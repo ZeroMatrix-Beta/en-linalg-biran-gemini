@@ -1,0 +1,190 @@
+\documentclass{report}
+\usepackage{amsmath, amsthm}
+
+% ==========================================
+% HEADING FORMATTING & SPACING
+% ==========================================
+\usepackage[explicit]{titlesec}
+\usepackage{titletoc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{tocloft}
+\usepackage[top=15mm, bottom=15mm, includefoot, nomarginpar]{geometry} % try 25 mm
+%\usepackage[rmx]{kpfonts}
+
+% change enumerations:
+\usepackage{enumitem, tabstackengine}
+
+% use tikz:
+\usepackage{tikz}
+
+% change page-footer:
+\usepackage{fancyhdr}
+
+% Macro for omitted content (kept for future use if needed)
+\newcommand{\omitted}[1]{\textcolor{red}{#1}}
+
+%No indent:
+% \setlength{\parindent}{0pt}
+
+% 1. Custom Chapter Format: Title (chapter X)
+\titleformat{\chapter}[block]  % [block] forces it onto a single line
+{\normalfont\LARGE\bfseries}  % Main style: Huge and Bold
+{}                           % Empty standard label
+{0pt}                        % Separation
+% #1 is the title. Suffix is \Large (smaller than \Huge) and un-bolded (\textnormal)
+{#1 {\Large\textnormal{(Chapter \thechapter)}}}
+
+% 2. Space-efficient Chapter Headings
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+
+% 3. Custom Section Format: Title (section X.Y)
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{}
+{0pt}
+{#1 {\large\textnormal{(Section \thechapter.\alph{section})}}}
+
+% 4. Space-efficient Section Headings
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+
+% Make the sub-sub section numbers logically and visually dissappear:
+% 1. Global limit: Only Chapters and Sections get numbers
+\setcounter{secnumdepth}{1}
+
+% 2. Visual styling for Subsections (Clean & Unnumbered)
+\titleformat{\subsection}
+{\normalfont\large\bfseries}
+{}
+{0pt}
+{#1}
+
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% change enumerations to alphabetical as default
+\setlist[enumerate]{itemsep=\itemsep,topsep=\itemsep}
+\setlist[enumerate,1]{label=\textbf{(\alph*)}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ==========================================
+% THEOREM CONFIGURATION
+% ==========================================
+
+\newtheoremstyle{colonstyle}
+{\topsep}{\topsep}{\upshape}{}{\bfseries}{:}{.5em}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (\textnormal{\textit{#3}})}}
+
+\theoremstyle{colonstyle}
+
+\newtheorem{theorem}{Theorem}[section]
+
+% The decoupled theorem display format: Chapter.letter.Number
+\renewcommand{\thetheorem}{\thechapter.\alph{section}.\arabic{theorem}}
+
+% --- NUMBEREd ENVIRONMENTS ---
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+
+% --- UNNUMBERED ENVIRONMENTS ---
+% The asterisk (*) prevents them from being numbered!
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{claim*}{Claim}
+
+\newtheorem*{remark}{Remark}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{example}{Example}
+\newtheorem*{summary}{Summary}
+\newtheorem*{warmup}{Warm up}
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Answer}
+\newtheorem*{importantremark}{Important remark}
+\newtheorem*{goals}{Goals}
+
+% Changing proof environment
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  % This line sets the font to Bold + Italic and adds the colon
+  \item[\hskip\labelsep
+  \bfseries\itshape #1:]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+%Change QED symbol:
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+%\geometry{
+  %  a4paper,
+  %  total={170mm,257mm},
+  %  left=24mm,
+  %  right=24mm,
+  %  %top=15mm,
+  %}
+
+% Defining custom Math Operators
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+
+% --- Standard-Seiten (alle normalen Seiten) ---
+\pagestyle{fancy}
+\fancyhf{} % Alle Kopf- und Fußzeilen leeren
+\renewcommand{\headrulewidth}{0pt} % Keine Linie oben
+\fancyfoot[C]{\textbf{\thepage}}   % Seitenzahl zentriert und FETT
+
+% --- Sonderfall: Kapitelanfänge ---
+% LaTeX schaltet bei \chapter automatisch auf den Stil 'plain' um.
+% Wir definieren diesen Stil um, damit auch dort die Zahl fett ist.
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\textbf{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+
+% Title page:
+\title{Lecture Notes: Linear Algebra II - 2026}
+\author{Prof. Dr. Paul Biran, Gemini 3.1 Pro}
+\date{}
+
+\begin{document}
+
+
+% titelpage, table of content
+\maketitle
+\setlength{\cftbeforechapskip}{13pt} % Space before a chapter entry in TOC
+\setlength{\cftbeforesecskip}{7pt}   % Space before a section entry in TOC
+\setlength{\cftbeforesubsecskip}{3pt} % Wert nach Bedarf anpassen
+\tableofcontents % This generates the TOC
+\cleardoublepage
+
+
+
+
+% Include content
+\input{content/vs-out-of-old-ones}
+\input{content/misc}
+\input{content/determinants}
+\input{content/eigenvalues-eigenvectors}
+
+
+
+\end{document}

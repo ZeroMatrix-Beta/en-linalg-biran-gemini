@@ -1,0 +1,795 @@
+\setcounter{chapter}{20} % Chapter 21
+\chapter{Eigenvalues \& Eigenvectors}
+
+\section{Motivation}
+
+\subsection{Fibonacci revisited}
+Consider the sequence $f_0, f_1, f_2, f_3, \dots, f_n, \dots$, defined by $f_0 = 0$, $f_1 = 1$, and $f_n := f_{n-1} + f_{n-2}$ for $n \ge 2$.
+This yields the sequence: $0, 1, 1, 2, 3, 5, 8, 13, 21, \dots$
+We found a formula for $f_n$:
+\[ f_n = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right) \quad \forall n \ge 0. \]
+We defined $Fib := \text{the set of all sequences } (a_0, a_1, a_2, \dots, a_n, \dots)$, that satisfy $a_n = a_{n-1} + a_{n-2}$ for $n \ge 2$.
+
+\textbf{Claim 1.} $Fib \subseteq \mathbb{R}^{\infty}$ is a 2-dimensional vector subspace of the space of all infinite sequences $(x_0, x_1, x_2, \dots, x_n, \dots)$.
+In fact, the map $F : Fib \longrightarrow \mathbb{R}^2$, given by $F(a_0, a_1, \dots, a_n, \dots) := (a_0, a_1) \in \mathbb{R}^2$, is an isomorphism.
+
+\textbf{Claim 2.} Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\Psi := \frac{1-\sqrt{5}}{2}$. Then, the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \Psi, \Psi^2, \dots, \Psi^n, \dots)$ belong to $Fib$, and, moreover, they form a basis for $Fib$.
+
+We, also, saw, that using these two sequences, we could easily find an explicit formula for all Fibonacci sequences. But, how did we find these two special sequences?
+
+The shift map $S : Fib \longrightarrow Fib$, defined by $S(a_0, a_1, \dots, a_n, \dots) := (a_1, a_2, \dots, a_{n+1}, \dots)$, is a linear map.
+Let us try to find a Fibonacci sequence $v \ne 0$, such that $S(v) = \lambda \cdot v$ for some $\lambda$.
+\[ S(v) = \lambda \cdot v \iff \lambda = \frac{1\pm\sqrt{5}}{2} \text{ and } v = (a, a\lambda, a\lambda^2, \dots, a\lambda^n, \dots) \]
+
+\begin{definition}[Eigenvalue and Eigenvector]
+  Let $V$ be a vector space over $K$, and $T: V \rightarrow V$ a linear map (an endomorphism of $V$). We say, that $\lambda \in K$ is an eigenvalue (a.k.a. characteristic value) of $T$, if there exists a vector $v \ne 0$, such that $Tv = \lambda v$. Any vector $v \ne 0$, with the property that $Tv = \lambda v$, is called an eigenvector (of $T$) for the eigenvalue $\lambda$.
+\end{definition}
+
+\begin{definition}[Diagonalizable Endomorphism]
+  Let $V$ be a finite-dimensional vector space over $K$, and $T: V \rightarrow V$ a linear map. We say, that $T$ is diagonalizable, if there exists a basis $\mathcal{B}$ of $V$, such that
+  \begin{equation} \label{eq:diagonal_form}
+    [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}
+  \end{equation}
+\end{definition}
+
+
+
+\begin{lemma}[Diagonalizable Matrix Criterion]
+  $T$ is diagonalizable, if and only if, there exists a basis $\mathcal{B}=(v_1, \dots, v_n)$ consisting of eigenvectors of $T$ (i.e. $\forall i$, $Tv_i = \lambda_i \cdot v_i$ for some $\lambda_i \in K$).
+  Moreover, if, for some basis $\mathcal{B}=(v_1, \dots, v_n)$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the shape \eqref{eq:diagonal_form}, then, for all $i$, $\lambda_i$ is an eigenvalue of $T$, and $v_i$ is an eigenvector for $\lambda_i$.
+\end{lemma}
+
+\begin{proof}
+  Recall, that $[T]_{\mathcal{B}}^{\mathcal{B}} = \left( [Tv_1]_{\mathcal{B}} \dots [Tv_n]_{\mathcal{B}} \right)$, and $[Tv_j]_{\mathcal{B}} = \begin{pmatrix} \alpha_{1j} \\ \vdots \\ \alpha_{nj} \end{pmatrix}$, where $Tv_j = \alpha_{1j}v_1 + \dots + \alpha_{nj}v_n$.
+  $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the shape \eqref{eq:diagonal_form}, if and only if, $\alpha_{ij} = 0$ for all $i \ne j$, and $\alpha_{kk} = \lambda_k \iff Tv_k = \lambda_k \cdot v_k$.
+\end{proof}
+
+\begin{remark}
+  We saw, that for all $A \in M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say, that a matrix $A \in M_{n \times n}(K)$ is diagonalizable, if the linear map $T_A$ is diagonalizable.
+\end{remark}
+
+\begin{example}
+  Let $A = \left(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\right)$ and $K = \mathbb{R}$.
+  $T_A\left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 3 \\ 3 \end{smallmatrix}\right) = 3 \cdot \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$. Thus, $\lambda = 3$ is an eigenvalue, and $v = \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
+  Furthermore, $T_A\left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$. This implies, that $\lambda = 1$ is an eigenvalue, and $v = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
+  Geometrically, this represents a stretching by a factor of 3 in $\mathbb{R}^2$ along one axis, and, the identity map along the other axis.
+\end{example}
+
+\begin{example}
+  Let $A = \left(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix}\right)$. Let us find all possible eigenvalues and eigenvectors.
+  We are looking for $A \cdot v = \lambda v$, with $\lambda \in \mathbb{R}$, and $0 \ne v \in \mathbb{R}^2$.
+  $(A - \lambda I)v = 0$. This implies, that $A - \lambda I$ is not invertible, which, in turn, means $\det(A - \lambda I) = 0$ (which leads to a quadratic equation).
+\end{example}
+
+\begin{proposition}[Linear Independence of Eigenvectors] \label{prop:lin_indep_eigen}
+  Let $V$ be a vector space over $K$, and $T: V \rightarrow V$ a linear map. Suppose, that $\lambda_1, \dots, \lambda_n \in K$ are eigenvalues of $T$, which are pairwise distinct (i.e. $\lambda_i \ne \lambda_j$ for all $i \ne j$). Let $v_1, \dots, v_n$ be eigenvectors for $\lambda_1, \dots, \lambda_n$ respectively. Then, $v_1, \dots, v_n$ are linearly independent. (Put shortly: eigenvectors, corresponding to a list of distinct eigenvalues, are always linearly independent).
+\end{proposition}
+
+\begin{proof}
+  We proceed by induction, on $n$.
+  Base case $n=1$: $v_1$ is an eigenvector for $\lambda_1$. By definition, $v_1 \ne 0$, which implies, that $v_1$ is linearly independent.
+
+  Inductive step, for $n \ge 1$: Suppose, the proposition holds for any list of $n$ eigenvalues and eigenvectors. We will prove, now, that the proposition holds, also, for a list of $n+1$ eigenvalues and eigenvectors.
+  Let $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ be pairwise distinct eigenvalues of $T$, and $v_1, \dots, v_n, v_{n+1}$ a given list of eigenvectors of $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ respectively. We need to prove, that $v_1, \dots, v_n, v_{n+1}$ are linearly independent.
+  Assume, that
+  \begin{equation} \label{eq:ind_step_sum}
+    a_1 v_1 + \dots + a_n v_n + a_{n+1} v_{n+1} = 0.
+  \end{equation}
+  We need to show, that $a_1 = \dots = a_n = a_{n+1} = 0$.
+  Apply the transformation $T$ to \eqref{eq:ind_step_sum}:
+  \[ a_1 T(v_1) + \dots + a_n T(v_n) + a_{n+1} T(v_{n+1}) = 0. \]
+  But, since $T(v_i) = \lambda_i v_i$, we have:
+  \begin{equation} \label{eq:ind_step_transformed}
+    a_1 \lambda_1 v_1 + \dots + a_n \lambda_n v_n + a_{n+1} \lambda_{n+1} v_{n+1} = 0.
+  \end{equation}
+
+  Consider, now, the combination $\eqref{eq:ind_step_transformed} - \lambda_{n+1} \cdot \eqref{eq:ind_step_sum}$:
+  \[ a_1(\lambda_1 - \lambda_{n+1})v_1 + \dots + a_n(\lambda_n - \lambda_{n+1})v_n + a_{n+1}(\lambda_{n+1} - \lambda_{n+1})v_{n+1} = 0. \]
+  By the induction hypothesis, $v_1, \dots, v_n$ are linearly independent.
+  Therefore, $a_1(\lambda_1 - \lambda_{n+1}) = \dots = a_n(\lambda_n - \lambda_{n+1}) = 0$.
+  By assumption, the eigenvalues are distinct, so, $\lambda_i \ne \lambda_{n+1}$. Consequently, $a_1 = \dots = a_n = 0$.
+  Going back to \eqref{eq:ind_step_sum}, we get $a_{n+1} v_{n+1} = 0$.
+  But, since $v_{n+1} \ne 0$ (because $v_{n+1}$ is an eigenvector), this implies, that $a_{n+1} = 0$.
+\end{proof}
+
+\subsection{The Characteristic Polynomial}
+
+
+
+\begin{proposition}[Eigenvalue Injective Criterion]
+  Let $V$ be a vector space over $K$, and $T: V \rightarrow V$ a linear map. Then, $\lambda$ is an eigenvalue of $T$, if and only if, the linear map $T - \lambda \cdot \mathrm{id}_V$ is not injective.
+\end{proposition}
+
+\begin{proof}
+  $\lambda$ is an eigenvalue of $T \iff \exists 0 \ne v \in V$ such that $Tv = \lambda v$
+  $\iff \exists 0 \ne v \in V$ such that $Tv - \lambda v = 0 \iff \exists 0 \ne v \in V$ such that $(T - \lambda \cdot \mathrm{id}_V)v = 0 \iff \ker(T - \lambda \cdot \mathrm{id}_V) \ne \{0\}$.
+  This implies, that $T - \lambda \cdot \mathrm{id}_V$ is not injective.
+\end{proof}
+
+\begin{definition}[Characteristic Polynomial]
+  Let $V$ be a finite-dimensional vector space over $K$, and $T: V \rightarrow V$ a linear map. We define the characteristic polynomial of $T$, as $P_T(x) := \det(T - x \cdot \mathrm{id}_V)$ (sometimes denoted $\chi_T(x)$), where $x$ is a formal variable ("in $K$"). We define the characteristic polynomial of a matrix $A \in M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
+\end{definition}
+
+\begin{definition}[Eigenspace]
+  Let $V$ be a vector space over $K$, and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The eigenspace corresponding to $\lambda$ is defined as:
+  $\Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \mathrm{id}_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}$.
+  Clearly, (because of this definition), $\Eig_T(\lambda) \subseteq V$ is a linear subspace.
+\end{definition}
+
+\begin{lemma}[Properties of the Characteristic Polynomial]
+  \label{lem:properties-of-the-char-poly}
+  Let $A \in M_{n \times n}(K)$. Then:
+  \begin{enumerate}
+    \item $P_A(x)$ is a polynomial of degree $n$, with leading coefficient $(-1)^n$ (i.e. $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$, with $c_i \in K$ for all $i$, and $c_n = (-1)^n$.)
+    \item $P_{A^T}(x) = P_A(x)$.
+    \item If $A = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}$ has upper triangular form, then, $P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x)$.
+    \item If $A = \left(\begin{array}{c|c} B_1 & * \\ \hline 0 & B_2 \end{array}\right)$ is a block matrix, then, $P_A(x) = P_{B_1}(x) \cdot P_{B_2}(x)$.
+    \item If $A$ and $B$ are similar matrices (i.e. $B = P^{-1}AP$ for some invertible matrix $P$), then, $P_A(x) = P_B(x)$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  (a) Let
+  \[P_A(x) = \det(A - x \cdot I_n) = \det\begin{pmatrix} A_{11}-x & A_{12} & \dots & A_{1n} \\ A_{21} & A_{22}-x & \dots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \dots & A_{nn}-x \end{pmatrix}. \]
+  Denote this matrix (inside the determinant) by $B$. This determinant, equals $\sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n}$.
+  $= (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + (\text{products of degree} \le n-1)$.
+  If $\sigma \ne \mathrm{id} = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then, at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$.
+  $= (-1)^n x^n + (\text{terms of degree} \le n-1)$.
+
+  (b) $P_{A^T}(x) = \det(A^T - x \cdot I_n) = \det((A - x \cdot I_n)^T) = \det(A - x \cdot I_n) = P_A(x)$.
+
+  (c+d) Exercise: Follows from properties of the determinant we have, already, proved.
+
+  (e) $P_B(x) = \det(B - x \cdot I_n) = \det(P^{-1}AP - x \cdot I_n) = \det(P^{-1}(A - x \cdot I_n)P) = \det(A - x \cdot I_n) = P_A(x)$.
+\end{proof}
+
+\begin{remark}
+  If $V$ is an $n$-dimensional vector space over $K$, and $T \in \End(V)$, then, $P_T(x)$ is a polynomial of degree $n$, with leading coefficient $(-1)^n$.
+\end{remark}
+
+\begin{proof}
+  Let $\mathcal{B}$ be a basis for $V$. Then, $[T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies, that $P_T(x) = \det([T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark, now, follows from (a) of the Lemma \ref{lem:properties-of-the-char-poly}.
+\end{proof}
+
+\begin{definition}[Trace]
+  Let $A \in M_{n \times n}(K)$. Define the trace (German:  ``Spur'') of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
+  If $V$ is a finite-dimensional vector space over $K$, and $T \in \End(V)$, define $\Tr(T) := \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$, where $\mathcal{B}$ is some basis for $V$. We will see soon, that $\Tr(T)$ is well defined (i.e. it does not depend on the choice of $\mathcal{B}$).
+\end{definition}
+
+\begin{lemma}[Properties of Trace]  For all $A, B \in M_{n \times n}(K)$, we have
+  \begin{enumerate}
+    \item $\Tr(A \cdot B) = \Tr(B \cdot A$
+    \item If $A$ and $B$ are similar matrices, then, $\Tr(A) = \Tr(B).$
+  \end{enumerate}
+  In particular, if $\mathcal{B}$ and $\mathcal{B}'$ are two bases for $V$, then $\Tr([T]_{\mathcal{B}}^{\mathcal{B}}) = \Tr([T]_{\mathcal{B}'}^{\mathcal{B}'})$. Thus, $\Tr(T)$ is well defined.
+\end{lemma}
+
+\begin{proof}
+  (a) $\Tr(A \cdot B) = \sum_{i=1}^n (A \cdot B)_{ii} = \sum_{i=1}^n \sum_{j=1}^n A_{ij} \cdot B_{ji} = \sum_{i,j} A_{ij}B_{ji} = \sum_{i,j} A_{ji}B_{ij} = \sum_{i=1}^n \sum_{j=1}^n B_{ij}A_{ji} = \sum_{i=1}^n (B \cdot A)_{ii} = \Tr(B \cdot A)$.
+
+  (b) If $B = P^{-1}AP$, then, $\Tr(B) = \Tr(P^{-1}AP) = \Tr(P^{-1} \cdot (AP)) = \Tr(AP \cdot P^{-1}) = \Tr(A)$.
+
+  Regarding the claim about $\Tr(T)$, recall, that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$, and $[\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1}$. Use (b), to conclude the proof.
+\end{proof}
+
+Why is the trace interesting?
+Let $A \in M_{n \times n}(K)$, and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$ its characteristic polynomial. We have seen, that $c_n = (-1)^n$.
+
+\begin{lemma}[Coefficients of the Characteristic Polynomial]
+  $c_{n-1} = (-1)^{n-1} \cdot \Tr(A)$, and $c_0 = \det(A)$. In other words, $P_A(x) = (-1)^n x^n + (-1)^{n-1}\Tr(A) \cdot x^{n-1} + c_{n-2}x^{n-2} + \dots + c_1 x + \det(A)$.
+\end{lemma}
+
+\begin{proof}
+  $P_A(x) = \det\begin{pmatrix} A_{11}-x & A_{12} & \dots & A_{1n} \\ A_{21} & A_{22}-x & \dots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \dots & A_{nn}-x \end{pmatrix}$. Denote this matrix by $B$.
+  \begin{equation} \label{eq:permutation_sum}
+    P_A(x) = (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + \sum_{\sigma \in S_n, \sigma \ne \mathrm{id}} \sgn(\sigma) B_{1, \sigma 1} \dots B_{n, \sigma n}.
+  \end{equation}
+  If $\sigma \ne \mathrm{id}$, then, there exist at least two indices $i \ne j$, such that $i \ne \sigma i$, and $j \ne \sigma j$.
+  Thus, the product contains at least two factors ($B_{i, \sigma i}$ and $B_{j, \sigma j}$) that are not from the diagonal of $B$, and so, do not contain $x$.
+  Therefore, the degree of the sum in \eqref{eq:permutation_sum} is $\le n-2$.
+  $P_A(x) = (A_{11}-x)(A_{22}-x) \dots (A_{nn}-x) + (\text{another polynomial of degree} \le n-2)$.
+  $= (-1)^n x^n + \left[ A_{11}(-x)^{n-1} + \dots + A_{nn}(-x)^{n-1} \right] + \dots$
+  $= (-1)^n x^n + (-1)^{n-1} \cdot \Tr(A)x^{n-1} + \dots + c_1 x + c_0$.
+
+  Finally, $c_0 = P_A(0) = \det(A - 0 \cdot I_n) = \det(A)$ (obtained by substituting $x=0$).
+\end{proof}
+
+\begin{definition}[Direct Sum]
+  Let $V$ be a vector space over $K$, and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say, that $W$ is a direct sum of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a direct sum), if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
+\end{definition}
+
+\begin{exercise}
+  $U_1 + \dots + U_r$ is a direct sum, if and only if, any of the following conditions hold:
+  \begin{enumerate}
+    \item The only way to write $0 = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$, is with $u_1 = \dots = u_r = 0$.
+    \item For all $2 \le j \le r$, we have $U_j \cap (U_1 + \dots + U_{j-1}) = \{0\}$.
+  \end{enumerate}
+  Under the additional assumption, that $U_1, \dots, U_r$ are all finite-dimensional, $U_1 + \dots + U_r$ is a direct sum, if and only if, whenever $\mathcal{B}_1, \dots, \mathcal{B}_r$ are bases for $U_1, \dots, U_r$ respectively, then, $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ forms a basis for $U_1 + \dots + U_r$.
+\end{exercise}
+
+\begin{exercise}
+  If $U_1 + \dots + U_r$ is a direct sum, then, there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So, when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
+\end{exercise}
+
+\begin{proposition}[Direct Sum of Eigenspaces]
+  Let $V$ be a vector space over $K$, and $T \in \End(V)$. Let $\lambda_1, \dots, \lambda_r \in K$ be pairwise distinct eigenvalues of $T$. Then, $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
+\end{proposition}
+
+\begin{proof}
+  Assume, $u_1 + \dots + u_r = u_1' + \dots + u_r'$, where $u_i, u_i' \in \Eig_T(\lambda_i)$ for all $1 \le i \le r$. We need to show, that $u_i = u_i'$ for all $i \iff (u_i - u_i' = 0, \text{ for all } i)$.
+  We have:
+  \begin{equation} \label{eq:ds_sum_zero}
+    (u_1 - u_1') + \dots + (u_r - u_r') = 0.
+  \end{equation}
+  Assume, by contradiction, that there exists an $i$, such that $u_i - u_i' \ne 0$.
+  Remove from the list $u_1 - u_1', \dots, u_r - u_r'$, all those vectors that are 0. We get a non-empty list $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ of non-zero vectors, and, by \eqref{eq:ds_sum_zero}, we still have
+  \begin{equation} \label{eq:ds_nonzero_subsum}
+    (u_{i_1} - u_{i_1}') + \dots + (u_{i_\ell} - u_{i_\ell}') = 0.
+  \end{equation}
+  Now, for all $k$, $u_{i_k} - u_{i_k}'$ is either an eigenvector of $\lambda_{i_k}$ or 0, but, by our assumptions, $u_{i_k} - u_{i_k}' \ne 0$.
+  Recall, from Proposition \ref{prop:lin_indep_eigen}, that eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent. $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ are linearly independent vectors, and, by \eqref{eq:ds_nonzero_subsum}, their sum is 0. This is a contradiction.
+\end{proof}
+
+\begin{corollary}[Diagonalizability via Eigenspaces]
+  Assume, $V$ is finite-dimensional, $T \in \End(V)$, and let $\lambda_1, \dots, \lambda_r$ be all the eigenvalues of $T$. Then, $T$ is diagonalizable, if and only if, $\sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$.
+\end{corollary}
+
+\begin{exercise}
+  If $V$ is finite-dimensional, then, $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
+\end{exercise}
+
+\begin{proof}
+  Choose a basis $\mathcal{B}_i$ for $\Eig_T(\lambda_i)$. Recall, that $W := \Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
+  This implies, that $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$.
+  Now, $W \subseteq V$ is a linear subspace, and $\dim W = \sum_{i=1}^r |\mathcal{B}_i| = \sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$.
+  This implies, $W = V$. Consequently, $V$ has a basis (namely $(\mathcal{B}_1, \dots, \mathcal{B}_r)$), whose elements are eigenvectors of $T$. This implies, that $T$ is diagonalizable.
+\end{proof}
+
+\section{Multiplicities of Eigenvalues}
+
+\begin{example}
+  Consider the matrices $A = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ and $B = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$.
+  We have, that their characteristic polynomials are identical: $P_A(x) = P_B(x) = (1-x)^2 = (x-1)^2$.
+\end{example}
+
+\begin{example}[Jordan Block]
+  Consider the matrix $J_{\lambda, n} \in M_{n \times n}(K)$, for $\lambda \in K$.
+  \begin{equation} \label{eq:jordan_block}
+    J := J_{\lambda,n} := \begin{pmatrix} \lambda & 1 & 0 & \dots & 0 \\ 0 & \lambda & 1 & \dots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & 0 & \lambda & 1 \\ 0 & 0 & 0 & 0 & \lambda \end{pmatrix}
+  \end{equation}
+  This is called a Jordan block. It features $\lambda$'s along the main diagonal, $1$'s along the "diagonal" just above the main diagonal, and $0$'s everywhere else.
+  The characteristic polynomial is $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$. This implies, that $J$ has only one eigenvalue, namely $\lambda$.
+
+  Let us find the eigenvectors, for the eigenvalue $\lambda$:
+  \[ J - \lambda \cdot I_n = \begin{pmatrix} 0 & 1 & 0 & \dots & 0 \\ 0 & 0 & 1 & \dots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix} \]
+  This matrix, clearly, has $n-1$ linearly independent columns.
+  Therefore, the rank is $\rank(J - \lambda \cdot I_n) = n - 1$.
+  By the rank-nullity theorem, $\dim \ker(J - \lambda \cdot I_n) = 1$.
+  Consequently, the eigenspace $\Eig_J(\lambda)$ is $1$-dimensional.
+  Clearly, $e_1 = \left(\begin{smallmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{smallmatrix}\right)$ is an eigenvector for $\lambda$.
+  So, $\Eig_J(\lambda) = \Sp(e_1)$.
+\end{example}
+
+
+
+\begin{importantremark}
+  There is an important difference, between polynomials $p(x) \in K[x]$ and the functions they define $K \rightarrow K$.
+  For example, if $K = \mathbb{Z}_2$, then, $p(x) = x$ and $q(x) = x^2$ are different polynomials, but, they define the same function $\mathbb{Z}_2 \rightarrow \mathbb{Z}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
+\end{importantremark}
+
+\begin{lemma}[Decomposition of Diagonalizable Matrices] \label{lem:diag_decomp}
+  Let $A \in M_{n \times n}(K)$ (or $T \in \End(V)$) be diagonalizable. Then, $P_A(x)$ decomposes as a product of linear (i.e. degree $1$) factors:
+  \[ P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x), \]
+  where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $A$ (but there might be repetitions among the $\lambda_i$'s).
+\end{lemma}
+
+\begin{proof}
+  By assumption, there exists an invertible matrix $P$, such that:
+  \begin{equation} \label{eq:diagonal_similarity}
+    P^{-1}AP = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix} =: D.
+  \end{equation}
+  (i.e., $A$ is similar to $D$).
+  Since similar matrices have the same characteristic polynomial, we have:
+  \[ P_A(x) = P_D(x) = \det \begin{pmatrix} \lambda_1 - x & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n - x \end{pmatrix} = (\lambda_1 - x) \dots (\lambda_n - x). \]
+\end{proof}
+
+\begin{example}
+  Let $A = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$ over $K = \mathbb{R}$. The associated linear map $T_A : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ represents a counter-clockwise rotation.
+  The characteristic polynomial is $P_A(x) = \det\left(\begin{smallmatrix} -x & -1 \\ 1 & -x \end{smallmatrix}\right) = x^2 + 1$.
+  This polynomial has no roots in $\mathbb{R}$. And, of course, $A$ has no real eigenvalues.
+\end{example}
+
+\subsection{A quick digression about polynomials...}
+Let $0 \ne p(x) \in K[x]$, and $\lambda \in K$. By dividing $p(x)$ by $(x-\lambda)$, we can write:
+\begin{equation} \label{eq:poly_division}
+  p(x) = (x-\lambda) \cdot q(x) + R,
+\end{equation}
+where $\deg q(x) = \deg p(x) - 1$, and $R \in K$ is the remainder.
+If we substitute $x = \lambda$ into \eqref{eq:poly_division}, we obtain $p(\lambda) = 0 \cdot q(\lambda) + R = R$. Thus, $p(x) = (x-\lambda) \cdot q(x) + p(\lambda)$.
+Conclusion: $p(\lambda) = 0 \iff p(x) = (x-\lambda) \cdot q(x)$ for some $q(x) \in K[x]$.
+We say, that $\lambda$ is a \textbf{zero} of $p(x)$ (De: Nullstelle), or a \textbf{root} of $p(x)$.
+Sometimes, $\lambda$ is also a zero of $q(x)$, so, $q(x) = (x-\lambda) \cdot h(x)$, which implies, $p(x) = (x-\lambda)^2 \cdot h(x)$, etc.
+
+\begin{definition}[Multiplicity of a Zero] \label{def:mult_zero}
+  We say, that $\lambda$ is a zero of \textbf{multiplicity} $m \in \mathbb{N}_{>0}$, if $p(x) = (x-\lambda)^m \cdot g(x)$, where $g(x) \in K[x]$, and $g(\lambda) \ne 0$ (i.e., $\lambda$ is not a zero of $g(x)$).
+  If $m=1$, we say, $\lambda$ is a \textbf{simple zero} of $p(x)$.
+  If $m \ge 2$, we say, $\lambda$ is a \textbf{multiple zero} of $p(x)$.
+\end{definition}
+
+\subsection{Geometric \& Algebraic Multiplicity of Eigenvalues}
+
+\begin{definition}[Geometric and Algebraic Multiplicity] \label{def:geom_alg_mult}
+  Let $V$ be a vector space over $K$, and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. We define the \textbf{geometric multiplicity} of $\lambda$, to be:
+  \[ m_g(T;\lambda) := \dim \Eig_T(\lambda). \]
+  Assume, now, in addition, that $V$ is finite-dimensional. We define the \textbf{algebraic multiplicity} of $\lambda$, to be the multiplicity of the zero $\lambda$ in the characteristic polynomial $P_T(x)$ of $T$. We denote it, by $m_a(T;\lambda)$.
+\end{definition}
+
+\begin{proposition}[Multiplicity Inequality] \label{prop:mult_inequality}
+  For any eigenvalue $\lambda$, the geometric multiplicity is less than, or equal to, the algebraic multiplicity:
+  \[ m_g(T;\lambda) \le m_a(T;\lambda). \]
+\end{proposition}
+
+\begin{proof}
+  Let $v_1, \dots, v_k$ be a basis for the eigenspace $\Eig_T(\lambda)$. We extend this basis, to a basis $\mathcal{B} = (v_1, \dots, v_k, w_{k+1}, \dots, w_n)$ of $V$.
+  Then, the matrix of $T$ with respect to the basis $\mathcal{B}$, has the block form:
+  \[ [T]_{\mathcal{B}}^{\mathcal{B}} = \left( [Tv_1]_{\mathcal{B}} \dots [Tv_k]_{\mathcal{B}} \mid [Tw_{k+1}]_{\mathcal{B}} \dots [Tw_n]_{\mathcal{B}} \right) \]
+  \begin{equation} \label{eq:block_matrix_T}
+    [T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{array}{c|c} \lambda I_k & C_1 \\ \hline 0 & C \end{array}\right)
+  \end{equation}
+  where $C \in M_{(n-k) \times (n-k)}(K)$.
+  We compute the characteristic polynomial, by utilizing the determinant property for block matrices (as established in previous sections):
+  \[ P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = (\lambda - x)^k \cdot \det(C - x I_{n-k}) \]
+  \[ P_T(x) = (\lambda - x)^k \cdot P_C(x) = (-1)^k(x - \lambda)^k \cdot P_C(x). \]
+  This factorization, directly, shows, that the multiplicity of $\lambda$ as a zero of $P_T(x)$, is at least $k$.
+  Therefore, we conclude, that $m_a(T;\lambda) \ge k = m_g(T;\lambda)$.
+\end{proof}
+
+\begin{example}
+  Revisiting the Jordan block $J := J_{\lambda, n}$ defined in \eqref{eq:jordan_block}:
+  We, previously, saw, that $P_J(x) = (\lambda - x)^n$, which, directly, implies, that $m_a(J;\lambda) = n$.
+  We, also, found, that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
+\end{example}
+
+
+\section{Diagonalizability} %
+
+\begin{theorem}[Equivalent Conditions for Diagonalizability] \label{thm:diag_equiv}
+  Let $V$ be an $n$-dimensional vector space over $K$, and $T \in \End(V)$. The following statements, are equivalent: %
+  \begin{enumerate}
+    \item $T$ is diagonalizable. %
+    \item There exists a basis for $V$ whose elements are eigenvectors of $T$. %
+    \item The characteristic polynomial $P_T(x)$ splits into a product of linear factors, and for every eigenvalue of $T$, the geometric and algebraic multiplicities are equal. %
+    \item $\sum_{i=1}^k \dim \Eig_T(\lambda_i) = \dim V$, where $\lambda_1, \dots, \lambda_k \in K$ are all the distinct eigenvalues of $T$. %
+    \item $V \cong \bigoplus_{i=1}^k \Eig_T(\lambda_i)$. %
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  $(a) \iff (b)$ has, already, been proved. %
+
+  $(a) \implies (c)$: Let $\mathcal{B}$ be a basis, in which $[T]_{\mathcal{B}}^{\mathcal{B}}$ has diagonal form. %
+  By changing the order of the elements in $\mathcal{B}$, we can arrange, that $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the following block-diagonal shape: %
+  \begin{equation} \label{eq:ordered_diag_matrix}
+    [T]_{\mathcal{B}}^{\mathcal{B}} = \left( \begin{array}{c|c|c}
+      \begin{matrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_1 \end{matrix} & \text{\Large 0} & \text{\Large 0} \\
+      \hline
+      \text{\Large 0} & \ddots & \text{\Large 0} \\
+      \hline
+      \text{\Large 0} & \text{\Large 0} & \begin{matrix} \lambda_k & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_k \end{matrix}
+    \end{array} \right)
+  \end{equation} %
+  where $\mathcal{B} = (v_1^{(1)}, \dots, v_{\ell_1}^{(1)}, v_1^{(2)}, \dots, v_{\ell_2}^{(2)}, \dots, v_1^{(k)}, \dots, v_{\ell_k}^{(k)})$.
+  Here $\lambda_1, \dots, \lambda_k$ are the eigenvalues of $T$ (with $\lambda_i \ne \lambda_j$ for all $i \ne j$), and $v_1^{(i)}, \dots, v_{\ell_i}^{(i)}$ are eigenvectors of $\lambda_i$ for all $i$. %
+  The characteristic polynomial is:
+  \begin{equation} \label{eq:char_poly_splits}
+    P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = (\lambda_1 - x)^{\ell_1} \cdot \dots \cdot (\lambda_k - x)^{\ell_k}.
+  \end{equation} %
+  This shows, that $P_T(x)$ splits as a product of linear factors. %
+  It, also, shows, that $\lambda_1, \dots, \lambda_k$ are all the eigenvalues of $T$. %
+  It remains to show, $m_g(T; \lambda_i) = m_a(T; \lambda_i)$, for all $i$. %
+  Clearly, $v_1^{(i)}, \dots, v_{\ell_i}^{(i)} \in \Eig_T(\lambda_i)$ are linearly independent, hence, $\ell_i \le \dim \Eig_T(\lambda_i) = m_g(T; \lambda_i)$, by definition. %
+  But, from \eqref{eq:char_poly_splits}, we, also, have $\ell_i = m_a(T; \lambda_i)$. %
+  So, $m_a(T; \lambda_i) \le m_g(T; \lambda_i)$, for all $i$. %
+  At the same time, we, always, have the inequality $m_g(T; \lambda_i) \le m_a(T; \lambda_i)$. %
+  Therefore, $m_g(T; \lambda_i) = m_a(T; \lambda_i)$, for all $i$. (The proof, also, shows, that $\ell_i = m_g(T; \lambda_i) = m_a(T; \lambda_i)$). %
+
+  $(c) \implies (d)$: We assume, that $P_T(x) = (\lambda_1 - x)^{\ell_1} \dots (\lambda_k - x)^{\ell_k}$, and $m_g(T; \lambda_i) = m_a(T; \lambda_i)$. %
+  Then $\lambda_1, \dots, \lambda_k$ are exactly all the eigenvalues of $T$. By definition, $\ell_i = m_a(T; \lambda_i)$. %
+  We have $n = \dim V = \sum_{i=1}^k m_a(T; \lambda_i)$ (because $\deg P_T(x) = n$). %
+  By assumption, this equals $\sum_{i=1}^k m_g(T; \lambda_i) = \sum_{i=1}^k \dim \Eig_T(\lambda_i)$. %
+
+  $(d) \implies (e)$: Recall, that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)$ is a direct sum. %
+  Consequently, $\dim(\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)) = \dim \Eig_T(\lambda_1) + \dots + \dim \Eig_T(\lambda_k) = \dim V$ (by assumption). %
+  Since $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \subseteq V$ is a linear subspace, we have, $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$. %
+  This implies that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$. %
+
+  $(e) \implies (a)$: If $V \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$, then, since $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)$ is a direct sum, and, also, a linear subspace of $V$, we must have $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$. %
+  If we choose a basis $v_1^{(i)}, \dots, v_{\ell_i}^{(i)}$ for $\Eig_T(\lambda_i)$ for all $i$ (where $\ell_i = m_g(T; \lambda_i)$), then, the union $(v_1^{(1)}, \dots, v_{\ell_1}^{(1)}, \dots, v_1^{(k)}, \dots, v_{\ell_k}^{(k)})$ is a basis of $V$, and all the vectors in it are eigenvectors of $T$. %
+\end{proof}
+
+\begin{corollary}[Sufficient Condition for Diagonalizability] \label{cor:sufficient_diag}
+  If $P_T(x)$ splits as a product of linear factors, and each eigenvalue $\lambda$ of $T$ has algebraic multiplicity $1$, then, $T$ is diagonalizable. %
+\end{corollary}
+
+\begin{proof}
+  If $m_a(T; \lambda) = 1$, this implies, that $m_g(T; \lambda) = 1$. Now, use point (c) of Theorem \ref{thm:diag_equiv}. %
+\end{proof}
+
+\subsection{Trigonalization}
+(= bringing a matrix/endomorphism to upper triangular form) %
+
+\begin{question}
+  Let $T \in \End(V)$. We want to find a basis $\mathcal{B}$ for $T$, such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ has as simple as possible form. %
+\end{question}
+\begin{itemize}
+  \item If $T$ is diagonalizable, we're okay. But, we've seen, that this is not always the case. e.g. $A = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$ is not diagonalizable (we saw: $m_a(A; 1) = 2, m_g(A; 1) = 1$). %
+  \item A weaker, (hence more general), condition is trigonalizability. %
+\end{itemize}
+
+\begin{definition}[Trigonalizable Endomorphism] \label{def:trigonalizable}
+  We say, that $T \in \End(V)$ is trigonalizable, if there exists a basis $\mathcal{B}$ for $V$, such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular, i.e., %
+  \begin{equation} \label{eq:upper_triangular_def}
+    [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix} \quad (n = \dim V).
+  \end{equation} %
+\end{definition}
+
+\begin{theorem}[Trigonalizability Condition] \label{thm:trig_condition}
+  Let $V$ be a finite-dimensional vector space over $K$, and $T \in \End(V)$. Then, $T$ is trigonalizable, if and only if, $P_T(x)$ splits as a product of linear factors, i.e., $P_T(x) = (\lambda_1 - x)^{\ell_1} \dots (\lambda_k - x)^{\ell_k}$. %
+\end{theorem}
+
+\subsection*{Short Digression}
+
+\begin{theorem}[Fundamental Theorem of Algebra] \label{thm:fta}
+  Every polynomial $p(x) \in \mathbb{C}[x]$ with complex coefficients splits as a product of linear factors, and a constant, i.e., %
+  $p(x) = C \cdot (x-a_1)^{n_1} \dots (x-a_r)^{n_r}$, with $C \in \mathbb{C}$, $r \ge 0$, and $a_i \in \mathbb{C}$. %
+\end{theorem}
+\begin{remark}
+  (Proof in analysis course, or complex analysis in 3rd semester). %
+\end{remark}
+
+\begin{corollary} \label{cor:complex_trigonalizable}
+  Let $V$ be a finite-dimensional vector space over $\mathbb{C}$. Then, every $T \in \End(V)$ is trigonalizable. %
+\end{corollary}
+
+\subsection{Proof of the Theorem on Trigonalizability}
+
+\begin{proof}
+  $\implies$: If there exists a basis $\mathcal{B}$, such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular as in \eqref{eq:upper_triangular_def}, then: %
+  \[ P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = \det \begin{pmatrix} \lambda_1 - x & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n - x \end{pmatrix} = (\lambda_1 - x) \dots (\lambda_n - x). \] %
+
+  $\impliedby$: We will use induction, on $n = \dim V$. %
+
+  \textbf{Base case $n=1$}: In this case, $V$ is $1$-dimensional, and $[T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} \lambda \end{smallmatrix}\right)$, so, $T$ is even diagonalizable. %
+
+  \textbf{Inductive step}: Let $n \ge 1$. Assume, that the theorem holds for all vector spaces of dimension $\le n$, and every endomorphism of such a space. %
+  Let $V$ be an $(n+1)$-dimensional vector space, and $T \in \End(V)$, such that $P_T(x)$ splits as a product of linear factors. %
+
+  Let $\lambda_1$ be a zero of $P_T(x)$. This implies, that there exists an eigenvector $u_1 \in \ker(T - \lambda_1 \cdot \mathrm{id}_V)$. %
+  Extend $u_1$, to a basis $\mathcal{B}' = (u_1, u_2, \dots, u_{n+1})$ of $V$. %
+  Then, the matrix of $T$ in basis $\mathcal{B}'$, has the block form:
+  \begin{equation} \label{eq:M_block}
+    [T]_{\mathcal{B}'}^{\mathcal{B}'} = \left(\begin{array}{c|c} \lambda_1 & * \dots * \\ \hline 0 & \\ \vdots & A \\ 0 & \end{array}\right) =: M
+  \end{equation} %
+  where $A$ is an $n \times n$ matrix. %
+  By block determinant properties, we have, $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$. %
+  Since $P_T(x)$ splits as a product of linear factors, so, does $P_A(x)$. %
+
+  Consider the linear map $T_A : K^n \rightarrow K^n$ defined by $T_A(u) = A \cdot u$. %
+  By the induction hypothesis, there exists a basis $\mathcal{C}$ of $K^n$, such that:
+  \begin{equation}
+    [T_A]_{\mathcal{C}}^{\mathcal{C}} = \begin{pmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{pmatrix}.
+  \end{equation} %
+  Denote by $\mathcal{E}$ the standard basis of $K^n$. We know, that $[T_A]_{\mathcal{C}}^{\mathcal{C}} = [\mathrm{id}]_{\mathcal{C}}^{\mathcal{E}} \cdot [T_A]_{\mathcal{E}}^{\mathcal{E}} \cdot [\mathrm{id}]_{\mathcal{E}}^{\mathcal{C}} = Q^{-1}AQ$, where $Q = [\mathrm{id}]_{\mathcal{C}}^{\mathcal{E}}$. %
+  Consequently, $Q^{-1}AQ = \left(\begin{smallmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{smallmatrix}\right)$. %
+
+  Now, define the $(n+1) \times (n+1)$ block matrix:
+  \begin{equation} \label{eq:P_underline}
+    \underline{P} := \left(\begin{array}{c|c} 1 & 0 \dots 0 \\ \hline 0 & \\ \vdots & Q \\ 0 & \end{array}\right) \in M_{(n+1) \times (n+1)}(K).
+  \end{equation} %
+
+  Claim: $\underline{P}$ is invertible, with $\underline{P}^{-1} = \left(\begin{array}{c|c} 1 & 0 \dots 0 \\ \hline 0 & \\ \vdots & Q^{-1} \\ 0 & \end{array}\right)$, and, $\underline{P}^{-1}M\underline{P} = \left(\begin{array}{c|c} \lambda_1 & * \dots * \\ \hline 0 & \\ \vdots & Q^{-1}AQ \\ 0 & \end{array}\right)$.
+
+  Proof of claim: This follows, from direct block matrix multiplication. %
+  \[ \underline{P} \cdot \underline{P}^{-1} = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q \end{array}\right) \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q^{-1} \end{array}\right) = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & I_n \end{array}\right) \] %
+  \[ \underline{P}^{-1} M \underline{P} = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q^{-1} \end{array}\right) \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & A \end{array}\right) \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q \end{array}\right) = \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & Q^{-1}AQ \end{array}\right) \] %
+  Since $Q^{-1}AQ$ is upper triangular with diagonal entries $\lambda_2, \dots, \lambda_{n+1}$, the entire matrix $\underline{P}^{-1}M\underline{P}$ is upper triangular. This proves, the claim. %
+
+  We continue with the proof of the Theorem. Recall, we have the basis $\mathcal{B}' = (u_1, u_2, \dots, u_{n+1})$, where $[T]_{\mathcal{B}'}^{\mathcal{B}'} = M$.
+
+  Claim: There exists a basis $\mathcal{B}$ for $V$, such that $[\mathrm{id}]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}$.
+
+  Proof of Claim: Write the entries of $\underline{P}$ as $P_{ij}$. Define $m = n+1$, and set vectors $v_1, \dots, v_m$ as linear combinations of $\mathcal{B}'$ using the columns of $\underline{P}$: %
+  \[ v_k := \sum_{j=1}^m P_{jk} u_j \quad \text{for } k = 1, \dots, m. \] %
+  The set $\mathcal{B} := (v_1, \dots, v_m)$ is a basis for $V$. %
+  To see this, assume, $c_1 v_1 + \dots + c_m v_m = 0$. Substituting the definitions of $v_k$, and using the linear independence of $(u_1, \dots, u_m)$, yields the matrix equation $\underline{P} \cdot (c_1, \dots, c_m)^T = 0$. %
+  Because $\underline{P}$ is invertible, $(c_1, \dots, c_m)^T = 0$, proving, linear independence. %
+
+  We, now, have the basis $\mathcal{B}$. Computing the matrix of $T$ in this new basis, yields: %
+  \begin{equation} \label{eq:final_trigonal_matrix}
+    [T]_{\mathcal{B}}^{\mathcal{B}} = [\mathrm{id}]_{\mathcal{B}}^{\mathcal{B}'} \cdot [T]_{\mathcal{B}'}^{\mathcal{B}'} \cdot [\mathrm{id}]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}^{-1} \cdot M \cdot \underline{P}.
+  \end{equation} %
+  As proven above, $\underline{P}^{-1} M \underline{P}$ is strictly upper triangular. Therefore, $T$ is trigonalizable. The induction is, now, complete. %
+\end{proof}
+
+\subsection{An Alternative (And More Elegant) Proof}
+
+\begin{proof} $\impliedby$: We will use induction, on $n = \dim V$. %
+
+  Define the $1$-dimensional subspace $U := \Sp(v_1)$, and consider the quotient space $V/U$. Since $v_1$ is an eigenvector, $T(U) \subseteq U$. This invariant property allows us to obtain a well-defined induced endomorphism on the quotient space, $\overline{T} : V/U \rightarrow V/U$, defined by, $\overline{T}([v]) := [Tv]$.
+
+  Extend $v_1$, to a basis $\mathcal{B}_1 = (v_1, w_2, \dots, w_{n+1})$ of $V$.
+  The equivalence classes $[w_2], \dots, [w_{n+1}]$ form a basis for $V/U$. In this basis, $\overline{T}$ is represented by an $n \times n$ matrix $A$, and, the full transformation $T$ in basis $\mathcal{B}_1$, takes the block form:
+  \begin{equation} \label{eq:block_matrix_induction}
+    [T]_{\mathcal{B}_1}^{\mathcal{B}_1} = \left(\begin{array}{c|ccc} \lambda_1 & * & \dots & * \\ \hline 0 & & & \\ \vdots & & A & \\ 0 & & & \end{array}\right)
+  \end{equation}
+  By the properties of block-triangular determinants, we have, $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$. Because $\overline{T}$ has the matrix representation $A$, we know, $P_{\overline{T}}(x) = P_A(x)$, which gives us:
+  \[ P_T(x) = (\lambda_1 - x) \cdot P_{\overline{T}}(x). \]
+  Since $P_T(x)$ splits into a product of linear factors by our initial assumption, $P_{\overline{T}}(x)$ must, also, split into linear factors.
+
+  Because $\dim(V/U) = n$, we can apply the induction hypothesis to $\overline{T}$. There exists a basis $\mathcal{C} = (z_2, \dots, z_{n+1})$ for $V/U$, such that its matrix is upper triangular:
+  \begin{equation} \label{eq:quotient_upper_triangular}
+    [\overline{T}]_{\mathcal{C}}^{\mathcal{C}} = \begin{pmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{pmatrix}.
+  \end{equation}
+  Now, each element in $\mathcal{C}$ is represented by some vector $v_i \in V$, meaning, $z_i = [v_i]$. (Such a $v_i$ is not unique, but, we pick one specific representative for every $i$).
+  Define the list of vectors $\mathcal{B} = (v_1, v_2, \dots, v_{n+1})$. We claim, that $\mathcal{B}$ is a basis for $V$.
+
+  To show this, we check for linear independence. Assume:
+  \[ \alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_{n+1} v_{n+1} = 0. \]
+  Passing this equation to the quotient space $V/U$ (where $[v_1] = 0$), we get:
+  \[ \alpha_2[v_2] + \dots + \alpha_{n+1}[v_{n+1}] = 0. \]
+  This implies, that $\alpha_2 z_2 + \dots + \alpha_{n+1} z_{n+1} = 0$.
+  Since the $z_i$ vectors form a basis for $V/U$, they are linearly independent, which forces, $\alpha_2 = \dots = \alpha_{n+1} = 0$.
+  Plugging this back into our original sum, leaves $\alpha_1 v_1 = 0$. Since $v_1 \ne 0$, we must have, $\alpha_1 = 0$.
+  Because the $n+1$ vectors are linearly independent, and $\dim V = n+1$, $\mathcal{B}$ is, indeed, a basis for $V$.
+
+  Finally, we claim, that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular.
+  For the first column, we, already, know, $T(v_1) = \lambda_1 v_1$.
+  For the remaining columns ($2 \le i \le n+1$), we read from the upper-triangular matrix \eqref{eq:quotient_upper_triangular}, that:
+  \[ [\overline{T}z_i]_{\mathcal{C}} = \alpha_{2i}z_2 + \dots + \alpha_{i-1, i}z_{i-1} + \lambda_i z_i \]
+  for some scalars $\alpha \in K$. Translating this back to the equivalence classes:
+  \[ [\overline{T}v_i] = \alpha_{2i}[v_2] + \dots + \alpha_{i-1, i}[v_{i-1}] + \lambda_i [v_i]. \]
+  This implies, that the difference between $T v_i$ and the linear combination of the $v$'s, must belong to the kernel of the quotient map, which is $U$:
+  \[ T v_i = \alpha_{2i}v_2 + \dots + \alpha_{i-1, i}v_{i-1} + \lambda_i v_i + u \quad \text{for some } u \in U. \]
+  Since $U = \Sp(v_1)$, we can write $u = \beta_i v_1$ for some scalar $\beta_i$. So,
+  \[ T v_i = \beta_i v_1 + \alpha_{2i}v_2 + \dots + \alpha_{i-1, i}v_{i-1} + \lambda_i v_i. \]
+  Because $T v_i$ only requires basis vectors up to index $i$, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is, strictly, upper triangular:
+  \[ [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \beta_2 & \dots & \beta_{n+1} \\ 0 & \lambda_2 & \dots & * \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \lambda_{n+1} \end{pmatrix} \]
+  This completes the inductive step, showing, that $T$ is trigonalizable.
+\end{proof}
+
+\setcounter{section}{3} % Sets section counter so the next \section is 4 (i.e., 'd')
+
+\section{The Minimal Polynomial \& The Cayley-Hamilton Theorem}
+
+A powerful tool in linear algebra is the ability to evaluate polynomials not just at scalar numbers, but at matrices and endomorphisms. Let $A \in M_{n \times n}(K)$. For any integer $k \ge 1$, the matrix power $A^k = A \cdot \dots \cdot A$ is well-defined. Therefore, for any formal polynomial $g(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0 \in K[x]$, we can define the matrix evaluation $g(A) \in M_{n \times n}(K)$ naturally as:
+\[
+g(A) := a_d A^d + a_{d-1}A^{d-1} + \dots + a_1 A + a_0 I_n.
+\]
+A natural question arises: can we find a polynomial that completely "kills" or annihilates a given matrix?
+
+\begin{claim*}[Existence of an Annihilating Polynomial]\label{claim:existence_annihilating}
+  For every matrix $A \in M_{n \times n}(K)$, there exists a non-zero polynomial $g \in K[x]$ such that $g(A) = 0$.
+\end{claim*}
+
+\begin{proof}
+  Consider the sequence of successive matrix powers. Since the vector space $M_{n \times n}(K)$ has dimension $n^2$, we can choose an integer $r \ge n^2$ to construct a sequence of length $r+1$:
+  \begin{equation} \label{eq:matrix_powers}
+    \underbrace{I_n, \ A, \ A^2, \ A^3, \ \dots, \ A^r}_{r+1 \text{ elements in a space of dimension } n^2}
+  \end{equation}
+  Because the number of elements strictly exceeds the dimension of the ambient space, the matrices in \eqref{eq:matrix_powers} cannot be linearly independent. This implies there exist scalars $a_0, a_1, \dots, a_r \in K$, not all zero, such that:
+  \[
+  a_0 I_n + a_1 A + a_2 A^2 + \dots + a_r A^r = 0.
+  \]
+  By setting $g(x) := a_r x^r + \dots + a_1 x + a_0$, we obtain the desired non-zero annihilating polynomial.
+\end{proof}
+
+A similar logic applies seamlessly to any abstract operator $T \in \End(V)$, where $V$ is a finite-dimensional vector space over $K$, defining $g(T) := a_d T^d + \dots + a_1 T + a_0 \id_V$. Since annihilating polynomials exist, it is mathematically fruitful to look for the "simplest" one, which acts as a sort of algebraic DNA for the operator.
+
+\begin{definition}[The Minimal Polynomial]\label{def:minimal_poly}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. A \textbf{minimal polynomial} for $T$ is a non-zero, monic polynomial $m_T(x) \in K[x]$ of the minimal possible degree such that $m_T(T) = 0$.
+\end{definition}
+
+While the minimal polynomial guarantees that an operator satisfies \textit{some} polynomial equation, one of the most celebrated theorems in mathematics provides a canonical polynomial that always works: the characteristic polynomial.
+
+\begin{theorem}[Cayley-Hamilton]\label{thm:cayley_hamilton}
+  Let $A \in M_{n \times n}(K)$. Then
+  \begin{enumerate}
+    \item  $P_A(A) = 0$.
+    \item Let $V$ be a finite-dimensional vector space over $K$, and $T \in \End(V)$. Then $P_T(T) = 0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{exercise}\label{ex:cayley_inverse}
+  Let $A \in M_{n \times n}(K)$ be an invertible matrix. Use Theorem \ref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
+\end{exercise}
+
+\subsection*{Proof of Cayley-Hamilton Theorem (Analytic Approach)}
+
+Before we dive into a purely algebraic mechanism, it is highly instructive to view this theorem through the lens of topology. The core idea is elegant: the theorem is trivially true for diagonal matrices. If we can show that diagonalizable matrices are "dense" (meaning almost all matrices are diagonalizable), we can use the continuity of polynomials to force the theorem to hold for \textit{every} matrix.
+
+First, we note that it is enough to prove part (a) (for matrices). Suppose we know that (a) is true, and let $T \in \End(V)$. Pick a basis $\mathcal{B}$ for $V$, and assign $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in M_{n \times n}(K)$.
+
+\begin{claim*}[Matrix Representation of Polynomials]\label{claim:matrix_poly}
+  $[P_T(T)]_{\mathcal{B}}^{\mathcal{B}} = P_A(A)$.
+\end{claim*}
+
+\begin{proof}[Proof of Claim]
+  The map assigning an endomorphism to its matrix representation is an algebra isomorphism. Thus, $[R+S]_{\mathcal{B}}^{\mathcal{B}} = [R]_{\mathcal{B}}^{\mathcal{B}} + [S]_{\mathcal{B}}^{\mathcal{B}}$, and $[R \circ S]_{\mathcal{B}}^{\mathcal{B}} = [R]_{\mathcal{B}}^{\mathcal{B}} \cdot [S]_{\mathcal{B}}^{\mathcal{B}}$.
+  Since $P_T(x) = P_A(x)$ by definition, we write $P_A(x) = c_n x^n + \dots + c_0$. Then:
+  \begin{align*}
+    [P_T(T)]_{\mathcal{B}}^{\mathcal{B}} &= [c_n T^n + \dots + c_1 T + c_0 \id_V]_{\mathcal{B}}^{\mathcal{B}} \\
+    &= c_n [T^n]_{\mathcal{B}}^{\mathcal{B}} + \dots + c_1 [T]_{\mathcal{B}}^{\mathcal{B}} + c_0 I_n \\
+    &= c_n A^n + \dots + c_1 A + c_0 I_n = P_A(A).
+  \end{align*}
+\end{proof}
+
+If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\mathcal{B}}^{\mathcal{B}} = 0$. Since the zero matrix uniquely represents the zero endomorphism, we conclude $P_T(T) = 0$. We now concentrate entirely on proving the theorem for matrices, beginning over the complex field $\mathbb{C}$.
+
+\begin{lemma}[Cayley-Hamilton for Diagonalizable Matrices]\label{lemma:cayley_diagonalizable}
+  Suppose $A \in M_{n \times n}(\mathbb{C})$ is diagonalizable. Then $P_A(A) = 0$.
+\end{lemma}
+
+\begin{proof}
+  By assumption, there exists an invertible matrix $Q$ such that $Q^{-1} A Q = \Lambda = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Since the roots of the characteristic polynomial are exactly the eigenvalues, we know $P_A(\lambda_i) = 0$ for all $i$. Writing $P_A(x) = \sum c_j x^j$, we substitute $A$:
+  \[
+  Q^{-1} P_A(A) Q = \sum c_j Q^{-1} A^j Q = \sum c_j (Q^{-1} A Q)^j = \sum c_j \Lambda^j = P_A(\Lambda).
+  \]
+  Because $\Lambda$ is diagonal, $P_A(\Lambda)$ is simply the diagonal matrix with entries $P_A(\lambda_1), \dots, P_A(\lambda_n)$. Since every entry is zero, $Q^{-1} P_A(A) Q = 0$, which immediately implies $P_A(A) = 0$.
+\end{proof}
+
+\begin{lemma}[Density of Diagonalizable Matrices]\label{lemma:sequence_diagonalizable}
+  Let $A \in M_{n \times n}(\mathbb{C})$ be any arbitrary matrix. Then there exists a sequence of matrices $(A_k)_{k=1}^\infty$ such that:
+  \begin{enumerate}
+    \item Each $A_k$ is diagonalizable.
+    \item $\lim_{k \to \infty} A_k = A$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Because $\mathbb{C}$ is algebraically closed, every matrix is trigonalizable. Thus, there exists an invertible matrix $P$ such that $U = P^{-1} A P$ is an upper triangular matrix with the eigenvalues $\lambda_1, \dots, \lambda_n$ on its diagonal.
+
+  To ensure diagonalizability, we must prevent repeated eigenvalues. We can fix this by introducing a tiny perturbation. For each integer $k \ge 1$, we define a diagonal matrix of small shifts:
+  \[
+  E_k = \operatorname{diag}\left(\frac{\epsilon_1}{k}, \frac{\epsilon_2}{k}, \dots, \frac{\epsilon_n}{k}\right)
+  \]
+  We carefully choose the constants $\epsilon_i$ such that the new diagonal entries $\lambda_i + \frac{\epsilon_i}{k}$ are strictly distinct from one another. We now define our sequence:
+  \[
+  A_k := P (U + E_k) P^{-1}
+  \]
+  Because $U + E_k$ is still upper triangular but now possesses exactly $n$ distinct eigenvalues, it is guaranteed to be diagonalizable. Finally, as $k \to \infty$, the perturbation matrix $E_k \to 0$, meaning $\lim_{k \to \infty} A_k = P U P^{-1} = A$.
+\end{proof}
+
+\begin{lemma}[Cayley-Hamilton over $\mathbb{C}$]\label{lemma:cayley_C}
+  Cayley-Hamilton holds for every matrix $A \in M_{n \times n}(\mathbb{C})$.
+\end{lemma}
+
+\begin{proof}
+  By our construction in Lemma \ref{lemma:sequence_diagonalizable}, we can find a sequence of diagonalizable matrices $A_k \to A$. By Lemma \ref{lemma:cayley_diagonalizable}, the theorem holds for all of them: $P_{A_k}(A_k) = 0$.
+
+  Notice that the mapping $\Phi: M_{n \times n}(\mathbb{C}) \to M_{n \times n}(\mathbb{C})$ defined by $\Phi(M) = P_M(M)$ is built entirely from taking determinants, adding matrices, and multiplying matrices. Therefore, $\Phi$ is a continuous polynomial function of the matrix entries. Because continuous functions commute with limits, we have:
+  \[
+  P_A(A) = \Phi(A) = \Phi\left(\lim_{k \to \infty} A_k\right) = \lim_{k \to \infty} \Phi(A_k) = \lim_{k \to \infty} 0 = 0.
+  \]
+\end{proof}
+
+To generalize this result from $\mathbb{C}$ to any arbitrary field $K$, we rely on a formal algebraic identity regarding multi-variable polynomials.
+
+\begin{lemma}[Formal Zero of Multi-Variable Polynomials]\label{lemma:multi_var_poly}
+  Suppose $f(x_1, \dots, x_r) \in \mathbb{R}[x_1, \dots, x_r]$ satisfies $f(a_1, \dots, a_r) = 0$ for all $(a_1, \dots, a_r) \in \mathbb{R}^r$. Then $f \equiv 0$ as a formal polynomial (all coefficients are 0).
+\end{lemma}
+
+\begin{proof}
+  Write $f(x_1, \dots, x_r) = \sum_{\mathbf{i} \in \mathcal{I}} c_{\mathbf{i}} x_1^{i_1} \dots x_r^{i_r}$. Because $f$ is zero everywhere on $\mathbb{R}^r$, all of its partial derivatives evaluated at the origin $(0, \dots, 0)$ must be zero. Taking the appropriate mixed partial derivatives isolates the coefficient $c_{\mathbf{i}}$. Thus, $c_{\mathbf{i}} = 0$ for all $\mathbf{i}$.
+\end{proof}
+
+\begin{proof}[Analytic Proof of Cayley-Hamilton over every field $K$]
+  For an $n \times n$ matrix $A$, the entries of $P_A(A)$ are given by multi-variable polynomials in the $n^2$ variables $A_{11}, A_{12}, \dots, A_{nn}$. These polynomials have integer (and hence real) coefficients. Let the polynomial representing the $(i,j)$-th entry be $q_{ij}(A_{11}, \dots, A_{nn})$.
+
+  Since Cayley-Hamilton holds for $\mathbb{C}$ (and thus for any matrix in $\mathbb{R}$), we know $q_{ij}(A_{11}, \dots) = 0$ for all evaluations in $\mathbb{R}^{n^2}$. By Lemma \ref{lemma:multi_var_poly}, $q_{ij} \equiv 0$ as formal polynomials. Because they are formally the zero polynomial, evaluating them over \textit{any} field $K$ will always yield 0. Thus, $P_A(A) = 0$ for any matrix over any field.
+\end{proof}
+
+\subsection*{A Purely Algebraic Proof of Cayley-Hamilton Thm}
+
+While the analytic proof is mathematically beautiful, it relies on topological machinery (limits and continuity) that feels slightly alien in pure algebra. Let us now construct a purely structural, algebraic proof using invariant subspaces.
+
+\begin{definition}[$T$-Cyclic Subspace]\label{def:T_cyclic_subspace}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $v \in V$. We define the \textbf{$T$-cyclic subspace} generated by $v$ as the span of the orbit of $v$ under $T$:
+  \[
+  \langle v \rangle_T := \operatorname{Sp}\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} = \operatorname{Sp}(v, Tv, T^2v, \dots).
+  \]
+\end{definition}
+
+\begin{lemma}[Basis and Companion Matrix]\label{lemma:cyclic_basis_companion}
+  Suppose that $v, Tv, \dots, T^{d-1}v$ ($d \ge 1$) are linearly independent, and $T^d v = c_0 v + c_1 Tv + \dots + c_{d-1}T^{d-1}v$. Then:
+  \begin{enumerate}
+    \item $\mathcal{B} = (v, Tv, \dots, T^{d-1}v)$ forms a basis for $\langle v \rangle_T$.
+    \item Let $S = T|_{\langle v \rangle_T}$. Then $[S]_{\mathcal{B}}^{\mathcal{B}}$ is a companion matrix:
+    \[
+    [S]_{\mathcal{B}}^{\mathcal{B}} =
+    \begin{pmatrix}
+      0 & 0 & \dots & 0 & c_0 \\
+      1 & 0 & \dots & 0 & c_1 \\
+      0 & 1 & \dots & 0 & c_2 \\
+      \vdots & \vdots & \ddots & \vdots & \vdots \\
+      0 & 0 & \dots & 1 & c_{d-1}
+    \end{pmatrix}.
+    \]
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  (a) Let $U = \operatorname{Sp}(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$. Since $\langle v \rangle_T$ is by definition the smallest $T$-invariant subspace containing $v$, we must have $U = \langle v \rangle_T$. Since the set is linearly independent and spans the space, it is a basis.
+
+  (b) This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
+\end{proof}
+
+\begin{lemma}[Characteristic Polynomial of a Companion Matrix]\label{lemma:companion_char_poly}
+  Under the assumptions of Lemma \ref{lemma:cyclic_basis_companion}, the characteristic polynomial of the restriction $S$ is given by:
+  \[
+  P_S(x) = (-1)^d (x^d - c_{d-1}x^{d-1} - \dots - c_1 x - c_0).
+  \]
+\end{lemma}
+
+\begin{proof}
+  We compute $\det([S]_{\mathcal{B}}^{\mathcal{B}} - x I_d)$ using cofactor expansion along the first row:
+  \[
+  P_S(x) = \begin{vmatrix}
+    -x & 0 & \dots & 0 & c_0 \\
+    1 & -x & \dots & 0 & c_1 \\
+    0 & 1 & \dots & 0 & c_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \dots & 1 & c_{d-1} - x
+  \end{vmatrix}
+  \]
+  Expanding across the first row, we get two non-zero terms:
+  \[
+  P_S(x) = (-x) \det(M_{11}) + (-1)^{1+d} c_0 \det(M_{1d})
+  \]
+  Notice that $M_{1d}$ is a lower triangular matrix with entirely $1$s on its main diagonal. Thus, $\det(M_{1d}) = 1$. The matrix $M_{11}$ is exactly the $(d-1) \times (d-1)$ matrix representing the characteristic polynomial of the smaller companion matrix. By induction on $d$, assuming the formula holds for $\det(M_{11})$, multiplying it by $-x$ shifts the degree of all terms up by one. Adding the $(-1)^{d+1}c_0$ term gives the exact formula claimed.
+\end{proof}
+
+\begin{proof}[Algebraic Proof of Cayley-Hamilton]
+  Let $V$ be finite-dimensional, and $T \in \End(V)$. We want to show $P_T(T) = 0$, meaning $P_T(T)v = 0$ for all $v \in V$.
+
+  Let $v \in V$, $v \neq 0$. Consider the cyclic subspace $\langle v \rangle_T$. Take the maximal integer $d \ge 1$ such that $v, Tv, \dots, T^{d-1}v$ are linearly independent. Then $T^d v = c_0 v + \dots + c_{d-1}T^{d-1}v$.
+  Extend this basis $\mathcal{B}$ to a full basis $\mathcal{C} = (v, \dots, T^{d-1}v, w_1, \dots, w_{n-d})$ for $V$. The matrix representation is block upper-triangular:
+  \begin{center}
+    \begin{tikzpicture}
+      % Main matrix frame
+      \draw[thick] (0,0) rectangle (4,4);
+
+      % Block 1: The Cyclic Subspace
+      \filldraw[fill=blue!10, draw=blue, thick] (0,2) rectangle (2,4);
+      \node[blue!80!black] at (1,3) {$[S]_{\mathcal{B}}^{\mathcal{B}}$};
+
+      % Block 2: The arbitrary upper right
+      \filldraw[fill=red!5, draw=red!50, thick] (2,2) rectangle (4,4);
+      \node[red!80!black] at (3,3) {$\ast$};
+
+      % Block 3: The forced zero block (due to invariance)
+      \filldraw[fill=gray!10, draw=gray, thick] (0,0) rectangle (2,2);
+      \node[gray!80!black] at (1,1) {$0$};
+
+      % Block 4: The arbitrary lower right
+      \filldraw[fill=orange!5, draw=orange!50, thick] (2,0) rectangle (4,2);
+      \node[orange!80!black] at (3,1) {$[C]$};
+
+      % Label
+      \node at (-1.5, 2) {\Large $[T]_{\mathcal{C}}^{\mathcal{C}} \ = $};
+    \end{tikzpicture}
+  \end{center}
+  Because the determinant of a block-triangular matrix is the product of the determinants of its diagonal blocks, we have $P_T(x) = P_S(x) \cdot P_C(x)$. Consider the endomorphism $R := P_T(T) \in \End(V)$. Since polynomials evaluated at $T$ commute with one another, we can factor $R$:
+  \[
+  R = P_C(T) \circ P_S(T).
+  \]
+  Therefore, $Rv = P_C(T) \Big( P_S(T)v \Big)$.
+  However, applying Lemma \ref{lemma:companion_char_poly} directly to $v$:
+  \[
+  P_S(T)v = (-1)^d (T^d v - c_{d-1}T^{d-1}v - \dots - c_0 v).
+  \]
+  By the very definition of our constants $c_i$, this evaluates exactly to $0$. Hence $Rv = P_C(T)(0) = 0$. Since $v \neq 0$ was chosen completely arbitrarily, $P_T(T)$ evaluates to zero on every vector in $V$, meaning $P_T(T) = 0$.
+\end{proof}
+
+\begin{remark}[The Lazy Proof]\label{rem:lazy_proof}
+  A completely incorrect "proof" often presented by students is: $P_A(A) = \det(A - A \cdot I) = \det(0) = 0$. This is fundamentally invalid. The expression $P_A(x) = \det(A - xI)$ evaluates to a polynomial with scalar coefficients. Substituting matrices into a scalar expression \textit{before} expanding the determinant leads to a severe category error. One must compute the scalar polynomial first, and only then evaluate it at the matrix $A$.
+\end{remark}

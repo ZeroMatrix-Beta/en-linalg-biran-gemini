@@ -1,0 +1,611 @@
+\setcounter{chapter}{19} % Chapter 20
+\chapter{Determinants}
+\section{Introduction and Motivation}
+
+In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether or not $A$ is invertible.
+
+\begin{proposition}[Invertibility of $2 \times 2$ Matrices]
+  The matrix $A$ is invertible if and only if $ad - bc \neq 0$. Moreover, if $A$ is invertible, then its inverse is given by the explicit formula:
+  \[
+  A^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}.
+  \]
+  The scalar quantity $ad - bc$ is called the determinant of $A$, denoted $\det(A)$.
+\end{proposition}
+
+\begin{proof}
+  First, we show that $A$ is not invertible if and only if its rank is strictly less than $2$. Because $A$ is a $2 \times 2$ matrix, having a rank of less than 2 implies that its column vectors are linearly dependent.
+
+  \begin{remark}[Exercise]
+    Check that the columns being linearly dependent implies that either the first column is the zero vector, i.e., $\binom{a}{c} = \binom{0}{0}$, or the second column is a scalar multiple of the first, i.e., $\binom{b}{d} = \tau \binom{a}{c}$ for some scalar $\tau \in K$.
+  \end{remark}
+
+  If $\binom{a}{c} = \lambda \binom{b}{d}$, this implies $a = \lambda b$ and $c = \lambda d$. Consequently, $ad - bc = (\lambda b)d - b(\lambda d) = 0$.
+  If, on the other hand, $\binom{b}{d} = \tau \binom{a}{c}$, this implies $b = \tau a$ and $d = \tau c$. Consequently, $ad - bc = a(\tau c) - (\tau a)c = 0$.
+  Thus, we have proved that if $A$ is not invertible, it mathematically forces $ad - bc = 0$.
+
+  Conversely, assume $ad - bc = 0$. If $a = 0$, this implies $bc = 0$, so either $b = 0$ or $c = 0$. This means either $A = \left(\begin{smallmatrix} 0 & 0 \\ c & d \end{smallmatrix}\right)$ or $A = \left(\begin{smallmatrix} 0 & b \\ 0 & d \end{smallmatrix}\right)$. In both of these cases, $A$ clearly has linearly dependent columns and is therefore not invertible.
+
+  So, assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus, we can write $A =  \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column, because $\binom{b}{\frac{bc}{a}} = \frac{b}{a} \binom{a}{c}$. This implies that the columns of $A$ are linearly dependent. Hence, $\operatorname{rank}(A) < 2$, which implies $A$ is not invertible.
+\end{proof}
+
+To confirm the sufficiency of this condition and to find the explicit inverse, the formula for $A^{-1}$ can be verified by direct matrix multiplication:
+\[
+\frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \frac{1}{ad-bc} \begin{pmatrix} ad-bc & bd-bd \\ -ac+ac & -bc+ad \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
+\]
+
+\begin{goals} While the $2 \times 2$ formula is easy to memorize, it does not immediately suggest how to handle larger matrices. Our main goals now are to make the determinant conceptually rigorous, and to generalize the determinant function to arbitrary $n \times n$ matrices.
+\end{goals}
+
+\subsection{Multilinear and Alternating Functions}
+
+To generalize the determinant, we should view an $n \times n$ matrix not just as a grid of numbers, but as a collection of $n$ row vectors.
+
+\begin{definition}[$n$-Linearity]\label{def:n_linear}
+  Let $D : M_{n \times n}(K) \to K$ be a function. We say that $D$ is \emph{$n$-linear} if for every $1 \le i \le n$, $D$ is linear as a function of the $i$-th row when all the other $n-1$ rows are held fixed.
+\end{definition}
+
+We can think of the matrix space $M_{n \times n}(K)$ as a Cartesian product of row vectors: $K^n_{\text{row}} \times \dots \times K^n_{\text{row}}$. If $A$ has rows $\alpha_1, \dots, \alpha_n$, we write $D(A) = D(\alpha_1, \dots, \alpha_n)$.
+Saying that $D$ is $n$-linear means that for any chosen row index $i$, the following two linearity conditions hold:
+\begin{enumerate}
+  \item $D(\alpha_1, \dots, \alpha_i + \alpha_i', \dots, \alpha_n) = D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) + D(\alpha_1, \dots, \alpha_i', \dots, \alpha_n)$.
+  \item $D(\alpha_1, \dots, c \cdot \alpha_i, \dots, \alpha_n) = c \cdot D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n)$ for all scalars $c \in K$.
+\end{enumerate}
+
+\begin{example}
+  For a matrix $A \in M_{n \times n}(K)$, write $A(i,j)$ for its entry at place $i,j$. Let $k_1, \dots, k_n$ be a fixed sequence of integers such that $1 \le k_i \le n$ for all $i$. Fix also a scalar $c \in K$. Consider $D : M_{n \times n}(K) \to K$ defined by the product of one entry from each row:
+  \[
+  D(A) := c \cdot A(1, k_1) \cdot A(2, k_2) \cdots A(n, k_n).
+  \]
+  We claim that $D$ is an $n$-linear function.
+
+  To see this, consider $D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) = b \cdot A(i, k_i)$, where $b \in K$ is the product of all the fixed terms. Notice that $b$ depends only on the rows $\alpha_1, \dots, \alpha_{i-1}, \alpha_{i+1}, \dots, \alpha_n$, and does NOT depend on row $i$.
+  Let $\alpha'_i = (\alpha'_{i,1}, \dots, \alpha'_{i,n})$ be another possible $i$-th row. Then, by standard distribution:
+  \[
+  D(\dots, \alpha_i + \alpha'_i, \dots) = b \cdot (A(i, k_i) + \alpha'_{i, k_i}) = D(\dots, \alpha_i, \dots) + D(\dots, \alpha'_i, \dots).
+  \]
+  Similarly, for any scalar $\lambda \in K$:
+  \[
+  D(\dots, \lambda \cdot \alpha_i, \dots) = b \cdot (\lambda A(i, k_i)) = \lambda \cdot D(\dots, \alpha_i, \dots).
+  \]
+  Thus, $D$ is indeed $n$-linear.
+\end{example}
+
+\begin{example}[Diagonal Product]
+  A more concrete example: $D(A) := A_{11} \cdot A_{22} \cdot \dots \cdot A_{nn}$ (i.e., the product of the terms on the main diagonal) is an $n$-linear function.
+\end{example}
+
+Now, let's try to find all 2-linear functions $D: M_{2 \times 2}(K) \to K$. Write the identity matrix as $I = \left(\begin{smallmatrix} -\epsilon_1- \\ -\epsilon_2- \end{smallmatrix}\right)$, where $\epsilon_1 = (1, 0)$ and $\epsilon_2 = (0, 1)$.
+
+If $D$ is 2-linear, then we have:
+\begin{align*}
+  D(A) &= D(A_{11}\epsilon_1 + A_{12}\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
+  &= A_{11} D(\epsilon_1, A_{21}\epsilon_1 + A_{22}\epsilon_2) + A_{12} D(\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
+  &= A_{11}A_{21}D(\epsilon_1, \epsilon_1) + A_{11}A_{22}D(\epsilon_1, \epsilon_2) + A_{12}A_{21}D(\epsilon_2, \epsilon_1) + A_{12}A_{22}D(\epsilon_2, \epsilon_2).
+\end{align*}
+So, $D$ is completely determined by its values on the four pairings: $D(\epsilon_1, \epsilon_1)$, $D(\epsilon_1, \epsilon_2)$, $D(\epsilon_2, \epsilon_1)$, and $D(\epsilon_2, \epsilon_2)$.
+
+\begin{lemma}[Closure of $n$-Linear Functions]\label{lem:linear_comb_n_linear}
+  Any linear combination of $n$-linear functions is again an $n$-linear function.
+\end{lemma}
+
+\begin{proof}
+  It is enough to prove this for a linear combination of two $n$-linear functions. Let $D, E : M_{n \times n}(K) \to K$ be $n$-linear functions, and $a, b \in K$. We define the combined function as $(aD + bE)(A) := aD(A) + bE(A)$.
+  By expanding $(aD+bE)(\dots, \alpha_i + \alpha'_i, \dots)$ and $(aD+bE)(\dots, \lambda \alpha_i, \dots)$ using the individual linearities of $D$ and $E$, we see the result naturally holds.
+\end{proof}
+
+\begin{example}
+  Consider $D : M_{2 \times 2}(K) \to K$ defined by $D(A) := A_{11}A_{22} - A_{12}A_{21}$. The function $D$ is $2$-linear because it can be written as $D = D_1 + D_2$, where $D_1(A) = A_{11}A_{22}$ and $D_2(A) = -A_{12}A_{21}$, both of which are 2-linear by our previous example. Furthermore, $D(I) = 1$, and if $A'$ is obtained from $A$ by interchanging the rows, then $D(A') = -D(A)$.
+
+  Indeed, $D(A') = D\left(\begin{smallmatrix} A_{21} & A_{22} \\ A_{11} & A_{12} \end{smallmatrix}\right) = A_{21} \cdot A_{12} - A_{22}A_{11} = -(A_{11}A_{22} - A_{12}A_{21}) = -D(A)$.
+\end{example}
+
+
+
+\begin{definition}[Alternating Property]\label{def:alternating}
+  Let $D : M_{n \times n}(K) \to K$ be an $n$-linear function. We say that $D$ is \emph{alternating} if, for every matrix $A$ in which some two rows are equal, we have $D(A) = 0$.
+\end{definition}
+
+\begin{proposition}[Adjacent Swap Property]\label{prop:alternating_swap}
+  Let $D$ be an $n$-linear function. Assume that $D$ has the property that whenever $A$ has two equal adjacent rows, then $D(A) = 0$. Then the following are equivalent:
+  \begin{enumerate}
+    \item $D$ is alternating.
+    \item For any matrix $B$, if $B'$ is obtained from $B$ by interchanging two of its rows, then $D(B') = -D(B)$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  We begin with the proof of (b). Assume, first, that $B'$ is obtained from $B$ by interchanging two adjacent rows (say, row $k$ and row $k+1$).
+  Consider evaluating $D$ on a matrix where both the $k$-th and $(k+1)$-th rows are equal to $\beta_k + \beta_{k+1}$. By our assumption, this yields $0$.
+  Expanding this via $n$-linearity gives:
+  \[
+  D(\dots, \beta_k + \beta_{k+1}, \beta_k + \beta_{k+1}, \dots) = D(\dots, \beta_k, \beta_k, \dots) + D(\dots, \beta_k, \beta_{k+1}, \dots)
+  \]
+  \[
+  + D(\dots, \beta_{k+1}, \beta_k, \dots) + D(\dots, \beta_{k+1}, \beta_{k+1}, \dots) = 0.
+  \]
+  By assumption, the terms with adjacent equal rows are zero, leaving $D(B) + D(B') = 0$, which naturally implies $D(B') = -D(B)$.
+
+  Now, suppose $B'$ is obtained from $B$ by interchanging rows $k$ and $l$ where $k < l$. We can obtain $B'$ by doing a sequence of adjacent row interchanges. Moving row $l$ to position $k$ requires $r = l-k$ adjacent interchanges. Next, moving the original row $k$ down to position $l$ requires $r-1$ adjacent interchanges. The total number of interchanges is $2r - 1$. Since this is always an odd number, we flip the sign an odd number of times. Thus, $D(B') = (-1)^{2r-1} D(B) = -D(B)$.
+
+  We now prove (a). Let $A$ be a matrix in which row $i$ equals row $j$ where $i < j$. If $j = i+1$, then by assumption $D(A) = 0$. If $j > i+1$, we interchange row $j$ with row $i+1$ to obtain a matrix $A'$ with two equal adjacent rows.
+  By assumption $D(A') = 0$, but by (2), $D(A') = -D(A)$, which implies $D(A) = 0$.
+\end{proof}
+
+\subsection{The Determinant Function}
+
+\begin{definition}[Determinant Function]\label{def:determinant_func}
+  A function $D : M_{n \times n}(K) \to K$ is called a \emph{determinant function} if it is $n$-linear, it is alternating, and it normalizes the identity matrix such that $D(I) = 1$.
+\end{definition}
+
+\begin{example}[Warmup]
+  Let us find all determinant functions on $M_{2 \times 2}(K)$. Write $I = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} -\epsilon_1- \\ -\epsilon_2- \end{smallmatrix}\right)$, meaning $\epsilon_1 = (1,0)$ and $\epsilon_2 = (0,1)$.
+  If $D$ is a $2$-linear function, we can expand it algebraically:
+  \begin{align*}
+    D(A) &= D(A_{11}\epsilon_1 + A_{12}\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
+    &= A_{11} D(\epsilon_1, A_{21}\epsilon_1 + A_{22}\epsilon_2) + A_{12} D(\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
+    &= A_{11}A_{21}D(\epsilon_1, \epsilon_1) + A_{11}A_{22}D(\epsilon_1, \epsilon_2) \\
+    &\quad + A_{12}A_{21}D(\epsilon_2, \epsilon_1) + A_{12}A_{22}D(\epsilon_2, \epsilon_2).
+  \end{align*}
+  So, $D$ is completely determined by its values on these standard basis row pairings.
+
+  If $D$ is alternating, then evaluating equal rows gives zero, meaning $D(\epsilon_1, \epsilon_1) = D(\epsilon_2, \epsilon_2) = 0$. Additionally, swapping rows flips the sign, so $D(\epsilon_2, \epsilon_1) = -D(\epsilon_1, \epsilon_2) = -D(I)$.
+  Finally, if $D$ is a determinant function, $D(I) = 1$. Substituting these values back into our expansion, we perfectly recover the familiar formula:
+  \[
+  D(A) = A_{11}A_{22}(1) + A_{12}A_{21}(-1) = A_{11}A_{22} - A_{12}A_{21}.
+  \]
+  Therefore, the $2 \times 2$ determinant function is completely unique!
+\end{example}
+
+\begin{definition}[Submatrix]\label{def:minor_submatrix}
+  Let $A \in M_{n \times n}(K)$, $n \ge 2$, and $1 \le i \le n$, $1 \le j \le n$. We denote by $A(i|j) \in M_{(n-1) \times (n-1)}(K)$ the matrix obtained from $A$ by deleting row $i$ and column $j$. If $D$ is an $(n-1)$-linear function, we intuitively define $D_{ij}(A) := D(A(i|j))$.
+\end{definition}
+
+\begin{theorem}[Recursive Construction of Determinants]\label{thm:recursive_det}
+  Let $n \ge 2$, and let $D$ be an $(n-1)$-linear function which is alternating. Let $1 \le j \le n$. Define $E_j : M_{n \times n}(K) \to K$ by
+  \[
+  E_j(A) := \sum_{i=1}^n (-1)^{i+j} A_{ij} D_{ij}(A).
+  \]
+  Then, $E_j$ is an $n$-linear function and it is alternating. Furthermore, if $D$ is a determinant function, then so is $E_j$.
+\end{theorem}
+
+\begin{proof}
+  Clearly, $D_{ij}(A)$ is independent of the $i$-th row of $A$ because that row is deleted in the construction of $A(i|j)$. Since $D$ is $(n-1)$-linear, the map $A \mapsto D_{ij}(A)$ is linear when viewed as a function of each of its remaining rows. The function $A \mapsto A_{ij} D_{ij}(A)$ is therefore $n$-linear. Since linear combinations of $n$-linear functions are $n$-linear, $E_j(A)$ is $n$-linear too.
+
+  We show that $E_j$ is alternating. By Proposition~\ref{prop:alternating_swap}, it is enough to show $E_j(A) = 0$ whenever $A$ has two equal adjacent rows.
+  Assume $\alpha_k = \alpha_{k+1}$ for some index $k$. For any $i \neq k, k+1$, the submatrix $A(i|j)$ still has two equal rows, hence $D_{ij}(A) = 0$. This leaves only two non-zero terms in the sum:
+  \[
+  E_j(A) = (-1)^{k+j} A_{kj} D_{kj}(A) + (-1)^{k+1+j} A_{(k+1)j} D_{(k+1)j}(A).
+  \]
+  But, since $\alpha_k = \alpha_{k+1}$, we have $A_{kj} = A_{(k+1)j}$ and $A(k|j) = A(k+1|j)$, meaning $D_{kj}(A) = D_{(k+1)j}(A)$. Thus, the two terms perfectly cancel out, yielding $E_j(A) = 0$. This proves $E_j$ is alternating.
+
+  Finally, assume $D$ is a determinant function, meaning $D(I_{n-1}) = 1$. Note that $I_n(j|j) = I_{n-1}$ for all $j$. When computing $E_j(I_n)$, the term $(I_n)_{ij}$ is $1$ if $i=j$, and $0$ if $i \neq j$. Therefore, the sum collapses to a single term:
+  \[
+  E_j(I_n) = (-1)^{j+j} D_{jj}(I_n) = D(I_n(j|j)) = 1.
+  \]
+  This shows that $E_j$ is a valid determinant function.
+\end{proof}
+
+\begin{corollary}[Existence of Determinants]\label{cor:det_exists}
+  For all $n \ge 1$, at least one determinant function exists.
+\end{corollary}
+
+\begin{example}
+  Consider $A \in M_{3 \times 3}(K)$. Using the uniquely defined $2 \times 2$ determinant function $|B| := B_{11}B_{22} - B_{12}B_{21}$, we can explicitly write out $E_1(A)$ as:
+  \[
+  E_1(A) = A_{11} \begin{vmatrix} A_{22} & A_{23} \\ A_{32} & A_{33} \end{vmatrix} - A_{21} \begin{vmatrix} A_{12} & A_{13} \\ A_{32} & A_{33} \end{vmatrix} + A_{31} \begin{vmatrix} A_{12} & A_{13} \\ A_{22} & A_{23} \end{vmatrix}.
+  \]
+  We can similarly construct $E_2(A)$ and $E_3(A)$ along the other columns, and all of these form valid determinant functions on $M_{3 \times 3}(K)$.
+\end{example}
+
+\section{Uniqueness of the Determinant}
+
+We have shown that a determinant function exists. Now, we will prove that it is absolutely unique. Let $D : M_{n \times n}(K) \to K$ be an $n$-linear alternating function.
+Let $A \in M_{n \times n}(K)$ be a matrix with rows $\alpha_1, \dots, \alpha_n$. We denote the identity matrix as $I$, whose rows are the standard basis vectors $\epsilon_1, \dots, \epsilon_n$ of $K^n_{\text{row}}$.
+
+Clearly, we can express each row of $A$ in terms of the standard basis: $\alpha_i = \sum_{j=1}^n A(i,j)\epsilon_j$ for $1 \le i \le n$. Using the $n$-linearity of $D$, we can expand $D(A)$ as follows:
+\begin{align*}
+  D(A) &= D(\alpha_1, \dots, \alpha_n) \\
+  &= D\left(\sum_{j=1}^n A(1,j)\epsilon_j, \alpha_2, \dots, \alpha_n\right) \\
+  &= \sum_{j=1}^n A(1,j) \cdot D(\epsilon_j, \alpha_2, \dots, \alpha_n) \\
+  &= \sum_{j=1}^n A(1,j) \cdot D\left(\epsilon_j, \sum_{k=1}^n A(2,k)\epsilon_k, \dots, \alpha_n\right) \\
+  &= \sum_{j,k} A(1,j) \cdot A(2,k) \cdot D(\epsilon_j, \epsilon_k, \dots, \alpha_n)
+\end{align*}
+where both $j$ and $k$ run between $1$ and $n$. Continuing this expansion for all $n$ rows yields an enormous sum:
+\[
+D(A) = \sum_{k_1, \dots, k_n} A(1,k_1) \cdot A(2,k_2) \cdots A(n,k_n) \cdot D(\epsilon_{k_1}, \epsilon_{k_2}, \dots, \epsilon_{k_n})
+\]
+where each of the indices $k_1, \dots, k_n$ runs between $1$ and $n$.
+
+Thus far, we have not used the fact that $D$ is alternating. Because $D$ is alternating, the term $D(\epsilon_{k_1}, \dots, \epsilon_{k_n}) = 0$ whenever two of the indices $k_1, \dots, k_n$ are equal. Thus, we are interested only in ordered sequences $(k_1, \dots, k_n)$ in which $k_i \in \{1, \dots, n\}$ for all $i$, and $k_i \neq k_j$ for all $i \neq j$.
+
+Such a sequence is called a \emph{permutation} of $\{1, \dots, n\}$, or a permutation of degree $n$. Alternatively, we can think of a permutation of degree $n$ as a bijective function $\sigma : \{1, \dots, n\} \to \{1, \dots, n\}$. Then, the sequence $(k_1, \dots, k_n) = (\sigma(1), \sigma(2), \dots, \sigma(n))$ is a permutation as defined earlier. In other words, a permutation of degree $n$ is simply a re-ordering of a list of $n$ elements: $(1, \dots, n) \mapsto (\sigma(1), \dots, \sigma(n))$.
+
+We can nicely rewrite our expansion of $D(A)$ as:
+\[
+D(A) = \sum_{\sigma} A(1,\sigma(1)) \cdot A(2,\sigma(2)) \cdots A(n,\sigma(n)) \cdot D(\epsilon_{\sigma(1)}, \epsilon_{\sigma(2)}, \dots, \epsilon_{\sigma(n)})
+\]
+where $\sigma$ runs over all possible permutations of degree $n$.
+
+\subsection{Properties of Permutations}
+
+An important property about permutations is that if $\sigma$ is a permutation of degree $n$, one can pass from the sequence $(1, \dots, n)$ to $(\sigma(1), \dots, \sigma(n))$ by performing a finite sequence of interchanges of pairs.
+
+More precisely, a \emph{transposition} is a permutation $\theta : \{1, \dots, n\} \to \{1, \dots, n\}$ for which there exist $i, j \in \{1, \dots, n\}$ with $i \neq j$ such that $\theta(i) = j$, $\theta(j) = i$, and $\theta(k) = k$ for all $k \neq i,j$.
+
+Every permutation $\sigma$ can be written as a composition of transpositions:
+\begin{equation} \label{eq:permutation_decomp}
+  \sigma = \theta_1 \circ \cdots \circ \theta_m
+\end{equation}
+where $\theta_1, \dots, \theta_m$ are transpositions. However, these $\theta_i$'s and the total number $m$ are not unique. The same permutation $\sigma$ can be written as $\sigma = \theta_1 \circ \cdots \circ \theta_m = \theta'_1 \circ \cdots \circ \theta'_{m'}$.
+
+\begin{remark}
+  Why is the decomposition \eqref{eq:permutation_decomp} always possible? Start with the sorted list $(1, \dots, n)$. If $\sigma(1) \neq 1$, then interchange $1$ and $\sigma(1)$. We now have $(\sigma(1), \dots, 1, \dots, n)$. Next, look at the second position. If it is not $\sigma(2)$, interchange it with $\sigma(2)$, and proceed similarly down the line. Of course, there are other ways to do it. For example, the permutation $(3,2,1)$ can be obtained in 3 steps:
+  \[ (1,2,3) \to (2,1,3) \to (2,3,1) \to (3,2,1) \]
+  But, it can also be obtained in just one step: $(1,2,3) \to (3,2,1)$.
+\end{remark}
+
+\begin{lemma}[Parity of Transpositions]\label{lem:permutation_parity}
+  If $(\sigma(1), \dots, \sigma(n))$ is obtained from $(1, \dots, n)$ in two different ways—one time by a sequence of $m$ transpositions, and another time by a sequence of $m'$ transpositions—then $m$ and $m'$ must have the same parity. That is, $m'$ is even if and only if $m$ is even, and $m'$ is odd if and only if $m$ is odd.
+\end{lemma}
+
+In other words, $(-1)^{m'} = (-1)^m$. The parity depends only on the permutation $\sigma$, and not on the particular sequence of transpositions used.
+
+A permutation $\sigma$ is called \emph{even} if $m$ is even, and \emph{odd} if $m$ is odd. The number $\operatorname{sgn}(\sigma) := (-1)^m \in \{-1, 1\}$ is called the \emph{sign} of $\sigma$.
+
+\begin{proof}[Proof of Lemma~\ref{lem:permutation_parity}]
+  We know from previous results that determinant functions $E : M_{n \times n}(K) \to K$ exist for $n \ge 1$. Let us fix one such determinant function $E$ (we denote it by $E$ to distinguish it from $D$ in the previous discussion).
+
+  Consider the evaluation $E(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)})$. If $(\sigma(1), \dots, \sigma(n))$ can be obtained from $(1, \dots, n)$ by a sequence of $m$ transpositions, then the matrix with rows $\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}$ can be obtained from the identity matrix $I$ by a sequence of $m$ interchanges of pairs of rows.
+
+  Because $E$ is alternating, swapping two rows flips the sign of the output. Therefore:
+  \[
+  E(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}) = (-1)^m E(\epsilon_1, \dots, \epsilon_n) = (-1)^m E(I) = (-1)^m.
+  \]
+  But, this exact same logic applies to the sequence of $m'$ transpositions. Thus:
+  \[
+  E(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}) = (-1)^{m'} E(\epsilon_1, \dots, \epsilon_n) = (-1)^{m'} E(I) = (-1)^{m'}.
+  \]
+  This identically implies that $(-1)^m = (-1)^{m'}$, proving the lemma.
+\end{proof}
+
+Returning to our original function $D(A)$, we have seen that:
+\[
+D(A) = \sum_{\sigma} A(1,\sigma(1)) \cdots A(n,\sigma(n)) \cdot D(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}).
+\]
+By the alternating property of $D$, performing the transpositions necessary to sort $(\sigma(1), \dots, \sigma(n))$ back to $(1, \dots, n)$ yields:
+\begin{equation} \label{eq:det_relation}
+  D(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}) = \operatorname{sgn}(\sigma) \cdot D(\epsilon_1, \dots, \epsilon_n) = \operatorname{sgn}(\sigma) \cdot D(I).
+\end{equation}
+
+\begin{theorem}[Leibniz Formula \& Uniqueness]
+  \label{thm:unique_det}
+  For all $n \ge 1$, there exists a unique determinant function on $M_{n \times n}(K)$. We will denote it by $\det$. It is mathematically given by the formula:
+  \[
+  \det(A) = \sum_{\sigma} \operatorname{sgn}(\sigma) \cdot A(1,\sigma(1)) \cdot A(2,\sigma(2)) \cdots A(n,\sigma(n)).
+  \]
+\end{theorem}
+
+\begin{proof}
+  This follows immediately from \eqref{eq:det_relation}. Indeed, if $D$ is a determinant function, then $D(I) = 1$. Substituting this into \eqref{eq:det_relation} yields the exact formula for $D(A)$ stated in the theorem, proving that the function is entirely unique.
+\end{proof}
+
+\begin{corollary}[Scaling of Alternating Functions]
+  \label{cor:det_pullout}
+  For any $n$-linear alternating function $D : M_{n \times n}(K) \to K$, we have $D(A) = \det(A) \cdot D(I)$ for all $A \in M_{n \times n}(K)$.
+\end{corollary}
+
+\subsection{The Symmetric Group}
+
+Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots, n\}$. The set $S_n$ has the algebraic structure of a group under composition: if $\sigma, \tau \in S_n$, their composition is $(\sigma \circ \tau)(x) = \sigma(\tau(x))$. The identity function $\operatorname{id}$ is the neutral element. The inverse $\sigma^{-1}$ exists because $\sigma$ is bijective. Furthermore, the size of the symmetric group is $|S_n| = n!$ (Exercise).
+
+\begin{lemma}[Multiplicativity of Signum]
+  \label{lem:sgn_multiplicative}
+  For all $\sigma, \tau \in S_n$, we have $\operatorname{sgn}(\sigma \circ \tau) = \operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(\tau)$.
+\end{lemma}
+
+\begin{proof}
+  Suppose $\sigma = \theta_1 \circ \cdots \circ \theta_m$ and $\tau = \lambda_1 \circ \cdots \circ \lambda_l$, where the $\theta_i$'s and $\lambda_j$'s are all transpositions. Then, their composition is simply $\sigma \circ \tau = \theta_1 \circ \cdots \circ \theta_m \circ \lambda_1 \circ \cdots \circ \lambda_l$, which explicitly consists of $m + l$ transpositions. Therefore:
+  \[
+  \operatorname{sgn}(\sigma \circ \tau) = (-1)^{m+l} = (-1)^m \cdot (-1)^l = \operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(\tau).
+  \]
+\end{proof}
+
+\subsection{Multiplicativity of the Determinant}
+
+\begin{theorem}[Multiplicativity of the Determinant]
+  \label{thm:det_multiplicative}
+  For any matrices $A, B \in M_{n \times n}(K)$, we have $\det(A \cdot B) = \det(A) \cdot \det(B)$.
+\end{theorem}
+
+\begin{proof}
+  Fix a matrix $B \in M_{n \times n}(K)$, and consider a function $D : M_{n \times n}(K) \to K$ defined by $D(A) := \det(A \cdot B)$.
+
+  Claim: $D$ is $n$-linear and alternating.
+
+  Proof of claim: Let the rows of $A$ be $\alpha_1, \dots, \alpha_n$. If we view $\alpha_i$ as a $1 \times n$ matrix, then the matrix product $\alpha_i \cdot B$ is also $1 \times n$. In fact, the rows of the product matrix $A \cdot B$ are exactly $\alpha_1 \cdot B, \dots, \alpha_n \cdot B$. So, $D(A) = \det(\alpha_1 \cdot B, \dots, \alpha_n \cdot B)$.
+
+  Clearly, for two row vectors $\alpha_i$ and $\alpha'_i$, we have $(\alpha_i + \alpha'_i) \cdot B = \alpha_i \cdot B + \alpha'_i \cdot B$. Also, for any scalar $c \in K$, $(c\alpha_i) \cdot B = c(\alpha_i \cdot B)$. Since the determinant function $\det$ is $n$-linear with respect to its rows, it heavily follows that $D$ is also $n$-linear.
+
+  Furthermore, if two rows of $A$ are equal (i.e., $\alpha_i = \alpha_j$), then the corresponding rows of $A \cdot B$ are also equal ($\alpha_i \cdot B = \alpha_j \cdot B$). Because $\det$ is alternating, $D(A) = \det(\alpha_1 \cdot B, \dots, \alpha_n \cdot B) = 0$. This rigorously proves the claim that $D$ is alternating.
+
+  We continue with the proof of Theorem~\ref{thm:det_multiplicative}. By Corollary~\ref{cor:det_pullout}, any $n$-linear alternating function satisfies $D(A) = \det(A) \cdot D(I)$. We compute $D(I)$ using our definition: $D(I) = \det(I \cdot B) = \det(B)$. Substituting this back yields $D(A) = \det(A) \cdot \det(B)$, completing the proof.
+\end{proof}
+
+\begin{corollary}[Determinant of an Inverse]
+  \label{cor:det_inverse}
+  If $A$ is invertible, then $\det(A) \neq 0$. Moreover, $\det(A^{-1}) = \frac{1}{\det(A)}$.
+\end{corollary}
+
+\begin{proof}
+  Assume $A$ is invertible, and denote its inverse by $A^{-1}$. Since $A \cdot A^{-1} = I$, taking the determinant of both sides and applying Theorem~\ref{thm:det_multiplicative} yields $\det(A) \cdot \det(A^{-1}) = \det(I) = 1$. This automatically implies that $\det(A)$ cannot be zero, and dividing by $\det(A)$ yields the expected formula.
+\end{proof}
+
+\section{More on Determinants: Properties of Determinants and the Transpose}
+
+Recall that for any matrix $M \in M_{m \times n}(K)$, we have the transposed matrix $M^T \in M_{n \times m}(K)$, where the entries are given by $M^T(i,j) = M(j,i)$.
+
+\begin{theorem}[Determinant of the Transpose]
+  \label{thm:det_transpose}
+  For all $A \in M_{n \times n}(K)$, we have $\det(A^T) = \det(A)$.
+\end{theorem}
+
+\begin{proof}
+  If $\sigma$ is a permutation of degree $n$, then by definition of the transpose, $A^T(i, \sigma(i)) = A(\sigma(i), i)$.
+  Therefore, expanding the determinant definition gives:
+  \[
+  \det(A^T) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \cdot A(\sigma(1), 1) \cdots A(\sigma(n), n).
+  \]
+  If we let $j = \sigma(i)$, then $i = \sigma^{-1}(j)$, and consequently $A(\sigma(i), i) = A(j, \sigma^{-1}(j))$. Hence, we can rearrange the product completely:
+  \begin{equation} \label{eq:transpose_prod}
+    A(\sigma(1), 1) \cdots A(\sigma(n), n) = A(1, \sigma^{-1}(1)) \cdots A(n, \sigma^{-1}(n))
+  \end{equation}
+  This holds because every factor on the left-hand side of \eqref{eq:transpose_prod} will appear exactly once on the right-hand side, and vice-versa.
+
+  Now, since $\sigma \circ \sigma^{-1} = \operatorname{id}$, we have $\operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(\sigma^{-1}) = \operatorname{sgn}(\operatorname{id}) = 1$, which implies $\operatorname{sgn}(\sigma) = \operatorname{sgn}(\sigma^{-1})$.
+  When $\sigma$ runs over $S_n$ (all possible permutations of degree $n$), its inverse $\sigma^{-1}$ also naturally runs over the entirety of $S_n$.
+
+  This implies:
+  \begin{align*}
+    \det(A^T) &= \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) A(\sigma(1), 1) \cdots A(\sigma(n), n) \\
+    &= \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma^{-1}) A(1, \sigma^{-1}(1)) \cdots A(n, \sigma^{-1}(n)) \\
+    &= \sum_{\tau \in S_n} \operatorname{sgn}(\tau) A(1, \tau(1)) \cdots A(n, \tau(n)) \\
+    &= \det(A).
+  \end{align*}
+\end{proof}
+
+\begin{example}
+  Let $A = \left(\begin{smallmatrix} 1 & 2 \\ 3 & 4 \end{smallmatrix}\right)$. Its transpose is $A^T = \left(\begin{smallmatrix} 1 & 3 \\ 2 & 4 \end{smallmatrix}\right)$. We have $\det(A) = (1)(4) - (2)(3) = -2$, and $\det(A^T) = (1)(4) - (3)(2) = -2$. Thus, the theorem holds.
+\end{example}
+
+\begin{corollary}[Column Alternating Property]
+  \label{cor:det_columns}
+  If $D : M_{n \times n}(K) \to K$ is an alternating $n$-linear function of the rows of the matrix, then $D$ is also an alternating $n$-linear function of the columns of the matrix. In fact, $D(A^T) = D(A)$ for all $A \in M_{n \times n}(K)$. In particular, this holds for $D = \det$.
+\end{corollary}
+
+\begin{proof}
+  For any $A \in M_{n \times n}(K)$, we have previously established $D(A) = \det(A) \cdot D(I)$. Applying this to $A^T$ gives $D(A^T) = \det(A^T) \cdot D(I)$. Since $\det(A^T) = \det(A)$, this evaluates exactly to $\det(A) \cdot D(I) = D(A)$.
+\end{proof}
+
+Because the determinant acts symmetrically on rows and columns, we can perform column operations just as we do row operations.
+
+\begin{theorem}[Invariance Under Row Operations]
+  \label{thm:row_operations}
+  Let $A \in M_{n \times n}(K)$.
+  \begin{enumerate}
+    \item If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row (i.e., $R_i + c R_j \to R_i$ for $i \neq j$), or by doing the analogous operation on columns, then $\det(B) = \det(A)$.
+    \item If $B$ is obtained from $A$ by interchanging two rows (i.e., $R_i \leftrightarrow R_j$ for $i \neq j$), or columns, then $\det(B) = -\det(A)$.
+    \item If $B$ is obtained from $A$ by multiplying a row by a scalar (i.e., $c R_i \to R_i$), then $\det(B) = c \det(A)$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Statement (b) follows directly from the fact that the determinant is an alternating function. Statement (c) follows from the $n$-linearity of the determinant.
+
+  To prove (a), let $A$ have rows $\alpha_1, \dots, \alpha_n$. Assume $j < i$. Expanding by linearity on the $i$-th row gives:
+  \begin{align*}
+    \det(B) &= \det(\alpha_1, \dots, \alpha_i + c\alpha_j, \dots, \alpha_j, \dots, \alpha_n) \\
+    &= \det(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) + c \det(\alpha_1, \dots, \alpha_j, \dots, \alpha_j, \dots, \alpha_n) \\
+    &= \det(A) + 0 = \det(A).
+  \end{align*}
+  The second term identically vanishes because two rows are equal ($\alpha_j$ appears twice). If $j > i$, the proof is similar.
+\end{proof}
+
+\subsection{Determinants of Block Matrices}
+
+Calculating the determinant of a large matrix by expanding all permutations is computationally expensive. Block matrices provide a powerful shortcut. Consider a block matrix $M$ of the form $M = \left(\begin{smallmatrix} A & B \\ 0 & C \end{smallmatrix}\right)$, where $A \in M_{r \times r}(K)$, $C \in M_{s \times s}(K)$, and $B \in M_{r \times s}(K)$.
+
+\begin{proposition}[Determinant of Block Matrices]
+  \label{prop:block_matrix}
+  For a block matrix $M$ defined as above, $\det(M) = \det(A) \cdot \det(C)$.
+\end{proposition}
+
+\begin{proof}
+  Define a helper function $D(A, B, C) := \det \left(\begin{smallmatrix} A & B \\ 0 & C \end{smallmatrix}\right)$ as a function $D : M_{r \times r}(K) \times M_{r \times s}(K) \times M_{s \times s}(K) \to K$.
+
+  If we fix the first two matrices $A$ and $B$, then the function mapping $C \mapsto D(A, B, C)$ is $s$-linear and alternating. By Corollary~\ref{cor:det_pullout}, any such function satisfies:
+  \begin{equation} \label{eq:block_step1}
+    D(A, B, C) = \det(C) \cdot D(A, B, I_s).
+  \end{equation}
+
+  Let us calculate $D(A, B, I_s) = \det \left ( \begin{smallmatrix} A & B \\ 0 & I_s \end{smallmatrix}\right)$. By doing row operations of the type $R_i + c R_j \to R_i$ (where $j \neq i$), we can use the last $s$ rows of the identity matrix $I_s$ to eliminate the entries in $B$ entirely. This transforms the matrix into $\left(\begin{smallmatrix} A & 0 \\ 0 & I_s \end{smallmatrix}\right)$.
+
+  Since these operations do not change the determinant, we have:
+  \begin{equation} \label{eq:block_step2}
+    \det \begin{pmatrix} A & B \\ 0 & I_s \end{pmatrix} = \det \begin{pmatrix} A & 0 \\ 0 & I_s \end{pmatrix}.
+  \end{equation}
+
+  The function $A \mapsto \det \left(\begin{smallmatrix} A & 0 \\ 0 & I_s \end{smallmatrix}\right)$ is $r$-linear and alternating. By Corollary~\ref{cor:det_pullout} again, it evaluates to $\det(A) \cdot \det \left(\begin{smallmatrix} I_r & 0 \\ 0 & I_s \end{smallmatrix}\right) = \det(A) \cdot \det(I_{r+s}) = \det(A) \cdot 1 = \det(A)$.
+
+  Going back through \eqref{eq:block_step2} and then to \eqref{eq:block_step1}, we finally get that $D(A, B, C) = \det(A) \cdot \det(C)$.
+\end{proof}
+
+\begin{remark}[Exercise]
+  Show that $\det \left(\begin{smallmatrix} A & 0 \\ B & C \end{smallmatrix}\right) = \det(A) \cdot \det(C)$, where $A \in M_{r \times r}(K)$, $C \in M_{s \times s}(K)$, and $B \in M_{s \times r}(K)$.
+\end{remark}
+
+\begin{example}[Calculation of a $4 \times 4$ Determinant]
+  Let $A = \left(\begin{smallmatrix} 1 & -1 & 2 & 3 \\ 2 & 2 & 0 & 2 \\ 4 & 1 & -1 & -1 \\ 1 & 2 & 3 & 0 \end{smallmatrix}\right) \in M_{4 \times 4}(\mathbb{R})$.
+  We begin by performing row operations $R_2 - 2R_1 \to R_2$, $R_3 - 4R_1 \to R_3$, and $R_4 - R_1 \to R_4$. This transforms $A$ into:
+  \[
+  \begin{pmatrix}
+    1 & -1 & 2 & 3 \\
+    0 & 4 & -4 & -4 \\
+    0 & 5 & -9 & -13 \\
+    0 & 3 & 1 & -3
+  \end{pmatrix}
+  \]
+  Now, we clean the second column below the diagonal using $R_3 - \frac{5}{4}R_2 \to R_3$ and $R_4 - \frac{3}{4}R_2 \to R_4$. This reveals a beautiful block structure:
+  \[
+  \left(
+  \begin{array}{cc|cc}
+    1 & -1 & 2 & 3 \\
+    0 & 4 & -4 & -4 \\ \hline
+    0 & 0 & -4 & -8 \\
+    0 & 0 & 4 & 0
+  \end{array}
+  \right)
+  \]
+
+  By applying Proposition~\ref{prop:block_matrix} to this partitioned form, we can see that the determinant of the $4 \times 4$ matrix is simply the product of the determinants of the $2 \times 2$ diagonal blocks:
+  \[
+  \det(A) = \det \begin{pmatrix} 1 & -1 \\ 0 & 4 \end{pmatrix} \cdot \det \begin{pmatrix} -4 & -8 \\ 4 & 0 \end{pmatrix}
+  \]
+  Consequently, we evaluate the individual pieces:
+  \[
+  \det(A) = (4) \cdot (32) = 128.
+  \]
+\end{example}
+
+
+
+\subsection{Cofactor Expansion and the Classical Adjoint}
+
+Recall that if $D$ is a determinant function on $M_{(n-1) \times (n-1)}(K)$, then for any fixed $j \in \{1, \dots, n\}$, the function $E_j(A) := \sum_{i=1}^n (-1)^{i+j} A_{ij} D(A(i|j))$ is a determinant function as well. But, we have seen that on $M_{n \times n}(K)$ there is a strictly unique determinant function, $\det$.
+
+\begin{corollary}[Laplace Expansion]
+  \label{cor:cofactor_expansion}
+  For all $A \in M_{n \times n}(K)$, we have the following $n$ different formulas for $\det(A)$ (expanding along column $j$):
+  \[
+  \det(A) = \sum_{i=1}^n (-1)^{i+j} A_{ij} \det A(i|j), \quad \text{for any } j = 1, \dots, n.
+  \]
+\end{corollary}
+
+The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \emph{$i,j$ cofactor of $A$}. We can succinctly write the expansion of $\det(A)$ by the cofactors of the $j$-th column as $\det(A) = \sum_{i=1}^n A_{ij} \cdot C_{ij}$.
+
+\begin{lemma*}[Orthogonality of Cofactors]\label{lem:false_cofactor}
+  If we replace $A_{ij}$ in the formula by $A_{ik}$ (where $k$ is fixed), we always get $0$. In other words, for all $A \in M_{n \times n}(K)$ and for $j \neq k$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = 0$.
+\end{lemma*}
+
+\begin{proof}
+  Let $B \in M_{n \times n}(K)$ be the matrix obtained from $A$ by replacing (not exchanging!) column $j$ of $A$ by column $k$ of $A$. So, in $B$, column $j$ equals column $k$. Clearly, $\det(B) = 0$ since $B$ has two equal columns.
+
+  Expanding $\det(B)$ along the $j$-th column gives:
+  \[
+  0 = \det(B) = \sum_{i=1}^n (-1)^{i+j} B_{ij} \det B(i|j).
+  \]
+  By construction, $B_{ij} = A_{ik}$ for all $i$. Furthermore, since we only modified column $j$, deleting column $j$ from both matrices leaves identical submatrices: $B(i|j) = A(i|j)$ for all $i$. Thus:
+  \[
+  0 = \sum_{i=1}^n (-1)^{i+j} A_{ik} \det A(i|j) = \sum_{i=1}^n A_{ik} \cdot C_{ij}.
+  \]
+\end{proof}
+
+\begin{summary} For $A \in M_{n \times n}(K)$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = \delta_{jk} \cdot \det(A)$, where $\delta_{jk}$ is the Kronecker delta (which is 1 if $j=k$, and 0 otherwise).
+\end{summary}
+
+\begin{definition*}[Classical Adjoint]\label{def:classical_adjoint}
+  The transpose of the matrix of cofactors, $(C_{ij})^T$, is called the \emph{classical adjoint} (or adjugate) of $A$, denoted $\operatorname{adj} A \in M_{n \times n}(K)$. Explicitly, $(\operatorname{adj} A)_{ij} = C_{ji} = (-1)^{i+j} \det A(j|i)$.
+\end{definition*}
+
+Our summary formula above immediately implies the matrix equation:
+\begin{equation} \label{eq:adj_property_right}
+  (\operatorname{adj} A) \cdot A = (\det A) \cdot I
+\end{equation}
+
+\begin{lemma*}[Left Adjugate Identity]\label{lem:adj_property_left}
+  It is also true that $A \cdot (\operatorname{adj} A) = (\det A) \cdot I$.
+\end{lemma*}
+
+\begin{proof}
+  Since $A^T(i|j) = (A(j|i))^T$, we have
+  \[(\operatorname{adj} A^T)_{ij} = (-1)^{i+j} \det A^T(j|i) = (-1)^{i+j} \det(A(i|j)^T) = (-1)^{i+j} \det A(i|j).\]
+  This perfectly matches $(\operatorname{adj} A)_{ji}$, which is exactly $((\operatorname{adj} A)^T)_{ij}$. Thus, $\operatorname{adj} A^T = (\operatorname{adj} A)^T$.
+
+  Applying \eqref{eq:adj_property_right} to the matrix $A^T$ gives $(\operatorname{adj} A^T) \cdot A^T = (\det A^T) \cdot I$. Using our transpose identities, this becomes $(\operatorname{adj} A)^T \cdot A^T = (\det A) \cdot I$. Taking the transpose of both sides finally yields $A \cdot (\operatorname{adj} A) = (\det A) \cdot I$.
+\end{proof}
+
+\begin{theorem}[Inverse via Adjugate]
+  \label{thm:inverse_adjoint}
+  Let $A \in M_{n \times n}(K)$. Then, $A$ is invertible if and only if $\det A \neq 0$. When $A$ is invertible, its inverse is given by $A^{-1} = \frac{1}{\det A} \cdot (\operatorname{adj} A)$.
+\end{theorem}
+
+\subsection{Cramer's Rule}
+
+Let $A \in M_{n \times n}(K)$. We would like an explicit formula to solve the system of linear equations $A \cdot x = b$, where $x = \left(\begin{smallmatrix} x_1 \\ \vdots \\ x_n \end{smallmatrix}\right)$ are the unknowns and $b = \left(\begin{smallmatrix} b_1 \\ \vdots \\ b_n \end{smallmatrix}\right) \in K^n$ is a given vector.
+
+Assume $A \cdot x = b$. Multiplying both sides by the adjoint gives $(\operatorname{adj} A) \cdot A \cdot x = (\operatorname{adj} A) \cdot b$. This directly implies $(\det A) \cdot x = (\operatorname{adj} A) \cdot b$.
+Looking at the $j$-th row of this vector equation, we get:
+\begin{align*}
+  (\det A) \cdot x_j &= \sum_{i=1}^n (\operatorname{adj} A)_{ji} \cdot b_i \\
+  &= \sum_{i=1}^n (-1)^{i+j} b_i \det A(i|j) \\
+  &= \det(A(j, b))
+\end{align*}
+where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the vector $b$.
+
+\begin{theorem}[Cramer's Rule]
+  \label{thm:cramers_rule}
+  Let $A \in M_{n \times n}(K)$ with $\det A \neq 0$. Let $b \in K^n$. Then, the system $A x = b$ has a unique solution, and it is given by the formula:
+  \[
+  x_j = \frac{\det A(j, b)}{\det A} \quad \text{for all } 1 \le j \le n,
+  \]
+  where $A(j,b)$ is the matrix obtained from $A$ by replacing column $j$ with $b$.
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:cramers_rule}]
+  We have seen previously in Linear Algebra I that if $A$ is invertible, then $A x = b$ has a unique solution. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
+\end{proof}
+
+\begin{example}
+  Consider the system $\left(\begin{smallmatrix} 2 & 1 \\ 1 & 3 \end{smallmatrix}\right) \left(\begin{smallmatrix} x_1 \\ x_2 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 5 \\ 5 \end{smallmatrix}\right)$. We have $\det(A) = 2(3) - 1(1) = 5$. Using Cramer's rule:
+  \[
+  x_1 = \frac{\det \begin{pmatrix} 5 & 1 \\ 5 & 3 \end{pmatrix}}{5} = \frac{15 - 5}{5} = 2, \quad x_2 = \frac{\det \begin{pmatrix} 2 & 5 \\ 1 & 5 \end{pmatrix}}{5} = \frac{10 - 5}{5} = 1.
+  \]
+  Thus, the solution is $x = \binom{2}{1}$.
+\end{example}
+
+\subsection{Determinants of Endomorphisms}
+
+\begin{warmup} Let $A \in M_{n \times n}(K)$, and let $P \in GL(n, K)$ (meaning $P$ is an invertible $n \times n$ matrix). Then, by multiplicativity (Theorem~\ref{thm:det_multiplicative}):
+  \[
+  \det(P^{-1} \cdot A \cdot P) = (\det P^{-1}) \cdot (\det A) \cdot (\det P) = \frac{1}{\det P} \cdot \det A \cdot \det P = \det A.
+  \]
+  In other words, similar matrices mathematically have the exact same determinant.
+\end{warmup}
+
+Let $V$ be a finite-dimensional vector space over $K$, and put $n := \dim V$. Let $T : V \to V$ be a linear map (an endomorphism). Pick a basis $\mathcal{B}$ for $V$. We have a matrix representation $[T]_{\mathcal{B}}^{\mathcal{B}} \in M_{n \times n}(K)$, and we can consider its determinant $\det [T]_{\mathcal{B}}^{\mathcal{B}} \in K$.
+
+\begin{question} Does $\det [T]_{\mathcal{B}}^{\mathcal{B}}$ depend on the specific choice of the basis $\mathcal{B}$?
+\end{question}
+
+\begin{answer} Let $\mathcal{B}'$ be another arbitrary basis for $V$. Denote by $P := [\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$ the transition matrix between the basis $\mathcal{B}'$ and $\mathcal{B}$. Recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\operatorname{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$.
+  We also formally have $[\operatorname{id}_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1} = P^{-1}$.
+  So, $[T]_{\mathcal{B}'}^{\mathcal{B}'} = P^{-1} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot P$. This implies $\det [T]_{\mathcal{B}'}^{\mathcal{B}'} = \det [T]_{\mathcal{B}}^{\mathcal{B}}$.
+
+  Recall also that if $T, S : V \to V$ are two linear maps, then $[S \circ T]_{\mathcal{B}}^{\mathcal{B}} = [S]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}}$. If $T$ is an isomorphism, then $[T^{-1}]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^{-1}$. Finally, $[\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}} = I$.
+\end{answer}
+
+\begin{corollary}[Determinant of an Endomorphism]
+  \label{cor:det_endomorphism}
+  Let $V$ be a finite-dimensional vector space over $K$, and let $T : V \to V$ be a linear map. Then, $\det([T]_{\mathcal{B}}^{\mathcal{B}})$ does NOT depend on the choice of the basis $\mathcal{B}$ of $V$. We denote this intrinsic scalar simply by $\det(T) \in K$.
+\end{corollary}
+
+The function $\det : \operatorname{End}(V) \to K, T \mapsto \det(T)$ has the following elegant properties:
+\begin{enumerate}
+  \item $\det(S \circ T) = \det(S) \cdot \det(T)$ for all $S, T \in \operatorname{End}(V)$.
+  \item $T$ is an isomorphism if and only if $\det T \neq 0$. If $T$ is an isomorphism, then $\det(T^{-1}) = \frac{1}{\det T}$.
+  \item $\det(\operatorname{id}_V) = 1$.
+  \item $\det(0) = 0 \in K$ (where $0$ is the zero linear map).
+\end{enumerate}
+
+\begin{importantremark}
+  In contrast to an endomorphism $T : V \to V$, if we take a linear map $T : V \to W$ between two vector spaces of the same dimension and bases $\mathcal{B}, \mathcal{C}$ of $V, W$, then $\det[T]_{\mathcal{C}}^{\mathcal{B}}$ generally depends on the choice of $\mathcal{B}$ and $\mathcal{C}$.
+\end{importantremark}
