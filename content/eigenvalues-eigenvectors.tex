@@ -4,179 +4,181 @@
 \section{Motivation}
 
 \subsection{Fibonacci revisited}
-Consider the sequence $f_0, f_1, f_2, f_3, \dots, f_n, \dots$, defined by $f_0 = 0$, $f_1 = 1$, and $f_n := f_{n-1} + f_{n-2}$ for $n \ge 2$.
+Consider the sequence $f_0, f_1, f_2, f_3, \dots, f_n, \dots$ defined by $f_0 = 0$, $f_1 = 1$, and $f_n := f_{n-1} + f_{n-2}$ for $n \ge 2$.
 This yields the sequence: $0, 1, 1, 2, 3, 5, 8, 13, 21, \dots$
+
 We found a formula for $f_n$:
 \[ f_n = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right) \quad \forall n \ge 0. \]
-We defined $Fib := \text{the set of all sequences } (a_0, a_1, a_2, \dots, a_n, \dots)$, that satisfy $a_n = a_{n-1} + a_{n-2}$ for $n \ge 2$.
 
-\textbf{Claim 1.} $Fib \subseteq \mathbb{R}^{\infty}$ is a 2-dimensional vector subspace of the space of all infinite sequences $(x_0, x_1, x_2, \dots, x_n, \dots)$.
-In fact, the map $F : Fib \longrightarrow \mathbb{R}^2$, given by $F(a_0, a_1, \dots, a_n, \dots) := (a_0, a_1) \in \mathbb{R}^2$, is an isomorphism.
+We defined $Fib := \text{the set of all sequences } (a_0, a_1, a_2, \dots, a_n, \dots)$ that satisfy $a_n = a_{n-1} + a_{n-2}$ for $n \ge 2$.
 
-\textbf{Claim 2.} Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\Psi := \frac{1-\sqrt{5}}{2}$. Then, the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \Psi, \Psi^2, \dots, \Psi^n, \dots)$ belong to $Fib$, and, moreover, they form a basis for $Fib$.
+\begin{claim*}\label{claim:fib_subspace}
+  $Fib \subseteq \mathbb{R}^{\infty}$ is a 2-dimensional vector subspace of the space of all infinite sequences \[(x_0, x_1, x_2, \dots, x_n, \dots).\]
+  In fact, the map $F : Fib \longrightarrow \mathbb{R}^2$ given by $F(a_0, a_1, \dots, a_n, \dots) := (a_0, a_1) \in \mathbb{R}^2$ is an isomorphism.
+\end{claim*}
 
-We, also, saw, that using these two sequences, we could easily find an explicit formula for all Fibonacci sequences. But, how did we find these two special sequences?
+\begin{claim*}\label{claim:fib_basis}
+  Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\Psi := \frac{1-\sqrt{5}}{2}$. Then the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \Psi, \Psi^2, \dots, \Psi^n, \dots)$ belong to $Fib$ and, moreover, they form a basis for $Fib$.
+\end{claim*}
 
-The shift map $S : Fib \longrightarrow Fib$, defined by $S(a_0, a_1, \dots, a_n, \dots) := (a_1, a_2, \dots, a_{n+1}, \dots)$, is a linear map.
-Let us try to find a Fibonacci sequence $v \ne 0$, such that $S(v) = \lambda \cdot v$ for some $\lambda$.
+We also saw that using these two sequences, we could easily find an explicit formula for all Fibonacci sequences. But how did we find these two special sequences?
+
+The shift map $S : Fib \longrightarrow Fib$ defined by $S(a_0, a_1, \dots, a_n, \dots) := (a_1, a_2, \dots, a_{n+1}, \dots)$ is a linear map.
+Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdot v$ for some $\lambda$.
 \[ S(v) = \lambda \cdot v \iff \lambda = \frac{1\pm\sqrt{5}}{2} \text{ and } v = (a, a\lambda, a\lambda^2, \dots, a\lambda^n, \dots) \]
 
-\begin{definition}[Eigenvalue and Eigenvector]
-  Let $V$ be a vector space over $K$, and $T: V \rightarrow V$ a linear map (an endomorphism of $V$). We say, that $\lambda \in K$ is an eigenvalue (a.k.a. characteristic value) of $T$, if there exists a vector $v \ne 0$, such that $Tv = \lambda v$. Any vector $v \ne 0$, with the property that $Tv = \lambda v$, is called an eigenvector (of $T$) for the eigenvalue $\lambda$.
+\begin{definition}[Eigenvalue and Eigenvector]\label{def:eigenvalue_eigenvector}
+  Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map (an endomorphism of $V$). We say that $\lambda \in K$ is an eigenvalue (a.k.a. characteristic value) of $T$ if there exists a vector $v \ne 0$ such that $Tv = \lambda v$. Any vector $v \ne 0$ with the property that $Tv = \lambda v$ is called an eigenvector (of $T$) for the eigenvalue $\lambda$.
 \end{definition}
 
-\begin{definition}[Diagonalizable Endomorphism]
-  Let $V$ be a finite-dimensional vector space over $K$, and $T: V \rightarrow V$ a linear map. We say, that $T$ is diagonalizable, if there exists a basis $\mathcal{B}$ of $V$, such that
+\begin{definition}[Diagonalizable Endomorphism]\label{def:diagonalizable_endomorphism}
+  Let $V$ be a finite-dimensional vector space over $K$ and $T: V \rightarrow V$ a linear map. We say that $T$ is diagonalizable if there exists a basis $\mathcal{B}$ of $V$ such that
   \begin{equation} \label{eq:diagonal_form}
     [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}
   \end{equation}
 \end{definition}
 
-
-
-\begin{lemma}[Diagonalizable Matrix Criterion]
-  $T$ is diagonalizable, if and only if, there exists a basis $\mathcal{B}=(v_1, \dots, v_n)$ consisting of eigenvectors of $T$ (i.e. $\forall i$, $Tv_i = \lambda_i \cdot v_i$ for some $\lambda_i \in K$).
-  Moreover, if, for some basis $\mathcal{B}=(v_1, \dots, v_n)$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the shape \eqref{eq:diagonal_form}, then, for all $i$, $\lambda_i$ is an eigenvalue of $T$, and $v_i$ is an eigenvector for $\lambda_i$.
+\begin{lemma}[Diagonalizable Matrix Criterion]\label{lem:diagonalizable_matrix_criterion}
+  $T$ is diagonalizable if and only if there exists a basis $\mathcal{B}=(v_1, \dots, v_n)$ consisting of eigenvectors of $T$ (i.e., $\forall i$, $Tv_i = \lambda_i \cdot v_i$ for some $\lambda_i \in K$).
+  Moreover, if for some basis $\mathcal{B}=(v_1, \dots, v_n)$ the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the shape \eqref{eq:diagonal_form}, then for all $i$, $\lambda_i$ is an eigenvalue of $T$ and $v_i$ is an eigenvector for $\lambda_i$.
 \end{lemma}
 
 \begin{proof}
-  Recall, that $[T]_{\mathcal{B}}^{\mathcal{B}} = \left( [Tv_1]_{\mathcal{B}} \dots [Tv_n]_{\mathcal{B}} \right)$, and $[Tv_j]_{\mathcal{B}} = \begin{pmatrix} \alpha_{1j} \\ \vdots \\ \alpha_{nj} \end{pmatrix}$, where $Tv_j = \alpha_{1j}v_1 + \dots + \alpha_{nj}v_n$.
-  $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the shape \eqref{eq:diagonal_form}, if and only if, $\alpha_{ij} = 0$ for all $i \ne j$, and $\alpha_{kk} = \lambda_k \iff Tv_k = \lambda_k \cdot v_k$.
+  Recall that $[T]_{\mathcal{B}}^{\mathcal{B}} = \left( [Tv_1]_{\mathcal{B}} \dots [Tv_n]_{\mathcal{B}} \right)$ and $[Tv_j]_{\mathcal{B}} = \begin{pmatrix} \alpha_{1j} \\ \vdots \\ \alpha_{nj} \end{pmatrix}$, where $Tv_j = \alpha_{1j}v_1 + \dots + \alpha_{nj}v_n$.
+  The matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ has the shape \eqref{eq:diagonal_form} if and only if $\alpha_{ij} = 0$ for all $i \ne j$, and $\alpha_{kk} = \lambda_k \iff Tv_k = \lambda_k \cdot v_k$.
 \end{proof}
 
-\begin{remark}
-  We saw, that for all $A \in M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say, that a matrix $A \in M_{n \times n}(K)$ is diagonalizable, if the linear map $T_A$ is diagonalizable.
+\begin{remark}\label{rem:diagonalizable_matrix}
+  We saw that for all $A \in M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say that a matrix $A \in M_{n \times n}(K)$ is diagonalizable if the linear map $T_A$ is diagonalizable.
 \end{remark}
 
-\begin{example}
+\begin{example}\label{ex:eigenvalue_R2_stretch}
   Let $A = \left(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\right)$ and $K = \mathbb{R}$.
-  $T_A\left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 3 \\ 3 \end{smallmatrix}\right) = 3 \cdot \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$. Thus, $\lambda = 3$ is an eigenvalue, and $v = \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
-  Furthermore, $T_A\left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$. This implies, that $\lambda = 1$ is an eigenvalue, and $v = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
-  Geometrically, this represents a stretching by a factor of 3 in $\mathbb{R}^2$ along one axis, and, the identity map along the other axis.
+  $T_A\left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 3 \\ 3 \end{smallmatrix}\right) = 3 \cdot \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$. Thus, $\lambda = 3$ is an eigenvalue and $v = \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
+  Furthermore, $T_A\left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$. This implies that $\lambda = 1$ is an eigenvalue and $v = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
+  Geometrically, this represents a stretching by a factor of 3 in $\mathbb{R}^2$ along one axis and the identity map along the other axis.
 \end{example}
 
-\begin{example}
+\begin{example}\label{ex:eigenvalue_R2_quadratic}
   Let $A = \left(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix}\right)$. Let us find all possible eigenvalues and eigenvectors.
-  We are looking for $A \cdot v = \lambda v$, with $\lambda \in \mathbb{R}$, and $0 \ne v \in \mathbb{R}^2$.
-  $(A - \lambda I)v = 0$. This implies, that $A - \lambda I$ is not invertible, which, in turn, means $\det(A - \lambda I) = 0$ (which leads to a quadratic equation).
+  We are looking for $A \cdot v = \lambda v$ with $\lambda \in \mathbb{R}$ and $0 \ne v \in \mathbb{R}^2$.
+  This gives $(A - \lambda I)v = 0$. This implies that $A - \lambda I$ is not invertible, which in turn means $\det(A - \lambda I) = 0$ (which leads to a quadratic equation).
 \end{example}
 
 \begin{proposition}[Linear Independence of Eigenvectors] \label{prop:lin_indep_eigen}
-  Let $V$ be a vector space over $K$, and $T: V \rightarrow V$ a linear map. Suppose, that $\lambda_1, \dots, \lambda_n \in K$ are eigenvalues of $T$, which are pairwise distinct (i.e. $\lambda_i \ne \lambda_j$ for all $i \ne j$). Let $v_1, \dots, v_n$ be eigenvectors for $\lambda_1, \dots, \lambda_n$ respectively. Then, $v_1, \dots, v_n$ are linearly independent. (Put shortly: eigenvectors, corresponding to a list of distinct eigenvalues, are always linearly independent).
+  Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map. Suppose that $\lambda_1, \dots, \lambda_n \in K$ are eigenvalues of $T$ which are pairwise distinct (i.e., $\lambda_i \ne \lambda_j$ for all $i \ne j$). Let $v_1, \dots, v_n$ be eigenvectors for $\lambda_1, \dots, \lambda_n$ respectively. Then $v_1, \dots, v_n$ are linearly independent. (Put shortly: eigenvectors corresponding to a list of distinct eigenvalues are always linearly independent).
 \end{proposition}
 
 \begin{proof}
-  We proceed by induction, on $n$.
-  Base case $n=1$: $v_1$ is an eigenvector for $\lambda_1$. By definition, $v_1 \ne 0$, which implies, that $v_1$ is linearly independent.
+  We proceed by induction on $n$.
+  Base case $n=1$: $v_1$ is an eigenvector for $\lambda_1$. By Definition \ref{def:eigenvalue_eigenvector}, $v_1 \ne 0$, which implies that $v_1$ is linearly independent.
 
-  Inductive step, for $n \ge 1$: Suppose, the proposition holds for any list of $n$ eigenvalues and eigenvectors. We will prove, now, that the proposition holds, also, for a list of $n+1$ eigenvalues and eigenvectors.
-  Let $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ be pairwise distinct eigenvalues of $T$, and $v_1, \dots, v_n, v_{n+1}$ a given list of eigenvectors of $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ respectively. We need to prove, that $v_1, \dots, v_n, v_{n+1}$ are linearly independent.
-  Assume, that
+  Inductive step for $n \ge 1$: Suppose the proposition holds for any list of $n$ eigenvalues and eigenvectors. We will prove now that the proposition holds also for a list of $n+1$ eigenvalues and eigenvectors.
+  Let $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ be pairwise distinct eigenvalues of $T$, and $v_1, \dots, v_n, v_{n+1}$ a given list of eigenvectors of $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ respectively. We need to prove that $v_1, \dots, v_n, v_{n+1}$ are linearly independent.
+  Assume that
   \begin{equation} \label{eq:ind_step_sum}
     a_1 v_1 + \dots + a_n v_n + a_{n+1} v_{n+1} = 0.
   \end{equation}
-  We need to show, that $a_1 = \dots = a_n = a_{n+1} = 0$.
+  We need to show that $a_1 = \dots = a_n = a_{n+1} = 0$.
   Apply the transformation $T$ to \eqref{eq:ind_step_sum}:
   \[ a_1 T(v_1) + \dots + a_n T(v_n) + a_{n+1} T(v_{n+1}) = 0. \]
-  But, since $T(v_i) = \lambda_i v_i$, we have:
+  But since $T(v_i) = \lambda_i v_i$, we have:
   \begin{equation} \label{eq:ind_step_transformed}
     a_1 \lambda_1 v_1 + \dots + a_n \lambda_n v_n + a_{n+1} \lambda_{n+1} v_{n+1} = 0.
   \end{equation}
 
-  Consider, now, the combination $\eqref{eq:ind_step_transformed} - \lambda_{n+1} \cdot \eqref{eq:ind_step_sum}$:
+  Consider now the combination $\eqref{eq:ind_step_transformed} - \lambda_{n+1} \cdot \eqref{eq:ind_step_sum}$:
   \[ a_1(\lambda_1 - \lambda_{n+1})v_1 + \dots + a_n(\lambda_n - \lambda_{n+1})v_n + a_{n+1}(\lambda_{n+1} - \lambda_{n+1})v_{n+1} = 0. \]
   By the induction hypothesis, $v_1, \dots, v_n$ are linearly independent.
   Therefore, $a_1(\lambda_1 - \lambda_{n+1}) = \dots = a_n(\lambda_n - \lambda_{n+1}) = 0$.
-  By assumption, the eigenvalues are distinct, so, $\lambda_i \ne \lambda_{n+1}$. Consequently, $a_1 = \dots = a_n = 0$.
+  By assumption, the eigenvalues are distinct, so $\lambda_i \ne \lambda_{n+1}$. Consequently, $a_1 = \dots = a_n = 0$.
   Going back to \eqref{eq:ind_step_sum}, we get $a_{n+1} v_{n+1} = 0$.
-  But, since $v_{n+1} \ne 0$ (because $v_{n+1}$ is an eigenvector), this implies, that $a_{n+1} = 0$.
+  But since $v_{n+1} \ne 0$ (because $v_{n+1}$ is an eigenvector), this implies that $a_{n+1} = 0$.
 \end{proof}
 
 \subsection{The Characteristic Polynomial}
 
-
-
-\begin{proposition}[Eigenvalue Injective Criterion]
-  Let $V$ be a vector space over $K$, and $T: V \rightarrow V$ a linear map. Then, $\lambda$ is an eigenvalue of $T$, if and only if, the linear map $T - \lambda \cdot \mathrm{id}_V$ is not injective.
+\begin{proposition}[Eigenvalue Injective Criterion]\label{prop:eigen_injective}
+  Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map. Then $\lambda$ is an eigenvalue of $T$ if and only if the linear map $T - \lambda \cdot \mathrm{id}_V$ is not injective.
 \end{proposition}
 
 \begin{proof}
   $\lambda$ is an eigenvalue of $T \iff \exists 0 \ne v \in V$ such that $Tv = \lambda v$
   $\iff \exists 0 \ne v \in V$ such that $Tv - \lambda v = 0 \iff \exists 0 \ne v \in V$ such that $(T - \lambda \cdot \mathrm{id}_V)v = 0 \iff \ker(T - \lambda \cdot \mathrm{id}_V) \ne \{0\}$.
-  This implies, that $T - \lambda \cdot \mathrm{id}_V$ is not injective.
+  This implies that $T - \lambda \cdot \mathrm{id}_V$ is not injective.
 \end{proof}
 
-\begin{definition}[Characteristic Polynomial]
-  Let $V$ be a finite-dimensional vector space over $K$, and $T: V \rightarrow V$ a linear map. We define the characteristic polynomial of $T$, as $P_T(x) := \det(T - x \cdot \mathrm{id}_V)$ (sometimes denoted $\chi_T(x)$), where $x$ is a formal variable ("in $K$"). We define the characteristic polynomial of a matrix $A \in M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
+\begin{definition}[Characteristic Polynomial]\label{def:char_poly}
+  Let $V$ be a finite-dimensional vector space over $K$ and $T: V \rightarrow V$ a linear map. We define the characteristic polynomial of $T$ as $P_T(x) := \det(T - x \cdot \mathrm{id}_V)$ (sometimes denoted $\chi_T(x)$), where $x$ is a formal variable ("in $K$"). We define the characteristic polynomial of a matrix $A \in M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
 \end{definition}
 
-\begin{definition}[Eigenspace]
-  Let $V$ be a vector space over $K$, and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The eigenspace corresponding to $\lambda$ is defined as:
-  $\Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \mathrm{id}_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}$.
-  Clearly, (because of this definition), $\Eig_T(\lambda) \subseteq V$ is a linear subspace.
+\begin{definition}[Eigenspace]\label{def:eigenspace}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The eigenspace corresponding to $\lambda$ is defined as:
+  \[ \Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \mathrm{id}_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}. \]
+  Clearly (by this definition), $\Eig_T(\lambda) \subseteq V$ is a linear subspace.
 \end{definition}
 
-\begin{lemma}[Properties of the Characteristic Polynomial]
-  \label{lem:properties-of-the-char-poly}
+\begin{lemma}[Properties of the Characteristic Polynomial]\label{lem:properties_char_poly}
   Let $A \in M_{n \times n}(K)$. Then:
   \begin{enumerate}
-    \item $P_A(x)$ is a polynomial of degree $n$, with leading coefficient $(-1)^n$ (i.e. $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$, with $c_i \in K$ for all $i$, and $c_n = (-1)^n$.)
-    \item $P_{A^T}(x) = P_A(x)$.
-    \item If $A = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}$ has upper triangular form, then, $P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x)$.
-    \item If $A = \left(\begin{array}{c|c} B_1 & * \\ \hline 0 & B_2 \end{array}\right)$ is a block matrix, then, $P_A(x) = P_{B_1}(x) \cdot P_{B_2}(x)$.
-    \item If $A$ and $B$ are similar matrices (i.e. $B = P^{-1}AP$ for some invertible matrix $P$), then, $P_A(x) = P_B(x)$.
+    \item[\textbf{(a)}] $P_A(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$ (i.e., $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$, with $c_i \in K$ for all $i$, and $c_n = (-1)^n$).
+    \item[\textbf{(b)}] $P_{A^T}(x) = P_A(x)$.
+    \item[\textbf{(c)}] If $A = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}$ has upper triangular form, then $P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x)$.
+    \item[\textbf{(d)}] If $A = \left(\begin{array}{c|c} B_1 & * \\ \hline 0 & B_2 \end{array}\right)$ is a block matrix, then $P_A(x) = P_{B_1}(x) \cdot P_{B_2}(x)$.
+    \item[\textbf{(e)}] If $A$ and $B$ are similar matrices (i.e., $B = P^{-1}AP$ for some invertible matrix $P$), then $P_A(x) = P_B(x)$.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  (a) Let
+  \textbf{(a)} Let
   \[P_A(x) = \det(A - x \cdot I_n) = \det\begin{pmatrix} A_{11}-x & A_{12} & \dots & A_{1n} \\ A_{21} & A_{22}-x & \dots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \dots & A_{nn}-x \end{pmatrix}. \]
-  Denote this matrix (inside the determinant) by $B$. This determinant, equals $\sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n}$.
+  Denote this matrix (inside the determinant) by $B$. This determinant equals $\sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n}$.
   $= (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + (\text{products of degree} \le n-1)$.
-  If $\sigma \ne \mathrm{id} = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then, at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$.
+  If $\sigma \ne \mathrm{id} = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$.
   $= (-1)^n x^n + (\text{terms of degree} \le n-1)$.
 
-  (b) $P_{A^T}(x) = \det(A^T - x \cdot I_n) = \det((A - x \cdot I_n)^T) = \det(A - x \cdot I_n) = P_A(x)$.
+  \textbf{(b)} $P_{A^T}(x) = \det(A^T - x \cdot I_n) = \det((A - x \cdot I_n)^T) = \det(A - x \cdot I_n) = P_A(x)$.
 
-  (c+d) Exercise: Follows from properties of the determinant we have, already, proved.
+  \textbf{(c)+(d)} Exercise: Follows from properties of the determinant we have already proved.
 
-  (e) $P_B(x) = \det(B - x \cdot I_n) = \det(P^{-1}AP - x \cdot I_n) = \det(P^{-1}(A - x \cdot I_n)P) = \det(A - x \cdot I_n) = P_A(x)$.
+  \textbf{(e)} $P_B(x) = \det(B - x \cdot I_n) = \det(P^{-1}AP - x \cdot I_n) = \det(P^{-1}(A - x \cdot I_n)P) = \det(A - x \cdot I_n) = P_A(x)$.
 \end{proof}
 
-\begin{remark}
-  If $V$ is an $n$-dimensional vector space over $K$, and $T \in \End(V)$, then, $P_T(x)$ is a polynomial of degree $n$, with leading coefficient $(-1)^n$.
+\begin{remark}\label{rem:char_poly_degree}
+  If $V$ is an $n$-dimensional vector space over $K$ and $T \in \End(V)$, then $P_T(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$.
 \end{remark}
 
 \begin{proof}
-  Let $\mathcal{B}$ be a basis for $V$. Then, $[T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies, that $P_T(x) = \det([T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark, now, follows from (a) of the Lemma \ref{lem:properties-of-the-char-poly}.
+  Let $\mathcal{B}$ be a basis for $V$. Then $[T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies that $P_T(x) = \det([T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark now follows from \textbf{(a)} of Lemma \ref{lem:properties_char_poly}.
 \end{proof}
 
-\begin{definition}[Trace]
-  Let $A \in M_{n \times n}(K)$. Define the trace (German:  ``Spur'') of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
-  If $V$ is a finite-dimensional vector space over $K$, and $T \in \End(V)$, define $\Tr(T) := \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$, where $\mathcal{B}$ is some basis for $V$. We will see soon, that $\Tr(T)$ is well defined (i.e. it does not depend on the choice of $\mathcal{B}$).
+\begin{definition}[Trace]\label{def:trace}
+  Let $A \in M_{n \times n}(K)$. Define the trace (German: ``Spur'') of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
+  If $V$ is a finite-dimensional vector space over $K$ and $T \in \End(V)$, define $\Tr(T) := \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$, where $\mathcal{B}$ is some basis for $V$. We will see soon that $\Tr(T)$ is well defined (i.e., it does not depend on the choice of $\mathcal{B}$).
 \end{definition}
 
-\begin{lemma}[Properties of Trace]  For all $A, B \in M_{n \times n}(K)$, we have
+\begin{lemma}[Properties of Trace]\label{lem:properties_trace}
+  For all $A, B \in M_{n \times n}(K)$, we have:
   \begin{enumerate}
-    \item $\Tr(A \cdot B) = \Tr(B \cdot A$
-    \item If $A$ and $B$ are similar matrices, then, $\Tr(A) = \Tr(B).$
+    \item[\textbf{(a)}] $\Tr(A \cdot B) = \Tr(B \cdot A)$
+    \item[\textbf{(b)}] If $A$ and $B$ are similar matrices, then $\Tr(A) = \Tr(B).$
   \end{enumerate}
   In particular, if $\mathcal{B}$ and $\mathcal{B}'$ are two bases for $V$, then $\Tr([T]_{\mathcal{B}}^{\mathcal{B}}) = \Tr([T]_{\mathcal{B}'}^{\mathcal{B}'})$. Thus, $\Tr(T)$ is well defined.
 \end{lemma}
 
 \begin{proof}
-  (a) $\Tr(A \cdot B) = \sum_{i=1}^n (A \cdot B)_{ii} = \sum_{i=1}^n \sum_{j=1}^n A_{ij} \cdot B_{ji} = \sum_{i,j} A_{ij}B_{ji} = \sum_{i,j} A_{ji}B_{ij} = \sum_{i=1}^n \sum_{j=1}^n B_{ij}A_{ji} = \sum_{i=1}^n (B \cdot A)_{ii} = \Tr(B \cdot A)$.
+  \textbf{(a)} $\Tr(A \cdot B) = \sum_{i=1}^n (A \cdot B)_{ii} = \sum_{i=1}^n \sum_{j=1}^n A_{ij} \cdot B_{ji} = \sum_{i,j} A_{ij}B_{ji} = \sum_{i,j} A_{ji}B_{ij} = \sum_{i=1}^n \sum_{j=1}^n B_{ij}A_{ji} = \sum_{i=1}^n (B \cdot A)_{ii} = \Tr(B \cdot A)$.
 
-  (b) If $B = P^{-1}AP$, then, $\Tr(B) = \Tr(P^{-1}AP) = \Tr(P^{-1} \cdot (AP)) = \Tr(AP \cdot P^{-1}) = \Tr(A)$.
+  \textbf{(b)} If $B = P^{-1}AP$, then $\Tr(B) = \Tr(P^{-1}AP) = \Tr(P^{-1} \cdot (AP)) = \Tr(AP \cdot P^{-1}) = \Tr(A)$.
 
-  Regarding the claim about $\Tr(T)$, recall, that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$, and $[\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1}$. Use (b), to conclude the proof.
+  Regarding the claim about $\Tr(T)$, recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$, and $[\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1}$. Use \textbf{(b)} to conclude the proof.
 \end{proof}
 
 Why is the trace interesting?
-Let $A \in M_{n \times n}(K)$, and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$ its characteristic polynomial. We have seen, that $c_n = (-1)^n$.
+Let $A \in M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$ its characteristic polynomial. We have seen that $c_n = (-1)^n$.
 
-\begin{lemma}[Coefficients of the Characteristic Polynomial]
-  $c_{n-1} = (-1)^{n-1} \cdot \Tr(A)$, and $c_0 = \det(A)$. In other words, $P_A(x) = (-1)^n x^n + (-1)^{n-1}\Tr(A) \cdot x^{n-1} + c_{n-2}x^{n-2} + \dots + c_1 x + \det(A)$.
+\begin{lemma}[Coefficients of the Characteristic Polynomial]\label{lem:char_poly_coeffs}
+  $c_{n-1} = (-1)^{n-1} \cdot \Tr(A)$ and $c_0 = \det(A)$. In other words, $P_A(x) = (-1)^n x^n + (-1)^{n-1}\Tr(A) \cdot x^{n-1} + c_{n-2}x^{n-2} + \dots + c_1 x + \det(A)$.
 \end{lemma}
 
 \begin{proof}
@@ -184,8 +186,8 @@ Let $A \in M_{n \times n}(K)$, and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \begin{equation} \label{eq:permutation_sum}
     P_A(x) = (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + \sum_{\sigma \in S_n, \sigma \ne \mathrm{id}} \sgn(\sigma) B_{1, \sigma 1} \dots B_{n, \sigma n}.
   \end{equation}
-  If $\sigma \ne \mathrm{id}$, then, there exist at least two indices $i \ne j$, such that $i \ne \sigma i$, and $j \ne \sigma j$.
-  Thus, the product contains at least two factors ($B_{i, \sigma i}$ and $B_{j, \sigma j}$) that are not from the diagonal of $B$, and so, do not contain $x$.
+  If $\sigma \ne \mathrm{id}$, then there exist at least two indices $i \ne j$ such that $i \ne \sigma i$ and $j \ne \sigma j$.
+  Thus, the product contains at least two factors ($B_{i, \sigma i}$ and $B_{j, \sigma j}$) that are not from the diagonal of $B$, and so do not contain $x$.
   Therefore, the degree of the sum in \eqref{eq:permutation_sum} is $\le n-2$.
   $P_A(x) = (A_{11}-x)(A_{22}-x) \dots (A_{nn}-x) + (\text{another polynomial of degree} \le n-2)$.
   $= (-1)^n x^n + \left[ A_{11}(-x)^{n-1} + \dots + A_{nn}(-x)^{n-1} \right] + \dots$
@@ -194,97 +196,95 @@ Let $A \in M_{n \times n}(K)$, and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   Finally, $c_0 = P_A(0) = \det(A - 0 \cdot I_n) = \det(A)$ (obtained by substituting $x=0$).
 \end{proof}
 
-\begin{definition}[Direct Sum]
-  Let $V$ be a vector space over $K$, and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say, that $W$ is a direct sum of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a direct sum), if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
+\begin{definition}[Direct Sum]\label{def:direct_sum}
+  Let $V$ be a vector space over $K$ and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say that $W$ is a direct sum of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a direct sum) if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
 \end{definition}
 
-\begin{exercise}
-  $U_1 + \dots + U_r$ is a direct sum, if and only if, any of the following conditions hold:
+\begin{exercise}\label{ex:direct_sum_conditions}
+  $U_1 + \dots + U_r$ is a direct sum if and only if any of the following conditions hold:
   \begin{enumerate}
     \item The only way to write $0 = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$, is with $u_1 = \dots = u_r = 0$.
     \item For all $2 \le j \le r$, we have $U_j \cap (U_1 + \dots + U_{j-1}) = \{0\}$.
   \end{enumerate}
-  Under the additional assumption, that $U_1, \dots, U_r$ are all finite-dimensional, $U_1 + \dots + U_r$ is a direct sum, if and only if, whenever $\mathcal{B}_1, \dots, \mathcal{B}_r$ are bases for $U_1, \dots, U_r$ respectively, then, $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ forms a basis for $U_1 + \dots + U_r$.
+  Under the additional assumption that $U_1, \dots, U_r$ are all finite-dimensional, $U_1 + \dots + U_r$ is a direct sum if and only if whenever $\mathcal{B}_1, \dots, \mathcal{B}_r$ are bases for $U_1, \dots, U_r$ respectively, then $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ forms a basis for $U_1 + \dots + U_r$.
 \end{exercise}
 
-\begin{exercise}
-  If $U_1 + \dots + U_r$ is a direct sum, then, there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So, when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
+\begin{exercise}\label{ex:canonical_iso_direct_sum}
+  If $U_1 + \dots + U_r$ is a direct sum, then there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
 \end{exercise}
 
-\begin{proposition}[Direct Sum of Eigenspaces]
-  Let $V$ be a vector space over $K$, and $T \in \End(V)$. Let $\lambda_1, \dots, \lambda_r \in K$ be pairwise distinct eigenvalues of $T$. Then, $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
+\begin{proposition}[Direct Sum of Eigenspaces]\label{prop:direct_sum_eigenspaces}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda_1, \dots, \lambda_r \in K$ be pairwise distinct eigenvalues of $T$. Then $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
 \end{proposition}
 
 \begin{proof}
-  Assume, $u_1 + \dots + u_r = u_1' + \dots + u_r'$, where $u_i, u_i' \in \Eig_T(\lambda_i)$ for all $1 \le i \le r$. We need to show, that $u_i = u_i'$ for all $i \iff (u_i - u_i' = 0, \text{ for all } i)$.
+  Assume $u_1 + \dots + u_r = u_1' + \dots + u_r'$, where $u_i, u_i' \in \Eig_T(\lambda_i)$ for all $1 \le i \le r$. We need to show that $u_i = u_i'$ for all $i \iff (u_i - u_i' = 0 \text{ for all } i)$.
   We have:
   \begin{equation} \label{eq:ds_sum_zero}
     (u_1 - u_1') + \dots + (u_r - u_r') = 0.
   \end{equation}
-  Assume, by contradiction, that there exists an $i$, such that $u_i - u_i' \ne 0$.
-  Remove from the list $u_1 - u_1', \dots, u_r - u_r'$, all those vectors that are 0. We get a non-empty list $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ of non-zero vectors, and, by \eqref{eq:ds_sum_zero}, we still have
+  Assume by contradiction that there exists an $i$ such that $u_i - u_i' \ne 0$.
+  Remove from the list $u_1 - u_1', \dots, u_r - u_r'$ all those vectors that are 0. We get a non-empty list $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ of non-zero vectors, and by \eqref{eq:ds_sum_zero}, we still have
   \begin{equation} \label{eq:ds_nonzero_subsum}
     (u_{i_1} - u_{i_1}') + \dots + (u_{i_\ell} - u_{i_\ell}') = 0.
   \end{equation}
-  Now, for all $k$, $u_{i_k} - u_{i_k}'$ is either an eigenvector of $\lambda_{i_k}$ or 0, but, by our assumptions, $u_{i_k} - u_{i_k}' \ne 0$.
-  Recall, from Proposition \ref{prop:lin_indep_eigen}, that eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent. $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ are linearly independent vectors, and, by \eqref{eq:ds_nonzero_subsum}, their sum is 0. This is a contradiction.
+  Now for all $k$, $u_{i_k} - u_{i_k}'$ is either an eigenvector of $\lambda_{i_k}$ or 0, but by our assumptions, $u_{i_k} - u_{i_k}' \ne 0$.
+  Recall from Proposition \ref{prop:lin_indep_eigen} that eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent. $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ are linearly independent vectors, and by \eqref{eq:ds_nonzero_subsum}, their sum is 0. This is a contradiction.
 \end{proof}
 
-\begin{corollary}[Diagonalizability via Eigenspaces]
-  Assume, $V$ is finite-dimensional, $T \in \End(V)$, and let $\lambda_1, \dots, \lambda_r$ be all the eigenvalues of $T$. Then, $T$ is diagonalizable, if and only if, $\sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$.
+\begin{corollary}[Diagonalizability via Eigenspaces]\label{cor:diagonalizability_eigenspaces}
+  Assume $V$ is finite-dimensional, $T \in \End(V)$, and let $\lambda_1, \dots, \lambda_r$ be all the eigenvalues of $T$. Then $T$ is diagonalizable if and only if $\sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$.
 \end{corollary}
 
-\begin{exercise}
-  If $V$ is finite-dimensional, then, $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
+\begin{exercise}\label{ex:finite_eigenvalues}
+  If $V$ is finite-dimensional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
 \end{exercise}
 
 \begin{proof}
-  Choose a basis $\mathcal{B}_i$ for $\Eig_T(\lambda_i)$. Recall, that $W := \Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
-  This implies, that $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$.
-  Now, $W \subseteq V$ is a linear subspace, and $\dim W = \sum_{i=1}^r |\mathcal{B}_i| = \sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$.
-  This implies, $W = V$. Consequently, $V$ has a basis (namely $(\mathcal{B}_1, \dots, \mathcal{B}_r)$), whose elements are eigenvectors of $T$. This implies, that $T$ is diagonalizable.
+  Choose a basis $\mathcal{B}_i$ for $\Eig_T(\lambda_i)$. Recall that $W := \Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
+  This implies that $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$.
+  Now $W \subseteq V$ is a linear subspace, and $\dim W = \sum_{i=1}^r |\mathcal{B}_i| = \sum_{i=1}^r \dim \Eig_T(\lambda_i) \le \dim V$.
+  This implies $W = V$ if and only if $\sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$. Consequently, $V$ has a basis (namely $(\mathcal{B}_1, \dots, \mathcal{B}_r)$) whose elements are eigenvectors of $T$ if and only if this dimension equality holds. This implies that $T$ is diagonalizable.
 \end{proof}
 
 \section{Multiplicities of Eigenvalues}
 
-\begin{example}
+\begin{example}\label{ex:char_poly_same}
   Consider the matrices $A = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ and $B = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$.
-  We have, that their characteristic polynomials are identical: $P_A(x) = P_B(x) = (1-x)^2 = (x-1)^2$.
+  We have that their characteristic polynomials are identical: $P_A(x) = P_B(x) = (1-x)^2 = (x-1)^2$.
 \end{example}
 
-\begin{example}[Jordan Block]
+\begin{example}[Jordan Block]\label{ex:jordan_block_mult}
   Consider the matrix $J_{\lambda, n} \in M_{n \times n}(K)$, for $\lambda \in K$.
   \begin{equation} \label{eq:jordan_block}
     J := J_{\lambda,n} := \begin{pmatrix} \lambda & 1 & 0 & \dots & 0 \\ 0 & \lambda & 1 & \dots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & 0 & \lambda & 1 \\ 0 & 0 & 0 & 0 & \lambda \end{pmatrix}
   \end{equation}
   This is called a Jordan block. It features $\lambda$'s along the main diagonal, $1$'s along the "diagonal" just above the main diagonal, and $0$'s everywhere else.
-  The characteristic polynomial is $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$. This implies, that $J$ has only one eigenvalue, namely $\lambda$.
+  The characteristic polynomial is $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$. This implies that $J$ has only one eigenvalue, namely $\lambda$.
 
-  Let us find the eigenvectors, for the eigenvalue $\lambda$:
+  Let us find the eigenvectors for the eigenvalue $\lambda$:
   \[ J - \lambda \cdot I_n = \begin{pmatrix} 0 & 1 & 0 & \dots & 0 \\ 0 & 0 & 1 & \dots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix} \]
-  This matrix, clearly, has $n-1$ linearly independent columns.
+  This matrix clearly has $n-1$ linearly independent columns.
   Therefore, the rank is $\rank(J - \lambda \cdot I_n) = n - 1$.
   By the rank-nullity theorem, $\dim \ker(J - \lambda \cdot I_n) = 1$.
   Consequently, the eigenspace $\Eig_J(\lambda)$ is $1$-dimensional.
   Clearly, $e_1 = \left(\begin{smallmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{smallmatrix}\right)$ is an eigenvector for $\lambda$.
-  So, $\Eig_J(\lambda) = \Sp(e_1)$.
+  So $\Eig_J(\lambda) = \Sp(e_1)$.
 \end{example}
 
-
-
-\begin{importantremark}
-  There is an important difference, between polynomials $p(x) \in K[x]$ and the functions they define $K \rightarrow K$.
-  For example, if $K = \mathbb{Z}_2$, then, $p(x) = x$ and $q(x) = x^2$ are different polynomials, but, they define the same function $\mathbb{Z}_2 \rightarrow \mathbb{Z}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
+\begin{importantremark}\label{rem:poly_vs_func}
+  There is an important difference between polynomials $p(x) \in K[x]$ and the functions they define $K \rightarrow K$.
+  For example, if $K = \mathbb{Z}_2$, then $p(x) = x$ and $q(x) = x^2$ are different polynomials, but they define the same function $\mathbb{Z}_2 \rightarrow \mathbb{Z}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
 \end{importantremark}
 
 \begin{lemma}[Decomposition of Diagonalizable Matrices] \label{lem:diag_decomp}
-  Let $A \in M_{n \times n}(K)$ (or $T \in \End(V)$) be diagonalizable. Then, $P_A(x)$ decomposes as a product of linear (i.e. degree $1$) factors:
+  Let $A \in M_{n \times n}(K)$ (or $T \in \End(V)$) be diagonalizable. Then $P_A(x)$ decomposes as a product of linear (i.e., degree $1$) factors:
   \[ P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x), \]
   where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $A$ (but there might be repetitions among the $\lambda_i$'s).
 \end{lemma}
 
 \begin{proof}
-  By assumption, there exists an invertible matrix $P$, such that:
+  By assumption, there exists an invertible matrix $P$ such that:
   \begin{equation} \label{eq:diagonal_similarity}
     P^{-1}AP = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix} =: D.
   \end{equation}
@@ -293,65 +293,66 @@ Let $A \in M_{n \times n}(K)$, and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \[ P_A(x) = P_D(x) = \det \begin{pmatrix} \lambda_1 - x & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n - x \end{pmatrix} = (\lambda_1 - x) \dots (\lambda_n - x). \]
 \end{proof}
 
-\begin{example}
+\begin{example}\label{ex:no_real_eigenvalues}
   Let $A = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$ over $K = \mathbb{R}$. The associated linear map $T_A : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ represents a counter-clockwise rotation.
   The characteristic polynomial is $P_A(x) = \det\left(\begin{smallmatrix} -x & -1 \\ 1 & -x \end{smallmatrix}\right) = x^2 + 1$.
   This polynomial has no roots in $\mathbb{R}$. And, of course, $A$ has no real eigenvalues.
 \end{example}
 
 \subsection{A quick digression about polynomials...}
-Let $0 \ne p(x) \in K[x]$, and $\lambda \in K$. By dividing $p(x)$ by $(x-\lambda)$, we can write:
+Let $0 \ne p(x) \in K[x]$ and $\lambda \in K$. By dividing $p(x)$ by $(x-\lambda)$, we can write:
 \begin{equation} \label{eq:poly_division}
   p(x) = (x-\lambda) \cdot q(x) + R,
 \end{equation}
 where $\deg q(x) = \deg p(x) - 1$, and $R \in K$ is the remainder.
 If we substitute $x = \lambda$ into \eqref{eq:poly_division}, we obtain $p(\lambda) = 0 \cdot q(\lambda) + R = R$. Thus, $p(x) = (x-\lambda) \cdot q(x) + p(\lambda)$.
 Conclusion: $p(\lambda) = 0 \iff p(x) = (x-\lambda) \cdot q(x)$ for some $q(x) \in K[x]$.
-We say, that $\lambda$ is a \textbf{zero} of $p(x)$ (De: Nullstelle), or a \textbf{root} of $p(x)$.
-Sometimes, $\lambda$ is also a zero of $q(x)$, so, $q(x) = (x-\lambda) \cdot h(x)$, which implies, $p(x) = (x-\lambda)^2 \cdot h(x)$, etc.
+We say that $\lambda$ is a \textbf{zero} of $p(x)$ (De: Nullstelle), or a \textbf{root} of $p(x)$.
+Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)$, which implies $p(x) = (x-\lambda)^2 \cdot h(x)$, etc.
 
 \begin{definition}[Multiplicity of a Zero] \label{def:mult_zero}
-  We say, that $\lambda$ is a zero of \textbf{multiplicity} $m \in \mathbb{N}_{>0}$, if $p(x) = (x-\lambda)^m \cdot g(x)$, where $g(x) \in K[x]$, and $g(\lambda) \ne 0$ (i.e., $\lambda$ is not a zero of $g(x)$).
-  If $m=1$, we say, $\lambda$ is a \textbf{simple zero} of $p(x)$.
-  If $m \ge 2$, we say, $\lambda$ is a \textbf{multiple zero} of $p(x)$.
+  We say that $\lambda$ is a zero of \textbf{multiplicity} $m \in \mathbb{N}_{>0}$ if $p(x) = (x-\lambda)^m \cdot g(x)$, where $g(x) \in K[x]$ and $g(\lambda) \ne 0$ (i.e., $\lambda$ is not a zero of $g(x)$).
+  If $m=1$, we say $\lambda$ is a \textbf{simple zero} of $p(x)$.
+  If $m \ge 2$, we say $\lambda$ is a \textbf{multiple zero} of $p(x)$.
 \end{definition}
 
 \subsection{Geometric \& Algebraic Multiplicity of Eigenvalues}
 
 \begin{definition}[Geometric and Algebraic Multiplicity] \label{def:geom_alg_mult}
-  Let $V$ be a vector space over $K$, and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. We define the \textbf{geometric multiplicity} of $\lambda$, to be:
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. We define the \textbf{geometric multiplicity} of $\lambda$ to be:
   \[ m_g(T;\lambda) := \dim \Eig_T(\lambda). \]
-  Assume, now, in addition, that $V$ is finite-dimensional. We define the \textbf{algebraic multiplicity} of $\lambda$, to be the multiplicity of the zero $\lambda$ in the characteristic polynomial $P_T(x)$ of $T$. We denote it, by $m_a(T;\lambda)$.
+  Assume now, in addition, that $V$ is finite-dimensional. We define the \textbf{algebraic multiplicity} of $\lambda$ to be the multiplicity of the zero $\lambda$ in the characteristic polynomial $P_T(x)$ of $T$. We denote it by $m_a(T;\lambda)$.
 \end{definition}
 
 \begin{proposition}[Multiplicity Inequality] \label{prop:mult_inequality}
-  For any eigenvalue $\lambda$, the geometric multiplicity is less than, or equal to, the algebraic multiplicity:
+  For any eigenvalue $\lambda$, the geometric multiplicity is less than or equal to the algebraic multiplicity:
   \[ m_g(T;\lambda) \le m_a(T;\lambda). \]
 \end{proposition}
 
 \begin{proof}
-  Let $v_1, \dots, v_k$ be a basis for the eigenspace $\Eig_T(\lambda)$. We extend this basis, to a basis $\mathcal{B} = (v_1, \dots, v_k, w_{k+1}, \dots, w_n)$ of $V$.
-  Then, the matrix of $T$ with respect to the basis $\mathcal{B}$, has the block form:
+  Let $v_1, \dots, v_k$ be a basis for the eigenspace $\Eig_T(\lambda)$. We extend this basis to a basis $\mathcal{B} = (v_1, \dots, v_k, w_{k+1}, \dots, w_n)$ of $V$.
+  Then the matrix of $T$ with respect to the basis $\mathcal{B}$ has the block form:
   \[ [T]_{\mathcal{B}}^{\mathcal{B}} = \left( [Tv_1]_{\mathcal{B}} \dots [Tv_k]_{\mathcal{B}} \mid [Tw_{k+1}]_{\mathcal{B}} \dots [Tw_n]_{\mathcal{B}} \right) \]
   \begin{equation} \label{eq:block_matrix_T}
     [T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{array}{c|c} \lambda I_k & C_1 \\ \hline 0 & C \end{array}\right)
   \end{equation}
   where $C \in M_{(n-k) \times (n-k)}(K)$.
-  We compute the characteristic polynomial, by utilizing the determinant property for block matrices (as established in previous sections):
+  We compute the characteristic polynomial by utilizing the determinant property for block matrices (as established in previous sections):
   \[ P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = (\lambda - x)^k \cdot \det(C - x I_{n-k}) \]
   \[ P_T(x) = (\lambda - x)^k \cdot P_C(x) = (-1)^k(x - \lambda)^k \cdot P_C(x). \]
-  This factorization, directly, shows, that the multiplicity of $\lambda$ as a zero of $P_T(x)$, is at least $k$.
-  Therefore, we conclude, that $m_a(T;\lambda) \ge k = m_g(T;\lambda)$.
+  This factorization directly shows that the multiplicity of $\lambda$ as a zero of $P_T(x)$ is at least $k$.
+  Therefore, we conclude that $m_a(T;\lambda) \ge k = m_g(T;\lambda)$.
 \end{proof}
 
-\begin{example}
+\begin{example}\label{ex:jordan_block_geom_alg}
   Revisiting the Jordan block $J := J_{\lambda, n}$ defined in \eqref{eq:jordan_block}:
-  We, previously, saw, that $P_J(x) = (\lambda - x)^n$, which, directly, implies, that $m_a(J;\lambda) = n$.
-  We, also, found, that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
+  We previously saw that $P_J(x) = (\lambda - x)^n$, which directly implies that $m_a(J;\lambda) = n$.
+  We also found that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
 \end{example}
 
 
 \section{Diagonalizability} %
+
 
 \begin{theorem}[Equivalent Conditions for Diagonalizability] \label{thm:diag_equiv}
   Let $V$ be an $n$-dimensional vector space over $K$, and $T \in \End(V)$. The following statements, are equivalent: %

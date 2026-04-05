@@ -2,9 +2,9 @@
 \chapter{Determinants}
 \section{Introduction and Motivation}
 
-In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether or not $A$ is invertible.
+In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether $A$ is invertible.
 
-\begin{proposition}[Invertibility of $2 \times 2$ Matrices]
+\begin{proposition}[Invertibility of $2 \times 2$ Matrices]\label{prop:inv_2x2}
   The matrix $A$ is invertible if and only if $ad - bc \neq 0$. Moreover, if $A$ is invertible, then its inverse is given by the explicit formula:
   \[
   A^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}.
@@ -13,19 +13,19 @@ In linear algebra, determining whether a matrix is invertible is a fundamental p
 \end{proposition}
 
 \begin{proof}
-  First, we show that $A$ is not invertible if and only if its rank is strictly less than $2$. Because $A$ is a $2 \times 2$ matrix, having a rank of less than 2 implies that its column vectors are linearly dependent.
+  First, we show that $A$ is not invertible if and only if its rank is strictly less than $2$. Because $A$ is a $2 \times 2$ matrix, having a rank less than 2 implies that its column vectors are linearly dependent.
 
-  \begin{remark}[Exercise]
-    Check that the columns being linearly dependent implies that either the first column is the zero vector, i.e., $\binom{a}{c} = \binom{0}{0}$, or the second column is a scalar multiple of the first, i.e., $\binom{b}{d} = \tau \binom{a}{c}$ for some scalar $\tau \in K$.
+  \begin{remark}[Exercise]\label{rem:lin_dep_2x2_exercise}
+    Check that the columns being linearly dependent implies that either the first column is the zero vector (i.e., $\binom{a}{c} = \binom{0}{0}$) or the second column is a scalar multiple of the first (i.e., $\binom{b}{d} = \tau \binom{a}{c}$ for some scalar $\tau \in K$).
   \end{remark}
 
-  If $\binom{a}{c} = \lambda \binom{b}{d}$, this implies $a = \lambda b$ and $c = \lambda d$. Consequently, $ad - bc = (\lambda b)d - b(\lambda d) = 0$.
-  If, on the other hand, $\binom{b}{d} = \tau \binom{a}{c}$, this implies $b = \tau a$ and $d = \tau c$. Consequently, $ad - bc = a(\tau c) - (\tau a)c = 0$.
-  Thus, we have proved that if $A$ is not invertible, it mathematically forces $ad - bc = 0$.
+  If $\binom{a}{c} = \lambda \binom{b}{d}$, then $a = \lambda b$ and $c = \lambda d$. Consequently, $ad - bc = (\lambda b)d - b(\lambda d) = 0$.
+  If, on the other hand, $\binom{b}{d} = \tau \binom{a}{c}$, then $b = \tau a$ and $d = \tau c$. Consequently, $ad - bc = a(\tau c) - (\tau a)c = 0$.
+  Thus, we have proved that if $A$ is not invertible, then $ad - bc = 0$.
 
-  Conversely, assume $ad - bc = 0$. If $a = 0$, this implies $bc = 0$, so either $b = 0$ or $c = 0$. This means either $A = \left(\begin{smallmatrix} 0 & 0 \\ c & d \end{smallmatrix}\right)$ or $A = \left(\begin{smallmatrix} 0 & b \\ 0 & d \end{smallmatrix}\right)$. In both of these cases, $A$ clearly has linearly dependent columns and is therefore not invertible.
+  Conversely, assume $ad - bc = 0$. If $a = 0$, then $bc = 0$, so either $b = 0$ or $c = 0$. This means either $A = \left(\begin{smallmatrix} 0 & 0 \\ c & d \end{smallmatrix}\right)$ or $A = \left(\begin{smallmatrix} 0 & b \\ 0 & d \end{smallmatrix}\right)$. In both of these cases, $A$ clearly has linearly dependent columns and is therefore not invertible.
 
-  So, assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus, we can write $A =  \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column, because $\binom{b}{\frac{bc}{a}} = \frac{b}{a} \binom{a}{c}$. This implies that the columns of $A$ are linearly dependent. Hence, $\operatorname{rank}(A) < 2$, which implies $A$ is not invertible.
+  Now assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus we can write $A = \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column because $\binom{b}{\frac{bc}{a}} = \frac{b}{a} \binom{a}{c}$. This implies that the columns of $A$ are linearly dependent. Hence, $\operatorname{rank}(A) < 2$, which implies $A$ is not invertible.
 \end{proof}
 
 To confirm the sufficiency of this condition and to find the explicit inverse, the formula for $A^{-1}$ can be verified by direct matrix multiplication:
@@ -33,7 +33,8 @@ To confirm the sufficiency of this condition and to find the explicit inverse, t
 \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \frac{1}{ad-bc} \begin{pmatrix} ad-bc & bd-bd \\ -ac+ac & -bc+ad \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
 \]
 
-\begin{goals} While the $2 \times 2$ formula is easy to memorize, it does not immediately suggest how to handle larger matrices. Our main goals now are to make the determinant conceptually rigorous, and to generalize the determinant function to arbitrary $n \times n$ matrices.
+\begin{goals}\label{goals:determinants}
+  While the $2 \times 2$ formula is easy to memorize, it does not immediately suggest how to handle larger matrices. Our main goals now are to make the determinant conceptually rigorous and to generalize the determinant function to arbitrary $n \times n$ matrices.
 \end{goals}
 
 \subsection{Multilinear and Alternating Functions}
@@ -51,14 +52,14 @@ Saying that $D$ is $n$-linear means that for any chosen row index $i$, the follo
   \item $D(\alpha_1, \dots, c \cdot \alpha_i, \dots, \alpha_n) = c \cdot D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n)$ for all scalars $c \in K$.
 \end{enumerate}
 
-\begin{example}
+\begin{example}\label{ex:n_linear_product}
   For a matrix $A \in M_{n \times n}(K)$, write $A(i,j)$ for its entry at place $i,j$. Let $k_1, \dots, k_n$ be a fixed sequence of integers such that $1 \le k_i \le n$ for all $i$. Fix also a scalar $c \in K$. Consider $D : M_{n \times n}(K) \to K$ defined by the product of one entry from each row:
   \[
   D(A) := c \cdot A(1, k_1) \cdot A(2, k_2) \cdots A(n, k_n).
   \]
   We claim that $D$ is an $n$-linear function.
 
-  To see this, consider $D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) = b \cdot A(i, k_i)$, where $b \in K$ is the product of all the fixed terms. Notice that $b$ depends only on the rows $\alpha_1, \dots, \alpha_{i-1}, \alpha_{i+1}, \dots, \alpha_n$, and does NOT depend on row $i$.
+  To see this, consider $D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) = b \cdot A(i, k_i)$, where $b \in K$ is the product of all the fixed terms. Notice that $b$ depends only on the rows $\alpha_1, \dots, \alpha_{i-1}, \alpha_{i+1}, \dots, \alpha_n$ and does not depend on row $i$.
   Let $\alpha'_i = (\alpha'_{i,1}, \dots, \alpha'_{i,n})$ be another possible $i$-th row. Then, by standard distribution:
   \[
   D(\dots, \alpha_i + \alpha'_i, \dots) = b \cdot (A(i, k_i) + \alpha'_{i, k_i}) = D(\dots, \alpha_i, \dots) + D(\dots, \alpha'_i, \dots).
@@ -70,11 +71,11 @@ Saying that $D$ is $n$-linear means that for any chosen row index $i$, the follo
   Thus, $D$ is indeed $n$-linear.
 \end{example}
 
-\begin{example}[Diagonal Product]
+\begin{example}[Diagonal Product]\label{ex:diagonal_product}
   A more concrete example: $D(A) := A_{11} \cdot A_{22} \cdot \dots \cdot A_{nn}$ (i.e., the product of the terms on the main diagonal) is an $n$-linear function.
 \end{example}
 
-Now, let's try to find all 2-linear functions $D: M_{2 \times 2}(K) \to K$. Write the identity matrix as $I = \left(\begin{smallmatrix} -\epsilon_1- \\ -\epsilon_2- \end{smallmatrix}\right)$, where $\epsilon_1 = (1, 0)$ and $\epsilon_2 = (0, 1)$.
+Now let us try to find all 2-linear functions $D: M_{2 \times 2}(K) \to K$. Write the identity matrix as $I = \left(\begin{smallmatrix} -\epsilon_1- \\ -\epsilon_2- \end{smallmatrix}\right)$, where $\epsilon_1 = (1, 0)$ and $\epsilon_2 = (0, 1)$.
 
 If $D$ is 2-linear, then we have:
 \begin{align*}
@@ -82,27 +83,25 @@ If $D$ is 2-linear, then we have:
   &= A_{11} D(\epsilon_1, A_{21}\epsilon_1 + A_{22}\epsilon_2) + A_{12} D(\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
   &= A_{11}A_{21}D(\epsilon_1, \epsilon_1) + A_{11}A_{22}D(\epsilon_1, \epsilon_2) + A_{12}A_{21}D(\epsilon_2, \epsilon_1) + A_{12}A_{22}D(\epsilon_2, \epsilon_2).
 \end{align*}
-So, $D$ is completely determined by its values on the four pairings: $D(\epsilon_1, \epsilon_1)$, $D(\epsilon_1, \epsilon_2)$, $D(\epsilon_2, \epsilon_1)$, and $D(\epsilon_2, \epsilon_2)$.
+So $D$ is completely determined by its values on the four pairings: $D(\epsilon_1, \epsilon_1)$, $D(\epsilon_1, \epsilon_2)$, $D(\epsilon_2, \epsilon_1)$, and $D(\epsilon_2, \epsilon_2)$.
 
 \begin{lemma}[Closure of $n$-Linear Functions]\label{lem:linear_comb_n_linear}
   Any linear combination of $n$-linear functions is again an $n$-linear function.
 \end{lemma}
 
 \begin{proof}
-  It is enough to prove this for a linear combination of two $n$-linear functions. Let $D, E : M_{n \times n}(K) \to K$ be $n$-linear functions, and $a, b \in K$. We define the combined function as $(aD + bE)(A) := aD(A) + bE(A)$.
+  It is enough to prove this for a linear combination of two $n$-linear functions. Let $D, E : M_{n \times n}(K) \to K$ be $n$-linear functions and $a, b \in K$. We define the combined function as $(aD + bE)(A) := aD(A) + bE(A)$.
   By expanding $(aD+bE)(\dots, \alpha_i + \alpha'_i, \dots)$ and $(aD+bE)(\dots, \lambda \alpha_i, \dots)$ using the individual linearities of $D$ and $E$, we see the result naturally holds.
 \end{proof}
 
-\begin{example}
+\begin{example}\label{ex:2_linear_det}
   Consider $D : M_{2 \times 2}(K) \to K$ defined by $D(A) := A_{11}A_{22} - A_{12}A_{21}$. The function $D$ is $2$-linear because it can be written as $D = D_1 + D_2$, where $D_1(A) = A_{11}A_{22}$ and $D_2(A) = -A_{12}A_{21}$, both of which are 2-linear by our previous example. Furthermore, $D(I) = 1$, and if $A'$ is obtained from $A$ by interchanging the rows, then $D(A') = -D(A)$.
 
   Indeed, $D(A') = D\left(\begin{smallmatrix} A_{21} & A_{22} \\ A_{11} & A_{12} \end{smallmatrix}\right) = A_{21} \cdot A_{12} - A_{22}A_{11} = -(A_{11}A_{22} - A_{12}A_{21}) = -D(A)$.
 \end{example}
 
-
-
 \begin{definition}[Alternating Property]\label{def:alternating}
-  Let $D : M_{n \times n}(K) \to K$ be an $n$-linear function. We say that $D$ is \emph{alternating} if, for every matrix $A$ in which some two rows are equal, we have $D(A) = 0$.
+  Let $D : M_{n \times n}(K) \to K$ be an $n$-linear function. We say that $D$ is \emph{alternating} if for every matrix $A$ in which some two rows are equal, we have $D(A) = 0$.
 \end{definition}
 
 \begin{proposition}[Adjacent Swap Property]\label{prop:alternating_swap}
@@ -114,7 +113,7 @@ So, $D$ is completely determined by its values on the four pairings: $D(\epsilon
 \end{proposition}
 
 \begin{proof}
-  We begin with the proof of (b). Assume, first, that $B'$ is obtained from $B$ by interchanging two adjacent rows (say, row $k$ and row $k+1$).
+  We begin with the proof of (2). Assume first that $B'$ is obtained from $B$ by interchanging two adjacent rows (say, row $k$ and row $k+1$).
   Consider evaluating $D$ on a matrix where both the $k$-th and $(k+1)$-th rows are equal to $\beta_k + \beta_{k+1}$. By our assumption, this yields $0$.
   Expanding this via $n$-linearity gives:
   \[
@@ -125,9 +124,9 @@ So, $D$ is completely determined by its values on the four pairings: $D(\epsilon
   \]
   By assumption, the terms with adjacent equal rows are zero, leaving $D(B) + D(B') = 0$, which naturally implies $D(B') = -D(B)$.
 
-  Now, suppose $B'$ is obtained from $B$ by interchanging rows $k$ and $l$ where $k < l$. We can obtain $B'$ by doing a sequence of adjacent row interchanges. Moving row $l$ to position $k$ requires $r = l-k$ adjacent interchanges. Next, moving the original row $k$ down to position $l$ requires $r-1$ adjacent interchanges. The total number of interchanges is $2r - 1$. Since this is always an odd number, we flip the sign an odd number of times. Thus, $D(B') = (-1)^{2r-1} D(B) = -D(B)$.
+  Now suppose $B'$ is obtained from $B$ by interchanging rows $k$ and $l$ where $k < l$. We can obtain $B'$ by doing a sequence of adjacent row interchanges. Moving row $l$ to position $k$ requires $r = l-k$ adjacent interchanges. Next, moving the original row $k$ down to position $l$ requires $r-1$ adjacent interchanges. The total number of interchanges is $2r - 1$. Since this is always an odd number, we flip the sign an odd number of times. Thus, $D(B') = (-1)^{2r-1} D(B) = -D(B)$.
 
-  We now prove (a). Let $A$ be a matrix in which row $i$ equals row $j$ where $i < j$. If $j = i+1$, then by assumption $D(A) = 0$. If $j > i+1$, we interchange row $j$ with row $i+1$ to obtain a matrix $A'$ with two equal adjacent rows.
+  We now prove (1). Let $A$ be a matrix in which row $i$ equals row $j$ where $i < j$. If $j = i+1$, then by assumption $D(A) = 0$. If $j > i+1$, we interchange row $j$ with row $i+1$ to obtain a matrix $A'$ with two equal adjacent rows.
   By assumption $D(A') = 0$, but by (2), $D(A') = -D(A)$, which implies $D(A) = 0$.
 \end{proof}
 
@@ -252,7 +251,7 @@ In other words, $(-1)^{m'} = (-1)^m$. The parity depends only on the permutation
 
 A permutation $\sigma$ is called \emph{even} if $m$ is even, and \emph{odd} if $m$ is odd. The number $\operatorname{sgn}(\sigma) := (-1)^m \in \{-1, 1\}$ is called the \emph{sign} of $\sigma$.
 
-\begin{proof}[Proof of Lemma~\ref{lem:permutation_parity}]
+\begin{proof}[Proof of Lemma]
   We know from previous results that determinant functions $E : M_{n \times n}(K) \to K$ exist for $n \ge 1$. Let us fix one such determinant function $E$ (we denote it by $E$ to distinguish it from $D$ in the previous discussion).
 
   Consider the evaluation $E(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)})$. If $(\sigma(1), \dots, \sigma(n))$ can be obtained from $(1, \dots, n)$ by a sequence of $m$ transpositions, then the matrix with rows $\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}$ can be obtained from the identity matrix $I$ by a sequence of $m$ interchanges of pairs of rows.
