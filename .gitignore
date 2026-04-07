@@ -1,3 +1,13 @@
+# --- Project Specifics ---
+# This hides your reference notes from GitHub but keeps them for Gemini
+_notes/
+source_material/
+
+# --- VS Code & System ---
+.vscode/
+.DS_Store
+Thumbs.db
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

@@ -327,6 +327,33 @@ Geometrically, in $\mathbb{R}^2$, this represents the decomposition of any vecto
   \end{tikzpicture}
 \end{center}
 
+Similarly, we can extend this intuition to $V = \mathbb{R}^3$:
+\begin{itemize}
+  \item If $U$ is a \textbf{plane} through the origin, then $V/U$ is 1-dimensional (isomorphic to a line). Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes "stacked" along a transversal direction.
+  \item If $U$ is a \textbf{line} through the origin, then $V/U$ is 2-dimensional (isomorphic to a plane). Each element $[v]$ is a line parallel to $U$.
+\end{itemize}
+
+\begin{center}
+  \begin{tikzpicture}[scale=1.2, x={(0.8cm,0.4cm)}, y={(-0.8cm,0.4cm)}, z={(0cm,1.2cm)}]
+    % Coordinate axes
+    \draw[->, gray!50] (0,0,0) -- (3,0,0);
+    \draw[->, gray!50] (0,0,0) -- (0,3,0);
+    \draw[->, gray!50] (0,0,0) -- (0,0,3.5) node[above] {$V = \mathbb{R}^3$};
+
+    % The subspace U (Plane at z=0)
+    \filldraw[blue!10, draw=blue, thick, opacity=0.6] (-2,-2,0) -- (2,-2,0) -- (2,2,0) -- (-2,2,0) -- cycle;
+    \node[blue] at (2, -1.5, 0) {$U = [0]$};
+
+    % The coset v + U (Parallel plane at z=2)
+    \filldraw[red!10, draw=red, thick, opacity=0.6] (-2,-2,2) -- (2,-2,2) -- (2,2,2) -- (-2,2,2) -- cycle;
+    \node[red] at (2, -1.5, 2) {$[v] = v + U$};
+
+    % The vector v shifting the plane
+    \draw[->, very thick, black] (0,0,0) -- (0,0,2) node[midway, left] {$v$};
+    \filldraw (0,0,0) circle (1.5pt) node[below] {$0$};
+  \end{tikzpicture}
+\end{center}
+
 \subsection{Generalization to Multiple Summands}
 
 The concept of a direct sum can be extended to any finite collection of vector spaces $U_1, \dots, U_m$ over $K$. We define their direct sum as:
