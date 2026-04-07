@@ -305,51 +305,67 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
   While $U \oplus U'$ is formally a different vector space from $V$, the existence of the canonical isomorphism $\varphi$ allows us to treat $V$ as the direct sum of its internal subspaces whenever a complement is specified.
 \end{remark}
 
-Geometrically, in $\mathbb{R}^2$, this represents the decomposition of any vector $v$ uniquely into a sum of a vector $u \in U$ and a vector $u' \in U'$, constructed via a parallelogram parallel to the complementary subspaces:
+Geometrically, in $\mathbb{R}^2$, this represents the decomposition of any vector $v$ uniquely into a sum of a vector $u \in U$ and a vector $u' \in U'$, constructed via a parallelogram parallel to the complementary subspaces.
 
 \begin{center}
   \begin{tikzpicture}[scale=1.2]
     % Axes/Subspaces
-    \draw[thick, blue] (-2,-1) -- (3,1.5) node[right] {$U$};
-    \draw[thick, red] (-1,2) -- (1.5,-3) node[right] {$U'$};
+    \draw[thick, blue] (-2,-1) -- (3,1.5) node[right] {$U$}; % Line U
+    \draw[thick, red] (-1,2) -- (1.5,-3) node[right] {$U'$}; % Line U'
 
     % Vectors
-    \draw[->, thick, blue!60!black] (0,0) -- (1.6,0.8) node[midway, above left] {$u$};
-    \draw[->, thick, red!60!black] (0,0) -- (0.5,-1) node[midway, left] {$u'$};
+    \draw[->, thick, blue!60!black] (0,0) -- (1.6,0.8) node[midway, above left] {$u$}; % Vector u in U
+    \draw[->, thick, red!60!black] (0,0) -- (0.5,-1) node[midway, left] {$u'$}; % Vector u' in U'
 
     % Parallelogram and Resultant
-    \draw[dashed, gray] (1.6,0.8) -- (2.1,-0.2);
-    \draw[dashed, gray] (0.5,-1) -- (2.1,-0.2);
-    \draw[->, very thick, purple] (0,0) -- (2.1,-0.2) node[right] {$v = u + u'$};
+    \draw[dashed, gray] (1.6,0.8) -- (2.1,-0.2); % Parallel line for parallelogram
+    \draw[dashed, gray] (0.5,-1) -- (2.1,-0.2); % Parallel line for parallelogram
+    \draw[->, very thick, purple] (0,0) -- (2.1,-0.2) node[right] {$v = u + u'$}; % Resultant vector v
 
     % Origin
     \filldraw (0,0) circle (1.5pt) node[above left] {$0$};
   \end{tikzpicture}
 \end{center}
 
-Similarly, we can extend this intuition to $V = \mathbb{R}^3$:
+Similarly, we can extend this intuition to $\mathbb{R}^3$. Consider $U$ to be the $z$-axis (a line through the origin) and $U'$ to be the $xy$-plane (a plane through the origin). Then $U$ and $U'$ are subspaces of $\mathbb{R}^3$.
 \begin{itemize}
-  \item If $U$ is a \textbf{plane} through the origin, then $V/U$ is 1-dimensional (isomorphic to a line). Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes "stacked" along a transversal direction.
-  \item If $U$ is a \textbf{line} through the origin, then $V/U$ is 2-dimensional (isomorphic to a plane). Each element $[v]$ is a line parallel to $U$.
+  \item $U = \operatorname{Sp}(e_3) = \{(0,0,z) \mid z \in \mathbb{R}\}$
+  \item $U' = \operatorname{Sp}(e_1, e_2) = \{(x,y,0) \mid x,y \in \mathbb{R}\}$
 \end{itemize}
+Any vector $v = (x,y,z) \in \mathbb{R}^3$ can be uniquely written as a sum of a vector $u \in U$ and a vector $u' \in U'$:
+$v = (0,0,z) + (x,y,0)$.
+Here, $u = (0,0,z) \in U$ and $u' = (x,y,0) \in U'$.
+Furthermore, $U \cap U' = \{(0,0,0)\}$, which is the zero vector.
+Thus, $\mathbb{R}^3 = U \oplus U'$. Geometrically, this means any point in 3D space can be reached by first moving along the $z$-axis and then moving in the $xy$-plane.
 
 \begin{center}
   \begin{tikzpicture}[scale=1.2, x={(0.8cm,0.4cm)}, y={(-0.8cm,0.4cm)}, z={(0cm,1.2cm)}]
     % Coordinate axes
     \draw[->, gray!50] (0,0,0) -- (3,0,0);
     \draw[->, gray!50] (0,0,0) -- (0,3,0);
-    \draw[->, gray!50] (0,0,0) -- (0,0,3.5) node[above] {$V = \mathbb{R}^3$};
+    \draw[->, gray!50] (0,0,0) -- (0,0,3.5) node[above] {$\mathbb{R}^3$};
+    \node[right] at (3,0,0) {$x$};
+    \node[left] at (0,3,0) {$y$};
+    \node[above] at (0,0,3.5) {$z$};
 
-    % The subspace U (Plane at z=0)
-    \filldraw[blue!10, draw=blue, thick, opacity=0.6] (-2,-2,0) -- (2,-2,0) -- (2,2,0) -- (-2,2,0) -- cycle;
-    \node[blue] at (2, -1.5, 0) {$U = [0]$};
+    % The subspace U' (xy-plane)
+    \filldraw[blue!10, draw=blue, thick, opacity=0.6] (-2,-2,0) -- (2,-2,0) -- (2,2,0) -- (-2,2,0) -- cycle; % xy-plane
+    \node[blue] at (2, -1.5, 0) {$U'$ (xy-plane)};
 
-    % The coset v + U (Parallel plane at z=2)
-    \filldraw[red!10, draw=red, thick, opacity=0.6] (-2,-2,2) -- (2,-2,2) -- (2,2,2) -- (-2,2,2) -- cycle;
-    \node[red] at (2, -1.5, 2) {$[v] = v + U$};
+    % The subspace U (z-axis)
+    \draw[thick, red] (0,0,-1) -- (0,0,3) node[above] {$U$ (z-axis)}; % z-axis
 
-    % The vector v shifting the plane
-    \draw[->, very thick, black] (0,0,0) -- (0,0,2) node[midway, left] {$v$};
+    % A vector v
+    \coordinate (v_coord) at (1.5, 1.5, 2);
+    \draw[->, very thick, purple] (0,0,0) -- (v_coord) node[above right] {$v$};
+
+    % Decomposition of v
+    \coordinate (u_prime_coord) at (1.5, 1.5, 0);
+    \coordinate (u_coord) at (0, 0, 2);
+    \draw[->, thick, blue!60!black] (0,0,0) -- (u_prime_coord) node[below right] {$u'$};
+    \draw[->, thick, red!60!black] (0,0,0) -- (u_coord) node[above left] {$u$};
+    \draw[dashed, gray] (u_prime_coord) -- (v_coord);
+    \draw[dashed, gray] (u_coord) -- (v_coord);
     \filldraw (0,0,0) circle (1.5pt) node[below] {$0$};
   \end{tikzpicture}
 \end{center}
@@ -398,11 +414,16 @@ We denote the equivalence class of $v \in V$ by $[v]$. Thus,
 \end{definition}
 
 Alternatively, each element in $V/U$ is a set of the form $v + U$, where $v \in V$.
+\bigbreak
+Geometrically, the nature of the quotient space $\mathbb{R}^2/U$ depends on the dimension of $U$:
+\begin{itemize}
+  \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = v + \{0\} = \{v\}$ is simply a single \textbf{point}. In this case, no points are ``collapsed'' together, and therefore $\mathbb{R}^2/\{0\} \cong \mathbb{R}^2$.
+  \item If $U$ is a \textbf{line} through the origin, the equivalence classes $[v]$ forming the space $\mathbb{R}^2/U$ are the lines parallel to $U$, as seen in Figure \ref{fig:quotient_r2}.
+\end{itemize}
 
-Geometrically, if $V = \mathbb{R}^2$ and $U$ is a line through the origin, the equivalence classes $[v]$ forming the space $V/U$ are precisely the lines parallel to $U$:
-
-\begin{center}
-  \begin{tikzpicture}[scale=0.8]
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=0.6]
     % The subspace U (origin line)
     \draw[very thick, blue] (-4,-1) -- (4,1) node[right] {$U = [0]$};
 
@@ -417,7 +438,68 @@ Geometrically, if $V = \mathbb{R}^2$ and $U$ is a line through the origin, the e
     % Origin
     \filldraw (0,0) circle (2pt) node[below right] {$0$};
   \end{tikzpicture}
-\end{center}
+  \caption{Geometric interpretation of the quotient space $\mathbb{R}^2/U$.}
+  \label{fig:quotient_r2}
+\end{figure}
+
+Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Figure \ref{fig:quotient_r3}:
+\begin{itemize}
+  \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = \{v\}$ is simply a \textbf{point}. Since no two distinct vectors are identified, the quotient space $\mathbb{R}^3/\{0\}$ is isomorphic to $\mathbb{R}^3$ itself.
+  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by Proposition \ref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes ``stacked'' along a transversal direction (see Figure \ref{fig:quotient_plane} and Proposition \ref{prop:iso_complement}).
+  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by Proposition \ref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see Figure \ref{fig:quotient_line} and Proposition \ref{prop:iso_complement}).
+  \item If $U = \mathbb{R}^3$ is the entire space, then there is only one equivalence class, $[v] = \mathbb{R}^3$. The quotient space $\mathbb{R}^3/\mathbb{R}^3$ is the zero vector space, with dimension $0$.
+\end{itemize}
+
+\begin{remark}
+  The crucial insight is that an equivalence class $[v] = v + U = \{v + u \mid u \in U\}$ is not merely a single vector, but a translate of the subspace $U$. Consequently, the ``shape'' or dimension of $[v]$ is identical to the dimension of $U$. Specifically:
+  \begin{itemize}
+    \item If $U$ is a line, then every $[v]$ is a line parallel to $U$.
+    \item If $U$ is a plane, then every $[v]$ is a plane parallel to $U$.
+  \end{itemize}
+  The dimension of the quotient space $V/U$ represents the number of independent directions available to shift these objects. For instance, in $\mathbb{R}^3$, if $U$ is a line (1-dimensional), there are 2 independent directions in which one can move this line to obtain a distinct parallel line (effectively moving the line across a 2-dimensional plane). 
+  
+  Thus, the space of all such lines is 2-dimensional. This geometric intuition aligns perfectly with the dimension formula established in Proposition \ref{prop:dim_quotient}. In the case where $U = \{0\}$, the equivalence class is a point (0-dimensional), and we retain all 3 degrees of freedom of the ambient space.
+\end{remark}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7, x={(0.8cm,0.4cm)}, y={(-0.8cm,0.4cm)}, z={(0cm,1.2cm)}]
+      % Plane Case
+      \draw[->, gray!50] (0,0,0) -- (2.5,0,0) node[right, scale=0.7] {$x$};
+      \draw[->, gray!50] (0,0,0) -- (0,2.5,0) node[left, scale=0.7] {$y$};
+      \draw[->, gray!50] (0,0,0) -- (0,0,3) node[above, scale=0.7] {$z$};
+      \filldraw[blue!10, draw=blue, thick, opacity=0.5] (-1.5,-1.5,0) -- (1.5,-1.5,0) -- (1.5,1.5,0) -- (-1.5,1.5,0) -- cycle;
+      \node[blue, scale=0.8] at (1.5, -1, 0) {$U$};
+      \filldraw[red!10, draw=red, thick, opacity=0.5] (-1.5,-1.5,2) -- (1.5,-1.5,2) -- (1.5,1.5,2) -- (-1.5,1.5,2) -- cycle;
+      \node[red, scale=0.8] at (1.5, -1, 2) {$v + U$};
+      \draw[->, very thick, black] (0,0,0) -- (0.8,0.6,2) node[midway, above left, scale=0.8] {$v$};
+      \filldraw (0,0,0) circle (1.2pt);
+    \end{tikzpicture}
+    \caption{Plane case ($1D$-quotient)}
+    \label{fig:quotient_plane}
+  \end{subfigure}%
+  \hspace{1cm}%
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7, x={(0.8cm,0.4cm)}, y={(-0.8cm,0.4cm)}, z={(0cm,0.7cm)}]
+      % Line Case (Shorter Z)
+      \draw[->, gray!50] (0,0,0) -- (2.5,0,0) node[right, scale=0.7] {$x$};
+      \draw[->, gray!50] (0,0,0) -- (0,2.5,0) node[left, scale=0.7] {$y$};
+      \draw[->, gray!50] (0,0,0) -- (0,0,3.5) node[above, scale=0.7] {$z$};
+      \draw[thick, blue] (0,0,-1) -- (0,0,3) node[above, scale=0.8] {$U$};
+      \draw[thick, red] (2,1,-1) -- (2,1,3) node[above, scale=0.8] {$v + U$};
+      % Vector v in foreground
+      \draw[->, very thick, black] (0,0,0) -- (2,1,0) node[midway, below, scale=0.8] {$v$};
+      \filldraw (0,0,0) circle (1.2pt);
+    \end{tikzpicture}
+    \caption{Line case ($2D$-quotient)}
+    \label{fig:quotient_line}
+  \end{subfigure}
+  \caption{Geometric interpretation of the quotient space $\mathbb{R}^3/U$.}
+  \label{fig:quotient_r3}
+\end{figure}
 
 \subsection{The Vector Space Structure of $V/U$}
 
@@ -452,7 +534,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   Kernel: We claim that $\ker(\pi) = U$. First, let $v \in \ker(\pi)$, meaning $\pi(v) = 0$. Then, $[v] = [0]$, which implies $v = v - 0 \in U$. Hence, $\ker(\pi) \subseteq U$. Conversely, let $u \in U$. Then, $u \sim 0$ because $u - 0 \in U$. Therefore, $\pi(u) = [u] = [0] = 0$, so $u \in \ker(\pi)$. This shows that $U \subseteq \ker(\pi)$, completing the proof.
 \end{proof}
 
-\begin{proposition}[Dimension of the Quotient Space]
+\begin{proposition}[Dimension of the Quotient Space] \label{prop:dim_quotient}
   Suppose that $V$ is a finite-dimensional vector space. Then, $V/U$ is also finite-dimensional, and $\dim V/U = \dim V - \dim U$.
 \end{proposition}
 
@@ -522,7 +604,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 
 Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $W \subseteq V$ be a complement of $U$ (i.e., $W$ is a subspace such that $U \cap W = \{0\}$ and $U + W = V$).
 
-\begin{proposition}[Canonical Isomorphism from a Complement]
+\begin{proposition}[Canonical Isomorphism from a Complement] \label{prop:iso_complement}
   Under the assumptions above, there is a canonical isomorphism $Q \colon W \to V/U$, defined by $Q(w) := [w] \in V/U$ for all $w \in W$.
 \end{proposition}
 

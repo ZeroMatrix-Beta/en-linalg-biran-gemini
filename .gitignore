@@ -1,8 +1,3 @@
-# --- Project Specifics ---
-# This hides your reference notes from GitHub but keeps them for Gemini
-#_notes/
-#source_material/
-
 # --- VS Code & System ---
 .vscode/
 .DS_Store
@@ -32,7 +27,7 @@ Thumbs.db
 # *.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
-.pdf
+#.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl

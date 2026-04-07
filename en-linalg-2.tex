@@ -21,6 +21,7 @@
 
 % use tikz:
 \usepackage{tikz}
+\usepackage{subcaption}
 
 % change page-footer:
 \usepackage{fancyhdr}
@@ -30,6 +31,10 @@
 
 %No indent:
 % \setlength{\parindent}{0pt}
+
+% Redefine \bigbreak to ensure the following paragraph is not indented
+\let\oldbigbreak\bigbreak
+\renewcommand{\bigbreak}{\oldbigbreak\noindent}
 
 % 1. Custom Chapter Format: Title (chapter X)
 \titleformat{\chapter}[block]  % [block] forces it onto a single line

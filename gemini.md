@@ -17,7 +17,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 
 # CONTEXT AND WORKSPACE
 * **Repository:** https://github.com/ZeroMatrix-Beta/en-linalg-biran-gemini/tree/main
-* **Lecture Notes:** They are stored in the `source_material/` folder which is ignored by git. The order of the lecture note is determined by `chapternumber.chaptername.sectionnumberalph.version.pdf`.
+* **Lecture Notes:** They are stored in the `source_material/` folder. They are **NOT** ignored by git anymore. The order of the lecture note is determined by `chapternumber.chaptername.sectionnumberalph.version.pdf`. (Appearently, Gemini Code Assistant isn't yet capable of reading pictures or pdf's...)
 * **Example:** `08.span.b.v01.pdf` stands for chapter 8, "span", section b. This file comes right after `08.span.a.v01.pdf`.
 * **Environment:** You are working directly within the repository structure. Always reference existing definitions in the project's preamble or `.cls` files before suggesting new commands. If you introduce packages that are not already in use, be clear about that.
 
