@@ -30,7 +30,7 @@
   So far, we have defined $+ \colon \Hom(V,W) \times \Hom(V,W) \to \Hom(V,W)$ and $\cdot \colon K \times \Hom(V,W) \to \Hom(V,W)$.
 
   Regarding the neutral element, the map $0 \colon V \to W$ defined by $v \mapsto 0$ for all $v \in V$ is linear. We claim that $0 + T = T$. Indeed,
-  $$(0 + T)(v) = 0(v) + T(v) = 0 + T(v) = T(v)$$
+  \[ (0 + T)(v) = 0(v) + T(v) = 0 + T(v) = T(v) \]
   for all $v \in V$. Similarly, one shows that $T + 0 = T$.
 \end{proof}
 
@@ -49,13 +49,13 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 \begin{theorem}[The Canonical Isomorphism from the Homomorphism Space $\Hom(V,W)$
    to the Matrix Space $\mathcal{M}_{m \times n}(K)$]
   Let $V$ and $W$ be finite-dimensional vector spaces over $K$, let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$, and let $\mathcal{C} = (w_1, \dots, w_m)$ be a basis for $W$. Then, $\Psi_{\mathcal{C}}^{\mathcal{B}} \colon \Hom(V,W) \to M_{m \times n}(K)$, defined by
-  $$\Psi_{\mathcal{C}}^{\mathcal{B}}(T) := [T]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [T(v_1)]_{\mathcal{C}} & \dots & [T(v_n)]_{\mathcal{C}} \\ | & & | \end{pmatrix},$$
+  \[ \Psi_{\mathcal{C}}^{\mathcal{B}}(T) := [T]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [T(v_1)]_{\mathcal{C}} & \dots & [T(v_n)]_{\mathcal{C}} \\ | & & | \end{pmatrix}, \]
   is a linear map, and moreover, an isomorphism.
 \end{theorem}
 
 \begin{proof}
   Recall that $T_{[T]_{\mathcal{C}}^{\mathcal{B}}} = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}$. Recall also that $\Phi_{\mathcal{B}}(v) = [v]_{\mathcal{B}} \in K^n$ for all $v \in V$. Furthermore, $\Phi_{\mathcal{C}}(w) = [w]_{\mathcal{C}} \in K^m$ for all $w \in W$. We have
-  $$\Phi_{\mathcal{B}}^{-1} \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} = a_1 v_1 + \dots + a_n v_n, \quad \Phi_{\mathcal{C}}^{-1} \begin{pmatrix} b_1 \\ \vdots \\ b_m \end{pmatrix} = b_1 w_1 + \dots + b_m w_m.$$
+  \[ \Phi_{\mathcal{B}}^{-1} \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} = a_1 v_1 + \dots + a_n v_n, \quad \Phi_{\mathcal{C}}^{-1} \begin{pmatrix} b_1 \\ \vdots \\ b_m \end{pmatrix} = b_1 w_1 + \dots + b_m w_m. \]
 
   We claim that the map $\Psi_{\mathcal{C}}^{\mathcal{B}}$ is bijective. Indeed, define $\Theta \colon M_{m \times n}(K) \to \Hom(V,W)$ by $\Theta(A) := \Phi_{\mathcal{C}}^{-1} \circ T_A \circ \Phi_{\mathcal{B}} \in \Hom(V,W)$ for $A \in M_{m \times n}(K)$. We have:
   \begin{align*}
@@ -107,6 +107,40 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
   $$\Psi_{\mathcal{B}}^{\mathcal{B}}(T_1 \circ T_2) = [T_1 \circ T_2]_{\mathcal{B}}^{\mathcal{B}} = [T_1]_{\mathcal{B}}^{\mathcal{B}} \cdot [T_2]_{\mathcal{B}}^{\mathcal{B}} = \Psi_{\mathcal{B}}^{\mathcal{B}}(T_1) \cdot \Psi_{\mathcal{B}}^{\mathcal{B}}(T_2)$$
   via matrix multiplication.
 \end{proof}
+\begin{proof}
+  First, we verify that $(\End(V), +, \circ)$ satisfies the ring axioms. We already know that $(\End(V), +)$ is an abelian group from the proposition regarding the vector space structure of $\Hom(V,W)$. We now verify the properties related to multiplication (composition):
+  \begin{enumerate}
+    \item \textbf{Associativity of Multiplication}: For any $T_1, T_2, T_3 \in \End(V)$, function composition is inherently associative. That is, $(T_1 \circ T_2) \circ T_3 = T_1 \circ (T_2 \circ T_3)$.
+    \item \textbf{Existence of Multiplicative Identity}: The identity map $\id_V \colon V \to V$ is an endomorphism. For any $T \in \End(V)$, we have $T \circ \id_V = T$ and $\id_V \circ T = T$. Thus, $\id_V$ is the multiplicative identity.
+    \item \textbf{Distributivity}: For any $T, T_1, T_2 \in \End(V)$, we must show both left and right distributivity.
+    \begin{itemize}
+      \item \textbf{Left Distributivity}: For any $v \in V$,
+      \[ (T \circ (T_1 + T_2))(v) = T((T_1 + T_2)(v)) = T(T_1(v) + T_2(v)). \]
+      By the linearity of $T$, this equals $T(T_1(v)) + T(T_2(v)) = (T \circ T_1)(v) + (T \circ T_2)(v) = (T \circ T_1 + T \circ T_2)(v)$.
+      Hence, $T \circ (T_1 + T_2) = T \circ T_1 + T \circ T_2$.
+      \item \textbf{Right Distributivity}: For any $v \in V$,
+      \begin{align*}
+        ((T_1 + T_2) \circ T)(v) &= (T_1 + T_2)(T(v)) \\
+        &= T_1(T(v)) + T_2(T(v)) \\
+        &= (T_1 \circ T)(v) + (T_2 \circ T)(v) \\
+        &= (T_1 \circ T + T_2 \circ T)(v).
+      \end{align*}
+      Hence, $(T_1 + T_2) \circ T = T_1 \circ T + T_2 \circ T$.
+    \end{itemize}
+  \end{enumerate}
+  Thus, $\End(V)$ is a ring with unity $\id_V$. It is generally not commutative, as demonstrated by matrix multiplication.
+
+  Now, assume $V$ is finite-dimensional with $\dim V = n$, and let $\mathcal{B}$ be a basis for $V$. We have already established that $\Psi_{\mathcal{B}}^{\mathcal{B}} \colon \End(V) \to M_{n \times n}(K)$ is a linear isomorphism. To prove it is a ring isomorphism, we must show it preserves the multiplicative structure and the multiplicative identity.
+
+  \begin{enumerate}
+    \item \textbf{Preservation of Multiplication}: For any $T_1, T_2 \in \End(V)$, a fundamental result from Linear Algebra I states that the matrix representation of a composition of linear maps is the product of their matrix representations. That is,
+    \[ \Psi_{\mathcal{B}}^{\mathcal{B}}(T_1 \circ T_2) = [T_1 \circ T_2]_{\mathcal{B}}^{\mathcal{B}} = [T_1]_{\mathcal{B}}^{\mathcal{B}} \cdot [T_2]_{\mathcal{B}}^{\mathcal{B}} = \Psi_{\mathcal{B}}^{\mathcal{B}}(T_1) \cdot \Psi_{\mathcal{B}}^{\mathcal{B}}(T_2). \]
+    \item \textbf{Preservation of Multiplicative Identity}: The matrix representation of the identity endomorphism with respect to any basis $\mathcal{B}$ is the identity matrix $I_n$.
+    \[ \Psi_{\mathcal{B}}^{\mathcal{B}}(\id_V) = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n. \]
+  \end{enumerate}
+  Since $\Psi_{\mathcal{B}}^{\mathcal{B}}$ is a bijective linear map that preserves both multiplication and the multiplicative identity, it is an isomorphism of rings.
+\end{proof}
+
 
 \subsection{The Dual Space}
 An important special case of $\Hom(V,W)$ is when $W=K$.
@@ -133,7 +167,7 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 
 \begin{proof}
   Let $\ell \in V^*$. We claim that $\ell = \sum_{i=1}^n \ell(v_i) \cdot v_i^*$, or in other words, we claim that $\ell(v) = \sum_{i=1}^n \ell(v_i) \cdot v_i^*(v)$. Indeed, both sides of the equation are linear maps $V \to K$, and therefore, it is enough to check that it holds for $v = v_1, v = v_2, \dots, v = v_n$, because $v_1, \dots, v_n$ form a basis for $V$. And indeed, for $v = v_k$, we have:
-  $$\sum_{i=1}^n \ell(v_i) \cdot v_i^*(v_k) = \sum_{i=1}^n \ell(v_i) \cdot \delta_{ik} = \ell(v_k).$$
+  \[ \sum_{i=1}^n \ell(v_i) \cdot v_i^*(v_k) = \sum_{i=1}^n \ell(v_i) \cdot \delta_{ik} = \ell(v_k). \]
   The claim just proven shows that $v_1^*, \dots, v_n^*$ span $V^*$. Since $\dim V^* = \dim V = n$, it follows that $v_1^*, \dots, v_n^*$ form a basis for $V^*$.
 \end{proof}
 
@@ -151,7 +185,7 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 \begin{proof}
   Let $\mathcal{B} = (v_1, \dots, v_n)$, and let $\mathcal{C} = (w_1, \dots, w_n)$. We have $A := [\id_V]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [v_1]_{\mathcal{C}} & \dots & [v_n]_{\mathcal{C}} \\ | & & | \end{pmatrix}$. Write $A = (a_{ij})$. By definition, $v_i = \sum_{k=1}^n a_{ki} w_k$.
   Let $\mathcal{C}^* = (w_1^*, \dots, w_n^*)$ be the dual basis of $\mathcal{C}$. We apply the previous lemma to $\ell = w_j^*$ and the basis $\mathcal{B}$:
-  $$w_j^* = \sum_{i=1}^n w_j^*(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*\left(\sum_{k=1}^n a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*.$$
+  \[ w_j^* = \sum_{i=1}^n w_j^*(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*\left(\sum_{k=1}^n a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
   Here, only $k = j$ remains from the inner sum. This implies that $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = A^T = ([\id_V]_{\mathcal{C}}^{\mathcal{B}})^T$.
 \end{proof}
 
@@ -184,7 +218,10 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   \end{enumerate}
 \end{exercise}
 
+\begin{summary}
+In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and gives us a new vector space $V^*$. It also takes any linear map $T \colon V \to W$ and gives us a new map $T^*$ between the duals of $V$ and $W$, but the arrow is reversed: $T^* \colon W^* \to V^*$. This is an example of a \qt{contravariant functor}.
 In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and gives us a new vector space $V^*$. It also takes any linear map $T \colon V \to W$ and gives us a new map $T^*$ between the duals of $V$ and $W$, but the arrow is reversed: $T^* \colon W^* \to V^*$. This is an example of a contravariant functor.
+\end{summary}
 
 \begin{lemma}[Transposition of the Representation Matrix]
   Let $S \colon V \to W$ be a linear map between two finite-dimensional vector spaces $V$ and $W$ over $K$. Let $\mathcal{B}$ be a basis for $V$, and let $\mathcal{C}$ be a basis for $W$. Consider $S^* \colon W^* \to V^*$ and the bases $\mathcal{C}^*, \mathcal{B}^*$ for $W^*, V^*$, respectively. Then, $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = ([S]_{\mathcal{C}}^{\mathcal{B}})^T$.
@@ -192,10 +229,11 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
 
 \begin{proof}
   Write $\mathcal{B} = (v_1, \dots, v_n)$, $\mathcal{C} = (w_1, \dots, w_m)$, and $A := [S]_{\mathcal{C}}^{\mathcal{B}} = (a_{ij})$. $A$ satisfies $S(v_j) = \sum_{i=1}^m a_{ij} w_i$. Now, for $w_j^* \in \mathcal{C}^*$, we have
-  $$S^*(w_j^*) = w_j^* \circ S = \sum_{i=1}^n (w_j^* \circ S)(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*(S(v_i)) \cdot v_i^*,$$
+  \[ S^*(w_j^*) = w_j^* \circ S = \sum_{i=1}^n (w_j^* \circ S)(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*(S(v_i)) \cdot v_i^*, \]
   where the second equality follows from the Lemma on the Dual Basis. Substituting $S(v_i)$, we get
-  $$= \sum_{i=1}^n w_j^*\left(\sum_{k=1}^m a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*.$$
-  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A^T$).
+  \[ \sum_{i=1}^n w_j^*\left(\sum_{k=1}^m a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
+  % Comment at Gemini: dont use a transposed row-vector here:
+  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A^T$). 
 \end{proof}
 
 \subsection{Reflexivity}
@@ -220,6 +258,7 @@ Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$,
 
   We now claim that $\tau$ is injective. To see this, we will show that $\ker(\tau) = 0$. Indeed, let $v \in \ker(\tau)$, meaning $\tau(v) = 0$. Then, $\ell(v) = 0$ for all $\ell \in V^*$. Choose a basis $\mathcal{B} = (v_1, \dots, v_n)$ for $V$. Write $v = c_1 v_1 + \dots + c_n v_n$. Apply $v_k^*$ to $v$, and we obtain $v_k^*(c_1 v_1 + \dots + c_n v_n) = 0$. But $v_k^*(c_1 v_1 + \dots + c_n v_n) = c_k$. Therefore, $c_k = 0$, and this holds for $1 \leq k \leq n$, which implies that $v = 0$. This proves that $\tau$ is injective.
 
+  To finish the proof, note that $\dim(V^*)^* = \dim V^* = \dim V$. Therefore, since $\tau \colon V \to (V^*)^*$ is injective, it must be an isomorphism.
   To finish the proof, note that $\dim(V^*)^* = \dim V^* = \dim V$. So, since $\tau \colon V \to (V^*)^*$ is injective, it must be an isomorphism.
 \end{proof}
 
@@ -329,8 +368,8 @@ Geometrically, in $\mathbb{R}^2$, this represents the decomposition of any vecto
 
 Similarly, we can extend this intuition to $\mathbb{R}^3$. Consider $U$ to be the $z$-axis (a line through the origin) and $U'$ to be the $xy$-plane (a plane through the origin). Then $U$ and $U'$ are subspaces of $\mathbb{R}^3$.
 \begin{itemize}
-  \item $U = \operatorname{Sp}(e_3) = \{(0,0,z) \mid z \in \mathbb{R}\}$
-  \item $U' = \operatorname{Sp}(e_1, e_2) = \{(x,y,0) \mid x,y \in \mathbb{R}\}$
+  \item $U = \Sp(e_3) = \{(0,0,z) \mid z \in \mathbb{R}\}$
+  \item $U' = \Sp(e_1, e_2) = \{(x,y,0) \mid x,y \in \mathbb{R}\}$
 \end{itemize}
 Any vector $v = (x,y,z) \in \mathbb{R}^3$ can be uniquely written as a sum of a vector $u \in U$ and a vector $u' \in U'$:
 $v = (0,0,z) + (x,y,0)$.

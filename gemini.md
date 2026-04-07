@@ -25,6 +25,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Math Variables:** Always use `\ell` for the letter `l` in math mode. This includes subscripts (e.g., `v_{\ell}`, not `v_l`) and summation indices. Never use a standard `l`.
 * **Bases:** All mathematical bases (B, C, E, etc.) MUST be wrapped in calligraphic script using \mathcal{...} (e.g., \mathcal{B}, \mathcal{C}, \mathcal{E}). This is a mandatory override of the source notes.
 * **Indexing:** Be meticulously precise with eigenvector indexing. Follow this exact pattern for partitioned bases: \mathcal{B} = (v_1^{(1)}, \dots, v_{\ell_1}^{(1)}, v_1^{(2)}, \dots, v_{\ell_2}^{(2)}, \dots, v_1^{(k)}, \dots, v_{\ell_k}^{(k)}).
+* **Inline Column Vectors:** To maintain consistent vertical spacing in prose, write column vectors as transposed row vectors, e.g., $(x_1, \dots, x_n)^T$, instead of using vertical stacks like `smallmatrix`.
 * **Matrices:** Use \begin{pmatrix} for displayed block equations and \left(\begin{smallmatrix} for inline text.
 * **Proof Labels:** Label sub-parts of proofs using bold parentheses (e.g., \textbf{(a)}, \textbf{(b)}).
 * **The \qt Macro:** Use `\qt{...}` for the *first* mention of a newly defined term in the body of a definition or theorem. 

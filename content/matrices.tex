@@ -1,0 +1,846 @@
+\setcounter{chapter}{16}
+\chapter{Matrices}
+
+\section{Matrix Multiplication}
+
+\begin{definition}[Matrix Multiplication]
+Let $A \in M_{m \times n}(K)$ and $B \in M_{n \times p}(K)$. We define a new matrix, which is called the product (or multiplication) of $A$ and $B$, denoted by $A \cdot B \in M_{m \times p}(K)$.
+
+Write $A = (a_{ij})_{\substack{1 \le i \le m \\ 1 \le j \le n}}$ and $B = (b_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le p}}$. The matrix $A \cdot B$ has entries $(c_{ij})_{\substack{1 \le i \le m \\ 1 \le j \le p}}$, where
+\begin{equation*}
+    c_{ij} := a_{i1}b_{1j} + \dots + a_{in}b_{nj} = \sum_{k=1}^{n} a_{ik}b_{kj}
+\end{equation*}
+We often write $AB$ instead of $A \cdot B$. 
+\end{definition}
+
+\begin{importantremark}
+The product $AB$ is defined only when the number of columns of $A$ equals the number of rows of $B$.
+\end{importantremark}
+
+An alternative description of $A \cdot B$ can be visualized by taking the dot product of the $i$-th row of $A$ with the $j$-th column of $B$:
+\begin{equation*}
+    c_{ij} = (\text{row } i \text{ of } A) \cdot (\text{column } j \text{ of } B) = a_{i1}b_{1j} + \dots + a_{ik}b_{kj} + \dots + a_{in}b_{nj}
+\end{equation*}
+Another way to describe it is by considering the columns of $B$, denoted as $w_1, \dots, w_p$. The matrix $A \cdot B$ is then formed by multiplying $A$ with each column vector $w_j$:
+\begin{equation*}
+    A \cdot \begin{pmatrix} | & & | \\ w_1 & \dots & w_p \\ | & & | \end{pmatrix} = \begin{pmatrix} | & & | \\ A w_1 & \dots & A w_p \\ | & & | \end{pmatrix}
+\end{equation*}
+
+\begin{example}
+We compute the product of a $2 \times 3$ matrix and a $3 \times 2$ matrix:
+\begin{equation*}
+    \begin{pmatrix} 3 & 2 & 1 \\ 1 & 0 & 2 \end{pmatrix} \cdot \begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 4 & 0 \end{pmatrix} = \begin{pmatrix} 3 \cdot 1 + 2 \cdot 0 + 1 \cdot 4 & 3 \cdot 2 + 2 \cdot 1 + 1 \cdot 0 \\ 1 \cdot 1 + 0 \cdot 0 + 2 \cdot 4 & 1 \cdot 2 + 0 \cdot 1 + 2 \cdot 0 \end{pmatrix} = \begin{pmatrix} 7 & 8 \\ 9 & 2 \end{pmatrix}
+\end{equation*}
+Conversely, multiplying the $3 \times 2$ matrix by the $2 \times 3$ matrix yields a $3 \times 3$ matrix:
+\begin{equation*}
+    \begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 4 & 0 \end{pmatrix} \cdot \begin{pmatrix} 3 & 2 & 1 \\ 1 & 0 & 2 \end{pmatrix} = \begin{pmatrix} 5 & 2 & 5 \\ 1 & 0 & 2 \\ 12 & 8 & 4 \end{pmatrix}
+\end{equation*}
+If $A \in M_{m \times n}(K)$ and $B \in M_{n \times p}(K)$, then $A \cdot B$ is defined, but $B \cdot A$ is not defined, unless $p = m$.
+\end{example}
+
+\subsection{Some Special Cases}
+
+\begin{enumerate}
+    \item If $A \in M_{m \times n}(K)$ and $v \in K_{\text{col}}^{n}$, we have previously defined the matrix-vector product $A \cdot v \in K_{\text{col}}^{m}$. However, we can also identify $K_{\text{col}}^{n} = M_{n \times 1}(K)$. If we view $v$ as an $n \times 1$ matrix, then the matrix multiplication of $A$ and $v$ yields the exact same result as applying $A$ to the vector $v$.
+    
+    \item If $A \in M_{m \times n}(K)$ and $w \in K_{\text{row}}^{m} = M_{1 \times m}(K)$, then we can define the left-multiplication $w \cdot A \in M_{1 \times n}(K) = K_{\text{row}}^{n}$. If $A$ is represented by its row vectors $v_1, \dots, v_m$, this operation scales and sums the rows of $A$ according to the entries of $w$.
+    
+    \item Let $v = (a_1, \dots, a_n) \in K_{\text{row}}^{n} = M_{1 \times n}(K)$, and let $w = \left(\begin{smallmatrix} b_1 \\ \vdots \\ b_n \end{smallmatrix}\right) \in K_{\text{col}}^{n} = M_{n \times 1}(K)$. Then the product $v \cdot w \in M_{1 \times 1}(K) = K$ is simply the standard scalar product:
+    \begin{equation*}
+        v \cdot w = a_1 b_1 + \dots + a_n b_n
+    \end{equation*}
+\end{enumerate}
+
+\subsection{Connections to Linear Maps}
+
+As a conclusion from our previous discussions on linear maps, let $T: V \to W$ and $S: W \to U$ be linear maps between finite-dimensional vector spaces. Let $\mathcal{B}$, $\mathcal{C}$, and $\mathcal{E}$ be bases for $V$, $W$, and $U$, respectively. The matrix representation of the composition $S \circ T$ is given by the product of their respective representation matrices:
+\begin{equation*}
+    [S \circ T]_{\mathcal{B}}^{\mathcal{E}} = [S]_{\mathcal{C}}^{\mathcal{E}} \cdot [T]_{\mathcal{B}}^{\mathcal{C}}
+\end{equation*}
+
+\subsection{Notation and The Identity Matrix}
+
+Let $\mathcal{I}$ be an index set. For $i, j \in \mathcal{I}$, we define the \textbf{Kronecker-delta} as:
+\begin{equation*}
+    \delta_{ij} := \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}
+\end{equation*}
+Using this, we define the \textbf{identity matrix} $I_n \in M_{n \times n}(K)$ as $I_n = (\delta_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le n}}$. Explicitly, this is:
+\begin{equation*}
+    I_n = \begin{pmatrix} 1 & & 0 \\ & \ddots & \\ 0 & & 1 \end{pmatrix}
+\end{equation*}
+
+\begin{remark}
+Let $V$ be a finite-dimensional vector space, and let $n := \dim V$. Let $\id_V: V \to V$ be the identity map, and let $\mathcal{B}$ be any basis for $V$. Then, $[\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n$. In other words, the matrix representing the identity map with respect to the basis $\mathcal{B}$ is precisely the identity matrix $I_n$.
+\end{remark}
+
+\begin{exercise}
+Prove the preceding remark.
+\end{exercise}
+
+\subsection{Properties of Matrix Multiplication}
+
+\begin{proposition} \label{prop:17.a.2}
+Matrix multiplication satisfies the following algebraic properties:
+\begin{enumerate}
+    \item \textbf{Associativity:} For all $A \in M_{m \times n}(K)$, $B \in M_{n \times p}(K)$, and $C \in M_{p \times q}(K)$, we have:
+    \begin{equation*}
+        (AB)C = A(BC) \in M_{m \times q}(K)
+    \end{equation*}
+    \item \textbf{Distributivity:} For all $A, B \in M_{m \times n}(K)$, $C \in M_{n \times p}(K)$, and $C' \in M_{q \times m}(K)$, we have:
+    \begin{align*}
+        (A + B)C &= AC + BC \in M_{m \times p}(K) \\
+        C'(A + B) &= C'A + C'B \in M_{q \times n}(K)
+    \end{align*}
+    \item \textbf{Identity:} For all $A \in M_{m \times n}(K)$, we have $I_m A = A$ and $A I_n = A$.
+    \item \textbf{Scalar Multiplication:} For all $\alpha \in K$, $A \in M_{m \times n}(K)$, and $B \in M_{n \times p}(K)$, we have:
+    \begin{equation*}
+        \alpha(AB) = (\alpha A)B = A(\alpha B)
+    \end{equation*}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear maps defined by left-multiplication with the matrices $A$, $B$, and $C$, respectively (i.e., $T_A(v) = A \cdot v$ for all $v \in K^n$, $T_B(w) = B \cdot w$ for all $w \in K^p$, and $T_C(u) = C \cdot u$ for all $u \in K^q$). For any dimension $r$, we denote the standard basis of $K^r$ by $\mathcal{E}_r$. We have already established that:
+\begin{equation*}
+    [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A, \quad [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} = B, \quad \text{and} \quad [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = C
+\end{equation*}
+
+\textbf{Proof of (a):} We rely on the associativity of function composition, which states that $(T_A \circ T_B) \circ T_C = T_A \circ (T_B \circ T_C)$. These are both maps from $K^q$ to $K^m$. We now pass to the matrix representation of these maps with respect to the standard bases $\mathcal{E}_q$ and $\mathcal{E}_m$:
+\begin{equation*}
+    [(T_A \circ T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ (T_B \circ T_C)]_{\mathcal{E}_q}^{\mathcal{E}_m}
+\end{equation*}
+By applying the rule for the matrix representation of composed maps, we get:
+\begin{equation*}
+    [T_A \circ T_B]_{\mathcal{E}_p}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_n}
+\end{equation*}
+Expanding further, we obtain:
+\begin{equation*}
+    \left([T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n}\right) \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot \left([T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p}\right)
+\end{equation*}
+Substituting the matrices back in yields $(A \cdot B) \cdot C = A \cdot (B \cdot C)$.
+
+\textbf{Proof of (b):} From the properties of linear maps, we know that $(T_A + T_B) \circ T_C = T_A \circ T_C + T_B \circ T_C$. Passing to the matrix representations, we have:
+\begin{equation*}
+    [(T_A + T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ T_C + T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
+\end{equation*}
+This implies that:
+\begin{equation*}
+    [T_A + T_B]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_n} = [T_A \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} + [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
+\end{equation*}
+Which directly gives us $(A + B) \cdot C = A \cdot C + B \cdot C$. The other distributive identity in (b) is proven similarly.
+
+\textbf{Proof of (c):} The identity matrix $I_m$ represents the identity map: $I_m = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{E}_m}$. Since composing with the identity map does not change a function, we have $\id_{K^m} \circ T_A = T_A$. Therefore:
+\begin{equation*}
+    [\id_{K^m} \circ T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A
+\end{equation*}
+This implies that $I_m \cdot A = A$. The proof for $A I_n = A$ follows the same logic.
+
+\textbf{Preparation for (d):} Let $V$ be a finite-dimensional vector space over $K$, let $\alpha \in K$, and let $\mathcal{B}$ be a basis for $V$. Consider the map $Q: V \to V$ defined by $Q(w) := \alpha \cdot w$. Then, $Q$ is linear, and moreover, we have $[Q]_{\mathcal{B}}^{\mathcal{B}} = \alpha \cdot I_n$, where $n = \dim V$. Explicitly, this is:
+\begin{equation*}
+    [Q]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \alpha & & 0 \\ & \ddots & \\ 0 & & \alpha \end{pmatrix}
+\end{equation*}
+The completion of the proof for statement (d) is left as an exercise.
+\end{proof}
+
+\begin{exercise}
+Prove the preparation claim, and complete the proof for statement (d) of Proposition 17.a.2.
+\end{exercise}
+
+\begin{remark}
+One could also prove the Proposition by direct, tedious calculation. You are encouraged to try it, for example for $(AB)C = A(BC)$, to see that it is not very pleasant.
+\end{remark}
+
+\begin{importantremark}
+Matrix multiplication is, in general, \textbf{not commutative}. There exist matrices $A$ and $B$ such that $A \cdot B \neq B \cdot A$. For example:
+\begin{align*}
+    \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \cdot \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} &= \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \\
+    \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} &= \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+\end{align*}
+\end{importantremark}
+
+\begin{remark}
+In the space $M_{n \times n}(K)$, we can add and subtract matrices, and we can also multiply matrices. There is additionally a multiplicative unit $I_n$. Because these operations satisfy associativity, distributivity, and other relevant axioms, it follows that $M_{n \times n}(K)$ forms a (non-commutative) ring with a unity.
+\end{remark}
+
+\subsection{Invertible Matrices}
+
+\begin{definition}[Invertibility]
+An $n \times n$ matrix $A \in M_{n \times n}(K)$ is called \textbf{invertible} if there exists a matrix $B \in M_{n \times n}(K)$ such that $A \cdot B = B \cdot A = I_n$.
+\end{definition}
+
+\begin{remark}
+If $A$ is invertible, then there exists \textbf{only one} matrix $B$ such that $A \cdot B = B \cdot A = I_n$.
+\end{remark}
+
+\begin{proof}
+Assume there are two matrices $B$ and $C$ such that $AB = BA = I_n$ and $AC = CA = I_n$. Then, we can calculate:
+\begin{equation*}
+    B = B \cdot I_n = B \cdot (A \cdot C) = (B \cdot A) \cdot C = I_n \cdot C = C
+\end{equation*}
+This proves the uniqueness.
+\end{proof}
+
+\begin{definition}[Inverse Matrix and the General Linear Group]
+If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ is called the \textbf{inverse} of $A$ and is denoted by $A^{-1}$. We have:
+\begin{equation*}
+    A \cdot A^{-1} = A^{-1} \cdot A = I_n
+\end{equation*}
+The set of all invertible $n \times n$ matrices over $K$ is denoted by:
+\begin{equation*}
+    GL_n(K) = GL(n, K) := \{A \in M_{n \times n}(K) \mid A \text{ is invertible}\}
+\end{equation*}
+\end{definition}
+
+\begin{definition}[Group]
+Let $G$ be a set and $\cdot : G \times G \to G$, $(a,b) \mapsto a \cdot b \in G$, be a binary operation. We say that $(G, \cdot)$ is a \textbf{group} if the following axioms hold:
+\begin{enumerate}
+    \item \textbf{Associativity:} For all $g_1, g_2, g_3 \in G$, we have $g_1 \cdot (g_2 \cdot g_3) = (g_1 \cdot g_2) \cdot g_3$.
+    \item \textbf{Identity Element:} There exists an element $e \in G$ such that $e \cdot g = g \cdot e = g$ for all $g \in G$. The element $e$ is called the unit (or identity) of $G$.
+    \item \textbf{Inverse Element:} For every $g \in G$, there exists an element $h \in G$ such that $g \cdot h = h \cdot g = e$. The element $h$ is called the inverse of $g$.
+\end{enumerate}
+Furthermore, if $G$ satisfies $g_1 \cdot g_2 = g_2 \cdot g_1$ for all $g_1, g_2 \in G$, we say that $G$ is a \textbf{commutative group} (or Abelian group).
+\end{definition}
+
+\begin{proposition} \label{prop:17.a.6}
+Let $G$ be a group. Then:
+\begin{enumerate}
+    \item The unit $e \in G$ is unique. (The unit $e$ is sometimes denoted as $1 \in G$.)
+    \item For every $g \in G$, its inverse is uniquely defined. It is denoted by $g^{-1}$ (so that $g \cdot g^{-1} = g^{-1} \cdot g = e$).
+    \item For every $g \in G$, we have $(g^{-1})^{-1} = g$.
+    \item For all $g_1, g_2 \in G$, we have $(g_1 \cdot g_2)^{-1} = g_2^{-1} \cdot g_1^{-1}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition} \label{prop:17.a.7}
+The set $GL_n(K)$, endowed with matrix multiplication $(A, B) \mapsto A \cdot B$, is a group. The unity is the identity matrix $I_n$. The inverse of a matrix $A \in GL_n(K)$ is $A^{-1}$. Moreover, for all $A, B \in GL_n(K)$, we have:
+\begin{equation*}
+    (A^{-1})^{-1} = A \quad \text{and} \quad (AB)^{-1} = B^{-1}A^{-1}
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Let $A, B \in GL_n(K)$. To establish that $GL_n(K)$ forms a group, we first need to show closure, namely that $AB \in GL_n(K)$ as well. Indeed, we can verify this by checking the inverse property:
+\begin{equation*}
+    (B^{-1} \cdot A^{-1})(AB) = B^{-1}A^{-1}AB = B^{-1}I_nB = B^{-1}B = I_n
+\end{equation*}
+and, multiplying from the right,
+\begin{equation*}
+    (AB)(B^{-1}A^{-1}) = ABB^{-1}A^{-1} = AI_nA^{-1} = AA^{-1} = I_n
+\end{equation*}
+This proves that $AB$ is invertible with inverse $B^{-1}A^{-1}$, and therefore, $AB \in GL_n(K)$. The other statements in the proposition follow immediately from what we have proved earlier regarding the uniqueness of inverses.
+\end{proof}
+
+\begin{corollary} \label{cor:17.a.8}
+Let $A \in GL_n(K)$. Then, for all $b \in K^n$, the linear system of equations $A \cdot x = b$ has a unique solution, namely $x = A^{-1} \cdot b$.
+\end{corollary}
+
+\begin{proof}
+If $Ax = b$, then multiplying both sides from the left by $A^{-1}$ yields:
+\begin{equation*}
+    A^{-1}(Ax) = A^{-1}b \implies I_n x = A^{-1}b \implies x = A^{-1}b
+\end{equation*}
+Conversely, if we substitute $x = A^{-1}b$ into the equation, we obtain:
+\begin{equation*}
+    A(A^{-1}b) = (AA^{-1})b = I_n b = b
+\end{equation*}
+This confirms both the existence and uniqueness of the solution.
+\end{proof}
+
+\begin{proposition} \label{prop:17.a.9}
+Let $A \in M_{n \times n}(K)$. Then, $A \in GL_n(K)$ (i.e., $A$ is invertible) if and only if the associated linear map $T_A: K^n \to K^n$ is an isomorphism. Moreover, in this case, $(T_A)^{-1} = T_{A^{-1}}$.
+\end{proposition}
+
+\begin{proof}
+First, assume that $A$ is invertible. We claim that $T_{A^{-1}} \circ T_A = \id_{K^n}$ and $T_A \circ T_{A^{-1}} = \id_{K^n}$, which will show that $T_A$ is an isomorphism. Indeed, for all $v \in K^n$:
+\begin{equation*}
+    T_{A^{-1}} \circ T_A(v) = A^{-1} \cdot (T_A(v)) = A^{-1} \cdot A \cdot v = I_n \cdot v = v
+\end{equation*}
+Similarly, one shows that for all $v \in K^n$:
+\begin{equation*}
+    T_A \circ T_{A^{-1}}(v) = I_n \cdot v = v
+\end{equation*}
+This proves that $T_A$ is an isomorphism.
+
+Conversely, assume that $T_A: K^n \to K^n$ is an isomorphism. Let $S := (T_A)^{-1}$. By a previous result, we know that any linear map from $K^n$ to $K^n$ is given by left-multiplication with a matrix, so $S = T_B$ for some $B \in M_{n \times n}(K)$. Now, for all $w \in K^n$:
+\begin{equation*}
+    w = S \circ T_A(w) = T_B(A \cdot w) = B \cdot A \cdot w = (BA) \cdot w
+\end{equation*}
+We apply this equality for the standard basis vectors $w = e_1, w = e_2, \dots, w = e_n$ and obtain that $BA = I_n$. Similarly, using $T_A \circ S = \id_{K^n}$, one shows that $AB = I_n$ too. Thus, $A$ is invertible.
+\end{proof}
+
+\begin{exercise}
+\begin{enumerate}
+    \item Let $A \in M_{m \times n}(K)$ and $B \in M_{n \times p}(K)$. Prove that $(AB)^T = B^T \cdot A^T$. \newline (\textit{Hint: Proving this by direct calculation is not so bad.})
+    \item Let $A \in GL_n(K)$. Prove that $A^T \in GL_n(K)$ and that $(A^T)^{-1} = (A^{-1})^T$.
+\end{enumerate}
+\end{exercise}
+
+\begin{definition}[Triangular and Diagonal Matrices] \label{def:17.a.10}
+A matrix $A \in M_{n \times n}(K)$, with entries $A = (a_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le n}}$, is called:
+\begin{itemize}
+    \item \textbf{Upper triangular} if $a_{ij} = 0$ for all $i > j$.
+    \item \textbf{Lower triangular} if $a_{ij} = 0$ for all $i < j$.
+    \item \textbf{Diagonal} if $a_{ij} = 0$ for all $i \neq j$. A diagonal matrix has the form:
+    \begin{equation*}
+        \begin{pmatrix} * & & 0 \\ & \ddots & \\ 0 & & * \end{pmatrix}
+    \end{equation*}
+\end{itemize}
+\end{definition}
+
+\begin{lemma} \label{lemma:17.a.11}
+Let $A$ and $B$ be two diagonal matrices (respectively, both upper triangular, or both lower triangular). Then, their product $A \cdot B$ is of the same type.
+\end{lemma}
+
+\begin{proof}
+\textit{Exercise.}
+\end{proof}
+
+\section{Change of Basis}
+
+\begin{question}
+How does the representation matrix $[T]$ of a linear map $T: V \to W$ depend on the choices of bases $\mathcal{B}$ and $\mathcal{C}$?
+\end{question}
+
+\begin{corollary} \label{cor:17.b.1}
+Let $V$ and $W$ be finite-dimensional vector spaces over $K$. Let $n := \dim V$ and $m := \dim W$. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases for $V$, and let $\mathcal{C}$ and $\mathcal{C}'$ be two bases for $W$. Then, $[\id_V]_{\mathcal{B}}^{\mathcal{B}'} \in GL_n(K)$ and $[\id_W]_{\mathcal{C}}^{\mathcal{C}'} \in GL_m(K)$, with inverses given by:
+\begin{equation*}
+    [\id_V]_{\mathcal{B}}^{\mathcal{B}'} = ([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1} \quad \text{and} \quad [\id_W]_{\mathcal{C}}^{\mathcal{C}'} = ([\id_W]_{\mathcal{C}'}^{\mathcal{C}})^{-1}
+\end{equation*}
+Let $T: V \to W$ be a linear map. Then, its representation matrix changes according to the formula:
+\begin{equation*}
+    [T]_{\mathcal{C}'}^{\mathcal{B}'} = [\id_W]_{\mathcal{C}'}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+\end{corollary}
+
+\begin{proof}
+We can write $T$ as the composition $T = \id_W \circ T \circ \id_V = \id_W \circ (T \circ \id_V)$. Passing to the matrix representations, this yields:
+\begin{equation*}
+    [T]_{\mathcal{C}'}^{\mathcal{B}'} = [\id_W]_{\mathcal{C}'}^{\mathcal{C}} \cdot [T \circ \id_V]_{\mathcal{C}}^{\mathcal{B}'} = [\id_W]_{\mathcal{C}'}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+Also, we have the identity $\id_V = \id_V \circ \id_V$. This implies that:
+\begin{equation*}
+    I_n = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}'} \cdot [\id_V]_{\mathcal{B}'}^{\mathcal{B}}
+\end{equation*}
+and similarly:
+\begin{equation*}
+    I_n = [\id_V]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+This demonstrates that $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is invertible and that its inverse is indeed $([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1}$. The proof for $[\id_W]_{\mathcal{C}}^{\mathcal{C}'}$ follows the exact same logic.
+\end{proof}
+
+\begin{definition} \label{def:17.b.2}
+Let $V$ be a finite-dimensional vector space over $K$, and let $n := \dim V$. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases of $V$. The matrix $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} \in GL_n(K)$ is called the \textbf{change of basis matrix} between $\mathcal{B}$ and $\mathcal{B}'$, or the \textbf{transition matrix} from basis $\mathcal{B}$ to basis $\mathcal{B}'$.
+\end{definition}
+
+\begin{remark}
+If $\mathcal{B} = (w_1, \dots, w_n)$ and $\mathcal{B}' = (w_1', \dots, w_n')$, then the transition matrix is explicitly constructed by placing the coordinate vectors of the old basis elements with respect to the new basis into the columns:
+\begin{equation*}
+    [\id_V]_{\mathcal{B}'}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [w_1]_{\mathcal{B}'} & \dots & [w_n]_{\mathcal{B}'} \\ | & & | \end{pmatrix}
+\end{equation*}
+\end{remark}
+
+\begin{proposition} \label{prop:17.b.3}
+Let $T: V \to W$ be an isomorphism between two finite-dimensional vector spaces. Let $\mathcal{B}$ and $\mathcal{C}$ be bases for $V$ and $W$, respectively. Then, the matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ is an invertible matrix, and furthermore:
+\begin{equation*}
+    [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} = ([T]_{\mathcal{C}}^{\mathcal{B}})^{-1}
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Let $n := \dim V = \dim W$. By the properties of composed linear maps and representation matrices, we have:
+\begin{equation*}
+    [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n
+\end{equation*}
+and conversely:
+\begin{equation*}
+    [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} = [\id_W]_{\mathcal{C}}^{\mathcal{C}} = I_n
+\end{equation*}
+This proves the claim.
+\end{proof}
+
+\subsection{Equivalence and Similarity of Matrices}
+
+\begin{question}
+Suppose $T: V \to V$ is an endomorphism. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases for $V$. What is the relation between $[T]_{\mathcal{B}'}^{\mathcal{B}'}$ and $[T]_{\mathcal{B}}^{\mathcal{B}}$?
+\end{question}
+
+\begin{corollary} \label{cor:17.b.4}
+Let $V$ be a finite-dimensional vector space, and let $T: V \to V$ be a linear map. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases for $V$. Then:
+\begin{equation*}
+    [T]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'} = ([\id_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+\end{corollary}
+
+\begin{definition}[Equivalence and Similarity] \label{def:17.b.5}
+We define two types of relations between matrices:
+\begin{enumerate}
+    \item Let $A, B \in M_{m \times n}(K)$. We say that $A$ and $B$ are \textbf{equivalent} if there exist matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = P A Q$.
+    \item Let $A, B \in M_{n \times n}(K)$. We say that $A$ and $B$ are \textbf{similar} if there exists a matrix $P \in GL_n(K)$ such that $B = P^{-1} A P$.
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+\begin{enumerate}
+    \item Show that "equivalence" between $m \times n$ matrices defines an equivalence relation on $M_{m \times n}(K)$.
+    \item Show that two matrices $A, B \in M_{m \times n}(K)$ are equivalent if and only if there exist two vector spaces $V$ and $W$ with $\dim V = n$ and $\dim W = m$, two bases $\mathcal{B}$ and $\mathcal{B}'$ of $V$, and two bases $\mathcal{C}$ and $\mathcal{C}'$ of $W$ such that:
+    \begin{equation*}
+        A = [T]_{\mathcal{C}}^{\mathcal{B}} \quad \text{and} \quad B = [T]_{\mathcal{C}'}^{\mathcal{B}'}
+    \end{equation*}
+    In other words, $A$ is equivalent to $B$ if and only if $A$ and $B$ are matrix representations of the exact same linear map $T$, but with respect to different choices of bases for $V$ and $W$.
+    \item Show that "similarity" between $n \times n$ matrices defines an equivalence relation on $M_{n \times n}(K)$.
+    \item Show that two square matrices $M, N \in M_{n \times n}(K)$ are similar if and only if there exists an $n$-dimensional space $V$, an endomorphism $T: V \to V$, and two bases $\mathcal{B}$ and $\mathcal{B}'$ of $V$ such that $M = [T]_{\mathcal{B}}^{\mathcal{B}}$ and $N = [T]_{\mathcal{B}'}^{\mathcal{B}'}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proposition} \label{prop:17.b.6}
+Let $V$ and $W$ be finite-dimensional vector spaces over $K$, with dimensions $n = \dim V$ and $m = \dim W$. Let $T: V \to W$ be a linear map with $\rank(T) = r$. (Recall that $\rank(T) := \dim \operatorname{Im}(T)$). Then, there exists a basis $\mathcal{B} = (v_1, \dots, v_n)$ of $V$ and a basis $\mathcal{C} = (w_1, \dots, w_m)$ of $W$ such that:
+\begin{equation*}
+    [T]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} I_r & O_{r, n-r} \\ O_{m-r, r} & O_{m-r, n-r} \end{pmatrix}
+\end{equation*}
+where $O_{p,q}$ stands for the zero matrix in $M_{p \times q}(K)$.
+\end{proposition}
+
+\begin{proof}
+Put $\ell := \dim \ker(T)$. By the rank theorem, we know that $r = n - \ell$. Let $v_1, \dots, v_\ell$ be a basis of $\ker(T)$, and extend it to a full basis $(v_1, \dots, v_\ell, v_{\ell+1}, \dots, v_n)$ of $V$. It will be useful to work below with the rearranged basis:
+\begin{equation*}
+    \mathcal{B} = (v_{\ell+1}, \dots, v_n, v_1, \dots, v_\ell)
+\end{equation*}
+In the proof of the rank theorem, we have seen that $T(v_{\ell+1}), \dots, T(v_n)$ form a basis for $\operatorname{Im}(T)$. Define $w_i := T(v_{\ell+i})$ for $i = 1, \dots, r$ (i.e., $w_1 = T(v_{\ell+1}), \dots, w_r = T(v_{\ell+r})$), and extend this list to a basis of $W$:
+\begin{equation*}
+    \mathcal{C} := (w_1, \dots, w_r, w_{r+1}, \dots, w_m)
+\end{equation*}
+It now directly follows from these definitions that the representation matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ takes the exact block form described in the proposition.
+\end{proof}
+
+\begin{corollary} \label{cor:17.b.7}
+Let $A \in M_{m \times n}(K)$. Then, there exist invertible matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that:
+\begin{equation*}
+    PAQ = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+\end{equation*}
+where $r = \rank_{\text{col}}(A)$. In particular, $\rank_{\text{col}}(A) \le \min\{m, n\}$.
+\end{corollary}
+
+\begin{proof}
+Consider the linear map $T_A: K^n \to K^m$ defined by left-multiplication, $T_A(v) = A \cdot v$. Then, $r = \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A)$, because we have previously seen that $\operatorname{Im}(T_A) = \operatorname{Sp}(T_A(e_1), \dots, T_A(e_n)) = \operatorname{Sp}(\text{columns of } A)$.
+
+Now, we apply the previous proposition to $T_A$, yielding that:
+\begin{equation*}
+    [T_A]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+\end{equation*}
+for some basis $\mathcal{B}$ of $K^n$ and some basis $\mathcal{C}$ of $K^m$. Using the change of basis formula, we can rewrite this as:
+\begin{equation*}
+    \underbrace{[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}}_{=: P} \cdot \underbrace{[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}}_{= A} \cdot \underbrace{[\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}}_{=: Q} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+\end{equation*}
+where $\mathcal{E}_n$ and $\mathcal{E}_m$ are the standard bases of $K^n$ and $K^m$, respectively. Setting $P = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$ and $Q = [\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ concludes the proof.
+\end{proof}
+
+\begin{remark}
+The fact that $\rank_{\text{col}}(A) \le \min\{m, n\}$ also follows from observing the linear map $T_A: K^n \to K^m$. We have:
+\begin{equation*}
+    \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A) = n - \dim \ker(T_A) \le n
+\end{equation*}
+and simultaneously,
+\begin{equation*}
+    \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A) \le \dim K^m = m
+\end{equation*}
+\end{remark}
+
+\begin{question}
+Recall that we have an equivalence relation on $M_{m \times n}(K)$: $A \sim B$ if there exist $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = PAQ$. Can we describe the equivalence classes of this equivalence relation?
+\end{question}
+
+\begin{corollary} \label{cor:17.b.8}
+Let $A, B \in M_{m \times n}(K)$. Then, $A \sim B$ if and only if $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$. Moreover, for every $0 \le r \le \min\{m, n\}$, there is precisely one equivalence class of matrices $A$ with $\rank_{\text{col}} = r$.
+\end{corollary}
+
+\begin{proof}
+Let $A, B \in M_{m \times n}(K)$. First, assume that $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$, and denote this common column rank by $r$. By Corollary \ref{cor:17.b.7}, we know that $A \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ and $B \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. Since $\sim$ is an equivalence relation, it naturally follows that $A \sim B$.
+
+Conversely, assume that $A \sim B$. This implies that there exist matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = PAQ$. Transitioning to the associated linear maps, this means $T_B = T_P \circ T_A \circ T_Q$. We analyze the image of $T_B$:
+\begin{equation*}
+    \operatorname{Im}(T_B) = T_B(K^n) = T_P \circ T_A(T_Q(K^n)) = T_P \circ T_A(K^n) = T_P(\operatorname{Im}(T_A))
+\end{equation*}
+Note that $T_Q(K^n) = K^n$ because $T_Q$ is an isomorphism. Consequently, the dimension of the image is:
+\begin{equation*}
+    \rank_{\text{col}}(B) = \dim \operatorname{Im}(T_B) = \dim T_P(\operatorname{Im}(T_A)) = \dim \operatorname{Im}(T_A) = \rank_{\text{col}}(A)
+\end{equation*}
+where the second to last equality holds because $T_P$ is an isomorphism, preserving the dimension of subspaces.
+\end{proof}
+
+\section{Column Rank and Row Rank}
+
+\begin{theorem}[Equality of Column and Row Rank] \label{thm:17.c.1}
+Let $A \in M_{m \times n}(K)$. Then, $\rank_{\text{col}}(A) = \rank_{\text{row}}(A)$.
+\end{theorem}
+
+\begin{remark}[Notation and Properties of Rank]
+\begin{enumerate}
+    \item Because of this theorem, we will from now on denote $\rank(A) := \rank_{\text{col}}(A) = \rank_{\text{row}}(A)$.
+    \item Suppose $A'$ is a row-reduced echelon matrix that is row-equivalent to $A$. Then, we have:
+    \begin{equation*}
+        \rank(A) = \rank_{\text{row}}(A) = \rank_{\text{row}}(A') = \text{number of pivots in } A'
+    \end{equation*}
+    \item Recall that for a linear map $T: V \to W$, we defined $\rank(T) := \dim \operatorname{Im}(T)$. Moreover, if $A \in M_{m \times n}(K)$, then $\rank(T_A) = \dim \operatorname{Im}(T_A) = \rank_{\text{col}}(A)$.
+\end{enumerate}
+\end{remark}
+
+\subsection{Preparation for the Proof}
+
+\begin{lemma}[Rank Invariance under Composition with Isomorphisms] \label{lemma:17.c.2}
+Let $T: V \to W$ be a linear map, and let $S: W \to W'$ and $L: P \to V$ be isomorphisms. Then:
+\begin{enumerate}
+    \item $\rank(S \circ T) = \rank(T)$.
+    \item $\rank(T \circ L) = \rank(T)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\textbf{Proof of (a):} By definition, $\rank(S \circ T) = \dim (S(T(V)))$. Since $S$ is an isomorphism, its restriction to the subspace $T(V) \subseteq W$ is injective. An injective linear map preserves the dimension of a vector space, and therefore:
+\begin{equation*}
+    \dim (S(T(V))) = \dim (T(V)) = \rank(T)
+\end{equation*}
+
+\textbf{Proof of (b):} By definition, $\rank(T \circ L) = \dim (T(L(P)))$. Since $L$ is an isomorphism, it is surjective, which implies that $L(P) = V$. Consequently:
+\begin{equation*}
+    \dim (T(L(P))) = \dim (T(V)) = \rank(T)
+\end{equation*}
+This completes the proof.
+\end{proof}
+
+\begin{lemma}[Invertibility of the Transpose] \label{lemma:17.c.3}
+Let $A \in M_{n \times n}(K)$. Then, $A \in GL_n(K)$ if and only if $A^T \in GL_n(K)$.
+\end{lemma}
+
+\begin{proof}
+We know that $A$ is invertible if and only if the associated linear map $T_A: K^n \to K^n$ is an isomorphism. This is true if and only if $\rank(T_A) = n$, which is equivalent to $\rank_{\text{col}}(A) = n$.
+
+We also know that $A$ is row-equivalent to some row-reduced echelon matrix $A'$. Since row-equivalence corresponds to multiplying from the left by invertible matrices, we have that $A \in GL_n(K)$ if and only if $A' \in GL_n(K)$. Because $A'$ is an $n \times n$ row-reduced echelon matrix, $A'$ is invertible if and only if it has no zero rows. This holds if and only if $A'$ has $n$ pivots, which is equivalent to $\rank_{\text{row}}(A') = n$. Since row operations preserve the row space, this means $\rank_{\text{row}}(A) = n$.
+
+In summary, we have established that $A \in GL_n(K)$ if and only if $\rank_{\text{row}}(A) = n$. But by definition, the row rank of $A$ is exactly the column rank of its transpose, so $\rank_{\text{row}}(A) = \rank_{\text{col}}(A^T)$. Therefore, $A \in GL_n(K)$ if and only if $\rank_{\text{col}}(A^T) = n$, which means $A^T$ is invertible.
+\end{proof}
+
+\begin{lemma}[Rank Invariance under Matrix Equivalence] \label{lemma:17.c.4}
+Let $A, B \in M_{m \times n}(K)$ such that $B = P A Q$, where $P \in GL_m(K)$ and $Q \in GL_n(K)$. Then:
+\begin{enumerate}
+    \item $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$.
+    \item $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\textbf{Proof of (a):} Transitioning to the associated linear maps, we have $T_B = T_P \circ T_A \circ T_Q$. Since $P$ and $Q$ are invertible matrices, both $T_P$ and $T_Q$ are isomorphisms. Applying Lemma \ref{lemma:17.c.2}, we deduce that $\rank(T_B) = \rank(T_A)$. Recalling that the rank of a linear map given by a matrix matches the column rank of that matrix, we obtain $\rank_{\text{col}}(B) = \rank_{\text{col}}(A)$.
+
+\textbf{Proof of (b):} Taking the transpose of the equation $B = PAQ$ yields $B^T = Q^T A^T P^T$. Since $P$ and $Q$ are invertible matrices, their transposes $P^T$ and $Q^T$ are also invertible (we have previously seen that $(P^T)^{-1} = (P^{-1})^T$). We can now apply part (a) of this Lemma, which we have already proven, to the matrices $A^T$ and $B^T$. This gives us $\rank_{\text{col}}(B^T) = \rank_{\text{col}}(A^T)$. By the definition of the transpose, this immediately translates to $\rank_{\text{row}}(B) = \rank_{\text{row}}(A)$.
+\end{proof}
+
+\subsection{Proof of the Main Theorem}
+
+We are now ready for the proof of Theorem \ref{thm:17.c.1}.
+
+\begin{proof}[Proof of Theorem \ref{thm:17.c.1}]
+Let $r := \rank_{\text{col}}(A)$. By a previous proposition regarding the equivalence of matrices, we know that there exist invertible matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that:
+\begin{equation*}
+    P A Q = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} =: B
+\end{equation*}
+By Lemma \ref{lemma:17.c.4}, we know that $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$. Thus, it suffices to determine the row rank of $B$.
+
+The matrix $B$ is of the block form $\left(\begin{smallmatrix} I_r & O \\ O & O \end{smallmatrix}\right)$. The non-zero rows of $B$ are precisely the first $r$ standard basis vectors $e_1^T, e_2^T, \dots, e_r^T \in K_{\text{row}}^n$. Since these vectors form a linearly independent set, the dimension of the row space of $B$ is exactly $r$. Consequently, $\rank_{\text{row}}(B) = r$.
+
+Therefore, we conclude that $\rank_{\text{row}}(A) = r = \rank_{\text{col}}(A)$, completing the proof.
+\end{proof}
+
+\begin{importantremark}[Column Space versus Row Space]
+Although $\rank_{\text{col}}(A) = \rank_{\text{row}}(A)$, the column space and the row space are, in general, different vector spaces. First of all, if $A \in M_{m \times n}(K)$, then the column space is a subspace of $K^m$, whereas the row space is a subspace of $K_{\text{row}}^n$ (which is isomorphic to $K^n$). But even in the case where $m = n$ (i.e., $A \in M_{n \times n}(K)$), these two spaces are generally distinct! They share the exact same dimension, but they are not the same space.
+\end{importantremark}
+
+\section{More on Matrices and Linear Equations}
+
+Let $A \in M_{m \times n}(K)$, and consider the homogeneous system of linear equations $A \cdot x = 0$. We denote the space of solutions of this system by:
+\begin{equation*}
+    \operatorname{Sol}(A, 0) := \{x \in K^n \mid A x = 0\} = \ker(T_A)
+\end{equation*}
+Note that by the Rank-Nullity Theorem, we have $\dim \operatorname{Sol}(A, 0) = n - \rank(A)$, because $\dim \ker(T_A) = n - \dim \operatorname{Im}(T_A)$.
+
+Let $A'$ be a row-reduced echelon matrix that is row-equivalent to $A$ (for example, $A'$ is obtained from $A$ by Gauss elimination). We then know that the number of pivots of $A'$ equals $\rank(A)$, and the number of free variables is $n - \rank(A)$.
+
+We can visualize the structure of $A'$ and its corresponding variables $x_1, \dots, x_n$ as follows. The columns containing the leading $1$'s (pivots) correspond to the pivot variables, while the remaining columns correspond to the free variables. Clearly, the solution spaces are identical:
+\begin{equation*}
+    \operatorname{Sol}(A, 0) = \operatorname{Sol}(A', 0)
+\end{equation*}
+
+Denote by $x_{i_1}, \dots, x_{i_\ell}$ the free variables, where $1 \le i_1 < \dots < i_\ell \le n$ and $\ell = n - \rank(A)$. Similarly, denote by $x_{j_1}, \dots, x_{j_r}$ the pivot variables, where $1 \le j_1 < \dots < j_r \le n$ and $r = \rank(A)$.
+
+For each choice of values for the free variables $x_{i_1}, \dots, x_{i_\ell} \in K$, the pivot variables $x_{j_1}, \dots, x_{j_r}$ are uniquely determined. So, we obtain a map $\Phi: K^\ell \to \operatorname{Sol}(A, 0)$, where $\ell = n - \rank(A)$, defined by:
+\begin{equation*}
+    \Phi(\lambda_1, \dots, \lambda_\ell) = \text{the unique solution of } Ax = 0 \text{ (which is the solution of } A'x = 0 \text{)}
+\end{equation*}
+with $x_{i_1} = \lambda_1, \dots, x_{i_k} = \lambda_k, \dots, x_{i_\ell} = \lambda_\ell$.
+
+\begin{proposition}[Linearity and Isomorphism of the Solution Map] \label{prop:17.d.1}
+The map $\Phi$ is linear. Moreover, it is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+\textbf{Linearity of $\Phi$:} The $k$-th non-zero row of $A'$ gives the following equation:
+\begin{equation*}
+    x_{j_k} + (\text{linear combination of the free variables that come after } j_k) = 0
+\end{equation*}
+This allows us to isolate the pivot variable $x_{j_k}$:
+\begin{equation*}
+    x_{j_k} = - \sum_{\{q \mid 1 \le q \le \ell, \, i_q > j_k\}} a'_{k, i_q} \cdot x_{i_q}
+\end{equation*}
+This explicitly shows that the pivot variables $x_{j_1}, \dots, x_{j_r}$ depend linearly on the free variables $x_{i_1}, \dots, x_{i_\ell}$. This proves the linearity of $\Phi$.
+
+\textbf{Isomorphism:} To prove that $\Phi$ is an isomorphism, it is enough to show that $\ker(\Phi) = \{0\}$, because $\Phi: K^\ell \to \operatorname{Sol}(A, 0)$ is a linear map between two spaces of the exact same dimension $\ell$.
+
+But this clearly holds: if $\lambda = (\lambda_1, \dots, \lambda_\ell) \in \ker(\Phi)$, which means $\Phi(\lambda_1, \dots, \lambda_\ell) = 0$, then by the definition of $\Phi$, we must have $\lambda_1 = \dots = \lambda_\ell = 0$. This is simply because each $\lambda_k$ is an actual entry in the output vector $\Phi(\lambda_1, \dots, \lambda_\ell)$.
+
+Furthermore, we can explicitly state the inverse map $\Phi^{-1}$. For any $x \in \operatorname{Sol}(A, 0)$, we extract the entries corresponding to the free variables:
+\begin{equation*}
+    \Phi^{-1}(x) = \begin{pmatrix} x_{i_1} \\ \vdots \\ x_{i_\ell} \end{pmatrix}
+\end{equation*}
+This completes the proof.
+\end{proof}
+
+\begin{corollary}[Solutions of Non-Homogeneous Systems] \label{cor:17.d.2}
+Let $b \in K^m$, and $A \in M_{m \times n}(K)$. Then:
+\begin{enumerate}
+    \item $\operatorname{Sol}(A, b) := \{x \in K^n \mid A \cdot x = b\} \neq \emptyset$ if and only if $b \in \operatorname{ColS}(A)$.
+    \item If $\operatorname{Sol}(A, b) \neq \emptyset$ and $y \in \operatorname{Sol}(A, b)$, then:
+    \begin{equation*}
+        \operatorname{Sol}(A, b) = y + \operatorname{Sol}(A, 0) := \{y + x \mid x \in \operatorname{Sol}(A, 0)\}
+    \end{equation*}
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+This is left as an exercise.
+
+\textbf{Hints:}
+1) Write the matrix $A$ in terms of its column vectors $v_1, \dots, v_n$:
+\begin{equation*}
+    A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}
+\end{equation*}
+For any vector $x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in K^n$, the matrix-vector product is a linear combination of the columns:
+\begin{equation*}
+    A \cdot x = x_1 \begin{pmatrix} | \\ v_1 \\ | \end{pmatrix} + \dots + x_n \begin{pmatrix} | \\ v_n \\ | \end{pmatrix}
+\end{equation*}
+
+2) Let $y \in \operatorname{Sol}(A, b)$. First, assume $x \in \operatorname{Sol}(A, 0)$. Then $A \cdot x = 0$ and $A \cdot y = b$. Adding these together yields:
+\begin{equation*}
+    A(y + x) = A \cdot y + A \cdot x = b + 0 = b
+\end{equation*}
+Conversely, if $z \in \operatorname{Sol}(A, b)$, meaning $A \cdot z = b$, then define $x := z - y$. We obviously have $z = y + x$, and checking the multiplication gives:
+\begin{equation*}
+    A \cdot x = A \cdot (z - y) = A \cdot z - A \cdot y = b - b = 0
+\end{equation*}
+This shows that any solution $z$ can be written as $y + x$ for some $x \in \operatorname{Sol}(A, 0)$.
+\end{proof}
+
+\begin{proposition}[Rank Criterion for Solvability] \label{prop:17.d.3}
+Let $A \in M_{m \times n}(K)$ and $b \in K^m$. The following statements are equivalent:
+\begin{enumerate}
+    \item $\rank(A|b) = \rank(A)$.
+    \item The system of equations $Ax = b$ has a solution.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Write $A$ in terms of its columns, $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$. We have the following chain of equivalences:
+\begin{align*}
+    \rank(A|b) = \rank(A) &\iff \operatorname{col-rank}(A|b) = \operatorname{col-rank}(A) \\
+    &\iff \dim \Sp(v_1, \dots, v_n, b) = \dim \Sp(v_1, \dots, v_n) \\
+    &\iff b \in \Sp(v_1, \dots, v_n) \\
+    &\iff b \in \operatorname{ColS}(A) \\
+    &\iff \operatorname{Sol}(A, b) \neq \emptyset
+\end{align*}
+The last step holds directly by Corollary \ref{cor:17.d.2}, thus finishing the proof.
+\end{proof}
+
+\begin{proposition}[Criterion for a Unique Solution] \label{prop:17.d.4}
+Let $A \in M_{m \times n}(K)$ and $b \in K^m$. The following statements are equivalent:
+\begin{enumerate}
+    \item $\rank(A) = \rank(A|b) = n$.
+    \item The system $Ax = b$ has a unique solution.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+This is left as an exercise.
+
+\textbf{Hints:} Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$. Note that:
+\begin{equation*}
+    \rank(A) = n \iff \dim \Sp(v_1, \dots, v_n) = n
+\end{equation*}
+Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linearly independent, and therefore, they form a basis for $\operatorname{ColS}(A)$.
+\end{proof}
+
+\section{Elementary Row Operations Revisited}
+
+Let $A \in M_{n \times p}(K)$. We have previously learned about elementary row operations, which are utilized as an integral part of the Gaussian elimination algorithm. The main point of this section is to demonstrate that all of these operations can be expressed through matrix multiplications.
+
+\textbf{Notation:} Let $n \in \mathbb{Z}_{\ge 1}$, and let $1 \le i \le n$, $1 \le j \le n$. We denote by $E_{ij} \in M_{n \times n}(K)$ the matrix whose entries are all zero, except for the entry in the $i$-th row and $j$-th column, which is equal to $1$. 
+
+We will now define three types of elementary matrices in $M_{n \times n}(K)$.
+
+\begin{definition}[Elementary Matrices] \label{def:17.e.0}
+We define the following three types of elementary matrices:
+\begin{enumerate}
+    \item \textbf{Type I:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$, and let $\alpha \in K$. We define $Q_{ij}(\alpha)$ to be the matrix obtained from $I_n$ by applying the row operation $R_i + \alpha R_j \longrightarrow R_i$ (i.e., replacing the $i$-th row by the sum of the $i$-th row and $\alpha$ times the $j$-th row). Explicitly, we have:
+    \begin{equation*}
+        Q_{ij}(\alpha) = I_n + \alpha \cdot E_{ij}
+    \end{equation*}
+    
+    \item \textbf{Type II:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$. We define $P_{ij}$ to be the matrix obtained from $I_n$ by permuting (exchanging) the $i$-th row and the $j$-th row, denoted by $R_i \leftrightarrow R_j$.
+    
+    \item \textbf{Type III:} Let $1 \le i \le n$, and let $0 \neq \alpha \in K$. We denote by $S_i(\alpha)$ the matrix obtained from $I_n$ by applying the row operation $\alpha R_i \longrightarrow R_i$ (i.e., multiplying the $i$-th row by the non-zero scalar $\alpha$).
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+Show that the Type II elementary matrix can be written explicitly as $P_{ij} = I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$.
+\end{exercise}
+
+\begin{example}
+Consider the space $M_{4 \times 4}(K)$. Examples of the three types of elementary matrices are:
+\begin{align*}
+    Q_{1,3}(\alpha) &= \begin{pmatrix} 1 & 0 & \alpha & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \\
+    P_{3,4} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \\
+    S_3(\alpha) &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & \alpha & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+\end{align*}
+\end{example}
+
+\begin{lemma}[Matrix Multiplication and Row Operations] \label{lemma:17.e.1}
+Let $A \in M_{n \times p}(K)$. Multiplying $A$ from the left by an elementary matrix performs the corresponding elementary row operation on $A$:
+\begin{enumerate}
+    \item Multiplying $A$ from the left with $Q_{ij}(\alpha)$ results in the row operation $R_i + \alpha R_j \longrightarrow R_i$:
+    \begin{equation*}
+        A \xrightarrow{R_i + \alpha R_j \longrightarrow R_i} Q_{ij}(\alpha) \cdot A
+    \end{equation*}
+    \item Multiplying $A$ from the left with $P_{ij}$ results in the row operation $R_i \leftrightarrow R_j$:
+    \begin{equation*}
+        A \xrightarrow{R_i \leftrightarrow R_j} P_{ij} \cdot A
+    \end{equation*}
+    \item Multiplying $A$ from the left with $S_i(\alpha)$ results in the row operation $\alpha R_i \longrightarrow R_i$:
+    \begin{equation*}
+        A \xrightarrow{\alpha R_i \longrightarrow R_i} S_i(\alpha) \cdot A
+    \end{equation*}
+\end{enumerate}
+\end{lemma}
+
+\begin{importantremark}[Column Operations]
+The same principle holds true for elementary column operations, but via right-multiplication:
+\begin{enumerate}
+    \item[\textbf{(a')}] Multiplying $A$ from the right with $Q_{ij}(\alpha)$ results in the column operation $C_j + \alpha C_i \longrightarrow C_j$:
+    \begin{equation*}
+        A \xrightarrow{C_j + \alpha C_i \longrightarrow C_j} A \cdot Q_{ij}(\alpha)
+    \end{equation*}
+    \item[\textbf{(b')}] Multiplying $A$ from the right with $P_{ij}$ results in the column operation $C_i \leftrightarrow C_j$:
+    \begin{equation*}
+        A \xrightarrow{C_i \leftrightarrow C_j} A \cdot P_{ij}
+    \end{equation*}
+    \item[\textbf{(c')}] Multiplying $A$ from the right with $S_i(\alpha)$ results in the column operation $\alpha C_i \longrightarrow C_i$:
+    \begin{equation*}
+        A \xrightarrow{\alpha C_i \longrightarrow C_i} A \cdot S_i(\alpha)
+    \end{equation*}
+\end{enumerate}
+\end{importantremark}
+
+\begin{proof}
+Statements (a), (b), and (c) can be proven directly by calculating the matrix multiplications (you are encouraged to check this!). 
+
+Statements (a'), (b'), and (c') can be deduced from the row operation versions by passing to the transposed matrix. For example, to prove (a'):
+\begin{equation*}
+    (A \cdot Q_{ij}(\alpha))^T = Q_{ij}(\alpha)^T \cdot A^T = Q_{ji}(\alpha) \cdot A^T
+\end{equation*}
+By part (a), this is exactly the matrix obtained from $A^T$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$. But taking the transpose again, this is equal to:
+\begin{equation*}
+    \left( \text{matrix obtained from } A \text{ after applying } C_j + \alpha C_i \longrightarrow C_j \right)^T
+\end{equation*}
+Taking the transpose of both sides, it follows that $A \cdot Q_{ij}(\alpha)$ is the matrix obtained from $A$ after the column operation $C_j + \alpha C_i \longrightarrow C_j$. The proofs for (b') and (c') follow a similar logic.
+\end{proof}
+
+\begin{lemma}[Inverses of Elementary Matrices] \label{lemma:17.e.2}
+Every elementary matrix is invertible, and the inverse of each is an elementary matrix of the exact same type:
+\begin{equation*}
+    Q_{ij}(\alpha)^{-1} = Q_{ij}(-\alpha), \quad P_{ij}^{-1} = P_{ij}, \quad \text{and} \quad S_i(\alpha)^{-1} = S_i(\alpha^{-1})
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+\textit{Exercise.} (\textit{Hint:} Note that $P_{ij} \cdot P_{ij}$ is the matrix obtained from $P_{ij}$ by exchanging rows $i$ and $j$, which brings us immediately back to $I_n$. Apply similar logical steps for the other types.)
+\end{proof}
+
+\begin{theorem}[Decomposition into Elementary Matrices] \label{thm:17.e.3}
+For every invertible matrix $A \in GL_n(K)$, there exists an integer $k \ge 1$ and a sequence of elementary matrices $T_1, \dots, T_k$ such that:
+\begin{equation*}
+    T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
+\end{equation*}
+Furthermore, we have $A = T_1^{-1} \dots T_k^{-1}$ and $A^{-1} = T_k \dots T_1$. In particular, any invertible matrix $A$ can be written as a finite product of elementary matrices.
+\end{theorem}
+
+\begin{proof}
+We already know that every matrix $A \in M_{n \times n}(K)$ can be brought to a row-reduced echelon matrix, which we will call $A'$, using the Gaussian elimination algorithm. 
+
+In our case, $A$ is invertible, and hence $\rank(A) = n$. Because row operations do not change the rank, we have $\rank(A') = \rank(A)$, which implies that $\rank(A') = n$. The only $n \times n$ row-reduced echelon matrix with rank $n$ is the identity matrix, meaning $A' = I_n$. 
+
+Since each step in the Gaussian elimination algorithm corresponds to an elementary operation, we can deduce from Lemma \ref{lemma:17.e.1} that there exist elementary matrices $T_1, \dots, T_k$ (of types I, II, and III) such that:
+\begin{equation*}
+    T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
+\end{equation*}
+By left-multiplying successively with the inverses of these elementary matrices, we isolate $A$ and deduce that $A = T_1^{-1} \dots T_k^{-1}$. Taking the inverse of $A$ yields $A^{-1} = T_k \dots T_1$.
+\end{proof}
+
+\begin{theorem}[Computing the Inverse Matrix] \label{thm:17.e.4}
+Let $A \in M_{n \times n}(K)$. Construct the augmented matrix by placing $A$ alongside $I_n$, denoted as $(A \mid I_n)$. Then, $A$ is invertible if and only if $(A \mid I_n)$ can be brought, via a sequence of elementary row operations, to the form $(I_n \mid B)$ for some matrix $B \in M_{n \times n}(K)$. Furthermore, if this is the case, we have $A^{-1} = B$.
+\end{theorem}
+
+Before proving this theorem, we require an intermediate technical result.
+
+\begin{lemma}[Block Matrix Multiplication] \label{lemma:17.e.5}
+Let $B, C, D \in M_{n \times n}(K)$. Then:
+\begin{equation*}
+    B \cdot (C \mid D) = (B \cdot C \mid B \cdot D)
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+This follows directly from the definition of matrix multiplication. Check the explicit details as an exercise!
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:17.e.4}]
+Assume that $A$ is invertible. By Theorem \ref{thm:17.e.3}, there exist elementary matrices $T_1, \dots, T_k$ such that $T_k \dots T_1 \cdot A = I_n$. Using Lemma \ref{lemma:17.e.5}, we can multiply the augmented matrix $(A \mid I_n)$ from the left by this chain of elementary matrices:
+\begin{equation*}
+    T_k \dots T_1 \cdot (A \mid I_n) = (T_k \dots T_1 \cdot A \mid T_k \dots T_1 \cdot I_n) = (I_n \mid T_k \dots T_1)
+\end{equation*}
+Let us define $B := T_k \dots T_1$. We can clearly see that:
+\begin{equation*}
+    B \cdot A = (T_k \dots T_1) \cdot A = I_n
+\end{equation*}
+and using the decomposition of $A$,
+\begin{equation*}
+    A \cdot B = (T_1^{-1} \dots T_k^{-1}) \cdot (T_k \dots T_1) = I_n
+\end{equation*}
+This explicitly implies that $A^{-1} = B$.
+
+Conversely, assume that $(A \mid I_n)$ can be brought to $(I_n \mid B)$ by a sequence of elementary row operations, for some matrix $B \in M_{n \times n}(K)$. This directly implies that the matrix $A$ itself is row-equivalent to $I_n$. Consequently, $A$ must have rank $n$, which inherently means that $A$ is invertible. This concludes the proof.
+\end{proof}
+
+\begin{example}
+Let us find the inverse of the matrix $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \in M_{2 \times 2}(\mathbb{Q})$. We place $A$ and $I_2$ together in an augmented matrix and apply Gaussian elimination:
+\begin{equation*}
+    \left( \begin{array}{cc|cc} 1 & 2 & 1 & 0 \\ 3 & 4 & 0 & 1 \end{array} \right) \xrightarrow{R_2 - 3R_1 \longrightarrow R_2} \left( \begin{array}{cc|cc} 1 & 2 & 1 & 0 \\ 0 & -2 & -3 & 1 \end{array} \right)
+\end{equation*}
+Next, we scale the second row to create a pivot of $1$:
+\begin{equation*}
+    \xrightarrow{-\frac{1}{2}R_2 \longrightarrow R_2} \left( \begin{array}{cc|cc} 1 & 2 & 1 & 0 \\ 0 & 1 & \frac{3}{2} & -\frac{1}{2} \end{array} \right)
+\end{equation*}
+Finally, we eliminate the entry above the second pivot:
+\begin{equation*}
+    \xrightarrow{R_1 - 2R_2 \longrightarrow R_1} \left( \begin{array}{cc|cc} 1 & 0 & -2 & 1 \\ 0 & 1 & \frac{3}{2} & -\frac{1}{2} \end{array} \right)
+\end{equation*}
+The left side is now the identity matrix $I_2$, which means the right side is our inverse matrix. We conclude that:
+\begin{equation*}
+    A^{-1} = \begin{pmatrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \end{pmatrix}
+\end{equation*}
+\end{example}

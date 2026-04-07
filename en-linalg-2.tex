@@ -26,6 +26,21 @@
 % change page-footer:
 \usepackage{fancyhdr}
 
+%\usepackage{fontspec}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{tgbonum}
+
+%\usepackage{concmath-otf}
+
+%\setmainfont{TeX Gyre Bonum}
+%\setmathfont{TeX Gyre Bonum Math}
+
+%\usepackage[default]{fontsetup}
+%\usepackage[sansdefault]{fontsetup}
+%
+%\usepackage{concmath-otf}
+
 % Macro for omitted content (kept for future use if needed)
 \newcommand{\omitted}[1]{\textcolor{red}{#1}}
 
@@ -51,10 +66,10 @@
 
 % 3. Custom Section Format: Title (section X.Y)
 \titleformat{\section}
-{\normalfont\Large\bfseries}
+{\large\bfseries}
 {}
 {0pt}
-{#1 {\large\textnormal{(Section \thechapter.\alph{section})}}}
+{#1 {\textnormal{(Section \thechapter.\alph{section})}}}
 
 % 4. Space-efficient Section Headings
 \titlespacing*{\section}{0pt}{12pt}{6pt}
@@ -189,6 +204,7 @@
 
 
 % Include content
+\input{content/matrices}
 \input{content/vs-out-of-old-ones}
 \input{content/misc}
 \input{content/determinants}

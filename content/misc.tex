@@ -126,9 +126,9 @@ In our strict definition of a vector space, there is always a distinguished orig
     \filldraw (3.25, 1.5) circle (1.5pt) node[below left] {$p_2'$};
     \filldraw (2.5, 3) circle (1.5pt) node[above right] {$p_2''$};
 
-    % Vector highlights
-    \draw[->, very thick, red] (0,0) -- (0.75, 1.5) node[midway, left=2pt] {$\vec{p_1 p_1'}$};
-    \draw[->, very thick, orange] (0,0) arc (180:120:2) (0.75, 1.5) -- (1.5, 3) node[midway, left=2pt] {$\vec{p_1' p_1''}$};
+    % Vector highlights (corrected)
+    \draw[->, very thick, red] (0,0) -- (0.75, 1.5) node[midway, left=2pt] {$\vec{p_1 p_1'}$}; % Vector p1 p1'
+    \draw[->, very thick, orange] (0.75, 1.5) -- (1.5, 3) node[midway, left=2pt] {$\vec{p_1' p_1''}$}; % Vector p1' p1''
   \end{tikzpicture}
 \end{center}
 

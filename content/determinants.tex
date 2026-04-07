@@ -2,6 +2,7 @@
 \chapter{Determinants}
 \section{Introduction and Motivation}
 
+\subsection{The special case of $2 \times 2$ matrices}
 In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether $A$ is invertible.
 
 \begin{proposition}[Invertibility of $2 \times 2$ Matrices]\label{prop:inv_2x2}
@@ -23,9 +24,9 @@ In linear algebra, determining whether a matrix is invertible is a fundamental p
   If, on the other hand, $\binom{b}{d} = \tau \binom{a}{c}$, then $b = \tau a$ and $d = \tau c$. Consequently, $ad - bc = a(\tau c) - (\tau a)c = 0$.
   Thus, we have proved that if $A$ is not invertible, then $ad - bc = 0$.
 
-  Conversely, assume $ad - bc = 0$. If $a = 0$, then $bc = 0$, so either $b = 0$ or $c = 0$. This means either $A = \left(\begin{smallmatrix} 0 & 0 \\ c & d \end{smallmatrix}\right)$ or $A = \left(\begin{smallmatrix} 0 & b \\ 0 & d \end{smallmatrix}\right)$. In both of these cases, $A$ clearly has linearly dependent columns and is therefore not invertible.
+  Conversely, assume $ad - bc = 0$. If $a = 0$, then $bc = 0$, so either $b = 0$ or $c = 0$. This means either $A = \left(\begin{smallmatrix} 0 & 0 \\ c & d \end{smallmatrix}\right)$ or $A = \left(\begin{smallmatrix} 0 & b \\ 0 & d \end{smallmatrix}\right)$. In both of these cases, $A$, clearly, has linearly dependent columns and is therefore not invertible.
 
-  Now assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus we can write $A = \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column because $\binom{b}{\frac{bc}{a}} = \frac{b}{a} \binom{a}{c}$. This implies that the columns of $A$ are linearly dependent. Hence, $\operatorname{rank}(A) < 2$, which implies $A$ is not invertible.
+  Now, assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus we can write $A = \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column because $\binom{b}{\frac{bc}{a}} = \frac{b}{a} \binom{a}{c}$. This implies that the columns of $A$ are linearly dependent. Hence, $\rank(A) < 2$, which implies $A$ is not invertible.
 \end{proof}
 
 To confirm the sufficiency of this condition and to find the explicit inverse, the formula for $A^{-1}$ can be verified by direct matrix multiplication:
@@ -39,7 +40,7 @@ To confirm the sufficiency of this condition and to find the explicit inverse, t
 
 \subsection{Multilinear and Alternating Functions}
 
-To generalize the determinant, we should view an $n \times n$ matrix not just as a grid of numbers, but as a collection of $n$ row vectors.
+We wish to generalize the determinant to arbitrary dimensions. To this end, we should view an $n \times n$ matrix not just as a grid of numbers, but as a collection of $n$ row vectors.
 
 \begin{definition}[$n$-Linearity]\label{def:n_linear}
   Let $D : M_{n \times n}(K) \to K$ be a function. We say that $D$ is \qt{$n$-linear} if for every $1 \le i \le n$, $D$ is linear as a function of the $i$-th row when all the other $n-1$ rows are held fixed.
@@ -68,7 +69,7 @@ Saying that $D$ is $n$-linear means that for any chosen row index $i$, the follo
   \[
   D(\dots, \lambda \cdot \alpha_i, \dots) = b \cdot (\lambda A(i, k_i)) = \lambda \cdot D(\dots, \alpha_i, \dots).
   \]
-  Thus, $D$ is indeed $n$-linear.
+  Therefore, $D$ is indeed $n$-linear.
 \end{example}
 
 \begin{example}[Diagonal Product]\label{ex:diagonal_product}
@@ -83,7 +84,7 @@ If $D$ is 2-linear, then we have:
   &= A_{11} D(\epsilon_1, A_{21}\epsilon_1 + A_{22}\epsilon_2) + A_{12} D(\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
   &= A_{11}A_{21}D(\epsilon_1, \epsilon_1) + A_{11}A_{22}D(\epsilon_1, \epsilon_2) + A_{12}A_{21}D(\epsilon_2, \epsilon_1) + A_{12}A_{22}D(\epsilon_2, \epsilon_2).
 \end{align*}
-So $D$ is completely determined by its values on the four pairings: $D(\epsilon_1, \epsilon_1)$, $D(\epsilon_1, \epsilon_2)$, $D(\epsilon_2, \epsilon_1)$, and $D(\epsilon_2, \epsilon_2)$.
+Therefore, $D$ is completely determined by its values on the following four pairings: $D(\epsilon_1, \epsilon_1)$, $D(\epsilon_1, \epsilon_2)$, $D(\epsilon_2, \epsilon_1)$, and $D(\epsilon_2, \epsilon_2)$.
 
 \begin{lemma}[Closure of $n$-Linear Functions]\label{lem:linear_comb_n_linear}
   Any linear combination of $n$-linear functions is again an $n$-linear function.
@@ -113,7 +114,7 @@ So $D$ is completely determined by its values on the four pairings: $D(\epsilon_
 \end{proposition}
 
 \begin{proof}
-  We begin with the proof of (2). Assume first that $B'$ is obtained from $B$ by interchanging two adjacent rows (say, row $k$ and row $k+1$).
+  We begin with the proof of \textbf{(b)}. Assume first that $B'$ is obtained from $B$ by interchanging two adjacent rows (say, row $k$ and row $k+1$).
   Consider evaluating $D$ on a matrix where both the $k$-th and $(k+1)$-th rows are equal to $\beta_k + \beta_{k+1}$. By our assumption, this yields $0$.
   Expanding this via $n$-linearity gives:
   \[
@@ -126,8 +127,8 @@ So $D$ is completely determined by its values on the four pairings: $D(\epsilon_
 
   Now suppose $B'$ is obtained from $B$ by interchanging rows $k$ and $\ell$ where $k < \ell$. We can obtain $B'$ by doing a sequence of adjacent row interchanges. Moving row $\ell$ to position $k$ requires $r = \ell-k$ adjacent interchanges. Next, moving the original row $k$ down to position $\ell$ requires $r-1$ adjacent interchanges. The total number of interchanges is $2r - 1$. Since this is always an odd number, we flip the sign an odd number of times. Thus, $D(B') = (-1)^{2r-1} D(B) = -D(B)$.
 
-  We now prove (1). Let $A$ be a matrix in which row $i$ equals row $j$ where $i < j$. If $j = i+1$, then by assumption $D(A) = 0$. If $j > i+1$, we interchange row $j$ with row $i+1$ to obtain a matrix $A'$ with two equal adjacent rows.
-  By assumption $D(A') = 0$, but by (2), $D(A') = -D(A)$, which implies $D(A) = 0$.
+  We now prove \textbf{(a)}. Let $A$ be a matrix in which row $i$ equals row $j$ where $i < j$. If $j = i+1$, then by assumption $D(A) = 0$. If $j > i+1$, we interchange row $j$ with row $i+1$ to obtain a matrix $A'$ with two equal adjacent rows.
+  By assumption $D(A') = 0$, but by \textbf{(b)}, $D(A') = -D(A)$, which implies $D(A) = 0$.
 \end{proof}
 
 \subsection{The Determinant Function}
@@ -145,7 +146,7 @@ So $D$ is completely determined by its values on the four pairings: $D(\epsilon_
     &= A_{11}A_{21}D(\epsilon_1, \epsilon_1) + A_{11}A_{22}D(\epsilon_1, \epsilon_2) \\
     &\quad + A_{12}A_{21}D(\epsilon_2, \epsilon_1) + A_{12}A_{22}D(\epsilon_2, \epsilon_2).
   \end{align*}
-  So, $D$ is completely determined by its values on these standard basis row pairings.
+  Consequently, $D$ is completely determined by its values on these standard basis row pairings.
 
   If $D$ is alternating, then evaluating equal rows gives zero, meaning $D(\epsilon_1, \epsilon_1) = D(\epsilon_2, \epsilon_2) = 0$. Additionally, swapping rows flips the sign, so $D(\epsilon_2, \epsilon_1) = -D(\epsilon_1, \epsilon_2) = -D(I)$.
   Finally, if $D$ is a determinant function, $D(I) = 1$. Substituting these values back into our expansion, we perfectly recover the familiar formula:
@@ -398,9 +399,9 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
 \end{theorem}
 
 \begin{proof}
-  Statement (b) follows directly from the fact that the determinant is an alternating function. Statement (c) follows from the $n$-linearity of the determinant.
+  Statement \textbf{(b)} follows directly from the fact that the determinant is an alternating function. Statement \textbf{(c)} follows from the $n$-linearity of the determinant.
 
-  To prove (a), let $A$ have rows $\alpha_1, \dots, \alpha_n$. Assume $j < i$. Expanding by linearity on the $i$-th row gives:
+  To prove \textbf{(a)}, let $A$ have rows $\alpha_1, \dots, \alpha_n$. Assume $j < i$. Expanding by linearity on the $i$-th row gives:
   \begin{align*}
     \det(B) &= \det(\alpha_1, \dots, \alpha_i + c\alpha_j, \dots, \alpha_j, \dots, \alpha_n) \\
     &= \det(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) + c \det(\alpha_1, \dots, \alpha_j, \dots, \alpha_j, \dots, \alpha_n) \\
