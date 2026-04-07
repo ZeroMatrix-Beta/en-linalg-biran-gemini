@@ -454,7 +454,8 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \begin{proof}
   $\implies$: If there exists a basis $\mathcal{B}$ such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular as in \eqref{eq:upper_triangular_def}, then:
   \[ P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = \det \begin{pmatrix} \lambda_1 - x & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n - x \end{pmatrix} = (\lambda_1 - x) \dots (\lambda_n - x). \]
-
+  
+  \noindent
   $\impliedby$: We will use induction on $n = \dim V$.
 
   \textbf{Base case $n=1$}: In this case, $V$ is $1$-dimensional and $[T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} \lambda \end{smallmatrix}\right)$, so $T$ is even diagonalizable.
@@ -479,8 +480,9 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{equation}
   Denote by $\mathcal{E}$ the standard basis of $K^n$. We know that $[T_A]_{\mathcal{C}}^{\mathcal{C}} = [\mathrm{id}]_{\mathcal{C}}^{\mathcal{E}} \cdot [T_A]_{\mathcal{E}}^{\mathcal{E}} \cdot [\mathrm{id}]_{\mathcal{E}}^{\mathcal{C}} = Q^{-1}AQ$, where $Q = [\mathrm{id}]_{\mathcal{C}}^{\mathcal{E}}$.
   Consequently, $Q^{-1}AQ = \left(\begin{smallmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{smallmatrix}\right)$.
-
-  Now define the $(n+1) \times (n+1)$ block matrix:
+  
+  \noindent
+  Now, define the $(n+1) \times (n+1)$ block matrix:
   \begin{equation} \label{eq:P_underline}
     \underline{P} := \left(\begin{array}{c|c} 1 & 0 \dots 0 \\ \hline 0 & \\ \vdots & Q \\ 0 & \end{array}\right) \in M_{(n+1) \times (n+1)}(K).
   \end{equation}
@@ -490,10 +492,21 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{claim*}
 
   \begin{proof}[Proof of Claim]
-    This follows from direct block matrix multiplication:
-    \[ \underline{P} \cdot \underline{P}^{-1} = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q \end{array}\right) \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q^{-1} \end{array}\right) = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & I_n \end{array}\right) \]
-    \[ \underline{P}^{-1} M \underline{P} = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q^{-1} \end{array}\right) \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & A \end{array}\right) \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q \end{array}\right) = \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & Q^{-1}AQ \end{array}\right) \]
-    Since $Q^{-1}AQ$ is upper triangular with diagonal entries $\lambda_2, \dots, \lambda_{n+1}$, the entire matrix $\underline{P}^{-1}M\underline{P}$ is upper triangular. This proves the claim.
+    This follows from direct block matrix multiplication. First, we verify the product $\underline{P} \cdot \underline{P}^{-1}$ to confirm the inverse:
+    \[ \underline{P} \cdot \underline{P}^{-1} = \left(\begin{array}{c|c} 1 \cdot 1 + 0 \cdot 0 & 1 \cdot 0 + 0 \cdot Q^{-1} \\ \hline 0 \cdot 1 + Q \cdot 0 & 0 \cdot 0 + Q \cdot Q^{-1} \end{array}\right) = \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & I_n \end{array}\right). \]
+    Next, we compute the similarity transformation $\underline{P}^{-1} M \underline{P}$ in two steps. Let us first multiply $\underline{P}^{-1}$ and $M$:
+    \begin{align*}
+      \underline{P}^{-1} M &= \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q^{-1} \end{array}\right) \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & A \end{array}\right) \\
+      &= \left(\begin{array}{c|c} 1 \cdot \lambda_1 + 0 \cdot 0 & 1 \cdot * + 0 \cdot A \\ \hline 0 \cdot \lambda_1 + Q^{-1} \cdot 0 & 0 \cdot * + Q^{-1} \cdot A \end{array}\right) = \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & Q^{-1}A \end{array}\right).
+    \end{align*}
+    Finally, we multiply the resulting matrix by $\underline{P}$ from the right:
+    \begin{align*}
+      (\underline{P}^{-1} M) \underline{P} &= \left(\begin{array}{c|c} \lambda_1 & * \\ \hline 0 & Q^{-1}A \end{array}\right) \left(\begin{array}{c|c} 1 & 0 \\ \hline 0 & Q \end{array}\right) \\
+      &= \left(\begin{array}{c|c} \lambda_1 \cdot 1 + * \cdot 0 & \lambda_1 \cdot 0 + * \cdot Q \\ \hline 0 \cdot 1 + Q^{-1}A \cdot 0 & 0 \cdot 0 + Q^{-1}A \cdot Q \end{array}\right) \\
+      &= \left(\begin{array}{c|c} \lambda_1 & *' \\ \hline 0 & Q^{-1}AQ \end{array}\right),
+    \end{align*}
+    where $*'$ denotes the new row vector $*Q$.
+    Since $Q^{-1}AQ$ is upper triangular with diagonal entries $\lambda_2, \dots, \lambda_{n+1}$ (as guaranteed by the induction hypothesis), the block structure ensures the entire matrix $\underline{P}^{-1}M\underline{P}$ is upper triangular. This proves the claim.
   \end{proof}
 
   We continue with the proof of the Theorem. Recall we have the basis $\mathcal{B}' = (u_1, u_2, \dots, u_{n+1})$, where $[T]_{\mathcal{B}'}^{\mathcal{B}'} = M$.

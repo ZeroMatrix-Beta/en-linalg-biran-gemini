@@ -29,13 +29,14 @@
 
   So far, we have defined $+ \colon \Hom(V,W) \times \Hom(V,W) \to \Hom(V,W)$ and $\cdot \colon K \times \Hom(V,W) \to \Hom(V,W)$.
 
-  Regarding the neutral element, the map $\mathcal{O} \colon V \to W$ defined by $v \mapsto 0$ for all $v \in V$ is linear. We claim that $\mathcal{O} + T = T$. Indeed,
-  $$(\mathcal{O} + T)(v) = \mathcal{O}(v) + T(v) = 0 + T(v) = T(v)$$
+  Regarding the neutral element, the map $0 \colon V \to W$ defined by $v \mapsto 0$ for all $v \in V$ is linear. We claim that $0 + T = T$. Indeed,
+  $$(0 + T)(v) = 0(v) + T(v) = 0 + T(v) = T(v)$$
   for all $v \in V$. Similarly, one shows that $T + \mathcal{O} = T$.
+  for all $v \in V$. Similarly, one shows that $T + 0 = T$.
 \end{proof}
 
 \begin{exercise}
-  Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space.
+  Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space, using the zero map $0 \colon V \to W$ as the additive identity.
 \end{exercise}
 
 For example, consider the distributivity axiom. For all $\alpha \in K$ and $T_1, T_2 \in \Hom(V,W)$, we have $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$. Indeed, for $v \in V$,
@@ -179,7 +180,7 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   Let $V$ be a vector space over $K$. Show that:
   \begin{enumerate}
     \item $(\id_V)^* = \id_{V^*}$.
-    \item $(\mathcal{O} \colon V \to V)^* = (\mathcal{O} \colon V^* \to V^*)$.
+    \item $(0 \colon V \to V)^* = (0 \colon V^* \to V^*)$.
   \end{enumerate}
 \end{exercise}
 
@@ -545,4 +546,3 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
   Let $T \colon V \to W$ be a linear map between vector spaces. Prove that the annihilator of the image of $T$ is equal to the kernel of its dual map:
   \[ (\operatorname{Im} T)^\perp = \ker(T^*). \]
 \end{exercise}
-
