@@ -41,6 +41,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Introductory Phrases:** Always place a comma after introductory adverbs (e.g., Clearly, So, Moreover, In this case, Hence, Thus, Next).
 * **Conjunctions:** Where grammatically sound, use commas around transition phrases like ", and therefore," (e.g., The determinant is non-zero, and therefore, the matrix is invertible.).
 * **Structural Flow:** Use commas to separate conditional clauses (If... , then...), but avoid grammatically incorrect commas before "that" or between verbs and objects. Use commas in front of "and therefore" if appropriate. 
+* **Syllabication:** To assist LaTeX with professional justification and avoid margin overflows, use manual hyphenation hints for long technical terms. For example, always use `finite-di\-men\-sional` instead of the plain version.
 
 # OPERATIONAL DIRECTIVES
 * **Inline Edits:** When performing inline edits, prioritize keeping the surrounding LaTeX syntax intact.

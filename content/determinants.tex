@@ -3,7 +3,7 @@
 \section{Introduction and Motivation}
 
 \subsection{The special case of $2 \times 2$ matrices}
-In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether $A$ is invertible.
+In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in \M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether $A$ is invertible.
 
 \begin{proposition}[Invertibility of $2 \times 2$ Matrices]\label{prop:inv_2x2}
   The matrix $A$ is invertible if and only if $ad - bc \neq 0$. Moreover, if $A$ is invertible, then its inverse is given by the explicit formula:
@@ -157,11 +157,11 @@ Therefore, $D$ is completely determined by its values on the following four pair
 \end{example}
 
 \begin{definition}[Submatrix]\label{def:minor_submatrix}
-  Let $A \in M_{n \times n}(K)$, $n \ge 2$, and $1 \le i \le n$, $1 \le j \le n$. We denote by $A(i|j) \in M_{(n-1) \times (n-1)}(K)$ the \qt{submatrix} obtained from $A$ by deleting row $i$ and column $j$. If $D$ is an $(n-1)$-linear function, we intuitively define $D_{ij}(A) := D(A(i|j))$.
+  Let $A \in \M_{n \times n}(K)$, $n \ge 2$, and $1 \le i \le n$, $1 \le j \le n$. We denote by $A(i|j) \in \M_{(n-1) \times (n-1)}(K)$ the \qt{submatrix} obtained from $A$ by deleting row $i$ and column $j$. If $D$ is an $(n-1)$-linear function, we intuitively define $D_{ij}(A) := D(A(i|j))$.
 \end{definition}
 
 \begin{theorem}[Recursive Construction of Determinants]\label{thm:recursive_det}
-  Let $n \ge 2$, and let $D$ be an $(n-1)$-linear function which is alternating. Let $1 \le j \le n$. Define $E_j : M_{n \times n}(K) \to K$ by
+  Let $n \ge 2$, and let $D$ be an $(n-1)$-linear function which is alternating. Let $1 \le j \le n$. Define $E_j : \M_{n \times n}(K) \to K$ by
   \[
   E_j(A) := \sum_{i=1}^n (-1)^{i+j} A_{ij} D_{ij}(A).
   \]
@@ -279,7 +279,7 @@ By the alternating property of $D$, performing the transpositions necessary to s
 
 \begin{theorem}[Leibniz Formula \& Uniqueness]
   \label{thm:unique_det}
-  For all $n \ge 1$, there exists a unique determinant function on $M_{n \times n}(K)$. We will denote it by $\det$. It is mathematically given by the formula:
+  For all $n \ge 1$, there exists a unique determinant function on $\M_{n \times n}(K)$. We will denote it by $\det$. It is mathematically given by the formula:
   \[
   \det(A) = \sum_{\sigma} \operatorname{sgn}(\sigma) \cdot A(1,\sigma(1)) \cdot A(2,\sigma(2)) \cdots A(n,\sigma(n)).
   \]
@@ -416,11 +416,11 @@ Calculating the determinant of a large matrix by expanding all permutations is c
 
 \begin{proposition}[Determinant of Block Matrices]
   \label{prop:block_matrix}
-  For a block matrix $M$ defined as above, $\det(M) = \det(A) \cdot \det(C)$.
+  For a block matrix $M$ defined as above, $\det(M) = \det(A) \cdot \det(C)$, where $A \in \M_{r \times r}(K)$, $C \in \M_{s \times s}(K)$, and $B \in \M_{r \times s}(K)$.
 \end{proposition}
 
 \begin{proof}
-  Define a helper function $D(A, B, C) := \det \left(\begin{smallmatrix} A & B \\ 0 & C \end{smallmatrix}\right)$ as a function $D : M_{r \times r}(K) \times M_{r \times s}(K) \times M_{s \times s}(K) \to K$.
+  Define a helper function $D(A, B, C) := \det \left(\begin{smallmatrix} A & B \\ 0 & C \end{smallmatrix}\right)$ as a function $D : \M_{r \times r}(K) \times \M_{r \times s}(K) \times \M_{s \times s}(K) \to K$.
 
   If we fix the first two matrices $A$ and $B$, then the function mapping $C \mapsto D(A, B, C)$ is $s$-linear and alternating. By Corollary~\ref{cor:det_pullout}, any such function satisfies:
   \begin{equation} \label{eq:block_step1}
@@ -440,11 +440,11 @@ Calculating the determinant of a large matrix by expanding all permutations is c
 \end{proof}
 
 \begin{remark}[Exercise]
-  Show that $\det \left(\begin{smallmatrix} A & 0 \\ B & C \end{smallmatrix}\right) = \det(A) \cdot \det(C)$, where $A \in M_{r \times r}(K)$, $C \in M_{s \times s}(K)$, and $B \in M_{s \times r}(K)$.
+  Show that $\det \left(\begin{smallmatrix} A & 0 \\ B & C \end{smallmatrix}\right) = \det(A) \cdot \det(C)$, where $A \in \M_{r \times r}(K)$, $C \in \M_{s \times s}(K)$, and $B \in \M_{s \times r}(K)$.
 \end{remark}
 
 \begin{example}[Calculation of a $4 \times 4$ Determinant]
-  Let $A = \left(\begin{smallmatrix} 1 & -1 & 2 & 3 \\ 2 & 2 & 0 & 2 \\ 4 & 1 & -1 & -1 \\ 1 & 2 & 3 & 0 \end{smallmatrix}\right) \in M_{4 \times 4}(\mathbb{R})$.
+  Let $A = \left(\begin{smallmatrix} 1 & -1 & 2 & 3 \\ 2 & 2 & 0 & 2 \\ 4 & 1 & -1 & -1 \\ 1 & 2 & 3 & 0 \end{smallmatrix}\right) \in \M_{4 \times 4}(\mathbb{R})$.
   We begin by performing row operations $R_2 - 2R_1 \to R_2$, $R_3 - 4R_1 \to R_3$, and $R_4 - R_1 \to R_4$. This transforms $A$ into:
   \[
   \begin{pmatrix}
@@ -480,11 +480,11 @@ Calculating the determinant of a large matrix by expanding all permutations is c
 
 \subsection{Cofactor Expansion and the Classical Adjoint}
 
-Recall that if $D$ is a determinant function on $M_{(n-1) \times (n-1)}(K)$, then for any fixed $j \in \{1, \dots, n\}$, the function $E_j(A) := \sum_{i=1}^n (-1)^{i+j} A_{ij} D(A(i|j))$ is a determinant function as well. But, we have seen that on $M_{n \times n}(K)$ there is a strictly unique determinant function, $\det$.
+Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, then for any fixed $j \in \{1, \dots, n\}$, the function $E_j(A) := \sum_{i=1}^n (-1)^{i+j} A_{ij} D(A(i|j))$ is a determinant function as well. But, we have seen that on $\M_{n \times n}(K)$ there is a strictly unique determinant function, $\det$.
 
 \begin{corollary}[Laplace Expansion]
   \label{cor:cofactor_expansion}
-  For all $A \in M_{n \times n}(K)$, we have the following $n$ different formulas for $\det(A)$ (expanding along column $j$):
+  For all $A \in \M_{n \times n}(K)$, we have the following $n$ different formulas for $\det(A)$ (expanding along column $j$):
   \[
   \det(A) = \sum_{i=1}^n (-1)^{i+j} A_{ij} \det A(i|j), \quad \text{for any } j = 1, \dots, n.
   \]
@@ -509,11 +509,11 @@ The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \emph{$i,j$ cofact
   \]
 \end{proof}
 
-\begin{summary} For $A \in M_{n \times n}(K)$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = \delta_{jk} \cdot \det(A)$, where $\delta_{jk}$ is the Kronecker delta (which is 1 if $j=k$, and 0 otherwise).
+\begin{summary} For $A \in \M_{n \times n}(K)$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = \delta_{jk} \cdot \det(A)$, where $\delta_{jk}$ is the Kronecker delta (which is 1 if $j=k$, and 0 otherwise).
 \end{summary}
 
 \begin{definition*}[Classical Adjoint]\label{def:classical_adjoint}
-  The transpose of the matrix of cofactors, $(C_{ij})^T$, is called the \qt{classical adjoint} (or adjugate) of $A$, denoted $\operatorname{adj} A \in M_{n \times n}(K)$. Explicitly, $(\operatorname{adj} A)_{ij} = C_{ji} = (-1)^{i+j} \det A(j|i)$.
+  The transpose of the matrix of cofactors, $(C_{ij})^T$, is called the \qt{classical adjoint} (or adjugate) of $A$, denoted $\operatorname{adj} A \in \M_{n \times n}(K)$. Explicitly, $(\operatorname{adj} A)_{ij} = C_{ji} = (-1)^{i+j} \det A(j|i)$.
 \end{definition*}
 
 Our summary formula above immediately implies the matrix equation:
@@ -574,14 +574,14 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
 
 \subsection{Determinants of Endomorphisms}
 
-\begin{warmup} Let $A \in M_{n \times n}(K)$, and let $P \in GL(n, K)$ (meaning $P$ is an invertible $n \times n$ matrix). Then, by multiplicativity (Theorem~\ref{thm:det_multiplicative}):
+\begin{warmup} Let $A \in \M_{n \times n}(K)$, and let $P \in GL(n, K)$ (meaning $P$ is an invertible $n \times n$ matrix). Then, by multiplicativity (Theorem~\ref{thm:det_multiplicative}):
   \[
   \det(P^{-1} \cdot A \cdot P) = (\det P^{-1}) \cdot (\det A) \cdot (\det P) = \frac{1}{\det P} \cdot \det A \cdot \det P = \det A.
   \]
   In other words, similar matrices mathematically have the exact same determinant.
 \end{warmup}
 
-Let $V$ be a finite-dimensional vector space over $K$, and put $n := \dim V$. Let $T : V \to V$ be a linear map (an endomorphism). Pick a basis $\mathcal{B}$ for $V$. We have a matrix representation $[T]_{\mathcal{B}}^{\mathcal{B}} \in M_{n \times n}(K)$, and we can consider its determinant $\det [T]_{\mathcal{B}}^{\mathcal{B}} \in K$.
+Let $V$ be a finite-di\-men\-sional vector space over $K$, and put $n := \dim V$. Let $T : V \to V$ be a linear map (an endomorphism). Pick a basis $\mathcal{B}$ for $V$. We have a matrix representation $[T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(K)$, and we can consider its determinant $\det [T]_{\mathcal{B}}^{\mathcal{B}} \in K$.
 
 \begin{question} Does $\det [T]_{\mathcal{B}}^{\mathcal{B}}$ depend on the specific choice of the basis $\mathcal{B}$?
 \end{question}

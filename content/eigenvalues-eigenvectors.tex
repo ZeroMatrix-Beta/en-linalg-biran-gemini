@@ -32,7 +32,7 @@ Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdo
 \end{definition}
 
 \begin{definition}[Diagonalizable Endomorphism]\label{def:diagonalizable_endomorphism}
-  Let $V$ be a finite-dimensional vector space over $K$ and $T: V \rightarrow V$ a linear map. We say that $T$ is \qt{diagonalizable} if there exists a basis $\mathcal{B}$ of $V$ such that
+  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T: V \rightarrow V$ a linear map. We say that $T$ is \qt{diagonalizable} if there exists a basis $\mathcal{B}$ of $V$ such that
   \begin{equation} \label{eq:diagonal_form}
     [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}
   \end{equation}
@@ -49,7 +49,7 @@ Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdo
 \end{proof}
 
 \begin{remark}\label{rem:diagonalizable_matrix}
-  We saw that for all $A \in M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say that a matrix $A \in M_{n \times n}(K)$ is diagonalizable if the linear map $T_A$ is diagonalizable.
+  We saw that for all $A \in \M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say that a matrix $A \in \M_{n \times n}(K)$ is diagonalizable if the linear map $T_A$ is diagonalizable.
 \end{remark}
 
 \begin{example}\label{ex:eigenvalue_R2_stretch}
@@ -109,7 +109,7 @@ Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdo
 \end{proof}
 
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
-  Let $V$ be a finite-dimensional vector space over $K$ and $T: V \rightarrow V$ a linear map. We define the \qt{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \mathrm{id}_V)$ (sometimes denoted $\chi_T(x)$), where $x$ is a formal variable (\qt{in $K$}). We define the \qt{characteristic polynomial} of a matrix $A \in M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
+  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T: V \rightarrow V$ a linear map. We define the \qt{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \mathrm{id}_V)$ (sometimes denoted $\chi_T(x)$), where $x$ is a formal variable (\qt{in $K$}). We define the \qt{characteristic polynomial} of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
 \end{definition}
 
 \begin{definition}[Eigenspace]\label{def:eigenspace}
@@ -119,7 +119,7 @@ Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdo
 \end{definition}
 
 \begin{lemma}[Properties of the Characteristic Polynomial]\label{lem:properties_char_poly}
-  Let $A \in M_{n \times n}(K)$. Then:
+  Let $A \in \M_{n \times n}(K)$. Then:
   \begin{enumerate}
     \item[\textbf{(a)}] $P_A(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$ (i.e., $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0$, with $c_i \in K$ for all $i$, and $c_n = (-1)^n$).
     \item[\textbf{(b)}] $P_{A^T}(x) = P_A(x)$.
@@ -157,7 +157,7 @@ Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdo
 \end{proof}
 
 \begin{definition}[Trace]\label{def:trace}
-  Let $A \in M_{n \times n}(K)$. Define the \qt{trace} (German: \qt{Spur}) of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
+  Let $A \in \M_{n \times n}(K)$. Define the \qt{trace} (German: \qt{Spur}) of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
   If $V$ is a finite-dimensional vector space over $K$ and $T \in \End(V)$, define $\Tr(T) := \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$, where $\mathcal{B}$ is some basis for $V$. We will see soon that $\Tr(T)$ is well defined (i.e., it does not depend on the choice of $\mathcal{B}$).
 \end{definition}
 
