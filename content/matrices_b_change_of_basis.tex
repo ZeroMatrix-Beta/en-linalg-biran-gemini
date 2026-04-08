@@ -1,0 +1,188 @@
+\section{Change of Basis}
+
+\begin{question}
+How does the representation matrix $[T]$ of a linear map $T: V \to W$ depend on the choices of bases $\mathcal{B}$ and $\mathcal{C}$?
+\end{question}
+
+\begin{corollary}[Change of Basis Formula]
+% cor:17.b.1
+\label{cor:change_of_basis_formula}
+Let $V$ and $W$ be finite-di\-men\-sional vector spaces over $K$. Let $n := \dim V$ and $m := \dim W$. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases for $V$, and let $\mathcal{C}$ and $\mathcal{C}'$ be two bases for $W$. Then, $[\id_V]_{\mathcal{B}}^{\mathcal{B}'} \in \GL_n(K)$ and $[\id_W]_{\mathcal{C}}^{\mathcal{C}'} \in \GL_m(K)$, with inverses given by:
+\begin{equation*}
+    [\id_V]_{\mathcal{B}}^{\mathcal{B}'} = ([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1} \quad \text{and} \quad [\id_W]_{\mathcal{C}}^{\mathcal{C}'} = ([\id_W]_{\mathcal{C}'}^{\mathcal{C}})^{-1}
+\end{equation*}
+Let $T: V \to W$ be a linear map. Then, its representation matrix changes according to the formula:
+\begin{equation*}
+    [T]_{\mathcal{C}'}^{\mathcal{B}'} = [\id_W]_{\mathcal{C}'}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+\end{corollary}
+
+\begin{proof}
+We can write $T$ as the composition $T = \id_W \circ T \circ \id_V = \id_W \circ (T \circ \id_V)$. Passing to the matrix representations, this yields:
+\begin{equation*}
+    [T]_{\mathcal{C}'}^{\mathcal{B}'} = [\id_W]_{\mathcal{C}'}^{\mathcal{C}} \cdot [T \circ \id_V]_{\mathcal{C}}^{\mathcal{B}'} = [\id_W]_{\mathcal{C}'}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+Also, we have the identity $\id_V = \id_V \circ \id_V$. This implies that:
+\begin{equation*}
+    I_n = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}'} \cdot [\id_V]_{\mathcal{B}'}^{\mathcal{B}}
+\end{equation*}
+and similarly:
+\begin{equation*}
+    I_n = [\id_V]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+This demonstrates that $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is invertible and that its inverse is indeed $([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1}$. The proof for $[\id_W]_{\mathcal{C}}^{\mathcal{C}'}$ follows the exact same logic.
+\end{proof}
+
+\begin{definition}[Change of Basis Matrix]
+% def:17.b.2
+\label{def:change_of_basis_matrix}
+Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $n := \dim V$. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases of $V$. The matrix $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} \in \GL_n(K)$ is called the \qt{change of basis matrix} between $\mathcal{B}$ and $\mathcal{B}'$, or the \qt{transition matrix} from basis $\mathcal{B}$ to basis $\mathcal{B}'$.
+\end{definition}
+
+\begin{remark}
+If $\mathcal{B} = (w_1, \dots, w_n)$ and $\mathcal{B}' = (w_1', \dots, w_n')$, then the transition matrix is explicitly constructed by placing the coordinate vectors of the old basis elements with respect to the new basis into the columns:
+\begin{equation*}
+    [\id_V]_{\mathcal{B}'}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [w_1]_{\mathcal{B}'} & \dots & [w_n]_{\mathcal{B}'} \\ | & & | \end{pmatrix}
+\end{equation*}
+\end{remark}
+
+\begin{proposition}[Representation of Isomorphisms]
+% prop:17.b.3
+\label{prop:representation_of_isomorphisms}
+Let $T: V \to W$ be an isomorphism between two finite-di\-men\-sional vector spaces. Let $\mathcal{B}$ and $\mathcal{C}$ be bases for $V$ and $W$, respectively. Then, the matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ is an invertible matrix, and furthermore:
+\begin{equation*}
+    [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} = ([T]_{\mathcal{C}}^{\mathcal{B}})^{-1}
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Let $n := \dim V = \dim W$. By the properties of composed linear maps and representation matrices, we have:
+\begin{equation*}
+    [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n
+\end{equation*}
+and conversely:
+\begin{equation*}
+    [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} = [\id_W]_{\mathcal{C}}^{\mathcal{C}} = I_n
+\end{equation*}
+This proves the claim.
+\end{proof}
+
+\subsection{Equivalence and Similarity of Matrices}
+
+\begin{question}
+Suppose $T: V \to V$ is an endomorphism. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases for $V$. What is the relation between $[T]_{\mathcal{B}'}^{\mathcal{B}'}$ and $[T]_{\mathcal{B}}^{\mathcal{B}}$?
+\end{question}
+
+\begin{corollary}[Similarity of Representation Matrices]
+% cor:17.b.4
+\label{cor:similarity_of_representation_matrices}
+Let $V$ be a finite-di\-men\-sional vector space, and let $T: V \to V$ be a linear map. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases for $V$. Then:
+\begin{equation*}
+    [T]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'} = ([\id_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
+\end{equation*}
+\end{corollary}
+
+\begin{definition}[Equivalence and Similarity]
+% def:17.b.5
+\label{def:equivalence_and_similarity}
+We define two types of relations between matrices:
+\begin{enumerate}
+    \item Let $A, B \in \M_{m \times n}(K)$. We say that $A$ and $B$ are \qt{equivalent} if there exist matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that $B = P A Q$.
+    \item Let $A, B \in \M_{n \times n}(K)$. We say that $A$ and $B$ are \qt{similar} if there exists a matrix $P \in \GL_n(K)$ such that $B = P^{-1} A P$.
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+\begin{enumerate}
+    \item Show that \qt{equivalence} between $m \times n$ matrices defines an equivalence relation on $\M_{m \times n}(K)$.
+    \item Show that two matrices $A, B \in \M_{m \times n}(K)$ are equivalent if and only if there exist two vector spaces $V$ and $W$ with $\dim V = n$ and $\dim W = m$, two bases $\mathcal{B}$ and $\mathcal{B}'$ of $V$, and two bases $\mathcal{C}$ and $\mathcal{C}'$ of $W$ such that:
+    \begin{equation*}
+        A = [T]_{\mathcal{C}}^{\mathcal{B}} \quad \text{and} \quad B = [T]_{\mathcal{C}'}^{\mathcal{B}'}
+    \end{equation*}
+    In other words, $A$ is equivalent to $B$ if and only if $A$ and $B$ are matrix representations of the exact same linear map $T$, but with respect to different choices of bases for $V$ and $W$.
+    \item Show that \qt{similarity} between $n \times n$ matrices defines an equivalence relation on $\M_{n \times n}(K)$.
+    \item Show that two square matrices $M, N \in \M_{n \times n}(K)$ are similar if and only if there exists an $n$-di\-men\-sional space $V$, an endomorphism $T: V \to V$, and two bases $\mathcal{B}$ and $\mathcal{B}'$ of $V$ such that $M = [T]_{\mathcal{B}}^{\mathcal{B}}$ and $N = [T]_{\mathcal{B}'}^{\mathcal{B}'}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proposition}[Normal Form for Linear Maps]
+% prop:17.b.6
+\label{prop:linear_map_normal_form}
+Let $V$ and $W$ be finite-di\-men\-sional vector spaces over $K$, with dimensions $n = \dim V$ and $m = \dim W$. Let $T: V \to W$ be a linear map with $\rank(T) = r$. (Recall that $\rank(T) := \dim \operatorname{Im}(T)$). Then, there exists a basis $\mathcal{B} = (v_1, \dots, v_n)$ of $V$ and a basis $\mathcal{C} = (w_1, \dots, w_m)$ of $W$ such that:
+\begin{equation*}
+    [T]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} I_r & O_{r, n-r} \\ O_{m-r, r} & O_{m-r, n-r} \end{pmatrix}
+\end{equation*}
+where $O_{p,q}$ stands for the zero matrix in $M_{p \times q}(K)$.
+\end{proposition}
+
+\begin{proof}
+Put $\ell := \dim \ker(T)$. By the rank theorem, we know that $r = n - \ell$. Let $v_1, \dots, v_\ell$ be a basis of $\ker(T)$, and extend it to a full basis $(v_1, \dots, v_\ell, v_{\ell+1}, \dots, v_n)$ of $V$. It will be useful to work below with the rearranged basis:
+\begin{equation*}
+    \mathcal{B} = (v_{\ell+1}, \dots, v_n, v_1, \dots, v_\ell)
+\end{equation*}
+In the proof of the rank theorem, we have seen that $T(v_{\ell+1}), \dots, T(v_n)$ form a basis for $\operatorname{Im}(T)$. Define $w_i := T(v_{\ell+i})$ for $i = 1, \dots, r$ (i.e., $w_1 = T(v_{\ell+1}), \dots, w_r = T(v_{\ell+r})$), and extend this list to a basis of $W$:
+\begin{equation*}
+    \mathcal{C} := (w_1, \dots, w_r, w_{r+1}, \dots, w_m)
+\end{equation*}
+It now directly follows from these definitions that the representation matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ takes the exact block form described in the proposition.
+\end{proof}
+
+\begin{corollary}[Matrix Equivalence and Normal Form]
+% cor:17.b.7
+\label{cor:matrix_equivalence_normal_form}
+Let $A \in \M_{m \times n}(K)$. Then, there exist invertible matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that:
+\begin{equation*}
+    PAQ = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+\end{equation*}
+where $r = \rank_{\text{col}}(A)$. In particular, $\rank_{\text{col}}(A) \le \min\{m, n\}$.
+\end{corollary}
+
+\begin{proof}
+Consider the linear map $T_A: K^n \to K^m$ defined by left-multiplication, $T_A(v) = A \cdot v$. Then, $r = \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A)$, because we have previously seen that 
+\[\operatorname{Im}(T_A) = \operatorname{Sp}(T_A(e_1), \dots, T_A(e_n)) = \operatorname{Sp}(\text{columns of } A).\]
+
+Now, we apply the previous proposition to $T_A$, yielding that:
+\begin{equation*}
+    [T_A]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+\end{equation*}
+for some basis $\mathcal{B}$ of $K^n$ and some basis $\mathcal{C}$ of $K^m$. Using the change of basis formula, we can rewrite this as:
+\begin{equation*}
+    \underbrace{[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}}_{=: P} \cdot \underbrace{[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}}_{= A} \cdot \underbrace{[\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}}_{=: Q} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+\end{equation*}
+where $\mathcal{E}_n$ and $\mathcal{E}_m$ are the standard bases of $K^n$ and $K^m$, respectively. Setting $P = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$ and $Q = [\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ concludes the proof.
+\end{proof}
+
+\begin{remark}
+The fact that $\rank_{\text{col}}(A) \le \min\{m, n\}$ also follows from observing the linear map $T_A: K^n \to K^m$. We have:
+\begin{equation*}
+    \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A) = n - \dim \ker(T_A) \le n
+\end{equation*}
+and simultaneously,
+\begin{equation*}
+    \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A) \le \dim K^m = m
+\end{equation*}
+\end{remark}
+
+\begin{question}
+Recall that we have an equivalence relation on $M_{m \times n}(K)$: $A \sim B$ if there exist $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = PAQ$. Can we describe the equivalence classes of this equivalence relation?
+\end{question}
+
+\begin{corollary}[Classification of Matrices by Rank]
+% cor:17.b.8
+\label{cor:matrix_rank_equivalence_classification}
+Let $A, B \in \M_{m \times n}(K)$. Then, $A \sim B$ if and only if $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$. Moreover, for every $0 \le r \le \min\{m, n\}$, there is precisely one equivalence class of matrices $A$ with $\rank_{\text{col}} = r$.
+\end{corollary}
+
+\begin{proof}
+Let $A, B \in \M_{m \times n}(K)$. First, assume that $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$, and denote this common column rank by $r$. By Corollary \ref{cor:matrix_equivalence_normal_form}, we know that $A \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ and $B \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. Since $\sim$ is an equivalence relation, it naturally follows that $A \sim B$.
+
+Conversely, assume that $A \sim B$. This implies that there exist matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = PAQ$. Transitioning to the associated linear maps, this means $T_B = T_P \circ T_A \circ T_Q$. We analyze the image of $T_B$:
+\begin{equation*}
+    \operatorname{Im}(T_B) = T_B(K^n) = T_P \circ T_A(T_Q(K^n)) = T_P \circ T_A(K^n) = T_P(\operatorname{Im}(T_A))
+\end{equation*}
+Note that $T_Q(K^n) = K^n$ because $T_Q$ is an isomorphism. Consequently, the dimension of the image is:
+\begin{equation*}
+    \rank_{\text{col}}(B) = \dim \operatorname{Im}(T_B) = \dim T_P(\operatorname{Im}(T_A)) = \dim \operatorname{Im}(T_A) = \rank_{\text{col}}(A)
+\end{equation*}
+where the second to last equality holds because $T_P$ is an isomorphism, preserving the dimension of subspaces.
+\end{proof}
