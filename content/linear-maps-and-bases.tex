@@ -1,15 +1,19 @@
 % Overriding the theorem counter for this chapter to match the 16.1, 16.2 convention
-\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
+
 \setcounter{chapter}{15} % Sets chapter counter so the next chapter is 16
 
 \chapter{Linear Maps and Bases}
 
-\section*{Writing Linear Maps Using Bases and Coordinates}
+\subsection{Writing Linear Maps Using Bases and Coordinates}
 
-In this lecture, we will assume all vector spaces to be finite-dimensional unless otherwise stated. We will write bases of a vector space $V$ as an ordered list (or tuple) $\mathcal{B} = (v_1, \dots, v_n)$.
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
 
-\begin{definition}[16.1]
-Let $V$ be a vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis of $V$. Let $v \in V$. We define the coordinate vector of $v$ with respect to the basis $\mathcal{B}$ as
+In this lecture, we will assume all vector spaces to be \qt{finite-dimensional} unless otherwise stated. We will write bases of a vector space $V$ as an ordered list (or tuple) $\mathcal{B} = (v_1, \dots, v_n)$.
+
+% def:16.1
+\begin{definition}[Coordinate Vector]
+\label{def:coordinate_vector}
+Let $V$ be a vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis of $V$. Let $v \in V$. We define the \qt{coordinate-vector} of $v$ with respect to the basis $\mathcal{B}$ as
 \[
 [v]_{\mathcal{B}} = 
 \begin{pmatrix}
@@ -31,7 +35,9 @@ Define a map $\Phi_{\mathcal{B}}: V \to K^n$ given by:
 \Phi_{\mathcal{B}}(v) := [v]_{\mathcal{B}} \in K^n.
 \]
 
-\begin{proposition}[16.2]
+% prop:16.2
+\begin{proposition}[Isomorphism of the Coordinate Map]
+\label{prop:coordinate_map_isomorphism}
 The map $\Phi_{\mathcal{B}}$ is an isomorphism.
 \end{proposition}
 
@@ -40,7 +46,7 @@ We first show that $\Phi_{\mathcal{B}}$ is a linear map. Let $a, b \in K$, and l
 \[
 v = a_1 v_1 + \dots + a_n v_n, \quad \text{and} \quad v' = b_1 v_1 + \dots + b_n v_n,
 \]
-with $a_i, b_i \in K$. By definition, 
+with $a_i, b_i \in K$. By definition, we have:
 \[
 [v]_{\mathcal{B}} = 
 \begin{pmatrix}
@@ -56,7 +62,7 @@ b_1 \\
 b_n
 \end{pmatrix}.
 \]
-Now, $a v + b v' = (a a_1 + b b_1) v_1 + \dots + (a a_n + b b_n) v_n$, and hence,
+Now, $a v + b v' = (a a_1 + b b_1) v_1 + \dots + (a a_n + b b_n) v_n$, and hence:
 \[
 \Phi_{\mathcal{B}}(a v + b v') = [a v + b v']_{\mathcal{B}} = 
 \begin{pmatrix}
@@ -78,11 +84,11 @@ b_n
 \end{pmatrix}
 = a \Phi_{\mathcal{B}}(v) + b \Phi_{\mathcal{B}}(v').
 \]
-This proves $\Phi_{\mathcal{B}}$ is linear. 
+This proves that $\Phi_{\mathcal{B}}$ is linear. 
 
 We now claim that $\Phi_{\mathcal{B}}$ is an isomorphism. By previous results, it is enough to show $\Phi_{\mathcal{B}}$ is bijective. Indeed, if $v \in \ker(\Phi_{\mathcal{B}})$, then $v = 0 v_1 + \dots + 0 v_n = 0$, which implies $\ker(\Phi_{\mathcal{B}}) = \{0\}$. This shows that $\Phi_{\mathcal{B}}$ is injective. 
 
-For the surjectivity of $\Phi_{\mathcal{B}}$, let $\left(\begin{smallmatrix} a_1 \\ \vdots \\ a_n \end{smallmatrix}\right) \in K^n$. Put $v = a_1 v_1 + \dots + a_n v_n \in V$. Then, $\Phi_{\mathcal{B}}(v) = \left(\begin{smallmatrix} a_1 \\ \vdots \\ a_n \end{smallmatrix}\right)$, which implies $\operatorname{Im}(\Phi_{\mathcal{B}}) = K^n$.
+For the surjectivity of $\Phi_{\mathcal{B}}$, let $(a_1, \dots, a_n)^T \in K^n$. Put $v = a_1 v_1 + \dots + a_n v_n \in V$. Then, $\Phi_{\mathcal{B}}(v) = (a_1, \dots, a_n)^T$, which implies $\operatorname{Im}(\Phi_{\mathcal{B}}) = K^n$.
 \end{proof}
 
 \begin{remark}
@@ -99,10 +105,12 @@ a_n
 \end{remark}
 
 \begin{remark}
-The previous Proposition (16.2) gives yet another proof for the following Corollary.
+The previous Proposition \ref{prop:coordinate_map_isomorphism} gives yet another proof for the following Corollary.
 \end{remark}
 
-\begin{corollary}[16.3]
+% cor:16.3
+\begin{corollary}[Classification of Finite-Dimensional Vector Spaces]
+\label{cor:vs_isomorphic_to_kn}
 Let $V$ be a vector space over $K$ with $\dim V = n \in \mathbb{Z}_{\ge 0}$. Then, $V \cong K^n$.
 \end{corollary}
 
@@ -111,84 +119,70 @@ Choose a basis $\mathcal{B}$ for $V$. Then, $\Phi_{\mathcal{B}}: V \to K^n$ is a
 \end{proof}
 
 \begin{remark}
-1) The Corollary does NOT hold for $\dim V = \infty$, at least not as stated.
-
-2) We have seen that $V \cong K^n$ ($n = \dim V < \infty$), but in general, there does not exist a canonical (or preferred) isomorphism $V \to K^n$. For example, $\Phi_{\mathcal{B}}$ depends on a choice of a basis $\mathcal{B}$.
+\begin{enumerate}
+    \item \textbf{(a)} The Corollary does NOT hold for $\dim V = \infty$, at least not as stated.
+    \item \textbf{(b)} We have seen that $V \cong K^n$ where $n = \dim V < \infty$, but in general, there does not exist a \qt{canonical} (or preferred) isomorphism $V \to K^n$. For example, $\Phi_{\mathcal{B}}$ depends on a choice of a basis $\mathcal{B}$.
+\end{enumerate}
 \end{remark}
 
-\begin{example}
-Consider $V = \mathbb{R}^2$, let $\mathcal{E} = \left(\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)\right)$ be the standard basis, and let $\mathcal{B} = \left(\left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)\right)$ be another basis (check that $\mathcal{B}$ is indeed a basis!). We have:
+% ex:16.a
+\begin{example}[Coordinate Vector Calculation]
+\label{ex:coordinate_vector_calculation}
+Consider $V = \mathbb{R}^2$, let $\mathcal{E} = \left((1, 0)^T, (0, 1)^T\right)$ be the standard basis, and let $\mathcal{B} = \left((1, 1)^T, (1, -1)^T\right)$ be another basis (check that $\mathcal{B}$ is indeed a basis!). We have
 \[
 \left[\begin{pmatrix} x \\ y \end{pmatrix}\right]_{\mathcal{E}} = \begin{pmatrix} x \\ y \end{pmatrix}, \quad \text{and we want to find} \quad \left[\begin{pmatrix} x \\ y \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} a \\ b \end{pmatrix} = ?
 \]
-Let us first try to determine $\left[\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)\right]_{\mathcal{B}}$ and $\left[\left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)\right]_{\mathcal{B}}$. We can write:
+Let us first try to determine $[(1, 0)^T]_{\mathcal{B}}$ and $[(0, 1)^T]_{\mathcal{B}}$. We set
 \[
-\left[\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix},
+\left[\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}, \quad \text{where} \quad a_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + a_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}.
 \]
-where $a_1$ and $a_2$ are the scalars such that:
-\[
-a_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + a_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}.
-\]
-This implies the following system of linear equations:
+This leads to the system of linear equations:
 \[
 \begin{cases}
 a_1 + a_2 = 1 \\
 a_1 - a_2 = 0
 \end{cases}
 \]
-Solving this system yields $a_1 = a_2 = \frac{1}{2}$. This implies that:
-\[
-\left[\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} 1/2 \\ 1/2 \end{pmatrix}.
-\]
+Solving this system yields $a_1 = a_2 = \frac{1}{2}$, and therefore, $[(1, 0)^T]_{\mathcal{B}} = (1/2, 1/2)^T$.
 
-Similarly, we write:
+Similarly, for the second standard basis vector, we set
 \[
-\left[\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix},
+\left[\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}, \quad \text{where} \quad b_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + b_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
 \]
-where $b_1$ and $b_2$ are the scalars such that:
-\[
-b_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + b_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
-\]
-This leads to the system:
+The resulting system is:
 \[
 \begin{cases}
 b_1 + b_2 = 0 \\
 b_1 - b_2 = 1
 \end{cases}
 \]
-Solving this system yields $b_1 = \frac{1}{2}$ and $b_2 = -\frac{1}{2}$. Consequently, we obtain:
-\[
-\left[\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} 1/2 \\ -1/2 \end{pmatrix}.
-\]
+Solving this yields $b_1 = \frac{1}{2}$ and $b_2 = -\frac{1}{2}$, so $[(0, 1)^T]_{\mathcal{B}} = (1/2, -1/2)^T$.
 
-Using the fact that $\Phi_{\mathcal{B}}$ is a linear map, we can finally calculate:
+Finally, using the fact that $\Phi_{\mathcal{B}}$ is linear, we calculate:
 \[
 \left[\begin{pmatrix} x \\ y \end{pmatrix}\right]_{\mathcal{B}} = x \left[\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right]_{\mathcal{B}} + y \left[\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} x/2 \\ x/2 \end{pmatrix} + \begin{pmatrix} y/2 \\ -y/2 \end{pmatrix} = \begin{pmatrix} \frac{x+y}{2} \\ \frac{x-y}{2} \end{pmatrix}.
 \]
 \end{example}
 
-\vspace{1em}
-\noindent\hrulefill
-\vspace{1em}
+\subsection{Representation Matrices}
 
-\section*{Representation Matrices}
-
-Now we arrive at the main question. Let $V$ and $W$ be vector spaces over $K$, let $n := \dim V$ and $m := \dim W$, and let $T: V \to W$ be a linear map. Fix a basis $\mathcal{B}$ for $V$ and a basis $\mathcal{C}$ for $W$. Consider the diagram:
+Now we arrive at the main question. Let $V$ and $W$ be vector spaces over $K$, let $n := \dim V$ and $m := \dim W$, and let $T: V \to W$ be a linear map. Fix a basis $\mathcal{B}$ for $V$ and a basis $\mathcal{C}$ for $W$. Consider the following commutative diagram:
 \[
-\begin{matrix}
-V & \xrightarrow{T} & W \\
-\Phi_{\mathcal{B}} \downarrow & & \downarrow \Phi_{\mathcal{C}} \\
-K^n & \xrightarrow{\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}} & K^m
-\end{matrix}
+\begin{tikzcd}[row sep=large, column sep=large]
+V \arrow[r, "T"] \arrow[d, "\Phi_{\mathcal{B}}"'] & W \arrow[d, "\Phi_{\mathcal{C}}"] \\
+K^n \arrow[r, "\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}"'] & K^m
+\end{tikzcd}
 \]
-which is commutative. Since $\Phi_{\mathcal{B}}^{-1}$, $T$, and $\Phi_{\mathcal{C}}$ are all linear maps, the map $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}: K^n \to K^m$ is also linear. By previous results, any linear map $K^n \to K^m$ can be written using a matrix $A \in M_{m \times n}(K)$. In other words, there exists a unique matrix $A \in M_{m \times n}(K)$ such that $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} = T_A$.
+Since $\Phi_{\mathcal{B}}^{-1}$, $T$, and $\Phi_{\mathcal{C}}$ are all linear maps, the map $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}: K^n \to K^m$ is also linear. By previous results, any linear map $K^n \to K^m$ can be written using a matrix $A \in \M_{m \times n}(K)$. In other words, there exists a unique matrix $A \in \M_{m \times n}(K)$ such that $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} = T_A$.
 
-The matrix $A$ is called the representation matrix of $T$ with respect to (w.r.t.) the bases $\mathcal{B}$ and $\mathcal{C}$. We also say that $A$ represents $T$ in the bases $\mathcal{B}$ and $\mathcal{C}$. We denote this matrix by $[T]_{\mathcal{C}}^{\mathcal{B}} \in M_{m \times n}(K)$.
+The matrix $A$ is called the \qt{representation matrix} of $T$ with respect to the bases $\mathcal{B}$ and $\mathcal{C}$. We also say that $A$ represents $T$ in the bases $\mathcal{B}$ and $\mathcal{C}$. We denote this matrix by $[T]_{\mathcal{C}}^{\mathcal{B}} \in \M_{m \times n}(K)$.
 
 \begin{question}
-1) How can we calculate the entries of $A$? \\
-2) How does $A$ depend on different choices of the bases $\mathcal{B}$ and $\mathcal{C}$? \\
-3) If we have three vector spaces $V, W, U$ with bases $\mathcal{B}, \mathcal{C}, \mathcal{D}$ respectively, and $T: V \to W$ and $S: W \to U$ are linear maps where $T$ is represented by the matrix $M$ and $S$ by the matrix $N$, then what is the matrix representing $S \circ T: V \to U$ with respect to the bases $\mathcal{B}$ and $\mathcal{D}$?
+\begin{enumerate}
+    \item \textbf{(a)} How can we calculate the entries of $A$?
+    \item \textbf{(b)} How does $A$ depend on different choices of the bases $\mathcal{B}$ and $\mathcal{C}$?
+    \item \textbf{(c)} If we have three vector spaces $V, W, U$ with bases $\mathcal{B}, \mathcal{C}, \mathcal{D}$ respectively, and $T: V \to W$ and $S: W \to U$ are linear maps where $T$ is represented by the matrix $M$ and $S$ by the matrix $N$, then what is the matrix representing $S \circ T: V \to U$ with respect to the bases $\mathcal{B}$ and $\mathcal{D}$?
+\end{enumerate}
 \end{question}
 
 Let $T: V \to W$ be a linear map, let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$, and let $\mathcal{C} = (w_1, \dots, w_m)$ be a basis for $W$. For any $v_i \in V$, its image is $T(v_i) \in W$. Under the map $T_A$, the standard basis vector $e_i \in K^n$ maps to $K^m$:
@@ -203,14 +197,16 @@ A = [T]_{\mathcal{C}}^{\mathcal{B}} =
 [T(v_1)]_{\mathcal{C}} & \dots & [T(v_n)]_{\mathcal{C}} \\
 | & & |
 \end{pmatrix}
-\in M_{m \times n}(K).
+\in \M_{m \times n}(K).
 \]
-Another way to describe this matrix is $A = (a_{ij})_{1 \le i \le m, \, 1 \le j \le n}$, where $a_{ij}$ are defined uniquely by
+Another way to describe this matrix is $A = (a_{ij}) \in \M_{m \times n}(K)$, where the entries $a_{ij}$ are defined uniquely by:
 \[
 T(v_j) = a_{1j} w_1 + \dots + a_{mj} w_m = \sum_{i=1}^m a_{ij} w_i.
 \]
 
-\begin{proposition}[16.4]
+% prop:16.4
+\begin{proposition}[Evaluation via Representation Matrix]
+\label{prop:matrix_evaluation}
 Let $T: V \to W$ be a linear map between two finite-dimensional vector spaces $V$ and $W$. Let $\mathcal{B}$ and $\mathcal{C}$ be bases for $V$ and $W$, respectively. Then, for all $v \in V$:
 \[
 [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}} = [T(v)]_{\mathcal{C}}.
@@ -227,15 +223,15 @@ By definition, $T_{[T]_{\mathcal{C}}^{\mathcal{B}}} = \Phi_{\mathcal{C}} \circ T
 
 \begin{example}
 \begin{enumerate}
-    \item Let $V = K^n$ and $W = K^m$, and let $T: K^n \to K^m$ be given by $T = T_A$ for $A \in M_{m \times n}(K)$, so $T(v) = A \cdot v$. Take $\mathcal{B} = (e_1, \dots, e_n)$ and $\mathcal{C} = (e_1, \dots, e_m)$ to be the standard bases. Then, $[T]_{\mathcal{C}}^{\mathcal{B}} = A$ (check the details!).
-    \item Let $V = K[x]_3$ and $W = K[x]_2$, and let $D: V \to W$ be the derivative map defined by $D(p(x)) = p'(x)$. Let $\mathcal{B} = (1, x, x^2, x^3)$ and $\mathcal{C} = (1, x, x^2)$. What is $[D]_{\mathcal{C}}^{\mathcal{B}}$?
+    \item \textbf{(a)} Let $V = K^n$ and $W = K^m$, and let $T: K^n \to K^m$ be given by $T = T_A$ for $A \in \M_{m \times n}(K)$, so $T(v) = A \cdot v$. Take $\mathcal{B} = (e_1, \dots, e_n)$ and $\mathcal{C} = (e_1, \dots, e_m)$ to be the standard bases. Then, $[T]_{\mathcal{C}}^{\mathcal{B}} = A$.
+    \item \textbf{(b)} Let $V = K[x]_3$ and $W = K[x]_2$, and let $D: V \to W$ be the derivative map defined by $D(p(x)) = p'(x)$. Let $\mathcal{B} = (1, x, x^2, x^3)$ and $\mathcal{C} = (1, x, x^2)$. We calculate:
     \begin{align*}
     D(1) &= 0 = 0 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
     D(x) &= 1 = 1 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
     D(x^2) &= 2x = 0 \cdot 1 + 2 \cdot x + 0 \cdot x^2 \\
     D(x^3) &= 3x^2 = 0 \cdot 1 + 0 \cdot x + 3 \cdot x^2
     \end{align*}
-    Therefore,
+    Therefore, the representation matrix is:
     \[
     [D]_{\mathcal{C}}^{\mathcal{B}} = 
     \begin{pmatrix}
@@ -244,8 +240,8 @@ By definition, $T_{[T]_{\mathcal{C}}^{\mathcal{B}}} = \Phi_{\mathcal{C}} \circ T
     0 & 0 & 0 & 3
     \end{pmatrix}.
     \]
-    \setcounter{enumi}{1} % To keep the professor's numbering of '2)' again
-    \item Suppose we view $D$ as a linear map $D: K[x]_3 \to K[x]_3$. Then,
+    \setcounter{enumi}{1} % Matching professor numbering
+    \item \textbf{(c)} Suppose we view $D$ as a linear map $D: K[x]_3 \to K[x]_3$. Then,
     \[
     [D]_{\mathcal{B}}^{\mathcal{B}} = 
     \begin{pmatrix}
@@ -258,11 +254,8 @@ By definition, $T_{[T]_{\mathcal{C}}^{\mathcal{B}}} = \Phi_{\mathcal{C}} \circ T
 \end{enumerate}
 \end{example}
 
-\vspace{1em}
-\noindent\hrulefill
-\vspace{1em}
 
-\section*{Representing Composition of Linear Maps by Matrices}
+\subsection{Representing Composition of Linear Maps by Matrices}
 
 Let $T: V \to W$ and $S: W \to U$ be linear maps. Let $\mathcal{A} = (v_1, \dots, v_n)$ be a basis for $V$, let $\mathcal{B} = (w_1, \dots, w_m)$ be a basis for $W$, and let $\mathcal{C} = (u_1, \dots, u_p)$ be a basis for $U$. The dimensions are thus $n = \dim V$, $m = \dim W$, and $p = \dim U$.
 
@@ -274,34 +267,37 @@ What is the matrix $[S \circ T]_{\mathcal{C}}^{\mathcal{A}}$? How is it related 
 
 To answer this, let us write the representation matrices as follows:
 \[
-[T]_{\mathcal{B}}^{\mathcal{A}} = (a_{ij})_{1 \le i \le m, \, 1 \le j \le n}, \quad [S]_{\mathcal{C}}^{\mathcal{B}} = (b_{ij})_{1 \le i \le p, \, 1 \le j \le m}, \quad [S \circ T]_{\mathcal{C}}^{\mathcal{A}} = (c_{ij})_{1 \le i \le p, \, 1 \le j \le n}.
+[T]_{\mathcal{B}}^{\mathcal{A}} = (a_{ij}), \quad [S]_{\mathcal{C}}^{\mathcal{B}} = (b_{ij}), \quad [S \circ T]_{\mathcal{C}}^{\mathcal{A}} = (c_{ij}).
 \]
-By definition:
-\begin{align}
-T(v_j) &= a_{1j} w_1 + \dots + a_{mj} w_m = \sum_{k=1}^m a_{kj} w_k, \quad \forall \, 1 \le j \le n, \\
-S(w_k) &= b_{1k} u_1 + \dots + b_{pk} u_p = \sum_{i=1}^p b_{ik} u_i, \quad \forall \, 1 \le k \le m, \\
-(S \circ T)(v_j) &= c_{1j} u_1 + \dots + c_{pj} u_p = \sum_{i=1}^p c_{ij} u_i, \quad \forall \, 1 \le j \le n.
-\end{align}
-But we can calculate $(S \circ T)(v_j)$ also using (1) and (2):
+By definition, the images of the basis vectors are given by:
+\begin{equation}
+\label{eq:T_basis_image}
+T(v_j) = \sum_{k=1}^m a_{kj} w_k, \quad \forall \, 1 \le j \le n,
+\end{equation}
+\begin{equation}
+\label{eq:S_basis_image}
+S(w_k) = \sum_{i=1}^p b_{ik} u_i, \quad \forall \, 1 \le k \le m,
+\end{equation}
+\begin{equation}
+\label{eq:composition_basis_image}
+(S \circ T)(v_j) = \sum_{i=1}^p c_{ij} u_i, \quad \forall \, 1 \le j \le n.
+\end{equation}
+
+But we can also calculate $(S \circ T)(v_j)$ using \eqref{eq:T_basis_image} and \eqref{eq:S_basis_image}:
 \begin{align*}
 (S \circ T)(v_j) &= S \left( \sum_{k=1}^m a_{kj} w_k \right) \\
 &= \sum_{k=1}^m a_{kj} S(w_k) \\
 &= \sum_{k=1}^m a_{kj} \left( \sum_{i=1}^p b_{ik} u_i \right) \\
-&= \sum_{k=1}^m \sum_{i=1}^p a_{kj} b_{ik} u_i \\
-&= \sum_{i=1}^p \sum_{k=1}^m a_{kj} b_{ik} u_i \\
-&= \sum_{i=1}^p \left( \sum_{k=1}^m b_{ik} a_{kj} \right) \cdot u_i.
+&= \sum_{k=1}^m \sum_{i=1}^p a_{kj} b_{ik} u_i = \sum_{i=1}^p \left( \sum_{k=1}^m b_{ik} a_{kj} \right) \cdot u_i.
 \end{align*}
-Consequently, $c_{ij} = \sum_{k=1}^m b_{ik} a_{kj}$. In other words:
+Comparing this with \eqref{eq:composition_basis_image}, we find that $c_{ij} = \sum_{k=1}^m b_{ik} a_{kj}$. In other words, row $i$ of $[S]_{\mathcal{C}}^{\mathcal{B}}$ multiplied by column $j$ of $[T]_{\mathcal{B}}^{\mathcal{A}}$ yields the entry $c_{ij}$:
 \[
-\text{row } i 
 \begin{pmatrix}
-b_{i1} & \dots & b_{ik} & \dots & b_{im}
+b_{i1} & \dots & b_{im}
 \end{pmatrix}
-\cdot \text{col } j 
+\cdot 
 \begin{pmatrix}
 a_{1j} \\
-\vdots \\
-a_{kj} \\
 \vdots \\
 a_{mj}
 \end{pmatrix}
@@ -311,9 +307,8 @@ This reveals that:
 \[
 [S]_{\mathcal{C}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{A}} = [S \circ T]_{\mathcal{C}}^{\mathcal{A}},
 \]
-where the dimensions follow $(p \times m) \cdot (m \times n) = (p \times n)$.
+where the matrix dimensions follow $(p \times m) \cdot (m \times n) = (p \times n)$.
 
-So, in order to get $[S \circ T]_{\mathcal{C}}^{\mathcal{A}}$ from $[T]_{\mathcal{B}}^{\mathcal{A}}$ and $[S]_{\mathcal{C}}^{\mathcal{B}}$, we need to use a new operation on matrices. It is called matrix multiplication. 
-
-But is this operation really new?
+In order to obtain $[S \circ T]_{\mathcal{C}}^{\mathcal{A}}$ from $[T]_{\mathcal{B}}^{\mathcal{A}}$ and $[S]_{\mathcal{C}}^{\mathcal{B}}$, we need to use a new operation on matrices. It is called \qt{matrix multiplication}. But is this operation really new?
 - Yes, but not entirely...
+

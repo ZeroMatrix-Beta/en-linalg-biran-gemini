@@ -55,6 +55,12 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Commit Messages:** When asked to generate a commit message, be specific about the mathematical or stylistic changes made.
 
 # MORE LATEX DIRECTIVES
+* Don't use
+```latex
+\vspace{1em}
+\noindent\hrulefill
+\vspace{1em}
+```
 * Make use of the following environments:
 
 ```latex
