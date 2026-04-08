@@ -132,8 +132,12 @@ Let us try to find a Fibonacci sequence $v \ne 0$ such that $S(v) = \lambda \cdo
 \begin{proof}
   \textbf{(a)} Let
   \[P_A(x) = \det(A - x \cdot I_n) = \det\begin{pmatrix} A_{11}-x & A_{12} & \dots & A_{1n} \\ A_{21} & A_{22}-x & \dots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \dots & A_{nn}-x \end{pmatrix}. \]
-  Denote this matrix (inside the determinant) by $B$. This determinant equals $\sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n}$.
-  $= (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + (\text{products of degree} \le n-1)$.
+  Denote this matrix (inside the determinant) by $B$. This determinant equals 
+  \begin{align*}
+    \sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n} 
+    & = (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) \\
+    & \qquad + (\text{products of degree} \le n-1).
+  \end{align*}
   If $\sigma \ne \mathrm{id} = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$.
   $= (-1)^n x^n + (\text{terms of degree} \le n-1)$.
 
@@ -391,10 +395,10 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \textbf{(c)} $\implies$ \textbf{(d)}: We assume that $P_T(x) = (\lambda_1 - x)^{\ell_1} \dots (\lambda_k - x)^{\ell_k}$ and $m_g(T; \lambda_i) = m_a(T; \lambda_i)$.
   Then $\lambda_1, \dots, \lambda_k$ are exactly the eigenvalues of $T$. By definition, $\ell_i = m_a(T; \lambda_i)$.
   We have $n = \dim V = \sum_{i=1}^k m_a(T; \lambda_i)$ (because $\deg P_T(x) = n$).
-  By assumption, this equals $\sum_{i=1}^k m_g(T; \lambda_i) = \sum_{i=1}^k \dim \Eig_T(\lambda_i)$.
+  By assumption, this equals \[ \sum_{i=1}^k m_g(T; \lambda_i) = \sum_{i=1}^k \dim \Eig_T(\lambda_i). \]
 
   \textbf{(d)} $\implies$ \textbf{(e)}: Recall that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)$ is a direct sum.
-  Consequently, $\dim(\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)) = \dim \Eig_T(\lambda_1) + \dots + \dim \Eig_T(\lambda_k) = \dim V$ by assumption.
+  Consequently, \[ \dim(\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)) = \dim \Eig_T(\lambda_1) + \dots + \dim \Eig_T(\lambda_k) = \dim V \] by assumption.
   Since $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \subseteq V$ is a linear subspace, we have $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$.
   This implies that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$.
 
@@ -650,7 +654,9 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 \end{lemma}
 
 \begin{proof}
-  By assumption, there exists an invertible matrix $Q$ such that $Q^{-1} A Q = \Lambda = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Since the roots of the characteristic polynomial are exactly the eigenvalues, we know $P_A(\lambda_i) = 0$ for all $i$. Writing $P_A(x) = \sum c_j x^j$, we substitute $A$:
+  By assumption, there exists an invertible matrix $Q$ such that 
+  \[Q^{-1} A Q = \Lambda = \operatorname{diag}(\lambda_1, \dots, \lambda_n). \] 
+  Since the roots of the characteristic polynomial are exactly the eigenvalues, we know $P_A(\lambda_i) = 0$ for all $i$. Writing $P_A(x) = \sum c_j x^j$, we substitute $A$:
   \[
   Q^{-1} P_A(A) Q = \sum c_j Q^{-1} A^j Q = \sum c_j (Q^{-1} A Q)^j = \sum c_j \Lambda^j = P_A(\Lambda).
   \]
@@ -695,6 +701,8 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 To generalize this result from $\mathbb{C}$ to any arbitrary field $K$, we rely on a formal algebraic identity regarding multi-variable polynomials.
 
 \begin{lemma}[Formal Zero of Multi-Variable Polynomials]\label{lemma:multi_var_poly}
+  \phantom{.} \\
+  \noindent 
   Suppose $f(x_1, \dots, x_r) \in \mathbb{R}$ $[x_1, \dots, x_r]$ satisfies $f(a_1, \dots, a_r) = 0$ for all $(a_1, \dots, a_r) \in \mathbb{R}^r$. Then $f \equiv 0$ as a formal polynomial (all coefficients are 0).
 \end{lemma}
 
@@ -811,7 +819,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{proof}
 
 \begin{remark}[The Lazy Proof]\label{rem:lazy_proof}
-  A completely incorrect "proof" often presented by students is: $P_A(A) = \det(A - A \cdot I) = \det(0) = 0$. This is fundamentally invalid. The expression $P_A(x) = \det(A - xI)$ evaluates to a polynomial with scalar coefficients. Substituting matrices into a scalar expression \textit{before} expanding the determinant leads to a severe category error. One must compute the scalar polynomial first, and only then evaluate it at the matrix $A$.
+  A completely incorrect "proof" often presented by students is the following: $P_A(A) = \det(A - A \cdot I) = \det(0) = 0$. This is fundamentally invalid. The expression $P_A(x) = \det(A - xI)$ evaluates to a polynomial with scalar coefficients. Substituting matrices into a scalar expression \textit{before} expanding the determinant leads to a severe category error. One must compute the scalar polynomial first, and only then evaluate it at the matrix $A$.
 \end{remark}
 
 \section{Column Rank and Row Rank}
