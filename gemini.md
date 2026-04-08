@@ -24,6 +24,11 @@ You are authorized to improve the prose and apply the established "House Style" 
 # MATHEMATICAL NOTATION (THE HOUSE STYLE)
 * **Math Variables:** Always use `\ell` for the letter `l` in math mode. This includes subscripts (e.g., `v_{\ell}`, not `v_l`) and summation indices. Never use a standard `l`.
 * **Bases:** All mathematical bases (B, C, E, etc.) MUST be wrapped in calligraphic script using \mathcal{...} (e.g., \mathcal{B}, \mathcal{C}, \mathcal{E}). This is a mandatory override of the source notes.
+* **Representation Matrices**: For any linear map $T: V \to W$, where $\mathcal{B}$ is a basis for $V$ (domain) and $\mathcal{C}$ is a basis for $W$ (codomain), the representation matrix **must** be written as $[T]_{\mathcal{C}}^{\mathcal{B}}$.
+    * **Superscript (Top):** Always the **Source/Domain** basis.
+    * **Subscript (Bottom):** Always the **Target/Codomain** basis.
+    * **Composition Logic:** Matrices are multiplied such that the "inner" bases match diagonally. For $T: (V, \mathcal{B}) \to (W, \mathcal{C})$ and $S: (W, \mathcal{C}) \to (U, \mathcal{E})$: $[S \circ T]_{\mathcal{E}}^{\mathcal{B}} = [S]_{\mathcal{E}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}}$.
+    * **Change of Basis:** For the identity map $\text{id}_V: (V, \mathcal{B}') \to (V, \mathcal{B})$, the transition matrix is $[\text{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$.
 * **Indexing:** Be meticulously precise with eigenvector indexing. Follow this exact pattern for partitioned bases: \mathcal{B} = (v_1^{(1)}, \dots, v_{\ell_1}^{(1)}, v_1^{(2)}, \dots, v_{\ell_2}^{(2)}, \dots, v_1^{(k)}, \dots, v_{\ell_k}^{(k)}).
 * **Inline Column Vectors:** To maintain consistent vertical spacing in prose, write column vectors as transposed row vectors, e.g., $(x_1, \dots, x_n)^T$, instead of using vertical stacks like `smallmatrix`.
 * **Matrices:** Use \begin{pmatrix} for displayed block equations and \left(\begin{smallmatrix} for inline text.
