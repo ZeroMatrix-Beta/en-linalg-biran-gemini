@@ -29,8 +29,9 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Matrices:** Use \begin{pmatrix} for displayed block equations and \left(\begin{smallmatrix} for inline text.
 * **Delimiters:** Use `\left(` and `\right)` (and other auto-sizing delimiters like `\left[` / `\right]`) primarily in displayed equations `\[ ... \]`. This ensures delimiters match the height of the content. In inline math `$ ... $`, standard delimiters are generally preferred to maintain consistent line height, unless the content is exceptionally tall (e.g., a fraction).
 * **Matrix Spaces:** Always use the macro `\M` for the space of matrices (e.g., `\M_{m \times n}(K)`). This renders as `\mathcal{M}` and distinguishes the space from a specific matrix $M$.
+* **General Linear Group:** Always use the macro `\GL` for the general linear group (e.g., `\GL_n(K)` or `\GL(n, K)`). This renders as `\operatorname{GL}`.
 * **Proof Labels:** Label sub-parts of proofs using bold parentheses (e.g., \textbf{(a)}, \textbf{(b)}).
-* **Labels:** Use descriptive, human-readable slugs for labels instead of numbering schemes. For example, use `\label{prop:unique_solution_criterion}` instead of `\label{prop:17.d.4}`. This avoids duplicates and makes the LaTeX source much easier to navigate.
+* **Labels:** Use descriptive, human-readable slugs for labels instead of numbering schemes. For example, use `\label{prop:unique_solution_criterion}` instead of `\label{prop:17.d.4}`. If possible (i.e. available),always place the original handwritten note label as a comment directly above the new descriptive label (e.g., `% prop:17.d.4`). This avoids duplicates and makes the LaTeX source much easier to navigate.
 * **The \qt Macro:** Use `\qt{...}` for the *first* mention of a newly defined term in the body of a definition or theorem. Don't use this if the term might get introduced in a previous chapter that is not yet included. But better suggest using `\qt{...}` to often.
 * **Bracket Restriction:** NEVER use `\qt{...}` or any other formatting macro inside the square brackets `[...]` of an environment header (e.g., `\begin{definition}[Linear Map]` is correct; `\begin{definition}[\qt{Linear Map}]` is WRONG).
 
@@ -88,6 +89,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\GL}{GL}
 ```
 
 
