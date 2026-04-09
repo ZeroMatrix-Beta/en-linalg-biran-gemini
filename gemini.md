@@ -36,6 +36,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Matrix Spaces:** Always use the macro `\M` for the space of matrices (e.g., `\M_{m \times n}(K)`). This renders as `\mathcal{M}` and distinguishes the space from a specific matrix $M$.
 * **General Linear Group:** Always use the macro `\GL` for the general linear group (e.g., `\GL_n(K)` or `\GL(n, K)`). This renders as `\operatorname{GL}`.
 * **Column and Row Spaces:** Always use the macros `\ColS` and `\RowS` for the column space and row space of a matrix (e.g., `\ColS(A)` and `\RowS(A)`).
+* **Fibonacci Sequences:** Individual Fibonacci sequences should be wrapped in calligraphic script (e.g., $\mathcal{F}$). The space of all Fibonacci sequences must use the macro `\Fib`.
 * **Proof Labels:** Label sub-parts of proofs using bold parentheses (e.g., \textbf{(a)}, \textbf{(b)}).
 * **Labels:** Use descriptive, human-readable slugs for labels instead of numbering schemes. For example, use `\label{prop:unique_solution_criterion}` instead of `\label{prop:17.d.4}`. If possible (i.e. available),always place the original handwritten note label as a comment directly above the new descriptive label (e.g., `% prop:17.d.4`). This avoids duplicates and makes the LaTeX source much easier to navigate.
 * **The \qt Macro:** Use `\qt{...}` for the *first* mention of a newly defined term in the body of a definition or theorem. Don't use this if the term might get introduced in a previous chapter that is not yet included. But better suggest using `\qt{...}` to often.

@@ -1,8 +1,12 @@
+\setcounter{chapter}{11} % Sets chapter counter so the current chapter is 12
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
+\setcounter{theorem}{0}
+
 \chapter{Dimension and Subspaces}
-In this chapter, we synthesize the fundamental results regarding finite-dimensional vector spaces and explore the relationship between a space and its subspaces through the lens of dimensionality.
+In this chapter, we synthesize the fundamental results regarding finite-di\-men\-sional vector spaces and explore the relationship between a space and its subspaces through the lens of dimensionality.
 
 \begin{summary}[Properties of Finite-Dimensional Spaces]
-Let $V$ be a finite-dimensional vector space over a field $K$. The following structural principles hold:
+Let $V$ be a finite-di\-men\-sional vector space over a field $K$. The following structural principles hold:
 \begin{enumerate}
     \item Every finite list of vectors that spans $V$ contains a sublist which constitutes a \qt{basis} of $V$. Formally, if $(v_1, \dots, v_n)$ spans $V$, then there exists a sublist $(v_{i_1}, \dots, v_{i_d})$ with $1 \le i_1 < i_2 < \dots < i_d \le n$ that is a basis for $V$, where $d = \dim V$.
     \item Every linearly independent list of vectors in $V$ can be extended to a basis of $V$. If the list $(u_1, \dots, u_m)$ is linearly independent, there exist vectors $w_1, \dots, w_{d-m}$ such that 
@@ -13,7 +17,7 @@ Let $V$ be a finite-dimensional vector space over a field $K$. The following str
 
 % thm:12.1
 \begin{theorem}[Equivalent Characterizations of a Basis]
-\label{thm:12.1}
+\label{thm:basis_equivalent_characterizations}
 Let $V$ be a vector space with $\dim V = n \in \mathbb{Z}_{\ge 0}$. Let $v_1, \dots, v_n \in V$ be a list of $n$ vectors. Then the following statements are equivalent:
 \begin{enumerate}
     \item[\textbf{(a)}] The vectors $v_1, \dots, v_n$ are linearly independent.
@@ -36,8 +40,8 @@ The equivalence is established through the following implications:
 
 % prop:12.2
 \begin{proposition}[Dimensional Constraints on Subspaces]
-\label{prop:12.2}
-Let $V$ be a finite-dimensional vector space over $K$. Then every linear subspace $U \subseteq V$ is also finite-dimensional. Moreover, $\dim U \le \dim V$, with the equality $\dim U = \dim V$ holding if and only if $U = V$.
+\label{prop:subspace_dimension_constraints}
+Let $V$ be a finite-di\-men\-sional vector space over $K$. Then every linear subspace $U \subseteq V$ is also finite-di\-men\-sional. Moreover, $\dim U \le \dim V$, with the equality $\dim U = \dim V$ holding if and only if $U = V$.
 \end{proposition}
 
 \begin{proof}
@@ -47,5 +51,5 @@ If $\Sp(v_1) \neq U$, we choose a second vector $v_2 \in U \setminus \Sp(v_1)$. 
 
 Crucially, in a space $V$ of dimension $n$, no linearly independent list can exceed length $n$. Consequently, this algorithmic procedure must terminate in $k$ steps, where $k \le n$. At this stage, we have a list $\{v_1, \dots, v_k\}$ that is linearly independent and spans $U$, thereby constituting a basis for $U$. This implies $U$ is finite-dimensional and $\dim U = k \le n = \dim V$.
 
-Furthermore, if $\dim U = \dim V = n$, then $U$ contains a linearly independent list of length $n$. By Theorem \ref{thm:12.1}, such a list satisfies property \textbf{(a)} and is therefore also a basis for $V$. This implies $\Sp(v_1, \dots, v_n) = V$. Since $U = \Sp(v_1, \dots, v_n)$ by the construction of the basis, we conclude $U = V$.
+Furthermore, if $\dim U = \dim V = n$, then $U$ contains a linearly independent list of length $n$. By Theorem \ref{thm:basis_equivalent_characterizations}, such a list satisfies property \textbf{(a)} and is therefore also a basis for $V$. This implies $\Sp(v_1, \dots, v_n) = V$. Since $U = \Sp(v_1, \dots, v_n)$ by the construction of the basis, we conclude $U = V$.
 \end{proof}

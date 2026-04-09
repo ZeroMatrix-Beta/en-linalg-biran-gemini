@@ -144,7 +144,7 @@ Consider the set $Fib \subseteq \mathbb{R}^\infty$ of all infinite real sequence
 
 To find a closed-form formula for the Fibonacci numbers (like Binet's formula), we study the \textbf{shift map} $S \colon \mathbb{R}^\infty \to \mathbb{R}^\infty$ defined by shifting the sequence one position to the left:
 \[ S(a_0, a_1, a_2, \dots) := (a_1, a_2, a_3, \dots). \]
-Since the shifted sequence also satisfies the Fibonacci recurrence, this map restricts to a linear endomorphism $S' \colon Fib \to Fib$.
+Since the shifted sequence also satisfies the Fibonacci recurrence, this map restricts to a linear endomorphism $S' \colon \Fib \to \Fib$.
 
 By utilizing the isomorphism $F$, we can translate the abstract shift operator $S'$ into concrete matrix multiplication on $\mathbb{R}^2$. The sequence $(a_0, a_1)$ shifts to $(a_1, a_2) = (a_1, a_0 + a_1)$, which corresponds to multiplication by the matrix $A = \left(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix}\right)$.
 
@@ -164,7 +164,7 @@ By utilizing the isomorphism $F$, we can translate the abstract shift operator $
 
 \subsection{Eigenvalues and Eigenvectors}
 
-The problem of finding a geometric sequence $(1, \lambda, \lambda^2, \dots)$ inside $Fib$ is equivalent to finding sequences that only scale by $\lambda$ when shifted. That is, we seek vectors $v$ such that $S'(v) = \lambda v$.
+The problem of finding a geometric sequence $(1, \lambda, \lambda^2, \dots)$ inside $\Fib$ is equivalent to finding sequences that only scale by $\lambda$ when shifted. That is, we seek vectors $\mathcal{F}$ such that $S'(\mathcal{F}) = \lambda \mathcal{F}$.
 
 \begin{definition}[Eigenvalues and Eigenvectors]
   Let $V$ be a vector space and $T \in \End(V)$. A scalar $\lambda \in K$ is called an \qt{eigenvalue} of $T$ if there exists a non-zero vector $v \in V$ such that:
