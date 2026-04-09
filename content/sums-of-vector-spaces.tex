@@ -25,7 +25,7 @@ Let $U, W \subseteq V$ be subspaces. Then, the following properties hold:
 \begin{enumerate}
     \item $U + W = \operatorname{Sp}(U \cup W)$. In particular, $U + W \subseteq V$ is a subspace, and $U$ and $W$ are themselves subspaces of $U + W$.
     \item If $U$ and $W$ are finite-dimensional, then so is $U + W$. Moreover, one can systematically find a basis for $U + W$ by following these sequential steps: first, choose a basis $(v_1, \dots, v_k)$ for $U \cap W$ (where $k = \dim(U \cap W)$). Second, extend this to a basis $(v_1, \dots, v_k, u_1, \dots, u_{l-k})$ for $U$ (where $l = \dim U$). Third, extend the initial intersection basis to a basis $(v_1, \dots, v_k, w_1, \dots, w_{m-k})$ for $W$ (where $m = \dim W$). Finally, the combined elements 
-    \[(v_1, \dots, v_k, u_1, \dots, u_{l-k}, w_1, \dots, w_{m-k})\] 
+    \[(v_1, \dots, v_k, u_1, \dots, u_{\ell-k}, w_1, \dots, w_{m-k})\] 
     form a basis for $U + W$.
 \end{enumerate}
 \end{proposition}
@@ -36,11 +36,11 @@ We will explicitly prove the second statement. By definition, the subspace $U + 
 Suppose there exists a linear combination equal to the zero vector:
 \begin{equation}
 \label{eq:linear_comb_sum}
-\alpha_1 v_1 + \dots + \alpha_k v_k + \beta_1 u_1 + \dots + \beta_{l-k} u_{l-k} + \gamma_1 w_1 + \dots + \gamma_{m-k} w_{m-k} = 0.
+\alpha_1 v_1 + \dots + \alpha_k v_k + \beta_1 u_1 + \dots + \beta_{\ell-k} u_{\ell-k} + \gamma_1 w_1 + \dots + \gamma_{m-k} w_{m-k} = 0.
 \end{equation}
 We can rearrange this equation to isolate the terms belonging to $U$ and $W$:
 \[
-\underbrace{\beta_1 u_1 + \dots + \beta_{l-k} u_{l-k}}_{\in U} = \underbrace{-\alpha_1 v_1 - \dots - \alpha_k v_k - \gamma_1 w_1 - \dots - \gamma_{m-k} w_{m-k}}_{\in W}.
+\underbrace{\beta_1 u_1 + \dots + \beta_{\ell-k} u_{\ell-k}}_{\in U} = \underbrace{-\alpha_1 v_1 - \dots - \alpha_k v_k - \gamma_1 w_1 - \dots - \gamma_{m-k} w_{m-k}}_{\in W}.
 \]
 Let us denote this common vector by $x$. Since the left side is entirely in $U$ and the right side is entirely in $W$, we have $x \in U$ and $x \in W$, which implies $x \in U \cap W$. 
 
@@ -50,9 +50,9 @@ x = \delta_1 v_1 + \dots + \delta_k v_k.
 \]
 Equating this with our original expression for $x$ in $U$, we obtain:
 \[
-\beta_1 u_1 + \dots + \beta_{l-k} u_{l-k} = \delta_1 v_1 + \dots + \delta_k v_k \implies \sum_{i=1}^{l-k} \beta_i u_i - \sum_{j=1}^k \delta_j v_j = 0.
+\beta_1 u_1 + \dots + \beta_{\ell-k} u_{\ell-k} = \delta_1 v_1 + \dots + \delta_k v_k \implies \sum_{i=1}^{\ell-k} \beta_i u_i - \sum_{j=1}^k \delta_j v_j = 0.
 \]
-However, the vectors $(v_1, \dots, v_k, u_1, \dots, u_{l-k})$ form a basis for $U$, meaning they are strictly linearly independent. Consequently, all coefficients in this sum must be zero. In particular, $\beta_1 = \dots = \beta_{l-k} = 0$.
+However, the vectors $(v_1, \dots, v_k, u_1, \dots, u_{\ell-k})$ form a basis for $U$, meaning they are strictly linearly independent. Consequently, all coefficients in this sum must be zero. In particular, $\beta_1 = \dots = \beta_{\ell-k} = 0$.
 
 Substituting these zero values back into our initial equation \eqref{eq:linear_comb_sum}, the terms involving $u_i$ vanish, leaving:
 \[
@@ -75,8 +75,8 @@ Let $V$ be a vector space, and let $U, W \subseteq V$ be finite-dimensional subs
 \begin{proof}
 Using the basis constructed in Proposition \ref{prop:properties_of_sums}, we can directly count the number of basis vectors for $U + W$:
 \begin{align*}
-\dim(U + W) &= k + (l - k) + (m - k) \\
-&= l + m - k \\
+\dim(U + W) &= k + (\ell - k) + (m - k) \\
+&= \ell + m - k \\
 &= \dim U + \dim W - \dim(U \cap W).
 \end{align*}
 \end{proof}
@@ -125,15 +125,15 @@ Let $V$ be a finite-dimensional vector space, and let $U \subseteq V$ be a subsp
 \end{proposition}
 
 \begin{proof}
-Choose a basis $\mathcal{B}_U = (u_1, \dots, u_l)$ for $U$, where $l = \dim U$. By the Steinitz Exchange Lemma, we can extend this to a full basis for $V$:
+Choose a basis $\mathcal{B}_U = (u_1, \dots, u_{\ell})$ for $U$, where $\ell = \dim U$. By the Steinitz Exchange Lemma, we can extend this to a full basis for $V$:
 \[
-\mathcal{B}_V = (u_1, \dots, u_l, w_1, \dots, w_m),
+\mathcal{B}_V = (u_1, \dots, u_{\ell}, w_1, \dots, w_m),
 \]
-where $l + m = \dim V$. We define $W := \operatorname{Sp}(w_1, \dots, w_m)$. 
+where $\ell + m = \dim V$. We define $W := \operatorname{Sp}(w_1, \dots, w_m)$. 
 
 We claim that $W$ is a valid complement of $U$. Indeed, since the combined basis spans the entirety of $V$, it is clear that $U + W = V$. To see that $U \cap W = \{0\}$, let $x \in U \cap W$. Because $x \in U$, we can write $x = \sum_{i=1}^l a_i u_i$. Because $x \in W$, we can also write $x = \sum_{j=1}^m b_j w_j$. Equating these expressions yields:
 \[
-\sum_{i=1}^l a_i u_i = \sum_{j=1}^m b_j w_j \implies \sum_{i=1}^l a_i u_i - \sum_{j=1}^m b_j w_j = 0.
+\sum_{i=1}^{\ell} a_i u_i = \sum_{j=1}^m b_j w_j \implies \sum_{i=1}^{\ell} a_i u_i - \sum_{j=1}^m b_j w_j = 0.
 \]
 Since $\mathcal{B}_V$ is a basis for $V$, all of its constituent vectors are strictly linearly independent. This forces all scalar coefficients to be zero: $a_i = 0$ for all $i$ and $b_j = 0$ for all $j$. Thus, $x = 0$, proving that $U \cap W = \{0\}$.
 \end{proof}

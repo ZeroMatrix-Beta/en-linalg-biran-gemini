@@ -54,8 +54,8 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 
 \begin{example}\label{ex:eigenvalue_R2_stretch}
   Let $A = \left(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\right)$ and $K = \mathbb{R}$.
-  $T_A\left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 3 \\ 3 \end{smallmatrix}\right) = 3 \cdot \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$. Thus, $\lambda = 3$ is an eigenvalue and $v = \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
-  Furthermore, $T_A\left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$. This implies that $\lambda = 1$ is an eigenvalue and $v = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$ is a corresponding eigenvector.
+  $T_A \binom{1}{1} = \binom{3}{3} = 3 \binom{1}{1}$. Thus, $\lambda = 3$ is an eigenvalue and $v = \binom{1}{1}$ is a corresponding eigenvector.
+  Furthermore, $T_A \binom{1}{-1} = \binom{1}{-1}$. This implies that $\lambda = 1$ is an eigenvalue and $v = \binom{1}{-1}$ is a corresponding eigenvector.
   Geometrically, this represents a stretching by a factor of 3 in $\mathbb{R}^2$ along one axis and the identity map along the other axis.
 \end{example}
 
@@ -260,7 +260,7 @@ Let $A \in M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + 
 \end{example}
 
 \begin{example}[Jordan Block]\label{ex:jordan_block_mult}
-  Consider the matrix $J_{\lambda, n} \in M_{n \times n}(K)$, for $\lambda \in K$.
+  Consider the matrix $J_{\lambda, n} \in \M_{n \times n}(K)$, for $\lambda \in K$.
   \begin{equation} \label{eq:jordan_block}
     J := J_{\lambda,n} := \begin{pmatrix} \lambda & 1 & 0 & \dots & 0 \\ 0 & \lambda & 1 & \dots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & 0 & \lambda & 1 \\ 0 & 0 & 0 & 0 & \lambda \end{pmatrix}
   \end{equation}
@@ -273,7 +273,7 @@ Let $A \in M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + 
   Therefore, the rank is $\rank(J - \lambda \cdot I_n) = n - 1$.
   By the rank-nullity theorem, $\dim \ker(J - \lambda \cdot I_n) = 1$.
   Consequently, the eigenspace $\Eig_J(\lambda)$ is $1$-dimensional.
-  Clearly, $e_1 = \left(\begin{smallmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{smallmatrix}\right)$ is an eigenvector for $\lambda$.
+  Clearly, $e_1 = (1, 0, \dots, 0)^T$ is an eigenvector for $\lambda$.
   Thus, $\Eig_J(\lambda) = \Sp(e_1)$.
 \end{example}
 
