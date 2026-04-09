@@ -18,8 +18,7 @@ We defined $\Fib := \text{the set of all sequences } (a_0, a_1, a_2, \dots, a_n,
 \end{claim*}
 
 \begin{claim*}\label{claim:fib_basis}
-  Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\Psi := \frac{1-\sqrt{5}}{2}$. Then the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \Psi, \Psi^2, \dots, \Psi^n, \dots)$ belong to $Fib$ and, moreover, they form a basis for $Fib$.
-  Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\Psi := \frac{1-\sqrt{5}}{2}$. Then the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \Psi, \Psi^2, \dots, \Psi^n, \dots)$ belong to $\Fib$ and, moreover, they form a basis for $\Fib$.
+  Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi := \frac{1-\sqrt{5}}{2}$. Then the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \psi, \psi^2, \dots, \psi^n, \dots)$ belong to $\Fib$ and, moreover, they form a basis for $\Fib$.
 \end{claim*}
 
 We also saw that using these two sequences, we could easily find an explicit formula for all Fibonacci sequences. But how did we find these two special sequences?
@@ -99,22 +98,20 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \subsection{The Characteristic Polynomial}
 
 \begin{proposition}[Eigenvalue Injective Criterion]\label{prop:eigen_injective}
-  Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map. Then $\lambda$ is an eigenvalue of $T$ if and only if the linear map $T - \lambda \cdot \mathrm{id}_V$ is not injective.
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Then $\lambda$ is an eigenvalue of $T$ if and only if the linear map $T - \lambda \cdot \id_V$ is not injective.
 \end{proposition}
 
 \begin{proof}
-  $\lambda$ is an eigenvalue of $T \iff \exists 0 \ne v \in V$ such that $Tv = \lambda v$
-  $\iff \exists 0 \ne v \in V$ such that $Tv - \lambda v = 0 \iff \exists 0 \ne v \in V$ such that $(T - \lambda \cdot \mathrm{id}_V)v = 0 \iff \ker(T - \lambda \cdot \mathrm{id}_V) \ne \{0\}$.
-  This implies that $T - \lambda \cdot \mathrm{id}_V$ is not injective.
+  $\iff \exists 0 \ne v \in V$ such that $Tv - \lambda v = 0 \iff \exists 0 \ne v \in V$ such that $(T - \lambda \cdot \id_V)v = 0 \iff \ker(T - \lambda \cdot \id_V) \ne \{0\}$.
+  This implies that $T - \lambda \cdot \id_V$ is not injective.
 \end{proof}
-
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
-  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T: V \rightarrow V$ a linear map. We define the \qt{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \mathrm{id}_V)$ (sometimes denoted $\chi_T(x)$), where $x$ is a formal variable (\qt{in $K$}). We define the \qt{characteristic polynomial} of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
+  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. We define the \qt{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \id_V)$, where $x$ is a formal variable. We define the \qt{characteristic polynomial} of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
 \end{definition}
 
 \begin{definition}[Eigenspace]\label{def:eigenspace}
   Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The \qt{eigenspace} corresponding to $\lambda$ is defined as:
-  \[ \Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \mathrm{id}_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}. \]
+  \[ \Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \id_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}. \]
   Clearly (by this definition), $\Eig_T(\lambda) \subseteq V$ is a linear subspace.
 \end{definition}
 
@@ -151,9 +148,8 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \begin{remark}\label{rem:char_poly_degree}
   If $V$ is an $n$-dimensional vector space over $K$ and $T \in \End(V)$, then $P_T(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$.
 \end{remark}
-
 \begin{proof}
-  Let $\mathcal{B}$ be a basis for $V$. Then $[T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies that $P_T(x) = \det([T - x \cdot \mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark now follows from \textbf{(a)} of Lemma \ref{lem:properties_char_poly}.
+  Let $\mathcal{B}$ be a basis for $V$. Then $[T - x \cdot \id_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies that $P_T(x) = \det([T - x \cdot \id_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark now follows from \textbf{(a)} of Lemma \ref{lem:properties_char_poly}.
 \end{proof}
 
 \begin{definition}[Trace]\label{def:trace}
@@ -468,7 +464,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \textbf{Inductive step}: Let $n \ge 1$. Assume that the theorem holds for all vector spaces of dimension $\le n$ and every endomorphism of such a space.
   Let $V$ be an $(n+1)$-dimensional vector space and $T \in \End(V)$ such that $P_T(x)$ splits as a product of linear factors.
 
-  Let $\lambda_1$ be a zero of $P_T(x)$. This implies that there exists an eigenvector $u_1 \in \ker(T - \lambda_1 \cdot \mathrm{id}_V)$.
+  Let $\lambda_1$ be a zero of $P_T(x)$. This implies that there exists an eigenvector $u_1 \in \ker(T - \lambda_1 \cdot \id_V)$.
   Extend $u_1$ to a basis $\mathcal{B}' = (u_1, u_2, \dots, u_{n+1})$ of $V$.
   Then the matrix of $T$ in basis $\mathcal{B}'$ has the block form:
   \begin{equation} \label{eq:M_block}

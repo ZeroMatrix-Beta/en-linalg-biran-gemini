@@ -361,7 +361,7 @@ Recall that for any matrix $M \in M_{m \times n}(K)$, we have the transposed mat
   \end{equation}
   This holds because every factor on the left-hand side of \eqref{eq:transpose_prod} will appear exactly once on the right-hand side, and vice-versa.
 
-  Now, since $\sigma \circ \sigma^{-1} = \operatorname{id}$, we have $\operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(\sigma^{-1}) = \operatorname{sgn}(\operatorname{id}) = 1$, which implies $\operatorname{sgn}(\sigma) = \operatorname{sgn}(\sigma^{-1})$.
+  Now, since $\sigma \circ \sigma^{-1} = \id$, we have $\operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(\sigma^{-1}) = \operatorname{sgn}(\id) = 1$, which implies $\operatorname{sgn}(\sigma) = \operatorname{sgn}(\sigma^{-1})$.
   When $\sigma$ runs over $S_n$ (all possible permutations of degree $n$), its inverse $\sigma^{-1}$ also naturally runs over the entirety of $S_n$.
 
   This implies:
@@ -587,10 +587,10 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$, and put $n := \dim V$
 \end{question}
 
 \begin{answer} Let $\mathcal{B}'$ be another arbitrary basis for $V$. Denote by $P := [\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$ the transition matrix between the basis $\mathcal{B}'$ and $\mathcal{B}$. Recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\operatorname{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$.
-  We also formally have $[\operatorname{id}_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1} = P^{-1}$.
+  We also formally have $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\id_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1} = P^{-1}$.
   So, $[T]_{\mathcal{B}'}^{\mathcal{B}'} = P^{-1} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot P$. This implies $\det [T]_{\mathcal{B}'}^{\mathcal{B}'} = \det [T]_{\mathcal{B}}^{\mathcal{B}}$.
 
-  Recall also that if $T, S : V \to V$ are two linear maps, then $[S \circ T]_{\mathcal{B}}^{\mathcal{B}} = [S]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}}$. If $T$ is an isomorphism, then $[T^{-1}]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^{-1}$. Finally, $[\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}} = I$.
+  Recall also that if $T, S : V \to V$ are two linear maps, then $[S \circ T]_{\mathcal{B}}^{\mathcal{B}} = [S]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}}$. If $T$ is an isomorphism, then $[T^{-1}]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^{-1}$. Finally, $[\id_V]_{\mathcal{B}}^{\mathcal{B}} = I$.
 \end{answer}
 
 \begin{corollary}[Determinant of an Endomorphism]

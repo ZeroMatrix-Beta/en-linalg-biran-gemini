@@ -63,7 +63,7 @@ T(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2).
 \label{ex:matrix_transformation}
 This is a central example in finite-dimensional linear algebra. Let $A \in \M_{m \times n}(K)$ be a matrix. We define a map $T_A: K^n \to K^m$ via matrix-vector multiplication:
 \[
-T_A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} := A \cdot \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}.
+T_A \left(\begin{smallmatrix} x_1 \\ \vdots \\ x_n \end{smallmatrix}\right) := A \cdot \left(\begin{smallmatrix} x_1 \\ \vdots \\ x_n \end{smallmatrix}\right).
 \]
 Recall from matrix arithmetic that $A \cdot (\alpha \cdot x) = \alpha \cdot (A \cdot x)$ and $A \cdot (x + y) = A \cdot x + A \cdot y$. Consequently, $T_A$ is a linear map.
 \end{example}
@@ -266,10 +266,6 @@ By the Rank-Nullity Theorem \eqref{thm:rank_nullity}, we know that $\dim \ker(T)
 \end{itemize}
 Because injectivity implies surjectivity (and vice versa) in this specific dimension constraint, either condition guarantees that the map is bijective, and therefore, an isomorphism.
 \end{proof}
-
-\vspace{1em}
-\noindent\hrulefill
-\vspace{1em}
 
 \subsection{Isomorphisms and Vector Space Equivalence}
 

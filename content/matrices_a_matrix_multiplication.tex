@@ -114,9 +114,9 @@ As a conclusion from our previous discussions on linear maps, let $T: V \to W$ a
 % Top row: Vector Spaces and Maps
 V \arrow[r, "T"] \arrow[rr, bend left=25, "S \circ T"] \& W \arrow[r, "S"] \& U \\
 % Bottom row: The bases associated with each space
-\mathcal{B} \arrow[u, phantom, "\in", rotate=90, yshift=-0.8em] \& 
-\mathcal{C} \arrow[u, phantom, "\in", rotate=90, yshift=-1.3em] \& 
-\mathcal{E} \arrow[u, phantom, "\in", rotate=90, yshift=-0.8em]
+\Sp(\mathcal{B}) \arrow[u, phantom, "\in", rotate=90, yshift=-0.5em] \& 
+\Sp(\mathcal{C}) \arrow[u, phantom, "\in", rotate=90, yshift=-0.7em] \& 
+\Sp(\mathcal{E}) \arrow[u, phantom, "\in", rotate=90, yshift=-0.5em]
 \end{tikzcd}
 \end{center}
 
@@ -311,7 +311,7 @@ The set $\GL_n(K)$, endowed with matrix multiplication $(A, B) \mapsto A \cdot B
 \end{proposition}
 
 \begin{proof}
-Let $A, B \in GL_n(K)$. To establish that $GL_n(K)$ forms a group, we first need to show closure, namely that $AB \in GL_n(K)$ as well. Indeed, we can verify this by checking the inverse property:
+Let $A, B \in \GL_n(K)$. To establish that $\GL_n(K)$ forms a group, we first need to show closure, namely that $AB \in \GL_n(K)$ as well. Indeed, we can verify this by checking the inverse property:
 \begin{equation*}
     (B^{-1} \cdot A^{-1})(AB) = B^{-1}A^{-1}AB = B^{-1}I_nB = B^{-1}B = I_n
 \end{equation*}
@@ -319,7 +319,7 @@ and, multiplying from the right,
 \begin{equation*}
     (AB)(B^{-1}A^{-1}) = ABB^{-1}A^{-1} = AI_nA^{-1} = AA^{-1} = I_n
 \end{equation*}
-This proves that $AB$ is invertible with inverse $B^{-1}A^{-1}$, and therefore, $AB \in GL_n(K)$. The other statements in the proposition follow immediately from what we have proved earlier regarding the uniqueness of inverses.
+This proves that $AB$ is invertible with inverse $B^{-1}A^{-1}$, and therefore, $AB \in \GL_n(K)$. The other statements in the proposition follow immediately from what we have proved earlier regarding the uniqueness of inverses.
 \end{proof}
 
 \begin{corollary}[Unique Solution via Matrix Inverse]
