@@ -3,7 +3,7 @@
 \section{Introduction and Motivation}
 
 \subsection{The special case of $2 \times 2$ matrices}
-In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \right) \in \M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether $A$ is invertible.
+In linear algebra, determining whether a matrix is invertible is a fundamental problem. Let us begin by analyzing the familiar $2 \times 2$ case. Let $A = (\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}) \in \M_{2 \times 2}(K)$. There is a very simple, well-known algebraic criterion to check whether $A$ is invertible.
 
 \begin{proposition}[Invertibility of $2 \times 2$ Matrices]\label{prop:inv_2x2}
   The matrix $A$ is invertible if and only if $ad - bc \neq 0$. Moreover, if $A$ is invertible, then its inverse is given by the explicit formula:
@@ -392,9 +392,9 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
   \label{thm:row_operations}
   Let $A \in \M_{n \times n}(K)$.
   \begin{enumerate}
-    \item If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row (i.e., $R_i + c R_j \to R_i$ for $i \neq j$), or by doing the analogous operation on columns, then $\det(B) = \det(A)$.
-    \item If $B$ is obtained from $A$ by interchanging two rows (i.e., $R_i \leftrightarrow R_j$ for $i \neq j$), or columns, then $\det(B) = -\det(A)$.
-    \item If $B$ is obtained from $A$ by multiplying a row by a scalar (i.e., $c R_i \to R_i$), then $\det(B) = c \det(A)$.
+    \item If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row (i.e., $c \cdot E_j + E_i \to E_i$ for $i \neq j$), or by doing the analogous operation on columns, then $\det(B) = \det(A)$.
+    \item If $B$ is obtained from $A$ by interchanging two rows (i.e., $E_i \leftrightarrow E_j$ for $i \neq j$), or columns, then $\det(B) = -\det(A)$.
+    \item If $B$ is obtained from $A$ by multiplying a row by a scalar (i.e., $c \cdot E_i \to E_i$), then $\det(B) = c \det(A)$.
   \end{enumerate}
 \end{theorem}
 
@@ -586,7 +586,7 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$, and put $n := \dim V$
 \begin{question} Does $\det [T]_{\mathcal{B}}^{\mathcal{B}}$ depend on the specific choice of the basis $\mathcal{B}$?
 \end{question}
 
-\begin{answer} Let $\mathcal{B}'$ be another arbitrary basis for $V$. Denote by $P := [\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$ the transition matrix between the basis $\mathcal{B}'$ and $\mathcal{B}$. Recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\operatorname{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\operatorname{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$.
+\begin{answer} Let $\mathcal{B}'$ be another arbitrary basis for $V$. Denote by $P := [\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ the transition matrix between the basis $\mathcal{B}'$ and $\mathcal{B}$. Recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}$.
   We also formally have $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\id_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1} = P^{-1}$.
   So, $[T]_{\mathcal{B}'}^{\mathcal{B}'} = P^{-1} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot P$. This implies $\det [T]_{\mathcal{B}'}^{\mathcal{B}'} = \det [T]_{\mathcal{B}}^{\mathcal{B}}$.
 
@@ -595,7 +595,7 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$, and put $n := \dim V$
 
 \begin{corollary}[Determinant of an Endomorphism]
   \label{cor:det_endomorphism}
-  Let $V$ be a finite-dimensional vector space over $K$, and let $T : V \to V$ be a linear map. Then, $\det([T]_{\mathcal{B}}^{\mathcal{B}})$ does NOT depend on the choice of the basis $\mathcal{B}$ of $V$. We denote this intrinsic scalar simply by $\det(T) \in K$.
+  Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $T : V \to V$ be a linear map. Then, $\det([T]_{\mathcal{B}}^{\mathcal{B}})$ does NOT depend on the choice of the basis $\mathcal{B}$ of $V$. We denote this intrinsic scalar simply by $\det(T) \in K$.
 \end{corollary}
 
 The function $\det : \operatorname{End}(V) \to K, T \mapsto \det(T)$ has the following elegant properties:
