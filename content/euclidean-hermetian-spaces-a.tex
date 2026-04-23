@@ -670,6 +670,124 @@ The Gram-Schmidt process can be viewed as a recursive method of "straightening o
     \end{tikzpicture}
 \end{center}
 
+\usetikzlibrary{calc}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.2]
+
+    % Plane W_{j-1}
+    \fill[green!15] (-2,-1) -- (2,-1) -- (3,1) -- (-1,1) -- cycle;
+    \draw (-2,-1) -- (2,-1) -- (3,1) -- (-1,1) -- cycle;
+    \node at (2.7,-0.9) {$W_{j-1} = \Sp(w_1,\dots,w_{j-1})$};
+
+    % Origin
+    \coordinate (O) at (0,0);
+    \fill (O) circle (1.2pt);
+
+    % Basis vectors in the plane
+    \coordinate (W1) at (1.5,0);
+    \coordinate (W2) at (0.8,0.9);
+    \coordinate (W3) at (-0.8,0.4);
+
+    \draw[->, thick] (O) -- (W1);
+    \node[below] at (W1) {$w_1$};
+
+    \draw[->, thick] (O) -- (W2);
+    \node[right] at (W2) {$w_2$};
+
+    \draw[->, thick] (O) -- (W3);
+    \node[left] at (W3) {$w_{j-1}$};
+
+    % Projection point (in plane)
+    \coordinate (P) at (1.2,0.3);
+    \fill (P) circle (1.2pt);
+    \node[below right] at (P) {$\Pr_{W_{j-1}}(v_j)$};
+
+    % v_j vector (out of plane)
+    \coordinate (V) at (1.6,2.2);
+    \draw[->, thick] (O) -- (V);
+    \node[right] at (V) {$v_j$};
+
+    % w_j orthogonal component
+    \draw[->, thick] (P) -- (V);
+    \node[right] at ($(P)!0.5!(V)$) {$w_j$};
+
+    % Projection vector
+    \draw[->, thick] (O) -- (P);
+
+    % Orthogonal drop
+    \draw[dashed] (V) -- (P);
+
+    % Right angle marker
+    \draw ($(P)+(0.15,0)$) -- ($(P)+(0.15,0.15)$) -- ($(P)+(0,0.15)$);
+
+\end{tikzpicture}
+\caption{Geometric idea of Gram--Schmidt: the vectors $w_1,\dots,w_{j-1}$ span $W_{j-1}$, 
+and $v_j$ decomposes as $v_j = w_j + \Pr_{W_{j-1}}(v_j)$ with $w_j \perp W_{j-1}$.}
+\end{figure}
+
+\usetikzlibrary{calc}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.2]
+
+    % Plane W_{j-1}
+    \fill[green!12] (-2,-1) -- (2,-1) -- (3,1) -- (-1,1) -- cycle;
+    \draw (-2,-1) -- (2,-1) -- (3,1) -- (-1,1) -- cycle;
+
+    % Light "hand-drawn" strokes
+    \foreach \t in {0.2,0.4,0.6,0.8} {
+        \draw[green!40, thick] 
+            ($(-2,-1)!\t!(-1,1)$) -- ($(2,-1)!\t!(3,1)$);
+    }
+
+    % Label of plane
+    \node at (-1.8,-1.2) {$W_{j-1}$};
+
+    % Origin
+    \coordinate (O) at (0,0);
+    \fill (O) circle (1.2pt);
+
+    % Projection point
+    \coordinate (P) at (1.1,0.2);
+    \fill (P) circle (1.2pt);
+    \node[below right] at (P) {$\Pr(v_j)$};
+
+    % v_j vector
+    \coordinate (V) at (1.6,2.3);
+    \draw[->, thick] (O) -- (V);
+    \node[left] at ($(O)!0.7!(V)$) {$v_j$};
+
+    % w_j vector
+    \draw[->, thick] (P) -- (V);
+    \node[right] at ($(P)!0.5!(V)$) {$w_j$};
+
+    % projection vector
+    \draw[->, thick] (O) -- (P);
+
+    % dashed orthogonal drop
+    \draw[dashed] (V) -- (P);
+
+    % right angle marker
+    \draw ($(P)+(0.12,0)$) -- ($(P)+(0.12,0.12)$) -- ($(P)+(0,0.12)$);
+
+    % Span text
+    \node at (2.8,0.6) 
+    {$\Sp(v_1,\dots,v_{j-1})=\Sp(w_1,\dots,w_{j-1})=W_{j-1}$};
+
+    % Formulas (like in sketch)
+    \node at (3.2,2.0) 
+    {$w_j = v_j - \Pr_{W_{j-1}}(v_j)$};
+
+    \node at (3.2,1.4) 
+    {$v_j = w_j + \Pr_{W_{j-1}}(v_j)$};
+
+\end{tikzpicture}
+\caption{Geometric idea behind the Gram--Schmidt process.}
+\end{figure}
+
 
 \begin{remark}
     In practice, the Gram-Schmidt process is often followed by a normalization step to produce an orthonormal basis. This two-stage process is essential for many numerical algorithms and theoretical results in linear algebra, such as the $QR$ decomposition.
