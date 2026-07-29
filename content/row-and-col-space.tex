@@ -170,7 +170,7 @@ The non-zero rows of the row-reduced echelon matrix $B$ form a basis for $\RowS(
 \end{theorem}
 
 \begin{proof}
-By Proposition \ref{prop:row_space_invariance}, $\RowS(A) = \RowS(B)$. Let $r$ be the number of pivots in $B$. The non-zero rows of $B$ are $w'_1, \dots, w'_r$. By definition, they span $\RowS(B)$. 
+By Proposition \Cref{prop:row_space_invariance}, $\RowS(A) = \RowS(B)$. Let $r$ be the number of pivots in $B$. The non-zero rows of $B$ are $w'_1, \dots, w'_r$. By definition, they span $\RowS(B)$. 
 
 To show linear independence, consider the indices of the pivot columns $j_1, \dots, j_r$. For each row $i \in \{1, \dots, r\}$, the entry in the $j_i$-th column is $1$, while in all other rows $k \neq i$, the entry in the $j_i$-th column is $0$. 
 Suppose $\sum_{i=1}^r \alpha_i w'_i = 0$. Looking at the $j_k$-th component of this vector sum, we have:
@@ -184,7 +184,7 @@ The number of pivots is independent of the sequence of row operations, as it alw
 \end{corollary}
 
 \begin{proof}
-By Theorem \ref{thm:row_basis}, the non-zero rows of any row-reduced echelon form $B$ of $A$ form a basis for $\RowS(A)$. The number of such rows is exactly the number of pivots. Since the dimension of a vector space is a fixed property, the number of pivots must be the same regardless of the specific row-reduction process used to reach an echelon form.
+By Theorem \Cref{thm:row_basis}, the non-zero rows of any row-reduced echelon form $B$ of $A$ form a basis for $\RowS(A)$. The number of such rows is exactly the number of pivots. Since the dimension of a vector space is a fixed property, the number of pivots must be the same regardless of the specific row-reduction process used to reach an echelon form.
 \end{proof}
 
 % thm:13.13
@@ -193,5 +193,5 @@ By Theorem \ref{thm:row_basis}, the non-zero rows of any row-reduced echelon for
 For any $A \in \M_{m \times n}(K)$, $\dim \RowS(A) = \dim \ColS(A)$. This shared dimension is the \qt{rank} of $A$, denoted $\rank(A)$.
 \end{theorem}
 \begin{proof}
-Let $r$ be the number of pivots in the RREF of $A$. By Theorem \ref{thm:basis_col_space}, $\dim \ColS(A) = r$. By Theorem \ref{thm:row_basis}, $\dim \RowS(A) = r$. Thus, the dimensions are exactly equal.
+Let $r$ be the number of pivots in the RREF of $A$. By Theorem \Cref{thm:basis_col_space}, $\dim \ColS(A) = r$. By Theorem \Cref{thm:row_basis}, $\dim \RowS(A) = r$. Thus, the dimensions are exactly equal.
 \end{proof}

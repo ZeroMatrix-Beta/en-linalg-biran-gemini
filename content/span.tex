@@ -85,9 +85,9 @@ Before diving into the algebra, let us visualize the logical strategy of the pro
     arrow/.style={->, thick, >=stealth}
 ]
     % Left Column (The 3 Facts)
-    \node[box] (n1) {\textbf{(1)} $S \subseteq \widetilde{\Sp}(S)$};
-    \node[box, below=0.5cm of n1] (n2) {\textbf{(2)} $\widetilde{\Sp}(S)$ is a linear subspace};
-    \node[box, below=1cm of n2] (n3) {\textbf{(3)} $\forall W \subseteq V$ subspace with \\ $S \subseteq W \implies \widetilde{\Sp}(S) \subseteq W$};
+    \node[box] (n1) {\textbf{(a)} $S \subseteq \widetilde{\Sp}(S)$};
+    \node[box, below=0.5cm of n1] (n2) {\textbf{(b)} $\widetilde{\Sp}(S)$ is a linear subspace};
+    \node[box, below=1cm of n2] (n3) {\textbf{(c)} $\forall W \subseteq V$ subspace with \\ $S \subseteq W \implies \widetilde{\Sp}(S) \subseteq W$};
     
     % Middle Column (Implications)
     \node[box, right=2cm of n1, yshift=-0.6cm] (p1) {$\Sp(S) \subseteq \widetilde{\Sp}(S)$};
@@ -106,11 +106,11 @@ Before diving into the algebra, let us visualize the logical strategy of the pro
 \end{tikzpicture}
 \end{center}
 
-Note that (1) and (2) imply that $\Sp(S) \subseteq \widetilde{\Sp}(S)$ because $\Sp(S)$ is defined as the intersection of \textit{all} subspaces containing $S$. Furthermore, (3) implies that $\widetilde{\Sp}(S) \subseteq \Sp(S)$ because $\Sp(S)$ is itself a valid subspace $W$ containing $S$.
+Note that (a) and (b) imply that $\Sp(S) \subseteq \widetilde{\Sp}(S)$ because $\Sp(S)$ is defined as the intersection of \textbf{all} subspaces containing $S$. Furthermore, (c) implies that $\widetilde{\Sp}(S) \subseteq \Sp(S)$ because $\Sp(S)$ is itself a valid subspace $W$ containing $S$.
 
-\textbf{Proof of (1):} Let $v \in S$. Then we can write $v = 1 \cdot v \in \widetilde{\Sp}(S)$. Thus $S \subseteq \widetilde{\Sp}(S)$.
+\textbf{(a)} Let $v \in S$. Then we can write $v = 1 \cdot v \in \widetilde{\Sp}(S)$. Thus $S \subseteq \widetilde{\Sp}(S)$.
 
-\textbf{Proof of (2):} 
+\textbf{(b)} 
 First, $0_V \in \widetilde{\Sp}(S)$ because for any $w \in S$, $0 \cdot w = 0_V$. 
 Second, let $u, v \in \widetilde{\Sp}(S)$. Then $u = a_1 w_1 + \dots + a_n w_n$ and $v = b_1 v_1 + \dots + b_m v_m$. Their sum:
 \[
@@ -122,7 +122,7 @@ c \cdot u = c(a_1 w_1 + \dots + a_n w_n) = (c a_1)w_1 + \dots + (c a_n)w_n \in \
 \]
 Thus $\widetilde{\Sp}(S)$ is closed under addition and scalar multiplication, making it a subspace.
 
-\textbf{Proof of (3):} Let $W \subseteq V$ be an arbitrary subspace such that $S \subseteq W$. Let $u \in \widetilde{\Sp}(S)$. Then $u = a_1 w_1 + \dots + a_n w_n$ with elements $w_i \in S$. Since $S \subseteq W$, we know $w_i \in W$. Since $W$ is a subspace, it is closed under scalar multiplication and finite addition, which guarantees $a_1 w_1 + \dots + a_n w_n \in W$. So $u \in W$. Thus $\widetilde{\Sp}(S) \subseteq W$.
+\textbf{(c)} Let $W \subseteq V$ be an arbitrary subspace such that $S \subseteq W$. Let $u \in \widetilde{\Sp}(S)$. Then $u = a_1 w_1 + \dots + a_n w_n$ with elements $w_i \in S$. Since $S \subseteq W$, we know $w_i \in W$. Since $W$ is a subspace, it is closed under scalar multiplication and finite addition, which guarantees $a_1 w_1 + \dots + a_n w_n \in W$. So $u \in W$. Thus $\widetilde{\Sp}(S) \subseteq W$.
 \end{proof}
 
 \subsection{Checking for Span: The Bridge to Computations}

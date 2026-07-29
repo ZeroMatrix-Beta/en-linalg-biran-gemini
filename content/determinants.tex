@@ -171,7 +171,7 @@ Therefore, $D$ is completely determined by its values on the following four pair
 \begin{proof}
   Clearly, $D_{ij}(A)$ is independent of the $i$-th row of $A$ because that row is deleted in the construction of $A(i|j)$. Since $D$ is $(n-1)$-linear, the map $A \mapsto D_{ij}(A)$ is linear when viewed as a function of each of its remaining rows. The function $A \mapsto A_{ij} D_{ij}(A)$ is therefore $n$-linear. Since linear combinations of $n$-linear functions are $n$-linear, $E_j(A)$ is $n$-linear too.
 
-  We show that $E_j$ is alternating. By Proposition~\ref{prop:alternating_swap}, it is enough to show $E_j(A) = 0$ whenever $A$ has two equal adjacent rows.
+  We show that $E_j$ is alternating. By \Cref{prop:alternating_swap}, it is enough to show $E_j(A) = 0$ whenever $A$ has two equal adjacent rows.
   Assume $\alpha_k = \alpha_{k+1}$ for some index $k$. For any $i \neq k, k+1$, the submatrix $A(i|j)$ still has two equal rows, hence $D_{ij}(A) = 0$. This leaves only two non-zero terms in the sum:
   \[
   E_j(A) = (-1)^{k+j} A_{kj} D_{kj}(A) + (-1)^{k+1+j} A_{(k+1)j} D_{(k+1)j}(A).
@@ -328,7 +328,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
 
   Furthermore, if two rows of $A$ are equal (i.e., $\alpha_i = \alpha_j$), then the corresponding rows of $A \cdot B$ are also equal ($\alpha_i \cdot B = \alpha_j \cdot B$). Because $\det$ is alternating, $D(A) = \det(\alpha_1 \cdot B, \dots, \alpha_n \cdot B) = 0$. This rigorously proves the claim that $D$ is alternating.
 
-  We continue with the proof of Theorem~\ref{thm:det_multiplicative}. By Corollary~\ref{cor:det_pullout}, any $n$-linear alternating function satisfies $D(A) = \det(A) \cdot D(I)$. We compute $D(I)$ using our definition: $D(I) = \det(I \cdot B) = \det(B)$. Substituting this back yields $D(A) = \det(A) \cdot \det(B)$, completing the proof.
+  We continue with the proof of \cref{thm:det_multiplicative}. By \Cref{cor:det_pullout}, any $n$-linear alternating function satisfies $D(A) = \det(A) \cdot D(I)$. We compute $D(I)$ using our definition: $D(I) = \det(I \cdot B) = \det(B)$. Substituting this back yields $D(A) = \det(A) \cdot \det(B)$, completing the proof.
 \end{proof}
 
 \begin{corollary}[Determinant of an Inverse]
@@ -337,7 +337,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
 \end{corollary}
 
 \begin{proof}
-  Assume $A$ is invertible, and denote its inverse by $A^{-1}$. Since $A \cdot A^{-1} = I$, taking the determinant of both sides and applying Theorem~\ref{thm:det_multiplicative} yields $\det(A) \cdot \det(A^{-1}) = \det(I) = 1$. This automatically implies that $\det(A)$ cannot be zero, and dividing by $\det(A)$ yields the expected formula.
+  Assume $A$ is invertible, and denote its inverse by $A^{-1}$. Since $A \cdot A^{-1} = I$, taking the determinant of both sides and applying \cref{thm:det_multiplicative} yields $\det(A) \cdot \det(A^{-1}) = \det(I) = 1$. This automatically implies that $\det(A)$ cannot be zero, and dividing by $\det(A)$ yields the expected formula.
 \end{proof}
 
 \section{More on Determinants: Properties of Determinants and the Transpose}
@@ -422,7 +422,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
 \begin{proof}
   Define a helper function $D(A, B, C) := \det \left(\begin{smallmatrix} A & B \\ 0 & C \end{smallmatrix}\right)$ as a function $D : \M_{r \times r}(K) \times \M_{r \times s}(K) \times \M_{s \times s}(K) \to K$.
 
-  If we fix the first two matrices $A$ and $B$, then the function mapping $C \mapsto D(A, B, C)$ is $s$-linear and alternating. By Corollary~\ref{cor:det_pullout}, any such function satisfies:
+  If we fix the first two matrices $A$ and $B$, then the function mapping $C \mapsto D(A, B, C)$ is $s$-linear and alternating. By \Cref{cor:det_pullout}, any such function satisfies:
   \begin{equation} \label{eq:block_step1}
     D(A, B, C) = \det(C) \cdot D(A, B, I_s).
   \end{equation}
@@ -434,13 +434,13 @@ Calculating the determinant of a large matrix by expanding all permutations is c
     \det \begin{pmatrix} A & B \\ 0 & I_s \end{pmatrix} = \det \begin{pmatrix} A & 0 \\ 0 & I_s \end{pmatrix}.
   \end{equation}
 
-  The function $A \mapsto \det \left(\begin{smallmatrix} A & 0 \\ 0 & I_s \end{smallmatrix}\right)$ is $r$-linear and alternating. By Corollary~\ref{cor:det_pullout} again, it evaluates to $\det(A) \cdot \det \left(\begin{smallmatrix} I_r & 0 \\ 0 & I_s \end{smallmatrix}\right) = \det(A) \cdot \det(I_{r+s}) = \det(A) \cdot 1 = \det(A)$.
+  The function $A \mapsto \det \left(\begin{smallmatrix} A & 0 \\ 0 & I_s \end{smallmatrix}\right)$ is $r$-linear and alternating. By \cref{cor:det_pullout} again, it evaluates to $\det(A) \cdot \det \left(\begin{smallmatrix} I_r & 0 \\ 0 & I_s \end{smallmatrix}\right) = \det(A) \cdot \det(I_{r+s}) = \det(A) \cdot 1 = \det(A)$.
 
   Going back through \eqref{eq:block_step2} and then to \eqref{eq:block_step1}, we finally get that $D(A, B, C) = \det(A) \cdot \det(C)$.
 \end{proof}
 
 \begin{remark}[Exercise]
-  Show that $\det \left(\begin{smallmatrix} A & 0 \\ B & C \end{smallmatrix}\right) = \det(A) \cdot \det(C)$, where $A \in \M_{r \times r}(K)$, $C \in \M_{s \times s}(K)$, and $B \in \M_{s \times r}(K)$. (Hint: Use column operations to reduce $B$ to zero, or consider the transpose of the matrix and apply Proposition \ref{prop:block_matrix}.)
+  Show that $\det \left(\begin{smallmatrix} A & 0 \\ B & C \end{smallmatrix}\right) = \det(A) \cdot \det(C)$, where $A \in \M_{r \times r}(K)$, $C \in \M_{s \times s}(K)$, and $B \in \M_{s \times r}(K)$. (Hint: Use column operations to reduce $B$ to zero, or consider the transpose of the matrix and apply \cref{prop:block_matrix}.)
 \end{remark}
 
 \begin{example}[Calculation of a $4 \times 4$ Determinant]
@@ -466,7 +466,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
   \right)
   \]
 
-  By applying Proposition~\ref{prop:block_matrix} to this partitioned form, we can see that the determinant of the $4 \times 4$ matrix is simply the product of the determinants of the $2 \times 2$ diagonal blocks:
+  By applying \cref{prop:block_matrix} to this partitioned form, we can see that the determinant of the $4 \times 4$ matrix is simply the product of the determinants of the $2 \times 2$ diagonal blocks:
   \[
   \det(A) = \det \begin{pmatrix} 1 & -1 \\ 0 & 4 \end{pmatrix} \cdot \det \begin{pmatrix} -4 & -8 \\ 4 & 0 \end{pmatrix}
   \]
@@ -553,14 +553,14 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
 
 \begin{theorem}[Cramer's Rule]
   \label{thm:cramers_rule}
-  Let $A \in \M_{n \times n}(K)$ with $\det A \neq 0$. Let $b \in K^n$. Then, the system $A x = b$ has a unique solution, and it is given by the formula:
+  Let $A \in \M_{n \times n}(K)$ with $\det A \neq 0$. Let $b = (b_1, \dots, b_n)^T \in K^n$. Then, the system $A x = b$, where $x = (x_1, \dots, x_n)^T$, has a unique solution, and it is given by the formula:
   \[
   x_j = \frac{\det A(j, b)}{\det A} \quad \text{for all } 1 \le j \le n,
   \]
   where $A(j,b)$ is the matrix obtained from $A$ by replacing column $j$ with $b$.
 \end{theorem}
 
-\begin{proof}[Proof of Theorem~\ref{thm:cramers_rule}]
+\begin{proof}[Proof of \Cref{thm:cramers_rule}]
   We have seen previously in Linear Algebra I that if $A$ is invertible, then $A x = b$ has a unique solution. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
 \end{proof}
 
@@ -574,7 +574,7 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
 
 \subsection{Determinants of Endomorphisms}
 
-\begin{warmup} Let $A \in \M_{n \times n}(K)$, and let $P \in \GL(n, K)$ (meaning $P$ is an invertible $n \times n$ matrix). Then, by multiplicativity (Theorem~\ref{thm:det_multiplicative}):
+\begin{warmup} Let $A \in \M_{n \times n}(K)$, and let $P \in \GL(n, K)$ (meaning $P$ is an invertible $n \times n$ matrix). Then, by multiplicativity (\cref{thm:det_multiplicative}):
   \[
   \det(P^{-1} \cdot A \cdot P) = (\det P^{-1}) \cdot (\det A) \cdot (\det P) = \frac{1}{\det P} \cdot \det A \cdot \det P = \det A.
   \]

@@ -1,0 +1,300 @@
+\setcounter{chapter}{22}
+\renewcommand{\thetheorem}{23.a.\arabic{theorem}}
+\setcounter{theorem}{0}
+\chapter{Dual Spaces and Inner Products}
+
+\section{Dual Spaces and Inner Products}
+
+Let $V$ be a vector space over $K$ (any field). Recall that we have the dual space $V^* := \Hom(V, K)$, which is the space of linear maps $\varphi \colon V \to K$ (also called \newterm{functionals}). The dual space $V^*$ is also a vector space over $K$.
+
+\begin{warmup}
+Assume $V = K^n$ and let $\varphi \colon K^n \to K$ be a functional. Then there exists a unique matrix $A = (a_1, \dots, a_n) \in \M_{1 \times n}(K)$ such that $\varphi(v) = A \cdot v$ for all $v \in K^n$.
+
+Indeed, let $e_1, \dots, e_n$ be the standard basis for $K^n$, and define $a_1 = \varphi(e_1), \dots, a_n = \varphi(e_n)$. Let $v = (v_1, \dots, v_n)^\top \in K^n$. Then
+\[ \varphi(v) = \varphi(v_1 e_1 + \dots + v_n e_n) = v_1 \varphi(e_1) + \dots + v_n \varphi(e_n) = v_1 a_1 + \dots + v_n a_n = A \cdot v. \]
+\end{warmup}
+
+Consider now an inner product space $(V, \langle \cdot, \cdot \rangle)$ over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$). Let $u \in V$. We define a map $\varphi_u \colon V \to K$ by mapping $v \mapsto \langle v, u \rangle \in K$.
+
+\begin{claim*}
+\label{claim:linearity_phi_u}
+The map $\varphi_u$ is linear.
+\end{claim*}
+(This is left as an exercise).
+
+% Thm 23.a.1
+\begin{theorem}
+\label{thm:dual_space_inner_product_isomorphism}
+Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$). Let $\varphi \in V^*$. Then there exists a unique vector $u \in V$ such that $\varphi = \varphi_u$, that is, $\varphi(v) = \langle v, u \rangle$ for all $v \in V$.
+
+In fact, for $K = \mathbb{R}$, the map $\Phi \colon V \to V^*$, given by $\Phi(u) := \varphi_u$, is an isomorphism. For $K = \mathbb{C}$, this map is injective and surjective, but it is only $\mathbb{C}$-antilinear, meaning that $\Phi(u_1+u_2) = \Phi(u_1)+\Phi(u_2)$ and $\Phi(c \cdot u) = \overline{c} \cdot \Phi(u)$ for all $c \in \mathbb{C}$ and $u \in V$.
+
+So, at least for $K = \mathbb{R}$, a scalar product on $V$ gives us a canonical isomorphism $V \cong V^*$. (However, this isomorphism depends on the choice of the scalar product!)
+\end{theorem}
+
+\begin{proof}
+First, we prove that for all $\varphi \in V^*$ there exists a unique $u \in V$ such that $\varphi = \varphi_u$.
+Fix an orthonormal basis $\mathcal{B} = (e_1, \dots, e_n)$ for $V$, where $n = \dim V$.
+Let $\varphi \in V^*$, and let $v \in V$. We have $v = \sum_{i=1}^n \langle v, e_i \rangle \cdot e_i$. This implies:
+\[ \varphi(v) = \varphi\left( \sum_{i=1}^n \langle v, e_i \rangle \cdot e_i \right) = \sum_{i=1}^n \langle v, e_i \rangle \cdot \varphi(e_i) = \left\langle v, \sum_{i=1}^n \overline{\varphi(e_i)} \cdot e_i \right\rangle. \]
+(Note that the conjugation is needed here only if $K = \mathbb{C}$).
+Define $u := \sum_{i=1}^n \overline{\varphi(e_i)} \cdot e_i$. It follows that $\varphi = \varphi_u$.
+
+\textbf{Uniqueness of $u$:} Suppose that $\varphi_{u_1} = \varphi_{u_2}$ for $u_1, u_2 \in V$. This implies that $\langle v, u_1 \rangle = \langle v, u_2 \rangle$ for all $v \in V$. By a previous result, this implies that $u_1 = u_2$.
+
+The statements about the linearity of $\Phi$ are left as an exercise.
+\end{proof}
+
+\section{The Adjoint Map}
+
+Let $V, W$ be vector spaces over $K$. Let $T \colon V \to W$ be a linear map. We have seen in Linear Algebra I that $T$ induces a linear map $T^* \colon W^* \to V^*$ defined by $T^*(\varphi) := \varphi \circ T$.
+
+\begin{center}
+\begin{tikzcd}
+V \arrow[r, "T"] \arrow[dr, "T^*(\varphi) = \varphi \circ T"'] & W \arrow[d, "\varphi"] \\
+& K
+\end{tikzcd}
+\end{center}
+
+Assume now that $(V, \langle \cdot, \cdot \rangle_V)$ and $(W, \langle \cdot, \cdot \rangle_W)$ are inner product spaces over $K$ (where $K = \mathbb{R}$ or $K = \mathbb{C}$). Assume that $\dim V < \infty$.
+Given $T$ as above, we can define a map $T' \colon W \to V$ using our \qt{canonical} identifications $W \cong W^*$ and $V \cong V^*$. (This is straightforward for $K = \mathbb{R}$, but we have to be careful with $K = \mathbb{C}$.)
+
+% \begin{center}
+% \begin{tikzcd}[row sep=large, column sep=large]
+% W^* \arrow[r, "T^*"] & V^* \\
+% W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"'] \arrow[u, bend right=30, "\Phi_V^{-1}"']
+% \end{tikzcd}
+% \end{center}
+
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep=large]
+W^* \arrow[r, "T^*"] & V^* \\
+W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"] \arrow[u, bend right=40, "\Phi_V^{-1}"']
+\end{tikzcd}
+\end{center}
+
+Here, we define $T' := \Phi_V^{-1} \circ T^* \circ \Phi_W$. (Note that we are using the fact that $\dim V < \infty$ so that $\Phi_V$ is invertible).
+
+What properties does $T'$ have?
+Note that $T'$ is uniquely defined by $\Phi_V \circ T' = T^* \circ \Phi_W$.
+\begin{align*}
+\Phi_V \circ T' &= T^* \circ \Phi_W \\
+&\iff \forall w \in W, \quad (\Phi_V \circ T')(w) = (T^* \circ \Phi_W)(w) \\
+&\iff \varphi_{T'(w)} = T^*(\varphi_w) \quad (\text{in } V^*) \\
+&\iff \forall v \in V, \quad \varphi_{T'(w)}(v) = (T^*(\varphi_w))(v) \\
+&\iff \langle v, T'(w) \rangle_V = \varphi_w(T(v)) = \langle T(v), w \rangle_W.
+\end{align*}
+In other words,
+\begin{equation}
+\label{eq:adjoint_property}
+\langle T(v), w \rangle_W = \langle v, T'(w) \rangle_V \quad \forall v \in V, \forall w \in W.
+\end{equation}
+
+\begin{claim*}
+$T'$ is a linear map.
+\end{claim*}
+
+\begin{proof}
+For $K = \mathbb{R}$, the maps $\Phi_W$, $\Phi_V$, and $T^*$ are linear, and therefore $T'$ is also linear.
+For $K = \mathbb{C}$, the maps $\Phi_W$ and $\Phi_V$ are additive but only $\mathbb{C}$-antilinear. This implies that $\Phi_V^{-1}$ is also additive and $\mathbb{C}$-antilinear (this is an exercise to check!).
+And $T^*$ is linear.
+Consequently, $T'(w_1 + w_2) = T'(w_1) + T'(w_2)$ (exercise).\label{exc:additivity_T_prime}
+Now, let $c \in \mathbb{C}$ and $w \in W$. We compute:
+\begin{align*}
+T'(cw) &= (\Phi_V^{-1} \circ T^* \circ \Phi_W)(cw) \\
+&= \Phi_V^{-1}(T^*(\overline{c} \cdot \Phi_W(w))) \\
+&= \Phi_V^{-1}(\overline{c} \cdot T^*(\Phi_W(w))) \\
+&= c \cdot \Phi_V^{-1}(T^*(\Phi_W(w))) \\
+&= c \cdot T'(w).
+\end{align*}
+This proves that $T'$ is linear.
+\end{proof}
+
+\begin{notation}
+The linear map $T' \colon W \to V$ is often denoted by $T^* \colon W \to V$. This makes sense because of the \qt{canonical} identifications:
+\begin{center}
+$T \colon V \to W \quad \rightsquigarrow \quad \left( \begin{tikzcd} W^* \arrow[r, "T^*"] & V^* \\ W \arrow[u, "\rotatebox{90}{$\cong$}", draw=none] \arrow[r, "T'"] & V \arrow[u, "\rotatebox{90}{$\cong$}"', draw=none] \end{tikzcd} \right)$
+\end{center}
+(Here we also assume $\dim W < \infty$ to have the canonical identification on the left). The map $T^* \colon W \to V$ is called the \newterm{adjoint} of $T$.
+\end{notation}
+
+\subsection{Basic Properties of Adjoint Maps}
+
+% Lemma 23.a.2
+\begin{lemma}[Properties of the Adjoint Map]
+\label{lem:properties_adjoint_map}
+Let $V, W, U$ be finite-di\-men\-sional inner product spaces over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$). Let $S, T \colon V \to W$ and $R \colon W \to U$ be linear maps. Then:
+\begin{enumerate}
+    \item $T^*$ is a linear map.
+    \item $(S+T)^* = S^* + T^*$.
+    \item $(\lambda T)^* = \overline{\lambda} T^*$ for all $\lambda \in K$.
+    \item $(T^*)^* = T$.
+    \item $(\id_V)^* = \id_V$.
+    \item $(R \circ T)^* = T^* \circ R^*$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+    \item This was proved already. (We will use repeatedly that if $\langle x, y_1 \rangle = \langle x, y_2 \rangle$ for all $x$, then $y_1 = y_2$).
+    \item Let $w \in W$ and $v \in V$. We have:
+    \begin{align*}
+    \langle v, (S+T)^*(w) \rangle &= \langle (S+T)(v), w \rangle \\
+    &= \langle S(v), w \rangle + \langle T(v), w \rangle \\
+    &= \langle v, S^*(w) \rangle + \langle v, T^*(w) \rangle \\
+    &= \langle v, (S^*+T^*)(w) \rangle.
+    \end{align*}
+    This holds for all $v \in V$, which implies $(S+T)^*(w) = (S^*+T^*)(w)$. Since this holds for all $w \in W$, we conclude that $(S+T)^* = S^* + T^*$.
+    \item This is left as an exercise.
+    \item Let $v \in V$ and $w \in W$. We have:
+    \begin{align*}
+    \langle w, (T^*)^*(v) \rangle &= \langle T^*(w), v \rangle \\
+    &= \overline{\langle v, T^*(w) \rangle} \\
+    &= \overline{\langle T(v), w \rangle} \\
+    &= \langle w, T(v) \rangle.
+    \end{align*}
+    This holds for all $w \in W$, which implies $(T^*)^*(v) = T(v)$. Since this holds for all $v \in V$, we conclude that $(T^*)^* = T$.
+    \item This is left as an exercise.
+    \item Let $v \in V$ and $u \in U$. We have:
+    \begin{align*}
+    \langle v, (R \circ T)^*(u) \rangle &= \langle (R \circ T)(v), u \rangle \\
+    &= \langle R(T(v)), u \rangle \\
+    &= \langle T(v), R^*(u) \rangle \\
+    &= \langle v, T^*(R^*(u)) \rangle \\
+    &= \langle v, (T^* \circ R^*)(u) \rangle.
+    \end{align*}
+    This holds for all $v \in V$, which implies $(R \circ T)^*(u) = (T^* \circ R^*)(u)$. Since this holds for all $u \in U$, we conclude that $(R \circ T)^* = T^* \circ R^*$.
+\end{enumerate}
+\end{proof}
+
+% Lemma 23.a.3
+\begin{lemma}[Orthogonal Relations of Adjoint Maps]
+\label{lem:orthogonal_relations_adjoint_maps}
+Let $V, W$ be finite-di\-men\-sional inner product spaces. Let $T \colon V \to W$ be a linear map, and let $T^* \colon W \to V$ be the adjoint of $T$. Then:
+\begin{enumerate}
+    \item $\ker(T^*) = (\operatorname{Im} T)^\perp$.
+    \item $\operatorname{Im} T^* = (\ker T)^\perp$.
+    \item $\ker T = (\operatorname{Im} T^*)^\perp$.
+    \item $\operatorname{Im} T = (\ker T^*)^\perp$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $w \in W$. Then:
+\begin{align*}
+w \in \ker(T^*) &\iff T^*(w) = 0 \\
+&\iff \forall v \in V, \quad \langle v, T^*(w) \rangle = 0 \\
+&\iff \forall v \in V, \quad \langle T(v), w \rangle = 0 \\
+&\iff w \perp T(v) \quad \forall v \in V \\
+&\iff w \perp \operatorname{Im}(T) \\
+&\iff w \in (\operatorname{Im} T)^\perp.
+\end{align*}
+This proves statement \textbf{(a)}.
+
+Apply the orthogonal complement $(-)^\perp$ to both sides of \textbf{(a)}:
+\[ (\ker T^*)^\perp = ((\operatorname{Im} T)^\perp)^\perp = \operatorname{Im} T. \]
+(Recall that $\operatorname{Im} T$ is finite-di\-men\-sional). This proves statement \textbf{(d)}.
+
+Now, use statement \textbf{(d)} with $T^*$ instead of $T$:
+\[ \operatorname{Im} T^* = (\ker (T^*)^*)^\perp = (\ker T)^\perp, \]
+which proves statement \textbf{(b)}.
+
+To prove statement \textbf{(c)}, apply the orthogonal complement $(-)^\perp$ to statement \textbf{(b)}.
+\end{proof}
+
+\subsection{Matrix Representation of Adjoint Maps}
+
+% Prop 23.a.4
+\begin{proposition}[Matrix Representation of the Adjoint]
+\label{prop:matrix_representation_adjoint}
+Let $V, W$ be finite-di\-men\-sional inner product spaces and $T \colon V \to W$ a linear map. Let $\mathcal{B} = (e_1, \dots, e_n)$ be an orthonormal basis for $V$, and $\mathcal{C} = (f_1, \dots, f_m)$ an orthonormal basis for $W$. Then:
+\[ [T^*]_{\mathcal{B}}^{\mathcal{C}} = \left( \overline{[T]_{\mathcal{C}}^{\mathcal{B}}} \right)^\top = \left([T]_{\mathcal{C}}^{\mathcal{B}}\right)^* \]
+(where the latter denotes the adjoint matrix).
+\end{proposition}
+
+\begin{proof}
+Write $A = (a_{ij})_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}} = [T]_{\mathcal{C}}^{\mathcal{B}}$ and $B = (b_{ij})_{\substack{1 \leq i \leq n \\ 1 \leq j \leq m}} = [T^*]_{\mathcal{B}}^{\mathcal{C}}$.
+We have:
+\[ b_{ij} = \langle T^*(f_j), e_i \rangle = \overline{\langle e_i, T^*(f_j) \rangle} = \overline{\langle T(e_i), f_j \rangle} = \overline{a_{ji}}. \]
+Therefore, $B = (\overline{A})^\top = A^*$.
+\end{proof}
+
+% Cor 23.a.5
+\begin{corollary}[Adjoint of a Matrix Map]
+\label{cor:adjoint_matrix_map}
+Let $A \in \M_{m \times n}(K)$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and let $T_A \colon K^n \to K^m$ be the linear map defined by $T_A(v) = A \cdot v$. Endow $K^n$ and $K^m$ with their standard inner products. Then $(T_A)^* = T_{A^*}$.
+\end{corollary}
+
+% Prop 23.a.6
+\begin{proposition}[Properties of the Adjoint Matrix]
+\label{prop:properties_adjoint_matrix}
+Let $K = \mathbb{R}$ or $\mathbb{C}$. Let $A, B \in \M_{m \times n}(K)$ and $C \in \M_{n \times p}(K)$. Then:
+\begin{enumerate}
+    \item $\overline{(A+B)}^\top = \overline{A}^\top + \overline{B}^\top$.
+    \item $\overline{(\lambda A)}^\top = \overline{\lambda} \overline{A}^\top$ for all $\lambda \in K$.
+    \item $\overline{(\overline{A}^\top)}^\top = A$.
+    \item $\overline{I_n}^\top = I_n$.
+    \item $\overline{(A \cdot C)}^\top = \overline{C}^\top \cdot \overline{A}^\top$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+This is left as an exercise.
+\end{proof}
+
+
+\section*{Exercise Solutions}
+\addcontentsline{toc}{section}{Exercise Solutions}
+
+\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]
+Let $v_1, v_2 \in V$ and $c \in K$. We have:
+\[ \varphi_u(v_1 + v_2) = \langle v_1 + v_2, u \rangle = \langle v_1, u \rangle + \langle v_2, u \rangle = \varphi_u(v_1) + \varphi_u(v_2), \]
+and
+\[ \varphi_u(c v_1) = \langle c v_1, u \rangle = c \langle v_1, u \rangle = c \varphi_u(v_1). \]
+Thus, $\varphi_u$ is a linear map.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{thm:dual_space_inner_product_isomorphism}]
+For $K = \mathbb{R}$, we have $\Phi(u) = \varphi_u$. Then:
+\[ \Phi(u_1+u_2)(v) = \langle v, u_1+u_2 \rangle = \langle v, u_1 \rangle + \langle v, u_2 \rangle = \Phi(u_1)(v) + \Phi(u_2)(v), \]
+and
+\[ \Phi(c u)(v) = \langle v, c u \rangle = c \langle v, u \rangle = c \Phi(u)(v). \]
+(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus $\Phi$ is linear.
+
+For $K = \mathbb{C}$, the additivity follows identically. For scalar multiplication:
+\[ \Phi(c u)(v) = \langle v, c u \rangle = \overline{c} \langle v, u \rangle = \overline{c} \Phi(u)(v). \]
+Thus $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
+
+For the inverse $\Phi^{-1}$: since $\Phi$ is additive, taking $\varphi_1 = \Phi(u_1)$ and $\varphi_2 = \Phi(u_2)$ gives $\Phi^{-1}(\varphi_1 + \varphi_2) = \Phi^{-1}(\varphi_1) + \Phi^{-1}(\varphi_2)$, so $\Phi^{-1}$ is additive.
+For scalar multiplication, let $\varphi = \Phi(u)$ and $\lambda \in \mathbb{C}$. Then $\overline{\lambda} \varphi = \overline{\lambda} \Phi(u) = \Phi(\lambda u)$. Applying $\Phi^{-1}$ to both sides gives $\Phi^{-1}(\overline{\lambda} \varphi) = \lambda u = \lambda \Phi^{-1}(\varphi)$. Setting $c = \overline{\lambda}$ (so $\lambda = \overline{c}$) gives $\Phi^{-1}(c \varphi) = \overline{c} \Phi^{-1}(\varphi)$, proving $\Phi^{-1}$ is $\mathbb{C}$-antilinear.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of Additivity of $T'$ (on \cpageref{exc:additivity_T_prime})]
+We have $T'(w_1 + w_2) = (\Phi_V^{-1} \circ T^* \circ \Phi_W)(w_1 + w_2)$.
+Since $\Phi_W$ is additive, this equals $(\Phi_V^{-1} \circ T^*)(\Phi_W(w_1) + \Phi_W(w_2))$.
+Since $T^*$ is linear (and therefore additive), this becomes $\Phi_V^{-1}(T^*(\Phi_W(w_1)) + T^*(\Phi_W(w_2)))$.
+Finally, since $\Phi_V^{-1}$ is additive, this splits into $\Phi_V^{-1}(T^*(\Phi_W(w_1))) + \Phi_V^{-1}(T^*(\Phi_W(w_2))) = T'(w_1) + T'(w_2)$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(c)}]
+Let $v \in V$ and $w \in W$. We have:
+\[ \langle v, (\lambda T)^*(w) \rangle = \langle (\lambda T)(v), w \rangle = \langle \lambda T(v), w \rangle = \lambda \langle T(v), w \rangle = \lambda \langle v, T^*(w) \rangle = \langle v, \overline{\lambda} T^*(w) \rangle. \]
+This holds for all $v \in V$, so $(\lambda T)^*(w) = \overline{\lambda} T^*(w)$. Thus $(\lambda T)^* = \overline{\lambda} T^*$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(e)}]
+Let $v, w \in V$. We have:
+\[ \langle v, (\id_V)^*(w) \rangle = \langle \id_V(v), w \rangle = \langle v, w \rangle. \]
+This holds for all $v \in V$, so $(\id_V)^*(w) = w = \id_V(w)$. Thus $(\id_V)^* = \id_V$.
+\end{exercisesolution}
+
+\begin{exercisesolution}. 
+These follow directly from the properties of matrix transpose and complex conjugation:
+\begin{enumerate}
+    \item $\overline{(A+B)}^\top = (\overline{A} + \overline{B})^\top = \overline{A}^\top + \overline{B}^\top$.
+    \item $\overline{(\lambda A)}^\top = (\overline{\lambda} \overline{A})^\top = \overline{\lambda} \overline{A}^\top$.
+    \item $\overline{(\overline{A}^\top)}^\top = (\overline{\overline{A}}^\top)^\top = (A^\top)^\top = A$.
+    \item $\overline{I_n}^\top = I_n^\top = I_n$ (since $I_n$ is real and symmetric).
+    \item $\overline{(A \cdot C)}^\top = (\overline{A} \cdot \overline{C})^\top = \overline{C}^\top \cdot \overline{A}^\top$.
+\end{enumerate}
+\end{exercisesolution}

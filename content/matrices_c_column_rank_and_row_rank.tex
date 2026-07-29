@@ -67,21 +67,21 @@ Let $A, B \in \M_{m \times n}(K)$ such that $B = P A Q$, where $P \in \GL_m(K)$ 
 \end{lemma}
 
 \begin{proof}
-\textbf{Proof of (a):} Transitioning to the associated linear maps, we have $T_B = T_P \circ T_A \circ T_Q$. Since $P$ and $Q$ are invertible matrices, both $T_P$ and $T_Q$ are isomorphisms. Applying Lemma \ref{lemma:rank_invariance_isomorphisms}, we deduce that $\rank(T_B) = \rank(T_A)$. Recalling that the rank of a linear map given by a matrix matches the column rank of that matrix, we obtain $\rank_{\text{col}}(B) = \rank_{\text{col}}(A)$.
+\textbf{(a)} Transitioning to the associated linear maps, we have $T_B = T_P \circ T_A \circ T_Q$. Since $P$ and $Q$ are invertible matrices, both $T_P$ and $T_Q$ are isomorphisms. Applying \cref{lemma:rank_invariance_isomorphisms}, we deduce that $\rank(T_B) = \rank(T_A)$. Recalling that the rank of a linear map given by a matrix matches the column rank of that matrix, we obtain $\rank_{\text{col}}(B) = \rank_{\text{col}}(A)$.
 
-\textbf{Proof of (b):} Taking the transpose of the equation $B = PAQ$ yields $B^T = Q^T A^T P^T$. Since $P$ and $Q$ are invertible matrices, their transposes $P^T$ and $Q^T$ are also invertible (we have previously seen that $(P^T)^{-1} = (P^{-1})^T$). We can now apply part (a) of this Lemma, which we have already proven, to the matrices $A^T$ and $B^T$. This gives us $\rank_{\text{col}}(B^T) = \rank_{\text{col}}(A^T)$. By the definition of the transpose, this immediately translates to $\rank_{\text{row}}(B) = \rank_{\text{row}}(A)$.
+\textbf{(b)} Taking the transpose of the equation $B = PAQ$ yields $B^T = Q^T A^T P^T$. Since $P$ and $Q$ are invertible matrices, their transposes $P^T$ and $Q^T$ are also invertible (we have previously seen that $(P^T)^{-1} = (P^{-1})^T$). We can now apply part (a) of this \Cref{lemma:rank_invariance_equivalence}, which we have already proven, to the matrices $A^T$ and $B^T$. This gives us $\rank_{\text{col}}(B^T) = \rank_{\text{col}}(A^T)$. By the definition of the transpose, this immediately translates to $\rank_{\text{row}}(B) = \rank_{\text{row}}(A)$.
 \end{proof}
 
 \subsection{Proof of the Main Theorem}
 
-We are now ready for the proof of Theorem \ref{thm:rank_row_column_equality}.
+We are now ready for the proof of \cref{thm:rank_row_column_equality}.
 
-\begin{proof}[Proof of Theorem \ref{thm:rank_row_column_equality}]
+\begin{proof}[Proof of \Cref{thm:rank_row_column_equality}]
 Let $r := \rank_{\text{col}}(A)$. By a previous proposition regarding the equivalence of matrices, we know that there exist invertible matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that:
 \begin{equation*}
     P A Q = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} =: B
 \end{equation*}
-By Lemma \ref{lemma:17.c.4}, we know that $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$. Thus, it suffices to determine the row rank of $B$.
+By \Cref{lemma:rank_invariance_equivalence}, we know that $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$. Thus, it suffices to determine the row rank of $B$.
 
 The matrix $B$ is of the block form $\left(\begin{smallmatrix} I_r & O \\ O & O \end{smallmatrix}\right)$. The non-zero rows of $B$ are precisely the first $r$ standard basis vectors $e_1^T, e_2^T, \dots, e_r^T \in K_{\text{row}}^n$. Since these vectors form a linearly independent set, the dimension of the row space of $B$ is exactly $r$. Consequently, $\rank_{\text{row}}(B) = r$.
 

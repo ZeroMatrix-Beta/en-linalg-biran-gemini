@@ -1,7 +1,7 @@
 \section{Elementary Row Operations Revisited}
 
 Let $A \in \M_{n \times p}(K)$. We have previously learned about elementary row operations, which are utilized as an integral part of the Gaussian elimination algorithm. The main point of this section is to demonstrate that all of these operations can be expressed through matrix multiplications.
-\textbf{Notation:} Let $n \in \mathbb{Z}_{\ge 1}$, and let $1 \le i \le n$, $1 \le j \le n$. We denote by $E_{ij} \in \M_{n \times n}(K)$ the matrix whose entries are all zero, except for the entry in the $i$-th row and $j$-th column, which is equal to $1$. 
+\textbf{Notation:} Let $n \in \mathbb{Z}_{\ge 1}$, and let $1 \le i \le n$, $1 \le j \le n$. We denote by $R_{ij} \in \M_{n \times n}(K)$ the matrix whose entries are all zero, except for the entry in the $i$-th row and $j$-th column, which is equal to $1$. 
 
 We will now define three types of elementary matrices in $\M_{n \times n}(K)$.
 
@@ -12,7 +12,7 @@ We define the following three types of elementary matrices:
 \begin{enumerate}
     \item \textbf{Type I:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$, and let $\alpha \in K$. We define $Q_{ij}(\alpha)$ to be the matrix obtained from $I_n$ by applying the row operation $R_i + \alpha R_j \longrightarrow R_i$ (i.e., replacing the $i$-th row by the sum of the $i$-th row and $\alpha$ times the $j$-th row). Explicitly, we have:
     \begin{equation*}
-        Q_{ij}(\alpha) = I_n + \alpha \cdot E_{ij}
+        Q_{ij}(\alpha) = I_n + \alpha \cdot R_{ij}
     \end{equation*}
     
     \item \textbf{Type II:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$. We define $P_{ij}$ to be the matrix obtained from $I_n$ by permuting (exchanging) the $i$-th row and the $j$-th row, denoted by $R_i \leftrightarrow R_j$.
@@ -22,7 +22,7 @@ We define the following three types of elementary matrices:
 \end{definition}
 
 \begin{exercise}
-Show that the Type II elementary matrix can be written explicitly as $P_{ij} = I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$.
+Show that the Type II elementary matrix can be written explicitly as $P_{ij} = I_n - R_{ii} - R_{jj} + R_{ij} + R_{ji}$.
 \end{exercise}
 
 \begin{example}
@@ -114,7 +114,7 @@ We already know that every matrix $A \in \M_{n \times n}(K)$ can be brought to a
 
 In our case, $A$ is invertible, and hence $\rank(A) = n$. Because row operations do not change the rank, we have $\rank(A') = \rank(A)$, which implies that $\rank(A') = n$. The only $n \times n$ row-reduced echelon matrix with rank $n$ is the identity matrix, meaning $A' = I_n$. 
 
-Since each step in the Gaussian elimination algorithm corresponds to an elementary operation, we can deduce from Lemma \ref{lemma:row_operations_matrix_multiplication} that there exist elementary matrices $T_1, \dots, T_k$ (of types I, II, and III) such that:
+Since each step in the Gaussian elimination algorithm corresponds to an elementary operation, we can deduce from Lemma \cref{lemma:row_operations_matrix_multiplication} that there exist elementary matrices $T_1, \dots, T_k$ (of types I, II, and III) such that:
 \begin{equation*}
     T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
 \end{equation*}
@@ -143,8 +143,8 @@ This follows directly from the definition of matrix multiplication. Check the ex
 This follows directly from the definition of matrix multiplication. (Hint: Consider the $(k,l)$-th entry of $B \cdot (C \mid D)$ and show it matches the $(k,l)$-th entry of $(B \cdot C \mid B \cdot D)$.)
 \end{proof}
 
-\begin{proof}[Proof of Theorem \ref{thm:matrix_inversion_algorithm}]
-Assume that $A$ is invertible. By Theorem \ref{thm:elementary_matrix_decomposition}, there exist elementary matrices $T_1, \dots, T_k$ such that $T_k \dots T_1 \cdot A = I_n$. Using Lemma \ref{lemma:block_matrix_multiplication}, we can multiply the augmented matrix $(A \mid I_n)$ from the left by this chain of elementary matrices:
+\begin{proof}[Proof of \Cref{thm:matrix_inversion_algorithm}]
+Assume that $A$ is invertible. By \Cref{thm:elementary_matrix_decomposition}, there exist elementary matrices $T_1, \dots, T_k$ such that $T_k \dots T_1 \cdot A = I_n$. Using \cref{lemma:block_matrix_multiplication}, we can multiply the augmented matrix $(A \mid I_n)$ from the left by this chain of elementary matrices:
 \begin{equation*}
     T_k \dots T_1 \cdot \left(A \mid I_n\right) = \left(T_k \dots T_1 \cdot A \mid T_k \dots T_1 \cdot I_n\right) = \left(I_n \mid T_k \dots T_1\right)
 \end{equation*}
@@ -152,7 +152,7 @@ Let us define $B := T_k \dots T_1$. We can clearly see that:
 \begin{equation*}
     B \cdot A = (T_k \dots T_1) \cdot A = I_n
 \end{equation*}
-and using the decomposition of $A$ provided by Theorem \ref{thm:elementary_matrix_decomposition},
+and using the decomposition of $A$ provided by \cref{thm:elementary_matrix_decomposition},
 \begin{equation*}
     A \cdot B = (T_1^{-1} \dots T_k^{-1}) \cdot (T_k \dots T_1) = I_n
 \end{equation*}

@@ -74,7 +74,7 @@ The zero vector is explicitly defined as $0 := (0, \dots, 0) \in K^n$.
 
 \subsection{Spaces of Matrices}
 \begin{example}
-Let $M_{m \times n}(K)$ be the set of all $m \times n$ matrices with entries in $K$. We define addition of matrices component-wise: if $A = (A_{i,j})$ and $B = (B_{i,j})$, then $A + B = (A_{i,j} + B_{i,j})$. Similarly, scalar multiplication is defined component-wise: $\alpha \cdot A = (\alpha \cdot A_{i,j})$. With these operations, $M_{m \times n}(K)$ forms a vector space over $K$. The zero vector is the $m \times n$ matrix consisting entirely of zeros.
+Let $\M_{m \times n}(K)$ be the set of all $m \times n$ matrices with entries in $K$. We define addition of matrices component-wise: if $A = (A_{i,j})$ and $B = (B_{i,j})$, then $A + B = (A_{i,j} + B_{i,j})$. Similarly, scalar multiplication is defined component-wise: $\alpha \cdot A = (\alpha \cdot A_{i,j})$. With these operations, $\M_{m \times n}(K)$ forms a vector space over $K$. The zero vector is the $m \times n$ matrix consisting entirely of zeros.
 \end{example}
 
 \subsection{Function Spaces $K^S$}
@@ -120,8 +120,8 @@ Every polynomial has a well-defined degree.
 Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \qt{linear subspace} if it satisfies:
 \begin{enumerate}
     \item $0_V \in U$.
-    \item $\forall u_1, u_2 \in U \implies u_1 + u_2 \in U$ (closed under addition).
-    \item $\forall \alpha \in K, \forall u \in U \implies \alpha \cdot u \in U$ (closed under scalar multiplication).
+    \item For all $u_1, u_2 \in U$, we have $u_1 + u_2 \in U$ (closed under addition).
+    \item For all $\alpha \in K$ and for all $u \in U$, we have $\alpha \cdot u \in U$ (closed under scalar multiplication).
 \end{enumerate}
 \end{definition}
 

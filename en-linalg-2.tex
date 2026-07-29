@@ -1,22 +1,35 @@
 \documentclass{report}
 
-% GEMINI 
+% GEMINI
 
 % ==========================================
-% HEADING FORMATTING & SPACING
+% FONTS & ENCODING
 % ==========================================
-\usepackage[explicit]{titlesec}
-\usepackage{titletoc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}          % Computer Modern (Latin Modern) -- has a full sans family
+\usepackage{anyfontsize}
+\renewcommand{\sfdefault}{lmss}
+% --- Body font: switch to Palatino by uncommenting the next line (single-line change) ---
+% \usepackage{mathpazo}
+
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+% ==========================================
+% CORE PACKAGES
+% ==========================================
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{xcolor}
-\usepackage{tocloft}
+\usepackage{mathtools}
+\usepackage{etoolbox}
+\usepackage[dvipsnames, x11names]{xcolor}
 \usepackage[top=15mm, bottom=15mm, includefoot, nomarginpar]{geometry} % try 25 mm
-%\usepackage[rmx]{kpfonts}
 
 % change enumerations:
 \usepackage{enumitem, tabstackengine}
+\usepackage{multirow}
 
 % use tikz:
 \usepackage{tikz}
@@ -27,117 +40,237 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes}
+\usetikzlibrary{shadows}
 
 % change page-footer:
 \usepackage{fancyhdr}
 
-%\usepackage{xr-hyper}
-%\usepackage[colorlinks=false]{hyperref}
-\usepackage[english]{babel}
+% ==========================================
+% GLOBAL COLOR PALETTE
+% ==========================================
+\definecolor{ThemePurple}{HTML}{6A3199}
 
-%\usepackage{fontspec}
+% --- Theorem environments ---
+\colorlet{EnvTheorem}{ThemePurple}
 
-%\usepackage[T1]{fontenc}
-%\usepackage{tgbonum}
+% --- Proofs ---
+\colorlet{ProofTint}{OliveGreen}
+\colorlet{ProofQEDText}{ProofTint}
+\colorlet{ProofQEDBg}{white}
 
-%\usepackage{concmath-otf}
+% --- Running text ---
+\colorlet{TextEmphColor}{SlateBlue4}
+\colorlet{TextBoldColor}{Brown!80!black}   % Espresso brown
+\colorlet{TextMetaNote}{Gray}
+\colorlet{LinkColor}{MidnightBlue}
+\colorlet{FileColor}{Magenta}
 
-%\setmainfont{TeX Gyre Bonum}
-%\setmathfont{TeX Gyre Bonum Math}
+% --- Lists ---
+\colorlet{ItemizeBullet}{BurntOrange}
+\colorlet{EnumerateBullet}{OliveGreen}
 
-%\usepackage[default]{fontsetup}
-%\usepackage[sansdefault]{fontsetup}
-%
-%\usepackage{concmath-otf}
+% --- Headings ---
+\colorlet{ChapTitleText}{MidnightBlue!90!black}
+\colorlet{ChapNumberText}{OliveGreen}
+\colorlet{ChapLine}{MidnightBlue!80!black}
+\colorlet{SecTitleColor}{ThemePurple}
+\colorlet{SecNumberColor}{OliveGreen}
+\colorlet{SubSecTitleColor}{ThemePurple!80!white}
+\colorlet{SubSubSecTitleColor}{TextBoldColor}
+\colorlet{HeaderFooterFaint}{OliveGreen!45!Gray}
+
+% --- EMPHASIS STYLE OVERRIDE ---
+\DeclareTextFontCommand{\emph}{\sffamily\bfseries\color{TextEmphColor}}
+\DeclareTextFontCommand{\textbf}{\sffamily\bfseries\color{TextBoldColor}}
+
+% ==========================================
+% HYPERLINKS & CLEVEREF  (hyperref must come before cleveref)
+% ==========================================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=LinkColor,
+  filecolor=FileColor,
+  urlcolor=LinkColor,
+  citecolor=LinkColor,
+  bookmarksopen=true
+}
+\usepackage[nameinlink, capitalize]{cleveref}
+
+% ==========================================
+% SPACING UNITS (everything in ex -- do not mix in pt)
+% ==========================================
+\newlength{\customparskip}
+\setlength{\customparskip}{1ex plus 0.5ex minus 0.2ex}
+
+\newlength{\customenvspace}
+\setlength{\customenvspace}{2.5ex plus 0.5ex minus 0.2ex}
+
+% Inline math breathing room
+\setlength{\mathsurround}{0.25ex}
+
+% Matrix and table rows
+\renewcommand{\arraystretch}{1.15}
+
+% Proportional math display spacing
+\AtBeginDocument{
+  \setlength{\abovedisplayskip}{1.2\customparskip plus 0.5ex minus 0.2ex}
+  \setlength{\belowdisplayskip}{1.2\customparskip plus 0.5ex minus 0.2ex}
+  \setlength{\abovedisplayshortskip}{0.5\customparskip plus 0.2ex}
+  \setlength{\belowdisplayshortskip}{0.8\customparskip plus 0.2ex minus 0.1ex}
+}
 
 % Macro for omitted content (kept for future use if needed)
 \newcommand{\omitted}[1]{\textcolor{red}{#1}}
 
 % Custom command for italicized terminology and "quotes"
-\newcommand{\qt}[1]{\textit{``#1''}}
-%No indent:
-% \setlength{\parindent}{0pt}
+\newcommand{\newterm}[1]{\textcolor{BrickRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{\grqq}}
+\newcommand{\qt}[1]{\textit{\textcolor{BrickRed}{``}#1\textcolor{BrickRed}{''}}}
+\newcommand{\inlinemetanote}[1]{\textit{[\textcolor{TextMetaNote}{#1}]}}
 
 % Redefine \bigbreak to ensure the following paragraph is not indented
 \let\oldbigbreak\bigbreak
 \renewcommand{\bigbreak}{\oldbigbreak\noindent}
 
+% ==========================================
+% HEADING FORMATTING & SPACING
+% ==========================================
+\usepackage[explicit]{titlesec}
+\usepackage{titletoc}
+\usepackage{tocloft}
+
+% Headings hang into the left margin, staggered by level.
+\newlength{\chapouthang}\setlength{\chapouthang}{-3.2ex}
+\newlength{\secouthang}\setlength{\secouthang}{-2.4ex}
+\newlength{\subsecouthang}\setlength{\subsecouthang}{-1.6ex}
+\newlength{\subsubsecouthang}\setlength{\subsubsecouthang}{-0.8ex}
+
 % 1. Custom Chapter Format: Title (chapter X)
-\titleformat{\chapter}[block]  % [block] forces it onto a single line
-{\normalfont\LARGE\bfseries}  % Main style: Huge and Bold
+\titleformat{name=\chapter}[block]  % [block] forces it onto a single line
+{\normalfont\sffamily\LARGE\bfseries\color{ChapTitleText}}  % Main style
 {}                           % Empty standard label
-{0pt}                        % Separation
-% #1 is the title. Suffix is \Large (smaller than \Huge) and un-bolded (\textnormal)
-{#1 {\Large\textnormal{(Chapter \thechapter)}}}
+{0ex}                        % Separation
+% #1 is the title. Suffix is \Large (smaller) and un-bolded
+{#1 {\Large\mdseries\color{ChapNumberText}(Chapter \thechapter)}}
+[{\color{ChapLine}\rule{\textwidth}{1pt}}]
+
+\titleformat{name=\chapter,numberless}[block]
+{\normalfont\sffamily\LARGE\bfseries\color{ChapTitleText}}
+{}
+{0ex}
+{#1}
+[{\color{ChapLine}\rule{\textwidth}{1pt}}]
 
 % 2. Space-efficient Chapter Headings
-\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+\titlespacing*{\chapter}{\chapouthang}{-7ex}{2.5ex}
 
 % 3. Custom Section Format: Title (section X.Y)
-\titleformat{\section}
-{\large\bfseries}
+\titleformat{name=\section}
+{\normalfont\sffamily\Large\bfseries\color{SecTitleColor}}
 {}
-{0pt}
-{#1 {\textnormal{(Section \thechapter.\alph{section})}}}
+{0ex}
+{#1 {\large\mdseries\color{SecNumberColor}(Section \thechapter.\alph{section})}}
 
-% 4. Space-efficient Section Headings
-\titlespacing*{\section}{0pt}{12pt}{6pt}
-
-
-% Make the sub-sub section numbers logically and visually dissappear:
-% 1. Global limit: Only Chapters and Sections get numbers
-\setcounter{secnumdepth}{1}
-
-% 2. Visual styling for Subsections (Clean & Unnumbered)
-\titleformat{\subsection}
-{\normalfont\large\bfseries}
+\titleformat{name=\section,numberless}
+{\normalfont\sffamily\Large\bfseries\color{SecTitleColor}}
 {}
-{0pt}
+{0ex}
 {#1}
 
-\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+% Make the sub-sub section numbers logically and visually disappear:
+% 1. Global limit: Only Chapters and Sections get numbers
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{2}
 
-% change enumerations to alphabetical as default
-\setlist[enumerate]{itemsep=\itemsep,topsep=\itemsep}
-\setlist[enumerate,1]{label=\textbf{(\alph*)}}
+% 2. Visual styling for Subsections / Subsubsections (Clean & Unnumbered)
+\titleformat{\subsection}
+{\normalfont\sffamily\large\bfseries\color{SubSecTitleColor}}
+{}
+{0ex}
+{#1}
+
+\titleformat{\subsubsection}
+{\normalfont\sffamily\normalsize\bfseries\color{SubSubSecTitleColor}}
+{}
+{0ex}
+{#1}
+
+% 4. Space-efficient Heading Spacing
+\titlespacing*{\section}{\secouthang}{3.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection}{\subsecouthang}{3ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+\titlespacing*{\subsubsection}{\subsubsecouthang}{2.5ex plus 1ex minus .2ex}{1ex plus .2ex}
+
+% ==========================================
+% LIST FORMATTING
+% ==========================================
+\setlist{
+  topsep=0.6ex plus 0.2ex minus 0.1ex,
+  partopsep=0ex,
+  parsep=0.5\customparskip,
+  itemsep=0.4ex plus 0.2ex minus 0.1ex,
+}
+
+\setlist[itemize]{
+  label=\textcolor{ItemizeBullet}{\textbullet}
+}
+
 % Define a common layout
 \newlength{\myleftmargin}
 \setlength{\myleftmargin}{\leftmargin} % default LaTeX value
 
 \newlength{\enumlabelwidth}
-\settowidth{\enumlabelwidth}{\textbf{(m)}} % widest expected label
+\settowidth{\enumlabelwidth}{\bfseries(m)} % widest expected label
 
 \setlist[enumerate,1]{
-  label=\textbf{(\alph*)},
+  % Redirects \textbf inside the label to the enumerate colour
+  font=\colorlet{TextBoldColor}{EnumerateBullet},
+  label=\textcolor{EnumerateBullet}{\bfseries(\alph*)},
+  ref=(\alph*),
   labelwidth=\enumlabelwidth,
   leftmargin=! % compute from labelwidth + labelsep
 }
 
 \setlist[description]{
+  style=unboxed,
   labelwidth=\enumlabelwidth,
   leftmargin=!,
-  labelsep=0.2em,
-  labelindent=0.4em,
-  font=\bfseries
+  labelsep=0.35ex,
+  labelindent=0.4ex,
+  font=\bfseries\color{TextBoldColor}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nested lists stay tight
+\setlist[itemize,2]{topsep=0ex, itemsep=0ex, parsep=0ex}
+\setlist[enumerate,2]{topsep=0ex, itemsep=0ex, parsep=0ex}
+
+% --- FIX: LISTS DIRECTLY AFTER A THEOREM HEADING ---
+\makeatletter
+\newcommand{\fixlistaftertheorem}{%
+  \if@inlabel
+    \leavevmode \par
+  \fi
+}
+\BeforeBeginEnvironment{itemize}{\fixlistaftertheorem}
+\BeforeBeginEnvironment{enumerate}{\fixlistaftertheorem}
+\BeforeBeginEnvironment{description}{\fixlistaftertheorem}
+\makeatother
 
 % ==========================================
 % THEOREM CONFIGURATION
 % ==========================================
+\newtheoremstyle{purplethm}%
+{\customenvspace}{\customenvspace}{\normalfont}{}{\color{EnvTheorem}\sffamily\bfseries}{:}{0.5em}%
+{\thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1 }}\thmnumber{\sffamily\bfseries #2}%
+ \thmnote{ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
 
-\newtheoremstyle{colonstyle}
-{\topsep}{\topsep}{\upshape}{}{\bfseries}{:}{.5em}
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (\textnormal{\textit{#3}})}}
-
-\theoremstyle{colonstyle}
+\theoremstyle{purplethm}
 
 \newtheorem{theorem}{Theorem}[section]
 
 % The decoupled theorem display format: Chapter.letter.Number
 \renewcommand{\thetheorem}{\thechapter.\alph{section}.\arabic{theorem}}
 
-% --- NUMBEREd ENVIRONMENTS ---
+% --- NUMBERED ENVIRONMENTS ---
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
@@ -162,31 +295,66 @@
 \newtheorem*{answer}{Answer}
 \newtheorem*{importantremark}{Important remark}
 \newtheorem*{goals}{Goals}
+\newtheorem*{ainote}{AI-Note}
 
-% Changing proof environment
+% ==========================================
+% CLEVEREF NAMES
+% ==========================================
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmata}
+\Crefname{lemma}{Lemma}{Lemmata}
+\crefname{corollary}{Corollary}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{proposition}{Proposition}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{chapter}{Chapter}{Chapters}
+\Crefname{chapter}{Chapter}{Chapters}
+\crefname{section}{Section}{Sections}
+\Crefname{section}{Section}{Sections}
+\crefname{equation}{Equation}{Equations}
+\Crefname{equation}{Equation}{Equations}
+\crefname{figure}{Figure}{Figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+\crefname{item}{Part}{Parts}
+\Crefname{item}{Part}{Parts}
+
+% ==========================================
+% PROOF ENVIRONMENT (olive green, upright, boxed Q.E.D.)
+% ==========================================
+\newcommand{\qedbox}{%
+  \tikz[baseline=(Q.base)]{%
+    \node[draw=ProofTint, fill=ProofQEDBg, line width=1pt, rounded corners=0.5ex,
+          inner xsep=0.5ex, inner ysep=0.3ex, font=\sffamily\bfseries\small,
+          text=ProofQEDText,
+          drop shadow={shadow xshift=0.5ex, shadow yshift=-0.5ex, fill=ProofTint, opacity=0.4}]
+         (Q) {Q.E.D.};%
+  }%
+}
+\renewcommand{\qedsymbol}{\qedbox}
+
 \makeatletter
-\renewenvironment{proof}[1][\proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  % This line sets the font to Bold + Italic and adds the colon
-  \item[\hskip\labelsep
-  \bfseries\itshape #1:]\ignorespaces
+\renewenvironment{proof}[1][\proofname]{%
+  \par\if@nobreak\vspace{-1ex}\else\addvspace{2.2ex plus 0.5ex minus 0.2ex}\fi
+  \noindent{\normalfont\sffamily\large\bfseries\color{ProofTint}#1}%
+  \par\nobreak\vspace{0.8ex plus .1ex}\vspace{-\parskip}
+  \@afterindentfalse\@afterheading
 }{%
-  \popQED\endtrivlist\@endpefalse
+  \unskip\nobreak\hfill\penalty50\hskip2em\null\nobreak\hfill
+  \qedbox
+  {\parfillskip=0pt\par}\vspace{2ex}
 }
 \makeatother
 
-%Change QED symbol:
-\renewcommand{\qedsymbol}{$\blacksquare$}
-
-%\geometry{
-  %  a4paper,
-  %  total={170mm,257mm},
-  %  left=24mm,
-  %  right=24mm,
-  %  %top=15mm,
-  %}
+\newenvironment{exercisesolution}[1][Solution]{%
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
 
 % --- MATH OPERATORS ---
 \newcommand{\M}{\mathcal{M}}
@@ -207,14 +375,14 @@
 \pagestyle{fancy}
 \fancyhf{} % Alle Kopf- und Fußzeilen leeren
 \renewcommand{\headrulewidth}{0pt} % Keine Linie oben
-\fancyfoot[C]{\textbf{\thepage}}   % Seitenzahl zentriert und FETT
+\fancyfoot[C]{\sffamily\color{HeaderFooterFaint}\bfseries\thepage}   % Seitenzahl zentriert und FETT
 
 % --- Sonderfall: Kapitelanfänge ---
 % LaTeX schaltet bei \chapter automatisch auf den Stil 'plain' um.
 % Wir definieren diesen Stil um, damit auch dort die Zahl fett ist.
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{\textbf{\thepage}}
+  \fancyfoot[C]{\sffamily\color{HeaderFooterFaint}\bfseries\thepage}
   \renewcommand{\headrulewidth}{0pt}
 }
 
@@ -227,9 +395,9 @@
 
 % titelpage, table of content
 \maketitle
-\setlength{\cftbeforechapskip}{13pt} % Space before a chapter entry in TOC
-\setlength{\cftbeforesecskip}{7pt}   % Space before a section entry in TOC
-\setlength{\cftbeforesubsecskip}{3pt} % Wert nach Bedarf anpassen
+\setlength{\cftbeforechapskip}{3ex} % Space before a chapter entry in TOC
+\setlength{\cftbeforesecskip}{1.6ex}   % Space before a section entry in TOC
+\setlength{\cftbeforesubsecskip}{0.7ex} % Wert nach Bedarf anpassen
 \tableofcontents % This generates the TOC
 \cleardoublepage
 
@@ -260,5 +428,9 @@
 \input{content/determinants.tex}
 \input{content/eigenvalues-eigenvectors.tex}
 \input{content/euclidean-hermetian-spaces-a.tex}
-
+\input{content/euclidean-hermetian-spaces-b.tex}
+\input{content/dual-spaces-inner-products-a.tex}
+% \input{content/spectral-theorems.tex}
+\input{content/24-spectral-thoerem.tex}
+\input{content/25-isometries.tex}
 \end{document}

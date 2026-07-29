@@ -174,7 +174,7 @@ Let $A, B \in \M_{m \times n}(K)$. Then, $A \sim B$ if and only if $\rank_{\text
 \end{corollary}
 
 \begin{proof}
-Let $A, B \in \M_{m \times n}(K)$. First, assume that $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$, and denote this common column rank by $r$. By Corollary \ref{cor:matrix_equivalence_normal_form}, we know that $A \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ and $B \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. Since $\sim$ is an equivalence relation, it naturally follows that $A \sim B$.
+Let $A, B \in \M_{m \times n}(K)$. First, assume that $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$, and denote this common column rank by $r$. By \cref{cor:matrix_equivalence_normal_form}, we know that $A \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ and $B \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. Since $\sim$ is an equivalence relation, it naturally follows that $A \sim B$.
 
 Conversely, assume that $A \sim B$. This implies that there exist matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = PAQ$. Transitioning to the associated linear maps, this means $T_B = T_P \circ T_A \circ T_Q$. We analyze the image of $T_B$:
 \begin{equation*}

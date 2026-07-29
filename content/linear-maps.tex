@@ -20,7 +20,7 @@ Let $V$ and $W$ be vector spaces over a field $K$. A map $T: V \to W$ is called 
 
 \begin{remark}[Notation and Terminology]
 \label{rem:linear_map_notation}
-In many contexts, we omit the parentheses and write $Tv$ instead of $T(v)$. The conditions outlined in Definition \ref{def:linear_map} essentially state that $T: V \to W$ is a map that respects the operations defined on the vector spaces; specifically, the addition and scalar multiplication in $V$ are mapped perfectly to the corresponding operations in $W$.
+In many contexts, we omit the parentheses and write $Tv$ instead of $T(v)$. The conditions outlined in \cref{def:linear_map} essentially state that $T: V \to W$ is a map that respects the operations defined on the vector spaces; specifically, the addition and scalar multiplication in $V$ are mapped perfectly to the corresponding operations in $W$.
 
 We denote the set of all linear maps from $V$ to $W$ by $\Hom_K(V, W)$, or simply $\Hom(V, W)$. While some authors use alternative notations such as $\operatorname{Lin}(V, W)$ or $\hom_K(V, W)$, $\Hom_K(V, W)$ remains the standard academic convention.
 \end{remark}
@@ -107,7 +107,7 @@ T(v_i) = w_i, \quad \forall \, 1 \le i \le n.
 \label{eq:T_def_existence}
 T(v) := \sum_{i=1}^n a_i w_i.
 \end{equation}
-Because the coordinates $a_i$ are uniquely determined for each $v$, the map $T$ is well-defined. By verifying the conditions of Definition \ref{def:linear_map}, it is straightforward to show that $T$ is linear. Furthermore, for each basis vector $v_j$, the only non-zero coordinate is $a_j = 1$, which naturally implies $T(v_j) = w_j$.
+Because the coordinates $a_i$ are uniquely determined for each $v$, the map $T$ is well-defined. By verifying the conditions of \cref{def:linear_map}, it is straightforward to show that $T$ is linear. Furthermore, for each basis vector $v_j$, the only non-zero coordinate is $a_j = 1$, which naturally implies $T(v_j) = w_j$.
 
 \textbf{Uniqueness:} Suppose there exists another linear map $S: V \to W$ such that $S(v_i) = w_i$ for all $1 \le i \le n$. For any $v = \sum_{i=1}^n a_i v_i \in V$, the linearity of $S$ dictates:
 \[
@@ -120,7 +120,7 @@ Since $S(v) = T(v)$ for all $v \in V$, the maps are functionally identical, esta
 % ex:15.a.4
 \begin{example}[Important Example 15.a.4: Linear Maps on Coordinate Spaces]
 \label{ex:linear_map_std_basis}
-Consider the coordinate space $K^n$ equipped with the standard basis $\mathcal{E} = (e_1, \dots, e_n)$. Let $w_1, \dots, w_n \in K^m$ be any vectors. Theorem \ref{thm:existence_uniqueness_linear_map} guarantees a unique linear map $T: K^n \to K^m$ such that $T(e_i) = w_i$ for all $1 \le i \le n$.
+Consider the coordinate space $K^n$ equipped with the standard basis $\mathcal{E} = (e_1, \dots, e_n)$. Let $w_1, \dots, w_n \in K^m$ be any vectors. \Cref{thm:existence_uniqueness_linear_map} guarantees a unique linear map $T: K^n \to K^m$ such that $T(e_i) = w_i$ for all $1 \le i \le n$.
 
 \begin{question}
 Can we provide an explicit matrix description for this map $T$?
@@ -136,7 +136,7 @@ w_1 & \dots & w_n \\
 | & & |
 \end{pmatrix}.
 \]
-The linear transformation $T_A: K^n \to K^m$ defined by $v \mapsto A \cdot v$ easily satisfies $T_A(e_j) = w_j$ for all $j$. Due to the absolute uniqueness property established in Theorem \ref{thm:existence_uniqueness_linear_map}, we immediately conclude that $T = T_A$.
+The linear transformation $T_A: K^n \to K^m$ defined by $v \mapsto A \cdot v$ easily satisfies $T_A(e_j) = w_j$ for all $j$. Due to the absolute uniqueness property established in \cref{thm:existence_uniqueness_linear_map}, we immediately conclude that $T = T_A$.
 \end{answer}
 \end{example}
 
@@ -147,7 +147,7 @@ For every linear transformation $T: K^n \to K^m$, there exists a unique matrix $
 \end{lemma}
 
 \begin{proof}
-Let $w_i = T(e_i)$ for each $i \in \{1, \dots, n\}$. As demonstrated in the preceding example, the matrix $A$ formed by using these specific vectors as columns defines a linear map $T_A$ that perfectly agrees with $T$ on the standard basis $\mathcal{E}$. Because $\mathcal{E}$ is a basis for $K^n$, Theorem \ref{thm:existence_uniqueness_linear_map} strictly implies that $T$ and $T_A$ must be the exact same map.
+Let $w_i = T(e_i)$ for each $i \in \{1, \dots, n\}$. As demonstrated in the preceding example, the matrix $A$ formed by using these specific vectors as columns defines a linear map $T_A$ that perfectly agrees with $T$ on the standard basis $\mathcal{E}$. Because $\mathcal{E}$ is a basis for $K^n$, \cref{thm:existence_uniqueness_linear_map} strictly implies that $T$ and $T_A$ must be the exact same map.
 \end{proof}
 \section{Kernel, Image, and the Rank-Nullity Theorem}
 
@@ -168,7 +168,7 @@ Let $V$ and $W$ be vector spaces over a field $K$, and let $T: V \to W$ be a lin
 Using standard notation from set theory, we can concisely write the kernel as the fiber over the zero vector, $\ker(T) = T^{-1}(\{0_W\})$, and the image as the range of the entire domain, $\operatorname{Im}(T) = T(V)$. (Note: The image is sometimes denoted as $\operatorname{Image}(T)$).
 \end{remark}
 
-\begin{proof}[Proof of Proposition \ref{prop:kernel_image}]
+\begin{proof}[Proof of \Cref{prop:kernel_image}]
 \begin{enumerate}
     \item To show that $\ker(T) \subseteq V$ is a subspace, let $a, b \in K$, and let $v_1, v_2 \in \ker(T)$. By the linearity of $T$, we have:
     \[

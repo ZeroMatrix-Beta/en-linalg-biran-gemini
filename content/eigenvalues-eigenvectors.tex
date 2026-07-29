@@ -70,7 +70,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 
 \begin{proof}
   We proceed by induction on $n$.
-  Base case $n=1$: $v_1$ is an eigenvector for $\lambda_1$. By Definition \ref{def:eigenvalue_eigenvector}, $v_1 \ne 0$, which implies that $v_1$ is linearly independent.
+  Base case $n=1$: $v_1$ is an eigenvector for $\lambda_1$. By \cref{def:eigenvalue_eigenvector}, $v_1 \ne 0$, which implies that $v_1$ is linearly independent.
 
   Inductive step for $n \ge 1$: Suppose the proposition holds for any list of $n$ eigenvalues and eigenvectors. We will prove now that the proposition holds also for a list of $n+1$ eigenvalues and eigenvectors.
   Let $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ be pairwise distinct eigenvalues of $T$, and $v_1, \dots, v_n, v_{n+1}$ a given list of eigenvectors of $\lambda_1, \dots, \lambda_n, \lambda_{n+1}$ respectively. We need to prove that $v_1, \dots, v_n, v_{n+1}$ are linearly independent.
@@ -151,7 +151,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   If $V$ is an $n$-di\-men\-sional vector space over $K$ and $T \in \End(V)$, then $P_T(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$.
 \end{remark}
 \begin{proof}
-  Let $\mathcal{B}$ be a basis for $V$. Then $[T - x \cdot \id_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies that $P_T(x) = \det([T - x \cdot \id_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark now follows from \textbf{(a)} of Lemma \ref{lem:properties_char_poly}.
+  Let $\mathcal{B}$ be a basis for $V$. Then $[T - x \cdot \id_V]_{\mathcal{B}}^{\mathcal{B}} = [T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n$. This implies that $P_T(x) = \det([T - x \cdot \id_V]_{\mathcal{B}}^{\mathcal{B}}) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$. The claim of the remark now follows from \textbf{(a)} of \cref{lem:properties_char_poly}.
 \end{proof}
 
 \begin{definition}[Trace]\label{def:trace}
@@ -234,7 +234,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \end{equation}
   where $u_{i_k} - u_{i_k}' \in \Eig_T(\lambda_{i_k})$
   Now for all $k$, $u_{i_k} - u_{i_k}'$ is either an eigenvector of $\lambda_{i_k}$ or 0, but by our assumptions, $u_{i_k} - u_{i_k}' \ne 0$.
-  Recall from Proposition \ref{prop:lin_indep_eigen} that eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent. $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ are linearly independent vectors, and by \eqref{eq:ds_nonzero_subsum}, their sum is 0. This is a contradiction.
+  Recall from \cref{prop:lin_indep_eigen} that eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent. $u_{i_1} - u_{i_1}', \dots, u_{i_\ell} - u_{i_\ell}'$ are linearly independent vectors, and by \eqref{eq:ds_nonzero_subsum}, their sum is $0$. This is a contradiction.
 \end{proof}
 
 \begin{corollary}[Diagonalizability via Eigenspaces]\label{cor:diagonalizability_eigenspaces}
@@ -414,7 +414,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{corollary}
 
 \begin{proof}
-  If $m_a(T; \lambda) = 1$, this implies that $m_g(T; \lambda) = 1$. Now use point \textbf{(c)} of Theorem \ref{thm:diag_equiv}.
+  If $m_a(T; \lambda) = 1$, this implies that $m_g(T; \lambda) = 1$. Now use point \textbf{(c)} of \cref{thm:diag_equiv}.
 \end{proof}
 
 
@@ -628,7 +628,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
 \end{theorem}
 
 \begin{exercise}\label{ex:cayley_inverse}
-  Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use Theorem \ref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
+  Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use \cref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
 \end{exercise}
 
 \subsection*{Proof of Cayley-Hamilton Theorem (Analytic Approach)}
@@ -690,11 +690,11 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 \end{proof}
 
 \begin{lemma}[Cayley-Hamilton over $\mathbb{C}$]\label{lemma:cayley_C}
-  Cayley-Hamilton holds for every matrix $A \in \M_{n \times n}(\mathbb{C})$.
+  Let $A \in \M_{n \times n}(\mathbb{C})$ be any complex matrix. The Cayley-Hamilton theorem holds for $A$.
 \end{lemma}
 
 \begin{proof}
-  By our construction in Lemma \ref{lemma:sequence_diagonalizable}, we can find a sequence of diagonalizable matrices $A_k \to A$. By Lemma \ref{lemma:cayley_diagonalizable}, the theorem holds for all of them: $P_{A_k}(A_k) = 0$.
+  By our construction in \cref{lemma:sequence_diagonalizable}, we can find a sequence of diagonalizable matrices $A_k \to A$. By \cref{lemma:cayley_diagonalizable}, the theorem holds for all of them: $P_{A_k}(A_k) = 0$.
 
   Notice that the mapping $\Phi: \M_{n \times n}(\mathbb{C}) \to \M_{n \times n}(\mathbb{C})$ defined by $\Phi(M) = P_M(M)$ is built entirely from taking determinants, adding matrices, and multiplying matrices. Therefore, $\Phi$ is a continuous polynomial function of the matrix entries. Because continuous functions commute with limits, we have:
   \[
@@ -717,7 +717,7 @@ To generalize this result from $\mathbb{C}$ to any arbitrary field $K$, we rely 
 \begin{proof}[Analytic Proof of Cayley-Hamilton over every field $K$]
   For an $n \times n$ matrix $A$, the entries of $P_A(A)$ are given by multi-variable polynomials in the $n^2$ variables $A_{11}, A_{12}, \dots, A_{nn}$. These polynomials have integer (and hence real) coefficients. Let the polynomial representing the $(i,j)$-th entry be $q_{ij}(A_{11}, \dots, A_{nn})$.
 
-  Since Cayley-Hamilton holds for $\mathbb{C}$ (and thus for any matrix in $\mathbb{R}$), we know $q_{ij}(A_{11}, \dots) = 0$ for all evaluations in $\mathbb{R}^{n^2}$. By Lemma \ref{lemma:multi_var_poly}, $q_{ij} \equiv 0$ as formal polynomials. Because they are formally the zero polynomial, evaluating them over \textit{any} field $K$ will always yield 0. Thus, $P_A(A) = 0$ for any matrix over any field.
+  Since Cayley-Hamilton holds for $\mathbb{C}$ (and thus for any matrix in $\mathbb{R}$), we know $q_{ij}(A_{11}, \dots) = 0$ for all evaluations in $\mathbb{R}^{n^2}$. By \cref{lemma:multi_var_poly}, $q_{ij} \equiv 0$ as formal polynomials. Because they are formally the zero polynomial, evaluating them over \textit{any} field $K$ will always yield 0. Thus, $P_A(A) = 0$ for any matrix over any field.
 \end{proof}
 
 \subsection*{A Purely Algebraic Proof of Cayley-Hamilton Thm}
@@ -756,7 +756,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{proof}
 
 \begin{lemma}[Characteristic Polynomial of a Companion Matrix]\label{lemma:companion_char_poly}
-  Under the assumptions of Lemma \ref{lemma:cyclic_basis_companion}, the characteristic polynomial of the restriction $S$ is given by:
+  Under the assumptions of \cref{lemma:cyclic_basis_companion}, the characteristic polynomial of the restriction $S$ is given by:
   \[
   P_S(x) = (-1)^d (x^d - c_{d-1}x^{d-1} - \dots - c_1 x - c_0).
   \]
@@ -817,7 +817,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   R = P_C(T) \circ P_S(T).
   \]
   Therefore, $Rv = P_C(T) \Big( P_S(T)v \Big)$.
-  However, applying Lemma \ref{lemma:companion_char_poly} directly to $v$:
+  However, applying \cref{lemma:companion_char_poly} directly to $v$:
   \[
   P_S(T)v = (-1)^d (T^d v - c_{d-1}T^{d-1}v - \dots - c_0 v).
   \]
@@ -847,7 +847,7 @@ Let $A \in \M_{m \times n}(K)$. Then, $\rank_{\text{col}}(A) = \rank_{\text{row}
 
 \subsection{Preparation for the Proof}
 
-\begin{lemma}[Rank Invariance under Composition with Isomorphisms] \label{lemma:17.c.2}
+\begin{lemma}[Rank Invariance under Composition with Isomorphisms] \label{lemma:rank_invariance_isomorphisms_2}
 Let $T: V \to W$ be a linear map, and let $S: W \to W'$ and $L: P \to V$ be isomorphisms. Then:
 \begin{enumerate}
     \item $\rank(S \circ T) = \rank(T)$.
@@ -881,7 +881,7 @@ We also know that $A$ is row-equivalent to some row-reduced echelon matrix $A'$.
 In summary, we have established that $A \in \GL_n(K)$ if and only if $\rank_{\text{row}}(A) = n$. But by definition, the row rank of $A$ is exactly the column rank of its transpose, so $\rank_{\text{row}}(A) = \rank_{\text{col}}(A^T)$. Therefore, $A \in \GL_n(K)$ if and only if $\rank_{\text{col}}(A^T) = n$, which means $A^T$ is invertible.
 \end{proof}
 
-\begin{lemma}[Rank Invariance under Matrix Equivalence] \label{lemma:17.c.4}
+\begin{lemma}[Rank Invariance under Matrix Equivalence] \label{lemma:rank_invariance_equivalence_2}
 Let $A, B \in \M_{m \times n}(K)$ such that $B = P A Q$, where $P \in \GL_m(K)$ and $Q \in \GL_n(K)$. Then:
 \begin{enumerate}
     \item $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$.
@@ -890,21 +890,21 @@ Let $A, B \in \M_{m \times n}(K)$ such that $B = P A Q$, where $P \in \GL_m(K)$ 
 \end{lemma}
 
 \begin{proof}
-\textbf{(a)} Transitioning to the associated linear maps, we have $T_B = T_P \circ T_A \circ T_Q$. Since $P$ and $Q$ are invertible matrices, both $T_P$ and $T_Q$ are isomorphisms. Applying Lemma \ref{lemma:17.c.2}, we deduce that $\rank(T_B) = \rank(T_A)$. Recalling that the rank of a linear map given by a matrix matches the column rank of that matrix, we obtain $\rank_{\text{col}}(B) = \rank_{\text{col}}(A)$.
+\textbf{(a)} Transitioning to the associated linear maps, we have $T_B = T_P \circ T_A \circ T_Q$. Since $P$ and $Q$ are invertible matrices, both $T_P$ and $T_Q$ are isomorphisms. Applying \cref{lemma:rank_invariance_isomorphisms_2}, we deduce that $\rank(T_B) = \rank(T_A)$. Recalling that the rank of a linear map given by a matrix matches the column rank of that matrix, we obtain $\rank_{\text{col}}(B) = \rank_{\text{col}}(A)$.
 
 \textbf{(b)} Taking the transpose of the equation $B = PAQ$ yields $B^T = Q^T A^T P^T$. Since $P$ and $Q$ are invertible matrices, their transposes $P^T$ and $Q^T$ are also invertible (we have previously seen that $(P^T)^{-1} = (P^{-1})^T$). We can now apply part (a) of this Lemma, which we have already proven, to the matrices $A^T$ and $B^T$. This gives us $\rank_{\text{col}}(B^T) = \rank_{\text{col}}(A^T)$. By the definition of the transpose, this immediately translates to $\rank_{\text{row}}(B) = \rank_{\text{row}}(A)$.
 \end{proof}
 
 \subsection{Proof of the Main Theorem}
 
-We are now ready for the proof of Theorem \ref{thm:17.c.1}.
+We are now ready for the proof of \cref{thm:17.c.1}.
 
-\begin{proof}[Proof of Theorem \ref{thm:17.c.1}]
+\begin{proof}[Proof of \Cref{thm:17.c.1}]
 Let $r := \rank_{\text{col}}(A)$. By a previous proposition regarding the equivalence of matrices, we know that there exist invertible matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that:
 \begin{equation*}
     P A Q = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} =: B
 \end{equation*}
-By Lemma \ref{lemma:17.c.4}, we know that $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$. Thus, it suffices to determine the row rank of $B$.
+By \Cref{lemma:rank_invariance_equivalence_2}, we know that $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$. Thus, it suffices to determine the row rank of $B$.
 
 The matrix $B$ is of the block form $\left(\begin{smallmatrix} I_r & O \\ O & O \end{smallmatrix}\right)$. The non-zero rows of $B$ are precisely the first $r$ standard basis vectors $e_1^T, e_2^T, \dots, e_r^T \in K_{\text{row}}^n$. Since these vectors form a linearly independent set, the dimension of the row space of $B$ is exactly $r$. Consequently, $\rank_{\text{row}}(B) = r$.
 

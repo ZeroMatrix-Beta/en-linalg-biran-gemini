@@ -48,6 +48,7 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 
 \begin{theorem}[The Canonical Isomorphism from the Homomorphism Space $\Hom(V,W)$ 
    to the Matrix Space $\M_{m \times n}(K)$]
+  \label{thm:homomorphism_isomorphism}
   Let $V$ and $W$ be finite-dimensional vector spaces over $K$, let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$, and let $\mathcal{C} = (w_1, \dots, w_m)$ be a basis for $W$. Then, $\Psi_{\mathcal{C}}^{\mathcal{B}} \colon \Hom(V,W) \to \M_{m \times n}(K)$, defined by
   \[ \Psi_{\mathcal{C}}^{\mathcal{B}}(T) := [T]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [T(v_1)]_{\mathcal{C}} & \dots & [T(v_n)]_{\mathcal{C}} \\ | & & | \end{pmatrix}, \]
   is a linear map, and moreover, an isomorphism.
@@ -84,7 +85,14 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 \end{corollary}
 
 \begin{proof}
-  Put $n := \dim V$ and $m := \dim W$. By the previous theorem, we have $\Hom(V,W) \cong \M_{m \times n}(K)$, which implies that $\Hom(V,W)$ is finite-dimensional. Moreover, $\dim \Hom(V,W) = \dim \M_{m \times n}(K) = m \cdot n$.
+  Let $n := \dim V$ and $m := \dim W$. By \cref{thm:homomorphism_isomorphism}, we have an isomorphism
+  \[
+  \Hom(V,W) \cong \M_{m \times n}(K).
+  \]
+  This means $\Hom(V,W)$ is a finite-dimensional space. Furthermore,
+  \[
+  \dim \Hom(V,W) = \dim \M_{m \times n}(K) = m \cdot n.
+  \]
 \end{proof}
 
 \subsection{Rings of Endomorphisms}
@@ -97,7 +105,7 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 \end{example}
 
 \begin{corollary}[The Ring of Endomorphisms]
-  Let $V$ be a vector space over $K$. Then, $\End(V) := \Hom(V,V)$ is a ring with a unity. This ring is, in general, not commutative. The multiplication in $\End(V)$ is given by composition $T_1 \cdot T_2 := T_1 \circ T_2$ for all $T_1, T_2 \in \Hom(V,V)$, and the unity is $\id_V$. Moreover, if $V$ is finite-dimensional with $\dim V = n$, and $\mathcal{B} = (w_1, \dots, w_n)$ is a basis for $V$, then $\Psi_{\mathcal{B}}^{\mathcal{B}} \colon \Hom(V,V) \to M_{n \times n}(K)$ is an isomorphism of rings.
+  Let $V$ be a vector space over $K$. Then, $\End(V) := \Hom(V,V)$ is a ring with a unity. This ring is, in general, not commutative. The multiplication in $\End(V)$ is given by composition $T_1 \cdot T_2 := T_1 \circ T_2$ for all $T_1, T_2 \in \Hom(V,V)$, and the unity is $\id_V$. Moreover, if $V$ is finite-dimensional with $\dim V = n$, and $\mathcal{B} = (w_1, \dots, w_n)$ is a basis for $V$, then $\Psi_{\mathcal{B}}^{\mathcal{B}} \colon \Hom(V,V) \to \M_{n \times n}(K)$ is an isomorphism of rings.
 \end{corollary}
 
 \begin{proof}[Proof (sketch)]
@@ -157,7 +165,7 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
   We have $\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K = \dim V \cdot 1 = \dim V$.
 \end{proof}
 
-Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in M_{1 \times 1}(K) \cong K$. The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell) := f_{\ell}$ is a linear map, and therefore, it is an isomorphism.
+Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell) := f_{\ell}$ is a linear map, and therefore, it is an isomorphism.
 
 Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$.
 
@@ -241,6 +249,7 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
 Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$, obtained by applying the \qt{dual} operation one more time to $V^*$. $V^{**}$ is sometimes called the \qt{bidual space} of $V$. Is there any relation between $V^{**}$ and $V$?
 
 \begin{theorem}[The Canonical Isomorphism to the Bidual Space]
+\label{thm:natural_map_injective}
   Let $V$ be a finite-di\-men\-sional vector space over $K$. Then, there is a canonical isomorphism $\tau \colon V \to (V^*)^*$ given by: for $v \in V$, $\tau(v) \colon V^* \to K$ is the map $\tau(v)(\ell) := \ell(v)$ for all $\ell \in V^*$.
 \end{theorem}
 
@@ -263,7 +272,7 @@ Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$,
 \end{proof}
 
 \begin{remark}
-  The previous theorem is not true for infinite-dimensional vector spaces. More specifically, $\tau \colon V \to (V^*)^*$ is injective, but not surjective. In fact, when $V$ is infinite-dimensional, $(V^*)^*$ is not isomorphic to $V$.
+  \Cref{thm:natural_map_injective} is not true for infinite-dimensional vector spaces. More specifically, $\tau \colon V \to (V^*)^*$ is injective, but not surjective. In fact, when $V$ is infinite-dimensional, $(V^*)^*$ is not isomorphic to $V$.
 \end{remark}
 
 \subsection{Naturality}
@@ -424,7 +433,7 @@ For an infinite family of vector spaces $\{U_i\}_{i \in I}$, we define the direc
 
 \subsection{Equivalence Relation and the Quotient Space}
 % \begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the quotient of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the quotient map, or the projection onto the quotient space.
-Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We will define a new vector space over $K$, denoted by $V/U$, together with a linear map $\pi \colon V \to V/U$ such that $\pi$ is surjective and $\ker(\pi) = U$.
+Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We will define a new vector space over $K$, denoted by $V/U$, together with a linear map $\pi \colon V \to V/U$ such that $\pi$ is surjective and $\ker(\pi) = U$. The space $V/U$ will have some other good properties.
 
 \begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the \qt{quotient} of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the \qt{quotient map}, or the \qt{projection onto the quotient space}.
 \end{definition*}
@@ -449,15 +458,15 @@ We denote the equivalence class of $v \in V$ by $[v]$. Thus,
 \[ [v] = v + U = \{v + u \mid u \in U\}. \]
 
 \begin{definition}[The Quotient Space]
-  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We define the quotient space $V/U$ as the set of equivalence classes of the equivalence relation $\sim$.
+  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We define $V/U := V/\sim$ to be the set of equivalence classes of the equivalence relation $\sim$. So, the elements of $V/U$ are $[v]$, where $v \in V$. 
+  
+  Alternatively, each element in $V/U$ is a set of the form $v + U$, where $v \in V$. The space $V/U$ is called the quotient of $V$ by $U$ (or modulo $U$).
 \end{definition}
-
-Alternatively, each element in $V/U$ is a set of the form $v + U$, where $v \in V$.
 \bigbreak
 Geometrically, the nature of the quotient space $\mathbb{R}^2/U$ depends on the dimension of $U$:
 \begin{itemize}
   \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = v + \{0\} = \{v\}$ is simply a single \textbf{point}. In this case, no points are \qt{collapsed} together, and therefore $\mathbb{R}^2/\{0\} \cong \mathbb{R}^2$.
-  \item If $U$ is a \textbf{line} through the origin, the equivalence classes $[v]$ forming the space $\mathbb{R}^2/U$ are the lines parallel to $U$, as seen in Figure \ref{fig:quotient_r2}.
+  \item If $U$ is a \textbf{line} through the origin, the equivalence classes $[v]$ forming the space $\mathbb{R}^2/U$ are the lines parallel to $U$, as seen in Figure \cref{fig:quotient_r2}.
 \end{itemize}
 
 \begin{figure}[ht!]
@@ -481,11 +490,11 @@ Geometrically, the nature of the quotient space $\mathbb{R}^2/U$ depends on the 
   \label{fig:quotient_r2}
 \end{figure}
 
-Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Figure \ref{fig:quotient_r3}:
+Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Figure \cref{fig:quotient_r3}:
 \begin{itemize}
   \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = \{v\}$ is simply a \textbf{point}. Since no two distinct vectors are identified, the quotient space $\mathbb{R}^3/\{0\}$ is isomorphic to $\mathbb{R}^3$ itself.
-  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by Proposition \ref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes \qt{stacked} along a transversal direction (see Figure \ref{fig:quotient_plane} and Proposition \ref{prop:iso_complement}).
-  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by Proposition \ref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see Figure \ref{fig:quotient_line} and Proposition \ref{prop:iso_complement}).
+  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by Proposition \cref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes \qt{stacked} along a transversal direction (see Figure \cref{fig:quotient_plane} and Proposition \cref{prop:iso_complement}).
+  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by Proposition \cref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see Figure \cref{fig:quotient_line} and Proposition \cref{prop:iso_complement}).
   \item If $U = \mathbb{R}^3$ is the entire space, then there is only one equivalence class, $[v] = \mathbb{R}^3$. The quotient space $\mathbb{R}^3/\mathbb{R}^3$ is the zero vector space, with dimension $0$.
 \end{itemize}
 
@@ -497,7 +506,7 @@ Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Fig
   \end{itemize}
   The dimension of the quotient space $V/U$ represents the number of independent directions available to shift these objects. For instance, in $\mathbb{R}^3$, if $U$ is a line (1-dimensional), there are 2 independent directions in which one can move this line to obtain a distinct parallel line (effectively moving the line across a 2-dimensional plane). 
   
-  Thus, the space of all such lines is 2-dimensional. This geometric intuition aligns perfectly with the dimension formula established in Proposition \ref{prop:dim_quotient}. In the case where $U = \{0\}$, the equivalence class is a point (0-dimensional), and we retain all 3 degrees of freedom of the ambient space.
+  Thus, the space of all such lines is 2-dimensional. This geometric intuition aligns perfectly with the dimension formula established in Proposition \cref{prop:dim_quotient}. In the case where $U = \{0\}$, the equivalence class is a point (0-dimensional), and we retain all 3 degrees of freedom of the ambient space.
 \end{remark}
 
 \begin{figure}[h!]
@@ -621,7 +630,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 
     To show that $\overline{T}$ is surjective, let $w \in \operatorname{Im}(T)$. Then, there exists $v \in V$ such that $T(v) = w$. Consequently, $\overline{T}([v]) = T(v) = w$, proving surjectivity.
 
-    \item The commutativity of the diagram follows immediately from the definitions.
+    \item The commutativity of the diagram follows immediately from the definitions. (Exercise: check this!)
   \end{enumerate}
 \end{proof}
 
@@ -634,10 +643,23 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 \end{remark}
 
 \begin{proof}
-  We define $T' \colon V/U \to W$ as follows: let $x \in V/U$ and choose $v \in V$ such that $x = [v]$. Define $T'(x) := T(v)$. The proof that $T'$ is well-defined and linear follows the exact same logic as in the Isomorphism Theorem. The diagram commutes by construction, since $T'(\pi(v)) = T'([v]) = T(v)$.
+  We define $T' \colon V/U \to W$ as follows: let $x \in V/U$. Choose $v \in V$ such that $x = [v]$. Define $T'(x) := T(v)$.
+
+  \begin{exercise}
+    \begin{enumerate}
+      \item Show that $T'$ is well-defined (i.e., if $[v] = [v']$, then $T(v) = T(v')$).
+      \item Show that $T'$ is linear.
+    \end{enumerate}
+  \end{exercise}
+
+  The diagram commutes by construction, since for all $v \in V$, $T' \circ \pi(v) = T'([v]) = T(v)$.
 
   For uniqueness, suppose $T = T'' \circ \pi$ is another factorization. We will show that $T'' = T'$. Let $x \in V/U$. Since $\pi$ is surjective, there exists $v \in V$ such that $x = \pi(v)$. We then have $T(v) = T'(\pi(v))$ and $T(v) = T''(\pi(v))$, which immediately yields $T'(x) = T''(x)$.
 \end{proof}
+
+\begin{exercise}
+  Prove that $\ker(T') = \ker(T)/U$.
+\end{exercise}
 
 \subsection{Quotients, Complements, and Dual Spaces}
 
@@ -659,15 +681,11 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
   We also claim that $Q$ is surjective. Let $x \in V/U$ and choose $v \in V$ such that $x = [v]$. Since $V = U + W$, there exist $u \in U$ and $w \in W$ such that $v = w + u$. It follows that $[v] = [w + u] = [w]$, so $Q(w) = x$. This proves that $Q$ is surjective, and consequently, an isomorphism.
 \end{proof}
 
+\begin{exercise}
+  Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$. (Hint: \dots)
+\end{exercise}
+
 \subsection{Quotients, Complements, and Annihilators}
-
-%\begin{proposition}[Isomorphism from a Specified Complement]
-%  Let $W \subseteq V$ be a complement of $U$ in $V$. There exists a canonical isomorphism $Q \colon W \to V/U$ defined by $Q(w) := [w]$.
-%\end{proposition}
-
-%\begin{proof}
-%  $Q$ is the composition of the inclusion $i \colon W \to V$ and the projection $\pi \colon V \to V/U$, and thus is linear. Since $W \cap U = \{0\}$, the kernel of $Q$ is trivial. As $V = U + W$, any $v \in V$ can be written as $w + u$, so $[v] = [w + u] = [w]$, which is $Q(w)$. This proves surjectivity and establishes the isomorphism.
-%\end{proof}
 
 \begin{proposition}[Annihilators and Dual Quotients]
   Let $U \subseteq V$ be a subspace, and define the \qt{annihilator} $U^\perp := \{\ell \in V^* \mid \ell|_U = 0\}$. Then:
@@ -682,11 +700,29 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
   \begin{enumerate}
     \item Clearly, the zero functional vanishes on $U$. For $\ell_1, \ell_2 \in U^\perp$ and $\alpha, \beta \in K$, we have $(\alpha \ell_1 + \beta \ell_2)(u) = \alpha \ell_1(u) + \beta \ell_2(u) = 0$ for all $u \in U$, establishing that $U^\perp$ is a subspace.
 
-    \item We define a map $L \colon (V/U)^* \to U^\perp$ by $L(s) := s \circ \pi$. This map is well-defined because for any $u \in U$, $(s \circ \pi)(u) = s([u]) = s(0) = 0$. To show linearity, let $s, t \in (V/U)^*$ and $\alpha, \beta \in K$; then
-    \[ L(\alpha s + \beta t) = (\alpha s + \beta t) \circ \pi = \alpha(s \circ \pi) + \beta(t \circ \pi) = \alpha L(s) + \beta L(t). \]
-    We define an inverse $P \colon U^\perp \to (V/U)^*$ such that for $T \in U^\perp$, $P(T) = T'$, where $T'$ is the unique map induced by the Universal Property of Quotients such that $T = T' \circ \pi$. The identities $L \circ P = \operatorname{id}$ and $P \circ L = \operatorname{id}$ confirm $L$ is a canonical isomorphism.
+    \item We define a map $L \colon (V/U)^* \to U^\perp$ as follows: Let $S \in (V/U)^*$, i.e., $S \colon V/U \to K$. Define $L(S) \in V^*$ to be $L(S) := S \circ \pi$.
 
-    \item Assume $V$ is finite-dimensional. Define the restriction map $R \colon V^* \to U^*$ by $R(\varphi) := \varphi|_U$. This map is linear, as $R(\alpha \varphi + \beta \psi) = (\alpha \varphi + \beta \psi)|_U = \alpha R(\varphi) + \beta R(\psi)$. By extending a basis of $U$ to $V$, we can construct a functional on $V$ that matches any functional on $U$, showing $R$ is surjective. Since $\ker(R) = \{\varphi \in V^* \mid \varphi|_U = 0\} = U^\perp$, the First Isomorphism Theorem yields $V^*/U^\perp \cong U^*$.
+    \begin{exercise}
+      \begin{enumerate}
+        \item Show that for all $S \in (V/U)^*$, $S \circ \pi \in U^\perp$.
+        \item Show that $L$ is a linear map.
+      \end{enumerate}
+    \end{exercise}
+    
+    We claim that $L$ is an isomorphism. To see this, we define a map $P \colon U^\perp \to (V/U)^*$ as follows. Let $T \in U^\perp$, i.e., $T \colon V \to K$ such that $T|_U = 0$. By the Universal Property of Quotients, there exists a unique $T' \colon V/U \to K$ such that $T = T' \circ \pi$. Define $P(T) := T'$.
+
+    We claim that $L \circ P = \id_{U^\perp}$ and $P \circ L = \id_{(V/U)^*}$. Indeed, for all $S \colon V/U \to K$, we have $P \circ L(S) = P(S \circ \pi) = S$, because of the uniqueness statement in the theorem about the universal property of quotient spaces. Also, for all $T \in U^\perp$, $L \circ P(T) = L(T') = T' \circ \pi = T$. This proves that $L$ is bijective, and since we know $L$ is linear, it is an isomorphism. It follows that $P$ is also a linear isomorphism.
+
+    \item Assume $V$ is finite-dimensional. Consider the restriction map $R \colon V^* \to U^*$ defined by $R(\varphi) := \varphi|_U$ for all $\varphi \in V^*$. 
+
+    \begin{exercise}
+      Show that $R$ is a linear map.
+    \end{exercise}
+
+    We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$. This proves $\operatorname{Im}(R) = U^*$.
+
+    We claim that $\ker(R) = U^\perp$. Indeed, this follows directly from definitions: $\ker(R) = \{\varphi \in V^* \mid \varphi|_U = 0\} = U^\perp$. 
+    By the First Isomorphism Theorem, $R$ induces an isomorphism $\overline{R} \colon V^*/U^\perp \xrightarrow{\cong} U^*$.
   \end{enumerate}
 \end{proof}
 
