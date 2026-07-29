@@ -194,11 +194,11 @@ Warning: For general norms $\|\cdot\|$, one cannot necessarily find a scalar pro
     
     What about property (4), positivity? For example, let $A = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$, which is symmetric. Then:
     \[
-        \left\langle \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \right\rangle_A = x_1 y_1 - x_2 y_2
+        \left\langle \binom{x_1}{x_2}, \binom{y_1}{y_2} \right\rangle_A = x_1 y_1 - x_2 y_2
     \]
-    But taking $v = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, we get:
+    But taking $v = \binom{0}{1}$, we get:
     \[
-        \left\langle \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\rangle_A = -1 < 0
+        \left\langle \binom{0}{1}, \binom{0}{1} \right\rangle_A = -1 < 0
     \]
     So, there is a lack of positivity.
 \end{enumerate}
@@ -322,7 +322,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     The opposite statement, that if $A$ is positive definite then $\langle \cdot, \cdot \rangle_A$ is a Hermitian product, is left as an exercise.
 \end{proof}
 
-\subsection{The geometry on $V$ and the choice of inner product}
+\subsection{The geometry on \texorpdfstring{$V$}{V} and the choice of inner product}
 
 The geometry on $V$ depends on the choice of inner product.
 

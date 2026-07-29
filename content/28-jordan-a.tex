@@ -1,0 +1,263 @@
+\setcounter{chapter}{27}
+\renewcommand{\thetheorem}{28.a.\arabic{theorem}}
+\setcounter{theorem}{0}
+
+\chapter{The Jordan Normal Form}
+
+\section{Introduction and Motivation}
+
+Let $V$ be a finite-dimensional vector space over $K$, and let $T \colon V \to V$ be a linear map.
+
+The easiest situation to understand is when $T$ is diagonalizable. That is, there exists a basis $\mathcal{B}$ for $V$ such that 
+\[
+[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & & 0 \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix},
+\]
+where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $T$.
+
+Using the basis $\mathcal{B}$, it is also easy to calculate powers of $T$. For example, 
+\[
+[T^k]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1^k & & 0 \\ & \ddots & \\ 0 & & \lambda_n^k \end{pmatrix} \quad \forall k \in \mathbb{Z}_{\ge 1}.
+\]
+
+But \underline{not all} $T \in \End(V)$ are diagonalizable! Why? There are two possible reasons:
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The characteristic polynomial $P_T(x)$ does not split as a product of linear factors. This is equivalent to saying that $T$ is not (even) trigonalizable (hence, all the more so not diagonalizable!). In other words, $P_T(x)$ doesn't have enough zeroes in $K$ (or even no zeroes at all).
+    
+    For example, consider $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$, where $A = R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$, with $\theta \neq \pi k$ for $k \in \mathbb{Z}$. The map $T_A$ has \underline{no} eigenvalues (in $\mathbb{R}$). It is a rotation, but not by $0^\circ$ or $180^\circ$.
+    
+    Sometimes we can overcome this "problem" by enlarging (extending) $K$. For example, $K = \mathbb{R}$ can be extended to $K = \mathbb{C}$. Then the above matrix $A$ has two eigenvalues when viewed as $A \in \M_{2 \times 2}(\mathbb{C})$, namely $\lambda_1 = e^{i\theta}$ and $\lambda_2 = e^{-i\theta}$ (Exercise: check this).
+
+    \item $T$ is trigonalizable, or equivalently $P_T(x)$ splits as a product of linear factors, but for some eigenvalues $\lambda$ of $T$, the geometric multiplicity is strictly less than the algebraic multiplicity:
+    \[
+    m_g(\lambda) < m_a(\lambda).
+    \]
+\end{enumerate}
+
+Let's try to understand case \textbf{(b)} better.
+
+% Def. & Example (28.a.1)
+\begin{definition}[Jordan Matrix]
+\label{def:jordan_matrix}
+Let $\lambda \in K$ and $n \in \mathbb{Z}_{\ge 1}$. Define:
+\[
+J_{\lambda, n} = \begin{pmatrix} \lambda & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & \lambda \end{pmatrix} \in \M_{n \times n}(K).
+\]
+This matrix has $\lambda$ on the main diagonal, $1$'s on the diagonal immediately above the main diagonal, and $0$'s everywhere else.
+
+For $n=1$, $J_{\lambda, 1} = (\lambda)$. For $n=2$, $J_{\lambda, 2} = \begin{pmatrix} \lambda & 1 \\ 0 & \lambda \end{pmatrix}$. For $n=3$, $J_{\lambda, 3} = \begin{pmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{pmatrix}$, etc.
+
+The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix with eigenvalue $\lambda$}.
+\end{definition}
+
+% Lemma. (28.a.2)
+\begin{lemma}[Properties of the Jordan Matrix]
+\label{lem:properties_jordan_matrix}
+\leavevmode
+\begin{enumerate}
+    \item \textbf{(a)} $\lambda$ is the only eigenvalue of $J_{\lambda, n}$.
+    \item \textbf{(b)} $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$, and $m_a(J_{\lambda, n}; \lambda) = n$.
+    \item \textbf{(c)} $m_g(J_{\lambda, n}; \lambda) = 1$. In fact, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp(e_1)$, where $e_1 = (1, 0, \dots, 0)^\top$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\leavevmode
+\begin{description}
+    \item[Proof of (a) and (b):] The characteristic polynomial is the determinant of an upper triangular matrix:
+    \[
+    P_{J_{\lambda, n}}(x) = \det \begin{pmatrix} \lambda-x & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & \lambda-x \end{pmatrix} = (\lambda-x)^n.
+    \]
+    This proves both \textbf{(a)} and \textbf{(b)}.
+    
+    \item[Proof of (c):] To find $\Eig_{J_{\lambda, n}}(\lambda)$, we need to solve the equation $(J_{\lambda, n} - \lambda I_n)x = 0$:
+    \[
+    (J_{\lambda, n} - \lambda I_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \implies \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}.
+    \]
+    This immediately implies the system of equations:
+    \[
+    \begin{cases}
+    x_2 = 0 \\
+    x_3 = 0 \\
+    \vdots \\
+    x_n = 0 \\
+    0 = 0
+    \end{cases}
+    \]
+    The only free variable is $x_1$. Therefore, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp\left(\begin{smallmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{smallmatrix}\right) = \Sp(e_1)$, which means the geometric multiplicity is $1$.
+\end{description}
+\end{proof}
+
+We've seen that the statement \qt{$P_T(x)$ splits as a product of linear factors} does \underline{not} imply that \qt{$T$ is diagonalizable}, and $J_{\lambda, n}$ is a clear counterexample.
+
+\begin{question}
+Is $J_{\lambda, n}$ the \qt{only reason} for this non-implication?
+\end{question}
+
+% Thm. (28.a.3)
+\begin{theorem}[Jordan Normal Form]
+\label{thm:jordan_normal_form}
+Let $V$ be an $n$-dimensional vector space over $K$ and $T \in \End(V)$ such that $P_T(x)$ splits as a product of linear factors in $K[x]$ (e.g., if $K = \mathbb{C}$, this always happens). Then there exists a basis $\mathcal{B}$ for $V$ such that
+\[
+[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} J_{\lambda_1, n_1} & & & \\ & J_{\lambda_2, n_2} & & \\ & & \ddots & \\ & & & J_{\lambda_k, n_k} \end{pmatrix},
+\]
+where $k \ge 1$, $\lambda_1, \dots, \lambda_k \in K$, $n_1, \dots, n_k \ge 1$, and $n_1 + \dots + n_k = n$.
+
+Moreover, up to permutation, the blocks $J_{\lambda_1, n_1}, \dots, J_{\lambda_k, n_k}$ are unique.
+\end{theorem}
+
+\begin{remark}
+The basis $\mathcal{B}$ is called a \newterm{Jordan basis} for $T$. The resulting block diagonal matrix is called the \newterm{Jordan Normal Form} (JNF) of $T$. A similar theorem holds for matrices $A \in \M_{n \times n}(K)$: there exists an invertible matrix $P$ such that $P^{-1} A P$ is in Jordan Normal Form.
+\end{remark}
+
+\begin{example}
+\label{ex:jordan_normal_form}
+Consider a matrix $A \in \M_{13 \times 13}(K)$ in Jordan Normal Form:
+\[
+A = \begin{pmatrix}
+\lambda_1 & 1 & 0 & & & & & & & & & & \\
+0 & \lambda_1 & 1 & & & & & & & & & & \\
+0 & 0 & \lambda_1 & & & & & & & & & & \\
+& & & \lambda_1 & 1 & 0 & & & & & & & \\
+& & & 0 & \lambda_1 & 1 & & & & & & & \\
+& & & 0 & 0 & \lambda_1 & & & & & & & \\
+& & & & & & \lambda_2 & 1 & & & & & \\
+& & & & & & 0 & \lambda_2 & & & & & \\
+& & & & & & & & \lambda_2 & & & & \\
+& & & & & & & & & \lambda_2 & & & \\
+& & & & & & & & & & \lambda_3 & 1 & 0 \\
+& & & & & & & & & & 0 & \lambda_3 & 1 \\
+& & & & & & & & & & 0 & 0 & \lambda_3
+\end{pmatrix}
+\]
+Here, $n = 13$. Let's assume the eigenvalues $\lambda_1, \lambda_2, \lambda_3$ are distinct.
+\begin{itemize}
+    \item \textbf{Characteristic polynomial:} $P_A(x) = (\lambda_1 - x)^6 \cdot (\lambda_2 - x)^4 \cdot (\lambda_3 - x)^3$.
+    \item \textbf{Algebraic multiplicity:} $m_a(\lambda_1) = 6$, $m_a(\lambda_2) = 4$, $m_a(\lambda_3) = 3$.
+    \item \textbf{Geometric multiplicity:} $m_g(\lambda)$ is exactly the number of blocks with eigenvalue $\lambda$. So, $m_g(\lambda_1) = 2$, $m_g(\lambda_2) = 3$, and $m_g(\lambda_3) = 1$.
+    \item \textbf{Minimal polynomial:} $\mu_A(x) = (x - \lambda_1)^{\ell_1} \cdot (x - \lambda_2)^{\ell_2} \cdot (x - \lambda_3)^{\ell_3}$, where $1 \le \ell_i \le m_a(\lambda_i)$. We will see that $\ell_i$ is precisely the size of the \underline{biggest} block with eigenvalue $\lambda_i$. Thus,
+    \[
+    \mu_A(x) = (x - \lambda_1)^3 \cdot (x - \lambda_2)^2 \cdot (x - \lambda_3)^3.
+    \]
+\end{itemize}
+\end{example}
+
+\section{Powers of Jordan Matrices and Minimal Polynomials}
+
+Let's go back to the Jordan matrices $J_{\lambda, n}$.
+Recall that $J_{\lambda, n} \in \M_{n \times n}(K)$ for $n \in \mathbb{Z}_{\ge 1}$ and $\lambda \in K$.
+We can write $J_{\lambda, n} = \lambda \cdot I_n + N$, where
+\[
+N = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & 0 \end{pmatrix} = J_{0, n}.
+\]
+
+% Lemma. (28.a.4)
+\begin{lemma}[Powers of the Nilpotent Matrix $N$ and Jordan Blocks]
+\label{lem:powers_jordan_blocks}
+\leavevmode
+\begin{enumerate}
+    \item \textbf{(a)} The powers of $N$ shift the diagonal of $1$'s further up:
+    \[
+    N^2 = \begin{pmatrix} 0 & 0 & 1 & & 0 \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & \ddots & 0 \\ 0 & & & & 0 \end{pmatrix}, \quad N^3 = \begin{pmatrix} 0 & 0 & 0 & 1 & \dots \\ & \ddots & \ddots & \ddots & \ddots \\ & & \ddots & \ddots & \ddots \end{pmatrix}, \quad \dots, \quad N^{n-1} = \begin{pmatrix} 0 & \dots & 0 & 1 \\ \vdots & & & 0 \\ \vdots & & & \vdots \\ 0 & \dots & \dots & 0 \end{pmatrix}.
+    \]
+    Furthermore, $N^n = 0$, and $N^k = 0$ for all $k \ge n$. In other words, $N^k$ has $1$'s in the $k$-th \qt{diagonal} above the \qt{central diagonal} and $0$'s everywhere else.
+    
+    \item \textbf{(b)} For all $k \ge 1$, we have:
+    \[
+    J_{\lambda, n}^k = \begin{pmatrix} \lambda^k & \binom{k}{1}\lambda^{k-1} & \binom{k}{2}\lambda^{k-2} & \dots \\ & \lambda^k & \binom{k}{1}\lambda^{k-1} & \dots \\ & & \ddots & \dots \\ & & & \binom{k}{1}\lambda^{k-1} \\ 0 & & & \lambda^k \end{pmatrix}.
+    \]
+    Written differently, we have $J_{\lambda, n}^k = \sum_{j=0}^k \binom{k}{j} \lambda^{k-j} N^j$ for all $k \ge 1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\leavevmode
+\begin{description}
+    \item[Proof of (a):] This can be shown by direct calculation (exercise). Alternatively, denote by $e_1, \dots, e_n$ the standard basis for $K^n$. Then the linear map $T_N \colon K^n \to K^n$ acts as a shift operator:
+    \[
+    T_N e_i = e_{i-1} \quad \forall 2 \le i \le n, \quad \text{and} \quad T_N e_1 = 0.
+    \]
+    In other words:
+    \[
+    e_n \xrightarrow{T_N} e_{n-1} \xrightarrow{T_N} \dots \xrightarrow{T_N} e_1 \xrightarrow{T_N} 0.
+    \]
+    The map $T_{N^2} (= T_N \circ T_N = T_N^2)$ applies the shift twice:
+    \begin{align*}
+    e_n &\xrightarrow{T_N^2} e_{n-2} \xrightarrow{T_N^2} e_{n-4} \dots \to 0 \\
+    e_{n-1} &\xrightarrow{T_N^2} e_{n-3} \xrightarrow{T_N^2} \dots \to 0
+    \end{align}
+    By induction on $k$, it follows that for all $k \ge 1$:
+    \[
+    T_{N^k}(e_j) = \begin{cases} e_{j-k} & \text{if } k+1 \le j \le n \\ 0 & \text{if } j \le k \end{cases}.
+    \]
+    Since $N^k = [T_{N^k}]_{\mathcal{E}_n}^{\mathcal{E}_n}$, the matrix form follows immediately.
+    
+    \item[Proof of (b):] Since the scalar matrix $\lambda I_n$ and the matrix $N$ commute, we can use the standard binomial theorem:
+    \[
+    J_{\lambda, n}^k = (\lambda I_n + N)^k = \sum_{j=0}^k \binom{k}{j} (\lambda I_n)^{k-j} N^j = \sum_{j=0}^k \binom{k}{j} \lambda^{k-j} N^j.
+    \]
+    Using the structure of $N^j$ from part \textbf{(a)}, this yields the upper triangular matrix with binomial coefficients along the diagonals.
+\end{description}
+\end{proof}
+
+% Cor. (28.a.5)
+\begin{corollary}[Multiplicities and the Minimal Polynomial from JNF]
+\label{cor:multiplicities_min_poly_jnf}
+Suppose $T \in \End(V)$ admits a matrix representation in Jordan Normal Form in some basis $\mathcal{B}$:
+\begin{equation}
+\label{eq:jnf_block_diag}
+[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} J_{\lambda_1, n_1} & & \\ & \ddots & \\ & & J_{\lambda_k, n_k} \end{pmatrix}.
+\end{equation}
+Then for every eigenvalue $\lambda$ of $T$, the geometric multiplicity $m_g(\lambda)$ equals the number of blocks in \eqref{eq:jnf_block_diag} labeled with $\lambda$ (i.e., blocks of the type $J_{\lambda, \dots}$). Note that blocks of size $1 \times 1$ also count. In other words,
+\[
+m_g(\lambda) = \# \{ j \mid 1 \le j \le k, \lambda_j = \lambda \}.
+\]
+Furthermore, the minimal polynomial $\mu_T(x)$ is given by:
+\[
+\mu_T(x) = \prod_{\lambda \in \operatorname{Spec}(T)} (x - \lambda)^{s(\lambda)},
+\]
+where $s(\lambda)$ is the size of the largest block labeled by $\lambda$, i.e., $s(\lambda) = \max \{ n_j \mid 1 \le j \le k, \lambda_j = \lambda \}$.
+\end{corollary}
+
+\begin{proof}
+\textbf{Geometric Multiplicity:} Suppose that $A \in \M_{n \times n}(K)$ has the block diagonal shape $A = \begin{pmatrix} B & 0 \\ 0 & C \end{pmatrix}$ with $B \in \M_{\ell \times \ell}(K)$ and $C \in \M_{m \times m}(K)$. Let $0 \neq u = \begin{pmatrix} v \\ w \end{pmatrix}$ with $v \in K^\ell$ and $w \in K^m$. Then $u$ is an eigenvector of $A$ for the eigenvalue $\lambda$ if and only if $Bv = \lambda v$ and $Cw = \lambda w$.
+
+Moreover, the eigenspace decomposes as $\Eig_A(\lambda) = \Eig_B(\lambda) \oplus \Eig_C(\lambda)$. In particular, $m_g(A, \lambda) = m_g(B, \lambda) + m_g(C, \lambda)$. (We use the convention here that if $\lambda$ is not an eigenvalue of a matrix $D$, then $m_g(D, \lambda) = 0$).
+
+Now recall from \cref{lem:properties_jordan_matrix} that for a single Jordan block, $m_g(J_{\lambda, r}; \lambda') = \begin{cases} 1 & \text{if } \lambda' = \lambda \\ 0 & \text{if } \lambda' \neq \lambda \end{cases}$.
+Applying this additively to $A := [T]_{\mathcal{B}}^{\mathcal{B}}$, we obtain:
+\[
+m_g(T, \lambda) = m_g(A, \lambda) = \sum_{i=1}^k m_g(J_{\lambda_i, n_i}; \lambda) = \# \{ i \mid \lambda_i = \lambda \}.
+\]
+
+\textbf{Minimal Polynomial:} Let $A = \begin{pmatrix} B & 0 \\ 0 & C \end{pmatrix}$ as above. We have $A^k = \begin{pmatrix} B^k & 0 \\ 0 & C^k \end{pmatrix}$ (check!). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \begin{pmatrix} q(B) & 0 \\ 0 & q(C) \end{pmatrix}$.
+
+Consider a single Jordan matrix $J_{\lambda, n}$. For every $q(x) \in K[x]$, we have:
+\[
+q(J_{\lambda, n}) = \begin{pmatrix} q(\lambda) & & * \\ & \ddots & \\ 0 & & q(\lambda) \end{pmatrix} \quad \text{(exercise)}.
+\]
+Note the following key properties:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $q(\lambda) \neq 0$, then $q(J_{\lambda, n})$ is an upper triangular matrix with non-zero diagonal entries, hence it is invertible.
+    \item If $q(x) = (x-\lambda)^s$, then $q(J_{\lambda, n}) = (J_{\lambda, n} - \lambda I_n)^s = N^s$. So, for $q(x) = (x-\lambda)^s$, $q(J_{\lambda, n}) = 0$ if and only if $s \ge n$.
+    \item Now, take a general polynomial $q(x) \in K[x]$ of positive degree (i.e., $q(x) \neq \text{const.}$) and let $\lambda$ be a zero of $q(x)$. We can write $q(x) = (x-\lambda)^s \cdot p(x)$, where $s \ge 1$ and $p(\lambda) \neq 0$. This implies $q(J_{\lambda, n}) = N^s \cdot p(J_{\lambda, n})$. Since $p(\lambda) \neq 0$, $p(J_{\lambda, n})$ is invertible by \textbf{(a)}. Therefore, $q(J_{\lambda, n}) = 0$ if and only if $N^s = 0$, which occurs if and only if $s \ge n$.
+\end{enumerate}
+
+Let $A$ be a matrix in Jordan Normal Form, and let $q(x) \in K[x]$ be a polynomial of positive degree such that $q(A) = 0$. We must have $q(\lambda_j) = 0$ for all $1 \le j \le k$, because if $q(\lambda_j) \neq 0$, then $q(J_{\lambda_j, n_j})$ would be invertible (and thus non-zero) by \textbf{(a)}, which would imply that $q(A) \neq 0$. This proves that $\lambda_1, \dots, \lambda_k$ are all zeroes of $q(x)$.
+
+Let $\lambda \in \{ \lambda_1, \dots, \lambda_k \}$. Write $q(x) = (x-\lambda)^s \cdot p(x)$ where $p(\lambda) \neq 0$. By \textbf{(c)}, we must have $s \ge n_j$ for all $j$ with $\lambda_j = \lambda$. That is, $s \ge \max \{ n_j \mid \lambda_j = \lambda \} = s(\lambda)$.
+This implies that any annihilating polynomial $q(x)$ must be of the form:
+\begin{equation}
+\label{eq:annihilating_poly_form}
+q(x) = \prod_{\lambda \in \{\lambda_1, \dots, \lambda_k\}} (x-\lambda)^{s(\lambda)} \cdot r(x) \quad \text{for some } r(x) \in K[x].
+\end{equation}
+
+On the other hand, we claim that the specific polynomial $\tilde{q}(x) := \prod_{\lambda \in \{\lambda_1, \dots, \lambda_k\}} (x-\lambda)^{s(\lambda)}$ satisfies $\tilde{q}(A) = 0$. If we prove this, then together with \eqref{eq:annihilating_poly_form}, it establishes that $\tilde{q}(x)$ is the monic polynomial of least degree annihilating $A$, meaning $\mu_T(x) = \tilde{q}(x)$.
+
+Indeed, let $A := \operatorname{blockdiag}(J_{\lambda_1, n_1}, \dots, J_{\lambda_k, n_k})$. We have:
+\begin{equation}
+\label{eq:q_tilde_block_eval}
+\tilde{q}(A) = \operatorname{blockdiag}(\tilde{q}(J_{\lambda_1, n_1}), \dots, \tilde{q}(J_{\lambda_k, n_k})).
+\end{equation}
+Let $1 \le j \le k$, and consider the block $\tilde{q}(J_{\lambda_j, n_j})$. We can write $\tilde{q}(x) = (x-\lambda_j)^{s(\lambda_j)} \cdot p_j(x)$ where $p_j(x) \in K[x]$. By the definition of $s(\lambda_j)$, we have $s(\lambda_j) \ge n_j$. By property \textbf{(c)} above, $\tilde{q}(J_{\lambda_j, n_j}) = 0$. This holds for all $1 \le j \le k$, hence the entire block diagonal matrix in \eqref{eq:q_tilde_block_eval} is zero. This proves the last claim, and hence concludes the proof of the corollary.
+\end{proof}

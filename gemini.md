@@ -111,6 +111,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 \newtheorem*{answer}{Answer}
 \newtheorem*{importantremark}{Important remark}
 \newtheorem*{goals}{Goals}
+\newtheorem*{conclusion}{Conclusion}
 \newtheorem*{ainote}{AI-Note}
 \newenvironment{exercisesolution}[1][Solution]{%
   \begin{proof}[#1]%

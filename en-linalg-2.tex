@@ -7,7 +7,8 @@
 % ==========================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}          % Computer Modern (Latin Modern) -- has a full sans family
+% Body font. Comment the next line out to fall back to plain Computer Modern.
+\usepackage{lmodern}          % Latin Modern -- has a full sans family
 \usepackage{anyfontsize}
 \renewcommand{\sfdefault}{lmss}
 % --- Body font: switch to Palatino by uncommenting the next line (single-line change) ---
@@ -15,6 +16,15 @@
 
 \usepackage[english]{babel}
 \usepackage{csquotes}
+
+% --- HYPHENATION / LINE-BREAKING TUNING ---
+\hyphenpenalty=100
+\exhyphenpenalty=100
+\doublehyphendemerits=10000
+\finalhyphendemerits=5000
+\tolerance=1500
+\emergencystretch=3em
+\hfuzz=0.25ex
 
 % ==========================================
 % CORE PACKAGES
@@ -25,7 +35,9 @@
 \usepackage{mathtools}
 \usepackage{etoolbox}
 \usepackage[dvipsnames, x11names]{xcolor}
-\usepackage[top=15mm, bottom=15mm, includefoot, nomarginpar]{geometry} % try 25 mm
+\usepackage[top=15mm, bottom=15mm, includehead, includefoot,
+            headheight=10mm, headsep=4mm, footskip=10mm,
+            nomarginpar]{geometry} % try 25 mm
 
 % change enumerations:
 \usepackage{enumitem, tabstackengine}
@@ -41,9 +53,12 @@
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes}
 \usetikzlibrary{shadows}
+\usetikzlibrary{babel}
 
-% change page-footer:
+% change page-header/footer:
 \usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{lastpage}
 
 % ==========================================
 % GLOBAL COLOR PALETTE
@@ -75,9 +90,20 @@
 \colorlet{ChapLine}{MidnightBlue!80!black}
 \colorlet{SecTitleColor}{ThemePurple}
 \colorlet{SecNumberColor}{OliveGreen}
-\colorlet{SubSecTitleColor}{ThemePurple!80!white}
+\colorlet{SubSecTitleColor}{TextBoldColor}   % same colour as \textbf
 \colorlet{SubSubSecTitleColor}{TextBoldColor}
 \colorlet{HeaderFooterFaint}{OliveGreen!45!Gray}
+\colorlet{HeaderFooterLine}{HeaderFooterFaint!50}
+
+% --- TOC entry colours ---
+% These must be *named* colours (not `A!95!B' expressions), because they are
+% handed to hyperref's linkcolor as well -- otherwise the link colour would
+% override the entry colour and the whole TOC would come out midnight blue.
+\colorlet{TocChapColor}{ThemePurple!95!black}
+\colorlet{TocSecColor}{TextEmphColor}
+\colorlet{TocSubsecColor}{TextBoldColor}
+\colorlet{TocSubsubColor}{gray}
+\colorlet{TocLabelColor}{ThemePurple!85!black}
 
 % --- EMPHASIS STYLE OVERRIDE ---
 \DeclareTextFontCommand{\emph}{\sffamily\bfseries\color{TextEmphColor}}
@@ -95,6 +121,7 @@
   citecolor=LinkColor,
   bookmarksopen=true
 }
+\usepackage{bookmark}   % tolerates skipped heading levels (e.g. \chapter -> \subsection)
 \usepackage[nameinlink, capitalize]{cleveref}
 
 % ==========================================
@@ -108,6 +135,13 @@
 
 % Inline math breathing room
 \setlength{\mathsurround}{0.25ex}
+
+% ...but NOT inside TikZ. A node's boundary is derived from the width of the box
+% it contains, and \mathsurround pads every math box on both sides. TikZ then
+% anchors arrows on the padded boundary while the glyphs sit elsewhere, so
+% tikz-cd arrows overshoot their targets and nodes collide. Must be 0 in there.
+\AtBeginEnvironment{tikzpicture}{\setlength{\mathsurround}{0pt}}
+\AtBeginEnvironment{tikzcd}{\setlength{\mathsurround}{0pt}}
 
 % Matrix and table rows
 \renewcommand{\arraystretch}{1.15}
@@ -123,8 +157,11 @@
 % Macro for omitted content (kept for future use if needed)
 \newcommand{\omitted}[1]{\textcolor{red}{#1}}
 
-% Custom command for italicized terminology and "quotes"
-\newcommand{\newterm}[1]{\textcolor{BrickRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{\grqq}}
+% Custom commands for italicized terminology and "quotes".
+% \newterm    -> English quotes ``...''   (the default; this is an English text)
+% \germanterm -> German quotes  \glqq...\grqq  for German technical terms
+\newcommand{\newterm}[1]{\textcolor{BrickRed}{``}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{''}}
+\newcommand{\germanterm}[1]{\textcolor{BrickRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{\grqq}}
 \newcommand{\qt}[1]{\textit{\textcolor{BrickRed}{``}#1\textcolor{BrickRed}{''}}}
 \newcommand{\inlinemetanote}[1]{\textit{[\textcolor{TextMetaNote}{#1}]}}
 
@@ -137,7 +174,6 @@
 % ==========================================
 \usepackage[explicit]{titlesec}
 \usepackage{titletoc}
-\usepackage{tocloft}
 
 % Headings hang into the left margin, staggered by level.
 \newlength{\chapouthang}\setlength{\chapouthang}{-3.2ex}
@@ -182,6 +218,10 @@
 \setcounter{secnumdepth}{1}
 \setcounter{tocdepth}{2}
 
+% Section numbers use the letter form everywhere (body heading, TOC, \cref),
+% i.e. "5.a" rather than the default "5.1".
+\renewcommand{\thesection}{\thechapter.\alph{section}}
+
 % 2. Visual styling for Subsections / Subsubsections (Clean & Unnumbered)
 \titleformat{\subsection}
 {\normalfont\sffamily\large\bfseries\color{SubSecTitleColor}}
@@ -199,6 +239,37 @@
 \titlespacing*{\section}{\secouthang}{3.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \titlespacing*{\subsection}{\subsecouthang}{3ex plus 1ex minus .2ex}{1.2ex plus .2ex}
 \titlespacing*{\subsubsection}{\subsubsecouthang}{2.5ex plus 1ex minus .2ex}{1ex plus .2ex}
+
+% ==========================================
+% TABLE OF CONTENTS TYPOGRAPHY & COLORS
+% ==========================================
+% Width reserved for the page number at the right edge.
+\contentsmargin{4.7ex}
+
+% Staggered indentation per level; dotted leaders in the faint header colour.
+\titlecontents{chapter}[0ex]
+  {\addvspace{3.7ex}\hypersetup{linkcolor=TocChapColor}\sffamily\bfseries\large\color{TocChapColor}}
+  {\color{ChapNumberText}\MakeUppercase{\chaptername}\ \thecontentslabel\hspace{1.9ex}\color{TocChapColor}}
+  {}
+  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{ChapNumberText}\contentspage}
+
+\titlecontents{section}[4.2ex]
+  {\addvspace{1.2ex}\hypersetup{linkcolor=TocSecColor}\sffamily\bfseries\color{TocSecColor}}
+  {\color{TocLabelColor}\thecontentslabel\hspace{1.9ex}\color{TocSecColor}}
+  {}
+  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocSecColor}\contentspage}
+
+\titlecontents{subsection}[9.3ex]
+  {\addvspace{0.6ex}\hypersetup{linkcolor=TocSubsecColor}\sffamily\color{TocSubsecColor}}
+  {\color{TocSubsecColor}\thecontentslabel\hspace{1.9ex}\color{TocSubsecColor}}
+  {}
+  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocSubsecColor}\contentspage}
+
+\titlecontents{subsubsection}[15.1ex]
+  {\addvspace{0.35ex}\hypersetup{linkcolor=TocSubsubColor}\sffamily\small\bfseries\color{TocSubsubColor}}
+  {\color{TocSubsubColor}\thecontentslabel\hspace{1.9ex}\color{TocSubsubColor}}
+  {}
+  {\normalfont\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocSubsubColor}\contentspage}
 
 % ==========================================
 % LIST FORMATTING
@@ -260,15 +331,27 @@
 % ==========================================
 \newtheoremstyle{purplethm}%
 {\customenvspace}{\customenvspace}{\normalfont}{}{\color{EnvTheorem}\sffamily\bfseries}{:}{0.5em}%
-{\thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1 }}\thmnumber{\sffamily\bfseries #2}%
- \thmnote{ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
+% NB: the space before the number lives in \thmnumber, not in \thmname -- otherwise
+% unnumbered environments (\newtheorem*) would emit a stray space before the note
+% or before the colon ("Remark  (...)", "Important remark :").
+{\thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+ \thmnote{\ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
 
 \theoremstyle{purplethm}
 
 \newtheorem{theorem}{Theorem}[section]
 
 % The decoupled theorem display format: Chapter.letter.Number
-\renewcommand{\thetheorem}{\thechapter.\alph{section}.\arabic{theorem}}
+% Robust against chapters that jump straight to \subsection (i.e. no \section at
+% all): in that case the section letter is simply omitted -> "Chapter.Number".
+\renewcommand{\thetheorem}{%
+  \thechapter.\ifnum\value{section}>0 \alph{section}.\fi\arabic{theorem}}
+
+% Reset the theorem counter at every chapter too, not only at every section --
+% otherwise a section-less chapter would keep counting from the previous one.
+\makeatletter
+\@addtoreset{theorem}{chapter}
+\makeatother
 
 % --- NUMBERED ENVIRONMENTS ---
 \newtheorem{lemma}[theorem]{Lemma}
@@ -295,6 +378,7 @@
 \newtheorem*{answer}{Answer}
 \newtheorem*{importantremark}{Important remark}
 \newtheorem*{goals}{Goals}
+\newtheorem*{conclusion}{Conclusion}
 \newtheorem*{ainote}{AI-Note}
 
 % ==========================================
@@ -340,7 +424,7 @@
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{%
   \par\if@nobreak\vspace{-1ex}\else\addvspace{2.2ex plus 0.5ex minus 0.2ex}\fi
-  \noindent{\normalfont\sffamily\large\bfseries\color{ProofTint}#1}%
+  \noindent{\normalfont\sffamily\bfseries\color{ProofTint}#1}%
   \par\nobreak\vspace{0.8ex plus .1ex}\vspace{-\parskip}
   \@afterindentfalse\@afterheading
 }{%
@@ -371,19 +455,42 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Fib}{Fib}
 
-% --- Standard-Seiten (alle normalen Seiten) ---
-\pagestyle{fancy}
-\fancyhf{} % Alle Kopf- und Fußzeilen leeren
-\renewcommand{\headrulewidth}{0pt} % Keine Linie oben
-\fancyfoot[C]{\sffamily\color{HeaderFooterFaint}\bfseries\thepage}   % Seitenzahl zentriert und FETT
 
-% --- Sonderfall: Kapitelanfänge ---
-% LaTeX schaltet bei \chapter automatisch auf den Stil 'plain' um.
-% Wir definieren diesen Stil um, damit auch dort die Zahl fett ist.
-\fancypagestyle{plain}{
-  \fancyhf{}
-  \fancyfoot[C]{\sffamily\color{HeaderFooterFaint}\bfseries\thepage}
-  \renewcommand{\headrulewidth}{0pt}
+% ==========================================
+% HEADER & FOOTER
+% ==========================================
+% Header: chapter (left) / page x of y (right).
+% Footer: current section (left) / current subsection (right).
+\pagestyle{fancy}
+\fancyhf{}
+
+% \parbox[b] lets a multi-line header grow upwards, so it always sits flush
+% with the page number on the rule.
+\fancyhead[L]{\parbox[b]{0.8\textwidth}{\sloppy\raggedright\small\sffamily\color{HeaderFooterFaint}\leftmark}}
+\fancyhead[R]{\parbox[b]{0.18\textwidth}{\sloppy\raggedleft\small\sffamily\color{HeaderFooterFaint}\textbf{\thepage} / \pageref*{LastPage}}}
+
+\fancyfoot[L]{\parbox[t]{0.47\textwidth}{\sloppy\raggedright\small\sffamily\color{HeaderFooterFaint}\rightmark}}
+\fancyfoot[R]{\parbox[t]{0.47\textwidth}{\sloppy\raggedleft\small\sffamily\color{HeaderFooterFaint}\lastxmark}}
+
+\renewcommand{\headrule}{\hbox to\headwidth{\color{HeaderFooterLine}\leaders\hrule height 0.5pt\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{HeaderFooterLine}\leaders\hrule height 0.5pt\hfill}}
+
+% Chapter openings switch to 'plain' automatically: no rules, centred page number.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\small\sffamily\color{HeaderFooterFaint}\textbf{\thepage} / \pageref*{LastPage}}%
+  \renewcommand{\headrule}{}%
+  \renewcommand{\footrule}{}%
+}
+
+% What goes into the marks.
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ \ ---\ \ #1}{}}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ \ ---\ \ #1}%
+  \extramarks{}{}%
+}
+\renewcommand{\subsectionmark}[1]{%
+  \extramarks{#1}{#1}%
 }
 
 % Title page:
@@ -395,10 +502,9 @@
 
 % titelpage, table of content
 \maketitle
-\setlength{\cftbeforechapskip}{3ex} % Space before a chapter entry in TOC
-\setlength{\cftbeforesecskip}{1.6ex}   % Space before a section entry in TOC
-\setlength{\cftbeforesubsecskip}{0.7ex} % Wert nach Bedarf anpassen
+% TOC entry spacing is now handled by the \titlecontents blocks in the preamble.
 \tableofcontents % This generates the TOC
+\hypersetup{linkcolor=LinkColor} % restore after the per-level TOC link colours
 \cleardoublepage
 
 % Include content
@@ -430,7 +536,10 @@
 \input{content/euclidean-hermetian-spaces-a.tex}
 \input{content/euclidean-hermetian-spaces-b.tex}
 \input{content/dual-spaces-inner-products-a.tex}
-% \input{content/spectral-theorems.tex}
 \input{content/24-spectral-thoerem.tex}
 \input{content/25-isometries.tex}
+\input{content/26-singular-value-decomposition.tex}
+\input{content/27-bilinear-and-quadratic-forms.tex}
+\input{content/28-jordan-a.tex}
+
 \end{document}
