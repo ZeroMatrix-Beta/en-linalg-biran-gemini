@@ -1,0 +1,13 @@
+% \begin{center}
+% \begin{tikzcd}[row sep=large, column sep=large]
+% W^* \arrow[r, "T^*"] & V^* \\
+% W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"'] \arrow[u, bend right=30, "\Phi_V^{-1}"']
+% \end{tikzcd}
+% \end{center}
+
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep=large]
+W^* \arrow[r, "T^*"] & V^* \\
+W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"] \arrow[u, bend right=40, "\Phi_V^{-1}"']
+\end{tikzcd}
+\end{center}

@@ -82,7 +82,7 @@
 
 % --- Lists ---
 \colorlet{ItemizeBullet}{BurntOrange}
-\colorlet{EnumerateBullet}{OliveGreen}
+\colorlet{EnumerateBullet}{TextBoldColor}
 
 % --- Headings ---
 \colorlet{ChapTitleText}{MidnightBlue!90!black}
@@ -281,32 +281,20 @@
   itemsep=0.4ex plus 0.2ex minus 0.1ex,
 }
 
-\setlist[itemize]{
-  label=\textcolor{ItemizeBullet}{\textbullet}
+\setlist[itemize,1]{
+  label=\textcolor{ItemizeBullet}{\textbullet},
+  leftmargin=2.5em
 }
 
-% Define a common layout
-\newlength{\myleftmargin}
-\setlength{\myleftmargin}{\leftmargin} % default LaTeX value
-
-\newlength{\enumlabelwidth}
-\settowidth{\enumlabelwidth}{\bfseries(m)} % widest expected label
-
 \setlist[enumerate,1]{
-  % Redirects \textbf inside the label to the enumerate colour
-  font=\colorlet{TextBoldColor}{EnumerateBullet},
   label=\textcolor{EnumerateBullet}{\bfseries(\alph*)},
   ref=(\alph*),
-  labelwidth=\enumlabelwidth,
-  leftmargin=! % compute from labelwidth + labelsep
+  leftmargin=2.5em
 }
 
 \setlist[description]{
   style=unboxed,
-  labelwidth=\enumlabelwidth,
-  leftmargin=!,
-  labelsep=0.35ex,
-  labelindent=0.4ex,
+  leftmargin=2.5em,
   font=\bfseries\color{TextBoldColor}
 }
 
@@ -352,6 +340,8 @@
 \makeatletter
 \@addtoreset{theorem}{chapter}
 \makeatother
+
+\setcounter{MaxMatrixCols}{20}
 
 % --- NUMBERED ENVIRONMENTS ---
 \newtheorem{lemma}[theorem]{Lemma}
@@ -408,17 +398,9 @@
 \Crefname{item}{Part}{Parts}
 
 % ==========================================
-% PROOF ENVIRONMENT (olive green, upright, boxed Q.E.D.)
+% PROOF ENVIRONMENT (olive green, upright, standard text Q.E.D.)
 % ==========================================
-\newcommand{\qedbox}{%
-  \tikz[baseline=(Q.base)]{%
-    \node[draw=ProofTint, fill=ProofQEDBg, line width=1pt, rounded corners=0.5ex,
-          inner xsep=0.5ex, inner ysep=0.3ex, font=\sffamily\bfseries\small,
-          text=ProofQEDText,
-          drop shadow={shadow xshift=0.5ex, shadow yshift=-0.5ex, fill=ProofTint, opacity=0.4}]
-         (Q) {Q.E.D.};%
-  }%
-}
+\newcommand{\qedbox}{\textcolor{ProofTint}{\sffamily\bfseries Q.E.D.}}
 \renewcommand{\qedsymbol}{\qedbox}
 
 \makeatletter
@@ -508,34 +490,34 @@
 \cleardoublepage
 
 % Include content
-\input{content/fibonacci.tex}
-\input{content/logic.tex}
-\input{content/set-theory.tex}
-\input{content/maps.tex}
-\input{content/fields.tex}
-\input{content/systems-of-linear-equations.tex}
-\input{content/vector-spaces.tex}
-\input{content/span.tex}
-\input{content/linear-independence.tex}
-\input{content/bases-part-a.tex}
-\input{content/bases-part-b.tex}
-\input{content/dimension.tex}
-\input{content/row-and-col-space.tex}
-\input{content/sums-of-vector-spaces.tex}
-\input{content/linear-maps.tex}
-\input{content/linear-maps-and-bases.tex}
-\input{content/matrices_a_matrix_multiplication.tex}
-\input{content/matrices_b_change_of_basis.tex}
-\input{content/matrices_c_column_rank_and_row_rank.tex}
-\input{content/matrices_d_more_on_matrices_and_lineq.tex}
-\input{content/matrices_e_elemntary_row_operations_revisited.tex}
-\input{content/vs-out-of-old-ones.tex}
-\input{content/misc.tex}
-\input{content/determinants.tex}
-\input{content/eigenvalues-eigenvectors.tex}
-\input{content/euclidean-hermetian-spaces-a.tex}
-\input{content/euclidean-hermetian-spaces-b.tex}
-\input{content/dual-spaces-inner-products-a.tex}
+\input{content/01-fibonacci.tex}
+\input{content/02-logic.tex}
+\input{content/03-set-theory.tex}
+\input{content/04-maps.tex}
+\input{content/05-fields.tex}
+\input{content/06-systems-of-linear-equations.tex}
+\input{content/07-vector-spaces.tex}
+\input{content/08-span.tex}
+\input{content/09-linear-independence.tex}
+\input{content/10a-bases-part-a.tex}
+\input{content/10b-bases-part-b.tex}
+\input{content/12-dimension.tex}
+\input{content/13-row-and-col-space.tex}
+\input{content/14-sums-of-vector-spaces.tex}
+\input{content/15a-linear-maps.tex}
+\input{content/16-linear-maps-and-bases.tex}
+\input{content/17a-matrices_a_matrix_multiplication.tex}
+\input{content/17b-matrices_b_change_of_basis.tex}
+\input{content/17c-matrices_c_column_rank_and_row_rank.tex}
+\input{content/17d-matrices_d_more_on_matrices_and_lineq.tex}
+\input{content/17e-matrices_e_elemntary_row_operations_revisited.tex}
+\input{content/18-vs-out-of-old-ones.tex}
+\input{content/19-misc.tex}
+\input{content/20-determinants.tex}
+\input{content/21-eigenvalues-eigenvectors.tex}
+\input{content/22a-euclidean-hermetian-spaces-a.tex}
+\input{content/22b-euclidean-hermetian-spaces-b.tex}
+\input{content/23a-dual-spaces-inner-products-a.tex}
 \input{content/24-spectral-thoerem.tex}
 \input{content/25-isometries.tex}
 \input{content/26-singular-value-decomposition.tex}

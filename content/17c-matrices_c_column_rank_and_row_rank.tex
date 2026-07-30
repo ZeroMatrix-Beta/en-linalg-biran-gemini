@@ -1,3 +1,5 @@
+\renewcommand{\thetheorem}{17.c.\arabic{theorem}}
+
 \section{Column Rank and Row Rank}
 
 \begin{theorem}[Equality of Column and Row Rank]
@@ -30,12 +32,12 @@ Let $T: V \to W$ be a linear map, and let $S: W \to W'$ and $L: P \to V$ be isom
 \end{lemma}
 
 \begin{proof}
-\textbf{Proof of (a):} By definition, $\rank(S \circ T) = \dim (S(T(V)))$. Since $S$ is an isomorphism, its restriction to the subspace $T(V) \subseteq W$ is injective. An injective linear map preserves the dimension of a vector space, and therefore:
+\textbf{(a)} By definition, $\rank(S \circ T) = \dim (S(T(V)))$. Since $S$ is an isomorphism, its restriction to the subspace $T(V) \subseteq W$ is injective. An injective linear map preserves the dimension of a vector space, and therefore:
 \begin{equation*}
     \dim (S(T(V))) = \dim (T(V)) = \rank(T)
 \end{equation*}
 
-\textbf{Proof of (b):} By definition, $\rank(T \circ L) = \dim (T(L(P)))$. Since $L$ is an isomorphism, it is surjective, which implies that $L(P) = V$. Consequently:
+\textbf{(b)} By definition, $\rank(T \circ L) = \dim (T(L(P)))$. Since $L$ is an isomorphism, it is surjective, which implies that $L(P) = V$. Consequently:
 \begin{equation*}
     \dim (T(L(P))) = \dim (T(V)) = \rank(T)
 \end{equation*}

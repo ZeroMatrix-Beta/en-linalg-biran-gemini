@@ -1,4 +1,6 @@
 \setcounter{chapter}{19} % Chapter 20
+\renewcommand{\thetheorem}{20.\arabic{theorem}}
+\setcounter{theorem}{0}
 \chapter{Determinants}
 \section{Introduction and Motivation}
 
@@ -53,7 +55,7 @@ Saying that $D$ is $n$-linear means that for any chosen row index $i$, the follo
   \item $D(\alpha_1, \dots, c \cdot \alpha_i, \dots, \alpha_n) = c \cdot D(\alpha_1, \dots, \alpha_i, \dots, \alpha_n)$ for all scalars $c \in K$.
 \end{enumerate}
 
-\begin{example}\label{ex:n_linear_product}
+\begin{example}[Product of Row Entries]\label{ex:n_linear_product}
   For a matrix $A \in \M_{n \times n}(K)$, write $A(i,j)$ for its entry at place $i,j$. Let $k_1, \dots, k_n$ be a fixed sequence of integers such that $1 \le k_i \le n$ for all $i$. Fix also a scalar $c \in K$. Consider $D : \M_{n \times n}(K) \to K$ defined by the product of one entry from each row:
   \[
   D(A) := c \cdot A(1, k_1) \cdot A(2, k_2) \cdots A(n, k_n).
@@ -95,7 +97,7 @@ Therefore, $D$ is completely determined by its values on the following four pair
   By expanding $(aD+bE)(\dots, \alpha_i + \alpha'_i, \dots)$ and $(aD+bE)(\dots, \lambda \alpha_i, \dots)$ using the individual linearities of $D$ and $E$, we see the result naturally holds.
 \end{proof}
 
-\begin{example}\label{ex:2_linear_det}
+\begin{example}[Two-by-Two Determinant Function]\label{ex:2_linear_det}
   Consider $D : \M_{2 \times 2}(K) \to K$ defined by $D(A) := A_{11}A_{22} - A_{12}A_{21}$. The function $D$ is $2$-linear because it can be written as $D = D_1 + D_2$, where $D_1(A) = A_{11}A_{22}$ and $D_2(A) = -A_{12}A_{21}$, both of which are 2-linear by our previous example. Furthermore, $D(I) = 1$, and if $A'$ is obtained from $A$ by interchanging the rows, then $D(A') = -D(A)$.
 
   Indeed, $D(A') = D\left(\begin{smallmatrix} A_{21} & A_{22} \\ A_{11} & A_{12} \end{smallmatrix}\right) = A_{21} \cdot A_{12} - A_{22}A_{11} = -(A_{11}A_{22} - A_{12}A_{21}) = -D(A)$.
@@ -189,7 +191,7 @@ Therefore, $D$ is completely determined by its values on the following four pair
   For all $n \ge 1$, at least one determinant function exists.
 \end{corollary}
 
-\begin{example}
+\begin{example}[Three-by-Three Determinant Expansion]
   Consider $A \in \M_{3 \times 3}(K)$. Using the uniquely defined $2 \times 2$ determinant function $|B| := B_{11}B_{22} - B_{12}B_{21}$, we can explicitly write out $E_1(A)$ (expanding along the first column) as:
   \[
   E_1(A) = A_{11} \begin{vmatrix} A_{22} & A_{23} \\ A_{32} & A_{33} \end{vmatrix} - A_{21} \begin{vmatrix} A_{12} & A_{13} \\ A_{32} & A_{33} \end{vmatrix} + A_{31} \begin{vmatrix} A_{12} & A_{13} \\ A_{22} & A_{23} \end{vmatrix}.
@@ -373,7 +375,7 @@ Recall that for any matrix $M \in M_{m \times n}(K)$, we have the transposed mat
   \end{align*}
 \end{proof}
 
-\begin{example}
+\begin{example}[Determinant of a Transposed Matrix]
   Let $A = \left(\begin{smallmatrix} 1 & 2 \\ 3 & 4 \end{smallmatrix}\right)$. Its transpose is $A^T = \left(\begin{smallmatrix} 1 & 3 \\ 2 & 4 \end{smallmatrix}\right)$. We have $\det(A) = (1)(4) - (2)(3) = -2$, and $\det(A^T) = (1)(4) - (3)(2) = -2$. Thus, the theorem holds.
 \end{example}
 
@@ -564,7 +566,7 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
   We have seen previously in Linear Algebra I that if $A$ is invertible, then $A x = b$ has a unique solution. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
 \end{proof}
 
-\begin{example}
+\begin{example}[Solving a System using Cramer's Rule]
   Consider the system $\left(\begin{smallmatrix} 2 & 1 \\ 1 & 3 \end{smallmatrix}\right) \left(\begin{smallmatrix} x_1 \\ x_2 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 5 \\ 5 \end{smallmatrix}\right)$. We have $\det(A) = 2(3) - 1(1) = 5$. Using Cramer's rule:
   \[
   x_1 = \frac{\det \begin{pmatrix} 5 & 1 \\ 5 & 3 \end{pmatrix}}{5} = \frac{15 - 5}{5} = 2, \quad x_2 = \frac{\det \begin{pmatrix} 2 & 5 \\ 1 & 5 \end{pmatrix}}{5} = \frac{10 - 5}{5} = 1.

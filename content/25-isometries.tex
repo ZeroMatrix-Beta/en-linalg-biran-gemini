@@ -375,13 +375,13 @@ Substituting this back yields $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mat
 
 \begin{exercisesolution}[Proof of \cref{prop:group_properties}]
 We will prove this generically for $G = \operatorname{U}(n)$ and $G = \operatorname{SU}(n)$ (the real cases are identical, replacing the conjugate transpose $^*$ with the transpose $^\top$).
-\begin{description}
-    \item[Proof of \textbf{(a)}:] The identity matrix $I_n$ satisfies $I_n^* \cdot I_n = I_n \cdot I_n = I_n$, so $I_n \in \operatorname{U}(n)$. Furthermore, $\det(I_n) = 1$, so $I_n \in \operatorname{SU}(n)$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The identity matrix $I_n$ satisfies $I_n^* \cdot I_n = I_n \cdot I_n = I_n$, so $I_n \in \operatorname{U}(n)$. Furthermore, $\det(I_n) = 1$, so $I_n \in \operatorname{SU}(n)$.
     
-    \item[Proof of \textbf{(b)}:] Let $A, B \in \operatorname{U}(n)$. We evaluate $(AB)^* (AB) = (B^* A^*) (AB) = B^* (A^* A) B$. Since $A \in \operatorname{U}(n)$, $A^* A = I_n$, so this reduces to $B^* I_n B = B^* B$. Since $B \in \operatorname{U}(n)$, $B^* B = I_n$. Thus, $AB \in \operatorname{U}(n)$. 
+    \item Let $A, B \in \operatorname{U}(n)$. We evaluate $(AB)^* (AB) = (B^* A^*) (AB) = B^* (A^* A) B$. Since $A \in \operatorname{U}(n)$, $A^* A = I_n$, so this reduces to $B^* I_n B = B^* B$. Since $B \in \operatorname{U}(n)$, $B^* B = I_n$. Thus, $AB \in \operatorname{U}(n)$. 
     If additionally $A, B \in \operatorname{SU}(n)$, then $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$, so $AB \in \operatorname{SU}(n)$.
     
-    \item[Proof of \textbf{(c)}:] Let $A \in \operatorname{U}(n)$. This implies $A^* A = I_n$, meaning $A^{-1} = A^*$. We check if $A^{-1}$ is unitary: $(A^{-1})^* A^{-1} = (A^*)^* A^* = A A^* = I_n$. Thus, $A^{-1} \in \operatorname{U}(n)$. 
+    \item Let $A \in \operatorname{U}(n)$. This implies $A^* A = I_n$, meaning $A^{-1} = A^*$. We check if $A^{-1}$ is unitary: $(A^{-1})^* A^{-1} = (A^*)^* A^* = A A^* = I_n$. Thus, $A^{-1} \in \operatorname{U}(n)$. 
     If additionally $A \in \operatorname{SU}(n)$, then $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{1} = 1$, so $A^{-1} \in \operatorname{SU}(n)$.
-\end{description}
+\end{enumerate}
 \end{exercisesolution}

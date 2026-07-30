@@ -51,14 +51,14 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   We saw that for all $A \in \M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say that a matrix $A \in \M_{n \times n}(K)$ is diagonalizable if the linear map $T_A$ is diagonalizable.
 \end{remark}
 
-\begin{example}\label{ex:eigenvalue_R2_stretch}
+\begin{example}[Stretching Transformation in \texorpdfstring{$R^2$}{R2}]\label{ex:eigenvalue_R2_stretch}
   Let $A = \left(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\right)$ and $K = \mathbb{R}$.
   $T_A \binom{1}{1} = \binom{3}{3} = 3 \binom{1}{1}$. Thus, $\lambda = 3$ is an eigenvalue and $v = \binom{1}{1}$ is a corresponding eigenvector.
   Furthermore, $T_A \binom{1}{-1} = \binom{1}{-1}$. This implies that $\lambda = 1$ is an eigenvalue and $v = \binom{1}{-1}$ is a corresponding eigenvector.
   Geometrically, this represents a stretching by a factor of 3 in $\mathbb{R}^2$ along one axis and the identity map along the other axis.
 \end{example}
 
-\begin{example}\label{ex:eigenvalue_R2_quadratic}
+\begin{example}[Finding Eigenvalues via Quadratic Equations]\label{ex:eigenvalue_R2_quadratic}
   Let $A = \left(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix}\right)$. Let us find all possible eigenvalues and eigenvectors.
   We are looking for $A \cdot v = \lambda v$ with $\lambda \in \mathbb{R}$ and $0 \ne v \in \mathbb{R}^2$.
   This gives $(A - \lambda I)v = 0$. This implies that $A - \lambda I$ is not invertible, which in turn means $\det(A - \lambda I) = 0$ (which leads to a quadratic equation).
@@ -255,7 +255,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 
 \section{Multiplicities of Eigenvalues}
 
-\begin{example}\label{ex:char_poly_same}
+\begin{example}[Identical Characteristic Polynomials]\label{ex:char_poly_same}
   Consider the matrices $A = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ and $B = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$.
   We have that their characteristic polynomials are identical: $P_A(x) = P_B(x) = (1-x)^2 = (x-1)^2$.
 \end{example}
@@ -299,7 +299,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \[ P_A(x) = P_D(x) = \det \begin{pmatrix} \lambda_1 - x & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n - x \end{pmatrix} = (\lambda_1 - x) \dots (\lambda_n - x). \]
 \end{proof}
 
-\begin{example}\label{ex:no_real_eigenvalues}
+\begin{example}[Rotation Matrix without Real Eigenvalues]\label{ex:no_real_eigenvalues}
   Let $A = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$ over $K = \mathbb{R}$. The associated linear map $T_A : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ represents a counter-clockwise rotation.
   The characteristic polynomial is $P_A(x) = \det\left(\begin{smallmatrix} -x & -1 \\ 1 & -x \end{smallmatrix}\right) = x^2 + 1$.
   This polynomial has no roots in $\mathbb{R}$. And, of course, $A$ has no real eigenvalues.
@@ -350,7 +350,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Therefore, we conclude that $m_a(T;\lambda) \ge k = m_g(T;\lambda)$.
 \end{proof}
 
-\begin{example}\label{ex:jordan_block_geom_alg}
+\begin{example}[Multiplicities of a Jordan Block]\label{ex:jordan_block_geom_alg}
   Revisiting the Jordan block $J := J_{\lambda, n}$ defined in \eqref{eq:jordan_block}:
   We previously saw that $P_J(x) = (\lambda - x)^n$, which directly implies that $m_a(J;\lambda) = n$.
   We also found that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
@@ -856,12 +856,12 @@ Let $T: V \to W$ be a linear map, and let $S: W \to W'$ and $L: P \to V$ be isom
 \end{lemma}
 
 \begin{proof}
-\textbf{Proof of (a):} By definition, $\rank(S \circ T) = \dim (S(T(V)))$. Since $S$ is an isomorphism, its restriction to the subspace $T(V) \subseteq W$ is injective. An injective linear map preserves the dimension of a vector space, and therefore:
+\textbf{(a)} By definition, $\rank(S \circ T) = \dim (S(T(V)))$. Since $S$ is an isomorphism, its restriction to the subspace $T(V) \subseteq W$ is injective. An injective linear map preserves the dimension of a vector space, and therefore:
 \begin{equation*}
     \dim (S(T(V))) = \dim (T(V)) = \rank(T)
 \end{equation*}
 
-\textbf{Proof of (b):} By definition, $\rank(T \circ L) = \dim (T(L(P)))$. Since $L$ is an isomorphism, it is surjective, which implies that $L(P) = V$. Consequently:
+\textbf{(b)} By definition, $\rank(T \circ L) = \dim (T(L(P)))$. Since $L$ is an isomorphism, it is surjective, which implies that $L(P) = V$. Consequently:
 \begin{equation*}
     \dim (T(L(P))) = \dim (T(V)) = \rank(T)
 \end{equation*}

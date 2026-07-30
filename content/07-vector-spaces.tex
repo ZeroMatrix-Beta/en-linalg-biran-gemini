@@ -58,7 +58,7 @@ By adding $-(0 \cdot v)$ to both sides, we yield $0_V = 0 \cdot v$.
 \subsection{Examples of Vector Spaces}
 
 \subsubsection{The Space $K^n$}
-\begin{example}
+\begin{example}[The Coordinate Space \texorpdfstring{$K^n$}{K to n}]
 The set of $n$-tuples $K^n$ becomes a vector space over $K$ if we endow it with the following operations. 
 Let $v = (a_1, \dots, a_n)$ and $w = (b_1, \dots, b_n) \in K^n$. We define addition in $K^n$ component-wise:
 \[
@@ -73,12 +73,12 @@ The zero vector is explicitly defined as $0 := (0, \dots, 0) \in K^n$.
 \end{example}
 
 \subsection{Spaces of Matrices}
-\begin{example}
+\begin{example}[Matrix Spaces]
 Let $\M_{m \times n}(K)$ be the set of all $m \times n$ matrices with entries in $K$. We define addition of matrices component-wise: if $A = (A_{i,j})$ and $B = (B_{i,j})$, then $A + B = (A_{i,j} + B_{i,j})$. Similarly, scalar multiplication is defined component-wise: $\alpha \cdot A = (\alpha \cdot A_{i,j})$. With these operations, $\M_{m \times n}(K)$ forms a vector space over $K$. The zero vector is the $m \times n$ matrix consisting entirely of zeros.
 \end{example}
 
 \subsection{Function Spaces \texorpdfstring{$K^S$}{S to K}}
-\begin{example}
+\begin{example}[Function Spaces]
 Let $S$ be an arbitrary set. We define the function space:
 \[
 K^S := \{f: S \to K \mid f \text{ is a function}\}
@@ -90,7 +90,7 @@ We define $(a \cdot f): S \to K$ point-wise by $x \mapsto a \cdot f(x)$.
 \end{example}
 
 \subsubsection{Polynomials $K[x]$}
-\begin{example}
+\begin{example}[Polynomial Spaces]
 A polynomial over $K$ is an expression of the form:
 \[
 f(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n
@@ -125,7 +125,7 @@ Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \qt{lin
 \end{enumerate}
 \end{definition}
 
-\begin{example}
+\begin{example}[Subspace of Plane Equations]
 Consider the set $U_b \subseteq K^3$ defined by $U_b = \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = b\}$. 
 
 \textbf{Claim:} $U_b$ is a linear subspace of $K^3$ if and only if $b = 0$.

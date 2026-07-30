@@ -13,7 +13,7 @@ Before advancing into the formal theory of vector spaces, we must establish the 
 A \qt{mathematical statement} (or logical statement) is a declarative sentence that is definitively either \textbf{True (T)} or \textbf{False (F)}. It is a fundamental axiom of logic that a statement cannot be both true and false simultaneously.
 \end{definition}
 
-\begin{example}
+\begin{example}[Examples of Logical Statements]
 Consider the following declarations:
 \begin{enumerate}[label=\textbf{\Alph*}:]
     \item \qt{For every real number $x$, $x^2 \ge 0$.}
@@ -55,7 +55,7 @@ A & B & A \wedge B \\
 \]
 \end{definition}
 
-\begin{example}
+\begin{example}[Conjunction Example]
 For $x \in \mathbb{R}$, the statement $(x^2 = 1) \wedge (x \ge 0)$ is logically equivalent to $x = 1$.
 \end{example}
 
@@ -75,7 +75,7 @@ A & B & A \vee B \\
 \]
 \end{definition}
 
-\begin{example}
+\begin{example}[Disjunction Example]
 The statement $(x > 1) \vee (x < 2)$ is True for all $x \in \mathbb{R}$. Conversely, $(x < 1) \vee (x > 2)$ is precisely the negation of the statement $1 \le x \le 2$.
 \end{example}
 
@@ -140,7 +140,7 @@ A \qt{predicate} $P(x)$ is a statement whose truth depends on a variable $x$. We
 \end{itemize}
 \end{definition}
 
-\begin{example}
+\begin{example}[Quantifiers over Integers]
 Let $P(n)$ be the predicate $n = n^2$ over $\mathbb{Z}$. 
 \begin{itemize}
     \item $\forall n \in \mathbb{Z} : P(n)$ is False.
@@ -180,6 +180,6 @@ The notation $\exists! x \in X : P(x)$ means there exists exactly one $x$ satisf
 \]
 \end{definition}
 
-\begin{example}
+\begin{example}[Unique Existence of Roots]
 $\exists! x \in \mathbb{R} : x^2 = 4$ is False (since $x = \pm 2$). However, $\exists! x \in \mathbb{R}_{\ge 0} : x^2 = 4$ is True.
 \end{example}

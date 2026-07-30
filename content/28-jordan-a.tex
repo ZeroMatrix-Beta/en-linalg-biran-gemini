@@ -54,23 +54,25 @@ The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix
 \begin{lemma}[Properties of the Jordan Matrix]
 \label{lem:properties_jordan_matrix}
 \leavevmode
-\begin{enumerate}
-    \item \textbf{(a)} $\lambda$ is the only eigenvalue of $J_{\lambda, n}$.
-    \item \textbf{(b)} $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$, and $m_a(J_{\lambda, n}; \lambda) = n$.
-    \item \textbf{(c)} $m_g(J_{\lambda, n}; \lambda) = 1$. In fact, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp(e_1)$, where $e_1 = (1, 0, \dots, 0)^\top$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\lambda$ is the only eigenvalue of $J_{\lambda, n}$.
+    \item $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$, and $m_a(J_{\lambda, n}; \lambda) = n$.
+    \item $m_g(J_{\lambda, n}; \lambda) = 1$. In fact, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp(e_1)$, where $e_1 = (1, 0, \dots, 0)^\top$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 \leavevmode
-\begin{description}
-    \item[Proof of (a) and (b):] The characteristic polynomial is the determinant of an upper triangular matrix:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The characteristic polynomial is the determinant of an upper triangular matrix:
     \[
     P_{J_{\lambda, n}}(x) = \det \begin{pmatrix} \lambda-x & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & \lambda-x \end{pmatrix} = (\lambda-x)^n.
     \]
-    This proves both \textbf{(a)} and \textbf{(b)}.
+    The only root of $P_{J_{\lambda, n}}(x)$ is $\lambda$, so $\lambda$ is the only eigenvalue of $J_{\lambda, n}$.
     
-    \item[Proof of (c):] To find $\Eig_{J_{\lambda, n}}(\lambda)$, we need to solve the equation $(J_{\lambda, n} - \lambda I_n)x = 0$:
+    \item From part \textbf{(a)}, the root $\lambda$ has multiplicity $n$, so $m_a(J_{\lambda, n}; \lambda) = n$.
+    
+    \item To find $\Eig_{J_{\lambda, n}}(\lambda)$, we need to solve the equation $(J_{\lambda, n} - \lambda I_n)x = 0$:
     \[
     (J_{\lambda, n} - \lambda I_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \implies \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}.
     \]
@@ -85,7 +87,7 @@ The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix
     \end{cases}
     \]
     The only free variable is $x_1$. Therefore, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp\left(\begin{smallmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{smallmatrix}\right) = \Sp(e_1)$, which means the geometric multiplicity is $1$.
-\end{description}
+\end{enumerate}
 \end{proof}
 
 We've seen that the statement \qt{$P_T(x)$ splits as a product of linear factors} does \underline{not} imply that \qt{$T$ is diagonalizable}, and $J_{\lambda, n}$ is a clear counterexample.
@@ -110,7 +112,7 @@ Moreover, up to permutation, the blocks $J_{\lambda_1, n_1}, \dots, J_{\lambda_k
 The basis $\mathcal{B}$ is called a \newterm{Jordan basis} for $T$. The resulting block diagonal matrix is called the \newterm{Jordan Normal Form} (JNF) of $T$. A similar theorem holds for matrices $A \in \M_{n \times n}(K)$: there exists an invertible matrix $P$ such that $P^{-1} A P$ is in Jordan Normal Form.
 \end{remark}
 
-\begin{example}
+\begin{example}[Jordan Normal Form Block Structure]
 \label{ex:jordan_normal_form}
 Consider a matrix $A \in \M_{13 \times 13}(K)$ in Jordan Normal Form:
 \[
@@ -155,14 +157,17 @@ N = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & 
 \begin{lemma}[Powers of the Nilpotent Matrix $N$ and Jordan Blocks]
 \label{lem:powers_jordan_blocks}
 \leavevmode
-\begin{enumerate}
-    \item \textbf{(a)} The powers of $N$ shift the diagonal of $1$'s further up:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The powers of $N$ shift the diagonal of $1$'s further up:
     \[
-    N^2 = \begin{pmatrix} 0 & 0 & 1 & & 0 \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & \ddots & 0 \\ 0 & & & & 0 \end{pmatrix}, \quad N^3 = \begin{pmatrix} 0 & 0 & 0 & 1 & \dots \\ & \ddots & \ddots & \ddots & \ddots \\ & & \ddots & \ddots & \ddots \end{pmatrix}, \quad \dots, \quad N^{n-1} = \begin{pmatrix} 0 & \dots & 0 & 1 \\ \vdots & & & 0 \\ \vdots & & & \vdots \\ 0 & \dots & \dots & 0 \end{pmatrix}.
+    N^2 = \begin{pmatrix} 0 & 0 & 1 & & 0 \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & \ddots & 0 \\ 0 & & & & 0 \end{pmatrix}, \quad N^3 = \begin{pmatrix} 0 & 0 & 0 & 1 & \dots \\ & \ddots & \ddots & \ddots & \ddots \\ & & \ddots & \ddots & \ddots \end{pmatrix}, \quad \dots, 
+    \]
+    \[
+    N^{n-1} = \begin{pmatrix} 0 & \dots & 0 & 1 \\ \vdots & & & 0 \\ \vdots & & & \vdots \\ 0 & \dots & \dots & 0 \end{pmatrix}.
     \]
     Furthermore, $N^n = 0$, and $N^k = 0$ for all $k \ge n$. In other words, $N^k$ has $1$'s in the $k$-th \qt{diagonal} above the \qt{central diagonal} and $0$'s everywhere else.
     
-    \item \textbf{(b)} For all $k \ge 1$, we have:
+    \item For all $k \ge 1$, we have:
     \[
     J_{\lambda, n}^k = \begin{pmatrix} \lambda^k & \binom{k}{1}\lambda^{k-1} & \binom{k}{2}\lambda^{k-2} & \dots \\ & \lambda^k & \binom{k}{1}\lambda^{k-1} & \dots \\ & & \ddots & \dots \\ & & & \binom{k}{1}\lambda^{k-1} \\ 0 & & & \lambda^k \end{pmatrix}.
     \]
@@ -172,8 +177,8 @@ N = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & 
 
 \begin{proof}
 \leavevmode
-\begin{description}
-    \item[Proof of (a):] This can be shown by direct calculation (exercise). Alternatively, denote by $e_1, \dots, e_n$ the standard basis for $K^n$. Then the linear map $T_N \colon K^n \to K^n$ acts as a shift operator:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item This can be shown by direct calculation (exercise). Alternatively, denote by $e_1, \dots, e_n$ the standard basis for $K^n$. Then the linear map $T_N \colon K^n \to K^n$ acts as a shift operator:
     \[
     T_N e_i = e_{i-1} \quad \forall 2 \le i \le n, \quad \text{and} \quad T_N e_1 = 0.
     \]
@@ -185,19 +190,19 @@ N = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & 
     \begin{align*}
     e_n &\xrightarrow{T_N^2} e_{n-2} \xrightarrow{T_N^2} e_{n-4} \dots \to 0 \\
     e_{n-1} &\xrightarrow{T_N^2} e_{n-3} \xrightarrow{T_N^2} \dots \to 0
-    \end{align}
+    \end{align*}
     By induction on $k$, it follows that for all $k \ge 1$:
     \[
     T_{N^k}(e_j) = \begin{cases} e_{j-k} & \text{if } k+1 \le j \le n \\ 0 & \text{if } j \le k \end{cases}.
     \]
     Since $N^k = [T_{N^k}]_{\mathcal{E}_n}^{\mathcal{E}_n}$, the matrix form follows immediately.
     
-    \item[Proof of (b):] Since the scalar matrix $\lambda I_n$ and the matrix $N$ commute, we can use the standard binomial theorem:
+    \item Since the scalar matrix $\lambda I_n$ and the matrix $N$ commute, we can use the standard binomial theorem:
     \[
     J_{\lambda, n}^k = (\lambda I_n + N)^k = \sum_{j=0}^k \binom{k}{j} (\lambda I_n)^{k-j} N^j = \sum_{j=0}^k \binom{k}{j} \lambda^{k-j} N^j.
     \]
     Using the structure of $N^j$ from part \textbf{(a)}, this yields the upper triangular matrix with binomial coefficients along the diagonals.
-\end{description}
+\end{enumerate}
 \end{proof}
 
 % Cor. (28.a.5)

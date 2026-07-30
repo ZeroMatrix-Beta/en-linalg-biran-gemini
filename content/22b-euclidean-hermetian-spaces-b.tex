@@ -1,71 +1,102 @@
+\setcounter{chapter}{21}
 \renewcommand{\thetheorem}{22.b.\arabic{theorem}}
 \setcounter{theorem}{0}
 
 \section{The Orthogonal Complement}
 
-Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space over $K$ ($\mathbb{R}$ or $\mathbb{C}$).
+Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$).
 
 % Def. (22.b.1)
 \begin{definition}[The Orthogonal Complement]
 \label{def:orthogonal_complement}
-Let $\emptyset \neq S \subseteq V$ be a subset. We define the orthogonal complement of $S$ as:
-\[ S^\perp := \{v \in V \mid v \perp s \;\forall s \in S\} = \{v \in V \mid \langle v, s \rangle = 0\}. \]
-When $S = \{v\}$ we write $v^\perp := \{v\}^\perp$.
+Let $\emptyset \neq S \subseteq V$ be a subset. We define the \newterm{orthogonal complement} of $S$ as:
+\[
+    S^\perp := \{v \in V \mid v \perp s \;\forall s \in S\} = \{v \in V \mid \langle v, s \rangle = 0\}.
+\]
+When $S = \{v\}$, we write $v^\perp := \{v\}^\perp$.
 \end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    % The plane v^\perp
+    \fill[green!15] (-1.5, -0.5) -- (1.5, -0.5) -- (2.5, 1) -- (-0.5, 1) -- cycle;
+    \draw[thick] (-1.5, -0.5) -- (1.5, -0.5) -- (2.5, 1) -- (-0.5, 1) -- cycle;
+    \node[right] at (1.5, -0.2) {$v^\perp$};
+    
+    % The vector v
+    \coordinate (O) at (0.5, 0.25);
+    \draw[->, thick, black] (O) -- +(0, 1.5) node[right] {$v$};
+    
+    % Right angle marker
+    \draw[red, thick] (O) -- +(0.2, 0) -- +(0.2, 0.2) -- +(0, 0.2);
+\end{tikzpicture}
+\end{center}
 
 % Lemma. (22.b.2)
 \begin{lemma}[Properties of the Orthogonal Complement]
 \label{lem:orthogonal_complement_properties}
 Let $\emptyset \neq S, T \subseteq V$. Then:
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item $S^\perp \subseteq V$ is a linear subspace.
-    \item $0^\perp = V$, $V^\perp = \{0\}$.
+    \item $0^\perp = V$, and $V^\perp = \{0\}$.
     \item $S \cap S^\perp$ is either $\emptyset$ or equal to $\{0\}$.
-    \item If $S \subseteq T$ then $S^\perp \supseteq T^\perp$.
+    \item If $S \subseteq T$, then $S^\perp \supseteq T^\perp$.
     \item $(\Sp(S))^\perp = S^\perp$.
     \item $S \subseteq (S^\perp)^\perp$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item We have $0 \in S^\perp$ because $\langle 0, s \rangle = 0$ for all $s \in S$.
     If $\alpha, \beta \in K$ and $v, w \in S^\perp$, then for all $s \in S$ we have:
-    \[ \langle \alpha v + \beta w, s \rangle = \alpha \langle v, s \rangle + \beta \langle w, s \rangle = 0. \]
-    This implies $\alpha v + \beta w \in S^\perp$. Thus, $S^\perp$ is a linear subspace.
+    \[
+        \langle \alpha v + \beta w, s \rangle = \alpha \langle v, s \rangle + \beta \langle w, s \rangle = 0.
+    \]
+    This implies that $\alpha v + \beta w \in S^\perp$. Thus, $S^\perp$ is a linear subspace.
     
-    \item Showing $0^\perp = V$ is left as an exercise. Let $v \in V^\perp$. Then $\langle v, w \rangle = 0$ for all $w \in V$. In particular, $\langle v, v \rangle = 0$, which implies $v = 0$. This shows $V^\perp \subseteq \{0\}$. Since clearly $\{0\} \subseteq V^\perp$, we conclude $V^\perp = \{0\}$.
+    \item Showing $0^\perp = V$ is left as an exercise. Let $v \in V^\perp$. Then $\langle v, w \rangle = 0$ for all $w \in V$. In particular, $\langle v, v \rangle = 0$, which implies $v = 0$. This shows $V^\perp \subseteq \{0\}$. Since it is clear that $\{0\} \subseteq V^\perp$, we conclude $V^\perp = \{0\}$.
     
-    \item If $S \cap S^\perp = \emptyset$, we are done. Otherwise, assume that $s \in S \cap S^\perp$. This implies $\langle s, s \rangle = 0$, which means $s = 0$.
+    \item If $S \cap S^\perp = \emptyset$, we are done. Otherwise, assume that $s \in S \cap S^\perp$. This implies that $\langle s, s \rangle = 0$, which yields $s = 0$.
     
     \item (Exercise).
     
-    \item We have $S \subseteq \Sp(S)$. By statement \textbf{(d)}, $(\Sp(S))^\perp \subseteq S^\perp$.
-    We will show that $S^\perp \subseteq (\Sp(S))^\perp$. Indeed, let $v \in S^\perp$, and let $u \in \Sp(S)$. Write $u = \sum_{i=1}^k \alpha_i u_i$ with $\alpha_i \in K$ and $u_i \in S$ for all $1 \leq i \leq k$. We compute:
-    \[ \langle v, u \rangle = \sum_{i=1}^k \overline{\alpha_i} \langle v, u_i \rangle = 0, \]
-    where we used the fact that $\langle v, u_i \rangle = 0$ because $v \in S^\perp$ and $u_i \in S$. Thus $v \perp u$. This holds for all $u \in \Sp(S)$, hence $v \in (\Sp(S))^\perp$. This shows $S^\perp \subseteq (\Sp(S))^\perp$.
+    \item We have $S \subseteq \Sp(S)$. By statement \textbf{(d)}, this yields $(\Sp(S))^\perp \subseteq S^\perp$.
+    Next, we will show that $S^\perp \subseteq (\Sp(S))^\perp$. Indeed, let $v \in S^\perp$, and let $u \in \Sp(S)$. We can write $u = \sum_{i=1}^k \alpha_i u_i$ with $\alpha_i \in K$ and $u_i \in S$ for all $1 \leq i \leq k$. We compute:
+    \[
+        \langle v, u \rangle = \sum_{i=1}^k \overline{\alpha_i} \underbrace{\langle v, u_i \rangle}_{= 0} = 0,
+    \]
+    where we used the fact that $\langle v, u_i \rangle = 0$ because $v \in S^\perp$ and $u_i \in S$. Thus, $v \perp u$. This holds for all $u \in \Sp(S)$, and therefore $v \in (\Sp(S))^\perp$. This shows that $S^\perp \subseteq (\Sp(S))^\perp$.
     
-    \item Let $s \in S$. Then for all $v \in S^\perp$ we have $\langle v, s \rangle = 0$, which implies $\langle s, v \rangle = 0$. Therefore, $s \perp v$ for all $v \in S^\perp$. This implies $s \in (S^\perp)^\perp$.
+    \item Let $s \in S$. Then for all $v \in S^\perp$ we have $\langle v, s \rangle = 0$, which implies $\langle s, v \rangle = 0$. Therefore, $s \perp v$ for all $v \in S^\perp$. Consequently, $s \in (S^\perp)^\perp$.
 \end{enumerate}
 \end{proof}
 
 % Thm. (22.b.3)
 \begin{theorem}[Orthogonal Complement in Finite Dimensions]
 \label{thm:orthogonal_complement_finite_dim}
-Let $V$ be an inner product space (possibly of infinite dimension), and $U \subseteq V$ a finite-di\-men\-sional subspace. Then $U^\perp$ is a complement of $U$ in $V$ (i.e., $U + U^\perp = V$ and $U \cap U^\perp = \{0\}$).
+Let $V$ be an inner product space (possibly of infinite dimension), and let $U \subseteq V$ be a finite-di\-men\-sional subspace. Then $U^\perp$ is a complement of $U$ in $V$ (i.e., $U + U^\perp = V$ and $U \cap U^\perp = \{0\}$).
 \end{theorem}
 
 \begin{proof}
-By \cref{lem:orthogonal_complement_properties}, we already have $U \cap U^\perp = \{0\}$. So it is enough to show that $U + U^\perp = V$.
-Put $r := \dim U$ and pick an orthonormal basis $(e_1, \dots, e_r)$ for $U$. Let $v \in V$.
-Define $\widetilde{P}_U(v) := \langle v, e_1 \rangle e_1 + \dots + \langle v, e_r \rangle e_r \in U$. (This is the orthogonal projection of $v$ to $U$.)
+By \cref{lem:orthogonal_complement_properties}, we already have $U \cap U^\perp = \{0\}$. So, it is enough to show that $U + U^\perp = V$.
+Put $r := \dim U$ and pick an orthonormal basis $(e_1, \dots, e_r)$ for $U$. (Note: this is not necessarily the standard basis or anything similar). Let $v \in V$.
+We introduce the temporary notation $\widetilde{P}_U(v) := \langle v, e_1 \rangle e_1 + \dots + \langle v, e_r \rangle e_r \in U$. (This is the orthogonal projection of $v$ onto $U$.)
 We have
-\[ v = \underbrace{\widetilde{P}_U(v)}_{\in U} + (v - \widetilde{P}_U(v)). \quad (*) \]
+\begin{equation}
+\label{eq:v_decomposition_temp}
+    v = \underbrace{\widetilde{P}_U(v)}_{\in U} + (v - \widetilde{P}_U(v)).
+\end{equation}
 We claim that $v - \widetilde{P}_U(v) \in U^\perp$. Indeed, for any $1 \leq i \leq r$,
-\[ \langle v - \widetilde{P}_U(v), e_i \rangle = \langle v, e_i \rangle - \sum_{k=1}^r \langle v, e_k \rangle \langle e_k, e_i \rangle = \langle v, e_i \rangle - \langle v, e_i \rangle = 0. \]
-This holds for all $1 \leq i \leq r$, hence $v - \widetilde{P}_U(v) \perp \Sp(e_1, \dots, e_r) = U$, i.e., $v - \widetilde{P}_U(v) \in U^\perp$.
-Going back to $(*)$, we see that
-\[ v = \underbrace{\widetilde{P}_U(v)}_{\in U} + \underbrace{(v - \widetilde{P}_U(v))}_{\in U^\perp}. \]
+\begin{align*}
+    \langle v - \widetilde{P}_U(v), e_i \rangle &= \langle v, e_i \rangle - \sum_{k=1}^r \langle v, e_k \rangle \langle e_k, e_i \rangle \\
+    &= \langle v, e_i \rangle - \langle v, e_i \rangle = 0.
+\end{align*}
+This holds for all $1 \leq i \leq r$, hence $(v - \widetilde{P}_U(v)) \perp \Sp(e_1, \dots, e_r) = U$, meaning $v - \widetilde{P}_U(v) \in U^\perp$.
+Going back to \eqref{eq:v_decomposition_temp}, we see that
+\[
+    v = \underbrace{\widetilde{P}_U(v)}_{\in U} + \underbrace{(v - \widetilde{P}_U(v))}_{\in U^\perp}.
+\]
 This holds for all $v \in V$, which implies $V = U + U^\perp$.
 \end{proof}
 
@@ -76,46 +107,46 @@ If $U \subseteq V$ is a finite-di\-men\-sional subspace, then since $U^\perp$ is
 % Def. (22.b.4)
 \begin{definition}[Orthogonal Projection]
 \label{def:orthogonal_projection}
-Let $V$ be an inner product space and $U \subseteq V$ a finite-di\-men\-sional subspace. We have seen that $U^\perp$ is a complement of $U$ in $V$ (which implies that for all $v \in V$, there exist unique $u \in U$ and $w \in U^\perp$ such that $v = u + w$).
-Define a map $P_U \colon V \to U$ as follows: for all $v \in V$, write $v = u + w$ with $u \in U$ and $w \in U^\perp$ in a unique way. We define $P_U(v) := u$. The map $P_U$ is called the \qt{orthogonal projection} on $U$.
+Let $V$ be an inner product space and $U \subseteq V$ a finite-di\-men\-sional subspace. We have seen that $U^\perp$ is a complement of $U$ in $V$ (which implies that for all $v \in V$, there exist unique vectors $u \in U$ and $w \in U^\perp$ such that $v = u + w$).
+Define a map $P_U \colon V \to U$ as follows: for all $v \in V$, write $v = u + w$ with $u \in U$ and $w \in U^\perp$ in a unique way. We define $P_U(v) := u$. The map $P_U$ is called the \newterm{orthogonal projection} on $U$.
 \end{definition}
 
 % Prop. (22.b.5)
 \begin{proposition}[Properties of Orthogonal Projection]
 \label{prop:orthogonal_projection_properties}
-$P_U$ has the following properties:
-\begin{enumerate}
+The map $P_U$ has the following properties:
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item $P_U$ is a linear map.
-    \item $\operatorname{Im} P_U = U$, $\ker P_U = U^\perp$.
+    \item $\operatorname{Im} P_U = U$ and $\ker P_U = U^\perp$.
     \item For all $v \in V$, $v - P_U(v) \in U^\perp$.
     \item For all $u \in U$, $P_U(u) = u$.
-    \item If $(e_1, \dots, e_r)$ is any orthonormal basis for $U$, then $P_U(v) = \sum_{i=1}^r \langle v, e_i \rangle \cdot e_i$ (which is equal to $\widetilde{P}_U(v)$ from the previous proof).
+    \item If $(e_1, \dots, e_r)$ is any orthonormal basis for $U$, then $P_U(v) = \sum_{i=1}^r \langle v, e_i \rangle \cdot e_i$ (which exactly equals $\widetilde{P}_U(v)$ from the previous proof).
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Properties \textbf{(a)}--\textbf{(d)} follow from the general fact that if $W_1, W_2$ are vector subspaces of $W$ and $W_1 \oplus W_2 = W$, then the map $P_{W_1} \colon W \to W_1$, defined by $P_{W_1}(w) = w_1$, where we write $w = w_1 + w_2$ in a unique way with $w_1 \in W_1, w_2 \in W_2$, is a linear map, $\operatorname{Im} P_{W_1} = W_1$, $\ker P_{W_1} = W_2$, and for all $w \in W$ we have $w - P_{W_1}(w) \in W_2$. (So $w = P_{W_1}(w) + (w - P_{W_1}(w))$ is the decomposition of $w$ as $w = w_1 + w_2$.) We also have $P_{W_1}(w) = w$ for all $w \in W_1$.
+Properties \textbf{(a)}--\textbf{(d)} follow from the general fact that if $W_1, W_2$ are vector subspaces of $W$ and $W_1 \oplus W_2 = W$, then the map $P_{W_1} \colon W \to W_1$, defined by $P_{W_1}(w) = w_1$, where we write $w = w_1 + w_2$ in a unique way with $w_1 \in W_1, w_2 \in W_2$, is a linear map. Furthermore, $\operatorname{Im} P_{W_1} = W_1$, $\ker P_{W_1} = W_2$, and for all $w \in W$ we have $w - P_{W_1}(w) \in W_2$. (Thus, $w = P_{W_1}(w) + (w - P_{W_1}(w))$ is the unique decomposition of $w$ as $w = w_1 + w_2$). We also have $P_{W_1}(w) = w$ for all $w \in W_1$.
 
-For \textbf{(e)}, we can write
+For statement \textbf{(e)}, we can write
 \begin{equation}
 \label{eq:orthogonal_decomposition_v}
-v = \underbrace{\left( \sum_{i=1}^r \langle v, e_i \rangle \cdot e_i \right)}_{\text{(1)}} + \underbrace{\left( v - \sum_{i=1}^r \langle v, e_i \rangle e_i \right)}_{\text{(2)}}
+    v = \underbrace{\left( \sum_{i=1}^r \langle v, e_i \rangle \cdot e_i \right)}_{\text{(I)}} + \underbrace{\left( v - \sum_{i=1}^r \langle v, e_i \rangle e_i \right)}_{\text{(II)}}.
 \end{equation}
-Now, $\text{(1)} = \widetilde{P}_U(v)$ from the previous proof, and we have also seen in that proof that $\text{(2)} \in U^\perp$. This implies that \eqref{eq:orthogonal_decomposition_v} is the unique decomposition of $v$ with respect to $V \cong U \oplus U^\perp$. Hence, $P_U(v) = \text{(1)}$.
+Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we have also seen in that proof that part (II) belongs to $U^\perp$. This implies that \eqref{eq:orthogonal_decomposition_v} is the unique decomposition of $v$ with respect to $V \cong U \oplus U^\perp$. Hence, $P_U(v) = \text{(I)}$.
 \end{proof}
 
 % Cor. (22.b.6)
 \begin{corollary}[Bidual Orthogonal Complement]
 \label{cor:bidual_orthogonal_complement}
-Let $V$ be an inner product space and $U \subseteq V$ a finite-di\-men\-sional subspace. Then $(U^\perp)^\perp = U$.
+Let $V$ be an inner product space and let $U \subseteq V$ be a finite-di\-men\-sional subspace. Then $(U^\perp)^\perp = U$.
 \end{corollary}
 
 \begin{proof}
-By a previous Lemma, $U \subseteq (U^\perp)^\perp$. We will show that we also have $(U^\perp)^\perp \subseteq U$. Indeed, let $v \in (U^\perp)^\perp$.
+By \cref{lem:orthogonal_complement_properties}, we have $U \subseteq (U^\perp)^\perp$. We will show that $(U^\perp)^\perp \subseteq U$ also holds. Indeed, let $v \in (U^\perp)^\perp$.
 Recall that $U^\perp$ is a complement of $U$ in $V$.
 Write $v = u + w$ with $u \in U$ and $w \in U^\perp$.
 Since $u \in U \subseteq (U^\perp)^\perp$ and also $v \in (U^\perp)^\perp$, we have that $w = v - u \in (U^\perp)^\perp$. But $w \in U^\perp$, hence $w \in U^\perp \cap (U^\perp)^\perp = \{0\}$.
-This shows that $w = 0$. Consequently, $v = u \in U$. We have proven that $(U^\perp)^\perp \subseteq U$.
+This shows that $w = 0$, and therefore, $v = u \in U$. We have proven that $(U^\perp)^\perp \subseteq U$.
 \end{proof}
 
 % Cor. (22.b.7)
@@ -124,100 +155,117 @@ This shows that $w = 0$. Consequently, $v = u \in U$. We have proven that $(U^\p
 If $V$ is a finite-di\-men\-sional inner product space and $U \subseteq V$ is a subspace, then $\dim U + \dim U^\perp = \dim V$.
 \end{corollary}
 
-\subsection{Orthogonal \& Unitary Matrices}
+\subsection*{Orthogonal and Unitary Matrices}
 
 % Def. (22.b.8)
 \begin{definition}[Orthogonal and Unitary Matrices]
 \label{def:orthogonal_unitary_matrices}
-\begin{enumerate}
-    \item A matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \qt{orthogonal} if its columns form an orthonormal system in $\mathbb{R}^n$, with respect to the standard scalar product of $\mathbb{R}^n$. We denote the set of orthogonal matrices $n \times n$ by $\operatorname{O}(n) \subseteq \M_{n \times n}(\mathbb{R})$.
-    \item A matrix $A \in \M_{n \times n}(\mathbb{C})$ is called \qt{unitary} if its columns form an orthonormal system in $\mathbb{C}^n$, with respect to the standard Hermitian product on $\mathbb{C}^n$. We denote the set of all unitary matrices $n \times n$ by $\operatorname{U}(n) \subseteq \M_{n \times n}(\mathbb{C})$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item A matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{orthogonal} if its columns form an orthonormal system in $\mathbb{R}^n$, with respect to the standard scalar product of $\mathbb{R}^n$. (This means if $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$, then $\langle v_i, v_j \rangle = \delta_{ij}$, which implies they form a basis). We denote the set of orthogonal matrices of size $n \times n$ by $\operatorname{O}(n) \subseteq \M_{n \times n}(\mathbb{R})$.
+    \item A matrix $A \in \M_{n \times n}(\mathbb{C})$ is called \newterm{unitary} if its columns form an orthonormal system in $\mathbb{C}^n$, with respect to the standard Hermitian product on $\mathbb{C}^n$. We denote the set of all unitary matrices of size $n \times n$ by $\operatorname{U}(n) \subseteq \M_{n \times n}(\mathbb{C})$.
 \end{enumerate}
 \end{definition}
+
+\begin{remark}
+Why are they called \qt{orthogonal matrices} and not \qt{orthonormal matrices}? This is simply a historical convention in the terminology!
+\end{remark}
 
 % Lemma. (22.b.9)
 \begin{lemma}[Characterization of Orthogonal Matrices]
 \label{lem:char_orthogonal_matrices}
-For a matrix $A \in \M_{n \times n}(\mathbb{R})$, the following are equivalent:
-\[ A \text{ is orthogonal} \iff A^T A = I_n \iff A A^T = I_n \iff A^{-1} = A^T. \]
+For a matrix $A \in \M_{n \times n}(\mathbb{R})$, the following statements are equivalent:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $A$ is an orthogonal matrix.
+    \item $A^\top A = I_n$.
+    \item $A A^\top = I_n$.
+    \item $A^{-1} = A^\top$.
+\end{enumerate}
 \end{lemma}
 
 % Lemma. (22.b.10)
 \begin{lemma}[Characterization of Unitary Matrices]
 \label{lem:char_unitary_matrices}
-For a matrix $A \in \M_{n \times n}(\mathbb{C})$, the following are equivalent:
-\[ A \text{ is unitary} \iff A^* A = I_n \iff A A^* = I_n \iff A^{-1} = A^*. \]
+For a matrix $A \in \M_{n \times n}(\mathbb{C})$, the following statements are equivalent:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $A$ is a unitary matrix.
+    \item $A^* A = I_n$ (which is equivalent to $\overline{A}^\top A = I_n$).
+    \item $A A^* = I_n$ (which is equivalent to $A \overline{A}^\top = I_n$).
+    \item $A^{-1} = A^*$.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}[Proof of \cref{lem:char_unitary_matrices}]
-(The proof of \cref{lem:char_orthogonal_matrices} is similar).
-Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$, where $v_k \in \mathbb{C}_{\text{col}}^n$ for $1 \leq k \leq n$. We have:
+(The proof of \cref{lem:char_orthogonal_matrices} is extremely similar).
+Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$, where $v_k \in \mathbb{C}_{\text{col}}^n$ for $1 \leq k \leq n$. We compute the product:
 \begin{equation}
 \label{eq:unitary_matrix_product}
-A^* A = \begin{pmatrix} - & \overline{v_1}^\top & - \\ & \vdots & \\ - & \overline{v_n}^\top & - \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \left( \overline{v_i}^\top \cdot v_j \right)_{1 \leq i \leq n, 1 \leq j \leq n} = \left( \langle v_j, v_i \rangle \right)_{1 \leq i \leq n, 1 \leq j \leq n}.
+    A^* A = \begin{pmatrix} \text{---} & \overline{v_1}^\top & \text{---} \\ & \vdots & \\ \text{---} & \overline{v_n}^\top & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \left( \overline{v_i}^\top \cdot v_j \right)_{1 \leq i \leq n, 1 \leq j \leq n} = \left( \langle v_j, v_i \rangle \right)_{1 \leq i \leq n, 1 \leq j \leq n}.
 \end{equation}
-Now, $A$ is unitary if and only if $v_1, \dots, v_n$ are an orthonormal system, which is equivalent to saying that \eqref{eq:unitary_matrix_product} is exactly $I_n$. The equivalence of these to $A A^* = I_n$ is a general property of invertible matrices.
+Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system, which is equivalent to saying that the resulting matrix in \eqref{eq:unitary_matrix_product} is exactly $I_n$. The equivalence of these statements to $A A^* = I_n$ is a general property of invertible matrices.
 \end{proof}
 
 % Cor. (22.b.11)
 \begin{corollary}[Rows of Orthogonal and Unitary Matrices]
 \label{cor:rows_orthogonal_unitary}
-\begin{enumerate}
-    \item Let $A \in \M_{n \times n}(\mathbb{R})$. Then $A \in \operatorname{O}(n) \iff A^T \in \operatorname{O}(n) \iff$ the rows of $A$ form an orthonormal basis for $\mathbb{R}^n$.
-    \item Let $A \in \M_{n \times n}(\mathbb{C})$. Then $A \in \operatorname{U}(n) \iff A^* \in \operatorname{U}(n) \iff$ the rows of $A$ form an orthonormal basis for $\mathbb{C}^n$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $A \in \M_{n \times n}(\mathbb{R})$. The matrix $A \in \operatorname{O}(n)$ if and only if $A^\top \in \operatorname{O}(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{R}^n$.
+    \item Let $A \in \M_{n \times n}(\mathbb{C})$. The matrix $A \in \operatorname{U}(n)$ if and only if $A^* \in \operatorname{U}(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{C}^n$.
 \end{enumerate}
 \end{corollary}
 
-\subsection{QR Decomposition}
+\subsection*{QR-Decomposition}
 
 % Thm. (22.b.12)
-\begin{theorem}[QR Decomposition for Invertible Matrices]
+\begin{theorem}[QR-Decomposition for Invertible Matrices]
 \label{thm:qr_decomposition_invertible}
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $A \in \GL_n(\mathbb{R})$. Then there exists $Q \in \operatorname{O}(n)$ and an upper triangular matrix $R \in \M_{n \times n}(\mathbb{R})$ such that $A = Q \cdot R$.
     \item Let $A \in \GL_n(\mathbb{C})$. Then there exists $Q \in \operatorname{U}(n)$ and an upper triangular matrix $R \in \M_{n \times n}(\mathbb{C})$ such that $A = Q \cdot R$.
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}[Proof (for \textbf{(a)} \& \textbf{(b)} together)]
+\begin{proof}[Proof (for \textbf{(a)} and \textbf{(b)} together)]
 Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$ with $v_k \in K_{\text{col}}^n$ (where $K = \mathbb{R}$ or $\mathbb{C}$).
 Since $A \in \GL_n(K)$, the vectors $v_1, \dots, v_n$ form a basis for $K^n$.
-Apply the Gram-Schmidt orthogonalization process to $v_1, \dots, v_n$ and obtain an orthonormal basis $(e_1, \dots, e_n)$ for $K^n$.
+Apply the Gram-Schmidt orthogonalization process to $v_1, \dots, v_n$ to obtain an orthonormal basis $e_1, \dots, e_n$ for $K^n$.
 Recall that for all $1 \leq j \leq n$, $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_j)$.
-And we also have:
+We also have:
 \begin{align*}
     v_1 &= \langle v_1, e_1 \rangle e_1 \\
     v_2 &= \langle v_2, e_1 \rangle e_1 + \langle v_2, e_2 \rangle e_2 \\
     &\vdots \\
     v_j &= \langle v_j, e_1 \rangle e_1 + \dots + \langle v_j, e_j \rangle e_j \\
     &\vdots \\
-    v_n &= \langle v_n, e_1 \rangle e_1 + \dots + \langle v_n, e_n \rangle e_n.
+    v_n &= \langle v_n, e_1 \rangle e_1 + \dots + \dots + \langle v_n, e_n \rangle e_n.
 \end{align*}
-This implies the matrix equation:
-\[ \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix} \begin{pmatrix} \langle v_1, e_1 \rangle & \langle v_2, e_1 \rangle & \dots & \langle v_j, e_1 \rangle & \dots & \langle v_n, e_1 \rangle \\ 0 & \langle v_2, e_2 \rangle & \dots & \langle v_j, e_2 \rangle & \dots & \langle v_n, e_2 \rangle \\ \vdots & 0 & \ddots & \vdots & & \vdots \\ \vdots & \vdots & & \langle v_j, e_j \rangle & \dots & \vdots \\ 0 & 0 & \dots & 0 & \dots & \langle v_n, e_n \rangle \end{pmatrix} \]
-Which is precisely $A = Q \cdot R$, where $Q \in \operatorname{O}(n)$ (or $\operatorname{U}(n)$), and $R$ is an upper triangular matrix.
+This directly implies the matrix equation:
+\[
+    \begin{pmatrix} | & & | & & | \\ v_1 & \dots & v_j & \dots & v_n \\ | & & | & & | \end{pmatrix} = \begin{pmatrix} | & & | & & | \\ e_1 & \dots & e_j & \dots & e_n \\ | & & | & & | \end{pmatrix} \begin{pmatrix} \langle v_1, e_1 \rangle & \langle v_2, e_1 \rangle & \dots & \langle v_j, e_1 \rangle & \dots & \langle v_n, e_1 \rangle \\ 0 & \langle v_2, e_2 \rangle & \dots & \langle v_j, e_2 \rangle & \dots & \langle v_n, e_2 \rangle \\ \vdots & 0 & \ddots & \vdots & & \vdots \\ \vdots & \vdots & & \langle v_j, e_j \rangle & \dots & \vdots \\ 0 & 0 & \dots & 0 & \dots & \langle v_n, e_n \rangle \end{pmatrix}.
+\]
+This is precisely $A = Q \cdot R$, where $Q \in \operatorname{O}(n)$ (or $\operatorname{U}(n)$), and $R$ is an upper triangular matrix.
 \end{proof}
 
-\begin{theorem}[Extension of QR Decomposition for All Matrices]
+\begin{theorem}[Extension of QR-Decomposition for All Matrices]
 \label{thm:qr_decomposition_all}
-Let $A \in \M_{n \times n}(K)$, and let $r := \rank(A)$. Then there exist matrices $Q, R$ with $Q \in \operatorname{O}(n)$ if $K = \mathbb{R}$ and $Q \in \operatorname{U}(n)$ if $K = \mathbb{C}$, and $R = \left(\begin{smallmatrix} C & * \\ 0 & 0 \end{smallmatrix}\right) \in \M_{n \times n}(K)$, where $C \in \M_{r \times r}(K)$ is an upper triangular matrix, such that $A = Q \cdot R$.
+Let $A \in \M_{n \times n}(K)$, and let $r := \rank(A)$. Then there exist matrices $Q$ and $R$ with $Q \in \operatorname{O}(n)$ if $K = \mathbb{R}$ (and $Q \in \operatorname{U}(n)$ if $K = \mathbb{C}$), and $R = \begin{pmatrix} C & * \\ 0 & 0 \end{pmatrix} \in \M_{n \times n}(K)$, where $C \in \M_{r \times r}(K)$ is an upper triangular matrix, such that $A = Q \cdot R$.
 \end{theorem}
 
 \begin{proof}
-Note that $r = \dim \Sp(v_1, \dots, v_n)$.
-We may assume $r \geq 1$, otherwise $r = 0$, hence $A = 0$ and we can take $R = 0$ and $Q$ arbitrary.
+Let $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$. Note that $r = \dim \Sp(v_1, \dots, v_n)$.
+We may assume $r \geq 1$, because otherwise $r = 0$, meaning $A = 0$, in which case we can take $R = 0$ and $Q$ to be any arbitrary orthogonal/unitary matrix.
 Note that there exist indices $1 \leq i_1 < \dots < i_r \leq n$ such that:
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item $v_{i_1}, \dots, v_{i_r}$ are linearly independent.
-    \item $(v_{i_1}, \dots, v_{i_k})$ is a basis for $\Sp(v_1, v_2, \dots, v_{i_k})$ (and $k = \dim \Sp(v_1, v_2, \dots, v_{i_k}) \leq i_k$).
+    \item $v_{i_1}, \dots, v_{i_k}$ is a basis for $\Sp(v_1, v_2, \dots, v_{i_k})$ (and $k = \dim \Sp(v_1, v_2, \dots, v_{i_k}) \leq i_k$).
 \end{enumerate}
-To see this, let $1 \leq i_1$ be the minimal index $j$ such that $v_j \neq 0$. (Since $r \geq 1$, there exists such an index.) Clearly $\Sp(v_1, \dots, v_{i_1}) = \Sp(v_{i_1})$. Suppose we have defined $1 \leq i_1 < \dots < i_k < n$ as above. Consider now the minimal index $\ell$, with $i_k < \ell \leq n$ and such that $v_\ell \notin \Sp(v_{i_1}, \dots, v_{i_k})$. If there is no such $\ell$, then $k = r$ and we are done. Otherwise take $i_{k+1} := \ell$. Continue the construction by induction.
+To see this, let $1 \leq i_1$ be the minimal index $j$ such that $v_j \neq 0$. (Since $r \geq 1$, there exists such an index.) Clearly, $\Sp(v_1, \dots, v_{i_1}) = \Sp(v_{i_1})$. Suppose we have defined $1 \leq i_1 < \dots < i_k < n$ as above. Consider now the minimal index $\ell$, with $i_k < \ell \leq n$ and such that $v_\ell \notin \Sp(v_{i_1}, \dots, v_{i_k})$. If there is no such $\ell$, then $k = r$ and we are done. Otherwise, take $i_{k+1} := \ell$. Continue the construction by induction.
 
 Now, apply the Gram-Schmidt process to the list of vectors $v_{i_1}, \dots, v_{i_r}$ and obtain an orthonormal system $e_1, \dots, e_r$ such that $(e_1, \dots, e_k)$ is a basis for $\Sp(v_{i_1}, \dots, v_{i_k}) = \Sp(v_1, v_2, \dots, v_{i_k})$.
-Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how?). Take $Q = \left(\begin{smallmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{smallmatrix}\right)$, and let $R$ be constructed analogously as in the previous proof, which will have the block form $R = \left(\begin{smallmatrix} C & * \\ 0 & 0 \end{smallmatrix}\right)$.
+Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how?). Take $Q = \begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix}$, and let $R$ be the exact same matrix block as in the previous proof. This guarantees $A = Q \cdot R$ with $R$ taking the desired block form.
 \end{proof}
 
 \begin{exercise}
 Let $V$ be an inner product space. Suppose $v_1, \dots, v_m \in V$ are not necessarily linearly independent, but not all of them are $0$. What happens if we apply the Gram-Schmidt orthogonalization process?
-Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$ that spans $\Sp(v_1, \dots, v_{i_k})$ and $v_{i_{k+1}} \in \Sp(v_1, v_2, \dots, v_{i_k})$. How will the next vector in the Gram-Schmidt process look like?
+
+Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$ that spans $\Sp(v_1, \dots, v_{i_k})$ and we encounter a vector $v_{i_{k+1}} \in \Sp(v_1, v_2, \dots, v_{i_k})$. How will the next vector in the Gram-Schmidt process look like?
 \end{exercise}

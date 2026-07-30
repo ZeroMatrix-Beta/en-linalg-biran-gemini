@@ -63,13 +63,13 @@ Two functions $f: X \to Y$ and $g: X' \to Y'$ are equal if they have the same do
 
 Sometimes a function is given by a formula, and sometimes it is not. Be careful: providing just a formula is often mathematically insufficient.
 
-\begin{example}
+\begin{example}[Specifying Domain and Target]
 \textbf{Bad notation:} $f(x) = x^2$. (What are the domain and target?)
 
 \textbf{O.K. notation:} Let $X := \{x \in \mathbb{R} \mid 0 \le x\}$. Define $f: X \to \mathbb{R}$ by $f(x) = x^2$.
 \end{example}
 
-\begin{example}
+\begin{example}[Student Database Function]
 Let $X = \{x \in \mathbb{Z} \mid x \ge 0\}$ and let $Y$ be the set of family names. We might try to define a map $g: X \to Y$ by setting $g(x)$ to be the family name of the student at ETH whose student number is $x$.
 
 This $g$ is \textbf{not} defined! What is $g(0)$? What is $g(10^{10})$? There are no students with these IDs. 
@@ -105,7 +105,7 @@ Conversely, $f$ is called an \textit{extension} of $f|_A$.
 
 \subsection{Some Standard Maps}
 
-\begin{example}
+\begin{example}[Standard Maps]
 \begin{enumerate}
     \item \textbf{Identity Map:} $\id: X \to X$ (sometimes denoted $\id_X$), defined by $\id(x) = x$ for all $x \in X$.
     \item \textbf{Constant Map:} $f: X \to Y$. Choose a fixed $y_0 \in Y$. Then $f(x) = y_0$ for all $x \in X$.
@@ -136,7 +136,7 @@ Let $f: X \to Y$ be a map.
 \end{enumerate}
 \end{definition}
 
-\begin{example}
+\begin{example}[Injective and Surjective Squaring Functions]
 Consider variations of the squaring function, which explicitly demonstrate the importance of the chosen domain and target:
 \begin{itemize}
     \item $f: \mathbb{R} \to \mathbb{R}, f(x) = x^2$. Not injective (e.g., $f(2) = f(-2)$). Not surjective (no real $x$ maps to $-1$).
@@ -185,7 +185,7 @@ Let $f: X \to Y$ be a bijection. The \textit{inverse map} $f^{-1}: Y \to X$ is t
 \end{tikzpicture}
 \end{center}
 
-\begin{example}
+\begin{example}[Inverse of Squaring Function]
 For the bijection $f: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$ with $f(x) = x^2$, the inverse map is $f^{-1}: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$, strictly defined by $f^{-1}(y) = \sqrt{y}$.
 \end{example}
 
@@ -198,7 +198,7 @@ Let $f: X \to Y$ and $g: Y \to Z$ be maps. The composition $g \circ f: X \to Z$ 
 \]
 \end{definition}
 
-\begin{example}
+\begin{example}[Composition with Inverse]
 If $f: X \to Y$ is bijective and $f^{-1}: Y \to X$ is its inverse, then by definition:
 \[
 f^{-1} \circ f = \id_X \quad \text{and} \quad f \circ f^{-1} = \id_Y
@@ -209,7 +209,7 @@ f^{-1} \circ f = \id_X \quad \text{and} \quad f \circ f^{-1} = \id_Y
 If $g \circ f$ is defined, $f \circ g$ is in general NOT defined (unless $Z=X$). But even when $Z=X$, in general $g \circ f \ne f \circ g$. Commutativity is not guaranteed.
 \end{remark}
 
-\begin{example}
+\begin{example}[Non-Commutative Compositions]
 Let $f, g: \mathbb{R} \to \mathbb{R}$ with $f(x) = x^2$ and $g(x) = x+1$.
 \begin{align*}
 (g \circ f)(x) &= g(x^2) = x^2 + 1 \\
@@ -301,7 +301,7 @@ f^{-1}(B) := \{x \in X \mid f(x) \in B\} \subseteq X
 The notation $f^{-1}(B)$ is somewhat confusing, as this set exists and is perfectly well-defined even if the map $f$ is not invertible!
 \end{importantremark}
 
-\begin{example}
+\begin{example}[Preimages of Subsets]
 Consider $f: \mathbb{R} \to \mathbb{R}, f(x) = x^2$ (which is neither injective nor surjective). We can still compute inverse images of subsets without issue:
 \begin{align*}
 f^{-1}(\{4\}) &= \{-2, 2\} \\
