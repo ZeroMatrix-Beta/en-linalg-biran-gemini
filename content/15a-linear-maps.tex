@@ -1,5 +1,5 @@
-% Overriding the theorem counter for this chapter to match the 15.0.1, 15.0.2 convention
 \renewcommand{\thetheorem}{15.a.\arabic{theorem}}
+\setcounter{theorem}{0}
 
 \setcounter{chapter}{14} % Sets chapter counter so the current chapter is 15
 \chapter{Linear Maps}
@@ -11,7 +11,7 @@ Linear maps, also known as linear transformations, are homomorphisms of vector s
 % def:15.a.1
 \begin{definition}[Linear Map]
 \label{def:linear_map}
-Let $V$ and $W$ be vector spaces over a field $K$. A map $T: V \to W$ is called a \qt{linear map} if it satisfies the following two conditions:
+Let $V$ and $W$ be vector spaces over a field $K$. A map $T: V \to W$ is called a \newterm{linear map} if it satisfies the following two conditions:
 \begin{enumerate}
     \item For all $v_1, v_2 \in V$, $T(v_1 + v_2) = T(v_1) + T(v_2)$.
     \item For all $\alpha \in K$ and $v \in V$, $T(\alpha \cdot v) = \alpha \cdot T(v)$.
@@ -147,8 +147,11 @@ For every linear transformation $T: K^n \to K^m$, there exists a unique matrix $
 \end{lemma}
 
 \begin{proof}
-Let $w_i = T(e_i)$ for each $i \in \{1, \dots, n\}$. As demonstrated in the preceding example, the matrix $A$ formed by using these specific vectors as columns defines a linear map $T_A$ that perfectly agrees with $T$ on the standard basis $\mathcal{E}$. Because $\mathcal{E}$ is a basis for $K^n$, \cref{thm:existence_uniqueness_linear_map} strictly implies that $T$ and $T_A$ must be the exact same map.
+Let $w_i := T(e_i)$ for each $i \in \{1, \dots, n\}$. As demonstrated in the preceding example, the matrix $A$ formed by using these specific vectors as columns defines a linear map $T_A$ that perfectly agrees with $T$ on the standard basis $\mathcal{E}$. Because $\mathcal{E}$ is a basis for $K^n$, \cref{thm:existence_uniqueness_linear_map} strictly implies that $T$ and $T_A$ must be the exact same map.
 \end{proof}
+% Source: 15.linear maps.b ("Kernel and Image"), which numbers from 15.b.1.
+\renewcommand{\thetheorem}{15.b.\arabic{theorem}}
+\setcounter{theorem}{0}
 \section{Kernel, Image, and the Rank-Nullity Theorem}
 
 In this section, we explore two fundamental subspaces associated with every linear map: the kernel and the image. These subspaces provide deep insight into the structure of the transformation and ultimately lead us to one of the most celebrated results in linear algebra, the Rank-Nullity Theorem.
@@ -157,30 +160,30 @@ In this section, we explore two fundamental subspaces associated with every line
 \begin{proposition}[Kernel and Image]
 \label{prop:kernel_image}
 Let $V$ and $W$ be vector spaces over a field $K$, and let $T: V \to W$ be a linear map.
-\begin{enumerate}
-    \item The set $\ker(T) := \{v \in V \mid T(v) = 0_W\} \subseteq V$ is a linear subspace of $V$. It is called the \qt{kernel} of $T$.
-    \item The set $\operatorname{Im}(T) := \{T(v) \mid v \in V\} \subseteq W$ is a linear subspace of $W$. It is called the \qt{image} of $T$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The set $\ker(T) := \{v \in V \mid T(v) = 0_W\} \subseteq V$ is a linear subspace of $V$. It is called the \newterm{kernel} of $T$.
+    \item The set $\Img(T) := \{T(v) \mid v \in V\} \subseteq W$ is a linear subspace of $W$. It is called the \newterm{image} of $T$.
 \end{enumerate}
 \end{proposition}
 
 \begin{remark}[Set-Theoretic Perspective]
 \label{rem:set_theoretic_notation}
-Using standard notation from set theory, we can concisely write the kernel as the fiber over the zero vector, $\ker(T) = T^{-1}(\{0_W\})$, and the image as the range of the entire domain, $\operatorname{Im}(T) = T(V)$. (Note: The image is sometimes denoted as $\operatorname{Image}(T)$).
+Using standard notation from set theory, we can concisely write the kernel as the fiber over the zero vector, $\ker(T) = T^{-1}(\{0_W\})$, and the image as the range of the entire domain, $\Img(T) = T(V)$. (Note: The image is sometimes denoted as $\operatorname{Image}(T)$).
 \end{remark}
 
 \begin{proof}[Proof of \Cref{prop:kernel_image}]
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item To show that $\ker(T) \subseteq V$ is a subspace, let $a, b \in K$, and let $v_1, v_2 \in \ker(T)$. By the linearity of $T$, we have:
     \[
     T(a v_1 + b v_2) = a T(v_1) + b T(v_2) = a \cdot 0_W + b \cdot 0_W = 0_W.
     \]
     This implies that $a v_1 + b v_2 \in \ker(T)$. Furthermore, since $T(0_V) = 0_W$, the zero vector $0_V \in \ker(T)$. Thus, the kernel is a valid subspace.
     
-    \item To show that $\operatorname{Im}(T) \subseteq W$ is a subspace, let $a, b \in K$, and let $w_1, w_2 \in \operatorname{Im}(T)$. By definition, there exist vectors $v_1, v_2 \in V$ such that $T(v_1) = w_1$ and $T(v_2) = w_2$. Therefore, we can write:
+    \item To show that $\Img(T) \subseteq W$ is a subspace, let $a, b \in K$, and let $w_1, w_2 \in \Img(T)$. By definition, there exist vectors $v_1, v_2 \in V$ such that $T(v_1) = w_1$ and $T(v_2) = w_2$. Therefore, we can write:
     \[
     a w_1 + b w_2 = a T(v_1) + b T(v_2) = T(a v_1 + b v_2).
     \]
-    Since $a v_1 + b v_2 \in V$, it follows immediately that $a w_1 + b w_2 \in \operatorname{Im}(T)$. Moreover, since $T(0_V) = 0_W$, we have $0_W \in \operatorname{Im}(T)$. Thus, the image is a subspace.
+    Since $a v_1 + b v_2 \in V$, it follows immediately that $a w_1 + b w_2 \in \Img(T)$. Moreover, since $T(0_V) = 0_W$, we have $0_W \in \Img(T)$. Thus, the image is a subspace.
 \end{enumerate}
 \end{proof}
 
@@ -195,7 +198,7 @@ First, suppose $T$ is injective. If $v \in \ker(T)$, then $T(v) = 0_W$. Since we
 
 Conversely, suppose that $\ker(T) = \{0_V\}$. Let $v_1, v_2 \in V$ such that $T(v_1) = T(v_2)$. By linearity, we obtain:
 \[
-T(v_1) - T(v_2) = 0_W \implies T(v_1 - v_2) = 0_W.
+T(v_1 - v_2) = T(v_1) - T(v_2) = 0_W.
 \]
 This implies that $v_1 - v_2 \in \ker(T)$. By our assumption, the only element in the kernel is the zero vector, and therefore, $v_1 - v_2 = 0_V$, which yields $v_1 = v_2$. Consequently, $T$ is injective.
 \end{proof}
@@ -203,9 +206,9 @@ This implies that $v_1 - v_2 \in \ker(T)$. By our assumption, the only element i
 % def:15.b.3
 \begin{definition}[Rank of a Linear Map]
 \label{def:rank_linear_map}
-Let $T: \in \Hom(V, W)$ be a linear map such that $\dim \operatorname{Im}(T) < \infty$. We define the \qt{rank} of $T$ as the dimension of its image:
+Let $T \in \Hom(V, W)$ be a linear map such that $\dim \Img(T) < \infty$. We define the \newterm{rank} of $T$ as the dimension of its image:
 \[
-\rank(T) := \dim \operatorname{Im}(T).
+\rank(T) := \dim \Img(T).
 \]
 \end{definition}
 
@@ -214,15 +217,15 @@ Let $T: \in \Hom(V, W)$ be a linear map such that $\dim \operatorname{Im}(T) < \
 \label{thm:rank_nullity}
 Let $V$ be a finite-dimensional vector space, and let $T: V \to W$ be a linear map. Then, the following dimension formula holds:
 \[
-\dim V = \dim \ker(T) + \dim \operatorname{Im}(T).
+\dim V = \dim \ker(T) + \dim \Img(T).
 \]
 \end{theorem}
 
 \begin{proof}
-Let $k = \dim \ker(T)$ and $n = \dim V$. Let $(u_1, \dots, u_k)$ be a basis for $\ker(T)$. By the Steinitz Exchange Lemma, we can extend this linearly independent set to a full basis for $V$, denoted by $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_{n-k})$. We claim that the family $\mathcal{C} = (T(v_1), \dots, T(v_{n-k}))$ forms a basis for $\operatorname{Im}(T)$.
+Let $k := \dim \ker(T)$ and $n := \dim V$. Let $(u_1, \dots, u_k)$ be a basis for $\ker(T)$. By the Steinitz Exchange Lemma, we can extend this linearly independent set to a full basis for $V$, denoted by $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_{n-k})$. We claim that the family $\mathcal{C} = (T(v_1), \dots, T(v_{n-k}))$ forms a basis for $\Img(T)$.
 
 \begin{enumerate}
-    \item \textbf{Spanning:} Let $w \in \operatorname{Im}(T)$. By definition, there exists some $v \in V$ such that $w = T(v)$. We can express $v$ uniquely as a linear combination of the basis vectors in $\mathcal{B}$:
+    \item \textbf{Spanning:} Let $w \in \Img(T)$. By definition, there exists some $v \in V$ such that $w = T(v)$. We can express $v$ uniquely as a linear combination of the basis vectors in $\mathcal{B}$:
     \[
     v = \sum_{i=1}^k a_i u_i + \sum_{j=1}^{n-k} b_j v_j.
     \]
@@ -232,7 +235,7 @@ Let $k = \dim \ker(T)$ and $n = \dim V$. Let $(u_1, \dots, u_k)$ be a basis for 
     &= \sum_{i=1}^k a_i T(u_i) + \sum_{j=1}^{n-k} b_j T(v_j) \\
     &= 0_W + \sum_{j=1}^{n-k} b_j T(v_j).
     \end{align*}
-    Thus, the vectors in $\mathcal{C}$ span $\operatorname{Im}(T)$.
+    Thus, the vectors in $\mathcal{C}$ span $\Img(T)$.
     
     \item \textbf{Linear Independence:} Suppose there exist scalars $b_j \in K$ such that:
     \[
@@ -240,12 +243,16 @@ Let $k = \dim \ker(T)$ and $n = \dim V$. Let $(u_1, \dots, u_k)$ be a basis for 
     \]
     By the linearity of $T$, this is equivalent to $T\left( \sum_{j=1}^{n-k} b_j v_j \right) = 0_W$, which implies that the vector $\sum_{j=1}^{n-k} b_j v_j$ lies in $\ker(T)$. Because $(u_1, \dots, u_k)$ is a basis for the kernel, there must exist scalars $a_i \in K$ such that:
     \[
-    \sum_{j=1}^{n-k} b_j v_j = \sum_{i=1}^k a_i u_i \implies \sum_{j=1}^{n-k} b_j v_j - \sum_{i=1}^k a_i u_i = 0_V.
+    \sum_{j=1}^{n-k} b_j v_j = \sum_{i=1}^k a_i u_i,
+    \]
+    or, after moving everything to one side,
+    \[
+    \sum_{j=1}^{n-k} b_j v_j - \sum_{i=1}^k a_i u_i = 0_V.
     \]
     However, since $\mathcal{B}$ is a basis for $V$, all of its constituent vectors are linearly independent. This forces all coefficients to be zero, specifically $b_j = 0$ for all $1 \le j \le n-k$. 
 \end{enumerate}
 
-Therefore, $\mathcal{C}$ is linearly independent and spans the image, making it a basis for $\operatorname{Im}(T)$. Consequently, $\dim \operatorname{Im}(T) = n - k = \dim V - \dim \ker(T)$.
+Therefore, $\mathcal{C}$ is linearly independent and spans the image, making it a basis for $\Img(T)$. Consequently, $\dim \Img(T) = n - k = \dim V - \dim \ker(T)$.
 \end{proof}
 
 % cor:15.b.5
@@ -260,9 +267,9 @@ Let $V$ and $W$ be finite-dimensional vector spaces such that $\dim V = \dim W$.
 \end{corollary}
 
 \begin{proof}
-By the Rank-Nullity Theorem \eqref{thm:rank_nullity}, we know that $\dim \ker(T) = \dim V - \dim \operatorname{Im}(T)$. Since we are given that $\dim V = \dim W$, we can analyze the implications:
+By the Rank-Nullity Theorem \eqref{thm:rank_nullity}, we know that $\dim \ker(T) = \dim V - \dim \Img(T)$. Since we are given that $\dim V = \dim W$, we can analyze the implications:
 \begin{itemize}
-    \item $T$ is injective $\iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \iff \dim \operatorname{Im}(T) = \dim V = \dim W \iff T$ is surjective.
+    \item $T$ is injective $\iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \iff \dim \Img(T) = \dim V = \dim W \iff T$ is surjective.
 \end{itemize}
 Because injectivity implies surjectivity (and vice versa) in this specific dimension constraint, either condition guarantees that the map is bijective, and therefore, an isomorphism.
 \end{proof}

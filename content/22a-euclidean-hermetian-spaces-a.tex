@@ -1,6 +1,6 @@
-\setcounter{chapter}{21}
 \renewcommand{\thetheorem}{22.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{21}
 
 \chapter{Euclidean and Hermitian Spaces}
 
@@ -108,13 +108,13 @@ By the definition of the norm and the properties of the inner product, we have:
 Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Hermitian case, $\langle v, u \rangle = \overline{\langle u, v \rangle} = \overline{0} = 0$.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Polarization Identities]
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \label{exc:reconstruct_scalar_prod} Let $V$ be a Euclidean space. Show that for all $u, v \in V$ we have
     \[
         \langle u, v \rangle = \frac{1}{2}\left(\|u+v\|^2 - \|u\|^2 - \|v\|^2\right). \quad (*)
     \]
-    This shows that $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. \textbf{Warning:} There exist norms that do \underline{not} come from scalar products.
+    This shows that $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. \textbf{Warning:} There exist norms that do \emph{not} come from scalar products.
     \item Find an analogous formula to (*) for a Hermitian vector space.
 \end{enumerate}
 \end{exercise}
@@ -122,7 +122,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 \subsection*{Examples}
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
-    \item The standard scalar product on $\mathbb{R}^n$. Let $\mathbb{R}^n = \mathbb{R}^n_{\text{col}}$. For all $u, v \in \mathbb{R}^n$, define $\langle u, v \rangle = u^\top \cdot v \in \M_{1 \times 1}(\mathbb{R}) = \mathbb{R}$.
+    \item The standard scalar product on $\mathbb{R}^n$. Let $\mathbb{R}^n = \mathbb{R}^n_{\text{col}}$. For all $u, v \in \mathbb{R}^n$, define $\langle u, v \rangle = u\transp \cdot v \in \M_{1 \times 1}(\mathbb{R}) = \mathbb{R}$.
     \begin{align*}
         \left\langle \begin{pmatrix} u_1 \\ \vdots \\ u_n \end{pmatrix}, \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \right\rangle &= \sum_{i=1}^n u_i \cdot v_i \\
         \left\| \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \right\| &= \sqrt{\sum_{i=1}^n v_i^2}.
@@ -130,7 +130,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     
     \item The standard Hermitian inner product on $\mathbb{C}^n$:
     \begin{align*}
-        \langle u, v \rangle &:= u^\top \cdot \overline{v} = \sum_{k=1}^n u_k \cdot \overline{v}_k \in \mathbb{C} \\
+        \langle u, v \rangle &:= u\transp \cdot \overline{v} = \sum_{k=1}^n u_k \cdot \overline{v}_k \in \mathbb{C} \\
         \|v\| &= \sqrt{\sum_{k=1}^n v_k \cdot \overline{v}_k} = \sqrt{\sum_{k=1}^n |v_k|^2}.
     \end{align*}
 
@@ -140,7 +140,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 % Def. (22.a.6)
 \begin{definition}
 \label{def:symmetric_matrix}
-    A matrix $A \in \M_{n \times n}(K)$ (where $K$ is any field) is called \newterm{symmetric} if $A^\top = A$ (i.e., $a_{ij} = a_{ji}$ for all $i,j$).
+    A matrix $A \in \M_{n \times n}(K)$ (where $K$ is any field) is called \newterm{symmetric} if $A\transp = A$ (i.e., $a_{ij} = a_{ji}$ for all $i,j$).
 \end{definition}
 
 % Def. (22.a.7)
@@ -148,14 +148,14 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 \label{def:adjoint_hermitian_matrices}
     \begin{enumerate}[label=\textbf{(\alph*)}]
         \item Let $A \in \M_{n \times m}(\mathbb{C})$. We write $\overline{A}$ for the matrix whose entry at $i,j$ is $\overline{(A_{ij})}$ (complex conjugation). That is, $(\overline{A})_{ij} := \overline{(A_{ij})}$.
-        \item Let $A \in \M_{n \times n}(\mathbb{C})$. Define $A^* := \overline{A}^\top$. The matrix $A^*$ is called the \newterm{adjoint matrix} of $A$ (this has nothing to do with the classical adjoint, $\operatorname{adj}(A)$).
-        \item A matrix $A \in \M_{n \times n}(\mathbb{C})$ is called \newterm{Hermitian} if $A^* = A$ ($\iff A^\top = \overline{A}$).
+        \item Let $A \in \M_{n \times n}(\mathbb{C})$. Define $A^* := \overline{A}\transp$. The matrix $A^*$ is called the \newterm{adjoint matrix} of $A$ (this has nothing to do with the classical adjoint, $\adj(A)$).
+        \item A matrix $A \in \M_{n \times n}(\mathbb{C})$ is called \newterm{Hermitian} if $A^* = A$ ($\iff A\transp = \overline{A}$).
     \end{enumerate}
 \end{definition}
 
 \noindent\textbf{Important example.} Let $A \in \M_{n \times n}(\mathbb{R})$. Define $\langle \cdot, \cdot \rangle_A : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ by
 \[
-    \langle v, w \rangle_A = v^\top \cdot A \cdot w.
+    \langle v, w \rangle_A = v\transp \cdot A \cdot w.
 \]
 
 \begin{exercise}
@@ -164,7 +164,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 
 Assume now that $A$ is symmetric. Then $\langle v, w \rangle_A = \langle w, v \rangle_A$ for all $v, w$. Indeed,
 \[
-    \langle w, v \rangle_A = w^\top \cdot A \cdot v = w^\top A^\top v = (v^\top A \cdot w)^\top = (\langle v, w \rangle_A)^\top = \langle v, w \rangle_A.
+    \langle w, v \rangle_A = w\transp \cdot A \cdot v = w\transp A\transp v = (v\transp A \cdot w)\transp = (\langle v, w \rangle_A)\transp = \langle v, w \rangle_A.
 \]
 (Note that this is just a scalar, viewed as a $1 \times 1$ matrix). 
 
@@ -173,7 +173,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
 % Def. (22.a.8)
 \begin{definition}
 \label{def:positive_definite_matrix_real}
-    A symmetric matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{positive definite} if $v^\top A v > 0$ for all $0 \neq v \in \mathbb{R}^n$.
+    A symmetric matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{positive definite} if $v\transp A v > 0$ for all $0 \neq v \in \mathbb{R}^n$.
 \end{definition}
 
 If $A$ is positive definite, then $\langle \cdot, \cdot \rangle_A$ is a scalar product (Exercise).
@@ -184,12 +184,12 @@ If $A$ is positive definite, then $\langle \cdot, \cdot \rangle_A$ is a scalar p
 
 \begin{example}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $a_1, \dots, a_n > 0$ (with $a_i \in \mathbb{R}$). Then the diagonal matrix $D = \left(\begin{smallmatrix} a_1 & & 0 \\ & \ddots & \\ 0 & & a_n \end{smallmatrix}\right)$ is positive definite. Indeed, if $v = (v_1, \dots, v_n)^\top$, then
+    \item Let $a_1, \dots, a_n > 0$ (with $a_i \in \mathbb{R}$). Then the diagonal matrix $D = \left(\begin{smallmatrix} a_1 & & 0 \\ & \ddots & \\ 0 & & a_n \end{smallmatrix}\right)$ is positive definite. Indeed, if $v = (v_1, \dots, v_n)\transp$, then
     \[
-        \langle v, v \rangle_D = v^\top \cdot D \cdot v = a_1 v_1^2 + \dots + a_n v_n^2 \geq 0,
+        \langle v, v \rangle_D = v\transp \cdot D \cdot v = a_1 v_1^2 + \dots + a_n v_n^2 \geq 0,
     \]
     with equality if and only if $v_i = 0$ for all $i$.
-    \item Let $A = \begin{pmatrix} a & b \\ b & d \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$. Then $A$ is positive definite if and only if $a > 0$ and $\det(A) > 0$. (Exercise).
+    \item Let $A = \left(\begin{smallmatrix} a & b \\ b & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$. Then $A$ is positive definite if and only if $a > 0$ and $\det(A) > 0$. (Exercise).
 \end{enumerate}
 \end{example}
 
@@ -198,37 +198,36 @@ The situation for Hermitian products is similar.
 % Def. (22.a.9)
 \begin{definition}
 \label{def:positive_definite_matrix_complex}
-    Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. We say that $A$ is \newterm{positive definite} if for all $0 \neq v \in \mathbb{C}^n$, we have $v^\top A \overline{v} > 0$.
-    (Note that $v^\top A \overline{v} \in \mathbb{R}$, because $(\overline{v^\top A \overline{v}}) = \overline{v}^\top \overline{A} v = (\overline{v}^\top \overline{A} v)^\top = v^\top \overline{A}^\top \overline{v} = v^\top A \overline{v}$. Here, we used $(\cdot)^\top = (\cdot)$ for a scalar/$1\times1$ matrix, and the fact that $A$ is Hermitian. Recall that if $v = (v_1, \dots, v_n)^\top \in \mathbb{C}^n$, then $\overline{v} := (\overline{v}_1, \dots, \overline{v}_n)^\top$).
+    Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. We say that $A$ is \newterm{positive definite} if for all $0 \neq v \in \mathbb{C}^n$, we have $v\transp A \overline{v} > 0$.
+    (Note that $v\transp A \overline{v} \in \mathbb{R}$, because $(\overline{v\transp A \overline{v}}) = \overline{v}\transp \overline{A} v = (\overline{v}\transp \overline{A} v)\transp = v\transp \overline{A}\transp \overline{v} = v\transp A \overline{v}$. Here, we used $(\cdot)\transp = (\cdot)$ for a scalar/$1\times1$ matrix, and the fact that $A$ is Hermitian. Recall that if $v = (v_1, \dots, v_n)\transp \in \mathbb{C}^n$, then $\overline{v} := (\overline{v}_1, \dots, \overline{v}_n)\transp$).
 \end{definition}
 
-Given a positive definite complex matrix $A$, we can define a Hermitian product on $\mathbb{C}^n$ via $\langle v, w \rangle_A = v^\top A \overline{w}$.
+Given a positive definite complex matrix $A$, we can define a Hermitian product on $\mathbb{C}^n$ via $\langle v, w \rangle_A = v\transp A \overline{w}$.
 
 \begin{claim*}
     $\langle \cdot, \cdot \rangle_A$ is a Hermitian product if and only if $A$ is positive definite.
 \end{claim*}
 
-\begin{exercise}
-\label{exc:pos_def_2x2_complex}
-    $A = \begin{pmatrix} a & b \\ \overline{b} & d \end{pmatrix} \in \M_{2 \times 2}(\mathbb{C})$ is positive definite if and only if $a \in \mathbb{R}$, $a > 0$, and $\det A \in \mathbb{R}$, $\det A > 0$.
+\begin{exercise}[Positive Definiteness of \texorpdfstring{$2\times2$}{2x2} Hermitian Matrices]\label{exc:pos_def_2x2_complex}
+    $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ is positive definite if and only if $a \in \mathbb{R}$, $a > 0$, and $\det A \in \mathbb{R}$, $\det A > 0$.
 \end{exercise}
 
 \begin{proof}[Proof of the Claim]
     We will prove it for complex matrices and Hermitian products (the case of symmetric matrices and scalar products is very similar and even simpler. Exercise).
     
-    Let $A \in \M_{n \times n}(\mathbb{C})$ and suppose that $\langle v, w \rangle_A := v^\top A \overline{w}$ is a Hermitian product.
+    Let $A \in \M_{n \times n}(\mathbb{C})$ and suppose that $\langle v, w \rangle_A := v\transp A \overline{w}$ is a Hermitian product.
     Then for all $v, w \in \mathbb{C}^n$ we have $\langle v, w \rangle_A = \overline{\langle w, v \rangle}_A$.
     \[
-        \implies v^\top A \overline{w} = \overline{w^\top A \overline{v}} \implies v^\top A \overline{w} = \overline{w}^\top \overline{A} v \implies v^\top A \overline{w} = (\overline{w}^\top \overline{A} v)^\top \implies v^\top A \overline{w} = v^\top \overline{A}^\top \overline{w}.
+        \implies v\transp A \overline{w} = \overline{w\transp A \overline{v}} \implies v\transp A \overline{w} = \overline{w}\transp \overline{A} v \implies v\transp A \overline{w} = (\overline{w}\transp \overline{A} v)\transp \implies v\transp A \overline{w} = v\transp \overline{A}\transp \overline{w}.
     \]
-    Take $v = e_i$, $w = e_j$ (standard basis). Write $A = \begin{pmatrix} a_{11} & \dots & a_{1j} & \dots & a_{1n} \\ \vdots & & \vdots & & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{pmatrix}$. We have
+    Take $v = e_i$, $w = e_j$ (standard basis). Write $A := \begin{pmatrix} a_{11} & \dots & a_{1j} & \dots & a_{1n} \\ \vdots & & \vdots & & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{pmatrix}$. We have
     \[
-        e_i^\top \cdot A \cdot e_j = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} A \begin{pmatrix} | \\ e_j \\ | \end{pmatrix} = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} \begin{pmatrix} a_{1j} \\ \vdots \\ a_{nj} \end{pmatrix} = a_{ij}.
+        e_i\transp \cdot A \cdot e_j = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} A \begin{pmatrix} | \\ e_j \\ | \end{pmatrix} = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} \begin{pmatrix} a_{1j} \\ \vdots \\ a_{nj} \end{pmatrix} = a_{ij}.
     \]
-    Similarly, $e_i^\top \overline{A}^\top e_j = \overline{a}_{ji}$.
-    Thus, $\overline{a}_{ji} = a_{ij}$ for all $i, j$, which implies $\overline{A}^\top = A$.
+    Similarly, $e_i\transp \overline{A}\transp e_j = \overline{a}_{ji}$.
+    Thus, $\overline{a}_{ji} = a_{ij}$ for all $i, j$, which implies $\overline{A}\transp = A$.
     
-    The fact that $A$ is positive definite is precisely the condition that $\langle v, v \rangle_A > 0$ for all $v \neq 0$, which is to say $v^\top A \overline{v} > 0$.
+    The fact that $A$ is positive definite is precisely the condition that $\langle v, v \rangle_A > 0$ for all $v \neq 0$, which is to say $v\transp A \overline{v} > 0$.
     
     The opposite statement: A positive definite matrix implies $\langle \cdot, \cdot \rangle_A$ is a Hermitian product (Exercise).
 \end{proof}
@@ -260,7 +259,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 \end{example}
 
 \begin{example}
-    Let $A = \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix}$. It is positive definite (why?). Let $\langle \cdot, \cdot \rangle :=$ std. scalar prod, and $\langle \cdot, \cdot \rangle' := \langle \cdot, \cdot \rangle_A$.
+    Let $A = \left(\begin{smallmatrix} 1 & -1 \\ -1 & 2 \end{smallmatrix}\right)$. It is positive definite (why?). Let $\langle \cdot, \cdot \rangle :=$ std. scalar prod, and $\langle \cdot, \cdot \rangle' := \langle \cdot, \cdot \rangle_A$.
     We have:
     \[
         \left\langle \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle = 1, \quad \left\langle \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle' = \begin{pmatrix} 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 0.
@@ -313,7 +312,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     If $\langle \cdot, \cdot \rangle$ is an inner product on $V$, then $\|v\| := \sqrt{\langle v, v \rangle}$ is a norm on $V$. (We'll prove this soon).
 \end{claim*}
 
-\begin{exercise}
+\begin{exercise}[Examples of Non-Inner-Product Norms]
     Define $\left\| \binom{a}{b} \right\|' := \max\{|a|, |b|\}$, and $\left\| \binom{a}{b} \right\|'' := |a| + |b|$ for all $\binom{a}{b} \in \mathbb{R}^2$. Show that $\| \cdot \|'$ and $\| \cdot \|''$ are norms, but they are not induced by any scalar product. 
     
     \textit{Hint:} Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.
@@ -360,13 +359,13 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \begin{proof}
     We assume $(V, \langle \cdot, \cdot \rangle)$ is a Hermitian space (the case of Euclidean space is very similar).
     
-    \underline{Triangle inequality:} Let $u, v \in V$.
+    \textbf{Triangle inequality:} Let $u, v \in V$.
     \begin{align*}
         \|u + v\|^2 &= \langle u + v, u + v \rangle = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle \\
-        &= \|u\|^2 + 2 \operatorname{Re} \langle u, v \rangle + \|v\|^2. \quad (*)
+        &= \|u\|^2 + 2 \Rea \langle u, v \rangle + \|v\|^2. \quad (*)
     \end{align*}
-    Note that for all $z \in \mathbb{C}$ we have $|\operatorname{Re} z| \leq |z|$. (Indeed, if $z = x + iy$, $x, y \in \mathbb{R}$, then $|\operatorname{Re} z| = |x| \leq \sqrt{x^2 + y^2} = |z|$).
-    Applying this to our situation, we have $\operatorname{Re} \langle u, v \rangle \leq |\operatorname{Re} \langle u, v \rangle| \leq |\langle u, v \rangle|$.
+    Note that for all $z \in \mathbb{C}$ we have $|\Rea z| \leq |z|$. (Indeed, if $z = x + iy$, $x, y \in \mathbb{R}$, then $|\Rea z| = |x| \leq \sqrt{x^2 + y^2} = |z|$).
+    Applying this to our situation, we have $\Rea \langle u, v \rangle \leq |\Rea \langle u, v \rangle| \leq |\langle u, v \rangle|$.
     Going back to (*), we get:
     \[
         \|u + v\|^2 \leq \|u\|^2 + 2 |\langle u, v \rangle| + \|v\|^2 \leq \|u\|^2 + 2 \|u\| \cdot \|v\| + \|v\|^2 = (\|u\| + \|v\|)^2,
@@ -556,14 +555,14 @@ We'll see more about this soon.
     \[
         \langle u, v \rangle = \frac{1}{4}\left(\|u+v\|^2 - \|u-v\|^2 + i\|u+iv\|^2 - i\|u-iv\|^2\right).
     \]
-    By expanding each norm term using $\|x+y\|^2 = \|x\|^2 + \|y\|^2 + 2\operatorname{Re}\langle x, y \rangle$ and maintaining careful track of the imaginary components through sesquilinearity, the cross terms isolate $\langle u, v \rangle$.
+    By expanding each norm term using $\|x+y\|^2 = \|x\|^2 + \|y\|^2 + 2\Rea\langle x, y \rangle$ and maintaining careful track of the imaginary components through sesquilinearity, the cross terms isolate $\langle u, v \rangle$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Positive Definite Matrices (on \cpageref{exc:pos_def_2x2_complex})]
-    Let $A = \begin{pmatrix} a & b \\ \overline{b} & d \end{pmatrix} \in \M_{2 \times 2}(\mathbb{C})$ be a Hermitian matrix (which implies $a, d \in \mathbb{R}$). 
-    For $v = (x, y)^\top \in \mathbb{C}^2$, the condition $v^\top A \overline{v} > 0$ yields
+    Let $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ be a Hermitian matrix (which implies $a, d \in \mathbb{R}$). 
+    For $v = \binom{x}{y} \in \mathbb{C}^2$, the condition $v\transp A \overline{v} > 0$ yields
     \[
         a|x|^2 + b x \overline{y} + \overline{b} \overline{x} y + d|y|^2 > 0.
     \]
-    Choosing $v = (1, 0)^\top$ gives $a > 0$. Through completing the square, the full expression is positive for all non-zero $v$ if and only if $a > 0$ and $ad - |b|^2 > 0$. This confirms the condition $a > 0$ and $\det A > 0$.
+    Choosing $v = \binom{1}{0}$ gives $a > 0$. Through completing the square, the full expression is positive for all non-zero $v$ if and only if $a > 0$ and $ad - |b|^2 > 0$. This confirms the condition $a > 0$ and $\det A > 0$.
 \end{exercisesolution}

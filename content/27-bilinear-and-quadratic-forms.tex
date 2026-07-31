@@ -1,7 +1,7 @@
-
-\setcounter{chapter}{26}
 \renewcommand{\thetheorem}{27.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+
+\setcounter{chapter}{26}
 
 \chapter{Bilinear and Quadratic Forms}
 
@@ -18,15 +18,15 @@ Let $V$ be a vector space over $K$ (a general field). A function $B \colon V \ti
 % Lemma. (27.a.2)
 \begin{lemma}[Matrix Representation of a Bilinear Form]
 \label{lem:matrix_rep_bilinear_form}
-Let $V$ be a vector space over $K$ and $\mathcal{C} = (e_1, \dots, e_n)$ a basis for $V$. Let $B \colon V \times V \to K$ be a bilinear form. Then there exists a matrix $[B]_{\mathcal{C}} \in \M_{n \times n}(K)$ such that
+Let $V$ be a vector space over $K$ and $\mathcal{C} := (e_1, \dots, e_n)$ a basis for $V$. Let $B \colon V \times V \to K$ be a bilinear form. Then there exists a matrix $[B]_{\mathcal{C}} \in \M_{n \times n}(K)$ such that
 \[
-B\left(\sum_{i=1}^n c_i e_i, \sum_{j=1}^n d_j e_j\right) = (c_1, \dots, c_n) \cdot [B]_{\mathcal{C}} \cdot (d_1, \dots, d_n)^\top \quad \forall c_i, d_j \in K.
+B\left(\sum_{i=1}^n c_i e_i, \sum_{j=1}^n d_j e_j\right) = (c_1, \dots, c_n) \cdot [B]_{\mathcal{C}} \cdot (d_1, \dots, d_n)\transp \quad \forall c_i, d_j \in K.
 \]
 The matrix $[B]_{\mathcal{C}}$ is called the \newterm{matrix representation} of $B$ in the basis $\mathcal{C}$.
 \end{lemma}
 
 \begin{proof}
-Define $[B]_{\mathcal{C}} = (a_{ij})$, where $a_{ij} := B(e_i, e_j)$. Then we compute:
+Define $[B]_{\mathcal{C}} := (a_{ij})$, where $a_{ij} := B(e_i, e_j)$. Then we compute:
 \begin{align*}
 B\left(\sum_{i=1}^n c_i e_i, \sum_{j=1}^n d_j e_j\right) &= \sum_{i=1}^n c_i B\left(e_i, \sum_{j=1}^n d_j e_j\right) \\
 &= \sum_{i=1}^n c_i \left(\sum_{j=1}^n d_j B(e_i, e_j)\right) \\
@@ -51,13 +51,13 @@ What happens for bilinear forms?
 \label{lem:change_of_basis_bilinear}
 Let $V$ be a finite-dimensional vector space over $K$ and $\mathcal{C}, \mathcal{D}$ two bases of $V$. Let $B \colon V \times V \to K$ be a bilinear form. Then
 \[
-[B]_{\mathcal{D}} = \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)^\top \cdot [B]_{\mathcal{C}} \cdot [\id_V]_{\mathcal{C}}^{\mathcal{D}}.
+[B]_{\mathcal{D}} = \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)\transp \cdot [B]_{\mathcal{C}} \cdot [\id_V]_{\mathcal{C}}^{\mathcal{D}}.
 \]
 (Note that this is quite different from \eqref{eq:transition_endomorphism}).
 \end{lemma}
 
 \begin{proof}
-Let $\mathcal{C} = (v_1, \dots, v_n)$ and $\mathcal{D} = (w_1, \dots, w_n)$. We have $([B]_{\mathcal{C}})_{j,k} = B(v_j, v_k)$, and $([B]_{\mathcal{D}})_{j,k} = B(w_j, w_k)$. Recall that column $j$ in $[\id_V]_{\mathcal{C}}^{\mathcal{D}}$ contains the coordinates of $w_j$ in the basis $\mathcal{C}$:
+Let $\mathcal{C} := (v_1, \dots, v_n)$ and $\mathcal{D} := (w_1, \dots, w_n)$. We have $([B]_{\mathcal{C}})_{j,k} = B(v_j, v_k)$, and $([B]_{\mathcal{D}})_{j,k} = B(w_j, w_k)$. Recall that column $j$ in $[\id_V]_{\mathcal{C}}^{\mathcal{D}}$ contains the coordinates of $w_j$ in the basis $\mathcal{C}$:
 \[
 w_j = \sum_{p=1}^n \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{p,j} \cdot v_p.
 \]
@@ -66,7 +66,7 @@ This implies:
 ([B]_{\mathcal{D}})_{j,k} &= B(w_j, w_k) \\
 &= B\left(\sum_{p=1}^n \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{p,j} v_p, \sum_{q=1}^n \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{q,k} v_q\right) \\
 &= \sum_{p,q=1}^n \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{p,j} \cdot B(v_p, v_q) \cdot \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{q,k} \\
-&= \left(\left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)^\top \cdot [B]_{\mathcal{C}} \cdot [\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{j,k}.
+&= \left(\left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)\transp \cdot [B]_{\mathcal{C}} \cdot [\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{j,k}.
 \end{align*}
 \end{proof}
 
@@ -85,18 +85,18 @@ This implies:
 \leavevmode
 \begin{enumerate}
     \item Let $(V, \langle \cdot, \cdot \rangle)$ be a Euclidean vector space. Then $B(v, w) := \langle v, w \rangle$ is a symmetric, positive definite bilinear form. Its associated quadratic form is $q(v) = \|v\|^2$.
-    \item Let $B \in \M_{n \times n}(K)$. Then $B \colon K^n \times K^n \to K$ defined by $B(v, w) := v^\top B w$ is a bilinear form. If $B^\top = B$ (i.e., $B$ is a symmetric matrix), then $B$ is a symmetric bilinear form (left as an exercise). The associated quadratic form is $q(v) = v^\top B v$.
+    \item Let $B \in \M_{n \times n}(K)$. Then $B \colon K^n \times K^n \to K$ defined by $B(v, w) := v\transp B w$ is a bilinear form. If $B\transp = B$ (i.e., $B$ is a symmetric matrix), then $B$ is a symmetric bilinear form (left as an exercise). The associated quadratic form is $q(v) = v\transp B v$.
 \end{enumerate}
 \end{example}
 
 \begin{remark}
-Note that $B \in \M_{n \times n}(K)$ and $B^\top \in \M_{n \times n}(K)$ give the same quadratic form $q \colon K^n \to K$. Indeed, for all $v \in K^n$, we have:
+Note that $B \in \M_{n \times n}(K)$ and $B\transp \in \M_{n \times n}(K)$ give the same quadratic form $q \colon K^n \to K$. Indeed, for all $v \in K^n$, we have:
 \[
-q_B(v) = v^\top B v = (v^\top B v)^\top = v^\top B^\top v = q_{B^\top}(v),
+q_B(v) = v\transp B v = (v\transp B v)\transp = v\transp B\transp v = q_{B\transp}(v),
 \]
-where we used the fact that $v^\top B v$ is a scalar, and thus equals its own transpose.
+where we used the fact that $v\transp B v$ is a scalar, and thus equals its own transpose.
 
-Assume now that $2 \neq 0$ in $K$ (i.e., $1 + 1 \neq 0$). Then $\frac{1}{2}(B + B^\top)$ also gives the same quadratic form as $B$.
+Assume now that $2 \neq 0$ in $K$ (i.e., $1 + 1 \neq 0$). Then $\frac{1}{2}(B + B\transp)$ also gives the same quadratic form as $B$.
 \end{remark}
 
 \begin{conclusion}
@@ -104,6 +104,7 @@ If $2 \neq 0$ in $K$, then for the discussion on quadratic forms $q \colon K^n \
 \end{conclusion}
 
 \begin{theorem*}[Polarization Identity]
+\label{thm:polarization_identity_bilinear}
 Assume $2 \neq 0$ in $K$. (Note that $2 \neq 0 \implies 4 \neq 0$. Why? This is left as an exercise).
 If $B$ is symmetric and defines $q := q_B$, then for all $v, w \in V$ we have:
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -115,13 +116,13 @@ If $B$ is symmetric and defines $q := q_B$, then for all $v, w \in V$ we have:
 % Thm. (27.a.5)
 \begin{theorem}[Sylvester's Law of Inertia]
 \label{thm:sylvesters_inertia}
-Let $B \colon V \times V \to \mathbb{R}$ be a \underline{symmetric} bilinear form on a vector space $V$ over $\mathbb{R}$, of dimension $n$. Then there exists a basis $\mathcal{C}$ for $V$ such that
+Let $B \colon V \times V \to \mathbb{R}$ be a \emph{symmetric} bilinear form on a vector space $V$ over $\mathbb{R}$, of dimension $n$. Then there exists a basis $\mathcal{C}$ for $V$ such that
 \[
 [B]_{\mathcal{C}} = \begin{pmatrix} I_k & 0 & 0 \\ 0 & -I_\ell & 0 \\ 0 & 0 & 0 \end{pmatrix},
 \]
 for some $k, \ell \in \mathbb{Z}_{\ge 0}$ with $k + \ell \le n$. (The zero block in the bottom right has size $n - (k + \ell)$).
 
-Moreover, $k$ and $\ell$ do \underline{not} depend on the basis $\mathcal{C}$ (they depend only on $B$). In fact:
+Moreover, $k$ and $\ell$ do \emph{not} depend on the basis $\mathcal{C}$ (they depend only on $B$). In fact:
 \begin{align*}
 k &= \max \{ \dim W \mid W \subseteq V \text{ is a subspace and } B|_{W \times W} \text{ is positive definite} \}, \\
 \ell &= \max \{ \dim U \mid U \subseteq V \text{ is a subspace and } -B|_{U \times U} \text{ is positive definite} \}, \\
@@ -139,12 +140,12 @@ n - (k + \ell) &= \max \{ \dim Z \mid Z \subseteq V \text{ is a subspace and } B
 \end{remark}
 
 \begin{proof}
-Choose any basis $\mathcal{C}'$ for $V$ and let $A := [B]_{\mathcal{C}'} \in \M_{n \times n}(\mathbb{R})$. Note that $A$ is a symmetric matrix (since $B$ is symmetric). This implies that $A$ is orthogonally diagonalizable, i.e., there exists $P \in \operatorname{O}(n)$ such that $P^{-1} A P$ is a diagonal matrix. But $P^{-1} = P^\top$, so $P^\top A P$ is diagonal.
+Choose any basis $\mathcal{C}'$ for $V$ and let $A := [B]_{\mathcal{C}'} \in \M_{n \times n}(\mathbb{R})$. Note that $A$ is a symmetric matrix (since $B$ is symmetric). This implies that $A$ is orthogonally diagonalizable, i.e., there exists $P \in \Orth(n)$ such that $P^{-1} A P$ is a diagonal matrix. But $P^{-1} = P\transp$, so $P\transp A P$ is diagonal.
 
 Let $\mathcal{C}''$ be the (unique) basis of $V$ such that $[\id_V]_{\mathcal{C}''}^{\mathcal{C}'} = P$. (That is, if $\mathcal{C}' = (v'_1, \dots, v'_n)$ and $\mathcal{C}'' = (v''_1, \dots, v''_n)$, then $v''_j = \sum_{i=1}^n P_{ij} v'_i$ for all $j$).
 We have 
 \[
-[B]_{\mathcal{C}''} = P^\top A P = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
+[B]_{\mathcal{C}''} = P\transp A P = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
 \]
 where $\eta_j \in \mathbb{R}$ for all $j$.
 
@@ -157,7 +158,7 @@ We can write:
 \eta_i &= 0, \quad \forall k+\ell+1 \le i \le n \quad (\text{so } B(v''_i, v''_i) = 0).
 \end{align*}
 
-Define $\mathcal{C} = (v_1, \dots, v_k, v_{k+1}, \dots, v_{k+\ell}, v_{k+\ell+1}, \dots, v_n)$, where 
+Define $\mathcal{C} := (v_1, \dots, v_k, v_{k+1}, \dots, v_{k+\ell}, v_{k+\ell+1}, \dots, v_n)$, where 
 \[
 v_i = \frac{1}{\lambda_i} v''_i \quad \forall 1 \le i \le k+\ell, \qquad v_i = v''_i \quad \forall k+\ell+1 \le i \le n.
 \]
@@ -168,6 +169,7 @@ In other words:
 Note that $v_i = c_i v''_i$ for some scalars $c_i \neq 0$, for all $i$. It is left as an exercise to show that $\mathcal{C}$ is indeed a basis.
 
 We have $([B]_{\mathcal{C}})_{i,j} = B(v_i, v_j) = B(c_i v''_i, c_j v''_j) = 0$ for all $i \neq j$.
+\noindent
 And for $i = j$:
 \begin{itemize}
     \item if $1 \le i \le k$, then $([B]_{\mathcal{C}})_{i,i} = B(v_i, v_i) = B\left(\frac{1}{\lambda_i} v''_i, \frac{1}{\lambda_i} v''_i\right) = \frac{1}{\lambda_i^2} \lambda_i^2 = 1$,
@@ -176,12 +178,18 @@ And for $i = j$:
 \end{itemize}
 This proves the existence of the basis $\mathcal{C}$ claimed in the theorem.
 
-We will prove now that $k$ is independent of $\mathcal{C}$.
-Put $k' := \max \{ \dim W \mid W \subseteq V \text{ is a subspace such that } B|_{W \times W} \text{ is positive definite} \}$.
-We will show $k = k'$. Indeed, $k \le k'$, because $B|_{U \times U}$ is positive definite on $U = \Sp(v_1, \dots, v_k)$. This is because:
+We will prove now that $k$ is independent of $\mathcal{C}$. Put 
 \[
-B(a_1 v_1 + \dots + a_k v_k, a_1 v_1 + \dots + a_k v_k) = (a_1, \dots, a_k, 0, \dots, 0) \cdot \begin{pmatrix} I_k & 0 & 0 \\ 0 & -I_\ell & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} a_1 \\ \vdots \\ a_k \\ 0 \\ \vdots \\ 0 \end{pmatrix} = a_1^2 + \dots + a_k^2 > 0,
+k' := \max \{ \dim W \mid W \subseteq V \text{ is a subspace such that } B|_{W \times W} \text{ is positive definite} \}.
 \]
+
+We will show $k = k'$. Indeed, $k \le k'$, because $B|_{U \times U}$ is positive definite on $U = \Sp(v_1, \dots, v_k)$. This is because:
+\begin{align}
+    & B(a_1 v_1 + \dots + a_k v_k, a_1 v_1 + \dots + a_k v_k) \\
+    & \quad = (a_1, \dots, a_k, 0, \dots, 0) \cdot \begin{pmatrix} I_k & 0 & 0 \\ 0 & -I_\ell & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} a_1 \\ \vdots \\ a_k \\ 0 \\ \vdots \\ 0 \end{pmatrix} \\
+    & \quad = a_1^2 + \dots + a_k^2 \\
+    & \quad > 0,
+\end{align}
 if not all $a_i = 0$.
 
 Suppose by contradiction that $k' \ge k+1$. This implies there exists $W \subseteq V$ of dimension $\ge k+1$ such that $B|_{W \times W}$ is positive definite. Take $X := \Sp(v_{k+1}, \dots, v_n)$.
@@ -200,11 +208,11 @@ The proofs for $\ell$ and $n - (k + \ell)$ are similar.
 % Thm. (27.a.6)
 \begin{theorem}[Sylvester's Law for Euclidean Spaces]
 \label{thm:sylvesters_euclidean}
-Let $V$ be a finite-dimensional Euclidean space of dimension $n$. Let $B \colon V \times V \to \mathbb{R}$ be a symmetric bilinear form. Then there exists an \underline{orthonormal} basis $\mathcal{C}$ for $V$ in which
+Let $V$ be a finite-dimensional Euclidean space of dimension $n$. Let $B \colon V \times V \to \mathbb{R}$ be a symmetric bilinear form. Then there exists an \emph{orthonormal} basis $\mathcal{C}$ for $V$ in which
 \[
 [B]_{\mathcal{C}} = \begin{pmatrix} \eta_1 & & & & & 0 \\ & \ddots & & & & \\ & & \eta_k & & & \\ & & & \eta_{k+1} & & \\ & & & & \ddots & \\ 0 & & & & & \eta_{k+\ell} \end{pmatrix},
 \]
-where $k + \ell \le n$, with $\eta_1, \dots, \eta_k > 0$ and $\eta_{k+1}, \dots, \eta_{k+\ell} < 0$. As before, $k, \ell$ are the positive and negative indices of $B$. Moreover, the scalars $\eta_1, \dots, \eta_k, \eta_{k+1}, \dots, \eta_{k+\ell}, 0, \dots, 0$ are independent of $\mathcal{C}$. They depend only on $B$ (and on the scalar product on $V$). They are the eigenvalues of $[B]_{\mathcal{D}}$ for every \underline{orthonormal} basis $\mathcal{D}$ of $V$ (independent of $\mathcal{D}$ and on whether or not $[B]_{\mathcal{D}}$ is diagonal).
+where $k + \ell \le n$, with $\eta_1, \dots, \eta_k > 0$ and $\eta_{k+1}, \dots, \eta_{k+\ell} < 0$. As before, $k, \ell$ are the positive and negative indices of $B$. Moreover, the scalars $\eta_1, \dots, \eta_k, \eta_{k+1}, \dots, \eta_{k+\ell}, 0, \dots, 0$ are independent of $\mathcal{C}$. They depend only on $B$ (and on the scalar product on $V$). They are the eigenvalues of $[B]_{\mathcal{D}}$ for every \emph{orthonormal} basis $\mathcal{D}$ of $V$ (independent of $\mathcal{D}$ and on whether or not $[B]_{\mathcal{D}}$ is diagonal).
 \end{theorem}
 
 \begin{remark}
@@ -221,14 +229,14 @@ T(Q) = \left\{ (y_1, \dots, y_n) \in \mathbb{R}^n \;\middle|\; \underbrace{\eta_
 \end{remark}
 
 \begin{proof}[Proof Outline]
-Pick any orthonormal basis $\mathcal{C}'$ for $V$ (similar to the previous proof, only now we take $\mathcal{C}'$ to be orthonormal). Define $A = [B]_{\mathcal{C}'}$, and proceed exactly as in the previous proof, but instead of defining $\mathcal{C}$ with the scaling factors $\lambda_i$, simply take $\mathcal{C} = \mathcal{C}''$.
+Pick any orthonormal basis $\mathcal{C}'$ for $V$ (similar to the previous proof, only now we take $\mathcal{C}'$ to be orthonormal). Define $A := [B]_{\mathcal{C}'}$, and proceed exactly as in the previous proof, but instead of defining $\mathcal{C}$ with the scaling factors $\lambda_i$, simply take $\mathcal{C} = \mathcal{C}''$.
 
-To see why $\eta_1, \dots, \eta_{k+\ell}, 0, \dots, 0$ depend only on $B$ etc., note that if $\mathcal{D}$ and $\mathcal{D}'$ are two orthonormal bases for $V$, then $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \operatorname{O}(n)$ (left as an exercise). Put $Q := [\id_V]_{\mathcal{D}'}^{\mathcal{D}}$.
+To see why $\eta_1, \dots, \eta_{k+\ell}, 0, \dots, 0$ depend only on $B$ etc., note that if $\mathcal{D}$ and $\mathcal{D}'$ are two orthonormal bases for $V$, then $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \Orth(n)$ (left as an exercise). Put $Q := [\id_V]_{\mathcal{D}'}^{\mathcal{D}}$.
 We have
 \[
-[B]_{\mathcal{D}} = Q^\top \cdot [B]_{\mathcal{D}'} \cdot Q = Q^{-1} [B]_{\mathcal{D}'} Q,
+[B]_{\mathcal{D}} = Q\transp \cdot [B]_{\mathcal{D}'} \cdot Q = Q^{-1} [B]_{\mathcal{D}'} Q,
 \]
-since $Q \in \operatorname{O}(n)$. Hence, the matrices $[B]_{\mathcal{D}}$ and $[B]_{\mathcal{D}'}$ are similar, which means their eigenvalues are exactly the same.
+since $Q \in \Orth(n)$. Hence, the matrices $[B]_{\mathcal{D}}$ and $[B]_{\mathcal{D}'}$ are similar, which means their eigenvalues are exactly the same.
 \end{proof}
 
 % Thm. (27.a.7)
@@ -245,7 +253,7 @@ If $B = 0$, or if $n = 1$, there is nothing to prove.
 Let $n \ge 2$. Assume the statement of the theorem holds for all vector spaces of dimension $\le n-1$. Let $V$ be an $n$-dimensional vector space.
 If $B(v, v) = 0$ for all $v \in V$, then the polarization formula shows $B = 0$ and we are done. So assume that there exists $v_1 \in V$ such that $B(v_1, v_1) \neq 0$. 
 
-Put $W = \Sp(v_1)$. The subspace $W$ is 1-dimensional (because $v_1 \neq 0$). Define the orthogonal complement with respect to $B$ as:
+Put $W := \Sp(v_1)$. The subspace $W$ is 1-dimensional (because $v_1 \neq 0$). Define the orthogonal complement with respect to $B$ as:
 \[
 W^{\perp_B} := \{ w \in V \mid B(v_1, w) = 0 \}.
 \]
@@ -270,7 +278,7 @@ It follows that $V = W \oplus W^{\perp_B}$. This implies $\dim W^{\perp_B} = n -
 
 Now, $B|_{W^{\perp_B} \times W^{\perp_B}}$ is a symmetric bilinear form on an $(n-1)$-dimensional vector space ($W^{\perp_B}$). By the induction hypothesis, there exists a basis $\mathcal{C}' = (v_2, \dots, v_n)$ for $W^{\perp_B}$ such that $B(v_i, v_j) = 0$ for all $i \neq j$ with $i, j \ge 2$.
 
-Take $\mathcal{C} = (v_1, \dots, v_n)$. Since $v_1 \in W$ and $v_2, \dots, v_n \in W^{\perp_B}$, we obtain that $B(v_i, v_j) = 0$ for all $i \neq j$.
+Take $\mathcal{C} := (v_1, \dots, v_n)$. Since $v_1 \in W$ and $v_2, \dots, v_n \in W^{\perp_B}$, we obtain that $B(v_i, v_j) = 0$ for all $i \neq j$.
 \end{proof}
 
 \begin{question}
@@ -294,16 +302,16 @@ The number $r$ is sometimes called the \newterm{rank} of $B$.
 \end{theorem}
 
 \begin{proof}
-By the previous theorem, there exists a basis $\mathcal{C}' = (v'_1, \dots, v'_n)$ of $V$ such that
+By the previous theorem (\ref{thm:diagonalization_symmetric_bilinear}), there exists a basis $\mathcal{C}' = (v'_1, \dots, v'_n)$ of $V$ such that
 \[
 [B]_{\mathcal{C}'} = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
 \]
 where $0 \le r \le n$ and $\eta_j \in \mathbb{C}$ for all $1 \le j \le r$, and $\eta_j = 0$ for $r < j \le n$.
 
 Choose $\lambda_j \in \mathbb{C}$ such that $\lambda_j^2 = \eta_j$ for $j = 1, \dots, r$. (This is always possible over $\mathbb{C}$).
-Define $v_j = \frac{1}{\lambda_j} v'_j$ for $j = 1, \dots, r$, and $v_q = v'_q$ for all $r < q \le n$.
+Define $v_j := \frac{1}{\lambda_j} v'_j$ for $j = 1, \dots, r$, and $v_q := v'_q$ for all $r < q \le n$.
 
-Take $\mathcal{C} = (v_1, \dots, v_n)$. Then $B(v_i, v_j) = 0$ for all $i \neq j$. Furthermore, for $1 \le j \le r$, we have:
+Take $\mathcal{C} := (v_1, \dots, v_n)$. Then $B(v_i, v_j) = 0$ for all $i \neq j$. Furthermore, for $1 \le j \le r$, we have:
 \[
 B(v_j, v_j) = B\left(\frac{1}{\lambda_j} v'_j, \frac{1}{\lambda_j} v'_j\right) = \frac{1}{\lambda_j^2} \cdot \eta_j = 1,
 \]
@@ -320,7 +328,11 @@ Recall: A symmetric bilinear form $B \colon V \times V \to \mathbb{R}$ is called
 Let $V$ be a finite-dimensional vector space over $\mathbb{R}$ and $B \colon V \times V \to \mathbb{R}$ a symmetric bilinear form. Then the following conditions are equivalent:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $B$ is positive definite.
-    \item There exists a basis $\mathcal{C} = (e_1, \dots, e_n)$ for $V$ such that the principal minors $\det(B(e_j, e_k))_{j,k=1, \dots, \ell}$ for all $1 \le \ell \le n$ are positive.
+    \item There exists a basis $\mathcal{C} := (e_1, \dots, e_n)$ for $V$ such that the principal minors 
+    \[ 
+    \det(B(e_j, e_k))_{j,k=1, \dots, \ell} \quad 
+    \]
+    for all $\; 1 \le \ell \le n$, are positive.
     \item Like \textbf{(b)}, but instead of "there exists a basis...", it holds for "all bases...".
 \end{enumerate}
 \end{theorem}
@@ -330,9 +342,9 @@ Let $V$ be a finite-dimensional vector space over $\mathbb{R}$ and $B \colon V \
 
 For $n = 1$, the assumption in \textbf{(b)} says $B(e_1, e_1) > 0$. This implies that for all $0 \neq c \in \mathbb{R}$, $B(c e_1, c e_1) = c^2 B(e_1, e_1) > 0$.
 
-Suppose the implication holds for all spaces of dimension $\le n$. Let $V$ be an $(n+1)$-dimensional vector space, and $B \colon V \times V \to \mathbb{R}$ a symmetric bilinear form. Let $\mathcal{C} = (e_1, \dots, e_{n+1})$ be a basis for $V$ such that all the principal minors of $[B]_{\mathcal{C}}$ are positive.
+Suppose the implication holds for all spaces of dimension $\le n$. Let $V$ be an $(n+1)$-dimensional vector space, and $B \colon V \times V \to \mathbb{R}$ a symmetric bilinear form. Let $\mathcal{C} := (e_1, \dots, e_{n+1})$ be a basis for $V$ such that all the principal minors of $[B]_{\mathcal{C}}$ are positive.
 
-Let $W := \Sp(e_1, \dots, e_n)$ with the basis $\mathcal{C}_W = (e_1, \dots, e_n)$.
+Let $W := \Sp(e_1, \dots, e_n)$ with the basis $\mathcal{C}_W := (e_1, \dots, e_n)$.
 The principal minors of $[B|_{W \times W}]_{\mathcal{C}_W}$ are exactly the same as the first $n$ principal minors of $[B]_{\mathcal{C}}$. Since these are positive, the induction hypothesis implies that $B|_{W \times W}$ is positive definite.
 
 This implies that if we define $\langle w, w' \rangle_B := B(w, w')$, then $\langle \cdot, \cdot \rangle_B$ is a valid scalar product on $W$.
@@ -349,7 +361,7 @@ By \eqref{eq:sylvester_ortho}, we have $B(e_j, e_{n+1} - w') = 0$ for all $1 \le
 
 This implies that the matrix representation in the new basis is block diagonal:
 \[
-[B]_{\mathcal{C}'} = \begin{pmatrix} C & 0 \\ 0 & d \end{pmatrix} = S^\top [B]_{\mathcal{C}} S,
+[B]_{\mathcal{C}'} = \begin{pmatrix} C & 0 \\ 0 & d \end{pmatrix} = S\transp [B]_{\mathcal{C}} S,
 \]
 where $d = B(e_{n+1} - w', e_{n+1} - w')$, $S = [\id_V]_{\mathcal{C}'}^{\mathcal{C}}$, and $C = [B|_{W \times W}]_{\mathcal{C}_W}$.
 
@@ -375,7 +387,7 @@ The proof of "\textbf{(b)} $\implies$ \textbf{(a)}" follows now by induction.
 \section*{Exercise Solutions}
 \addcontentsline{toc}{section}{Exercise Solutions}
 
-\begin{exercisesolution}[Proof that $2 \neq 0 \implies 4 \neq 0$]
+\begin{exercisesolution}[Proof that $2 \neq 0 \implies 4 \neq 0$ (on \cpageref{thm:polarization_identity_bilinear})]
 Assume $2 \neq 0$ in a field $K$. This means $1 + 1 \neq 0$. If $4 = 0$, then $2 + 2 = 0$, which means $2 \cdot 2 = 0$. Since $K$ is a field, it has no zero divisors. Thus, $2 \cdot 2 = 0$ implies $2 = 0$, which contradicts our assumption. Therefore, $4 \neq 0$.
 \end{exercisesolution}
 
@@ -388,11 +400,11 @@ Thus, $\alpha w_1 + \beta w_2 \in W^{\perp_B}$, proving it is a subspace.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof that $\mathcal{C}$ is a basis (on \cpageref{thm:sylvesters_inertia})]
-We are given a basis $\mathcal{C}'' = (v''_1, \dots, v''_n)$. The new set $\mathcal{C} = (v_1, \dots, v_n)$ is formed by scaling each vector in $\mathcal{C}''$ by a non-zero scalar $c_i$ (where $c_i = 1/\lambda_i$ or $c_i = 1$). Since scaling basis vectors by non-zero scalars preserves linear independence and the span, $\mathcal{C}$ remains a basis for $V$.
+We are given a basis $\mathcal{C}'' := (v''_1, \dots, v''_n)$. The new set $\mathcal{C} := (v_1, \dots, v_n)$ is formed by scaling each vector in $\mathcal{C}''$ by a non-zero scalar $c_i$ (where $c_i = 1/\lambda_i$ or $c_i = 1$). Since scaling basis vectors by non-zero scalars preserves linear independence and the span, $\mathcal{C}$ remains a basis for $V$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof that $\mathcal{C}'$ is a basis (on \cpageref{thm:sylvesters_criterion})]
-We are given the basis $\mathcal{C} = (e_1, \dots, e_n, e_{n+1})$. We define $\mathcal{C}' = (e_1, \dots, e_n, e_{n+1} - w')$, where $w' \in W = \Sp(e_1, \dots, e_n)$. We can write $w' = \sum_{i=1}^n \alpha_i e_i$. 
+We are given the basis $\mathcal{C} = (e_1, \dots, e_n, e_{n+1})$. We define $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$, where $w' \in W = \Sp(e_1, \dots, e_n)$. We can write $w' = \sum_{i=1}^n \alpha_i e_i$. 
 Suppose a linear combination of $\mathcal{C}'$ equals zero:
 \[
 \sum_{i=1}^n c_i e_i + c_{n+1}(e_{n+1} - w') = 0 \implies \sum_{i=1}^n (c_i - c_{n+1}\alpha_i) e_i + c_{n+1} e_{n+1} = 0.

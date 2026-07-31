@@ -1,6 +1,9 @@
-\setcounter{chapter}{17} % Chapter 18
-\renewcommand{\thetheorem}{18.\arabic{theorem}}
+% Source: 18.new vector spaces out of old ones.a/.b/.c, which number from
+% 18.a.1, 18.b.1 and 18.c.1 respectively. The prefix is re-declared at each
+% \section below.
+\renewcommand{\thetheorem}{18.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{17} % Chapter 18
 \chapter{Constructing New Vector Spaces Out of Old Ones}
 
 \setcounter{section}{0}
@@ -156,7 +159,7 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 An important special case of $\Hom(V,W)$ is when $W=K$.
 
 \begin{definition}[The Dual Space and Linear Functionals]
-  Let $V$ be a vector space over $K$. The \qt{dual space} of $V$ is defined to be the vector space $V^* := \Hom(V,K)$. The elements of $V^*$ are linear maps $\ell \colon V \to K$, and are sometimes called \qt{functionals}.
+  Let $V$ be a vector space over $K$. The \newterm{dual space} of $V$ is defined to be the vector space $V^* := \Hom(V,K)$. The elements of $V^*$ are linear maps $\ell \colon V \to K$, and are sometimes called \newterm{functionals}.
 \end{definition}
 
 \begin{corollary}[Dimensionality of the Dual Space]
@@ -172,7 +175,7 @@ Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ 
 Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$.
 
 \begin{lemma}[Construction of the Dual Basis]
-  The elements $v_1^*, \dots, v_n^* \in V^*$ form a basis for $V^*$. This basis is called the \qt{dual basis} to $\mathcal{B}$. We denote this basis by $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$. Moreover, for all $\ell \in V^*$, $\ell = \sum_{i=1}^n \ell(v_i) \cdot v_i^*$.
+  The elements $v_1^*, \dots, v_n^* \in V^*$ form a basis for $V^*$. This basis is called the \newterm{dual basis} to $\mathcal{B}$. We denote this basis by $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$. Moreover, for all $\ell \in V^*$, $\ell = \sum_{i=1}^n \ell(v_i) \cdot v_i^*$.
 \end{lemma}
 
 \begin{proof}
@@ -187,7 +190,7 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 \begin{proposition}[Dual Change of Basis and Transposition]
   The relationship between transition matrices in the dual space and the primal space is characterized by transposition and inversion. Specifically, the transition matrix between dual bases $\mathcal{C}^*$ and $\mathcal{B}^*$ is the transpose of the inverse transition matrix between the original bases $\mathcal{C}$ and $\mathcal{B}$:
   \[
-  [\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = \left( [\id_V]_{\mathcal{C}}^{\mathcal{B}} \right)^T = \left( \left( [\id_V]_{\mathcal{B}}^{\mathcal{C}} \right)^{-1} \right)^T.
+  [\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = \left( [\id_V]_{\mathcal{C}}^{\mathcal{B}} \right)\transp = \left( \left( [\id_V]_{\mathcal{B}}^{\mathcal{C}} \right)^{-1} \right)\transp.
   \]
   Thus, the coordinate transformation in the dual space corresponds to the transpose of the inverse transformation in the primal space.
 \end{proposition}
@@ -198,12 +201,12 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   Let $A := [\id_V]$ and write $A = (a_{ij})$. By definition, $v_i = \sum_{k=1}^n a_{ki} w_k$.
   Let $\mathcal{C}^* = (w_1^*, \dots, w_n^*)$ be the dual basis of $\mathcal{C}$. We apply the previous lemma to $\ell = w_j^*$ and the basis $\mathcal{B}$:
   \[ w_j^* = \sum_{i=1}^n w_j^*(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*\left(\sum_{k=1}^n a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
-  Here, only $k = j$ remains from the inner sum. This implies that $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = A^T = ([\id_V]_{\mathcal{C}}^{\mathcal{B}})^T$.
+  Here, only $k = j$ remains from the inner sum. This implies that $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([\id_V]_{\mathcal{C}}^{\mathcal{B}})\transp$.
 \end{proof}
 
 \subsection{The Dual Map}
 \begin{lemma}[Definition of the Dual Map]
-  Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. Define a new map $T^* \colon W^* \to V^*$ by $T^*(\ell) := \ell \circ T$ for all $\ell \in W^*$. Then, $T^*$ is a linear map. It is called the \qt{dual map} to $T$.
+  Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. Define a new map $T^* \colon W^* \to V^*$ by $T^*(\ell) := \ell \circ T$ for all $\ell \in W^*$. Then, $T^*$ is a linear map. It is called the \newterm{dual map} to $T$.
 \end{lemma}
 
 \begin{proof}
@@ -222,7 +225,7 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   Exercise.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Duals of Identity and Zero Maps]
   Let $V$ be a vector space over $K$. Show that:
   \begin{enumerate}
     \item $(\id_V)^* = \id_{V^*}$.
@@ -231,11 +234,15 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 \end{exercise}
 
 \begin{summary}
-In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and gives us a new vector space $V^*$. It also takes any linear map $T \colon V \to W$ and gives us a new map $T^*$ between the duals of $V$ and $W$, but the arrow is reversed: $T^* \colon W^* \to V^*$. This is an example of a \qt{contravariant functor}.
+In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and gives us a new vector space $V^*$. It also takes any linear map $T \colon V \to W$ and gives us a new map $T^*$ between the duals of $V$ and $W$, but the arrow is reversed: $T^* \colon W^* \to V^*$. This is an example of a \newterm{contravariant functor}.
+
+\subsection{The Double Dual (or Bidual) Space}
+
+Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$, obtained by applying the \newterm{dual} operation one more time to $V^*$. $V^{**}$ is sometimes called the \newterm{bidual space} of $V$. Is there any relation between $V^{**}$ and $V$?
 \end{summary}
 
 \begin{lemma}[Transposition of the Representation Matrix]
-  Let $S \colon V \to W$ be a linear map between two finite-di\-men\-sional vector spaces $V$ and $W$ over $K$. Let $\mathcal{B}$ be a basis for $V$, and let $\mathcal{C}$ be a basis for $W$. Consider $S^* \colon W^* \to V^*$ and the bases $\mathcal{C}^*, \mathcal{B}^*$ for $W^*, V^*$, respectively. Then, $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = ([S]_{\mathcal{C}}^{\mathcal{B}})^T$.
+  Let $S \colon V \to W$ be a linear map between two finite-di\-men\-sional vector spaces $V$ and $W$ over $K$. Let $\mathcal{B}$ be a basis for $V$, and let $\mathcal{C}$ be a basis for $W$. Consider $S^* \colon W^* \to V^*$ and the bases $\mathcal{C}^*, \mathcal{B}^*$ for $W^*, V^*$, respectively. Then, $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$.
 \end{lemma}
 
 \begin{proof}
@@ -244,7 +251,7 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
   where the second equality follows from the Lemma on the Dual Basis. Substituting $S(v_i)$, we get
   \[ \sum_{i=1}^n w_j^*\left(\sum_{k=1}^m a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
   % Comment at Gemini: dont use a transposed row-vector here:
-  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A^T$). 
+  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$). 
 \end{proof}
 
 \subsection{Reflexivity}
@@ -294,11 +301,13 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
   \end{tikzpicture}
 \end{center}
 
-\begin{exercise}
+\begin{exercise}[Canonical Evaluation on Dual Bases]
   Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the dual basis, and let $(\mathcal{B}^*)^* = ((v_1^*)^*, \dots, (v_n^*)^*)$ be the basis for $(V^*)^*$ which is dual to $\mathcal{B}^*$. Show that $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$, meaning $\tau(v_i) = (v_i^*)^*$ for all $1 \leq i \leq n$.
 \end{exercise}
 
 \setcounter{section}{1}
+\renewcommand{\thetheorem}{18.b.\arabic{theorem}}
+\setcounter{theorem}{0}
 \section{Direct Sums}
 
 \subsection{The External Direct Sum}
@@ -348,7 +357,7 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
 
   To establish injectivity, suppose $\varphi(u, u') = 0$, which implies $u + u' = 0$, and therefore $u = -u'$. Since $u \in U$ and $u' \in U'$, it follows that $u = -u' \in U \cap U'$. However, as $U'$ is a complement of $U$, we have $U \cap U' = \{0\}$ by definition. Consequently, $u = u' = 0$, which shows that $\ker(\varphi) = \{0_{U \oplus U'}\}$. Thus, $\varphi$ is injective.
 
-  Regarding surjectivity, we observe that since $U'$ is a complement of $U$ in $V$, we have $U + U' = V$ by definition. Thus, for any $v \in V$, there exist $u \in U$ and $u' \in U'$ such that $u + u' = v$. This implies $\varphi(u, u') = v$, and therefore $\operatorname{Im}(\varphi) = V$. This proves that $\varphi$ is surjective, and consequently, an isomorphism.
+  Regarding surjectivity, we observe that since $U'$ is a complement of $U$ in $V$, we have $U + U' = V$ by definition. Thus, for any $v \in V$, there exist $u \in U$ and $u' \in U'$ such that $u + u' = v$. This implies $\varphi(u, u') = v$, and therefore $\Img(\varphi) = V$. This proves that $\varphi$ is surjective, and consequently, an isomorphism.
 \end{proof}
 
 \begin{remark}
@@ -431,13 +440,15 @@ endowed with coordinatewise operations.
 For an infinite family of vector spaces $\{U_i\}_{i \in I}$, we define the direct sum $\bigoplus_{i \in I} U_i$ as the set of functions $t \colon I \to \bigcup_{i \in I} U_i$ such that $t(i) \in U_i$ for all $i \in I$, and $t(i) \neq 0$ for at most finitely many indices $i \in I$. This ensures that any element of the direct sum can be represented as a finite formal sum of components.
 
 \setcounter{section}{2}
+\renewcommand{\thetheorem}{18.c.\arabic{theorem}}
+\setcounter{theorem}{0}
 \section{Quotient Spaces}
 
 \subsection{Equivalence Relation and the Quotient Space}
 % \begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the quotient of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the quotient map, or the projection onto the quotient space.
 Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We will define a new vector space over $K$, denoted by $V/U$, together with a linear map $\pi \colon V \to V/U$ such that $\pi$ is surjective and $\ker(\pi) = U$. The space $V/U$ will have some other good properties.
 
-\begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the \qt{quotient} of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the \qt{quotient map}, or the \qt{projection onto the quotient space}.
+\begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the \newterm{quotient} of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the \newterm{quotient map}, or the \newterm{projection onto the quotient space}.
 \end{definition*}
 
 We begin by defining a relation on $V$. For $v_1, v_2 \in V$, we define $v_1 \sim v_2$ if and only if $v_1 - v_2 \in U$.
@@ -495,8 +506,8 @@ Geometrically, the nature of the quotient space $\mathbb{R}^2/U$ depends on the 
 Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Figure \cref{fig:quotient_r3}:
 \begin{itemize}
   \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = \{v\}$ is simply a \textbf{point}. Since no two distinct vectors are identified, the quotient space $\mathbb{R}^3/\{0\}$ is isomorphic to $\mathbb{R}^3$ itself.
-  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by Proposition \cref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes \qt{stacked} along a transversal direction (see Figure \cref{fig:quotient_plane} and Proposition \cref{prop:iso_complement}).
-  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by Proposition \cref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see Figure \cref{fig:quotient_line} and Proposition \cref{prop:iso_complement}).
+  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by \cref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes \qt{stacked} along a transversal direction (see Figure \cref{fig:quotient_plane} and \cref{prop:iso_complement}).
+  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by \cref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see Figure \cref{fig:quotient_line} and \cref{prop:iso_complement}).
   \item If $U = \mathbb{R}^3$ is the entire space, then there is only one equivalence class, $[v] = \mathbb{R}^3$. The quotient space $\mathbb{R}^3/\mathbb{R}^3$ is the zero vector space, with dimension $0$.
 \end{itemize}
 
@@ -508,7 +519,7 @@ Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Fig
   \end{itemize}
   The dimension of the quotient space $V/U$ represents the number of independent directions available to shift these objects. For instance, in $\mathbb{R}^3$, if $U$ is a line (1-dimensional), there are 2 independent directions in which one can move this line to obtain a distinct parallel line (effectively moving the line across a 2-dimensional plane). 
   
-  Thus, the space of all such lines is 2-dimensional. This geometric intuition aligns perfectly with the dimension formula established in Proposition \cref{prop:dim_quotient}. In the case where $U = \{0\}$, the equivalence class is a point (0-dimensional), and we retain all 3 degrees of freedom of the ambient space.
+  Thus, the space of all such lines is 2-dimensional. This geometric intuition aligns perfectly with the dimension formula established in \cref{prop:dim_quotient}. In the case where $U = \{0\}$, the equivalence class is a point (0-dimensional), and we retain all 3 degrees of freedom of the ambient space.
 \end{remark}
 
 \begin{figure}[h!]
@@ -573,7 +584,7 @@ We want to turn $V/U$ into a vector space over $K$. We define addition as $[v_1]
 We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v \in V$.
 
 \begin{proposition}[The Quotient Map]
-  The map $\pi \colon V \to V/U$ is a linear map. Moreover, it is surjective (i.e., $\operatorname{Im}(\pi) = V/U$), and $\ker(\pi) = U$.
+  The map $\pi \colon V \to V/U$ is a linear map. Moreover, it is surjective (i.e., $\Img(\pi) = V/U$), and $\ker(\pi) = U$.
 \end{proposition}
 
 \begin{proof}
@@ -592,24 +603,24 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   We have seen that $\pi \colon V \to V/U$ is a surjective linear map. This guarantees that $V/U$ is finite-dimensional. (Generally, if $T \colon W' \to W''$ is a surjective linear map and $W'$ is finite-dimensional, then $W''$ is also finite-dimensional, because the images of a basis of $W'$ span $W''$).
 
   We now apply the Rank-Nullity Theorem to $\pi$:
-  \[ \dim V = \dim \ker(\pi) + \dim \operatorname{Im}(\pi). \]
-  Since $\ker(\pi) = U$ and $\operatorname{Im}(\pi) = V/U$, we obtain $\dim V/U = \dim V - \dim U$.
+  \[ \dim V = \dim \ker(\pi) + \dim \Img(\pi). \]
+  Since $\ker(\pi) = U$ and $\Img(\pi) = V/U$, we obtain $\dim V/U = \dim V - \dim U$.
 \end{proof}
 
 \subsection{The Isomorphism Theorem and Universal Property}
 
 \begin{theorem}[The First Isomorphism Theorem]
-  Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. We define a new map $\overline{T} \colon V/\ker(T) \to \operatorname{Im}(T)$ as follows: For $x \in V/\ker(T)$, choose a representative $v \in V$ such that $x = [v]$. Define $\overline{T}(x) := T(v)$. Then:
+  Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. We define a new map $\overline{T} \colon V/\ker(T) \to \Img(T)$ as follows: For $x \in V/\ker(T)$, choose a representative $v \in V$ such that $x = [v]$. Define $\overline{T}(x) := T(v)$. Then:
   \begin{enumerate}
     \item $\overline{T}$ is well-defined and is a linear map.
-    \item $\overline{T} \colon V/\ker(T) \to \operatorname{Im}(T)$ is an isomorphism.
-    \item {The following diagram commutes: $T = i \circ \overline{T} \circ \pi$, where $i \colon \operatorname{Im}(T) \to W$ is the inclusion map.
+    \item $\overline{T} \colon V/\ker(T) \to \Img(T)$ is an isomorphism.
+    \item {The following diagram commutes: $T = i \circ \overline{T} \circ \pi$, where $i \colon \Img(T) \to W$ is the inclusion map.
       \begin{center}
         \begin{tikzpicture}[node distance=3cm, auto, thick]
           \node (V) {$V$};
           \node (W) [right of=V, node distance=4cm] {$W$};
           \node (Vmod) [below of=V] {$V/\ker(T)$};
-          \node (Im) [below of=W] {$\operatorname{Im}(T)$};
+          \node (Im) [below of=W] {$\Img(T)$};
 
           \draw[->] (V) to node {$T$} (W);
           \draw[->] (V) to node[swap] {$\pi$} (Vmod);
@@ -630,7 +641,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 
     \item To show that $\overline{T}$ is injective, let $x \in \ker(\overline{T})$, and write $x = [v]$ for some $v \in V$. Then, $\overline{T}(x) = T(v) = 0$, meaning $v \in \ker(T)$. This implies that $x = [v] = 0_{V/\ker(T)}$.
 
-    To show that $\overline{T}$ is surjective, let $w \in \operatorname{Im}(T)$. Then, there exists $v \in V$ such that $T(v) = w$. Consequently, $\overline{T}([v]) = T(v) = w$, proving surjectivity.
+    To show that $\overline{T}$ is surjective, let $w \in \Img(T)$. Then, there exists $v \in V$ such that $T(v) = w$. Consequently, $\overline{T}([v]) = T(v) = w$, proving surjectivity.
 
     \item The commutativity of the diagram follows immediately from the definitions. (Exercise: check this!)
   \end{enumerate}
@@ -659,7 +670,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   For uniqueness, suppose $T = T'' \circ \pi$ is another factorization. We will show that $T'' = T'$. Let $x \in V/U$. Since $\pi$ is surjective, there exists $v \in V$ such that $x = \pi(v)$. We then have $T(v) = T'(\pi(v))$ and $T(v) = T''(\pi(v))$, which immediately yields $T'(x) = T''(x)$.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Kernel of the Induced Quotient Map]
   Prove that $\ker(T') = \ker(T)/U$.
 \end{exercise}
 
@@ -683,14 +694,14 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
   We also claim that $Q$ is surjective. Let $x \in V/U$ and choose $v \in V$ such that $x = [v]$. Since $V = U + W$, there exist $u \in U$ and $w \in W$ such that $v = w + u$. It follows that $[v] = [w + u] = [w]$, so $Q(w) = x$. This proves that $Q$ is surjective, and consequently, an isomorphism.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Inverse Isomorphism from a Complement]
   Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$. (Hint: \dots)
 \end{exercise}
 
 \subsection{Quotients, Complements, and Annihilators}
 
 \begin{proposition}[Annihilators and Dual Quotients]
-  Let $U \subseteq V$ be a subspace, and define the \qt{annihilator} $U^\perp := \{\ell \in V^* \mid \ell|_U = 0\}$. Then:
+  Let $U \subseteq V$ be a subspace, and define the \newterm{annihilator} $U^\perp := \{\ell \in V^* \mid \ell|_U = 0\}$. Then:
   \begin{enumerate}
     \item $U^\perp \subseteq V^*$ is a linear subspace.
     \item There is a canonical isomorphism $(V/U)^* \cong U^\perp$.
@@ -721,14 +732,14 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
       Show that $R$ is a linear map.
     \end{exercise}
 
-    We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$. This proves $\operatorname{Im}(R) = U^*$.
+    We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$. This proves $\Img(R) = U^*$.
 
     We claim that $\ker(R) = U^\perp$. Indeed, this follows directly from definitions: $\ker(R) = \{\varphi \in V^* \mid \varphi|_U = 0\} = U^\perp$. 
     By the First Isomorphism Theorem, $R$ induces an isomorphism $\overline{R} \colon V^*/U^\perp \xrightarrow{\cong} U^*$.
   \end{enumerate}
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Relationship between Annihilator of Image and Kernel of Dual Map]
   Let $T \colon V \to W$ be a linear map between vector spaces. Prove that the annihilator of the image of $T$ is equal to the kernel of its dual map:
-  \[ (\operatorname{Im} T)^\perp = \ker(T^*). \]
+  \[ (\Img T)^\perp = \ker(T^*). \]
 \end{exercise}

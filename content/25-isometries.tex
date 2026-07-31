@@ -1,6 +1,6 @@
-\setcounter{chapter}{24}
 \renewcommand{\thetheorem}{25.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{24}
 
 \chapter{Orthogonal and Unitary Maps / Isometries}
 
@@ -19,7 +19,7 @@ If $T \colon V \to W$ is a linear isometry, then:
 \begin{enumerate}
     \item For all $v \in V$, $\|Tv\| = \|v\|$.
     \item For all $p, q \in V$, the distance is preserved:
-    \[ \operatorname{dist}_W(Tp, Tq) = \|Tp - Tq\|_W = \|p - q\|_V = \operatorname{dist}_V(p, q). \]
+    \[ \dist_W(Tp, Tq) = \|Tp - Tq\|_W = \|p - q\|_V = \dist_V(p, q). \]
     \item $T$ is injective. Indeed, if $v \in \ker T$, then $0 = \|Tv\| = \|v\|$, which implies $v = 0$. So, $\ker T = \{0\}$.
 \end{enumerate}
 
@@ -57,7 +57,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$ or $\m
     \item $T$ is an isometry.
     \item For all $v \in V$, $\|Tv\| = \|v\|$.
     \item For every orthonormal system $e_1, \dots, e_k$ of $V$, the list of vectors $Te_1, \dots, Te_k$ is also an orthonormal system.
-    \item There exists an orthonormal \underline{basis} $\mathcal{B} = (e_1, \dots, e_n)$ of $V$ such that $Te_1, \dots, Te_n$ is also an orthonormal basis.
+    \item There exists an orthonormal \emph{basis} $\mathcal{B} := (e_1, \dots, e_n)$ of $V$ such that $Te_1, \dots, Te_n$ is also an orthonormal basis.
     \item $T \circ T^* = \id_V$.
     \item $T^* \circ T = \id_V$.
     \item $T^* = T^{-1}$.
@@ -95,27 +95,28 @@ This implies that $T^*Te_j = e_j$. This last equality holds for all $1 \leq j \l
 
 \section{Orthogonal and Unitary Matrices}
 
+\noindent
 Back to matrices. Recall that:
 \begin{itemize}
-    \item $A \in \M_{n \times n}(\mathbb{R})$ is orthogonal if $A^T A = I \iff AA^T = I \iff A^{-1} = A^T$. The set of such matrices is $\operatorname{O}(n)$.
-    \item $A \in \M_{n \times n}(\mathbb{C})$ is unitary if $A^* A = I \iff AA^* = I \iff A^{-1} = A^*$. The set of such matrices is $\operatorname{U}(n)$.
+    \item $A \in \M_{n \times n}(\mathbb{R})$ is orthogonal if $A\transp A = I \iff AA\transp = I \iff A^{-1} = A\transp$. The set of such matrices is $\Orth(n)$.
+    \item $A \in \M_{n \times n}(\mathbb{C})$ is unitary if $A^* A = I \iff AA^* = I \iff A^{-1} = A^*$. The set of such matrices is $\Unit(n)$.
 \end{itemize}
 
 % Prop. (25.a.3)
 \begin{proposition}
 \label{prop:orth_unitary_matrix_rep}
-Let $V$ be an $n$-di\-men\-sional inner product space over $\mathbb{R}$ (resp. $\mathbb{C}$). Let $\mathcal{B}$ be an orthonormal basis for $V$, and let $T \in \End(V)$. Then, $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \operatorname{O}(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \operatorname{U}(n)$).
+Let $V$ be an $n$-di\-men\-sional inner product space over $\mathbb{R}$ (resp. $\mathbb{C}$). Let $\mathcal{B}$ be an orthonormal basis for $V$, and let $T \in \End(V)$. Then, $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Unit(n)$).
 \end{proposition}
 
 \begin{proof}
 This is left as an exercise.
 \end{proof}
 
-Note that for all $A \in \operatorname{O}(n)$, we have $\det(A) = \pm 1$. Indeed:
-\[ 1 = \det(I) = \det(AA^T) = \det(A) \cdot \det(A^T) = \det(A) \cdot \det(A) = \det(A)^2. \]
+Note that for all $A \in \Orth(n)$, we have $\det(A) = \pm 1$. Indeed:
+\[ 1 = \det(I) = \det(AA\transp) = \det(A) \cdot \det(A\transp) = \det(A) \cdot \det(A) = \det(A)^2. \]
 
-Similarly, for all $A \in \operatorname{U}(n)$, we have $|\det(A)| = 1$. Indeed:
-\[ 1 = \det(AA^*) = \det(A) \cdot \det(\overline{A}^T) = \det(A) \cdot \det(\overline{A}) = \det(A) \cdot \overline{\det(A)} = |\det(A)|^2. \]
+Similarly, for all $A \in \Unit(n)$, we have $|\det(A)| = 1$. Indeed:
+\[ 1 = \det(AA^*) = \det(A) \cdot \det(\overline{A}\transp) = \det(A) \cdot \det(\overline{A}) = \det(A) \cdot \overline{\det(A)} = |\det(A)|^2. \]
 (Note that $\det(A) \in \mathbb{C}$).
 
 % Def. (25.a.4)
@@ -123,15 +124,15 @@ Similarly, for all $A \in \operatorname{U}(n)$, we have $|\det(A)| = 1$. Indeed:
 \label{def:special_groups}
 We define the following subsets:
 \begin{align*}
-    \operatorname{SO}(n) &:= \{ A \in \operatorname{O}(n) \mid \det(A) = 1 \} \subseteq \operatorname{O}(n) \subseteq \GL_n(\mathbb{R}), \\
-    \operatorname{SU}(n) &:= \{ A \in \operatorname{U}(n) \mid \det(A) = 1 \} \subseteq \operatorname{U}(n) \subseteq \GL_n(\mathbb{C}).
+    \SOrth(n) &:= \{ A \in \Orth(n) \mid \det(A) = 1 \} \subseteq \Orth(n) \subseteq \GL_n(\mathbb{R}), \\
+    \SUnit(n) &:= \{ A \in \Unit(n) \mid \det(A) = 1 \} \subseteq \Unit(n) \subseteq \GL_n(\mathbb{C}).
 \end{align*}
 \end{definition}
 
 % Prop. (25.a.5)
 \begin{proposition}[Group Properties]
 \label{prop:group_properties}
-Let $G$ be any of the sets $\operatorname{O}(n), \operatorname{SO}(n), \operatorname{U}(n)$, or $\operatorname{SU}(n)$. Then:
+Let $G$ be any of the sets $\Orth(n), \SOrth(n), \Unit(n)$, or $\SUnit(n)$. Then:
 \begin{enumerate}
     \item $I_n \in G$.
     \item For all $A, B \in G$, $A \cdot B \in G$.
@@ -148,7 +149,7 @@ This is left as an exercise.
 % Lemma. (25.a.6)
 \begin{lemma}
 \label{lem:eigenvalues_orthogonal}
-Let $A \in \operatorname{O}(n)$. If $\lambda$ is a real eigenvalue of $A$, then $\lambda = \pm 1$.
+Let $A \in \Orth(n)$. If $\lambda$ is a real eigenvalue of $A$, then $\lambda = \pm 1$.
 \end{lemma}
 
 \begin{proof}
@@ -158,15 +159,15 @@ As $v \neq 0$, we have $\langle v, v \rangle \neq 0$, which implies $\lambda^2 =
 \end{proof}
 
 % Prop. (25.a.7)
-\begin{proposition}[Classification of $\operatorname{O}(2)$]
+\begin{proposition}[Classification of $\Orth(2)$]
 \label{prop:classification_o2}
-Let $A \in \operatorname{O}(2)$.
+Let $A \in \Orth(2)$.
 \begin{enumerate}
     \item If $\det A = 1$, then there exists $\theta \in [0, 2\pi)$ such that 
     \[ A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} := R_\theta. \]
     The map $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$ is an anti-clockwise rotation by an angle $\theta$.
     
-    \item If $\det A = -1$, then there exists a basis $\mathcal{B} = (v_1, v_2)$ for $\mathbb{R}^2$ such that $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$ has the following representation matrix in the basis $\mathcal{B}$:
+    \item If $\det A = -1$, then there exists a basis $\mathcal{B} := (v_1, v_2)$ for $\mathbb{R}^2$ such that $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$ has the following representation matrix in the basis $\mathcal{B}$:
     \begin{equation}
         [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}. \label{eq:reflection_matrix}
     \end{equation}
@@ -207,7 +208,10 @@ Let $A \in \operatorname{O}(2)$.
 \begin{proof}
 Note that if $v \in \mathbb{R}^2$ has $\|v\| = 1$, then there exists $\theta \in [0, 2\pi)$ such that $v = \left(\begin{smallmatrix} \cos\theta \\ \sin\theta \end{smallmatrix}\right)$.
 
-Now, let $A = \begin{pmatrix} | & | \\ u_1 & u_2 \\ | & | \end{pmatrix} \in \operatorname{O}(2)$. 
+Now, let
+\[
+    A = \begin{pmatrix} | & | \\ u_1 & u_2 \\ | & | \end{pmatrix} \in \Orth(2).
+\]
 Since $A$ is orthogonal, its columns form an orthonormal basis. Thus, $\|u_1\| = 1$, which implies $u_1 = \left(\begin{smallmatrix} \cos\theta \\ \sin\theta \end{smallmatrix}\right)$ for some $\theta \in [0, 2\pi)$. 
 We also have $u_1 \perp u_2$ and $\|u_2\| = 1$. 
 
@@ -241,16 +245,16 @@ Within the space $\Sp\left(\begin{smallmatrix} -\sin\theta \\ \cos\theta \end{sm
 \end{tikzpicture}
 \end{center}
 
-If $u_2 = u_2'$, then $A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} = R_\theta$, and $\det A = 1$.
+If $u_2 = u_2'$, then $A = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{smallmatrix}\right) = R_\theta$, and $\det A = 1$.
 
-If $u_2 = u_2''$, then $A = \begin{pmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{pmatrix} = R_\theta \cdot \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$, and $\det A = -1$.
+If $u_2 = u_2''$, then $A = \left(\begin{smallmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{smallmatrix}\right) = R_\theta \cdot \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$, and $\det A = -1$.
 
 In the second case, a direct calculation shows that $v_1 = \left(\begin{smallmatrix} \cos(\frac{\theta}{2}) \\ \sin(\frac{\theta}{2}) \end{smallmatrix}\right)$ and $v_2 = \left(\begin{smallmatrix} \cos(\frac{\theta}{2} + \frac{\pi}{2}) \\ \sin(\frac{\theta}{2} + \frac{\pi}{2}) \end{smallmatrix}\right)$ are eigenvectors of $A$ for the eigenvalues $\lambda_1 = 1$ and $\lambda_2 = -1$, respectively.
 \end{proof}
 
 \begin{summary}
-$\operatorname{SO}(2) =$ rotations. \\
-$\operatorname{O}(2) \setminus \operatorname{SO}(2) =$ reflections.
+$\SOrth(2) =$ rotations. \\
+$\Orth(2) \setminus \SOrth(2) =$ reflections.
 \end{summary}
 
 % Cor. (25.a.8)
@@ -265,16 +269,16 @@ Moreover, there exists an orthonormal basis $\mathcal{B}$ for $V$ such that:
 \end{corollary}
 
 % Prop. (25.a.9)
-\begin{proposition}[Classification of $\operatorname{SO}(3)$]
+\begin{proposition}[Classification of $\SOrth(3)$]
 \label{prop:classification_so3}
-Let $A \in \operatorname{SO}(3)$. Then $1$ is an eigenvalue of $A$. 
-Moreover, there exists an orthonormal basis $\mathcal{B} = (v_1, v_2, v_3)$ and $\theta \in [0, 2\pi)$ such that
+Let $A \in \SOrth(3)$. Then $1$ is an eigenvalue of $A$. 
+Moreover, there exists an orthonormal basis $\mathcal{B} := (v_1, v_2, v_3)$ and $\theta \in [0, 2\pi)$ such that
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & R_\theta \end{pmatrix}. \]
 So, $T_A$ is a rotation with angle $\theta$ around the axis $\Sp(v_1)$. Moreover:
 \begin{enumerate}
     \item If $-1$ is an eigenvalue of $A$, then $\theta = \pi$, hence
     \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}. \]
-    \item If $-1$ is \underline{not} an eigenvalue of $A$ (which is true if and only if $1$ is the only real eigenvalue), then $\theta \neq \pi$.
+    \item If $-1$ is \emph{not} an eigenvalue of $A$ (which is true if and only if $1$ is the only real eigenvalue), then $\theta \neq \pi$.
 \end{enumerate}
 \end{proposition}
 
@@ -299,43 +303,43 @@ So, $T_A$ is a rotation with angle $\theta$ around the axis $\Sp(v_1)$. Moreover
 
 \begin{proof}
 The characteristic polynomial $P_A(x)$ of $A$ is a polynomial of degree $3$ with real coefficients. By the Intermediate Value Theorem from analysis, any odd-degree polynomial with real coefficients has at least one real zero $\lambda \in \mathbb{R}$ of $P_A(x)$ (i.e., $P_A(\lambda) = 0$). This implies that $A$ has at least one real eigenvalue. 
-By a previous theorem (\cref{lem:eigenvalues_orthogonal}), $\lambda = \pm 1$.
+By a previous theorem (\ref{lem:eigenvalues_orthogonal}), $\lambda = \pm 1$.
 
 Let $v_1 \in \mathbb{R}^3$ be an eigenvector of $\lambda$. By normalizing it if necessary, we may assume $\|v_1\| = 1$. Consider the subspace
 \[ L := v_1^\perp = \{v \in \mathbb{R}^3 \mid v \perp v_1\}. \]
 Since $A$ is orthogonal, we have for all $v \in L$, $A \cdot v \in L$. (i.e., $T_A(L) \subseteq L$, meaning $L$ is invariant under $T_A$).
-Indeed, if $v \in L$, this implies $0 = \langle v, v_1 \rangle$. Because $A \in \operatorname{O}(3)$, it preserves inner products:
+Indeed, if $v \in L$, this implies $0 = \langle v, v_1 \rangle$. Because $A \in \Orth(3)$, it preserves inner products:
 \[ 0 = \langle v, v_1 \rangle = \langle Av, Av_1 \rangle = \langle Av, \pm v_1 \rangle = \pm \langle Av, v_1 \rangle \implies Av \in L. \]
 
 We also have $\mathbb{R}^3 = \Sp(v_1) \oplus L$, hence $\dim L = 2$.
-Now, $T_A|_L \colon L \to L$ is a linear isometry. Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By a previous result, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \operatorname{O}(2)$.
+Now, $T_A|_L \colon L \to L$ is a linear isometry. Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By a previous result, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \Orth(2)$.
 
 \textbf{Case (a):} $\lambda = 1$. Take the basis $\mathcal{B} := (v_1, w_1, w_2)$. Then
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \multicolumn{2}{c}{\multirow{2}{*}{$Q$}} \\ 0 & & \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & Q \end{pmatrix}. \]
 Now, $1 = \det A = \det(T_A) = 1 \cdot \det(Q)$, which implies $\det Q = 1$. 
-So, $Q \in \operatorname{SO}(2)$. By the previous proposition, there exists $\theta \in [0, 2\pi)$ such that $Q = R_\theta$.
+So, $Q \in \SOrth(2)$. By the previous proposition (\ref{prop:classification_o2}), there exists $\theta \in [0, 2\pi)$ such that $Q = R_\theta$.
 Thus,
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 \\ 0 & R_\theta \end{pmatrix}. \]
 
 \textbf{Case (b):} If $\lambda = -1$. By the same argument as for case (a), we get that $1 = \det A = (-1) \cdot \det(T_A|_L)$, which implies $\det(T_A|_L) = -1$. By \cref{cor:2d_isometry_matrix}, there exists an orthonormal basis $\mathcal{L} = (w_1, w_2)$ for $L$ such that $[T_A|_L]_{\mathcal{L}}^{\mathcal{L}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$.
-Take $\mathcal{B}' = (v_1, w_1, w_2)$. Then
+Take $\mathcal{B}' := (v_1, w_1, w_2)$. Then
 \[ [T_A]_{\mathcal{B}'}^{\mathcal{B}'} = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}. \]
-And for the reordered basis $\mathcal{B} = (w_1, v_1, w_2)$, we have 
+And for the reordered basis $\mathcal{B} := (w_1, v_1, w_2)$, we have 
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & R_\pi \end{pmatrix}. \]
-Note that in case (b) too, $1$ is an eigenvalue of $A$ (corresponding to the eigenvector $w_1$).
+Note that in case \textbf{(b)} too, $1$ is an eigenvalue of $A$ (corresponding to the eigenvector $w_1$).
 \end{proof}
 
 % Prop. (25.a.10)
-\begin{proposition}[Classification of $\operatorname{O}(3) \setminus \operatorname{SO}(3)$]
+\begin{proposition}[Classification of $\Orth(3) \setminus \SOrth(3)$]
 \label{prop:classification_o3_minus_so3}
-Let $A \in \operatorname{O}(3) \setminus \operatorname{SO}(3)$. Then there exists an orthonormal basis $\mathcal{B} = (v_1, v_2, v_3)$ for $\mathbb{R}^3$ such that 
+Let $A \in \Orth(3) \setminus \SOrth(3)$. Then there exists an orthonormal basis $\mathcal{B} := (v_1, v_2, v_3)$ for $\mathbb{R}^3$ such that 
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} -1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & R_\theta \end{pmatrix} \]
 for some $\theta \in [0, 2\pi)$. (So $T_A$ does a rotation by $\theta$ around $\Sp(v_1)$, followed by a reflection with respect to $\Sp(v_2, v_3)$).
 \end{proposition}
 
 \begin{proof}
-Let $A' := -A = (-I) \cdot A$. Then $A' \in \operatorname{O}(3)$ and $\det A' = (-1)^3 \cdot \det A = (-1) \cdot (-1) = 1$.
-This implies $A' \in \operatorname{SO}(3)$. By the previous proposition, there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^3$, and $\theta' \in [0, 2\pi)$, such that $[T_{A'}]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_{\theta'} \end{smallmatrix}\right)$. 
+Let $A' := -A = (-I) \cdot A$. Then $A' \in \Orth(3)$ and $\det A' = (-1)^3 \cdot \det A = (-1) \cdot (-1) = 1$.
+This implies $A' \in \SOrth(3)$. By the previous proposition (\ref{prop:classification_so3}), there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^3$, and $\theta' \in [0, 2\pi)$, such that $[T_{A'}]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_{\theta'} \end{smallmatrix}\right)$. 
 This implies:
 \begin{align*}
     [T_A]_{\mathcal{B}}^{\mathcal{B}} &= [-\id_{\mathbb{R}^3}]_{\mathcal{B}}^{\mathcal{B}} \cdot [T_{A'}]_{\mathcal{B}}^{\mathcal{B}} \\
@@ -374,14 +378,14 @@ Substituting this back yields $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mat
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:group_properties}]
-We will prove this generically for $G = \operatorname{U}(n)$ and $G = \operatorname{SU}(n)$ (the real cases are identical, replacing the conjugate transpose $^*$ with the transpose $^\top$).
+We will prove this generically for $G = \Unit(n)$ and $G = \SUnit(n)$ (the real cases are identical, replacing the conjugate transpose $^*$ with the transpose $\transp$).
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item The identity matrix $I_n$ satisfies $I_n^* \cdot I_n = I_n \cdot I_n = I_n$, so $I_n \in \operatorname{U}(n)$. Furthermore, $\det(I_n) = 1$, so $I_n \in \operatorname{SU}(n)$.
+    \item The identity matrix $I_n$ satisfies $I_n^* \cdot I_n = I_n \cdot I_n = I_n$, so $I_n \in \Unit(n)$. Furthermore, $\det(I_n) = 1$, so $I_n \in \SUnit(n)$.
     
-    \item Let $A, B \in \operatorname{U}(n)$. We evaluate $(AB)^* (AB) = (B^* A^*) (AB) = B^* (A^* A) B$. Since $A \in \operatorname{U}(n)$, $A^* A = I_n$, so this reduces to $B^* I_n B = B^* B$. Since $B \in \operatorname{U}(n)$, $B^* B = I_n$. Thus, $AB \in \operatorname{U}(n)$. 
-    If additionally $A, B \in \operatorname{SU}(n)$, then $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$, so $AB \in \operatorname{SU}(n)$.
+    \item Let $A, B \in \Unit(n)$. We evaluate $(AB)^* (AB) = (B^* A^*) (AB) = B^* (A^* A) B$. Since $A \in \Unit(n)$, $A^* A = I_n$, so this reduces to $B^* I_n B = B^* B$. Since $B \in \Unit(n)$, $B^* B = I_n$. Thus, $AB \in \Unit(n)$. 
+    If additionally $A, B \in \SUnit(n)$, then $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$, so $AB \in \SUnit(n)$.
     
-    \item Let $A \in \operatorname{U}(n)$. This implies $A^* A = I_n$, meaning $A^{-1} = A^*$. We check if $A^{-1}$ is unitary: $(A^{-1})^* A^{-1} = (A^*)^* A^* = A A^* = I_n$. Thus, $A^{-1} \in \operatorname{U}(n)$. 
-    If additionally $A \in \operatorname{SU}(n)$, then $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{1} = 1$, so $A^{-1} \in \operatorname{SU}(n)$.
+    \item Let $A \in \Unit(n)$. This implies $A^* A = I_n$, meaning $A^{-1} = A^*$. We check if $A^{-1}$ is unitary: $(A^{-1})^* A^{-1} = (A^*)^* A^* = A A^* = I_n$. Thus, $A^{-1} \in \Unit(n)$. 
+    If additionally $A \in \SUnit(n)$, then $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{1} = 1$, so $A^{-1} \in \SUnit(n)$.
 \end{enumerate}
 \end{exercisesolution}

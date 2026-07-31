@@ -1,33 +1,33 @@
-\setcounter{chapter}{6}
 \renewcommand{\thetheorem}{7.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{6}
 
 \chapter{Vector Spaces}
 
 \subsection{Definition and Axioms}
 
 \begin{definition}[Vector Space]
-A \qt{vector space} over a field $K$ is a set $V$, endowed with two operations:
+A \newterm{vector space} over a field $K$ is a set $V$, endowed with two operations:
 \begin{align*}
 +: V \times V &\longrightarrow V, \quad (v_1, v_2) \mapsto v_1 + v_2  &\text{(Addition of vectors)} \\
 \cdot: K \times V &\longrightarrow V, \quad (\alpha, v) \mapsto \alpha \cdot v  &\text{(Scalar multiplication)}
 \end{align*}
 such that the following conditions (axioms) hold:
-\begin{description}
-    \item[\textbf{V1}] $\forall v_1, v_2, v_3 \in V$: $v_1 + (v_2 + v_3) = (v_1 + v_2) + v_3$.
-    \item[\textbf{V2}] $\exists$ an element $0 \in V$ such that $0 + v = v + 0 = v$ for all $v \in V$. (Sometimes denoted $0_V$).
-    \item[\textbf{V3}] $\forall v \in V, \exists v' \in V$ such that $v + v' = 0$.
-    \item[\textbf{V4}] $\forall v_1, v_2 \in V$: $v_1 + v_2 = v_2 + v_1$.
-    \item[\textbf{V5}] $\forall a, b \in K, \forall v \in V$: $a \cdot (b \cdot v) = (a \cdot b) \cdot v$.
-    \item[\textbf{V6}] $\forall v \in V$: $1 \cdot v = v$.
-    \item[\textbf{V7}] $\forall \alpha \in K, \forall v_1, v_2 \in V$: $\alpha \cdot (v_1 + v_2) = \alpha \cdot v_1 + \alpha \cdot v_2$.
-    \item[\textbf{V8}] $\forall \alpha_1, \alpha_2 \in K, \forall v \in V$: $(\alpha_1 + \alpha_2) \cdot v = \alpha_1 \cdot v + \alpha_2 \cdot v$.
-\end{description}
+\begin{enumerate}[label=(\textbf{V}\arabic*), leftmargin=3.5em]
+    \item $\forall v_1, v_2, v_3 \in V$: $v_1 + (v_2 + v_3) = (v_1 + v_2) + v_3$.
+    \item $\exists$ an element $0 \in V$ such that $0 + v = v + 0 = v$ for all $v \in V$. (Sometimes denoted $0_V$).
+    \item $\forall v \in V, \exists v' \in V$ such that $v + v' = 0$.
+    \item $\forall v_1, v_2 \in V$: $v_1 + v_2 = v_2 + v_1$.
+    \item $\forall a, b \in K, \forall v \in V$: $a \cdot (b \cdot v) = (a \cdot b) \cdot v$.
+    \item $\forall v \in V$: $1 \cdot v = v$.
+    \item $\forall \alpha \in K, \forall v_1, v_2 \in V$: $\alpha \cdot (v_1 + v_2) = \alpha \cdot v_1 + \alpha \cdot v_2$.
+    \item $\forall \alpha_1, \alpha_2 \in K, \forall v \in V$: $(\alpha_1 + \alpha_2) \cdot v = \alpha_1 \cdot v + \alpha_2 \cdot v$.
+\end{enumerate}
 \end{definition}
 
 \begin{lemma}
 Let $V$ be a vector space over a field $K$. Then the following properties hold:
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item The $0$ vector from (V2) is unique. To avoid confusion (e.g., with $0 \in K$), we will sometimes denote it by $0_V$.
     \item The element $v'$ (corresponding to $v$) from (V3) is unique. We will denote it by $-v$. We will also write $v - w := v + (-w)$ for all $v, w \in V$.
     \item For all $v \in V$, we have $0 \cdot v = 0_V$ (i.e., $0_K \cdot v = 0_V$).
@@ -37,22 +37,24 @@ Let $V$ be a vector space over a field $K$. Then the following properties hold:
 \end{lemma}
 
 \begin{proof}
-\textbf{(a)} Assume there are two such zero elements, $0_1$ and $0_2$. 
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Assume there are two such zero elements, $0_1$ and $0_2$. 
 Then, by applying (V2) to both, we get: $0_1 = 0_1 + 0_2 = 0_2 + 0_1 = 0_2$. Thus, $0_1 = 0_2$.
 
-\textbf{(b)} Assume there are two inverses $v_1'$ and $v_2'$ for an element $v$. 
+    \item Assume there are two inverses $v_1'$ and $v_2'$ for an element $v$. 
 Then we can write: 
 \[
 v_1' = v_1' + 0_V = v_1' + (v + v_2') = (v_1' + v) + v_2' = 0_V + v_2' = v_2'
 \]
 Thus, the inverse is unique.
 
-\textbf{(c)} Consider $0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v$. 
+    \item Consider $0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v$. 
 By adding $-(0 \cdot v)$ to both sides, we yield $0_V = 0 \cdot v$.
 
-\textbf{(d)} Similarly, $\alpha \cdot 0_V = \alpha \cdot (0_V + 0_V) = \alpha \cdot 0_V + \alpha \cdot 0_V$. Adding $-(\alpha \cdot 0_V)$ yields $0_V = \alpha \cdot 0_V$.
+    \item Similarly, $\alpha \cdot 0_V = \alpha \cdot (0_V + 0_V) = \alpha \cdot 0_V + \alpha \cdot 0_V$. Adding $-(\alpha \cdot 0_V)$ yields $0_V = \alpha \cdot 0_V$.
 
-\textbf{(e)} Observe that $v + (-1) \cdot v = 1 \cdot v + (-1) \cdot v = (1 - 1) \cdot v = 0 \cdot v = 0_V$. Since the inverse is unique by part (b), it must be that $(-1) \cdot v = -v$.
+    \item Observe that $v + (-1) \cdot v = 1 \cdot v + (-1) \cdot v = (1 - 1) \cdot v = 0 \cdot v = 0_V$. Since the inverse is unique by part \textbf{(b)}, it must be that $(-1) \cdot v = -v$.
+\end{enumerate}
 \end{proof}
 
 \subsection{Examples of Vector Spaces}
@@ -102,12 +104,12 @@ For finite fields, different polynomials may yield the exact same function! For 
 \end{importantremark}
 
 \textbf{Degree of a polynomial:}
-Let $f(x) = a_0 + a_1 x + \dots + a_n x^n$ be a polynomial with $a_n \ne 0$. We say that the \textit{degree} of $f$ is $n$, and we write $\deg(f) = n \in \mathbb{Z}_{\ge 0}$.
+Let $f(x) = a_0 + a_1 x + \dots + a_n x^n$ be a polynomial with $a_n \ne 0$. We say that the \textit{degree} of $f$ is $n$, and we write $\deg(f) := n \in \mathbb{Z}_{\ge 0}$.
 Alternatively, if $f(x) \ne 0$:
 \[
 \deg(f) := \max \{k \in \mathbb{Z}_{\ge 0} \mid a_k \ne 0\}
 \]
-If $a_0 = a_1 = \dots = a_n = 0$, meaning $f$ is the zero polynomial, we set $\deg(f) = -\infty$. (And consequently, $\deg(f) = -\infty \iff f = 0$).
+If $a_0 = a_1 = \dots = a_n = 0$, meaning $f$ is the zero polynomial, we set $\deg(f) := -\infty$. (And consequently, $\deg(f) = -\infty \iff f = 0$).
 
 \begin{remark}
 Every polynomial has a well-defined degree.
@@ -117,7 +119,7 @@ Every polynomial has a well-defined degree.
 \subsection{Linear Subspaces}
 
 \begin{definition}[Linear Subspace]
-Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \qt{linear subspace} if it satisfies:
+Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \newterm{linear subspace} if it satisfies:
 \begin{enumerate}
     \item $0_V \in U$.
     \item For all $u_1, u_2 \in U$, we have $u_1 + u_2 \in U$ (closed under addition).
@@ -126,7 +128,7 @@ Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \qt{lin
 \end{definition}
 
 \begin{example}[Subspace of Plane Equations]
-Consider the set $U_b \subseteq K^3$ defined by $U_b = \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = b\}$. 
+Consider the set $U_b \subseteq K^3$ defined by $U_b := \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = b\}$. 
 
 \textbf{Claim:} $U_b$ is a linear subspace of $K^3$ if and only if $b = 0$.
 

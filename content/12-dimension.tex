@@ -1,6 +1,6 @@
-\setcounter{chapter}{11} % Sets chapter counter so the current chapter is 12
 \renewcommand{\thetheorem}{12.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{11} % Sets chapter counter so the current chapter is 12
 
 \chapter{Dimension and Subspaces}
 In this chapter, we synthesize the fundamental results regarding finite-di\-men\-sional vector spaces and explore the relationship between a space and its subspaces through the lens of dimensionality.
@@ -8,7 +8,7 @@ In this chapter, we synthesize the fundamental results regarding finite-di\-men\
 \begin{summary}[Properties of Finite-Dimensional Spaces]
 Let $V$ be a finite-di\-men\-sional vector space over a field $K$. The following structural principles hold:
 \begin{enumerate}
-    \item Every finite list of vectors that spans $V$ contains a sublist which constitutes a \qt{basis} of $V$. Formally, if $(v_1, \dots, v_n)$ spans $V$, then there exists a sublist $(v_{i_1}, \dots, v_{i_d})$ with $1 \le i_1 < i_2 < \dots < i_d \le n$ that is a basis for $V$, where $d = \dim V$.
+    \item Every finite list of vectors that spans $V$ contains a sublist which constitutes a \newterm{basis} of $V$. Formally, if $(v_1, \dots, v_n)$ spans $V$, then there exists a sublist $(v_{i_1}, \dots, v_{i_d})$ with $1 \le i_1 < i_2 < \dots < i_d \le n$ that is a basis for $V$, where $d = \dim V$.
     \item Every linearly independent list of vectors in $V$ can be extended to a basis of $V$. If the list $(u_1, \dots, u_m)$ is linearly independent, there exist vectors $w_1, \dots, w_{d-m}$ such that 
     \[(u_1, \dots, u_m, w_1, \dots, w_{d-m})\] 
     is a basis of $V$, where $d = \dim V$.
@@ -45,7 +45,7 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$. Then every linear sub
 \end{proposition}
 
 \begin{proof}
-Let $n = \dim V$. We first establish that $U$ possesses a finite basis. If $U = \{0\}$, the empty set serves as the basis and we are done. Assume $U \neq \{0\}$. We select a non-zero vector $v_1 \in U$. If $\Sp(v_1) = U$, we have found our basis. 
+Let $n := \dim V$. We first establish that $U$ possesses a finite basis. If $U = \{0\}$, the empty set serves as the basis and we are done. Assume $U \neq \{0\}$. We select a non-zero vector $v_1 \in U$. If $\Sp(v_1) = U$, we have found our basis. 
 
 If $\Sp(v_1) \neq U$, we choose a second vector $v_2 \in U \setminus \Sp(v_1)$. It follows from the properties of linear independence that the list $\{v_1, v_2\}$ is linearly independent. We proceed iteratively: after $j$ steps, we obtain a linearly independent list $\{v_1, \dots, v_j\} \subseteq U$. If $\Sp(v_1, \dots, v_j) = U$, the process terminates. Otherwise, we choose $v_{j+1} \in U \setminus \Sp(v_1, \dots, v_j)$. By the principle that adding a vector outside the span of a linearly independent set preserves independence, the expanded list $\{v_1, \dots, v_{j+1}\}$ remains linearly independent.
 

@@ -1,4 +1,5 @@
 \renewcommand{\thetheorem}{17.e.\arabic{theorem}}
+\setcounter{theorem}{0}
 
 \section{Elementary Row Operations Revisited}
 
@@ -75,15 +76,15 @@ The same principle holds true for elementary column operations, but via right-mu
 \end{importantremark}
 
 \begin{proof}
-Statements (a), (b), and (c) can be proven directly by calculating the matrix multiplications (you are encouraged to check this!). 
+Statements \textbf{(a)}, \textbf{(b)}, and \textbf{(c)} can be proven directly by calculating the matrix multiplications (you are encouraged to check this!). 
 
-Statements (a'), (b'), and (c') can be deduced from the row operation versions by passing to the transposed matrix. For example, to prove (a'):
+Statements \textbf{(a')}, \textbf{(b')}, and \textbf{(c')} can be deduced from the row operation versions by passing to the transposed matrix. For example, to prove \textbf{(a')}:
 \begin{equation*}
-    (A \cdot Q_{ij}(\alpha))^T = Q_{ij}(\alpha)^T \cdot A^T = Q_{ji}(\alpha) \cdot A^T
+    (A \cdot Q_{ij}(\alpha))\transp = Q_{ij}(\alpha)\transp \cdot A\transp = Q_{ji}(\alpha) \cdot A\transp
 \end{equation*}
-By part (a), this is exactly the matrix obtained from $A^T$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$. But taking the transpose again, this is equal to:
+By part \textbf{(a)}, this is exactly the matrix obtained from $A\transp$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$. But taking the transpose again, this is equal to:
 \begin{equation*}
-    \left( \text{matrix obtained from } A \text{ after applying } C_j + \alpha C_i \longrightarrow C_j \right)^T
+    \left( \text{matrix obtained from } A \text{ after applying } C_j + \alpha C_i \longrightarrow C_j \right)\transp
 \end{equation*}
 Taking the transpose of both sides, it follows that $A \cdot Q_{ij}(\alpha)$ is the matrix obtained from $A$ after the column operation $C_j + \alpha C_i \longrightarrow C_j$. The proofs for (b') and (c') follow a similar logic.
 \end{proof}
@@ -116,7 +117,7 @@ We already know that every matrix $A \in \M_{n \times n}(K)$ can be brought to a
 
 In our case, $A$ is invertible, and hence $\rank(A) = n$. Because row operations do not change the rank, we have $\rank(A') = \rank(A)$, which implies that $\rank(A') = n$. The only $n \times n$ row-reduced echelon matrix with rank $n$ is the identity matrix, meaning $A' = I_n$. 
 
-Since each step in the Gaussian elimination algorithm corresponds to an elementary operation, we can deduce from Lemma \cref{lemma:row_operations_matrix_multiplication} that there exist elementary matrices $T_1, \dots, T_k$ (of types I, II, and III) such that:
+Since each step in the Gaussian elimination algorithm corresponds to an elementary operation, we can deduce from \cref{lemma:row_operations_matrix_multiplication} that there exist elementary matrices $T_1, \dots, T_k$ (of types I, II, and III) such that:
 \begin{equation*}
     T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
 \end{equation*}

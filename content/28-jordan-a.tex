@@ -1,6 +1,6 @@
-\setcounter{chapter}{27}
 \renewcommand{\thetheorem}{28.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{27}
 
 \chapter{The Jordan Normal Form}
 
@@ -19,12 +19,12 @@ Using the basis $\mathcal{B}$, it is also easy to calculate powers of $T$. For e
 [T^k]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1^k & & 0 \\ & \ddots & \\ 0 & & \lambda_n^k \end{pmatrix} \quad \forall k \in \mathbb{Z}_{\ge 1}.
 \]
 
-But \underline{not all} $T \in \End(V)$ are diagonalizable! Why? There are two possible reasons:
+But \emph{not all} $T \in \End(V)$ are diagonalizable! Why? There are two possible reasons:
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The characteristic polynomial $P_T(x)$ does not split as a product of linear factors. This is equivalent to saying that $T$ is not (even) trigonalizable (hence, all the more so not diagonalizable!). In other words, $P_T(x)$ doesn't have enough zeroes in $K$ (or even no zeroes at all).
     
-    For example, consider $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$, where $A = R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$, with $\theta \neq \pi k$ for $k \in \mathbb{Z}$. The map $T_A$ has \underline{no} eigenvalues (in $\mathbb{R}$). It is a rotation, but not by $0^\circ$ or $180^\circ$.
+    For example, consider $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$, where $A = R_\theta = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{smallmatrix}\right)$, with $\theta \neq \pi k$ for $k \in \mathbb{Z}$. The map $T_A$ has \emph{no} eigenvalues (in $\mathbb{R}$). It is a rotation, but not by $0^\circ$ or $180^\circ$.
     
     Sometimes we can overcome this "problem" by enlarging (extending) $K$. For example, $K = \mathbb{R}$ can be extended to $K = \mathbb{C}$. Then the above matrix $A$ has two eigenvalues when viewed as $A \in \M_{2 \times 2}(\mathbb{C})$, namely $\lambda_1 = e^{i\theta}$ and $\lambda_2 = e^{-i\theta}$ (Exercise: check this).
 
@@ -45,7 +45,7 @@ J_{\lambda, n} = \begin{pmatrix} \lambda & 1 & & 0 \\ & \ddots & \ddots & \\ & &
 \]
 This matrix has $\lambda$ on the main diagonal, $1$'s on the diagonal immediately above the main diagonal, and $0$'s everywhere else.
 
-For $n=1$, $J_{\lambda, 1} = (\lambda)$. For $n=2$, $J_{\lambda, 2} = \begin{pmatrix} \lambda & 1 \\ 0 & \lambda \end{pmatrix}$. For $n=3$, $J_{\lambda, 3} = \begin{pmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{pmatrix}$, etc.
+For $n=1$, $J_{\lambda, 1} = (\lambda)$. For $n=2$, $J_{\lambda, 2} = \left(\begin{smallmatrix} \lambda & 1 \\ 0 & \lambda \end{smallmatrix}\right)$. For $n=3$, $J_{\lambda, 3} = \begin{pmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{pmatrix}$, etc.
 
 The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix with eigenvalue $\lambda$}.
 \end{definition}
@@ -57,7 +57,7 @@ The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\lambda$ is the only eigenvalue of $J_{\lambda, n}$.
     \item $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$, and $m_a(J_{\lambda, n}; \lambda) = n$.
-    \item $m_g(J_{\lambda, n}; \lambda) = 1$. In fact, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp(e_1)$, where $e_1 = (1, 0, \dots, 0)^\top$.
+    \item $m_g(J_{\lambda, n}; \lambda) = 1$. In fact, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp(e_1)$, where $e_1 = (1, 0, \dots, 0)\transp$.
 \end{enumerate}
 \end{lemma}
 
@@ -74,7 +74,11 @@ The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix
     
     \item To find $\Eig_{J_{\lambda, n}}(\lambda)$, we need to solve the equation $(J_{\lambda, n} - \lambda I_n)x = 0$:
     \[
-    (J_{\lambda, n} - \lambda I_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \implies \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}.
+    (J_{\lambda, n} - \lambda I_n) \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}.
+    \]
+    Subtracting $\lambda I_n$ clears the main diagonal and leaves only the superdiagonal of $1$'s, so this reads
+    \[
+    \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}.
     \]
     This immediately implies the system of equations:
     \[
@@ -90,7 +94,7 @@ The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix
 \end{enumerate}
 \end{proof}
 
-We've seen that the statement \qt{$P_T(x)$ splits as a product of linear factors} does \underline{not} imply that \qt{$T$ is diagonalizable}, and $J_{\lambda, n}$ is a clear counterexample.
+We've seen that the statement \qt{$P_T(x)$ splits as a product of linear factors} does \emph{not} imply that \qt{$T$ is diagonalizable}, and $J_{\lambda, n}$ is a clear counterexample.
 
 \begin{question}
 Is $J_{\lambda, n}$ the \qt{only reason} for this non-implication?
@@ -137,7 +141,7 @@ Here, $n = 13$. Let's assume the eigenvalues $\lambda_1, \lambda_2, \lambda_3$ a
     \item \textbf{Characteristic polynomial:} $P_A(x) = (\lambda_1 - x)^6 \cdot (\lambda_2 - x)^4 \cdot (\lambda_3 - x)^3$.
     \item \textbf{Algebraic multiplicity:} $m_a(\lambda_1) = 6$, $m_a(\lambda_2) = 4$, $m_a(\lambda_3) = 3$.
     \item \textbf{Geometric multiplicity:} $m_g(\lambda)$ is exactly the number of blocks with eigenvalue $\lambda$. So, $m_g(\lambda_1) = 2$, $m_g(\lambda_2) = 3$, and $m_g(\lambda_3) = 1$.
-    \item \textbf{Minimal polynomial:} $\mu_A(x) = (x - \lambda_1)^{\ell_1} \cdot (x - \lambda_2)^{\ell_2} \cdot (x - \lambda_3)^{\ell_3}$, where $1 \le \ell_i \le m_a(\lambda_i)$. We will see that $\ell_i$ is precisely the size of the \underline{biggest} block with eigenvalue $\lambda_i$. Thus,
+    \item \textbf{Minimal polynomial:} $\mu_A(x) = (x - \lambda_1)^{\ell_1} \cdot (x - \lambda_2)^{\ell_2} \cdot (x - \lambda_3)^{\ell_3}$, where $1 \le \ell_i \le m_a(\lambda_i)$. We will see that $\ell_i$ is precisely the size of the \emph{biggest} block with eigenvalue $\lambda_i$. Thus,
     \[
     \mu_A(x) = (x - \lambda_1)^3 \cdot (x - \lambda_2)^2 \cdot (x - \lambda_3)^3.
     \]
@@ -219,13 +223,13 @@ m_g(\lambda) = \# \{ j \mid 1 \le j \le k, \lambda_j = \lambda \}.
 \]
 Furthermore, the minimal polynomial $\mu_T(x)$ is given by:
 \[
-\mu_T(x) = \prod_{\lambda \in \operatorname{Spec}(T)} (x - \lambda)^{s(\lambda)},
+\mu_T(x) = \prod_{\lambda \in \Spec(T)} (x - \lambda)^{s(\lambda)},
 \]
 where $s(\lambda)$ is the size of the largest block labeled by $\lambda$, i.e., $s(\lambda) = \max \{ n_j \mid 1 \le j \le k, \lambda_j = \lambda \}$.
 \end{corollary}
 
 \begin{proof}
-\textbf{Geometric Multiplicity:} Suppose that $A \in \M_{n \times n}(K)$ has the block diagonal shape $A = \begin{pmatrix} B & 0 \\ 0 & C \end{pmatrix}$ with $B \in \M_{\ell \times \ell}(K)$ and $C \in \M_{m \times m}(K)$. Let $0 \neq u = \begin{pmatrix} v \\ w \end{pmatrix}$ with $v \in K^\ell$ and $w \in K^m$. Then $u$ is an eigenvector of $A$ for the eigenvalue $\lambda$ if and only if $Bv = \lambda v$ and $Cw = \lambda w$.
+\textbf{Geometric Multiplicity:} Suppose that $A \in \M_{n \times n}(K)$ has the block diagonal shape $A = \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ with $B \in \M_{\ell \times \ell}(K)$ and $C \in \M_{m \times m}(K)$. Let $0 \neq u = \binom{v}{w}$ with $v \in K^\ell$ and $w \in K^m$. Then $u$ is an eigenvector of $A$ for the eigenvalue $\lambda$ if and only if $Bv = \lambda v$ and $Cw = \lambda w$.
 
 Moreover, the eigenspace decomposes as $\Eig_A(\lambda) = \Eig_B(\lambda) \oplus \Eig_C(\lambda)$. In particular, $m_g(A, \lambda) = m_g(B, \lambda) + m_g(C, \lambda)$. (We use the convention here that if $\lambda$ is not an eigenvalue of a matrix $D$, then $m_g(D, \lambda) = 0$).
 
@@ -235,7 +239,7 @@ Applying this additively to $A := [T]_{\mathcal{B}}^{\mathcal{B}}$, we obtain:
 m_g(T, \lambda) = m_g(A, \lambda) = \sum_{i=1}^k m_g(J_{\lambda_i, n_i}; \lambda) = \# \{ i \mid \lambda_i = \lambda \}.
 \]
 
-\textbf{Minimal Polynomial:} Let $A = \begin{pmatrix} B & 0 \\ 0 & C \end{pmatrix}$ as above. We have $A^k = \begin{pmatrix} B^k & 0 \\ 0 & C^k \end{pmatrix}$ (check!). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \begin{pmatrix} q(B) & 0 \\ 0 & q(C) \end{pmatrix}$.
+\textbf{Minimal Polynomial:} Let $A := \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ as above. We have $A^k = \left(\begin{smallmatrix} B^k & 0 \\ 0 & C^k \end{smallmatrix}\right)$ (check!). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \left(\begin{smallmatrix} q(B) & 0 \\ 0 & q(C) \end{smallmatrix}\right)$.
 
 Consider a single Jordan matrix $J_{\lambda, n}$. For every $q(x) \in K[x]$, we have:
 \[
@@ -259,10 +263,10 @@ q(x) = \prod_{\lambda \in \{\lambda_1, \dots, \lambda_k\}} (x-\lambda)^{s(\lambd
 
 On the other hand, we claim that the specific polynomial $\tilde{q}(x) := \prod_{\lambda \in \{\lambda_1, \dots, \lambda_k\}} (x-\lambda)^{s(\lambda)}$ satisfies $\tilde{q}(A) = 0$. If we prove this, then together with \eqref{eq:annihilating_poly_form}, it establishes that $\tilde{q}(x)$ is the monic polynomial of least degree annihilating $A$, meaning $\mu_T(x) = \tilde{q}(x)$.
 
-Indeed, let $A := \operatorname{blockdiag}(J_{\lambda_1, n_1}, \dots, J_{\lambda_k, n_k})$. We have:
+Indeed, let $A := \blockdiag(J_{\lambda_1, n_1}, \dots, J_{\lambda_k, n_k})$. We have:
 \begin{equation}
 \label{eq:q_tilde_block_eval}
-\tilde{q}(A) = \operatorname{blockdiag}(\tilde{q}(J_{\lambda_1, n_1}), \dots, \tilde{q}(J_{\lambda_k, n_k})).
+\tilde{q}(A) = \blockdiag(\tilde{q}(J_{\lambda_1, n_1}), \dots, \tilde{q}(J_{\lambda_k, n_k})).
 \end{equation}
 Let $1 \le j \le k$, and consider the block $\tilde{q}(J_{\lambda_j, n_j})$. We can write $\tilde{q}(x) = (x-\lambda_j)^{s(\lambda_j)} \cdot p_j(x)$ where $p_j(x) \in K[x]$. By the definition of $s(\lambda_j)$, we have $s(\lambda_j) \ge n_j$. By property \textbf{(c)} above, $\tilde{q}(J_{\lambda_j, n_j}) = 0$. This holds for all $1 \le j \le k$, hence the entire block diagonal matrix in \eqref{eq:q_tilde_block_eval} is zero. This proves the last claim, and hence concludes the proof of the corollary.
 \end{proof}

@@ -1,6 +1,6 @@
-\setcounter{chapter}{2}
 \renewcommand{\thetheorem}{3.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{2}
 
 \chapter{Set Theory}
 
@@ -9,7 +9,7 @@ In this chapter, we formalize the language of sets, which provides the universal
 \subsection{Basic Definitions and Notation}
 
 \begin{definition}[Set]
-A \qt{set} is a collection of distinct objects, which are referred to as the \textit{elements} of the set.
+A \newterm{set} is a collection of distinct objects, which are referred to as the \textit{elements} of the set.
 \end{definition}
 
 In our notation, we denote sets typically by capital letters. If an object $x$ is an element of a set $M$, we write $x \in M$. If it is not, we write $x \notin M$.
@@ -37,7 +37,7 @@ The set of integers whose square is less than or equal to $9$ is written as:
 \end{example}
 
 \begin{definition}[The Empty Set]
-The \qt{empty set}, denoted by $\emptyset$ or $\{\}$, is the unique set containing no elements.
+The \newterm{empty set}, denoted by $\emptyset$ or $\{\}$, is the unique set containing no elements.
 \end{definition}
 
 It is important to note that a set is allowed to contain another set as one of its elements. For instance, consider the set $M = \{1, \text{elephant}, \{a, 5\}\}$. Here, the set $\{a, 5\}$ is a single element of $M$. Similarly, we can define a set containing only the empty set: $M = \{\emptyset\}$, which is a set containing exactly one element.
@@ -49,8 +49,8 @@ We now define how sets relate to one another in terms of containment.
 \begin{definition}[Subset and Proper Subset]
 Let $P$ and $Q$ be sets.
 \begin{enumerate}
-    \item We say $P$ is a \qt{subset} of $Q$, denoted $P \subseteq Q$, if every element of $P$ is also an element of $Q$. Formally: $\forall x \in P : x \in Q$.
-    \item We say $P$ is a \qt{proper subset} of $Q$, denoted $P \subsetneq Q$, if $P \subseteq Q$ and $P \ne Q$. 
+    \item We say $P$ is a \newterm{subset} of $Q$, denoted $P \subseteq Q$, if every element of $P$ is also an element of $Q$. Formally: $\forall x \in P : x \in Q$.
+    \item We say $P$ is a \newterm{proper subset} of $Q$, denoted $P \subsetneq Q$, if $P \subseteq Q$ and $P \ne Q$. 
     \item We write $P \not\subseteq Q$ to denote that $P$ is not a subset of $Q$, meaning $\neg(P \subseteq Q)$.
 \end{enumerate}
 \end{definition}
@@ -130,17 +130,17 @@ Just as we have logical operators for statements, we have operations to combine 
 To handle ordered pairs and higher-dimensional structures, we introduce the Cartesian product.
 
 \begin{definition}[Cartesian Product]
-The \qt{Cartesian product} of two sets $X$ and $Y$ is the set of all ordered pairs $(x, y)$ where $x \in X$ and $y \in Y$:
+The \newterm{Cartesian product} of two sets $X$ and $Y$ is the set of all ordered pairs $(x, y)$ where $x \in X$ and $y \in Y$:
 \[
-X \times Y = \{(x, y) \mid x \in X, y \in Y\}
+X \times Y := \{(x, y) \mid x \in X, y \in Y\}
 \]
 \end{definition}
 
 This construction generalizes to $n$ sets. We denote the $n$-fold product of a set $X$ with itself as $X^n$:
 \[
-X^n = \underbrace{X \times \dots \times X}_{n \text{ times}} = \{(x_1, \dots, x_n) \mid x_i \in X \text{ for } 1 \le i \le n\}
+X^n := \underbrace{X \times \dots \times X}_{n \text{ times}} = \{(x_1, \dots, x_n) \mid x_i \in X \text{ for } 1 \le i \le n\}
 \]
-The elements of $X^n$ are called $n$-tuples. For example, $X^2 = X \times X$, and $X^3 = X \times X \times X = \{(x_1, x_2, x_3) \mid x_1, x_2, x_3 \in X\}$, and so forth.
+The elements of $X^n$ are called $n$-tuples. For example, $X^2 := X \times X$, and $X^3 := X \times X \times X = \{(x_1, x_2, x_3) \mid x_1, x_2, x_3 \in X\}$, and so forth.
 
 \begin{example}[Cartesian Products in the Plane]
 If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ represents the standard Euclidean plane. If we take $X = [0, 2]$ and $Y = [1, 2]$, then $X \times Y$ represents a rectangle in the plane with corners at $(0,1), (2,1), (0,2),$ and $(2,2)$.
@@ -166,9 +166,9 @@ If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ re
 \subsection{Power Sets and Cardinality}
 
 \begin{definition}[Power Set]
-Let $X$ be a set. The \qt{power set} of $X$, denoted by $\mathcal{P}(X)$ or $2^X$, is the set of all subsets of $X$:
+Let $X$ be a set. The \newterm{power set} of $X$, denoted by $\mathcal{P}(X)$ or $2^X$, is the set of all subsets of $X$:
 \[
-\mathcal{P}(X) = \{Q \mid Q \subseteq X\}
+\mathcal{P}(X) := \{Q \mid Q \subseteq X\}
 \]
 \end{definition}
 
@@ -181,10 +181,10 @@ Note that $\mathcal{P}(X)$ contains $8$ elements.
 \end{example}
 
 \begin{definition}[Cardinality]
-If $X$ is a finite set, meaning a set with finitely many elements $X = \{x_1, \dots, x_n\}$, we say that the \qt{cardinality} of $X$ is the number of elements in $X$, denoted by $|X| = n$ or $\text{card}(X) = n$.
+If $X$ is a finite set, meaning a set with finitely many elements $X = \{x_1, \dots, x_n\}$, we say that the \newterm{cardinality} of $X$ is the number of elements in $X$, denoted by $|X| := n$ or $\text{card}(X) := n$.
 \end{definition}
 
-\begin{exercise}
+\begin{exercise}[Cardinality of the Power Set]
 Let $A$ be a finite set. Prove by induction that the cardinality of its power set is given by:
 \[
 |\mathcal{P}(A)| = 2^{|A|}

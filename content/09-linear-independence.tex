@@ -1,6 +1,6 @@
-\setcounter{chapter}{8}
 \renewcommand{\thetheorem}{9.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{8}
 
 \chapter{Linear Independence}
 
@@ -36,10 +36,10 @@ Let $V$ be a vector space. The following properties hold for any finite list of 
 \end{lemma}
 
 \begin{proof}
-Statements \textbf{(a)} and \textbf{(b)} follow trivially from the vector space axioms (specifically the commutativity of vector addition and the property that $0 \cdot v = 0_V$).
-
+We address each property:
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \setcounter{enumii}{2}
+    \item Follows trivially from the vector space axioms (specifically $0 \cdot v = 0_V$ for all $v \in V$).
+    \item Follows trivially from the commutativity of vector addition in $V$.
     \item Assume $v_k = v_l$ for some $1 \le k < l \le n$. We can construct a specific linear combination where the coefficient for $v_k$ is $1$, the coefficient for $v_l$ is $-1$, and all other coefficients are $0$:
     \[
     0 \cdot v_1 + \dots + 1 \cdot v_k + \dots + (-1) \cdot v_l + \dots + 0 \cdot v_n = v_k - v_l = 0_V
@@ -62,7 +62,9 @@ Let us apply this definition to various vector spaces.
 Consider the vectors $v_1 = \binom{1}{0}$ and $v_2 = \binom{0}{1}$ in $\mathbb{R}^2$. \\
 Assume $a_1 v_1 + a_2 v_2 = 0_{\mathbb{R}^2}$. This means:
 \[
-a_1 \begin{pmatrix} 1 \\ 0 \end{pmatrix} + a_2 \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies \begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+a_1 \begin{pmatrix} 1 \\ 0 \end{pmatrix} + a_2 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}
+    = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.
 \]
 Thus, $a_1 = 0$ and $a_2 = 0$. The vectors $\{v_1, v_2\}$ are linearly independent.
 \end{example}
@@ -77,7 +79,7 @@ Consider the standard basis vectors in $K^n$:
 \[
 e_1 = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, \quad e_2 = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \quad \dots \quad, \quad e_n = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}
 \]
-Setting $a_1 e_1 + a_2 e_2 + \dots + a_n e_n = 0_{K^n}$ yields the column vector $(a_1, a_2, \dots, a_n)^T = (0, 0, \dots, 0)^T$. This immediately forces $a_i = 0$ for all $i$. Thus, the set $\{e_1, e_2, \dots, e_n\}$ is always linearly independent.
+Setting $a_1 e_1 + a_2 e_2 + \dots + a_n e_n = 0_{K^n}$ yields the column vector $(a_1, a_2, \dots, a_n)\transp = (0, 0, \dots, 0)\transp$. This immediately forces $a_i = 0$ for all $i$. Thus, the set $\{e_1, e_2, \dots, e_n\}$ is always linearly independent.
 \end{example}
 
 \begin{example}[Single Vectors]
@@ -109,7 +111,7 @@ a_1 v_{i_1} + a_2 v_{i_2} + \dots + a_n v_{i_n} = 0_V
 
 \subsection{Back to Linear Independence: Redundancy}
 
-This definition leads to an incredibly useful geometric intuition: a set of vectors is linearly dependent if and only if at least one vector is "redundant" — meaning it can be built entirely out of the other vectors in the set. 
+This definition leads to an incredibly useful geometric intuition: a set of vectors is linearly dependent if and only if at least one vector is "redundant" â€” meaning it can be built entirely out of the other vectors in the set. 
 
 \begin{center}
 \begin{tikzpicture}[

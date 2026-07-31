@@ -1,6 +1,6 @@
-\setcounter{chapter}{0}
 \renewcommand{\thetheorem}{1.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{0}
 
 \chapter{The Fibonacci Sequence}
 \stepcounter{section}
@@ -9,7 +9,7 @@
 We begin our study with the classical Fibonacci sequence, a sequence of numbers that naturally emerges in various mathematical and biological contexts.
 
 \begin{definition}[The Fibonacci Sequence]
-The \qt{Fibonacci sequence} is an infinite sequence of integers $a_0, a_1, a_2, a_3, \dots, a_n, \dots$ defined by the following recurrence relation:
+The \newterm{Fibonacci sequence} is an infinite sequence of integers $a_0, a_1, a_2, a_3, \dots, a_n, \dots$ defined by the following recurrence relation:
 \begin{equation} \label{eq:standard_fib_recurrence}
 \begin{cases}
 a_0 = 0 \\
@@ -35,7 +35,7 @@ A natural, central question arises: Is there a closed, explicit formula for the 
 Clearly, the recurrence relation for the Fibonacci sequence is fundamentally different. To find a formula for $a_n$, it is highly beneficial to step back and generalize the problem.
 
 \begin{definition}[Generalized Fibonacci Sequence]
-Let $a_0, a_1 \in \mathbb{R}$ be given initial real numbers. We define a sequence $\mathcal{A}$ to be a \qt{Fibonacci sequence} if it satisfies the relation:
+Let $a_0, a_1 \in \mathbb{R}$ be given initial real numbers. We define a sequence $\mathcal{A}$ to be a \newterm{Fibonacci sequence} if it satisfies the relation:
 \begin{equation} \label{eq:generalized_fib_recurrence}
 \begin{cases}
 \alpha_0 = a_0 \\
@@ -61,7 +61,9 @@ The collection of Fibonacci sequences, $\Fib$, is closed under term-wise additio
 \end{proposition}
 
 \begin{proof}
-For the first property, let $\mathcal{A}_1 = (a_0, a_1, a_2, \dots)$ and $\mathcal{A}_2 = (b_0, b_1, b_2, \dots)$ be two sequences in $\Fib$. We define their sum term-wise as $\mathcal{A}_1 + \mathcal{A}_2 := (c_0, c_1, c_2, \dots)$, where $c_n = a_n + b_n$. We must verify that the sequence $(c_n)$ obeys the Fibonacci recurrence relation, namely $c_n = c_{n-1} + c_{n-2}$ for $n \ge 2$. By algebraic manipulation, we find:
+We address each closure property:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $\mathcal{A}_1 = (a_0, a_1, a_2, \dots)$ and $\mathcal{A}_2 = (b_0, b_1, b_2, \dots)$ be two sequences in $\Fib$. We define their sum term-wise as $\mathcal{A}_1 + \mathcal{A}_2 := (c_0, c_1, c_2, \dots)$, where $c_n = a_n + b_n$. We must verify that the sequence $(c_n)$ obeys the Fibonacci recurrence relation, namely $c_n = c_{n-1} + c_{n-2}$ for $n \ge 2$. By algebraic manipulation, we find:
 \[
 c_{n-1} + c_{n-2} = (a_{n-1} + b_{n-1}) + (a_{n-2} + b_{n-2}) = (a_{n-1} + a_{n-2}) + (b_{n-1} + b_{n-2})
 \]
@@ -71,7 +73,8 @@ c_{n-1} + c_{n-2} = a_n + b_n = c_n
 \]
 This shows that $\mathcal{F}_{a_0, a_1} + \mathcal{F}_{b_0, b_1} = \mathcal{F}_{a_0 + b_0, a_1 + b_1}$, and therefore, $\Fib$ is closed under addition.
 
-For the second property, let $\mathcal{A} = (a_0, a_1, a_2, \dots) \in \Fib$ and $\alpha \in \mathbb{R}$. We define $\alpha \mathcal{A} := (\alpha a_0, \alpha a_1, \alpha a_2, \dots)$. We need to check that $\alpha a_n = \alpha a_{n-1} + \alpha a_{n-2}$. This is obviously true because $a_n = a_{n-1} + a_{n-2}$, and we simply multiply both sides by $\alpha$. In fact, we see that $\alpha \mathcal{F}_{a_0, a_1} = \mathcal{F}_{\alpha a_0, \alpha a_1}$.
+    \item Let $\mathcal{A} = (a_0, a_1, a_2, \dots) \in \Fib$ and $\alpha \in \mathbb{R}$. We define $\alpha \mathcal{A} := (\alpha a_0, \alpha a_1, \alpha a_2, \dots)$. We need to check that $\alpha a_n = \alpha a_{n-1} + \alpha a_{n-2}$. This is true because $a_n = a_{n-1} + a_{n-2}$, and we simply multiply both sides by $\alpha$. In fact, we see that $\alpha \mathcal{F}_{a_0, a_1} = \mathcal{F}_{\alpha a_0, \alpha a_1}$, so $\Fib$ is closed under scalar multiplication.
+\end{enumerate}
 \end{proof}
 
 \begin{corollary}
@@ -125,7 +128,7 @@ We denote these two specific roots as $\varphi := \frac{1 + \sqrt{5}}{2} \approx
 
 \begin{theorem}[Binet's Formula]
 \label{thm:binet_formula}
-The explicit formula for the $n$-th term of the classical Fibonacci sequence $\mathcal{F}_{0,1}$ is given by \qt{Binet's Formula}:
+The explicit formula for the $n$-th term of the classical Fibonacci sequence $\mathcal{F}_{0,1}$ is given by \newterm{Binet's Formula}:
 \[
 a_n = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right)
 \]
@@ -161,8 +164,9 @@ The derivation above yields two profound observations regarding the growth and r
 
 \begin{importantremark}
 Clearly, as $n$ grows, the term involving $\psi$ becomes negligible. Since $|\psi| = |\frac{1-\sqrt{5}}{2}| \approx 0.618 < 1$, it follows that $\psi^n \to 0$ as $n \to \infty$. Therefore, for large $n$, we have the approximation $a_n \approx \frac{1}{\sqrt{5}} \varphi^n$. In fact, because $\left| \frac{\psi^n}{\sqrt{5}} \right| < \frac{1}{2}$ for all $n \ge 0$, we arrive at the following precise conclusion:
+the number $a_n$ is the \textit{closest integer} to
 \[
-\implies a_n \text{ is the \textit{closest integer} to } \frac{1}{\sqrt{5}} \cdot \left(\frac{1+\sqrt{5}}{2}\right)^n
+\frac{1}{\sqrt{5}} \cdot \left(\frac{1+\sqrt{5}}{2}\right)^n.
 \]
 Furthermore, this implies that the ratio of consecutive terms satisfies:
 \begin{equation}
@@ -170,11 +174,11 @@ Furthermore, this implies that the ratio of consecutive terms satisfies:
 \end{equation}
 \end{importantremark}
 
-Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n = \binom{a_{n+1}}{a_n}$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
+Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n := \binom{a_{n+1}}{a_n}$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
 \begin{equation}
 \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} a_n \\ a_{n-1} \end{pmatrix} \implies v_n = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^n \begin{pmatrix} a_1 \\ a_0 \end{pmatrix}
 \end{equation}
-This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M = \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$.
+This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$.
 
 \begin{exercise}[Interesting Exercises]
 \begin{enumerate}

@@ -1,4 +1,5 @@
 \renewcommand{\thetheorem}{17.b.\arabic{theorem}}
+\setcounter{theorem}{0}
 
 \section{Change of Basis}
 
@@ -38,7 +39,7 @@ This demonstrates that $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is invertible and 
 \begin{definition}[Change of Basis Matrix]
 % def:17.b.2
 \label{def:change_of_basis_matrix}
-Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $n := \dim V$. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases of $V$. The matrix $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} \in \GL_n(K)$ is called the \qt{change of basis matrix} between $\mathcal{B}$ and $\mathcal{B}'$, or the \qt{transition matrix} from basis $\mathcal{B}$ to basis $\mathcal{B}'$.
+Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $n := \dim V$. Let $\mathcal{B}$ and $\mathcal{B}'$ be two bases of $V$. The matrix $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} \in \GL_n(K)$ is called the \newterm{change of basis matrix} between $\mathcal{B}$ and $\mathcal{B}'$, or the \newterm{transition matrix} from basis $\mathcal{B}$ to basis $\mathcal{B}'$.
 \end{definition}
 
 \begin{remark}
@@ -89,12 +90,12 @@ Let $V$ be a finite-di\-men\-sional vector space, and let $T: V \to V$ be a line
 \label{def:equivalence_and_similarity}
 We define two types of relations between matrices:
 \begin{enumerate}
-    \item Let $A, B \in \M_{m \times n}(K)$. We say that $A$ and $B$ are \qt{equivalent} if there exist matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that $B = P A Q$.
-    \item Let $A, B \in \M_{n \times n}(K)$. We say that $A$ and $B$ are \qt{similar} if there exists a matrix $P \in \GL_n(K)$ such that $B = P^{-1} A P$.
+    \item Let $A, B \in \M_{m \times n}(K)$. We say that $A$ and $B$ are \newterm{equivalent} if there exist matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that $B = P A Q$.
+    \item Let $A, B \in \M_{n \times n}(K)$. We say that $A$ and $B$ are \newterm{similar} if there exists a matrix $P \in \GL_n(K)$ such that $B = P^{-1} A P$.
 \end{enumerate}
 \end{definition}
 
-\begin{exercise}
+\begin{exercise}[Properties and Characterization of Matrix Equivalence]
 \begin{enumerate}
     \item Show that \qt{equivalence} between $m \times n$ matrices defines an equivalence relation on $\M_{m \times n}(K)$.
     \item Show that two matrices $A, B \in \M_{m \times n}(K)$ are equivalent if and only if there exist two vector spaces $V$ and $W$ with $\dim V = n$ and $\dim W = m$, two bases $\mathcal{B}$ and $\mathcal{B}'$ of $V$, and two bases $\mathcal{C}$ and $\mathcal{C}'$ of $W$ such that:
@@ -110,7 +111,7 @@ We define two types of relations between matrices:
 \begin{proposition}[Normal Form for Linear Maps]
 % prop:17.b.6
 \label{prop:linear_map_normal_form}
-Let $V$ and $W$ be finite-di\-men\-sional vector spaces over $K$, with dimensions $n = \dim V$ and $m = \dim W$. Let $T: V \to W$ be a linear map with $\rank(T) = r$. (Recall that $\rank(T) := \dim \operatorname{Im}(T)$). Then, there exists a basis $\mathcal{B} = (v_1, \dots, v_n)$ of $V$ and a basis $\mathcal{C} = (w_1, \dots, w_m)$ of $W$ such that:
+Let $V$ and $W$ be finite-di\-men\-sional vector spaces over $K$, with dimensions $n = \dim V$ and $m = \dim W$. Let $T: V \to W$ be a linear map with $\rank(T) = r$. (Recall that $\rank(T) := \dim \Img(T)$). Then, there exists a basis $\mathcal{B} = (v_1, \dots, v_n)$ of $V$ and a basis $\mathcal{C} = (w_1, \dots, w_m)$ of $W$ such that:
 \begin{equation*}
     [T]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} I_r & O_{r, n-r} \\ O_{m-r, r} & O_{m-r, n-r} \end{pmatrix}
 \end{equation*}
@@ -122,7 +123,7 @@ Put $\ell := \dim \ker(T)$. By the rank theorem, we know that $r = n - \ell$. Le
 \begin{equation*}
     \mathcal{B} = (v_{\ell+1}, \dots, v_n, v_1, \dots, v_\ell)
 \end{equation*}
-In the proof of the rank theorem, we have seen that $T(v_{\ell+1}), \dots, T(v_n)$ form a basis for $\operatorname{Im}(T)$. Define $w_i := T(v_{\ell+i})$ for $i = 1, \dots, r$ (i.e., $w_1 = T(v_{\ell+1}), \dots, w_r = T(v_{\ell+r})$), and extend this list to a basis of $W$:
+In the proof of the rank theorem, we have seen that $T(v_{\ell+1}), \dots, T(v_n)$ form a basis for $\Img(T)$. Define $w_i := T(v_{\ell+i})$ for $i = 1, \dots, r$ (i.e., $w_1 = T(v_{\ell+1}), \dots, w_r = T(v_{\ell+r})$), and extend this list to a basis of $W$:
 \begin{equation*}
     \mathcal{C} := (w_1, \dots, w_r, w_{r+1}, \dots, w_m)
 \end{equation*}
@@ -140,8 +141,8 @@ where $r = \rank_{\text{col}}(A)$. In particular, $\rank_{\text{col}}(A) \le \mi
 \end{corollary}
 
 \begin{proof}
-Consider the linear map $T_A: K^n \to K^m$ defined by left-multiplication, $T_A(v) = A \cdot v$. Then, $r = \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A)$, because we have previously seen that 
-\[\operatorname{Im}(T_A) = \operatorname{Sp}(T_A(e_1), \dots, T_A(e_n)) = \operatorname{Sp}(\text{columns of } A).\]
+Consider the linear map $T_A: K^n \to K^m$ defined by left-multiplication, $T_A(v) = A \cdot v$. Then, $r = \rank_{\text{col}}(A) = \dim \Img(T_A)$, because we have previously seen that 
+\[\Img(T_A) = \Sp(T_A(e_1), \dots, T_A(e_n)) = \Sp(\text{columns of } A).\]
 
 Now, we apply the previous proposition to $T_A$, yielding that:
 \begin{equation*}
@@ -157,11 +158,11 @@ where $\mathcal{E}_n$ and $\mathcal{E}_m$ are the standard bases of $K^n$ and $K
 \begin{remark}
 The fact that $\rank_{\text{col}}(A) \le \min\{m, n\}$ also follows from observing the linear map $T_A: K^n \to K^m$. We have:
 \begin{equation*}
-    \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A) = n - \dim \ker(T_A) \le n
+    \rank_{\text{col}}(A) = \dim \Img(T_A) = n - \dim \ker(T_A) \le n
 \end{equation*}
 and simultaneously,
 \begin{equation*}
-    \rank_{\text{col}}(A) = \dim \operatorname{Im}(T_A) \le \dim K^m = m
+    \rank_{\text{col}}(A) = \dim \Img(T_A) \le \dim K^m = m
 \end{equation*}
 \end{remark}
 
@@ -180,11 +181,11 @@ Let $A, B \in \M_{m \times n}(K)$. First, assume that $\rank_{\text{col}}(A) = \
 
 Conversely, assume that $A \sim B$. This implies that there exist matrices $P \in GL_m(K)$ and $Q \in GL_n(K)$ such that $B = PAQ$. Transitioning to the associated linear maps, this means $T_B = T_P \circ T_A \circ T_Q$. We analyze the image of $T_B$:
 \begin{equation*}
-    \operatorname{Im}(T_B) = T_B(K^n) = T_P \circ T_A(T_Q(K^n)) = T_P \circ T_A(K^n) = T_P(\operatorname{Im}(T_A))
+    \Img(T_B) = T_B(K^n) = T_P \circ T_A(T_Q(K^n)) = T_P \circ T_A(K^n) = T_P(\Img(T_A))
 \end{equation*}
 Note that $T_Q(K^n) = K^n$ because $T_Q$ is an isomorphism. Consequently, the dimension of the image is:
 \begin{equation*}
-    \rank_{\text{col}}(B) = \dim \operatorname{Im}(T_B) = \dim T_P(\operatorname{Im}(T_A)) = \dim \operatorname{Im}(T_A) = \rank_{\text{col}}(A)
+    \rank_{\text{col}}(B) = \dim \Img(T_B) = \dim T_P(\Img(T_A)) = \dim \Img(T_A) = \rank_{\text{col}}(A)
 \end{equation*}
 where the second to last equality holds because $T_P$ is an isomorphism, preserving the dimension of subspaces.
 \end{proof}

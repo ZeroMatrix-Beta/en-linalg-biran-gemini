@@ -1,6 +1,13 @@
 \setcounter{chapter}{20} % Chapter 21
 \chapter{Eigenvalues \& Eigenvectors}
 
+% This chapter bundles several source parts (21.eigenvectors.b/.c/.d) into one
+% file, so the prefix is re-declared at every \section rather than once at the
+% top. Without this the whole chapter inherited chapter 20's prefix and printed
+% its theorems as "20.1", "20.2", ...
+\renewcommand{\thetheorem}{21.a.\arabic{theorem}}
+\setcounter{theorem}{0}
+
 \section{Motivation}
 
 \subsection{Fibonacci revisited}
@@ -18,7 +25,7 @@ We defined $\Fib := \text{the set of all sequences } (a_0, a_1, a_2, \dots, a_n,
 \end{claim*}
 
 \begin{claim*}\label{claim:fib_basis}
-  Put $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi := \frac{1-\sqrt{5}}{2}$. Then the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \psi, \psi^2, \dots, \psi^n, \dots)$ belong to $\Fib$ and, moreover, they form a basis for $\Fib$.
+  Put $\varphi := \frac{1+\sqrt{5}}{2}$ and $\psi := \frac{1-\sqrt{5}}{2}$. Then the two geometric sequences $(1, \varphi, \varphi^2, \dots, \varphi^n, \dots)$ and $(1, \psi, \psi^2, \dots, \psi^n, \dots)$ belong to $\Fib$ and, moreover, they form a basis for $\Fib$.
 \end{claim*}
 
 We also saw that using these two sequences, we could easily find an explicit formula for all Fibonacci sequences. But how did we find these two special sequences?
@@ -28,13 +35,15 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \[ S(\mathcal{F}) = \lambda \cdot \mathcal{F} \iff \lambda = \frac{1\pm\sqrt{5}}{2} \text{ and } \mathcal{F} = (a, a\lambda, a\lambda^2, \dots, a\lambda^n, \dots) \]
 
 \begin{definition}[Eigenvalue and Eigenvector]\label{def:eigenvalue_eigenvector}
-  Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map (an endomorphism of $V$). We say that $\lambda \in K$ is an \qt{eigenvalue} (a.k.a. \qt{characteristic value}) of $T$ if there exists a vector $v \ne 0$ such that $Tv = \lambda v$. Any vector $v \ne 0$ with the property that $Tv = \lambda v$ is called an \qt{eigenvector} (of $T$) for the eigenvalue $\lambda$.
+  Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map (an endomorphism of $V$). We say that $\lambda \in K$ is an \newterm{eigenvalue} (a.k.a. \newterm{characteristic value}) of $T$ if there exists a vector $v \ne 0$ such that $Tv = \lambda v$. Any vector $v \ne 0$ with the property that $Tv = \lambda v$ is called an \newterm{eigenvector} (of $T$) for the eigenvalue $\lambda$.
 \end{definition}
 
 \begin{definition}[Diagonalizable Endomorphism]\label{def:diagonalizable_endomorphism}
+  Let $V$ be a finite-di\-men\-sional vector space over $K$, put $n := \dim V$, and let $T \in \End(V)$. We say that $T$ is \newterm{diagonalizable} if there exists a basis $\mathcal{B} := (v_1, \dots, v_n)$ for $V$ such that the representation matrix of $T$ with respect to $\mathcal{B}$ is diagonal, that is,
   \begin{equation} \label{eq:diagonal_form}
     [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}
   \end{equation}
+  for some $\lambda_1, \dots, \lambda_n \in K$.
 \end{definition}
 
 \begin{lemma}[Diagonalizable Matrix Criterion]\label{lem:diagonalizable_matrix_criterion}
@@ -51,7 +60,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   We saw that for all $A \in \M_{n \times n}(K)$, we have a linear map $T_A: K^n \rightarrow K^n$, $T_A(v) := A \cdot v$. We say that a matrix $A \in \M_{n \times n}(K)$ is diagonalizable if the linear map $T_A$ is diagonalizable.
 \end{remark}
 
-\begin{example}[Stretching Transformation in \texorpdfstring{$R^2$}{R2}]\label{ex:eigenvalue_R2_stretch}
+\begin{example}[Stretching Transformation in $\mathbb{R}^2$]\label{ex:eigenvalue_R2_stretch}
   Let $A = \left(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\right)$ and $K = \mathbb{R}$.
   $T_A \binom{1}{1} = \binom{3}{3} = 3 \binom{1}{1}$. Thus, $\lambda = 3$ is an eigenvalue and $v = \binom{1}{1}$ is a corresponding eigenvector.
   Furthermore, $T_A \binom{1}{-1} = \binom{1}{-1}$. This implies that $\lambda = 1$ is an eigenvalue and $v = \binom{1}{-1}$ is a corresponding eigenvector.
@@ -119,7 +128,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   Let $A \in \M_{n \times n}(K)$. Then:
   \begin{enumerate}
     \item $P_A(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$ (i.e., $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + \dots + c_0$, with $c_i \in K$ for all $i$, and $c_n = (-1)^n$).
-    \item $P_{A^T}(x) = P_A(x)$.
+    \item $P_{A\transp}(x) = P_A(x)$.
     \item If $A = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}$ has upper triangular form, then $P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x)$.
     \item If $A = \left(\begin{array}{c|c} B_1 & * \\ \hline 0 & B_2 \end{array}\right)$ is a block matrix, then $P_A(x) = P_{B_1}(x) \cdot P_{B_2}(x)$.
     \item If $A$ and $B$ are similar matrices (i.e., $B = P^{-1}AP$ for some invertible matrix $P$), then $P_A(x) = P_B(x)$.
@@ -139,7 +148,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   If $\sigma \ne \mathrm{id} = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$.
   $= (-1)^n x^n + (\text{terms of degree} \le n-1)$.
 
-  \textbf{(b)} $P_{A^T}(x) = \det(A^T - x \cdot I_n) = \det((A - x \cdot I_n)^T) = \det(A - x \cdot I_n) = P_A(x)$.
+  \textbf{(b)} $P_{A\transp}(x) = \det(A\transp - x \cdot I_n) = \det((A - x \cdot I_n)\transp) = \det(A - x \cdot I_n) = P_A(x)$.
 
   \textbf{(c)+(d)} These properties follow directly from the definition of the determinant and its behavior with block matrices, as established in Chapter 20 (Determinants). For example, for (c), the determinant of an upper triangular matrix is the product of its diagonal entries. For (d), the determinant of a block triangular matrix is the product of the determinants of its diagonal blocks.
   % Original: Exercise: Follows from properties of the determinant we have already proved.
@@ -204,7 +213,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   Let $V$ be a vector space over $K$ and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say that $W$ is a \qt{direct sum} of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a \qt{direct sum}) if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
 \end{definition}
 
-\begin{exercise}\label{ex:direct_sum_conditions}
+\begin{exercise}[Equivalent Conditions for Direct Sums]\label{ex:direct_sum_conditions}
   $U_1 + \dots + U_r$ is a direct sum if and only if any of the following conditions hold:
   \begin{enumerate}
     \item The only way to write $0 = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$, is with $u_1 = \dots = u_r = 0$.
@@ -213,7 +222,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   Under the additional assumption that $U_1, \dots, U_r$ are all finite-dimensional, $U_1 + \dots + U_r$ is a direct sum if and only if whenever $\mathcal{B}_1, \dots, \mathcal{B}_r$ are bases for $U_1, \dots, U_r$ respectively, then $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ forms a basis for $U_1 + \dots + U_r$.
 \end{exercise}
 
-\begin{exercise}\label{ex:canonical_iso_direct_sum}
+\begin{exercise}[Isomorphism between External and Internal Direct Sums]\label{ex:canonical_iso_direct_sum}
   If $U_1 + \dots + U_r$ is a direct sum, then there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
 \end{exercise}
 
@@ -242,21 +251,25 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \[ \sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V. \]
 \end{corollary}
 
-\begin{exercise}\label{ex:finite_eigenvalues}
-  If $V$ is finite-dimensional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
-\end{exercise}
-
 \begin{proof}
   Choose a basis $\mathcal{B}_i$ for $\Eig_T(\lambda_i)$. Recall that $W := \Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_r)$ is a direct sum.
   This implies that $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$.
   Now $W \subseteq V$ is a linear subspace, and $\dim W = \sum_{i=1}^r |\mathcal{B}_i| = \sum_{i=1}^r \dim \Eig_T(\lambda_i) \le \dim V$.
-  This implies $W = V$ if and only if $\sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$. Consequently, $V$ has a basis (namely $(\mathcal{B}_1, \dots, \mathcal{B}_r)$) whose elements are eigenvectors of $T$ if and only if this dimension equality holds. This implies that $T$ is diagonalizable.
+  Since $W \subseteq V$ is a subspace of the finite-di\-men\-sional space $V$, we have $W = V$ if and only if $\dim W = \dim V$, that is, if and only if $\sum_{i=1}^r \dim \Eig_T(\lambda_i) = \dim V$.
+
+  It remains to connect this to diagonalizability. If the dimension equality holds, then $W = V$, so $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $V$ consisting of eigenvectors of $T$, and therefore, $T$ is diagonalizable by \cref{lem:diagonalizable_matrix_criterion}. Conversely, if $T$ is diagonalizable, pick a basis $\mathcal{C} = (w_1, \dots, w_n)$ of $V$ consisting of eigenvectors. Every $w_j$ lies in $\Eig_T(\lambda_i)$ for some $i$ (the eigenvalues of $T$ are exactly $\lambda_1, \dots, \lambda_r$), hence $w_j \in W$ for all $j$. Consequently, $V = \Sp(w_1, \dots, w_n) \subseteq W$, so $W = V$ and the dimension equality holds.
 \end{proof}
 
+\begin{exercise}\label{ex:finite_eigenvalues}
+  If $V$ is finite-di\-men\-sional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
+\end{exercise}
+
+\renewcommand{\thetheorem}{21.b.\arabic{theorem}}
+\setcounter{theorem}{0}
 \section{Multiplicities of Eigenvalues}
 
 \begin{example}[Identical Characteristic Polynomials]\label{ex:char_poly_same}
-  Consider the matrices $A = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ and $B = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$.
+  Consider the matrices $A := \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ and $B := \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$.
   We have that their characteristic polynomials are identical: $P_A(x) = P_B(x) = (1-x)^2 = (x-1)^2$.
 \end{example}
 
@@ -274,7 +287,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   Therefore, the rank is $\rank(J - \lambda \cdot I_n) = n - 1$.
   By the rank-nullity theorem, $\dim \ker(J - \lambda \cdot I_n) = 1$.
   Consequently, the eigenspace $\Eig_J(\lambda)$ is $1$-dimensional.
-  Clearly, $e_1 = (1, 0, \dots, 0)^T$ is an eigenvector for $\lambda$.
+  Clearly, $e_1 = (1, 0, \dots, 0)\transp$ is an eigenvector for $\lambda$.
   Thus, $\Eig_J(\lambda) = \Sp(e_1)$.
 \end{example}
 
@@ -336,7 +349,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{proposition}
 
 \begin{proof}
-  Let $v_1, \dots, v_k$ be a basis for the eigenspace $\Eig_T(\lambda)$. We extend this basis to a basis $\mathcal{B} = (v_1, \dots, v_k, w_{k+1}, \dots, w_n)$ of $V$.
+  Let $v_1, \dots, v_k$ be a basis for the eigenspace $\Eig_T(\lambda)$. We extend this basis to a basis $\mathcal{B} := (v_1, \dots, v_k, w_{k+1}, \dots, w_n)$ of $V$.
   Then the matrix of $T$ with respect to the basis $\mathcal{B}$ has the block form:
   \[ [T]_{\mathcal{B}}^{\mathcal{B}} = \left( [Tv_1]_{\mathcal{B}} \dots [Tv_k]_{\mathcal{B}} \mid [Tw_{k+1}]_{\mathcal{B}} \dots [Tw_n]_{\mathcal{B}} \right) \]
   \begin{equation} \label{eq:block_matrix_T}
@@ -357,11 +370,13 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{example}
 
 
+\renewcommand{\thetheorem}{21.c.\arabic{theorem}}
+\setcounter{theorem}{0}
 \section{Diagonalizability}
 
 \begin{theorem}[Equivalent Conditions for Diagonalizability]\label{thm:diag_equiv}
   Let $V$ be an $n$-dimensional vector space over $K$ and $T \in \End(V)$. The following statements are equivalent:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $T$ is diagonalizable.
     \item There exists a basis for $V$ whose elements are eigenvectors of $T$.
     \item The characteristic polynomial $P_T(x)$ splits into a product of linear factors and, for every eigenvalue of $T$, the geometric and algebraic multiplicities are equal.
@@ -523,11 +538,11 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{claim*}
 
   \begin{proof}[Proof of Claim]
-    Write the entries of $\underline{P}$ as $P_{ij}$. Define $m = n+1$ and set vectors $v_1, \dots, v_m$ as linear combinations of $\mathcal{B}'$ using the columns of $\underline{P}$:
+    Write the entries of $\underline{P}$ as $P_{ij}$. Define $m := n+1$ and set vectors $v_1, \dots, v_m$ as linear combinations of $\mathcal{B}'$ using the columns of $\underline{P}$:
     \[ v_k := \sum_{j=1}^m P_{jk} u_j \quad \text{for } k = 1, \dots, m. \]
     The set $\mathcal{B} := (v_1, \dots, v_m)$ is a basis for $V$.
-    To see this, assume $c_1 v_1 + \dots + c_m v_m = 0$. Substituting the definitions of $v_k$ and using the linear independence of $(u_1, \dots, u_m)$ yields the matrix equation $\underline{P} \cdot (c_1, \dots, c_m)^T = 0$.
-    Because $\underline{P}$ is invertible, $(c_1, \dots, c_m)^T = 0$, proving linear independence.
+    To see this, assume $c_1 v_1 + \dots + c_m v_m = 0$. Substituting the definitions of $v_k$ and using the linear independence of $(u_1, \dots, u_m)$ yields the matrix equation $\underline{P} \cdot (c_1, \dots, c_m)\transp = 0$.
+    Because $\underline{P}$ is invertible, $(c_1, \dots, c_m)\transp = 0$, proving linear independence.
   \end{proof}
 
   We now have the basis $\mathcal{B}$. Computing the matrix of $T$ in this new basis yields:
@@ -553,12 +568,12 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \[ P_T(x) = (\lambda_1 - x) \cdot P_{\overline{T}}(x). \]
   Since $P_T(x)$ splits into a product of linear factors by our initial assumption, $P_{\overline{T}}(x)$ must also split into linear factors.
 
-  Because $\dim(V/U) = n$, we can apply the induction hypothesis to $\overline{T}$. There exists a basis $\mathcal{C} = (z_2, \dots, z_{n+1})$ for $V/U$ such that its matrix is upper triangular:
+  Because $\dim(V/U) = n$, we can apply the induction hypothesis to $\overline{T}$. There exists a basis $\mathcal{C} := (z_2, \dots, z_{n+1})$ for $V/U$ such that its matrix is upper triangular:
   \begin{equation} \label{eq:quotient_upper_triangular}
     [\overline{T}]_{\mathcal{C}}^{\mathcal{C}} = \begin{pmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{pmatrix}.
   \end{equation}
   Now, each element in $\mathcal{C}$ is represented by some vector $v_i \in V$, meaning $z_i = [v_i]$. (Such a $v_i$ is not unique, but we pick one specific representative for every $i$).
-  Define the list of vectors $\mathcal{B} = (v_1, v_2, \dots, v_{n+1})$. We claim that $\mathcal{B}$ is a basis for $V$.
+  Define the list of vectors $\mathcal{B} := (v_1, v_2, \dots, v_{n+1})$. We claim that $\mathcal{B}$ is a basis for $V$.
 
   To show this, we check for linear independence. Assume:
   \[ \alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_{n+1} v_{n+1} = 0. \]
@@ -587,6 +602,8 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
 \setcounter{section}{3} % Sets section counter so the next \section is 4 (i.e., 'd')
 
+\renewcommand{\thetheorem}{21.d.\arabic{theorem}}
+\setcounter{theorem}{0}
 \section{The Minimal Polynomial \& The Cayley-Hamilton Theorem}
 
 A powerful tool in linear algebra is the ability to evaluate polynomials not just at scalar numbers, but at matrices and endomorphisms. Let $A \in M_{n \times n}(K)$. For any integer $k \ge 1$, the matrix power $A^k = A \cdot \dots \cdot A$ is well-defined. Therefore, for any formal polynomial $g(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0 \in K[x]$, we can define the matrix evaluation $g(A) \in M_{n \times n}(K)$ naturally as:
@@ -627,7 +644,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \end{enumerate}
 \end{theorem}
 
-\begin{exercise}\label{ex:cayley_inverse}
+\begin{exercise}[Expressing Matrix Inverses via Cayley-Hamilton]\label{ex:cayley_inverse}
   Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use \cref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
 \end{exercise}
 
@@ -659,7 +676,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 
 \begin{proof}
   By assumption, there exists an invertible matrix $Q$ such that 
-  \[Q^{-1} A Q = \Lambda = \operatorname{diag}(\lambda_1, \dots, \lambda_n). \] 
+  \[Q^{-1} A Q = \Lambda = \diag(\lambda_1, \dots, \lambda_n). \] 
   Since the roots of the characteristic polynomial are exactly the eigenvalues, we know $P_A(\lambda_i) = 0$ for all $i$. Writing $P_A(x) = \sum c_j x^j$, we substitute $A$:
   \[
   Q^{-1} P_A(A) Q = \sum c_j Q^{-1} A^j Q = \sum c_j (Q^{-1} A Q)^j = \sum c_j \Lambda^j = P_A(\Lambda).
@@ -680,7 +697,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 
   To ensure diagonalizability, we must prevent repeated eigenvalues. We can fix this by introducing a tiny perturbation. For each integer $k \ge 1$, we define a diagonal matrix of small shifts:
   \[
-  E_k = \operatorname{diag}\left(\frac{\epsilon_1}{k}, \frac{\epsilon_2}{k}, \dots, \frac{\epsilon_n}{k}\right)
+  E_k = \diag\left(\frac{\epsilon_1}{k}, \frac{\epsilon_2}{k}, \dots, \frac{\epsilon_n}{k}\right)
   \]
   We carefully choose the constants $\epsilon_i$ such that the new diagonal entries $\lambda_i + \frac{\epsilon_i}{k}$ are strictly distinct from one another. We now define our sequence:
   \[
@@ -727,7 +744,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \begin{definition}[$T$-Cyclic Subspace]\label{def:T_cyclic_subspace}
   Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $v \in V$. We define the \qt{$T$-cyclic subspace} generated by $v$ as the span of the orbit of $v$ under $T$:
   \[
-  \langle v \rangle_T := \operatorname{Sp}\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} = \operatorname{Sp}(v, Tv, T^2v, \dots).
+  \langle v \rangle_T := \Sp\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} = \Sp(v, Tv, T^2v, \dots).
   \]
 \end{definition}
 
@@ -750,9 +767,10 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{lemma}
 
 \begin{proof}
-  (a) Let $U = \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$. Since $\langle v \rangle_T$ is by definition the smallest $T$-invariant subspace containing $v$, we must have $U = \langle v \rangle_T$. Since the set is linearly independent and spans the space, it is a basis.
-
-  (b) This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
+  \begin{enumerate}
+    \item Let $U = \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$. Since $\langle v \rangle_T$ is by definition the smallest $T$-invariant subspace containing $v$, we must have $U = \langle v \rangle_T$. Since the set is linearly independent and spans the space, it is a basis.
+    \item This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
+  \end{enumerate}
 \end{proof}
 
 \begin{lemma}[Characteristic Polynomial of a Companion Matrix]\label{lemma:companion_char_poly}
@@ -785,7 +803,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   Let $V$ be finite-dimensional, and $T \in \End(V)$. We want to show $P_T(T) = 0$, meaning $P_T(T)v = 0$ for all $v \in V$.
 
   Let $v \in V$, $v \neq 0$. Consider the cyclic subspace $\langle v \rangle_T$. Take the maximal integer $d \ge 1$ such that $v, Tv, \dots, T^{d-1}v$ are linearly independent. Then $T^d v = c_0 v + \dots + c_{d-1}T^{d-1}v$.
-  Extend this basis $\mathcal{B}$ to a full basis $\mathcal{C} = (v, \dots, T^{d-1}v, w_1, \dots, w_{n-d})$ for $V$. The matrix representation of $T$ with respect to $\mathcal{C}$ is block upper-triangular:
+  Extend this basis $\mathcal{B}$ to a full basis $\mathcal{C} := (v, \dots, T^{d-1}v, w_1, \dots, w_{n-d})$ for $V$. The matrix representation of $T$ with respect to $\mathcal{C}$ is block upper-triangular:
   \begin{center}
     \begin{tikzpicture}
       % Main matrix frame
@@ -828,85 +846,3 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   A completely incorrect "proof" often presented by students is the following: $P_A(A) = \det(A - A \cdot I) = \det(0) = 0$. This is fundamentally invalid. The expression $P_A(x) = \det(A - xI)$ evaluates to a polynomial with scalar coefficients. Substituting matrices into a scalar expression \textit{before} expanding the determinant leads to a severe category error. One must compute the scalar polynomial first, and only then evaluate it at the matrix $A$.
 \end{remark}
 
-\section{Column Rank and Row Rank}
-
-\begin{theorem}[Equality of Column and Row Rank] \label{thm:17.c.1}
-Let $A \in \M_{m \times n}(K)$. Then, $\rank_{\text{col}}(A) = \rank_{\text{row}}(A)$.
-\end{theorem}
-
-\begin{remark}[Notation and Properties of Rank]
-\begin{enumerate}
-    \item Because of this theorem, we will from now on denote $\rank(A) := \rank_{\text{col}}(A) = \rank_{\text{row}}(A)$.
-    \item Suppose $A'$ is a row-reduced echelon matrix that is row-equivalent to $A$. Then, we have:
-    \begin{equation*}
-        \rank(A) = \rank_{\text{row}}(A) = \rank_{\text{row}}(A') = \text{number of pivots in } A'
-    \end{equation*}
-    \item Recall that for a linear map $T: V \to W$, we defined $\rank(T) := \dim \operatorname{Im}(T)$. Moreover, if $A \in \M_{m \times n}(K)$, then $\rank(T_A) = \dim \operatorname{Im}(T_A) = \rank_{\text{col}}(A)$.
-\end{enumerate}
-\end{remark}
-
-\subsection{Preparation for the Proof}
-
-\begin{lemma}[Rank Invariance under Composition with Isomorphisms] \label{lemma:rank_invariance_isomorphisms_2}
-Let $T: V \to W$ be a linear map, and let $S: W \to W'$ and $L: P \to V$ be isomorphisms. Then:
-\begin{enumerate}
-    \item $\rank(S \circ T) = \rank(T)$.
-    \item $\rank(T \circ L) = \rank(T)$.
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-\textbf{(a)} By definition, $\rank(S \circ T) = \dim (S(T(V)))$. Since $S$ is an isomorphism, its restriction to the subspace $T(V) \subseteq W$ is injective. An injective linear map preserves the dimension of a vector space, and therefore:
-\begin{equation*}
-    \dim (S(T(V))) = \dim (T(V)) = \rank(T)
-\end{equation*}
-
-\textbf{(b)} By definition, $\rank(T \circ L) = \dim (T(L(P)))$. Since $L$ is an isomorphism, it is surjective, which implies that $L(P) = V$. Consequently:
-\begin{equation*}
-    \dim (T(L(P))) = \dim (T(V)) = \rank(T)
-\end{equation*}
-This completes the proof.
-\end{proof}
-
-
-\begin{lemma}[Invertibility of the Transpose] \label{lemma:transpose_invertibility_v2}
-Let $A \in \M_{n \times n}(K)$. Then, $A \in \GL_n(K)$ if and only if $A^T \in \GL_n(K)$.
-\end{lemma}
-
-\begin{proof}
-We know that $A$ is invertible if and only if the associated linear map $T_A: K^n \to K^n$ is an isomorphism. This is true if and only if $\rank(T_A) = n$, which is equivalent to $\rank_{\text{col}}(A) = n$.
-
-We also know that $A$ is row-equivalent to some row-reduced echelon matrix $A'$. Since row-equivalence corresponds to multiplying from the left by invertible matrices, we have that $A \in \GL_n(K)$ if and only if $A' \in \GL_n(K)$. Because $A'$ is an $n \times n$ row-reduced echelon matrix, $A'$ is invertible if and only if it has no zero rows. This holds if and only if $A'$ has $n$ pivots, which is equivalent to $\rank_{\text{row}}(A') = n$. Since row operations preserve the row space, this means $\rank_{\text{row}}(A) = n$.
-
-In summary, we have established that $A \in \GL_n(K)$ if and only if $\rank_{\text{row}}(A) = n$. But by definition, the row rank of $A$ is exactly the column rank of its transpose, so $\rank_{\text{row}}(A) = \rank_{\text{col}}(A^T)$. Therefore, $A \in \GL_n(K)$ if and only if $\rank_{\text{col}}(A^T) = n$, which means $A^T$ is invertible.
-\end{proof}
-
-\begin{lemma}[Rank Invariance under Matrix Equivalence] \label{lemma:rank_invariance_equivalence_2}
-Let $A, B \in \M_{m \times n}(K)$ such that $B = P A Q$, where $P \in \GL_m(K)$ and $Q \in \GL_n(K)$. Then:
-\begin{enumerate}
-    \item $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$.
-    \item $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$.
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-\textbf{(a)} Transitioning to the associated linear maps, we have $T_B = T_P \circ T_A \circ T_Q$. Since $P$ and $Q$ are invertible matrices, both $T_P$ and $T_Q$ are isomorphisms. Applying \cref{lemma:rank_invariance_isomorphisms_2}, we deduce that $\rank(T_B) = \rank(T_A)$. Recalling that the rank of a linear map given by a matrix matches the column rank of that matrix, we obtain $\rank_{\text{col}}(B) = \rank_{\text{col}}(A)$.
-
-\textbf{(b)} Taking the transpose of the equation $B = PAQ$ yields $B^T = Q^T A^T P^T$. Since $P$ and $Q$ are invertible matrices, their transposes $P^T$ and $Q^T$ are also invertible (we have previously seen that $(P^T)^{-1} = (P^{-1})^T$). We can now apply part (a) of this Lemma, which we have already proven, to the matrices $A^T$ and $B^T$. This gives us $\rank_{\text{col}}(B^T) = \rank_{\text{col}}(A^T)$. By the definition of the transpose, this immediately translates to $\rank_{\text{row}}(B) = \rank_{\text{row}}(A)$.
-\end{proof}
-
-\subsection{Proof of the Main Theorem}
-
-We are now ready for the proof of \cref{thm:17.c.1}.
-
-\begin{proof}[Proof of \Cref{thm:17.c.1}]
-Let $r := \rank_{\text{col}}(A)$. By a previous proposition regarding the equivalence of matrices, we know that there exist invertible matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that:
-\begin{equation*}
-    P A Q = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} =: B
-\end{equation*}
-By \Cref{lemma:rank_invariance_equivalence_2}, we know that $\rank_{\text{row}}(A) = \rank_{\text{row}}(B)$. Thus, it suffices to determine the row rank of $B$.
-
-The matrix $B$ is of the block form $\left(\begin{smallmatrix} I_r & O \\ O & O \end{smallmatrix}\right)$. The non-zero rows of $B$ are precisely the first $r$ standard basis vectors $e_1^T, e_2^T, \dots, e_r^T \in K_{\text{row}}^n$. Since these vectors form a linearly independent set, the dimension of the row space of $B$ is exactly $r$. Consequently, $\rank_{\text{row}}(B) = r$.
-
-Therefore, we conclude that $\rank_{\text{row}}(A) = r = \rank_{\text{col}}(A)$, completing the proof.
-\end{proof}

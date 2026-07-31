@@ -1,11 +1,11 @@
-\setcounter{chapter}{23}
 \renewcommand{\thetheorem}{24.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{23}
 
 \chapter{Spectral Theorems}
 
 \begin{ainote}
-The professor left a note to \qt{explain the name} of the Spectral Theorems. In linear algebra, the \qt{spectrum} of a linear operator is its set of eigenvalues. The Spectral Theorems provide conditions under which an operator can be completely described by its spectrum---specifically, when there exists a basis for the entire space consisting solely of the operator's eigenvectors (making the operator diagonalizable).
+The professor left a note to \qt{explain the name} of the Spectral Theorems. In linear algebra, the \newterm{spectrum} of a linear operator is its set of eigenvalues. The Spectral Theorems provide conditions under which an operator can be completely described by its spectrum---specifically, when there exists a basis for the entire space consisting solely of the operator's eigenvectors (making the operator diagonalizable).
 \end{ainote}
 
 % Def. (24.a.1)
@@ -49,7 +49,7 @@ and therefore, $T \circ T^* = T^* \circ T$.
 \label{def:normal_endomorphism}
 Let $V$ be an inner product space. An endomorphism $T \colon V \to V$ is called \newterm{normal} if $T \circ T^* = T^* \circ T$. 
 
-Similarly, a matrix $A \in \M_{n \times n}(K)$ (where $K = \mathbb{R}$ or $\mathbb{C}$) is called \newterm{normal} if $A \cdot \overline{A}^\top = \overline{A}^\top \cdot A$. (Note that $A$ is a normal matrix if and only if the map $T_A \colon K^n \to K^n$ is a normal endomorphism, provided we endow $K^n$ with its standard inner product).
+Similarly, a matrix $A \in \M_{n \times n}(K)$ (where $K = \mathbb{R}$ or $\mathbb{C}$) is called \newterm{normal} if $A \cdot \overline{A}\transp = \overline{A}\transp \cdot A$. (Note that $A$ is a normal matrix if and only if the map $T_A \colon K^n \to K^n$ is a normal endomorphism, provided we endow $K^n$ with its standard inner product).
 \end{definition}
 
 We have seen in the previous lemma that if $T \colon V \to V$ is orthogonally diagonalizable, then $T$ is normal. 
@@ -60,7 +60,7 @@ Is the converse statement true?
 
 Over $K = \mathbb{R}$, the answer is NO! 
 For example, consider the matrix $A = \left(\begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix}\right)$. The linear map $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$ is a clockwise rotation by $90^\circ$, so there are no eigenvalues (in $\mathbb{R}$) and no eigenvectors. Thus, it cannot be diagonalizable. 
-However, $\overline{A}^\top = A^\top = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$, and we can easily check that $A \cdot A^\top = A^\top \cdot A = I_2$, meaning $A$ is indeed normal.
+However, $\overline{A}\transp = A\transp = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$, and we can easily check that $A \cdot A\transp = A\transp \cdot A = I_2$, meaning $A$ is indeed normal.
 
 What about over $\mathbb{C}$?
 
@@ -127,7 +127,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
 We only need to prove the direction \qt{$T$ is normal $\implies T$ is orthogonally diagonalizable}, as the reverse direction was already established in \cref{lem:orth_diag_implies_commute}.
 
 By a previous theorem, $T$ is trigonalizable (here we explicitly use the fact that $K = \mathbb{C}$ and the Fundamental Theorem of Algebra). That is, there exists a basis $\mathcal{C}$ for $V$ such that $[T]_{\mathcal{C}}^{\mathcal{C}}$ is an upper triangular matrix. 
-By applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$, we obtain a new basis $\mathcal{B} = (v_1, \dots, v_n)$ which is orthonormal, and such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is still upper triangular. (This is left as an exercise to check. The main point is that if $\mathcal{C} = (u_1, \dots, u_n)$, then Gram-Schmidt gives an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$).
+By applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$, we obtain a new basis $\mathcal{B} := (v_1, \dots, v_n)$ which is orthonormal, and such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is still upper triangular. (This is left as an exercise to check. The main point is that if $\mathcal{C} = (u_1, \dots, u_n)$, then Gram-Schmidt gives an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$).
 
 We claim that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is actually diagonal. To see this, let us write the matrix explicitly as $[T]_{\mathcal{B}}^{\mathcal{B}} = (a_{ij})_{1 \leq i \leq n, 1 \leq j \leq n}$:
 \[
@@ -142,7 +142,7 @@ We claim that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is actually diagonal. To see thi
 Since $\mathcal{B}$ is orthonormal, the norm of $Tv_1$ is simply the norm of the first column of the matrix, which means $\|Tv_1\|^2 = |a_{11}|^2$. 
 We also know that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, which means taking the conjugate transpose:
 \[
-    \left( \overline{[T]_{\mathcal{B}}^{\mathcal{B}}} \right)^\top = 
+    \left( \overline{[T]_{\mathcal{B}}^{\mathcal{B}}} \right)\transp = 
     \begin{pmatrix}
         \overline{a_{11}} & 0 & \dots & 0 \\
         \overline{a_{12}} & \overline{a_{22}} & \dots & 0 \\
@@ -176,7 +176,7 @@ We can continue this process by induction, and show that for all $1 \leq k < n$ 
 \end{proof}
 
 \begin{remark}
-In the proof above, we used $K = \mathbb{C}$ \underline{only} at one place: when we stated that $T$ is trigonalizable. Therefore, we immediately obtain the following corollary for the real case.
+In the proof above, we used $K = \mathbb{C}$ \emph{only} at one place: when we stated that $T$ is trigonalizable. Therefore, we immediately obtain the following corollary for the real case.
 \end{remark}
 
 % Cor. (24.a.6)
@@ -198,7 +198,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$, and l
 \begin{proof}
 Let $\mathcal{B}$ be an orthonormal basis such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is a diagonal matrix. Since we are over $\mathbb{R}$, the conjugate transpose is simply the standard transpose. Then:
 \[
-    [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^\top = [T]_{\mathcal{B}}^{\mathcal{B}},
+    [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)\transp = [T]_{\mathcal{B}}^{\mathcal{B}},
 \]
 where the first equality holds because we are over $\mathbb{R}$, and the second equality holds because $[T]_{\mathcal{B}}^{\mathcal{B}}$ is a diagonal matrix. Because their representation matrices with respect to the same basis are equal, it follows that $T^* = T$.
 \end{proof}
@@ -208,10 +208,10 @@ where the first equality holds because we are over $\mathbb{R}$, and the second 
 \label{def:self_adjoint}
 Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and $T \in \End(V)$. $T$ is called \newterm{self adjoint} if $T^* = T$. 
 
-Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} if $A^* = A$. (Note that over $K = \mathbb{R}$, a self adjoint matrix is precisely a symmetric matrix, $A^\top = A$).
+Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} if $A^* = A$. (Note that over $K = \mathbb{R}$, a self adjoint matrix is precisely a symmetric matrix, $A\transp = A$).
 \end{definition}
 
-\begin{exercise}
+\begin{exercise}[Matrix Representation of Self-Adjoint Maps]
 Show that $T \colon V \to V$ is self adjoint if and only if for every orthonormal basis $\mathcal{B}$ of $V$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint.
 \end{exercise}
 
@@ -243,14 +243,14 @@ Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C
     
     \item For $K = \mathbb{C}$, this follows immediately from the Fundamental Theorem of Algebra. So assume $K = \mathbb{R}$. Let $\mathcal{B}$ be an orthonormal basis for $V$ and consider the matrix $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(\mathbb{R})$. The statement would follow if we show that the characteristic polynomial $P_A(x)$ factors as a product of linear terms with real coefficients. 
     
-    Now, $T^* = T$, hence $A = [T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = A^* = A^\top$. 
+    Now, $T^* = T$, hence $A = [T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = A^* = A\transp$. 
     Consider $\mathbb{C}^n$ endowed with its standard inner product, and view $A$ as a matrix in $\M_{n \times n}(\mathbb{C})$. Let $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ be the corresponding linear map. The standard basis $\mathcal{E}_n = (e_1, \dots, e_n)$ is orthonormal, and $[T_A]_{\mathcal{E}_n}^{\mathcal{E}_n} = A$. 
     
     We know that $P_{T_A}(x) = P_A(x)$. When viewed as a polynomial over $\mathbb{C}$ (i.e., in $\mathbb{C}[x]$), it factors as a product of linear terms:
     \begin{equation}
         P_A(x) = \prod_{k=1}^n (x - \lambda_k) \in \mathbb{C}[x], \quad (*)
     \end{equation}
-    where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $T_A$. But $T_A$ is self adjoint (even when viewed over $\mathbb{C}$ since $A^\top = A = A^*$), so by part \textbf{(a)}, all the eigenvalues $\lambda_1, \dots, \lambda_n \in \mathbb{R}$. Therefore, the factorization $(*)$ actually holds in $\mathbb{R}[x]$.
+    where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $T_A$. But $T_A$ is self adjoint (even when viewed over $\mathbb{C}$ since $A\transp = A = A^*$), so by part \textbf{(a)}, all the eigenvalues $\lambda_1, \dots, \lambda_n \in \mathbb{R}$. Therefore, the factorization $(*)$ actually holds in $\mathbb{R}[x]$.
 \end{enumerate}
 \end{proof}
 
@@ -264,21 +264,21 @@ Let $K = \mathbb{R}$ or $\mathbb{C}$. Recall that a matrix $A \in \M_{n \times n
 
 \begin{example}[Classes of Normal Matrices]
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item For $K = \mathbb{R}$: Symmetric matrices and orthogonal matrices $\operatorname{O}(n)$ are normal.
-    \item For $K = \mathbb{C}$: Self adjoint matrices and unitary matrices $\operatorname{U}(n)$ are normal.
+    \item For $K = \mathbb{R}$: Symmetric matrices and orthogonal matrices $\Orth(n)$ are normal.
+    \item For $K = \mathbb{C}$: Self adjoint matrices and unitary matrices $\Unit(n)$ are normal.
 \end{enumerate}
 \end{example}
 
 \begin{remark}
-There exist symmetric matrices in $\M_{n \times n}(\mathbb{C})$ that are not normal. For example, let $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$. We have $A^\top = A$, so it is symmetric. However, $A^* = \left(\begin{smallmatrix} -i & -i \\ -i & 1 \end{smallmatrix}\right)$. A quick calculation shows that $A \cdot A^* \neq A^* \cdot A$, so $A$ is not normal.
+There exist symmetric matrices in $\M_{n \times n}(\mathbb{C})$ that are not normal. For example, let $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$. We have $A\transp = A$, so it is symmetric. However, $A^* = \left(\begin{smallmatrix} -i & -i \\ -i & 1 \end{smallmatrix}\right)$. A quick calculation shows that $A \cdot A^* \neq A^* \cdot A$, so $A$ is not normal.
 \end{remark}
 
 % Thm. (24.a.11)
 \begin{theorem}[Matrix Spectral Theorems]
 \label{thm:spectral_thm_matrices}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item If $A \in \M_{n \times n}(\mathbb{C})$ is normal, then there exists a unitary matrix $U \in \operatorname{U}(n)$ such that $U^{-1} A U$ is diagonal. (Note that $U^{-1} = U^*$).
-    \item If $A \in \M_{n \times n}(\mathbb{R})$ is a symmetric matrix, then there exists an orthogonal matrix $O \in \operatorname{O}(n)$ such that $O^{-1} A O$ is diagonal. (Note that $O^{-1} = O^\top$).
+    \item If $A \in \M_{n \times n}(\mathbb{C})$ is normal, then there exists a unitary matrix $U \in \Unit(n)$ such that $U^{-1} A U$ is diagonal. (Note that $U^{-1} = U^*$).
+    \item If $A \in \M_{n \times n}(\mathbb{R})$ is a symmetric matrix, then there exists an orthogonal matrix $O \in \Orth(n)$ such that $O^{-1} A O$ is diagonal. (Note that $O^{-1} = O\transp$).
 \end{enumerate}
 \end{theorem}
 
@@ -296,9 +296,9 @@ The proof is left as an exercise, based on the following key points translating 
 \addcontentsline{toc}{section}{Exercise Solutions}
 
 \begin{exercisesolution}[Proof of Gram-Schmidt Preserving Upper Triangularity (on \cpageref{thm:spectral_thm_c})]~\\
-Let $\mathcal{C} = (u_1, \dots, u_n)$ be a basis for $V$ such that the representation matrix $[T]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular. This means that for any $1 \leq k \leq n$, the vector $T(u_k)$ is a linear combination of $u_1, \dots, u_k$. In other words, $T(u_k) \in \Sp(u_1, \dots, u_k)$. Consequently, the subspace $W_k := \Sp(u_1, \dots, u_k)$ is $T$-invariant, meaning $T(W_k) \subseteq W_k$.
+Let $\mathcal{C} := (u_1, \dots, u_n)$ be a basis for $V$ such that the representation matrix $[T]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular. This means that for any $1 \leq k \leq n$, the vector $T(u_k)$ is a linear combination of $u_1, \dots, u_k$. In other words, $T(u_k) \in \Sp(u_1, \dots, u_k)$. Consequently, the subspace $W_k := \Sp(u_1, \dots, u_k)$ is $T$-invariant, meaning $T(W_k) \subseteq W_k$.
 
-Applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$ produces an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with the property that for every $1 \leq k \leq n$, the spans are preserved: $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k) = W_k$. 
+Applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$ produces an orthonormal basis $\mathcal{B} := (v_1, \dots, v_n)$ with the property that for every $1 \leq k \leq n$, the spans are preserved: $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k) = W_k$. 
 
 Now, consider the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$. The $k$-th column of this matrix consists of the coordinates of $T(v_k)$ with respect to the basis $\mathcal{B}$. Since $v_k \in W_k$ and $W_k$ is $T$-invariant, we must have $T(v_k) \in W_k = \Sp(v_1, \dots, v_k)$. This means $T(v_k)$ can be written strictly as a linear combination of $v_1, \dots, v_k$, meaning all coefficients for vectors $v_j$ with $j > k$ are exactly zero. Therefore, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is an upper triangular matrix.
 \end{exercisesolution}
@@ -312,9 +312,9 @@ Conversely, suppose that for any orthonormal basis $\mathcal{B}$ of $V$, the mat
 
 \begin{exercisesolution}[Proof of \cref{thm:spectral_thm_matrices}]
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a normal matrix. By point (a), the linear map $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ is a normal endomorphism with respect to the standard inner product. By the Spectral Theorem over $\mathbb{C}$ (\cref{thm:spectral_thm_c}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ for $\mathbb{C}^n$ consisting of eigenvectors of $T_A$. 
+    \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a normal matrix. By point (a), the linear map $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ is a normal endomorphism with respect to the standard inner product. By the Spectral Theorem over $\mathbb{C}$ (\cref{thm:spectral_thm_c}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B} := (v_1, \dots, v_n)$ for $\mathbb{C}^n$ consisting of eigenvectors of $T_A$. 
     
-    The representation matrix of $T_A$ with respect to $\mathcal{B}$, which is $[T_A]_{\mathcal{B}}^{\mathcal{B}}$, is a diagonal matrix $D$. Let $\mathcal{E}_n$ be the standard basis for $\mathbb{C}^n$. The transition matrix from $\mathcal{B}$ to $\mathcal{E}_n$ is $U := [\id_{\mathbb{C}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$, whose columns are precisely the vectors $v_1, \dots, v_n$. Since $\mathcal{B}$ is an orthonormal basis, point (b) guarantees that $U$ is a unitary matrix. 
+    The representation matrix of $T_A$ with respect to $\mathcal{B}$, which is $[T_A]_{\mathcal{B}}^{\mathcal{B}}$, is a diagonal matrix $D$. Let $\mathcal{E}_n$ be the standard basis for $\mathbb{C}^n$. The transition matrix from $\mathcal{B}$ to $\mathcal{E}_n$ is $U := [\id_{\mathbb{C}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$, whose columns are precisely the vectors $v_1, \dots, v_n$. Since $\mathcal{B}$ is an orthonormal basis, point \textbf{(b)} guarantees that $U$ is a unitary matrix. 
     
     Using the change of basis formula, we have:
     \[

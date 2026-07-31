@@ -1,8 +1,15 @@
-\setcounter{chapter}{9}
-\renewcommand{\thetheorem}{10.b.\arabic{theorem}}
+% Source: 11.basis.b -- this is chapter 11 of the course, not a second half of
+% chapter 10. The part letter `b' is inherited from the source note, hence the
+% 11.b.n prefix even though this is the chapter's first section.
+\renewcommand{\thetheorem}{11.b.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{10}
 
 \chapter{Bases of a Vector Space (Part B)}
+
+% Start the section counter at `b' so the heading reads "Section 11.b" and
+% agrees with the 11.b.n theorem numbers and with the source note 11.basis.b.
+\setcounter{section}{1}
 \section{The Dimension Theorem}
 
 \subsection{The Strong Exchange Lemma}
@@ -185,7 +192,7 @@ The dimension of this space matches the cardinality of the underlying set $S$:
 \dim K^S = |S|
 \]
 
-\begin{exercise}
+\begin{exercise}[Basis for the Space of Functions on a Finite Set]
 If $S$ is a finite set, say $S = \{s_1, \dots, s_n\}$, can you construct an explicit basis for $K^S$? \\
 \textit{(Hint: Try to define a family of functions $f_i$ where each function outputs $1$ for exactly one specific element $s_i$, and $0$ for all other elements).}
 \end{exercise}

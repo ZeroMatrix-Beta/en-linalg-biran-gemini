@@ -1,6 +1,8 @@
-\setcounter{chapter}{21}
 \renewcommand{\thetheorem}{22.b.\arabic{theorem}}
 \setcounter{theorem}{0}
+% This file continues chapter 22, which was opened in 22a. Do NOT reset the
+% chapter counter here -- that would rewind it to 21 and this section would be
+% numbered 21.b while sitting inside chapter 22.
 
 \section{The Orthogonal Complement}
 
@@ -117,7 +119,7 @@ Define a map $P_U \colon V \to U$ as follows: for all $v \in V$, write $v = u + 
 The map $P_U$ has the following properties:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $P_U$ is a linear map.
-    \item $\operatorname{Im} P_U = U$ and $\ker P_U = U^\perp$.
+    \item $\Img P_U = U$ and $\ker P_U = U^\perp$.
     \item For all $v \in V$, $v - P_U(v) \in U^\perp$.
     \item For all $u \in U$, $P_U(u) = u$.
     \item If $(e_1, \dots, e_r)$ is any orthonormal basis for $U$, then $P_U(v) = \sum_{i=1}^r \langle v, e_i \rangle \cdot e_i$ (which exactly equals $\widetilde{P}_U(v)$ from the previous proof).
@@ -125,7 +127,7 @@ The map $P_U$ has the following properties:
 \end{proposition}
 
 \begin{proof}
-Properties \textbf{(a)}--\textbf{(d)} follow from the general fact that if $W_1, W_2$ are vector subspaces of $W$ and $W_1 \oplus W_2 = W$, then the map $P_{W_1} \colon W \to W_1$, defined by $P_{W_1}(w) = w_1$, where we write $w = w_1 + w_2$ in a unique way with $w_1 \in W_1, w_2 \in W_2$, is a linear map. Furthermore, $\operatorname{Im} P_{W_1} = W_1$, $\ker P_{W_1} = W_2$, and for all $w \in W$ we have $w - P_{W_1}(w) \in W_2$. (Thus, $w = P_{W_1}(w) + (w - P_{W_1}(w))$ is the unique decomposition of $w$ as $w = w_1 + w_2$). We also have $P_{W_1}(w) = w$ for all $w \in W_1$.
+Properties \textbf{(a)}--\textbf{(d)} follow from the general fact that if $W_1, W_2$ are vector subspaces of $W$ and $W_1 \oplus W_2 = W$, then the map $P_{W_1} \colon W \to W_1$, defined by $P_{W_1}(w) = w_1$, where we write $w = w_1 + w_2$ in a unique way with $w_1 \in W_1, w_2 \in W_2$, is a linear map. Furthermore, $\Img P_{W_1} = W_1$, $\ker P_{W_1} = W_2$, and for all $w \in W$ we have $w - P_{W_1}(w) \in W_2$. (Thus, $w = P_{W_1}(w) + (w - P_{W_1}(w))$ is the unique decomposition of $w$ as $w = w_1 + w_2$). We also have $P_{W_1}(w) = w$ for all $w \in W_1$.
 
 For statement \textbf{(e)}, we can write
 \begin{equation}
@@ -161,8 +163,12 @@ If $V$ is a finite-di\-men\-sional inner product space and $U \subseteq V$ is a 
 \begin{definition}[Orthogonal and Unitary Matrices]
 \label{def:orthogonal_unitary_matrices}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item A matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{orthogonal} if its columns form an orthonormal system in $\mathbb{R}^n$, with respect to the standard scalar product of $\mathbb{R}^n$. (This means if $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$, then $\langle v_i, v_j \rangle = \delta_{ij}$, which implies they form a basis). We denote the set of orthogonal matrices of size $n \times n$ by $\operatorname{O}(n) \subseteq \M_{n \times n}(\mathbb{R})$.
-    \item A matrix $A \in \M_{n \times n}(\mathbb{C})$ is called \newterm{unitary} if its columns form an orthonormal system in $\mathbb{C}^n$, with respect to the standard Hermitian product on $\mathbb{C}^n$. We denote the set of all unitary matrices of size $n \times n$ by $\operatorname{U}(n) \subseteq \M_{n \times n}(\mathbb{C})$.
+    \item A matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{orthogonal} if its columns form an orthonormal system in $\mathbb{R}^n$, with respect to the standard scalar product of $\mathbb{R}^n$. That is, writing $A$ in terms of its columns,
+    \[
+        A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix},
+    \]
+    the condition means that $\langle v_i, v_j \rangle = \delta_{ij}$ for all $1 \leq i, j \leq n$ (which in particular implies that the columns form an orthonormal basis for $\mathbb{R}^n$). We denote the set of orthogonal matrices of size $n \times n$ by $\Orth(n) \subseteq \M_{n \times n}(\mathbb{R})$.
+    \item A matrix $A \in \M_{n \times n}(\mathbb{C})$ is called \newterm{unitary} if its columns form an orthonormal system in $\mathbb{C}^n$, with respect to the standard Hermitian product on $\mathbb{C}^n$. We denote the set of all unitary matrices of size $n \times n$ by $\Unit(n) \subseteq \M_{n \times n}(\mathbb{C})$.
 \end{enumerate}
 \end{definition}
 
@@ -176,9 +182,9 @@ Why are they called \qt{orthogonal matrices} and not \qt{orthonormal matrices}? 
 For a matrix $A \in \M_{n \times n}(\mathbb{R})$, the following statements are equivalent:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $A$ is an orthogonal matrix.
-    \item $A^\top A = I_n$.
-    \item $A A^\top = I_n$.
-    \item $A^{-1} = A^\top$.
+    \item $A\transp A = I_n$.
+    \item $A A\transp = I_n$.
+    \item $A^{-1} = A\transp$.
 \end{enumerate}
 \end{lemma}
 
@@ -188,19 +194,29 @@ For a matrix $A \in \M_{n \times n}(\mathbb{R})$, the following statements are e
 For a matrix $A \in \M_{n \times n}(\mathbb{C})$, the following statements are equivalent:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $A$ is a unitary matrix.
-    \item $A^* A = I_n$ (which is equivalent to $\overline{A}^\top A = I_n$).
-    \item $A A^* = I_n$ (which is equivalent to $A \overline{A}^\top = I_n$).
+    \item $A^* A = I_n$ (which is equivalent to $\overline{A}\transp A = I_n$).
+    \item $A A^* = I_n$ (which is equivalent to $A \overline{A}\transp = I_n$).
     \item $A^{-1} = A^*$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}[Proof of \cref{lem:char_unitary_matrices}]
 (The proof of \cref{lem:char_orthogonal_matrices} is extremely similar).
-Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$, where $v_k \in \mathbb{C}_{\text{col}}^n$ for $1 \leq k \leq n$. We compute the product:
-\begin{equation}
+Write
+\[
+    A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix},
+\]
+where $v_k \in \mathbb{C}_{\text{col}}^n$ for $1 \leq k \leq n$. We compute the product:
+% \begin{equation}
+% \label{eq:unitary_matrix_product}
+%     A^* A = \begin{pmatrix} \text{---} & \overline{v_1}\transp & \text{---} \\ & \vdots & \\ \text{---} & \overline{v_n}\transp & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \left( \overline{v_i}\transp \cdot v_j \right)_{1 \leq i \leq n, 1 \leq j \leq n} = \left( \langle v_j, v_i \rangle \right)_{1 \leq i \leq n, 1 \leq j \leq n}.
+% \end{equation}
+\begin{align}
 \label{eq:unitary_matrix_product}
-    A^* A = \begin{pmatrix} \text{---} & \overline{v_1}^\top & \text{---} \\ & \vdots & \\ \text{---} & \overline{v_n}^\top & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \left( \overline{v_i}^\top \cdot v_j \right)_{1 \leq i \leq n, 1 \leq j \leq n} = \left( \langle v_j, v_i \rangle \right)_{1 \leq i \leq n, 1 \leq j \leq n}.
-\end{equation}
+    A^* A &= \begin{pmatrix} \text{---} & \overline{v_1}\transp & \text{---} \\ & \vdots & \\ \text{---} & \overline{v_n}\transp & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} \nonumber \\
+    &= \left( \overline{v_i}\transp \cdot v_j \right)_{1 \leq i, j \leq n} \\
+    &= \left( \langle v_j, v_i \rangle \right)_{1 \leq i, j \leq n}.
+\end{align}
 Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system, which is equivalent to saying that the resulting matrix in \eqref{eq:unitary_matrix_product} is exactly $I_n$. The equivalence of these statements to $A A^* = I_n$ is a general property of invertible matrices.
 \end{proof}
 
@@ -208,8 +224,8 @@ Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system,
 \begin{corollary}[Rows of Orthogonal and Unitary Matrices]
 \label{cor:rows_orthogonal_unitary}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A \in \M_{n \times n}(\mathbb{R})$. The matrix $A \in \operatorname{O}(n)$ if and only if $A^\top \in \operatorname{O}(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{R}^n$.
-    \item Let $A \in \M_{n \times n}(\mathbb{C})$. The matrix $A \in \operatorname{U}(n)$ if and only if $A^* \in \operatorname{U}(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{C}^n$.
+    \item Let $A \in \M_{n \times n}(\mathbb{R})$. The matrix $A \in \Orth(n)$ if and only if $A\transp \in \Orth(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{R}^n$.
+    \item Let $A \in \M_{n \times n}(\mathbb{C})$. The matrix $A \in \Unit(n)$ if and only if $A^* \in \Unit(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{C}^n$.
 \end{enumerate}
 \end{corollary}
 
@@ -219,39 +235,35 @@ Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system,
 \begin{theorem}[QR-Decomposition for Invertible Matrices]
 \label{thm:qr_decomposition_invertible}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A \in \GL_n(\mathbb{R})$. Then there exists $Q \in \operatorname{O}(n)$ and an upper triangular matrix $R \in \M_{n \times n}(\mathbb{R})$ such that $A = Q \cdot R$.
-    \item Let $A \in \GL_n(\mathbb{C})$. Then there exists $Q \in \operatorname{U}(n)$ and an upper triangular matrix $R \in \M_{n \times n}(\mathbb{C})$ such that $A = Q \cdot R$.
+    \item Let $A \in \GL_n(\mathbb{R})$. Then there exists $Q \in \Orth(n)$ and an upper triangular matrix $R \in \M_{n \times n}(\mathbb{R})$ such that $A = Q \cdot R$.
+    \item Let $A \in \GL_n(\mathbb{C})$. Then there exists $Q \in \Unit(n)$ and an upper triangular matrix $R \in \M_{n \times n}(\mathbb{C})$ such that $A = Q \cdot R$.
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}[Proof (for \textbf{(a)} and \textbf{(b)} together)]
-Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$ with $v_k \in K_{\text{col}}^n$ (where $K = \mathbb{R}$ or $\mathbb{C}$).
-Since $A \in \GL_n(K)$, the vectors $v_1, \dots, v_n$ form a basis for $K^n$.
-Apply the Gram-Schmidt orthogonalization process to $v_1, \dots, v_n$ to obtain an orthonormal basis $e_1, \dots, e_n$ for $K^n$.
-Recall that for all $1 \leq j \leq n$, $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_j)$.
-We also have:
-\begin{align*}
-    v_1 &= \langle v_1, e_1 \rangle e_1 \\
-    v_2 &= \langle v_2, e_1 \rangle e_1 + \langle v_2, e_2 \rangle e_2 \\
-    &\vdots \\
-    v_j &= \langle v_j, e_1 \rangle e_1 + \dots + \langle v_j, e_j \rangle e_j \\
-    &\vdots \\
-    v_n &= \langle v_n, e_1 \rangle e_1 + \dots + \dots + \langle v_n, e_n \rangle e_n.
-\end{align*}
-This directly implies the matrix equation:
+\begin{proof}[Proof of \cref{thm:qr_decomposition_invertible}]
+We prove parts \textbf{(a)} and \textbf{(b)} simultaneously for $K = \mathbb{R}$ and $K = \mathbb{C}$:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $A \in \GL_n(\mathbb{R})$. Write
 \[
-    \begin{pmatrix} | & & | & & | \\ v_1 & \dots & v_j & \dots & v_n \\ | & & | & & | \end{pmatrix} = \begin{pmatrix} | & & | & & | \\ e_1 & \dots & e_j & \dots & e_n \\ | & & | & & | \end{pmatrix} \begin{pmatrix} \langle v_1, e_1 \rangle & \langle v_2, e_1 \rangle & \dots & \langle v_j, e_1 \rangle & \dots & \langle v_n, e_1 \rangle \\ 0 & \langle v_2, e_2 \rangle & \dots & \langle v_j, e_2 \rangle & \dots & \langle v_n, e_2 \rangle \\ \vdots & 0 & \ddots & \vdots & & \vdots \\ \vdots & \vdots & & \langle v_j, e_j \rangle & \dots & \vdots \\ 0 & 0 & \dots & 0 & \dots & \langle v_n, e_n \rangle \end{pmatrix}.
+    A := \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}
 \]
-This is precisely $A = Q \cdot R$, where $Q \in \operatorname{O}(n)$ (or $\operatorname{U}(n)$), and $R$ is an upper triangular matrix.
+with $v_k \in \mathbb{R}_{\text{col}}^n$. Since $A \in \GL_n(\mathbb{R})$, the vectors $v_1, \dots, v_n$ form a basis for $\mathbb{R}^n$. Apply the Gram-Schmidt orthogonalization process to $v_1, \dots, v_n$ to obtain an orthonormal basis $e_1, \dots, e_n$ for $\mathbb{R}^n$. Recall that for all $1 \leq j \leq n$, $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_j)$. We have $v_j = \sum_{i=1}^j \langle v_j, e_i \rangle e_i$, which yields $A = Q \cdot R$ with $Q \in \Orth(n)$ and $R$ upper triangular.
+
+    \item Let $A \in \GL_n(\mathbb{C})$. Following the identical construction over $\mathbb{C}$ yields $A = Q \cdot R$ with $Q \in \Unit(n)$ and $R$ upper triangular.
+\end{enumerate}
 \end{proof}
 
 \begin{theorem}[Extension of QR-Decomposition for All Matrices]
 \label{thm:qr_decomposition_all}
-Let $A \in \M_{n \times n}(K)$, and let $r := \rank(A)$. Then there exist matrices $Q$ and $R$ with $Q \in \operatorname{O}(n)$ if $K = \mathbb{R}$ (and $Q \in \operatorname{U}(n)$ if $K = \mathbb{C}$), and $R = \begin{pmatrix} C & * \\ 0 & 0 \end{pmatrix} \in \M_{n \times n}(K)$, where $C \in \M_{r \times r}(K)$ is an upper triangular matrix, such that $A = Q \cdot R$.
+Let $A \in \M_{n \times n}(K)$, and let $r := \rank(A)$. Then there exist matrices $Q$ and $R$ with $Q \in \Orth(n)$ if $K = \mathbb{R}$ (and $Q \in \Unit(n)$ if $K = \mathbb{C}$), and $R = \begin{pmatrix} C & * \\ 0 & 0 \end{pmatrix} \in \M_{n \times n}(K)$, where $C \in \M_{r \times r}(K)$ is an upper triangular matrix, such that $A = Q \cdot R$.
 \end{theorem}
 
 \begin{proof}
-Let $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$. Note that $r = \dim \Sp(v_1, \dots, v_n)$.
+Let
+\[
+    A := \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}.
+\]
+Note that $r = \dim \Sp(v_1, \dots, v_n)$.
 We may assume $r \geq 1$, because otherwise $r = 0$, meaning $A = 0$, in which case we can take $R = 0$ and $Q$ to be any arbitrary orthogonal/unitary matrix.
 Note that there exist indices $1 \leq i_1 < \dots < i_r \leq n$ such that:
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -261,10 +273,14 @@ Note that there exist indices $1 \leq i_1 < \dots < i_r \leq n$ such that:
 To see this, let $1 \leq i_1$ be the minimal index $j$ such that $v_j \neq 0$. (Since $r \geq 1$, there exists such an index.) Clearly, $\Sp(v_1, \dots, v_{i_1}) = \Sp(v_{i_1})$. Suppose we have defined $1 \leq i_1 < \dots < i_k < n$ as above. Consider now the minimal index $\ell$, with $i_k < \ell \leq n$ and such that $v_\ell \notin \Sp(v_{i_1}, \dots, v_{i_k})$. If there is no such $\ell$, then $k = r$ and we are done. Otherwise, take $i_{k+1} := \ell$. Continue the construction by induction.
 
 Now, apply the Gram-Schmidt process to the list of vectors $v_{i_1}, \dots, v_{i_r}$ and obtain an orthonormal system $e_1, \dots, e_r$ such that $(e_1, \dots, e_k)$ is a basis for $\Sp(v_{i_1}, \dots, v_{i_k}) = \Sp(v_1, v_2, \dots, v_{i_k})$.
-Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how?). Take $Q = \begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix}$, and let $R$ be the exact same matrix block as in the previous proof. This guarantees $A = Q \cdot R$ with $R$ taking the desired block form.
+Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how?). Take
+\[
+    Q := \begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix},
+\]
+and let $R$ be the exact same matrix block as in the previous proof. This guarantees $A = Q \cdot R$ with $R$ taking the desired block form.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Gram-Schmidt on Linearly Dependent Vectors]
 Let $V$ be an inner product space. Suppose $v_1, \dots, v_m \in V$ are not necessarily linearly independent, but not all of them are $0$. What happens if we apply the Gram-Schmidt orthogonalization process?
 
 Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$ that spans $\Sp(v_1, \dots, v_{i_k})$ and we encounter a vector $v_{i_{k+1}} \in \Sp(v_1, v_2, \dots, v_{i_k})$. How will the next vector in the Gram-Schmidt process look like?

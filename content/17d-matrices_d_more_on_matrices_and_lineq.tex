@@ -1,25 +1,87 @@
 \renewcommand{\thetheorem}{17.d.\arabic{theorem}}
+\setcounter{theorem}{0}
 
 \section{More on Matrices and Linear Equations}
 
 Let $A \in \M_{m \times n}(K)$, and consider the homogeneous system of linear equations $A \cdot x = 0$. We denote the space of solutions of this system by:
 \begin{equation*}
-    \operatorname{Sol}(A, 0) := \{x \in K^n \mid A x = 0\} = \ker(T_A)
+    \Sol(A, 0) := \{x \in K^n \mid A x = 0\} = \ker(T_A)
 \end{equation*}
 Note that by the Rank-Nullity Theorem, we have 
-\[\dim \operatorname{Sol}(A, 0) = n - \rank(A),\] 
-because $\dim \ker(T_A) = n - \dim \operatorname{Im}(T_A)$.
+\[\dim \Sol(A, 0) = n - \rank(A),\] 
+because $\dim \ker(T_A) = n - \dim \Img(T_A)$.
 
 Let $A'$ be a row-reduced echelon matrix that is row-equivalent to $A$ (for example, $A'$ is obtained from $A$ by Gauss elimination). We then know that the number of pivots of $A'$ equals $\rank(A)$, and the number of free variables is $n - \rank(A)$.
 
-We can visualize the structure of $A'$ and its corresponding variables $x_1, \dots, x_n$ as follows. The columns containing the leading $1$'s (pivots) correspond to the pivot variables, while the remaining columns correspond to the free variables. Clearly, the solution spaces are identical:
+We can visualize the structure of $A'$ and its corresponding variables $x_1, \dots, x_n$ as in \cref{fig:rref_pivot_staircase}. The columns containing the leading $1$'s (pivots) correspond to the pivot variables, while the remaining columns correspond to the free variables. Clearly, the solution spaces are identical:
 \begin{equation*}
-    \operatorname{Sol}(A, 0) = \operatorname{Sol}(A', 0)
+    \Sol(A, 0) = \Sol(A', 0)
 \end{equation*}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth]
+  % --- the pivot pattern: column index of the leading 1 in each non-zero row ---
+  % rows are drawn top-down; row k has its pivot in column pivotcol{k}
+  \def\ncols{9}
+  \def\nrows{6}   % 4 non-zero rows + 2 zero rows
+
+  % Shade the pivot columns (2, 3, 6, 8) and the free columns.
+  \foreach \c in {2,3,6,8}
+    \fill[ThemePurple!12] (\c-1, 0) rectangle (\c, \nrows);
+  \foreach \c in {1,4,5,7,9}
+    \fill[BurntOrange!10] (\c-1, 0) rectangle (\c, \nrows);
+
+  % The zero rows at the bottom.
+  \fill[black!6] (0,0) rectangle (\ncols, 2);
+
+  % The staircase: everything strictly below/left of it is zero.
+  \draw[very thick, ThemePurple!80!black]
+    (0,\nrows) -- (1,\nrows) -- (1,5) -- (2,5) -- (2,4) -- (5,4) -- (5,3)
+    -- (7,3) -- (7,2) -- (\ncols,2);
+
+  % Leading 1's.
+  \node at (1.5, 5.5) {$1$};
+  \node at (2.5, 4.5) {$1$};
+  \node at (5.5, 3.5) {$1$};
+  \node at (7.5, 2.5) {$1$};
+
+  % A hint of the free entries to the right of each pivot.
+  \node[gray] at (4.0, 5.5) {$*$};   \node[gray] at (6.5, 5.5) {$*$};
+  \node[gray] at (8.5, 5.5) {$*$};   \node[gray] at (4.0, 4.5) {$*$};
+  \node[gray] at (6.5, 4.5) {$*$};   \node[gray] at (8.5, 4.5) {$*$};
+  \node[gray] at (6.5, 3.5) {$*$};   \node[gray] at (8.5, 3.5) {$*$};
+  \node[gray] at (8.5, 2.5) {$*$};
+  \node[black!45, font=\Large] at (4.5, 1.0) {$0$};
+
+  % Matrix delimiters.
+  \draw[thick] (-0.18,0) -- (-0.35,0) -- (-0.35,\nrows) -- (-0.18,\nrows);
+  \draw[thick] (\ncols+0.18,0) -- (\ncols+0.35,0) -- (\ncols+0.35,\nrows) -- (\ncols+0.18,\nrows);
+
+  % Column labels: which variable each column belongs to.
+  \foreach \c/\lab in {1/{x_1},2/{x_2},3/{x_3},4/{x_4},5/{x_5},6/{x_6},7/{x_7},8/{x_8},9/{x_9}}
+    \node[below] at (\c-0.5, 0) {\small $\lab$};
+
+  % Braces classifying the columns.
+  \node[below=5mm, ThemePurple!80!black, font=\small\sffamily\bfseries] at (4.5,-0.35)
+    {pivot columns: $x_2, x_3, x_6, x_8$ \quad ($r = \rank(A) = 4$ of them)};
+  \node[below=9mm, BurntOrange!80!black, font=\small\sffamily\bfseries] at (4.5,-0.35)
+    {free columns: $x_1, x_4, x_5, x_7, x_9$ \quad ($\ell = n - \rank(A) = 5$ of them)};
+
+  \node[right=3mm, black!55, font=\small] at (\ncols+0.35, 1.0) {zero rows};
+\end{tikzpicture}
+\caption{The staircase shape of a row-reduced echelon matrix $A'$, here with
+$n = 9$ columns and $\rank(A) = 4$. Every entry below the purple staircase
+vanishes. Each of the $r$ non-zero rows contributes exactly one leading $1$,
+whose column is a \emph{pivot} column; the remaining $\ell = n - r$ columns are
+the \emph{free} columns. Choosing the $\ell$ free variables arbitrarily forces
+the $r$ pivot variables, which is precisely the map $\Phi$ below.}
+\label{fig:rref_pivot_staircase}
+\end{figure}
 
 Denote by $x_{i_1}, \dots, x_{i_\ell}$ the free variables, where $1 \le i_1 < \dots < i_\ell \le n$ and $\ell = n - \rank(A)$. Similarly, denote by $x_{j_1}, \dots, x_{j_r}$ the pivot variables, where $1 \le j_1 < \dots < j_r \le n$ and $r = \rank(A)$.
 
-For each choice of values for the free variables $x_{i_1}, \dots, x_{i_\ell} \in K$, the pivot variables $x_{j_1}, \dots, x_{j_r}$ are uniquely determined. So, we obtain a map $\Phi: K^\ell \to \operatorname{Sol}(A, 0)$, where $\ell = n - \rank(A)$, defined by:
+For each choice of values for the free variables $x_{i_1}, \dots, x_{i_\ell} \in K$, the pivot variables $x_{j_1}, \dots, x_{j_r}$ are uniquely determined. So, we obtain a map $\Phi: K^\ell \to \Sol(A, 0)$, where $\ell = n - \rank(A)$, defined by:
 \begin{equation*}
     \Phi(\lambda_1, \dots, \lambda_\ell) = \text{the unique solution of } Ax = 0 \text{ (which is the solution of } A'x = 0 \text{)}
 \end{equation*}
@@ -42,11 +104,11 @@ This allows us to isolate the pivot variable $x_{j_k}$:
 \end{equation*}
 This explicitly shows that the pivot variables $x_{j_1}, \dots, x_{j_r}$ depend linearly on the free variables $x_{i_1}, \dots, x_{i_\ell}$. This proves the linearity of $\Phi$.
 
-\textbf{Isomorphism:} To prove that $\Phi$ is an isomorphism, it is enough to show that $\ker(\Phi) = \{0\}$, because $\Phi: K^\ell \to \operatorname{Sol}(A, 0)$ is a linear map between two spaces of the exact same dimension $\ell$.
+\textbf{Isomorphism:} To prove that $\Phi$ is an isomorphism, it is enough to show that $\ker(\Phi) = \{0\}$, because $\Phi: K^\ell \to \Sol(A, 0)$ is a linear map between two spaces of the exact same dimension $\ell$.
 
 But this clearly holds: if $\lambda = (\lambda_1, \dots, \lambda_\ell) \in \ker(\Phi)$, which means $\Phi(\lambda_1, \dots, \lambda_\ell) = 0$, then by the definition of $\Phi$, we must have $\lambda_1 = \dots = \lambda_\ell = 0$. This is simply because each $\lambda_k$ is an actual entry in the output vector $\Phi(\lambda_1, \dots, \lambda_\ell)$.
 
-Furthermore, we can explicitly state the inverse map $\Phi^{-1}$. For any $x \in \operatorname{Sol}(A, 0)$, we extract the entries corresponding to the free variables:
+Furthermore, we can explicitly state the inverse map $\Phi^{-1}$. For any $x \in \Sol(A, 0)$, we extract the entries corresponding to the free variables:
 \begin{equation*}
     \Phi^{-1}(x) = \begin{pmatrix} x_{i_1} \\ \vdots \\ x_{i_\ell} \end{pmatrix}
 \end{equation*}
@@ -58,10 +120,10 @@ This completes the proof.
 \label{cor:non_homogeneous_solutions}
 Let $b \in K^m$, and $A \in \M_{m \times n}(K)$. Then:
 \begin{enumerate}
-    \item $\operatorname{Sol}(A, b) := \{x \in K^n \mid A \cdot x = b\} \neq \emptyset$ if and only if $b \in \operatorname{ColS}(A)$.
-    \item If $\operatorname{Sol}(A, b) \neq \emptyset$ and $y \in \operatorname{Sol}(A, b)$, then:
+    \item $\Sol(A, b) := \{x \in K^n \mid A \cdot x = b\} \neq \emptyset$ if and only if $b \in \ColS(A)$.
+    \item If $\Sol(A, b) \neq \emptyset$ and $y \in \Sol(A, b)$, then:
     \begin{equation*}
-        \operatorname{Sol}(A, b) = y + \operatorname{Sol}(A, 0) := \{y + x \mid x \in \operatorname{Sol}(A, 0)\}
+        \Sol(A, b) = y + \Sol(A, 0) := \{y + x \mid x \in \Sol(A, 0)\}
     \end{equation*}
 \end{enumerate}
 \end{corollary}
@@ -79,15 +141,15 @@ For any vector $x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in K^n$,
     A \cdot x = x_1 \begin{pmatrix} | \\ v_1 \\ | \end{pmatrix} + \dots + x_n \begin{pmatrix} | \\ v_n \\ | \end{pmatrix}
 \end{equation*}
 
-2) Let $y \in \operatorname{Sol}(A, b)$. First, assume $x \in \operatorname{Sol}(A, 0)$. Then $A \cdot x = 0$ and $A \cdot y = b$. Adding these together yields:
+2) Let $y \in \Sol(A, b)$. First, assume $x \in \Sol(A, 0)$. Then $A \cdot x = 0$ and $A \cdot y = b$. Adding these together yields:
 \begin{equation*}
     A(y + x) = A \cdot y + A \cdot x = b + 0 = b
 \end{equation*}
-Conversely, if $z \in \operatorname{Sol}(A, b)$, meaning $A \cdot z = b$, then define $x := z - y$. We obviously have $z = y + x$, and checking the multiplication gives:
+Conversely, if $z \in \Sol(A, b)$, meaning $A \cdot z = b$, then define $x := z - y$. We obviously have $z = y + x$, and checking the multiplication gives:
 \begin{equation*}
     A \cdot x = A \cdot (z - y) = A \cdot z - A \cdot y = b - b = 0
 \end{equation*}
-This shows that any solution $z$ can be written as $y + x$ for some $x \in \operatorname{Sol}(A, 0)$.
+This shows that any solution $z$ can be written as $y + x$ for some $x \in \Sol(A, 0)$.
 \end{proof}
 
 \begin{proposition}[Rank Criterion for Solvability]
@@ -101,13 +163,17 @@ Let $A \in \M_{m \times n}(K)$ and $b \in K^m$. The following statements are equ
 \end{proposition}
 
 \begin{proof}
-Write $A$ in terms of its columns, $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$. We have the following chain of equivalences:
+Write $A$ in terms of its columns,
+\[
+    A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}.
+\]
+We have the following chain of equivalences:
 \begin{align*}
-    \rank(A|b) = \rank(A) &\iff \operatorname{col-rank}(A|b) = \operatorname{col-rank}(A) \\
+    \rank(A|b) = \rank(A) &\iff \rank_{\text{col}}(A|b) = \rank_{\text{col}}(A) \\
     &\iff \dim \Sp(v_1, \dots, v_n, b) = \dim \Sp(v_1, \dots, v_n) \\
     &\iff b \in \Sp(v_1, \dots, v_n) \\
-    &\iff b \in \operatorname{ColS}(A) \\
-    &\iff \operatorname{Sol}(A, b) \neq \emptyset
+    &\iff b \in \ColS(A) \\
+    &\iff \Sol(A, b) \neq \emptyset
 \end{align*}
 The last step holds directly by \cref{cor:non_homogeneous_solutions}, thus finishing the proof.
 \end{proof}
@@ -125,9 +191,13 @@ Let $A \in \M_{m \times n}(K)$ and $b \in K^m$. The following statements are equ
 \begin{proof}
 This is left as an exercise.
 
-\textbf{Hints:} Write $A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}$. Note that:
+\textbf{Hints:} Write
+\[
+    A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}.
+\]
+Note that:
 \begin{equation*}
     \rank(A) = n \iff \dim \Sp(v_1, \dots, v_n) = n
 \end{equation*}
-Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linearly independent, and therefore, they form a basis for $\operatorname{ColS}(A)$.
+Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linearly independent, and therefore, they form a basis for $\ColS(A)$.
 \end{proof}

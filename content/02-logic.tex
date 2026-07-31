@@ -1,6 +1,6 @@
-\setcounter{chapter}{1}
 \renewcommand{\thetheorem}{2.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{1}
 
 
 \chapter{Logic and Mathematics}
@@ -10,7 +10,7 @@ Before advancing into the formal theory of vector spaces, we must establish the 
 \subsection{Mathematical Statements and Basic Operators}
 
 \begin{definition}[Mathematical Statement]
-A \qt{mathematical statement} (or logical statement) is a declarative sentence that is definitively either \textbf{True (T)} or \textbf{False (F)}. It is a fundamental axiom of logic that a statement cannot be both true and false simultaneously.
+A \newterm{mathematical statement} (or logical statement) is a declarative sentence that is definitively either \textbf{True (T)} or \textbf{False (F)}. It is a fundamental axiom of logic that a statement cannot be both true and false simultaneously.
 \end{definition}
 
 \begin{example}[Examples of Logical Statements]
@@ -26,7 +26,7 @@ Statements A and B are True. Statement C is False (e.g., $9$ is odd but not prim
 \subsection{Negation, Conjunction, and Disjunction}
 
 \begin{definition}[Negation]
-The \qt{negation} of a statement $A$, denoted $\neg A$ (or sometimes $\sim A$), asserts that $A$ does not hold.
+The \newterm{negation} of a statement $A$, denoted $\neg A$ (or sometimes $\sim A$), asserts that $A$ does not hold.
 \[
 \begin{array}{|c|c|}
 \hline
@@ -121,7 +121,7 @@ A & B & A \iff B \\
 \]
 \end{definition}
 
-\begin{exercise}
+\begin{exercise}[Contrapositive and De Morgan's Laws]
 Prove the following via truth tables:
 \begin{enumerate}
     \item \textbf{Contrapositive:} $(A \implies B) \iff (\neg B \implies \neg A)$.
@@ -131,7 +131,7 @@ Prove the following via truth tables:
 
 \subsection{Predicates and Quantifiers}
 
-A \qt{predicate} $P(x)$ is a statement whose truth depends on a variable $x$. We use quantifiers to convert predicates into absolute statements.
+A \newterm{predicate} $P(x)$ is a statement whose truth depends on a variable $x$. We use quantifiers to convert predicates into absolute statements.
 
 \begin{definition}[Quantifiers]
 \begin{itemize}
@@ -149,7 +149,7 @@ Let $P(n)$ be the predicate $n = n^2$ over $\mathbb{Z}$.
 \end{example}
 
 \begin{importantremark}[The Order of Quantifiers]
-The order of quantifiers is non-commutative. Consider $X$ (ETH students), $Y$ (courses), and $A(x,y) = \qt{student $x$ takes course $y$}$.
+The order of quantifiers is non-commutative. Consider $X$ (ETH students), $Y$ (courses), and $A(x,y) := \qt{\text{student } x \text{ takes course } y}$.
 \begin{itemize}
     \item $\forall x \in X, \exists y \in Y : A(x,y)$ means every student takes at least one course (True).
     \item $\exists y \in Y, \forall x \in X : A(x,y)$ means there is one specific course taken by \textit{every} student (False).

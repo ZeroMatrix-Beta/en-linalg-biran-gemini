@@ -1,15 +1,13 @@
---- START OF FILE singular-value-decomposition.tex ---
-
-\setcounter{chapter}{25}
 \renewcommand{\thetheorem}{26.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{25}
 
 \chapter{Singular Value Decomposition}
 
 % Thm. (26.a.1)
 \begin{theorem}[Singular Value Decomposition]
 \label{thm:singular_value_decomposition}
-Let $K = \mathbb{R}$ or $\mathbb{C}$, and let $A \in \M_{m \times n}(K)$. Then there exist $P \in \operatorname{O}(m)$ (if $K = \mathbb{R}$) or $P \in \operatorname{U}(m)$ (if $K = \mathbb{C}$), and $Q \in \operatorname{O}(n)$ (if $K = \mathbb{R}$) or $Q \in \operatorname{U}(n)$ (if $K = \mathbb{C}$), and a \qt{diagonal} matrix
+Let $K = \mathbb{R}$ or $\mathbb{C}$, and let $A \in \M_{m \times n}(K)$. Then there exist $P \in \Orth(m)$ (if $K = \mathbb{R}$) or $P \in \Unit(m)$ (if $K = \mathbb{C}$), and $Q \in \Orth(n)$ (if $K = \mathbb{R}$) or $Q \in \Unit(n)$ (if $K = \mathbb{C}$), and a \qt{diagonal} matrix
 \[
 D = \left(
 \begin{array}{ccc}
@@ -40,12 +38,13 @@ Indeed, for all $0 \neq v \in K^n$, we have:
 This implies that $T_B v \neq 0$. Therefore, $\ker T_B = \{0\}$, hence $T_B$ is injective.
 
 Note also that if $\eta \in K$ is an eigenvalue of $B$, then $\eta \in \mathbb{R}$ (even if $K = \mathbb{C}$) and $\eta > 0$.
-Indeed, $B$ is self adjoint ($B^* = (A^* A)^* = A^* (A^*)^* = A^* A = B$), hence $\eta \in \mathbb{R}$. To see that $\eta > 0$, let $v$ be an eigenvector of $\eta$. From \eqref{eq:svd_pos_def}, we have:
+Indeed, $B$ is self adjoint ($B^* = (A^* A)^* = A^* (A^*)^* = A^* A = B$), hence $\eta \in \mathbb{R}$. To see that $\eta > 0$, let $v$ be an eigenvector for $\eta$, so that $v \neq 0$ and $Bv = \eta v$. Substituting this into \eqref{eq:svd_pos_def} gives
 \[
-\langle Bv, v \rangle > 0 \implies \langle \eta v, v \rangle > 0 \implies \eta \langle v, v \rangle > 0 \implies \eta > 0.
+0 < \langle Bv, v \rangle = \langle \eta v, v \rangle = \eta \cdot \langle v, v \rangle,
 \]
+where the last step uses linearity in the first variable together with $\eta \in \mathbb{R}$. Since $v \neq 0$, positivity of the inner product gives $\langle v, v \rangle > 0$, and therefore, $\eta > 0$.
 
-By a previous theorem, $B$ is orthogonally diagonalizable, hence there exists $Q \in \operatorname{O}(n)$ (or $\operatorname{U}(n)$) such that
+By a previous theorem, $B$ is orthogonally diagonalizable, hence there exists $Q \in \Orth(n)$ (or $\Unit(n)$) such that
 \[
 Q^{-1} A^* A Q = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
 \]
@@ -66,9 +65,9 @@ It follows that the columns of $C$ form an orthonormal system of vectors in $K^m
 \[
 C^* C = 
 \begin{pmatrix}
-- & \overline{c_1}^\top & - \\
+- & \overline{c_1}\transp & - \\
 & \vdots & \\
-- & \overline{c_n}^\top & -
+- & \overline{c_n}\transp & -
 \end{pmatrix}
 \begin{pmatrix}
 | & & | \\
@@ -81,7 +80,7 @@ Extend $c_1, \dots, c_n$ to an orthonormal basis $c_1, \dots, c_n, f_{n+1}, \dot
 \[
 P := \begin{pmatrix} | & & | & | & & | \\ c_1 & \dots & c_n & f_{n+1} & \dots & f_m \\ | & & | & | & & | \end{pmatrix} \in \M_{m \times m}(K).
 \]
-Clearly, $P \in \operatorname{O}(m)$ (or $\operatorname{U}(m)$).
+Clearly, $P \in \Orth(m)$ (or $\Unit(m)$).
 
 We have:
 \[

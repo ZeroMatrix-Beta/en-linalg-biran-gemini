@@ -1,6 +1,6 @@
-\setcounter{chapter}{9}
 \renewcommand{\thetheorem}{10.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{9}
 
 \chapter{Bases of Vector Spaces (Part A)}
 
@@ -11,7 +11,7 @@
 We have previously explored two fundamental properties a set of vectors can possess: the ability to \textit{span} the entire space, and the property of being \textit{linearly independent} (having no redundancies). A basis is simply a set that achieves both simultaneously.
 
 \begin{definition}[Basis]
-Let $V$ be a vector space over a field $K$. A subset $S \subseteq V$ is called a \textbf{basis} of $V$ (plural: \qt{bases}) if the following two conditions hold:
+Let $V$ be a vector space over a field $K$. A subset $S \subseteq V$ is called a \textbf{basis} of $V$ (plural: \newterm{bases}) if the following two conditions hold:
 \begin{enumerate}
     \item $S$ is linearly independent.
     \item $S$ generates (or spans) $V$, meaning $\Sp(S) = V$.
@@ -24,7 +24,7 @@ Why is a basis so mathematically desirable? Because it provides a perfect "coord
 A subset $S \subseteq V$ is a basis of $V$ if and only if every vector $v \in V$ can be written in a \textbf{unique way} as a linear combination of vectors in $S$.
 \end{proposition}
 
-To prove this rigorously—especially since $S$ might be an infinite set, like the set of all polynomials—we must first formalize what we mean by "a unique way as a linear combination." In a vector space, we can only ever add a \textit{finite} number of vectors together. 
+To prove this rigorouslyâ€”especially since $S$ might be an infinite set, like the set of all polynomialsâ€”we must first formalize what we mean by "a unique way as a linear combination." In a vector space, we can only ever add a \textit{finite} number of vectors together. 
 
 We formalize this using \textbf{finitely supported functions}. Let $c: S \to K$ be a function that assigns a scalar coefficient to every vector in $S$. We require that $c$ is non-zero on only finitely many elements. In other words, the "support" of the function:
 \[
@@ -43,10 +43,10 @@ Because $\text{supp}(c)$ is finite, the number of non-zero terms in this sum is 
     arrow/.style={->, thick, >=stealth, draw=blue!60!black}
 ]
     \node[box] (funcs) {\textbf{Finitely Supported Functions} \\ $c: S \to K$ \\ (Only finitely many $c(u) \ne 0$)};
-    \node[box, right=3cm of funcs] (vectors) {\textbf{Vectors in $V$} \\ $v = \sum_{u \in S} c(u) u$};
+    \node[box, right=4.5cm of funcs] (vectors) {\textbf{Vectors in $V$} \\ $v := \sum_{u \in S} c(u) u$};
     
-    \draw[arrow] (funcs.east) to[bend left=15] node[midway, above] {Linear Combination} (vectors.west);
-    \draw[arrow, dashed] (vectors.west) to[bend left=15] node[midway, below] {Unique Recipe (if Basis)} (funcs.east);
+    \draw[arrow] (funcs.east) to[bend left=15] node[midway, above, font=\small] {Linear Combination} (vectors.west);
+    \draw[arrow, dashed] (vectors.west) to[bend left=15] node[midway, below, font=\small] {Unique Recipe (if Basis)} (funcs.east);
 \end{tikzpicture}
 \end{center}
 

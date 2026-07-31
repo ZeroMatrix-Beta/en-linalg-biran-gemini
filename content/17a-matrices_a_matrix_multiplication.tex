@@ -1,6 +1,6 @@
-\setcounter{chapter}{16}
 \renewcommand{\thetheorem}{17.a.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{16}
 \chapter{Matrices}
 
 \section{Matrix Multiplication}
@@ -94,7 +94,7 @@ If $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$, then $A \cdot B$ i
     
     \item If $A \in \M_{m \times n}(K)$ and $w \in K_{\text{row}}^{m} = \M_{1 \times m}(K)$, then we can define the left-multiplication $w \cdot A \in \M_{1 \times n}(K) = K_{\text{row}}^{n}$. If $A$ is represented by its row vectors $v_1, \dots, v_m$, this operation scales and sums the rows of $A$ according to the entries of $w$.
     
-    \item Let $v = (a_1, \dots, a_n) \in K_{\text{row}}^{n} = \M_{1 \times n}(K)$, and let $w = (b_1, \dots, b_n)^T \in K_{\text{col}}^{n} = \M_{n \times 1}(K)$. Then the product $v \cdot w \in \M_{1 \times 1}(K) = K$ is simply the standard scalar product:
+    \item Let $v = (a_1, \dots, a_n) \in K_{\text{row}}^{n} = \M_{1 \times n}(K)$, and let $w = (b_1, \dots, b_n)\transp \in K_{\text{col}}^{n} = \M_{n \times 1}(K)$. Then the product $v \cdot w \in \M_{1 \times 1}(K) = K$ is simply the standard scalar product:
     \begin{equation*}
         v \cdot w = a_1 b_1 + \dots + a_n b_n
     \end{equation*}
@@ -143,22 +143,22 @@ Prove the preceding remark.
 % prop:17.a.2
 \label{prop:matrix_multiplication_properties}
 Matrix multiplication satisfies the following algebraic properties:
-\begin{description}
-    \item[Associativity:] For all $A \in \M_{m \times n}(K)$, $B \in \M_{n \times p}(K)$, and $C \in \M_{p \times q}(K)$, we have:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Associativity:} For all $A \in \M_{m \times n}(K)$, $B \in \M_{n \times p}(K)$, and $C \in \M_{p \times q}(K)$, we have:
     \begin{equation*}
         (AB)C = A(BC) \in \M_{m \times q}(K)
     \end{equation*}
-    \item[Distributivity:] For all $A, B \in \M_{m \times n}(K)$, $C \in \M_{n \times p}(K)$, and $C' \in \M_{q \times m}(K)$, we have:
+    \item \textbf{Distributivity:} For all $A, B \in \M_{m \times n}(K)$, $C \in \M_{n \times p}(K)$, and $C' \in \M_{q \times m}(K)$, we have:
     \begin{align*}
         (A + B)C &= AC + BC \in \M_{m \times p}(K) \\
         C'(A + B) &= C'A + C'B \in \M_{q \times n}(K)
     \end{align*}
-    \item[Identity:] For all $A \in \M_{m \times n}(K)$, we have $I_m A = A$ and $A I_n = A$.
-    \item[Scalar Multiplication:] For all $\alpha \in K$, $A \in \M_{m \times n}(K)$, and $B \in \M_{n \times p}(K)$, we have:
+    \item \textbf{Identity:} For all $A \in \M_{m \times n}(K)$, we have $I_m A = A$ and $A I_n = A$.
+    \item \textbf{Scalar Multiplication:} For all $\alpha \in K$, $A \in \M_{m \times n}(K)$, and $B \in \M_{n \times p}(K)$, we have:
     \begin{equation*}
         \alpha(AB) = (\alpha A)B = A(\alpha B)
     \end{equation*}
-\end{description}
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
@@ -167,64 +167,66 @@ Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear
     [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A, \quad [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} = B, \quad \text{and} \quad [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = C
 \end{equation*}
 
-\textbf{(a)} We rely on the associativity of function composition, which states that $(T_A \circ T_B) \circ T_C = T_A \circ (T_B \circ T_C)$. These are both maps from $K^q$ to $K^m$. We now pass to the matrix representation of these maps with respect to the standard bases $\mathcal{E}_q$ and $\mathcal{E}_m$:
-\begin{equation*}
-    [(T_A \circ T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ (T_B \circ T_C)]_{\mathcal{E}_q}^{\mathcal{E}_m}
-\end{equation*}
-By applying the rule for the matrix representation of composed maps, we get:
-\begin{equation*}
-    [T_A \circ T_B]_{\mathcal{E}_p}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_n}
-\end{equation*}
-Expanding further, we obtain:
-\begin{equation*}
-    \left([T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n}\right) \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot \left([T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p}\right)
-\end{equation*}
-Substituting the matrices back in yields $(A \cdot B) \cdot C = A \cdot (B \cdot C)$.
-
-\textbf{(b)} From the properties of linear maps, we know that $(T_A + T_B) \circ T_C = T_A \circ T_C + T_B \circ T_C$. Passing to the matrix representations, we have:
-\begin{equation*}
-    [(T_A + T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ T_C + T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
-\end{equation*}
-This implies that:
-\begin{equation*}
-    [T_A + T_B]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_n} = [T_A \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} + [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
-\end{equation*}
-Which directly gives us $(A + B) \cdot C = A \cdot C + B \cdot C$. The other distributive identity in (b) is proven similarly.
-
-\textbf{(c)} The identity matrix $I_m$ represents the identity map: $I_m = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{E}_m}$. Since composing with the identity map does not change a function, we have $\id_{K^m} \circ T_A = T_A$. Therefore:
-\begin{equation*}
-    [\id_{K^m} \circ T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A
-\end{equation*}
-This implies that $I_m \cdot A = A$. The proof for $A I_n = A$ follows the same logic.
-
-\textbf{(d)} Let $T_A: K^n \to K^m$ and $T_B: K^p \to K^n$ be the linear maps associated with $A$ and $B$, respectively. We want to show that $\alpha(AB) = (\alpha A)B = A(\alpha B)$. This is equivalent to showing that the corresponding linear maps are equal.
-
-First, consider the map $Q: K^n \to K^n$ defined by $Q(v) := \alpha v$. This map is linear. If $\mathcal{E}_n$ is the standard basis for $K^n$, then for any $e_j \in \mathcal{E}_n$, $Q(e_j) = \alpha e_j$. Thus, the matrix representation of $Q$ with respect to $\mathcal{E}_n$ is $[Q]_{\mathcal{E}_n}^{\mathcal{E}_n} = \alpha I_n$.
-
-Now, let's look at the compositions:
-\begin{itemize}
-    \item The linear map corresponding to $(\alpha A)B$ is $T_{\alpha A} \circ T_B$. We know that $T_{\alpha A}(v) = (\alpha A)v = \alpha(Av) = \alpha T_A(v)$, so $T_{\alpha A} = \alpha T_A$. Thus, $T_{(\alpha A)B} = (\alpha T_A) \circ T_B$.
-    \item The linear map corresponding to $A(\alpha B)$ is $T_A \circ T_{\alpha B}$. Similarly, $T_{\alpha B} = \alpha T_B$. Thus, $T_{A(\alpha B)} = T_A \circ (\alpha T_B)$.
-\end{itemize}
-
-We need to show that $(\alpha T_A) \circ T_B = T_A \circ (\alpha T_B)$. For any $v \in K^p$:
-\begin{align*}
-    ((\alpha T_A) \circ T_B)(v) &= (\alpha T_A)(T_B(v)) \\
-    &= \alpha (T_A(T_B(v))) \quad (\text{by definition of scalar multiplication for maps})
-\end{align*}
-And for the other side:
-\begin{align*}
-    (T_A \circ (\alpha T_B))(v) &= T_A((\alpha T_B)(v)) \\
-    &= T_A(\alpha (T_B(v))) \quad (\text{by definition of scalar multiplication for maps}) \\
-    &= \alpha (T_A(T_B(v))) \quad (\text{by linearity of } T_A)
-\end{align*}
-Since both compositions yield the same result, the corresponding matrices are equal: $(\alpha A)B = A(\alpha B)$.
-
-Finally, to show $\alpha(AB) = (\alpha A)B$:
-The matrix $\alpha(AB)$ corresponds to the linear map $\alpha(T_A \circ T_B)$.
-The matrix $(\alpha A)B$ corresponds to the linear map $(\alpha T_A) \circ T_B$.
-We have already shown that $(\alpha T_A) \circ T_B = \alpha (T_A \circ T_B)$ (from the first part of the derivation above).
-Therefore, $\alpha(AB) = (\alpha A)B$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item We rely on the associativity of function composition, which states that $(T_A \circ T_B) \circ T_C = T_A \circ (T_B \circ T_C)$. These are both maps from $K^q$ to $K^m$. We now pass to the matrix representation of these maps with respect to the standard bases $\mathcal{E}_q$ and $\mathcal{E}_m$:
+    \begin{equation*}
+        [(T_A \circ T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ (T_B \circ T_C)]_{\mathcal{E}_q}^{\mathcal{E}_m}
+    \end{equation*}
+    By applying the rule for the matrix representation of composed maps, we get:
+    \begin{equation*}
+        [T_A \circ T_B]_{\mathcal{E}_p}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_n}
+    \end{equation*}
+    Expanding further, we obtain:
+    \begin{equation*}
+        \left([T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n}\right) \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot \left([T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p}\right)
+    \end{equation*}
+    Substituting the matrices back in yields $(A \cdot B) \cdot C = A \cdot (B \cdot C)$.
+    
+    \item From the properties of linear maps, we know that $(T_A + T_B) \circ T_C = T_A \circ T_C + T_B \circ T_C$. Passing to the matrix representations, we have:
+    \begin{equation*}
+        [(T_A + T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ T_C + T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
+    \end{equation*}
+    This implies that:
+    \begin{equation*}
+        [T_A + T_B]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_n} = [T_A \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} + [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
+    \end{equation*}
+    Which directly gives us $(A + B) \cdot C = A \cdot C + B \cdot C$. The other distributive identity in \textbf{(b)} is proven similarly.
+    
+    \item The identity matrix $I_m$ represents the identity map: $I_m = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{E}_m}$. Since composing with the identity map does not change a function, we have $\id_{K^m} \circ T_A = T_A$. Therefore:
+    \begin{equation*}
+        [\id_{K^m} \circ T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A
+    \end{equation*}
+    This implies that $I_m \cdot A = A$. The proof for $A I_n = A$ follows the same logic.
+    
+    \item Let $T_A: K^n \to K^m$ and $T_B: K^p \to K^n$ be the linear maps associated with $A$ and $B$, respectively. We want to show that $\alpha(AB) = (\alpha A)B = A(\alpha B)$. This is equivalent to showing that the corresponding linear maps are equal.
+    
+    First, consider the map $Q: K^n \to K^n$ defined by $Q(v) := \alpha v$. This map is linear. If $\mathcal{E}_n$ is the standard basis for $K^n$, then for any $e_j \in \mathcal{E}_n$, $Q(e_j) = \alpha e_j$. Thus, the matrix representation of $Q$ with respect to $\mathcal{E}_n$ is $[Q]_{\mathcal{E}_n}^{\mathcal{E}_n} = \alpha I_n$.
+    
+    Now, let's look at the compositions:
+    \begin{itemize}
+        \item The linear map corresponding to $(\alpha A)B$ is $T_{\alpha A} \circ T_B$. We know that $T_{\alpha A}(v) = (\alpha A)v = \alpha(Av) = \alpha T_A(v)$, so $T_{\alpha A} = \alpha T_A$. Thus, $T_{(\alpha A)B} = (\alpha T_A) \circ T_B$.
+        \item The linear map corresponding to $A(\alpha B)$ is $T_A \circ T_{\alpha B}$. Similarly, $T_{\alpha B} = \alpha T_B$. Thus, $T_{A(\alpha B)} = T_A \circ (\alpha T_B)$.
+    \end{itemize}
+    
+    We need to show that $(\alpha T_A) \circ T_B = T_A \circ (\alpha T_B)$. For any $v \in K^p$:
+    \begin{align*}
+        ((\alpha T_A) \circ T_B)(v) &= (\alpha T_A)(T_B(v)) \\
+        &= \alpha (T_A(T_B(v))) \quad (\text{by definition of scalar multiplication for maps})
+    \end{align*}
+    And for the other side:
+    \begin{align*}
+        (T_A \circ (\alpha T_B))(v) &= T_A((\alpha T_B)(v)) \\
+        &= T_A(\alpha (T_B(v))) \quad (\text{by definition of scalar multiplication for maps}) \\
+        &= \alpha (T_A(T_B(v))) \quad (\text{by linearity of } T_A)
+    \end{align*}
+    Since both compositions yield the same result, the corresponding matrices are equal: $(\alpha A)B = A(\alpha B)$.
+    
+    Finally, to show $\alpha(AB) = (\alpha A)B$:
+    The matrix $\alpha(AB)$ corresponds to the linear map $\alpha(T_A \circ T_B)$.
+    The matrix $(\alpha A)B$ corresponds to the linear map $(\alpha T_A) \circ T_B$.
+    We have already shown that $(\alpha T_A) \circ T_B = \alpha (T_A \circ T_B)$ (from the first part of the derivation above).
+    Therefore, $\alpha(AB) = (\alpha A)B$.
+\end{enumerate}
 \end{proof}
 
 \begin{exercise}
@@ -277,14 +279,13 @@ If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ is called 
 \end{definition}
 
 \begin{definition}[Group]
-Let $G$ be a set and $\cdot : G \times G \to G$, $(a,b) \mapsto a \cdot b \in G$, be a binary operation. We say that $(G, \cdot)$ is a \textbf{group} if the following axioms hold:
-Let $G$ be a set and $\cdot : G \times G \to G$, $(a,b) \mapsto a \cdot b \in G$, be a binary operation. We say that $(G, \cdot)$ is a \qt{group} if the following axioms hold:
+Let $G$ be a set and $\cdot : G \times G \to G$, $(a,b) \mapsto a \cdot b \in G$, be a binary operation. We say that $(G, \cdot)$ is a \newterm{group} if the following axioms hold:
 \begin{enumerate}
     \item \textbf{Associativity:} For all $g_1, g_2, g_3 \in G$, we have $g_1 \cdot (g_2 \cdot g_3) = (g_1 \cdot g_2) \cdot g_3$.
-    \item \textbf{Identity Element:} There exists an element $e \in G$ such that $e \cdot g = g \cdot e = g$ for all $g \in G$. The element $e$ is called the \qt{unit} (or \qt{identity}) of $G$.
-    \item \textbf{Inverse Element:} For every $g \in G$, there exists an element $h \in G$ such that $g \cdot h = h \cdot g = e$. The element $h$ is called the \qt{inverse} of $g$.
+    \item \textbf{Identity Element:} There exists an element $e \in G$ such that $e \cdot g = g \cdot e = g$ for all $g \in G$. The element $e$ is called the \newterm{unit} (or \newterm{identity}) of $G$.
+    \item \textbf{Inverse Element:} For every $g \in G$, there exists an element $h \in G$ such that $g \cdot h = h \cdot g = e$. The element $h$ is called the \newterm{inverse} of $g$.
 \end{enumerate}
-Furthermore, if $G$ satisfies $g_1 \cdot g_2 = g_2 \cdot g_1$ for all $g_1, g_2 \in G$, we say that $G$ is a \qt{commutative group} (or \qt{Abelian group}).
+Furthermore, if $G$ satisfies $g_1 \cdot g_2 = g_2 \cdot g_1$ for all $g_1, g_2 \in G$, we say that $G$ is a \newterm{commutative group} (or \newterm{Abelian group}).
 \end{definition}
 
 \begin{proposition}[Group Properties]
@@ -329,7 +330,7 @@ Let $A \in \GL_n(K)$. Then, for all $b \in K^n$, the linear system of equations 
 \begin{proof}
 If $Ax = b$, then multiplying both sides from the left by $A^{-1}$ yields:
 \begin{equation*}
-    A^{-1}(Ax) = A^{-1}b \implies I_n x = A^{-1}b \implies x = A^{-1}b
+    x = I_n x = (A^{-1} A) x = A^{-1}(Ax) = A^{-1} b.
 \end{equation*}
 Conversely, if we substitute $x = A^{-1}b$ into the equation, we obtain:
 \begin{equation*}
@@ -362,24 +363,24 @@ Conversely, assume that $T_A: K^n \to K^n$ is an isomorphism. Let $S := (T_A)^{-
 We apply this equality for the standard basis vectors $w = e_1, w = e_2, \dots, w = e_n$ and obtain that $BA = I_n$. Similarly, using $T_A \circ S = \id_{K^n}$, one shows that $AB = I_n$ too. Thus, $A$ is invertible.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Properties of the Transpose Map]
 \begin{enumerate}
-    \item Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. Prove that $(AB)^T = B^T \cdot A^T$. \newline (\textit{Hint: Proving this by direct calculation is not so bad.})
+    \item Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. Prove that $(AB)\transp = B\transp \cdot A\transp$. \newline (\textit{Hint: Proving this by direct calculation is not so bad.})
     \begin{proof}[Proof Sketch]
     Let $A = (a_{ij})$ and $B = (b_{jk})$. Let $C = AB = (c_{ik})$. Then $c_{ik} = \sum_{\ell=1}^n a_{i\ell} b_{\ell k}$.
-    The $(i,k)$-th entry of $(AB)^T$ is $c_{ki} = \sum_{\ell=1}^n a_{k\ell} b_{\ell i}$.
-    Now consider $B^T = (b'_{k\ell})$ where $b'_{k\ell} = b_{\ell k}$, and $A^T = (a'_{\ell i})$ where $a'_{\ell i} = a_{i\ell}$.
-    The $(i,k)$-th entry of $B^T A^T$ is $\sum_{\ell=1}^n b'_{i\ell} a'_{\ell k} = \sum_{\ell=1}^n b_{\ell i} a_{k\ell}$.
-    This is exactly $c_{ki}$, thus $(AB)^T = B^T A^T$.
+    The $(i,k)$-th entry of $(AB)\transp$ is $c_{ki} = \sum_{\ell=1}^n a_{k\ell} b_{\ell i}$.
+    Now consider $B\transp = (b'_{k\ell})$ where $b'_{k\ell} = b_{\ell k}$, and $A\transp = (a'_{\ell i})$ where $a'_{\ell i} = a_{i\ell}$.
+    The $(i,k)$-th entry of $B\transp A\transp$ is $\sum_{\ell=1}^n b'_{i\ell} a'_{\ell k} = \sum_{\ell=1}^n b_{\ell i} a_{k\ell}$.
+    This is exactly $c_{ki}$, thus $(AB)\transp = B\transp A\transp$.
     \end{proof}
-    \item Let $A \in \GL_n(K)$. Prove that $A^T \in \GL_n(K)$ and that $(A^T)^{-1} = (A^{-1})^T$.
+    \item Let $A \in \GL_n(K)$. Prove that $A\transp \in \GL_n(K)$ and that $(A\transp)^{-1} = (A^{-1})\transp$.
     \begin{proof}[Proof Sketch]
-    For the first part, recall that $\det(A^T) = \det(A)$. Since $A \in \GL_n(K)$, we know $\det(A) \neq 0$, which implies $\det(A^T) \neq 0$, and thus $A^T \in \GL_n(K)$.
-    For the second part, we need to show that $A^T (A^{-1})^T = I_n$ and $(A^{-1})^T A^T = I_n$. Using the result from part (1):
-    \[ A^T (A^{-1})^T = (A^{-1}A)^T = I_n^T = I_n. \]
+    For the first part, recall that $\det(A\transp) = \det(A)$. Since $A \in \GL_n(K)$, we know $\det(A) \neq 0$, which implies $\det(A\transp) \neq 0$, and thus $A\transp \in \GL_n(K)$.
+    For the second part, we need to show that $A\transp (A^{-1})\transp = I_n$ and $(A^{-1})\transp A\transp = I_n$. Using the result from part (1):
+    \[ A\transp (A^{-1})\transp = (A^{-1}A)\transp = I_n\transp = I_n. \]
     Similarly,
-    \[ (A^{-1})^T A^T = (AA^{-1})^T = I_n^T = I_n. \]
-    This confirms that $(A^{-1})^T$ is indeed the inverse of $A^T$.
+    \[ (A^{-1})\transp A\transp = (AA^{-1})\transp = I_n\transp = I_n. \]
+    This confirms that $(A^{-1})\transp$ is indeed the inverse of $A\transp$.
     \end{proof}
 \end{enumerate}
 \end{exercise}

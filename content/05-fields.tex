@@ -1,6 +1,6 @@
-\setcounter{chapter}{4}
 \renewcommand{\thetheorem}{5.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{4}
 
 \chapter{Fields (Körper)}
 
@@ -8,7 +8,7 @@ Before we can solve systems of linear equations or define abstract vector spaces
 
 In linear algebra, we do not restrict ourselves to the real numbers. We can perform our calculations over any algebraic structure where addition, subtraction, multiplication, and division behave exactly as we expect them to. Such a structure is called a \textbf{field} (in German: \textit{Körper}).
 
-\section{The Field Axioms}
+\subsection{The Field Axioms}
 
 To ensure that an algebraic structure behaves nicely, it must satisfy nine rigid rules. These are the Field Axioms.
 
@@ -22,26 +22,26 @@ and two distinguished, unique elements $0, 1 \in K$, such that the following nin
 
 \noindent
 \textbf{Axioms of Addition:}
-\begin{enumerate}
-    \item[\textbf{K1}] $\forall x, y, z \in K: x + (y + z) = (x + y) + z$ \hfill \textit{(Associativity of Addition)}
-    \item[\textbf{K2}] $\forall x, y \in K: x + y = y + x$ \hfill \textit{(Commutativity of Addition)}
-    \item[\textbf{K3}] $\forall x \in K: 0 + x = x$ \hfill \textit{(Neutral Element of Addition)}
-    \item[\textbf{K4}] $\forall x \in K, \exists x' \in K: x + x' = 0$ \hfill \textit{(Inverse Element of Addition)}
+\begin{enumerate}[label=(K\arabic*), leftmargin=3.5em]
+    \item $\forall x, y, z \in K: x + (y + z) = (x + y) + z$ \hfill \textit{(Associativity of Addition)}
+    \item $\forall x, y \in K: x + y = y + x$ \hfill \textit{(Commutativity of Addition)}
+    \item $\forall x \in K: 0 + x = x$ \hfill \textit{(Neutral Element of Addition)}
+    \item $\forall x \in K, \exists x' \in K: x + x' = 0$ \hfill \textit{(Inverse Element of Addition)}
 \end{enumerate}
 
 \noindent
 \textbf{Axioms of Multiplication:}
-\begin{enumerate}
-    \item[\textbf{K5}] $\forall x, y, z \in K: x \cdot (y \cdot z) = (x \cdot y) \cdot z$ \hfill \textit{(Associativity of Multiplication)}
-    \item[\textbf{K6}] $\forall x \in K: 1 \cdot x = x$ \hfill \textit{(Neutral Element of Multiplication)}
-    \item[\textbf{K7}] $\forall x \in K \setminus \{0\}, \exists x' \in K: x' \cdot x = 1$ \hfill \textit{(Inverse Element of Multiplication)}
+\begin{enumerate}[label=(K\arabic*), start=5, leftmargin=3.5em]
+    \item $\forall x, y, z \in K: x \cdot (y \cdot z) = (x \cdot y) \cdot z$ \hfill \textit{(Associativity of Multiplication)}
+    \item $\forall x \in K: 1 \cdot x = x$ \hfill \textit{(Neutral Element of Multiplication)}
+    \item $\forall x \in K \setminus \{0\}, \exists x' \in K: x' \cdot x = 1$ \hfill \textit{(Inverse Element of Multiplication)}
 \end{enumerate}
 
 \noindent
 \textbf{Compatibility and Non-Triviality:}
-\begin{enumerate}
-    \item[\textbf{K8}] $\forall x, y, z \in K: x \cdot (y + z) = x \cdot y + x \cdot z$ \hfill \textit{(Distributivity)}
-    \item[\textbf{K9}] $1 \ne 0$ \hfill \textit{(The field has at least two elements)}
+\begin{enumerate}[label=(K\arabic*), start=8, leftmargin=3.5em]
+    \item $\forall x, y, z \in K: x \cdot (y + z) = x \cdot y + x \cdot z$ \hfill \textit{(Distributivity)}
+    \item $1 \ne 0$ \hfill \textit{(The field has at least two elements)}
 \end{enumerate}
 \end{definition}
 
@@ -50,7 +50,7 @@ We typically denote the additive inverse $x'$ from (K4) as $-x$, allowing us to 
 Similarly, we denote the multiplicative inverse $x'$ from (K7) as $x^{-1}$ or $\frac{1}{x}$, allowing us to define division by non-zero elements: $x / y := x \cdot y^{-1}$.
 \end{remark}
 
-\section{Infinite Fields}
+\subsection{Infinite Fields}
 
 The most familiar fields are infinite. They form the backbone of calculus and classical geometry.
 
@@ -66,7 +66,7 @@ The most familiar fields are infinite. They form the backbone of calculus and cl
 The integers $\mathbb{Z} = \{\dots, -2, -1, 0, 1, 2, \dots\}$ do \textbf{not} form a field! While they satisfy addition and multiplication axioms perfectly, they completely fail (K7). For instance, there is no integer $x'$ such that $2 \cdot x' = 1$. You cannot divide freely within $\mathbb{Z}$.
 \end{importantremark}
 
-\section{Finite Fields and Modular Arithmetic}
+\subsection{Finite Fields and Modular Arithmetic}
 
 A field does not have to be an infinite, continuous line of numbers. If we change our definitions of "addition" and "multiplication", we can create perfectly valid fields that contain only a finite number of elements.
 
@@ -132,14 +132,14 @@ Notice the fascinating property of $\mathbb{F}_2$: $1 + 1 = 0$. In this field, e
 Let us explore $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$.
 \begin{itemize}
     \item \textbf{Addition:} $3 + 4 = 7$. But $7 \div 5 = 1$ with a remainder of $2$. So, $3 + 4 = 2$ in $\mathbb{F}_5$.
-    \item \textbf{Additive Inverses (K4):} What is $-2$? We need a number that adds to $2$ to yield $0$. Since $2 + 3 = 5 \equiv 0$, we know that $-2 = 3$.
-    \item \textbf{Multiplicative Inverses (K7):} What is the inverse of $3$ (i.e., $\frac{1}{3}$)? We need a number $x$ such that $3 \cdot x = 1$. Let's test the options: $3 \cdot 2 = 6 \equiv 1$. Therefore, $3^{-1} = 2$.
+    \item \textbf{Additive Inverses \textbf{(K4)}:} What is $-2$? We need a number that adds to $2$ to yield $0$. Since $2 + 3 = 5 \equiv 0$, we know that $-2 = 3$.
+    \item \textbf{Multiplicative Inverses \textbf{(K7)}:} What is the inverse of $3$ (i.e., $\frac{1}{3}$)? We need a number $x$ such that $3 \cdot x = 1$. Let's test the options: $3 \cdot 2 = 6 \equiv 1$. Therefore, $3^{-1} = 2$.
 \end{itemize}
 \end{example}
 
-\section{Proving Basic Properties from the Axioms}
+\subsection{Proving Basic Properties from the Axioms}
 
-The power of an axiomatic definition is that if we can prove a theorem using \textit{only} axioms (K1) through (K9), that theorem is universally true for \textbf{every field in existence}—whether it is the infinite space of real numbers $\mathbb{R}$, or the tiny binary world of $\mathbb{F}_2$.
+The power of an axiomatic definition is that if we can prove a theorem using \textit{only} axioms \textbf{(K1)} through \textbf{(K9)}, that theorem is universally true for \textbf{every field in existence}—whether it is the infinite space of real numbers $\mathbb{R}$, or the tiny binary world of $\mathbb{F}_2$.
 
 Let us prove two seemingly "obvious" facts that actually require careful algebraic footwork to justify.
 
@@ -148,27 +148,27 @@ For any element $x$ in a field $K$, we have $0 \cdot x = 0$.
 \end{lemma}
 
 \begin{proof}
-Let $x \in K$. By the neutral property of zero (K3), we know that $0 = 0 + 0$. 
+Let $x \in K$. By the neutral property of zero \textbf{(K3)}, we know that $0 = 0 + 0$. 
 Let us multiply both sides of this equation by $x$:
 \[
 (0 + 0) \cdot x = 0 \cdot x
 \]
-By the distributivity axiom (K8), we can expand the left side:
+By the distributivity axiom \textbf{(K8)}, we can expand the left side:
 \[
 0 \cdot x + 0 \cdot x = 0 \cdot x
 \]
-Now, by the additive inverse axiom (K4), the element $(0 \cdot x)$ must have an inverse, $-(0 \cdot x)$. We add this inverse to both sides of our equation:
+Now, by the additive inverse axiom \textbf{(K4)}, the element $(0 \cdot x)$ must have an inverse, $-(0 \cdot x)$. We add this inverse to both sides of our equation:
 \[
 \big(0 \cdot x + 0 \cdot x\big) + \big(-(0 \cdot x)\big) = 0 \cdot x + \big(-(0 \cdot x)\big)
 \]
-Using associativity of addition (K1), we regroup the left side:
+Using associativity of addition \textbf{(K1)}, we regroup the left side:
 \[
 0 \cdot x + \Big(0 \cdot x + \big(-(0 \cdot x)\big)\Big) = 0
 \]
 \[
 0 \cdot x + 0 = 0
 \]
-Finally, applying (K3) once more, we drop the $+ 0$ to conclude:
+Finally, applying \textbf{(K3)} once more, we drop the $+ 0$ to conclude:
 \[
 0 \cdot x = 0
 \]
@@ -181,7 +181,7 @@ Let $a, b \in K$. If $a \cdot b = 0$, then either $a = 0$ or $b = 0$.
 \begin{proof}
 Assume $a \cdot b = 0$. We want to show that if $a \ne 0$, then $b$ must be exactly $0$.
 
-Suppose $a \ne 0$. Because $a$ is a non-zero element in a field, axiom (K7) guarantees that it has a multiplicative inverse, $a^{-1}$. 
+Suppose $a \ne 0$. Because $a$ is a non-zero element in a field, axiom \textbf{(K7)} guarantees that it has a multiplicative inverse, $a^{-1}$. 
 Let us multiply both sides of our equation $a \cdot b = 0$ by this inverse:
 \[
 a^{-1} \cdot (a \cdot b) = a^{-1} \cdot 0
@@ -190,15 +190,15 @@ From our previous lemma, we know that any element multiplied by $0$ is $0$, so t
 \[
 a^{-1} \cdot (a \cdot b) = 0
 \]
-By associativity of multiplication (K5), we regroup the left side:
+By associativity of multiplication \textbf{(K5)}, we regroup the left side:
 \[
 (a^{-1} \cdot a) \cdot b = 0
 \]
-By the definition of the inverse (K7), $a^{-1} \cdot a = 1$:
+By the definition of the inverse \textbf{(K7)}, $a^{-1} \cdot a = 1$:
 \[
 1 \cdot b = 0
 \]
-Finally, by the neutral element of multiplication (K6), $1 \cdot b = b$. Thus:
+Finally, by the neutral element of multiplication \textbf{(K6)}, $1 \cdot b = b$. Thus:
 \[
 b = 0
 \]

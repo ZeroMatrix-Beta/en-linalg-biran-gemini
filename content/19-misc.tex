@@ -1,6 +1,6 @@
-\setcounter{chapter}{18} % Chapter 19
 \renewcommand{\thetheorem}{19.\arabic{theorem}}
 \setcounter{theorem}{0}
+\setcounter{chapter}{18} % Chapter 19
 \chapter{Miscellaneous Topics and Motivation}
 
 \section{Geometric Motivation: Why Abstraction Matters}
@@ -11,12 +11,12 @@ It is a common temptation to simply identify every $n$-dimensional vector space 
 
 \begin{definition}[A Continuous Family of Subspaces]
   Let $S \subseteq \mathbb{C}$ be the unit circle defined by $S = \{e^{i\theta} \mid \theta \in [0, 2\pi]\}$. For each $z = e^{i\theta} \in S$, we define a 1-dimensional subspace $L_z \subseteq \mathbb{R}^2$ as follows:
-  \[ L_z := \operatorname{Sp} \left( \cos\frac{\theta}{2}, \sin\frac{\theta}{2} \right). \]
+  \[ L_z := \Sp \left( \cos\frac{\theta}{2}, \sin\frac{\theta}{2} \right). \]
 \end{definition}
 
 Notice a topological anomaly: $z=1$ corresponds to both $\theta=0$ and $\theta=2\pi$.
-In the first case ($\theta=0$), the spanning vector is $(1,0)$, so $L_1 = \operatorname{Sp}(1,0)$.
-In the second case ($\theta=2\pi$), the spanning vector is $(-1,0)$, which gives the exact same subspace $L_1 = \operatorname{Sp}(-1,0)$. The line $L_z$ rotates at exactly half the speed of the point $z$.
+In the first case ($\theta=0$), the spanning vector is $(1,0)$, so $L_1 = \Sp(1,0)$.
+In the second case ($\theta=2\pi$), the spanning vector is $(-1,0)$, which gives the exact same subspace $L_1 = \Sp(-1,0)$. The line $L_z$ rotates at exactly half the speed of the point $z$.
 
 \begin{center}
   \begin{tikzpicture}[scale=1.8]
@@ -63,9 +63,9 @@ In the second case ($\theta=2\pi$), the spanning vector is $(-1,0)$, which gives
 In our strict definition of a vector space, there is always a distinguished origin $0$. Affine geometry studies spaces that "look like" vector spaces locally, but have forgotten their origin.
 
 \begin{definition}[Affine Space]
-  A subset $X \subseteq V$ is called an \qt{affine space} if there exists a linear subspace $U \subseteq V$ and a translation vector $x_0 \in V$ such that $X = x_0 + U$.
+  A subset $X \subseteq V$ is called an \newterm{affine space} if there exists a linear subspace $U \subseteq V$ and a translation vector $x_0 \in V$ such that $X = x_0 + U$.
 
-  We say that $X$ is modeled on the subspace $U$, and we write the \qt{direction space} as $\vec{X} := U$. The elements of $X$ are called \qt{points}, while the elements of $\vec{X}$ are called \qt{vectors}.
+  We say that $X$ is modeled on the subspace $U$, and we write the \newterm{direction space} as $\vec{X} := U$. The elements of $X$ are called \newterm{points}, while the elements of $\vec{X}$ are called \newterm{vectors}.
 \end{definition}
 
 \begin{proposition}[Algebra of Affine Spaces]
