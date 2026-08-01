@@ -1,13 +1,63 @@
-% \begin{center}
-% \begin{tikzcd}[row sep=large, column sep=large]
-% W^* \arrow[r, "T^*"] & V^* \\
-% W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"'] \arrow[u, bend right=30, "\Phi_V^{-1}"']
-% \end{tikzcd}
-% \end{center}
+Could you add and complete those 2 examples for me? (write the rationale, etc?). 
 
+* The first one about the tikz-cd is for the transcription workflow, the second one is for speech-refinement.md
+
+* Furthermore, make it a rule in speech-refinement to not rewrite parentical remarks into prose. Check the whole speech-refinement file for such errors. mark the xml as deferred.
+
+* Last: I want similar punctuation and comma rules as we have in speech-refinement for the transcription workflow.
+
+=====================================
+
+# cramped tikz-cd example:
+
+**Bad:**
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep=large]
+W^* \arrow[r, "T^*"] & V^* \\
+W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"'] \arrow[u, bend right=30, "\Phi_V^{-1}"']
+\end{tikzcd}
+\end{center}
+
+**Good:**
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep=large]
 W^* \arrow[r, "T^*"] & V^* \\
 W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"] \arrow[u, bend right=40, "\Phi_V^{-1}"']
 \end{tikzcd}
 \end{center}
+
+
+**Rationale:** @AI: Write a rationale here
+
+==========================================
+
+
+**Rationale:**
+
+# Speech refinement: Don't rewrite parentical remarks into prose! (Or choose other title)
+
+Original:
+Das ist das folgende Lemma, ähm, $\mathbb{Z}_n$ mit diesen Operationen ist ein Ring (und neutralen Elementen $[0]$ und $[1]$). Also $[0]$, die Klasse von $0$, ist das neutrale Element bezüglich Addition, und $[1]$, die Klasse von $1$, das neutrale Element bezüglich Multiplikation.
+
+Bad Refinement:
+Das ist das folgende Lemma: $\mathbb{Z}_n$ mit diesen Operationen ist ein Ring mit den neutralen Elementen $[0]$ und $[1]$. Dabei ist $[0]$, die Klasse der $0$, das neutrale Element bezüglich der Addition, und $[1]$, die Klasse der $1$, das neutrale Element bezüglich der Multiplikation.
+
+Good:
+... (@AI: Write a good example)
+
+Rationale: The previous stage of the pipeline made a premature parentical remark and added "(und neutralen Elementen $[0]$ und $[1]$)". But in the next sentence, the prof would actually explain that concept. The result: The speech refinement looks strange.
+(@AI: Complete Rationale and choose other words)
+
+=======================
+
+
+
+Die, okay, aber jetzt wieder zurück zur, zur, zur Theorie. Ähm, also wir haben jetzt gesagt, diese $\mathbb{Z}_n$, das sind, ähm, Ringe. Jetzt in Ringen, da gibt's ja Elemente, die haben ein multiplikatives Inverses, und andere nicht. Also wenn es ein Körper ist, wissen wir, jedes Element hat ein multiplikatives Inverses, außer $0$. Und in Ringen, da muss das nicht unbedingt der Fall sein. ["zur, zur, zur" wurde sehr wahrscheinlich nicht so gesagt während der Vorlesung]
+
+Bad Rafinement:
+
+Okay, aber jetzt wieder zurück zur Theorie. Wir haben also gesehen, dass diese Mengen $\mathbb{Z}_n$ Ringe sind. In Ringen gibt es im Allgemeinen Elemente, die ein multiplikatives Inverses besitzen, und andere, bei denen das nicht der Fall ist. Wenn wir einen Körper haben, wissen wir, dass jedes Element außer der Null ein multiplikatives Inverses besitzt. In einem allgemeinen Ring muss das jedoch nicht so sein. ("unbedingt" fehlt)
+
+Good Refinement: ???
+
+Rationale: ????
