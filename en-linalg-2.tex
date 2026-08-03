@@ -97,9 +97,9 @@
 \colorlet{ChapTitleText}{MidnightBlue!90!black}
 \colorlet{ChapNumberText}{OliveGreen}
 \colorlet{ChapLine}{MidnightBlue!80!black}
-\colorlet{SecTitleColor}{ThemePurple}
+\colorlet{SecTitleColor}{MidnightBlue}
 \colorlet{SecNumberColor}{OliveGreen}
-\colorlet{SubSecTitleColor}{TextBoldColor}   % same colour as \textbf
+\colorlet{SubSecTitleColor}{MidnightBlue}
 \colorlet{SubSubSecTitleColor}{TextBoldColor}
 \colorlet{HeaderFooterFaint}{OliveGreen!45!Gray}
 \colorlet{HeaderFooterLine}{HeaderFooterFaint!50}
@@ -137,11 +137,16 @@
 % ==========================================
 % SPACING UNITS (everything in ex -- do not mix in pt)
 % ==========================================
+\linespread{1.05}
+
 \newlength{\customparskip}
-\setlength{\customparskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\customparskip}{3pt plus 1.5pt minus 0.5pt}
 
 \newlength{\customenvspace}
-\setlength{\customenvspace}{2.5ex plus 0.5ex minus 0.2ex}
+\setlength{\customenvspace}{2.0ex plus 0.5ex minus 0.2ex}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\customparskip}
 
 % Inline math breathing room
 \setlength{\mathsurround}{0.25ex}
@@ -285,10 +290,10 @@
 % LIST FORMATTING
 % ==========================================
 \setlist{
-  topsep=0.6ex plus 0.2ex minus 0.1ex,
-  partopsep=0ex,
+  topsep=0pt,
+  partopsep=0pt,
   parsep=0.5\customparskip,
-  itemsep=0.4ex plus 0.2ex minus 0.1ex,
+  itemsep=0pt,
 }
 
 \setlist[itemize,1]{
