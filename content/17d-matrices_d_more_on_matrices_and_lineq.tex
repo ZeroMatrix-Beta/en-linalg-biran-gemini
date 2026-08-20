@@ -132,24 +132,26 @@ Let $b \in K^m$, and $A \in \M_{m \times n}(K)$. Then:
 This is left as an exercise.
 
 \textbf{Hints:}
-1) Write the matrix $A$ in terms of its column vectors $v_1, \dots, v_n$:
-\begin{equation*}
-    A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}
-\end{equation*}
-For any vector $x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in K^n$, the matrix-vector product is a linear combination of the columns:
-\begin{equation*}
-    A \cdot x = x_1 \begin{pmatrix} | \\ v_1 \\ | \end{pmatrix} + \dots + x_n \begin{pmatrix} | \\ v_n \\ | \end{pmatrix}
-\end{equation*}
+\begin{enumerate}
+    \item Write the matrix $A$ in terms of its column vectors $v_1, \dots, v_n$:
+    \[
+        A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}
+    \]
+    For any vector $x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in K^n$, the matrix-vector product is a linear combination of the columns:
+    \[
+        A \cdot x = x_1 \begin{pmatrix} | \\ v_1 \\ | \end{pmatrix} + \dots + x_n \begin{pmatrix} | \\ v_n \\ | \end{pmatrix}
+    \]
 
-2) Let $y \in \Sol(A, b)$. First, assume $x \in \Sol(A, 0)$. Then $A \cdot x = 0$ and $A \cdot y = b$. Adding these together yields:
-\begin{equation*}
-    A(y + x) = A \cdot y + A \cdot x = b + 0 = b
-\end{equation*}
-Conversely, if $z \in \Sol(A, b)$, meaning $A \cdot z = b$, then define $x := z - y$. We obviously have $z = y + x$, and checking the multiplication gives:
-\begin{equation*}
-    A \cdot x = A \cdot (z - y) = A \cdot z - A \cdot y = b - b = 0
-\end{equation*}
-This shows that any solution $z$ can be written as $y + x$ for some $x \in \Sol(A, 0)$.
+    \item Let $y \in \Sol(A, b)$. First, assume $x \in \Sol(A, 0)$. Then $A \cdot x = 0$ and $A \cdot y = b$. Adding these together yields:
+    \[
+        A(y + x) = A \cdot y + A \cdot x = b + 0 = b
+    \]
+    Conversely, if $z \in \Sol(A, b)$, meaning $A \cdot z = b$, then define $x := z - y$. We obviously have $z = y + x$, and checking the multiplication gives:
+    \[
+        A \cdot x = A \cdot (z - y) = A \cdot z - A \cdot y = b - b = 0
+    \]
+    This shows that any solution $z$ can be written as $y + x$ for some $x \in \Sol(A, 0)$.
+\end{enumerate}
 \end{proof}
 
 \begin{proposition}[Rank Criterion for Solvability]

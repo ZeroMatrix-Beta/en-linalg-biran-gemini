@@ -355,8 +355,8 @@ Similarly, one shows that for all $v \in K^n$:
     T_A \circ T_{A^{-1}}(v) = I_n \cdot v = v
 \end{equation*}
 This proves that $T_A$ is an isomorphism.
-
-Conversely, assume that $T_A: K^n \to K^n$ is an isomorphism. Let $S := (T_A)^{-1}$. By a previous result, we know that any linear map from $K^n$ to $K^n$ is given by left-multiplication with a matrix, so $S = T_B$ for some $B \in M_{n \times n}(K)$. Now, for all $w \in K^n$:
+ 
+Conversely, assume that $T_A: K^n \to K^n$ is an isomorphism. Let $S := (T_A)^{-1}$. By \cref{lem:all_linear_maps_are_matrices}, we know that any linear map from $K^n$ to $K^n$ is given by left-multiplication with a matrix, so $S = T_B$ for some $B \in \M_{n \times n}(K)$. Now, for all $w \in K^n$:
 \begin{equation*}
     w = S \circ T_A(w) = T_B(A \cdot w) = B \cdot A \cdot w = (BA) \cdot w
 \end{equation*}

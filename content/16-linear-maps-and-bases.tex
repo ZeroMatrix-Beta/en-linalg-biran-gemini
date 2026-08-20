@@ -86,7 +86,7 @@ b_n
 \]
 This proves that $\Phi_{\mathcal{B}}$ is linear. 
 
-We now claim that $\Phi_{\mathcal{B}}$ is an isomorphism. By previous results, it is enough to show $\Phi_{\mathcal{B}}$ is bijective. Indeed, if $v \in \ker(\Phi_{\mathcal{B}})$, then $v = 0 v_1 + \dots + 0 v_n = 0$, which implies $\ker(\Phi_{\mathcal{B}}) = \{0\}$. This shows that $\Phi_{\mathcal{B}}$ is injective. 
+We now claim that $\Phi_{\mathcal{B}}$ is an isomorphism. By previous results (\cref{def:isomorphic_spaces}), it is enough to show $\Phi_{\mathcal{B}}$ is bijective. Indeed, if $v \in \ker(\Phi_{\mathcal{B}})$, then $v = 0 v_1 + \dots + 0 v_n = 0$, which implies $\ker(\Phi_{\mathcal{B}}) = \{0\}$. This shows that $\Phi_{\mathcal{B}}$ is injective. 
 
 For the surjectivity of $\Phi_{\mathcal{B}}$, let $(a_1, \dots, a_n)\transp \in K^n$. Put $v := a_1 v_1 + \dots + a_n v_n \in V$. Then, $\Phi_{\mathcal{B}}(v) = (a_1, \dots, a_n)\transp$, which implies $\Img(\Phi_{\mathcal{B}}) = K^n$.
 \end{proof}
@@ -174,7 +174,7 @@ V \arrow[r, "T"] \arrow[d, "\Phi_{\mathcal{B}}"'] & W \arrow[d, "\Phi_{\mathcal{
 K^n \arrow[r, "\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}"'] & K^m
 \end{tikzcd}
 \end{center}
-Since $\Phi_{\mathcal{B}}^{-1}$, $T$, and $\Phi_{\mathcal{C}}$ are all linear maps, the map $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}: K^n \to K^m$ is also linear. By previous results (\ref{lem:all_linear_maps_are_matrices}), any linear map $K^n \to K^m$ can be written using a matrix $A \in \M_{m \times n}(K)$. In other words, there exists a unique matrix $A \in \M_{m \times n}(K)$ such that $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} = T_A$.
+Since $\Phi_{\mathcal{B}}^{-1}$, $T$, and $\Phi_{\mathcal{C}}$ are all linear maps, the map $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}: K^n \to K^m$ is also linear. By previous results (\cref{lem:all_linear_maps_are_matrices}), any linear map $K^n \to K^m$ can be written using a matrix $A \in \M_{m \times n}(K)$. In other words, there exists a unique matrix $A \in \M_{m \times n}(K)$ such that $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} = T_A$.
 
 The matrix $A$ is called the \newterm{representation matrix} of $T$ with respect to the bases $\mathcal{B}$ and $\mathcal{C}$. We also say that $A$ represents $T$ in the bases $\mathcal{B}$ and $\mathcal{C}$. We denote this matrix by $[T]_{\mathcal{C}}^{\mathcal{B}} \in \M_{m \times n}(K)$.
 
@@ -186,11 +186,17 @@ The matrix $A$ is called the \newterm{representation matrix} of $T$ with respect
 \end{enumerate}
 \end{question}
 
-Let $T: V \to W$ be a linear map, let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$, and let $\mathcal{C} = (w_1, \dots, w_m)$ be a basis for $W$. For any $v_i \in V$, its image is $T(v_i) \in W$. Under the map $T_A$, the standard basis vector $e_i \in K^n$ maps to $K^m$:
+Let $T: V \to W$ be a linear map, let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$, and let $\mathcal{C} = (w_1, \dots, w_m)$ be a basis for $W$. We wish to determine the entries of its representation matrix $A := [T]_{\mathcal{C}}^{\mathcal{B}} \in \M_{m \times n}(K)$. By definition, $A$ is the unique matrix such that the linear map $T_A: K^n \to K^m$, given by left-multiplication by $A$, satisfies $T_A = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}$. 
+
+Recall that the $j$-th column of $A$ is given by $T_A(e_j)$, where $e_j \in K^n$ is the $j$-th standard basis vector. We can evaluate $T_A(e_j)$ using the commutative diagram:
 \[
-T_A(e_i) = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}(e_i) = \Phi_{\mathcal{C}}(T(v_i)) = [T(v_i)]_{\mathcal{C}}.
+T_A(e_j) = \left( \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} \right)(e_j) = \Phi_{\mathcal{C}}\left( T\left( \Phi_{\mathcal{B}}^{-1}(e_j) \right) \right).
 \]
-But these are precisely the columns of $A$. In other words:
+Recall that the coordinate vector of the basis vector $v_j \in V$ with respect to its own basis $\mathcal{B}$ is the $j$-th standard basis vector $e_j \in K^n$, meaning $\Phi_{\mathcal{B}}(v_j) = [v_j]_{\mathcal{B}} = e_j$. Applying the inverse coordinate map gives $\Phi_{\mathcal{B}}^{-1}(e_j) = v_j$. Substituting this into our expression, we have:
+\[
+T_A(e_j) = \Phi_{\mathcal{C}}(T(v_j)) = [T(v_j)]_{\mathcal{C}}.
+\]
+This means that the $j$-th column of the representation matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ is precisely the coordinate vector of $T(v_j)$ with respect to the basis $\mathcal{C}$. Thus, we can write $A$ in block-column form as:
 \[
 A = [T]_{\mathcal{C}}^{\mathcal{B}} = 
 \begin{pmatrix}
@@ -200,9 +206,9 @@ A = [T]_{\mathcal{C}}^{\mathcal{B}} =
 \end{pmatrix}
 \in \M_{m \times n}(K).
 \]
-Another way to describe this matrix is $A = (a_{ij}) \in \M_{m \times n}(K)$, where the entries $a_{ij}$ are defined uniquely by:
+Equivalently, if we write $A = (a_{ij}) \in \M_{m \times n}(K)$, the entries $a_{ij}$ of the $j$-th column are determined by expressing $T(v_j) \in W$ as a linear combination of the basis vectors $\mathcal{C} = (w_1, \dots, w_m)$:
 \[
-T(v_j) = a_{1j} w_1 + \dots + a_{mj} w_m = \sum_{i=1}^m a_{ij} w_i.
+T(v_j) = a_{1j} w_1 + a_{2j} w_2 + \dots + a_{mj} w_m = \sum_{i=1}^m a_{ij} w_i.
 \]
 
 % prop:16.4
@@ -215,11 +221,42 @@ Let $T: V \to W$ be a linear map between two finite-di\-men\-sional vector space
 \end{proposition}
 
 \begin{proof}
-The equality $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}} = [T(v)]_{\mathcal{C}}$ is equivalent to evaluating the linear transformation defined by the matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ at the vector $[v]_{\mathcal{B}} \in K^n$:
+\textbf{First Proof (Computational):} Let $v \in V$ be an arbitrary vector. We can express $v$ uniquely as a linear combination of the basis vectors in $\mathcal{B} = (v_1, \dots, v_n)$:
 \[
-T_{[T]_{\mathcal{C}}^{\mathcal{B}}}([v]_{\mathcal{B}}) = [T(v)]_{\mathcal{C}}.
+v = \sum_{j=1}^n x_j v_j.
 \]
-By definition, $T_{[T]_{\mathcal{C}}^{\mathcal{B}}} = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}$. But this is precisely how we defined the matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$.
+By definition, the coordinate vector of $v$ with respect to $\mathcal{B}$ is $[v]_{\mathcal{B}} = (x_1, \dots, x_n)\transp \in K^n$. Since $T$ is linear, we can apply it to $v$:
+\[
+T(v) = T\left( \sum_{j=1}^n x_j v_j \right) = \sum_{j=1}^n x_j T(v_j).
+\]
+Now, we take the coordinate vector of $T(v)$ with respect to the basis $\mathcal{C}$. Since the coordinate map $\Phi_{\mathcal{C}}$ is an isomorphism, it is linear, and we obtain:
+\[
+[T(v)]_{\mathcal{C}} = \Phi_{\mathcal{C}}(T(v)) = \Phi_{\mathcal{C}}\left( \sum_{j=1}^n x_j T(v_j) \right) = \sum_{j=1}^n x_j [T(v_j)]_{\mathcal{C}}.
+\]
+Observe that this last expression is exactly the definition of the matrix-vector product of the matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ (whose columns are $[T(v_j)]_{\mathcal{C}}$) and the column vector $[v]_{\mathcal{B}}$ (whose entries are $x_j$):
+\[
+\sum_{j=1}^n x_j [T(v_j)]_{\mathcal{C}} = 
+\begin{pmatrix}
+| & & | \\
+[T(v_1)]_{\mathcal{C}} & \dots & [T(v_n)]_{\mathcal{C}} \\
+| & & |
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\ \vdots \\ x_n
+\end{pmatrix}
+= [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}}.
+\]
+Therefore, we conclude that $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}} = [T(v)]_{\mathcal{C}}$.
+
+\textbf{Second Proof (Structural):} Recall that the representation matrix $A := [T]_{\mathcal{C}}^{\mathcal{B}}$ is uniquely defined by the relation $T_A = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}$. Evaluating the linear transformation $T_A$ at the coordinate vector $[v]_{\mathcal{B}} = \Phi_{\mathcal{B}}(v) \in K^n$ yields:
+\[
+T_A([v]_{\mathcal{B}}) = \left(\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}\right) (\Phi_{\mathcal{B}}(v)) = \Phi_{\mathcal{C}}\left(T\left(\Phi_{\mathcal{B}}^{-1}(\Phi_{\mathcal{B}}(v))\right)\right) = \Phi_{\mathcal{C}}(T(v)) = [T(v)]_{\mathcal{C}}.
+\]
+On the other hand, the map $T_A$ acts on vectors in $K^n$ by left-multiplication by the matrix $A$. Thus, we also have:
+\[
+T_A([v]_{\mathcal{B}}) = A \cdot [v]_{\mathcal{B}} = [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}}.
+\]
+Equating both expressions gives $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}} = [T(v)]_{\mathcal{C}}$, which completes the proof.
 \end{proof}
 
 \begin{example}[Examples of Representation Matrices]

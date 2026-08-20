@@ -71,37 +71,63 @@
 \definecolor{ThemePurple}{HTML}{6A3199}
 \colorlet{ThemePrimary}{ThemePurple}
 \colorlet{ThemeSecondary}{MidnightBlue}
-\colorlet{ThemeWeekNumber}{OliveGreen}
+\definecolor{ThemeAccent}{HTML}{BD2400}
+\definecolor{ThemeGreen}{HTML}{008837}
+% \colorlet{ThemeWeekNumber}{OliveGreen}
+\colorlet{ThemeWeekNumber}{ThemeGreen}
 \colorlet{ThemeAccent1}{BurntOrange}
 
 % --- Theorem environments ---
 \colorlet{EnvTheorem}{ThemePurple}
 
 % --- Proofs ---
-\colorlet{ProofTint}{OliveGreen}
+% \colorlet{ProofTint}{OliveGreen}
+\colorlet{ProofTint}{ThemeGreen}
+% \colorlet{ProofTint}{ThemeAccent}
 \colorlet{ProofQEDText}{ProofTint}
 \colorlet{ProofQEDBg}{white}
 
 % --- Running text ---
-\colorlet{TextEmphColor}{MidnightBlue}
-\colorlet{TextBoldColor}{Brown!80!black}   % Espresso brown
+% \colorlet{TextEmphColor}{MidnightBlue}
+\definecolor{EmphBlue}{HTML}{008CC8}
+\colorlet{TextEmphColor}{EmphBlue}
+% \colorlet{TextBoldColor}{Brown!70!black}   % Espresso brown
+% \definecolor{TextBoldColor}{HTML}{4A2511}    % Deep espresso brown
+\definecolor{TextBoldColor}{HTML}{A8651E}    % Warm Bronze Brown (grayscale ~113, brighter than OliveGreen ~107)
 \colorlet{TextMetaNote}{Gray}
 \colorlet{LinkColor}{MidnightBlue}
 \colorlet{FileColor}{Magenta}
 
 % --- Lists ---
-\colorlet{ItemizeBullet}{BurntOrange}
-\colorlet{EnumerateBullet}{MidnightBlue}
+% \colorlet{ItemizeBullet}{BurntOrange}
+% \colorlet{EnumerateBullet}{MidnightBlue}
+% \definecolor{ListAmber}{HTML}{EBA900}
+% \definecolor{ListAmber}{HTML}{BD8800}
+% \definecolor{ListAmber}{HTML}{9D9808}
+% \definecolor{ListAmber}{HTML}{8D1B00}
+% \definecolor{ListAmber}{HTML}{EB2D00}
+\definecolor{ListAmber}{HTML}{BD2400}
+\colorlet{ItemizeBullet}{ListAmber}
+\colorlet{EnumerateBullet}{ListAmber}
 
 % --- Headings ---
 \colorlet{ChapTitleText}{MidnightBlue!90!black}
-\colorlet{ChapNumberText}{OliveGreen}
+% \colorlet{ChapNumberText}{OliveGreen}
+\colorlet{ChapNumberText}{ThemeGreen}
+% \colorlet{ChapNumberText}{ThemeAccent}
 \colorlet{ChapLine}{MidnightBlue!80!black}
+% \colorlet{SecTitleColor}{ThemePurple}
 \colorlet{SecTitleColor}{MidnightBlue}
-\colorlet{SecNumberColor}{OliveGreen}
+% \colorlet{SecNumberColor}{OliveGreen}
+\colorlet{SecNumberColor}{ThemeGreen}
+% \colorlet{SecNumberColor}{ThemeAccent}
+% \colorlet{SubSecTitleColor}{TextBoldColor}
 \colorlet{SubSecTitleColor}{MidnightBlue}
-\colorlet{SubSubSecTitleColor}{TextBoldColor}
-\colorlet{HeaderFooterFaint}{OliveGreen!45!Gray}
+% \colorlet{SubSubSecTitleColor}{TextBoldColor}
+\colorlet{SubSubSecTitleColor}{MidnightBlue}
+% \colorlet{HeaderFooterFaint}{OliveGreen!45!Gray}
+\colorlet{HeaderFooterFaint}{ThemeGreen!45!Gray}
+% \colorlet{HeaderFooterFaint}{ThemeAccent!45!Gray}
 \colorlet{HeaderFooterLine}{HeaderFooterFaint!50}
 
 % --- TOC entry colours ---
@@ -109,7 +135,7 @@
 % handed to hyperref's linkcolor as well -- otherwise the link colour would
 % override the entry colour and the whole TOC would come out midnight blue.
 \colorlet{TocChapColor}{ThemePurple!95!black}
-\colorlet{TocSecColor}{TextEmphColor}
+\colorlet{TocSecColor}{MidnightBlue} % Keep TOC section entries as MidnightBlue
 \colorlet{TocSubsecColor}{TextBoldColor}
 \colorlet{TocSubsubColor}{gray}
 \colorlet{TocLabelColor}{ThemePurple!85!black}
@@ -175,9 +201,12 @@
 % Custom commands for italicized terminology and "quotes".
 % \newterm    -> English quotes ``...''   (the default; this is an English text)
 % \germanterm -> German quotes  \glqq...\grqq  for German technical terms
-\newcommand{\newterm}[1]{\textcolor{BrickRed}{``}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{''}}
-\newcommand{\germanterm}[1]{\textcolor{BrickRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{\grqq}}
-\newcommand{\qt}[1]{\textit{\textcolor{BrickRed}{``}#1\textcolor{BrickRed}{''}}}
+% \definecolor{QuoteRed}{HTML}{EB2D00}
+\definecolor{QuoteRed}{HTML}{BD2400}
+% \newcommand{\newterm}[1]{\textcolor{BrickRed}{``}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{''}}
+\newcommand{\newterm}[1]{\textcolor{QuoteRed}{``}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{QuoteRed}{''}}
+\newcommand{\germanterm}[1]{\textcolor{QuoteRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{QuoteRed}{\grqq}}
+\newcommand{\qt}[1]{\textit{\textcolor{QuoteRed}{``}#1\textcolor{QuoteRed}{''}}}
 \newcommand{\inlinemetanote}[1]{\textit{[\textcolor{TextMetaNote}{#1}]}}
 
 % Redefine \bigbreak to ensure the following paragraph is not indented
@@ -336,45 +365,55 @@
 % ==========================================
 % THEOREM CONFIGURATION
 % ==========================================
+% ==========================================
+% THEOREM CONFIGURATION
+% ==========================================
+% 1. Theorems, Lemmata, Propositions, Corollaries (\faGem)
 \newtheoremstyle{purplethm}%
 {\customenvspace}{\customenvspace}{\normalfont}{}{\color{EnvTheorem}\sffamily\bfseries}{:}{0.5em}%
-% NB: the space before the number lives in \thmnumber, not in \thmname -- otherwise
-% unnumbered environments (\newtheorem*) would emit a stray space before the note
-% or before the colon ("Remark  (...)", "Important remark :").
-{\thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+% {\textcolor{EnvTheorem}{\faAward}\hspace{0.4em}%
+{\textcolor{EnvTheorem}{\faGem}\hspace{0.4em}%
+ \thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+ \thmnote{\ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
+
+% 2. Definitions (\faBookOpen)
+\newtheoremstyle{defthm}%
+{\customenvspace}{\customenvspace}{\normalfont}{}{\color{EnvTheorem}\sffamily\bfseries}{:}{0.5em}%
+{\textcolor{EnvTheorem}{\faBookOpen}\hspace{0.4em}%
+ \thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+ \thmnote{\ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
+
+% 3. Questions & Answers (\faQuestionCircle)
+\newtheoremstyle{questionthm}%
+{\customenvspace}{\customenvspace}{\normalfont}{}{\color{MidnightBlue}\sffamily\bfseries}{:}{0.5em}%
+{\textcolor{MidnightBlue}{\faQuestionCircle}\hspace{0.4em}%
+ \thmname{\textcolor{MidnightBlue}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+ \thmnote{\ \textcolor{MidnightBlue}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{MidnightBlue}{\bfseries)}}}
+
+% 4. Remarks & Notes (\faInfoCircle)
+\newtheoremstyle{remarkthm}%
+{\customenvspace}{\customenvspace}{\normalfont}{}{\color{ThemeGreen}\sffamily\bfseries}{:}{0.5em}%
+{\textcolor{ThemeGreen}{\faInfoCircle}\hspace{0.4em}%
+ \thmname{\textcolor{ThemeGreen}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+ \thmnote{\ \textcolor{ThemeGreen}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{ThemeGreen}{\bfseries)}}}
+
+% 5. Examples & Exercises (\faLightbulb)
+\newtheoremstyle{examplethm}%
+{\customenvspace}{\customenvspace}{\normalfont}{}{\color{EnvTheorem}\sffamily\bfseries}{:}{0.5em}%
+{\textcolor{EnvTheorem}{\faLightbulb}\hspace{0.4em}%
+ \thmname{\textcolor{EnvTheorem}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
  \thmnote{\ \textcolor{EnvTheorem}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvTheorem}{\bfseries)}}}
 
 \theoremstyle{purplethm}
-
-% NB: deliberately NOT \newtheorem{theorem}{Theorem}[section].
-% Each content file hard-codes its own \thetheorem prefix so that the printed
-% numbers stay synchronised with Prof. Biran's handwritten notes, where one
-% source part (e.g. `25.isometries.v03') may be typeset here as several
-% \section's. An automatic per-section reset therefore restarted the counter in
-% the middle of a source part and printed e.g. "25.a.1" three times. The counter
-% now resets per chapter only; a file that opens a new source part resets it
-% explicitly with \setcounter{theorem}{0}.
 \newtheorem{theorem}{Theorem}
 
-% The decoupled theorem display format: Chapter.letter.Number
-% Robust against chapters that jump straight to \subsection (i.e. no \section at
-% all): in that case the section letter is simply omitted -> "Chapter.Number".
 \renewcommand{\thetheorem}{%
   \thechapter.\ifnum\value{section}>0 \alph{section}.\fi\arabic{theorem}}
 
-% hyperref builds its anchor names from \theH<counter>, NOT from \the<counter>.
-% Its default for a counter reset by `section' omits the chapter, so e.g. the
-% first theorem of every section of every chapter would claim the anchor
-% `theorem.<n>.1' -- the duplicates get dropped and \cref links silently jump to
-% the wrong environment. Mirroring the printed number keeps the anchors unique.
-% (\AtBeginDocument: hyperref installs its own defaults late, so a plain
-% \renewcommand here would simply be overwritten.)
 \makeatletter
 \AtBeginDocument{%
   \renewcommand{\theHtheorem}{\thechapter.\alph{section}.\arabic{theorem}}%
   \renewcommand{\theHequation}{\thechapter.\alph{section}.\arabic{equation}}%
-  % The aliased counters below need the same treatment, and must point at the
-  % *same* anchor as \theHtheorem -- they are one counter under four names.
   \@namedef{theHlemma}{\theHtheorem}%
   \@namedef{theHcorollary}{\theHtheorem}%
   \@namedef{theHdefinition}{\theHtheorem}%
@@ -382,8 +421,6 @@
 }
 \makeatother
 
-% Reset the theorem counter at every chapter too, not only at every section --
-% otherwise a section-less chapter would keep counting from the previous one.
 \makeatletter
 \@addtoreset{theorem}{chapter}
 \makeatother
@@ -391,18 +428,7 @@
 \setcounter{MaxMatrixCols}{20}
 
 % --- NUMBERED ENVIRONMENTS ---
-% NB: deliberately NOT \newtheorem{lemma}[theorem]{Lemma}.
-% That form makes `lemma' share the *counter named* `theorem', and cleveref
-% derives a reference's type from the counter name -- so every \cref to a
-% lemma, corollary, definition or proposition printed "Theorem". Only 52 of the
-% ~290 numbered environments in this document are actually theorems, so almost
-% every cross-reference was mislabelled.
-%
-% aliascnt gives each environment a counter of its own name that is merely an
-% alias of `theorem'. The shared, continuous numbering is preserved exactly
-% (\thelemma expands to \thetheorem, dynamically, so the per-file
-% \renewcommand{\thetheorem} prefixes still apply), but cleveref can now tell
-% the environments apart.
+\theoremstyle{purplethm}
 \newaliascnt{lemma}{theorem}
 \newtheorem{lemma}[lemma]{Lemma}
 \aliascntresetthe{lemma}
@@ -411,35 +437,54 @@
 \newtheorem{corollary}[corollary]{Corollary}
 \aliascntresetthe{corollary}
 
-\newaliascnt{definition}{theorem}
-\newtheorem{definition}[definition]{Definition}
-\aliascntresetthe{definition}
-
 \newaliascnt{proposition}{theorem}
 \newtheorem{proposition}[proposition]{Proposition}
 \aliascntresetthe{proposition}
 
+\theoremstyle{defthm}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+
 % --- UNNUMBERED ENVIRONMENTS ---
-% The asterisk (*) prevents them from being numbered!
+\theoremstyle{purplethm}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem*{lemma*}{Lemma}
 \newtheorem*{proposition*}{Proposition}
-\newtheorem*{definition*}{Definition}
 \newtheorem*{corollary*}{Corollary}
 \newtheorem*{claim*}{Claim}
 
-\newtheorem*{notation}{Notation}
-\newtheorem*{remark}{Remark}
-\newtheorem*{exercise}{Exercise}
-\newtheorem*{example}{Example}
-\newtheorem*{summary}{Summary}
-\newtheorem*{warmup}{Warm up}
+\theoremstyle{defthm}
+\newtheorem*{definition*}{Definition}
+
+\theoremstyle{questionthm}
 \newtheorem*{question}{Question}
 \newtheorem*{answer}{Answer}
+
+% 6. AI-Note (\faRobot)
+\definecolor{GoldOrange}{HTML}{C26B00}
+\colorlet{EnvAINote}{GoldOrange}
+\newtheoremstyle{ainotethm}%
+{\customenvspace}{\customenvspace}{\normalfont}{}{\color{EnvAINote}\sffamily\bfseries}{:}{0.5em}%
+{\textcolor{EnvAINote}{\faRobot}\hspace{0.4em}%
+ \thmname{\textcolor{EnvAINote}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
+ \thmnote{\ \textcolor{EnvAINote}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvAINote}{\bfseries)}}}
+
+\theoremstyle{remarkthm}
+\newtheorem*{notation}{Notation}
+\newtheorem*{remark}{Remark}
+\newtheorem*{summary}{Summary}
 \newtheorem*{importantremark}{Important remark}
 \newtheorem*{goals}{Goals}
 \newtheorem*{conclusion}{Conclusion}
+
+\theoremstyle{ainotethm}
 \newtheorem*{ainote}{AI-Note}
+
+\theoremstyle{examplethm}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{example}{Example}
+\newtheorem*{warmup}{Warm up}
 
 % ==========================================
 % CLEVEREF NAMES
@@ -468,15 +513,19 @@
 \Crefname{item}{Part}{Parts}
 
 % ==========================================
-% PROOF ENVIRONMENT (olive green, upright, standard text Q.E.D.)
 % ==========================================
-\newcommand{\qedbox}{\textcolor{ProofTint}{\sffamily\bfseries Q.E.D.}}
+% PROOF ENVIRONMENT (with pen nib icon & shadowed Q.E.D. box)
+% ==========================================
+\newcommand{\qedbox}{%
+  \tikz[baseline=(Q.base)]\node[draw=ProofTint, fill=ProofQEDBg, line width=1pt, rounded corners=2pt, inner xsep=4pt, inner ysep=2pt, font=\sffamily\bfseries\small, text=ProofQEDText, drop shadow={shadow xshift=0.5ex, shadow yshift=-0.5ex, fill=ProofTint, opacity=0.4}] (Q) {Q.E.D.};%
+}
 \renewcommand{\qedsymbol}{\qedbox}
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{%
   \par\if@nobreak\vspace{-1ex}\else\addvspace{2.2ex plus 0.5ex minus 0.2ex}\fi
-  \noindent{\normalfont\sffamily\bfseries\color{ProofTint}#1:}%
+  \noindent\textcolor{ProofTint}{\faPenNib}\hspace{0.5em}%
+  {\normalfont\sffamily\bfseries\color{ProofTint}#1:}%
   \par\nobreak\vspace{0.8ex plus .1ex}\vspace{-\parskip}
   \@afterindentfalse\@afterheading
 }{%

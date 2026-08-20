@@ -68,7 +68,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$ or $\m
 \begin{proof}
 We will prove some of the equivalences here; the rest are left as exercises (and for the exercise sheet).
 
-\textbf{(b)} $\implies$ \textbf{(a)}: Using the polarization identity (for the real case), we have:
+\textbf{(b)} $\implies$ \textbf{(a)}: Using the polarization identity for the real case (on \cpageref{exc:reconstruct_scalar_prod}), we have:
 \begin{align*}
     \langle Tv, Tw \rangle &= \frac{1}{2} \left( \|Tv + Tw\|^2 - \|Tv\|^2 - \|Tw\|^2 \right) \\
     &= \frac{1}{2} \left( \|T(v + w)\|^2 - \|Tv\|^2 - \|Tw\|^2 \right) \\
@@ -80,17 +80,7 @@ We will prove some of the equivalences here; the rest are left as exercises (and
 \[ \langle Te_i, Te_j \rangle = \langle e_i, e_j \rangle = \delta_{ij}. \]
 This implies that $Te_1, \dots, Te_k$ is also an orthonormal system.
 
-\begin{ainote}
-In the handwritten notes, the following proof is labeled as \textbf{(d)} $\implies$ \textbf{(e)}. However, it actually proves \textbf{(d)} $\implies$ \textbf{(f)}, which is $T^* \circ T = \id_V$. We have corrected the labeling here.
-\end{ainote}
-
-\textbf{(d)} $\implies$ \textbf{(f)}: Let $\mathcal{B} = (e_1, \dots, e_n)$ be an orthonormal basis such that $Te_1, \dots, Te_n$ is also an orthonormal system. Let $1 \leq j \leq n$. We have, for all $1 \leq i \leq n$:
-\begin{equation}
-    \langle e_i, e_j \rangle = \delta_{ij} = \langle Te_i, Te_j \rangle = \langle e_i, T^*Te_j \rangle. \quad (*)
-\end{equation}
-Since $(e_1, \dots, e_n)$ is a basis for $V$, the equality $(*)$ implies that by linearity in the first argument,
-\[ \langle v, e_j \rangle = \langle v, T^*Te_j \rangle \quad \forall v \in V. \]
-This implies that $T^*Te_j = e_j$. This last equality holds for all $1 \leq j \leq n$, which implies that $T^* \circ T = \id_V$.
+The remaining implications, in particular \textbf{(d)} $\implies$ \textbf{(e)}, are established in the exercise solutions at the end of this chapter.
 \end{proof}
 
 \section{Orthogonal and Unitary Matrices}
@@ -112,10 +102,10 @@ Let $V$ be an $n$-di\-men\-sional inner product space over $\mathbb{R}$ (resp. $
 This is left as an exercise.
 \end{proof}
 
-Note that for all $A \in \Orth(n)$, we have $\det(A) = \pm 1$. Indeed:
+Note that for all $A \in \Orth(n)$, we have $\det(A) = \pm 1$. Indeed, by \cref{thm:det_multiplicative,thm:det_transpose},
 \[ 1 = \det(I) = \det(AA\transp) = \det(A) \cdot \det(A\transp) = \det(A) \cdot \det(A) = \det(A)^2. \]
 
-Similarly, for all $A \in \Unit(n)$, we have $|\det(A)| = 1$. Indeed:
+Similarly, for all $A \in \Unit(n)$, we have $|\det(A)| = 1$. Indeed, by the same two results,
 \[ 1 = \det(AA^*) = \det(A) \cdot \det(\overline{A}\transp) = \det(A) \cdot \det(\overline{A}) = \det(A) \cdot \overline{\det(A)} = |\det(A)|^2. \]
 (Note that $\det(A) \in \mathbb{C}$).
 
@@ -153,7 +143,7 @@ Let $A \in \Orth(n)$. If $\lambda$ is a real eigenvalue of $A$, then $\lambda = 
 \end{lemma}
 
 \begin{proof}
-Suppose $Av = \lambda v$, where $0 \neq v \in \mathbb{R}^n$. Then:
+Suppose $Av = \lambda v$, where $0 \neq v \in \mathbb{R}^n$. Since the standard basis of $\mathbb{R}^n$ is orthonormal, \cref{prop:orth_unitary_matrix_rep} shows that $T_A$ is an isometry, and therefore, it preserves the standard scalar product. Then:
 \[ \langle v, v \rangle = \langle Av, Av \rangle = \langle \lambda v, \lambda v \rangle = \lambda^2 \langle v, v \rangle. \]
 As $v \neq 0$, we have $\langle v, v \rangle \neq 0$, which implies $\lambda^2 = 1$, and therefore $\lambda = \pm 1$.
 \end{proof}
@@ -212,10 +202,10 @@ Now, let
 \[
     A = \begin{pmatrix} | & | \\ u_1 & u_2 \\ | & | \end{pmatrix} \in \Orth(2).
 \]
-Since $A$ is orthogonal, its columns form an orthonormal basis. Thus, $\|u_1\| = 1$, which implies $u_1 = \left(\begin{smallmatrix} \cos\theta \\ \sin\theta \end{smallmatrix}\right)$ for some $\theta \in [0, 2\pi)$. 
+Since $A$ is orthogonal, its columns form an orthonormal basis by \cref{def:orthogonal_unitary_matrices}. Thus, $\|u_1\| = 1$, which implies $u_1 = \left(\begin{smallmatrix} \cos\theta \\ \sin\theta \end{smallmatrix}\right)$ for some $\theta \in [0, 2\pi)$. 
 We also have $u_1 \perp u_2$ and $\|u_2\| = 1$. 
 
-The orthogonal complement to $u_1$ is:
+By \cref{cor:dim_orthogonal_complement}, the orthogonal complement of $u_1$ is a line, namely:
 \[ \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}^\perp = \Sp \begin{pmatrix} \cos(\theta + \frac{\pi}{2}) \\ \sin(\theta + \frac{\pi}{2}) \end{pmatrix} = \Sp \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}. \]
 Within the space $\Sp\left(\begin{smallmatrix} -\sin\theta \\ \cos\theta \end{smallmatrix}\right)$, there are precisely two elements with norm $1$, namely:
 \[ u_2' = \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}, \quad u_2'' = \begin{pmatrix} \sin\theta \\ -\cos\theta \end{pmatrix}. \]
@@ -302,26 +292,27 @@ So, $T_A$ is a rotation with angle $\theta$ around the axis $\Sp(v_1)$. Moreover
 \end{center}
 
 \begin{proof}
-The characteristic polynomial $P_A(x)$ of $A$ is a polynomial of degree $3$ with real coefficients. By the Intermediate Value Theorem from analysis, any odd-degree polynomial with real coefficients has at least one real zero $\lambda \in \mathbb{R}$ of $P_A(x)$ (i.e., $P_A(\lambda) = 0$). This implies that $A$ has at least one real eigenvalue. 
-By a previous theorem (\ref{lem:eigenvalues_orthogonal}), $\lambda = \pm 1$.
+The characteristic polynomial $P_A(x)$ of $A$ is a polynomial of degree $3$ with real coefficients. By a theorem from analysis (the Intermediate Value Theorem), every polynomial of odd degree with real coefficients has a real zero, so there exists $\lambda \in \mathbb{R}$ with $P_A(\lambda) = 0$. This implies that $A$ has at least one real eigenvalue. 
+By \cref{lem:eigenvalues_orthogonal}, $\lambda = \pm 1$.
 
 Let $v_1 \in \mathbb{R}^3$ be an eigenvector of $\lambda$. By normalizing it if necessary, we may assume $\|v_1\| = 1$. Consider the subspace
 \[ L := v_1^\perp = \{v \in \mathbb{R}^3 \mid v \perp v_1\}. \]
-Since $A$ is orthogonal, we have for all $v \in L$, $A \cdot v \in L$. (i.e., $T_A(L) \subseteq L$, meaning $L$ is invariant under $T_A$).
-Indeed, if $v \in L$, this implies $0 = \langle v, v_1 \rangle$. Because $A \in \Orth(3)$, it preserves inner products:
-\[ 0 = \langle v, v_1 \rangle = \langle Av, Av_1 \rangle = \langle Av, \pm v_1 \rangle = \pm \langle Av, v_1 \rangle \implies Av \in L. \]
+Since $A$ is orthogonal, we have $A \cdot v \in L$ for all $v \in L$ (i.e., $T_A(L) \subseteq L$, meaning $L$ is invariant under $T_A$).
+Indeed, if $v \in L$, this implies $0 = \langle v, v_1 \rangle$. Because $A \in \Orth(3)$, the map $T_A$ preserves the scalar product by \cref{prop:orth_unitary_matrix_rep}, and therefore,
+\[ 0 = \langle v, v_1 \rangle = \langle Av, Av_1 \rangle = \langle Av, \pm v_1 \rangle = \pm \langle Av, v_1 \rangle, \]
+which implies that $Av \in L$.
 
-We also have $\mathbb{R}^3 = \Sp(v_1) \oplus L$, hence $\dim L = 2$.
-Now, $T_A|_L \colon L \to L$ is a linear isometry. Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By a previous result, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \Orth(2)$.
+By \cref{thm:orthogonal_complement_finite_dim}, we also have $\mathbb{R}^3 = \Sp(v_1) \oplus L$, hence $\dim L = 2$ by \cref{cor:dim_orthogonal_complement}.
+Now, $T_A|_L \colon L \to L$ is a linear isometry. Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By \cref{prop:orth_unitary_matrix_rep}, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \Orth(2)$.
 
 \textbf{Case (a):} $\lambda = 1$. Take the basis $\mathcal{B} := (v_1, w_1, w_2)$. Then
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \multicolumn{2}{c}{\multirow{2}{*}{$Q$}} \\ 0 & & \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & Q \end{pmatrix}. \]
-Now, $1 = \det A = \det(T_A) = 1 \cdot \det(Q)$, which implies $\det Q = 1$. 
-So, $Q \in \SOrth(2)$. By the previous proposition (\ref{prop:classification_o2}), there exists $\theta \in [0, 2\pi)$ such that $Q = R_\theta$.
+Now, by \cref{cor:det_endomorphism,prop:block_matrix}, $1 = \det A = \det(T_A) = 1 \cdot \det(Q)$, which implies $\det Q = 1$. 
+So, $Q \in \SOrth(2)$. By \cref{prop:classification_o2}, there exists $\theta \in [0, 2\pi)$ such that $Q = R_\theta$.
 Thus,
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 \\ 0 & R_\theta \end{pmatrix}. \]
 
-\textbf{Case (b):} If $\lambda = -1$. By the same argument as for case (a), we get that $1 = \det A = (-1) \cdot \det(T_A|_L)$, which implies $\det(T_A|_L) = -1$. By \cref{cor:2d_isometry_matrix}, there exists an orthonormal basis $\mathcal{L} = (w_1, w_2)$ for $L$ such that $[T_A|_L]_{\mathcal{L}}^{\mathcal{L}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$.
+\textbf{Case (b):} $\lambda = -1$. By the same argument as in case \textbf{(a)}, we get that $1 = \det A = (-1) \cdot \det(T_A|_L)$, which implies $\det(T_A|_L) = -1$. By \cref{cor:2d_isometry_matrix}, there exists an orthonormal basis $\mathcal{L} = (w_1, w_2)$ for $L$ such that $[T_A|_L]_{\mathcal{L}}^{\mathcal{L}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$.
 Take $\mathcal{B}' := (v_1, w_1, w_2)$. Then
 \[ [T_A]_{\mathcal{B}'}^{\mathcal{B}'} = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}. \]
 And for the reordered basis $\mathcal{B} := (w_1, v_1, w_2)$, we have 
@@ -338,8 +329,8 @@ for some $\theta \in [0, 2\pi)$. (So $T_A$ does a rotation by $\theta$ around $\
 \end{proposition}
 
 \begin{proof}
-Let $A' := -A = (-I) \cdot A$. Then $A' \in \Orth(3)$ and $\det A' = (-1)^3 \cdot \det A = (-1) \cdot (-1) = 1$.
-This implies $A' \in \SOrth(3)$. By the previous proposition (\ref{prop:classification_so3}), there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^3$, and $\theta' \in [0, 2\pi)$, such that $[T_{A'}]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_{\theta'} \end{smallmatrix}\right)$. 
+Let $A' := -A = (-I) \cdot A$. Since $-I \in \Orth(3)$, \cref{prop:group_properties} gives $A' \in \Orth(3)$, and by \cref{thm:det_multiplicative}, $\det A' = \det(-I) \cdot \det A = (-1)^3 \cdot \det A = (-1) \cdot (-1) = 1$.
+This implies $A' \in \SOrth(3)$. By \cref{prop:classification_so3}, there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^3$, and $\theta' \in [0, 2\pi)$, such that $[T_{A'}]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_{\theta'} \end{smallmatrix}\right)$. 
 This implies:
 \begin{align*}
     [T_A]_{\mathcal{B}}^{\mathcal{B}} &= [-\id_{\mathbb{R}^3}]_{\mathcal{B}}^{\mathcal{B}} \cdot [T_{A'}]_{\mathcal{B}}^{\mathcal{B}} \\
@@ -356,12 +347,20 @@ where $\theta = (\theta' + \pi) \pmod{2\pi}$.
 \addcontentsline{toc}{section}{Exercise Solutions}
 
 \begin{exercisesolution}[Proof of \cref{thm:isometry_equivalences} \textbf{(d)} $\implies$ \textbf{(e)}]
-Assume there exists an orthonormal basis $\mathcal{B} = (e_1, \dots, e_n)$ of $V$ such that $Te_1, \dots, Te_n$ is also an orthonormal basis. Since it is an orthonormal basis, we have $\langle Te_i, Te_j \rangle = \delta_{ij}$. 
-By the definition of the adjoint map, we can rewrite the inner product as:
-\[ \delta_{ij} = \langle Te_i, Te_j \rangle = \langle e_i, T^*Te_j \rangle. \]
-Because the vectors $e_i$ form a basis, the fact that the inner product of $T^*Te_j$ with every basis vector $e_i$ yields $\delta_{ij}$ (which are precisely the coordinates of $e_j$) implies that $T^*Te_j = e_j$ for all $1 \leq j \leq n$.
-Since the linear map $T^* \circ T$ acts as the identity on a basis, it must be the identity map on the entire space $V$. Thus, $T^* \circ T = \id_V$. (This proves \textbf{(d)} $\implies$ \textbf{(f)}).
-Since $V$ is finite-di\-men\-sional, a left inverse is also a right inverse, so $T \circ T^* = \id_V$, proving \textbf{(e)}.
+\begin{ainote}
+In the handwritten notes, this proof is labeled as proving \textbf{(d)} $\implies$ \textbf{(e)}. However, the first part actually proves \textbf{(d)} $\implies$ \textbf{(f)} (which is $T^* \circ T = \id_V$), from which \textbf{(e)} is then deduced. We have clarified the steps here.
+\end{ainote}
+
+Assume there exists an orthonormal basis $\mathcal{B} = (e_1, \dots, e_n)$ of $V$ such that $Te_1, \dots, Te_n$ is also an orthonormal basis. Let $1 \leq j \leq n$. Then, for all $1 \leq i \leq n$, the defining property \eqref{eq:adjoint_property} of the adjoint map gives
+\begin{equation}
+\label{eq:isometry_adjoint_on_basis}
+    \langle e_i, e_j \rangle = \delta_{ij} = \langle Te_i, Te_j \rangle = \langle e_i, T^*Te_j \rangle.
+\end{equation}
+Since $(e_1, \dots, e_n)$ is a basis for $V$, the equality \eqref{eq:isometry_adjoint_on_basis} extends by linearity in the first argument to
+\[ \langle v, e_j \rangle = \langle v, T^*Te_j \rangle \quad \text{for all } v \in V, \]
+and therefore, $T^*Te_j = e_j$. This last equality holds for all $1 \leq j \leq n$, so the linear map $T^* \circ T$ agrees with $\id_V$ on the basis $\mathcal{B}$. Thus, $T^* \circ T = \id_V$, which proves \textbf{(d)} $\implies$ \textbf{(f)}.
+
+Finally, $T^* \circ T = \id_V$ shows that $T$ is injective, and since $V$ is finite-di\-men\-sional, $T$ is an isomorphism by \cref{cor:equal_dim_iso}. Consequently, $T^* = T^* \circ T \circ T^{-1} = T^{-1}$, and therefore, $T \circ T^* = \id_V$, which proves \textbf{(e)}.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:orth_unitary_matrix_rep}]
@@ -369,11 +368,11 @@ Let $\mathcal{B} = (e_1, \dots, e_n)$ be an orthonormal basis for $V$.
 First, suppose $T$ is an orthogonal (resp. unitary) endomorphism. By \cref{thm:isometry_equivalences}, $T \circ T^* = \id_V$ and $T^* \circ T = \id_V$. 
 Taking the representation matrix with respect to $\mathcal{B}$, we have:
 \[ [T^* \circ T]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n. \]
-By the properties of representation matrices, this splits into $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$. Since $\mathcal{B}$ is an orthonormal basis, $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. 
-Thus, $\left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$, which means the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is orthogonal (resp. unitary).
+By the properties of representation matrices, this splits into $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$. Since $\mathcal{B}$ is an orthonormal basis, \cref{prop:matrix_representation_adjoint} gives $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. 
+Thus, $\left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$, which by \cref{lem:char_orthogonal_matrices} (resp. \cref{lem:char_unitary_matrices}) means that the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is orthogonal (resp. unitary).
 
 Conversely, assume that $A := [T]_{\mathcal{B}}^{\mathcal{B}}$ is orthogonal (resp. unitary). This means $A^* A = I_n$. 
-Because $\mathcal{B}$ is an orthonormal basis, $A^* = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = [T^*]_{\mathcal{B}}^{\mathcal{B}}$. 
+Again because $\mathcal{B}$ is an orthonormal basis, \cref{prop:matrix_representation_adjoint} yields $A^* = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = [T^*]_{\mathcal{B}}^{\mathcal{B}}$. 
 Substituting this back yields $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$, and therefore $[T^* \circ T]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}}$. This implies the maps are equal, so $T^* \circ T = \id_V$. By \cref{thm:isometry_equivalences}, this guarantees $T$ is an isometry.
 \end{exercisesolution}
 
@@ -383,9 +382,9 @@ We will prove this generically for $G = \Unit(n)$ and $G = \SUnit(n)$ (the real 
     \item The identity matrix $I_n$ satisfies $I_n^* \cdot I_n = I_n \cdot I_n = I_n$, so $I_n \in \Unit(n)$. Furthermore, $\det(I_n) = 1$, so $I_n \in \SUnit(n)$.
     
     \item Let $A, B \in \Unit(n)$. We evaluate $(AB)^* (AB) = (B^* A^*) (AB) = B^* (A^* A) B$. Since $A \in \Unit(n)$, $A^* A = I_n$, so this reduces to $B^* I_n B = B^* B$. Since $B \in \Unit(n)$, $B^* B = I_n$. Thus, $AB \in \Unit(n)$. 
-    If additionally $A, B \in \SUnit(n)$, then $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$, so $AB \in \SUnit(n)$.
+    If additionally $A, B \in \SUnit(n)$, then by \cref{thm:det_multiplicative}, $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$, so $AB \in \SUnit(n)$.
     
     \item Let $A \in \Unit(n)$. This implies $A^* A = I_n$, meaning $A^{-1} = A^*$. We check if $A^{-1}$ is unitary: $(A^{-1})^* A^{-1} = (A^*)^* A^* = A A^* = I_n$. Thus, $A^{-1} \in \Unit(n)$. 
-    If additionally $A \in \SUnit(n)$, then $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{1} = 1$, so $A^{-1} \in \SUnit(n)$.
+    If additionally $A \in \SUnit(n)$, then by \cref{cor:det_inverse}, $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{1} = 1$, so $A^{-1} \in \SUnit(n)$.
 \end{enumerate}
 \end{exercisesolution}
