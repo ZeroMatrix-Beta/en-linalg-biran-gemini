@@ -38,10 +38,41 @@ while read -r label; do
   fi
   anchor=$(printf '%s' "$line" | sed 's/{}}[[:space:]]*$//' | sed 's/.*{\([^{}]*\)}$/\1/')
   num=$(printf '%s' "$line" | sed 's/.*newlabel{[^}]*}{{//; s/}{.*//')
+
+  # (1) The anchor is a heading: the label sits in an unnumbered environment
+  #     and picked up the enclosing chapter/section.
   case "$anchor" in
     chapter.*|section.*|subsection.*)
-      printf 'BAD  %-42s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
+      printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
       bad=1
+      continue
+      ;;
+  esac
+
+  # (2) A bare integer is a chapter number. Every numbered environment in this
+  #     document prints Chapter.Number or Chapter.Section.Number, so a label
+  #     that prints just "4" drifted onto the chapter counter even when the
+  #     hyperref anchor happens to point somewhere else (e.g. figure.caption.N).
+  case "$num" in
+    ''|*[!0-9]*) ;;
+    *)
+      printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
+      bad=1
+      continue
+      ;;
+  esac
+
+  # (3) Only fig:* labels should land on a figure counter.
+  case "$anchor" in
+    figure.*)
+      case "$label" in
+        fig:*) ;;
+        *)
+          printf 'BAD  %-40s prints "%s"  (anchor %s, not a fig: label)\n' \
+            "$label" "$num" "$anchor"
+          bad=1
+          ;;
+      esac
       ;;
   esac
 done < "$tmp"

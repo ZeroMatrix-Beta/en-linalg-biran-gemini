@@ -12,47 +12,66 @@ Let $X$ and $Y$ be sets. A map $f: X \to Y$ (also called a function or transform
 
 In accordance with this definition, we can visually distinguish between valid and invalid assignments. A function must assign exactly one output to each input in its domain.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
-    % Diagram 1: O.K.
-    \begin{scope}[shift={(0,0)}]
-        \draw (0,0) ellipse (1cm and 2cm); \node at (-1, 2) {\Large $X$};
-        \draw (3,0) ellipse (1cm and 2cm); \node at (4, 2) {\Large $Y$};
-        \filldraw (0, 1) circle (2pt); \filldraw (0, 0) circle (2pt); \filldraw (0, -1) circle (2pt);
-        \filldraw (3, 1) circle (2pt); \filldraw (3, 0) circle (2pt); \filldraw (3, -1) circle (2pt);
-        \draw[->, thick] (0.2, 1) -- (2.8, 1);
-        \draw[->, thick] (0.2, 0) -- (2.8, 0);
-        \draw[->, thick] (0.2, -1) -- (2.8, -1);
-        \node at (1.5, -2.5) {\textbf{O.K.}};
-        \node at (1.5, 2) {\Large $f$};
-    \end{scope}
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.62, >=Stealth]
+      \draw (0,0) ellipse (1 and 2);  \node at (-1.15,1.85) {$X$};
+      \draw (3,0) ellipse (1 and 2);  \node at (4.15,1.85) {$Y$};
+      \foreach \y in {1,0,-1} \filldraw (0,\y) circle (2.4pt);
+      \foreach \y in {1.4,0.5,-0.5,-1.4} \filldraw (3,\y) circle (2.4pt);
+      \draw[->, thick, ThemeGreen] (0.25,1)  -- (2.75,1.4);
+      \draw[->, thick, ThemeGreen] (0.25,0)  -- (2.75,0.5);
+      \draw[->, thick, ThemeGreen] (0.25,-1) -- (2.75,-0.5);
+      \node at (1.5,2.4) {$f$};
+    \end{tikzpicture}
+    \caption{O.K.}
+    \label{fig:map_ok}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.62, >=Stealth]
+      \draw (0,0) ellipse (1 and 2);  \node at (-1.15,1.85) {$X$};
+      \draw (3,0) ellipse (1 and 2);  \node at (4.15,1.85) {$Y$};
+      \foreach \y in {1,0,-1} \filldraw (0,\y) circle (2.4pt);
+      \foreach \y in {1.4,0.5,-0.5,-1.4} \filldraw (3,\y) circle (2.4pt);
+      % the top element of X is sent to two different elements of Y
+      \draw[->, thick, ThemeAccent] (0.25,1) -- (2.75,1.4);
+      \draw[->, thick, ThemeAccent] (0.25,1) -- (2.75,0.5);
+      \draw[->, thick] (0.25,0)  -- (2.75,-0.5);
+      \draw[->, thick] (0.25,-1) -- (2.75,-1.4);
+      \node at (1.5,2.4) {$f$};
+    \end{tikzpicture}
+    \caption{NOT O.K.}
+    \label{fig:map_two_values}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.62, >=Stealth]
+      \draw (0,0) ellipse (1 and 2);  \node at (-1.15,1.85) {$X$};
+      \draw (3,0) ellipse (1 and 2);  \node at (4.15,1.85) {$Y$};
+      \foreach \y in {1,0,-1} \filldraw (0,\y) circle (2.4pt);
+      \foreach \y in {1.4,0.5,-0.5,-1.4} \filldraw (3,\y) circle (2.4pt);
+      \draw[->, thick] (0.25,1) -- (2.75,1.4);
+      \draw[->, thick] (0.25,0) -- (2.75,0.5);
+      % the bottom element of X is sent nowhere
+      \draw[ThemeAccent, thick] (0,-1) circle (5.5pt);
+      \node at (1.5,2.4) {$f$};
+    \end{tikzpicture}
+    \caption{NOT O.K.}
+    \label{fig:map_undefined}
+  \end{subfigure}
+  \caption{Which assignments are maps. In \cref{fig:map_ok} every element of $X$ has exactly one arrow leaving it. In \cref{fig:map_two_values} the top element of $X$ is assigned two different values, so the value is not \textit{uniquely defined}. In \cref{fig:map_undefined} the circled element of $X$ is assigned no value at all, so $f$ is not defined on \textit{every} element of $X$.}
+  \label{fig:what_is_a_map}
+\end{figure}
 
-    % Diagram 2: NOT O.K. (Undefined for some x)
-    \begin{scope}[shift={(6,0)}]
-        \draw (0,0) ellipse (1cm and 2cm); \node at (-1, 2) {\Large $X$};
-        \draw (3,0) ellipse (1cm and 2cm); \node at (4, 2) {\Large $Y$};
-        \filldraw (0, 1) circle (2pt); \filldraw (0, 0) circle (2pt); \filldraw (0, -1) circle (2pt);
-        \filldraw (3, 1) circle (2pt); \filldraw (3, 0) circle (2pt); \filldraw (3, -1) circle (2pt);
-        \draw[->, thick] (0.2, 1) -- (2.8, 1);
-        % The middle element in X has no output arrow!
-        \draw[->, thick] (0.2, -1) -- (2.8, -1);
-        \node at (1.5, -2.5) {\textbf{NOT O.K.}};
-    \end{scope}
-
-    % Diagram 3: NOT O.K. (Multiple outputs for one x)
-    \begin{scope}[shift={(12,0)}]
-        \draw (0,0) ellipse (1cm and 2cm); \node at (-1, 2) {\Large $X$};
-        \draw (3,0) ellipse (1cm and 2cm); \node at (4, 2) {\Large $Y$};
-        \filldraw (0, 1) circle (2pt); \filldraw (0, 0) circle (2pt); \filldraw (0, -1) circle (2pt);
-        \filldraw (3, 1.5) circle (2pt); \filldraw (3, 0) circle (2pt); \filldraw (3, -1.5) circle (2pt);
-        
-        \draw[->, thick] (0.2, 1) -- (2.8, 1.5);
-        \draw[->, thick] (0.2, 0) -- (2.8, 0) node[midway, above] {Input $x$};
-        \draw[->, thick] (0.2, 0) -- (2.8, -1.5) node[midway, below right] {Output $y$};
-        \node at (1.5, -2.5) {\textbf{NOT O.K.}};
-    \end{scope}
-\end{tikzpicture}
-\end{center}
+Informally, a map turns inputs into outputs:
+\[
+\text{Input} \in X \; \xrightarrow{\ f\ } \; \text{output} \in Y .
+\]
 
 $X$ is called the \textit{domain of definition} of $f$. 
 $Y$ is called the \textit{target} (or target domain) of $f$.
@@ -109,9 +128,9 @@ Conversely, $f$ is called an \textit{extension} of $f|_A$.
 \begin{enumerate}
     \item \textbf{Identity Map:} $\id: X \to X$ (sometimes denoted $\id_X$), defined by $\id(x) = x$ for all $x \in X$.
     \item \textbf{Constant Map:} $f: X \to Y$. Choose a fixed $y_0 \in Y$. Then $f(x) = y_0$ for all $x \in X$.
-    \item \textbf{Characteristic Function:} Let $A \subseteq X$. The characteristic function $\chi_A: X \to \{0, 1\}$ is defined as:
+    \item \textbf{Characteristic Function:} Let $A \subseteq X$. The characteristic function on $A$, written $\mathbf{1}_A: X \to \mathbb{R}$ (and also $\chi_A$), is defined as:
     \[
-    \chi_A(x) = 
+    \mathbf{1}_A(x) :=
     \begin{cases}
     1 & \text{if } x \in A \\
     0 & \text{if } x \notin A
@@ -119,8 +138,8 @@ Conversely, $f$ is called an \textit{extension} of $f|_A$.
     \]
     \item \textbf{Projections:} Given a Cartesian product $X_1 \times X_2$, the standard projection maps are:
     \begin{align*}
-    p_1&: X_1 \times X_2 \to X_1, \quad p_1(x_1, x_2) = x_1 \\
-    p_2&: X_1 \times X_2 \to X_2, \quad p_2(x_1, x_2) = x_2
+    \pi_1&: X_1 \times X_2 \to X_1, \quad (x_1, x_2) \mapsto x_1 \\
+    \pi_2&: X_1 \times X_2 \to X_2, \quad (x_1, x_2) \mapsto x_2
     \end{align*}
 \end{enumerate}
 \end{example}
@@ -149,7 +168,8 @@ Consider variations of the squaring function, which explicitly demonstrate the i
 Let $f: X \to Y$ be a bijection. The \textit{inverse map} $f^{-1}: Y \to X$ is the map that assigns to every $y \in Y$ the unique $x \in X$ such that $f(x) = y$.
 \end{definition}
 
-\begin{center}
+\begin{figure}[ht!]
+\centering
 \begin{tikzpicture}[scale=0.8, every node/.style={transform shape}]
     % Forward Map f
     \begin{scope}[shift={(0,0)}]
@@ -183,7 +203,9 @@ Let $f: X \to Y$ be a bijection. The \textit{inverse map} $f^{-1}: Y \to X$ is t
         \node at (1.5, 2) {\Large $f^{-1}$};
     \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{A bijection $f$ and its inverse $f^{-1}$. Because $f$ is bijective, every $y \in Y$ is hit by exactly one $x \in X$, so reversing every arrow again produces a map.}
+\label{fig:inverse_map}
+\end{figure}
 
 \begin{example}[Inverse of Squaring Function]
 For the bijection $f: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$ with $f(x) = x^2$, the inverse map is $f^{-1}: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$, strictly defined by $f^{-1}(y) = \sqrt{y}$.
@@ -192,11 +214,19 @@ For the bijection $f: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$ with $f(x) = x^
 \subsection{Composition of Maps}
 
 \begin{definition}[Composition]
+\label{def:composition}
 Let $f: X \to Y$ and $g: Y \to Z$ be maps. The composition $g \circ f: X \to Z$ is defined by:
 \[
 (g \circ f)(x) := g(f(x))
 \]
 \end{definition}
+
+On elements, the composition is simply the two assignments performed one after the other:
+\[
+\begin{tikzcd}[column sep=large]
+x \arrow[r, mapsto, "f"] & f(x) \arrow[r, mapsto, "g"] & g(f(x))
+\end{tikzcd}
+\]
 
 \begin{example}[Composition with Inverse]
 If $f: X \to Y$ is bijective and $f^{-1}: Y \to X$ is its inverse, then by definition:
@@ -219,10 +249,12 @@ Clearly, $g \circ f \ne f \circ g$.
 \end{example}
 
 \begin{lemma}[Composition of Injective and Surjective Maps]
+\label{lem:composition_inj_surj}
 Let $f: X \to Y$ and $g: Y \to Z$ be maps.
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item If $f$ and $g$ are injective, then $g \circ f$ is injective.
     \item If $f$ and $g$ are surjective, then $g \circ f$ is surjective.
+    \item If $f$ and $g$ are bijective, then $g \circ f$ is bijective.
 \end{enumerate}
 \end{lemma}
 
@@ -230,14 +262,62 @@ Let $f: X \to Y$ and $g: Y \to Z$ be maps.
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Assume $f$ and $g$ are injective. Let $x_1, x_2 \in X$ such that $(g \circ f)(x_1) = (g \circ f)(x_2)$. This means $g(f(x_1)) = g(f(x_2))$. Because $g$ is injective, this implies $f(x_1) = f(x_2)$. Because $f$ is injective, this implies $x_1 = x_2$. Thus, $g \circ f$ is injective.
     \item Assume $f$ and $g$ are surjective. Let $z \in Z$. Because $g$ is surjective, there exists $y \in Y$ such that $g(y) = z$. Because $f$ is surjective, there exists $x \in X$ such that $f(x) = y$. Therefore, $g(f(x)) = g(y) = z$, which means $(g \circ f)(x) = z$. Thus, $g \circ f$ is surjective.
+    \item This follows from \textbf{(a)} and \textbf{(b)}, because bijective means injective and surjective.
 \end{enumerate}
 \end{proof}
 
-\subsection{Visualizing Properties via Graphs}
+\subsection{Graphs}
 
-We can often immediately determine the injectivity, surjectivity, and bijectivity of a functionâ€”or whether an assignment is a function at allâ€”by examining its Cartesian graph using horizontal and vertical line tests.
+\begin{definition}[Graph of a Map]
+\label{def:graph_of_map}
+Let $f: X \to Y$ be a map. The \newterm{graph} of $f$ is the following subset of $X \times Y$:
+\[
+\operatorname{Graph}(f) := \{(x,y) \in X \times Y \mid y = f(x)\} \subseteq X \times Y .
+\]
+\end{definition}
 
-\begin{center}
+For $X \subseteq \mathbb{R}$ and $Y = \mathbb{R}$ the graph is a curve in the plane, and the defining condition can be read off geometrically. Since $f$ must assign to every $x \in X$ exactly one value, a subset of the plane is the graph of a map if and only if every vertical line meets it in exactly one point. This is the \newterm{vertical line test}, illustrated in \cref{fig:vertical_line_test}.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.95]
+      \draw[->, gray!70] (-2.1,0) -- (2.1,0);
+      \draw[->, gray!70] (0,-1.75) -- (0,1.75);
+      \draw[domain=-1.8:1.8, smooth, variable=\x, thick, ThemePurple]
+        plot ({\x}, {0.55*sin((2*\x) r) + 0.35*\x});
+      \draw[dashed, ThemeGreen] (1.1,-1.7) -- (1.1,1.7);
+      \fill[ThemeGreen] (1.1,0.885) circle (1.8pt);
+    \end{tikzpicture}
+    \caption{a graph}
+    \label{fig:is_a_graph}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.95]
+      \draw[->, gray!70] (-2.1,0) -- (2.1,0);
+      \draw[->, gray!70] (0,-1.75) -- (0,1.75);
+      \draw[domain=-1.45:1.45, smooth, variable=\t, thick, ThemeAccent]
+        plot ({\t*\t*\t - \t}, {\t});
+      % the test line is offset from the y-axis so that it reads as a separate line
+      \draw[dashed, ThemeGreen] (0.2,-1.7) -- (0.2,1.7);
+      \fill[ThemeGreen] (0.2,-0.89) circle (1.8pt);
+      \fill[ThemeGreen] (0.2,-0.20) circle (1.8pt);
+      \fill[ThemeGreen] (0.2,1.09) circle (1.8pt);
+    \end{tikzpicture}
+    \caption{not a graph}
+    \label{fig:not_a_graph}
+  \end{subfigure}
+  \caption{The vertical line test. On the left every vertical line meets the curve exactly once, so the curve is the graph of a map. On the right the vertical line drawn meets the curve three times, so no single value can be assigned to that input and the curve is not the graph of a map.}
+  \label{fig:vertical_line_test}
+\end{figure}
+
+We can often immediately determine the injectivity, surjectivity, and bijectivity of a function --- or whether an assignment is a function at all --- by examining its Cartesian graph using horizontal and vertical line tests.
+
+\begin{figure}[ht!]
+\centering
 \begin{tikzpicture}[scale=0.8, every node/.style={transform shape}]
     % Surjective, but not injective
     \begin{scope}[shift={(0,0)}]
@@ -281,7 +361,9 @@ We can often immediately determine the injectivity, surjectivity, and bijectivit
         \node at (1.5, -2.5) {\begin{tabular}{c} Not a Function's Graph \\ (fails vertical line test) \end{tabular}};
     \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Reading off properties from a graph. A \textit{horizontal} line at height $y$ meets the graph once for each $x$ with $f(x) = y$: meeting every horizontal line at least once means surjective, at most once means injective, and exactly once means bijective. A \textit{vertical} line meeting the curve more than once means the curve is not a graph at all.}
+\label{fig:graph_line_tests}
+\end{figure}
 
 \subsection{Image and Inverse Image of Subsets}
 
@@ -316,6 +398,7 @@ f^{-1}(\{-1, 0\}) &= \{0\}
 \subsection{Partitions}
 
 \begin{definition}[Partition]
+\label{def:partition}
 Let $X$ be a set and $\mathcal{P}$ a family of subsets of $X$, none of which is empty. We say that $\mathcal{P}$ is a \textit{partition} of $X$ if the following hold:
 \begin{enumerate}
     \item $X = \bigcup_{P \in \mathcal{P}} P$ (the subsets cover $X$).
@@ -323,25 +406,57 @@ Let $X$ be a set and $\mathcal{P}$ a family of subsets of $X$, none of which is 
 \end{enumerate}
 \end{definition}
 
-\begin{center}
-\begin{tikzpicture}[scale=1]
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=0.9]
     % Outer set X
-    \draw[thick, fill=gray!10] (0,0) rectangle (6,4);
-    \node at (0.3, 3.7) {\Large $X$};
-    
+    \draw[thick, fill=ThemePurple!6] (0,0) rectangle (6,4);
+    \node at (0.35, 3.65) {$X$};
+
     % Partition lines
     \draw[thick] (2,0) to[out=90, in=270] (2.5,4);
     \draw[thick] (4,0) to[out=110, in=250] (4.5,4);
     \draw[thick] (0, 2) to[out=0, in=180] (2.2, 1.8);
     \draw[thick] (2.4, 2.5) to[out=0, in=180] (4.4, 2.2);
     \draw[thick] (4.2, 1.5) to[out=0, in=180] (6, 2);
-    
+
     % Labels
-    \node at (1, 3) {\Large $P_1$};
-    \node at (1, 1) {\Large $P_2$};
-    \node at (3.2, 3.2) {\Large $P_3$};
-    \node at (3.3, 1) {\Large $P_4$};
-    \node at (5.2, 3) {\Large $P_5$};
-    \node at (5.2, 1) {\Large $P_6$};
-\end{tikzpicture}
-\end{center}
+    \node at (1, 3)   {$P_1$};
+    \node at (1, 1)   {$P_2$};
+    \node at (3.2, 3.2) {$P_3$};
+    \node at (3.3, 1) {$P_4$};
+    \node at (5.2, 3) {$P_5$};
+    \node at (5.2, 1) {$P_6$};
+  \end{tikzpicture}
+  \caption{A partition of $X$. The pieces cover $X$ and no two of them overlap, so every element of $X$ lies in exactly one piece.}
+  \label{fig:partition}
+\end{figure}
+
+The last observation is what makes partitions useful, and it deserves to be stated on its own.
+
+\begin{lemma}[Every Element Lies in Exactly One Piece]
+\label{lem:unique_piece}
+Let $\mathcal{P}$ be a partition of $X$. Then for every $x \in X$ there exists exactly one $P \in \mathcal{P}$ with $x \in P$: at least one by condition \textbf{(a)} of \cref{def:partition}, and at most one by condition \textbf{(b)}.
+\end{lemma}
+
+\subsection{Defining Functions by Cases}
+
+Partitions are precisely what licenses the case-by-case definitions we have already used, such as the characteristic function or the map $h$ above.
+
+\begin{proposition}[Gluing Functions along a Partition]
+\label{prop:defining_by_cases}
+Let $X$ and $Y$ be sets and let $\mathcal{P}$ be a partition of $X$. Suppose that for every $P \in \mathcal{P}$ we are given a function $f_P: P \to Y$. Then there exists a unique function
+\[
+f: X \to Y \quad \text{such that} \quad f|_P = f_P \ \text{ for all } P \in \mathcal{P}.
+\]
+\end{proposition}
+
+\begin{proof}
+Let $x \in X$. By \cref{lem:unique_piece} there exists exactly one $P \in \mathcal{P}$ with $x \in P$, so we may define
+\[
+f(x) := f_P(x).
+\]
+This assigns to every $x \in X$ a uniquely determined element of $Y$, so $f$ is a well-defined map, and by construction $f|_P = f_P$ for every $P \in \mathcal{P}$.
+
+For uniqueness, suppose $g: X \to Y$ also satisfies $g|_P = f_P$ for all $P \in \mathcal{P}$. Given $x \in X$, choose the piece $P$ containing $x$; then $g(x) = g|_P(x) = f_P(x) = f(x)$. Hence $g = f$.
+\end{proof}
