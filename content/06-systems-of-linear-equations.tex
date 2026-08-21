@@ -6,20 +6,20 @@
 
 \subsection{Fields (Körper)}
 
-Before we solve systems of linear equations, we must define the algebraic structures over which these equations are built. Throughout this course, we will work over a base \newterm{field} (in German: \qt{Körper}), usually denoted by $K$. 
+Before we solve systems of linear equations, we must fix the algebraic structure over which these equations are built. Throughout this course, we will work over a base \newterm{field} (in German: \qt{Körper}), usually denoted by $K$.
 
-A field is a set equipped with two operations (addition $+$ and multiplication $\cdot$) that satisfy a standard set of axioms, including commutativity, associativity, distributivity, and the existence of identities ($0$ and $1$) and inverses.
+A field is a set equipped with two operations (addition $+$ and multiplication $\cdot$) satisfying the ten axioms \textbf{(K1)}--\textbf{(K10)} of \cref{def:field}: commutativity, associativity and distributivity, together with the existence of the identities $0$ and $1$ and of additive and multiplicative inverses. We briefly recall the examples we will use most often.
 
 \begin{example}[Common Fields]
 \begin{itemize}
-    \item $\mathbb{Q} = \left\{\frac{m}{n} \mid m, n \in \mathbb{Z}, n \ne 0\right\}$ (The rational numbers)
-    \item $\mathbb{R}$ (The real numbers)
-    \item $\mathbb{C} = \{a + i \cdot b \mid a, b \in \mathbb{R}, i^2 = -1\}$ (The complex numbers)
+    \item $\mathbb{Q} = \left\{a \mid a = \frac{m}{n}, \; m, n \in \mathbb{Z}, \, n \ne 0\right\}$ (the rational numbers)
+    \item $\mathbb{R}$ (the real numbers)
+    \item $\mathbb{C} = \{z \mid z = a + i \cdot b, \; a, b \in \mathbb{R}\}$, where $i \cdot i = -1$ (the complex numbers)
 \end{itemize}
 \end{example}
 
 \begin{example}[Finite Fields]
-Fields do not have to be infinite. We will frequently use finite fields, where arithmetic is performed modulo a prime number. 
+Fields do not have to be infinite. We will frequently use finite fields, where arithmetic is performed modulo a prime number.
 \begin{enumerate}
     \item $\mathbb{F}_2 = \{0, 1\}$. Operations are done modulo $2$:
     \[
@@ -58,63 +58,97 @@ Fields do not have to be infinite. We will frequently use finite fields, where a
 \end{enumerate}
 \end{example}
 
-\subsection{Motivating Example}
+\subsection{A Motivating Example}
 
-Let us solve a familiar system of linear equations over $\mathbb{R}$ using elimination:
+Let us solve a small system of linear equations over $\mathbb{R}$ by elimination:
 \begin{equation*}
 \begin{cases}
 E_1: \quad x + 3y + 4z = -1 \\
-E_2: \quad 2x - y + z = 5 \\
-E_3: \quad 3x + 2y + z = 0
+E_2: \quad 2x - \phantom{3}y + \phantom{4}z = \phantom{-}5
 \end{cases}
 \end{equation*}
 
-We perform operations on the equations to systematically eliminate variables:
-\begin{align*}
--2 \cdot E_1 + E_2 \to E_2 \\
--3 \cdot E_1 + E_3 \to E_3 
-\end{align*}
-This yields an equivalent, simpler system:
+We operate on the equations so as to eliminate variables one at a time. First we remove $x$ from the second equation by $-2 \cdot E_1 + E_2 \to E_2$:
 \begin{equation*}
 \begin{cases}
 x + 3y + 4z = -1 \\
--7y - 7z = 7 \\
--7y - 11z = 3
+\phantom{x} \; -7y - 7z = \phantom{-}7
 \end{cases}
 \end{equation*}
-
-Next, we scale the second equation ($-\frac{1}{7} \cdot E_2 \to E_2$) to get:
+Next we normalise the second equation by $-\frac{1}{7} \cdot E_2 \to E_2$:
 \begin{equation*}
 \begin{cases}
 x + 3y + 4z = -1 \\
-y + z = -1 \\
--7y - 11z = 3
+\phantom{x + 3}y + \phantom{4}z = -1
 \end{cases}
 \end{equation*}
-
-Finally, we eliminate $y$ from the third equation ($7 \cdot E_2 + E_3 \to E_3$):
+Finally, instead of substituting backwards, we eliminate $y$ \emph{upwards} as well, using $-3 \cdot E_2 + E_1 \to E_1$:
 \begin{equation*}
 \begin{cases}
-x + 3y + 4z = -1 \\
-y + z = -1 \\
--4z = -4 \implies z = 1
+x \phantom{{}+ 3y} + \phantom{4}z = \phantom{-}2 \\
+\phantom{x + 3}y + \phantom{4}z = -1
 \end{cases}
 \end{equation*}
 
-\noindent
-By backward substitution:
-\begin{itemize}
-    \item $y + 1 = -1 \implies y = -2$
-    \item $x + 3(-2) + 4(1) = -1 \implies x - 2 = -1 \implies x = 1$
-\end{itemize}
-Thus, the unique solution is $(x,y,z) = (1, -2, 1)$. We can readily verify this by plugging the values back into the original system.
+The system is now solved as far as it can be. There are three unknowns but only two equations, so one unknown remains free: let $z = c \in \mathbb{R}$ be an arbitrary real number. Then
+\[
+y = -1 - c, \qquad x = 2 - c,
+\]
+and the set of solutions is
+\begin{equation} \label{eq:motivating_solution_set}
+\{(x, y, z) \mid x = 2 - c, \; y = -1 - c, \; z = c, \; c \in \mathbb{R}\}.
+\end{equation}
+This is not a single point but an entire one-parameter family --- geometrically, the line in which the two planes $x + 3y + 4z = -1$ and $2x - y + z = 5$ intersect, as sketched in \cref{fig:two_planes}.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=0.92, font=\small]
+    % Two parallelograms sheared in opposite directions, both containing the
+    % horizontal segment y = 0: that segment is their line of intersection.
+    % The fills are translucent so that the overlap region stays visible.
+    \fill[ThemeSecondary!50, fill opacity=0.42, draw=ThemeSecondary!75, thin]
+      (-5.0,1.5) -- (1.8,1.5) -- (5.0,-1.5) -- (-1.8,-1.5) -- cycle;
+    \fill[ThemeGreen!50, fill opacity=0.42, draw=ThemeGreen!75, thin]
+      (-1.5,1.1) -- (5.3,1.1) -- (1.5,-1.1) -- (-5.3,-1.1) -- cycle;
+
+    % --- the line of solutions: the common intersection of the two planes ---
+    \draw[ThemeAccent, very thick] (-4.3,0) -- (4.3,0);
+    \node[ThemeAccent, anchor=west, inner sep=2pt] at (4.35,0) {$L$};
+
+    % --- the point singled out once a third equation is imposed ---
+    \fill[ThemePurple] (1.6,0) circle (2.2pt);
+    \node[ThemePurple, anchor=south, inner sep=4pt] at (1.6,0) {$c = 1$};
+
+    \node[ThemeSecondary!75!black, anchor=south east] at (-4.6,1.5) {$E_1$};
+    \node[ThemeGreen!62!black, anchor=south west] at (4.9,1.1) {$E_2$};
+  \end{tikzpicture}
+  \caption{Schematic picture of the motivating example. Each equation cuts out a
+  plane in $\mathbb{R}^3$, and the solution set $L$ of the system is the line in
+  which the two planes meet --- one free parameter $c$, exactly as
+  \eqref{eq:motivating_solution_set} records. Imposing a third independent
+  equation adds a third plane, which meets $L$ in a single point.}
+  \label{fig:two_planes}
+\end{figure}
+
+\begin{example}[One more equation removes the freedom]
+Suppose we append a third equation $E_3: 3x + 2y + z = 0$ to the system above. Substituting the parametrised solution \eqref{eq:motivating_solution_set} into it gives
+\[
+3(2 - c) + 2(-1 - c) + c = 4 - 4c = 0,
+\]
+so that $c = 1$ is forced. The freedom collapses and the system now has the unique solution
+\[
+(x, y, z) = (1, -2, 1),
+\]
+which is exactly the member of the family \eqref{eq:motivating_solution_set} with $c = 1$. A system may therefore have no solution, exactly one solution, or infinitely many; deciding which of these occurs is one of the goals of this chapter.
+\end{example}
 
 \subsection{General Systems of Linear Equations}
 
 \begin{definition}[Linear Equation]
-A \newterm{linear equation} in $n$ variables $x_1, \dots, x_n$ over a field $K$ is an equation of the form:
+\label{def:linear_equation}
+A \newterm{linear equation} in $n$ variables $x_1, \dots, x_n$ over a field $K$ is an equation of the form
 \[
-a_1 x_1 + \dots + a_n x_n = b
+a_1 x_1 + \dots + a_n x_n = b,
 \]
 where $a_1, \dots, a_n \in K$ are the \newterm{coefficients} and $b \in K$ is the \newterm{constant term}.
 \begin{itemize}
@@ -124,23 +158,27 @@ where $a_1, \dots, a_n \in K$ are the \newterm{coefficients} and $b \in K$ is th
 \end{definition}
 
 \begin{definition}[System of Linear Equations]
-A general system of $m$ linear equations in $n$ variables over a field $K$ is written as:
+\label{def:system_of_linear_equations}
+A general system of $m$ linear equations in $n$ variables over a field $K$ is written as
 \begin{equation} \label{eq:general_system}
 \begin{cases}
-A_{1,1}x_1 + A_{1,2}x_2 + \dots + A_{1,n}x_n = b_1 \\
-A_{2,1}x_1 + A_{2,2}x_2 + \dots + A_{2,n}x_n = b_2 \\
+a_{1,1}x_1 + a_{1,2}x_2 + \dots + a_{1,n}x_n = b_1 \\
+a_{2,1}x_1 + a_{2,2}x_2 + \dots + a_{2,n}x_n = b_2 \\
 \vdots \\
-A_{m,1}x_1 + A_{m,2}x_2 + \dots + A_{m,n}x_n = b_m
+a_{m,1}x_1 + a_{m,2}x_2 + \dots + a_{m,n}x_n = b_m
 \end{cases}
 \end{equation}
+with $a_{i,j} \in K$ for $1 \le i \le m$, $1 \le j \le n$, and $b_i \in K$ for $1 \le i \le m$. Here $i$ is the row index and $j$ is the column index.
 \end{definition}
 
 \begin{definition}[Solution]
-A \newterm{solution} to the system is a sequence of scalars $s_1, \dots, s_n \in K$ that simultaneously satisfies all $m$ equations when we substitute $x_j = s_j$.
+\label{def:solution}
+A \newterm{solution} of the system is a tuple of scalars $s_1, \dots, s_n \in K$ that satisfies all $m$ equations simultaneously when we substitute $x_j = s_j$.
 \end{definition}
 
-\begin{definition}[Equivalence]
-Two systems of linear equations (in the same variables) are called \newterm{equivalent} if they have exactly the same set of solutions.
+\begin{definition}[Equivalence of Systems]
+\label{def:equivalent_systems}
+Two systems of linear equations in the same variables are called \newterm{equivalent} if they have exactly the same set of solutions.
 \end{definition}
 
 \subsection{Matrices}
@@ -148,32 +186,34 @@ Two systems of linear equations (in the same variables) are called \newterm{equi
 To study systems of linear equations systematically, we strip away the variables and isolate the coefficients into a rectangular array.
 
 \begin{definition}[Matrix]
+\label{def:matrix}
 An $m \times n$ \newterm{matrix} over $K$ is a rectangular array consisting of $m \cdot n$ elements of $K$, arranged in $m$ rows and $n$ columns.
 \end{definition}
 
 \begin{notation}
-We denote a matrix $A$ by its entries:
+We denote a matrix $A$ by its entries,
 \[
-A = (A_{i,j})_{1 \le i \le m, 1 \le j \le n} \quad \text{or simply} \quad (a_{ij})
+A = (a_{i,j})_{1 \le i \le m, \, 1 \le j \le n} \quad \text{or simply} \quad (a_{ij}),
 \]
-Here, $i$ denotes the row index and $j$ denotes the column index.
+where $i$ denotes the row index and $j$ the column index.
 \end{notation}
 
-We define the set of all such matrices as:
+We define the set of all such matrices as
 \begin{equation*}
-    \M_{m \times n}(K) := \text{the set of all } m \times n \text{ matrices over } K
+    \M_{m \times n}(K) := \text{the set of all } m \times n \text{ matrices over } K.
 \end{equation*}
 
 \begin{definition}[Row and Column Vectors]
+\label{def:row_and_column_vectors}
 Special cases of matrices occur when one of the dimensions is $1$:
-\begin{enumerate}
-    \item \textbf{Column Vectors:} An $n \times 1$ matrix is called a \newterm{column vector}. The set of all column vectors of length $n$ is denoted by $K^n := \M_{n \times 1}(K)$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item An $n \times 1$ matrix is called a \newterm{column vector}. The set of all column vectors of length $n$ is denoted by $K^n := \M_{n \times 1}(K)$:
     \[
-    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \in K^n
+    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \in K^n.
     \]
-    \item \textbf{Row Vectors:} A $1 \times n$ matrix is called a \newterm{row vector}. The set of all row vectors of length $n$ is denoted by $K_{\text{row}}^n := \M_{1 \times n}(K)$.
+    \item A $1 \times n$ matrix is called a \newterm{row vector}. The set of all row vectors of length $n$ is denoted by $K_{\text{row}}^n := \M_{1 \times n}(K)$:
     \[
-    (x_1, x_2, \dots, x_n) \in K_{\text{row}}^n
+    (x_1, x_2, \dots, x_n) \in K_{\text{row}}^n.
     \]
 \end{enumerate}
 \end{definition}
@@ -181,121 +221,478 @@ Special cases of matrices occur when one of the dimensions is $1$:
 \subsection{Matrix-Vector Multiplication}
 
 \begin{definition}[Matrix-Vector Multiplication]
-Let $A \in \M_{m \times n}(K)$ and $x \in K^n$. We define the product $A \cdot x$ as a new column vector in $K^m$, computed by taking the dot product of the rows of $A$ with the vector $x$:
+\label{def:matrix_vector_multiplication}
+Let $A \in \M_{m \times n}(K)$ and $x \in K^n$. We define the product $A \cdot x$ to be the column vector in $K^m$ obtained by pairing each row of $A$ with the vector $x$:
 \[
-\begin{pmatrix} 
+\begin{pmatrix}
 A_{1,1} & A_{1,2} & \dots & A_{1,n} \\
 A_{2,1} & A_{2,2} & \dots & A_{2,n} \\
 \vdots & \vdots & \ddots & \vdots \\
-A_{m,1} & A_{m,2} & \dots & A_{m,n} 
+A_{m,1} & A_{m,2} & \dots & A_{m,n}
 \end{pmatrix}
 \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
 =
-\begin{pmatrix} 
+\begin{pmatrix}
 A_{1,1}x_1 + \dots + A_{1,n}x_n \\
 A_{2,1}x_1 + \dots + A_{2,n}x_n \\
 \vdots \\
-A_{m,1}x_1 + \dots + A_{m,n}x_n 
-\end{pmatrix} \in K^m
+A_{m,1}x_1 + \dots + A_{m,n}x_n
+\end{pmatrix} \in K^m.
 \]
 \end{definition}
 
-Using this powerful notation, the massive system of linear equations \eqref{eq:general_system} can be written elegantly and compactly as a single matrix equation:
+With this notation, the whole system \eqref{eq:general_system} collapses into a single matrix equation. We write
 \begin{equation} \label{eq:matrix_equation}
-A x = b
+(S): \quad A x = b,
 \end{equation}
 where $A \in \M_{m \times n}(K)$ is the \newterm{coefficient matrix}, $x \in K^n$ is the vector of variables, and $b \in K^m$ is the \newterm{constant vector}.
 
-\subsection{Elementary Row Operations (EROs)}
+\begin{notation}
+\label{not:solution_set}
+For a system $(S)$ as in \eqref{eq:matrix_equation} we write
+\[
+L(S) := \{(x_1, \dots, x_n) \mid x_i \in K, \; A x = b\} \subseteq K^n
+\]
+for its \newterm{set of solutions}. Two systems $(S)$ and $(S')$ in the same variables are equivalent (\cref{def:equivalent_systems}) precisely when $L(S) = L(S')$.
+\end{notation}
 
-To solve $A x = b$, we define the \newterm{augmented matrix} $(A|b) \in \M_{m \times (n+1)}(K)$ by appending $b$ as an extra column to $A$. We can manipulate this matrix using three basic operations that correspond exactly to operations on the equations themselves.
-
-\begin{definition}[Elementary Row Operations]
-Let $E_i$ denote the $i$-th row of the augmented matrix. The three \newterm{Elementary Row Operations} (EROs) are defined and denoted as follows:
-\begin{enumerate}
-    \item \textbf{Type 1:} Multiply row $i$ by a non-zero scalar $\lambda \in K \setminus \{0\}$. \\
-    Notation: $\lambda \cdot E_i \to E_i$
-    \item \textbf{Type 2:} Add to row $j$ a scalar multiple of row $i$. \\
-    Notation: $\lambda \cdot E_i + E_j \to E_j$
-    \item \textbf{Type 3:} Swap row $i$ and row $j$. \\
-    Notation: $E_i \leftrightarrow E_j$
-\end{enumerate}
-\end{definition}
-
-\begin{theorem}
-Performing Elementary Row Operations on the augmented matrix $(A|b)$ does NOT change the set of solutions to the corresponding system of linear equations. In other words, if $(A|b)$ is transformed into $(A'|b')$ via EROs, then $Ax = b$ and $A'x = b'$ are equivalent systems.
-\end{theorem}
-
-\begin{proof}[Idea of the Proof]
-Each of the three EROs is strictly reversible. If you apply an operation, you can apply its inverse to get the original system back. Therefore, no solutions are lost, and no false solutions are created.
-\end{proof}
-
-\subsection{Further Computational Examples}
-
-\begin{example}[A system with infinitely many solutions]
-Consider the following system:
-\begin{equation*}
+\begin{example}[The motivating example in matrix form]
+The system of the previous section can be rewritten first with indexed variables and then as a matrix equation:
+\[
 \begin{cases}
-x_1 - 2x_2 + x_3 + x_4 = 1 \\
-2x_1 - 4x_2 + x_3 + 3x_4 = 2 \\
-x_1 - 2x_2 + 2x_3 - x_4 = 1
+x + 3y + 4z = -1 \\
+2x - y + z = 5
 \end{cases}
-\end{equation*}
-We write the augmented matrix and apply EROs:
-\[
-\begin{pmatrix}
-1 & -2 & 1 & 1 & \big| & 1 \\
-2 & -4 & 1 & 3 & \big| & 2 \\
-1 & -2 & 2 & -1 & \big| & 1 
-\end{pmatrix}
-\xrightarrow{\begin{subarray}{l} -2 \cdot E_1 + E_2 \to E_2 \\ -1 \cdot E_1 + E_3 \to E_3 \end{subarray}}
-\begin{pmatrix}
-1 & -2 & 1 & 1 & \big| & 1 \\
-0 & 0 & -1 & 1 & \big| & 0 \\
-0 & 0 & 1 & -2 & \big| & 0 
-\end{pmatrix}
-\]
-\[
-\xrightarrow{1 \cdot E_2 + E_3 \to E_3}
-\begin{pmatrix}
-1 & -2 & 1 & 1 & \big| & 1 \\
-0 & 0 & -1 & 1 & \big| & 0 \\
-0 & 0 & 0 & -1 & \big| & 0 
-\end{pmatrix}
-\]
-From the third row, $-x_4 = 0 \implies x_4 = 0$. \\
-From the second row, $-x_3 + x_4 = 0 \implies x_3 = 0$. \\
-Substituting into the first row gives $x_1 - 2x_2 + 0 + 0 = 1 \implies x_1 = 1 + 2x_2$.
-
-We have a free variable. Let $x_2 = \alpha \in \mathbb{R}$. The general solution is:
-\[
-x = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 1 + 2\alpha \\ \alpha \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} + \alpha \begin{pmatrix} 2 \\ 1 \\ 0 \\ 0 \end{pmatrix}
+\iff
+\begin{cases}
+x_1 + 3x_2 + 4x_3 = -1 \\
+2x_1 - x_2 + x_3 = 5
+\end{cases}
+\iff
+\underbrace{\begin{pmatrix} 1 & 3 & 4 \\ 2 & -1 & 1 \end{pmatrix}}_{2 \times 3}
+\underbrace{\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}}_{3 \times 1}
+=
+\underbrace{\begin{pmatrix} -1 \\ 5 \end{pmatrix}}_{2 \times 1}.
 \]
 \end{example}
 
+\begin{goals}
+Our aim for the rest of this chapter is to study the set of solutions $L(S)$ of a system $A x = b$:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Does the system have a solution at all, and if so, how many?
+    \item How do we find \emph{all} of the solutions, systematically?
+    \item Does $L(S)$ carry a structure of its own?
+\end{enumerate}
+\end{goals}
+
+\subsection{Elementary Row Operations}
+
+\begin{notation}
+We do not need to write down the unknowns $x_1, \dots, x_n$ at every step: the coefficient matrix $A$ and the constant vector $b$ already carry all the information. We therefore record the system as its \newterm{augmented matrix} (or \newterm{extended matrix})
+\[
+(A \mid b) \in \M_{m \times (n+1)}(K),
+\]
+obtained by appending $b$ to $A$ as an extra column.
+\end{notation}
+
+\begin{example}[An augmented matrix]
+The system
+\[
+\begin{cases}
+2x_1 - \phantom{1}x_2 + 3x_3 + 2x_4 = 0 \\
+\phantom{2}x_1 + 4x_2 \phantom{{}+ 3x_3} - \phantom{2}x_4 = 3 \\
+2x_1 + 6x_2 - \phantom{3}x_3 + 5x_4 = 9
+\end{cases}
+\qquad \text{has the augmented matrix} \qquad
+\begin{pmatrix}
+2 & -1 & 3 & 2 & \big| & 0 \\
+1 & 4 & 0 & -1 & \big| & 3 \\
+2 & 6 & -1 & 5 & \big| & 9
+\end{pmatrix}.
+\]
+\end{example}
+
+The three operations below act on the equations of a system, and equally on the rows of its augmented matrix.
+
+\begin{definition}[Elementary Row Operations]
+\label{def:elementary_row_operations}
+Let $E_i$ denote the $i$-th equation of a system, equivalently the $i$-th row of its augmented matrix. The three \newterm{elementary row operations} (EROs) are:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Type 1 (scaling).} Choose $\lambda \in K \setminus \{0\}$ and multiply row $i$ by $\lambda$. \\
+    Notation: $\lambda \cdot E_i \to E_i$.
+    \item \textbf{Type 2 (addition).} Choose $\lambda \in K$ and $1 \le i, j \le m$ with $i \ne j$, and replace row $j$ by row $j$ \emph{plus} $\lambda$ times row $i$. \\
+    Notation: $\lambda \cdot E_i + E_j \to E_j$.
+    \item \textbf{Type 3 (interchange).} Swap row $i$ and row $j$. \\
+    Notation: $E_i \leftrightarrow E_j$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Row Equivalence]
+\label{def:row_equivalence}
+Let $C$ and $C'$ be $r \times s$ matrices with entries in $K$. We say that $C'$ is \newterm{row equivalent} to $C$ if $C'$ can be obtained from $C$ by a finite sequence of elementary row operations,
+\[
+C = C_0 \longrightarrow C_1 \longrightarrow \dots \longrightarrow C_k = C'.
+\]
+\end{definition}
+
+\begin{theorem}[Row Operations Preserve the Solution Set]
+\label{thm:ero_preserve_solutions}
+Let $(S): A x = b$ and $(S'): A' x = b'$ be two systems of $m$ linear equations in $n$ unknowns. Suppose the augmented matrix $(A' \mid b')$ is row equivalent to $(A \mid b)$. Then
+\[
+L(S') = L(S).
+\]
+\end{theorem}
+
+\begin{proof}
+We begin with three claims.
+
+\begin{claim*}[Claim 1 --- One Operation Gives One Inclusion]
+\label{claim:ero_one_inclusion}
+If $(S')$ is obtained from $(S)$ by one elementary row operation, then $L(S) \subseteq L(S')$.
+\end{claim*}
+
+\emph{Proof of Claim 1.} Let $(x_1, \dots, x_n) \in L(S)$. We must show that $(x_1, \dots, x_n) \in L(S')$. We treat the three types separately.
+
+\textbf{(a)} Operation $\lambda \cdot E_i \to E_i$ with $\lambda \ne 0$. All equations of $(S')$ coincide with those of $(S)$ except for equation $i$, which changes as
+\[
+a_{i,1}x_1 + \dots + a_{i,n}x_n = b_i
+\qquad \longrightarrow \qquad
+\lambda a_{i,1}x_1 + \dots + \lambda a_{i,n}x_n = \lambda b_i.
+\]
+If $(x_1, \dots, x_n)$ satisfies the left equation, then multiplying both sides by $\lambda$ shows that it satisfies the right one as well.
+
+\textbf{(b)} Operation $\lambda \cdot E_i + E_j \to E_j$. Again all equations of $(S)$ and $(S')$ coincide except for equation $j$:
+\begin{align*}
+\text{row } j \text{ in } (S): \quad & a_{j,1}x_1 + \dots + a_{j,n}x_n = b_j \\
+\longrightarrow \qquad \text{row } j \text{ in } (S'): \quad & \bigl(a_{j,1} + \lambda a_{i,1}\bigr)x_1 + \dots + \bigl(a_{j,n} + \lambda a_{i,n}\bigr)x_n = b_j + \lambda b_i
+\end{align*}
+If $(x_1, \dots, x_n)$ satisfies rows $i$ and $j$ of $(S)$, then adding $\lambda$ times the $i$-th equation to the $j$-th shows that it satisfies row $j$ of $(S')$ too.
+
+\textbf{(c)} Operation $E_i \leftrightarrow E_j$. Here we clearly have
+\[
+(x_1, \dots, x_n) \in L(S) \implies (x_1, \dots, x_n) \in L(S'),
+\]
+because the order in which the equations of a system are listed has no effect whatsoever on its set of solutions.
+
+This concludes the proof of Claim 1. \hfill $\diamond$
+
+\begin{claim*}[Claim 2 --- Every Operation is Reversible]
+\label{claim:ero_reversible}
+If $(S')$ is obtained from $(S)$ by one elementary row operation, then $(S)$ can be obtained from $(S')$ by one elementary row operation.
+\end{claim*}
+
+\emph{Proof of Claim 2.} There are three cases, and in each of them we exhibit the inverse operation explicitly:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $(S) \xrightarrow{\;\lambda \cdot E_i \to E_i\;} (S')$ with $\lambda \ne 0$, then $(S') \xrightarrow{\;\frac{1}{\lambda} \cdot E_i \to E_i\;} (S)$.
+    \item If $(S) \xrightarrow{\;\lambda \cdot E_i + E_j \to E_j\;} (S')$ with $i \ne j$, then $(S') \xrightarrow{\;-\lambda \cdot E_i + E_j \to E_j\;} (S)$.
+    \item If $(S) \xrightarrow{\;E_i \leftrightarrow E_j\;} (S')$, then $(S') \xrightarrow{\;E_j \leftrightarrow E_i\;} (S)$.
+\end{enumerate}
+Note that case \textbf{(a)} is where the restriction $\lambda \ne 0$ in \cref{def:elementary_row_operations} earns its keep: without it, $\frac{1}{\lambda}$ would not exist and the operation would not be reversible. This concludes the proof of Claim 2. \hfill $\diamond$
+
+\begin{claim*}[Claim 3 --- One Operation Preserves the Solution Set]
+\label{claim:ero_equality}
+If $(S')$ is obtained from $(S)$ by one elementary row operation, then $L(S) = L(S')$.
+\end{claim*}
+
+\emph{Proof of Claim 3.} By Claim 1, we have $L(S) \subseteq L(S')$. By Claim 2, $(S)$ is obtained from $(S')$ by one elementary row operation, and hence Claim 1 applies again with the roles of $(S)$ and $(S')$ reversed, giving $L(S') \subseteq L(S)$. The two inclusions together give equality. This concludes the proof of Claim 3. \hfill $\diamond$
+
+We are now in a position to prove the theorem. By assumption, there is a finite sequence of elementary row operations
+\[
+(S) = (S_0) \longrightarrow (S_1) \longrightarrow \dots \longrightarrow (S_k) = (S').
+\]
+Applying Claim 3 to each single step gives
+\[
+L(S) = L(S_0) = L(S_1) = \dots = L(S_k) = L(S'). \qedhere
+\]
+\end{proof}
+
+\subsection{Row-Reduced Matrices}
+
+\Cref{thm:ero_preserve_solutions} tells us that we may row-reduce as much as we like without changing the answer. It remains to decide \emph{how far} the reduction can be pushed. The next two definitions describe the two successive normal forms we aim for.
+
+\begin{definition}[Row-Reduced Matrix]
+\label{def:row_reduced}
+An $m \times n$ matrix $A$ is called \newterm{row-reduced} if the following two conditions hold:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The first non-zero entry in each non-zero row of $A$ is $1$. This entry is called the \newterm{pivot} (or \newterm{leading term}) of that row.
+    \item Each column of $A$ which contains the leading non-zero entry of some row has all its other entries equal to $0$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}[Row-reduced and not row-reduced]
+Consider the following four matrices over $\mathbb{Q}$:
+\[
+A = \begin{pmatrix}
+0 & 0 & 0 & 1 & 2 \\
+0 & 1 & -3 & 0 & \frac{1}{2} \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+\qquad\qquad
+B = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & -1 & 0 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+\[
+C = \begin{pmatrix}
+0 & 2 & 1 \\
+1 & 0 & -3 \\
+0 & 0 & 0
+\end{pmatrix}
+\qquad\qquad
+D = \begin{pmatrix}
+0 & 0 & 1 & 1 \\
+1 & 0 & 0 & 2 \\
+0 & 1 & 0 & 5
+\end{pmatrix}
+\]
+\begin{itemize}
+    \item $A$ \emph{is} row-reduced. The pivots sit in columns $4$ and $2$, and each of those columns is zero apart from its pivot.
+    \item $B$ is \emph{not} row-reduced. Its pivots sit in columns $1$, $2$ and $3$; but column $3$ contains the pivot of row $3$ and also the entry $-1$ in row $2$, so condition \textbf{(b)} fails.
+    \item $C$ is \emph{not} row-reduced. The first non-zero entry of row $1$ is $2$ and not $1$, so condition \textbf{(a)} already fails.
+    \item $D$ \emph{is} row-reduced. Its pivots sit in columns $3$, $1$ and $2$, and each of those columns is zero apart from its pivot. Note that the pivots do \emph{not} march to the right as we go down the rows --- being row-reduced does not require this.
+\end{itemize}
+\end{example}
+
+\begin{theorem}[Reduction to a Row-Reduced Matrix]
+\label{thm:row_reduction_exists}
+Every $m \times n$ matrix $A$ is row equivalent to a row-reduced matrix.
+\end{theorem}
+
+\begin{proof}
+Let $A = (a_{ij})$ with $1 \le i \le m$, $1 \le j \le n$ and $a_{ij} \in K$. We proceed row by row.
+
+\textbf{Row $\#1$.} If all entries in the first row of $A$ are $0$, then condition \textbf{(a)} of \cref{def:row_reduced} is satisfied for row $\#1$ and there is nothing to do. Otherwise, let $k$ be the smallest index $j$ for which $a_{1j} \ne 0$, that is
+\[
+a_{1j} = 0 \quad \forall \, 1 \le j < k, \qquad a_{1k} \ne 0,
+\]
+so that the first row has the shape $(0, \dots, 0, a_{1k}, \ast, \dots, \ast)$. Multiply row $\#1$ by $\frac{1}{a_{1k}}$; its leading entry is now $1$, and condition \textbf{(a)} holds for row $\#1$. Next, for each $2 \le i \le m$, add $(-a_{ik})$ times row $\#1$ to row $i$, that is, perform
+\[
+-a_{ik} \cdot E_1 + E_i \to E_i.
+\]
+Schematically:
+\[
+\begin{pmatrix}
+0 & \dots & 0 & 1 & \dots \\
+& \vdots & & \vdots & \\
+a_{i1} & \dots & \dots & a_{ik} & \dots \\
+& \vdots & & \vdots &
+\end{pmatrix}
+\xrightarrow{\; -a_{ik} \cdot E_1 + E_i \to E_i \;}
+\begin{pmatrix}
+0 & \dots & 0 & 1 & \dots \\
+& \vdots & & \vdots & \\
+a_{i1} & \dots & a_{i,k-1} & 0 & \dots \\
+& \vdots & & \vdots &
+\end{pmatrix}
+\]
+After these operations, column $k$ is zero apart from the $1$ in row $\#1$.
+
+\textbf{Row $\#2$.} If all entries in row $\#2$ are $0$, we do nothing to this row. If some entry in row $\#2$ is non-zero, we multiply row $\#2$ by a scalar so that its leading term becomes $1$. Recall that row $\#1$ has its leading non-zero entry in column $k$. Since we have just made all other entries of column $k$ vanish, the leading non-zero term of row $\#2$ can \emph{not} lie in column $k$: it must appear in some other column, say column $k'$ with $k' \ne k$. We now add suitable multiples of row $\#2$ to all the other rows until we obtain a matrix in which all entries of column $k'$ are $0$, except the one in row $\#2$. The two possible configurations are
+\[
+\begin{pmatrix}
+0 & \dots & 0 & \dots & 0 & 1 & \ast & \dots & \ast \\
+0 & \dots & 0 & 1 & \ast \dots \ast & 0 & \ast & \dots & \ast \\
+& & 0 & & & 0 & & & \\
+& & \vdots & & & \vdots & & &
+\end{pmatrix}
+\quad \text{or} \quad
+\begin{pmatrix}
+0 & \dots & 0 & 1 & \ast \dots \ast & 0 & \ast & \dots & \ast \\
+0 & \dots & 0 & \dots & 0 & 1 & \ast & \dots & \ast \\
+& & 0 & & & 0 & & & \\
+& & \vdots & & & \vdots & & &
+\end{pmatrix}
+\]
+according to whether $k' < k$ or $k < k'$.
+
+\begin{importantremark}
+\label{rem:row_reduction_does_not_undo}
+In the operations just performed using row $\#2$ we did \emph{not} change any of the entries of row $\#1$ lying in columns $1, \dots, k$; in particular, nothing was changed in column $k$. Also, in case row $\#1$ was zero, the operations using row $\#2$ do not affect row $\#1$ at all. This is what guarantees that the work already done is never undone by the later steps.
+\end{importantremark}
+
+We continue now to row $\#3$ and repeat the same procedure, and so on. After a finite number of elementary row operations we arrive at a row-reduced matrix.
+\end{proof}
+
+\subsection{Row-Reduced Echelon Matrices}
+
+The matrix $D$ of the example above is row-reduced, and yet its pivots appear in the disorderly column order $3, 1, 2$. Sorting the rows costs nothing and yields a genuine normal form.
+
+\begin{definition}[Row-Reduced Echelon Matrix]
+\label{def:row_reduced_echelon}
+An $m \times n$ matrix $A$ is called \newterm{row-reduced echelon} if the following hold:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $A$ is row-reduced.
+    \item Every row of $A$ which has all its entries $0$ appears below every row which has a non-zero entry.
+    \item If rows $1, \dots, r$ are the non-zero rows of $A$, and if the leading non-zero entry of row $i$ occurs in column $k_i$ for $i = 1, \dots, r$, then
+    \[
+    k_1 < k_2 < \dots < k_r.
+    \]
+\end{enumerate}
+\end{definition}
+
+Condition \textbf{(c)} is what produces the characteristic staircase shape shown in \cref{fig:echelon_staircase}.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[font=\small, x=1cm, y=0.66cm]
+    % Cell (column c, row r) is centred at (c-0.5, -r+0.5).
+    % Pivots sit in columns 2, 4, 6 of rows 1, 2, 3; rows 4 and 5 are zero.
+    % --- the region that the echelon conditions force to be zero ---
+    \fill[gray!14]
+      (0,0) -- (1,0) -- (1,-1) -- (3,-1) -- (3,-2) -- (5,-2) -- (5,-3)
+      -- (7,-3) -- (7,-5) -- (0,-5) -- cycle;
+    % --- boundary between the non-zero rows and the zero rows ---
+    \draw[ThemeGreen!55, dashed] (0,-3) -- (5,-3);
+    % --- zero entries ---
+    \foreach \c/\r in {1/1, 1/2, 1/3, 1/4, 1/5,
+                       2/2, 2/3, 3/2, 3/3, 4/1, 4/3, 5/3, 6/1, 6/2,
+                       2/4, 3/4, 4/4, 5/4, 6/4, 7/4,
+                       2/5, 3/5, 4/5, 5/5, 6/5, 7/5}
+      \node[gray] at (\c-0.5,-\r+0.5) {$0$};
+    % --- entries in the pivot-free columns ---
+    \foreach \c/\r in {3/1, 5/1, 7/1, 5/2, 7/2, 7/3}
+      \node[ThemeSecondary] at (\c-0.5,-\r+0.5) {$\ast$};
+    % --- the pivots ---
+    \foreach \c/\r in {2/1, 4/2, 6/3} {
+      \node[ThemeAccent] at (\c-0.5,-\r+0.5) {$1$};
+      \draw[ThemeAccent, thick] (\c-0.5,-\r+0.5) circle (0.3);
+    }
+    % --- the staircase itself, drawn last so that it stays visible ---
+    \draw[ThemeGreen, very thick]
+      (1,0) -- (1,-1) -- (3,-1) -- (3,-2) -- (5,-2) -- (5,-3) -- (7,-3);
+    % --- delimiters ---
+    \draw[thick] (-0.15,0.15) -- (-0.4,0.15) -- (-0.4,-5.15) -- (-0.15,-5.15);
+    \draw[thick] (7.15,0.15) -- (7.4,0.15) -- (7.4,-5.15) -- (7.15,-5.15);
+    % --- row labels ---
+    \node[anchor=east, gray] at (-0.7,-0.5) {$1$};
+    \node[anchor=east, gray] at (-0.7,-2.5) {$r$};
+    \node[anchor=east, gray] at (-0.7,-3.5) {$r+1$};
+    \node[anchor=east, gray] at (-0.7,-4.5) {$m$};
+    % --- pivot column labels ---
+    \foreach \c/\lab in {2/{k_1}, 4/{k_2}, 6/{k_3}}
+      \node[ThemeAccent, anchor=south] at (\c-0.5,0.25) {$\lab$};
+  \end{tikzpicture}
+  \caption{A row-reduced echelon matrix. The circled pivots are $1$; everything
+  below the green staircase is $0$, and each pivot column is $0$ apart from its
+  pivot. Because $k_1 < k_2 < k_3$, the pivots move strictly to the right as we
+  descend, and the $m - r$ zero rows are pushed to the bottom. The columns
+  carrying a $\ast$ are the ones without a pivot; they will turn into the free
+  variables when the matrix is read back as a system.}
+  \label{fig:echelon_staircase}
+\end{figure}
+
+\begin{theorem}[Reduction to Row-Reduced Echelon Form]
+\label{thm:echelon_form_exists}
+Every $m \times n$ matrix $A$ is row equivalent to a row-reduced echelon matrix.
+\end{theorem}
+
+\begin{proof}
+By \cref{thm:row_reduction_exists} we already know that $A$ is row equivalent to a row-reduced matrix $A'$. Performing a finite number of row interchanges on $A'$ --- an operation of Type 3, which preserves row equivalence --- we may list the non-zero rows in increasing order of their pivot columns and move all zero rows to the bottom. The result satisfies conditions \textbf{(b)} and \textbf{(c)} of \cref{def:row_reduced_echelon}, and interchanging rows does not disturb condition \textbf{(a)}. Hence we arrive at a row-reduced echelon matrix.
+\end{proof}
+
+\begin{remark}
+\label{rem:why_echelon_helps}
+Why is this useful for solving systems of equations? Let $A x = b$ be a system of linear equations and consider its augmented matrix $(A \mid b)$. We may perform on $(A \mid b)$ the same elementary operations that we perform on $A$, and so obtain a row-equivalent matrix $(A' \mid b')$ in which $A'$ is a row-reduced echelon matrix. By \cref{thm:ero_preserve_solutions}, the systems $A x = b$ and $A' x = b'$ have the same solutions --- but $A' x = b'$ is far easier to solve, since each pivot expresses one variable directly in terms of the pivot-free ones.
+\end{remark}
+
+\subsection{Worked Examples}
+
+\begin{example}[Solving a system by full reduction]
+Consider the system over $\mathbb{R}$ whose augmented matrix is
+\[
+\begin{pmatrix}
+0 & -9 & 3 & 4 & \big| & 9 \\
+1 & 4 & 0 & -1 & \big| & 5 \\
+2 & 6 & -1 & 5 & \big| & -5
+\end{pmatrix}.
+\]
+We first normalise the leading entry of the first row, and then clear its column:
+\[
+\xrightarrow{-\frac{1}{9} \cdot E_1 \to E_1}
+\begin{pmatrix}
+0 & 1 & -\frac{1}{3} & -\frac{4}{9} & \big| & -1 \\
+1 & 4 & 0 & -1 & \big| & 5 \\
+2 & 6 & -1 & 5 & \big| & -5
+\end{pmatrix}
+\xrightarrow{\begin{subarray}{l} -4 \cdot E_1 + E_2 \to E_2 \\ -6 \cdot E_1 + E_3 \to E_3 \end{subarray}}
+\begin{pmatrix}
+0 & 1 & -\frac{1}{3} & -\frac{4}{9} & \big| & -1 \\
+1 & 0 & \frac{4}{3} & \frac{7}{9} & \big| & 9 \\
+2 & 0 & 1 & \frac{23}{3} & \big| & 1
+\end{pmatrix}
+\]
+Next we clear the first column below row $2$ and normalise the third row:
+\[
+\xrightarrow{-2 \cdot E_2 + E_3 \to E_3}
+\begin{pmatrix}
+0 & 1 & -\frac{1}{3} & -\frac{4}{9} & \big| & -1 \\
+1 & 0 & \frac{4}{3} & \frac{7}{9} & \big| & 9 \\
+0 & 0 & -\frac{5}{3} & \frac{55}{9} & \big| & -17
+\end{pmatrix}
+\xrightarrow{-\frac{3}{5} \cdot E_3 \to E_3}
+\begin{pmatrix}
+0 & 1 & -\frac{1}{3} & -\frac{4}{9} & \big| & -1 \\
+1 & 0 & \frac{4}{3} & \frac{7}{9} & \big| & 9 \\
+0 & 0 & 1 & -\frac{11}{3} & \big| & \frac{51}{5}
+\end{pmatrix}
+\]
+Now we clear the third column upwards, and finally sort the rows:
+\[
+\xrightarrow{\begin{subarray}{l} -\frac{4}{3} \cdot E_3 + E_2 \to E_2 \\ \frac{1}{3} \cdot E_3 + E_1 \to E_1 \end{subarray}}
+\begin{pmatrix}
+0 & 1 & 0 & -\frac{5}{3} & \big| & \frac{12}{5} \\
+1 & 0 & 0 & \frac{17}{3} & \big| & -\frac{23}{5} \\
+0 & 0 & 1 & -\frac{11}{3} & \big| & \frac{51}{5}
+\end{pmatrix}
+\xrightarrow{E_1 \leftrightarrow E_2}
+\begin{pmatrix}
+1 & 0 & 0 & \frac{17}{3} & \big| & -\frac{23}{5} \\
+0 & 1 & 0 & -\frac{5}{3} & \big| & \frac{12}{5} \\
+0 & 0 & 1 & -\frac{11}{3} & \big| & \frac{51}{5}
+\end{pmatrix}
+\]
+The last matrix is in row-reduced echelon form. Reading it back as a system gives
+\[
+\begin{cases}
+x_1 \phantom{{}+ x_2 + x_3} + \frac{17}{3}x_4 = -\frac{23}{5} \\
+\phantom{x_1 + {}} x_2 \phantom{{}+ x_3} - \frac{5}{3}x_4 = \phantom{-}\frac{12}{5} \\
+\phantom{x_1 + x_2 + {}} x_3 - \frac{11}{3}x_4 = \phantom{-}\frac{51}{5}
+\end{cases}
+\]
+Column $4$ carries no pivot, so $x_4$ is free. Take $x_4 := a \in \mathbb{R}$ arbitrary. Then
+\[
+x_3 = \frac{11}{3}a + \frac{51}{5}, \qquad
+x_2 = \frac{5}{3}a + \frac{12}{5}, \qquad
+x_1 = -\frac{17}{3}a - \frac{23}{5},
+\]
+and these are \emph{all} the solutions of the original system, by \cref{thm:ero_preserve_solutions}.
+\end{example}
+
 \begin{example}[Conditions for consistency]
-Let's see how solutions behave for a general choice of constants $b_1, b_2, b_3 \in \mathbb{R}$:
+Let us now see how the solutions behave for a general choice of the constants $b_1, b_2, b_3 \in \mathbb{R}$ in the system
 \[
 \begin{pmatrix}
 1 & -2 & 1 \\
 2 & 1 & 1 \\
-0 & 5 & -1 
+0 & 5 & -1
 \end{pmatrix}
 \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}
-= \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}
+= \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}.
 \]
-We construct the augmented matrix and reduce:
+We construct the augmented matrix and reduce it:
 \[
 \begin{pmatrix}
 1 & -2 & 1 & \big| & b_1 \\
 2 & 1 & 1 & \big| & b_2 \\
-0 & 5 & -1 & \big| & b_3 
+0 & 5 & -1 & \big| & b_3
 \end{pmatrix}
 \xrightarrow{-2 \cdot E_1 + E_2 \to E_2}
 \begin{pmatrix}
 1 & -2 & 1 & \big| & b_1 \\
 0 & 5 & -1 & \big| & b_2 - 2b_1 \\
-0 & 5 & -1 & \big| & b_3 
+0 & 5 & -1 & \big| & b_3
 \end{pmatrix}
 \]
 \[
@@ -303,11 +700,96 @@ We construct the augmented matrix and reduce:
 \begin{pmatrix}
 1 & -2 & 1 & \big| & b_1 \\
 0 & 5 & -1 & \big| & b_2 - 2b_1 \\
-0 & 0 & 0 & \big| & b_3 - b_2 + 2b_1 
+0 & 0 & 0 & \big| & b_3 - b_2 + 2b_1
+\end{pmatrix}
+\xrightarrow{\frac{1}{5} \cdot E_2 \to E_2}
+\begin{pmatrix}
+1 & -2 & 1 & \big| & b_1 \\
+0 & 1 & -\frac{1}{5} & \big| & \frac{1}{5}(b_2 - 2b_1) \\
+0 & 0 & 0 & \big| & b_3 - b_2 + 2b_1
 \end{pmatrix}
 \]
-For this system to have \textit{any} solutions, the bottom row cannot result in a contradiction ($0 = \text{non-zero}$). Therefore, the system is consistent if and only if:
 \[
-b_3 - b_2 + 2b_1 = 0
+\xrightarrow{2 \cdot E_2 + E_1 \to E_1}
+\begin{pmatrix}
+1 & 0 & \frac{3}{5} & \big| & \frac{1}{5}(b_1 + 2b_2) \\
+0 & 1 & -\frac{1}{5} & \big| & \frac{1}{5}(b_2 - 2b_1) \\
+0 & 0 & 0 & \big| & b_3 - b_2 + 2b_1
+\end{pmatrix}
 \]
+The last matrix is in row-reduced echelon form, and the equivalent system reads
+\[
+\begin{cases}
+x_1 \phantom{{}+ x_2} + \frac{3}{5}x_3 = \frac{1}{5}(b_1 + 2b_2) \\
+\phantom{x_1 + {}} x_2 - \frac{1}{5}x_3 = \frac{1}{5}(b_2 - 2b_1) \\
+\phantom{x_1 + x_2 + \frac{3}{5}x_3 \; } 0 = b_3 - b_2 + 2b_1
+\end{cases}
+\]
+Two cases arise from the last row.
+\begin{itemize}
+    \item If $b_3 - b_2 + 2b_1 \ne 0$, the third equation reads $0 = \text{non-zero}$, and the system has \emph{no} solutions.
+    \item If $b_3 - b_2 + 2b_1 = 0$, the third equation is vacuous and the system is equivalent to
+    \[
+    \begin{cases}
+    x_1 + \frac{3}{5}x_3 = \frac{1}{5}(b_1 + 2b_2) \\
+    x_2 - \frac{1}{5}x_3 = \frac{1}{5}(b_2 - 2b_1)
+    \end{cases}
+    \]
+    Column $3$ carries no pivot, so $x_3$ is free. Take $x_3 := c \in \mathbb{R}$ arbitrary; then
+    \[
+    x_2 = \frac{1}{5}c + \frac{1}{5}(b_2 - 2b_1), \qquad
+    x_1 = -\frac{3}{5}c + \frac{1}{5}(b_1 + 2b_2).
+    \]
+\end{itemize}
+So the constants $b_1, b_2, b_3$ cannot be chosen freely: the system is consistent if and only if $b_3 - b_2 + 2b_1 = 0$, and when it is, it has infinitely many solutions.
 \end{example}
+
+\begin{example}[A system with infinitely many solutions]
+As a final illustration, consider
+\begin{equation*}
+\begin{cases}
+x_1 - 2x_2 + \phantom{2}x_3 + \phantom{3}x_4 = 1 \\
+2x_1 - 4x_2 + \phantom{2}x_3 + 3x_4 = 2 \\
+x_1 - 2x_2 + 2x_3 - \phantom{3}x_4 = 1
+\end{cases}
+\end{equation*}
+We write the augmented matrix and apply EROs:
+\[
+\begin{pmatrix}
+1 & -2 & 1 & 1 & \big| & 1 \\
+2 & -4 & 1 & 3 & \big| & 2 \\
+1 & -2 & 2 & -1 & \big| & 1
+\end{pmatrix}
+\xrightarrow{\begin{subarray}{l} -2 \cdot E_1 + E_2 \to E_2 \\ -1 \cdot E_1 + E_3 \to E_3 \end{subarray}}
+\begin{pmatrix}
+1 & -2 & 1 & 1 & \big| & 1 \\
+0 & 0 & -1 & 1 & \big| & 0 \\
+0 & 0 & 1 & -2 & \big| & 0
+\end{pmatrix}
+\]
+\[
+\xrightarrow{1 \cdot E_2 + E_3 \to E_3}
+\begin{pmatrix}
+1 & -2 & 1 & 1 & \big| & 1 \\
+0 & 0 & -1 & 1 & \big| & 0 \\
+0 & 0 & 0 & -1 & \big| & 0
+\end{pmatrix}
+\]
+From the third row, $-x_4 = 0$, and therefore, $x_4 = 0$. From the second row, $-x_3 + x_4 = 0$, and therefore, $x_3 = 0$. Substituting into the first row gives $x_1 - 2x_2 = 1$, that is, $x_1 = 1 + 2x_2$.
+
+Here $x_2$ is the free variable. Let $x_2 = \alpha \in \mathbb{R}$. The general solution is
+\[
+x = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 1 + 2\alpha \\ \alpha \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} + \alpha \begin{pmatrix} 2 \\ 1 \\ 0 \\ 0 \end{pmatrix}.
+\]
+Observe the shape of the answer: one particular solution plus an arbitrary multiple of a fixed vector. That the solution set of a system should always look like this is precisely the kind of structure our \textbf{(c)} question asked about, and we will return to it once we have the language of vector spaces.
+\end{example}
+
+\begin{ainote}
+The lecture notes for this chapter use $F$ for the base field and $R_i$ for the
+rows; this transcript writes $K$ and $E_i$ throughout, in line with the
+conventions used in the rest of the document. The two matrices in the schematic
+step of the proof of \cref{thm:row_reduction_exists}, and the final example above,
+are expanded slightly beyond what the notes show; the geometric picture in
+\cref{fig:two_planes} and the staircase in \cref{fig:echelon_staircase} were added
+here. Everything else follows the notes directly.
+\end{ainote}
