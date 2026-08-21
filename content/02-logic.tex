@@ -26,7 +26,8 @@ Statements A and B are True. Statement C is False (e.g., $9$ is odd but not prim
 \subsection{Negation, Conjunction, and Disjunction}
 
 \begin{definition}[Negation]
-The \newterm{negation} of a statement $A$, denoted $\neg A$ (or sometimes $\sim A$), asserts that $A$ does not hold.
+\label{def:negation}
+The \newterm{negation} of a statement $A$, denoted $\neg A$ (and sometimes $\overline{A}$), asserts that $A$ does not hold.
 \[
 \begin{array}{|c|c|}
 \hline
@@ -40,7 +41,8 @@ A & \neg A \\
 \end{definition}
 
 \begin{definition}[Conjunction / AND]
-The statement $A \wedge B$ (read \qt{$A$ and $B$}) is True if and only if both $A$ and $B$ are True.
+\label{def:conjunction}
+The statement $A \wedge B$ (read \qt{$A$ and $B$}, and sometimes written $A \,\&\, B$) is True if and only if both $A$ and $B$ are True.
 \[
 \begin{array}{|c|c|c|}
 \hline
@@ -60,6 +62,7 @@ For $x \in \mathbb{R}$, the statement $(x^2 = 1) \wedge (x \ge 0)$ is logically 
 \end{example}
 
 \begin{definition}[Disjunction / OR]
+\label{def:disjunction}
 The statement $A \vee B$ (read \qt{$A$ or $B$}) is True if \textit{at least one} of the statements $A$ or $B$ is True. This is an \textit{inclusive} OR.
 \[
 \begin{array}{|c|c|c|}
@@ -75,9 +78,90 @@ A & B & A \vee B \\
 \]
 \end{definition}
 
+\begin{importantremark}
+\label{rem:inclusive_or}
+In everyday life, \qt{either $A$ or $B$} usually means one of the two but not both. In mathematics it means \qt{either $A$ or $B$, or both}: it could be only $A$, it could be only $B$, and it could be both $A$ and $B$.
+\end{importantremark}
+
+The three basic operators are conveniently visualised by shading the region of a Venn diagram on which the compound statement comes out True; see \cref{fig:venn_operators}.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[b]{0.30\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.62]
+      \fill[ThemePurple!22, even odd rule] (-2.1,-1.5) rectangle (2.1,1.6) (0,0) circle (1.05);
+      \draw[gray!70] (-2.1,-1.5) rectangle (2.1,1.6);
+      \draw[thick] (0,0) circle (1.05);
+      \node at (0,0) {$A$};
+      \node[gray, font=\scriptsize] at (1.72,1.3) {$X$};
+    \end{tikzpicture}
+    \caption{$\neg A$}
+    \label{fig:venn_neg}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.30\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.62]
+      \draw[gray!70] (-2.1,-1.5) rectangle (2.1,1.6);
+      \begin{scope}
+        \clip (-0.55,0) circle (1.05);
+        \fill[ThemePurple!35] (0.55,0) circle (1.05);
+      \end{scope}
+      \draw[thick] (-0.55,0) circle (1.05);
+      \draw[thick] (0.55,0) circle (1.05);
+      \node at (-1.25,0) {$A$};
+      \node at (1.25,0) {$B$};
+      \node[gray, font=\scriptsize] at (1.72,1.3) {$X$};
+    \end{tikzpicture}
+    \caption{$A \wedge B$}
+    \label{fig:venn_and}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.30\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.62]
+      \draw[gray!70] (-2.1,-1.5) rectangle (2.1,1.6);
+      \fill[ThemePurple!35] (-0.55,0) circle (1.05);
+      \fill[ThemePurple!35] (0.55,0) circle (1.05);
+      \draw[thick] (-0.55,0) circle (1.05);
+      \draw[thick] (0.55,0) circle (1.05);
+      \node at (-1.25,0) {$A$};
+      \node at (1.25,0) {$B$};
+      \node[gray, font=\scriptsize] at (1.72,1.3) {$X$};
+    \end{tikzpicture}
+    \caption{$A \vee B$}
+    \label{fig:venn_or}
+  \end{subfigure}
+  \caption{The three basic operators of \cref{def:negation,def:conjunction,def:disjunction}, drawn on a universe $X$. The shaded region is where the compound statement is True. Note that in \cref{fig:venn_or} the overlap is shaded as well: this is the inclusive OR.}
+  \label{fig:venn_operators}
+\end{figure}
+
 \begin{example}[Disjunction Example]
-The statement $(x > 1) \vee (x < 2)$ is True for all $x \in \mathbb{R}$. Conversely, $(x < 1) \vee (x > 2)$ is precisely the negation of the statement $1 \le x \le 2$.
+\label{ex:disjunction_interval}
+The statement $(x > 1) \vee (x < 2)$ is True for all $x \in \mathbb{R}$, since every real number satisfies at least one of the two conditions. Conversely, $(x < 1) \vee (x > 2)$ is precisely the negation of the statement $1 \le x \le 2$, as \cref{fig:or_number_line} shows.
 \end{example}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=1.0, >=Stealth]
+    \draw[->, gray!70] (-3.1,0) -- (3.5,0) node[right, black, font=\small] {$x$};
+    % where (x<1) or (x>2) holds
+    \draw[ThemePurple, line width=1.6pt] (-3.0,0) -- (0,0);
+    \draw[ThemePurple, line width=1.6pt] (1.5,0) -- (3.4,0);
+    % the negation: the closed interval [1,2]
+    \draw[ThemeGreen, line width=1.6pt] (0,0) -- (1.5,0);
+    \filldraw[ThemeGreen] (0,0) circle (2.3pt);
+    \filldraw[ThemeGreen] (1.5,0) circle (2.3pt);
+    \node[below, font=\small] at (0,-0.14) {$1$};
+    \node[below, font=\small] at (1.5,-0.14) {$2$};
+    \node[ThemePurple, above, font=\scriptsize] at (-1.5,0.10) {$x < 1$};
+    \node[ThemePurple, above, font=\scriptsize] at (2.45,0.10) {$x > 2$};
+    \node[ThemeGreen, above, font=\scriptsize] at (0.75,0.10) {$1 \le x \le 2$};
+  \end{tikzpicture}
+  \caption{The statement $(x < 1) \vee (x > 2)$ holds exactly on the two purple rays, which together form the complement of the green interval. Hence it is the negation of $1 \le x \le 2$.}
+  \label{fig:or_number_line}
+\end{figure}
 
 \subsection{Implications and Equivalences}
 
@@ -121,12 +205,31 @@ A & B & A \iff B \\
 \]
 \end{definition}
 
-\begin{exercise}[Contrapositive and De Morgan's Laws]
-Prove the following via truth tables:
+\begin{example}[Equivalences]
+\label{ex:equivalences}
+Both of the following statements are True:
+\[
+(x^2 > 0) \iff (x \ne 0), \qquad (0 = 1) \iff \qt{\text{The Earth is flat}}.
+\]
+The second one is True because both sides are False. Again, causality is irrelevant.
+\end{example}
+
+\begin{proposition}[Contrapositive]
+\label{prop:contrapositive}
+Let $A, B$ be statements. Then
+\[
+(A \implies B) \iff (\neg B \implies \neg A).
+\]
+\end{proposition}
+
+\begin{exercise}[Double Negation and De Morgan's Laws]
+\label{exer:de_morgan}
+Prove \cref{prop:contrapositive} via a truth table, and show in the same way that
 \begin{enumerate}
-    \item \textbf{Contrapositive:} $(A \implies B) \iff (\neg B \implies \neg A)$.
-    \item \textbf{De Morgan's Laws:} $\neg(A \wedge B) \iff \neg A \vee \neg B$ and $\neg(A \vee B) \iff \neg A \wedge \neg B$.
+    \item \textbf{Double Negation:} $\neg(\neg A) = A$;
+    \item \textbf{De Morgan's Laws:} $\neg(A \wedge B) = \neg A \vee \neg B$ and $\neg(A \vee B) = \neg A \wedge \neg B$.
 \end{enumerate}
+Spell the two De Morgan laws out in words.
 \end{exercise}
 
 \subsection{Predicates and Quantifiers}
@@ -141,12 +244,23 @@ A \newterm{predicate} $P(x)$ is a statement whose truth depends on a variable $x
 \end{definition}
 
 \begin{example}[Quantifiers over Integers]
-Let $P(n)$ be the predicate $n = n^2$ over $\mathbb{Z}$. 
+\label{ex:quantifiers_integers}
+Let $P(n)$ be the predicate $n = n^2$ over $\mathbb{Z}$.
 \begin{itemize}
     \item $\forall n \in \mathbb{Z} : P(n)$ is False.
     \item $\exists n \in \mathbb{Z} : P(n)$ is True (take $n=1$).
+    \item $\forall n \in \mathbb{Z} : \bigl( n = n^2 \implies (n = 0) \vee (n = 1) \bigr)$ is True.
 \end{itemize}
 \end{example}
+
+Quantifiers may of course be combined. For instance,
+\[
+\forall y \in \mathbb{R} : \bigl( y \ge 0 \implies (\exists x \in \mathbb{R} : x^2 = y) \bigr)
+\]
+is a True statement. In practice one writes this more compactly as
+\begin{equation} \label{eq:sqrt_existence}
+\forall \, 0 \le y \in \mathbb{R}, \ \exists x \in \mathbb{R} \ \text{ such that } \ x^2 = y.
+\end{equation}
 
 \begin{importantremark}[The Order of Quantifiers]
 The order of quantifiers is non-commutative. Consider $X$ (ETH students), $Y$ (courses), and $A(x,y) := \qt{\text{student } x \text{ takes course } y}$.
@@ -155,6 +269,42 @@ The order of quantifiers is non-commutative. Consider $X$ (ETH students), $Y$ (c
     \item $\exists y \in Y, \forall x \in X : A(x,y)$ means there is one specific course taken by \textit{every} student (False).
 \end{itemize}
 \end{importantremark}
+
+\Cref{fig:quantifier_order} makes the asymmetry visible: reading the table row by row gives $\forall x \, \exists y$, whereas reading it column by column gives $\exists y \, \forall x$. Every row carries at least one mark, but no column is completely filled. The reader is encouraged to try the same interchange on \eqref{eq:sqrt_existence} and to decide what the swapped statement asserts there.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=0.82]
+    % --- grid ---
+    \draw[gray!45] (0,0) grid (4,4);
+    % --- column labels (courses) ---
+    \foreach \c/\n in {0.5/1, 1.5/2, 2.5/3, 3.5/4}
+      \node[above, font=\small] at (\c,4.05) {$y_{\n}$};
+    % --- row labels (students), top row is x_1 ---
+    \foreach \r/\n in {3.5/1, 2.5/2, 1.5/3, 0.5/4}
+      \node[left, font=\small] at (-0.05,\r) {$x_{\n}$};
+    % --- who takes what ---
+    \foreach \p in {(0.5,3.5),(1.5,3.5),(1.5,2.5),(2.5,2.5),%
+                    (2.5,1.5),(3.5,1.5),(0.5,0.5),(3.5,0.5)}
+      \fill[ThemePurple] \p circle (4pt);
+    % --- every row has at least one mark ---
+    \foreach \r in {3.5,2.5,1.5,0.5}
+      \node[right, ThemeGreen, font=\small] at (4.15,\r) {$\checkmark$};
+    % --- no column is complete ---
+    \foreach \c in {0.5,1.5,2.5,3.5}
+      \node[below, ThemeAccent, font=\small] at (\c,-0.15) {$\times$};
+    \node[right, ThemeGreen, font=\scriptsize, align=left] at (4.55,2.0)
+      {each student takes\\ at least one course};
+    \node[below, ThemeAccent, font=\scriptsize] at (2.0,-0.75)
+      {no course is taken by every student};
+  \end{tikzpicture}
+  \caption{A mark in row $x_i$, column $y_j$ records that student $x_i$ takes course
+  $y_j$. Every row contains a mark, so $\forall x \in X, \exists y \in Y : A(x,y)$ is
+  True. No column is entirely filled, so $\exists y \in Y, \forall x \in X : A(x,y)$
+  is False. Swapping two quantifiers of different type therefore changes the meaning
+  of a statement.}
+  \label{fig:quantifier_order}
+\end{figure}
 
 \subsection{Negation and Unique Existence}
 
@@ -181,5 +331,6 @@ The notation $\exists! x \in X : P(x)$ means there exists exactly one $x$ satisf
 \end{definition}
 
 \begin{example}[Unique Existence of Roots]
-$\exists! x \in \mathbb{R} : x^2 = 4$ is False (since $x = \pm 2$). However, $\exists! x \in \mathbb{R}_{\ge 0} : x^2 = 4$ is True.
+\label{ex:unique_existence_roots}
+$\exists! x \in \mathbb{R} : x^2 = 4$ is False (since $x = \pm 2$). However, $\exists! x \in \mathbb{R} : (x \ge 0) \wedge (x^2 = 4)$ is True.
 \end{example}
