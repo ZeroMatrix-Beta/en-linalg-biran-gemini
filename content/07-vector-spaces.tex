@@ -7,6 +7,7 @@
 \subsection{Definition and Axioms}
 
 \begin{definition}[Vector Space]
+\label{def:vector_space}
 A \newterm{vector space} over a field $K$ is a set $V$, endowed with two operations:
 \begin{align*}
 +: V \times V &\longrightarrow V, \quad (v_1, v_2) \mapsto v_1 + v_2  &\text{(Addition of vectors)} \\
@@ -23,9 +24,11 @@ such that the following conditions (axioms) hold:
     \item $\forall \alpha \in K, \forall v_1, v_2 \in V$: $\alpha \cdot (v_1 + v_2) = \alpha \cdot v_1 + \alpha \cdot v_2$.
     \item $\forall \alpha_1, \alpha_2 \in K, \forall v \in V$: $(\alpha_1 + \alpha_2) \cdot v = \alpha_1 \cdot v + \alpha_2 \cdot v$.
 \end{enumerate}
+The elements of $K$ are called \newterm{scalars} and the elements of $V$ are called \newterm{vectors}.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}[Elementary Consequences of the Axioms]
+\label{lem:vector_space_basics}
 Let $V$ be a vector space over a field $K$. Then the following properties hold:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The $0$ vector from (V2) is unique. To avoid confusion (e.g., with $0 \in K$), we will sometimes denote it by $0_V$.
@@ -33,36 +36,59 @@ Let $V$ be a vector space over a field $K$. Then the following properties hold:
     \item For all $v \in V$, we have $0 \cdot v = 0_V$ (i.e., $0_K \cdot v = 0_V$).
     \item For all $\alpha \in K$, we have $\alpha \cdot 0_V = 0_V$.
     \item $(-1) \cdot v = -v$ for all $v \in V$.
+    \item $-(-v) = v$ for all $v \in V$.
+    \item If $a \cdot v = 0_V$ for some $a \in K$ and $v \in V$, then either $a = 0$ or $v = 0_V$.
+    \item Associativity for $+$ holds also for sums of $n$ elements. That is, $v_1 + \dots + v_n$ makes sense no matter how we place the brackets:
+    \[
+    v_1 + \bigl(v_2 + (\dots + (v_{n-1} + v_n) \dots)\bigr),
+    \qquad
+    (v_1 + v_2) + (\dots), \qquad \text{and so on},
+    \]
+    all give the same element of $V$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Assume there are two such zero elements, $0_1$ and $0_2$. 
+    \item Assume there are two such zero elements, $0_1$ and $0_2$.
 Then, by applying (V2) to both, we get: $0_1 = 0_1 + 0_2 = 0_2 + 0_1 = 0_2$. Thus, $0_1 = 0_2$.
 
-    \item Assume there are two inverses $v_1'$ and $v_2'$ for an element $v$. 
-Then we can write: 
+    \item Assume there are two inverses $v_1'$ and $v_2'$ for an element $v$.
+Then we can write:
 \[
 v_1' = v_1' + 0_V = v_1' + (v + v_2') = (v_1' + v) + v_2' = 0_V + v_2' = v_2'
 \]
 Thus, the inverse is unique.
 
-    \item Consider $0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v$. 
+    \item Consider $0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v$, where the second equality is (V8).
 By adding $-(0 \cdot v)$ to both sides, we yield $0_V = 0 \cdot v$.
 
-    \item Similarly, $\alpha \cdot 0_V = \alpha \cdot (0_V + 0_V) = \alpha \cdot 0_V + \alpha \cdot 0_V$. Adding $-(\alpha \cdot 0_V)$ yields $0_V = \alpha \cdot 0_V$.
+    \item Similarly, $\alpha \cdot 0_V = \alpha \cdot (0_V + 0_V) = \alpha \cdot 0_V + \alpha \cdot 0_V$ by (V7). Adding $-(\alpha \cdot 0_V)$ yields $0_V = \alpha \cdot 0_V$.
 
     \item Observe that $v + (-1) \cdot v = 1 \cdot v + (-1) \cdot v = (1 - 1) \cdot v = 0 \cdot v = 0_V$. Since the inverse is unique by part \textbf{(b)}, it must be that $(-1) \cdot v = -v$.
+
+    \item By definition, $-(-v)$ is the unique element that added to $-v$ gives $0_V$. But $v$ itself satisfies $(-v) + v = v + (-v) = 0_V$ by (V4) and (V3), so uniqueness in part \textbf{(b)} forces $-(-v) = v$.
+
+    \item Let $a \in K$ and $v \in V$ and assume that $a \cdot v = 0_V$. If $a = 0$ there is nothing to prove, so suppose $a \ne 0$. Because $K$ is a field, there is an element $a^{-1} \in K$ with $a^{-1} \cdot a = 1$. Therefore,
+    \[
+    v \overset{\text{(V6)}}{=} 1 \cdot v = (a^{-1} \cdot a) \cdot v \overset{\text{(V5)}}{=} a^{-1} \cdot (a \cdot v) = a^{-1} \cdot 0_V \overset{\text{\textbf{(d)}}}{=} 0_V.
+    \]
+    So either $a = 0$ or $v = 0_V$, as claimed.
+
+    \item This follows from (V1) by induction on $n$, exactly as for the associativity of addition in a field. From now on we will therefore write $v_1 + \dots + v_n$ without brackets.
 \end{enumerate}
 \end{proof}
 
-\subsection{Examples of Vector Spaces}
+\subsection{The Coordinate Space \texorpdfstring{$K^n$}{K to the n}}
 
-\subsubsection{The Space $K^n$}
-\begin{example}[The Coordinate Space \texorpdfstring{$K^n$}{K to n}]
-The set of $n$-tuples $K^n$ becomes a vector space over $K$ if we endow it with the following operations. 
-Let $v = (a_1, \dots, a_n)$ and $w = (b_1, \dots, b_n) \in K^n$. We define addition in $K^n$ component-wise:
+\begin{example}[The Coordinate Space \texorpdfstring{$K^n$}{K to the n}]
+\label{ex:coordinate_space}
+Let $K$ be a field and $n \in \mathbb{N}$. Put
+\[
+K^n := \{(a_1, \dots, a_n) \mid a_i \in K, \; 1 \le i \le n\}.
+\]
+The set $K^n$ becomes a vector space over $K$ if we endow it with the following operations.
+Let $v = (a_1, \dots, a_n)$ and $w = (b_1, \dots, b_n) \in K^n$. We define addition in $K^n$ component-wise, using the addition of the field $K$ in each slot:
 \[
 v + w = (a_1, \dots, a_n) + (b_1, \dots, b_n) := (a_1 + b_1, \dots, a_n + b_n)
 \]
@@ -70,96 +96,348 @@ For $\alpha \in K$, we define scalar multiplication as:
 \[
 \alpha \cdot v = \alpha \cdot (a_1, \dots, a_n) := (\alpha \cdot a_1, \dots, \alpha \cdot a_n)
 \]
-The zero vector is explicitly defined as $0 := (0, \dots, 0) \in K^n$. 
-(The proof that this constitutes a vector space relies directly on the fact that $K$ itself satisfies the axioms of a field).
+The zero vector is explicitly defined as $0 := (0, \dots, 0) \in K^n$.
+With these operations $K^n$ becomes a vector space over $K$; the proof rests entirely on the fact that $K$ itself satisfies the field axioms. We call $K^n$ also the \newterm{$n$-dimensional coordinate space} over $K$.
 \end{example}
 
-\subsection{Spaces of Matrices}
-\begin{example}[Matrix Spaces]
-Let $\M_{m \times n}(K)$ be the set of all $m \times n$ matrices with entries in $K$. We define addition of matrices component-wise: if $A = (A_{i,j})$ and $B = (B_{i,j})$, then $A + B = (A_{i,j} + B_{i,j})$. Similarly, scalar multiplication is defined component-wise: $\alpha \cdot A = (\alpha \cdot A_{i,j})$. With these operations, $\M_{m \times n}(K)$ forms a vector space over $K$. The zero vector is the $m \times n$ matrix consisting entirely of zeros.
-\end{example}
-
-\subsection{Function Spaces \texorpdfstring{$K^S$}{S to K}}
-\begin{example}[Function Spaces]
-Let $S$ be an arbitrary set. We define the function space:
-\[
-K^S := \{f: S \to K \mid f \text{ is a function}\}
-\]
-We define addition $+$ and scalar multiplication $\cdot$ on $K^S$ as follows: 
-Let $f, g \in K^S$ and $a \in K$. 
-We define $(f + g): S \to K$ point-wise by $x \mapsto f(x) + g(x)$.
-We define $(a \cdot f): S \to K$ point-wise by $x \mapsto a \cdot f(x)$.
-\end{example}
-
-\subsubsection{Polynomials $K[x]$}
-\begin{example}[Polynomial Spaces]
-A polynomial over $K$ is an expression of the form:
-\[
-f(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n
-\]
-where $a_i \in K$. Two polynomials are considered equal if and only if all their corresponding coefficients are equal. Addition and scalar multiplication are performed exactly as expected by manipulating coefficients.
+\begin{exercise}
+Check the details: verify each of the eight axioms (V1)--(V8) for $K^n$.
+\end{exercise}
 
 \begin{importantremark}
-For finite fields, different polynomials may yield the exact same function! For example, if $K = \mathbb{F}_2$, the polynomials $f(x) = x$ and $g(x) = x^2$ produce the same output values for all inputs in $\mathbb{F}_2$. However, \textbf{as polynomials}, $f(x)$ and $g(x)$ are strictly different mathematical objects!
+\label{rem:row_or_column}
+Sometimes we write the elements of $K^n$ as row vectors and sometimes as column vectors, whichever is more convenient at the time. The two conventions describe the same vector space, and we will switch between them without further comment --- but whenever a matrix product $A \cdot x$ is involved, the elements of $K^n$ are always to be read as column vectors, as in \cref{def:matrix_vector_multiplication}.
 \end{importantremark}
-
-\textbf{Degree of a polynomial:}
-Let $f(x) = a_0 + a_1 x + \dots + a_n x^n$ be a polynomial with $a_n \ne 0$. We say that the \textit{degree} of $f$ is $n$, and we write $\deg(f) := n \in \mathbb{Z}_{\ge 0}$.
-Alternatively, if $f(x) \ne 0$:
-\[
-\deg(f) := \max \{k \in \mathbb{Z}_{\ge 0} \mid a_k \ne 0\}
-\]
-If $a_0 = a_1 = \dots = a_n = 0$, meaning $f$ is the zero polynomial, we set $\deg(f) := -\infty$. (And consequently, $\deg(f) = -\infty \iff f = 0$).
-
-\begin{remark}
-Every polynomial has a well-defined degree.
-\end{remark}
-\end{example}
 
 \subsection{Linear Subspaces}
 
 \begin{definition}[Linear Subspace]
-Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \newterm{linear subspace} if it satisfies:
-\begin{enumerate}
-    \item $0_V \in U$.
+\label{def:linear_subspace}
+Let $V$ be a vector space over $K$. A subset $U \subseteq V$ is called a \newterm{linear subspace} of $V$ (or just a \newterm{subspace} of $V$) if the following holds:
+\begin{enumerate}[label=(\textbf{LSS}\arabic*), leftmargin=4.5em]
+    \item $U \ne \emptyset$.
     \item For all $u_1, u_2 \in U$, we have $u_1 + u_2 \in U$ (closed under addition).
-    \item For all $\alpha \in K$ and for all $u \in U$, we have $\alpha \cdot u \in U$ (closed under scalar multiplication).
+    \item For all $\alpha \in K$ and all $u \in U$, we have $\alpha \cdot u \in U$ (closed under scalar multiplication).
 \end{enumerate}
 \end{definition}
 
-\begin{example}[Subspace of Plane Equations]
-Consider the set $U_b \subseteq K^3$ defined by $U_b := \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = b\}$. 
-
-\textbf{Claim:} $U_b$ is a linear subspace of $K^3$ if and only if $b = 0$.
+\begin{lemma}[A Subspace is a Vector Space]
+\label{lem:subspace_is_vector_space}
+Let $V$ be a vector space over $K$ and let $U \subseteq V$ be a subspace. Then $U$ is a vector space in its own right, when endowed with the operations inherited from $V$.
+\end{lemma}
 
 \begin{proof}
-Suppose $U_b$ is a valid subspace. Let $(x_1, x_2, x_3)$ and $(y_1, y_2, y_3) \in U_b$. 
-Then by definition, $x_1 + x_2 + x_3 = b$ and $y_1 + y_2 + y_3 = b$. 
-Since $U_b$ is a subspace, it must be closed under addition, meaning $(x_1 + y_1, x_2 + y_2, x_3 + y_3) \in U_b$. 
-This implies:
+Conditions (LSS2) and (LSS3) say precisely that the operations $+$ and $\cdot$ of $V$ restrict to operations
 \[
-(x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = b
++ \colon U \times U \longrightarrow U, \qquad \cdot \colon K \times U \longrightarrow U,
 \]
-But rearranging the terms, we also know:
+so that $U$ carries the two operations required by \cref{def:vector_space}. That these operations satisfy the eight axioms of a vector space then follows by direct verification, since each axiom is an identity that already holds for all elements of $V$ and therefore in particular for all elements of $U$.
+
+The one axiom that deserves a word is (V2), because it asserts the \emph{existence} of an element of $U$ rather than an identity. Pick any element $u \in U$; this is possible because $U \ne \emptyset$ by (LSS1). By (LSS3),
 \[
-(x_1 + x_2 + x_3) + (y_1 + y_2 + y_3) = b + b = 2b
+0_V = 0_K \cdot u \in U,
 \]
-Therefore, $2b = b$, which implies $b = 0$. 
-(Conversely, if $b=0$, it is trivial to check that all three subspace conditions hold).
+where the first equality is \cref{lem:vector_space_basics} \textbf{(c)}. Now $0_V + w = w$ holds for every $w \in U$, because it already holds for every $w \in V$ by (V2) for $V$. Hence $0_V$ serves as the zero element of $U$.
 \end{proof}
+
+\begin{exercise}
+Carry out the direct verification of the remaining seven axioms for $U$.
+\end{exercise}
+
+In practice one rarely checks (LSS1)--(LSS3) separately. The following criterion compresses them into two conditions, one of which is a single membership test.
+
+\begin{lemma}[Criterion for a Linear Subspace]
+\label{lem:subspace_criterion}
+Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subset. Then $U$ is a linear subspace of $V$ if and only if the following holds:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $0_V \in U$.
+    \item For all $\alpha_1, \alpha_2 \in K$ and all $u_1, u_2 \in U$, we have $\alpha_1 u_1 + \alpha_2 u_2 \in U$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\textbf{Direction 1 ($\implies$):} Suppose $U \subseteq V$ is a subspace. Then $0_V \in U$ was established in the proof of \cref{lem:subspace_is_vector_space}, which gives \textbf{(a)}. For \textbf{(b)}, given $\alpha_1, \alpha_2 \in K$ and $u_1, u_2 \in U$, condition (LSS3) gives $\alpha_1 u_1 \in U$ and $\alpha_2 u_2 \in U$, and then (LSS2) gives $\alpha_1 u_1 + \alpha_2 u_2 \in U$.
+
+\textbf{Direction 2 ($\impliedby$):} Suppose \textbf{(a)} and \textbf{(b)} hold. Then $U \ne \emptyset$ by \textbf{(a)}, which is (LSS1). Let $u_1, u_2 \in U$. By \textbf{(b)} applied with $\alpha_1 = \alpha_2 = 1$,
+\[
+\underbrace{1 \cdot u_1 + 1 \cdot u_2}_{= \; u_1 + u_2} \in U,
+\]
+which is (LSS2). Finally, let $\alpha \in K$ and $u \in U$. By \textbf{(b)} applied with $\alpha_1 = \alpha$, $\alpha_2 = 0$ and $u_1 = u_2 = u$,
+\[
+\underbrace{\alpha \cdot u + 0 \cdot u}_{= \; \alpha \cdot u} \in U,
+\]
+which is (LSS3). Hence $U$ is a linear subspace.
+\end{proof}
+
+\subsection{Examples of Subspaces}
+
+\begin{example}[The Trivial Subspace]
+\label{ex:trivial_subspace}
+Let $V$ be a vector space over $K$. Then $\{0_V\} \subseteq V$ is a linear subspace: it is non-empty, and $0_V + 0_V = 0_V$ as well as $\alpha \cdot 0_V = 0_V$ for every $\alpha \in K$, by \cref{lem:vector_space_basics} \textbf{(d)}. At the other extreme, $V \subseteq V$ is of course a subspace of itself.
 \end{example}
 
-\begin{example}[Subspaces of Polynomials]
-Fix $d \in \mathbb{Z}_{\ge 0} \cup \{-\infty\}$. 
-We define the set:
+\begin{example}[A Plane Through the Origin, and One That Is Not]
+\label{ex:plane_subspace}
+Fix $b \in K$ and consider the subset
 \[
-K[x]_d := \{f \in K[x] \mid \deg(f) \le d\}
+U_b := \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = b\} \subseteq K^3.
 \]
-(where we agree that $-\infty \le k$ for all $k \in \mathbb{Z}_{\ge 0}$). 
 
-\begin{claim*}
+\begin{claim*}[$U_b$ is a subspace exactly for $b = 0$]
+\label{claim:U_b_subspace}
+$U_b \subseteq K^3$ is a linear subspace if and only if $b = 0$.
+\end{claim*}
+
+\emph{Proof of the direction $\implies$.} Suppose $U_b$ is a subspace of $K^3$. Let $(x_1, x_2, x_3)$ and $(y_1, y_2, y_3) \in U_b$. Then by definition,
+\begin{equation} \label{eq:U_b_membership}
+x_1 + x_2 + x_3 = b, \qquad y_1 + y_2 + y_3 = b.
+\end{equation}
+Since $U_b$ is a subspace, it is closed under addition, and therefore, $(x_1 + y_1, x_2 + y_2, x_3 + y_3) \in U_b$. By the definition of $U_b$, this implies
+\[
+(x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = b.
+\]
+But rearranging the terms and using \eqref{eq:U_b_membership}, we also get
+\[
+(x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = (x_1 + x_2 + x_3) + (y_1 + y_2 + y_3) = b + b.
+\]
+Therefore, $b + b = b$, which implies $b = 0$. \hfill $\diamond$
+\end{example}
+
+\begin{exercise}
+\label{exc:U_b_converse}
+Prove the direction $\impliedby$ of the claim on \cpageref{claim:U_b_subspace} that $U_b$ is a subspace exactly for $b = 0$: show that if $b = 0$, then $U_0$ satisfies (LSS1), (LSS2) and (LSS3), and is therefore a linear subspace of $K^3$.
+\end{exercise}
+
+\subsection{The Solution Set of a Linear System}
+
+The previous example is a special case of something much more important. It answers the third of the questions we set ourselves in the previous chapter, in the list of goals on \cpageref{goals:solution_set}: the solution set of a system of linear equations does carry a structure of its own --- provided the system is homogeneous.
+
+Let $A \in \M_{m \times n}(K)$ and fix $b \in K^m$, viewed as a column vector. Consider
+\[
+L := \{x \in K^n \mid A \cdot x = b\} \subseteq K^n,
+\]
+where the elements of $K^n$ are viewed as column vectors as well, following the remark on row and column notation on \cpageref{rem:row_or_column}. This is exactly the set $L(S)$ of solutions of the system $(S): Ax = b$ from \eqref{eq:matrix_equation}.
+
+\begin{lemma}[Linearity of Matrix-Vector Multiplication]
+\label{lem:matrix_vector_linearity}
+Let $A \in \M_{m \times n}(K)$. For all $u, v \in K^n$ and all $a \in K$ we have:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $A \cdot (u + v) = A \cdot u + A \cdot v$.
+    \item $A \cdot (a \cdot u) = a \cdot (A \cdot u)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $A = (a_{ij})$ with $1 \le i \le m$, $1 \le j \le n$, and let
+\[
+u = \begin{pmatrix} u_1 \\ \vdots \\ u_n \end{pmatrix}, \qquad
+v = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}.
+\]
+We prove \textbf{(a)} by comparing the $i$-th entries of both sides. By \cref{def:matrix_vector_multiplication}, entry number $i$ of $A \cdot u$ is $a_{i1}u_1 + \dots + a_{in}u_n$, and entry number $i$ of $A \cdot v$ is $a_{i1}v_1 + \dots + a_{in}v_n$. Adding these in $K$ and regrouping by distributivity gives
+\begin{align*}
+\bigl(A \cdot u + A \cdot v\bigr)_i
+&= \bigl(a_{i1}u_1 + \dots + a_{in}u_n\bigr) + \bigl(a_{i1}v_1 + \dots + a_{in}v_n\bigr) \\
+&= a_{i1}(u_1 + v_1) + a_{i2}(u_2 + v_2) + \dots + a_{in}(u_n + v_n) \\
+&= \bigl(A \cdot (u + v)\bigr)_i,
+\end{align*}
+the last equality again by \cref{def:matrix_vector_multiplication}, since the $j$-th entry of $u + v$ is $u_j + v_j$. As this holds for every $1 \le i \le m$, the two column vectors are equal.
+\end{proof}
+
+\begin{exercise}
+\label{exc:matrix_vector_scalar}
+Prove statement \textbf{(b)} of \cref{lem:matrix_vector_linearity}.
+\end{exercise}
+
+\begin{theorem}[When the Solution Set is a Subspace]
+\label{thm:solution_set_subspace}
+$L \subseteq K^n$ is a linear subspace if and only if $b = 0 \in K^m$.
+\end{theorem}
+
+\begin{proof}
+\textbf{Direction 1 ($\impliedby$):} We assume $b = 0$ and have to show that $L \subseteq K^n$ is a subspace.
+
+First, $x = 0 \in L$, since indeed $A \cdot 0 = 0$. Next, if $x = (x_1, \dots, x_n) \in L$ and $y = (y_1, \dots, y_n) \in L$, then by \cref{lem:matrix_vector_linearity} \textbf{(a)},
+\[
+A \cdot (x + y) = A \cdot x + A \cdot y = 0 + 0 = 0,
+\]
+and therefore, $x + y \in L$. This shows that $x, y \in L$ implies $x + y \in L$. Finally, let $x \in L$ and $a \in K$. By \cref{lem:matrix_vector_linearity} \textbf{(b)},
+\[
+A \cdot (a \cdot x) = a \cdot (A \cdot x) = a \cdot 0 = 0,
+\]
+so $a \cdot x \in L$. This shows $L$ is a subspace.
+
+\textbf{Direction 2 ($\implies$):} Suppose $L \subseteq K^n$ is a subspace. We need to show that $b = 0$. Since $L$ is a subspace, $0 \in L$ by \cref{lem:subspace_criterion} \textbf{(a)}. By the definition of $L$, this means $A \cdot 0 = b$. But $A \cdot 0 = 0$, and therefore, $b = 0$.
+\end{proof}
+
+\begin{importantremark}
+\label{rem:homogeneous_vs_inhomogeneous}
+So the solution set of a \emph{homogeneous} system is a linear subspace of $K^n$, while the solution set of an inhomogeneous one is never a subspace --- it does not even contain $0$. It is not, however, shapeless: recall the last example of the previous chapter, whose general solution had the form \qt{one particular solution plus an arbitrary multiple of a fixed vector}. We will make that observation precise once we have the notion of dimension.
+\end{importantremark}
+
+\subsection{More Examples of Vector Spaces}
+
+\subsubsection{Spaces of Sequences \texorpdfstring{$K^\infty$}{K to the infinity}}
+
+\begin{example}[Spaces of Sequences]
+\label{ex:sequence_space}
+Let $K$ be a field. Define
+\[
+K^\infty := \{(a_0, a_1, a_2, \dots, a_k, \dots) \mid a_i \in K \; \forall i\},
+\]
+the set of all infinite sequences with entries in $K$. We define $+$ and $\cdot$ on $K^\infty$ entry-wise:
+\begin{align*}
+(a_0, a_1, \dots, a_k, \dots) + (b_0, b_1, \dots, b_k, \dots) &:= (a_0 + b_0, a_1 + b_1, \dots, a_k + b_k, \dots), \\
+a \cdot (a_0, a_1, \dots, a_k, \dots) &:= (a \cdot a_0, a \cdot a_1, \dots, a \cdot a_k, \dots) \quad \text{for } a \in K.
+\end{align*}
+\end{example}
+
+\begin{exercise}
+With these operations, $K^\infty$ is a vector space over $K$.
+\end{exercise}
+
+\begin{example}[Fibonacci Sequences as a Subspace]
+\label{ex:fib_subspace}
+Recall the Fibonacci sequences from \cref{prop:fib_closure}:
+\[
+\Fib = \{(a_0, a_1, \dots, a_k, \dots) \in \mathbb{R}^\infty \mid a_k = a_{k-1} + a_{k-2} \; \forall k \ge 2\}.
+\]
+Then $\Fib \subseteq \mathbb{R}^\infty$ is a linear subspace --- which is precisely what we verified by hand in the very first chapter, before we had the word for it.
+
+More generally, if we fix $\alpha, \beta \in \mathbb{R}$, then
+\[
+U_{\alpha, \beta} := \{(a_0, a_1, \dots, a_k, \dots) \in \mathbb{R}^\infty \mid a_k = \alpha a_{k-1} + \beta a_{k-2} \; \forall k \ge 2\}
+\]
+is also a linear subspace of $\mathbb{R}^\infty$, with $\Fib = U_{1,1}$.
+\end{example}
+
+\subsubsection{Spaces of Functions \texorpdfstring{$K^S$}{K to the S}}
+
+\begin{example}[Function Spaces]
+\label{ex:function_space}
+Fix a field $K$ and a non-empty set $S$. We define the function space
+\[
+K^S := \{f \colon S \to K \mid f \text{ is a function}\}.
+\]
+We define addition $+$ and scalar multiplication $\cdot$ on $K^S$ as follows. Let $f, g \in K^S$ and $a \in K$. We define $(f + g) \colon S \to K$ point-wise by $x \mapsto f(x) + g(x)$, where the addition on the right is that of $K$, and we define $(a \cdot f) \colon S \to K$ point-wise by $x \mapsto a \cdot f(x)$.
+\end{example}
+
+\begin{exercise}
+$K^S$ is a vector space over $K$.
+\end{exercise}
+
+\begin{example}[Continuous Functions]
+\label{ex:continuous_subspace}
+Take $K = \mathbb{R}$ and let $S = [0,1] = \{x \in \mathbb{R} \mid 0 \le x \le 1\}$. Define
+\[
+C(S) := \{f \in \mathbb{R}^S \mid f \text{ is continuous on } [0,1]\} \subseteq \mathbb{R}^S.
+\]
+Then $C(S) \subseteq \mathbb{R}^S$ is a linear subspace.
+\end{example}
+
+\begin{exercise}
+\label{exc:continuous_subspace}
+Prove that $C(S)$ is a linear subspace of $\mathbb{R}^S$: check that the constant function $0$ is continuous, and that a sum of two continuous functions, as well as a scalar multiple of a continuous function, is again continuous on $[0,1]$.
+\end{exercise}
+
+\subsubsection{Polynomials \texorpdfstring{$K[x]$}{K[x]}}
+
+\begin{example}[Polynomial Spaces]
+\label{ex:polynomial_space}
+Let $K$ be a field and let $x$ be a \emph{formal} variable --- we may think of $x$ as a \qt{free element of $K$}. A \newterm{polynomial} over $K$ (or polynomial with coefficients in $K$) is an expression of the form
+\[
+f(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n, \qquad n \in \mathbb{N},
+\]
+where $a_i \in K$ for all $0 \le i \le n$. The $a_i$ are called the \newterm{coefficients} of $f$. The \newterm{zero polynomial} is the one with $a_0 = a_1 = \dots = 0$. Two polynomials are equal if and only if all their corresponding coefficients are equal.
+
+To add two polynomials
+\[
+f(x) = a_0 + a_1 x + \dots + a_n x^n, \qquad g(x) = b_0 + b_1 x + \dots + b_m x^m,
+\]
+we first pad the shorter one with zeros: if $n < m$ we set $a_{n+1} = \dots = a_m = 0$, and if $n > m$ we set $b_{m+1} = \dots = b_n = 0$. Putting $r := \max\{n, m\}$, both are then written with the same number of terms and we may define
+\[
+f(x) + g(x) := (a_0 + b_0) + (a_1 + b_1)x + (a_2 + b_2)x^2 + \dots + (a_r + b_r)x^r.
+\]
+If $c \in K$, we define
+\[
+c \cdot f(x) := c \cdot a_0 + c \cdot a_1 x + c \cdot a_2 x^2 + \dots + c \cdot a_n x^n.
+\]
+\end{example}
+
+\begin{notation}
+\label{not:polynomial_ring}
+We write $K[x]$ for the set of all polynomials over $K$.
+\end{notation}
+
+\begin{exercise}
+With the operations above, $K[x]$ is a vector space over $K$.
+\end{exercise}
+
+If we view polynomials as functions $K \to K$, then the polynomials over $K$ give us a linear subspace of $K^K$. This second point of view is however genuinely coarser than the first, and the following warning explains why.
+
+\begin{importantremark}
+\label{rem:polynomial_vs_function}
+For some fields (e.g., $K = \mathbb{F}_2$, or $\mathbb{F}_p$ with $p$ prime) two \emph{different} polynomials may give the same function. For example, over $K = \mathbb{F}_2$ the polynomials $f(x) = x$ and $g(x) = x^2$ produce the same output value for every input in $\mathbb{F}_2$. But \textbf{as polynomials} $f(x)$ and $g(x)$ are strictly different objects, since their coefficients differ.
+\end{importantremark}
+
+\subsubsection{The Degree of a Polynomial}
+
+Let $f(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n$ be a polynomial with $a_n \ne 0$. We say that the \newterm{degree} of $f$ is $n$, and we write $\deg(f) := n \in \mathbb{Z}_{\ge 0}$. If $a_0 = a_1 = \dots = a_n = 0$, meaning $f$ is the zero polynomial, we set $\deg(f) := -\infty$. Consequently, $\deg(f) = -\infty$ if and only if $f = 0$.
+
+\begin{remark}
+Every polynomial has a well-defined degree: if $f \ne 0$ and $f(x) = a_0 + a_1 x + \dots + a_r x^r$, then
+\[
+\deg(f) := \max \{k \in \mathbb{Z}_{\ge 0} \mid a_k \ne 0\},
+\]
+and this maximum is taken over a non-empty finite set, hence exists.
+\end{remark}
+
+\begin{example}[Polynomials of Bounded Degree]
+\label{ex:bounded_degree_subspace}
+Fix $d \in \mathbb{Z}_{\ge 0} \cup \{-\infty\}$ and define
+\[
+K[x]_d := \{f \in K[x] \mid \deg(f) \le d\},
+\]
+where we agree that $-\infty \le k$ for all $k \in \mathbb{Z}$.
+
+\begin{claim*}[{$K[x]_d$ is a subspace}]
+\label{claim:bounded_degree_subspace}
 $K[x]_d \subseteq K[x]$ is a linear subspace of $K[x]$.
 \end{claim*}
 
 Later, we will see that $K[x]_d$ is a subspace of dimension $d+1$.
 \end{example}
+
+\begin{question}
+\label{q:degree_exactly_d}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Is the set $\{f \in K[x] \mid \deg(f) = d\}$ also a subspace of $K[x]$?
+    \item Consider the subset
+    \[
+    \left\{ p \in K[x]_5 \;\middle|\; p(x) = a_0 + a_1 x + \dots + a_5 x^5, \; \sum_{i=0}^{5} a_i = 0 \right\} \subseteq K[x]_5,
+    \]
+    that is, all polynomials of degree $\le 5$ for which the sum of the coefficients is $0$. Is this subset a linear subspace of $K[x]_5$?
+\end{enumerate}
+\end{question}
+
+\subsubsection{Spaces of Matrices}
+
+\begin{example}[Matrix Spaces]
+\label{ex:matrix_space}
+Consider the set $\M_{m \times n}(K)$ of all $m \times n$ matrices with entries in $K$. We define addition of matrices component-wise: if $A = (a_{ij})$ and $B = (b_{ij})$, then $A + B := (a_{ij} + b_{ij})$. Similarly, for $\alpha \in K$ we define scalar multiplication component-wise by $\alpha \cdot A := (\alpha \, a_{ij})$.
+
+\begin{claim*}[$\M_{m \times n}(K)$ is a vector space]
+\label{claim:matrix_space}
+With these operations, $\M_{m \times n}(K)$ is a vector space over $K$. Its zero vector is the $m \times n$ matrix all of whose entries are $0$.
+\end{claim*}
+\end{example}
+
+\begin{ainote}
+The lecture notes index sequences from $1$, writing $K^\infty = \{(a_1, a_2, \dots)\}$ and
+$\Fib$ with the recursion starting at $k \ge 3$. This transcript indexes from $0$
+instead, so that $\Fib$ here is literally the same object as the one built in
+\cref{prop:fib_closure}; nothing else changes. The notes also use $W$ for a
+subspace, where this transcript writes $U$, matching the later chapters. The
+proofs of \cref{lem:vector_space_basics} \textbf{(e)}, \textbf{(f)} and
+\textbf{(h)} are left as exercises in the notes and are supplied here; the
+exercises marked as such above are the ones the notes leave open.
+\end{ainote}

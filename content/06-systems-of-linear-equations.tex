@@ -225,18 +225,18 @@ Special cases of matrices occur when one of the dimensions is $1$:
 Let $A \in \M_{m \times n}(K)$ and $x \in K^n$. We define the product $A \cdot x$ to be the column vector in $K^m$ obtained by pairing each row of $A$ with the vector $x$:
 \[
 \begin{pmatrix}
-A_{1,1} & A_{1,2} & \dots & A_{1,n} \\
-A_{2,1} & A_{2,2} & \dots & A_{2,n} \\
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
 \vdots & \vdots & \ddots & \vdots \\
-A_{m,1} & A_{m,2} & \dots & A_{m,n}
+a_{m,1} & a_{m,2} & \dots & a_{m,n}
 \end{pmatrix}
 \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
 =
 \begin{pmatrix}
-A_{1,1}x_1 + \dots + A_{1,n}x_n \\
-A_{2,1}x_1 + \dots + A_{2,n}x_n \\
+a_{1,1}x_1 + \dots + a_{1,n}x_n \\
+a_{2,1}x_1 + \dots + a_{2,n}x_n \\
 \vdots \\
-A_{m,1}x_1 + \dots + A_{m,n}x_n
+a_{m,1}x_1 + \dots + a_{m,n}x_n
 \end{pmatrix} \in K^m.
 \]
 \end{definition}
@@ -277,6 +277,7 @@ x_1 + 3x_2 + 4x_3 = -1 \\
 \end{example}
 
 \begin{goals}
+\label{goals:solution_set}
 Our aim for the rest of this chapter is to study the set of solutions $L(S)$ of a system $A x = b$:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Does the system have a solution at all, and if so, how many?
