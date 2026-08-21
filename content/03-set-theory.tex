@@ -59,6 +59,19 @@ Let $P$ and $Q$ be sets.
 Note that some authors use $P \subset Q$ to denote proper subsets, while others use it for generic subsets.
 \end{remark}
 
+\begin{example}[Subsets and Non-Subsets]
+\label{ex:subset_examples}
+We have
+\[
+\{-1, 2, 5\} \subsetneq \{x \mid x \text{ is an integer and } x^2 \le 30\},
+\]
+the inclusion being proper because, for instance, $0$ lies in the right-hand set but not in the left. On the other hand,
+\[
+\{-1, 2, 5\} \not\subseteq \{x \mid x \text{ is an integer and } x^2 \le 20\},
+\]
+since $5^2 = 25 > 20$.
+\end{example}
+
 \begin{claim*}
 For any set $Q$, the empty set is a subset of $Q$ (i.e., $\emptyset \subseteq Q$).
 \end{claim*}
@@ -74,56 +87,175 @@ Just as we have logical operators for statements, we have operations to combine 
     \item \textbf{Complement:} The complement of $A$ in $X$ is $A^c = X \setminus A = \{x \in X \mid x \notin A\}$.
 \end{enumerate}
 
-\begin{center}
-\begin{tikzpicture}[scale=0.6, every node/.style={transform shape}]
-    % Intersection
-    \begin{scope}[shift={(0,0)}]
-        \draw (0,0) circle (1.5cm);
-        \draw (2,0) circle (1.5cm);
-        \clip (0,0) circle (1.5cm);
-        \fill[gray!40] (2,0) circle (1.5cm);
-        \node at (-0.5,0) {\Large $A$};
-        \node at (2.5,0) {\Large $B$};
-        \node at (1,-2.5) {\Large $A \cap B$};
-    \end{scope}
+\begin{figure}[ht!]
+  \centering
+  % Each panel draws the ambient set X as a frame, the sets A and B as discs,
+  % and shades the region belonging to the operation named in the sub-caption.
+  \begin{subfigure}[b]{0.19\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.38]
+      \draw[gray!70] (-2.2,-1.9) rectangle (4.2,2.2);
+      \begin{scope}
+        \clip (0,0) circle (1.5);
+        \fill[ThemePurple!35] (2,0) circle (1.5);
+      \end{scope}
+      \draw[thick] (0,0) circle (1.5);
+      \draw[thick] (2,0) circle (1.5);
+      \node at (-0.75,0) {$A$};
+      \node at (2.75,0) {$B$};
+      \node[gray, font=\scriptsize] at (3.7,1.7) {$X$};
+    \end{tikzpicture}
+    \caption{$A \cap B$}
+    \label{fig:venn_set_cap}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.19\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.38]
+      \draw[gray!70] (-2.2,-1.9) rectangle (4.2,2.2);
+      \fill[ThemePurple!35] (0,0) circle (1.5);
+      \fill[ThemePurple!35] (2,0) circle (1.5);
+      \draw[thick] (0,0) circle (1.5);
+      \draw[thick] (2,0) circle (1.5);
+      \node at (-0.75,0) {$A$};
+      \node at (2.75,0) {$B$};
+      \node[gray, font=\scriptsize] at (3.7,1.7) {$X$};
+    \end{tikzpicture}
+    \caption{$A \cup B$}
+    \label{fig:venn_set_cup}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.19\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.38]
+      \draw[gray!70] (-2.2,-1.9) rectangle (4.2,2.2);
+      \fill[ThemePurple!35] (0,0) circle (1.5);
+      \begin{scope}
+        \clip (2,0) circle (1.5);
+        \fill[white] (0,0) circle (1.5);
+      \end{scope}
+      \draw[thick] (0,0) circle (1.5);
+      \draw[thick] (2,0) circle (1.5);
+      \node at (-0.75,0) {$A$};
+      \node at (2.75,0) {$B$};
+      \node[gray, font=\scriptsize] at (3.7,1.7) {$X$};
+    \end{tikzpicture}
+    \caption{$A \setminus B$}
+    \label{fig:venn_set_minus}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.19\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.38]
+      \fill[ThemePurple!35, even odd rule] (-2.2,-1.9) rectangle (4.2,2.2) (1,0) circle (1.5);
+      \draw[gray!70] (-2.2,-1.9) rectangle (4.2,2.2);
+      \draw[thick] (1,0) circle (1.5);
+      \node at (1,0) {$A$};
+      \node[gray, font=\scriptsize] at (3.7,1.7) {$X$};
+    \end{tikzpicture}
+    \caption{$A^c$}
+    \label{fig:venn_set_complement}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.19\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.38]
+      \draw[gray!70] (-2.2,-1.9) rectangle (4.2,2.2);
+      \fill[ThemePurple!35] (0,0) circle (1.5);
+      \fill[ThemePurple!35] (2,0) circle (1.5);
+      \begin{scope}
+        \clip (0,0) circle (1.5);
+        \fill[white] (2,0) circle (1.5);
+      \end{scope}
+      \draw[thick] (0,0) circle (1.5);
+      \draw[thick] (2,0) circle (1.5);
+      \node at (-0.75,0) {$A$};
+      \node at (2.75,0) {$B$};
+      \node[gray, font=\scriptsize] at (3.7,1.7) {$X$};
+    \end{tikzpicture}
+    \caption{$A \bigtriangleup B$}
+    \label{fig:venn_set_symdiff}
+  \end{subfigure}
+  \caption{The set operations, drawn inside an ambient set $X$. In each panel the shaded region is the result of the operation. The last panel is the symmetric difference of \cref{def:symmetric_difference}, which is exactly the union with the intersection removed.}
+  \label{fig:set_operations}
+\end{figure}
 
-    % Union
-    \begin{scope}[shift={(6,0)}]
-        \fill[gray!40] (0,0) circle (1.5cm);
-        \fill[gray!40] (2,0) circle (1.5cm);
-        \draw (0,0) circle (1.5cm);
-        \draw (2,0) circle (1.5cm);
-        \node at (-0.5,0) {\Large $A$};
-        \node at (2.5,0) {\Large $B$};
-        \node at (1,-2.5) {\Large $A \cup B$};
-    \end{scope}
+\begin{definition}[Symmetric Difference]
+\label{def:symmetric_difference}
+The \newterm{symmetric difference} of $A$ and $B$ is defined by
+\[
+A \bigtriangleup B := (A \cup B) \setminus (A \cap B).
+\]
+\end{definition}
 
-    % Difference
-    \begin{scope}[shift={(12,0)}]
-        \fill[gray!40] (0,0) circle (1.5cm);
-        \begin{scope}
-            \clip (2,0) circle (1.5cm);
-            \fill[white] (0,0) circle (1.5cm);
-        \end{scope}
-        \draw (0,0) circle (1.5cm);
-        \draw (2,0) circle (1.5cm);
-        \node at (-0.5,0) {\Large $A$};
-        \node at (2.5,0) {\Large $B$};
-        \node at (1,-2.5) {\Large $A \setminus B$};
-    \end{scope}
-    
-    % Complement
-    \begin{scope}[shift={(18,-1.5)}]
-        \fill[gray!40] (-1.5,-1) rectangle (3.5,2.5);
-        \fill[white] (1,0.75) circle (1.2cm);
-        \draw (-1.5,-1) rectangle (3.5,2.5);
-        \draw (1,0.75) circle (1.2cm);
-        \node at (1,0.75) {\Large $A$};
-        \node at (3,2) {\Large $X$};
-        \node at (1,-2) {\Large $A^c$};
-    \end{scope}
-\end{tikzpicture}
-\end{center}
+\begin{notation}
+The set $X$ above is called the \newterm{ambient set}, or the underlying set (in German, \germanterm{Grundmenge}), of the discussion. The complement of $A$ in $X$ is sometimes also written $\overline{A}$ rather than $A^c$.
+\end{notation}
+
+\subsection{Unions and Intersections of Families of Sets}
+
+The operations $\cap$ and $\cup$ are not restricted to two sets; they extend to arbitrary collections.
+
+\begin{definition}[Union and Intersection of a Family]
+\label{def:family_union_intersection}
+Let $\mathcal{A}$ be a family (that is, a set) of sets with $\mathcal{A} \ne \emptyset$. We define
+\begin{align*}
+\bigcup_{A \in \mathcal{A}} A &:= \{ x \mid \exists A \in \mathcal{A} \text{ such that } x \in A \}, \\
+\bigcap_{A \in \mathcal{A}} A &:= \{ x \mid \forall A \in \mathcal{A} : x \in A \}.
+\end{align*}
+\end{definition}
+
+In practice, $\mathcal{A}$ sometimes merely parametrises, or indexes, a family of sets.
+
+\begin{example}[An Indexed Family]
+\label{ex:indexed_family}
+Let $\mathcal{A} = \{2, 3, 4, \dots\}$ and, for every $n \in \mathcal{A}$, set
+\[
+A_n := \{ x \mid x \in \mathbb{Z}, \ x \ge 1, \text{ and } n^2 \text{ divides } x \}.
+\]
+Thus $A_2 = \{4, 8, 12, \dots\}$, $A_3 = \{9, 18, 27, \dots\}$, and so on. Then
+\[
+\bigcup_{n \in \mathcal{A}} A_n = \{ a \in \mathbb{Z} \mid \exists k, r \in \mathbb{Z}, \ k, r \ge 1, \text{ such that } a = k^2 \cdot r \},
+\qquad
+\bigcap_{n \in \mathcal{A}} A_n = \emptyset .
+\]
+The union is drawn in \cref{fig:indexed_family}. The intersection is empty because no integer $x \ge 1$ is divisible by $n^2$ for \textit{every} $n$: any such $x$ would exceed every bound.
+\end{example}
+
+\begin{ainote}
+As written in the notes, the condition describing the union allows $k = 1$, and with $k = 1$ the equation $a = k^2 \cdot r$ is satisfied by \textit{every} $a \ge 1$. Taken literally the right-hand side would therefore be all of $\{a \in \mathbb{Z} \mid a \ge 1\}$, which is not the union of the $A_n$. Since the index set is $\mathcal{A} = \{2, 3, \dots\}$, the intended condition is $k \ge 2$, so that
+\[
+\bigcup_{n \in \mathcal{A}} A_n = \{ a \in \mathbb{Z} \mid a \ge 1 \text{ and } a \text{ is divisible by the square of some } k \ge 2 \},
+\]
+that is, the positive integers that are \textit{not} squarefree. This is what \cref{fig:indexed_family} shows.
+\end{ainote}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[x=0.46cm, y=1cm]
+    % --- the three sample members of the family ---
+    \foreach \row/\n/\lab in {0/2/{$A_2$}, 1/3/{$A_3$}, 2/4/{$A_4$}} {
+      \node[left, font=\small] at (0.4, -0.62*\row) {\lab};
+      \draw[gray!45] (1,-0.62*\row) -- (24.6,-0.62*\row);
+    }
+    % A_2: multiples of 4
+    \foreach \k in {4,8,12,16,20,24} \fill[ThemePurple] (\k,0) circle (2.4pt);
+    % A_3: multiples of 9
+    \foreach \k in {9,18} \fill[ThemePurple] (\k,-0.62) circle (2.4pt);
+    % A_4: multiples of 16
+    \foreach \k in {16} \fill[ThemePurple] (\k,-1.24) circle (2.4pt);
+    % --- the union ---
+    \node[left, font=\small] at (0.4,-2.15) {$\bigcup_n A_n$};
+    \draw[gray!45] (1,-2.15) -- (24.6,-2.15);
+    \foreach \k in {4,8,9,12,16,18,20,24} \fill[ThemeAccent] (\k,-2.15) circle (2.6pt);
+    % --- the integer axis ---
+    \draw[->, gray!70] (1,-2.85) -- (25.2,-2.85) node[right, black, font=\small] {$\mathbb{Z}$};
+    \foreach \k in {1,...,24} \draw[gray!60] (\k,-2.78) -- (\k,-2.92);
+    \foreach \k in {4,8,12,16,20,24} \node[below, font=\tiny] at (\k,-2.95) {\k};
+  \end{tikzpicture}
+  \caption{The family $A_n$ of the preceding example, restricted to $1 \le x \le 24$. The set $A_n$ collects the positive multiples of $n^2$, so $A_5, A_6, \dots$ contribute nothing in this range. The union (in red) consists of $4, 8, 9, 12, 16, 18, 20, 24$: precisely the integers divisible by a square greater than $1$. Every row is eventually empty in any fixed range, which is why the intersection is empty.}
+  \label{fig:indexed_family}
+\end{figure}
 
 \subsection{Cartesian Products}
 
@@ -136,6 +268,15 @@ X \times Y := \{(x, y) \mid x \in X, y \in Y\}
 \]
 \end{definition}
 
+\begin{example}[A Finite Cartesian Product]
+\label{ex:finite_cartesian_product}
+Let $X = \{1, 2, \text{elephant}\}$ and $Y = \{4, \text{dog}\}$. Then
+\[
+X \times Y = \{(1,4), \, (1,\text{dog}), \, (2,4), \, (2,\text{dog}), \, (\text{elephant},4), \, (\text{elephant},\text{dog})\}.
+\]
+The pairs are \textit{ordered}, and this matters: $(1,4) \in X \times Y$, whereas $(4,1) \notin X \times Y$.
+\end{example}
+
 This construction generalizes to $n$ sets. We denote the $n$-fold product of a set $X$ with itself as $X^n$:
 \[
 X^n := \underbrace{X \times \dots \times X}_{n \text{ times}} = \{(x_1, \dots, x_n) \mid x_i \in X \text{ for } 1 \le i \le n\}
@@ -143,25 +284,41 @@ X^n := \underbrace{X \times \dots \times X}_{n \text{ times}} = \{(x_1, \dots, x
 The elements of $X^n$ are called $n$-tuples. For example, $X^2 := X \times X$, and $X^3 := X \times X \times X = \{(x_1, x_2, x_3) \mid x_1, x_2, x_3 \in X\}$, and so forth.
 
 \begin{example}[Cartesian Products in the Plane]
-If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ represents the standard Euclidean plane. If we take $X = [0, 2]$ and $Y = [1, 2]$, then $X \times Y$ represents a rectangle in the plane with corners at $(0,1), (2,1), (0,2),$ and $(2,2)$.
-
-\begin{center}
-\begin{tikzpicture}[scale=1.5]
-    % Axes
-    \draw[->, thick] (-0.5, 0) -- (3, 0) node[right] {$\mathbb{R}$};
-    \draw[->, thick] (0, -0.5) -- (0, 3) node[above] {$\mathbb{R}$};
-    
-    % Rectangle X \times Y
-    \fill[gray!30] (0, 1) rectangle (2, 2);
-    \draw[thick] (0, 1) rectangle (2, 2);
-    
-    % Ticks and Labels
-    \draw (2, 0.1) -- (2, -0.1) node[below] {$2$};
-    \draw (0.1, 1) -- (-0.1, 1) node[left] {$1$};
-    \draw (0.1, 2) -- (-0.1, 2) node[left] {$2$};
-\end{tikzpicture}
-\end{center}
+If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ represents the standard Euclidean plane. If we take $X = [0, 2]$ and $Y = [1, 2]$, then $X \times Y$ represents a rectangle in the plane with corners at $(0,1), (2,1), (0,2),$ and $(2,2)$, as drawn in \cref{fig:cartesian_rectangle}.
 \end{example}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=1.35, >=Stealth]
+    % --- axes ---
+    \draw[->, gray!70] (-0.9,0) -- (2.9,0) node[right, black, font=\small] {$\mathbb{R}$};
+    \draw[->, gray!70] (0,-0.7) -- (0,2.8) node[above, black, font=\small] {$\mathbb{R}$};
+    % --- the product ---
+    \fill[ThemePurple!25] (0,1) rectangle (2,2);
+    \draw[ThemePurple, thick] (0,1) rectangle (2,2);
+    \node[ThemePurple, font=\small] at (1,1.5) {$X \times Y$};
+    % --- the two factors, marked on their own axes ---
+    \draw[ThemeAccent, line width=1.7pt] (0,0) -- (2,0);
+    \node[ThemeAccent, below, font=\scriptsize] at (1,-0.42) {$X = [0,2]$};
+    \draw[ThemeGreen, line width=1.7pt] (0,1) -- (0,2);
+    \node[ThemeGreen, font=\scriptsize, rotate=90, anchor=south] at (-0.58,1.5) {$Y = [1,2]$};
+    % --- a sample point and its two coordinates ---
+    \fill[black] (1.4,1.7) circle (1.5pt);
+    \node[above right, font=\scriptsize] at (1.4,1.7) {$(x,y)$};
+    \draw[dotted, gray!80] (1.4,1.7) -- (1.4,0);
+    \draw[dotted, gray!80] (1.4,1.7) -- (0,1.7);
+    \fill[ThemeAccent] (1.4,0) circle (1.4pt);
+    \fill[ThemeGreen] (0,1.7) circle (1.4pt);
+    \node[below, ThemeAccent, font=\scriptsize] at (1.4,-0.05) {$x$};
+    \node[left, ThemeGreen, font=\scriptsize] at (-0.05,1.7) {$y$};
+    % --- ticks ---
+    \draw[gray!70] (2,0.07) -- (2,-0.07);
+    \draw[gray!70] (0.07,1) -- (-0.07,1) node[left, black, font=\scriptsize] {$1$};
+    \draw[gray!70] (0.07,2) -- (-0.07,2) node[left, black, font=\scriptsize] {$2$};
+  \end{tikzpicture}
+  \caption{The Cartesian product $X \times Y$ for $X = [0,2]$ and $Y = [1,2]$. A point of the product is precisely a choice of one coordinate from each factor: dropping the point $(x,y)$ onto the horizontal axis returns $x \in X$, and onto the vertical axis returns $y \in Y$.}
+  \label{fig:cartesian_rectangle}
+\end{figure}
 
 \subsection{Power Sets and Cardinality}
 
@@ -197,16 +354,33 @@ In the early development of set theory, it was assumed that any property $A(x)$ 
 
 Suppose there exists a \qt{set of all sets}, denoted by $S$. We then define a subset $R \subseteq S$ as follows:
 \[
-R := \{X \in S \mid X \notin X\}
+R := \{P \in S \mid P \notin P\},
 \]
+that is, $R$ is the set of all sets that do not contain themselves. For example, $S$ itself is a set, so $S \in S$, and therefore $S \notin R$.
+
 Now, we ask: is $R$ an element of itself?
 \begin{itemize}
     \item If $R \in R$, then by the definition of $R$, it must be that $R \notin R$. This is a contradiction.
     \item If $R \notin R$, then by the definition of $R$, it must be that $R \in R$. This is also a contradiction.
 \end{itemize}
+The two implications close into the cycle drawn in \cref{fig:russell_cycle}: each of the only two possible answers forces the other one.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[>=Stealth, node distance=3.6cm]
+    \node[draw=ThemePurple, thick, rounded corners=3pt, inner sep=6pt] (in)  {$R \in R$};
+    \node[draw=ThemePurple, thick, rounded corners=3pt, inner sep=6pt, right=of in] (out) {$R \notin R$};
+    \draw[->, ThemeAccent, thick] (in) to[bend left=28]
+      node[above, font=\scriptsize, text=ThemeAccent] {by definition of $R$} (out);
+    \draw[->, ThemeAccent, thick] (out) to[bend left=28]
+      node[below, font=\scriptsize, text=ThemeAccent] {by definition of $R$} (in);
+  \end{tikzpicture}
+  \caption{Russell's paradox as a cycle. A statement and its negation imply one another, so neither can be assigned a truth value. The fault lies not in the reasoning but in the assumption that $S$ is a set.}
+  \label{fig:russell_cycle}
+\end{figure}
 
 \begin{claim*}
-$S$ is not a set.
+Neither $S$ nor $R$ can be regarded as a set.
 \end{claim*}
 
 This paradox led to the development of Axiomatic Set Theory (e.g., Zermelo-Fraenkel), which places specific restrictions on how sets can be constructed to ensure mathematical consistency.
