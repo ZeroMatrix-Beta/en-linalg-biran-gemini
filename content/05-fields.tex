@@ -10,15 +10,16 @@ In linear algebra, we do not restrict ourselves to the real numbers. We can perf
 
 \subsection{The Field Axioms}
 
-To ensure that an algebraic structure behaves nicely, it must satisfy nine rigid rules. These are the Field Axioms.
+To ensure that an algebraic structure behaves nicely, it must satisfy ten rigid rules. These are the Field Axioms.
 
 \begin{definition}[Field]
+\label{def:field}
 A \textit{field} is a tuple $(K, +, \cdot, 0, 1)$ consisting of a set $K$ equipped with two binary operations:
 \begin{align*}
 &+: K \times K \rightarrow K, \quad (x, y) \mapsto x + y \quad \text{(Addition)} \\
 &\cdot: K \times K \rightarrow K, \quad (x, y) \mapsto x \cdot y \quad \text{(Multiplication)}
 \end{align*}
-and two distinguished, unique elements $0, 1 \in K$, such that the following nine axioms hold:
+and two distinguished, unique elements $0, 1 \in K$, such that the following ten axioms hold:
 
 \noindent
 \textbf{Axioms of Addition:}
@@ -38,17 +39,33 @@ and two distinguished, unique elements $0, 1 \in K$, such that the following nin
 \end{enumerate}
 
 \noindent
-\textbf{Compatibility and Non-Triviality:}
+\textbf{Compatibility, Non-Triviality, and Commutativity:}
 \begin{enumerate}[label=(K\arabic*), start=8, leftmargin=3.5em]
-    \item $\forall x, y, z \in K: x \cdot (y + z) = x \cdot y + x \cdot z$ \hfill \textit{(Distributivity)}
-    \item $1 \ne 0$ \hfill \textit{(The field has at least two elements)}
+    \item $\forall x, y, z \in K: x \cdot (y + z) = x \cdot y + x \cdot z$ \ and \\
+          $\forall x, y, z \in K: (y + z) \cdot x = y \cdot x + z \cdot x$ \hfill \textit{(Distributivity)}
+    \item $1 \ne 0$ \hfill \textit{(Non-triviality: the field has at least two elements)}
+    \item $\forall x, y \in K: x \cdot y = y \cdot x$ \hfill \textit{(Commutativity of Multiplication)}
 \end{enumerate}
 \end{definition}
+
+\begin{importantremark}
+\label{rem:k10_matters}
+Axiom \textbf{(K10)} is not decorative. A structure satisfying \textbf{(K1)}--\textbf{(K9)} but not \textbf{(K10)} is called a \newterm{skew field} (or division ring); the quaternions are the standard example. Everything in this course is done over fields, so multiplication may always be reordered freely.
+\end{importantremark}
 
 \begin{remark}[Notation]
 We typically denote the additive inverse $x'$ from (K4) as $-x$, allowing us to define subtraction: $x - y := x + (-y)$. 
 Similarly, we denote the multiplicative inverse $x'$ from (K7) as $x^{-1}$ or $\frac{1}{x}$, allowing us to define division by non-zero elements: $x / y := x \cdot y^{-1}$.
 \end{remark}
+
+\begin{ainote}
+The source material for this chapter is a single page, giving the definition above
+(and nothing else) in German, as \qt{Definition 1.3.9}. Everything that follows ---
+the examples, finite fields and modular arithmetic, $\mathbb{F}_p$, and the two
+proofs from the axioms --- has no counterpart in the provided notes and was supplied
+by this transcript. It is standard material and consistent with the course, but it is
+not lecture content.
+\end{ainote}
 
 \subsection{Infinite Fields}
 
@@ -68,9 +85,9 @@ The integers $\mathbb{Z} = \{\dots, -2, -1, 0, 1, 2, \dots\}$ do \textbf{not} fo
 
 \subsection{Finite Fields and Modular Arithmetic}
 
-A field does not have to be an infinite, continuous line of numbers. If we change our definitions of "addition" and "multiplication", we can create perfectly valid fields that contain only a finite number of elements.
+A field does not have to be an infinite, continuous line of numbers. If we change our definitions of \qt{addition} and \qt{multiplication}, we can create perfectly valid fields that contain only a finite number of elements.
 
-The secret to building a finite field is \textit{modular arithmetic} (often called "clock arithmetic"). Instead of numbers growing infinitely on a number line, they wrap around a circle.
+The secret to building a finite field is \newterm{modular arithmetic} (often called \qt{clock arithmetic}). Instead of numbers growing infinitely on a number line, they wrap around a circle.
 
 \begin{center}
 \begin{tikzpicture}[scale=1.1,
@@ -78,9 +95,10 @@ The secret to building a finite field is \textit{modular arithmetic} (often call
     box/.style={circle, draw, thick, fill=blue!10, minimum size=8mm, align=center},
     arrow/.style={->, thick, >=stealth, dashed, draw=blue!60!black}
 ]
-    % Draw a clock for F_5
-    \foreach \i/\label in {90/0, 18/1, -54/2, -126/3, -198/4} {
-        \node[box] (\label) at (\i:1.5) {\textbf{\label}};
+    % Draw a clock for F_5. The loop variable must not be called \label:
+    % that would shadow LaTeX's own \label inside the loop body.
+    \foreach \i/\lab in {90/0, 18/1, -54/2, -126/3, -198/4} {
+        \node[box] (\lab) at (\i:1.5) {\textbf{\lab}};
     }
     
     \draw[arrow, bend left=20] (0) to (1);
@@ -103,10 +121,54 @@ Addition and multiplication are performed exactly as regular integers, but if th
 \end{definition}
 
 \begin{theorem}
+\label{thm:fp_is_field}
 $\mathbb{F}_p$ is a field if and only if $p$ is a prime number.
 \end{theorem}
 
-Why must $p$ be prime? Consider what happens if we try to build a field modulo $4$ (which is not prime). In modulo $4$, we have $2 \cdot 2 = 4 \equiv 0 \pmod 4$. We multiplied two non-zero numbers and got zero! In a true field, this is algebraically impossible, because it destroys the ability to divide (axiom K7). Prime numbers beautifully prevent this "zero divisor" problem.
+Why must $p$ be prime? Consider what happens if we try to build a field modulo $4$ (which is not prime). In modulo $4$, we have $2 \cdot 2 = 4 \equiv 0 \pmod 4$. We multiplied two non-zero numbers and got zero! In a true field, this is algebraically impossible, because it destroys the ability to divide (axiom \textbf{(K7)}). Prime numbers beautifully prevent this \qt{zero divisor} problem, as \cref{fig:cayley_tables} makes visible.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[b]{0.46\textwidth}
+    \centering
+    \begin{tikzpicture}[x=0.72cm, y=0.72cm, font=\small]
+      % header row and column
+      \node at (0,0) {$\cdot$};
+      \foreach \c in {1,...,4} \node[ThemePurple] at (\c,0) {\c};
+      \foreach \r in {1,...,4} \node[ThemePurple] at (0,-\r) {\r};
+      \draw[gray!70] (-0.45,-0.45) -- (4.55,-0.45);
+      \draw[gray!70] (0.45,0.45) -- (0.45,-4.55);
+      % body: products mod 5, none of them zero
+      \foreach \r in {1,...,4} \foreach \c in {1,...,4} {
+        \pgfmathtruncatemacro{\v}{mod(\r*\c,5)}
+        \node at (\c,-\r) {\v};
+      }
+    \end{tikzpicture}
+    \caption{$\mathbb{F}_5$: no zero in the body}
+    \label{fig:cayley_f5}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[b]{0.46\textwidth}
+    \centering
+    \begin{tikzpicture}[x=0.72cm, y=0.72cm, font=\small]
+      \node at (0,0) {$\cdot$};
+      \foreach \c in {1,2,3} \node[ThemePurple] at (\c,0) {\c};
+      \foreach \r in {1,2,3} \node[ThemePurple] at (0,-\r) {\r};
+      \draw[gray!70] (-0.45,-0.45) -- (3.55,-0.45);
+      \draw[gray!70] (0.45,0.45) -- (0.45,-3.55);
+      \foreach \r in {1,2,3} \foreach \c in {1,2,3} {
+        \pgfmathtruncatemacro{\v}{mod(\r*\c,4)}
+        \node at (\c,-\r) {\v};
+      }
+      % 2 * 2 = 0 is the obstruction
+      \draw[ThemeAccent, thick, rounded corners=2pt] (1.65,-1.65) rectangle (2.35,-2.35);
+    \end{tikzpicture}
+    \caption{$\mathbb{Z}/4\mathbb{Z}$: $2 \cdot 2 = 0$}
+    \label{fig:cayley_z4}
+  \end{subfigure}
+  \caption{Multiplication tables of the non-zero elements. For the prime modulus $5$ every entry is non-zero and every row is a rearrangement of $1,2,3,4$, so each element has an inverse: the $1$ in row $x$ sits in column $x^{-1}$. For the composite modulus $4$ the boxed entry $2 \cdot 2 = 0$ produces a zero divisor, and row $2$ never reaches $1$, so $2$ has no inverse and \textbf{(K7)} fails.}
+  \label{fig:cayley_tables}
+\end{figure}
 
 \begin{example}[The Smallest Field: $\mathbb{F}_2$]
 The absolute smallest field mathematically possible contains only two elements: $\{0, 1\}$. This is the field of Boolean logic, heavily used in computer science and cryptography. Operations are done modulo $2$:
@@ -139,11 +201,12 @@ Let us explore $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$.
 
 \subsection{Proving Basic Properties from the Axioms}
 
-The power of an axiomatic definition is that if we can prove a theorem using \textit{only} axioms \textbf{(K1)} through \textbf{(K9)}, that theorem is universally true for \textbf{every field in existence}—whether it is the infinite space of real numbers $\mathbb{R}$, or the tiny binary world of $\mathbb{F}_2$.
+The power of an axiomatic definition is that if we can prove a theorem using \textit{only} axioms \textbf{(K1)} through \textbf{(K10)}, that theorem is universally true for \textbf{every field in existence} --- whether it is the infinite space of real numbers $\mathbb{R}$, or the tiny binary world of $\mathbb{F}_2$.
 
-Let us prove two seemingly "obvious" facts that actually require careful algebraic footwork to justify.
+Let us prove two seemingly \qt{obvious} facts that actually require careful algebraic footwork to justify.
 
 \begin{lemma}[Multiplication by Zero]
+\label{lem:mult_by_zero}
 For any element $x$ in a field $K$, we have $0 \cdot x = 0$.
 \end{lemma}
 
@@ -175,6 +238,7 @@ Finally, applying \textbf{(K3)} once more, we drop the $+ 0$ to conclude:
 \end{proof}
 
 \begin{lemma}[Zero Divisors do not exist]
+\label{lem:no_zero_divisors}
 Let $a, b \in K$. If $a \cdot b = 0$, then either $a = 0$ or $b = 0$.
 \end{lemma}
 
@@ -186,7 +250,7 @@ Let us multiply both sides of our equation $a \cdot b = 0$ by this inverse:
 \[
 a^{-1} \cdot (a \cdot b) = a^{-1} \cdot 0
 \]
-From our previous lemma, we know that any element multiplied by $0$ is $0$, so the right side is $0$:
+By \cref{lem:mult_by_zero}, any element multiplied by $0$ is $0$, so the right side is $0$:
 \[
 a^{-1} \cdot (a \cdot b) = 0
 \]
