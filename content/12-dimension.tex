@@ -6,6 +6,7 @@
 In this chapter, we synthesize the fundamental results regarding finite-di\-men\-sional vector spaces and explore the relationship between a space and its subspaces through the lens of dimensionality.
 
 \begin{summary}[Properties of Finite-Dimensional Spaces]
+\label{sum:finite_dim_properties}
 Let $V$ be a finite-di\-men\-sional vector space over a field $K$. The following structural principles hold:
 \begin{enumerate}
     \item Every finite list of vectors that spans $V$ contains a sublist which constitutes a \newterm{basis} of $V$. Formally, if $(v_1, \dots, v_n)$ spans $V$, then there exists a sublist $(v_{i_1}, \dots, v_{i_d})$ with $1 \le i_1 < i_2 < \dots < i_d \le n$ that is a basis for $V$, where $d = \dim V$.
@@ -38,6 +39,31 @@ The equivalence is established through the following implications:
 
 
 
+The previous theorem settles what happens for a list whose length is exactly $\dim V$. The next one records what happens when the length is wrong in either direction: too short a list cannot reach every vector, and too long a list must contain a redundancy.
+
+\begin{theorem}[Lists of the Wrong Length]
+\label{thm:wrong_length_lists}
+Suppose that $n = \dim V < \infty$, and let $v_1, \dots, v_k$ be a list of vectors in $V$. Then:
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item If $k < n$, the list $v_1, \dots, v_k$ can \textbf{not} span $V$.
+    \item If $k > n$, the list $v_1, \dots, v_k$ can \textbf{not} be linearly independent.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(1)} Assume that $k < n$, and suppose by contradiction that $\Sp(v_1, \dots, v_k) = V$. By item \textbf{(1)} of the summary on \cpageref{sum:finite_dim_properties} we can delete some of the vectors from the list $v_1, \dots, v_k$ and obtain a basis $v_{i_1}, \dots, v_{i_{k'}}$ of $V$. Then
+\[
+\dim V = k' \le k < n = \dim V,
+\]
+a contradiction.
+
+\textbf{(2)} Assume that $k > n$, and suppose by contradiction that $v_1, \dots, v_k$ are linearly independent. By item \textbf{(2)} of the summary on \cpageref{sum:finite_dim_properties} we can extend this list to a basis of $V$. Then
+\[
+\dim V \ge k > n = \dim V,
+\]
+a contradiction.
+\end{proof}
+
 % prop:12.2
 \begin{proposition}[Dimensional Constraints on Subspaces]
 \label{prop:subspace_dimension_constraints}
@@ -47,9 +73,25 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$. Then every linear sub
 \begin{proof}
 Let $n := \dim V$. We first establish that $U$ possesses a finite basis. If $U = \{0\}$, the empty set serves as the basis and we are done. Assume $U \neq \{0\}$. We select a non-zero vector $v_1 \in U$. If $\Sp(v_1) = U$, we have found our basis. 
 
-If $\Sp(v_1) \neq U$, we choose a second vector $v_2 \in U \setminus \Sp(v_1)$. It follows from the properties of linear independence that the list $\{v_1, v_2\}$ is linearly independent. We proceed iteratively: after $j$ steps, we obtain a linearly independent list $\{v_1, \dots, v_j\} \subseteq U$. If $\Sp(v_1, \dots, v_j) = U$, the process terminates. Otherwise, we choose $v_{j+1} \in U \setminus \Sp(v_1, \dots, v_j)$. By the principle that adding a vector outside the span of a linearly independent set preserves independence, the expanded list $\{v_1, \dots, v_{j+1}\}$ remains linearly independent.
+If $\Sp(v_1) \neq U$, we choose a second vector $v_2 \in U \setminus \Sp(v_1)$. It follows from the properties of linear independence (\cref{lem:no_predecessor_span}) that the list $\{v_1, v_2\}$ is linearly independent. We proceed iteratively: after $j$ steps, we obtain a linearly independent list $\{v_1, \dots, v_j\} \subseteq U$. If $\Sp(v_1, \dots, v_j) = U$, the process terminates. Otherwise, we choose $v_{j+1} \in U \setminus \Sp(v_1, \dots, v_j)$. By the principle that adding a vector outside the span of a linearly independent set preserves independence (again \cref{lem:no_predecessor_span}), the expanded list $\{v_1, \dots, v_{j+1}\}$ remains linearly independent.
 
 Crucially, in a space $V$ of dimension $n$, no linearly independent list can exceed length $n$. Consequently, this algorithmic procedure must terminate in $k$ steps, where $k \le n$. At this stage, we have a list $\{v_1, \dots, v_k\}$ that is linearly independent and spans $U$, thereby constituting a basis for $U$. This implies $U$ is finite-dimensional and $\dim U = k \le n = \dim V$.
 
+It remains to settle when equality holds. One direction is immediate: if $U = V$, then clearly $\dim U = \dim V$. The converse is the substantial one.
+
 Furthermore, if $\dim U = \dim V = n$, then $U$ contains a linearly independent list of length $n$. By \Cref{thm:basis_equivalent_characterizations}, such a list satisfies property \textbf{(a)} and is therefore also a basis for $V$. This implies $\Sp(v_1, \dots, v_n) = V$. Since $U = \Sp(v_1, \dots, v_n)$ by the construction of the basis, we conclude $U = V$.
 \end{proof}
+
+\begin{ainote}
+\Cref{thm:wrong_length_lists} is stated and proved in the notes and was missing
+from this transcript; it is restored above. The notes justify the two
+independence steps in the proof of
+\cref{prop:subspace_dimension_constraints} by citing Lemma E of the previous
+chapter (\cref{lem:no_predecessor_span}), which the transcript appealed to
+without naming; the citations are put back, leaving the surrounding wording as
+it was. The trivial direction of the equality claim in
+\cref{prop:subspace_dimension_constraints}, that $U = V$ gives
+$\dim U = \dim V$, was also missing and is supplied. The notes restate
+\cref{lem:no_predecessor_span} in full at this point as a recollection from the
+earlier lecture; it is only cross-referenced here.
+\end{ainote}
