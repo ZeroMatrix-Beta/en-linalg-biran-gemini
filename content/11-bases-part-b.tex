@@ -17,6 +17,7 @@
 Before we establish the main theorem of this chapter, we formalize a stronger version of the Steinitz Exchange Theorem (Lemma D from the previous section). We proved that an independent list cannot be larger than a spanning list. However, the exact mechanism of the proof actually guarantees something even more powerful: we can precisely substitute the independent vectors into the spanning set.
 
 \begin{lemma}[Lemma D': Strong Steinitz Exchange]
+\label{lem:strong_steinitz}
 Let $V$ be a vector space over $K$, and suppose that $V = \Sp(v_1, \dots, v_n)$ for some list of vectors $v_1, \dots, v_n \in V$. Let $u_1, \dots, u_m \in V$ be a linearly independent list. 
 
 Then $m \le n$, and moreover, one can delete exactly $m$ vectors from the spanning list $v_1, \dots, v_n$ such that the remaining $n-m$ vectors, together with all the vectors $u_1, \dots, u_m$, still span $V$.
@@ -27,34 +28,90 @@ Then $m \le n$, and moreover, one can delete exactly $m$ vectors from the spanni
 \end{lemma}
 
 \begin{proof}
-The fact that $m \le n$ was already proven in Lemma D. To prove the "moreover" part, we simply apply the exact step-by-step substitution procedure described in the proof of Lemma D. 
-For steps $j = 1, 2, \dots, m$, we sequentially add $u_j$ to the front of the list. At each step, the list becomes dependent (Lemma C), and we forcefully eject a redundant $v_k$ vector (Lemma B) to restore independence while perfectly preserving the span. After $m$ steps, we have injected all $m$ independent vectors and deleted exactly $m$ of the original spanning vectors. The resulting mixed list still spans $V$.
+The fact that $m \le n$ was already proven in Lemma D. To prove the \qt{moreover} part, we simply apply the exact step-by-step substitution procedure described in the proof of Lemma D. 
+For steps $j = 1, 2, \dots, m$, we sequentially add $u_j$ to the front of the list. At each step, the list becomes dependent (Lemma C), and we forcefully eject a redundant $v_k$ vector (Lemma B) to restore independence while perfectly preserving the span. After $m$ steps, we have injected all $m$ independent vectors and deleted exactly $m$ of the original spanning vectors. The resulting mixed list still spans $V$. See also \cpageref{rem:steinitz_stronger_form}, where the same statement is drawn out of the proof of Lemma D directly.
 \end{proof}
 
 \subsection{The Existence and Uniqueness of Dimension}
 
-We are now ready to state and prove the foundational theorem of finite-dimensional vector spaces. It guarantees that bases always exist and that they provide an absolute, rigid measure of the "size" of a vector space.
+We are now ready to state and prove the foundational theorem of finite-dimensional vector spaces. It guarantees that bases always exist and that they provide an absolute, rigid measure of the \qt{size} of a vector space.
 
 \begin{theorem}[The Basis Theorem]
+\label{thm:basis_theorem}
 Let $V$ be a finite-dimensional vector space over $K$. Then $V$ has a basis with finitely many elements. 
 
 Moreover, \textbf{every} basis of $V$ is finite, and any two bases of $V$ have exactly the same number of elements.
 \end{theorem}
 
 \begin{remark}[Infinite Dimensional Spaces]
-This theorem is actually true even if $V$ is not finite-dimensional (this is known as the "Hamel Basis Theorem" and requires Zorn's Lemma). However, in this course, we will only prove the theorem for finite-dimensional spaces. The infinite-dimensional case is rigorously covered in advanced algebra courses (e.g., \textit{Grundstrukturen} in the 2nd semester).
+This theorem is actually true even if $V$ is not finite-dimensional (this is known as the \qt{Hamel Basis Theorem} and requires Zorn's Lemma). However, in this course, we will only prove the theorem for finite-dimensional spaces. The infinite-dimensional case is rigorously covered in advanced algebra courses (e.g., \textit{Grundstrukturen} in the 2nd semester).
 \end{remark}
+
+\subsection{Preparation: Two Lemmas}
+
+For the proof of the theorem we need some preparation. The first lemma is the converse reading of the redundancy lemma of the previous chapter: there, a dependent list was shown to contain a vector lying in the span of its predecessors; here, a list in which \emph{no} vector lies in the span of its predecessors is shown to be independent.
+
+\begin{lemma}[Lemma E: No Predecessor Span Means Independent]
+\label{lem:no_predecessor_span}
+Let $w_1, \dots, w_\ell \in V$ and assume that
+\[
+w_j \notin \Sp(w_1, \dots, w_{j-1}) \qquad \text{for all } 1 \le j \le \ell.
+\]
+Then the list $w_1, \dots, w_\ell$ is linearly independent.
+\end{lemma}
+
+\begin{proof}
+If $w_1, \dots, w_\ell$ were linearly dependent, then by \cref{lem:targeted_redundancy} there would exist an index $1 \le j \le \ell$ with $w_j \in \Sp(w_1, \dots, w_{j-1})$, contradicting the assumption.
+\end{proof}
+
+The second lemma is the one that actually produces a basis. Note that it extracts the basis from \emph{within} the given spanning list, rather than merely asserting that one exists somewhere.
+
+\begin{lemma}[Lemma F: Every Finite Spanning List Contains a Basis]
+\label{lem:spanning_list_contains_basis}
+Suppose that $\Sp(v_1, \dots, v_n) = V$. Then there exists a subset of $\{v_1, \dots, v_n\}$ which is a basis for $V$.
+\end{lemma}
+
+\begin{proof}
+The proof is algorithmic and is based on $n$ steps. At each step we consider another vector from the list $v_1, \dots, v_n$ and decide whether or not to drop it from the list. At step number $j$ we consider $v_j$:
+
+\begin{description}
+    \item[Step 1.] If $v_1 = 0_V$ we drop $v_1$ from the list. If $v_1 \ne 0_V$ we keep it.
+    \item[Step $j$, for $2 \le j \le n$.] If $v_j \in \Sp(v_1, \dots, v_{j-1})$ we drop $v_j$. Otherwise we keep it.
+\end{description}
+
+After performing the $n$ steps above we obtain a new, possibly shorter, list
+\[
+v_{i_1}, v_{i_2}, \dots, v_{i_m}, \qquad \text{where } 1 \le i_1 < i_2 < \dots < i_m \le n.
+\]
+
+We claim that $\Sp(v_{i_1}, \dots, v_{i_m}) = V$. Indeed, in any of the steps $1 \le j \le n$ we dropped the vector $v_j$ only if $v_j \in \Sp(v_1, \dots, v_{j-1})$, and by \cref{lem:targeted_redundancy} such a vector may be dropped without changing the span. Therefore,
+\[
+\Sp(v_{i_1}, \dots, v_{i_m}) = \Sp(v_1, \dots, v_n) = V.
+\]
+
+We also claim that $v_{i_1}, \dots, v_{i_m}$ is linearly independent. Indeed, for every $1 \le k \le m$ the vector $v_{i_k}$ survived its step, which means
+\[
+v_{i_k} \notin \Sp(v_1, v_2, \dots, v_{i_k - 1}),
+\]
+and since $v_{i_1}, \dots, v_{i_{k-1}}$ are all taken from among $v_1, \dots, v_{i_k - 1}$, this gives in particular
+\[
+v_{i_k} \notin \Sp(v_{i_1}, v_{i_2}, \dots, v_{i_{k-1}}).
+\]
+By \cref{lem:no_predecessor_span}, the list $v_{i_1}, v_{i_2}, \dots, v_{i_m}$ is linearly independent.
+
+Together with the fact that $\Sp(v_{i_1}, \dots, v_{i_m}) = V$, we get that $v_{i_1}, \dots, v_{i_m}$ is a basis for $V$.
+\end{proof}
 
 \subsection{Proof of the Basis Theorem}
 
-Because this theorem is so monumental, we will break its proof down into three distinct, manageable statements. 
+Because this theorem is so monumental, we will break its proof down into three distinct, manageable statements.
 
 \subsubsection*{Statement 1: V has a finite basis.}
 
 \begin{proof}
 Because we assumed $V$ is finite-dimensional, there must exist some finite list of vectors that spans $V$. Let us call this spanning set $S = \{w_1, \dots, w_k\}$. If $S$ is already linearly independent, it is a basis, and we are done.
 
-If $S$ is linearly dependent, we can extract a basis from it using the following systematic reduction algorithm (often called a "Redundancy Filter"):
+If $S$ is linearly dependent, we can extract a basis from it using the following systematic reduction algorithm (often called a \qt{Redundancy Filter}):
 
 \begin{center}
 \resizebox{0.9\textwidth}{!}{
@@ -86,7 +143,7 @@ Specifically:
     \item If the zero vector $0_V$ is in the list, drop it.
     \item Read the list from left to right. If a vector $w_j$ is a linear combination of its strictly preceding vectors (i.e., $w_j \in \Sp(w_1, \dots, w_{j-1})$), drop it.
 \end{enumerate}
-By Lemma B, dropping this redundant vector does not change the span of the list. We repeat this until we have checked every vector. The remaining list still spans $V$. Furthermore, by \cref{prop:dependence_is_redundancy}, it must be linearly independent, because we systematically deleted every vector that could be written as a combination of the others. Thus, the remaining list is a finite basis.
+By Lemma B, dropping this redundant vector does not change the span of the list. We repeat this until we have checked every vector. The remaining list still spans $V$. Furthermore, by \cref{lem:no_predecessor_span}, it must be linearly independent, because we systematically deleted every vector that could be written as a combination of the vectors preceding it. Thus, the remaining list is a finite basis. This is precisely the algorithm of \cref{lem:spanning_list_contains_basis}, applied to the spanning list $w_1, \dots, w_k$.
 \end{proof}
 
 \subsubsection*{Statement 2: Every basis of V is finite.}
@@ -147,11 +204,17 @@ Since $|\mathcal{A}| \le |\mathcal{B}|$ and $|\mathcal{B}| \le |\mathcal{A}|$, i
 Because the number of elements in a basis is a rigid, absolute invariant of the vector space, we can finally define the space's dimension.
 
 \begin{definition}[Dimension]
-Let $V$ be a finite-dimensional vector space over $K$. We define the \textbf{dimension} of $V$ to be the number of elements in any basis of $V$. 
-We denote this integer by $\dim V = n \in \mathbb{Z}_{\ge 0}$.
+\label{def:dimension}
+Let $V$ be a finite-dimensional vector space over $K$. We define the \textbf{dimension} of $V$ to be the number of elements in any basis of $V$.
+We denote this integer by $\dim V := n \in \mathbb{Z}_{\ge 0}$.
 
 If $V$ is not finite-dimensional, we write $\dim V = \infty$.
 \end{definition}
+
+\begin{importantremark}
+\label{rem:dimension_well_defined}
+$\dim V$ is \textbf{well defined}: the definition does not depend on the specific choice of a basis for $V$. This is exactly what Statement 3 of \cref{thm:basis_theorem} buys us. Without it, the phrase \qt{the number of elements in any basis} would not name a single number, and the definition above would be empty.
+\end{importantremark}
 
 \begin{remark}[The Zero Space]
 Consider the zero vector space $V = \{0_V\}$. Its only spanning set is $\{0_V\}$, which is linearly dependent. The only linearly independent subset that spans it is the empty set $\emptyset$. 
@@ -200,6 +263,23 @@ If $S$ is a finite set, say $S = \{s_1, \dots, s_n\}$, can you construct an expl
 \end{exercise}
 
 \begin{remark}
-When the domain $S$ is an infinite set, the space $K^S$ is infinite-dimensional. In this case, we unfortunately do not have a "nice" or easily describable basis for it.
+When the domain $S$ is an infinite set, the space $K^S$ is infinite-dimensional. In this case, we unfortunately do not have a \qt{nice} or easily describable basis for it.
 \end{remark}
 \end{example}
+
+\begin{ainote}
+The notes prepare the Basis Theorem with two lemmas that the transcript had
+dropped: \cref{lem:no_predecessor_span} and
+\cref{lem:spanning_list_contains_basis}, both restored above with their proofs.
+Statement 1 of the theorem is proved in the notes by citing
+\cref{lem:spanning_list_contains_basis}; the transcript inlines the algorithm
+instead, which is kept, with the citation corrected. That citation had pointed
+at \cref{prop:dependence_is_redundancy}, which is about a vector lying in the
+span of \emph{all} the others, whereas the filter only ever tests a vector
+against the ones preceding it. \Cref{lem:no_predecessor_span} is the statement
+that closes that gap. Also restored:
+\cpageref{rem:dimension_well_defined}, which the notes flag explicitly. The
+notes state \cref{lem:strong_steinitz} here and refer back to the closing remark
+of the previous lecture for its proof; both are kept, and the cross-reference is
+made explicit.
+\end{ainote}
