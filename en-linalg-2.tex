@@ -412,8 +412,10 @@
 
 \makeatletter
 \AtBeginDocument{%
-  \renewcommand{\theHtheorem}{\thechapter.\alph{section}.\arabic{theorem}}%
-  \renewcommand{\theHequation}{\thechapter.\alph{section}.\arabic{equation}}%
+  % \arabic, not \alph: in chapters that never open a \section the counter is 0,
+  % and \alph{0} yields an empty token, producing malformed anchors like "24..11".
+  \renewcommand{\theHtheorem}{\thechapter.\arabic{section}.\arabic{theorem}}%
+  \renewcommand{\theHequation}{\thechapter.\arabic{section}.\arabic{equation}}%
   \@namedef{theHlemma}{\theHtheorem}%
   \@namedef{theHcorollary}{\theHtheorem}%
   \@namedef{theHdefinition}{\theHtheorem}%
@@ -445,6 +447,18 @@
 \newaliascnt{definition}{theorem}
 \newtheorem{definition}[definition]{Definition}
 \aliascntresetthe{definition}
+
+% --- KEEP THE ALIASES TRACKING \thetheorem ---
+% \aliascntresetthe does `\let\thelemma\thetheorem', which snapshots the *current*
+% meaning of \thetheorem. Every content file opens with a per-chapter
+% \renewcommand{\thetheorem}{...}; with a \let-binding that override reaches only the
+% bare `theorem' environment, so a chapter would print "Definition 27.4" and then
+% "Theorem 27.a.5" three lines later. Re-binding them as macros makes them expand
+% \thetheorem at use time, so one override per file retags every numbered environment.
+\renewcommand{\thelemma}{\thetheorem}
+\renewcommand{\thecorollary}{\thetheorem}
+\renewcommand{\theproposition}{\thetheorem}
+\renewcommand{\thedefinition}{\thetheorem}
 
 % --- UNNUMBERED ENVIRONMENTS ---
 \theoremstyle{purplethm}
