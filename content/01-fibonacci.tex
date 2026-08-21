@@ -12,9 +12,9 @@ We begin our study with the classical Fibonacci sequence, a sequence of numbers 
 The \newterm{Fibonacci sequence} is an infinite sequence of integers $a_0, a_1, a_2, a_3, \dots, a_n, \dots$ defined by the following recurrence relation:
 \begin{equation} \label{eq:standard_fib_recurrence}
 \begin{cases}
-a_0 = 0 \\
-a_1 = 1 \\
-a_n = a_{n-1} + a_{n-2} & \text{for } n \ge 2
+a_0 := 0 \\
+a_1 := 1 \\
+a_n := a_{n-1} + a_{n-2} & \text{for } n \ge 2
 \end{cases}
 \end{equation}
 \end{definition}
@@ -28,8 +28,8 @@ a_0 = 0, \quad a_1 = 1, \quad a_2 = 1, \quad a_3 = 2, \quad a_4 = 3, \quad a_5 =
 
 A natural, central question arises: Is there a closed, explicit formula for the general term $a_n$? To answer this, let us briefly look at other well-known mathematical sequences for comparison:
 \begin{enumerate}
-    \item \textbf{Arithmetic Sequence:} Defined by $a_0 = a$ and $a_n = a_{n-1} + d$ for $n \ge 1$. The explicit formula for the general term is given by $a_n = a + n \cdot d$.
-    \item \textbf{Geometric Sequence:} Defined by $a_0 = a$ and $a_n = a_{n-1} \cdot q$ for $n \ge 1$. The explicit formula is given by $a_n = a \cdot q^n$.
+    \item \textbf{Arithmetic Sequence:} Defined by $a_0 := a$ and $a_n := a_{n-1} + d$ for $n \ge 1$. The explicit formula for the general term is given by $a_n = a + n \cdot d$.
+    \item \textbf{Geometric Sequence:} Defined by $a_0 := a$ and $a_n := a_{n-1} \cdot q$ for $n \ge 1$. The explicit formula is given by $a_n = a \cdot q^n$.
 \end{enumerate}
 
 Clearly, the recurrence relation for the Fibonacci sequence is fundamentally different. To find a formula for $a_n$, it is highly beneficial to step back and generalize the problem.
@@ -38,9 +38,9 @@ Clearly, the recurrence relation for the Fibonacci sequence is fundamentally dif
 Let $a_0, a_1 \in \mathbb{R}$ be given initial real numbers. We define a sequence $\mathcal{A}$ to be a \newterm{Fibonacci sequence} if it satisfies the relation:
 \begin{equation} \label{eq:generalized_fib_recurrence}
 \begin{cases}
-\alpha_0 = a_0 \\
-\alpha_1 = a_1 \\
-\alpha_n = \alpha_{n-1} + \alpha_{n-2} & \text{for } n \ge 2
+\alpha_0 := a_0 \\
+\alpha_1 := a_1 \\
+\alpha_n := \alpha_{n-1} + \alpha_{n-2} & \text{for } n \ge 2
 \end{cases}
 \end{equation}
 We denote such a sequence uniquely determined by its starting values as $\mathcal{F}_{a_0, a_1}$. Furthermore, we denote the collection (or space) of all such generalized Fibonacci sequences by $\Fib$.
@@ -63,7 +63,7 @@ The collection of Fibonacci sequences, $\Fib$, is closed under term-wise additio
 \begin{proof}
 We address each closure property:
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $\mathcal{A}_1 = (a_0, a_1, a_2, \dots)$ and $\mathcal{A}_2 = (b_0, b_1, b_2, \dots)$ be two sequences in $\Fib$. We define their sum term-wise as $\mathcal{A}_1 + \mathcal{A}_2 := (c_0, c_1, c_2, \dots)$, where $c_n = a_n + b_n$. We must verify that the sequence $(c_n)$ obeys the Fibonacci recurrence relation, namely $c_n = c_{n-1} + c_{n-2}$ for $n \ge 2$. By algebraic manipulation, we find:
+    \item Let $\mathcal{A}_1 = (a_0, a_1, a_2, \dots)$ and $\mathcal{A}_2 = (b_0, b_1, b_2, \dots)$ be two sequences in $\Fib$. We define their sum term-wise as $\mathcal{A}_1 + \mathcal{A}_2 := (c_0, c_1, c_2, \dots)$, where $c_n := a_n + b_n$. We must verify that the sequence $(c_n)$ obeys the Fibonacci recurrence relation, namely $c_n = c_{n-1} + c_{n-2}$ for $n \ge 2$. By algebraic manipulation, we find:
 \[
 c_{n-1} + c_{n-2} = (a_{n-1} + b_{n-1}) + (a_{n-2} + b_{n-2}) = (a_{n-1} + a_{n-2}) + (b_{n-1} + b_{n-2})
 \]
@@ -78,7 +78,8 @@ This shows that $\mathcal{F}_{a_0, a_1} + \mathcal{F}_{b_0, b_1} = \mathcal{F}_{
 \end{proof}
 
 \begin{corollary}
-Linear combinations of Fibonacci sequences are also Fibonacci sequences. That is, for any scalars $\alpha, \beta \in \mathbb{R}$, we have:
+\label{cor:fib_linear_combination}
+By \cref{prop:fib_closure}, linear combinations of Fibonacci sequences are also Fibonacci sequences. That is, for any scalars $\alpha, \beta \in \mathbb{R}$, we have:
 \[
 \alpha \mathcal{F}_{a_0, a_1} + \beta \mathcal{F}_{b_0, b_1} = \mathcal{F}_{\alpha a_0 + \beta b_0, \alpha a_1 + \beta b_1}
 \]
@@ -89,7 +90,7 @@ As a direct consequence of this structure, in order to find a general formula fo
 \[
 \mathcal{F}_{a_0, a_1} = a_0 \cdot \mathcal{F}_{1,0} + a_1 \cdot \mathcal{F}_{0,1}
 \]
-We will see later in the course that $\Fib$ represents a $2$-dimensional vector space. Every element in this space can be expressed by a linear combination of some two base elements (but $1$ element alone is not enough). What precisely constitutes a \qt{vector space} and \qt{dimension} will be formally defined later in the course.
+We will see later in the course that $\Fib$ represents a $2$-dimensional vector space. Every element in this space can be expressed by a linear combination of some two base elements (but $1$ element alone is not enough). What precisely constitutes a \qt{vector space} and \qt{dimension} will be formally defined later in the course. The corresponding picture is drawn in \cref{fig:fib_plane}.
 \end{remark}
 
 \subsection{Deriving the Explicit Formula}
@@ -101,6 +102,7 @@ First, we can rule out arithmetic sequences. Except for the trivial zero sequenc
 Next, we ask: perhaps for some choice of $a_0, a_1$, the sequence $\mathcal{F}_{a_0, a_1}$ coincides with a geometric sequence? Let us try a geometric sequence of the form $\mathcal{G} = (1, q, q^2, q^3, \dots, q^n, \dots)$. 
 
 \begin{lemma}
+\label{lem:geometric_fibonacci}
 A geometric sequence $\mathcal{G} = (1, q, q^2, \dots)$ with $q \ne 0$ is a Fibonacci sequence if and only if $q = \frac{1 \pm \sqrt{5}}{2}$.
 \end{lemma}
 
@@ -126,6 +128,102 @@ We denote these two specific roots as $\varphi := \frac{1 + \sqrt{5}}{2} \approx
 \]
 \end{proof}
 
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=1.35, >=Stealth]
+    % --- background grid ---
+    \draw[step=0.5, gray!15, very thin] (-1.7,-1.2) rectangle (2.2,2.2);
+    % --- axes ---
+    \draw[->, gray!70] (-1.80,0) -- (2.45,0) node[right, black, font=\small] {$a_0$};
+    \draw[->, gray!70] (0,-1.30) -- (0,2.40) node[above, black, font=\small] {$a_1$};
+    % --- the two eigen-directions (drawn faintly here, revisited later) ---
+    \draw[ThemeAccent!55, thick] (-0.74,-1.20) -- (1.36,2.20);
+    \node[ThemeAccent, above left, font=\scriptsize] at (1.30,2.06) {ratio $\varphi$};
+    \draw[ThemeGreen!55, thick] (-1.70,1.05) -- (1.94,-1.20);
+    \node[ThemeGreen, below left, font=\scriptsize] at (1.92,-1.06) {ratio $\psi$};
+    % --- the two building blocks ---
+    \draw[->, ThemePurple, very thick] (0,0) -- (1,0);
+    \fill[ThemePurple] (1,0) circle (1.7pt);
+    \node[ThemePurple, below, font=\scriptsize] at (1.02,-0.06) {$\mathcal{F}_{1,0}$};
+    \draw[->, ThemePurple, very thick] (0,0) -- (0,1);
+    \fill[ThemePurple] (0,1) circle (1.7pt);
+    \node[ThemePurple, left, font=\scriptsize] at (-0.06,1.02) {$\mathcal{F}_{0,1}$};
+    % --- the two geometric Fibonacci sequences ---
+    \fill[ThemeAccent] (1,1.618) circle (1.7pt);
+    \node[ThemeAccent, right, font=\scriptsize] at (1.06,1.64) {$\mathcal{F}_{1,\varphi}$};
+    \fill[ThemeGreen] (1,-0.618) circle (1.7pt);
+    \node[ThemeGreen, right, font=\scriptsize] at (1.06,-0.64) {$\mathcal{F}_{1,\psi}$};
+    % --- a general element, decomposed along the two building blocks ---
+    \fill[EmphBlue] (1.7,0.8) circle (1.7pt);
+    \node[EmphBlue, above right, font=\scriptsize] at (1.66,0.82) {$\mathcal{F}_{a_0,a_1}$};
+    \draw[EmphBlue, dotted, thick] (1.7,0) -- (1.7,0.8) -- (0,0.8);
+    \node[EmphBlue, below, font=\scriptsize] at (1.7,-0.04) {$a_0$};
+    \node[EmphBlue, left, font=\scriptsize] at (-0.04,0.8) {$a_1$};
+    \fill (0,0) circle (1.4pt);
+    \node[below left, font=\scriptsize] at (0,0) {$\mathcal{F}_{0,0}$};
+  \end{tikzpicture}
+  \caption{The space $\Fib$ drawn as a plane: a Fibonacci sequence is completely
+  determined by its two initial values, so the point $(a_0, a_1)$ \textit{is} the
+  sequence $\mathcal{F}_{a_0,a_1}$. Addition and rescaling of sequences become the
+  usual addition and rescaling of points, which is the content of
+  \cref{prop:fib_closure}, and the decomposition
+  $\mathcal{F}_{a_0,a_1} = a_0 \mathcal{F}_{1,0} + a_1 \mathcal{F}_{0,1}$ is just
+  reading off coordinates. The two coloured lines carry the geometric Fibonacci
+  sequences found in \cref{lem:geometric_fibonacci}; they will turn out to be the
+  natural axes of this plane.}
+  \label{fig:fib_plane}
+\end{figure}
+
+\begin{remark}
+The number $\varphi$ is one of the most persistent constants in mathematics. The
+defining relation $\varphi^2 = \varphi + 1$ can be rewritten as
+$\varphi = 1 + \tfrac{1}{\varphi}$, which says that removing a unit square from a
+$\varphi \times 1$ rectangle leaves a rectangle of exactly the same proportions.
+Iterating this observation produces the classical subdivision of a rectangle into
+squares whose side lengths are consecutive Fibonacci numbers, drawn in
+\cref{fig:golden_spiral}. The quarter circles inscribed into those squares fit
+together smoothly, and the resulting spiral grows by a factor of $\varphi$ per quarter
+turn.
+\end{remark}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=0.50]
+    % --- the Fibonacci squares tiling a 13 x 8 rectangle ---
+    \draw[ThemePurple!55, fill=ThemePurple!5]  (5,0) rectangle (13,8);
+    \draw[ThemePurple!55, fill=ThemePurple!9]  (0,0) rectangle (5,5);
+    \draw[ThemePurple!55, fill=ThemePurple!13] (0,5) rectangle (3,8);
+    \draw[ThemePurple!55, fill=ThemePurple!17] (3,6) rectangle (5,8);
+    \draw[ThemePurple!55, fill=ThemePurple!21] (3,5) rectangle (4,6);
+    \draw[ThemePurple!55, fill=ThemePurple!25] (4,5) rectangle (5,6);
+    % --- side lengths ---
+    \node[ThemePurple, font=\small] at (9,4)     {$8$};
+    \node[ThemePurple, font=\small] at (2.5,2.5) {$5$};
+    \node[ThemePurple, font=\small] at (1.5,6.5) {$3$};
+    \node[ThemePurple, font=\small] at (4,7)     {$2$};
+    \node[ThemePurple, font=\tiny]  at (3.5,5.5) {$1$};
+    \node[ThemePurple, font=\tiny]  at (4.5,5.5) {$1$};
+    % --- the golden spiral: five quarter turns, each of radius a Fibonacci number ---
+    \draw[ThemeAccent, very thick] (3,6) arc[start angle=180, end angle=360, radius=1];
+    \draw[ThemeAccent, very thick] (5,6) arc[start angle=0,   end angle=90,  radius=2];
+    \draw[ThemeAccent, very thick] (3,8) arc[start angle=90,  end angle=180, radius=3];
+    \draw[ThemeAccent, very thick] (0,5) arc[start angle=180, end angle=270, radius=5];
+    \draw[ThemeAccent, very thick] (5,0) arc[start angle=270, end angle=360, radius=8];
+    % --- the enclosing 13 x 8 rectangle ---
+    \draw[ThemePurple, thick] (0,0) rectangle (13,8);
+    \draw[<->, gray!80] (0,-0.9) -- (13,-0.9)
+      node[midway, text=black, fill=white, inner sep=1pt, font=\scriptsize] {$13 = a_7$};
+    \draw[<->, gray!80] (13.9,0) -- (13.9,8)
+      node[midway, text=black, fill=white, inner sep=1pt, font=\scriptsize] {$8 = a_6$};
+  \end{tikzpicture}
+  \caption{Squares with consecutive Fibonacci side lengths $1, 1, 2, 3, 5, 8$ tile a
+  $13 \times 8$ rectangle, because $a_{n-1} + a_n = a_{n+1}$ is exactly the statement
+  that a square of side $a_n$ glued onto an $a_{n-1} \times a_n$ rectangle produces an
+  $a_n \times a_{n+1}$ rectangle. Since $a_{n+1}/a_n \to \varphi$, these rectangles
+  become ever closer to the golden rectangle.}
+  \label{fig:golden_spiral}
+\end{figure}
+
 \begin{theorem}[Binet's Formula]
 \label{thm:binet_formula}
 The explicit formula for the $n$-th term of the classical Fibonacci sequence $\mathcal{F}_{0,1}$ is given by \newterm{Binet's Formula}:
@@ -135,9 +233,9 @@ a_n = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\fra
 \end{theorem}
 
 \begin{proof}
-So far, we have found formulas for two specific sequences, $\mathcal{F}_{1, \varphi}$ and $\mathcal{F}_{1, \psi}$. Our original goal is to find a formula for the classical sequence $\mathcal{F}_{0,1}$. 
+So far, by \cref{lem:geometric_fibonacci}, we have found formulas for two specific sequences, $\mathcal{F}_{1, \varphi}$ and $\mathcal{F}_{1, \psi}$. Our original goal is to find a formula for the classical sequence $\mathcal{F}_{0,1}$.
 
-We use the linearity principle established in \cref{prop:fib_closure}. We seek scalars $\alpha, \beta \in \mathbb{R}$ such that:
+We use the linearity principle established in \cref{cor:fib_linear_combination}. We seek scalars $\alpha, \beta \in \mathbb{R}$ such that:
 \[
 \alpha \cdot \mathcal{F}_{1, \varphi} + \beta \cdot \mathcal{F}_{1, \psi} = \mathcal{F}_{0,1}
 \]
@@ -158,7 +256,209 @@ a_n = \frac{1}{\sqrt{5}} (\varphi^n - \psi^n) = \frac{1}{\sqrt{5}} \left( \left(
 \]
 \end{proof}
 
+\subsection{Where the Idea Came From: Symmetries of \texorpdfstring{$\Fib$}{Fib}}
+
+The derivation of \cref{thm:binet_formula} is complete, but it rests on a step that
+looks like a lucky guess: why should one ever think of hunting for a \emph{geometric}
+sequence inside $\Fib$? The answer is not luck, and uncovering it introduces the single
+most important theme of this course.
+
+Let us look at maps
+\[
+T \colon \Fib \longrightarrow \Fib,
+\]
+also called functions, transformations or operators. Such a $T$ takes as input an
+arbitrary Fibonacci sequence $\mathcal{A}$ and returns as output another Fibonacci
+sequence $T(\mathcal{A})$. We have just seen in \cref{prop:fib_closure} that $\Fib$
+carries an algebraic structure: it is closed under addition and under multiplication
+by scalars. It is therefore natural to restrict attention to those maps that
+\emph{respect} this structure.
+
+\begin{definition}[Linear Map on $\Fib$]
+\label{def:linear_map_fib}
+A map $T \colon \Fib \to \Fib$ is called a \newterm{linear map} if
+\begin{equation} \label{eq:fib_linearity}
+\begin{cases}
+T(\mathcal{A} + \mathcal{B}) = T(\mathcal{A}) + T(\mathcal{B}) & \text{for all } \mathcal{A}, \mathcal{B} \in \Fib, \\[0.4ex]
+T(\alpha \mathcal{A}) = \alpha \, T(\mathcal{A}) & \text{for all } \alpha \in \mathbb{R}, \ \mathcal{A} \in \Fib.
+\end{cases}
+\end{equation}
+\end{definition}
+
+There are many examples of such maps, though the first ones that come to mind are not
+very exciting:
+\begin{enumerate}
+    \item the identity $T := \id$, that is $T(\mathcal{A}) := \mathcal{A}$;
+    \item the rescaling $T(\mathcal{A}) := \gamma \cdot \mathcal{A}$ for a fixed $\gamma \in \mathbb{R}$.
+\end{enumerate}
+Neither of these takes any notice of the fact that the elements of $\Fib$ are
+\textit{sequences}. Here is another one, which does:
+
+\begin{definition}[The Shift Map]
+\label{def:shift_map}
+The \newterm{shift map} $S \colon \Fib \to \Fib$ is defined by
+\[
+S(a_0, a_1, a_2, \dots, a_n, \dots) := (a_1, a_2, \dots, a_n, \dots),
+\]
+that is, it simply forgets the first term of the sequence.
+\end{definition}
+
+\begin{exercise}
+Check that $S$ is linear.
+\end{exercise}
+
+Mathematicians like to probe a map $T \colon X \to X$ by looking for its special, or
+extreme, values. Two such notions will accompany us for the rest of the course.
+
+\begin{definition}[Fixed Point and Eigenvector]
+\label{def:fixed_point_eigenvector}
+Let $T \colon X \to X$ be a map. An element $x_0 \in X$ is a \newterm{fixed point} of
+$T$ if $T(x_0) = x_0$. An element $y_0 \in X$ is an \newterm{eigenvector} of $T$ if
+$T(y_0)$ is proportional to $y_0$, that is, if
+\[
+T(y_0) = \lambda \cdot y_0 \quad \text{for some } \lambda \in \mathbb{R}.
+\]
+\end{definition}
+
+Let us test both notions on $X = \Fib$ with $T = S$ the shift map.
+
+\begin{proposition}[Fixed Points of the Shift Map]
+\label{prop:fixed_points_shift}
+The only fixed point of the shift map $S$ is the zero sequence $\mathcal{F}_{0,0}$.
+\end{proposition}
+
+\begin{proof}
+Suppose $\mathcal{A} = (a_0, a_1, a_2, \dots)$ satisfies $S(\mathcal{A}) = \mathcal{A}$.
+Comparing the two sequences term by term gives
+\[
+a_0 = a_1, \quad a_1 = a_2, \quad a_2 = a_3, \quad \dots
+\]
+and therefore $a_n = a_0$ for all $n$. Such a constant sequence is a Fibonacci
+sequence if and only if $a_0 = a_0 + a_0$, which forces $a_0 = 0$. Hence
+$\mathcal{A} = (0,0,0,\dots) = \mathcal{F}_{0,0}$.
+\end{proof}
+
+So the fixed points of $S$ are not interesting. Let us weaken the requirement and ask
+for eigenvectors instead. This is exactly where the geometric sequences appear.
+
+\begin{proposition}[Eigenvectors of the Shift Map]
+\label{prop:eigenvectors_shift}
+A sequence $\mathcal{A} \ne \mathcal{F}_{0,0}$ is an eigenvector of the shift map $S$
+if and only if $\mathcal{A}$ is a geometric sequence
+$\mathcal{A} = (a_0, a_0 \lambda, a_0 \lambda^2, \dots)$ with $a_0 \ne 0$ whose ratio
+$\lambda$ satisfies $\lambda^2 = \lambda + 1$. Consequently
+$\lambda \in \{\varphi, \psi\}$, while $a_0 \ne 0$ may be chosen freely.
+\end{proposition}
+
+\begin{proof}
+Assume $S(\mathcal{A}) = \lambda \cdot \mathcal{A}$ for some $\lambda \in \mathbb{R}$.
+Written out, the left-hand side is $(a_1, a_2, \dots, a_{n+1}, \dots)$ and the
+right-hand side is $(\lambda a_0, \lambda a_1, \dots, \lambda a_n, \dots)$. Comparing
+entries yields
+\[
+a_n = a_{n-1} \cdot \lambda \quad \text{for all } n \ge 1,
+\]
+and therefore
+\[
+\mathcal{A} = (a_0, \, a_0 \lambda, \, a_0 \lambda^2, \, a_0 \lambda^3, \, \dots, \, a_0 \lambda^n, \, \dots),
+\]
+which is precisely a geometric sequence. Note that $a_0 \ne 0$, since otherwise every
+term would vanish and $\mathcal{A}$ would be $\mathcal{F}_{0,0}$, which we excluded.
+
+It remains to determine which ratios $\lambda$ are admissible. Since $\mathcal{A}$ must
+in addition be a Fibonacci sequence, the relation $a_2 = a_1 + a_0$ has to hold, that is
+\[
+\underbrace{a_0 \cdot \lambda^2}_{=\, a_2} = \underbrace{a_0 \cdot \lambda}_{=\, a_1} + \, a_0 .
+\]
+Dividing by $a_0 \ne 0$ gives $\lambda^2 = \lambda + 1$, the very same quadratic
+equation we met in \cref{lem:geometric_fibonacci}. Its roots are $\varphi$ and $\psi$,
+and $a_0$ is not constrained at all. Conversely, every geometric sequence with ratio
+$\varphi$ or $\psi$ satisfies $S(\mathcal{A}) = \lambda \cdot \mathcal{A}$ by the same
+computation read backwards.
+\end{proof}
+
+\begin{conclusion}
+Taking $a_0 = 1$, the two geometric sequences
+\[
+\mathcal{F}_{1, \varphi} = (1, \varphi, \varphi^2, \dots, \varphi^n, \dots)
+\qquad \text{and} \qquad
+\mathcal{F}_{1, \psi} = (1, \psi, \psi^2, \dots, \psi^n, \dots)
+\]
+are Fibonacci sequences \textit{and} they are eigenvectors of the shift operator $S$.
+The geometric sequences were therefore never a guess: they are forced upon us the
+moment we ask which sequences the shift map merely rescales.
+\end{conclusion}
+
+It is worth restating this in the picture of \cref{fig:fib_plane}. Under the
+identification $\mathcal{F}_{a_0,a_1} \leftrightarrow (a_0, a_1)$, shifting a sequence
+discards $a_0$ and promotes $a_1$ and $a_2 = a_0 + a_1$ to the new initial pair, so
+\begin{equation} \label{eq:shift_in_coordinates}
+S\bigl( \mathcal{F}_{a_0, a_1} \bigr) = \mathcal{F}_{a_1, \, a_0 + a_1},
+\qquad \text{that is} \qquad
+\begin{pmatrix} a_0 \\ a_1 \end{pmatrix} \longmapsto
+\begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}
+\begin{pmatrix} a_0 \\ a_1 \end{pmatrix}.
+\end{equation}
+The shift map thus acts on the plane $\Fib$ through a single fixed matrix, and
+\cref{prop:eigenvectors_shift} identifies the two lines that this matrix maps onto
+themselves, as drawn in \cref{fig:shift_eigenlines}.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=1.0, >=Stealth]
+    % --- the two invariant lines, labelled at their empty lower ends ---
+    \draw[ThemeAccent!70, thick] (-1.20,-1.94) -- (1.88,3.04);
+    \node[ThemeAccent, below right, font=\scriptsize] at (-1.22,-1.92) {$\mathbb{R} \cdot \mathcal{F}_{1,\varphi}$};
+    \draw[ThemeGreen!70, thick] (-2.00,1.24) -- (2.90,-1.79);
+    \node[ThemeGreen, below left, font=\scriptsize] at (2.92,-1.77) {$\mathbb{R} \cdot \mathcal{F}_{1,\psi}$};
+    % --- axes ---
+    \draw[->, gray!70] (-2.20,0) -- (3.25,0) node[right, black, font=\small] {$a_0$};
+    \draw[->, gray!70] (0,-2.15) -- (0,3.30) node[above, black, font=\small] {$a_1$};
+    % --- eigenvector for phi and its image (stretched by phi) ---
+    \draw[->, ThemeAccent, very thick] (0,0) -- (1,1.618);
+    \node[text=ThemeAccent, fill=white, inner sep=1pt, right, font=\scriptsize] at (1.10,1.50) {$\mathcal{F}_{1,\varphi}$};
+    \draw[->, ThemeAccent, very thick, dashed] (0,0) -- (1.618,2.618);
+    \node[ThemeAccent, right, font=\scriptsize] at (1.72,2.62) {$S(\mathcal{F}_{1,\varphi})$};
+    % --- eigenvector for psi and its image (flipped and contracted by psi) ---
+    \draw[->, ThemeGreen, very thick] (0,0) -- (1,-0.618);
+    \node[text=ThemeGreen, fill=white, inner sep=1pt, below right, font=\scriptsize] at (1.00,-0.82) {$\mathcal{F}_{1,\psi}$};
+    \draw[->, ThemeGreen, very thick, dashed] (0,0) -- (-0.618,0.382);
+    \node[text=ThemeGreen, fill=white, inner sep=1pt, above left, font=\scriptsize] at (-0.60,0.58) {$S(\mathcal{F}_{1,\psi})$};
+    % --- a generic sequence, whose direction is NOT preserved ---
+    \draw[->, ThemePurple, thick] (0,0) -- (2.6,-0.5);
+    \node[ThemePurple, below, font=\scriptsize] at (2.62,-0.58) {$\mathcal{A}$};
+    \draw[->, ThemePurple, thick, dashed] (0,0) -- (-0.5,2.1);
+    \node[ThemePurple, above left, font=\scriptsize] at (-0.48,2.12) {$S(\mathcal{A})$};
+    \fill (0,0) circle (1.4pt);
+  \end{tikzpicture}
+  \caption{The shift map $S$ acting on the plane $\Fib$ via
+  \eqref{eq:shift_in_coordinates}; images are drawn dashed. A generic sequence
+  $\mathcal{A}$ (purple) is thrown off its own direction. Only the two coloured lines
+  are preserved: on $\mathbb{R} \cdot \mathcal{F}_{1,\varphi}$ the map stretches by
+  $\varphi > 1$, while on $\mathbb{R} \cdot \mathcal{F}_{1,\psi}$ it reverses the
+  direction and contracts by
+  $|\psi| < 1$. These two lines are exactly the geometric Fibonacci sequences of
+  \cref{prop:eigenvectors_shift}.}
+  \label{fig:shift_eigenlines}
+\end{figure}
+
+\begin{remark}
+The contraction along the second line is the geometric reason behind the asymptotics
+established below. Writing an arbitrary Fibonacci sequence in terms of the two
+eigen-directions, the $\psi$-component is crushed towards $0$ under repeated shifting
+while the $\varphi$-component grows. Whatever sequence one starts from, its direction
+in the plane $\Fib$ converges to the line $\mathbb{R} \cdot \mathcal{F}_{1,\varphi}$.
+\end{remark}
+
 \subsection{The Upshot: Asymptotics and Matrix Form}
+
+\begin{ainote}
+This subsection has no counterpart in Prof.\ Biran's notes for Lecture 1A, which end
+with the exercises reproduced below. The closest-integer estimate, the matrix form and
+Cassini's identity are supplementary material added in this transcript. They are
+included because the matrix $M$ reappears in the chapters on eigenvalues, but they
+should not be mistaken for lecture content.
+\end{ainote}
 
 The derivation above yields two profound observations regarding the growth and representation of the Fibonacci sequence.
 
@@ -174,11 +474,41 @@ Furthermore, this implies that the ratio of consecutive terms satisfies:
 \end{equation}
 \end{importantremark}
 
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[x=0.46cm, y=2.5cm, >=Stealth]
+    % --- limiting value phi ---
+    \draw[ThemeAccent, dashed, thick] (0.4,1.61803) -- (12.1,1.61803);
+    \node[ThemeAccent, right, font=\small] at (12.1,1.61803) {$\varphi$};
+    % --- axes ---
+    \draw[->, gray!70] (0.4,0.95) -- (12.3,0.95) node[below, black, font=\small] {$n$};
+    \draw[->, gray!70] (0.4,0.95) -- (0.4,2.34) node[left, black, font=\small] {$\dfrac{a_{n+1}}{a_n}$};
+    % --- y ticks ---
+    \foreach \y in {1,1.5,2}
+      \draw[gray!70] (0.32,\y) -- (0.48,\y) node[left=2pt, black, font=\scriptsize] {$\y$};
+    % --- x ticks ---
+    \foreach \n in {2,4,6,8,10}
+      \draw[gray!70] (\n,0.90) -- (\n,1.00) node[below=3pt, black, font=\scriptsize] {$\n$};
+    % --- the ratios a_{n+1}/a_n ---
+    \draw[ThemePurple, thin]
+      (1,1) -- (2,2) -- (3,1.5) -- (4,1.66667) -- (5,1.6) -- (6,1.625)
+      -- (7,1.61538) -- (8,1.61905) -- (9,1.61765) -- (10,1.61818) -- (11,1.61798);
+    \foreach \p in {(1,1),(2,2),(3,1.5),(4,1.66667),(5,1.6),(6,1.625),%
+                    (7,1.61538),(8,1.61905),(9,1.61765),(10,1.61818),(11,1.61798)}
+      \fill[ThemePurple] \p circle (1.6pt);
+  \end{tikzpicture}
+  \caption{The quotients $a_{n+1}/a_n$ of the classical Fibonacci sequence
+  $\mathcal{F}_{0,1}$. They oscillate around the golden ratio $\varphi$, alternately
+  overshooting and undershooting it, because the error term $\psi^n$ changes sign at
+  every step while its magnitude decays geometrically.}
+  \label{fig:fib_ratio_to_phi}
+\end{figure}
+
 Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n := \binom{a_{n+1}}{a_n}$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
 \begin{equation}
 \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} a_n \\ a_{n-1} \end{pmatrix} \implies v_n = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^n \begin{pmatrix} a_1 \\ a_0 \end{pmatrix}
 \end{equation}
-This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$.
+This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$. It is the shift map of \eqref{eq:shift_in_coordinates} written in the reversed coordinates $\binom{a_{n+1}}{a_n}$, so by \cref{prop:eigenvectors_shift} its eigenvalues are again $\varphi$ and $\psi$.
 
 \begin{exercise}[Interesting Exercises]
 \begin{enumerate}
@@ -203,7 +533,11 @@ This formulation shows that the behavior of the sequence is entirely governed by
         \right.
         \]
     \item \textbf{Non-existence of Arithmetic Fibonacci Sequences:} Complete the details to show that no Fibonacci sequence $\mathcal{F}_{a_0, a_1}$ (except for the trivial zero sequence) can be an arithmetic sequence.
-    \item \textbf{Convergence:} For the classical Fibonacci sequence $a_n = \mathcal{F}_{0,1}$, calculate the limit \[\lim_{n \to \infty} \frac{a_n}{a_{n-1}}\].
+    \item \textbf{Convergence:} For the classical Fibonacci sequence $\mathcal{F}_{0,1} = (a_0, a_1, a_2, \dots)$, calculate the limit
+    \[
+        \lim_{n \to \infty} \frac{a_n}{a_{n-1}},
+    \]
+    whose numerical behaviour is plotted in \cref{fig:fib_ratio_to_phi}.
     \item \textbf{Cassini's Identity:} Show that $a_{n+1} a_{n-1} - a_n^2 = (-1)^n$ for all $n \ge 1$. Hint: Use the determinant of the matrix $M^n$.
 \end{enumerate}
 \end{exercise}
