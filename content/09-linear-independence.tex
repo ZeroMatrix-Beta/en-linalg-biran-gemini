@@ -6,9 +6,10 @@
 
 \subsection{Linear Independence of a Finite List}
 
-Let $V$ be a vector space over a field $K$. In the previous chapter, we studied how a set of vectors can \textit{span} a subspace. We now ask whether a spanning set contains "redundant" vectors. This leads us to the core algebraic concept of linear independence.
+Let $V$ be a vector space over a field $K$. In the previous chapter, we studied how a set of vectors can \textit{span} a subspace. We now ask whether a spanning set contains \qt{redundant} vectors. This leads us to the core algebraic concept of linear independence.
 
 \begin{definition}[Linear Independence]
+\label{def:linear_independence}
 Let $v_1, \dots, v_n$ be a finite list of vectors in $V$. We say that the list $v_1, \dots, v_n$ is \textbf{linearly independent} if the only linear combination that equals the zero vector $0_V$ is the trivial combination (where all coefficients are zero). 
 
 In formal notation, the vectors are linearly independent if, for all $a_1, \dots, a_n \in K$:
@@ -18,6 +19,7 @@ a_1 v_1 + a_2 v_2 + \dots + a_n v_n = 0_V \implies a_1 = 0, a_2 = 0, \dots, a_n 
 \end{definition}
 
 \begin{remark}[The Empty Set]
+\label{rem:empty_list_independent}
 By mathematical convention, the empty list of vectors $\emptyset$ is defined to be linearly independent. But \textit{why} does this make sense? 
 
 Recall from Chapter 8 that we defined the span of the empty set as the zero subspace: $\Sp(\emptyset) = \{0_V\}$. If the empty set were to be linearly \textit{dependent}, there would need to exist a linear combination of its elements that non-trivially yields $0_V$. However, since $\emptyset$ contains literally no vectors, we cannot even form a linear combination with a non-zero coefficient! Because the condition for dependence is impossible to satisfy, the empty set is vacuously, and logically, independent.
@@ -26,6 +28,7 @@ Recall from Chapter 8 that we defined the span of the empty set as the zero subs
 Before looking at examples, we can immediately deduce several structural facts directly from the definition.
 
 \begin{lemma}[Basic Properties of Linear Independence]
+\label{lem:independence_basics}
 Let $V$ be a vector space. The following properties hold for any finite list of vectors:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The zero vector $0_V$ can always be written as a trivial linear combination of any finite list of vectors: $0 \cdot v_1 + \dots + 0 \cdot v_n = 0_V$.
@@ -54,12 +57,19 @@ We address each property:
 \end{enumerate}
 \end{proof}
 
+Property \textbf{(b)} above has a convenient consequence, which we will use constantly from here on.
+
+\begin{notation}[From Lists to Sets]
+\label{not:independence_of_a_set}
+Since the order of the vectors is irrelevant, whenever the list $v_1, \dots, v_n$ has \emph{no repetitions} we can talk about the linear independence of the \textbf{set} $\{v_1, \dots, v_n\}$, and we shall do so freely. The proviso matters, because a set silently discards repetitions: $\{v, v\} = \{v\}$, whereas the two-term list $v, v$ is never independent by \cref{lem:independence_basics} \textbf{(c)}. We return to this distinction on \cpageref{q:family_vs_set}.
+\end{notation}
+
 \subsection{Examples of Linear Independence}
 
 Let us apply this definition to various vector spaces.
 
 \begin{example}[In $\mathbb{R}^2$]
-Consider the vectors $v_1 = \binom{1}{0}$ and $v_2 = \binom{0}{1}$ in $\mathbb{R}^2$. \\
+Consider the vectors $v_1 := \binom{1}{0}$ and $v_2 := \binom{0}{1}$ in $\mathbb{R}^2$. \\
 Assume $a_1 v_1 + a_2 v_2 = 0_{\mathbb{R}^2}$. This means:
 \[
 a_1 \begin{pmatrix} 1 \\ 0 \end{pmatrix} + a_2 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
@@ -70,7 +80,7 @@ Thus, $a_1 = 0$ and $a_2 = 0$. The vectors $\{v_1, v_2\}$ are linearly independe
 \end{example}
 
 \begin{example}[Linearly dependent vectors in $\mathbb{R}^2$]
-Consider $v_1 = \binom{1}{1}$ and $v_2 = \binom{2}{2}$. \\
+Consider $v_1 := \binom{1}{1}$ and $v_2 := \binom{2}{2}$. \\
 We can easily spot that $2 v_1 - v_2 = 0_{\mathbb{R}^2}$. Because we have coefficients $a_1 = 2$ and $a_2 = -1$ (which are non-zero) that yield the zero vector, these vectors are NOT linearly independent.
 \end{example}
 
@@ -83,35 +93,139 @@ Setting $a_1 e_1 + a_2 e_2 + \dots + a_n e_n = 0_{K^n}$ yields the column vector
 \end{example}
 
 \begin{example}[Single Vectors]
-Let $V$ be a vector space and $v \in V$. The single-element set $\{v\}$ is linearly independent if and only if $v \ne 0_V$. (If $v = 0_V$, we know from Lemma 9.1 that it is not independent. If $v \ne 0_V$, then $a \cdot v = 0_V \implies a = 0$).
+Let $V$ be a vector space and $v \in V$. The single-element set $\{v\}$ is linearly independent if and only if $v \ne 0_V$. (If $v = 0_V$, we know from \cref{lem:independence_basics} that it is not independent. If $v \ne 0_V$, then $a \cdot v = 0_V \implies a = 0$).
 \end{example}
 
 \subsection{Arbitrary Families and Linear Dependence}
 
-As we advance in linear algebra, we frequently need to deal with infinite collections of vectors (such as the set of all polynomials). We must rigorously extend our definition to handle this.
+As we advance in linear algebra, we frequently need to deal with infinite collections of vectors (such as the set of all polynomials). We must rigorously extend our definition to handle this. Before we do, we should say what a family actually is.
+
+\begin{question}
+\label{q:what_is_a_family}
+What do we mean by a family of vectors in $V$, written $\mathcal{F} = \{v_i\}_{i \in I}$ and indexed by a set $I$?
+\end{question}
+
+\begin{definition}[Family]
+\label{def:family}
+The meaning of this is, by definition, that we have a set $I$ (called the \textbf{set of indices}), and that we are given a function
+\[
+\mathcal{F} \colon I \longrightarrow V, \qquad I \ni i \longmapsto v_i \in V.
+\]
+So $\mathcal{F}$ assigns to each index $i \in I$ an element $v_i \in V$.
+\end{definition}
+
+\begin{example}[Families and Their Index Sets]
+\label{ex:families}
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item $I = \{1, \dots, n\}$ is a finite set. Then a family $\mathcal{F} = \{v_i\}_{i \in I}$ can be just written as $v_1, \dots, v_n$; the finite lists of the previous subsections are thus a special case.
+    \item $I = \mathbb{Z}_{\ge 1} = \{1, 2, 3, \dots\}$. Then $\mathcal{F} = \{v_i\}_{i \in \mathbb{Z}_{\ge 1}}$ can be written as $v_1, v_2, v_3, \dots$.
+    \item We can have families $\mathcal{F} = \{v_i\}_{i \in I}$ indexed by other (in fact, any) sets $I$. For example $I = \mathbb{R}$, and so on.
+\end{enumerate}
+\end{example}
+
+\begin{remark}[Families of Elements of Any Set]
+\label{rem:families_of_any_set}
+There is nothing special about $V$ being a vector space as far as the concept of families goes. If $X$ is a set and $I$ is another set, we can talk about families $\mathcal{F} = \{x_i\}_{i \in I}$ of elements from $X$, indexed (or parametrized) by $i \in I$. Again, this means a function
+\[
+\mathcal{F} \colon I \longrightarrow X, \qquad I \ni i \longmapsto x_i \in X.
+\]
+\end{remark}
+
+\begin{remark}[Repetitions and Injectivity]
+\label{rem:family_repetitions}
+If this function $\mathcal{F}$ is \textbf{not} injective, then the family $\mathcal{F} = \{x_i\}_{i \in I}$ will have \textbf{repetitions}, i.e., there exist $i_1, i_2 \in I$ with $i_1 \ne i_2$ such that
+\[
+x_{i_1} = x_{i_2}.
+\]
+Conversely, an injective $\mathcal{F}$ is precisely a family without repetitions. This is the one feature of families that interacts with linear independence.
+\end{remark}
+
+Back to linear independence.
 
 \begin{definition}[Linear Independence of an Arbitrary Family]
+\label{def:independent_family}
 Let $\mathcal{F} = \{v_i\}_{i \in I}$ be a \textit{family of vectors} in $V$, indexed by an arbitrary set $I$ (which may be infinite). We say that the family $\mathcal{F}$ is linearly independent if \textbf{every finite subset} of $\mathcal{F}$ is linearly independent.
+
+Spelled out in terms of the indexing, this says: for every $n \in \mathbb{N}$ and any sequence of \emph{distinct} indices $i_1, \dots, i_n \in I$ (i.e., $i_k \ne i_\ell$ for all $k \ne \ell$), the list of vectors
+\[
+v_{i_1}, \, v_{i_2}, \, \dots, \, v_{i_n}
+\]
+is linearly independent in the sense of \cref{def:linear_independence}.
+\end{definition}
+
+\begin{remark}[Repetitions Rule Out Independence]
+\label{rem:family_repetition_dependent}
+Of course, if in $\mathcal{F}$ there is a repetition of some vector (i.e., there exist $i, j \in I$ with $i \ne j$ such that $v_i = v_j$), then the family $\mathcal{F}$ can \textbf{not} be linearly independent. Indeed, $i, j$ is a choice of two distinct indices, so \cref{def:independent_family} demands that the two-term list $v_i, v_j$ be independent; but that list consists of the same vector twice, and is not independent by \cref{lem:independence_basics} \textbf{(c)}.
+\end{remark}
+
+Since a family carries more information than the set of its values, it is worth asking how much of that extra information linear independence can actually see.
+
+\begin{question}
+\label{q:family_vs_set}
+What is the difference between a family $\mathcal{F} = \{v_i\}_{i \in I}$ and the set $S = \{v_i \mid i \in I\}$?
+\end{question}
+
+\begin{answer}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The set $S$ does \textbf{not} contain repetitions (in case there are any in $\mathcal{F}$).
+    \item The set $S$ does \textbf{not} \qt{remember} the indexing $i \in I$ of the elements $v_i$ of $S$.
+\end{enumerate}
+Now, \textbf{(b)} has no effect on linear independence, since by \cref{lem:independence_basics} \textbf{(b)} the order and the names of the indices are irrelevant. The effect of \textbf{(a)} is clear and has been discussed on \cpageref{rem:family_repetition_dependent}: a repetition makes the family dependent while leaving the set unchanged.
+\end{answer}
+
+Sometimes we consider a set of vectors $\emptyset \ne S \subseteq V$ directly, and it costs nothing to define independence for it.
+
+\begin{definition}[Linear Independence of a Set]
+\label{def:independent_set}
+Let $\emptyset \ne S \subseteq V$ be a set of vectors. We say that $S$ is \textbf{linearly independent} if every finite list $v_1, \dots, v_n \in S$, $n \ge 1$, that has no repetitions (i.e., $v_i \ne v_j$ for all $i \ne j$) is linearly independent.
 \end{definition}
 
 \begin{example}[Families of Polynomials]
 In the space of bounded polynomials $K[x]_d$, the set of standard monomials $\{1, x, x^2, \dots, x^d\}$ is linearly independent. This remains true even for the \textbf{infinite family} of all monomials $\mathcal{F} = \{1, x, x^2, \dots\} \subseteq K[x]$. Any finite subset of this family will just be a finite collection of distinct monomials, which can only sum to the zero polynomial if all their coefficients are strictly zero.
 \end{example}
 
+\begin{exercise}
+\label{exc:k_infinity_independent}
+For each $k \ge 0$ let $e_k \in K^\infty$ be the sequence whose $k$-th entry is $1$ and all of whose other entries are $0$, where $K^\infty$ is the space of sequences from \cpageref{ex:sequence_space}. Show that the set
+\[
+\{e_0, e_1, e_2, \dots, e_k, \dots\} \subseteq K^\infty
+\]
+is linearly independent. (Note that this set does \emph{not} span $K^\infty$: a linear combination is a finite sum, so it can only produce sequences with finitely many non-zero entries.)
+\end{exercise}
+
 We now formally define the opposite of linear independence, specifically focusing on how it applies to an arbitrary family.
 
 \begin{definition}[Linear Dependence]
-A family $\mathcal{F} = \{v_i\}_{i \in I}$ of vectors in $V$ is called \textbf{linearly dependent} if it is NOT linearly independent. 
+\label{def:linear_dependence}
+A family $\mathcal{F} = \{v_i\}_{i \in I}$ of vectors in $V$ is called \textbf{linearly dependent} if it is NOT linearly independent.
 
 In other words, this means there exists some finite integer $n \in \mathbb{N}$, a selection of $n$ distinct indices $i_1, \dots, i_n \in I$, and a set of scalars $a_1, \dots, a_n \in K$ \textbf{where not all $a_j$ are zero}, such that:
 \[
 a_1 v_{i_1} + a_2 v_{i_2} + \dots + a_n v_{i_n} = 0_V
 \]
+Such a combination, in which at least one coefficient is non-zero, is called a \textbf{non-trivial linear combination} of $v_{i_1}, \dots, v_{i_n}$. In other words, there is a non-trivial linear combination of elements from $\mathcal{F}$ that gives $0_V$.
 \end{definition}
+
+\begin{remark}[Two Ways to Be Dependent]
+\label{rem:dependence_basics}
+Let $\mathcal{F} = \{v_i\}_{i \in I}$ be a family of vectors in $V$.
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item If there exists an $i \in I$ such that $v_i = 0_V$, then $\mathcal{F}$ is linearly dependent. Just take $n = 1$, the single index $i_1 := i$ with $v_{i_1} = 0_V$, and any $a_1 \ne 0$; then
+    \[
+    a_1 \cdot v_{i_1} = a_1 \cdot 0_V = 0_V.
+    \]
+    \item If $\mathcal{F}$ has a repetition of some vector, then $\mathcal{F}$ is linearly dependent. This is the remark on \cpageref{rem:family_repetition_dependent}, restated in the language of dependence.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[Dependent Sets]
+\label{rem:dependent_set}
+We can define a linearly dependent set $S$ in a similar way to the above: $S \subseteq V$ is linearly dependent if it is not linearly independent in the sense of \cref{def:independent_set}, which spelled out gives the same description as in \cref{def:linear_dependence}, with the $n$ distinct indices replaced by $n$ pairwise distinct vectors $v_1, \dots, v_n \in S$.
+\end{remark}
 
 \subsection{Back to Linear Independence: Redundancy}
 
-This definition leads to an incredibly useful geometric intuition: a set of vectors is linearly dependent if and only if at least one vector is "redundant" â€” meaning it can be built entirely out of the other vectors in the set. 
+This definition leads to an incredibly useful geometric intuition: a set of vectors is linearly dependent if and only if at least one vector is \qt{redundant} --- meaning it can be built entirely out of the other vectors in the set.
 
 \begin{center}
 \begin{tikzpicture}[
@@ -122,11 +236,12 @@ This definition leads to an incredibly useful geometric intuition: a set of vect
     \node[box] (dep) {\textbf{Algebraic Definition} \\ $\{v_1, \dots, v_n\}$ is \\ Linearly Dependent \\ ($\sum a_i v_i = 0_V$, $a_i \ne 0$)};
     \node[box, right=3cm of dep] (red) {\textbf{Geometric Redundancy} \\ At least one vector $v_k$ \\ is a linear combination \\ of the others. \\ ($v_k \in \Sp(v_1, \dots, \widehat{v_k}, \dots, v_n)$)};
     
-    \draw[arrow] (dep) -- (red) node[midway, above, font=\bfseries] {Proposition 9.1};
+    \draw[arrow] (dep) -- (red) node[midway, above, font=\bfseries] {\Cref{prop:dependence_is_redundancy}};
 \end{tikzpicture}
 \end{center}
 
 \begin{proposition}[Equivalence of Dependence and Redundancy]
+\label{prop:dependence_is_redundancy}
 A list of vectors $v_1, \dots, v_n$ is linearly dependent if and only if at least one vector in the list can be written as a linear combination of the other vectors.
 \end{proposition}
 
@@ -179,7 +294,7 @@ How does linear independence behave when we add or remove vectors from a set? Th
         \draw[thick, fill=green!30, dashed] (0,-0.6) ellipse (1.2cm and 0.8cm);
         \node at (0, -0.6) {\textbf{Subset $S'$}};
         
-        \node[box, fill=white, below=2.2cm of center1] (l1) {\textbf{Lemma 9.2} \\ Independence is \\ inherited downwards.};
+        \node[box, fill=white, below=2.2cm of center1] (l1) {\textbf{\Cref{lem:subsets_of_independent_sets}} \\ Independence is \\ inherited downwards.};
         \draw[arrow, color=green!50!black] (0, 0.2) -- (0, -0.2);
     \end{scope}
 
@@ -193,13 +308,14 @@ How does linear independence behave when we add or remove vectors from a set? Th
         \node at (0, -0.6) {\textbf{Set $S$}};
         \node at (0, -1) {(Dependent)};
         
-        \node[box, fill=white, below=2.2cm of center2] (l2) {\textbf{Lemma 9.3} \\ Dependence \\ spreads upwards.};
+        \node[box, fill=white, below=2.2cm of center2] (l2) {\textbf{\Cref{lem:supersets_of_dependent_sets}} \\ Dependence \\ spreads upwards.};
         \draw[arrow, color=red!50!black] (0, -0.2) -- (0, 0.6);
     \end{scope}
 \end{tikzpicture}
 \end{center}
 
 \begin{lemma}[Subsets of Independent Sets]
+\label{lem:subsets_of_independent_sets}
 Let $S \subseteq V$ be a linearly independent set. If $S' \subseteq S$ is a subset, then $S'$ is also linearly independent.
 \end{lemma}
 
@@ -212,6 +328,7 @@ However, since $S' \subseteq S$, every vector $v_i$ is also an element of the la
 \end{proof}
 
 \begin{lemma}[Supersets of Dependent Sets]
+\label{lem:supersets_of_dependent_sets}
 Let $S \subseteq V$ be a linearly dependent set. If $S''$ is a superset containing $S$ (i.e., $S \subseteq S'' \subseteq V$), then $S''$ is also linearly dependent.
 \end{lemma}
 
@@ -220,5 +337,22 @@ Because $S$ is linearly dependent, there exist vectors $v_1, \dots, v_k \in S$ a
 \[
 a_1 v_1 + \dots + a_k v_k = 0_V
 \]
-Since $S \subseteq S''$, the vectors $v_1, \dots, v_k$ also belong to $S''$. Therefore, this exact same non-trivial linear combination exists within $S''$, immediately satisfying the definition of linear dependence for $S''$. 
+Since $S \subseteq S''$, the vectors $v_1, \dots, v_k$ also belong to $S''$. Therefore, this exact same non-trivial linear combination exists within $S''$, immediately satisfying the definition of linear dependence for $S''$.
 \end{proof}
+
+\begin{ainote}
+\Cref{def:family} and the surrounding discussion of families --- the index-set
+examples, the remark that nothing here needs $V$ to be a vector space, and the
+link between repetitions and injectivity --- are in the notes and were missing
+from this transcript; the same holds for \cref{def:independent_set}, for the
+comparison of a family with the set of its values on \cpageref{q:family_vs_set},
+for the exercise on \cpageref{exc:k_infinity_independent}, and for the remarks on
+\cpageref{rem:dependence_basics}. The notes write the two non-zero coefficients
+in the proof of \cref{lem:independence_basics} \textbf{(c)} as $1$ and $1$,
+which does not give $v_k - v_l$; the transcript already had the corrected $1$
+and $-1$, which is kept. Because this transcript indexes sequences from $0$
+(\cpageref{ex:sequence_space}), the standard vectors of $K^\infty$ in that exercise are $e_0, e_1, e_2, \dots$ rather than
+$e_1, e_2, \dots$ as in the notes. \Cref{prop:dependence_is_redundancy} and the
+two diagrams are not in the notes at this point; the proposition is kept here
+because the basis-extraction argument in the chapters on bases relies on it.
+\end{ainote}

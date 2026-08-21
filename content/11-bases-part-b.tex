@@ -86,7 +86,7 @@ Specifically:
     \item If the zero vector $0_V$ is in the list, drop it.
     \item Read the list from left to right. If a vector $w_j$ is a linear combination of its strictly preceding vectors (i.e., $w_j \in \Sp(w_1, \dots, w_{j-1})$), drop it.
 \end{enumerate}
-By Lemma B, dropping this redundant vector does not change the span of the list. We repeat this until we have checked every vector. The remaining list still spans $V$. Furthermore, by Proposition 9.1, it must be linearly independent, because we systematically deleted every vector that could be written as a combination of the others. Thus, the remaining list is a finite basis.
+By Lemma B, dropping this redundant vector does not change the span of the list. We repeat this until we have checked every vector. The remaining list still spans $V$. Furthermore, by \cref{prop:dependence_is_redundancy}, it must be linearly independent, because we systematically deleted every vector that could be written as a combination of the others. Thus, the remaining list is a finite basis.
 \end{proof}
 
 \subsubsection*{Statement 2: Every basis of V is finite.}
