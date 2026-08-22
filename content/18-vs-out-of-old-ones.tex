@@ -4,14 +4,27 @@
 \renewcommand{\thetheorem}{18.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{17} % Chapter 18
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
 \chapter{Constructing New Vector Spaces Out of Old Ones}
+
+% Extractor: Gemini 3.1 Pro
 
 \setcounter{section}{0}
 \section{The Homomorphism Space, The Dual Space And The Dual Map}
 
 \subsection{The Homomorphism Space}
 
+% prop:18.a.1
 \begin{proposition}[The Vector Space Structure of the Homomorphism Space]
+  \label{prop:hom_vector_space}
   Let $V$ and $W$ be two vector spaces over $K$. Then, $\Hom(V,W)$ has the structure of a vector space over $K$, if we endow it with the following operations:
   \begin{itemize}
     \item For all $T_1, T_2 \in \Hom(V,W)$, $(T_1 + T_2)(v) := T_1(v) + T_2(v)$ for all $v \in V$.
@@ -39,8 +52,9 @@
   for all $v \in V$. Similarly, one shows that $T + 0 = T$.
 \end{proof}
 
-\begin{exercise}
-  Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space, using the zero map $0 \colon V \to W$ as the additive identity.
+\begin{exercise}[The Axioms for $\Hom(V,W)$]
+  \label{exc:hom_axioms}
+  Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space, using the zero map $0 \colon V \to W$ as the additive identity. Show also that $\alpha \cdot T$ is linear for all $\alpha \in K$ and $T \in \Hom(V,W)$, and that $\Psi_{\mathcal{C}}^{\mathcal{B}}(T_1 + T_2) = \Psi_{\mathcal{C}}^{\mathcal{B}}(T_1) + \Psi_{\mathcal{C}}^{\mathcal{B}}(T_2)$ in \cref{thm:homomorphism_isomorphism}.
 \end{exercise}
 
 For example, consider the distributivity axiom. For all $\alpha \in K$ and $T_1, T_2 \in \Hom(V,W)$, we have $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$. Indeed, for $v \in V$,
@@ -101,6 +115,37 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 \end{proof}
 
 \subsection{Rings of Endomorphisms}
+
+% Creator: Opus 5 (High)
+The notes say at this point only \qt{explain briefly the structure of a ring}
+and \qt{explain what is a homomorphism of rings}, since both were given orally.
+The book uses both notions from here on --- and already used the word
+\qt{ring} in \cpageref{rem:matrix_ring} --- so we record them.
+
+\begin{aidefinition}[Ring]
+\label{aidef:ring}
+A \newterm{ring} is a set $R$ together with two operations, an addition $+ \colon R \times R \to R$ and a multiplication $\cdot \colon R \times R \to R$, such that:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $(R, +)$ is a commutative group, whose neutral element is denoted by $0$;
+    \item the multiplication is associative: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for all $a, b, c \in R$;
+    \item the two operations are connected by the distributive laws
+    \[
+    a \cdot (b + c) = a \cdot b + a \cdot c \quad \text{and} \quad (b + c) \cdot a = b \cdot a + c \cdot a \qquad \text{for all } a,b,c \in R.
+    \]
+\end{enumerate}
+If there is an element $1 \in R$ with $1 \cdot a = a \cdot 1 = a$ for all $a \in R$, we call $R$ a \newterm{ring with a unity}, and $1$ its \newterm{unity}. If moreover $a \cdot b = b \cdot a$ for all $a, b \in R$, the ring is called \newterm{commutative}.
+\end{aidefinition}
+
+\begin{aidefinition}[Homomorphism of Rings]
+\label{aidef:ring_homomorphism}
+Let $R$ and $S$ be rings with unity. A map $\varphi \colon R \to S$ is a \newterm{homomorphism of rings} if for all $a, b \in R$,
+\[
+\varphi(a + b) = \varphi(a) + \varphi(b), \qquad \varphi(a \cdot b) = \varphi(a) \cdot \varphi(b), \qquad \varphi(1_R) = 1_S.
+\]
+A bijective homomorphism of rings is called an \newterm{isomorphism of rings}; its inverse is then automatically a homomorphism of rings as well.
+\end{aidefinition}
+
+% Extractor: Gemini 3.1 Pro
 \begin{example}[Examples of Rings]
   \begin{enumerate}
     \item Every field $K$ is also a commutative ring.
@@ -109,17 +154,15 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
   \end{enumerate}
 \end{example}
 
+% cor:18.a.4
 \begin{corollary}[The Ring of Endomorphisms]
+  \label{cor:endomorphism_ring}
   Let $V$ be a vector space over $K$. Then, $\End(V) := \Hom(V,V)$ is a ring with a unity. This ring is, in general, not commutative. The multiplication in $\End(V)$ is given by composition $T_1 \cdot T_2 := T_1 \circ T_2$ for all $T_1, T_2 \in \Hom(V,V)$, and the unity is $\id_V$. Moreover, if $V$ is finite-dimensional with $\dim V = n$, and $\mathcal{B} = (w_1, \dots, w_n)$ is a basis for $V$, then $\Psi_{\mathcal{B}}^{\mathcal{B}} \colon \Hom(V,V) \to \M_{n \times n}(K)$ is an isomorphism of rings.
 \end{corollary}
 
-\begin{proof}[Proof (sketch)]
-  The multiplication $T_1 \cdot T_2 := T_1 \circ T_2$ is associative, since $(T_1 \cdot T_2) \cdot T_3 = (T_1 \circ T_2) \circ T_3 = T_1 \circ (T_2 \circ T_3) = T_1 \cdot (T_2 \cdot T_3)$. Also, $T \cdot \id_V = T \circ \id_V = T$, and $\id_V \cdot T = \id_V \circ T = T$. Furthermore, $T \cdot (T_1 + T_2) = T \circ (T_1 + T_2) = T \circ T_1 + T \circ T_2$.
-
-  Now, if $V$ is finite-dimensional, and $\mathcal{B}$ is a basis for $V$, then
-  $$\Psi_{\mathcal{B}}^{\mathcal{B}}(T_1 \circ T_2) = [T_1 \circ T_2]_{\mathcal{B}}^{\mathcal{B}} = [T_1]_{\mathcal{B}}^{\mathcal{B}} \cdot [T_2]_{\mathcal{B}}^{\mathcal{B}} = \Psi_{\mathcal{B}}^{\mathcal{B}}(T_1) \cdot \Psi_{\mathcal{B}}^{\mathcal{B}}(T_2)$$
-  via matrix multiplication.
-\end{proof}
+% The notes give a proof sketch here; the verification below is Gemini's
+% expansion of it and contains everything the sketch does.
+% Creator: Gemini 3.1 Pro
 \begin{proof}
   First, we verify that $(\End(V), +, \circ)$ satisfies the ring axioms. We already know that $(\End(V), +)$ is an abelian group from the proposition regarding the vector space structure of $\Hom(V,W)$. We now verify the properties related to multiplication (composition):
   \begin{enumerate}
@@ -162,7 +205,9 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
   Let $V$ be a vector space over $K$. The \newterm{dual space} of $V$ is defined to be the vector space $V^* := \Hom(V,K)$. The elements of $V^*$ are linear maps $\ell \colon V \to K$, and are sometimes called \newterm{functionals}.
 \end{definition}
 
+% cor:18.a.6
 \begin{corollary}[Dimensionality of the Dual Space]
+  \label{cor:dim_dual}
   Let $V$ be a finite-di\-men\-sional vector space over $K$. Then, $\dim V^* = \dim V$.
 \end{corollary}
 
@@ -170,11 +215,21 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
   We have $\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K = \dim V \cdot 1 = \dim V$.
 \end{proof}
 
-Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell) := f_{\ell}$ is a linear map, and therefore, it is an isomorphism.
+Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. % Extractor: Opus 5 (High)
+The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell) := f_{\ell}$ is a linear map, and it is in fact an isomorphism; the notes leave the verification to the reader, and it is carried out among the solutions at the end of this section.
+
+\begin{exercise}[The Row Space as the Dual of the Column Space]
+\label{exc:row_space_is_dual}
+Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell) := f_{\ell}$, is a linear map and an isomorphism.
+\end{exercise}
+
+% Extractor: Gemini 3.1 Pro
 
 Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$.
 
+% lem:18.a.7
 \begin{lemma}[Construction of the Dual Basis]
+  \label{lem:dual_basis}
   The elements $v_1^*, \dots, v_n^* \in V^*$ form a basis for $V^*$. This basis is called the \newterm{dual basis} to $\mathcal{B}$. We denote this basis by $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$. Moreover, for all $\ell \in V^*$, $\ell = \sum_{i=1}^n \ell(v_i) \cdot v_i^*$.
 \end{lemma}
 
@@ -187,7 +242,9 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 \begin{question}Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B}$ and $\mathcal{C}$ be two bases for $V$. $\mathcal{B}^*$ and $\mathcal{C}^*$ are two bases for $V^*$. What is the relation between $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*}$ and $[\id_V]_{\mathcal{B}}^{\mathcal{C}}$?
 \end{question}
 
+% prop:18.a.8
 \begin{proposition}[Dual Change of Basis and Transposition]
+  \label{prop:dual_change_of_basis}
   The relationship between transition matrices in the dual space and the primal space is characterized by transposition and inversion. Specifically, the transition matrix between dual bases $\mathcal{C}^*$ and $\mathcal{B}^*$ is the transpose of the inverse transition matrix between the original bases $\mathcal{C}$ and $\mathcal{B}$:
   \[
   [\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = \left( [\id_V]_{\mathcal{C}}^{\mathcal{B}} \right)\transp = \left( \left( [\id_V]_{\mathcal{B}}^{\mathcal{C}} \right)^{-1} \right)\transp.
@@ -198,14 +255,16 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 \begin{proof}
   Let $\mathcal{B} = (v_1, \dots, v_n)$, and let $\mathcal{C} = (w_1, \dots, w_n)$. We have 
   \[[\id_V]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [v_1]_{\mathcal{C}} & \dots & [v_n]_{\mathcal{C}} \\ | & & | \end{pmatrix}.\]
-  Let $A := [\id_V]$ and write $A = (a_{ij})$. By definition, $v_i = \sum_{k=1}^n a_{ki} w_k$.
+  Let $A := [\id_V]_{\mathcal{C}}^{\mathcal{B}}$ and write $A = (a_{ij})$. By definition, $v_i = \sum_{k=1}^n a_{ki} w_k$.
   Let $\mathcal{C}^* = (w_1^*, \dots, w_n^*)$ be the dual basis of $\mathcal{C}$. We apply the previous lemma to $\ell = w_j^*$ and the basis $\mathcal{B}$:
   \[ w_j^* = \sum_{i=1}^n w_j^*(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*\left(\sum_{k=1}^n a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
   Here, only $k = j$ remains from the inner sum. This implies that $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([\id_V]_{\mathcal{C}}^{\mathcal{B}})\transp$.
 \end{proof}
 
 \subsection{The Dual Map}
+% lem:18.a.9
 \begin{lemma}[Definition of the Dual Map]
+  \label{lem:dual_map}
   Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. Define a new map $T^* \colon W^* \to V^*$ by $T^*(\ell) := \ell \circ T$ for all $\ell \in W^*$. Then, $T^*$ is a linear map. It is called the \newterm{dual map} to $T$.
 \end{lemma}
 
@@ -217,28 +276,28 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   So, $T^*(\alpha \ell) = \alpha \cdot T^*(\ell)$. Similarly, one shows that $T^*(\ell_1 + \ell_2) = T^*(\ell_1) + T^*(\ell_2)$.
 \end{proof}
 
+% prop:18.a.10
 \begin{proposition}[Functoriality and Composition of Duals]
+  \label{prop:dual_functoriality}
   Let $U, V, W$ be vector spaces over $K$, and let $T \colon V \to W$ and $S \colon W \to U$ be linear maps. Consider the dual maps $T^* \colon W^* \to V^*$ and $S^* \colon U^* \to W^*$. Then, $(S \circ T)^* = T^* \circ S^*$.
 \end{proposition}
 
-\begin{proof}
-  Exercise.
-\end{proof}
+% Extractor: Opus 5 (High)
+The notes mark this proof as an exercise; it is carried out among the solutions at the end of the section, together with the following one.
 
-\begin{exercise}[Duals of Identity and Zero Maps]
-  Let $V$ be a vector space over $K$. Show that:
-  \begin{enumerate}
+\begin{exercise}[Duals of Compositions, of the Identity and of the Zero Map]
+  \label{exc:dual_functoriality}
+  Let $V$ be a vector space over $K$. Prove \cref{prop:dual_functoriality}, and show that:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $(\id_V)^* = \id_{V^*}$.
     \item $(0 \colon V \to V)^* = (0 \colon V^* \to V^*)$.
   \end{enumerate}
 \end{exercise}
 
+% Extractor: Gemini 3.1 Pro
+
 \begin{summary}
 In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and gives us a new vector space $V^*$. It also takes any linear map $T \colon V \to W$ and gives us a new map $T^*$ between the duals of $V$ and $W$, but the arrow is reversed: $T^* \colon W^* \to V^*$. This is an example of a \newterm{contravariant functor}.
-
-\subsection{The Double Dual (or Bidual) Space}
-
-Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$, obtained by applying the \newterm{dual} operation one more time to $V^*$. $V^{**}$ is sometimes called the \newterm{bidual space} of $V$. Is there any relation between $V^{**}$ and $V$?
 \end{summary}
 
 \begin{lemma}[Transposition of the Representation Matrix]
@@ -255,7 +314,7 @@ Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$,
 \end{proof}
 
 \subsection{Reflexivity}
-Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$, obtained by applying the \qt{dual} operation one more time to $V^*$. $V^{**}$ is sometimes called the \qt{bidual space} of $V$. Is there any relation between $V^{**}$ and $V$?
+Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$, obtained by applying the dual operation one more time to $V^*$. $V^{**}$ is sometimes called the \newterm{bidual space} of $V$. Is there any relation between $V^{**}$ and $V$?
 
 \begin{theorem}[The Canonical Isomorphism to the Bidual Space]
 \label{thm:natural_map_injective}
@@ -302,9 +361,69 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
 \end{center}
 
 \begin{exercise}[Canonical Evaluation on Dual Bases]
-  Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the dual basis, and let $(\mathcal{B}^*)^* = ((v_1^*)^*, \dots, (v_n^*)^*)$ be the basis for $(V^*)^*$ which is dual to $\mathcal{B}^*$. Show that $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$, meaning $\tau(v_i) = (v_i^*)^*$ for all $1 \leq i \leq n$.
+  \label{exc:tau_on_dual_bases}
+  Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the dual basis, and let $(\mathcal{B}^*)^* = ((v_1^*)^*, \dots, (v_n^*)^*)$ be the basis for $(V^*)^*$ which is dual to $\mathcal{B}^*$. Show that $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$, meaning $\tau(v_i) = (v_i^*)^*$ for all $1 \leq i \leq n$.
 \end{exercise}
 
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_hom_dual}
+
+\begin{exercisesolution}[Proof of \cref{exc:hom_axioms}]
+For the linearity of $\alpha \cdot T$: for $a \in K$ and $v, v' \in V$,
+\[
+(\alpha T)(a v + v') = \alpha \, T(av + v') = \alpha \big( a T(v) + T(v') \big) = a \cdot \alpha T(v) + \alpha T(v') = a \, (\alpha T)(v) + (\alpha T)(v').
+\]
+
+The vector space axioms for $\Hom(V,W)$ all reduce to the corresponding axioms in $W$, because both operations are defined pointwise. For instance, associativity of addition: for all $v \in V$,
+\[
+\big((T_1 + T_2) + T_3\big)(v) = \big(T_1(v) + T_2(v)\big) + T_3(v) = T_1(v) + \big(T_2(v) + T_3(v)\big) = \big(T_1 + (T_2 + T_3)\big)(v),
+\]
+using associativity in $W$ in the middle; since two maps agreeing at every $v$ are equal, $(T_1 + T_2) + T_3 = T_1 + (T_2 + T_3)$. The same pattern gives commutativity, $1 \cdot T = T$, $(\alpha\beta) \cdot T = \alpha \cdot (\beta \cdot T)$, and the two distributive laws --- the one for $\alpha \cdot (T_1 + T_2)$ is written out in the text above. The additive inverse of $T$ is $(-1) \cdot T$, since $(T + (-1)T)(v) = T(v) - T(v) = 0$ for all $v$.
+
+For the additivity of $\Psi_{\mathcal{C}}^{\mathcal{B}}$: its $j$-th column at $T_1 + T_2$ is
+\[
+[(T_1 + T_2)(v_j)]_{\mathcal{C}} = [T_1(v_j) + T_2(v_j)]_{\mathcal{C}} = [T_1(v_j)]_{\mathcal{C}} + [T_2(v_j)]_{\mathcal{C}},
+\]
+because the coordinate map $\Phi_{\mathcal{C}}$ is linear. Columnwise addition of matrices is addition of matrices, so $\Psi_{\mathcal{C}}^{\mathcal{B}}(T_1 + T_2) = \Psi_{\mathcal{C}}^{\mathcal{B}}(T_1) + \Psi_{\mathcal{C}}^{\mathcal{B}}(T_2)$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:row_space_is_dual}]
+Linearity of $D$: for $\ell, \ell' \in K^n_{\text{row}}$, $\alpha \in K$ and every $v \in K^n_{\text{col}}$,
+\[
+f_{\alpha \ell + \ell'}(v) = (\alpha \ell + \ell') \cdot v = \alpha (\ell \cdot v) + \ell' \cdot v = \alpha f_{\ell}(v) + f_{\ell'}(v),
+\]
+by the distributivity of matrix multiplication, so $D(\alpha \ell + \ell') = \alpha D(\ell) + D(\ell')$.
+
+Injectivity: if $D(\ell) = 0$, then $\ell \cdot v = 0$ for every $v \in K^n_{\text{col}}$; taking $v = e_i$ picks out the $i$-th entry of $\ell$, so every entry of $\ell$ vanishes and $\ell = 0$. Since $\dim K^n_{\text{row}} = n = \dim K^n_{\text{col}} = \dim (K^n_{\text{col}})^*$ by \cref{cor:dim_dual}, an injective linear map between these two spaces is an isomorphism by \cref{cor:equal_dim_iso}.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{prop:dual_functoriality} and of \cref{exc:dual_functoriality}]
+For the composition rule, both $(S \circ T)^*$ and $T^* \circ S^*$ are maps $U^* \to V^*$, so it suffices to evaluate them at an arbitrary $\ell \in U^*$:
+\[
+(S \circ T)^*(\ell) = \ell \circ (S \circ T) = (\ell \circ S) \circ T = T^*(\ell \circ S) = T^*\big(S^*(\ell)\big) = (T^* \circ S^*)(\ell),
+\]
+using only the associativity of composition. Hence $(S \circ T)^* = T^* \circ S^*$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item For $\ell \in V^*$ we have $(\id_V)^*(\ell) = \ell \circ \id_V = \ell$, so $(\id_V)^* = \id_{V^*}$.
+    \item For $\ell \in V^*$ and $v \in V$, $\big(0^*(\ell)\big)(v) = \ell(0(v)) = \ell(0_V) = 0$, so $0^*(\ell)$ is the zero functional for every $\ell$, that is, $0^*$ is the zero map $V^* \to V^*$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:tau_on_dual_bases}]
+Both $\tau(v_i)$ and $(v_i^*)^*$ are elements of $(V^*)^*$, that is, functionals on $V^*$. Since $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ is a basis of $V^*$, it suffices to check that they agree on each $v_j^*$. By the definition of $\tau$,
+\[
+\tau(v_i)(v_j^*) = v_j^*(v_i) = \delta_{ji} = \delta_{ij},
+\]
+while by the definition of the basis dual to $\mathcal{B}^*$,
+\[
+(v_i^*)^*(v_j^*) = \delta_{ij}.
+\]
+The two agree on every member of a basis of $V^*$, hence $\tau(v_i) = (v_i^*)^*$ for all $i$, that is, $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$.
+\end{exercisesolution}
+
+% Extractor: Gemini 3.1 Pro
 \setcounter{section}{1}
 \renewcommand{\thetheorem}{18.b.\arabic{theorem}}
 \setcounter{theorem}{0}
@@ -312,7 +431,9 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
 
 \subsection{The External Direct Sum}
 
+% prop:18.b.1
 \begin{proposition}[Vector Space Structure of the Cartesian Product]
+  \label{prop:direct_sum_structure}
   Let $V$ and $W$ be two vector spaces over $K$. Then, the Cartesian product $V \times W$ becomes a vector space over $K$, provided we endow it with the following operations:
   \begin{itemize}
     \item $(v_1, w_1) + (v_2, w_2) := (v_1 + v_2, w_1 + w_2)$ for all $(v_1, w_1), (v_2, w_2) \in V \times W$.
@@ -321,9 +442,13 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
   The zero element of this space is given by $0_{V \times W} := (0_V, 0_W)$. This new vector space $V \times W$ is usually denoted by $V \oplus W$ and is called the direct sum of $V$ and $W$.
 \end{proposition}
 
-\begin{proof}
-  Exercise. One must verify that all vector space axioms are satisfied under these componentwise operations.
-\end{proof}
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Axioms for $V \oplus W$, and the Canonical Maps]
+  \label{exc:direct_sum_axioms}
+  Verify that all vector space axioms are satisfied by $V \times W$ under the componentwise operations above, so that \cref{prop:direct_sum_structure} holds. Check also that the four canonical maps of the following remark are linear, that $p_V$ and $p_W$ are surjective, and that $i_V$ and $i_W$ are injective.
+\end{exercise}
+
+% Extractor: Gemini 3.1 Pro
 
 \begin{remark}[Canonical Maps associated with Direct Sums]
   The direct sum $V \oplus W$ is naturally equipped with several canonical linear maps:
@@ -344,7 +469,9 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
 
 \subsection{Internal Direct Sums and Complements}
 
+% prop:18.b.2
 \begin{proposition}[Isomorphism to a Complementary Subspace]
+  \label{prop:direct_sum_complement}
   Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Suppose $U' \subseteq V$ is another subspace that acts as a complement of $U$ in $V$, which implies that $U + U' = V$ and $U \cap U' = \{0\}$. Then, the map
   \[
   \varphi \colon U \oplus U' \to V, \quad \varphi(u, u') := u + u'
@@ -439,17 +566,36 @@ endowed with coordinatewise operations.
 
 For an infinite family of vector spaces $\{U_i\}_{i \in I}$, we define the direct sum $\bigoplus_{i \in I} U_i$ as the set of functions $t \colon I \to \bigcup_{i \in I} U_i$ such that $t(i) \in U_i$ for all $i \in I$, and $t(i) \neq 0$ for at most finitely many indices $i \in I$. This ensures that any element of the direct sum can be represented as a finite formal sum of components.
 
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_direct_sums}
+
+\begin{exercisesolution}[Proof of \cref{exc:direct_sum_axioms}]
+Every axiom for $V \times W$ is checked coordinatewise and reduces to the same axiom in $V$ and in $W$. For instance, for $(v_1,w_1), (v_2,w_2), (v_3,w_3) \in V \times W$,
+\[
+\big((v_1,w_1) + (v_2,w_2)\big) + (v_3,w_3) = (v_1 + v_2 + v_3, \; w_1 + w_2 + w_3) = (v_1,w_1) + \big((v_2,w_2) + (v_3,w_3)\big),
+\]
+using associativity in $V$ in the first coordinate and in $W$ in the second. The same pattern gives commutativity, the neutral element $(0_V, 0_W)$, the additive inverse $-(v,w) = (-v,-w)$, and the four axioms involving scalars, for instance $\alpha \cdot \big((v_1,w_1) + (v_2,w_2)\big) = (\alpha v_1 + \alpha v_2, \alpha w_1 + \alpha w_2) = \alpha (v_1,w_1) + \alpha (v_2,w_2)$.
+
+The canonical maps are linear for the same reason: $i_V(\alpha v + v') = (\alpha v + v', 0) = \alpha (v,0) + (v',0) = \alpha \, i_V(v) + i_V(v')$, and
+\[
+p_V\big(\alpha (v,w) + (v',w')\big) = p_V(\alpha v + v', \; \alpha w + w') = \alpha v + v' = \alpha \, p_V(v,w) + p_V(v',w'),
+\]
+and symmetrically for $i_W$ and $p_W$.
+
+The projections are surjective, since $p_V(v, 0) = v$ for every $v \in V$ and $p_W(0,w) = w$ for every $w \in W$. The embeddings are injective, since $i_V(v) = (v,0) = (0,0)$ forces $v = 0$, so $\ker(i_V) = \{0\}$, and likewise for $i_W$.
+\end{exercisesolution}
+
+% Extractor: Gemini 3.1 Pro
+
 \setcounter{section}{2}
 \renewcommand{\thetheorem}{18.c.\arabic{theorem}}
 \setcounter{theorem}{0}
 \section{Quotient Spaces}
 
 \subsection{Equivalence Relation and the Quotient Space}
-% \begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the quotient of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the quotient map, or the projection onto the quotient space.
-Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We will define a new vector space over $K$, denoted by $V/U$, together with a linear map $\pi \colon V \to V/U$ such that $\pi$ is surjective and $\ker(\pi) = U$. The space $V/U$ will have some other good properties.
 
-\begin{definition*}[The Quotient $V/U$ And The Quotient Map $\pi$] The space $V/U$ is called the \newterm{quotient} of $V$ by $U$, or $V$ modulo $U$. The map $\pi$ is called the \newterm{quotient map}, or the \newterm{projection onto the quotient space}.
-\end{definition*}
+Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We will define a new vector space over $K$, denoted by $V/U$, together with a linear map $\pi \colon V \to V/U$ such that $\pi$ is surjective and $\ker(\pi) = U$. The space $V/U$ will have some other good properties. The space $V/U$ will be called the \newterm{quotient} of $V$ by $U$, or $V$ modulo $U$, and the map $\pi$ the \newterm{quotient map}, or the \newterm{projection onto the quotient space}.
 
 We begin by defining a relation on $V$. For $v_1, v_2 \in V$, we define $v_1 \sim v_2$ if and only if $v_1 - v_2 \in U$.
 
@@ -470,7 +616,9 @@ We begin by defining a relation on $V$. For $v_1, v_2 \in V$, we define $v_1 \si
 We denote the equivalence class of $v \in V$ by $[v]$. Thus,
 \[ [v] = v + U = \{v + u \mid u \in U\}. \]
 
+% def:18.c.1
 \begin{definition}[The Quotient Space]
+  \label{def:quotient_space}
   Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We define $V/U := V/\sim$ to be the set of equivalence classes of the equivalence relation $\sim$. So, the elements of $V/U$ are $[v]$, where $v \in V$. 
   
   Alternatively, each element in $V/U$ is a set of the form $v + U$, where $v \in V$. The space $V/U$ is called the quotient of $V$ by $U$ (or modulo $U$).
@@ -479,7 +627,7 @@ We denote the equivalence class of $v \in V$ by $[v]$. Thus,
 Geometrically, the nature of the quotient space $\mathbb{R}^2/U$ depends on the dimension of $U$:
 \begin{itemize}
   \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = v + \{0\} = \{v\}$ is simply a single \textbf{point}. In this case, no points are \qt{collapsed} together, and therefore $\mathbb{R}^2/\{0\} \cong \mathbb{R}^2$.
-  \item If $U$ is a \textbf{line} through the origin, the equivalence classes $[v]$ forming the space $\mathbb{R}^2/U$ are the lines parallel to $U$, as seen in Figure \cref{fig:quotient_r2}.
+  \item If $U$ is a \textbf{line} through the origin, the equivalence classes $[v]$ forming the space $\mathbb{R}^2/U$ are the lines parallel to $U$, as seen in \cref{fig:quotient_r2}.
 \end{itemize}
 
 \begin{figure}[ht!]
@@ -503,11 +651,11 @@ Geometrically, the nature of the quotient space $\mathbb{R}^2/U$ depends on the 
   \label{fig:quotient_r2}
 \end{figure}
 
-Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Figure \cref{fig:quotient_r3}:
+Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in \cref{fig:quotient_r3}:
 \begin{itemize}
   \item If $U = \{0\}$ is the trivial subspace, then each equivalence class $[v] = \{v\}$ is simply a \textbf{point}. Since no two distinct vectors are identified, the quotient space $\mathbb{R}^3/\{0\}$ is isomorphic to $\mathbb{R}^3$ itself.
-  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by \cref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes \qt{stacked} along a transversal direction (see Figure \cref{fig:quotient_plane} and \cref{prop:iso_complement}).
-  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by \cref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see Figure \cref{fig:quotient_line} and \cref{prop:iso_complement}).
+  \item If $U$ is a \textbf{plane} through the origin, then $\mathbb{R}^3/U$ is 1-dimensional (by \cref{prop:dim_quotient}) and therefore isomorphic to a line. Each element $[v]$ is a plane parallel to $U$. The quotient space can be viewed as the set of all such parallel planes \qt{stacked} along a transversal direction (see \cref{fig:quotient_plane} and \cref{prop:iso_complement}).
+  \item If $U$ is a \textbf{line} through the origin, then $\mathbb{R}^3/U$ is 2-dimensional (by \cref{prop:dim_quotient}) and therefore isomorphic to a plane. Each element $[v]$ is a line parallel to $U$ (see \cref{fig:quotient_line} and \cref{prop:iso_complement}).
   \item If $U = \mathbb{R}^3$ is the entire space, then there is only one equivalence class, $[v] = \mathbb{R}^3$. The quotient space $\mathbb{R}^3/\mathbb{R}^3$ is the zero vector space, with dimension $0$.
 \end{itemize}
 
@@ -566,7 +714,9 @@ Similarly, we can extend this intuition to $\mathbb{R}^3$, as illustrated in Fig
 
 We want to turn $V/U$ into a vector space over $K$. We define addition as $[v_1] + [v_2] := [v_1 + v_2]$ for all $[v_1], [v_2] \in V/U$. Alternatively, this can be written as $(v_1 + U) + (v_2 + U) := (v_1 + v_2) + U$. For scalar multiplication, let $\alpha \in K$ and $[v] \in V/U$. We define $\alpha \cdot [v] := [\alpha v]$. The zero element is defined as $0_{V/U} := [0_V] = U$.
 
+% prop:18.c.2
 \begin{proposition}[Well-definedness of Operations in $V/U$]
+  \label{prop:quotient_operations}
   The operations defined above are well-defined. Moreover, they give $V/U$ the structure of a vector space over $K$.
 \end{proposition}
 
@@ -578,8 +728,16 @@ We want to turn $V/U$ into a vector space over $K$. We define addition as $[v_1]
   \[ (v_1 + v_2) - (v_1' + v_2') = (v_1 - v_1') + (v_2 - v_2') \in U. \]
   Therefore, $v_1 + v_2 \sim v_1' + v_2'$, which implies $[v_1 + v_2] = [v_1' + v_2']$. This proves that the operations are well-defined.
 
-  It remains to show that they satisfy the axioms of a vector space. These follow directly from the corresponding axioms in $V$. (Exercise: complete the proof!)
+  It remains to show that they satisfy the axioms of a vector space. These follow directly from the corresponding axioms in $V$; the notes leave that verification to the reader, and it is carried out among the solutions at the end of this section.
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Axioms for $V/U$]
+  \label{exc:quotient_axioms}
+  Complete the proof of \cref{prop:quotient_operations} by checking that the operations on $V/U$ satisfy the axioms of a vector space.
+\end{exercise}
+
+% Extractor: Gemini 3.1 Pro
 
 We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v \in V$.
 
@@ -609,7 +767,9 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 
 \subsection{The Isomorphism Theorem and Universal Property}
 
+% thm:18.c.5
 \begin{theorem}[The First Isomorphism Theorem]
+  \label{thm:first_isomorphism}
   Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. We define a new map $\overline{T} \colon V/\ker(T) \to \Img(T)$ as follows: For $x \in V/\ker(T)$, choose a representative $v \in V$ such that $x = [v]$. Define $\overline{T}(x) := T(v)$. Then:
   \begin{enumerate}
     \item $\overline{T}$ is well-defined and is a linear map.
@@ -643,9 +803,17 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 
     To show that $\overline{T}$ is surjective, let $w \in \Img(T)$. Then, there exists $v \in V$ such that $T(v) = w$. Consequently, $\overline{T}([v]) = T(v) = w$, proving surjectivity.
 
-    \item The commutativity of the diagram follows immediately from the definitions. (Exercise: check this!)
+    \item The commutativity of the diagram follows immediately from the definitions; the notes leave this to the reader, and it is checked among the solutions at the end of this section.
   \end{enumerate}
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Commutativity of the Diagram in \cref{thm:first_isomorphism}]
+  \label{exc:first_iso_diagram}
+  Check that $T = i \circ \overline{T} \circ \pi$, where $i \colon \Img(T) \to W$ is the inclusion.
+\end{exercise}
+
+% Extractor: Gemini 3.1 Pro
 
 \begin{theorem}[Universal Property of Quotient Spaces]
   Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. The quotient space $V/U$ has the following universal property: For every vector space $W$ and every linear map $T \colon V \to W$ for which $T(U) = 0$ (i.e., for which $\ker(T) \supseteq U$), there exists a unique linear map $T' \colon V/U \to W$ such that $T = T' \circ \pi$. Moreover, $\ker(T') = \ker(T)/U$.
@@ -658,8 +826,9 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 \begin{proof}
   We define $T' \colon V/U \to W$ as follows: let $x \in V/U$. Choose $v \in V$ such that $x = [v]$. Define $T'(x) := T(v)$.
 
-  \begin{exercise}
-    \begin{enumerate}
+  \begin{exercise}[Well-definedness and Linearity of the Induced Map]
+    \label{exc:induced_map_well_defined}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
       \item Show that $T'$ is well-defined (i.e., if $[v] = [v']$, then $T(v) = T(v')$).
       \item Show that $T'$ is linear.
     \end{enumerate}
@@ -671,6 +840,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 \end{proof}
 
 \begin{exercise}[Kernel of the Induced Quotient Map]
+  \label{exc:kernel_induced_map}
   Prove that $\ker(T') = \ker(T)/U$.
 \end{exercise}
 
@@ -695,7 +865,8 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 \end{proof}
 
 \begin{exercise}[Inverse Isomorphism from a Complement]
-  Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$. (Hint: \dots)
+  \label{exc:inverse_from_complement}
+  Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$.
 \end{exercise}
 
 \subsection{Quotients, Complements, and Annihilators}
@@ -715,8 +886,9 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 
     \item We define a map $L \colon (V/U)^* \to U^\perp$ as follows: Let $S \in (V/U)^*$, i.e., $S \colon V/U \to K$. Define $L(S) \in V^*$ to be $L(S) := S \circ \pi$.
 
-    \begin{exercise}
-      \begin{enumerate}
+    \begin{exercise}[The Map $L$ Lands in $U^\perp$ and is Linear]
+      \label{exc:annihilator_L}
+      \begin{enumerate}[label=\textbf{(\alph*)}]
         \item Show that for all $S \in (V/U)^*$, $S \circ \pi \in U^\perp$.
         \item Show that $L$ is a linear map.
       \end{enumerate}
@@ -728,7 +900,8 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 
     \item Assume $V$ is finite-dimensional. Consider the restriction map $R \colon V^* \to U^*$ defined by $R(\varphi) := \varphi|_U$ for all $\varphi \in V^*$. 
 
-    \begin{exercise}
+    \begin{exercise}[Linearity of the Restriction Map]
+      \label{exc:restriction_linear}
       Show that $R$ is a linear map.
     \end{exercise}
 
@@ -740,6 +913,133 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 \end{proof}
 
 \begin{exercise}[Relationship between Annihilator of Image and Kernel of Dual Map]
+  \label{exc:annihilator_image_kernel_dual}
   Let $T \colon V \to W$ be a linear map between vector spaces. Prove that the annihilator of the image of $T$ is equal to the kernel of its dual map:
   \[ (\Img T)^\perp = \ker(T^*). \]
 \end{exercise}
+
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_quotients}
+
+\begin{exercisesolution}[Proof of \cref{exc:quotient_axioms}]
+Every axiom is inherited from $V$ by passing to classes. For instance, associativity: for $v_1, v_2, v_3 \in V$,
+\[
+\big([v_1] + [v_2]\big) + [v_3] = [v_1 + v_2] + [v_3] = [(v_1 + v_2) + v_3] = [v_1 + (v_2 + v_3)] = [v_1] + \big([v_2] + [v_3]\big),
+\]
+where the middle step is associativity in $V$. Commutativity is identical. The class $[0_V] = U$ is neutral, since $[v] + [0_V] = [v + 0_V] = [v]$, and $[-v]$ is an additive inverse of $[v]$, since $[v] + [-v] = [0_V]$. For scalars, $\alpha([v_1] + [v_2]) = [\alpha(v_1+v_2)] = [\alpha v_1 + \alpha v_2] = \alpha[v_1] + \alpha[v_2]$, and similarly $(\alpha + \beta)[v] = \alpha[v] + \beta[v]$, $(\alpha\beta)[v] = \alpha(\beta[v])$ and $1 \cdot [v] = [v]$. Each of these is the corresponding axiom in $V$ with brackets placed around it, which is legitimate precisely because the operations were shown to be well defined.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:first_iso_diagram}]
+Both $T$ and $i \circ \overline{T} \circ \pi$ are maps $V \to W$, so we evaluate at an arbitrary $v \in V$:
+\[
+\big(i \circ \overline{T} \circ \pi\big)(v) = i\big(\overline{T}([v])\big) = i\big(T(v)\big) = T(v),
+\]
+using the definition of $\pi$, then the definition of $\overline{T}$ on the class $[v]$ with representative $v$, and finally that $i$ is the inclusion of $\Img(T)$ into $W$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:induced_map_well_defined}]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Suppose $[v] = [v']$. Then $v - v' \in U \subseteq \ker(T)$ by the hypothesis $T(U) = 0$, so $T(v - v') = 0$ and hence $T(v) = T(v')$. So the value $T'([v]) := T(v)$ does not depend on the representative chosen.
+    \item For $\alpha \in K$ and $[v], [v'] \in V/U$,
+    \[
+    T'\big(\alpha [v] + [v']\big) = T'\big([\alpha v + v']\big) = T(\alpha v + v') = \alpha T(v) + T(v') = \alpha \, T'([v]) + T'([v']),
+    \]
+    using the definition of the operations on $V/U$, then the definition of $T'$, then the linearity of $T$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:kernel_induced_map}]
+First note that $\ker(T) \supseteq U$, so the quotient $\ker(T)/U$ makes sense and is a subspace of $V/U$: its elements are the classes $[v]$ with $v \in \ker(T)$.
+
+Let $x \in V/U$ and write $x = [v]$. Then
+\[
+x \in \ker(T') \iff T'([v]) = 0 \iff T(v) = 0 \iff v \in \ker(T) \iff x \in \ker(T)/U,
+\]
+where the second step is the definition of $T'$. The middle equivalence is legitimate for either representative of $x$, since $T'$ is well defined. Hence $\ker(T') = \ker(T)/U$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:inverse_from_complement}]
+Let $x \in V/U$. Since $V = U + W$, any representative $v$ of $x$ can be written as $v = u + w$ with $u \in U$ and $w \in W$, and then $x = [v] = [w]$. The map
+\[
+Q^{-1} \colon V/U \to W, \qquad Q^{-1}(x) := w, \quad \text{where } x = [u + w] \text{ with } u \in U, \, w \in W,
+\]
+is the inverse of $Q$. It is well defined: if $u + w = u' + w'$ with $u,u' \in U$ and $w,w' \in W$, then $w - w' = u' - u \in U \cap W = \{0\}$, so $w = w'$. And indeed $Q^{-1}(Q(w)) = Q^{-1}([w]) = w$ for $w \in W$, while $Q(Q^{-1}([v])) = Q(w) = [w] = [v]$.
+
+Equivalently, and more compactly: $Q^{-1} = p_W \circ (\text{choice of representative})$, where $p_W$ is the projection of $V = U \oplus W$ onto $W$ furnished by \cref{prop:direct_sum_complement}; the content of the verification above is exactly that this projection is well defined on classes.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:annihilator_L}]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $S \in (V/U)^*$ and $u \in U$. Then $\pi(u) = [u] = 0_{V/U}$, because $u \in U = \ker(\pi)$, and therefore
+    \[
+    (S \circ \pi)(u) = S(0_{V/U}) = 0.
+    \]
+    So $S \circ \pi$ vanishes on $U$, that is, $S \circ \pi \in U^\perp$.
+    \item For $S, S' \in (V/U)^*$ and $\alpha \in K$, and every $v \in V$,
+    \[
+    L(\alpha S + S')(v) = \big((\alpha S + S') \circ \pi\big)(v) = (\alpha S + S')\big(\pi(v)\big) = \alpha \, S(\pi(v)) + S'(\pi(v)) = \big(\alpha L(S) + L(S')\big)(v),
+    \]
+    so $L(\alpha S + S') = \alpha L(S) + L(S')$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:restriction_linear}]
+For $\varphi, \varphi' \in V^*$, $\alpha \in K$ and every $u \in U$,
+\[
+R(\alpha \varphi + \varphi')(u) = (\alpha \varphi + \varphi')|_U(u) = \alpha \varphi(u) + \varphi'(u) = \big(\alpha R(\varphi) + R(\varphi')\big)(u),
+\]
+since the operations on $V^*$ are defined pointwise. Two functionals on $U$ agreeing at every $u \in U$ are equal, so $R(\alpha \varphi + \varphi') = \alpha R(\varphi) + R(\varphi')$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:annihilator_image_kernel_dual}]
+Both sides are subsets of $W^*$. For $\ell \in W^*$, the notes' chain of equivalences reads
+\[
+\ell \in (\Img T)^\perp \iff \ell|_{\Img(T)} = 0 \iff \ell \circ T = 0 \iff T^*(\ell) = 0 \iff \ell \in \ker(T^*).
+\]
+The middle equivalence is the only one with content: $\ell \circ T$ is the zero map on $V$ exactly when $\ell(T(v)) = 0$ for every $v \in V$, and the values $T(v)$ are precisely the elements of $\Img(T)$, so this says exactly that $\ell$ vanishes on $\Img(T)$. The remaining steps are the definitions of $U^\perp$, of $T^*$, and of the kernel.
+\end{exercisesolution}
+
+\begin{ainote}
+The three lectures behind this chapter --- 18.a on $\Hom$, duals and biduals,
+18.b on direct sums, 18.c on quotients --- are all present in the transcript,
+statement for statement, and the printed numbers 18.a.1--18.a.12, 18.b.1--18.b.2
+and 18.c.1--18.c.8 already agreed with the handwritten ones. What the audit
+found here was damage of a different kind: repetitions, one broken inference,
+and a great many exercises left unanswered.
+
+\textbf{Repetitions and misplacements.} The paragraph introducing the bidual
+appeared twice, once inside a \verb|summary| environment that had swallowed a
+\verb|\subsection| heading along with it, and once again under
+\qt{Reflexivity}; the first copy is removed and the summary now ends where the
+notes end it. \Cref{cor:endomorphism_ring} carried two proofs in a row, a
+sketch and a full verification; the sketch was contained in the verification
+and is dropped. A \verb|definition*| naming the quotient and the quotient map
+stood before either had been constructed, duplicating the naming that comes
+with \cref{def:quotient_space}; it is folded into the sentence that announces
+the construction. Four cross-references read \qt{Figure \cref{fig:quotient_r2}},
+which typesets the word \qt{Figure} twice.
+
+\textbf{One broken inference.} Of the map $D \colon K^n_{\text{row}} \to
+(K^n_{\text{col}})^*$ the transcript said it \qt{is a linear map, and therefore,
+it is an isomorphism} --- linearity does not give that, and the notes do not
+claim it does: they say the map is an iso and mark the verification \qt{exc.
+Prove this!}. It is now \cref{exc:row_space_is_dual}, solved on
+\cpageref{sec:solutions_hom_dual}. Also repaired: the proof of
+\cref{prop:dual_change_of_basis} set $A := [\id_V]$ with no bases on it, and the
+matrix it means is $[\id_V]_{\mathcal{C}}^{\mathcal{B}}$.
+
+\textbf{Rings.} At the point where the notes say only \qt{explain briefly the
+structure of a ring} and \qt{explain what is a homomorphism of rings} --- both
+given orally --- the book had nothing, although it uses the word from
+\cpageref{rem:matrix_ring} onwards and states \cref{cor:endomorphism_ring} as an
+isomorphism of rings. \Cref{aidef:ring} and \cref{aidef:ring_homomorphism} fill
+that gap; they are not Prof. Biran's text and are marked as AI-Definitions.
+
+\textbf{Exercises.} The notes mark fourteen things \qt{Exc.} across the three
+lectures, from the vector space axioms for $\Hom(V,W)$ to
+$(\Img T)^\perp = \ker(T^*)$. Several stood in the transcript as
+\verb|\begin{proof}| blocks reading \qt{Exercise}, which leaves a stated result
+with no proof anywhere. All of them are now exercises, and each of the three
+sections ends with the solutions.
+\end{ainote}
