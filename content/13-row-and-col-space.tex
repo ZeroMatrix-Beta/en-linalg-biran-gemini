@@ -28,7 +28,12 @@ Thus, $w$ is in the span if and only if the linear system $Ax = w$ is \qt{consis
 
 To answer the second question and describe the entire span precisely, we replace the specific target $w$ with a general, variable vector $b = (b_{1}, \dots, b_{m})\transp$ and reduce the augmented matrix $(A \mid b)$ to a row-reduced echelon form $(A' \mid b')$. 
 
-This row operation procedure transforms our original problem into a much simpler, equivalent linear system $A'x = b'$. As shown in Prof. Biran's notes, the resulting matrix generally has the following characteristic block structure:
+Two cases have to be distinguished. Suppose first that $A'$ has no zero rows at all, so that every row of $A'$ carries a pivot. Then the system $A'x = b'$ can be solved no matter what the right-hand side $b'$ is, and by \cref{thm:ero_preserve_solutions} the original system $Ax = b$ is then solvable as well. Since this argument applies to every $b \in K^{m}$, we conclude that in this case
+\[
+\Sp(w_{1}, \dots, w_{n}) = K^{m}.
+\]
+
+In the remaining case, $A'$ does have zero rows. This row operation procedure transforms our original problem into a much simpler, equivalent linear system $A'x = b'$. As shown in Prof. Biran's notes, the resulting matrix generally has the following characteristic block structure:
 \begin{equation}
 \label{eq:block_consistency}
 (A' \mid b') = \left( 
@@ -54,9 +59,15 @@ In other words, the system is consistent if and only if the entries in $b'$ corr
 \begin{example}[Calculating a Specific Span]
 \label{ex:span_calc}
 Let $v_{1} = (1, 1, 1)\transp$ and $v_{2} = (1, 0, -1)\transp \in K^{3}$. To describe $\Sp(v_{1}, v_{2})$, we set up the augmented matrix with a general vector $b$ and row-reduce:
-\[
-\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 1 & 0 & b_{2} \\ 1 & -1 & b_{3} \end{array} \right) \xrightarrow{R_{2}-R_{1}, R_{3}-R_{1}} \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & -1 & b_{2}-b_{1} \\ 0 & -2 & b_{3}-b_{1} \end{array} \right) \xrightarrow{R_{3}-2R_{2}} \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & -1 & b_{2}-b_{1} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right)
-\]
+\begin{align*}
+\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 1 & 0 & b_{2} \\ 1 & -1 & b_{3} \end{array} \right)
+&\xrightarrow[\; -1 \cdot E_{1} + E_{3} \to E_{3} \;]{\; -1 \cdot E_{1} + E_{2} \to E_{2} \;}
+\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & -1 & b_{2}-b_{1} \\ 0 & -2 & b_{3}-b_{1} \end{array} \right) \\[0.5em]
+&\xrightarrow{\; -1 \cdot E_{2} \to E_{2} \;}
+\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ 0 & -2 & b_{3}-b_{1} \end{array} \right) \\[0.5em]
+&\xrightarrow{\; 2 \cdot E_{2} + E_{3} \to E_{3} \;}
+\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right)
+\end{align*}
 The system is consistent if and only if the expression corresponding to the zero-row evaluates to zero. Thus, the span is perfectly described by that single plane equation:
 \[
 \Sp(v_{1}, v_{2}) = \{ (b_{1}, b_{2}, b_{3})\transp \in K^{3} \mid b_{1} - 2b_{2} + b_{3} = 0 \}.
@@ -68,6 +79,8 @@ The vectors are linearly independent if and only if the homogeneous equation $Ax
 
 This occurs if and only if the row-reduced echelon form $A'$ has a pivot in every column. If even a single column lacks a pivot, the corresponding variable becomes \qt{free} (e.g., it can be parameterized to take on any scalar value). The existence of a free variable immediately allows for non-trivial solutions, which by definition means the vectors are linearly dependent.
 \end{answer}
+
+The machinery just developed gives a second, entirely computational proof of the two counting statements of \cref{thm:wrong_length_lists}, now specialised to the concrete space $K^{m}$. It is instructive to compare the two arguments: the earlier one was extracted from the abstract theory of bases, whereas the one below simply counts pivots.
 
 % thm:13.2
 \begin{theorem}[Fundamental Constraints on Coordinate Vectors]
@@ -83,6 +96,12 @@ Let $v_{1}, \dots, v_{n} \in K^{m}$.
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $A = (v_{1} \mid \dots \mid v_{n})$. The number of pivots in $A'$ is bounded by the number of rows $m$. If $n > m$, at least $n - m$ columns are forced to be without pivots. These free variables guarantee non-trivial solutions to $Ax = 0$, hence dependence.
     \item The number of pivots is bounded by the number of columns $n$. If $n < m$, there are at least $m - n$ zero-rows in $A'$. By the logic of equation \eqref{eq:block_consistency}, we can easily choose a vector $b$ such that the resulting $b'$ has non-zero entries in those bottom rows, making the system inconsistent.
+
+    It is worth recording what the elimination produces here in slightly more detail. Applying Gauss elimination to the extended matrix $(v_{1} \mid \dots \mid v_{n} \mid b)$ yields a matrix whose left block is in row-reduced echelon form and whose last column splits into two parts: an upper part $b'$, sitting next to the rows with pivots, and a lower part $b''$, sitting next to the zero rows. Every entry of $b''$ is an expression of the form $\alpha_{1} b_{1} + \dots + \alpha_{m} b_{m}$ with $\alpha_{1}, \dots, \alpha_{m} \in K$, where the coefficients $\alpha_{i}$ may of course differ from entry to entry. The span is therefore
+    \[
+    \Sp(v_{1}, \dots, v_{n}) = \left\{ b \in K^{m} \;\middle|\; b'' = 0 \right\} \subsetneq K^{m},
+    \]
+    The inclusion is strict: $b''$ has at least one entry, and the linear form $\alpha_{1} b_{1} + \dots + \alpha_{m} b_{m}$ computing it cannot have all its coefficients equal to zero, since the row operations leading to it are reversible and hence cannot annihilate a whole row.
 \end{enumerate}
 \end{proof}
 
@@ -91,26 +110,96 @@ Let $v_{1}, \dots, v_{n} \in K^{m}$.
 % def:13.4
 \begin{definition}[Subspaces of a Matrix]
 \label{def:matrix_subspaces}
-Let $A \in \M_{m \times n}(K)$.
+Let $A \in \M_{m \times n}(K)$, and denote by $u_{1}, \dots, u_{m} \in K^{n}$ the rows of $A$ and by $v_{1}, \dots, v_{n} \in K^{m}$ the columns of $A$, so that
+\[
+A = \begin{pmatrix} \text{---} & u_{1} & \text{---} \\ & \vdots & \\ \text{---} & u_{m} & \text{---} \end{pmatrix} = \begin{pmatrix} | & & | \\ v_{1} & \dots & v_{n} \\ | & & | \end{pmatrix}.
+\]
 \begin{enumerate}
-\item The \newterm{column space} $\ColS(A) \subseteq K^{m}$ is the span of the columns of $A$.
-\item The \newterm{row space} $\RowS(A) \subseteq K^{n}$ is the span of the rows of $A$.
+\item The \newterm{column space} $\ColS(A) \subseteq K^{m}$ is the span of the columns of $A$, that is, $\ColS(A) := \Sp(v_{1}, \dots, v_{n})$.
+\item The \newterm{row space} $\RowS(A) \subseteq K^{n}$ is the span of the rows of $A$, that is, $\RowS(A) := \Sp(u_{1}, \dots, u_{m})$.
 \end{enumerate}
 \end{definition}
+
+Note the difference in the ambient spaces: the rows of $A$ have $n$ entries and are viewed as row vectors, so that $\RowS(A)$ is a subspace of $K^{n}$, while the columns have $m$ entries and are viewed as column vectors, so that $\ColS(A)$ is a subspace of $K^{m}$.
 
 % prop:13.5
 \begin{proposition}[Invariance of Row Space]
 \label{prop:row_space_invariance}
-Elementary row operations do not change the row space: $\RowS(A) = \RowS(A')$.
+Elementary row operations do not change the row space: $\RowS(A) = \RowS(A')$. More generally, if $A, B \in \M_{m \times n}(K)$ are row-equivalent matrices in the sense of \cref{def:row_equivalence}, then $\RowS(A) = \RowS(B)$.
 \end{proposition}
 
 \begin{proof}
-New rows are, simply, linear combinations of the old rows, and because elementary operations are reversible, the spans remain identical.
+New rows are, simply, linear combinations of the old rows, and because elementary operations are reversible, the spans remain identical. We now carry this out for each of the three types of \cref{def:elementary_row_operations}. Let $M \in \M_{m \times n}(K)$ be a matrix with rows $w_{1}, \dots, w_{m} \in K^{n}$.
+
+\textbf{Type 3 ($E_{i} \leftrightarrow E_{j}$).} Exchanging two rows of $M$ merely reorders the list $w_{1}, \dots, w_{m}$, and the span of a list does not depend on the order of its members. Hence $\RowS(M)$ is unchanged by such an operation.
+
+\textbf{Type 1 ($\lambda \cdot E_{i} \to E_{i}$, with $\lambda \in K \setminus \{0\}$).} Replacing $w_{i}$ by $\lambda w_{i}$ does not change the span of the rows either: the new row lies in $\Sp(w_{1}, \dots, w_{m})$, and conversely $w_{i} = \lambda^{-1} (\lambda w_{i})$ lies in the span of the new list, which is where the hypothesis $\lambda \neq 0$ enters. So $\RowS(M)$ is left unchanged by such an operation as well.
+
+\textbf{Type 2 ($\lambda \cdot E_{j} + E_{i} \to E_{i}$, with $i \neq j$ and $\lambda \in K$).} Here we claim that
+\[
+\Sp(w_{1}, \dots, w_{i}, \dots, w_{m}) = \Sp(w_{1}, \dots, w_{i} + \lambda w_{j}, \dots, w_{m}),
+\]
+where on the right-hand side the $i$-th member of the list has been replaced by $w_{i} + \lambda w_{j}$ and all other members are unchanged. Indeed, the inclusion
+\[
+\Sp(w_{1}, \dots, w_{i} + \lambda w_{j}, \dots, w_{m}) \subseteq \Sp(w_{1}, \dots, w_{i}, \dots, w_{m})
+\]
+holds because every linear combination of the vectors on the left is obviously also a linear combination of $w_{1}, \dots, w_{m}$. But we also have the reverse inclusion
+\[
+\Sp(w_{1}, \dots, w_{i}, \dots, w_{m}) \subseteq \Sp(w_{1}, \dots, w_{i} + \lambda w_{j}, \dots, w_{m}),
+\]
+because $w_{i} = (w_{i} + \lambda w_{j}) - \lambda w_{j}$, and since $i \neq j$, the vector $w_{j}$ itself is still one of the members of the list on the right. Consequently, whenever we write a linear combination of $w_{1}, \dots, w_{m}$, we may substitute this expression for $w_{i}$ and obtain a linear combination of $w_{1}, \dots, w_{i} + \lambda w_{j}, \dots, w_{m}$. This proves the claim, and with it that an operation of Type 2 does not change $\RowS(M)$ either.
+
+Finally, let $A$ and $B$ be row-equivalent. By \cref{def:row_equivalence}, there exists a finite sequence of matrices
+\[
+A = A_{0} \longrightarrow A_{1} \longrightarrow \dots \longrightarrow A_{r-1} \longrightarrow A_{r} = B
+\]
+such that $A_{i+1}$ is obtained from $A_{i}$ by a single elementary row operation for every $0 \le i \le r-1$. By what we have just proved, each of these steps leaves the row space unchanged, and therefore
+\[
+\RowS(A) = \RowS(A_{0}) = \RowS(A_{1}) = \dots = \RowS(A_{r}) = \RowS(B). \qedhere
+\]
 \end{proof}
 
 \begin{importantremark}
 Row operations \textbf{do} change the column space, as seen by $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \to \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$. However, they \textbf{preserve} the linear relations between columns: $\sum \alpha_{i} w_{i} = 0 \iff \sum \alpha_{i} w'_{i} = 0$.
 \end{importantremark}
+
+This second assertion carries the entire weight of \cref{thm:basis_col_space} below, which transfers a statement about the echelon form back to the original matrix. The notes do not prove it, so we record it here, together with the two consequences in which it is actually used.
+
+\begin{ailemma}[Row Operations Preserve the Relations Between Columns]
+\label{ailem:column_relations_preserved}
+Let $A, A' \in \M_{m \times n}(K)$ be row-equivalent matrices, and denote by $w_{1}, \dots, w_{n}$ the columns of $A$ and by $w'_{1}, \dots, w'_{n}$ the columns of $A'$. Then, for all scalars $\alpha_{1}, \dots, \alpha_{n} \in K$,
+\[
+\alpha_{1} w_{1} + \dots + \alpha_{n} w_{n} = 0 \quad \text{if and only if} \quad \alpha_{1} w'_{1} + \dots + \alpha_{n} w'_{n} = 0.
+\]
+Consequently, for every subset of indices $S \subseteq \{1, \dots, n\}$:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item the columns $(w_{i})_{i \in S}$ are linearly independent if and only if the columns $(w'_{i})_{i \in S}$ are linearly independent;
+    \item for every index $j$, we have $w_{j} \in \Sp\left( (w_{i})_{i \in S} \right)$ if and only if $w'_{j} \in \Sp\left( (w'_{i})_{i \in S} \right)$.
+\end{enumerate}
+\end{ailemma}
+
+\begin{proof}
+Writing $x := (\alpha_{1}, \dots, \alpha_{n})\transp$, the equation $\alpha_{1} w_{1} + \dots + \alpha_{n} w_{n} = 0$ says precisely that $Ax = 0$, and likewise $\alpha_{1} w'_{1} + \dots + \alpha_{n} w'_{n} = 0$ says precisely that $A'x = 0$. Performing on $(A \mid 0)$ the very sequence of elementary row operations that leads from $A$ to $A'$ produces $(A' \mid 0)$, since a zero column stays a zero column under any row operation. So the two augmented matrices are row-equivalent, and \cref{thm:ero_preserve_solutions} gives the two homogeneous systems the same solution set. This is the asserted equivalence.
+
+For \textbf{(a)}, a linear relation among the columns indexed by $S$ is the same thing as a linear relation among all $n$ columns whose coefficients vanish outside $S$. The equivalence just proved matches such relations for $A$ with such relations for $A'$ coefficient by coefficient, so one family admits a non-trivial relation exactly when the other does.
+
+For \textbf{(b)}, an expression $w_{j} = \sum_{i \in S} \gamma_{i} w_{i}$ is the relation $\sum_{i \in S} \gamma_{i} w_{i} - w_{j} = 0$, which again has vanishing coefficients outside $S \cup \{j\}$. Applying the equivalence to it, and reading the resulting relation in the other direction, gives $w'_{j} = \sum_{i \in S} \gamma_{i} w'_{i}$, with the same coefficients $\gamma_{i}$; and symmetrically.
+\end{proof}
+
+Both spaces now have a dimension, and these two numbers deserve names of their own.
+
+% def:13.6
+\begin{definition}[Row Rank and Column Rank]
+\label{def:row_and_column_rank}
+Let $A \in \M_{m \times n}(K)$. We define the \newterm{row rank} and the \newterm{column rank} of $A$ as
+\[
+\rank_{\text{row}}(A) := \dim \RowS(A), \qquad \rank_{\text{col}}(A) := \dim \ColS(A).
+\]
+\end{definition}
+
+\begin{remark}
+The notes flag right here that these two numbers always coincide, $\rank_{\text{row}}(A) = \rank_{\text{col}}(A)$, and postpone the proof. In this chapter the equality already falls out of the two basis theorems below, in \cref{thm:rank_equality}; we return to it in \cref{thm:rank_row_column_equality}, where it is proved once more, this time from the theory of linear maps and without any appeal to Gauss elimination.
+\end{remark}
 
 \subsection{Constructing Bases}
 
@@ -121,7 +210,7 @@ The columns of $A$ that correspond to the \qt{pivot columns} of its row-reduced 
 \end{theorem}
 
 \begin{proof}
-By the principle that row operations preserve the linear dependence relations between columns, we have:
+By the principle that row operations preserve the linear dependence relations between columns (\cref{ailem:column_relations_preserved}), we have:
 \[
 \sum_{i=1}^n \alpha_i w_i = 0 \iff \sum_{i=1}^n \alpha_i w'_i = 0.
 \]
@@ -160,7 +249,7 @@ Since the standard basis vectors $e_1, \dots, e_r$ are clearly linearly independ
 \[
 K^r \times \{0\}^{m-r} = \Sp(e_1, \dots, e_r) \subseteq \ColS(B) \subseteq K^r \times \{0\}^{m-r}.
 \]
-This double inclusion forces the equality $\ColS(B) = \Sp(e_1, \dots, e_r) = K^r \times \{0\}^{m-r}$. Consequently, the pivot columns of $B$ form a basis for its column space. By the preservation of linear relations, the corresponding columns in the original matrix $A$ form a basis for $\ColS(A)$.
+This double inclusion forces the equality $\ColS(B) = \Sp(e_1, \dots, e_r) = K^r \times \{0\}^{m-r}$. Consequently, the pivot columns of $B$ form a basis for its column space. By the preservation of linear relations, the corresponding columns in the original matrix $A$ form a basis for $\ColS(A)$: they are linearly independent by part \textbf{(a)} of \cref{ailem:column_relations_preserved}, and every other column of $A$ lies in their span by part \textbf{(b)}, since this is so for $B$.
 \end{proof}
 
 % thm:13.8
@@ -187,11 +276,111 @@ The number of pivots is independent of the sequence of row operations, as it alw
 By \cref{thm:row_basis}, the non-zero rows of any row-reduced echelon form $B$ of $A$ form a basis for $\RowS(A)$. The number of such rows is exactly the number of pivots. Since the dimension of a vector space is a fixed property, the number of pivots must be the same regardless of the specific row-reduction process used to reach an echelon form.
 \end{proof}
 
+The row basis theorem is not merely a structural statement; read in the right direction, it is a recipe. It answers the practical question of how to produce a basis for a subspace that has been handed to us as a span.
+
+\begin{corollary}[Algorithm for Finding a Basis]
+\label{cor:basis_algorithm}
+Let $U := \Sp(u_{1}, \dots, u_{m}) \subseteq K^{n}$ be the subspace spanned by a list of vectors $u_{1}, \dots, u_{m} \in K^{n}$, which we regard as row vectors. Form the matrix
+\[
+A := \begin{pmatrix} \text{---} & u_{1} & \text{---} \\ & \vdots & \\ \text{---} & u_{m} & \text{---} \end{pmatrix} \in \M_{m \times n}(K),
+\]
+and apply Gauss elimination to $A$ until a row-reduced echelon matrix $M$ is reached. Then the non-zero rows of $M$ form a basis for $U$.
+\end{corollary}
+
+\begin{proof}
+By construction, $U = \RowS(A)$. The matrix $M$ is row-equivalent to $A$, so $\RowS(A) = \RowS(M)$ by \cref{prop:row_space_invariance}, and the non-zero rows of $M$ form a basis for that space by \cref{thm:row_basis}.
+\end{proof}
+
 % thm:13.13
 \begin{theorem}[The Rank Equality]
 \label{thm:rank_equality}
-For any $A \in \M_{m \times n}(K)$, $\dim \RowS(A) = \dim \ColS(A)$. This shared dimension is the \newterm{rank} of $A$, denoted $\rank(A)$.
+For any $A \in \M_{m \times n}(K)$, $\dim \RowS(A) = \dim \ColS(A)$, or equivalently, in the terminology of \cref{def:row_and_column_rank}, $\rank_{\text{row}}(A) = \rank_{\text{col}}(A)$. This shared dimension is the \newterm{rank} of $A$, denoted $\rank(A)$.
 \end{theorem}
 \begin{proof}
 Let $r$ be the number of pivots in the RREF of $A$. By \cref{thm:basis_col_space}, $\dim \ColS(A) = r$. By \cref{thm:row_basis}, $\dim \RowS(A) = r$. Thus, the dimensions are exactly equal.
 \end{proof}
+
+\subsection{The Transpose of a Matrix}
+
+The row space and the column space of a matrix are built from two different readings of the same array of scalars. The operation that turns one reading into the other is the transpose, which we introduce here and will use constantly from now on.
+
+% def:13.14
+\begin{definition}[Transpose of a Matrix]
+\label{def:transpose}
+Let $A = (a_{ij}) \in \M_{m \times n}(K)$. The \newterm{transposed matrix} of $A$ is the matrix $A\transp := (b_{ij}) \in \M_{n \times m}(K)$ whose entries are given by
+\[
+b_{ij} := a_{ji} \qquad \text{for all } 1 \le i \le n, \; 1 \le j \le m.
+\]
+\end{definition}
+
+\begin{notation}
+The transposed matrix is sometimes also denoted by $A^{t}$.
+\end{notation}
+
+\begin{example}[Transposing a Rectangular Matrix]
+\label{ex:transpose_computation}
+Transposing turns the rows of a matrix into columns and its columns into rows:
+\[
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}\transp = \begin{pmatrix} 1 & 3 & 5 \\ 2 & 4 & 6 \end{pmatrix}.
+\]
+\end{example}
+
+% prop:13.16
+\begin{proposition}[Simple Properties of the Transpose]
+\label{prop:transpose_properties}
+For all matrices $A, B \in \M_{m \times n}(K)$ and every scalar $\lambda \in K$, the following hold:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $(A + B)\transp = A\transp + B\transp$.
+    \item $(\lambda A)\transp = \lambda \cdot A\transp$.
+    \item $(A\transp)\transp = A$.
+    \item $\RowS(A\transp) = \ColS(A)$ and $\ColS(A\transp) = \RowS(A)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The entry of $(A+B)\transp$ in position $(i,j)$ is the entry of $A + B$ in position $(j,i)$, namely $a_{ji} + b_{ji}$, which is exactly the entry of $A\transp + B\transp$ in position $(i,j)$.
+    \item Likewise, the entry of $(\lambda A)\transp$ in position $(i,j)$ is $\lambda a_{ji}$, which is the entry of $\lambda \cdot A\transp$ in position $(i,j)$.
+    \item Transposing twice returns the entry in position $(i,j)$ to $a_{ij}$.
+    \item By \cref{def:transpose}, the $i$-th row of $A\transp$ consists of the entries $a_{1i}, \dots, a_{mi}$, that is, it is the $i$-th column of $A$ written as a row vector. The rows of $A\transp$ are therefore precisely the columns of $A$, so the two spans agree: $\RowS(A\transp) = \ColS(A)$. The second identity follows by applying the first one to $A\transp$ and using \textbf{(c)}. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+Statement \textbf{(d)} is the reason the transpose is the natural bookkeeping device for the two ranks. Taking dimensions in \cref{prop:transpose_properties} \textbf{(d)} gives
+\[
+\rank_{\text{row}}(A\transp) = \rank_{\text{col}}(A), \qquad \rank_{\text{col}}(A\transp) = \rank_{\text{row}}(A),
+\]
+so every statement about row rank is a statement about the column rank of the transposed matrix, and conversely.
+\end{remark}
+
+\begin{ainote}
+Four pieces of the notes were missing from this transcript and are restored
+above: the case distinction in the answer to Questions 1 and 2, where an $A'$
+without zero rows forces $\Sp(w_{1}, \dots, w_{n}) = K^{m}$; the definition of
+row rank and column rank (\cref{def:row_and_column_rank}), used from
+\cref{thm:rank_row_column_equality} onwards but never introduced;
+\cref{cor:basis_algorithm}, which the notes state as an algorithm; and the whole
+closing section on the transpose, whose notation $A\transp$ the transcript
+already used in this chapter and in fourteen later ones without ever defining
+it. The proof of \cref{prop:row_space_invariance} had been compressed to a
+single sentence; the notes treat the three types of row operation separately and
+prove the Type 2 case by double inclusion, so that argument is restored around
+the sentence that was there. \Cref{thm:coordinate_constraints} is the
+computational counterpart of \cref{thm:wrong_length_lists}, which is how the
+notes present it; the description of the span by the vanishing of $b''$ is put
+back into its proof.
+
+Two things go beyond the notes. \Cref{ailem:column_relations_preserved} is not
+in Biran's text: the transcript asserts the preservation of linear relations
+between columns in an important remark and then rests
+\cref{thm:basis_col_space} on it, so it is stated and proved here as an
+AI-Lemma, on the strength of \cref{thm:ero_preserve_solutions}. And the notes
+defer $\rank_{\text{row}}(A) = \rank_{\text{col}}(A)$ to a later lecture, while
+this chapter already reaches it in \cref{thm:rank_equality}; the argument is
+sound and is kept, with the relation to \cref{thm:rank_row_column_equality}
+recorded in a remark. In the worked span computation on
+\cpageref{ex:span_calc} the elimination now carries Prof. Biran's arrow labels
+and includes the normalisation step $-1 \cdot E_{2} \to E_{2}$, without which
+the displayed chain never reaches a row-reduced echelon matrix.
+\end{ainote}

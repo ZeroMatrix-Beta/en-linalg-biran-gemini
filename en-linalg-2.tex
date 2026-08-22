@@ -495,6 +495,50 @@
 \theoremstyle{ainotethm}
 \newtheorem*{ainote}{AI-Note}
 
+% --- AI-AUTHORED RESULTS ---
+% Statements that do NOT appear in Prof. Biran's notes, added to close a gap the
+% notes leave implicit or to make a step of a transcribed proof citable. They
+% wear the robot marker of the AI-Note style so a reader can always tell them
+% apart from the lecture material, and they run on a counter of their own, so
+% inserting one never shifts Biran's numbering. They are ordinary numbered
+% environments otherwise, hence fully referenceable with \cref.
+\newtheorem{aitheorem}{AI-Theorem}[chapter]
+
+\newaliascnt{ailemma}{aitheorem}
+\newtheorem{ailemma}[ailemma]{AI-Lemma}
+\aliascntresetthe{ailemma}
+
+\newaliascnt{aiproposition}{aitheorem}
+\newtheorem{aiproposition}[aiproposition]{AI-Proposition}
+\aliascntresetthe{aiproposition}
+
+\newaliascnt{aicorollary}{aitheorem}
+\newtheorem{aicorollary}[aicorollary]{AI-Corollary}
+\aliascntresetthe{aicorollary}
+
+\newaliascnt{aidefinition}{aitheorem}
+\newtheorem{aidefinition}[aidefinition]{AI-Definition}
+\aliascntresetthe{aidefinition}
+
+% Same reasoning as for the aliases of \thetheorem above: re-bind as macros so
+% that the whole family always expands the master format at use time.
+\renewcommand{\theailemma}{\theaitheorem}
+\renewcommand{\theaiproposition}{\theaitheorem}
+\renewcommand{\theaicorollary}{\theaitheorem}
+\renewcommand{\theaidefinition}{\theaitheorem}
+
+\makeatletter
+\AtBeginDocument{%
+  % Keep the hyperref anchors of the AI family disjoint from the ones of the
+  % lecture environments, which share the chapter.number shape.
+  \renewcommand{\theHaitheorem}{ai.\thechapter.\arabic{aitheorem}}%
+  \@namedef{theHailemma}{\theHaitheorem}%
+  \@namedef{theHaiproposition}{\theHaitheorem}%
+  \@namedef{theHaicorollary}{\theHaitheorem}%
+  \@namedef{theHaidefinition}{\theHaitheorem}%
+}
+\makeatother
+
 \theoremstyle{examplethm}
 \newtheorem*{exercise}{Exercise}
 \newtheorem*{example}{Example}
@@ -513,6 +557,16 @@
 \Crefname{definition}{Definition}{Definitions}
 \crefname{proposition}{Proposition}{Propositions}
 \Crefname{proposition}{Proposition}{Propositions}
+\crefname{aitheorem}{AI-Theorem}{AI-Theorems}
+\Crefname{aitheorem}{AI-Theorem}{AI-Theorems}
+\crefname{ailemma}{AI-Lemma}{AI-Lemmata}
+\Crefname{ailemma}{AI-Lemma}{AI-Lemmata}
+\crefname{aiproposition}{AI-Proposition}{AI-Propositions}
+\Crefname{aiproposition}{AI-Proposition}{AI-Propositions}
+\crefname{aicorollary}{AI-Corollary}{AI-Corollaries}
+\Crefname{aicorollary}{AI-Corollary}{AI-Corollaries}
+\crefname{aidefinition}{AI-Definition}{AI-Definitions}
+\Crefname{aidefinition}{AI-Definition}{AI-Definitions}
 \crefname{chapter}{Chapter}{Chapters}
 \Crefname{chapter}{Chapter}{Chapters}
 \crefname{section}{Section}{Sections}
