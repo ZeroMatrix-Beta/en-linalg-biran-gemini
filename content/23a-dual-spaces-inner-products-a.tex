@@ -1,6 +1,17 @@
+% Source: 23.dual-spaces-inner-products.a, which numbers from 23.a.1.
 \renewcommand{\thetheorem}{23.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{22}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
+% Extractor: Gemini 3.1 Pro
 \chapter{Dual Spaces and Inner Products}
 
 \section{Dual spaces and inner products}
@@ -14,6 +25,9 @@ Indeed, let $e_1, \dots, e_n$ be the standard basis for $K^n$, and define $a_1 :
 \[
     \varphi(v) = \varphi(v_1 e_1 + \dots + v_n e_n) = v_1 \varphi(e_1) + \dots + v_n \varphi(e_n) = v_1 a_1 + \dots + v_n a_n = A \cdot v.
 \]
+% Creator: Opus 5 (High)
+This also settles the uniqueness of $A$: any row matrix $A' = (a_1', \dots, a_n')$ with $\varphi(v) = A' \cdot v$ for all $v \in K^n$ satisfies $a_i' = A' \cdot e_i = \varphi(e_i) = a_i$, so its entries are already forced by $\varphi$.
+% Extractor: Gemini 3.1 Pro
 \end{warmup}
 
 Consider now an inner product space $(V, \langle \cdot, \cdot \rangle)$ over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$). Let $u \in V$. We define a map $\varphi_u \colon V \to K$ by mapping $v \mapsto \langle v, u \rangle \in K$.
@@ -44,11 +58,53 @@ Let $\varphi \in V^*$, and let $v \in V$. We have $v = \sum_{i=1}^n \langle v, e
 (Note that the conjugation is needed here only if $K = \mathbb{C}$).
 Define $u := \sum_{i=1}^n \overline{\varphi(e_i)} \cdot e_i$. It follows that $\varphi(v) = \langle v, u \rangle$, so $\varphi = \varphi_u$.
 
-\textbf{Uniqueness of $u$:} Suppose that $\varphi_{u_1} = \varphi_{u_2}$ for $u_1, u_2 \in V$. This implies that $\langle v, u_1 \rangle = \langle v, u_2 \rangle$ for all $v \in V$. By a previous result, this implies that $u_1 = u_2$.
+\textbf{Uniqueness of $u$:} Suppose that $\varphi_{u_1} = \varphi_{u_2}$ for $u_1, u_2 \in V$. This implies that $\langle v, u_1 \rangle = \langle v, u_2 \rangle$ for all $v \in V$. By a previous result (\cref{lem:basic_properties_inner_prod} \textbf{(c)}), this implies that $u_1 = u_2$.
 
 The statements about the linearity of $\Phi$ are left as an exercise.
 \end{proof}
 
+% Creator: Gemini 3.1 Pro
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_dual_spaces}
+
+\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]
+Let $v_1, v_2 \in V$ and $c \in K$. We have:
+\[
+    \varphi_u(v_1 + v_2) = \langle v_1 + v_2, u \rangle = \langle v_1, u \rangle + \langle v_2, u \rangle = \varphi_u(v_1) + \varphi_u(v_2),
+\]
+and
+\[
+    \varphi_u(c v_1) = \langle c v_1, u \rangle = c \langle v_1, u \rangle = c \varphi_u(v_1).
+\]
+Thus, $\varphi_u$ is a linear map.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{thm:dual_space_inner_product_isomorphism}]
+For $K = \mathbb{R}$, we have $\Phi(u) = \varphi_u$. Then:
+\[
+    \Phi(u_1+u_2)(v) = \langle v, u_1+u_2 \rangle = \langle v, u_1 \rangle + \langle v, u_2 \rangle = \Phi(u_1)(v) + \Phi(u_2)(v),
+\]
+and
+\[
+    \Phi(c u)(v) = \langle v, c u \rangle = c \langle v, u \rangle = c \Phi(u)(v).
+\]
+(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus $\Phi$ is linear.
+
+For $K = \mathbb{C}$, the additivity follows identically. For scalar multiplication:
+\[
+    \Phi(c u)(v) = \langle v, c u \rangle = \overline{c} \langle v, u \rangle = \overline{c} \Phi(u)(v).
+\]
+Thus $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
+
+For the inverse $\Phi^{-1}$: since $\Phi$ is additive, taking $\varphi_1 = \Phi(u_1)$ and $\varphi_2 = \Phi(u_2)$ gives $\Phi^{-1}(\varphi_1 + \varphi_2) = \Phi^{-1}(\varphi_1) + \Phi^{-1}(\varphi_2)$, so $\Phi^{-1}$ is additive.
+For scalar multiplication, let $\varphi = \Phi(u)$ and $\lambda \in \mathbb{C}$. Then $\overline{\lambda} \varphi = \overline{\lambda} \Phi(u) = \Phi(\lambda u)$. Applying $\Phi^{-1}$ to both sides gives $\Phi^{-1}(\overline{\lambda} \varphi) = \lambda u = \lambda \Phi^{-1}(\varphi)$. Setting $c = \overline{\lambda}$ (so $\lambda = \overline{c}$) gives $\Phi^{-1}(c \varphi) = \overline{c} \Phi^{-1}(\varphi)$, proving $\Phi^{-1}$ is $\mathbb{C}$-antilinear.
+
+% Creator: Opus 5 (High)
+This last paragraph is also the verification Prof. Biran marks with \qt{check!} in the proof that $T'$ is linear: it is exactly the assertion that $\Phi_V^{-1}$ is additive and $\mathbb{C}$-antilinear.
+% Creator: Gemini 3.1 Pro
+\end{exercisesolution}
+
+% Extractor: Gemini 3.1 Pro
 \section{The adjoint map}
 
 Let $V, W$ be vector spaces over $K$. Let $T \colon V \to W$ be a linear map. We have seen in Linear Algebra I that $T$ induces a linear map $T^* \colon W^* \to V^*$ defined by $T^*(\varphi) := \varphi \circ T$.
@@ -63,17 +119,13 @@ V \arrow[r, "T"] \arrow[dr, "T^*(\varphi) = \varphi \circ T"'] & W \arrow[d, "\v
 Assume now that $(V, \langle \cdot, \cdot \rangle_V)$ and $(W, \langle \cdot, \cdot \rangle_W)$ are inner product spaces over $K$ (where $K = \mathbb{R}$ or $K = \mathbb{C}$). Assume that $\dim V < \infty$.
 Given $T$ as above, we can define a map $T' \colon W \to V$ using our \qt{canonical} identifications $W \cong W^*$ and $V \cong V^*$. (This is straightforward for $K = \mathbb{R}$, but we have to be careful with $K = \mathbb{C}$.)
 
-% \begin{center}
-% \begin{tikzcd}[row sep=large, column sep=large]
-% W^* \arrow[r, "T^*"] & V^* \\
-% W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"'] \arrow[u, bend right=30, "\Phi_V^{-1}"']
-% \end{tikzcd}
-% \end{center}
-
+% The notes draw two parallel arrows between $V$ and $V^*$: $\Phi_V$ pointing up
+% and $\Phi_V^{-1}$ pointing down. Both variants of the transcription drew
+% $\Phi_V^{-1}$ from $V$ to $V^*$, which is the wrong direction for the inverse.
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep=large]
-W^* \arrow[r, "T^*"] & V^* \\
-W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, "\Phi_V"] \arrow[u, bend right=40, "\Phi_V^{-1}"']
+W^* \arrow[r, "T^*"] & V^* \arrow[d, shift left=1.1ex, "\Phi_V^{-1}"] \\
+W \arrow[u, "\Phi_W"] \arrow[r, dashed, "T'"'] & V \arrow[u, shift left=1.1ex, "\Phi_V"]
 \end{tikzcd}
 \end{center}
 
@@ -142,7 +194,7 @@ Let $V, W, U$ be inner product spaces over $K$ (where $K = \mathbb{R}$ or $\math
 
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item This was proved already. (We will use repeatedly that if $\langle x, y_1 \rangle = \langle x, y_2 \rangle$ for all $x$, then $y_1 = y_2$).
+    \item This was proved already. (We will use repeatedly that if $\langle x, y_1 \rangle = \langle x, y_2 \rangle$ for all $x$, then $y_1 = y_2$; this is \cref{lem:basic_properties_inner_prod} \textbf{(c)}).
     \item Let $w \in W$ and $v \in V$. We have:
     \begin{align*}
         \langle v, (S+T)^*(w) \rangle &= \langle (S+T)(v), w \rangle \\
@@ -185,7 +237,10 @@ Let $V, W$ be finite-di\-men\-sional inner product spaces. Let $T \colon V \to W
 \end{enumerate}
 \end{lemma}
 
+% Extractor: Opus 5 (High)
 \begin{proof}
+Only \textbf{(a)} is established from scratch; the notes then deduce the other three from it in the order \textbf{(d)}, \textbf{(b)}, \textbf{(c)}, each step relying only on the ones already obtained. The forward references below are therefore not circular. The passages from a subspace to its double orthogonal complement all invoke \cref{cor:bidual_orthogonal_complement}, which requires the subspace in question to be finite-di\-men\-sional; we point out each time why it is.
+% Extractor: Gemini 3.1 Pro
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $w \in W$. Then:
     \begin{align*}
@@ -206,11 +261,17 @@ Let $V, W$ be finite-di\-men\-sional inner product spaces. Let $T \colon V \to W
     \[
         (\Img T^*)^\perp = ((\ker T)^\perp)^\perp = \ker T.
     \]
+% Extractor: Opus 5 (High)
+    The second equality is \cref{cor:bidual_orthogonal_complement} applied to the subspace $\ker T \subseteq V$, which is finite-di\-men\-sional because $V$ is.
+% Extractor: Gemini 3.1 Pro
 
     \item Apply the orthogonal complement $(-)^\perp$ to both sides of \textbf{(a)}:
     \[
         (\ker T^*)^\perp = ((\Img T)^\perp)^\perp = \Img T.
     \]
+% Extractor: Opus 5 (High)
+    Here the second equality is \cref{cor:bidual_orthogonal_complement} applied to $\Img T \subseteq W$; recall that $\Img T$ is finite-di\-men\-sional, being the image of the finite-di\-men\-sional space $V$.
+% Extractor: Gemini 3.1 Pro
 \end{enumerate}
 \end{proof}
 
@@ -240,6 +301,22 @@ Therefore, $B = (\overline{A})\transp = A^*$.
 Let $A \in \M_{m \times n}(K)$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and let $T_A \colon K^n \to K^m$ be the linear map defined by $T_A(v) = A \cdot v$. Endow $K^n$ and $K^m$ with their standard inner products. Then $(T_A)^* = T_{A^*}$.
 \end{corollary}
 
+% Creator: Opus 5 (High)
+\begin{proof}
+Let $\mathcal{E} := (e_1, \dots, e_n)$ and $\mathcal{F} := (f_1, \dots, f_m)$ be the standard bases of $K^n$ and of $K^m$. With respect to the standard inner products both are orthonormal, so \cref{prop:matrix_representation_adjoint} applies to them. The $j$-th column of $[T_A]_{\mathcal{F}}^{\mathcal{E}}$ is $T_A(e_j) = A \cdot e_j$, the $j$-th column of $A$, and therefore $[T_A]_{\mathcal{F}}^{\mathcal{E}} = A$. Consequently,
+\[
+    [(T_A)^*]_{\mathcal{E}}^{\mathcal{F}} = \left( [T_A]_{\mathcal{F}}^{\mathcal{E}} \right)^* = A^*.
+\]
+The same computation applied to $A^*$ gives $[T_{A^*}]_{\mathcal{E}}^{\mathcal{F}} = A^*$. Two linear maps $K^m \to K^n$ with the same representation matrix with respect to the same pair of bases are equal, and hence $(T_A)^* = T_{A^*}$.
+\end{proof}
+
+% The notes open a new titled block here, \qt{Properties of the adjoint matrix};
+% the transcription dropped the heading and left Prop. 23.a.6 hanging under the
+% previous one.
+% Extractor: Opus 5 (High)
+\subsection*{Properties of the adjoint matrix}
+% Extractor: Gemini 3.1 Pro
+
 % Prop 23.a.6
 \begin{proposition}[Properties of the Adjoint Matrix]
 \label{prop:properties_adjoint_matrix}
@@ -254,45 +331,13 @@ Let $K = \mathbb{R}, \mathbb{C}$, and let $A, B \in \M_{m \times n}(K)$ and $C \
 \end{proposition}
 
 \begin{proof}
-This is left as an exercise.
+This is left as an exercise. (The verification is carried out in the solutions at the end of this section.)
 \end{proof}
 
 
-\section*{Exercise Solutions}
-\addcontentsline{toc}{section}{Exercise Solutions}
-
-\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]
-Let $v_1, v_2 \in V$ and $c \in K$. We have:
-\[
-    \varphi_u(v_1 + v_2) = \langle v_1 + v_2, u \rangle = \langle v_1, u \rangle + \langle v_2, u \rangle = \varphi_u(v_1) + \varphi_u(v_2),
-\]
-and
-\[
-    \varphi_u(c v_1) = \langle c v_1, u \rangle = c \langle v_1, u \rangle = c \varphi_u(v_1).
-\]
-Thus, $\varphi_u$ is a linear map.
-\end{exercisesolution}
-
-\begin{exercisesolution}[Proof of \cref{thm:dual_space_inner_product_isomorphism}]
-For $K = \mathbb{R}$, we have $\Phi(u) = \varphi_u$. Then:
-\[
-    \Phi(u_1+u_2)(v) = \langle v, u_1+u_2 \rangle = \langle v, u_1 \rangle + \langle v, u_2 \rangle = \Phi(u_1)(v) + \Phi(u_2)(v),
-\]
-and
-\[
-    \Phi(c u)(v) = \langle v, c u \rangle = c \langle v, u \rangle = c \Phi(u)(v).
-\]
-(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus $\Phi$ is linear.
-
-For $K = \mathbb{C}$, the additivity follows identically. For scalar multiplication:
-\[
-    \Phi(c u)(v) = \langle v, c u \rangle = \overline{c} \langle v, u \rangle = \overline{c} \Phi(u)(v).
-\]
-Thus $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
-
-For the inverse $\Phi^{-1}$: since $\Phi$ is additive, taking $\varphi_1 = \Phi(u_1)$ and $\varphi_2 = \Phi(u_2)$ gives $\Phi^{-1}(\varphi_1 + \varphi_2) = \Phi^{-1}(\varphi_1) + \Phi^{-1}(\varphi_2)$, so $\Phi^{-1}$ is additive.
-For scalar multiplication, let $\varphi = \Phi(u)$ and $\lambda \in \mathbb{C}$. Then $\overline{\lambda} \varphi = \overline{\lambda} \Phi(u) = \Phi(\lambda u)$. Applying $\Phi^{-1}$ to both sides gives $\Phi^{-1}(\overline{\lambda} \varphi) = \lambda u = \lambda \Phi^{-1}(\varphi)$. Setting $c = \overline{\lambda}$ (so $\lambda = \overline{c}$) gives $\Phi^{-1}(c \varphi) = \overline{c} \Phi^{-1}(\varphi)$, proving $\Phi^{-1}$ is $\mathbb{C}$-antilinear.
-\end{exercisesolution}
+% Creator: Gemini 3.1 Pro
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_adjoint_map}
 
 \begin{exercisesolution}[Proof of Additivity of $T'$ (on \cpageref{exc:additivity_T_prime})]
 We have:
