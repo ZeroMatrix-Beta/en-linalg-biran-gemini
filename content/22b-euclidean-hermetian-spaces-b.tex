@@ -1,9 +1,19 @@
+% Source: 22.euclidean-hermitian-spaces.b, which numbers from 22.b.1.
 \renewcommand{\thetheorem}{22.b.\arabic{theorem}}
 \setcounter{theorem}{0}
 % This file continues chapter 22, which was opened in 22a. Do NOT reset the
 % chapter counter here -- that would rewind it to 21 and this section would be
 % numbered 21.b while sitting inside chapter 22.
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
 
+% Extractor: Gemini 3.1 Pro
 \section{The Orthogonal Complement}
 
 Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$).
@@ -13,7 +23,7 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space over $K$ (wher
 \label{def:orthogonal_complement}
 Let $\emptyset \neq S \subseteq V$ be a subset. We define the \newterm{orthogonal complement} of $S$ as:
 \[
-    S^\perp := \{v \in V \mid v \perp s \;\forall s \in S\} = \{v \in V \mid \langle v, s \rangle = 0\}.
+    S^\perp := \{v \in V \mid v \perp s \;\forall s \in S\} = \{v \in V \mid \langle v, s \rangle = 0 \;\forall s \in S\}.
 \]
 When $S = \{v\}$, we write $v^\perp := \{v\}^\perp$.
 \end{definition}
@@ -157,6 +167,15 @@ This shows that $w = 0$, and therefore, $v = u \in U$. We have proven that $(U^\
 If $V$ is a finite-di\-men\-sional inner product space and $U \subseteq V$ is a subspace, then $\dim U + \dim U^\perp = \dim V$.
 \end{corollary}
 
+% Creator: Opus 5 (High)
+\begin{proof}
+Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:orthogonal_complement_finite_dim} applies: $U + U^\perp = V$ and $U \cap U^\perp = \{0\}$, so the sum $U + U^\perp$ is direct and equals $V$. Choosing a basis for $U$ and a basis for $U^\perp$ and concatenating them therefore produces a basis for $V$, whence
+\[
+    \dim U + \dim U^\perp = \dim \left( U \oplus U^\perp \right) = \dim V. \qedhere
+\]
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 \subsection*{Orthogonal and Unitary Matrices}
 
 % Def. (22.b.8)
@@ -212,13 +231,24 @@ where $v_k \in \mathbb{C}_{\text{col}}^n$ for $1 \leq k \leq n$. We compute the 
 %     A^* A = \begin{pmatrix} \text{---} & \overline{v_1}\transp & \text{---} \\ & \vdots & \\ \text{---} & \overline{v_n}\transp & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \left( \overline{v_i}\transp \cdot v_j \right)_{1 \leq i \leq n, 1 \leq j \leq n} = \left( \langle v_j, v_i \rangle \right)_{1 \leq i \leq n, 1 \leq j \leq n}.
 % \end{equation}
 \begin{align}
-\label{eq:unitary_matrix_product}
     A^* A &= \begin{pmatrix} \text{---} & \overline{v_1}\transp & \text{---} \\ & \vdots & \\ \text{---} & \overline{v_n}\transp & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} \nonumber \\
-    &= \left( \overline{v_i}\transp \cdot v_j \right)_{1 \leq i, j \leq n} \\
+    &= \left( \overline{v_i}\transp \cdot v_j \right)_{1 \leq i, j \leq n} \nonumber \\
+    \label{eq:unitary_matrix_product}
     &= \left( \langle v_j, v_i \rangle \right)_{1 \leq i, j \leq n}.
 \end{align}
-Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system, which is equivalent to saying that the resulting matrix in \eqref{eq:unitary_matrix_product} is exactly $I_n$. The equivalence of these statements to $A A^* = I_n$ is a general property of invertible matrices.
+Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system, which is equivalent to saying that the resulting matrix in \eqref{eq:unitary_matrix_product} is exactly $I_n$. This proves \textbf{(a)} $\iff$ \textbf{(b)}.
+
+% Extractor: Opus 5 (High)
+For the remaining equivalences, suppose $A^* A = I_n$. Taking determinants and using $\det(A^*) = \det(\overline{A}\transp) = \det(\overline{A}) = \overline{\det(A)}$, we obtain $\left| \det(A) \right|^2 = 1$, so $\det(A) \ne 0$ and $A$ is invertible. Multiplying $A^* A = I_n$ on the right by $A^{-1}$ gives $A^* = A^{-1}$, which is \textbf{(d)}; and then $A A^* = A A^{-1} = I_n$, which is \textbf{(c)}. Conversely, \textbf{(c)} gives by the same argument $A^* = A^{-1}$ and hence \textbf{(b)}, so all four statements are equivalent.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Orthogonal Case of the Characterization]
+\label{exc:char_orthogonal_matrices_proof}
+Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R})$ and the standard scalar product on $\mathbb{R}^n$, thereby proving \cref{lem:char_orthogonal_matrices}. (Prof. Biran remarks that it is \qt{similar}; the point of writing it out is to see exactly where the complex conjugations of the Hermitian case disappear.)
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 % Cor. (22.b.11)
 \begin{corollary}[Rows of Orthogonal and Unitary Matrices]
@@ -228,6 +258,15 @@ Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system,
     \item Let $A \in \M_{n \times n}(\mathbb{C})$. The matrix $A \in \Unit(n)$ if and only if $A^* \in \Unit(n)$, which holds if and only if the rows of $A$ form an orthonormal basis for $\mathbb{C}^n$.
 \end{enumerate}
 \end{corollary}
+
+% Creator: Opus 5 (High)
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item By \cref{lem:char_orthogonal_matrices}, $A \in \Orth(n)$ if and only if $A\transp A = I_n$, and equally if and only if $A A\transp = I_n$. Applying the same characterization to the matrix $A\transp$, whose transpose is $A$, the condition $A\transp \in \Orth(n)$ reads $(A\transp)\transp A\transp = A A\transp = I_n$ --- the very same equation. Hence $A \in \Orth(n) \iff A\transp \in \Orth(n)$. Finally, the columns of $A\transp$ are exactly the rows of $A$, so $A\transp \in \Orth(n)$ says precisely that the rows of $A$ form an orthonormal system, and an orthonormal system of $n$ vectors in $\mathbb{R}^n$ is a basis by \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
+    \item Identical, with \cref{lem:char_unitary_matrices} in place of \cref{lem:char_orthogonal_matrices} and $A^*$ in place of $A\transp$: the condition $A^* \in \Unit(n)$ reads $(A^*)^* A^* = A A^* = I_n$, which is one of the equivalent forms of $A \in \Unit(n)$; and the columns of $A^*$ are the conjugates of the rows of $A$, which form an orthonormal system exactly when the rows do. \qedhere
+\end{enumerate}
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 \subsection*{QR-Decomposition}
 
@@ -241,22 +280,50 @@ Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system,
 \end{theorem}
 
 \begin{proof}[Proof of \cref{thm:qr_decomposition_invertible}]
-We prove parts \textbf{(a)} and \textbf{(b)} simultaneously for $K = \mathbb{R}$ and $K = \mathbb{C}$:
-\begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A \in \GL_n(\mathbb{R})$. Write
+We prove parts \textbf{(a)} and \textbf{(b)} together, writing $K = \mathbb{R}$ or $K = \mathbb{C}$ throughout; the only difference between the two cases is whether the resulting $Q$ is called orthogonal or unitary.
+
+Let $A \in \GL_n(K)$ and write
 \[
     A := \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}
 \]
-with $v_k \in \mathbb{R}_{\text{col}}^n$. Since $A \in \GL_n(\mathbb{R})$, the vectors $v_1, \dots, v_n$ form a basis for $\mathbb{R}^n$. Apply the Gram-Schmidt orthogonalization process to $v_1, \dots, v_n$ to obtain an orthonormal basis $e_1, \dots, e_n$ for $\mathbb{R}^n$. Recall that for all $1 \leq j \leq n$, $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_j)$. We have $v_j = \sum_{i=1}^j \langle v_j, e_i \rangle e_i$, which yields $A = Q \cdot R$ with $Q \in \Orth(n)$ and $R$ upper triangular.
+with $v_k \in K_{\text{col}}^n$. Since $A \in \GL_n(K)$, the vectors $v_1, \dots, v_n$ form a basis for $K^n$. Apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to $v_1, \dots, v_n$ to obtain an orthonormal basis $e_1, \dots, e_n$ for $K^n$, and recall from part \textbf{(c)} of that theorem that
+\begin{equation} \label{eq:qr_nested_spans}
+    \Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_j) \qquad \forall \; 1 \le j \le n.
+\end{equation}
 
-    \item Let $A \in \GL_n(\mathbb{C})$. Following the identical construction over $\mathbb{C}$ yields $A = Q \cdot R$ with $Q \in \Unit(n)$ and $R$ upper triangular.
-\end{enumerate}
+% Extractor: Opus 5 (High)
+Fix $1 \le j \le n$. By \eqref{eq:qr_nested_spans} the vector $v_j$ lies in $\Sp(e_1, \dots, e_j)$, and since $(e_1, \dots, e_j)$ is orthonormal, \cref{thm:properties_orthogonal_systems} \textbf{(b)} identifies its coefficients: they are $\langle v_j, e_i \rangle / \langle e_i, e_i \rangle = \langle v_j, e_i \rangle$. So the whole list expands as
+\begin{align*}
+    v_1 &= \langle v_1, e_1 \rangle e_1, \\
+    v_2 &= \langle v_2, e_1 \rangle e_1 + \langle v_2, e_2 \rangle e_2, \\
+        &\;\;\vdots \\
+    v_j &= \langle v_j, e_1 \rangle e_1 + \dots + \langle v_j, e_j \rangle e_j, \\
+        &\;\;\vdots \\
+    v_n &= \langle v_n, e_1 \rangle e_1 + \dots + \langle v_n, e_n \rangle e_n,
+\end{align*}
+with no $e_i$ of index $i > j$ ever appearing in $v_j$. Read column by column, these $n$ identities are exactly one matrix product:
+\[
+    \underbrace{\begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}}_{A}
+    = \underbrace{\begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix}}_{Q}
+      \underbrace{\begin{pmatrix}
+        \langle v_1, e_1 \rangle & \langle v_2, e_1 \rangle & \dots & \langle v_n, e_1 \rangle \\
+        0 & \langle v_2, e_2 \rangle & \dots & \langle v_n, e_2 \rangle \\
+        \vdots & & \ddots & \vdots \\
+        0 & 0 & \dots & \langle v_n, e_n \rangle
+      \end{pmatrix}}_{R},
+\]
+that is, $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $R_{ij} = 0$ for $i > j$.
+
+The columns of $Q$ are $e_1, \dots, e_n$, an orthonormal basis of $K^n$, so $Q \in \Orth(n)$ when $K = \mathbb{R}$ and $Q \in \Unit(n)$ when $K = \mathbb{C}$ (\cref{def:orthogonal_unitary_matrices}); and $R$ is upper triangular by construction. Hence $A = Q \cdot R$ as required.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
 
-\begin{theorem}[Extension of QR-Decomposition for All Matrices]
+% The notes state this extension without a number -- it follows the numbered
+% Thm. 22.b.12 as unnumbered prose -- so it is a theorem*, not a theorem.
+\begin{theorem*}[Extension of QR-Decomposition for All Matrices]
 \label{thm:qr_decomposition_all}
-Let $A \in \M_{n \times n}(K)$, and let $r := \rank(A)$. Then there exist matrices $Q$ and $R$ with $Q \in \Orth(n)$ if $K = \mathbb{R}$ (and $Q \in \Unit(n)$ if $K = \mathbb{C}$), and $R = \begin{pmatrix} C & * \\ 0 & 0 \end{pmatrix} \in \M_{n \times n}(K)$, where $C \in \M_{r \times r}(K)$ is an upper triangular matrix, such that $A = Q \cdot R$.
-\end{theorem}
+Let $A \in \M_{n \times n}(K)$, and let $r := \rank(A)$. Then there exist matrices $Q$ and $R$ with $Q \in \Orth(n)$ if $K = \mathbb{R}$ (and $Q \in \Unit(n)$ if $K = \mathbb{C}$), and $R = \left(\begin{array}{c|c} C & * \\ \hline 0 & 0 \end{array}\right) \in \M_{n \times n}(K)$, where $C \in \M_{r \times r}(K)$ is an upper triangular matrix, such that $A = Q \cdot R$.
+\end{theorem*}
 
 \begin{proof}
 Let
@@ -273,15 +340,99 @@ Note that there exist indices $1 \leq i_1 < \dots < i_r \leq n$ such that:
 To see this, let $1 \leq i_1$ be the minimal index $j$ such that $v_j \neq 0$. (Since $r \geq 1$, there exists such an index.) Clearly, $\Sp(v_1, \dots, v_{i_1}) = \Sp(v_{i_1})$. Suppose we have defined $1 \leq i_1 < \dots < i_k < n$ as above. Consider now the minimal index $\ell$, with $i_k < \ell \leq n$ and such that $v_\ell \notin \Sp(v_{i_1}, \dots, v_{i_k})$. If there is no such $\ell$, then $k = r$ and we are done. Otherwise, take $i_{k+1} := \ell$. Continue the construction by induction.
 
 Now, apply the Gram-Schmidt process to the list of vectors $v_{i_1}, \dots, v_{i_r}$ and obtain an orthonormal system $e_1, \dots, e_r$ such that $(e_1, \dots, e_k)$ is a basis for $\Sp(v_{i_1}, \dots, v_{i_k}) = \Sp(v_1, v_2, \dots, v_{i_k})$.
-Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how?). Take
+Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how? --- see \cref{exc:extend_orthonormal_system}). Take
 \[
     Q := \begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix},
 \]
-and let $R$ be the exact same matrix block as in the previous proof. This guarantees $A = Q \cdot R$ with $R$ taking the desired block form.
+and let $R$ be built exactly as in the previous proof, by $R_{ij} := \langle v_j, e_i \rangle$.
+
+% Extractor: Opus 5 (High)
+The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$ --- upper triangular for the same reason as before --- while the remaining columns are the arbitrary entries denoted by $*$. Hence $A = Q \cdot R$ with $R$ of the stated form.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
 
+% Extractor: Opus 5 (High)
+\begin{exercise}[Extending an Orthonormal System to an Orthonormal Basis]
+\label{exc:extend_orthonormal_system}
+Let $V$ be a finite-di\-men\-sional inner product space and let $(e_1, \dots, e_r)$ be an orthonormal system in $V$ with $r \le n := \dim V$. Show that it can be extended to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $V$. (This is the step marked \qt{how?} in the proof above.)
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 \begin{exercise}[Gram-Schmidt on Linearly Dependent Vectors]
+\label{exc:gram_schmidt_dependent}
 Let $V$ be an inner product space. Suppose $v_1, \dots, v_m \in V$ are not necessarily linearly independent, but not all of them are $0$. What happens if we apply the Gram-Schmidt orthogonalization process?
 
 Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$ that spans $\Sp(v_1, \dots, v_{i_k})$ and we encounter a vector $v_{i_{k+1}} \in \Sp(v_1, v_2, \dots, v_{i_k})$. How will the next vector in the Gram-Schmidt process look like?
 \end{exercise}
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_orthogonal_complement}
+
+\begin{exercisesolution}[Proof of \cref{lem:orthogonal_complement_properties} \textbf{(b)}, the identity $0^\perp = V$]
+  Here $0$ denotes the subset $\{0\} \subseteq V$, so by \cref{def:orthogonal_complement}
+  \[ 0^\perp = \{ v \in V \mid \langle v, 0 \rangle = 0 \}. \]
+  By \cref{lem:basic_properties_inner_prod} \textbf{(a)} we have $\langle v, 0 \rangle = 0$ for \emph{every} $v \in V$, so the defining condition is satisfied by every vector of $V$ and $0^\perp = V$.
+
+  The companion statement $V^\perp = \{0\}$, proved in the text, is the mirror image: the larger the set, the more orthogonality conditions, and the smaller its complement.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lem:orthogonal_complement_properties} \textbf{(d)}]
+  Assume $S \subseteq T$ and let $v \in T^\perp$, so that $\langle v, t \rangle = 0$ for every $t \in T$. Every $s \in S$ is in particular an element of $T$, so $\langle v, s \rangle = 0$ for every $s \in S$, that is, $v \in S^\perp$. Hence $T^\perp \subseteq S^\perp$, which is the assertion $S^\perp \supseteq T^\perp$.
+
+  Note that the inclusion reverses: passing to a larger set imposes more conditions on $v$, so fewer vectors survive.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:char_orthogonal_matrices_proof}, that is, of \cref{lem:char_orthogonal_matrices}]
+  Write
+  \[
+      A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}, \qquad v_k \in \mathbb{R}^n_{\text{col}},
+  \]
+  and recall that the standard scalar product on $\mathbb{R}^n$ is $\langle u, v \rangle = u\transp v$.
+
+  \textbf{(a)} $\iff$ \textbf{(b)}. The rows of $A\transp$ are the vectors $v_1\transp, \dots, v_n\transp$, so
+  \[
+      A\transp A = \begin{pmatrix} \text{---} & v_1\transp & \text{---} \\ & \vdots & \\ \text{---} & v_n\transp & \text{---} \end{pmatrix} \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix} = \left( v_i\transp v_j \right)_{1 \le i, j \le n} = \left( \langle v_i, v_j \rangle \right)_{1 \le i, j \le n}.
+  \]
+  By \cref{def:orthogonal_unitary_matrices}, $A$ is orthogonal exactly when $\langle v_i, v_j \rangle = \delta_{ij}$ for all $i, j$, which says precisely that the matrix just computed is $I_n$.
+
+  This is where the conjugations of the Hermitian case have gone. There the left factor was $\overline{A}\transp$, so the $(i,j)$ entry came out as $\overline{v_i}\transp v_j = \langle v_j, v_i \rangle$ --- the arguments in the opposite order. Over $\mathbb{R}$ there is no conjugation, the scalar product is symmetric, and the entry is $\langle v_i, v_j \rangle$. Since the condition imposed is the symmetric one $\delta_{ij}$, the difference is invisible in the conclusion, but it is real in the computation.
+
+  \textbf{(b)} $\implies$ \textbf{(d)}. Suppose $A\transp A = I_n$. Taking determinants and using $\det(A\transp) = \det(A)$ gives $\det(A)^2 = 1$, so $\det(A) = \pm 1 \ne 0$ and $A$ is invertible. Multiplying $A\transp A = I_n$ on the right by $A^{-1}$ yields $A\transp = A^{-1}$.
+
+  \textbf{(d)} $\implies$ \textbf{(c)}. If $A\transp = A^{-1}$, then $A A\transp = A A^{-1} = I_n$.
+
+  \textbf{(c)} $\implies$ \textbf{(b)}. Suppose $A A\transp = I_n$. Determinants again give $\det(A)^2 = 1$, so $A$ is invertible; multiplying on the left by $A^{-1}$ gives $A\transp = A^{-1}$, and hence $A\transp A = A^{-1} A = I_n$.
+
+  The four statements are therefore equivalent.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:extend_orthonormal_system}]
+  An orthonormal system is in particular an orthogonal system, hence linearly independent by \cref{thm:properties_orthogonal_systems} \textbf{(a)}. So $(e_1, \dots, e_r)$ can be extended to a basis $(e_1, \dots, e_r, u_{r+1}, \dots, u_n)$ of $V$.
+
+  Now apply the Gram-Schmidt process (\cref{thm:gram_schmidt}) to that basis, producing $w_1, \dots, w_n$. The point is that Gram-Schmidt does not disturb an initial segment that is already orthonormal. Indeed $w_1 = e_1$, and if $2 \le j \le r$ and $w_i = e_i$ for all $i < j$, then
+  \[ w_j = e_j - \sum_{i=1}^{j-1} \frac{\langle e_j, w_i \rangle}{\langle w_i, w_i \rangle} w_i = e_j - \sum_{i=1}^{j-1} \frac{\langle e_j, e_i \rangle}{1} \, e_i = e_j, \]
+  because $\langle e_j, e_i \rangle = 0$ for $i \ne j$ and $\langle e_i, e_i \rangle = 1$. By induction $w_i = e_i$ for all $1 \le i \le r$.
+
+  Therefore $(w_1, \dots, w_n) = (e_1, \dots, e_r, w_{r+1}, \dots, w_n)$ is an orthogonal basis of $V$, and normalizing only the tail (the first $r$ vectors already have norm $1$) gives the orthonormal basis
+  \[ \left( e_1, \dots, e_r, \frac{w_{r+1}}{\|w_{r+1}\|}, \dots, \frac{w_n}{\|w_n\|} \right) \]
+  extending the given system.
+
+  There is a second route, worth recording because it is the one the geometry suggests: put $U := \Sp(e_1, \dots, e_r)$. By \cref{cor:dim_orthogonal_complement}, $\dim U^\perp = n - r$; choose an orthonormal basis $(f_{r+1}, \dots, f_n)$ of $U^\perp$, which exists by \cref{cor:orthonormal_basis_exists}. Every $f_i$ is orthogonal to every $e_j$ by the definition of $U^\perp$, so the concatenation $(e_1, \dots, e_r, f_{r+1}, \dots, f_n)$ is an orthonormal system of $n$ vectors, hence linearly independent, hence a basis of $V$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:gram_schmidt_dependent}]
+  \textbf{The next vector is $0$.} Suppose that after $k$ successful steps we have an orthogonal system $e_1, \dots, e_k$ with
+  \[ U := \Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k}), \]
+  and that the next vector to be processed satisfies $v_{i_{k+1}} \in \Sp(v_1, \dots, v_{i_k}) = U$. The Gram-Schmidt formula prescribes
+  \[ w := v_{i_{k+1}} - \sum_{i=1}^{k} \frac{\langle v_{i_{k+1}}, e_i \rangle}{\langle e_i, e_i \rangle} \, e_i . \]
+  But $(e_1, \dots, e_k)$ is an orthogonal system spanning $U$, and $v_{i_{k+1}}$ lies in $U$, so \cref{thm:properties_orthogonal_systems} \textbf{(b)} tells us the coefficients of $v_{i_{k+1}}$ in that system exactly:
+  \[ v_{i_{k+1}} = \sum_{i=1}^{k} \frac{\langle v_{i_{k+1}}, e_i \rangle}{\langle e_i, e_i \rangle} \, e_i . \]
+  The subtracted sum is therefore $v_{i_{k+1}}$ itself --- it is the orthogonal projection $P_U(v_{i_{k+1}})$, which fixes $U$ pointwise by \cref{prop:orthogonal_projection_properties} \textbf{(d)} --- and consequently
+  \[ w = v_{i_{k+1}} - v_{i_{k+1}} = 0 . \]
+
+  \textbf{What this means for the process.} The construction then stalls: the next step would divide by $\langle w, w \rangle = 0$. Geometrically this is exactly right --- $v_{i_{k+1}}$ contributes no new direction, so there is nothing left after removing its component along $U$.
+
+  \textbf{The remedy.} Discard every vector that produces $0$ and carry on with the next one. The vectors that survive are precisely a maximal linearly independent sublist $v_{i_1}, \dots, v_{i_r}$ of $v_1, \dots, v_m$, where $r = \dim \Sp(v_1, \dots, v_m)$, and the output $e_1, \dots, e_r$ is an orthogonal basis of $\Sp(v_1, \dots, v_m)$ satisfying $\Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k})$ for every $k$.
+
+  This is what the proof of the extension of the QR-decomposition on \cpageref{thm:qr_decomposition_all} arranges in advance: rather than letting the process stall, it selects the indices $i_1 < \dots < i_r$ first and applies Gram-Schmidt only to $v_{i_1}, \dots, v_{i_r}$, which are linearly independent by construction.
+\end{exercisesolution}
