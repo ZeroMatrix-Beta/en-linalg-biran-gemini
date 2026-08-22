@@ -42,16 +42,27 @@ while read -r label; do
   # (1) The anchor is a heading: the label sits in an unnumbered environment
   #     and picked up the enclosing chapter/section. Labels that deliberately
   #     mark a heading are spelled ch:*/sec:*/subsec:* and are legitimate.
+  #     Subsections are unnumbered in this document, so a \cref to one prints
+  #     the enclosing *section* number: only chapter.*/section.* anchors may be
+  #     whitelisted, and only for a label that says so in its prefix.
   case "$anchor" in
-    chapter.*|section.*|subsection.*)
+    chapter.*)
       case "$label" in
-        ch:*|sec:*|subsec:*) ;;
-        *)
-          printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
-          bad=1
-          continue
-          ;;
+        ch:*) ;;
+        *) printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"; bad=1; continue ;;
       esac
+      ;;
+    section.*)
+      case "$label" in
+        sec:*) ;;
+        *) printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"; bad=1; continue ;;
+      esac
+      ;;
+    subsection.*)
+      printf 'BAD  %-40s prints "%s"  (anchor %s, subsections are unnumbered -- use \\cpageref)\n' \
+        "$label" "$num" "$anchor"
+      bad=1
+      continue
       ;;
   esac
 

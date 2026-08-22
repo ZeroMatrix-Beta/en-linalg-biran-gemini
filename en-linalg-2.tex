@@ -468,12 +468,23 @@
 \newtheorem*{corollary*}{Corollary}
 \newtheorem*{claim*}{Claim}
 
+% A claim that later text needs to cite gets a number, on a counter of its own
+% so that inserting one never disturbs the Theorem/Lemma/Definition sequence.
+% Give every one of them a descriptive name in the optional argument.
+\newtheorem{claim}{Claim}[chapter]
+
+\makeatletter
+\AtBeginDocument{%
+  \renewcommand{\theHclaim}{claim.\thechapter.\arabic{claim}}%
+}
+\makeatother
+
 \theoremstyle{defthm}
 \newtheorem*{definition*}{Definition}
 
 \theoremstyle{questionthm}
-\newtheorem*{question}{Question}
-\newtheorem*{answer}{Answer}
+\newtheorem{question}{Question}[chapter]
+\newtheorem{answer}{Answer}[chapter]
 
 % 6. AI-Note (\faRobot)
 \definecolor{GoldOrange}{HTML}{C26B00}
@@ -484,13 +495,18 @@
  \thmname{\textcolor{EnvAINote}{\sffamily\bfseries#1}}\thmnumber{\sffamily\bfseries\ #2}%
  \thmnote{\ \textcolor{EnvAINote}{\bfseries(}{\normalfont\sffamily\itshape#3}\textcolor{EnvAINote}{\bfseries)}}}
 
+% Note-like environments carry numbers too, each on a counter of its own and
+% reset per chapter, so that \cref works on them and inserting one never
+% disturbs the Theorem/Lemma/Definition sequence. Before this, a \label inside
+% one of them silently attached to whatever counter had been stepped last,
+% which is what tools/check-crefs.sh was written to catch.
 \theoremstyle{remarkthm}
-\newtheorem*{notation}{Notation}
-\newtheorem*{remark}{Remark}
-\newtheorem*{summary}{Summary}
-\newtheorem*{importantremark}{Important remark}
-\newtheorem*{goals}{Goals}
-\newtheorem*{conclusion}{Conclusion}
+\newtheorem{notation}{Notation}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{summary}{Summary}[chapter]
+\newtheorem{importantremark}{Important remark}[chapter]
+\newtheorem{goals}{Goals}[chapter]
+\newtheorem{conclusion}{Conclusion}[chapter]
 
 \theoremstyle{ainotethm}
 \newtheorem*{ainote}{AI-Note}
@@ -540,9 +556,9 @@
 \makeatother
 
 \theoremstyle{examplethm}
-\newtheorem*{exercise}{Exercise}
-\newtheorem*{example}{Example}
-\newtheorem*{warmup}{Warm up}
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{warmup}{Warm up}[chapter]
 
 % ==========================================
 % CLEVEREF NAMES
@@ -557,6 +573,30 @@
 \Crefname{definition}{Definition}{Definitions}
 \crefname{proposition}{Proposition}{Propositions}
 \Crefname{proposition}{Proposition}{Propositions}
+\crefname{claim}{Claim}{Claims}
+\Crefname{claim}{Claim}{Claims}
+\crefname{remark}{Remark}{Remarks}
+\Crefname{remark}{Remark}{Remarks}
+\crefname{importantremark}{Important remark}{Important remarks}
+\Crefname{importantremark}{Important remark}{Important remarks}
+\crefname{example}{Example}{Examples}
+\Crefname{example}{Example}{Examples}
+\crefname{exercise}{Exercise}{Exercises}
+\Crefname{exercise}{Exercise}{Exercises}
+\crefname{notation}{Notation}{Notations}
+\Crefname{notation}{Notation}{Notations}
+\crefname{summary}{Summary}{Summaries}
+\Crefname{summary}{Summary}{Summaries}
+\crefname{question}{Question}{Questions}
+\Crefname{question}{Question}{Questions}
+\crefname{answer}{Answer}{Answers}
+\Crefname{answer}{Answer}{Answers}
+\crefname{goals}{Goals}{Goals}
+\Crefname{goals}{Goals}{Goals}
+\crefname{conclusion}{Conclusion}{Conclusions}
+\Crefname{conclusion}{Conclusion}{Conclusions}
+\crefname{warmup}{Warm up}{Warm ups}
+\Crefname{warmup}{Warm up}{Warm ups}
 \crefname{aitheorem}{AI-Theorem}{AI-Theorems}
 \Crefname{aitheorem}{AI-Theorem}{AI-Theorems}
 \crefname{ailemma}{AI-Lemma}{AI-Lemmata}

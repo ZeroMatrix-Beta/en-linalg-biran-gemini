@@ -1,12 +1,24 @@
 \renewcommand{\thetheorem}{17.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{16}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
 \chapter{Matrices}
 
+% Extractor: Gemini 3.1 Pro
 \section{Matrix Multiplication}
 
+% def:17.a.1
 \begin{definition}[Matrix Multiplication]
-Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. We define a new matrix, which is called the \qt{product} (or \qt{multiplication}) of $A$ and $B$, denoted by $A \cdot B \in \M_{m \times p}(K)$.
+\label{def:matrix_multiplication}
+Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. We define a new matrix, which is called the \newterm{product} (or \newterm{multiplication}) of $A$ and $B$, denoted by $A \cdot B \in \M_{m \times p}(K)$.
 
 Write $A = (a_{ij})_{\substack{1 \le i \le m \\ 1 \le j \le n}}$ and $B = (b_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le p}}$. The matrix $A \cdot B$ has entries $(c_{ij})_{\substack{1 \le i \le m \\ 1 \le j \le p}}$, where
 \begin{equation*}
@@ -93,6 +105,12 @@ If $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$, then $A \cdot B$ i
     \item If $A \in \M_{m \times n}(K)$ and $v \in K_{\text{col}}^{n}$, we have previously defined the matrix-vector product $A \cdot v \in K_{\text{col}}^{m}$. However, we can also identify $K_{\text{col}}^{n} = \M_{n \times 1}(K)$. If we view $v$ as an $n \times 1$ matrix, then the matrix multiplication of $A$ and $v$ yields the exact same result as applying $A$ to the vector $v$.
     
     \item If $A \in \M_{m \times n}(K)$ and $w \in K_{\text{row}}^{m} = \M_{1 \times m}(K)$, then we can define the left-multiplication $w \cdot A \in \M_{1 \times n}(K) = K_{\text{row}}^{n}$. If $A$ is represented by its row vectors $v_1, \dots, v_m$, this operation scales and sums the rows of $A$ according to the entries of $w$.
+% Extractor: Opus 5 (High)
+    This gives the product a row-wise description matching the column-wise one above. If $A$ has rows $v_1, \dots, v_m$ and $B \in \M_{n \times p}(K)$ has columns $w_1, \dots, w_p$, then
+    \begin{equation*}
+        A \cdot B = \begin{pmatrix} | & & | \\ A w_1 & \dots & A w_p \\ | & & | \end{pmatrix} = \begin{pmatrix} \text{---} & v_1 \cdot B & \text{---} \\ & \vdots & \\ \text{---} & v_m \cdot B & \text{---} \end{pmatrix}.
+    \end{equation*}
+% Extractor: Gemini 3.1 Pro
     
     \item Let $v = (a_1, \dots, a_n) \in K_{\text{row}}^{n} = \M_{1 \times n}(K)$, and let $w = (b_1, \dots, b_n)\transp \in K_{\text{col}}^{n} = \M_{n \times 1}(K)$. Then the product $v \cdot w \in \M_{1 \times 1}(K) = K$ is simply the standard scalar product:
     \begin{equation*}
@@ -107,16 +125,15 @@ As a conclusion from our previous discussions on linear maps, let $T: V \to W$ a
     [S \circ T]_{\mathcal{E}}^{\mathcal{B}} = [S]_{\mathcal{E}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}}
 \]
 
+% Extractor: Opus 5 (High)
 \begin{center}
-\begin{tikzcd}[column sep=7em, row sep=4em, ampersand replacement=\&]
-% Top row: Vector Spaces and Maps
-V \arrow[r, "T"] \arrow[rr, bend left=25, "S \circ T"] \& W \arrow[r, "S"] \& U \\
-% Bottom row: The bases associated with each space
-\Sp(\mathcal{B}) \arrow[u, phantom, "\in", rotate=90, yshift=-0em] \& 
-\Sp(\mathcal{C}) \arrow[u, phantom, "\in", rotate=90, yshift=-0.2em] \& 
-\Sp(\mathcal{E}) \arrow[u, phantom, "\in", rotate=90, yshift=-0em]
+\begin{tikzcd}[column sep=7em, row sep=3em, ampersand replacement=\&]
+V \arrow[r, "T"] \arrow[rr, bend left=25, "S \circ T"] \& W \arrow[r, "S"] \& U
 \end{tikzcd}
 \end{center}
+Here $\mathcal{B}$ is a basis of the source $V$, $\mathcal{C}$ a basis of the space $W$ in the middle, and $\mathcal{E}$ a basis of the target $U$; each matrix in the identity above carries the basis of its own source as a superscript and the basis of its own target as a subscript, and the two occurrences of $\mathcal{C}$ meet in the middle exactly where $T$ and $S$ meet.
+
+% Extractor: Gemini 3.1 Pro
 
 \subsection{Notation and The Identity Matrix}
 
@@ -124,17 +141,19 @@ Let $\mathcal{I}$ be an index set. For $i, j \in \mathcal{I}$, we define the \te
 \begin{equation*}
     \delta_{ij} := \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}
 \end{equation*}
-Using this, we define the \qt{identity matrix} $I_n \in \M_{n \times n}(K)$ as $I_n = (\delta_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le n}}$. Explicitly, this is:
+Using this, we define the \newterm{identity matrix} $I_n \in \M_{n \times n}(K)$ as $I_n = (\delta_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le n}}$. Explicitly, this is:
 \begin{equation*}
     I_n = \begin{pmatrix} 1 & & 0 \\ & \ddots & \\ 0 & & 1 \end{pmatrix}
 \end{equation*}
 
 \begin{remark}
-Let $V$ be a finite-dimensional vector space, and let $n := \dim V$. Let $\id_V: V \to V$ be the identity map, and let $\mathcal{B}$ be any basis for $V$. Then, $[\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n$. In other words, the matrix representing the identity map with respect to the basis $\mathcal{B}$ is precisely the identity matrix $I_n$.
+\label{rem:identity_represents_id}
+Let $V$ be a finite-di\-men\-sional vector space, and let $n := \dim V$. Let $\id_V: V \to V$ be the identity map, and let $\mathcal{B}$ be any basis for $V$. Then, $[\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n$. In other words, the matrix representing the identity map with respect to the basis $\mathcal{B}$ is precisely the identity matrix $I_n$.
 \end{remark}
 
-\begin{exercise}
-Prove the preceding remark.
+\begin{exercise}[The Identity Map is Represented by $I_n$]
+\label{exc:identity_represents_id}
+Prove \cref{rem:identity_represents_id}.
 \end{exercise}
 
 \subsection{Properties of Matrix Multiplication}
@@ -229,9 +248,27 @@ Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear
 \end{enumerate}
 \end{proof}
 
-\begin{exercise}
-The proof for statement \textbf{(d)} of \cref{prop:matrix_multiplication_properties} relies on the properties of scalar multiplication of linear maps. You are encouraged to verify these properties.
+% Extractor: Opus 5 (High)
+The notes prepare statement \textbf{(d)} differently, through the following observation about the map that scales every vector by a fixed factor.
+
+\begin{claim}[The Scaling Map is Represented by $\alpha I_n$]
+\label{claim:scaling_map_matrix}
+Let $V$ be a finite-di\-men\-sional vector space over $K$, let $\alpha \in K$, and let $\mathcal{B}$ be a basis for $V$. Consider the map $Q: V \to V$ defined by $Q(v) := \alpha v$. Then $Q$ is linear, and moreover
+\[
+[Q]_{\mathcal{B}}^{\mathcal{B}} = \alpha \cdot I_n = \begin{pmatrix} \alpha & & 0 \\ & \ddots & \\ 0 & & \alpha \end{pmatrix}, \qquad \text{where } n = \dim V.
+\]
+\end{claim}
+
+\begin{exercise}[Preparation for Statement (d)]
+\label{exc:scaling_map_and_statement_d}
+Prove \cref{claim:scaling_map_matrix}, and use it to prove statement \textbf{(d)} of \cref{prop:matrix_multiplication_properties}.
 \end{exercise}
+
+\begin{remark}
+One can prove \cref{prop:matrix_multiplication_properties} also by direct calculation with the entries. It is worth trying once, say for $(AB)C = A(BC)$, to see that it is not very pleasant --- and to appreciate how much work the passage to linear maps saves.
+\end{remark}
+
+% Extractor: Gemini 3.1 Pro
 
 \begin{remark}
 In the space $\M_{n \times n}(K)$, we can add and subtract matrices, and we can also multiply matrices. There is additionally a multiplicative unit $I_n$. Because these operations satisfy associativity, distributivity, and other relevant axioms, it follows that $\M_{n \times n}(K)$ forms a (non-com\-mu\-ta\-tive) ring with a unity.
@@ -245,14 +282,10 @@ Matrix multiplication is, in general, \textbf{not commutative}. There exist matr
 \end{align*}
 \end{importantremark}
 
-\begin{remark}
-In the space $\M_{n \times n}(K)$, we can add and subtract matrices, and we can also multiply matrices. There is additionally a multiplicative unit $I_n$. Because these operations satisfy associativity, distributivity, and other relevant axioms, it follows that $\M_{n \times n}(K)$ forms a (non-commutative) ring with a unity.
-\end{remark}
-
 \subsection{Invertible Matrices}
 
 \begin{definition}[Invertibility]
-An $n \times n$ matrix $A \in \M_{n \times n}(K)$ is called \qt{invertible} if there exists a matrix $B \in \M_{n \times n}(K)$ such that $A \cdot B = B \cdot A = I_n$.
+An $n \times n$ matrix $A \in \M_{n \times n}(K)$ is called \newterm{invertible} if there exists a matrix $B \in \M_{n \times n}(K)$ such that $A \cdot B = B \cdot A = I_n$.
 \end{definition}
 
 \begin{remark}
@@ -268,11 +301,11 @@ This proves the uniqueness.
 \end{proof}
 
 \begin{definition}[Inverse Matrix and the General Linear Group]
-If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ is called the \qt{inverse} of $A$ and is denoted by $A^{-1}$. We have:
+If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ is called the \newterm{inverse} of $A$ and is denoted by $A^{-1}$. We have:
 \begin{equation*}
     A \cdot A^{-1} = A^{-1} \cdot A = I_n
 \end{equation*}
-\qt{The set of all invertible $n \times n$ matrices over $K$} is denoted by:
+The set of all invertible $n \times n$ matrices over $K$ is denoted by:
 \begin{equation*}
     \GL_n(K) = \GL(n, K) := \{A \in \M_{n \times n}(K) \mid A \text{ is invertible}\}
 \end{equation*}
@@ -303,7 +336,7 @@ Let $G$ be a group. Then:
 \begin{proposition}[The General Linear Group]
 % prop:17.a.7
 \label{prop:gl_group_structure}
-The set $\GL_n(K)$, endowed with matrix multiplication $(A, B) \mapsto A \cdot B$, is a \qt{group}. The unity is the identity matrix $I_n$. The inverse of a matrix $A \in \GL_n(K)$ is $A^{-1}$. Moreover, for all $A, B \in \GL_n(K)$, we have:
+The set $\GL_n(K)$, endowed with matrix multiplication $(A, B) \mapsto A \cdot B$, is a group. The unity is the identity matrix $I_n$. The inverse of a matrix $A \in \GL_n(K)$ is $A^{-1}$. Moreover, for all $A, B \in \GL_n(K)$, we have:
 \begin{equation*}
     (A^{-1})^{-1} = A \quad \text{and} \quad (AB)^{-1} = B^{-1}A^{-1}
 \end{equation*}
@@ -364,24 +397,10 @@ We apply this equality for the standard basis vectors $w = e_1, w = e_2, \dots, 
 \end{proof}
 
 \begin{exercise}[Properties of the Transpose Map]
-\begin{enumerate}
+\label{exc:transpose_properties_multiplication}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. Prove that $(AB)\transp = B\transp \cdot A\transp$. \newline (\textit{Hint: Proving this by direct calculation is not so bad.})
-    \begin{proof}[Proof Sketch]
-    Let $A = (a_{ij})$ and $B = (b_{jk})$. Let $C = AB = (c_{ik})$. Then $c_{ik} = \sum_{\ell=1}^n a_{i\ell} b_{\ell k}$.
-    The $(i,k)$-th entry of $(AB)\transp$ is $c_{ki} = \sum_{\ell=1}^n a_{k\ell} b_{\ell i}$.
-    Now consider $B\transp = (b'_{k\ell})$ where $b'_{k\ell} = b_{\ell k}$, and $A\transp = (a'_{\ell i})$ where $a'_{\ell i} = a_{i\ell}$.
-    The $(i,k)$-th entry of $B\transp A\transp$ is $\sum_{\ell=1}^n b'_{i\ell} a'_{\ell k} = \sum_{\ell=1}^n b_{\ell i} a_{k\ell}$.
-    This is exactly $c_{ki}$, thus $(AB)\transp = B\transp A\transp$.
-    \end{proof}
     \item Let $A \in \GL_n(K)$. Prove that $A\transp \in \GL_n(K)$ and that $(A\transp)^{-1} = (A^{-1})\transp$.
-    \begin{proof}[Proof Sketch]
-    For the first part, recall that $\det(A\transp) = \det(A)$. Since $A \in \GL_n(K)$, we know $\det(A) \neq 0$, which implies $\det(A\transp) \neq 0$, and thus $A\transp \in \GL_n(K)$.
-    For the second part, we need to show that $A\transp (A^{-1})\transp = I_n$ and $(A^{-1})\transp A\transp = I_n$. Using the result from part (1):
-    \[ A\transp (A^{-1})\transp = (A^{-1}A)\transp = I_n\transp = I_n. \]
-    Similarly,
-    \[ (A^{-1})\transp A\transp = (AA^{-1})\transp = I_n\transp = I_n. \]
-    This confirms that $(A^{-1})\transp$ is indeed the inverse of $A\transp$.
-    \end{proof}
 \end{enumerate}
 \end{exercise}
 
@@ -390,9 +409,9 @@ We apply this equality for the standard basis vectors $w = e_1, w = e_2, \dots, 
 \label{def:triangular_diagonal_matrices}
 A matrix $A \in \M_{n \times n}(K)$, with entries $A = (a_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le n}}$, is called:
 \begin{itemize}
-    \item \qt{Upper triangular} if $a_{ij} = 0$ for all $i > j$.
-    \item \qt{Lower triangular} if $a_{ij} = 0$ for all $i < j$.
-    \item \qt{Diagonal} if $a_{ij} = 0$ for all $i \neq j$. A diagonal matrix has the form:
+    \item \newterm{Upper triangular} if $a_{ij} = 0$ for all $i > j$.
+    \item \newterm{Lower triangular} if $a_{ij} = 0$ for all $i < j$.
+    \item \newterm{Diagonal} if $a_{ij} = 0$ for all $i \neq j$. A diagonal matrix has the form:
     \begin{equation*}
         \begin{pmatrix} * & & 0 \\ & \ddots & \\ 0 & & * \end{pmatrix}
     \end{equation*}
@@ -405,19 +424,110 @@ A matrix $A \in \M_{n \times n}(K)$, with entries $A = (a_{ij})_{\substack{1 \le
 Let $A$ and $B$ be two diagonal matrices (respectively, both upper triangular, or both lower triangular). Then, their product $A \cdot B$ is of the same type.
 \end{lemma}
 
-\begin{proof}
-  Exercise: Let $A = (a_{ij})$ and $B = (b_{ij})$ be two upper triangular matrices. This means $a_{ij} = 0$ for $i > j$ and $b_{ij} = 0$ for $i > j$.
-  Let $C = AB = (c_{ij})$. We want to show that $c_{ij} = 0$ for $i > j$.
-  The entry $c_{ij}$ is given by the sum $c_{ij} = \sum_{k=1}^n a_{ik} b_{kj}$.
+% Extractor: Opus 5 (High)
+The notes leave the proof as an exercise; it is carried out among the solutions
+at the end of this section, on \cpageref{sec:solutions_matrix_multiplication}.
 
-  Consider $c_{ij}$ where $i > j$. For each term $a_{ik} b_{kj}$ in the sum:
-  \begin{itemize}
-    \item If $k < i$: For $a_{ik}$ to be non-zero, $k$ must be less than or equal to $i$. If $k > j$, then $b_{kj}$ must be zero (since $B$ is upper triangular).
-    \item If $k \ge i$: Since $i > j$, we have $k > j$. This implies $b_{kj} = 0$ (since $B$ is upper triangular).
-  \end{itemize}
-  More precisely, for $c_{ij}$ with $i > j$, we have $a_{ik} = 0$ for all $k < i$ such that $k < i$ is false (i.e., $k \ge i$), and $b_{kj} = 0$ for all $k > j$.
-  Thus, in the sum $\sum_{k=1}^n a_{ik} b_{kj}$, if $k < i$, then $a_{ik}$ can be non-zero. But if $k > j$, $b_{kj}$ is zero. So we only need to consider $k \le j$.
-  However, if $k \le j$ and $i > j$, then $i > k$. This means $a_{ik} = 0$ for all $k \le j$.
-  Therefore, every term $a_{ik}b_{kj}$ in the sum must be zero when $i > j$. Hence, $c_{ij} = 0$ for $i > j$, and $C$ is upper triangular.
-  The proofs for diagonal and lower triangular matrices follow similar logic.
-\end{proof}
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_matrix_multiplication}
+
+\begin{exercisesolution}[Proof of \cref{rem:identity_represents_id}]
+Let $\mathcal{B} = (v_1, \dots, v_n)$. The $j$-th column of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is the coordinate vector of $\id_V(v_j) = v_j$ with respect to $\mathcal{B}$. Writing $v_j = 0 \cdot v_1 + \dots + 1 \cdot v_j + \dots + 0 \cdot v_n$ shows that this coordinate vector is $e_j$, whose $i$-th entry is $\delta_{ij}$. So the $(i,j)$-entry of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is $\delta_{ij}$, which is exactly $I_n$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{claim:scaling_map_matrix} and of \cref{prop:matrix_multiplication_properties} \textbf{(d)}]
+The map $Q(v) := \alpha v$ is linear, since $Q(a v + b v') = \alpha(a v + b v') = a \alpha v + b \alpha v' = a Q(v) + b Q(v')$. For its matrix, the $j$-th column of $[Q]_{\mathcal{B}}^{\mathcal{B}}$ is $[Q(v_j)]_{\mathcal{B}} = [\alpha v_j]_{\mathcal{B}} = \alpha e_j$, and a matrix whose $j$-th column is $\alpha e_j$ for every $j$ is precisely $\alpha I_n$.
+
+Now let $\alpha \in K$, $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. Applying the claim in $K^m$ with respect to the standard basis, multiplication by $\alpha$ on $K^m$ is represented by $\alpha I_m$, and therefore $\alpha C = (\alpha I_m) \cdot C$ for every $C \in \M_{m \times q}(K)$; likewise $\alpha A = (\alpha I_m) A$. Using associativity, \cref{prop:matrix_multiplication_properties} \textbf{(a)}, twice:
+\[
+\alpha (AB) = (\alpha I_m)(AB) = \big((\alpha I_m) A\big) B = (\alpha A) B.
+\]
+For the remaining identity, note that $(\alpha I_m) A = A (\alpha I_n)$, since both sides have $(i,j)$-entry $\alpha a_{ij}$. Hence
+\[
+(\alpha A) B = \big(A (\alpha I_n)\big) B = A \big((\alpha I_n) B\big) = A (\alpha B),
+\]
+again by associativity. Together these give $\alpha(AB) = (\alpha A)B = A(\alpha B)$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:transpose_properties_multiplication}]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Write $A = (a_{ij}) \in \M_{m \times n}(K)$ and $B = (b_{jk}) \in \M_{n \times p}(K)$, and put $C := AB$, so that $c_{ik} = \sum_{\ell=1}^{n} a_{i\ell} b_{\ell k}$. Both $(AB)\transp$ and $B\transp A\transp$ lie in $\M_{p \times m}(K)$, so it suffices to compare entries. The $(k,i)$-entry of $(AB)\transp$ is
+    \[
+    c_{ik} = \sum_{\ell=1}^{n} a_{i\ell} b_{\ell k}.
+    \]
+    On the other hand, the $(k,i)$-entry of $B\transp A\transp$ is the $k$-th row of $B\transp$ times the $i$-th column of $A\transp$, that is,
+    \[
+    \sum_{\ell=1}^{n} (B\transp)_{k\ell} (A\transp)_{\ell i} = \sum_{\ell=1}^{n} b_{\ell k} a_{i \ell},
+    \]
+    which is the same sum, since the entries are scalars and $K$ is commutative. Hence $(AB)\transp = B\transp A\transp$.
+    \item Let $A \in \GL_n(K)$. Using \textbf{(a)} and $I_n\transp = I_n$,
+    \[
+    A\transp \cdot (A^{-1})\transp = (A^{-1} A)\transp = I_n\transp = I_n, \qquad (A^{-1})\transp \cdot A\transp = (A A^{-1})\transp = I_n\transp = I_n.
+    \]
+    So $A\transp$ has a two-sided inverse, which means $A\transp \in \GL_n(K)$ and $(A\transp)^{-1} = (A^{-1})\transp$. Note that no determinants are needed: part \textbf{(a)} alone produces the inverse explicitly.
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lemma:triangular_multiplication_closure}]
+We give the upper triangular case; the other two follow from it.
+
+Let $A = (a_{ij})$ and $B = (b_{ij})$ be upper triangular, so that $a_{ik} = 0$ whenever $i > k$, and $b_{kj} = 0$ whenever $k > j$. Write $C := AB = (c_{ij})$, so that $c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}$.
+
+Fix a pair of indices with $i > j$, and consider a single term $a_{ik} b_{kj}$ of that sum. Exactly one of the following two cases occurs:
+\begin{itemize}
+    \item $k < i$. Then $a_{ik} = 0$, because $A$ is upper triangular.
+    \item $k \ge i$. Then $k \ge i > j$, so $k > j$, and hence $b_{kj} = 0$, because $B$ is upper triangular.
+\end{itemize}
+In either case the term vanishes, so $c_{ij} = 0$ for all $i > j$, which says precisely that $C$ is upper triangular.
+
+For the lower triangular case, note that $A$ is lower triangular if and only if $A\transp$ is upper triangular. So if $A$ and $B$ are lower triangular, then $A\transp$ and $B\transp$ are upper triangular, and by \cref{exc:transpose_properties_multiplication} \textbf{(a)} together with the case already proved,
+\[
+(AB)\transp = B\transp A\transp \quad \text{is upper triangular,}
+\]
+which makes $AB$ lower triangular. Finally, a matrix is diagonal exactly when it is both upper and lower triangular, so the diagonal case follows from the two cases just proved.
+\end{exercisesolution}
+
+\begin{ainote}
+Every numbered statement of the notes for this section is present in the
+transcript, and 17.a.1--17.a.11 already matched the handwritten numbering. What
+was missing sits around them.
+
+Restored: the preparation the notes give for statement \textbf{(d)} of
+\cref{prop:matrix_multiplication_properties}, namely
+\cref{claim:scaling_map_matrix}, that scaling by $\alpha$ is represented by
+$\alpha I_n$, which is how the notes ask for that statement to be proved; the
+remark that the proposition can also be proved by direct calculation, with Prof.
+Biran's warning that it is \qt{not very pleasant}; and the row-wise description
+of a product in the second special case, which the notes give alongside the
+column-wise one.
+
+Removed: a second, verbatim copy of the remark that $\M_{n \times n}(K)$ is a
+non-com\-mu\-ta\-tive ring. It appeared twice in the transcript, a few lines
+apart, and once in the notes.
+
+Two things were wrong rather than missing. The diagram under \qt{Connections to
+Linear Maps} placed $\Sp(\mathcal{B})$ below $V$ joined by a rotated
+\qt{$\in$}, asserting $\Sp(\mathcal{B}) \in V$, which is not a relation between
+a span and the space containing it; the notes have no such diagram, and it is
+replaced by the composition diagram with the bookkeeping said in words. And the
+proof of \cref{lemma:triangular_multiplication_closure} opened with the word
+\qt{Exercise} and then argued, in the middle of the paragraph, that \qt{for
+$a_{ik}$ to be non-zero, $k$ must be less than or equal to $i$} --- the
+condition runs the other way. The conclusion was right and the argument was
+not.
+
+The notes mark four things \qt{Exc.}: the identity matrix remark, the
+preparation claim and statement \textbf{(d)}, the two transpose identities, and
+\cref{lemma:triangular_multiplication_closure}. All four are now stated as
+exercises and solved on \cpageref{sec:solutions_matrix_multiplication}. The
+transcript had instead embedded \qt{proof sketches} inside the exercise
+environment, and one of them derived $A\transp \in \GL_n(K)$ from
+$\det(A\transp) = \det(A)$ --- determinants are three chapters away, and the
+transpose identity of part \textbf{(a)} produces the inverse directly.
+
+Finally, terms being defined for the first time --- the product, the
+Kronecker-delta, the identity matrix, invertible, the inverse, upper and lower
+triangular, diagonal --- were marked with \verb|\qt| rather than
+\verb|\newterm|, which the house style reserves for exactly this.
+\end{ainote}
