@@ -4,7 +4,18 @@
 \setcounter{chapter}{14} % Sets chapter counter so the current chapter is 15
 \chapter{Linear Maps}
 
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
+% Extractor: Gemini 3.1 Pro
 \section{Introduction to Linear Maps}
+\label{sec:intro_linear_maps}
 
 Linear maps, also known as linear transformations, are homomorphisms of vector spaces. They are the primary objects of study in linear algebra, as they preserve the underlying algebraic structure of vector spaces.
 
@@ -83,7 +94,7 @@ Let $V$ and $W$ be vector spaces over a field $K$, and let $T: V \to W$ be a lin
 
 \begin{proof}
 \begin{enumerate}
-    \item The first statement follows directly from the definition of linearity \eqref{def:linear_map} by applying induction on the number of vectors $n$.
+    \item The first statement follows directly from the definition of linearity, \cref{def:linear_map}, by applying induction on the number of vectors $n$.
     \item To prove the second statement, we evaluate the image of the zero vector:
     \[
     0_W = T(0_V) - T(0_V) = T(0_V - 0_V) = T(0_V).
@@ -107,7 +118,30 @@ T(v_i) = w_i, \quad \forall \, 1 \le i \le n.
 \label{eq:T_def_existence}
 T(v) := \sum_{i=1}^n a_i w_i.
 \end{equation}
-Because the coordinates $a_i$ are uniquely determined for each $v$, the map $T$ is well-defined. By verifying the conditions of \cref{def:linear_map}, it is straightforward to show that $T$ is linear. Furthermore, for each basis vector $v_j$, the only non-zero coordinate is $a_j = 1$, which naturally implies $T(v_j) = w_j$.
+Because the coordinates $a_i$ are uniquely determined for each $v$, the map $T$ is well-defined.
+
+% Extractor: Opus 5 (High)
+We claim that $T$ is linear. Indeed, let $v, v' \in V$. There exist $a_1, \dots, a_n \in K$ with $v = a_1 v_1 + \dots + a_n v_n$ and $a'_1, \dots, a'_n \in K$ with $v' = a'_1 v_1 + \dots + a'_n v_n$, so that
+\[
+v + v' = (a_1 + a'_1) v_1 + \dots + (a_n + a'_n) v_n.
+\]
+By our definition of $T$, this gives
+\[
+T(v + v') = (a_1 + a'_1) w_1 + \dots + (a_n + a'_n) w_n = (a_1 w_1 + \dots + a_n w_n) + (a'_1 w_1 + \dots + a'_n w_n) = T(v) + T(v').
+\]
+Also, if $\alpha \in K$, then $\alpha v = \alpha a_1 v_1 + \dots + \alpha a_n v_n$, and therefore,
+\[
+T(\alpha v) = \alpha a_1 w_1 + \dots + \alpha a_n w_n = \alpha (a_1 w_1 + \dots + a_n w_n) = \alpha T(v).
+\]
+This proves that $T: V \to W$ is a linear map.
+
+We claim next that $T(v_i) = w_i$ for all $1 \le i \le n$. Indeed, writing $v_i = 0 \cdot v_1 + \dots + 1 \cdot v_i + \dots + 0 \cdot v_n$ exhibits the coordinates of $v_i$, whence
+\[
+T(v_i) = 0 \cdot w_1 + \dots + 1 \cdot w_i + \dots + 0 \cdot w_n = w_i.
+\]
+This concludes the proof of the existence of $T$.
+
+% Extractor: Gemini 3.1 Pro
 
 \textbf{Uniqueness:} Suppose there exists another linear map $S: V \to W$ such that $S(v_i) = w_i$ for all $1 \le i \le n$. For any $v = \sum_{i=1}^n a_i v_i \in V$, the linearity of $S$ dictates:
 \[
@@ -118,7 +152,7 @@ Since $S(v) = T(v)$ for all $v \in V$, the maps are functionally identical, esta
 
 \stepcounter{theorem}
 % ex:15.a.4
-\begin{example}[Important Example 15.a.4: Linear Maps on Coordinate Spaces]
+\begin{example}[Linear Maps on Coordinate Spaces]
 \label{ex:linear_map_std_basis}
 Consider the coordinate space $K^n$ equipped with the standard basis $\mathcal{E} = (e_1, \dots, e_n)$. Let $w_1, \dots, w_n \in K^m$ be any vectors. \Cref{thm:existence_uniqueness_linear_map} guarantees a unique linear map $T: K^n \to K^m$ such that $T(e_i) = w_i$ for all $1 \le i \le n$.
 
@@ -136,7 +170,15 @@ w_1 & \dots & w_n \\
 | & & |
 \end{pmatrix}.
 \]
-The linear transformation $T_A: K^n \to K^m$ defined by $v \mapsto A \cdot v$ easily satisfies $T_A(e_j) = w_j$ for all $j$. Due to the absolute uniqueness property established in \cref{thm:existence_uniqueness_linear_map}, we immediately conclude that $T = T_A$.
+The linear transformation $T_A: K^n \to K^m$ defined by $v \mapsto A \cdot v$ satisfies $T_A(e_j) = w_j$ for all $j$.
+% Extractor: Opus 5 (High)
+Indeed, multiplying $A$ by $e_i$ picks out the $i$-th column of $A$:
+\[
+T_A(e_i) = \begin{pmatrix} | & & | & & | \\ w_1 & \dots & w_i & \dots & w_n \\ | & & | & & | \end{pmatrix} \cdot \begin{pmatrix} 0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{pmatrix} = \begin{pmatrix} | \\ w_i \\ | \end{pmatrix},
+\]
+where the $1$ on the right sits in entry $i$.
+% Extractor: Gemini 3.1 Pro
+Due to the absolute uniqueness property established in \cref{thm:existence_uniqueness_linear_map}, we immediately conclude that $T = T_A$.
 \end{answer}
 \end{example}
 
@@ -148,11 +190,15 @@ For every linear transformation $T: K^n \to K^m$, there exists a unique matrix $
 
 \begin{proof}
 Let $w_i := T(e_i)$ for each $i \in \{1, \dots, n\}$. As demonstrated in the preceding example, the matrix $A$ formed by using these specific vectors as columns defines a linear map $T_A$ that perfectly agrees with $T$ on the standard basis $\mathcal{E}$. Because $\mathcal{E}$ is a basis for $K^n$, \cref{thm:existence_uniqueness_linear_map} strictly implies that $T$ and $T_A$ must be the exact same map.
+
+% Creator: Opus 5 (High)
+The matrix is moreover unique, which the notes do not claim but which costs one line: if $B \in \M_{m \times n}(K)$ also satisfies $T = T_B$, then the $i$-th column of $B$ equals $B \cdot e_i = T_B(e_i) = T(e_i) = w_i$ for every $i$, so $B$ and $A$ have the same columns and $B = A$.
 \end{proof}
 % Source: 15.linear maps.b ("Kernel and Image"), which numbers from 15.b.1.
 \renewcommand{\thetheorem}{15.b.\arabic{theorem}}
 \setcounter{theorem}{0}
 \section{Kernel, Image, and the Rank-Nullity Theorem}
+\label{sec:kernel_image_rank}
 
 In this section, we explore two fundamental subspaces associated with every linear map: the kernel and the image. These subspaces provide deep insight into the structure of the transformation and ultimately lead us to one of the most celebrated results in linear algebra, the Rank-Nullity Theorem.
 
@@ -187,13 +233,33 @@ Using standard notation from set theory, we can concisely write the kernel as th
 \end{enumerate}
 \end{proof}
 
+% Extractor: Opus 5 (High)
+\begin{example}[The Kernel of a Matrix Transformation]
+\label{ex:kernel_of_T_A}
+Let $A \in \M_{m \times n}(K)$ and consider the linear map $T_A: K^n \to K^m$, recalling that $T_A(x) = A \cdot x$ for all $x \in K^n$. Then
+\[
+\ker(T_A) = \{x \in K^n \mid A \cdot x = 0\},
+\]
+which is precisely the solution set of the homogeneous linear system with coefficient matrix $A$. The kernel is therefore not a new object at all: it is the solution set of a homogeneous system, seen from the point of view of linear maps.
+\end{example}
+
 % prop:15.b.2
-\begin{proposition}[Injectivity and the Kernel]
+\begin{proposition}[Injectivity, Surjectivity, Kernel and Image]
 \label{prop:injectivity_kernel}
-A linear map $T: V \to W$ is injective if and only if $\ker(T) = \{0_V\}$.
+Let $T: V \to W$ be a linear map. Then:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $T$ is injective if and only if $\ker(T) = \{0_V\}$.
+    \item $T$ is surjective if and only if $\Img(T) = W$.
+\end{enumerate}
+Recall that a map is called \newterm{bijective} if it is both injective and surjective.
 \end{proposition}
 
+% Extractor: Gemini 3.1 Pro
 \begin{proof}
+% Extractor: Opus 5 (High)
+Statement \textbf{(b)} is a restatement of the definition of surjectivity, since $\Img(T) = T(V)$, so there is nothing to prove. We turn to \textbf{(a)}.
+
+% Extractor: Gemini 3.1 Pro
 First, suppose $T$ is injective. If $v \in \ker(T)$, then $T(v) = 0_W$. Since we also know that $T(0_V) = 0_W$, the injectivity of $T$ forces $v = 0_V$. Thus, $\ker(T) = \{0_V\}$.
 
 Conversely, suppose that $\ker(T) = \{0_V\}$. Let $v_1, v_2 \in V$ such that $T(v_1) = T(v_2)$. By linearity, we obtain:
@@ -203,19 +269,140 @@ T(v_1 - v_2) = T(v_1) - T(v_2) = 0_W.
 This implies that $v_1 - v_2 \in \ker(T)$. By our assumption, the only element in the kernel is the zero vector, and therefore, $v_1 - v_2 = 0_V$, which yields $v_1 = v_2$. Consequently, $T$ is injective.
 \end{proof}
 
-% def:15.b.3
-\begin{definition}[Rank of a Linear Map]
-\label{def:rank_linear_map}
-Let $T \in \Hom(V, W)$ be a linear map such that $\dim \Img(T) < \infty$. We define the \newterm{rank} of $T$ as the dimension of its image:
+% Extractor: Opus 5 (High)
+\begin{exercise}[Images and Preimages of Subspaces]
+\label{exc:images_preimages_subspaces}
+Let $T: V \to W$ be a linear map. Show that:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item if $V' \subseteq V$ is a linear subspace, then $T(V') \subseteq W$ is a linear subspace;
+    \item if $W' \subseteq W$ is a linear subspace, then $T^{-1}(W') \subseteq V$ is a linear subspace, where $T^{-1}(W') := \{v \in V \mid T(v) \in W'\}$;
+    \item both statements are generalisations of \cref{prop:kernel_image}. Explain why.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Isomorphisms}
+
+Recall from set theory that a map $f: X \to Y$ is called bijective if it is both injective and surjective, and that in this case there exists a unique inverse map $g: Y \to X$, denoted by $f^{-1}$, meaning that
 \[
-\rank(T) := \dim \Img(T).
+g \circ f = \id_X \quad \text{and} \quad f \circ g = \id_Y.
 \]
+Conversely, if $f: X \to Y$ is a map for which some $g: Y \to X$ satisfies $g \circ f = \id_X$ and $f \circ g = \id_Y$, then $f$ is bijective. What is the right analogue of this for linear maps?
+
+% def:15.b.3
+\begin{definition}[Isomorphism]
+\label{def:isomorphism}
+A linear map $T: V \to W$ is called an \newterm{isomorphism} if there exists a \emph{linear} map $S: W \to V$ such that
+\[
+S \circ T = \id_V \quad \text{and} \quad T \circ S = \id_W.
+\]
+% Extractor: Gemini 3.1 Pro
+Two vector spaces $V$ and $W$ are defined to be \qt{isomorphic}, denoted as $V \cong W$, if there exists an isomorphism between them.
+
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep=huge]
+V \arrow[r, "T", shift left=1.2ex] & W \arrow[l, "S", shift left=1.2ex]
+\end{tikzcd}
+\end{center}
+
 \end{definition}
 
-% thm:15.b.4
+% Extractor: Opus 5 (High)
+\begin{remark}
+\label{rem:iso_is_bijective}
+An isomorphism $T: V \to W$ is obviously bijective: the linear map $S$ of \cref{def:isomorphism} is in particular an inverse map of $T$ in the set-theoretic sense recalled above. The converse is the substantial question, and it is not a matter of definition, because the definition of an isomorphism demands that the inverse be \emph{linear}: is every bijective linear map an isomorphism?
+\end{remark}
+
+% lem:15.b.4
+\begin{lemma}[Bijective Linear Maps are Isomorphisms]
+\label{lem:bijective_is_iso}
+Let $T: V \to W$ be a linear map which is bijective. Then the inverse map $T^{-1}: W \to V$ is linear. In other words, a bijective linear map is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Let $a, b \in K$ and $w_1, w_2 \in W$. Put $v_1 := T^{-1}(w_1)$ and $v_2 := T^{-1}(w_2)$, so that $T(v_1) = w_1$ and $T(v_2) = w_2$. Since $T$ is linear, we have
+\[
+T(a v_1 + b v_2) = a T(v_1) + b T(v_2) = a w_1 + b w_2.
+\]
+Applying $T^{-1}$ to both sides gives
+\[
+T^{-1}(a w_1 + b w_2) = a v_1 + b v_2 = a \cdot T^{-1}(w_1) + b \cdot T^{-1}(w_2),
+\]
+so $T^{-1}$ is a linear map.
+\end{proof}
+
+\begin{summary}
+\label{sum:bijective_equals_iso}
+For linear maps, bijective $=$ isomorphism.
+\end{summary}
+
+% lem:15.b.5
+\begin{lemma}[Compositions of Linear Maps are Linear]
+\label{lem:composition_linear}
+Let $T: V \to W$ and $S: W \to U$ be linear maps. Then the composition $S \circ T: V \to U$ is also linear.
+\end{lemma}
+
+\begin{proof}
+Let $a, b \in K$ and $v_1, v_2 \in V$. Then
+\begin{align*}
+(S \circ T)(a v_1 + b v_2) &= S\big(T(a v_1 + b v_2)\big) = S\big(a T(v_1) + b T(v_2)\big) \\
+&= a \cdot S(T(v_1)) + b \cdot S(T(v_2)) = a \cdot (S \circ T)(v_1) + b \cdot (S \circ T)(v_2). \qedhere
+\end{align*}
+\end{proof}
+
+\begin{exercise}[Isomorphism is an Equivalence Relation]
+\label{exc:iso_equivalence_relation}
+Show that $\cong$, that is, being isomorphic, defines an equivalence relation on the set of vector spaces over $K$.
+\end{exercise}
+
+% def:15.b.6
+\begin{definition}[Endomorphisms and Automorphisms]
+\label{def:endomorphism}
+A linear map $T: V \to V$, whose domain and target are the same space $V$, is sometimes called an \newterm{endomorphism} of $V$. We denote the set of all endomorphisms of $V$ by $\End(V)$, so that $\End(V) = \Hom(V, V)$. A linear map $T: V \to V$ which is an isomorphism is called an \newterm{automorphism} of $V$; in slogan form, endomorphism $+$ isomorphism $=$ automorphism.
+\end{definition}
+
+% def:15.b.7
+\begin{definition}[Monomorphisms and Epimorphisms]
+\label{def:monomorphism}
+If a linear map $T$ is injective, one says that $T$ is a \newterm{monomorphism}; if $T$ is surjective, one says that $T$ is an \newterm{epimorphism}.
+\end{definition}
+
+\begin{remark}
+We will not use the terminology of \cref{def:monomorphism} in this course, and will simply say injective and surjective instead.
+\end{remark}
+
+\subsection{The Rank Theorem}
+
+% lem:15.b.8
+\begin{lemma}[The Image is Spanned by the Images of a Basis]
+\label{lem:image_spanned_by_basis}
+Let $T: V \to W$ be a linear map, and let $v_1, \dots, v_n$ be a basis of $V$. Then
+\[
+\Img(T) = \Sp\big(T(v_1), \dots, T(v_n)\big).
+\]
+\end{lemma}
+
+\begin{proof}
+We first show that $\Img(T) \supseteq \Sp(T(v_1), \dots, T(v_n))$. Let $a_1, \dots, a_n \in K$. Then
+\[
+\sum_{i=1}^{n} a_i T(v_i) = T\left( \sum_{i=1}^{n} a_i v_i \right) \in \Img(T),
+\]
+which shows that $\Sp(T(v_1), \dots, T(v_n)) \subseteq \Img(T)$.
+
+We show now that $\Img(T) \subseteq \Sp(T(v_1), \dots, T(v_n))$. Let $w \in \Img(T)$. By definition, there exists $v \in V$ such that $T(v) = w$. Since $v_1, \dots, v_n$ is a basis for $V$, there exist $a_1, \dots, a_n \in K$ such that $v = \sum_{i=1}^{n} a_i v_i$, and therefore,
+\[
+w = T(v) = T\left( \sum_{i=1}^{n} a_i v_i \right) = \sum_{i=1}^{n} a_i T(v_i).
+\]
+So $w \in \Sp(T(v_1), \dots, T(v_n))$, which proves the second inclusion.
+\end{proof}
+
+% Creator: Opus 5 (High)
+The dimension of the image is the quantity the next theorem is about; it is given the name $\rank(T)$ at the end of this section, in \cref{def:rank_linear_map}.
+
+% Extractor: Gemini 3.1 Pro
+% thm:15.b.9
 \begin{theorem}[Rank-Nullity Theorem]
 \label{thm:rank_nullity}
-Let $V$ be a finite-dimensional vector space, and let $T: V \to W$ be a linear map. Then, the following dimension formula holds:
+Let $V$ be a finite-di\-men\-sional vector space, and let $T: V \to W$ be a linear map. Then, the following dimension formula holds:
 \[
 \dim V = \dim \ker(T) + \dim \Img(T).
 \]
@@ -255,30 +442,96 @@ Let $k := \dim \ker(T)$ and $n := \dim V$. Let $(u_1, \dots, u_k)$ be a basis fo
 Therefore, $\mathcal{C}$ is linearly independent and spans the image, making it a basis for $\Img(T)$. Consequently, $\dim \Img(T) = n - k = \dim V - \dim \ker(T)$.
 \end{proof}
 
-% cor:15.b.5
-\begin{corollary}[Equivalence of Injectivity and Surjectivity]
+% Extractor: Opus 5 (High)
+\begin{remark}
+The spanning step above can be shortened: applying \cref{lem:image_spanned_by_basis} to the basis $\mathcal{B}$ gives
+\[
+\Img(T) = \Sp\big(\underbrace{T(u_1)}_{= \, 0}, \dots, \underbrace{T(u_k)}_{= \, 0}, T(v_1), \dots, T(v_{n-k})\big) = \Sp\big(T(v_1), \dots, T(v_{n-k})\big),
+\]
+which is how the notes obtain it. Only the independence of $\mathcal{C}$ then remains to be checked.
+\end{remark}
+
+% Creator: Opus 5 (High)
+The theorem also admits a second, more structural proof, which replaces the manipulation of coordinates by a single well-chosen decomposition of $V$. It uses the existence of a complement from \cref{prop:existence_complement} and the fact that isomorphisms carry bases to bases, \cref{thm:iso_preserves_bases} below; neither of these depends on the rank theorem, so no circularity arises.
+
+\begin{proof}[Second proof of \Cref{thm:rank_nullity}]
+By \cref{prop:existence_complement}, the subspace $\ker(T) \subseteq V$ admits a complement, that is, a subspace $U \subseteq V$ with
+\[
+\ker(T) + U = V \quad \text{and} \quad \ker(T) \cap U = \{0_V\}.
+\]
+We claim that the restriction $T|_U: U \to \Img(T)$ is an isomorphism.
+
+It is injective: if $u \in U$ satisfies $T(u) = 0_W$, then $u \in \ker(T) \cap U = \{0_V\}$, so $u = 0_V$, and \cref{prop:injectivity_kernel} \textbf{(a)} applies. It is surjective onto $\Img(T)$: given $w \in \Img(T)$, write $w = T(v)$ for some $v \in V$ and decompose $v = x + u$ with $x \in \ker(T)$ and $u \in U$; then
+\[
+w = T(x + u) = T(x) + T(u) = 0_W + T(u) = T(u).
+\]
+Being a bijective linear map, $T|_U$ is an isomorphism by \cref{lem:bijective_is_iso}. By \cref{thm:iso_preserves_bases}, it carries a basis of $U$ to a basis of $\Img(T)$, and therefore, $\dim U = \dim \Img(T)$.
+
+Finally, the dimension formula of \cref{prop:properties_of_sums} \textbf{(c)}, applied to the subspaces $\ker(T)$ and $U$, gives
+\[
+\dim V = \dim\big(\ker(T) + U\big) = \dim \ker(T) + \dim U - \underbrace{\dim\big(\ker(T) \cap U\big)}_{= \, 0} = \dim \ker(T) + \dim \Img(T). \qedhere
+\]
+\end{proof}
+
+% cor:15.b.10
+\begin{corollary}[Dimension Obstructions to Injectivity and Surjectivity]
 \label{cor:equal_dim_iso}
-Let $V$ and $W$ be finite-dimensional vector spaces such that $\dim V = \dim W$. For any linear map $T: V \to W$, the following statements are equivalent:
-\begin{enumerate}
-    \item $T$ is injective.
-    \item $T$ is surjective.
-    \item $T$ is an isomorphism.
+% Extractor: Opus 5 (High)
+Let $T: V \to W$ be a linear map, where $V$ and $W$ are finite-di\-men\-sional vector spaces. Then:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $\dim W < \dim V$, then $T$ is \textbf{not} injective.
+    \item If $\dim W > \dim V$, then $T$ is \textbf{not} surjective.
+    \item If $\dim W = \dim V$, then $T$ is bijective if and only if $T$ is injective, if and only if $T$ is surjective.
 \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-By the Rank-Nullity Theorem \eqref{thm:rank_nullity}, we know that $\dim \ker(T) = \dim V - \dim \Img(T)$. Since we are given that $\dim V = \dim W$, we can analyze the implications:
-\begin{itemize}
-    \item $T$ is injective $\iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \iff \dim \Img(T) = \dim V = \dim W \iff T$ is surjective.
-\end{itemize}
-Because injectivity implies surjectivity (and vice versa) in this specific dimension constraint, either condition guarantees that the map is bijective, and therefore, an isomorphism.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Since $\Img(T)$ is a subspace of $W$, we have $\dim \Img(T) \le \dim W < \dim V$. By \cref{thm:rank_nullity},
+    \[
+    \dim \ker(T) = \dim V - \dim \Img(T) > 0,
+    \]
+    so $\ker(T) \neq \{0_V\}$, and $T$ is not injective by \cref{prop:injectivity_kernel} \textbf{(a)}.
+    \item By \cref{thm:rank_nullity} and the assumption,
+    \[
+    \dim \Img(T) = \dim V - \dim \ker(T) \le \dim V < \dim W,
+    \]
+    so $\Img(T) \subsetneq W$, and $T$ is not surjective by \cref{prop:injectivity_kernel} \textbf{(b)}.
+    \item Here the chain of equivalences reads
+    \[
+    T \text{ injective} \iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \iff \dim V = \dim \Img(T) \iff \dim W = \dim \Img(T),
+    \]
+    the third step by \cref{thm:rank_nullity} and the last by the assumption $\dim V = \dim W$. Since $\Img(T)$ is a subspace of $W$, the final equality holds if and only if $\Img(T) = W$, that is, if and only if $T$ is surjective. As each of the two properties implies the other, either one already makes $T$ bijective. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+By \cref{lem:bijective_is_iso}, the word \qt{bijective} in statement \textbf{(c)} may equivalently be read as \qt{is an isomorphism}. So for maps between spaces of equal finite dimension, injectivity alone already forces $T$ to be an isomorphism.
+\end{remark}
+
+% cor:15.b.11
+\begin{corollary}[Isomorphism is Detected by Dimension]
+\label{cor:iso_iff_equal_dimension}
+Two finite-di\-men\-sional vector spaces $V$ and $W$ over $K$ are isomorphic if and only if $\dim V = \dim W$.
+\end{corollary}
+
+\begin{proof}
+Suppose first that $T: V \to W$ is an isomorphism. By \cref{def:isomorphism}, it admits a linear inverse and is in particular bijective, so $\ker(T) = \{0_V\}$ and $\Img(T) = W$ by \cref{prop:injectivity_kernel}. The rank theorem, \cref{thm:rank_nullity}, then gives
+\[
+\dim W = \dim \Img(T) = \dim V - \dim \ker(T) = \dim V.
+\]
+
+Conversely, assume that $\dim V = \dim W$, and denote this common dimension by $n$. Let $v_1, \dots, v_n$ be a basis for $V$ and $w_1, \dots, w_n$ a basis for $W$. By \cref{thm:existence_uniqueness_linear_map}, there is a linear map $T: V \to W$ with $T(v_i) = w_i$ for all $1 \le i \le n$. By \cref{lem:image_spanned_by_basis},
+\[
+\Img(T) = \Sp\big(T(v_1), \dots, T(v_n)\big) = \Sp(w_1, \dots, w_n) = W,
+\]
+so $T$ is surjective and $\dim \Img(T) = n$. By \cref{thm:rank_nullity}, $\dim \ker(T) = n - n = 0$, so $T$ is injective as well. Being a bijective linear map, $T$ is an isomorphism by \cref{lem:bijective_is_iso}, and hence $V \cong W$.
 \end{proof}
 
 \subsection{Isomorphisms and Vector Space Equivalence}
 
+% Extractor: Gemini 3.1 Pro
 Isomorphisms allow us to classify vector spaces and identify when two ostensibly different spaces are essentially the \qt{same} in terms of their linear algebraic structure.
-
-\setcounter{theorem}{11} % Jumping the counter to align strictly with Prof. Biran's handwritten 15.b.12
 
 % thm:15.b.12
 \begin{theorem}[Isomorphisms Preserve Bases]
@@ -291,25 +544,157 @@ Let $T: V \to W$ be an isomorphism between two vector spaces $V$ and $W$. Let $\
 \end{enumerate}
 \end{theorem}
 
-% def:15.b.13
-\begin{definition}[Isomorphic Spaces]
-\label{def:isomorphic_spaces}
-Two vector spaces $V$ and $W$ are defined to be \qt{isomorphic}, denoted as $V \cong W$, if there exists an isomorphism between them. Formally, this means there exist linear maps $T: V \to W$ and $S: W \to V$ such that:
-\[
-T \circ S = \id_W, \quad \text{and} \quad S \circ T = \id_V.
-\]
+% Creator: Opus 5 (High)
+The notes state this theorem without proof. Since the second proof of
+\cref{thm:rank_nullity} above appeals to it, we supply one; it is short, and it
+uses nothing beyond the definition of an isomorphism.
 
-\begin{center}
-\begin{tikzcd}[row sep=large, column sep=huge]
-V \arrow[r, "T", shift left=1.2ex] & W \arrow[l, "S", shift left=1.2ex]
-\end{tikzcd}
-\end{center}
+\begin{proof}
+Write $S := T^{-1}: W \to V$ for the inverse of $T$, which is linear because $T$ is an isomorphism. Each statement is an equivalence, and in each case the implication from right to left follows by applying the already-proved implication from left to right to the isomorphism $S$ and the family $T(\mathcal{S})$, since $S(T(\mathcal{S})) = \mathcal{S}$. It therefore suffices to prove the three implications from left to right.
 
-\end{definition}
+\begin{enumerate}
+    \item Let $\mathcal{S}$ be linearly independent, and suppose that a finite subfamily satisfies $\sum_{i} a_i T(v_i) = 0_W$. By linearity, $T\left( \sum_{i} a_i v_i \right) = 0_W$, and applying $S$ gives $\sum_{i} a_i v_i = 0_V$. The independence of $\mathcal{S}$ forces every $a_i$ to vanish, so $T(\mathcal{S})$ is linearly independent.
+    \item Let $\mathcal{S}$ span $V$, and let $w \in W$. Then $S(w) \in V$ is a linear combination $S(w) = \sum_{i} a_i v_i$ of members of $\mathcal{S}$, and applying $T$ gives
+    \[
+    w = T(S(w)) = \sum_{i} a_i T(v_i),
+    \]
+    so $T(\mathcal{S})$ spans $W$.
+    \item Immediate from the first two statements, since a basis is precisely a linearly independent spanning family. \qedhere
+\end{enumerate}
+\end{proof}
 
+% Extractor: Gemini 3.1 Pro
 \begin{remark}[The Significance of Isomorphism]
 \label{rem:significance_of_iso}
 If two vector spaces are isomorphic ($V \cong W$), they possess identical linear algebraic properties, such as having the exact same dimension. We can conceptually think of $V$ and $W$ as the exact same space, just represented in two different ways. 
 
 However, it is crucial to note that identifying $V$ with $W$ requires the explicit choice of an isomorphism $T: V \to W$. Because there is usually no preferred (or \qt{canonical}) choice for this map, it is generally better practice not to forcefully identify different vector spaces simply because they are isomorphic. We will explore the nuances of canonical choices later in the course.
 \end{remark}
+
+% def:15.b.13
+\begin{definition}[Rank of a Linear Map]
+\label{def:rank_linear_map}
+Let $T \in \Hom(V, W)$ be a linear map such that $\dim \Img(T) < \infty$. We define the \newterm{rank} of $T$ as the dimension of its image:
+\[
+\rank(T) := \dim \Img(T).
+\]
+\end{definition}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Rank of a Composition]
+\label{exc:rank_of_composition}
+Let $T: V \to W$ and $S: W \to U$ be linear maps, where $U$, $V$ and $W$ are finite-di\-men\-sional. Show that:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\rank(S \circ T) \le \min\{\rank(S), \rank(T)\}$;
+    \item if $S$ is injective, then $\rank(S \circ T) = \rank(T)$;
+    \item if $T$ is surjective, then $\rank(S \circ T) = \rank(S)$.
+\end{enumerate}
+\end{exercise}
+
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+
+\begin{exercisesolution}[Linearity Criterion (on \cpageref{exer:linearity_criterion})]
+Suppose first that $T$ is linear. Then, for all $\alpha_1, \alpha_2 \in K$ and $v_1, v_2 \in V$,
+\[
+T(\alpha_1 v_1 + \alpha_2 v_2) = T(\alpha_1 v_1) + T(\alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2),
+\]
+using additivity for the first equality and homogeneity for the second.
+
+Conversely, assume the displayed identity for all scalars and vectors. Taking $\alpha_1 = \alpha_2 = 1$ gives $T(v_1 + v_2) = T(v_1) + T(v_2)$, which is additivity. Taking $\alpha_2 = 0$ and $v_2 = 0_V$ gives
+\[
+T(\alpha_1 v_1) = \alpha_1 T(v_1) + 0 \cdot T(0_V) = \alpha_1 T(v_1),
+\]
+which is homogeneity. So $T$ satisfies both conditions of \cref{def:linear_map}.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Images and Preimages of Subspaces (on \cpageref{exc:images_preimages_subspaces})]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Since $0_V \in V'$ and $T(0_V) = 0_W$, we have $0_W \in T(V')$. Let $a, b \in K$ and $w_1, w_2 \in T(V')$, say $w_1 = T(v_1)$ and $w_2 = T(v_2)$ with $v_1, v_2 \in V'$. Then $a v_1 + b v_2 \in V'$, because $V'$ is a subspace, and
+    \[
+    a w_1 + b w_2 = a T(v_1) + b T(v_2) = T(a v_1 + b v_2) \in T(V').
+    \]
+    \item Since $T(0_V) = 0_W \in W'$, we have $0_V \in T^{-1}(W')$. Let $a, b \in K$ and $v_1, v_2 \in T^{-1}(W')$, so that $T(v_1), T(v_2) \in W'$. Then
+    \[
+    T(a v_1 + b v_2) = a T(v_1) + b T(v_2) \in W',
+    \]
+    because $W'$ is a subspace, and therefore $a v_1 + b v_2 \in T^{-1}(W')$.
+    \item Both parts of \cref{prop:kernel_image} are special cases. Taking $V' := V$ in \textbf{(a)} gives that $\Img(T) = T(V)$ is a subspace of $W$, and taking $W' := \{0_W\}$ in \textbf{(b)} gives that $\ker(T) = T^{-1}(\{0_W\})$ is a subspace of $V$ --- exactly the two set-theoretic descriptions recorded in the remark on \cpageref{rem:set_theoretic_notation}.
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Isomorphism is an Equivalence Relation (on \cpageref{exc:iso_equivalence_relation})]
+\textbf{Reflexivity.} The identity $\id_V: V \to V$ is linear and satisfies $\id_V \circ \id_V = \id_V$, so it is an isomorphism, and $V \cong V$.
+
+\textbf{Symmetry.} Let $V \cong W$, witnessed by an isomorphism $T: V \to W$ with linear inverse $S: W \to V$. Then $S$ is itself linear with linear inverse $T$, since $T \circ S = \id_W$ and $S \circ T = \id_V$. So $S$ is an isomorphism and $W \cong V$.
+
+\textbf{Transitivity.} Let $T: V \to W$ and $T': W \to U$ be isomorphisms with inverses $S$ and $S'$. By \cref{lem:composition_linear}, both $T' \circ T: V \to U$ and $S \circ S': U \to V$ are linear, and
+\[
+(S \circ S') \circ (T' \circ T) = S \circ (S' \circ T') \circ T = S \circ \id_W \circ T = S \circ T = \id_V,
+\]
+and symmetrically $(T' \circ T) \circ (S \circ S') = \id_U$. So $T' \circ T$ is an isomorphism and $V \cong U$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Rank of a Composition (on \cpageref{exc:rank_of_composition})]
+Throughout, we use the identity
+\[
+\Img(S \circ T) = \{S(T(v)) \mid v \in V\} = \{S(w) \mid w \in \Img(T)\} = S\big(\Img(T)\big),
+\]
+so that $\Img(S \circ T)$ is the image of the restricted linear map $S|_{\Img(T)}: \Img(T) \to U$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Since $\Img(T) \subseteq W$, we have $S(\Img(T)) \subseteq S(W) = \Img(S)$, and both are subspaces of $U$ by \cpageref{exc:images_preimages_subspaces}, whence $\rank(S \circ T) \le \rank(S)$. Applying \cref{thm:rank_nullity} to $S|_{\Img(T)}$ gives
+    \[
+    \rank(S \circ T) = \dim \Img\big(S|_{\Img(T)}\big) = \dim \Img(T) - \dim \ker\big(S|_{\Img(T)}\big) \le \rank(T),
+    \]
+    and the two bounds together give $\rank(S \circ T) \le \min\{\rank(S), \rank(T)\}$.
+    \item If $S$ is injective, then so is its restriction $S|_{\Img(T)}$, so $\ker(S|_{\Img(T)}) = \{0_W\}$ and the displayed computation becomes an equality: $\rank(S \circ T) = \dim \Img(T) = \rank(T)$.
+    \item If $T$ is surjective, then $\Img(T) = W$, and therefore $\Img(S \circ T) = S(W) = \Img(S)$, so that $\rank(S \circ T) = \rank(S)$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{ainote}
+This was the most heavily damaged chapter so far. Of the thirteen numbered
+statements in the notes for \cref{sec:kernel_image_rank}, the transcript kept
+five, and it hid the loss with a counter jump: a
+\verb|\setcounter{theorem}{11}| placed just before
+\cref{thm:iso_preserves_bases}, annotated as aligning the numbering with the
+notes. Restored above, in the notes' own order, so that the printed numbers now
+agree with the handwritten ones throughout: \cref{def:isomorphism},
+\cref{lem:bijective_is_iso}, \cref{lem:composition_linear},
+\cref{def:endomorphism}, \cref{def:monomorphism},
+\cref{lem:image_spanned_by_basis} and \cref{cor:iso_iff_equal_dimension}, along
+with the example of $\ker(T_A)$, the recollection on bijections that motivates
+\cref{def:isomorphism}, and three of the notes' exercises. In
+\cref{prop:injectivity_kernel} the surjectivity criterion was missing, and in
+\cref{cor:equal_dim_iso} the two dimension obstructions --- the statements that
+really do the work in practice --- had been dropped in favour of the third part
+alone.
+
+The gap that mattered most was \cref{def:isomorphism} itself. The transcript
+carried a definition of \emph{isomorphic spaces} at the very end of the chapter,
+numbered 15.b.13, while the word \qt{isomorphism} was already used in
+\cref{cor:equal_dim_iso} and \cref{thm:iso_preserves_bases} above it. Worse, the
+old proof of \cref{cor:equal_dim_iso} concluded from bijectivity that the map is
+an isomorphism, which is exactly \cref{lem:bijective_is_iso} --- the one result
+in the notes that was missing. That definition has been moved to the notes'
+position, 15.b.3, and merged with the notes' formulation.
+
+Since Prof. Biran leaves \cref{thm:iso_preserves_bases} unproved, a proof is
+supplied here. It is also used for a second proof of \cref{thm:rank_nullity},
+added above: rather than manipulating coordinates, one takes a complement $U$ of
+$\ker(T)$ as in \cref{prop:existence_complement} and observes that $T|_U$ is an
+isomorphism onto $\Img(T)$, after which the dimension formula of
+\cref{prop:properties_of_sums} finishes the argument. Neither ingredient depends
+on the rank theorem.
+
+In \cref{sec:intro_linear_maps}, the notes verify in full that the map
+constructed in \cref{thm:existence_uniqueness_linear_map} is linear and that it
+sends $v_i$ to $w_i$; the transcript replaced both verifications with the phrase
+\qt{it is straightforward to show}. They are restored, as is the computation
+showing that $A \cdot e_i$ picks out the $i$-th column of $A$. The uniqueness of
+the matrix in \cref{lem:all_linear_maps_are_matrices} is asserted by the
+transcript but not proved, and not claimed at all in the notes; a one-line proof
+is added. Two cross-references used \verb|\eqref| on a definition and on a
+theorem, which typesets as a bare equation number; they are now \verb|\cref|.
+\end{ainote}

@@ -40,12 +40,18 @@ while read -r label; do
   num=$(printf '%s' "$line" | sed 's/.*newlabel{[^}]*}{{//; s/}{.*//')
 
   # (1) The anchor is a heading: the label sits in an unnumbered environment
-  #     and picked up the enclosing chapter/section.
+  #     and picked up the enclosing chapter/section. Labels that deliberately
+  #     mark a heading are spelled ch:*/sec:*/subsec:* and are legitimate.
   case "$anchor" in
     chapter.*|section.*|subsection.*)
-      printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
-      bad=1
-      continue
+      case "$label" in
+        ch:*|sec:*|subsec:*) ;;
+        *)
+          printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
+          bad=1
+          continue
+          ;;
+      esac
       ;;
   esac
 
@@ -59,6 +65,24 @@ while read -r label; do
       printf 'BAD  %-40s prints "%s"  (anchor %s)\n' "$label" "$num" "$anchor"
       bad=1
       continue
+      ;;
+  esac
+
+  # (2b) "12.a" is a *section* number. A numbered environment always prints
+  #      Chapter.Number or Chapter.Letter.Number, so a trailing letter means the
+  #      label drifted onto the section counter -- even when the hyperref anchor
+  #      points at the environment that happened to precede it.
+  case "$label" in
+    ch:*|sec:*|subsec:*) ;;
+    *)
+      case "$num" in
+        [0-9]*.[a-z])
+          printf 'BAD  %-40s prints "%s"  (anchor %s, section number)\n' \
+            "$label" "$num" "$anchor"
+          bad=1
+          continue
+          ;;
+      esac
       ;;
   esac
 
