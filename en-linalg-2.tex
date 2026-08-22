@@ -671,6 +671,10 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\Rea}{Re}   % real part; \Re is taken by the fraktur symbol
+\DeclareMathOperator{\Ima}{Im}   % imaginary part of a complex number. Deliberately
+                                 % distinct from \Img, which is the image of a map:
+                                 % both print "Im", but the two are unrelated and
+                                 % keeping the sources apart makes greps honest.
 
 % Matrix groups. Declared as operators so that "O", "U", "SO", "SU" stay upright
 % and are never mistaken for the italic variables O, U (which this text also uses

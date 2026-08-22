@@ -1,9 +1,20 @@
+% Source: 22.euclidean-hermitian-spaces.a, which numbers from 22.a.1. Part b
+% lives in the next file and re-declares the prefix there.
 \renewcommand{\thetheorem}{22.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{21}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
 
 \chapter{Euclidean and Hermitian Spaces}
 
+% Extractor: Gemini 3.1 Pro
 \section{Euclidean and Hermitian (Unitary) spaces}
 
 At last (!) we endow our spaces with a geometric structure. We work here with vector spaces $V$ over $K = \mathbb{R}$ or $K = \mathbb{C}$. Over $\mathbb{R}$ we will have Euclidean spaces. Over $\mathbb{C}$ we will have Hermitian (a.k.a.\ unitary) spaces.
@@ -65,7 +76,7 @@ We call $(V, \langle \cdot, \cdot \rangle)$ a \newterm{Hermitian} (or unitary) s
 \begin{remark}
 Recall that if $\alpha = a + ib \in \mathbb{C}$, where $a, b \in \mathbb{R}$ and $i = \sqrt{-1}$, then $\overline{\alpha} := a - ib$ is the complex conjugate of $\alpha$. Recall also that $\alpha \cdot \overline{\alpha} = a^2 + b^2 = |\alpha|^2 \geq 0$, with equality if and only if $\alpha = 0$.
 
-The definition of a Hermitian product ``coincides'' with a scalar product if $V$ is over $\mathbb{R}$, and we allow $\alpha$ only in $\mathbb{R}$.
+The definition of a Hermitian product \qt{coincides} with a scalar product if $V$ is over $\mathbb{R}$, and we allow $\alpha$ only in $\mathbb{R}$.
 \end{remark}
 
 % lemma 22.a.3
@@ -74,9 +85,10 @@ The definition of a Hermitian product ``coincides'' with a scalar product if $V$
 Let $V$ be a Euclidean/Hermitian vector space. Then:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\forall v \in V$, $\langle 0, v \rangle = \langle v, 0 \rangle = 0$.
-    \item Let $w \in V$. If $\langle v, w \rangle = 0$ for all $v \in V$, then $w = 0$. \hfill (Exercise)
+    \item Let $w \in V$. If $\langle v, w \rangle = 0$ for all $v \in V$, then $w = 0$.
     \item Let $w_1, w_2 \in V$. If $\langle v, w_1 \rangle = \langle v, w_2 \rangle$ for all $v \in V$, then $w_1 = w_2$.
 \end{enumerate}
+All three parts are left as an exercise.
 \end{lemma}
 
 % def 22.a.4
@@ -109,6 +121,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 \end{proof}
 
 \begin{exercise}[Polarization Identities]
+\label{exc:polarization}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \label{exc:reconstruct_scalar_prod} Let $V$ be a Euclidean space. Show that for all $u, v \in V$ we have
     \[
@@ -158,7 +171,8 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \langle v, w \rangle_A = v\transp \cdot A \cdot w.
 \]
 
-\begin{exercise}
+\begin{exercise}[Bilinearity of \texorpdfstring{$\langle \cdot, \cdot \rangle_A$}{the form attached to A}]
+    \label{exc:bilinear_form_A}
     $\langle \cdot, \cdot \rangle_A$ is bilinear (i.e., linear in both variables).
 \end{exercise}
 
@@ -176,13 +190,18 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
     A symmetric matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{positive definite} if $v\transp A v > 0$ for all $0 \neq v \in \mathbb{R}^n$.
 \end{definition}
 
-If $A$ is positive definite, then $\langle \cdot, \cdot \rangle_A$ is a scalar product (Exercise).
+\begin{exercise}[Positive Definiteness Yields a Scalar Product]
+    \label{exc:pos_def_gives_scalar_product}
+    If $A$ is positive definite, then $\langle \cdot, \cdot \rangle_A$ is a scalar product.
+\end{exercise}
 
 \begin{claim*}
+\label{claim:scalar_product_forces_pos_def}
     If $\langle \cdot, \cdot \rangle_A$ is a scalar product, then $A$ is positive definite. (Proof: a bit later).
 \end{claim*}
 
 \begin{example}
+\label{ex:pos_def_examples_real}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $a_1, \dots, a_n > 0$ (with $a_i \in \mathbb{R}$). Then the diagonal matrix $D = \left(\begin{smallmatrix} a_1 & & 0 \\ & \ddots & \\ 0 & & a_n \end{smallmatrix}\right)$ is positive definite. Indeed, if $v = (v_1, \dots, v_n)\transp$, then
     \[
@@ -205,6 +224,7 @@ The situation for Hermitian products is similar.
 Given a positive definite complex matrix $A$, we can define a Hermitian product on $\mathbb{C}^n$ via $\langle v, w \rangle_A = v\transp A \overline{w}$.
 
 \begin{claim*}
+\label{claim:hermitian_product_iff_pos_def}
     $\langle \cdot, \cdot \rangle_A$ is a Hermitian product if and only if $A$ is positive definite.
 \end{claim*}
 
@@ -213,10 +233,10 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 \end{exercise}
 
 \begin{proof}[Proof of the Claim]
-    We will prove it for complex matrices and Hermitian products (the case of symmetric matrices and scalar products is very similar and even simpler. Exercise).
-    
+    We will prove it for complex matrices and Hermitian products (the case of symmetric matrices and scalar products is very similar and even simpler --- see \cref{exc:real_case_of_claim}).
+
     Let $A \in \M_{n \times n}(\mathbb{C})$ and suppose that $\langle v, w \rangle_A := v\transp A \overline{w}$ is a Hermitian product.
-    Then for all $v, w \in \mathbb{C}^n$ we have $\langle v, w \rangle_A = \overline{\langle w, v \rangle}_A$.
+    Then for all $v, w \in \mathbb{C}^n$ we have $\langle v, w \rangle_A = \overline{\langle w, v \rangle_A}$.
     \[
         \implies v\transp A \overline{w} = \overline{w\transp A \overline{v}} \implies v\transp A \overline{w} = \overline{w}\transp \overline{A} v \implies v\transp A \overline{w} = (\overline{w}\transp \overline{A} v)\transp \implies v\transp A \overline{w} = v\transp \overline{A}\transp \overline{w}.
     \]
@@ -229,8 +249,18 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     
     The fact that $A$ is positive definite is precisely the condition that $\langle v, v \rangle_A > 0$ for all $v \neq 0$, which is to say $v\transp A \overline{v} > 0$.
     
-    The opposite statement: A positive definite matrix implies $\langle \cdot, \cdot \rangle_A$ is a Hermitian product (Exercise).
+    The opposite statement --- that a positive definite matrix $A$ makes $\langle \cdot, \cdot \rangle_A$ a Hermitian product --- is \cref{exc:pos_def_gives_hermitian_product}.
 \end{proof}
+
+\begin{exercise}[The Real Case of the Claim]
+    \label{exc:real_case_of_claim}
+    Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R})$ and the form $\langle v, w \rangle_A = v\transp A w$, thereby proving the Claim on \cpageref{claim:scalar_product_forces_pos_def}: if $\langle \cdot, \cdot \rangle_A$ is a scalar product, then $A$ is symmetric and positive definite.
+\end{exercise}
+
+\begin{exercise}[Positive Definiteness Yields a Hermitian Product]
+    \label{exc:pos_def_gives_hermitian_product}
+    Let $A \in \M_{n \times n}(\mathbb{C})$ be a positive definite Hermitian matrix. Show that $\langle v, w \rangle_A := v\transp A \overline{w}$ is a Hermitian product on $\mathbb{C}^n$.
+\end{exercise}
 
 \subsection*{The geometry on \texorpdfstring{$V$}{V} depends on the choice of inner product}
 
@@ -276,7 +306,8 @@ We define a scalar product:
 \]
 (This is well-defined and finite. Why?)
 
-\begin{exercise}
+\begin{exercise}[The Integral Pairing is Bilinear and Symmetric]
+    \label{exc:integral_pairing}
     Show that $\langle \cdot, \cdot \rangle$ is linear in both variables and symmetric.
 \end{exercise}
 
@@ -313,6 +344,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \end{claim*}
 
 \begin{exercise}[Examples of Non-Inner-Product Norms]
+    \label{exc:non_inner_product_norms}
     Define $\left\| \binom{a}{b} \right\|' := \max\{|a|, |b|\}$, and $\left\| \binom{a}{b} \right\|'' := |a| + |b|$ for all $\binom{a}{b} \in \mathbb{R}^2$. Show that $\| \cdot \|'$ and $\| \cdot \|''$ are norms, but they are not induced by any scalar product. 
     
     \textit{Hint:} Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.
@@ -337,7 +369,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     \begin{align*}
         0 &\leq \|w\|^2 = \langle v - \lambda u, v - \lambda u \rangle \\
         &= \langle v, v \rangle - \overline{\lambda} \langle v, u \rangle - \lambda \langle u, v \rangle + \lambda \overline{\lambda} \langle u, u \rangle \\
-        &= \|v\|^2 - \overline{\lambda} \cdot \lambda \|u\|^2 - \lambda \cdot \overline{\lambda} \|u\|^2 + \lambda \cdot \overline{\lambda} \|u\|^2 \quad \left(\text{since } \overline{\langle v, u \rangle} = \overline{\lambda} \|u\|^2 \text{ and } \langle u, v \rangle = \lambda \|u\|^2\right) \\
+        &= \|v\|^2 - \overline{\lambda} \cdot \lambda \|u\|^2 - \lambda \cdot \overline{\lambda} \|u\|^2 + \lambda \cdot \overline{\lambda} \|u\|^2 \quad \left(\text{since } \langle v, u \rangle = \lambda \|u\|^2 \text{ and } \langle u, v \rangle = \overline{\langle v, u \rangle} = \overline{\lambda} \|u\|^2\right) \\
         &= \|v\|^2 - |\lambda|^2 \|u\|^2 \\
         &= \|v\|^2 - \frac{|\langle v, u \rangle|^2}{\|u\|^4} \cdot \|u\|^2 \\
         &= \|v\|^2 - \frac{|\langle v, u \rangle|^2}{\|u\|^2}.
@@ -372,9 +404,14 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     \]
     where the second inequality follows from the Cauchy-Schwarz inequality.
     Since both $\|u + v\|$ and $\|u\| + \|v\|$ are non-negative, the last inequality implies that $\|u + v\| \leq \|u\| + \|v\|$.
-    
-    The other properties of being a norm: Exercise.
+
+    The other properties of being a norm are \cref{exc:remaining_norm_axioms}.
 \end{proof}
+
+\begin{exercise}[The Remaining Two Norm Axioms]
+    \label{exc:remaining_norm_axioms}
+    Complete the proof of \cref{cor:norm_induced} by verifying the homogeneity $\|\alpha \cdot v\| = |\alpha| \cdot \|v\|$ and the non-degeneracy \qt{$\|v\| = 0 \implies v = 0$} for $\|v\| := \sqrt{\langle v, v \rangle}$.
+\end{exercise}
 
 % Def. (22.a.13)
 \begin{definition}
@@ -437,11 +474,8 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \label{prop:matrix_representation_orthonormal}
     Let $V, W$ be vector spaces over $K$ ($= \mathbb{R}$ or $\mathbb{C}$) and let $\langle \cdot, \cdot \rangle$ be an inner product on $W$. Let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$ and $\mathcal{C} = (w_1, \dots, w_m)$ an \emph{orthonormal} basis for $W$. Let $T: V \to W$ be a linear map. Write $[T]_{\mathcal{C}}^{\mathcal{B}} = (a_{ij})$. Then $a_{ij} = \langle T(v_j), w_i \rangle$ for all $i,j$. 
     (If $\mathcal{C}$ is only an orthogonal basis, then $a_{ij} = \langle T(v_j), w_i \rangle / \langle w_i, w_i \rangle$).
+    The proof is left as an exercise.
 \end{proposition}
-
-\begin{proof}
-    Exercise.
-\end{proof}
 
 So, having orthogonal/orthonormal bases for our spaces is useful!
 
@@ -546,23 +580,182 @@ Orthogonal projection:
 \]
 We'll see more about this soon.
 
-\vspace{2em}
 
-\subsection*{Solutions to Exercises}
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_euclidean_hermitian_a}
 
-\begin{exercisesolution}[Proof of Polarization Identity (on \cpageref{exc:reconstruct_scalar_prod} \textbf{(b)})]
-    Let $V$ be a Hermitian space. The analogous formula to reconstruct the Hermitian product from the norm is the Polarization Identity:
-    \[
-        \langle u, v \rangle = \frac{1}{4}\left(\|u+v\|^2 - \|u-v\|^2 + i\|u+iv\|^2 - i\|u-iv\|^2\right).
-    \]
-    By expanding each norm term using $\|x+y\|^2 = \|x\|^2 + \|y\|^2 + 2\Rea\langle x, y \rangle$ and maintaining careful track of the imaginary components through sesquilinearity, the cross terms isolate $\langle u, v \rangle$.
+\begin{exercisesolution}[Proof of \cref{lem:basic_properties_inner_prod}]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Homogeneity in the first variable with $\alpha := 0$ gives
+      \[ \langle 0, v \rangle = \langle 0 \cdot 0, v \rangle = 0 \cdot \langle 0, v \rangle = 0, \]
+      and homogeneity in the second variable gives $\langle v, 0 \rangle = \langle v, 0 \cdot 0 \rangle = \overline{0} \cdot \langle v, 0 \rangle = 0$ (in the Euclidean case simply $0 \cdot \langle v, 0 \rangle$, since there is no conjugation).
+    \item Suppose $\langle v, w \rangle = 0$ for every $v \in V$. Taking in particular $v := w$ gives $\langle w, w \rangle = 0$. If $w$ were non-zero, positivity would force $\langle w, w \rangle > 0$, a contradiction. Hence $w = 0$.
+    \item Let $v \in V$ be arbitrary. Additivity in the second variable, together with $\overline{-1} = -1$, gives
+      \[ \langle v, w_1 - w_2 \rangle = \langle v, w_1 \rangle + \overline{(-1)} \langle v, w_2 \rangle = \langle v, w_1 \rangle - \langle v, w_2 \rangle = 0. \]
+      Since this holds for every $v \in V$, part \textbf{(b)} applied to $w := w_1 - w_2$ gives $w_1 - w_2 = 0$, that is, $w_1 = w_2$.
+  \end{enumerate}
 \end{exercisesolution}
 
-\begin{exercisesolution}[Positive Definite Matrices (on \cpageref{exc:pos_def_2x2_complex})]
-    Let $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ be a Hermitian matrix (which implies $a, d \in \mathbb{R}$). 
-    For $v = \binom{x}{y} \in \mathbb{C}^2$, the condition $v\transp A \overline{v} > 0$ yields
-    \[
-        a|x|^2 + b x \overline{y} + \overline{b} \overline{x} y + d|y|^2 > 0.
-    \]
-    Choosing $v = \binom{1}{0}$ gives $a > 0$. Through completing the square, the full expression is positive for all non-zero $v$ if and only if $a > 0$ and $ad - |b|^2 > 0$. This confirms the condition $a > 0$ and $\det A > 0$.
+\begin{exercisesolution}[Proof of \cref{exc:polarization} \textbf{(a)}]
+  Let $V$ be a Euclidean space and $u, v \in V$. Expanding by bilinearity and then using symmetry,
+  \[ \|u+v\|^2 = \langle u+v, u+v \rangle = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle = \|u\|^2 + 2\langle u, v \rangle + \|v\|^2. \]
+  Rearranging gives exactly
+  \[ \langle u, v \rangle = \frac{1}{2}\left( \|u+v\|^2 - \|u\|^2 - \|v\|^2 \right). \]
+  The right-hand side involves nothing but the norm, so two scalar products on $V$ that induce the same norm are equal --- this is the sense in which $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. The converse fails: not every norm arises this way, as \cref{exc:non_inner_product_norms} shows.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:polarization} \textbf{(b)}]
+  Let $V$ be a Hermitian space. Here $\langle u, v \rangle$ is in general not real, so one formula must recover two real numbers, and we obtain them one at a time.
+
+  \textbf{The real part.} Expanding as above, but now with $\langle v, u \rangle = \overline{\langle u, v \rangle}$,
+  \begin{equation} \label{eq:hermitian_expand}
+    \|u+v\|^2 = \|u\|^2 + \langle u, v \rangle + \overline{\langle u, v \rangle} + \|v\|^2 = \|u\|^2 + \|v\|^2 + 2 \Rea \langle u, v \rangle,
+  \end{equation}
+  so that $\Rea \langle u, v \rangle = \frac{1}{2}\left( \|u+v\|^2 - \|u\|^2 - \|v\|^2 \right)$, which is literally the Euclidean formula $(*)$ with $\langle u, v \rangle$ replaced by its real part.
+
+  \textbf{The imaginary part.} Apply \eqref{eq:hermitian_expand} with $iv$ in place of $v$. Since $\|iv\| = |i| \cdot \|v\| = \|v\|$ and $\langle u, iv \rangle = \overline{i} \langle u, v \rangle = -i \langle u, v \rangle$, we get
+  \[ \|u + iv\|^2 = \|u\|^2 + \|v\|^2 + 2 \Rea \left( -i \langle u, v \rangle \right). \]
+  Writing $\langle u, v \rangle = x + iy$ with $x, y \in \mathbb{R}$ gives $-i(x+iy) = y - ix$, whose real part is $y = \Ima \langle u, v \rangle$. Hence
+  \[ \Ima \langle u, v \rangle = \frac{1}{2}\left( \|u+iv\|^2 - \|u\|^2 - \|v\|^2 \right). \]
+
+  \textbf{The formula.} Putting the two together,
+  \[ \langle u, v \rangle = \frac{1}{2}\left( \|u+v\|^2 - \|u\|^2 - \|v\|^2 \right) + \frac{i}{2} \left( \|u+iv\|^2 - \|u\|^2 - \|v\|^2 \right), \]
+  which is the analogue of $(*)$ asked for. Subtracting the versions of \eqref{eq:hermitian_expand} for $v$ and for $-v$ (respectively for $iv$ and $-iv$) eliminates $\|u\|^2 + \|v\|^2$ and yields the more symmetric form usually called the polarization identity:
+  \[ \langle u, v \rangle = \frac{1}{4}\left( \|u+v\|^2 - \|u-v\|^2 + i\|u+iv\|^2 - i\|u-iv\|^2 \right). \]
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:bilinear_form_A}]
+  Everything follows from the distributivity and homogeneity of matrix multiplication. For the first variable, using $(v_1 + v_2)\transp = v_1\transp + v_2\transp$ and $(\alpha v)\transp = \alpha v\transp$,
+  \[ \langle v_1 + v_2, w \rangle_A = (v_1 + v_2)\transp A w = v_1\transp A w + v_2\transp A w = \langle v_1, w \rangle_A + \langle v_2, w \rangle_A, \]
+  \[ \langle \alpha v, w \rangle_A = (\alpha v)\transp A w = \alpha \left( v\transp A w \right) = \alpha \langle v, w \rangle_A. \]
+  For the second variable,
+  \[ \langle v, w_1 + w_2 \rangle_A = v\transp A (w_1 + w_2) = v\transp A w_1 + v\transp A w_2 = \langle v, w_1 \rangle_A + \langle v, w_2 \rangle_A, \]
+  \[ \langle v, \alpha w \rangle_A = v\transp A (\alpha w) = \alpha \left( v\transp A w \right) = \alpha \langle v, w \rangle_A. \]
+  Note that no hypothesis on $A$ is needed here; symmetry and positivity are what will require one.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:pos_def_gives_scalar_product}]
+  Let $A \in \M_{n \times n}(\mathbb{R})$ be positive definite; by \cref{def:positive_definite_matrix_real} this includes the requirement that $A$ be symmetric. We check the four axioms of \cref{def:scalar_product_real} for $\langle v, w \rangle_A := v\transp A w$.
+
+  Linearity in each of the two variables is \cref{exc:bilinear_form_A}. Symmetry is the computation carried out in the text above: since $A\transp = A$ and a $1 \times 1$ matrix equals its own transpose,
+  \[ \langle w, v \rangle_A = w\transp A v = w\transp A\transp v = \left( v\transp A w \right)\transp = v\transp A w = \langle v, w \rangle_A. \]
+  Positivity is the definition of positive definiteness: $\langle v, v \rangle_A = v\transp A v > 0$ for every $0 \ne v \in \mathbb{R}^n$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:pos_def_examples_real} \textbf{(b)}]
+  Let $A = \left(\begin{smallmatrix} a & b \\ b & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$, which is symmetric, and write $v = \left(\begin{smallmatrix} x \\ y \end{smallmatrix}\right)$. Then
+  \[ Q(v) := v\transp A v = a x^2 + 2bxy + d y^2. \]
+
+  \textbf{Necessity.} Suppose $A$ is positive definite. Taking $v = \left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)$ gives $Q(v) = a > 0$. Taking $v = \left(\begin{smallmatrix} -b/a \\ 1 \end{smallmatrix}\right)$ --- which is legitimate now that $a \ne 0$, and is non-zero --- gives
+  \[ Q(v) = a \cdot \frac{b^2}{a^2} - 2b \cdot \frac{b}{a} + d = \frac{b^2 - 2b^2 + ad}{a} = \frac{ad - b^2}{a} = \frac{\det(A)}{a} > 0, \]
+  and since $a > 0$ this forces $\det(A) > 0$.
+
+  \textbf{Sufficiency.} Suppose $a > 0$ and $\det(A) = ad - b^2 > 0$. Completing the square,
+  \begin{equation} \label{eq:complete_square_real}
+    Q(v) = a \left( x + \frac{b}{a} y \right)^2 + \frac{ad - b^2}{a} \, y^2 = a \left( x + \frac{b}{a} y \right)^2 + \frac{\det(A)}{a} \, y^2 .
+  \end{equation}
+  Both coefficients are positive, so $Q(v) \ge 0$ always, and $Q(v) = 0$ forces first $y = 0$ and then $x + \frac{b}{a}y = x = 0$. Hence $Q(v) > 0$ for every $v \ne 0$, which is positive definiteness.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:pos_def_2x2_complex}]
+  Let $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ be Hermitian. The two reality assertions are automatic: $A^* = A$ forces $a = \overline{a}$ and $d = \overline{d}$, so $a, d \in \mathbb{R}$, and consequently
+  \[ \det A = ad - b\overline{b} = ad - |b|^2 \in \mathbb{R}. \]
+  So only the two inequalities are at issue. Write $v = \left(\begin{smallmatrix} x \\ y \end{smallmatrix}\right) \in \mathbb{C}^2$ and compute
+  \[ Q(v) := v\transp A \overline{v} = a|x|^2 + b x \overline{y} + \overline{b} \, \overline{x} y + d|y|^2 = a|x|^2 + 2 \Rea \left( b x \overline{y} \right) + d |y|^2, \]
+  the last step because $\overline{b}\,\overline{x}y = \overline{b x \overline{y}}$, and $z + \overline{z} = 2\Rea z$.
+
+  \textbf{Necessity.} If $A$ is positive definite, then $v = \left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)$ gives $Q(v) = a > 0$, and $v = \left(\begin{smallmatrix} -\overline{b}/a \\ 1 \end{smallmatrix}\right)$ gives, after the computation below, $Q(v) = \det(A)/a > 0$, whence $\det A > 0$.
+
+  \textbf{Sufficiency.} Assume $a > 0$ and $\det A > 0$. Completing the square exactly as in the real case, but taking the conjugations into account,
+  \[ a \left| x + \frac{\overline{b}}{a} y \right|^2 = a \left( x + \frac{\overline{b}}{a}y \right) \overline{\left( x + \frac{\overline{b}}{a}y \right)} = a|x|^2 + b x \overline{y} + \overline{b} \, \overline{x} y + \frac{|b|^2}{a}|y|^2, \]
+  and therefore
+  \begin{equation} \label{eq:complete_square_complex}
+    Q(v) = a \left| x + \frac{\overline{b}}{a} y \right|^2 + \frac{ad - |b|^2}{a} |y|^2 = a \left| x + \frac{\overline{b}}{a} y \right|^2 + \frac{\det(A)}{a} |y|^2 .
+  \end{equation}
+  Both coefficients are positive real numbers and both squared moduli are non-negative, so $Q(v) \ge 0$; and $Q(v) = 0$ forces $y = 0$ and then $x = 0$. Hence $Q(v) > 0$ for all $v \ne 0$. Reading \eqref{eq:complete_square_complex} at $x = -\overline{b}y/a$, $y = 1$ also supplies the value $\det(A)/a$ used in the necessity half.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:real_case_of_claim}]
+  Let $A \in \M_{n \times n}(\mathbb{R})$ and suppose $\langle v, w \rangle_A := v\transp A w$ is a scalar product on $\mathbb{R}^n$. Symmetry of the product says $v\transp A w = w\transp A v$ for all $v, w \in \mathbb{R}^n$. Take $v := e_i$ and $w := e_j$ from the standard basis. As in the complex computation of the text,
+  \[ e_i\transp A e_j = a_{ij}, \qquad e_j\transp A e_i = a_{ji}, \]
+  since $A e_j$ is the $j$-th column of $A$ and left multiplication by $e_i\transp$ selects its $i$-th entry. Hence $a_{ij} = a_{ji}$ for all $i, j$, that is, $A\transp = A$: the matrix is symmetric.
+
+  Positivity of the scalar product says $\langle v, v \rangle_A = v\transp A v > 0$ for every $0 \ne v \in \mathbb{R}^n$, which is precisely the statement that the symmetric matrix $A$ is positive definite (\cref{def:positive_definite_matrix_real}). This proves the Claim on \cpageref{claim:scalar_product_forces_pos_def}, and, read together with \cref{exc:pos_def_gives_scalar_product}, shows that $\langle \cdot, \cdot \rangle_A$ is a scalar product if and only if $A$ is symmetric and positive definite.
+
+  It is indeed simpler than the complex case: no conjugation has to be tracked, and the Hermitian axiom collapses to plain symmetry.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:pos_def_gives_hermitian_product}]
+  Let $A \in \M_{n \times n}(\mathbb{C})$ be Hermitian and positive definite, and put $\langle v, w \rangle_A := v\transp A \overline{w}$. We verify the four axioms of \cref{def:hermitian_product_complex}.
+
+  \textbf{Linearity in the first variable.} As in \cref{exc:bilinear_form_A}, $(v_1 + v_2)\transp A \overline{w} = v_1\transp A \overline{w} + v_2\transp A \overline{w}$ and $(\alpha v)\transp A \overline{w} = \alpha \left( v\transp A \overline{w} \right)$.
+
+  \textbf{Sesquilinearity in the second variable.} Complex conjugation is additive and satisfies $\overline{\alpha w} = \overline{\alpha} \, \overline{w}$, so
+  \[ \langle v, w_1 + w_2 \rangle_A = v\transp A \left( \overline{w_1} + \overline{w_2} \right) = \langle v, w_1 \rangle_A + \langle v, w_2 \rangle_A, \]
+  \[ \langle v, \alpha w \rangle_A = v\transp A \left( \overline{\alpha} \, \overline{w} \right) = \overline{\alpha} \left( v\transp A \overline{w} \right) = \overline{\alpha} \langle v, w \rangle_A. \]
+
+  \textbf{The Hermitian property.} Using that a $1 \times 1$ matrix equals its own transpose, and then $\overline{A}\transp = A$:
+  \[ \overline{\langle w, v \rangle_A} = \overline{w\transp A \overline{v}} = \overline{w}\transp \overline{A} v = \left( \overline{w}\transp \overline{A} v \right)\transp = v\transp \overline{A}\transp \overline{w} = v\transp A \overline{w} = \langle v, w \rangle_A. \]
+
+  \textbf{Positivity.} $\langle v, v \rangle_A = v\transp A \overline{v} > 0$ for every $0 \ne v \in \mathbb{C}^n$ is exactly \cref{def:positive_definite_matrix_complex}; that this quantity is real at all was checked there.
+
+  Together with the half proved in the text, this completes the Claim on \cpageref{claim:hermitian_product_iff_pos_def}.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:integral_pairing}]
+  First, the pairing is well defined and finite --- Prof. Biran's \qt{Why?}. If $f, g \in C[a,b]$, then $f \cdot g$ is continuous on the closed bounded interval $[a,b]$, hence Riemann integrable there, and its integral is a real number.
+
+  \textbf{Linearity in the first variable.} By the linearity of the integral,
+  \[ \langle f_1 + f_2, g \rangle = \int_a^b \left( f_1(x) + f_2(x) \right) g(x) \, dx = \int_a^b f_1 g \, dx + \int_a^b f_2 g \, dx = \langle f_1, g \rangle + \langle f_2, g \rangle, \]
+  and for $\alpha \in \mathbb{R}$,
+  \[ \langle \alpha f, g \rangle = \int_a^b \alpha f(x) g(x) \, dx = \alpha \int_a^b f(x) g(x) \, dx = \alpha \langle f, g \rangle. \]
+
+  \textbf{Symmetry.} Pointwise multiplication of real numbers is commutative, so $f(x)g(x) = g(x)f(x)$ for every $x$, and therefore $\langle f, g \rangle = \langle g, f \rangle$.
+
+  \textbf{Linearity in the second variable} now follows from the first variable together with symmetry, without any further computation.
+
+  Positivity is the part checked in the text, so $\langle \cdot, \cdot \rangle$ is indeed a scalar product on $C[a,b]$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:non_inner_product_norms}]
+  Write $v = \left(\begin{smallmatrix} a \\ b \end{smallmatrix}\right)$ and $v' = \left(\begin{smallmatrix} a' \\ b' \end{smallmatrix}\right)$.
+
+  \textbf{Both are norms.} For $\| \cdot \|''$ the three axioms are immediate from the corresponding properties of the absolute value on $\mathbb{R}$:
+  \[ \|v + v'\|'' = |a+a'| + |b+b'| \le |a| + |a'| + |b| + |b'| = \|v\|'' + \|v'\|'', \]
+  $\|\alpha v\|'' = |\alpha a| + |\alpha b| = |\alpha| \cdot \|v\|''$, and $\|v\|'' = 0$ forces $|a| = |b| = 0$, so $v = 0$. For $\| \cdot \|'$,
+  \[ \|v+v'\|' = \max\{|a+a'|, |b+b'|\} \le \max\{|a| + |a'|, |b| + |b'|\} \le \max\{|a|,|b|\} + \max\{|a'|,|b'|\}, \]
+  since each of $|a|+|a'|$ and $|b|+|b'|$ is bounded by the right-hand side; homogeneity is $\max\{|\alpha a|, |\alpha b|\} = |\alpha| \max\{|a|,|b|\}$, and $\|v\|' = 0$ again forces $v = 0$.
+
+  \textbf{Neither comes from a scalar product.} Suppose a norm $\| \cdot \|$ on a real vector space is induced by a scalar product. Expanding as in \cref{exc:polarization} \textbf{(a)} for both $u+v$ and $u-v$ and adding, the cross terms cancel and we obtain the \newterm{parallelogram law}
+  \begin{equation} \label{eq:parallelogram}
+    \|u+v\|^2 + \|u-v\|^2 = 2\|u\|^2 + 2\|v\|^2 \qquad \forall u, v .
+  \end{equation}
+  (Equivalently: the formula in the hint would have to define a scalar product, and \eqref{eq:parallelogram} is what its additivity in the first variable amounts to.) So it suffices to exhibit two vectors violating \eqref{eq:parallelogram}. Take $u := \left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)$ and $v := \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)$, so that $u + v = \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ and $u - v = \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)$.
+
+  For $\| \cdot \|'$ we get $\|u\|' = \|v\|' = \|u+v\|' = \|u-v\|' = 1$, so the left-hand side of \eqref{eq:parallelogram} is $1 + 1 = 2$ while the right-hand side is $2 + 2 = 4$.
+
+  For $\| \cdot \|''$ we get $\|u\|'' = \|v\|'' = 1$ and $\|u+v\|'' = \|u-v\|'' = 2$, so the left-hand side is $4 + 4 = 8$ while the right-hand side is $2 + 2 = 4$.
+
+  In both cases \eqref{eq:parallelogram} fails, so neither norm is induced by a scalar product. This is the warning attached to \cref{exc:polarization} \textbf{(a)}: a scalar product determines its norm, but a norm need not come from one.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:remaining_norm_axioms}]
+  First note that $\|v\| := \sqrt{\langle v, v \rangle}$ makes sense: in the Hermitian case $\langle v, v \rangle = \overline{\langle v, v \rangle}$ by the Hermitian property, so $\langle v, v \rangle$ is real; it is $0$ for $v = 0$ by \cref{lem:basic_properties_inner_prod} \textbf{(a)} and positive otherwise, so the square root is defined and lies in $\mathbb{R}_{\ge 0}$.
+
+  \textbf{Homogeneity.} For $\alpha \in K$ and $v \in V$,
+  \[ \|\alpha v\|^2 = \langle \alpha v, \alpha v \rangle = \alpha \overline{\alpha} \langle v, v \rangle = |\alpha|^2 \|v\|^2, \]
+  using homogeneity in the first variable and sesquilinearity in the second (in the Euclidean case $\alpha \cdot \alpha = \alpha^2 = |\alpha|^2$). Both $\|\alpha v\|$ and $|\alpha| \cdot \|v\|$ are non-negative, so taking square roots gives $\|\alpha v\| = |\alpha| \cdot \|v\|$.
+
+  \textbf{Non-degeneracy.} If $\|v\| = 0$, then $\langle v, v \rangle = 0$. Were $v \ne 0$, positivity would give $\langle v, v \rangle > 0$; hence $v = 0$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{prop:matrix_representation_orthonormal}]
+  By the definition of the representation matrix, the $j$-th column of $[T]_{\mathcal{C}}^{\mathcal{B}} = (a_{ij})$ holds the coordinates of $T(v_j)$ in the basis $\mathcal{C}$, that is,
+  \[ T(v_j) = \sum_{i=1}^m a_{ij} \, w_i . \]
+  Fix $1 \le k \le m$ and pair both sides with $w_k$. Using linearity in the first variable and the orthogonality $\langle w_i, w_k \rangle = 0$ for $i \ne k$,
+  \[ \langle T(v_j), w_k \rangle = \sum_{i=1}^m a_{ij} \langle w_i, w_k \rangle = a_{kj} \langle w_k, w_k \rangle . \]
+  If $\mathcal{C}$ is orthonormal, then $\langle w_k, w_k \rangle = \|w_k\|^2 = 1$ and we get $a_{kj} = \langle T(v_j), w_k \rangle$, which is the claim after renaming $k$ to $i$. If $\mathcal{C}$ is merely orthogonal, then $\langle w_k, w_k \rangle \ne 0$ (an orthogonal system does not contain $0$) and dividing gives
+  \[ a_{ij} = \frac{\langle T(v_j), w_i \rangle}{\langle w_i, w_i \rangle} . \]
+  This is \cref{thm:properties_orthogonal_systems} \textbf{(b)} applied to the vector $T(v_j) \in \Sp(w_1, \dots, w_m) = W$.
 \end{exercisesolution}
