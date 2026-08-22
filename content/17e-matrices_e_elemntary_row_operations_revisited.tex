@@ -1,38 +1,54 @@
 \renewcommand{\thetheorem}{17.e.\arabic{theorem}}
 \setcounter{theorem}{0}
 
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
+% Extractor: Gemini 3.1 Pro
 \section{Elementary Row Operations Revisited}
+\label{sec:eros_revisited}
 
 Let $A \in \M_{n \times p}(K)$. We have previously learned about elementary row operations, which are utilized as an integral part of the Gaussian elimination algorithm. The main point of this section is to demonstrate that all of these operations can be expressed through matrix multiplications.
-\textbf{Notation:} Let $n \in \mathbb{Z}_{\ge 1}$, and let $1 \le i \le n$, $1 \le j \le n$. We denote by $R_{ij} \in \M_{n \times n}(K)$ the matrix whose entries are all zero, except for the entry in the $i$-th row and $j$-th column, which is equal to $1$. 
 
-We will now define three types of elementary matrices in $\M_{n \times n}(K)$.
+\begin{notation}
+\label{not:matrix_units}
+Let $n \in \mathbb{Z}_{\ge 1}$, and let $1 \le i \le n$, $1 \le j \le n$. We denote by $E_{ij} \in \M_{n \times n}(K)$ the matrix whose entries are all zero, except for the entry in the $i$-th row and $j$-th column, which is equal to $1$.
+\end{notation}
 
-\begin{definition}[Elementary Matrices]
-% def:17.e.0
-\label{def:elementary_matrices}
+We will now define three types of elementary matrices in $\M_{n \times n}(K)$. The notes introduce them without a number of their own, so that the numbering of this section starts at \cref{lemma:row_operations_matrix_multiplication} below.
+
+% The notes present the three types under "Notation", unnumbered; keeping this
+% definition unnumbered is what makes 17.e.1--17.e.5 below line up with them.
+\begin{definition*}[Elementary Matrices]
 We define the following three types of elementary matrices:
 \begin{enumerate}
     \item \textbf{Type I:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$, and let $\alpha \in K$. We define $Q_{ij}(\alpha)$ to be the matrix obtained from $I_n$ by applying the row operation $R_i + \alpha R_j \longrightarrow R_i$ (i.e., replacing the $i$-th row by the sum of the $i$-th row and $\alpha$ times the $j$-th row). Explicitly, we have:
     \begin{equation*}
-        Q_{ij}(\alpha) = I_n + \alpha \cdot R_{ij}
+        Q_{ij}(\alpha) = I_n + \alpha \cdot E_{ij}
     \end{equation*}
     
     \item \textbf{Type II:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$. We define $P_{ij}$ to be the matrix obtained from $I_n$ by permuting (exchanging) the $i$-th row and the $j$-th row, denoted by $R_i \leftrightarrow R_j$.
     
     \item \textbf{Type III:} Let $1 \le i \le n$, and let $0 \neq \alpha \in K$. We denote by $S_i(\alpha)$ the matrix obtained from $I_n$ by applying the row operation $\alpha R_i \longrightarrow R_i$ (i.e., multiplying the $i$-th row by the non-zero scalar $\alpha$).
 \end{enumerate}
-\end{definition}
+\end{definition*}
 
-\begin{exercise}
-Show that the Type II elementary matrix can be written explicitly as $P_{ij} = I_n - R_{ii} - R_{jj} + R_{ij} + R_{ji}$.
+\begin{exercise}[Explicit Form of the Permutation Matrix]
+\label{exc:permutation_matrix_form}
+Show that the Type II elementary matrix can be written explicitly as $P_{ij} = I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$.
 \end{exercise}
 
 \begin{example}[Examples of Elementary Matrices]
 Consider the space $\M_{4 \times 4}(K)$. Examples of the three types of elementary matrices are:
 \begin{align*}
     Q_{1,3}(\alpha) &= \begin{pmatrix} 1 & 0 & \alpha & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \\
-    P_{3,4} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \\
+    P_{2,4} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix} \\
     S_3(\alpha) &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & \alpha & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
 \end{align*}
 \end{example}
@@ -76,7 +92,7 @@ The same principle holds true for elementary column operations, but via right-mu
 \end{importantremark}
 
 \begin{proof}
-Statements \textbf{(a)}, \textbf{(b)}, and \textbf{(c)} can be proven directly by calculating the matrix multiplications (you are encouraged to check this!). 
+Statements \textbf{(a)}, \textbf{(b)}, and \textbf{(c)} can be proven directly by calculating the matrix multiplications; the notes leave this calculation to the reader, and it is carried out for \textbf{(a)} among the solutions at the end of the section.
 
 Statements \textbf{(a')}, \textbf{(b')}, and \textbf{(c')} can be deduced from the row operation versions by passing to the transposed matrix. For example, to prove \textbf{(a')}:
 \begin{equation*}
@@ -98,9 +114,11 @@ Every elementary matrix is invertible, and the inverse of each is an elementary 
 \end{equation*}
 \end{lemma}
 
-\begin{proof}
-\textit{Exercise.} (\textit{Hint:} Note that $P_{ij} \cdot P_{ij}$ is the matrix obtained from $P_{ij}$ by exchanging rows $i$ and $j$, which brings us immediately back to $I_n$. Apply similar logical steps for the other types.)
-\end{proof}
+% Extractor: Opus 5 (High)
+\begin{exercise}[Proof of \cref{lemma:elementary_matrix_inverses}]
+\label{exc:elementary_matrix_inverses}
+The notes leave this proof as an exercise. \textit{(Hint:} Note that $P_{ij} \cdot P_{ij}$ is the matrix obtained from $P_{ij}$ by exchanging rows $i$ and $j$, which brings us immediately back to $I_n$. Apply similar logical steps for the other types.\textit{)}
+\end{exercise}
 
 \begin{theorem}[Decomposition into Elementary Matrices]
 % thm:17.e.3
@@ -141,10 +159,11 @@ Let $B, C, D \in \M_{n \times n}(K)$. Then:
 \end{equation*}
 \end{lemma}
 
-\begin{proof}
-This follows directly from the definition of matrix multiplication. Check the explicit details as an exercise!
-This follows directly from the definition of matrix multiplication. (Hint: Consider the $(k,l)$-th entry of $B \cdot (C \mid D)$ and show it matches the $(k,l)$-th entry of $(B \cdot C \mid B \cdot D)$.)
-\end{proof}
+% Extractor: Opus 5 (High)
+\begin{exercise}[Proof of \cref{lemma:block_matrix_multiplication}]
+\label{exc:block_matrix_multiplication}
+The notes leave this proof as an exercise: it follows directly from the definition of matrix multiplication. \textit{(Hint:} Consider the $(k,\ell)$-th entry of $B \cdot (C \mid D)$ and show that it matches the $(k,\ell)$-th entry of $(B \cdot C \mid B \cdot D)$.\textit{)}
+\end{exercise}
 
 \begin{proof}[Proof of \Cref{thm:matrix_inversion_algorithm}]
 Assume that $A$ is invertible. By \Cref{thm:elementary_matrix_decomposition}, there exist elementary matrices $T_1, \dots, T_k$ such that $T_k \dots T_1 \cdot A = I_n$. Using \cref{lemma:block_matrix_multiplication}, we can multiply the augmented matrix $(A \mid I_n)$ from the left by this chain of elementary matrices:
@@ -161,7 +180,7 @@ and using the decomposition of $A$ provided by \cref{thm:elementary_matrix_decom
 \end{equation*}
 This explicitly implies that $A^{-1} = B$.
 
-Conversely, assume that $(A \mid I_n)$ can be brought to $(I_n \mid B)$ by a sequence of elementary row operations, for some matrix $B \in M_{n \times n}(K)$. This directly implies that the matrix $A$ itself is row-equivalent to $I_n$. Consequently, $A$ must have rank $n$, which inherently means that $A$ is invertible. This concludes the proof.
+Conversely, assume that $(A \mid I_n)$ can be brought to $(I_n \mid B)$ by a sequence of elementary row operations, for some matrix $B \in \M_{n \times n}(K)$. This directly implies that the matrix $A$ itself is row-equivalent to $I_n$. Consequently, $A$ must have rank $n$, which inherently means that $A$ is invertible. This concludes the proof.
 \end{proof}
 
 \begin{example}[Computing the Inverse of a Two-by-Two Matrix]
@@ -182,3 +201,78 @@ The left side is now the identity matrix $I_2$, which means the right side is ou
     A^{-1} = \begin{pmatrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \end{pmatrix}
 \end{equation*}
 \end{example}
+
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_eros_revisited}
+
+\begin{exercisesolution}[Proof of \cref{exc:permutation_matrix_form}]
+Both sides are $n \times n$ matrices, so it suffices to compare entries. Write $M := I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$, and recall that the $(k,\ell)$-entry of $E_{pq}$ is $1$ if $(k,\ell) = (p,q)$ and $0$ otherwise, while the $(k,\ell)$-entry of $I_n$ is $\delta_{k\ell}$. Since $i \neq j$, the five matrix units involved sit in five distinct positions, and the entries of $M$ are:
+\begin{itemize}
+    \item $M_{kk} = 1$ for $k \notin \{i, j\}$, from $I_n$ alone;
+    \item $M_{ii} = 1 - 1 = 0$ and $M_{jj} = 1 - 1 = 0$;
+    \item $M_{ij} = 0 + 1 = 1$ and $M_{ji} = 0 + 1 = 1$;
+    \item $M_{k\ell} = 0$ in every other position.
+\end{itemize}
+That is exactly the matrix obtained from $I_n$ by exchanging rows $i$ and $j$: row $i$ of $M$ has its single $1$ in column $j$, row $j$ has its single $1$ in column $i$, and every other row is unchanged. Hence $M = P_{ij}$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lemma:row_operations_matrix_multiplication} \textbf{(a)}]
+Let $A = (a_{k\ell}) \in \M_{n \times p}(K)$. Using $Q_{ij}(\alpha) = I_n + \alpha E_{ij}$ and distributivity,
+\[
+Q_{ij}(\alpha) \cdot A = (I_n + \alpha E_{ij}) A = A + \alpha \, E_{ij} A.
+\]
+Now $E_{ij} A$ has $(k, \ell)$-entry $\sum_{q} (E_{ij})_{kq} a_{q\ell}$, and $(E_{ij})_{kq}$ vanishes unless $k = i$ and $q = j$. So $E_{ij}A$ has the $j$-th row of $A$ sitting in its $i$-th row and zeros everywhere else. Adding $\alpha$ times this to $A$ therefore leaves every row of $A$ untouched except the $i$-th, which becomes
+\[
+(\text{row } i \text{ of } A) + \alpha \cdot (\text{row } j \text{ of } A),
+\]
+which is precisely the operation $R_i + \alpha R_j \longrightarrow R_i$. The calculations for $P_{ij}$ and $S_i(\alpha)$ are of the same kind.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lemma:elementary_matrix_inverses}]
+For Type II, the hint does it: $P_{ij} \cdot P_{ij}$ is, by \cref{lemma:row_operations_matrix_multiplication} \textbf{(b)}, the matrix obtained from $P_{ij}$ by exchanging its rows $i$ and $j$, and exchanging them a second time restores $I_n$. So $P_{ij}^{-1} = P_{ij}$.
+
+For Type I, apply \cref{lemma:row_operations_matrix_multiplication} \textbf{(a)} twice, or compute directly using $i \neq j$, which gives $E_{ij} E_{ij} = 0$:
+\[
+Q_{ij}(\alpha) \, Q_{ij}(-\alpha) = (I_n + \alpha E_{ij})(I_n - \alpha E_{ij}) = I_n - \alpha E_{ij} + \alpha E_{ij} - \alpha^2 E_{ij}E_{ij} = I_n,
+\]
+and the same computation with $\alpha$ and $-\alpha$ interchanged gives $Q_{ij}(-\alpha) Q_{ij}(\alpha) = I_n$. Hence $Q_{ij}(\alpha)^{-1} = Q_{ij}(-\alpha)$.
+
+For Type III, $S_i(\alpha) S_i(\alpha^{-1})$ scales the $i$-th row of $S_i(\alpha^{-1})$ by $\alpha$, turning its $(i,i)$-entry $\alpha^{-1}$ into $1$ and leaving the other rows alone, so the product is $I_n$; symmetrically for the other order. This uses $\alpha \neq 0$, which is part of the definition of $S_i(\alpha)$. In every case the inverse is an elementary matrix of the same type.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{lemma:block_matrix_multiplication}]
+Write $(C \mid D) \in \M_{n \times 2n}(K)$ for the matrix whose first $n$ columns are those of $C$ and whose last $n$ columns are those of $D$. By the column-wise description of a product, multiplying on the left by $B$ acts on each column separately:
+\[
+B \cdot \begin{pmatrix} | & & | \\ u_1 & \dots & u_{2n} \\ | & & | \end{pmatrix} = \begin{pmatrix} | & & | \\ B u_1 & \dots & B u_{2n} \\ | & & | \end{pmatrix}.
+\]
+The first $n$ columns of $(C \mid D)$ are the columns $c_1, \dots, c_n$ of $C$, and the last $n$ are the columns $d_1, \dots, d_n$ of $D$. So the first $n$ columns of $B \cdot (C \mid D)$ are $Bc_1, \dots, Bc_n$, that is, the columns of $B \cdot C$, and the last $n$ are $Bd_1, \dots, Bd_n$, the columns of $B \cdot D$. Hence $B \cdot (C \mid D) = (B \cdot C \mid B \cdot D)$.
+\end{exercisesolution}
+
+\begin{ainote}
+All five numbered statements of the notes are present in the transcript, in the
+notes' order and with the notes' proofs, but the printed numbers were each one
+too large: the three types of elementary matrix are introduced in the notes
+under \qt{Notation}, without a number, while the transcript wrapped them in a
+numbered \verb|definition|, which consumed 17.e.1 and pushed everything after
+it. That definition is now unnumbered, and 17.e.1 through 17.e.5 line up with
+the handwritten ones again.
+
+The notes call the matrix units $E_{ij}$; the transcript renamed them
+$R_{ij}$, which collides with the $R_i$ that this very section uses for rows ---
+$R_{ij}$ and $R_i + \alpha R_j \to R_i$ appear within two lines of each other.
+The notes' $E_{ij}$ is restored. Note that the notes switch from the $E_i$ of
+the chapter on linear systems to $R_i$ here for rows; that switch is Prof.
+Biran's own and is left alone.
+
+The notes mark four things for the reader: the explicit form of $P_{ij}$, the
+direct calculation behind \cref{lemma:row_operations_matrix_multiplication},
+\cref{lemma:elementary_matrix_inverses}, and
+\cref{lemma:block_matrix_multiplication}. All four are now exercises with
+solutions above. The proof of \cref{lemma:block_matrix_multiplication} in the
+transcript also carried its opening sentence twice, once with an exercise
+prompt and once with a hint.
+
+Finally, the transcript's example of a Type II matrix was $P_{3,4}$, correctly
+computed but not the notes' example; it is back to Prof. Biran's $P_{2,4}$.
+\end{ainote}
