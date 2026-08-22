@@ -761,11 +761,11 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \setcounter{theorem}{0}
 \section{The Minimal Polynomial \& The Cayley-Hamilton Theorem}
 
-A powerful tool in linear algebra is the ability to evaluate polynomials not just at scalar numbers, but at matrices and endomorphisms. Let $A \in M_{n \times n}(K)$. For any integer $k \ge 1$, the matrix power $A^k = A \cdot \dots \cdot A$ is well-defined. Therefore, for any formal polynomial $g(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0 \in K[x]$, we can define the matrix evaluation $g(A) \in M_{n \times n}(K)$ naturally as:
+A powerful tool in linear algebra is the ability to evaluate polynomials not just at scalar numbers, but at matrices and endomorphisms. Let $A \in \M_{n \times n}(K)$. For any integer $k \ge 1$, the matrix power $A^k = \underbrace{A \cdot \dots \cdot A}_{k}$ is well-defined. Therefore, for any formal polynomial $g(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0 \in K[x]$, we can define the matrix evaluation $g(A) \in \M_{n \times n}(K)$ naturally as:
 \[
 g(A) := a_d A^d + a_{d-1}A^{d-1} + \dots + a_1 A + a_0 I_n.
 \]
-A natural question arises: can we find a polynomial that completely "kills" or annihilates a given matrix?
+A natural question arises: can we find a polynomial that completely \qt{kills} or annihilates a given matrix?
 
 \begin{claim*}[Existence of an Annihilating Polynomial]\label{claim:existence_annihilating}
   For every matrix $A \in \M_{n \times n}(K)$, there exists a non-zero polynomial $g \in K[x]$ such that $g(A) = 0$.
@@ -783,15 +783,19 @@ A natural question arises: can we find a polynomial that completely "kills" or a
   By setting $g(x) := a_r x^r + \dots + a_1 x + a_0$, we obtain the desired non-zero annihilating polynomial.
 \end{proof}
 
-A similar logic applies seamlessly to any abstract operator $T \in \End(V)$, where $V$ is a finite-dimensional vector space over $K$, defining $g(T) := a_d T^d + \dots + a_1 T + a_0 \id_V$. Since annihilating polynomials exist, it is mathematically fruitful to look for the "simplest" one, which acts as a sort of algebraic DNA for the operator.
+A similar logic applies seamlessly to any abstract operator $T \in \End(V)$, where $V$ is a finite-dimensional vector space over $K$, writing $T^k := \underbrace{T \circ \dots \circ T}_{k}$ and defining $g(T) := a_d T^d + \dots + a_1 T + a_0 \id_V$. Since annihilating polynomials exist, it is mathematically fruitful to look for the \qt{simplest} one, which acts as a sort of algebraic DNA for the operator.
 
-\begin{definition}[The Minimal Polynomial]\label{def:minimal_poly}
-  Let $V$ be a vector space over $K$ and $T \in \End(V)$. A \qt{minimal polynomial} for $T$ is a non-zero, monic polynomial $m_T(x) \in K[x]$ of the minimal possible degree such that $m_T(T) = 0$.
+\begin{definition}[The Minimal Polynomial]
+  % def:21.d.1
+  \label{def:minimal_poly}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. A \newterm{minimal polynomial} for $T$ is a non-zero, monic polynomial $m_T(x) \in K[x]$ of the minimal possible degree such that $m_T(T) = 0$.
 \end{definition}
 
 While the minimal polynomial guarantees that an operator satisfies \textit{some} polynomial equation, one of the most celebrated theorems in mathematics provides a canonical polynomial that always works: the characteristic polynomial.
 
-\begin{theorem}[Cayley-Hamilton]\label{thm:cayley_hamilton}
+\begin{theorem}[Cayley-Hamilton]
+  % thm:21.d.2
+  \label{thm:cayley_hamilton}
   Let $A \in \M_{n \times n}(K)$. Then
   \begin{enumerate}
     \item  $P_A(A) = 0$.
@@ -799,13 +803,23 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \end{enumerate}
 \end{theorem}
 
+% Extractor: Opus 5 (High)
+\begin{exercise}[Cayley-Hamilton for $2 \times 2$ Matrices]\label{ex:cayley_2x2}
+  Let $A := \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$. Its characteristic polynomial is
+  \[ P_A(x) = \det\begin{pmatrix} a-x & b \\ c & d-x \end{pmatrix} = (a-x)(d-x) - bc = x^2 - \underbrace{(a+d)}_{\Tr(A)} \, x + \underbrace{(ad-bc)}_{\det(A)}. \]
+  Verify \cref{thm:cayley_hamilton} in this case by calculating
+  \[ P_A(A) = A^2 - (a+d) \cdot A + (ad-bc) \cdot I_2 \]
+  directly, and obtain $\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 \begin{exercise}[Expressing Matrix Inverses via Cayley-Hamilton]\label{ex:cayley_inverse}
   Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use \cref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
 \end{exercise}
 
 \subsection*{Proof of Cayley-Hamilton Theorem (Analytic Approach)}
 
-Before we dive into a purely algebraic mechanism, it is highly instructive to view this theorem through the lens of topology. The core idea is elegant: the theorem is trivially true for diagonal matrices. If we can show that diagonalizable matrices are "dense" (meaning almost all matrices are diagonalizable), we can use the continuity of polynomials to force the theorem to hold for \textit{every} matrix.
+Before we dive into a purely algebraic mechanism, it is highly instructive to view this theorem through the lens of topology. The core idea is elegant: the theorem is trivially true for diagonal matrices. If we can show that diagonalizable matrices are \qt{dense} (meaning almost all matrices are diagonalizable), we can use the continuity of polynomials to force the theorem to hold for \textit{every} matrix.
 
 First, we note that it is enough to prove part \textbf{(a)} (for matrices). Suppose we know that \textbf{(a)} is true, and let $T \in \End(V)$. Pick a basis $\mathcal{B}$ for $V$, and assign $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(K)$.
 
@@ -825,7 +839,9 @@ First, we note that it is enough to prove part \textbf{(a)} (for matrices). Supp
 
 If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\mathcal{B}}^{\mathcal{B}} = 0$. Since the zero matrix uniquely represents the zero endomorphism, we conclude $P_T(T) = 0$. We now concentrate entirely on proving the theorem for matrices, beginning over the complex field $\mathbb{C}$.
 
-\begin{lemma}[Cayley-Hamilton for Diagonalizable Matrices]\label{lemma:cayley_diagonalizable}
+\begin{lemma}[Cayley-Hamilton for Diagonalizable Matrices]
+  % lemma:21.d.3
+  \label{lemma:cayley_diagonalizable}
   Suppose $A \in \M_{n \times n}(\mathbb{C})$ is diagonalizable. Then $P_A(A) = 0$.
 \end{lemma}
 
@@ -839,29 +855,52 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   Because $\Lambda$ is diagonal, $P_A(\Lambda)$ is simply the diagonal matrix with entries $P_A(\lambda_1), \dots, P_A(\lambda_n)$. Since every entry is zero, $Q^{-1} P_A(A) Q = 0$, which immediately implies $P_A(A) = 0$.
 \end{proof}
 
-\begin{lemma}[Density of Diagonalizable Matrices]\label{lemma:sequence_diagonalizable}
+\begin{lemma}[Density of Diagonalizable Matrices]
+  % lemma:21.d.4
+  \label{lemma:sequence_diagonalizable}
   Let $A \in \M_{n \times n}(\mathbb{C})$ be any arbitrary matrix. Then there exists a sequence of matrices $(A_k)_{k=1}^\infty$ such that:
   \begin{enumerate}
     \item Each $A_k$ is diagonalizable.
-    \item $\lim_{k \to \infty} A_k = A$.
+    \item $\lim_{k \to \infty} A_k = A$, in the entrywise sense that $\lim_{k \to \infty} A_k(i,j) = A(i,j)$ for all $1 \le i \le n$ and $1 \le j \le n$.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  Because $\mathbb{C}$ is algebraically closed, every matrix is trigonalizable. Thus, there exists an invertible matrix $P$ such that $U = P^{-1} A P$ is an upper triangular matrix with the eigenvalues $\lambda_1, \dots, \lambda_n$ on its diagonal.
+  Because $\mathbb{C}$ is algebraically closed, every matrix is trigonalizable (\cref{cor:complex_trigonalizable}). Thus, there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that
+  \[ P^{-1} A P = \begin{pmatrix} \lambda_1 & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix}, \]
+  where $\lambda_1, \dots, \lambda_n \in \mathbb{C}$ are \qt{the} eigenvalues of $A$ --- or more precisely the zeros of $P_A(x)$, each of them appearing on the diagonal as many times as its algebraic multiplicity --- and $b_{ij} \in \mathbb{C}$ for $1 \le i < j \le n$. Note that, equivalently,
+  \begin{equation} \label{eq:trigonalized_A}
+    A = P \begin{pmatrix} \lambda_1 & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix} P^{-1}.
+  \end{equation}
 
-  To ensure diagonalizability, we must prevent repeated eigenvalues. We can fix this by introducing a tiny perturbation. For each integer $k \ge 1$, we define a diagonal matrix of small shifts:
+  To ensure diagonalizability, we must prevent repeated eigenvalues, and we fix this by a tiny perturbation of the diagonal --- one chosen afresh for each $k$. Let $k \in \mathbb{Z}_{\ge 1}$ and pick $\lambda_1(k), \dots, \lambda_n(k) \in \mathbb{C}$ such that
+  \begin{enumerate}
+    \item $\left| \lambda_i(k) - \lambda_i \right| < \frac{1}{2023 \cdot k}$ for every $i$, and
+    \item $\lambda_1(k), \dots, \lambda_n(k)$ are pairwise distinct.
+  \end{enumerate}
+  This is always possible: distinct points may be chosen inside any collection of discs of positive radius, however small. Now define
   \[
-  E_k = \diag\left(\frac{\epsilon_1}{k}, \frac{\epsilon_2}{k}, \dots, \frac{\epsilon_n}{k}\right)
+  A_k := P \begin{pmatrix} \lambda_1(k) & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n(k) \end{pmatrix} P^{-1},
   \]
-  We carefully choose the constants $\epsilon_i$ such that the new diagonal entries $\lambda_i + \frac{\epsilon_i}{k}$ are strictly distinct from one another. We now define our sequence:
-  \[
-  A_k := P (U + E_k) P^{-1}
-  \]
-  Because $U + E_k$ is still upper triangular but now possesses exactly $n$ distinct eigenvalues, it is guaranteed to be diagonalizable. Finally, as $k \to \infty$, the perturbation matrix $E_k \to 0$, meaning $\lim_{k \to \infty} A_k = P U P^{-1} = A$.
+  keeping the very same $P$ and the very same entries $b_{ij}$ above the diagonal.
+
+  Clearly $A_k$ has $n$ distinct eigenvalues, namely $\lambda_1(k), \dots, \lambda_n(k)$, and is therefore diagonalizable. (Alternatively: $P_{A_k}(x)$ splits into the $n$ distinct linear factors $(\lambda_1(k) - x) \cdot \dots \cdot (\lambda_n(k) - x)$, so $m_a(A_k; \lambda_i(k)) = 1$ for every $i$, and \cref{cor:sufficient_diag} applies.)
+
+  Finally, by condition \textbf{(a)} the middle matrix converges entrywise to the middle matrix of \eqref{eq:trigonalized_A} as $k \to \infty$, and the map $X \mapsto PXP^{-1}$ is continuous (\cref{ex:conjugation_continuous}). Consequently,
+  \[ \lim_{k \to \infty} A_k = P \left( \lim_{k \to \infty} \begin{pmatrix} \lambda_1(k) & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n(k) \end{pmatrix} \right) P^{-1} = P \begin{pmatrix} \lambda_1 & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix} P^{-1} = A. \qedhere \]
 \end{proof}
 
-\begin{lemma}[Cayley-Hamilton over $\mathbb{C}$]\label{lemma:cayley_C}
+% Extractor: Opus 5 (High)
+\begin{exercise}[Continuity of Two-Sided Multiplication]\label{ex:conjugation_continuous}
+  Let $P, Q \in \M_{n \times n}(\mathbb{C})$ be given matrices. Show that the map
+  \[ \M_{n \times n}(\mathbb{C}) \longrightarrow \M_{n \times n}(\mathbb{C}), \qquad X \longmapsto P X Q, \]
+  is continuous. (This is what licenses pulling the limit through $P$ and $P^{-1}$ at the end of the proof above.)
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
+\begin{lemma}[Cayley-Hamilton over $\mathbb{C}$]
+  % lemma:21.d.5
+  \label{lemma:cayley_C}
   Let $A \in \M_{n \times n}(\mathbb{C})$ be any complex matrix. The Cayley-Hamilton theorem holds for $A$.
 \end{lemma}
 
@@ -876,34 +915,98 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 
 To generalize this result from $\mathbb{C}$ to any arbitrary field $K$, we rely on a formal algebraic identity regarding multi-variable polynomials.
 
-\begin{lemma}[Formal Zero of Multi-Variable Polynomials]\label{lemma:multi_var_poly}
-  \phantom{.} \\
-  \noindent 
-  Suppose $f(x_1, \dots, x_r) \in \mathbb{R}$ $[x_1, \dots, x_r]$ satisfies $f(a_1, \dots, a_r) = 0$ for all $(a_1, \dots, a_r) \in \mathbb{R}^r$. Then $f \equiv 0$ as a formal polynomial (all coefficients are 0).
+Here $\mathbb{R}[x_1, \dots, x_r]$ denotes the set of all polynomials in the variables $x_1, \dots, x_r$ with coefficients in $\mathbb{R}$, that is, the finite sums
+\[ f(x_1, \dots, x_r) = \sum_{\underline{i} \in \mathcal{I}} c_{\underline{i}} \, x_1^{i_1} \cdot \dots \cdot x_r^{i_r}, \qquad c_{\underline{i}} \in \mathbb{R}, \]
+taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-indices $\underline{i} = (i_1, \dots, i_r)$.
+
+\begin{lemma}[Formal Zero of Multi-Variable Polynomials]
+  % lemma:21.d.6
+  \label{lemma:multi_var_poly}
+  Suppose $f(x_1, \dots, x_r) \in \mathbb{R}[x_1, \dots, x_r]$ satisfies $f(a_1, \dots, a_r) = 0$ for all $(a_1, \dots, a_r) \in \mathbb{R}^r$. Then $f \equiv 0$ as a formal polynomial (all coefficients are 0).
 \end{lemma}
 
+% Extractor: Opus 5 (High)
 \begin{proof}
-  Write $f(x_1, \dots, x_r) = \sum_{\mathbf{i} \in \mathcal{I}} c_{\mathbf{i}} x_1^{i_1} \dots x_r^{i_r}$. Because $f$ is zero everywhere on $\mathbb{R}^r$, all of its partial derivatives evaluated at the origin $(0, \dots, 0)$ must be zero. Taking the appropriate mixed partial derivatives isolates the coefficient $c_{\mathbf{i}}$. Thus, $c_{\mathbf{i}} = 0$ for all $\mathbf{i}$.
+  Write $f(x_1, \dots, x_r) = \sum_{\underline{i} \in \mathcal{I}} c_{\underline{i}} x_1^{i_1} \dots x_r^{i_r}$, fix a multi-index $\underline{i} = (i_1, \dots, i_r) \in \mathcal{I}$, and put $m := i_1 + \dots + i_r$. We show that $c_{\underline{i}} = 0$.
+
+  Since $f(a_1, \dots, a_r) = 0$ for every $(a_1, \dots, a_r) \in \mathbb{R}^r$, the function $f$ is identically zero on $\mathbb{R}^r$, and hence so are all of its partial derivatives, of any order, all over $\mathbb{R}^r$. In particular,
+  \begin{equation} \label{eq:all_partials_vanish}
+    \left. \frac{\partial^m f}{\partial x_1^{i_1} \dots \partial x_r^{i_r}} \right|_{x_1 = 0, \dots, x_r = 0} = 0.
+  \end{equation}
+
+  On the other hand, we can compute that same derivative monomial by monomial. For a multi-index $\underline{j} = (j_1, \dots, j_r)$,
+  \[
+    \frac{\partial^m}{\partial x_1^{i_1} \dots \partial x_r^{i_r}} \left( x_1^{j_1} \cdot \dots \cdot x_r^{j_r} \right) =
+    \begin{cases}
+      0, & \text{if } j_k < i_k \text{ for some } k, \\[0.5em]
+      \displaystyle \prod_{k=1}^r j_k (j_k - 1) \dots (j_k - i_k + 1) \, x_k^{\,j_k - i_k}, & \text{if } j_k \ge i_k \text{ for all } k.
+    \end{cases}
+  \]
+  Now evaluate at the origin. In the first case the result is $0$. In the second case, if $\underline{j} \ne \underline{i}$, then $j_k > i_k$ for at least one $k$, so a positive power of $x_k$ survives and the value at the origin is again $0$. Only $\underline{j} = \underline{i}$ contributes, and it contributes
+  \[ \prod_{k=1}^r i_k (i_k - 1) \dots 1 = i_1! \cdot \dots \cdot i_r!. \]
+  Summing over the monomials of $f$ therefore gives
+  \[ \left. \frac{\partial^m f}{\partial x_1^{i_1} \dots \partial x_r^{i_r}} \right|_{x_1 = 0, \dots, x_r = 0} = c_{\underline{i}} \cdot i_1! \cdot \dots \cdot i_r!. \]
+  Comparing with \eqref{eq:all_partials_vanish} and dividing by the non-zero real number $i_1! \dots i_r!$ yields $c_{\underline{i}} = 0$, as claimed.
 \end{proof}
 
+\begin{exercise}[Where the Argument Breaks over Other Fields]\label{ex:multi_var_other_fields}
+  What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$ --- even for $r = 1$ --- with, for example, $K = \mathbb{Z}_2$, or some other field, finite or infinite?
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 \begin{proof}[Analytic Proof of Cayley-Hamilton over every field $K$]
+  % Extractor: Opus 5 (High)
+  The point of departure is that the determinant is given by one and the same formula over every field: for every $n \times n$ matrix $B$ over every field $K$,
+  \begin{equation} \label{eq:leibniz_universal}
+    \det B = \sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \cdot \dots \cdot B_{n, \sigma n}.
+  \end{equation}
+  Consequently $P_A(x) = \det(A - x \cdot I_n)$ may be regarded as an element of $K[x, A_{11}, A_{12}, \dots, A_{nn}]$, a polynomial in the $n^2 + 1$ variables $x, A_{11}, \dots, A_{nn}$. But \eqref{eq:leibniz_universal} shows more: the coefficients produced by that formula are sums of products of $\pm 1$, so they lie in $\mathbb{Z}$, and hence in $\mathbb{R}$. Thus, $P_A(x) \in \mathbb{R}[x, A_{11}, \dots, A_{nn}]$, and the polynomial does not depend on $K$ at all.
+  % Extractor: Gemini 3.1 Pro
+
   For an $n \times n$ matrix $A$, the entries of $P_A(A)$ are given by multi-variable polynomials in the $n^2$ variables $A_{11}, A_{12}, \dots, A_{nn}$. These polynomials have integer (and hence real) coefficients. Let the polynomial representing the $(i,j)$-th entry be $q_{ij}(A_{11}, \dots, A_{nn})$.
 
   Since Cayley-Hamilton holds for $\mathbb{C}$ (and thus for any matrix in $\mathbb{R}$), we know $q_{ij}(A_{11}, \dots) = 0$ for all evaluations in $\mathbb{R}^{n^2}$. By \cref{lemma:multi_var_poly}, $q_{ij} \equiv 0$ as formal polynomials. Because they are formally the zero polynomial, evaluating them over \textit{any} field $K$ will always yield 0. Thus, $P_A(A) = 0$ for any matrix over any field.
 \end{proof}
 
+% Extractor: Opus 5 (High)
+\begin{example}[The Polynomials $q_{ij}$ for $n = 2$]\label{ex:q_ij_2x2}
+  Let $n = 2$ and $A := \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$, so that $P_A(x) = (a-x)(d-x) - bc = x^2 - (a+d)x + (ad-bc)$ as in \cref{ex:cayley_2x2}. Then
+  \begin{align*}
+    P_A(A) &= \begin{pmatrix} a & b \\ c & d \end{pmatrix}^2 - (a+d) \cdot \begin{pmatrix} a & b \\ c & d \end{pmatrix} + \begin{pmatrix} ad-bc & 0 \\ 0 & ad-bc \end{pmatrix} \\
+    &= \begin{pmatrix} a^2 + bc & ab+bd \\ ac+cd & bc+d^2 \end{pmatrix} - (a+d) \cdot \begin{pmatrix} a & b \\ c & d \end{pmatrix} + \begin{pmatrix} ad-bc & 0 \\ 0 & ad-bc \end{pmatrix} \\
+    &= \begin{pmatrix} q_{11} & q_{12} \\ q_{21} & q_{22} \end{pmatrix}, \qquad q_{ij} \in \mathbb{R}[a,b,c,d].
+  \end{align*}
+  This displays concretely what the proof above uses: the four entries of $P_A(A)$ are polynomial expressions in the entries of $A$, with coefficients that are plain integers and owe nothing to the field the entries are drawn from.
+\end{example}
+% Extractor: Gemini 3.1 Pro
+
 \subsection*{A Purely Algebraic Proof of Cayley-Hamilton Thm}
 
 While the analytic proof is mathematically beautiful, it relies on topological machinery (limits and continuity) that feels slightly alien in pure algebra. Let us now construct a purely structural, algebraic proof using invariant subspaces.
 
-\begin{definition}[$T$-Cyclic Subspace]\label{def:T_cyclic_subspace}
-  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $v \in V$. We define the \qt{$T$-cyclic subspace} generated by $v$ as the span of the orbit of $v$ under $T$:
+\begin{definition}[$T$-Cyclic Subspace]
+  % def:21.d.7
+  \label{def:T_cyclic_subspace}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $v \in V$. We define the \newterm{$T$-cyclic subspace} generated by $v$ as the span of the orbit of $v$ under $T$:
   \[
-  \langle v \rangle_T := \Sp\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} = \Sp(v, Tv, T^2v, \dots).
+  \langle v \rangle_T := \Sp\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} = \Sp(v, Tv, T^2v, T^3 v, \dots) \subseteq V,
   \]
+  where, as usual, $T^0 := \id_V$.
 \end{definition}
 
-\begin{lemma}[Basis and Companion Matrix]\label{lemma:cyclic_basis_companion}
+% Extractor: Opus 5 (High)
+\begin{exercise}[Minimality of the Cyclic Subspace]\label{ex:cyclic_minimal}
+  Let $V$ be a vector space over $K$, let $T \in \End(V)$ and let $v \in V$. Prove:
+  \begin{enumerate}
+    \item $\langle v \rangle_T$ is invariant under $T$, that is, $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
+    \item $\langle v \rangle_T$ is the smallest linear subspace of $V$ that contains $v$ and is $T$-invariant. That is, if $U \subseteq V$ is a linear subspace with $v \in U$ and $T(U) \subseteq U$, then $\langle v \rangle_T \subseteq U$.
+  \end{enumerate}
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
+\begin{lemma}[Basis and Companion Matrix]
+  % lemma:21.d.8
+  \label{lemma:cyclic_basis_companion}
   Suppose that $v, Tv, \dots, T^{d-1}v$ ($d \ge 1$) are linearly independent, and $T^d v = c_0 v + c_1 Tv + \dots + c_{d-1}T^{d-1}v$. Then:
   \begin{enumerate}
     \item $\mathcal{B} = (v, Tv, \dots, T^{d-1}v)$ forms a basis for $\langle v \rangle_T$.
@@ -923,16 +1026,19 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 
 \begin{proof}
   \begin{enumerate}
-    \item Let $U = \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$. Since $\langle v \rangle_T$ is by definition the smallest $T$-invariant subspace containing $v$, we must have $U = \langle v \rangle_T$. Since the set is linearly independent and spans the space, it is a basis.
+    \item Let $U := \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$, so $U$ is a $T$-invariant subspace of $V$ containing $v$. Clearly $U \subseteq \langle v \rangle_T$; and by part \textbf{(b)} of \cref{ex:cyclic_minimal} --- which identifies $\langle v \rangle_T$ as the smallest $T$-invariant subspace containing $v$ --- we also have $\langle v \rangle_T \subseteq U$. Hence $U = \langle v \rangle_T$. Since the elements of $\mathcal{B}$ are linearly independent by assumption and span this space, they form a basis for it.
     \item This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
   \end{enumerate}
 \end{proof}
 
-\begin{lemma}[Characteristic Polynomial of a Companion Matrix]\label{lemma:companion_char_poly}
+\begin{lemma}[Characteristic Polynomial of a Companion Matrix]
+  % lemma:21.d.9
+  \label{lemma:companion_char_poly}
   Under the assumptions of \cref{lemma:cyclic_basis_companion}, the characteristic polynomial of the restriction $S$ is given by:
   \[
   P_S(x) = (-1)^d (x^d - c_{d-1}x^{d-1} - \dots - c_1 x - c_0).
   \]
+  For $d = 1$ this reads $P_S(x) = -(x - c_0)$.
 \end{lemma}
 
 \begin{proof}
@@ -951,14 +1057,26 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   P_S(x) = (-x) \det(M_{11}) + (-1)^{1+d} c_0 \det(M_{1d})
   \]
   where $M_{11}$ is the submatrix obtained by deleting the first row and first column, and $M_{1d}$ is the submatrix obtained by deleting the first row and $d$-th column.
-  Notice that $M_{1d}$ is a lower triangular matrix with entirely $1$s on its main diagonal. Thus, $\det(M_{1d}) = 1$. The matrix $M_{11}$ is exactly the $(d-1) \times (d-1)$ matrix representing the characteristic polynomial of the smaller companion matrix. By induction on $d$, assuming the formula holds for $\det(M_{11})$, multiplying it by $-x$ shifts the degree of all terms up by one. Adding the $(-1)^{d+1}c_0$ term gives the exact formula claimed.
+  Notice that $M_{1d}$ is an upper triangular matrix with entirely $1$s on its main diagonal. Thus, $\det(M_{1d}) = 1$. The matrix $M_{11}$ is exactly the $(d-1) \times (d-1)$ matrix of the same shape, built from the constants $c_1, \dots, c_{d-1}$ in place of $c_0, \dots, c_{d-1}$.
+
+  % Extractor: Opus 5 (High)
+  We can now run the induction on $d$ explicitly. For $d = 1$ the matrix is the $1 \times 1$ matrix $(c_0 - x)$, whose determinant is $c_0 - x = (-1)^1 (x - c_0)$, which is the asserted formula. Let $d \ge 2$ and assume the formula for size $d-1$. Applied to $M_{11}$, whose constants are $c_1, \dots, c_{d-1}$, it gives
+  \[ \det(M_{11}) = (-1)^{d-1} \left( x^{d-1} - c_{d-1}x^{d-2} - \dots - c_2 x - c_1 \right). \]
+  Substituting this and $\det(M_{1d}) = 1$ into the cofactor expansion above yields
+  \begin{align*}
+    P_S(x) &= (-x) \cdot (-1)^{d-1} \left( x^{d-1} - c_{d-1}x^{d-2} - \dots - c_1 \right) + (-1)^{d+1} c_0 \\
+    &= (-1)^{d} \left( x^{d} - c_{d-1}x^{d-1} - \dots - c_1 x \right) + (-1)^{d} (-c_0) \\
+    &= (-1)^d \left( x^d - c_{d-1}x^{d-1} - \dots - c_1 x - c_0 \right),
+  \end{align*}
+  which is exactly the formula claimed. Here we used $(-1)^{d+1} = (-1)^{d-1} = -(-1)^d$ in both of the last two steps.
 \end{proof}
+% Extractor: Gemini 3.1 Pro
 
 \begin{proof}[Algebraic Proof of Cayley-Hamilton]
   Let $V$ be finite-dimensional, and $T \in \End(V)$. We want to show $P_T(T) = 0$, meaning $P_T(T)v = 0$ for all $v \in V$.
 
-  Let $v \in V$, $v \neq 0$. Consider the cyclic subspace $\langle v \rangle_T$. Take the maximal integer $d \ge 1$ such that $v, Tv, \dots, T^{d-1}v$ are linearly independent. Then $T^d v = c_0 v + \dots + c_{d-1}T^{d-1}v$.
-  Extend this basis $\mathcal{B}$ to a full basis $\mathcal{C} := (v, \dots, T^{d-1}v, w_1, \dots, w_{n-d})$ for $V$. The matrix representation of $T$ with respect to $\mathcal{C}$ is block upper-triangular:
+  Let $v \in V$, $v \neq 0$. Consider the cyclic subspace $\langle v \rangle_T$. Take the maximal integer $d \ge 1$ such that $v, Tv, \dots, T^{d-1}v$ are linearly independent. Then $T^d v = c_0 v + \dots + c_{d-1}T^{d-1}v$ for some $c_0, \dots, c_{d-1} \in K$, and $\dim \langle v \rangle_T = d$ by \cref{lemma:cyclic_basis_companion}.
+  Put $n := \dim V$. If $d < n$, extend this basis $\mathcal{B}$ to a full basis $\mathcal{C} := (v, \dots, T^{d-1}v, w_1, \dots, w_{n-d})$ for $V$. (If $d = n$, take $\mathcal{C} := \mathcal{B}$; the block $C$ below is then empty and $P_C(x) = 1$, so the argument goes through unchanged.) The matrix representation of $T$ with respect to $\mathcal{C}$ is block upper-triangular:
   \begin{center}
     \begin{tikzpicture}
       % Main matrix frame
@@ -984,8 +1102,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
       \node at (-1.5, 2) {\Large $[T]_{\mathcal{C}}^{\mathcal{C}} \ = $};
     \end{tikzpicture}
   \end{center}
-  Because the determinant of a block-triangular matrix is the product of the determinants of its diagonal blocks, we have $P_T(x) = P_S(x) \cdot P_C(x)$. Consider the endomorphism $R := P_T(T) \in \End(V)$. Since polynomials evaluated at $T$ commute with one another, we can factor $R$:
-  Because the determinant of a block-triangular matrix is the product of the determinants of its diagonal blocks (as shown in Proposition 20.40), we have $P_T(x) = P_S(x) \cdot P_C(x)$. Consider the endomorphism $R := P_T(T) \in \End(V)$. Since polynomials evaluated at $T$ commute with one another, we can factor $R$:
+  Because the determinant of a block-triangular matrix is the product of the determinants of its diagonal blocks (\cref{prop:block_matrix}), we have $P_T(x) = P_S(x) \cdot P_C(x)$. Consider the endomorphism $R := P_T(T) \in \End(V)$. Since polynomials evaluated at $T$ commute with one another, we can factor $R$:
   \[
   R = P_C(T) \circ P_S(T).
   \]
@@ -998,6 +1115,74 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{proof}
 
 \begin{remark}[The Lazy Proof]\label{rem:lazy_proof}
-  A completely incorrect "proof" often presented by students is the following: $P_A(A) = \det(A - A \cdot I) = \det(0) = 0$. This is fundamentally invalid. The expression $P_A(x) = \det(A - xI)$ evaluates to a polynomial with scalar coefficients. Substituting matrices into a scalar expression \textit{before} expanding the determinant leads to a severe category error. One must compute the scalar polynomial first, and only then evaluate it at the matrix $A$.
+  A completely incorrect \qt{proof} often presented by students is the following: $P_A(A) = \det(A - A \cdot I) = \det(0) = 0$. This is fundamentally invalid. The expression $P_A(x) = \det(A - xI)$ evaluates to a polynomial with scalar coefficients. Substituting matrices into a scalar expression \textit{before} expanding the determinant leads to a severe category error. One must compute the scalar polynomial first, and only then evaluate it at the matrix $A$.
+  Note also that the two sides do not even live in the same place: $\det(A - x I)$ is a \emph{scalar}, whereas $P_A(A)$ is an $n \times n$ \emph{matrix}, so the very first equality of the \qt{proof} equates a scalar with a matrix.
 \end{remark}
 
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_minimal_poly}
+
+\begin{exercisesolution}[Solution of \cref{ex:cayley_2x2}]
+  Write $A := \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$ and compute the three summands separately:
+  \[ A^2 = \begin{pmatrix} a^2 + bc & ab + bd \\ ac + cd & bc + d^2 \end{pmatrix}, \qquad
+     -(a+d) \cdot A = \begin{pmatrix} -a^2 - ad & -ab - bd \\ -ac - cd & -ad - d^2 \end{pmatrix}, \]
+  \[ (ad - bc) \cdot I_2 = \begin{pmatrix} ad - bc & 0 \\ 0 & ad - bc \end{pmatrix}. \]
+  Adding them entry by entry:
+  \begin{align*}
+    (1,1): &\quad (a^2 + bc) + (-a^2 - ad) + (ad - bc) = 0, \\
+    (1,2): &\quad (ab + bd) + (-ab - bd) + 0 = 0, \\
+    (2,1): &\quad (ac + cd) + (-ac - cd) + 0 = 0, \\
+    (2,2): &\quad (bc + d^2) + (-ad - d^2) + (ad - bc) = 0.
+  \end{align*}
+  Hence $P_A(A) = \left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)$, confirming \cref{thm:cayley_hamilton} for $n = 2$. Note that every cancellation above is an identity in the four symbols $a, b, c, d$ with integer coefficients --- it uses nothing about the field $K$, which is precisely the observation exploited in \cref{ex:q_ij_2x2}.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:cayley_inverse}]
+  Write $P_A(x) = c_n x^n + c_{n-1}x^{n-1} + \dots + c_1 x + c_0$. Its constant coefficient is
+  \[ c_0 = P_A(0) = \det(A - 0 \cdot I_n) = \det(A), \]
+  which is non-zero precisely because $A$ is invertible. By \cref{thm:cayley_hamilton},
+  \[ c_n A^n + c_{n-1}A^{n-1} + \dots + c_1 A + c_0 I_n = 0, \]
+  so, moving the constant term to the other side and factoring out one copy of $A$ (which is legitimate, since $A$ commutes with every power of itself),
+  \[ c_0 I_n = -\left( c_n A^n + \dots + c_1 A \right) = A \cdot \left( -c_n A^{n-1} - c_{n-1}A^{n-2} - \dots - c_1 I_n \right). \]
+  Dividing by the non-zero scalar $c_0 = \det(A)$ and multiplying by $A^{-1}$ gives
+  \[ A^{-1} = -\frac{1}{\det(A)} \left( c_n A^{n-1} + c_{n-1} A^{n-2} + \dots + c_2 A + c_1 I_n \right), \]
+  which exhibits $A^{-1}$ as a polynomial in $A$ of degree at most $n-1$, as required.
+
+  For $n = 2$ this recovers the familiar formula: there $c_2 = 1$ and $c_1 = -(a+d) = -\Tr(A)$, so
+  \[ A^{-1} = \frac{1}{\det(A)} \left( \Tr(A) \cdot I_2 - A \right) = \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}. \]
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:conjugation_continuous}]
+  Identify $\M_{n \times n}(\mathbb{C})$ with $\mathbb{C}^{n^2}$ by listing the entries; under this identification, convergence of matrices is exactly entrywise convergence, which is what the statement of \cref{lemma:sequence_diagonalizable} asks for. A map into $\mathbb{C}^{n^2}$ is continuous if and only if each of its $n^2$ coordinate functions is continuous, so it suffices to look at one entry of $PXQ$ at a time. By the definition of matrix multiplication,
+  \[ (P X Q)_{ij} = \sum_{k=1}^n \sum_{\ell=1}^n P_{ik} \, X_{k\ell} \, Q_{\ell j}. \]
+  Here $P_{ik}$ and $Q_{\ell j}$ are fixed complex numbers, so the right-hand side is a linear --- in particular polynomial --- expression in the $n^2$ coordinates $X_{k\ell}$ of $X$. Polynomial functions $\mathbb{C}^{n^2} \to \mathbb{C}$ are continuous, being built from the (continuous) coordinate projections by finitely many additions and multiplications. Hence every entry of $PXQ$ depends continuously on $X$, and so does $PXQ$ itself.
+
+  Taking $Q := P^{-1}$ gives the case used in \cref{lemma:sequence_diagonalizable}: we have $\lim_{k \to \infty} P B_k P^{-1} = P \left( \lim_{k \to \infty} B_k \right) P^{-1}$ whenever the limit on the right exists.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{ex:multi_var_other_fields}]
+  Two separate things go wrong, and it is worth keeping them apart.
+
+  \textbf{The proof breaks immediately.} The argument is analytic: it differentiates $f$ as a \emph{function} on $\mathbb{R}^r$, and differentiation rests on limits, which a bare field $K$ does not provide. One can of course define the formal derivative of a polynomial without any analysis, but the step that made the proof work --- \qt{$f$ vanishes identically, therefore all its derivatives vanish identically} --- is a statement about functions and is no longer available. Even granting formal derivatives, the last step divides by $i_1! \cdot \dots \cdot i_r!$, and in a field of characteristic $p$ those factorials can be $0$: for $K = \mathbb{Z}_2$ and $i = 2$ already $2! = 0$ in $K$.
+
+  \textbf{For finite $K$ the statement itself is false}, so no repair of the proof is possible. Take $K = \mathbb{Z}_2$ and $r = 1$. Then $f(x) := x^2 + x$ satisfies $f(0) = 0$ and $f(1) = 1 + 1 = 0$, so $f$ vanishes at every point of $K$, yet $f$ is not the zero polynomial. This is exactly the phenomenon of \cref{rem:poly_vs_func}, and \cref{ex:poly_vs_func} shows that it occurs over every finite field.
+
+  \textbf{For infinite $K$ the statement survives}, but it must be proved algebraically rather than analytically. Induct on $r$. The case $r = 1$ is the content of \cref{ex:poly_vs_func}: a non-zero polynomial in one variable has at most $\deg$ many zeros, so over an infinite field it cannot vanish everywhere. For $r \ge 2$, collect $f$ by powers of the last variable,
+  \[ f(x_1, \dots, x_r) = \sum_{j} g_j(x_1, \dots, x_{r-1}) \cdot x_r^{\,j}, \]
+  and fix any $(a_1, \dots, a_{r-1}) \in K^{r-1}$. The one-variable polynomial $\sum_j g_j(a_1, \dots, a_{r-1}) \, x_r^{\,j}$ then vanishes at every point of $K$, so by the case $r = 1$ all of its coefficients $g_j(a_1, \dots, a_{r-1})$ are $0$. As $(a_1, \dots, a_{r-1})$ was arbitrary, each $g_j$ vanishes identically on $K^{r-1}$, hence $g_j \equiv 0$ by the inductive hypothesis, and therefore $f \equiv 0$.
+
+  This is why the proof of Cayley-Hamilton over an arbitrary field routes through $\mathbb{R}$: \cref{lemma:multi_var_poly} is applied only over $\mathbb{R}$, where it is both true and easy, and its conclusion --- that the $q_{ij}$ are the zero polynomial \emph{formally} --- is then field-independent.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:cyclic_minimal}]
+  \begin{enumerate}
+    \item Let $u \in \langle v \rangle_T$. By the definition of the span, $u = a_0 v + a_1 Tv + \dots + a_m T^m v$ for some $m \in \mathbb{Z}_{\ge 0}$ and $a_0, \dots, a_m \in K$. Applying the linear map $T$ gives
+      \[ Tu = a_0 Tv + a_1 T^2 v + \dots + a_m T^{m+1} v, \]
+      which is again a linear combination of vectors of the form $T^k v$, and hence lies in $\langle v \rangle_T$. Therefore $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
+    \item Let $U \subseteq V$ be a linear subspace with $v \in U$ and $T(U) \subseteq U$. We show by induction on $k$ that $T^k v \in U$ for every $k \in \mathbb{Z}_{\ge 0}$. For $k = 0$ this says $v \in U$, which holds by assumption. If $T^k v \in U$, then $T^{k+1} v = T(T^k v) \in T(U) \subseteq U$, which completes the induction.
+
+      Thus $\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} \subseteq U$. Since $U$ is a linear subspace, it contains every linear combination of its elements, and therefore contains the span of that set, which is exactly $\langle v \rangle_T$. Hence $\langle v \rangle_T \subseteq U$.
+  \end{enumerate}
+  Together, \textbf{(a)} and \textbf{(b)} say that $\langle v \rangle_T$ is itself a $T$-invariant subspace containing $v$ and is contained in every other one --- that is, it is the smallest such subspace, which is the property used in the proof of \cref{lemma:cyclic_basis_companion}.
+\end{exercisesolution}
