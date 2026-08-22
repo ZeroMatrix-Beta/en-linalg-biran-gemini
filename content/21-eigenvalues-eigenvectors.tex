@@ -379,7 +379,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \end{proof}
 
 \begin{example}[Rotation Matrix without Real Eigenvalues]\label{ex:no_real_eigenvalues}
-  Let $A = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$ over $K = \mathbb{R}$. The associated linear map $T_A : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ represents a counter-clockwise rotation.
+  Let $A = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$ over $K = \mathbb{R}$. The associated linear map $T_A : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ represents a rotation by $90^\circ$ in the counter-clockwise direction.
   The characteristic polynomial is $P_A(x) = \det\left(\begin{smallmatrix} -x & -1 \\ 1 & -x \end{smallmatrix}\right) = x^2 + 1$.
   This polynomial has no roots in $\mathbb{R}$. And, of course, $A$ has no real eigenvalues.
 \end{example}
@@ -392,7 +392,7 @@ Let $0 \ne p(x) \in K[x]$ and $\lambda \in K$. By dividing $p(x)$ by $(x-\lambda
 where $\deg q(x) = \deg p(x) - 1$, and $R \in K$ is the remainder.
 If we substitute $x = \lambda$ into \eqref{eq:poly_division}, we obtain $p(\lambda) = 0 \cdot q(\lambda) + R = R$. Thus, $p(x) = (x-\lambda) \cdot q(x) + p(\lambda)$.
 Conclusion: $p(\lambda) = 0 \iff p(x) = (x-\lambda) \cdot q(x)$ for some $q(x) \in K[x]$.
-We say that $\lambda$ is a \qt{zero} of $p(x)$ (De: Nullstelle), or a \qt{root} of $p(x)$.
+We say that $\lambda$ is a \newterm{zero} of $p(x)$ (in German: \germanterm{Nullstelle}), or a \newterm{root} of $p(x)$.
 Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)$, which implies $p(x) = (x-\lambda)^2 \cdot h(x)$, etc.
 
 \begin{definition}[Multiplicity of a Zero]
@@ -405,13 +405,17 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
 \subsection{Geometric \& Algebraic Multiplicity of Eigenvalues}
 
-\begin{definition}[Geometric and Algebraic Multiplicity] \label{def:geom_alg_mult}
-  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. We define the \qt{geometric multiplicity} of $\lambda$ to be:
+\begin{definition}[Geometric and Algebraic Multiplicity]
+  % def:21.b.3
+  \label{def:geom_alg_mult}
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. We define the \newterm{geometric multiplicity} of $\lambda$ to be:
   \[ m_g(T;\lambda) := \dim \Eig_T(\lambda). \]
-  Assume now, in addition, that $V$ is finite-di\-men\-sional. We define the \qt{algebraic multiplicity} of $\lambda$ to be the multiplicity of the zero $\lambda$ in the characteristic polynomial $P_T(x)$ of $T$. We denote it by $m_a(T;\lambda)$.
+  Assume now, in addition, that $V$ is finite-di\-men\-sional. We define the \newterm{algebraic multiplicity} of $\lambda$ to be the multiplicity of the zero $\lambda$ in the characteristic polynomial $P_T(x)$ of $T$. We denote it by $m_a(T;\lambda)$.
 \end{definition}
 
-\begin{proposition}[Multiplicity Inequality] \label{prop:mult_inequality}
+\begin{proposition}[Multiplicity Inequality]
+  % prop:21.b.4
+  \label{prop:mult_inequality}
   For any eigenvalue $\lambda$, the geometric multiplicity is less than or equal to the algebraic multiplicity:
   \[ m_g(T; \lambda) \le m_a(T; \lambda). \]
 \end{proposition}
@@ -424,7 +428,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     [T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{array}{c|c} \lambda I_k & C_1 \\ \hline 0 & C \end{array}\right)
   \end{equation}
   where $C \in \M_{(n-k) \times (n-k)}(K)$.
-  We compute the characteristic polynomial by utilizing the determinant property for block matrices (as established in previous sections):
+  We compute the characteristic polynomial by utilizing the determinant property for block matrices (\cref{prop:block_matrix}):
   \[ P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = (\lambda - x)^k \cdot \det(C - x I_{n-k}) \]
   \[ P_T(x) = (\lambda - x)^k \cdot P_C(x) = (-1)^k(x - \lambda)^k \cdot P_C(x). \]
   This factorization directly shows that the multiplicity of $\lambda$ as a zero of $P_T(x)$ is at least $k$.
@@ -437,7 +441,25 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   We also found that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
 \end{example}
 
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_multiplicities}
 
+\begin{exercisesolution}[Solution of \cref{ex:poly_vs_func}]
+  The assignment $p(x) \mapsto \hat{p}$, where $\hat{p} : K \to K$ denotes the function $\hat{p}(a) := p(a)$, is $K$-linear, so two polynomials $p(x), q(x) \in K[x]$ define the same function if and only if their difference $r(x) := p(x) - q(x)$ vanishes at \emph{every} point of $K$. The question is therefore: which non-zero polynomials vanish identically as functions?
+
+  \textbf{A non-zero polynomial has at most $\deg$ many zeros.} We claim that a polynomial $0 \ne r(x) \in K[x]$ of degree $d$ has at most $d$ distinct zeros in $K$. We induct on $d$. If $d = 0$, then $r$ is a non-zero constant and has no zeros at all. Let $d \ge 1$. If $r$ has no zero, there is nothing to prove; otherwise pick a zero $\lambda \in K$. By the Conclusion of the digression above, $r(x) = (x - \lambda) \cdot q(x)$ with $\deg q(x) = d-1$. If $\mu \ne \lambda$ is another zero of $r$, then $(\mu - \lambda) \cdot q(\mu) = 0$ with $\mu - \lambda \ne 0$, and since a field has no zero divisors, $q(\mu) = 0$. So every zero of $r$ other than $\lambda$ is a zero of $q$, of which there are at most $d-1$ by the inductive hypothesis. Hence $r$ has at most $d$ zeros.
+
+  \textbf{Infinite fields.} If $K$ is infinite, then no non-zero polynomial can vanish at every point of $K$, since it has only finitely many zeros. Consequently $r(x) = 0$, that is, $p(x) = q(x)$: over an infinite field, distinct polynomials always define distinct functions. This settles $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$ --- for these fields the phenomenon of \cref{rem:poly_vs_func} cannot occur, and one may safely identify a polynomial with the function it defines.
+
+  \textbf{Finite fields.} If $K$ is finite, the phenomenon always occurs. Indeed, put
+  \[ r(x) := \prod_{a \in K} (x - a) \in K[x]. \]
+  This polynomial is non-zero (it is monic of degree $|K|$), yet $\hat{r}(a) = 0$ for every $a \in K$. Thus $p(x)$ and $p(x) + r(x)$ are distinct polynomials defining the same function, for any $p(x)$ whatsoever. For $K = \mathbb{Z}_2$ this gives $r(x) = x \cdot (x-1) = x^2 - x$, and adding it to $p(x) = x$ returns exactly Prof. Biran's $q(x) = x^2$.
+
+  There is also a proof by counting, which shows that a collision must occur without exhibiting one: if $|K| = m < \infty$, then there are exactly $m^m$ functions $K \to K$, whereas $K[x]$ is infinite, so the map $p(x) \mapsto \hat{p}$ cannot possibly be injective.
+\end{exercisesolution}
+
+% Extractor: Gemini 3.1 Pro
 \renewcommand{\thetheorem}{21.c.\arabic{theorem}}
 \setcounter{theorem}{0}
 \section{Diagonalizability}
