@@ -5,9 +5,23 @@
 % file, so the prefix is re-declared at every \section rather than once at the
 % top. Without this the whole chapter inherited chapter 20's prefix and printed
 % its theorems as "20.1", "20.2", ...
+%
+% Note on part (a): the scan 21.eigenvectors.a is absent from source/, so the
+% material of \S 21.a could not be collated against Prof. Biran's notes. Parts
+% b, c and d were verified page by page against 21.eigenvectors.b.v03, .c.v02
+% and .d.v02, and the numbers printed here reproduce his own.
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
 \renewcommand{\thetheorem}{21.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 
+% Extractor: Gemini 3.1 Pro
 \section{Motivation}
 
 \subsection{Fibonacci revisited}
@@ -115,11 +129,11 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   This implies that $T - \lambda \cdot \id_V$ is not injective.
 \end{proof}
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
-  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. We define the \qt{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \id_V)$, where $x$ is a formal variable. We define the \qt{characteristic polynomial} of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
+  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. We define the \newterm{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \id_V)$, where $x$ is a formal variable. We define the characteristic polynomial of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
 \end{definition}
 
 \begin{definition}[Eigenspace]\label{def:eigenspace}
-  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The \qt{eigenspace} corresponding to $\lambda$ is defined as:
+  Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The \newterm{eigenspace} corresponding to $\lambda$ is defined as:
   \[ \Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \id_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}. \]
   Clearly (by this definition), $\Eig_T(\lambda) \subseteq V$ is a linear subspace.
 \end{definition}
@@ -138,15 +152,14 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \begin{proof}
   \textbf{(a)} Let
   \[P_A(x) = \det(A - x \cdot I_n) = \det\begin{pmatrix} A_{11}-x & A_{12} & \dots & A_{1n} \\ A_{21} & A_{22}-x & \dots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \dots & A_{nn}-x \end{pmatrix}. \]
-  Denote this matrix (inside the determinant) by $B$. This determinant equals 
+  Denote this matrix (inside the determinant) by $B$. This determinant equals
   \begin{align*}
-    \sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n} 
+    \sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \dots B_{n, \sigma n}
     & = (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) \\
-    & \qquad + (\text{products of degree} \le n-1). \\
-    & \qquad + (\text{terms from other permutations, of degree} \le n-2).
+    & \qquad + (\text{terms from the permutations } \sigma \ne \id).
   \end{align*}
-  If $\sigma \ne \mathrm{id} = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$.
-  $= (-1)^n x^n + (\text{terms of degree} \le n-1)$.
+  If $\sigma \ne \id = \left(\begin{smallmatrix} 1 & 2 & \dots & n \\ 1 & 2 & \dots & n \end{smallmatrix}\right)$, then at least one factor in the product $B_{1, \sigma 1} \dots B_{n, \sigma n}$ does not contain $x$, so each such term has degree $\le n-1$. Consequently, the whole determinant equals
+  \[ (-1)^n x^n + (\text{terms of degree} \le n-1). \]
 
   \textbf{(b)} $P_{A\transp}(x) = \det(A\transp - x \cdot I_n) = \det((A - x \cdot I_n)\transp) = \det(A - x \cdot I_n) = P_A(x)$.
 
@@ -164,7 +177,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \end{proof}
 
 \begin{definition}[Trace]\label{def:trace}
-  Let $A \in \M_{n \times n}(K)$. Define the \qt{trace} (German: \qt{Spur}) of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
+  Let $A \in \M_{n \times n}(K)$. Define the \newterm{trace} (in German: \germanterm{Spur}) of $A$, denoted $\Tr(A) := \sum_{i=1}^n A_{ii} \in K$ (which is the sum of the entries along the diagonal of $A$).
   If $V$ is a finite-dimensional vector space over $K$ and $T \in \End(V)$, define $\Tr(T) := \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$, where $\mathcal{B}$ is some basis for $V$. We will see soon that $\Tr(T)$ is well defined (i.e., it does not depend on the choice of $\mathcal{B}$).
 \end{definition}
 
@@ -182,7 +195,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 
   \textbf{(b)} If $B = P^{-1}AP$, then $\Tr(B) = \Tr(P^{-1}AP) = \Tr(P^{-1} \cdot (AP)) = \Tr(AP \cdot P^{-1}) = \Tr(A)$.
 
-  Regarding the claim about $\Tr(T)$, recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'}$, and $[\mathrm{id}_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\mathrm{id}_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1}$. Use \textbf{(b)} to conclude the proof.
+  Regarding the claim about $\Tr(T)$, recall that $[T]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}$, and $[\id_V]_{\mathcal{B}'}^{\mathcal{B}} = ([\id_V]_{\mathcal{B}}^{\mathcal{B}'})^{-1}$. Use \textbf{(b)} to conclude the proof.
 \end{proof}
 
 Why is the trace interesting?
@@ -195,9 +208,9 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \begin{proof}
   $P_A(x) = \det\begin{pmatrix} A_{11}-x & A_{12} & \dots & A_{1n} \\ A_{21} & A_{22}-x & \dots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \dots & A_{nn}-x \end{pmatrix}$. Denote this matrix by $B$.
   \begin{equation} \label{eq:permutation_sum}
-    P_A(x) = (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + \sum_{\sigma \in S_n, \sigma \ne \mathrm{id}} \sgn(\sigma) B_{1, \sigma 1} \dots B_{n, \sigma n}.
+    P_A(x) = (A_{11}-x) \cdot (A_{22}-x) \dots (A_{nn}-x) + \sum_{\sigma \in S_n, \sigma \ne \id} \sgn(\sigma) B_{1, \sigma 1} \dots B_{n, \sigma n}.
   \end{equation}
-  If $\sigma \ne \mathrm{id}$, then there exist at least two indices $i \ne j$ such that $i \ne \sigma i$ and $j \ne \sigma j$.
+  If $\sigma \ne \id$, then there exist at least two indices $i \ne j$ such that $i \ne \sigma i$ and $j \ne \sigma j$.
   Thus, the product contains at least two factors ($B_{i, \sigma i}$ and $B_{j, \sigma j}$) that are not from the diagonal of $B$, and so do not contain $x$.
   Therefore, the degree of the sum in \eqref{eq:permutation_sum} is $\le n-2$.
   $P_A(x) = (A_{11}-x)(A_{22}-x) \dots (A_{nn}-x) + (\text{another polynomial of degree} \le n-2)$.
@@ -210,7 +223,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \end{proof}
 
 \begin{definition}[Direct Sum]\label{def:direct_sum}
-  Let $V$ be a vector space over $K$ and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say that $W$ is a \qt{direct sum} of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a \qt{direct sum}) if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
+  Let $V$ be a vector space over $K$ and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say that $W$ is a \newterm{direct sum} of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a direct sum) if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
 \end{definition}
 
 \begin{exercise}[Equivalent Conditions for Direct Sums]\label{ex:direct_sum_conditions}
@@ -264,6 +277,51 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   If $V$ is finite-di\-men\-sional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
 \end{exercise}
 
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_eigen_motivation}
+
+\begin{exercisesolution}[Proof of \cref{ex:direct_sum_conditions}]
+  Throughout, write $W := U_1 + \dots + U_r$.
+
+  \textbf{Directness implies (a).} The zero vector always admits the representation $0 = 0 + \dots + 0$ with $0 \in U_i$ for every $i$. If the sum is direct, this representation is the only one, which is precisely \textbf{(a)}.
+
+  \textbf{(a) implies directness.} Let $w \in W$ and suppose $w = u_1 + \dots + u_r = u_1' + \dots + u_r'$ with $u_i, u_i' \in U_i$. Subtracting the two representations gives $0 = (u_1 - u_1') + \dots + (u_r - u_r')$, and $u_i - u_i' \in U_i$ because $U_i$ is a subspace. By \textbf{(a)}, every summand vanishes, so $u_i = u_i'$ for all $i$; the representation of $w$ is therefore unique.
+
+  \textbf{(a) implies (b).} Fix $2 \le j \le r$ and let $u \in U_j \cap (U_1 + \dots + U_{j-1})$. Write $u = u_1 + \dots + u_{j-1}$ with $u_i \in U_i$. Then
+  \[ u_1 + \dots + u_{j-1} + (-u) + 0 + \dots + 0 = 0 \]
+  is a representation of $0$ whose $i$-th entry lies in $U_i$ for every $i$ (the $j$-th entry being $-u \in U_j$). By \textbf{(a)} all entries vanish, and in particular $u = 0$.
+
+  \textbf{(b) implies (a).} Suppose $0 = u_1 + \dots + u_r$ with $u_i \in U_i$ and not all $u_i$ equal to $0$. Let $j$ be the largest index with $u_j \ne 0$. If $j = 1$, then $0 = u_1$ contradicts $u_1 \ne 0$. If $j \ge 2$, then
+  \[ u_j = -(u_1 + \dots + u_{j-1}) \in U_j \cap (U_1 + \dots + U_{j-1}) = \{0\}, \]
+  again contradicting $u_j \ne 0$. Hence all the $u_i$ vanish.
+
+  \textbf{The basis criterion.} Assume in addition that every $U_i$ is finite-di\-men\-sional, and let $\mathcal{B}_i := (b_1^{(i)}, \dots, b_{d_i}^{(i)})$ be a basis for $U_i$. The concatenated list $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ always spans $W$, since every $u_i \in U_i$ is a combination of $\mathcal{B}_i$. So the only question is linear independence.
+
+  If the sum is direct, consider a vanishing combination of the concatenated list and collect, for each $i$, the terms coming from $\mathcal{B}_i$ into a single vector $u_i \in U_i$. Then $u_1 + \dots + u_r = 0$, so $u_i = 0$ for every $i$ by \textbf{(a)}, and the linear independence of $\mathcal{B}_i$ forces all the coefficients in the $i$-th group to vanish. Thus $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$, for every choice of the bases $\mathcal{B}_i$.
+
+  Conversely, suppose $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$ for some choice of bases $\mathcal{B}_i$, and let $0 = u_1 + \dots + u_r$ with $u_i \in U_i$. Expanding each $u_i$ in the basis $\mathcal{B}_i$ exhibits a vanishing combination of the concatenated list; by its linear independence all coefficients are $0$, hence $u_i = 0$ for every $i$. This is \textbf{(a)}, so the sum is direct.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:canonical_iso_direct_sum}]
+  Consider the map
+  \[ \Phi : U_1 \oplus \dots \oplus U_r \longrightarrow U_1 + \dots + U_r, \qquad \Phi(u_1, \dots, u_r) := u_1 + \dots + u_r. \]
+  Addition and scalar multiplication in the external direct sum $U_1 \oplus \dots \oplus U_r$ are performed componentwise, so
+  \[ \Phi\big((u_1, \dots, u_r) + \mu (u_1', \dots, u_r')\big) = \sum_{i=1}^r (u_i + \mu u_i') = \Phi(u_1, \dots, u_r) + \mu \Phi(u_1', \dots, u_r'), \]
+  and $\Phi$ is linear. It is surjective, because by the very definition of $U_1 + \dots + U_r$ every element of the target is of the form $u_1 + \dots + u_r$ with $u_i \in U_i$.
+
+  For injectivity, let $(u_1, \dots, u_r) \in \ker \Phi$, that is, $u_1 + \dots + u_r = 0$ with $u_i \in U_i$. Since the sum is direct, part \textbf{(a)} of \cref{ex:direct_sum_conditions} gives $u_1 = \dots = u_r = 0$, so $\ker \Phi = \{0\}$. Hence $\Phi$ is an isomorphism.
+
+  The isomorphism is canonical in the sense that its definition involves no choice whatsoever --- no bases, no complements --- only the addition of $V$. This is what licenses the identification of $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$ whenever the sum is direct.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:finite_eigenvalues}]
+  Put $n := \dim V$ and let $\lambda_1, \dots, \lambda_m \in K$ be pairwise distinct eigenvalues of $T$. Choose, for each $i$, an eigenvector $v_i \ne 0$ for $\lambda_i$. By \cref{prop:lin_indep_eigen}, the vectors $v_1, \dots, v_m$ are linearly independent, and a linearly independent list in an $n$-di\-men\-sional space has at most $n$ members. Hence $m \le n$.
+
+  Since $m$ was the number of \emph{any} list of pairwise distinct eigenvalues, $T$ has at most $n = \dim V$ distinct eigenvalues; in particular, only finitely many.
+\end{exercisesolution}
+
+% Extractor: Gemini 3.1 Pro
 \renewcommand{\thetheorem}{21.b.\arabic{theorem}}
 \setcounter{theorem}{0}
 \section{Multiplicities of Eigenvalues}
@@ -278,7 +336,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \begin{equation} \label{eq:jordan_block}
     J := J_{\lambda,n} := \begin{pmatrix} \lambda & 1 & 0 & \dots & 0 \\ 0 & \lambda & 1 & \dots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & 0 & \lambda & 1 \\ 0 & 0 & 0 & 0 & \lambda \end{pmatrix}
   \end{equation}
-  This is called a \qt{Jordan block}. It features $\lambda$'s along the main diagonal, $1$'s along the "diagonal" just above the main diagonal, and $0$'s everywhere else.
+  This is called a \newterm{Jordan block}. It features $\lambda$'s along the main diagonal, $1$'s along the \qt{diagonal} just above the main diagonal, and $0$'s everywhere else.
   The characteristic polynomial is $P_{J_{\lambda, n}}(x) = (\lambda - x)^n$. This implies that $J$ has only one eigenvalue, namely $\lambda$.
 
   Let us find the eigenvectors for the eigenvalue $\lambda$:
@@ -296,8 +354,16 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   For example, if $K = \mathbb{Z}_2$, then $p(x) = x$ and $q(x) = x^2$ are different polynomials, but they define the same function $\mathbb{Z}_2 \rightarrow \mathbb{Z}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
 \end{importantremark}
 
-\begin{lemma}[Decomposition of Diagonalizable Matrices] \label{lem:diag_decomp}
-  Let $A \in M_{n \times n}(K)$ (or $T \in \End(V)$) be diagonalizable. Then $P_A(x)$ decomposes as a product of linear (i.e., degree $1$) factors:
+% Extractor: Opus 5 (High)
+\begin{exercise}[Polynomials versus Polynomial Functions]\label{ex:poly_vs_func}
+  Settle the question raised at the end of \cref{rem:poly_vs_func}: for which fields $K$ do two distinct polynomials $p(x), q(x) \in K[x]$ always define distinct functions $K \to K$? In particular, what happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$?
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
+\begin{lemma}[Decomposition of Diagonalizable Matrices]
+  % lemma:21.b.1
+  \label{lem:diag_decomp}
+  Let $A \in \M_{n \times n}(K)$ (or $T \in \End(V)$) be diagonalizable. Then $P_A(x)$ decomposes as a product of linear (i.e., degree $1$) factors:
   \[ P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x), \]
   where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $A$ (but there might be repetitions among the $\lambda_i$'s).
 \end{lemma}
@@ -329,10 +395,12 @@ Conclusion: $p(\lambda) = 0 \iff p(x) = (x-\lambda) \cdot q(x)$ for some $q(x) \
 We say that $\lambda$ is a \qt{zero} of $p(x)$ (De: Nullstelle), or a \qt{root} of $p(x)$.
 Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)$, which implies $p(x) = (x-\lambda)^2 \cdot h(x)$, etc.
 
-\begin{definition}[Multiplicity of a Zero] \label{def:mult_zero}
-  We say that $\lambda$ is a zero of \qt{multiplicity} $m \in \mathbb{N}_{>0}$ if $p(x) = (x-\lambda)^m \cdot g(x)$, where $g(x) \in K[x]$ and $g(\lambda) \ne 0$ (i.e., $\lambda$ is not a zero of $g(x)$).
-  If $m=1$, we say $\lambda$ is a \qt{simple zero} of $p(x)$.
-  If $m \ge 2$, we say $\lambda$ is a \qt{multiple zero} of $p(x)$.
+\begin{definition}[Multiplicity of a Zero]
+  % def:21.b.2
+  \label{def:mult_zero}
+  Let $0 \ne p(x) \in K[x]$ and $\lambda \in K$. We say that $\lambda$ is a zero of \newterm{multiplicity} $m \in \mathbb{N}_{>0}$ if $p(x) = (x-\lambda)^m \cdot g(x)$, where $g(x) \in K[x]$ and $g(\lambda) \ne 0$ (i.e., $\lambda$ is not a zero of $g(x)$).
+  If $m=1$, we say $\lambda$ is a \newterm{simple zero} of $p(x)$.
+  If $m \ge 2$, we say $\lambda$ is a \newterm{multiple zero} of $p(x)$.
 \end{definition}
 
 \subsection{Geometric \& Algebraic Multiplicity of Eigenvalues}
@@ -500,7 +568,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \begin{equation}
     [T_A]_{\mathcal{C}}^{\mathcal{C}} = \begin{pmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{pmatrix}.
   \end{equation}
-  Denote by $\mathcal{E}$ the standard basis of $K^n$. We know that $[T_A]_{\mathcal{C}}^{\mathcal{C}} = [\mathrm{id}]_{\mathcal{C}}^{\mathcal{E}} \cdot [T_A]_{\mathcal{E}}^{\mathcal{E}} \cdot [\mathrm{id}]_{\mathcal{E}}^{\mathcal{C}} = Q^{-1}AQ$, where $Q = [\mathrm{id}]_{\mathcal{C}}^{\mathcal{E}}$.
+  Denote by $\mathcal{E}$ the standard basis of $K^n$. We know that $[T_A]_{\mathcal{C}}^{\mathcal{C}} = [\id]_{\mathcal{C}}^{\mathcal{E}} \cdot [T_A]_{\mathcal{E}}^{\mathcal{E}} \cdot [\id]_{\mathcal{E}}^{\mathcal{C}} = Q^{-1}AQ$, where $Q = [\id]_{\mathcal{C}}^{\mathcal{E}}$.
   Consequently, $Q^{-1}AQ = \left(\begin{smallmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{smallmatrix}\right)$.
   
   \noindent
@@ -534,7 +602,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   We continue with the proof of the Theorem. Recall we have the basis $\mathcal{B}' = (u_1, u_2, \dots, u_{n+1})$, where $[T]_{\mathcal{B}'}^{\mathcal{B}'} = M$.
 
   \begin{claim*}\label{claim:trig_basis_exists}
-    There exists a basis $\mathcal{B}$ for $V$ such that $[\mathrm{id}]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}$.
+    There exists a basis $\mathcal{B}$ for $V$ such that $[\id]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}$.
   \end{claim*}
 
   \begin{proof}[Proof of Claim]
@@ -547,7 +615,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
   We now have the basis $\mathcal{B}$. Computing the matrix of $T$ in this new basis yields:
   \begin{equation} \label{eq:final_trigonal_matrix}
-    [T]_{\mathcal{B}}^{\mathcal{B}} = [\mathrm{id}]_{\mathcal{B}}^{\mathcal{B}'} \cdot [T]_{\mathcal{B}'}^{\mathcal{B}'} \cdot [\mathrm{id}]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}^{-1} \cdot M \cdot \underline{P}.
+    [T]_{\mathcal{B}}^{\mathcal{B}} = [\id]_{\mathcal{B}}^{\mathcal{B}'} \cdot [T]_{\mathcal{B}'}^{\mathcal{B}'} \cdot [\id]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}^{-1} \cdot M \cdot \underline{P}.
   \end{equation}
   As proven above, $\underline{P}^{-1} M \underline{P}$ is strictly upper triangular. Therefore, $T$ is trigonalizable. The induction is now complete.
 \end{proof}
