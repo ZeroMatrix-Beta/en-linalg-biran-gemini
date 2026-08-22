@@ -1,7 +1,18 @@
 \renewcommand{\thetheorem}{17.d.\arabic{theorem}}
 \setcounter{theorem}{0}
 
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
+% Extractor: Gemini 3.1 Pro
 \section{More on Matrices and Linear Equations}
+\label{sec:more_matrices_lineq}
 
 Let $A \in \M_{m \times n}(K)$, and consider the homogeneous system of linear equations $A \cdot x = 0$. We denote the space of solutions of this system by:
 \begin{equation*}
@@ -18,6 +29,7 @@ We can visualize the structure of $A'$ and its corresponding variables $x_1, \do
     \Sol(A, 0) = \Sol(A', 0)
 \end{equation*}
 
+% Creator: Gemini 3.1 Pro  --- TikZ rendering of the staircase sketch in the notes
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=8mm, y=8mm, >=Stealth]
@@ -128,11 +140,12 @@ Let $b \in K^m$, and $A \in \M_{m \times n}(K)$. Then:
 \end{enumerate}
 \end{corollary}
 
-\begin{proof}
-This is left as an exercise.
-
-\textbf{Hints:}
-\begin{enumerate}
+% Extractor: Opus 5 (High)
+\begin{exercise}[Proof of \cref{cor:non_homogeneous_solutions}]
+\label{exc:non_homogeneous_solutions}
+The notes leave this proof as an exercise, with the following hints.
+% Extractor: Gemini 3.1 Pro
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item Write the matrix $A$ in terms of its column vectors $v_1, \dots, v_n$:
     \[
         A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}
@@ -152,7 +165,7 @@ This is left as an exercise.
     \]
     This shows that any solution $z$ can be written as $y + x$ for some $x \in \Sol(A, 0)$.
 \end{enumerate}
-\end{proof}
+\end{exercise}
 
 \begin{proposition}[Rank Criterion for Solvability]
 % prop:17.d.3
@@ -190,10 +203,12 @@ Let $A \in \M_{m \times n}(K)$ and $b \in K^m$. The following statements are equ
 \end{enumerate}
 \end{proposition}
 
-\begin{proof}
-This is left as an exercise.
-
-\textbf{Hints:} Write
+% Extractor: Opus 5 (High)
+\begin{exercise}[Proof of \cref{prop:unique_solution_rank_criterion}]
+\label{exc:unique_solution_rank_criterion}
+The notes leave this proof as an exercise, with the following hint.
+% Extractor: Gemini 3.1 Pro
+Write
 \[
     A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}.
 \]
@@ -202,4 +217,53 @@ Note that:
     \rank(A) = n \iff \dim \Sp(v_1, \dots, v_n) = n
 \end{equation*}
 Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linearly independent, and therefore, they form a basis for $\ColS(A)$.
-\end{proof}
+\end{exercise}
+
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_more_matrices_lineq}
+
+\begin{exercisesolution}[Proof of \cref{cor:non_homogeneous_solutions}]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item As the hint records, for $x = (x_1, \dots, x_n)\transp \in K^n$ the product $A \cdot x$ is the linear combination $x_1 v_1 + \dots + x_n v_n$ of the columns of $A$. Hence
+    \[
+    \Sol(A, b) \neq \emptyset \iff \exists\, x \in K^n : x_1 v_1 + \dots + x_n v_n = b \iff b \in \Sp(v_1, \dots, v_n) = \ColS(A),
+    \]
+    the last equality being the definition of the column space.
+
+    \item Let $y \in \Sol(A, b)$. If $x \in \Sol(A, 0)$, then $A(y + x) = Ay + Ax = b + 0 = b$, so $y + x \in \Sol(A, b)$, which gives the inclusion $y + \Sol(A, 0) \subseteq \Sol(A, b)$. Conversely, if $z \in \Sol(A, b)$, put $x := z - y$; then $z = y + x$ and
+    \[
+    Ax = A(z - y) = Az - Ay = b - b = 0,
+    \]
+    so $x \in \Sol(A, 0)$ and $z \in y + \Sol(A, 0)$. The two inclusions give the asserted equality. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{prop:unique_solution_rank_criterion}]
+Suppose first that $\rank(A) = \rank(A \mid b) = n$. Since the two ranks agree, \cref{prop:rank_solvability_criterion} gives a solution $y \in \Sol(A, b)$. Since $\rank(A) = n$, the computation at the start of this section gives
+\[
+\dim \Sol(A, 0) = n - \rank(A) = 0,
+\]
+so $\Sol(A, 0) = \{0\}$. By \cref{cor:non_homogeneous_solutions} \textbf{(b)}, $\Sol(A, b) = y + \{0\} = \{y\}$, so the solution is unique.
+
+Conversely, suppose $Ax = b$ has a unique solution $y$. In particular a solution exists, so $\rank(A \mid b) = \rank(A)$ by \cref{prop:rank_solvability_criterion}. If now $x \in \Sol(A, 0)$, then $y + x$ is again a solution of $Ax = b$ by \cref{cor:non_homogeneous_solutions} \textbf{(b)}, and uniqueness forces $y + x = y$, that is, $x = 0$. So $\Sol(A, 0) = \{0\}$, and therefore
+\[
+0 = \dim \Sol(A, 0) = n - \rank(A),
+\]
+which gives $\rank(A) = n$. In the language of the hint: the columns $v_1, \dots, v_n$ are then linearly independent and form a basis of $\ColS(A)$, which is exactly the statement that the coefficients in $b = x_1 v_1 + \dots + x_n v_n$ are uniquely determined.
+\end{exercisesolution}
+
+\begin{ainote}
+This section is complete in the transcript: all four numbered statements, in the
+notes' order, with the notes' proofs and with Prof. Biran's hints for the two he
+leaves as exercises. The staircase picture that the notes draw by hand is
+rendered as \cref{fig:rref_pivot_staircase}.
+
+The two proofs the notes mark \qt{Exc.} stood in the text as
+\verb|\begin{proof}| blocks reading \qt{This is left as an exercise}, followed
+by the hints. They are now exercises carrying those hints, and both are solved
+above. The second one needs a little more than the hint gives: the uniqueness
+criterion follows by combining \cref{prop:rank_solvability_criterion} with the
+dimension count $\dim \Sol(A, 0) = n - \rank(A)$ from the opening of the
+section.
+\end{ainote}
