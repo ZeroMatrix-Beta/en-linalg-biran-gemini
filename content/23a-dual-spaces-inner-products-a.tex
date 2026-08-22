@@ -63,49 +63,12 @@ Define $u := \sum_{i=1}^n \overline{\varphi(e_i)} \cdot e_i$. It follows that $\
 The statements about the linearity of $\Phi$ are left as an exercise.
 \end{proof}
 
-% Creator: Gemini 3.1 Pro
-\subsection{Solutions to the Exercises}
-\label{sec:solutions_dual_spaces}
-
-\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]
-Let $v_1, v_2 \in V$ and $c \in K$. We have:
-\[
-    \varphi_u(v_1 + v_2) = \langle v_1 + v_2, u \rangle = \langle v_1, u \rangle + \langle v_2, u \rangle = \varphi_u(v_1) + \varphi_u(v_2),
-\]
-and
-\[
-    \varphi_u(c v_1) = \langle c v_1, u \rangle = c \langle v_1, u \rangle = c \varphi_u(v_1).
-\]
-Thus, $\varphi_u$ is a linear map.
-\end{exercisesolution}
-
-\begin{exercisesolution}[Proof of \cref{thm:dual_space_inner_product_isomorphism}]
-For $K = \mathbb{R}$, we have $\Phi(u) = \varphi_u$. Then:
-\[
-    \Phi(u_1+u_2)(v) = \langle v, u_1+u_2 \rangle = \langle v, u_1 \rangle + \langle v, u_2 \rangle = \Phi(u_1)(v) + \Phi(u_2)(v),
-\]
-and
-\[
-    \Phi(c u)(v) = \langle v, c u \rangle = c \langle v, u \rangle = c \Phi(u)(v).
-\]
-(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus $\Phi$ is linear.
-
-For $K = \mathbb{C}$, the additivity follows identically. For scalar multiplication:
-\[
-    \Phi(c u)(v) = \langle v, c u \rangle = \overline{c} \langle v, u \rangle = \overline{c} \Phi(u)(v).
-\]
-Thus $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
-
-For the inverse $\Phi^{-1}$: since $\Phi$ is additive, taking $\varphi_1 = \Phi(u_1)$ and $\varphi_2 = \Phi(u_2)$ gives $\Phi^{-1}(\varphi_1 + \varphi_2) = \Phi^{-1}(\varphi_1) + \Phi^{-1}(\varphi_2)$, so $\Phi^{-1}$ is additive.
-For scalar multiplication, let $\varphi = \Phi(u)$ and $\lambda \in \mathbb{C}$. Then $\overline{\lambda} \varphi = \overline{\lambda} \Phi(u) = \Phi(\lambda u)$. Applying $\Phi^{-1}$ to both sides gives $\Phi^{-1}(\overline{\lambda} \varphi) = \lambda u = \lambda \Phi^{-1}(\varphi)$. Setting $c = \overline{\lambda}$ (so $\lambda = \overline{c}$) gives $\Phi^{-1}(c \varphi) = \overline{c} \Phi^{-1}(\varphi)$, proving $\Phi^{-1}$ is $\mathbb{C}$-antilinear.
-
-% Creator: Opus 5 (High)
-This last paragraph is also the verification Prof. Biran marks with \qt{check!} in the proof that $T'$ is linear: it is exactly the assertion that $\Phi_V^{-1}$ is additive and $\mathbb{C}$-antilinear.
-% Creator: Gemini 3.1 Pro
-\end{exercisesolution}
-
-% Extractor: Gemini 3.1 Pro
-\section{The adjoint map}
+% The notes give \qt{The adjoint map} a heading of its own, but they go on
+% numbering the results under it 23.a.2, 23.a.3, ..., and the source folder has
+% no 23.b at all: this is not a new lettered part of the chapter. Hence a
+% subsection. As a \section it printed as \qt{Section 23.b}, contradicting every
+% theorem number inside it.
+\subsection*{The adjoint map}
 
 Let $V, W$ be vector spaces over $K$. Let $T \colon V \to W$ be a linear map. We have seen in Linear Algebra I that $T$ induces a linear map $T^* \colon W^* \to V^*$ defined by $T^*(\varphi) := \varphi \circ T$.
 
@@ -337,7 +300,44 @@ This is left as an exercise. (The verification is carried out in the solutions a
 
 % Creator: Gemini 3.1 Pro
 \subsection{Solutions to the Exercises}
-\label{sec:solutions_adjoint_map}
+\label{sec:solutions_dual_spaces_inner_products}
+
+\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]
+Let $v_1, v_2 \in V$ and $c \in K$. We have:
+\[
+    \varphi_u(v_1 + v_2) = \langle v_1 + v_2, u \rangle = \langle v_1, u \rangle + \langle v_2, u \rangle = \varphi_u(v_1) + \varphi_u(v_2),
+\]
+and
+\[
+    \varphi_u(c v_1) = \langle c v_1, u \rangle = c \langle v_1, u \rangle = c \varphi_u(v_1).
+\]
+Thus, $\varphi_u$ is a linear map.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{thm:dual_space_inner_product_isomorphism}]
+For $K = \mathbb{R}$, we have $\Phi(u) = \varphi_u$. Then:
+\[
+    \Phi(u_1+u_2)(v) = \langle v, u_1+u_2 \rangle = \langle v, u_1 \rangle + \langle v, u_2 \rangle = \Phi(u_1)(v) + \Phi(u_2)(v),
+\]
+and
+\[
+    \Phi(c u)(v) = \langle v, c u \rangle = c \langle v, u \rangle = c \Phi(u)(v).
+\]
+(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus $\Phi$ is linear.
+
+For $K = \mathbb{C}$, the additivity follows identically. For scalar multiplication:
+\[
+    \Phi(c u)(v) = \langle v, c u \rangle = \overline{c} \langle v, u \rangle = \overline{c} \Phi(u)(v).
+\]
+Thus $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
+
+For the inverse $\Phi^{-1}$: since $\Phi$ is additive, taking $\varphi_1 = \Phi(u_1)$ and $\varphi_2 = \Phi(u_2)$ gives $\Phi^{-1}(\varphi_1 + \varphi_2) = \Phi^{-1}(\varphi_1) + \Phi^{-1}(\varphi_2)$, so $\Phi^{-1}$ is additive.
+For scalar multiplication, let $\varphi = \Phi(u)$ and $\lambda \in \mathbb{C}$. Then $\overline{\lambda} \varphi = \overline{\lambda} \Phi(u) = \Phi(\lambda u)$. Applying $\Phi^{-1}$ to both sides gives $\Phi^{-1}(\overline{\lambda} \varphi) = \lambda u = \lambda \Phi^{-1}(\varphi)$. Setting $c = \overline{\lambda}$ (so $\lambda = \overline{c}$) gives $\Phi^{-1}(c \varphi) = \overline{c} \Phi^{-1}(\varphi)$, proving $\Phi^{-1}$ is $\mathbb{C}$-antilinear.
+
+% Creator: Opus 5 (High)
+This last paragraph is also the verification Prof. Biran marks with \qt{check!} in the proof that $T'$ is linear: it is exactly the assertion that $\Phi_V^{-1}$ is additive and $\mathbb{C}$-antilinear.
+% Creator: Gemini 3.1 Pro
+\end{exercisesolution}
 
 \begin{exercisesolution}[Proof of Additivity of $T'$ (on \cpageref{exc:additivity_T_prime})]
 We have:
