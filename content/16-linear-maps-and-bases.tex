@@ -3,8 +3,18 @@
 
 \setcounter{chapter}{15} % Sets chapter counter so the next chapter is 16
 
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
+
 \chapter{Linear Maps and Bases}
 
+% Extractor: Gemini 3.1 Pro
 \subsection{Writing Linear Maps Using Bases and Coordinates}
 
 
@@ -166,9 +176,8 @@ Finally, using the fact that $\Phi_{\mathcal{B}}$ is linear, we calculate:
 
 \subsection{Representation Matrices}
 
-Now we arrive at the main question. Let $V$ and $W$ be vector spaces over $K$, let $n := \dim V$ and $m := \dim W$, and let $T: V \to W$ be a linear map. Fix a basis $\mathcal{B}$ for $V$ and a basis $\mathcal{C}$ for $W$. Consider the following commutative diagram test:
+Now we arrive at the main question. Let $V$ and $W$ be vector spaces over $K$, let $n := \dim V$ and $m := \dim W$, and let $T: V \to W$ be a linear map. Fix a basis $\mathcal{B}$ for $V$ and a basis $\mathcal{C}$ for $W$. Consider the following diagram, in which the two paths from $V$ to $K^m$ agree, so that the diagram is commutative:
 \begin{center}
-    \usetikzlibrary{babel}
 \begin{tikzcd}[row sep=large, column sep=large]
 V \arrow[r, "T"] \arrow[d, "\Phi_{\mathcal{B}}"'] & W \arrow[d, "\Phi_{\mathcal{C}}"] \\
 K^n \arrow[r, "\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}"'] & K^m
@@ -221,6 +230,7 @@ Let $T: V \to W$ be a linear map between two finite-di\-men\-sional vector space
 \end{proposition}
 
 \begin{proof}
+% Creator: Gemini 3.1 Pro  --- the notes give only the structural proof below
 \textbf{First Proof (Computational):} Let $v \in V$ be an arbitrary vector. We can express $v$ uniquely as a linear combination of the basis vectors in $\mathcal{B} = (v_1, \dots, v_n)$:
 \[
 v = \sum_{j=1}^n x_j v_j.
@@ -248,6 +258,7 @@ x_1 \\ \vdots \\ x_n
 \]
 Therefore, we conclude that $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mathcal{B}} = [T(v)]_{\mathcal{C}}$.
 
+% Extractor: Gemini 3.1 Pro
 \textbf{Second Proof (Structural):} Recall that the representation matrix $A := [T]_{\mathcal{C}}^{\mathcal{B}}$ is uniquely defined by the relation $T_A = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}$. Evaluating the linear transformation $T_A$ at the coordinate vector $[v]_{\mathcal{B}} = \Phi_{\mathcal{B}}(v) \in K^n$ yields:
 \[
 T_A([v]_{\mathcal{B}}) = \left(\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}\right) (\Phi_{\mathcal{B}}(v)) = \Phi_{\mathcal{C}}\left(T\left(\Phi_{\mathcal{B}}^{-1}(\Phi_{\mathcal{B}}(v))\right)\right) = \Phi_{\mathcal{C}}(T(v)) = [T(v)]_{\mathcal{C}}.
@@ -261,7 +272,7 @@ Equating both expressions gives $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mat
 
 \begin{example}[Examples of Representation Matrices]
 \begin{enumerate}
-    \item  Let $V = K^n$ and $W = K^m$, and let $T: K^n \to K^m$ be given by $T = T_A$ for $A \in \M_{m \times n}(K)$, so $T(v) = A \cdot v$. Take $\mathcal{B} := (e_1, \dots, e_n)$ and $\mathcal{C} := (e_1, \dots, e_m)$ to be the standard bases. Then, $[T]_{\mathcal{C}}^{\mathcal{B}} = A$.
+    \item  Let $V = K^n$ and $W = K^m$, and let $T: K^n \to K^m$ be given by $T = T_A$ for $A \in \M_{m \times n}(K)$, so $T(v) = A \cdot v$. Take $\mathcal{B} := (e_1, \dots, e_n)$ and $\mathcal{C} := (e_1, \dots, e_m)$ to be the standard bases. Then, $[T]_{\mathcal{C}}^{\mathcal{B}} = A$. \textit{(Check the details!)}
     \item  Let $V = K[x]_3$ and $W = K[x]_2$, and let $D: V \to W$ be the derivative map defined by $D(p(x)) = p'(x)$. Let $\mathcal{B} := (1, x, x^2, x^3)$ and $\mathcal{C} := (1, x, x^2)$. We calculate:
     \begin{align*}
     D(1) &= 0 = 0 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
@@ -278,8 +289,7 @@ Equating both expressions gives $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mat
     0 & 0 & 0 & 3
     \end{pmatrix}.
     \]
-    \setcounter{enumi}{1} % Matching professor numbering
-    \item  Suppose we view $D$ as a linear map $D: K[x]_3 \to K[x]_3$. Then,
+    \item  Revisiting the previous item, suppose we view $D$ as a linear map $D: K[x]_3 \to K[x]_3$, so that the same map is now given the same basis on both sides. Then,
     \[
     [D]_{\mathcal{B}}^{\mathcal{B}} = 
     \begin{pmatrix}
@@ -348,4 +358,37 @@ This reveals that:
 where the matrix dimensions follow $(p \times m) \cdot (m \times n) = (p \times n)$.
 
 In order to obtain $[S \circ T]_{\mathcal{C}}^{\mathcal{A}}$ from $[T]_{\mathcal{B}}^{\mathcal{A}}$ and $[S]_{\mathcal{C}}^{\mathcal{B}}$, we need to use a new operation on matrices. It is called \qt{matrix multiplication}. But is this operation really new?
-- Yes, but not entirely...
+
+\medskip
+\noindent--- Yes, but not entirely\dots
+
+% Creator: Opus 5 (High)
+\begin{ainote}
+This chapter came through the transcription essentially intact: every statement
+of the notes is present, in the notes' order, and the printed numbers
+16.1--16.4 already agreed with the handwritten ones. The abrupt final line is
+Prof. Biran's own; his notes end there, in the middle of the thought that
+chapter 17 picks up.
+
+What needed repair was small and mostly typographic. The third example carried a
+\verb|\setcounter{enumi}{1}|, annotated as matching the professor's numbering,
+which made the list print two items labelled \textbf{(b)}; the notes label that
+item $2'$ because it revisits the previous one, so the counter manipulation is
+dropped and the revisiting is said in words instead. The sentence introducing
+the commutative diagram ended in the word \qt{test}, evidently a leftover. A
+\verb|\usetikzlibrary{babel}| sat in the middle of the document, although the
+preamble already loads that library. Prof. Biran's aside \qt{check the
+details!} on the first representation-matrix example is restored, and his
+closing line is now set as the reply it is rather than as a stray hyphen.
+
+The proof that $\Phi_{\mathcal{B}}$ is an isomorphism cited the definition of
+isomorphic spaces for the step that bijectivity suffices. That step is
+\cref{lem:bijective_is_iso}, which the transcript of the previous chapter had
+dropped altogether and which is now restored; the citation points there.
+
+One addition of the transcript is worth keeping and worth flagging: the notes
+prove \cref{prop:matrix_evaluation} only structurally, by observing that the
+asserted identity is exactly the commutative diagram defining
+$[T]_{\mathcal{C}}^{\mathcal{B}}$. The computational proof that precedes it in
+the text above is not Prof. Biran's.
+\end{ainote}
