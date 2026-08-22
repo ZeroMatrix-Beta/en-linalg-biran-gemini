@@ -499,13 +499,12 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   So $m_a(T; \lambda_i) \le m_g(T; \lambda_i)$ for all $i$. At the same time, we always have the inequality $m_g(T; \lambda_i) \le m_a(T; \lambda_i)$.
   Therefore, $m_g(T; \lambda_i) = m_a(T; \lambda_i)$ for all $i$. (The proof also shows that $\ell_i = m_g(T; \lambda_i) = m_a(T; \lambda_i)$).
 
-  % Original: So $m_a(T; \lambda_i) \le m_g(T; \lambda_i)$ for all $i$. At the same time, we always have the inequality $m_g(T; \lambda_i) \le m_a(T; \lambda_i)$. Therefore, $m_g(T; \lambda_i) = m_a(T; \lambda_i)$ for all $i$. (The proof also shows that $\ell_i = m_g(T; \lambda_i) = m_a(T; \lambda_i)$).
   \textbf{(c)} $\implies$ \textbf{(d)}: We assume that $P_T(x) = (\lambda_1 - x)^{\ell_1} \dots (\lambda_k - x)^{\ell_k}$ and $m_g(T; \lambda_i) = m_a(T; \lambda_i)$.
   Then $\lambda_1, \dots, \lambda_k$ are exactly the eigenvalues of $T$. By definition, $\ell_i = m_a(T; \lambda_i)$.
   We have $n = \dim V = \sum_{i=1}^k m_a(T; \lambda_i)$ (because $\deg P_T(x) = n$).
   By assumption, this equals \[ \sum_{i=1}^k m_g(T; \lambda_i) = \sum_{i=1}^k \dim \Eig_T(\lambda_i). \]
 
-  \textbf{(d)} $\implies$ \textbf{(e)}: Recall that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)$ is a direct sum.
+  \textbf{(d)} $\implies$ \textbf{(e)}: Recall from \cref{prop:direct_sum_eigenspaces} that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)$ is a direct sum.
   Consequently, \[ \dim(\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)) = \dim \Eig_T(\lambda_1) + \dots + \dim \Eig_T(\lambda_k) = \dim V \] by assumption.
   Since $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \subseteq V$ is a linear subspace, we have $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$.
   This implies that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$.
@@ -536,7 +535,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{itemize}
 
 \begin{definition}[Trigonalizable Endomorphism] \label{def:trigonalizable}
-  We say that $T \in \End(V)$ is \qt{trigonalizable} if there exists a basis $\mathcal{B}$ for $V$ such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular, i.e.,
+  We say that $T \in \End(V)$ is \newterm{trigonalizable} if there exists a basis $\mathcal{B}$ for $V$ such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular, i.e.,
   \begin{equation} \label{eq:upper_triangular_def}
     [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix} \quad (n = \dim V).
   \end{equation}
@@ -550,7 +549,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
 \begin{theorem}[Fundamental Theorem of Algebra] \label{thm:fta}
   Every polynomial $p(x) \in \mathbb{C}[x]$ with complex coefficients splits as a product of linear factors and a constant, i.e.,
-  $p(x) = C \cdot (x-a_1)^{n_1} \dots (x-a_r)^{n_r}$, with $C \in \mathbb{C}$, $r \ge 0$, and $a_i \in \mathbb{C}$.
+  $p(x) = C \cdot (x-a_1)^{n_1} \dots (x-a_r)^{n_r}$, with $C \in \mathbb{C}$, $r \ge 0$, $a_i \in \mathbb{C}$, and $n_j \in \mathbb{N}_{>0}$.
 \end{theorem}
 
 \begin{remark}\label{rem:fta_proof}
@@ -561,9 +560,21 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Let $V$ be a finite-dimensional vector space over $\mathbb{C}$. Then every $T \in \End(V)$ is trigonalizable.
 \end{corollary}
 
+% Creator: Opus 5 (High)
+\begin{proof}
+  The characteristic polynomial $P_T(x)$ lies in $\mathbb{C}[x]$, so by \cref{thm:fta} it splits as a product of linear factors. Now apply \cref{thm:trig_condition}.
+\end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Splitting Passes to the Cofactor]\label{ex:factor_splits}
+  Let $\lambda \in K$ and let $p(x), q(x) \in K[x]$ be non-zero polynomials with $p(x) = (\lambda - x) \cdot q(x)$. Show that if $p(x)$ splits into a product of linear factors over $K$, then so does $q(x)$.
+  (This is the step Prof. Biran leaves as an exercise in both proofs of \cref{thm:trig_condition}, applied to $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$.)
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 \subsection{Proof of the Theorem on Trigonalizability}
 
-\begin{proof}
+\begin{proof}[Proof of \cref{thm:trig_condition}]
   $\implies$: If there exists a basis $\mathcal{B}$ such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular as in \eqref{eq:upper_triangular_def}, then:
   \[ P_T(x) = \det([T]_{\mathcal{B}}^{\mathcal{B}} - x \cdot I_n) = \det \begin{pmatrix} \lambda_1 - x & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n - x \end{pmatrix} = (\lambda_1 - x) \dots (\lambda_n - x). \]
   
@@ -582,8 +593,8 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     [T]_{\mathcal{B}'}^{\mathcal{B}'} = \left(\begin{array}{c|c} \lambda_1 & * \dots * \\ \hline 0 & \\ \vdots & A \\ 0 & \end{array}\right) =: M
   \end{equation}
   where $A$ is an $n \times n$ matrix in $\M_{n \times n}(K)$.
-  By block determinant properties, we have $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$.
-  Since $P_T(x)$ splits as a product of linear factors, so does $P_A(x)$.
+  By block determinant properties (\cref{prop:block_matrix}), we have $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$.
+  Since $P_T(x)$ splits as a product of linear factors, so does $P_A(x)$ (\cref{ex:factor_splits}).
 
   Consider the linear map $T_A : K^n \rightarrow K^n$ defined by $T_A(u) = A \cdot u$.
   By the induction hypothesis, there exists a basis $\mathcal{C}$ of $K^n$ such that:
@@ -596,7 +607,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \noindent
   Now, define the $(n+1) \times (n+1)$ block matrix:
   \begin{equation} \label{eq:P_underline}
-    \underline{P} := \left(\begin{array}{c|c} 1 & 0 \dots 0 \\ \hline 0 & \\ \vdots & Q \\ 0 & \end{array}\right) \in M_{(n+1) \times (n+1)}(K).
+    \underline{P} := \left(\begin{array}{c|c} 1 & 0 \dots 0 \\ \hline 0 & \\ \vdots & Q \\ 0 & \end{array}\right) \in \M_{(n+1) \times (n+1)}(K).
   \end{equation}
 
   \begin{claim*}\label{claim:P_invertible_trig}
@@ -639,24 +650,42 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \begin{equation} \label{eq:final_trigonal_matrix}
     [T]_{\mathcal{B}}^{\mathcal{B}} = [\id]_{\mathcal{B}}^{\mathcal{B}'} \cdot [T]_{\mathcal{B}'}^{\mathcal{B}'} \cdot [\id]_{\mathcal{B}'}^{\mathcal{B}} = \underline{P}^{-1} \cdot M \cdot \underline{P}.
   \end{equation}
-  As proven above, $\underline{P}^{-1} M \underline{P}$ is strictly upper triangular. Therefore, $T$ is trigonalizable. The induction is now complete.
+  As proven above, $\underline{P}^{-1} M \underline{P}$ is upper triangular, with $\lambda_1, \lambda_2, \dots, \lambda_{n+1}$ along its diagonal. Therefore, $T$ is trigonalizable. The induction is now complete.
 \end{proof}
 
 \subsection{An Alternative (And More Elegant) Proof}
 
-\begin{proof}
-  $\impliedby$: We will use induction on $n = \dim V$.
+% Extractor: Opus 5 (High)
+\begin{exercise}[Bases of a Quotient Space]\label{ex:quotient_basis}
+  Let $V$ be a finite-di\-men\-sional vector space over $K$, let $U \subseteq V$ be a linear subspace, and let $(u_1, \dots, u_r)$ be a basis for $U$, extended to a basis $(u_1, \dots, u_r, w_{r+1}, \dots, w_n)$ of $V$. Show that the equivalence classes $([w_{r+1}], \dots, [w_n])$ form a basis for the quotient space $V/U$. (In particular, $\dim V/U = \dim V - \dim U$.)
+\end{exercise}
+
+\begin{proof}[Alternative proof of the direction $\impliedby$ of \cref{thm:trig_condition}]
+  $\impliedby$: We will use induction on $n = \dim V$, and also quotient spaces.
+
+  Let us first recall the latter. If $U \subseteq V$ is a linear subspace, we have the quotient space $V/U$, whose elements are the equivalence classes $[v]$ of the vectors $v \in V$, where $[v] = [v']$ if and only if $v - v' \in U$. Recall also that if $V$ is finite-di\-men\-sional, then so is $V/U$, and
+  \[ \dim V/U = \dim V - \dim U. \]
+
+  Now to the proof.
+
+  \textbf{Base case $n=1$}: In this case, $V$ is $1$-dimensional and $[T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} \lambda \end{smallmatrix}\right)$, so $T$ is even diagonalizable.
+
+  \textbf{Inductive step}: Let $n \ge 1$. Assume that the direction $\impliedby$ of the theorem holds for all vector spaces of dimension $\le n$ and every endomorphism of such a space.
+  Let $V$ be an $(n+1)$-dimensional vector space and $T \in \End(V)$ such that $P_T(x)$ splits as a product of linear factors.
+
+  Let $\lambda_1 \in K$ be a zero of $P_T(x)$. This implies that there exists an eigenvector $v_1 \in \ker(T - \lambda_1 \cdot \id_V)$.
+% Extractor: Gemini 3.1 Pro
 
   Define the $1$-dimensional subspace $U := \Sp(v_1)$ and consider the quotient space $V/U$. Since $v_1$ is an eigenvector, $T(U) \subseteq U$. This invariance property allows us to obtain a well-defined induced endomorphism on the quotient space, $\overline{T} : V/U \rightarrow V/U$, defined by $\overline{T}([v]) := [Tv]$.
 
   Extend $v_1$ to a basis $\mathcal{B}_1 = (v_1, w_2, \dots, w_{n+1})$ of $V$.
-  The equivalence classes $[w_2], \dots, [w_{n+1}]$ form a basis for $V/U$. In this basis, $\overline{T}$ is represented by an $n \times n$ matrix $A$, and the full transformation $T$ in basis $\mathcal{B}_1$ takes the block form:
+  The equivalence classes $[w_2], \dots, [w_{n+1}]$ form a basis for $V/U$ (\cref{ex:quotient_basis}, applied with $r = 1$ and the basis $(v_1)$ of $U$). In this basis, $\overline{T}$ is represented by an $n \times n$ matrix $A$, and the full transformation $T$ in basis $\mathcal{B}_1$ takes the block form:
   \begin{equation} \label{eq:block_matrix_induction}
     [T]_{\mathcal{B}_1}^{\mathcal{B}_1} = \left(\begin{array}{c|ccc} \lambda_1 & * & \dots & * \\ \hline 0 & & & \\ \vdots & & A & \\ 0 & & & \end{array}\right).
   \end{equation}
-  By the properties of block-triangular determinants, we have $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$. Because $\overline{T}$ has the matrix representation $A$, we know $P_{\overline{T}}(x) = P_A(x)$, which gives us:
+  By the properties of block-triangular determinants (\cref{prop:block_matrix}), we have $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$. Because $\overline{T}$ has the matrix representation $A$, we know $P_{\overline{T}}(x) = P_A(x)$, which gives us:
   \[ P_T(x) = (\lambda_1 - x) \cdot P_{\overline{T}}(x). \]
-  Since $P_T(x)$ splits into a product of linear factors by our initial assumption, $P_{\overline{T}}(x)$ must also split into linear factors.
+  Since $P_T(x)$ splits into a product of linear factors by our initial assumption, $P_{\overline{T}}(x)$ must also split into linear factors (\cref{ex:factor_splits}).
 
   Because $\dim(V/U) = n$, we can apply the induction hypothesis to $\overline{T}$. There exists a basis $\mathcal{C} := (z_2, \dots, z_{n+1})$ for $V/U$ such that its matrix is upper triangular:
   \begin{equation} \label{eq:quotient_upper_triangular}
@@ -684,12 +713,48 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \[ Tv_i = \alpha_{2i}v_2 + \dots + \alpha_{i-1, i}v_{i-1} + \lambda_i v_i + u \quad \text{for some } u \in U. \]
   Since $U = \Sp(v_1)$, we can write $u = \beta_i v_1$ for some scalar $\beta_i$. Thus,
   \[ Tv_i = \beta_i v_1 + \alpha_{2i}v_2 + \dots + \alpha_{i-1, i}v_{i-1} + \lambda_i v_i. \]
-  Because $Tv_i$ only requires basis vectors up to index $i$, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular:
   Because $Tv_i$ can be expressed as a linear combination of $v_1, \dots, v_i$ (and not $v_{i+1}, \dots, v_{n+1}$), $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular:
   \[ [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} \lambda_1 & \beta_2 & \dots & \beta_{n+1} \\ 0 & \lambda_2 & \dots & * \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \lambda_{n+1} \end{pmatrix}. \]
   This completes the inductive step, showing that $T$ is trigonalizable.
 \end{proof}
 
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_diagonalizability}
+
+\begin{exercisesolution}[Proof of \cref{ex:factor_splits}]
+  If $q(x)$ is a non-zero constant there is nothing to prove, so assume $\deg q(x) \ge 1$ and hence $\deg p(x) \ge 2$. By hypothesis
+  \[ p(x) = c \cdot (\mu_1 - x) \cdot \dots \cdot (\mu_m - x) \]
+  for some $c \in K \setminus \{0\}$, some $\mu_1, \dots, \mu_m \in K$ and $m := \deg p(x)$.
+
+  First, $\lambda$ occurs among the $\mu_i$. Indeed, substituting $x = \lambda$ into $p(x) = (\lambda - x) q(x)$ gives $p(\lambda) = 0$, so
+  \[ c \cdot (\mu_1 - \lambda) \cdot \dots \cdot (\mu_m - \lambda) = 0. \]
+  A field has no zero divisors and $c \ne 0$, so $\mu_j = \lambda$ for at least one index $j$; after renumbering we may assume $\mu_1 = \lambda$.
+
+  Consequently,
+  \[ (\lambda - x) \cdot q(x) = p(x) = (\lambda - x) \cdot \big( c \cdot (\mu_2 - x) \cdot \dots \cdot (\mu_m - x) \big). \]
+  The polynomial ring $K[x]$ over a field has no zero divisors --- the degree of a product is the sum of the degrees --- so we may cancel the non-zero factor $(\lambda - x)$ and obtain
+  \[ q(x) = c \cdot (\mu_2 - x) \cdot \dots \cdot (\mu_m - x), \]
+  which is a product of linear factors and a constant, as claimed.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{ex:quotient_basis}]
+  Recall that the quotient map $\pi : V \to V/U$, $\pi(v) := [v]$, is linear and satisfies $[u] = 0$ exactly for $u \in U$.
+
+  \textbf{Spanning.} Let $[v] \in V/U$ be arbitrary and expand $v$ in the basis of $V$:
+  \[ v = a_1 u_1 + \dots + a_r u_r + b_{r+1} w_{r+1} + \dots + b_n w_n. \]
+  Applying $\pi$ and using $[u_i] = 0$ for $i \le r$ leaves $[v] = b_{r+1}[w_{r+1}] + \dots + b_n[w_n]$. Hence $([w_{r+1}], \dots, [w_n])$ spans $V/U$.
+
+  \textbf{Linear independence.} Suppose $b_{r+1}[w_{r+1}] + \dots + b_n[w_n] = 0$, that is, $b_{r+1} w_{r+1} + \dots + b_n w_n \in U$. Since $(u_1, \dots, u_r)$ is a basis for $U$, there are scalars $a_1, \dots, a_r$ with
+  \[ b_{r+1} w_{r+1} + \dots + b_n w_n = a_1 u_1 + \dots + a_r u_r, \]
+  and therefore
+  \[ a_1 u_1 + \dots + a_r u_r - b_{r+1} w_{r+1} - \dots - b_n w_n = 0. \]
+  This is a vanishing linear combination of the basis $(u_1, \dots, u_r, w_{r+1}, \dots, w_n)$ of $V$, so all its coefficients vanish; in particular $b_{r+1} = \dots = b_n = 0$.
+
+  Thus $([w_{r+1}], \dots, [w_n])$ is a basis for $V/U$, and counting its members gives $\dim V/U = n - r = \dim V - \dim U$.
+\end{exercisesolution}
+
+% Extractor: Gemini 3.1 Pro
 \setcounter{section}{3} % Sets section counter so the next \section is 4 (i.e., 'd')
 
 \renewcommand{\thetheorem}{21.d.\arabic{theorem}}
