@@ -1,8 +1,20 @@
+% Source: 27.quadratic forms.v03, twelve pages numbering 27.a.1 through 27.a.9.
+% The Polarization Identity carries no number in the notes (Prof. Biran marks
+% it with a circled star), hence theorem* here.
 \renewcommand{\thetheorem}{27.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 
 \setcounter{chapter}{26}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
 
+% Extractor: Gemini 3.1 Pro
 \chapter{Bilinear and Quadratic Forms}
 
 % Def. (27.a.1)
@@ -85,9 +97,16 @@ This implies:
 \leavevmode
 \begin{enumerate}
     \item Let $(V, \langle \cdot, \cdot \rangle)$ be a Euclidean vector space. Then $B(v, w) := \langle v, w \rangle$ is a symmetric, positive definite bilinear form. Its associated quadratic form is $q(v) = \|v\|^2$.
-    \item Let $B \in \M_{n \times n}(K)$. Then $B \colon K^n \times K^n \to K$ defined by $B(v, w) := v\transp B w$ is a bilinear form. If $B\transp = B$ (i.e., $B$ is a symmetric matrix), then $B$ is a symmetric bilinear form (left as an exercise). The associated quadratic form is $q(v) = v\transp B v$.
+    \item Let $B \in \M_{n \times n}(K)$. Then $B \colon K^n \times K^n \to K$ defined by $B(v, w) := v\transp B w$ is a bilinear form. If $B\transp = B$ (i.e., $B$ is a symmetric matrix), then $B$ is a symmetric bilinear form (left as an exercise, see \cref{exc:symmetric_matrix_symmetric_form}). The associated quadratic form is $q(v) = v\transp B v$.
 \end{enumerate}
 \end{example}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[A Symmetric Matrix Gives a Symmetric Bilinear Form]
+\label{exc:symmetric_matrix_symmetric_form}
+This is the step Prof. Biran marks with \qt{exc.} in the example above. Let $B \in \M_{n \times n}(K)$ with $B\transp = B$, and let $B \colon K^n \times K^n \to K$ be the bilinear form $B(v, w) := v\transp B w$. Show that it is symmetric, that is, $B(v, w) = B(w, v)$ for all $v, w \in K^n$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 \begin{remark}
 Note that $B \in \M_{n \times n}(K)$ and $B\transp \in \M_{n \times n}(K)$ give the same quadratic form $q \colon K^n \to K$. Indeed, for all $v \in K^n$, we have:
@@ -105,13 +124,20 @@ If $2 \neq 0$ in $K$, then for the discussion on quadratic forms $q \colon K^n \
 
 \begin{theorem*}[Polarization Identity]
 \label{thm:polarization_identity_bilinear}
-Assume $2 \neq 0$ in $K$. (Note that $2 \neq 0 \implies 4 \neq 0$. Why? This is left as an exercise).
+Assume $2 \neq 0$ in $K$. (Note that $2 \neq 0 \implies 4 \neq 0$. Why? This is left as an exercise, see \cref{exc:two_nonzero_four_nonzero}).
 If $B$ is symmetric and defines $q := q_B$, then for all $v, w \in V$ we have:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $B(v, w) = \frac{1}{4}q(v + w) - \frac{1}{4}q(v - w)$.
     \item $B(v, w) = \frac{1}{2}(q(v + w) - q(v) - q(w))$.
 \end{enumerate}
 \end{theorem*}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Why \texorpdfstring{$2 \neq 0$}{2 =/= 0} Forces \texorpdfstring{$4 \neq 0$}{4 =/= 0}]
+\label{exc:two_nonzero_four_nonzero}
+This is the question Prof. Biran annotates the Polarization Identity with. Let $K$ be a field in which $2 \neq 0$. Show that then also $4 \neq 0$, so that the divisions by $4$ in part \textbf{(a)} really are legitimate.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 % Thm. (27.a.5)
 \begin{theorem}[Sylvester's Law of Inertia]
@@ -140,7 +166,7 @@ n - (k + \ell) &= \max \{ \dim Z \mid Z \subseteq V \text{ is a subspace and } B
 \end{remark}
 
 \begin{proof}
-Choose any basis $\mathcal{C}'$ for $V$ and let $A := [B]_{\mathcal{C}'} \in \M_{n \times n}(\mathbb{R})$. Note that $A$ is a symmetric matrix (since $B$ is symmetric). This implies that $A$ is orthogonally diagonalizable, i.e., there exists $P \in \Orth(n)$ such that $P^{-1} A P$ is a diagonal matrix. But $P^{-1} = P\transp$, so $P\transp A P$ is diagonal.
+Choose any basis $\mathcal{C}'$ for $V$ and let $A := [B]_{\mathcal{C}'} \in \M_{n \times n}(\mathbb{R})$. Note that $A$ is a symmetric matrix (since $B$ is symmetric). By the Spectral Theorem for matrices (\cref{thm:spectral_thm_matrices} \textbf{(b)}), this implies that $A$ is orthogonally diagonalizable, i.e., there exists $P \in \Orth(n)$ such that $P^{-1} A P$ is a diagonal matrix. But $P^{-1} = P\transp$, so $P\transp A P$ is diagonal.
 
 Let $\mathcal{C}''$ be the (unique) basis of $V$ such that $[\id_V]_{\mathcal{C}''}^{\mathcal{C}'} = P$. (That is, if $\mathcal{C}' = (v'_1, \dots, v'_n)$ and $\mathcal{C}'' = (v''_1, \dots, v''_n)$, then $v''_j = \sum_{i=1}^n P_{ij} v'_i$ for all $j$).
 We have 
@@ -166,7 +192,7 @@ In other words:
 \[
 \mathcal{C} = \left(\frac{1}{\lambda_1} v''_1, \dots, \frac{1}{\lambda_k} v''_k, \frac{1}{\lambda_{k+1}} v''_{k+1}, \dots, \frac{1}{\lambda_{k+\ell}} v''_{k+\ell}, v''_{k+\ell+1}, \dots, v''_n\right).
 \]
-Note that $v_i = c_i v''_i$ for some scalars $c_i \neq 0$, for all $i$. It is left as an exercise to show that $\mathcal{C}$ is indeed a basis.
+Note that $v_i = c_i v''_i$ for some scalars $c_i \neq 0$, for all $i$. It is left as an exercise to show that $\mathcal{C}$ is indeed a basis, see \cref{exc:scaled_family_is_basis}.
 
 We have $([B]_{\mathcal{C}})_{i,j} = B(v_i, v_j) = B(c_i v''_i, c_j v''_j) = 0$ for all $i \neq j$.
 \noindent
@@ -183,17 +209,17 @@ We will prove now that $k$ is independent of $\mathcal{C}$. Put
 k' := \max \{ \dim W \mid W \subseteq V \text{ is a subspace such that } B|_{W \times W} \text{ is positive definite} \}.
 \]
 
-We will show $k = k'$. Indeed, $k \le k'$, because $B|_{U \times U}$ is positive definite on $U = \Sp(v_1, \dots, v_k)$. This is because:
-\begin{align}
+We will show $k = k'$. Indeed, $k \le k'$, because $B|_{U \times U}$ is positive definite on $U := \Sp(v_1, \dots, v_k)$. This is because:
+\begin{align*}
     & B(a_1 v_1 + \dots + a_k v_k, a_1 v_1 + \dots + a_k v_k) \\
     & \quad = (a_1, \dots, a_k, 0, \dots, 0) \cdot \begin{pmatrix} I_k & 0 & 0 \\ 0 & -I_\ell & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} a_1 \\ \vdots \\ a_k \\ 0 \\ \vdots \\ 0 \end{pmatrix} \\
     & \quad = a_1^2 + \dots + a_k^2 \\
     & \quad > 0,
-\end{align}
+\end{align*}
 if not all $a_i = 0$.
 
 Suppose by contradiction that $k' \ge k+1$. This implies there exists $W \subseteq V$ of dimension $\ge k+1$ such that $B|_{W \times W}$ is positive definite. Take $X := \Sp(v_{k+1}, \dots, v_n)$.
-Then, by the dimension formula:
+Then, by the dimension formula (\cref{prop:properties_of_sums} \textbf{(c)}):
 \[
 \dim(W \cap X) = \dim W + \dim X - \dim(W+X) \ge (k+1) + (n-k) - \dim(W+X) \ge n+1 - n = 1.
 \]
@@ -205,14 +231,36 @@ This proves $k = k'$.
 The proofs for $\ell$ and $n - (k + \ell)$ are similar.
 \end{proof}
 
+% Extractor: Opus 5 (High)
+\begin{exercise}[Rescaling a Basis Leaves a Basis]
+\label{exc:scaled_family_is_basis}
+This is the step marked \qt{Exc.} in the proof above. Let $\mathcal{C}'' := (v''_1, \dots, v''_n)$ be a basis for $V$, let $c_1, \dots, c_n \in K \setminus \{0\}$, and put $v_i := c_i v''_i$. Show that $\mathcal{C} := (v_1, \dots, v_n)$ is again a basis for $V$.
+\end{exercise}
+
+\begin{exercise}[Why Symmetry Cannot Be Dropped in \texorpdfstring{\cref{thm:sylvesters_inertia}}{Sylvester's Law of Inertia}]
+\label{exc:sylvester_needs_symmetry}
+Prof. Biran annotates the word \qt{symmetric} in the statement of \cref{thm:sylvesters_inertia} with \qt{explain}. Explain why the hypothesis cannot simply be dropped: show that if $[B]_{\mathcal{C}}$ has the form displayed in the theorem for \emph{some} basis $\mathcal{C}$, then $B$ is necessarily symmetric. (Hint: that displayed matrix is symmetric, and \cref{lem:change_of_basis_bilinear} tells you what happens to it under a change of basis). Then give a bilinear form on $\mathbb{R}^2$ for which the conclusion of the theorem fails.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 % Thm. (27.a.6)
 \begin{theorem}[Sylvester's Law for Euclidean Spaces]
 \label{thm:sylvesters_euclidean}
 Let $V$ be a finite-dimensional Euclidean space of dimension $n$. Let $B \colon V \times V \to \mathbb{R}$ be a symmetric bilinear form. Then there exists an \emph{orthonormal} basis $\mathcal{C}$ for $V$ in which
 \[
-[B]_{\mathcal{C}} = \begin{pmatrix} \eta_1 & & & & & 0 \\ & \ddots & & & & \\ & & \eta_k & & & \\ & & & \eta_{k+1} & & \\ & & & & \ddots & \\ 0 & & & & & \eta_{k+\ell} \end{pmatrix},
+[B]_{\mathcal{C}} = \begin{pmatrix}
+\eta_1 & & & & & & & & \\
+& \ddots & & & & & & & \\
+& & \eta_k & & & & & & \\
+& & & \eta_{k+1} & & & & & \\
+& & & & \ddots & & & & \\
+& & & & & \eta_{k+\ell} & & & \\
+& & & & & & 0 & & \\
+& & & & & & & \ddots & \\
+& & & & & & & & 0
+\end{pmatrix},
 \]
-where $k + \ell \le n$, with $\eta_1, \dots, \eta_k > 0$ and $\eta_{k+1}, \dots, \eta_{k+\ell} < 0$. As before, $k, \ell$ are the positive and negative indices of $B$. Moreover, the scalars $\eta_1, \dots, \eta_k, \eta_{k+1}, \dots, \eta_{k+\ell}, 0, \dots, 0$ are independent of $\mathcal{C}$. They depend only on $B$ (and on the scalar product on $V$). They are the eigenvalues of $[B]_{\mathcal{D}}$ for every \emph{orthonormal} basis $\mathcal{D}$ of $V$ (independent of $\mathcal{D}$ and on whether or not $[B]_{\mathcal{D}}$ is diagonal).
+where $k + \ell \le n$, with $\eta_1, \dots, \eta_k > 0$ and $\eta_{k+1}, \dots, \eta_{k+\ell} < 0$, and where the remaining $n - (k+\ell)$ diagonal entries vanish. As before, $k, \ell$ are the positive and negative indices of $B$. Moreover, the scalars $\eta_1, \dots, \eta_k, \eta_{k+1}, \dots, \eta_{k+\ell}, 0, \dots, 0$ are independent of $\mathcal{C}$. They depend only on $B$ (and on the scalar product on $V$). They are the eigenvalues of $[B]_{\mathcal{D}}$ for every \emph{orthonormal} basis $\mathcal{D}$ of $V$ (independent of $\mathcal{D}$ and on whether or not $[B]_{\mathcal{D}}$ is diagonal).
 \end{theorem}
 
 \begin{remark}
@@ -231,13 +279,20 @@ T(Q) = \left\{ (y_1, \dots, y_n) \in \mathbb{R}^n \;\middle|\; \underbrace{\eta_
 \begin{proof}[Proof Outline]
 Pick any orthonormal basis $\mathcal{C}'$ for $V$ (similar to the previous proof, only now we take $\mathcal{C}'$ to be orthonormal). Define $A := [B]_{\mathcal{C}'}$, and proceed exactly as in the previous proof, but instead of defining $\mathcal{C}$ with the scaling factors $\lambda_i$, simply take $\mathcal{C} = \mathcal{C}''$.
 
-To see why $\eta_1, \dots, \eta_{k+\ell}, 0, \dots, 0$ depend only on $B$ etc., note that if $\mathcal{D}$ and $\mathcal{D}'$ are two orthonormal bases for $V$, then $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \Orth(n)$ (left as an exercise). Put $Q := [\id_V]_{\mathcal{D}'}^{\mathcal{D}}$.
+To see why $\eta_1, \dots, \eta_{k+\ell}, 0, \dots, 0$ depend only on $B$ etc., note that if $\mathcal{D}$ and $\mathcal{D}'$ are two orthonormal bases for $V$, then $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \Orth(n)$ (left as an exercise, see \cref{exc:transition_between_orthonormal_bases}). Put $Q := [\id_V]_{\mathcal{D}'}^{\mathcal{D}}$.
 We have
 \[
 [B]_{\mathcal{D}} = Q\transp \cdot [B]_{\mathcal{D}'} \cdot Q = Q^{-1} [B]_{\mathcal{D}'} Q,
 \]
 since $Q \in \Orth(n)$. Hence, the matrices $[B]_{\mathcal{D}}$ and $[B]_{\mathcal{D}'}$ are similar, which means their eigenvalues are exactly the same.
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Transition Matrix Between Two Orthonormal Bases]
+\label{exc:transition_between_orthonormal_bases}
+This is the step marked \qt{exc.} in the proof above, and it is what makes the whole argument work: it converts the congruence $Q\transp [B]_{\mathcal{D}'} Q$ of \cref{lem:change_of_basis_bilinear} into a similarity, so that eigenvalues are preserved. Let $V$ be a Euclidean space and let $\mathcal{D}, \mathcal{D}'$ be two orthonormal bases for $V$. Show that $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \Orth(n)$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 % Thm. (27.a.7)
 \begin{theorem}[Diagonalization of Symmetric Bilinear Forms]
@@ -251,13 +306,13 @@ We proceed by induction on $n := \dim V$. We need to show there exists a basis $
 If $B = 0$, or if $n = 1$, there is nothing to prove.
 
 Let $n \ge 2$. Assume the statement of the theorem holds for all vector spaces of dimension $\le n-1$. Let $V$ be an $n$-dimensional vector space.
-If $B(v, v) = 0$ for all $v \in V$, then the polarization formula shows $B = 0$ and we are done. So assume that there exists $v_1 \in V$ such that $B(v_1, v_1) \neq 0$. 
+If $B(v, v) = 0$ for all $v \in V$, then the polarization formula (on \cpageref{thm:polarization_identity_bilinear}) shows $B = 0$ and we are done. (That identity is available here because $K$ has characteristic $0$, so in particular $2 \neq 0$ in $K$). So assume that there exists $v_1 \in V$ such that $B(v_1, v_1) \neq 0$.
 
 Put $W := \Sp(v_1)$. The subspace $W$ is 1-dimensional (because $v_1 \neq 0$). Define the orthogonal complement with respect to $B$ as:
 \[
 W^{\perp_B} := \{ w \in V \mid B(v_1, w) = 0 \}.
 \]
-It is left as an exercise to show that $W^{\perp_B} \subseteq V$ is a subspace.
+It is left as an exercise to show that $W^{\perp_B} \subseteq V$ is a subspace, see \cref{exc:orthogonal_complement_wrt_B}.
 
 We claim that $W \cap W^{\perp_B} = \{0\}$. Indeed, if $w \in W \cap W^{\perp_B}$, then $w = c \cdot v_1$ and $B(v_1, w) = 0$. But $B(v_1, w) = B(v_1, c \cdot v_1) = c \cdot B(v_1, v_1)$. Since $B(v_1, v_1) \neq 0$, this implies $c = 0$, which means $w = 0$.
 
@@ -281,6 +336,15 @@ Now, $B|_{W^{\perp_B} \times W^{\perp_B}}$ is a symmetric bilinear form on an $(
 Take $\mathcal{C} := (v_1, \dots, v_n)$. Since $v_1 \in W$ and $v_2, \dots, v_n \in W^{\perp_B}$, we obtain that $B(v_i, v_j) = 0$ for all $i \neq j$.
 \end{proof}
 
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Orthogonal Complement with Respect to a Bilinear Form]
+\label{exc:orthogonal_complement_wrt_B}
+This is the step marked \qt{Exc.} in the proof above. With $B$, $V$ and $v_1$ as there, show that
+\[ W^{\perp_B} := \{ w \in V \mid B(v_1, w) = 0 \} \]
+is a linear subspace of $V$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 \begin{question}
 What happens over $\mathbb{C}$?
 \end{question}
@@ -294,7 +358,7 @@ Let $B \colon V \times V \to \mathbb{C}$ be a symmetric bilinear form on a vecto
 \]
 for some $0 \le r \le n$. (The zero block in the bottom right has size $n - r$).
 
-The number $r$ is independent of the basis $\mathcal{C}$ --- it depends only on $B$. In fact,
+The number $r$ is independent of the basis $\mathcal{C}$: it depends only on $B$. In fact,
 \[
 n - r = \max \{ \dim W \mid W \subseteq V \text{ is a subspace such that } B|_{W \times W} \equiv 0 \}.
 \]
@@ -306,9 +370,9 @@ By the previous theorem (\cref{thm:diagonalization_symmetric_bilinear}), there e
 \[
 [B]_{\mathcal{C}'} = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
 \]
-where $0 \le r \le n$ and $\eta_j \in \mathbb{C}$ for all $1 \le j \le r$, and $\eta_j = 0$ for $r < j \le n$.
+where, after reordering the vectors of $\mathcal{C}'$ if necessary, $\eta_j \neq 0$ for all $1 \le j \le r$ and $\eta_j = 0$ for all $r < j \le n$. Here $r$ is simply the number of non-zero entries on the diagonal, so $0 \le r \le n$. (The reordering matters: the vectors $v'_j$ with $\eta_j \neq 0$ must come first, since we are about to divide by $\lambda_j$).
 
-Choose $\lambda_j \in \mathbb{C}$ such that $\lambda_j^2 = \eta_j$ for $j = 1, \dots, r$. (This is always possible over $\mathbb{C}$).
+Choose $\lambda_j \in \mathbb{C}$ such that $\lambda_j^2 = \eta_j$ for $j = 1, \dots, r$. (This is always possible over $\mathbb{C}$, and $\lambda_j \neq 0$ because $\eta_j \neq 0$).
 Define $v_j := \frac{1}{\lambda_j} v'_j$ for $j = 1, \dots, r$, and $v_q := v'_q$ for all $r < q \le n$.
 
 Take $\mathcal{C} := (v_1, \dots, v_n)$. Then $B(v_i, v_j) = 0$ for all $i \neq j$. Furthermore, for $1 \le j \le r$, we have:
@@ -333,7 +397,7 @@ Let $V$ be a finite-dimensional vector space over $\mathbb{R}$ and $B \colon V \
     \det(B(e_j, e_k))_{j,k=1, \dots, \ell} \quad 
     \]
     for all $\; 1 \le \ell \le n$, are positive.
-    \item Like \textbf{(b)}, but instead of "there exists a basis...", it holds for "all bases...".
+    \item Like \textbf{(b)}, but instead of \qt{there exists a basis\dots}, it holds for \qt{all bases\dots}.
 \end{enumerate}
 \end{theorem}
 
@@ -356,7 +420,7 @@ By a previous result (Riesz Representation Theorem, \cref{thm:dual_space_inner_p
 B(w, w') = B(w, e_{n+1}) \quad \forall w \in W.
 \end{equation}
 
-Define a new basis for $V$, $\mathcal{C}' = (e_1, \dots, e_n, e_{n+1} - w')$. (It is left as an exercise to show this is a basis. Hint: $w' \in W$).
+Define a new basis for $V$, $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$. (It is left as an exercise to show this is a basis, see \cref{exc:shifted_family_is_basis}. Hint: $w' \in W$).
 By \eqref{eq:sylvester_ortho}, we have $B(e_j, e_{n+1} - w') = 0$ for all $1 \le j \le n$. 
 
 This implies that the matrix representation in the new basis is block diagonal:
@@ -379,19 +443,42 @@ This implies:
 B(v, v) = B(w, w) + \alpha^2 B(e_{n+1} - w', e_{n+1} - w') = B(w, w) + \alpha^2 d > 0,
 \]
 whenever either $w \neq 0$ or $\alpha \neq 0$. This implies that $B$ is positive definite.
-The proof of "\textbf{(b)} $\implies$ \textbf{(a)}" follows now by induction.
+The proof of \qt{\textbf{(b)} $\implies$ \textbf{(a)}} follows now by induction.
 
-\textbf{(a)} $\implies$ \textbf{(b)}: Left as an exercise. Similar ideas apply.
+\textbf{(a)} $\implies$ \textbf{(b)}: Left as an exercise, see \cref{exc:sylvester_criterion_forward}. Similar ideas apply.
 \end{proof}
 
-\section*{Exercise Solutions}
-\addcontentsline{toc}{section}{Exercise Solutions}
+% Extractor: Opus 5 (High)
+\begin{exercise}[Shifting the Last Basis Vector Leaves a Basis]
+\label{exc:shifted_family_is_basis}
+This is the step Prof. Biran marks with \qt{exc.\ show this is a basis. Hint: $w' \in W$} in the proof above. Let $\mathcal{C} := (e_1, \dots, e_n, e_{n+1})$ be a basis for $V$ and let $w' \in W := \Sp(e_1, \dots, e_n)$. Show that $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$ is again a basis for $V$.
+\end{exercise}
 
-\begin{exercisesolution}[Proof that $2 \neq 0 \implies 4 \neq 0$ (on \cpageref{thm:polarization_identity_bilinear})]
+\begin{exercise}[The Forward Direction of \texorpdfstring{\cref{thm:sylvesters_criterion}}{Sylvester's Criterion}]
+\label{exc:sylvester_criterion_forward}
+This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove that \textbf{(a)} $\implies$ \textbf{(b)} in \cref{thm:sylvesters_criterion}: if $B$ is positive definite, then the principal minors $\det(B(e_j, e_k))_{j,k = 1, \dots, \ell}$ are positive for $1 \le \ell \le n$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
+% Creator: Gemini 3.1 Pro
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_bilinear_quadratic}
+
+% Creator: Opus 5 (High)
+\begin{exercisesolution}[Proof of \cref{exc:symmetric_matrix_symmetric_form}]
+Let $v, w \in K^n$. The product $w\transp B v$ is a $1 \times 1$ matrix, that is, a scalar, and therefore, it equals its own transpose. Using this together with $B\transp = B$, we compute
+\[
+    B(w, v) = w\transp B v = \left(w\transp B v\right)\transp = v\transp B\transp w = v\transp B w = B(v, w),
+\]
+which is precisely the symmetry of the bilinear form.
+\end{exercisesolution}
+
+% Creator: Gemini 3.1 Pro
+\begin{exercisesolution}[Proof of \cref{exc:two_nonzero_four_nonzero}]
 Assume $2 \neq 0$ in a field $K$. This means $1 + 1 \neq 0$. If $4 = 0$, then $2 + 2 = 0$, which means $2 \cdot 2 = 0$. Since $K$ is a field, it has no zero divisors. Thus, $2 \cdot 2 = 0$ implies $2 = 0$, which contradicts our assumption. Therefore, $4 \neq 0$.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Proof that $W^{\perp_B}$ is a subspace (on \cpageref{thm:diagonalization_symmetric_bilinear})]
+\begin{exercisesolution}[Proof of \cref{exc:orthogonal_complement_wrt_B}]
 Let $w_1, w_2 \in W^{\perp_B}$ and $\alpha, \beta \in K$. We need to show that $\alpha w_1 + \beta w_2 \in W^{\perp_B}$. By definition of $W^{\perp_B}$, we have $B(v_1, w_1) = 0$ and $B(v_1, w_2) = 0$. Using the linearity of $B$ in the second argument, we compute:
 \[
 B(v_1, \alpha w_1 + \beta w_2) = \alpha B(v_1, w_1) + \beta B(v_1, w_2) = \alpha \cdot 0 + \beta \cdot 0 = 0.
@@ -399,11 +486,35 @@ B(v_1, \alpha w_1 + \beta w_2) = \alpha B(v_1, w_1) + \beta B(v_1, w_2) = \alpha
 Thus, $\alpha w_1 + \beta w_2 \in W^{\perp_B}$, proving it is a subspace.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Proof that $\mathcal{C}$ is a basis (on \cpageref{thm:sylvesters_inertia})]
+\begin{exercisesolution}[Proof of \cref{exc:scaled_family_is_basis}]
 We are given a basis $\mathcal{C}'' := (v''_1, \dots, v''_n)$. The new set $\mathcal{C} := (v_1, \dots, v_n)$ is formed by scaling each vector in $\mathcal{C}''$ by a non-zero scalar $c_i$ (where $c_i = 1/\lambda_i$ or $c_i = 1$). Since scaling basis vectors by non-zero scalars preserves linear independence and the span, $\mathcal{C}$ remains a basis for $V$.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Proof that $\mathcal{C}'$ is a basis (on \cpageref{thm:sylvesters_criterion})]
+% Creator: Opus 5 (High)
+\begin{exercisesolution}[Proof of \cref{exc:sylvester_needs_symmetry}]
+Suppose that $\mathcal{C}$ is a basis for $V$ in which $M := [B]_{\mathcal{C}}$ has the form displayed in \cref{thm:sylvesters_inertia}. That matrix is symmetric, $M\transp = M$. Now let $v, w \in V$ be arbitrary and let $c, d \in \mathbb{R}^n$ be their coordinate vectors with respect to $\mathcal{C}$. By \cref{lem:matrix_rep_bilinear_form}, $B(v, w) = c\transp M d$, and since a $1 \times 1$ matrix equals its own transpose,
+\[
+    B(w, v) = d\transp M c = \left(d\transp M c\right)\transp = c\transp M\transp d = c\transp M d = B(v, w).
+\]
+So $B$ is symmetric. In other words, symmetry is not an artefact of the proof but a genuine necessary condition: no non-symmetric form can be brought to that shape in any basis.
+
+For a form where the conclusion fails, take $V := \mathbb{R}^2$ and
+\[ B(v, w) := v_1 w_2 - v_2 w_1, \]
+which is bilinear with $B(e_1, e_2) = 1$ and $B(e_2, e_1) = -1$, hence not symmetric. By the argument just given, $[B]_{\mathcal{C}}$ never has the form of \cref{thm:sylvesters_inertia}. One can also see the failure directly: $q_B(v) = B(v, v) = v_1 v_2 - v_2 v_1 = 0$ for every $v$, so the associated quadratic form vanishes identically even though $B \neq 0$, and the numbers $k$ and $\ell$ could not possibly describe $B$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:transition_between_orthonormal_bases}]
+Write $\mathcal{D} = (d_1, \dots, d_n)$ and $\mathcal{D}' = (d'_1, \dots, d'_n)$, and put $Q := [\id_V]_{\mathcal{D}'}^{\mathcal{D}}$. By the definition of a transition matrix, column $j$ of $Q$ holds the coordinates of $d_j$ in the basis $\mathcal{D}'$, that is,
+\[ d_j = \sum_{p=1}^n Q_{p,j} \, d'_p \qquad \text{for all } 1 \le j \le n. \]
+Since $\mathcal{D}$ is orthonormal, $\langle d_j, d_k \rangle = \delta_{jk}$, and since $\mathcal{D}'$ is orthonormal, $\langle d'_p, d'_q \rangle = \delta_{pq}$. Expanding by bilinearity,
+\[
+    \delta_{jk} = \langle d_j, d_k \rangle = \left\langle \sum_{p=1}^n Q_{p,j} d'_p, \; \sum_{q=1}^n Q_{q,k} d'_q \right\rangle = \sum_{p,q=1}^n Q_{p,j} Q_{q,k} \, \delta_{pq} = \sum_{p=1}^n Q_{p,j} Q_{p,k} = \left(Q\transp Q\right)_{j,k}.
+\]
+Hence $Q\transp Q = I_n$, which is exactly the statement that $Q \in \Orth(n)$. (Equivalently, the displayed identity says that the columns of $Q$ form an orthonormal system, which is \cref{def:orthogonal_unitary_matrices}).
+\end{exercisesolution}
+
+% Creator: Gemini 3.1 Pro
+\begin{exercisesolution}[Proof of \cref{exc:shifted_family_is_basis}]
 We are given the basis $\mathcal{C} = (e_1, \dots, e_n, e_{n+1})$. We define $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$, where $w' \in W = \Sp(e_1, \dots, e_n)$. We can write $w' = \sum_{i=1}^n \alpha_i e_i$. 
 Suppose a linear combination of $\mathcal{C}'$ equals zero:
 \[
@@ -412,6 +523,15 @@ Suppose a linear combination of $\mathcal{C}'$ equals zero:
 Because $\mathcal{C}$ is a basis, all coefficients must be zero. In particular, $c_{n+1} = 0$. Substituting this back into the other coefficients yields $c_i = 0$ for all $1 \le i \le n$. Thus, the vectors in $\mathcal{C}'$ are linearly independent and form a basis.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Proof of \cref{thm:sylvesters_criterion} \textbf{(a)} $\implies$ \textbf{(b)}]
-Assume $B$ is positive definite. Let $\mathcal{C} = (e_1, \dots, e_n)$ be any basis for $V$. For any $1 \le \ell \le n$, consider the subspace $W_\ell = \Sp(e_1, \dots, e_\ell)$. Since $B$ is positive definite on $V$, its restriction $B|_{W_\ell \times W_\ell}$ is also positive definite. The matrix representation of this restriction in the basis $(e_1, \dots, e_\ell)$ is exactly the $\ell \times \ell$ principal submatrix of $[B]_{\mathcal{C}}$. A positive definite matrix has strictly positive eigenvalues (as shown in the proof of Sylvester's Law of Inertia), and its determinant is the product of these eigenvalues. Therefore, the determinant of every principal submatrix (the principal minors) must be strictly positive.
+\begin{exercisesolution}[Proof of \cref{exc:sylvester_criterion_forward}]
+Assume $B$ is positive definite. Let $\mathcal{C} = (e_1, \dots, e_n)$ be any basis for $V$. For any $1 \le \ell \le n$, consider the subspace $W_\ell := \Sp(e_1, \dots, e_\ell)$. Since $B$ is positive definite on $V$, its restriction $B|_{W_\ell \times W_\ell}$ is also positive definite. The matrix representation of this restriction in the basis $\mathcal{E}_\ell := (e_1, \dots, e_\ell)$ is exactly the $\ell \times \ell$ principal submatrix of $[B]_{\mathcal{C}}$, so it is the $\ell$-th principal minor that we must show is positive.
+
+% Creator: Opus 5 (High)
+Apply \cref{thm:sylvesters_inertia} to the symmetric bilinear form $B|_{W_\ell \times W_\ell}$ on $W_\ell$. It supplies a basis $\mathcal{F}$ of $W_\ell$ in which the matrix of the restriction is $I_k \oplus (-I_m) \oplus 0$ with $k + m \le \ell$. Here $k$ is the largest dimension of a subspace on which the form is positive definite; since the form is positive definite on all of $W_\ell$, which has dimension $\ell$, we get $k = \ell$, and therefore, $m = 0$ and there is no zero block. In other words,
+\[ \left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{F}} = I_\ell, \qquad \text{so} \qquad \det\left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{F}} = 1 > 0. \]
+Now pass back to the basis $\mathcal{E}_\ell$. By \cref{lem:change_of_basis_bilinear}, with $S := [\id_{W_\ell}]_{\mathcal{F}}^{\mathcal{E}_\ell}$,
+\[ \left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{E}_\ell} = S\transp \cdot \left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{F}} \cdot S, \]
+and taking determinants gives $\det\left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{E}_\ell} = \det(S)^2 \cdot 1 > 0$, because $S$ is invertible. This is the $\ell$-th principal minor of $[B]_{\mathcal{C}}$, and $\ell$ was arbitrary, which proves \textbf{(b)}.
+
+Note that the basis $\mathcal{C}$ was arbitrary throughout, so what we have actually proved is the stronger implication \textbf{(a)} $\implies$ \textbf{(c)}. Since \textbf{(c)} $\implies$ \textbf{(b)} is immediate, the cycle \textbf{(a)} $\implies$ \textbf{(c)} $\implies$ \textbf{(b)} $\implies$ \textbf{(a)} closes, and all three conditions of \cref{thm:sylvesters_criterion} are equivalent. The notes state the three conditions but only ever discuss the passage between \textbf{(a)} and \textbf{(b)}, leaving \textbf{(c)} unproved; this is what closes that gap.
 \end{exercisesolution}
