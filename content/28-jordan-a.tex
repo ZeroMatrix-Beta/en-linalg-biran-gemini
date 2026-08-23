@@ -1,7 +1,21 @@
+% Source: 28.Jordan.a.v02, ten pages. As in chapter 26, Prof. Biran numbers
+% nothing here: every Def., Lemma, Thm. and Cor. is unnumbered in the notes.
+% We print 28.a.1 through 28.a.5 anyway, following the decision taken for the
+% Singular Value Decomposition: nothing downstream shifts, and it keeps these
+% results citable by \cref.
 \renewcommand{\thetheorem}{28.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{27}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
 
+% Extractor: Gemini 3.1 Pro
 \chapter{The Jordan Normal Form}
 
 \section{Introduction and Motivation}
@@ -26,13 +40,20 @@ But \emph{not all} $T \in \End(V)$ are diagonalizable! Why? There are two possib
     
     For example, consider $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$, where $A = R_\theta = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{smallmatrix}\right)$, with $\theta \neq \pi k$ for $k \in \mathbb{Z}$. The map $T_A$ has \emph{no} eigenvalues (in $\mathbb{R}$). It is a rotation, but not by $0^\circ$ or $180^\circ$.
     
-    Sometimes we can overcome this "problem" by enlarging (extending) $K$. For example, $K = \mathbb{R}$ can be extended to $K = \mathbb{C}$. Then the above matrix $A$ has two eigenvalues when viewed as $A \in \M_{2 \times 2}(\mathbb{C})$, namely $\lambda_1 = e^{i\theta}$ and $\lambda_2 = e^{-i\theta}$ (Exercise: check this).
+    Sometimes we can overcome this \qt{problem} by enlarging (extending) $K$. For example, $K = \mathbb{R}$ can be extended to $K = \mathbb{C}$. Then the above matrix $A$ has two eigenvalues when viewed as $A \in \M_{2 \times 2}(\mathbb{C})$, namely $\lambda_1 = e^{i\theta}$ and $\lambda_2 = e^{-i\theta}$ (Exercise: check this, see \cref{exc:rotation_complex_eigenvalues}).
 
     \item $T$ is trigonalizable, or equivalently $P_T(x)$ splits as a product of linear factors, but for some eigenvalues $\lambda$ of $T$, the geometric multiplicity is strictly less than the algebraic multiplicity:
     \[
     m_g(\lambda) < m_a(\lambda).
     \]
 \end{enumerate}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Complex Eigenvalues of a Rotation]
+\label{exc:rotation_complex_eigenvalues}
+This is the step Prof. Biran marks with \qt{exc. check this}. Let $\theta \in \mathbb{R}$ and let $R_\theta = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{smallmatrix}\right)$, regarded as an element of $\M_{2 \times 2}(\mathbb{C})$. Show that its eigenvalues are $e^{i\theta}$ and $e^{-i\theta}$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 Let's try to understand case \textbf{(b)} better.
 
@@ -112,6 +133,13 @@ where $k \ge 1$, $\lambda_1, \dots, \lambda_k \in K$, $n_1, \dots, n_k \ge 1$, a
 Moreover, up to permutation, the blocks $J_{\lambda_1, n_1}, \dots, J_{\lambda_k, n_k}$ are unique.
 \end{theorem}
 
+% Extractor: Opus 5 (High)
+\begin{exercise}[What the Uniqueness in \texorpdfstring{\cref{thm:jordan_normal_form}}{the Jordan Normal Form theorem} Says]
+\label{exc:jnf_uniqueness_meaning}
+Prof. Biran annotates the uniqueness claim with \qt{explain}. Make the statement precise: say exactly which data attached to $T$ is being claimed to be independent of the choice of Jordan basis, and why \qt{up to permutation} is the right qualification. Then verify two concrete instances of that independence directly from \cref{cor:multiplicities_min_poly_jnf}: for each eigenvalue $\lambda$, both the \emph{number} of blocks carrying $\lambda$ and the \emph{size of the largest} such block are determined by $T$ alone.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
 \begin{remark}
 The basis $\mathcal{B}$ is called a \newterm{Jordan basis} for $T$. The resulting block diagonal matrix is called the \newterm{Jordan Normal Form} (JNF) of $T$. A similar theorem holds for matrices $A \in \M_{n \times n}(K)$: there exists an invertible matrix $P$ such that $P^{-1} A P$ is in Jordan Normal Form.
 \end{remark}
@@ -141,12 +169,24 @@ Here, $n = 13$. Let's assume the eigenvalues $\lambda_1, \lambda_2, \lambda_3$ a
     \item \textbf{Characteristic polynomial:} $P_A(x) = (\lambda_1 - x)^6 \cdot (\lambda_2 - x)^4 \cdot (\lambda_3 - x)^3$.
     \item \textbf{Algebraic multiplicity:} $m_a(\lambda_1) = 6$, $m_a(\lambda_2) = 4$, $m_a(\lambda_3) = 3$.
     \item \textbf{Geometric multiplicity:} $m_g(\lambda)$ is exactly the number of blocks with eigenvalue $\lambda$. So, $m_g(\lambda_1) = 2$, $m_g(\lambda_2) = 3$, and $m_g(\lambda_3) = 1$.
-    \item \textbf{Minimal polynomial:} $\mu_A(x) = (x - \lambda_1)^{\ell_1} \cdot (x - \lambda_2)^{\ell_2} \cdot (x - \lambda_3)^{\ell_3}$, where $1 \le \ell_i \le m_a(\lambda_i)$. We will see that $\ell_i$ is precisely the size of the \emph{biggest} block with eigenvalue $\lambda_i$. Thus,
+    \item \textbf{Minimal polynomial:} $\mu_A(x) = (x - \lambda_1)^{\ell_1} \cdot (x - \lambda_2)^{\ell_2} \cdot (x - \lambda_3)^{\ell_3}$, where $1 \le \ell_i \le m_a(\lambda_i)$ (why? See \cref{exc:minimal_poly_exponent_bounds}). We will see that $\ell_i$ is precisely the size of the \emph{biggest} block with eigenvalue $\lambda_i$. Thus,
     \[
     \mu_A(x) = (x - \lambda_1)^3 \cdot (x - \lambda_2)^2 \cdot (x - \lambda_3)^3.
     \]
 \end{itemize}
 \end{example}
+
+% Creator: Opus 5 (High)
+\begin{remark}
+Prof. Biran writes \qt{Remind} beside the minimal polynomial in this example, so we recall the definition. By \cref{def:minimal_poly}, the minimal polynomial of $T$ is the monic polynomial of least degree that annihilates $T$, that is, with $\mu_T(T) = 0$. Note that chapter 21 writes it $m_T(x)$, whereas the notes for the present chapter write $\mu_T(x)$; the two symbols denote the same polynomial, and we keep $\mu$ here to stay with Prof. Biran's notation for the Jordan chapters.
+\end{remark}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Bounds on the Exponents of the Minimal Polynomial]
+\label{exc:minimal_poly_exponent_bounds}
+These are the two steps Prof. Biran marks with \qt{why?} in the example above. Let $T \in \End(V)$ with $P_T(x)$ splitting into linear factors, and write $\mu_T(x) = \prod_i (x - \lambda_i)^{\ell_i}$ over the distinct eigenvalues $\lambda_i$ of $T$. Show that $1 \le \ell_i \le m_a(\lambda_i)$ for every $i$. (Hint for the lower bound: apply $\mu_T(T)$ to an eigenvector. Hint for the upper bound: \cref{thm:cayley_hamilton}).
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 \section{Powers of Jordan Matrices and Minimal Polynomials}
 
@@ -182,7 +222,7 @@ N = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & 
 \begin{proof}
 \leavevmode
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item This can be shown by direct calculation (exercise). Alternatively, denote by $e_1, \dots, e_n$ the standard basis for $K^n$. Then the linear map $T_N \colon K^n \to K^n$ acts as a shift operator:
+    \item This can be shown by direct calculation (exercise, see \cref{exc:powers_of_N_direct}). Alternatively, denote by $e_1, \dots, e_n$ the standard basis for $K^n$. Then the linear map $T_N \colon K^n \to K^n$ acts as a shift operator:
     \[
     T_N e_i = e_{i-1} \quad \forall 2 \le i \le n, \quad \text{and} \quad T_N e_1 = 0.
     \]
@@ -208,6 +248,15 @@ N = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & 
     Using the structure of $N^j$ from part \textbf{(a)}, this yields the upper triangular matrix with binomial coefficients along the diagonals.
 \end{enumerate}
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Powers of \texorpdfstring{$N$}{N} by Direct Calculation]
+\label{exc:powers_of_N_direct}
+This is the route Prof. Biran marks with \qt{Direct calculation (exc.)}, offered as an alternative to the shift-operator argument given in the proof. With $N = J_{0,n}$, so that $N_{i,j} = 1$ when $j = i+1$ and $N_{i,j} = 0$ otherwise, show by induction on $k$ that
+\[ \left(N^k\right)_{i,j} = \begin{cases} 1 & \text{if } j = i + k, \\ 0 & \text{otherwise,} \end{cases} \]
+and deduce that $N^k = 0$ for all $k \ge n$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 % Cor. (28.a.5)
 \begin{corollary}[Multiplicities and the Minimal Polynomial from JNF]
@@ -239,11 +288,11 @@ Applying this additively to $A := [T]_{\mathcal{B}}^{\mathcal{B}}$, we obtain:
 m_g(T, \lambda) = m_g(A, \lambda) = \sum_{i=1}^k m_g(J_{\lambda_i, n_i}; \lambda) = \# \{ i \mid \lambda_i = \lambda \}.
 \]
 
-\textbf{Minimal Polynomial:} Let $A := \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ as above. We have $A^k = \left(\begin{smallmatrix} B^k & 0 \\ 0 & C^k \end{smallmatrix}\right)$ (check!). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \left(\begin{smallmatrix} q(B) & 0 \\ 0 & q(C) \end{smallmatrix}\right)$.
+\textbf{Minimal Polynomial:} Let $A := \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ as above. We have $A^k = \left(\begin{smallmatrix} B^k & 0 \\ 0 & C^k \end{smallmatrix}\right)$ (check! See \cref{exc:powers_of_block_diagonal}). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \left(\begin{smallmatrix} q(B) & 0 \\ 0 & q(C) \end{smallmatrix}\right)$.
 
 Consider a single Jordan matrix $J_{\lambda, n}$. For every $q(x) \in K[x]$, we have:
 \[
-q(J_{\lambda, n}) = \begin{pmatrix} q(\lambda) & & * \\ & \ddots & \\ 0 & & q(\lambda) \end{pmatrix} \quad \text{(exercise)}.
+q(J_{\lambda, n}) = \begin{pmatrix} q(\lambda) & & * \\ & \ddots & \\ 0 & & q(\lambda) \end{pmatrix} \quad \text{(exercise, see \cref{exc:polynomial_of_jordan_block})}.
 \]
 Note the following key properties:
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -268,5 +317,98 @@ Indeed, let $A := \blockdiag(J_{\lambda_1, n_1}, \dots, J_{\lambda_k, n_k})$. We
 \label{eq:q_tilde_block_eval}
 \tilde{q}(A) = \blockdiag(\tilde{q}(J_{\lambda_1, n_1}), \dots, \tilde{q}(J_{\lambda_k, n_k})).
 \end{equation}
-Let $1 \le j \le k$, and consider the block $\tilde{q}(J_{\lambda_j, n_j})$. We can write $\tilde{q}(x) = (x-\lambda_j)^{s(\lambda_j)} \cdot p_j(x)$ where $p_j(x) \in K[x]$. By the definition of $s(\lambda_j)$, we have $s(\lambda_j) \ge n_j$. By property \textbf{(c)} above, $\tilde{q}(J_{\lambda_j, n_j}) = 0$. This holds for all $1 \le j \le k$, hence the entire block diagonal matrix in \eqref{eq:q_tilde_block_eval} is zero. This proves the last claim, and hence concludes the proof of the corollary.
+Let $1 \le j \le k$, and consider the block $\tilde{q}(J_{\lambda_j, n_j})$. We can write $\tilde{q}(x) = (x-\lambda_j)^{s(\lambda_j)} \cdot p_j(x)$ where $p_j(x) \in K[x]$.
+% Creator: Opus 5 (High)
+Explicitly, $p_j(x) = \prod_{\lambda \neq \lambda_j} (x-\lambda)^{s(\lambda)}$, the product running over the \emph{distinct} eigenvalues other than $\lambda_j$, and therefore, $p_j(\lambda_j) \neq 0$. This is what property \textbf{(c)} requires.
+% Extractor: Gemini 3.1 Pro
+By the definition of $s(\lambda_j)$, we have $s(\lambda_j) \ge n_j$. By property \textbf{(c)} above, $\tilde{q}(J_{\lambda_j, n_j}) = 0$. This holds for all $1 \le j \le k$, hence the entire block diagonal matrix in \eqref{eq:q_tilde_block_eval} is zero. This proves the last claim, and hence concludes the proof of the corollary.
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Powers of a Block Diagonal Matrix]
+\label{exc:powers_of_block_diagonal}
+This is the step Prof. Biran marks with \qt{check!} in the proof above. Let $A = \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ with $B \in \M_{\ell \times \ell}(K)$ and $C \in \M_{m \times m}(K)$. Show that $A^k = \left(\begin{smallmatrix} B^k & 0 \\ 0 & C^k \end{smallmatrix}\right)$ for every $k \ge 1$, and deduce that $q(A) = \left(\begin{smallmatrix} q(B) & 0 \\ 0 & q(C) \end{smallmatrix}\right)$ for every polynomial $q(x) \in K[x]$.
+\end{exercise}
+
+\begin{exercise}[A Polynomial Evaluated on a Jordan Block]
+\label{exc:polynomial_of_jordan_block}
+This is the step Prof. Biran marks with \qt{exc.} in the proof above. Let $q(x) \in K[x]$ and let $J_{\lambda, n}$ be a Jordan matrix. Show that $q(J_{\lambda, n})$ is upper triangular with every diagonal entry equal to $q(\lambda)$. (Hint: write $J_{\lambda,n} = \lambda I_n + N$ and expand using \cref{lem:powers_jordan_blocks}; the terms involving $N^j$ with $j \ge 1$ are strictly upper triangular).
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_jordan_a}
+
+\begin{exercisesolution}[Proof of \cref{exc:rotation_complex_eigenvalues}]
+We compute the characteristic polynomial directly:
+\[
+    P_{R_\theta}(x) = \det \begin{pmatrix} \cos\theta - x & -\sin\theta \\ \sin\theta & \cos\theta - x \end{pmatrix} = (\cos\theta - x)^2 + \sin^2\theta = x^2 - 2\cos\theta \cdot x + 1,
+\]
+where the last step uses $\cos^2\theta + \sin^2\theta = 1$. Over $\mathbb{C}$ the roots are
+\[
+    x = \cos\theta \pm \sqrt{\cos^2\theta - 1} = \cos\theta \pm \sqrt{-\sin^2\theta} = \cos\theta \pm i \sin\theta,
+\]
+which by Euler's formula are exactly $e^{i\theta}$ and $e^{-i\theta}$.
+
+This also makes the point of the surrounding discussion visible: these two roots are real if and only if $\sin\theta = 0$, that is, if and only if $\theta = \pi k$ for some $k \in \mathbb{Z}$, which is precisely the case excluded above.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:jnf_uniqueness_meaning}]
+The data claimed to be independent of the choice of Jordan basis is the \emph{multiset} of pairs
+\[ \{ (\lambda_1, n_1), (\lambda_2, n_2), \dots, (\lambda_k, n_k) \}, \]
+that is, the unordered list, counted with repetitions, of the eigenvalues labelling the blocks together with the sizes of those blocks. Equivalently: for every $\lambda \in K$ and every $r \ge 1$, the number of indices $j$ with $\lambda_j = \lambda$ and $n_j = r$ depends only on $T$.
+
+The qualification \qt{up to permutation} is needed because no ordering of the blocks can possibly be canonical. If $\mathcal{B}$ is a Jordan basis, then reordering the basis vectors block by block is again a basis, and it produces the same blocks arranged along the diagonal in a different order. So the ordered list of blocks is not an invariant of $T$, while the multiset is.
+
+Two instances of this independence follow immediately from \cref{cor:multiplicities_min_poly_jnf}.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The number of blocks carrying $\lambda$ equals $m_g(\lambda) = \dim \Eig_T(\lambda)$. The eigenspace $\Eig_T(\lambda) = \ker(T - \lambda \id_V)$ is defined without reference to any basis, so its dimension is an invariant of $T$, and hence so is the number of blocks.
+    \item The size of the largest block carrying $\lambda$ is the exponent $s(\lambda)$ of $(x - \lambda)$ in the minimal polynomial $\mu_T(x)$. The minimal polynomial is defined by \cref{def:minimal_poly} purely in terms of $T$, with no basis involved, so $s(\lambda)$ is an invariant of $T$ too.
+\end{enumerate}
+These two invariants do not by themselves pin down the whole multiset when $\lambda$ labels three or more blocks, which is why the theorem asserts more than \textbf{(a)} and \textbf{(b)} together give.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:minimal_poly_exponent_bounds}]
+\textbf{The lower bound $\ell_i \ge 1$.} Let $\lambda_i$ be an eigenvalue of $T$ and pick an eigenvector $v \neq 0$, so $Tv = \lambda_i v$. Then $T^m v = \lambda_i^m v$ for every $m \ge 0$, and consequently $g(T)v = g(\lambda_i) v$ for every polynomial $g(x) \in K[x]$. Applying this to $g = \mu_T$ gives
+\[ 0 = \mu_T(T) v = \mu_T(\lambda_i) \cdot v. \]
+Since $v \neq 0$, this forces $\mu_T(\lambda_i) = 0$, so $(x - \lambda_i)$ divides $\mu_T(x)$, that is, $\ell_i \ge 1$.
+
+\textbf{The upper bound $\ell_i \le m_a(\lambda_i)$.} First note that $\mu_T$ divides every annihilating polynomial. Indeed, if $g(T) = 0$, divide with remainder, $g = q \cdot \mu_T + r$ with $r = 0$ or $\deg r < \deg \mu_T$. Evaluating at $T$ gives $r(T) = g(T) - q(T)\mu_T(T) = 0$, and if $r \neq 0$ this would contradict the minimality of $\deg \mu_T$. Hence $r = 0$ and $\mu_T \mid g$.
+
+By \cref{thm:cayley_hamilton} we have $P_T(T) = 0$, so $\mu_T(x)$ divides $P_T(x)$. Since $P_T(x)$ splits, the multiplicity of the factor $(x - \lambda_i)$ in $P_T(x)$ is by definition $m_a(\lambda_i)$, and a divisor cannot contain that factor more often than $P_T$ does. Therefore, $\ell_i \le m_a(\lambda_i)$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:powers_of_N_direct}]
+By definition $N_{i,j} = 1$ if $j = i+1$ and $N_{i,j} = 0$ otherwise, which is the case $k = 1$ of the claim. Assume the claim for some $k \ge 1$. Then
+\[
+    \left(N^{k+1}\right)_{i,j} = \sum_{p=1}^n \left(N^k\right)_{i,p} \cdot N_{p,j}.
+\]
+By the induction hypothesis the factor $\left(N^k\right)_{i,p}$ vanishes unless $p = i+k$, and $N_{p,j}$ vanishes unless $j = p+1$. So the whole sum is $1$ exactly when $j = (i+k) + 1 = i + (k+1)$, and $0$ otherwise, which is the claim for $k+1$.
+
+For $k \ge n$ there is no pair of indices $1 \le i, j \le n$ with $j = i + k$ at all, since that would force $j \ge 1 + n > n$. Hence every entry of $N^k$ vanishes, that is, $N^k = 0$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:powers_of_block_diagonal}]
+We argue by induction on $k$. For $k = 1$ there is nothing to prove. Assuming the claim for $k$, block multiplication gives
+\[
+    A^{k+1} = A^k \cdot A = \begin{pmatrix} B^k & 0 \\ 0 & C^k \end{pmatrix} \begin{pmatrix} B & 0 \\ 0 & C \end{pmatrix} = \begin{pmatrix} B^k B & 0 \\ 0 & C^k C \end{pmatrix} = \begin{pmatrix} B^{k+1} & 0 \\ 0 & C^{k+1} \end{pmatrix}.
+\]
+For the second statement, write $q(x) = \sum_{m=0}^d a_m x^m$. The identity also holds for $m = 0$, because $A^0 = I_n = \left(\begin{smallmatrix} I_\ell & 0 \\ 0 & I_m \end{smallmatrix}\right)$. Hence
+\[
+    q(A) = \sum_{m=0}^d a_m A^m = \sum_{m=0}^d a_m \begin{pmatrix} B^m & 0 \\ 0 & C^m \end{pmatrix} = \begin{pmatrix} \sum_{m} a_m B^m & 0 \\ 0 & \sum_{m} a_m C^m \end{pmatrix} = \begin{pmatrix} q(B) & 0 \\ 0 & q(C) \end{pmatrix}.
+\]
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:polynomial_of_jordan_block}]
+Write $q(x) = \sum_{m=0}^d a_m x^m$ and $J_{\lambda, n} = \lambda I_n + N$ as in the text. By \cref{lem:powers_jordan_blocks} \textbf{(b)},
+\[ J_{\lambda,n}^m = \sum_{j=0}^m \binom{m}{j} \lambda^{m-j} N^j \qquad \text{for all } m \ge 1, \]
+and this also holds for $m = 0$, both sides being $I_n$. Substituting and collecting the terms according to the power of $N$,
+\[
+    q(J_{\lambda,n}) = \sum_{m=0}^d a_m \sum_{j=0}^m \binom{m}{j} \lambda^{m-j} N^j = \underbrace{\left(\sum_{m=0}^d a_m \lambda^m\right)}_{= \, q(\lambda)} N^0 + \sum_{j \ge 1} c_j N^j,
+\]
+where $c_j := \sum_{m \ge j} a_m \binom{m}{j} \lambda^{m-j}$ and $N^0 = I_n$.
+
+By \cref{lem:powers_jordan_blocks} \textbf{(a)}, for every $j \ge 1$ the matrix $N^j$ has its only non-zero entries in positions $(i, i+j)$, so it is strictly upper triangular. A sum of strictly upper triangular matrices is again strictly upper triangular, and therefore,
+\[ q(J_{\lambda,n}) = q(\lambda) \cdot I_n + (\text{strictly upper triangular}). \]
+This is exactly the assertion: $q(J_{\lambda,n})$ is upper triangular, and each of its diagonal entries equals $q(\lambda)$.
+\end{exercisesolution}
