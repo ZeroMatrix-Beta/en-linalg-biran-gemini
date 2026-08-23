@@ -275,22 +275,22 @@ The order of quantifiers is non-commutative. Consider $X$ (ETH students), $Y$ (c
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=0.82]
-    % --- grid ---
+    %, grid ---
     \draw[gray!45] (0,0) grid (4,4);
-    % --- column labels (courses) ---
+    %, column labels (courses) ---
     \foreach \c/\n in {0.5/1, 1.5/2, 2.5/3, 3.5/4}
       \node[above, font=\small] at (\c,4.05) {$y_{\n}$};
-    % --- row labels (students), top row is x_1 ---
+    %, row labels (students), top row is x_1 ---
     \foreach \r/\n in {3.5/1, 2.5/2, 1.5/3, 0.5/4}
       \node[left, font=\small] at (-0.05,\r) {$x_{\n}$};
-    % --- who takes what ---
+    %, who takes what ---
     \foreach \p in {(0.5,3.5),(1.5,3.5),(1.5,2.5),(2.5,2.5),%
                     (2.5,1.5),(3.5,1.5),(0.5,0.5),(3.5,0.5)}
       \fill[ThemePurple] \p circle (4pt);
-    % --- every row has at least one mark ---
+    %, every row has at least one mark ---
     \foreach \r in {3.5,2.5,1.5,0.5}
       \node[right, ThemeGreen, font=\small] at (4.15,\r) {$\checkmark$};
-    % --- no column is complete ---
+    %, no column is complete ---
     \foreach \c in {0.5,1.5,2.5,3.5}
       \node[below, ThemeAccent, font=\small] at (\c,-0.15) {$\times$};
     \node[right, ThemeGreen, font=\scriptsize, align=left] at (4.55,2.0)

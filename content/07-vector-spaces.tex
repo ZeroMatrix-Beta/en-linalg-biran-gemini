@@ -106,7 +106,7 @@ Check the details: verify each of the eight axioms (V1)--(V8) for $K^n$.
 
 \begin{importantremark}
 \label{rem:row_or_column}
-Sometimes we write the elements of $K^n$ as row vectors and sometimes as column vectors, whichever is more convenient at the time. The two conventions describe the same vector space, and we will switch between them without further comment --- but whenever a matrix product $A \cdot x$ is involved, the elements of $K^n$ are always to be read as column vectors, as in \cref{def:matrix_vector_multiplication}.
+Sometimes we write the elements of $K^n$ as row vectors and sometimes as column vectors, whichever is more convenient at the time. The two conventions describe the same vector space, and we will switch between them without further comment, but whenever a matrix product $A \cdot x$ is involved, the elements of $K^n$ are always to be read as column vectors, as in \cref{def:matrix_vector_multiplication}.
 \end{importantremark}
 
 \subsection{Linear Subspaces}
@@ -210,7 +210,7 @@ Prove the direction $\impliedby$ of the claim on \cpageref{claim:U_b_subspace} t
 
 \subsection{The Solution Set of a Linear System}
 
-The previous example is a special case of something much more important. It answers the third of the questions we set ourselves in the previous chapter, in the list of goals on \cpageref{goals:solution_set}: the solution set of a system of linear equations does carry a structure of its own --- provided the system is homogeneous.
+The previous example is a special case of something much more important. It answers the third of the questions we set ourselves in the previous chapter, in the list of goals on \cpageref{goals:solution_set}: the solution set of a system of linear equations does carry a structure of its own, provided the system is homogeneous.
 
 Let $A \in \M_{m \times n}(K)$ and fix $b \in K^m$, viewed as a column vector. Consider
 \[
@@ -271,7 +271,7 @@ so $a \cdot x \in L$. This shows $L$ is a subspace.
 
 \begin{importantremark}
 \label{rem:homogeneous_vs_inhomogeneous}
-So the solution set of a \emph{homogeneous} system is a linear subspace of $K^n$, while the solution set of an inhomogeneous one is never a subspace --- it does not even contain $0$. It is not, however, shapeless: recall the last example of the previous chapter, whose general solution had the form \qt{one particular solution plus an arbitrary multiple of a fixed vector}. We will make that observation precise once we have the notion of dimension.
+So the solution set of a \emph{homogeneous} system is a linear subspace of $K^n$, while the solution set of an inhomogeneous one is never a subspace; it does not even contain $0$. It is not, however, shapeless: recall the last example of the previous chapter, whose general solution had the form \qt{one particular solution plus an arbitrary multiple of a fixed vector}. We will make that observation precise once we have the notion of dimension.
 \end{importantremark}
 
 \subsection{More Examples of Vector Spaces}
@@ -301,7 +301,7 @@ Recall the Fibonacci sequences from \cref{prop:fib_closure}:
 \[
 \Fib = \{(a_0, a_1, \dots, a_k, \dots) \in \mathbb{R}^\infty \mid a_k = a_{k-1} + a_{k-2} \; \forall k \ge 2\}.
 \]
-Then $\Fib \subseteq \mathbb{R}^\infty$ is a linear subspace --- which is precisely what we verified by hand in the very first chapter, before we had the word for it.
+Then $\Fib \subseteq \mathbb{R}^\infty$ is a linear subspace, which is precisely what we verified by hand in the very first chapter, before we had the word for it.
 
 More generally, if we fix $\alpha, \beta \in \mathbb{R}$, then
 \[
@@ -343,7 +343,7 @@ Prove that $C(S)$ is a linear subspace of $\mathbb{R}^S$: check that the constan
 
 \begin{example}[Polynomial Spaces]
 \label{ex:polynomial_space}
-Let $K$ be a field and let $x$ be a \emph{formal} variable --- we may think of $x$ as a \qt{free element of $K$}. A \newterm{polynomial} over $K$ (or polynomial with coefficients in $K$) is an expression of the form
+Let $K$ be a field and let $x$ be a \emph{formal} variable; we may think of $x$ as a \qt{free element of $K$}. A \newterm{polynomial} over $K$ (or polynomial with coefficients in $K$) is an expression of the form
 \[
 f(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n, \qquad n \in \mathbb{N},
 \]

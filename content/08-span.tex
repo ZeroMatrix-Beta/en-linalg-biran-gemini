@@ -235,7 +235,7 @@ A vector space $V$ is called \newterm{finite-di\-men\-sional} if there exists a 
 
 \begin{importantremark}
 \label{rem:finite_dim_no_number_yet}
-Note that this definition says nothing yet about \emph{how many} vectors a generating set must contain --- only that some finite generating set exists. Attaching an actual number to a finite-di\-men\-sional space requires the notion of a basis, and is the business of the next few chapters.
+Note that this definition says nothing yet about \emph{how many} vectors a generating set must contain, only that some finite generating set exists. Attaching an actual number to a finite-di\-men\-sional space requires the notion of a basis, and is the business of the next few chapters.
 \end{importantremark}
 
 \subsection{The Subspaces of the Plane}
@@ -263,32 +263,32 @@ Before turning to computations, let us use the span to list \emph{all} linear su
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=1.05, font=\small, >={Stealth[length=2mm]}]
-    % --- axes ---
+    %, axes ---
     \draw[gray!55, ->] (-2.7,0) -- (2.7,0);
     \draw[gray!55, ->] (0,-2.0) -- (0,2.0);
-    % --- a family of lines through the origin: the one-dimensional subspaces ---
+    %, a family of lines through the origin: the one-dimensional subspaces ---
     \foreach \ang in {20, 62, 108, 152} {
       \draw[ThemeSecondary!40, thin] (\ang:-2.3) -- (\ang:2.3);
     }
-    % --- the distinguished line L_v ---
+    %, the distinguished line L_v ---
     \draw[ThemeAccent, very thick] (30:-2.45) -- (30:2.45);
     \coordinate (V) at (30:2.0);
-    % --- coordinate drop lines ---
+    %, coordinate drop lines ---
     \draw[gray!80, dashed, thin] (V) -- ($(V)-(0,{2.0*sin(30)})$);
     \draw[gray!80, dashed, thin] (V) -- ($(V)-({2.0*cos(30)},0)$);
     \node[gray, anchor=north, inner sep=2pt, fill=white]
       at ($(V)-(0,{2.0*sin(30)})$) {$a$};
     \node[gray, anchor=east, inner sep=2pt, fill=white]
       at ($(V)-({2.0*cos(30)},0)$) {$b$};
-    % --- the vector v itself ---
+    %, the vector v itself ---
     \fill[ThemePurple] (V) circle (2pt);
     \node[ThemePurple, anchor=south, inner sep=4pt, fill=white]
       at (V) {$v = (a,b)$};
-    % --- the origin: the zero subspace. The label sits in the widest gap of the
+    %, the origin: the zero subspace. The label sits in the widest gap of the
     %     pencil of lines (between 108 and 152 degrees) and masks them locally. ---
     \fill[ThemeGreen] (0,0) circle (2.2pt);
     \node[ThemeGreen!70!black, inner sep=1.5pt, fill=white] at (130:0.8) {$\{0\}$};
-    % --- the line label goes on the far end, away from v ---
+    %, the line label goes on the far end, away from v ---
     \node[ThemeAccent, anchor=north east, inner sep=1pt]
       at (30:-2.5) {$L_v = \Sp(v)$};
   \end{tikzpicture}
@@ -393,7 +393,7 @@ The first equivalence is exactly \eqref{eq:product_is_combination}, read from ri
 
 \begin{remark}[How to check this in practice]
 \label{rem:span_check_in_practice}
-Because of this equivalence, whenever you are asked \qt{is $w$ in the span of these vectors?}, you do not need to guess the coefficients. You simply construct the augmented matrix $(A \mid w)$ and perform Gauss elimination, bringing it to row-reduced echelon form as in \cref{thm:echelon_form_exists}. If the resulting system yields a contradiction, the vector is \textbf{not} in the span. If the system is solvable, the solutions $x_1, \dots, x_n$ are exactly the coefficients needed to build $w$ --- and by \cref{thm:ero_preserve_solutions}, row reduction has not changed which coefficients those are. Whether the coefficients are \emph{unique} is a separate question, and it is precisely the question of linear independence, which occupies the next chapter.
+Because of this equivalence, whenever you are asked \qt{is $w$ in the span of these vectors?}, you do not need to guess the coefficients. You simply construct the augmented matrix $(A \mid w)$ and perform Gauss elimination, bringing it to row-reduced echelon form as in \cref{thm:echelon_form_exists}. If the resulting system yields a contradiction, the vector is \textbf{not} in the span. If the system is solvable, the solutions $x_1, \dots, x_n$ are exactly the coefficients needed to build $w$, and by \cref{thm:ero_preserve_solutions}, row reduction has not changed which coefficients those are. Whether the coefficients are \emph{unique} is a separate question, and it is precisely the question of linear independence, which occupies the next chapter.
 \end{remark}
 
 \subsection{Some Spaces and How to Generate Them}

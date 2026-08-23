@@ -16,7 +16,7 @@
 
 % Creator: Gemini 3.1 Pro
 \begin{ainote}
-The professor left a note to \qt{explain the name} of the Spectral Theorems. In linear algebra, the \newterm{spectrum} of a linear operator is its set of eigenvalues. The Spectral Theorems provide conditions under which an operator can be completely described by its spectrum---specifically, when there exists a basis for the entire space consisting solely of the operator's eigenvectors (making the operator diagonalizable).
+The professor left a note to \qt{explain the name} of the Spectral Theorems. In linear algebra, the \newterm{spectrum} of a linear operator is its set of eigenvalues. The Spectral Theorems provide conditions under which an operator can be completely described by its spectrum, specifically, when there exists a basis for the entire space consisting solely of the operator's eigenvectors (making the operator diagonalizable).
 \end{ainote}
 
 % Extractor: Gemini 3.1 Pro
@@ -139,7 +139,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
 We only need to prove the direction \qt{$T$ is normal $\implies T$ is orthogonally diagonalizable}, as the reverse direction was already established in \cref{lem:orth_diag_implies_commute}.
 
 By a previous theorem (\cref{cor:complex_trigonalizable}), $T$ is trigonalizable (here we explicitly use the fact that $K = \mathbb{C}$ and the Fundamental Theorem of Algebra). That is, there exists a basis $\mathcal{C}$ for $V$ such that $[T]_{\mathcal{C}}^{\mathcal{C}}$ is an upper triangular matrix.
-By applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$, we obtain a new basis $\mathcal{B} := (v_1, \dots, v_n)$ which is orthonormal, and such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is still upper triangular. (This is left as an exercise to check --- see \cref{exc:gram_schmidt_keeps_triangular}. The main point is that if $\mathcal{C} = (u_1, \dots, u_n)$, then Gram-Schmidt gives an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$).
+By applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$, we obtain a new basis $\mathcal{B} := (v_1, \dots, v_n)$ which is orthonormal, and such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is still upper triangular. (This is left as an exercise to check, see \cref{exc:gram_schmidt_keeps_triangular}. The main point is that if $\mathcal{C} = (u_1, \dots, u_n)$, then Gram-Schmidt gives an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$).
 
 We claim that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is actually diagonal. To see this, let us write the matrix explicitly as $[T]_{\mathcal{B}}^{\mathcal{B}} = (a_{ij})_{1 \leq i \leq n, 1 \leq j \leq n}$:
 \[
@@ -352,7 +352,7 @@ while
 \[
     A^* \cdot A = \begin{pmatrix} -i & -i \\ -i & 1 \end{pmatrix} \begin{pmatrix} i & i \\ i & 1 \end{pmatrix} = \begin{pmatrix} 1 + 1 & 1 - i \\ 1 + i & 1 + 1 \end{pmatrix} = \begin{pmatrix} 2 & 1-i \\ 1+i & 2 \end{pmatrix}.
 \]
-The diagonals agree, but the off-diagonal entries are conjugate to one another and $1 + i \neq 1 - i$, so $A \cdot A^* \neq A^* \cdot A$ and $A$ is not normal --- even though $A\transp = A$.
+The diagonals agree, but the off-diagonal entries are conjugate to one another and $1 + i \neq 1 - i$, so $A \cdot A^* \neq A^* \cdot A$ and $A$ is not normal, even though $A\transp = A$.
 
 The example is not an accident: over $\mathbb{C}$ it is $A^* = A$, and not $A\transp = A$, that forces normality, and the two conditions are unrelated as soon as $A$ has non-real entries.
 \end{exercisesolution}

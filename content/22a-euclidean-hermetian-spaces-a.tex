@@ -233,7 +233,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 \end{exercise}
 
 \begin{proof}[Proof of the Claim]
-    We will prove it for complex matrices and Hermitian products (the case of symmetric matrices and scalar products is very similar and even simpler --- see \cref{exc:real_case_of_claim}).
+    We will prove it for complex matrices and Hermitian products (the case of symmetric matrices and scalar products is very similar and even simpler, see \cref{exc:real_case_of_claim}).
 
     Let $A \in \M_{n \times n}(\mathbb{C})$ and suppose that $\langle v, w \rangle_A := v\transp A \overline{w}$ is a Hermitian product.
     Then for all $v, w \in \mathbb{C}^n$ we have $\langle v, w \rangle_A = \overline{\langle w, v \rangle_A}$.
@@ -249,7 +249,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     
     The fact that $A$ is positive definite is precisely the condition that $\langle v, v \rangle_A > 0$ for all $v \neq 0$, which is to say $v\transp A \overline{v} > 0$.
     
-    The opposite statement --- that a positive definite matrix $A$ makes $\langle \cdot, \cdot \rangle_A$ a Hermitian product --- is \cref{exc:pos_def_gives_hermitian_product}.
+    The opposite statement, that a positive definite matrix $A$ makes $\langle \cdot, \cdot \rangle_A$ a Hermitian product, is \cref{exc:pos_def_gives_hermitian_product}.
 \end{proof}
 
 \begin{exercise}[The Real Case of the Claim]
@@ -602,7 +602,7 @@ We'll see more about this soon.
   \[ \|u+v\|^2 = \langle u+v, u+v \rangle = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle = \|u\|^2 + 2\langle u, v \rangle + \|v\|^2. \]
   Rearranging gives exactly
   \[ \langle u, v \rangle = \frac{1}{2}\left( \|u+v\|^2 - \|u\|^2 - \|v\|^2 \right). \]
-  The right-hand side involves nothing but the norm, so two scalar products on $V$ that induce the same norm are equal --- this is the sense in which $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. The converse fails: not every norm arises this way, as \cref{exc:non_inner_product_norms} shows.
+  The right-hand side involves nothing but the norm, so two scalar products on $V$ that induce the same norm are equal; this is the sense in which $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. The converse fails: not every norm arises this way, as \cref{exc:non_inner_product_norms} shows.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:polarization} \textbf{(b)}]
@@ -647,7 +647,7 @@ We'll see more about this soon.
   Let $A = \left(\begin{smallmatrix} a & b \\ b & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$, which is symmetric, and write $v = \left(\begin{smallmatrix} x \\ y \end{smallmatrix}\right)$. Then
   \[ Q(v) := v\transp A v = a x^2 + 2bxy + d y^2. \]
 
-  \textbf{Necessity.} Suppose $A$ is positive definite. Taking $v = \left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)$ gives $Q(v) = a > 0$. Taking $v = \left(\begin{smallmatrix} -b/a \\ 1 \end{smallmatrix}\right)$ --- which is legitimate now that $a \ne 0$, and is non-zero --- gives
+  \textbf{Necessity.} Suppose $A$ is positive definite. Taking $v = \left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)$ gives $Q(v) = a > 0$. Taking $v = \left(\begin{smallmatrix} -b/a \\ 1 \end{smallmatrix}\right)$, which is legitimate now that $a \ne 0$, and is non-zero, gives
   \[ Q(v) = a \cdot \frac{b^2}{a^2} - 2b \cdot \frac{b}{a} + d = \frac{b^2 - 2b^2 + ad}{a} = \frac{ad - b^2}{a} = \frac{\det(A)}{a} > 0, \]
   and since $a > 0$ this forces $\det(A) > 0$.
 
@@ -704,7 +704,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:integral_pairing}]
-  First, the pairing is well defined and finite --- Prof. Biran's \qt{Why?}. If $f, g \in C[a,b]$, then $f \cdot g$ is continuous on the closed bounded interval $[a,b]$, hence Riemann integrable there, and its integral is a real number.
+  First, the pairing is well defined and finite, Prof. Biran's \qt{Why?}. If $f, g \in C[a,b]$, then $f \cdot g$ is continuous on the closed bounded interval $[a,b]$, hence Riemann integrable there, and its integral is a real number.
 
   \textbf{Linearity in the first variable.} By the linearity of the integral,
   \[ \langle f_1 + f_2, g \rangle = \int_a^b \left( f_1(x) + f_2(x) \right) g(x) \, dx = \int_a^b f_1 g \, dx + \int_a^b f_2 g \, dx = \langle f_1, g \rangle + \langle f_2, g \rangle, \]

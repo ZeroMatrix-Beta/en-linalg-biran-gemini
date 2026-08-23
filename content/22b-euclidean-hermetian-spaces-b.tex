@@ -262,7 +262,7 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
 % Creator: Opus 5 (High)
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item By \cref{lem:char_orthogonal_matrices}, $A \in \Orth(n)$ if and only if $A\transp A = I_n$, and equally if and only if $A A\transp = I_n$. Applying the same characterization to the matrix $A\transp$, whose transpose is $A$, the condition $A\transp \in \Orth(n)$ reads $(A\transp)\transp A\transp = A A\transp = I_n$ --- the very same equation. Hence $A \in \Orth(n) \iff A\transp \in \Orth(n)$. Finally, the columns of $A\transp$ are exactly the rows of $A$, so $A\transp \in \Orth(n)$ says precisely that the rows of $A$ form an orthonormal system, and an orthonormal system of $n$ vectors in $\mathbb{R}^n$ is a basis by \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
+    \item By \cref{lem:char_orthogonal_matrices}, $A \in \Orth(n)$ if and only if $A\transp A = I_n$, and equally if and only if $A A\transp = I_n$. Applying the same characterization to the matrix $A\transp$, whose transpose is $A$, the condition $A\transp \in \Orth(n)$ reads $(A\transp)\transp A\transp = A A\transp = I_n$, the very same equation. Hence $A \in \Orth(n) \iff A\transp \in \Orth(n)$. Finally, the columns of $A\transp$ are exactly the rows of $A$, so $A\transp \in \Orth(n)$ says precisely that the rows of $A$ form an orthonormal system, and an orthonormal system of $n$ vectors in $\mathbb{R}^n$ is a basis by \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
     \item Identical, with \cref{lem:char_unitary_matrices} in place of \cref{lem:char_orthogonal_matrices} and $A^*$ in place of $A\transp$: the condition $A^* \in \Unit(n)$ reads $(A^*)^* A^* = A A^* = I_n$, which is one of the equivalent forms of $A \in \Unit(n)$; and the columns of $A^*$ are the conjugates of the rows of $A$, which form an orthonormal system exactly when the rows do. \qedhere
 \end{enumerate}
 \end{proof}
@@ -340,14 +340,14 @@ Note that there exist indices $1 \leq i_1 < \dots < i_r \leq n$ such that:
 To see this, let $1 \leq i_1$ be the minimal index $j$ such that $v_j \neq 0$. (Since $r \geq 1$, there exists such an index.) Clearly, $\Sp(v_1, \dots, v_{i_1}) = \Sp(v_{i_1})$. Suppose we have defined $1 \leq i_1 < \dots < i_k < n$ as above. Consider now the minimal index $\ell$, with $i_k < \ell \leq n$ and such that $v_\ell \notin \Sp(v_{i_1}, \dots, v_{i_k})$. If there is no such $\ell$, then $k = r$ and we are done. Otherwise, take $i_{k+1} := \ell$. Continue the construction by induction.
 
 Now, apply the Gram-Schmidt process to the list of vectors $v_{i_1}, \dots, v_{i_r}$ and obtain an orthonormal system $e_1, \dots, e_r$ such that $(e_1, \dots, e_k)$ is a basis for $\Sp(v_{i_1}, \dots, v_{i_k}) = \Sp(v_1, v_2, \dots, v_{i_k})$.
-Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how? --- see \cref{exc:extend_orthonormal_system}). Take
+Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $K^n$ (how? See \cref{exc:extend_orthonormal_system}). Take
 \[
     Q := \begin{pmatrix} | & & | \\ e_1 & \dots & e_n \\ | & & | \end{pmatrix},
 \]
 and let $R$ be built exactly as in the previous proof, by $R_{ij} := \langle v_j, e_i \rangle$.
 
 % Extractor: Opus 5 (High)
-The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$ --- upper triangular for the same reason as before --- while the remaining columns are the arbitrary entries denoted by $*$. Hence $A = Q \cdot R$ with $R$ of the stated form.
+The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$, upper triangular for the same reason as before, while the remaining columns are the arbitrary entries denoted by $*$. Hence $A = Q \cdot R$ with $R$ of the stated form.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 
@@ -395,7 +395,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
   \]
   By \cref{def:orthogonal_unitary_matrices}, $A$ is orthogonal exactly when $\langle v_i, v_j \rangle = \delta_{ij}$ for all $i, j$, which says precisely that the matrix just computed is $I_n$.
 
-  This is where the conjugations of the Hermitian case have gone. There the left factor was $\overline{A}\transp$, so the $(i,j)$ entry came out as $\overline{v_i}\transp v_j = \langle v_j, v_i \rangle$ --- the arguments in the opposite order. Over $\mathbb{R}$ there is no conjugation, the scalar product is symmetric, and the entry is $\langle v_i, v_j \rangle$. Since the condition imposed is the symmetric one $\delta_{ij}$, the difference is invisible in the conclusion, but it is real in the computation.
+  This is where the conjugations of the Hermitian case have gone. There the left factor was $\overline{A}\transp$, so the $(i,j)$ entry came out as $\overline{v_i}\transp v_j = \langle v_j, v_i \rangle$, the arguments in the opposite order. Over $\mathbb{R}$ there is no conjugation, the scalar product is symmetric, and the entry is $\langle v_i, v_j \rangle$. Since the condition imposed is the symmetric one $\delta_{ij}$, the difference is invisible in the conclusion, but it is real in the computation.
 
   \textbf{(b)} $\implies$ \textbf{(d)}. Suppose $A\transp A = I_n$. Taking determinants and using $\det(A\transp) = \det(A)$ gives $\det(A)^2 = 1$, so $\det(A) = \pm 1 \ne 0$ and $A$ is invertible. Multiplying $A\transp A = I_n$ on the right by $A^{-1}$ yields $A\transp = A^{-1}$.
 
@@ -427,10 +427,10 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
   \[ w := v_{i_{k+1}} - \sum_{i=1}^{k} \frac{\langle v_{i_{k+1}}, e_i \rangle}{\langle e_i, e_i \rangle} \, e_i . \]
   But $(e_1, \dots, e_k)$ is an orthogonal system spanning $U$, and $v_{i_{k+1}}$ lies in $U$, so \cref{thm:properties_orthogonal_systems} \textbf{(b)} tells us the coefficients of $v_{i_{k+1}}$ in that system exactly:
   \[ v_{i_{k+1}} = \sum_{i=1}^{k} \frac{\langle v_{i_{k+1}}, e_i \rangle}{\langle e_i, e_i \rangle} \, e_i . \]
-  The subtracted sum is therefore $v_{i_{k+1}}$ itself --- it is the orthogonal projection $P_U(v_{i_{k+1}})$, which fixes $U$ pointwise by \cref{prop:orthogonal_projection_properties} \textbf{(d)} --- and consequently
+  The subtracted sum is therefore $v_{i_{k+1}}$ itself; it is the orthogonal projection $P_U(v_{i_{k+1}})$, which fixes $U$ pointwise by \cref{prop:orthogonal_projection_properties} \textbf{(d)}, and consequently
   \[ w = v_{i_{k+1}} - v_{i_{k+1}} = 0 . \]
 
-  \textbf{What this means for the process.} The construction then stalls: the next step would divide by $\langle w, w \rangle = 0$. Geometrically this is exactly right --- $v_{i_{k+1}}$ contributes no new direction, so there is nothing left after removing its component along $U$.
+  \textbf{What this means for the process.} The construction then stalls: the next step would divide by $\langle w, w \rangle = 0$. Geometrically this is exactly right, $v_{i_{k+1}}$ contributes no new direction, so there is nothing left after removing its component along $U$.
 
   \textbf{The remedy.} Discard every vector that produces $0$ and carry on with the next one. The vectors that survive are precisely a maximal linearly independent sublist $v_{i_1}, \dots, v_{i_r}$ of $v_1, \dots, v_m$, where $r = \dim \Sp(v_1, \dots, v_m)$, and the output $e_1, \dots, e_r$ is an orthogonal basis of $\Sp(v_1, \dots, v_m)$ satisfying $\Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k})$ for every $k$.
 

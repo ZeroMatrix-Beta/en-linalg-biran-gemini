@@ -98,7 +98,7 @@ and the set of solutions is
 \begin{equation} \label{eq:motivating_solution_set}
 \{(x, y, z) \mid x = 2 - c, \; y = -1 - c, \; z = c, \; c \in \mathbb{R}\}.
 \end{equation}
-This is not a single point but an entire one-parameter family --- geometrically, the line in which the two planes $x + 3y + 4z = -1$ and $2x - y + z = 5$ intersect, as sketched in \cref{fig:two_planes}.
+This is not a single point but an entire one-parameter family, geometrically, the line in which the two planes $x + 3y + 4z = -1$ and $2x - y + z = 5$ intersect, as sketched in \cref{fig:two_planes}.
 
 \begin{figure}[ht!]
   \centering
@@ -111,11 +111,11 @@ This is not a single point but an entire one-parameter family --- geometrically,
     \fill[ThemeGreen!50, fill opacity=0.42, draw=ThemeGreen!75, thin]
       (-1.5,1.1) -- (5.3,1.1) -- (1.5,-1.1) -- (-5.3,-1.1) -- cycle;
 
-    % --- the line of solutions: the common intersection of the two planes ---
+    %, the line of solutions: the common intersection of the two planes ---
     \draw[ThemeAccent, very thick] (-4.3,0) -- (4.3,0);
     \node[ThemeAccent, anchor=west, inner sep=2pt] at (4.35,0) {$L$};
 
-    % --- the point singled out once a third equation is imposed ---
+    %, the point singled out once a third equation is imposed ---
     \fill[ThemePurple] (1.6,0) circle (2.2pt);
     \node[ThemePurple, anchor=south, inner sep=4pt] at (1.6,0) {$c = 1$};
 
@@ -124,7 +124,7 @@ This is not a single point but an entire one-parameter family --- geometrically,
   \end{tikzpicture}
   \caption{Schematic picture of the motivating example. Each equation cuts out a
   plane in $\mathbb{R}^3$, and the solution set $L$ of the system is the line in
-  which the two planes meet --- one free parameter $c$, exactly as
+  which the two planes meet, one free parameter $c$, exactly as
   \eqref{eq:motivating_solution_set} records. Imposing a third independent
   equation adds a third plane, which meets $L$ in a single point.}
   \label{fig:two_planes}
@@ -347,7 +347,7 @@ L(S') = L(S).
 \begin{proof}
 We begin with three claims.
 
-\begin{claim*}[Claim 1 --- One Operation Gives One Inclusion]
+\begin{claim*}[Claim 1, One Operation Gives One Inclusion]
 \label{claim:ero_one_inclusion}
 If $(S')$ is obtained from $(S)$ by one elementary row operation, then $L(S) \subseteq L(S')$.
 \end{claim*}
@@ -377,7 +377,7 @@ because the order in which the equations of a system are listed has no effect wh
 
 This concludes the proof of Claim 1. \hfill $\diamond$
 
-\begin{claim*}[Claim 2 --- Every Operation is Reversible]
+\begin{claim*}[Claim 2, Every Operation is Reversible]
 \label{claim:ero_reversible}
 If $(S')$ is obtained from $(S)$ by one elementary row operation, then $(S)$ can be obtained from $(S')$ by one elementary row operation.
 \end{claim*}
@@ -390,7 +390,7 @@ If $(S')$ is obtained from $(S)$ by one elementary row operation, then $(S)$ can
 \end{enumerate}
 Note that case \textbf{(a)} is where the restriction $\lambda \ne 0$ in \cref{def:elementary_row_operations} earns its keep: without it, $\frac{1}{\lambda}$ would not exist and the operation would not be reversible. This concludes the proof of Claim 2. \hfill $\diamond$
 
-\begin{claim*}[Claim 3 --- One Operation Preserves the Solution Set]
+\begin{claim*}[Claim 3, One Operation Preserves the Solution Set]
 \label{claim:ero_equality}
 If $(S')$ is obtained from $(S)$ by one elementary row operation, then $L(S) = L(S')$.
 \end{claim*}
@@ -452,7 +452,7 @@ D = \begin{pmatrix}
     \item $A$ \emph{is} row-reduced. The pivots sit in columns $4$ and $2$, and each of those columns is zero apart from its pivot.
     \item $B$ is \emph{not} row-reduced. Its pivots sit in columns $1$, $2$ and $3$; but column $3$ contains the pivot of row $3$ and also the entry $-1$ in row $2$, so condition \textbf{(b)} fails.
     \item $C$ is \emph{not} row-reduced. The first non-zero entry of row $1$ is $2$ and not $1$, so condition \textbf{(a)} already fails.
-    \item $D$ \emph{is} row-reduced. Its pivots sit in columns $3$, $1$ and $2$, and each of those columns is zero apart from its pivot. Note that the pivots do \emph{not} march to the right as we go down the rows --- being row-reduced does not require this.
+    \item $D$ \emph{is} row-reduced. Its pivots sit in columns $3$, $1$ and $2$, and each of those columns is zero apart from its pivot. Note that the pivots do \emph{not} march to the right as we go down the rows, being row-reduced does not require this.
 \end{itemize}
 \end{example}
 
@@ -540,38 +540,38 @@ Condition \textbf{(c)} is what produces the characteristic staircase shape shown
   \begin{tikzpicture}[font=\small, x=1cm, y=0.66cm]
     % Cell (column c, row r) is centred at (c-0.5, -r+0.5).
     % Pivots sit in columns 2, 4, 6 of rows 1, 2, 3; rows 4 and 5 are zero.
-    % --- the region that the echelon conditions force to be zero ---
+    %, the region that the echelon conditions force to be zero ---
     \fill[gray!14]
       (0,0) -- (1,0) -- (1,-1) -- (3,-1) -- (3,-2) -- (5,-2) -- (5,-3)
       -- (7,-3) -- (7,-5) -- (0,-5) -- cycle;
-    % --- boundary between the non-zero rows and the zero rows ---
+    %, boundary between the non-zero rows and the zero rows ---
     \draw[ThemeGreen!55, dashed] (0,-3) -- (5,-3);
-    % --- zero entries ---
+    %, zero entries ---
     \foreach \c/\r in {1/1, 1/2, 1/3, 1/4, 1/5,
                        2/2, 2/3, 3/2, 3/3, 4/1, 4/3, 5/3, 6/1, 6/2,
                        2/4, 3/4, 4/4, 5/4, 6/4, 7/4,
                        2/5, 3/5, 4/5, 5/5, 6/5, 7/5}
       \node[gray] at (\c-0.5,-\r+0.5) {$0$};
-    % --- entries in the pivot-free columns ---
+    %, entries in the pivot-free columns ---
     \foreach \c/\r in {3/1, 5/1, 7/1, 5/2, 7/2, 7/3}
       \node[ThemeSecondary] at (\c-0.5,-\r+0.5) {$\ast$};
-    % --- the pivots ---
+    %, the pivots ---
     \foreach \c/\r in {2/1, 4/2, 6/3} {
       \node[ThemeAccent] at (\c-0.5,-\r+0.5) {$1$};
       \draw[ThemeAccent, thick] (\c-0.5,-\r+0.5) circle (0.3);
     }
-    % --- the staircase itself, drawn last so that it stays visible ---
+    %, the staircase itself, drawn last so that it stays visible ---
     \draw[ThemeGreen, very thick]
       (1,0) -- (1,-1) -- (3,-1) -- (3,-2) -- (5,-2) -- (5,-3) -- (7,-3);
-    % --- delimiters ---
+    %, delimiters ---
     \draw[thick] (-0.15,0.15) -- (-0.4,0.15) -- (-0.4,-5.15) -- (-0.15,-5.15);
     \draw[thick] (7.15,0.15) -- (7.4,0.15) -- (7.4,-5.15) -- (7.15,-5.15);
-    % --- row labels ---
+    %, row labels ---
     \node[anchor=east, gray] at (-0.7,-0.5) {$1$};
     \node[anchor=east, gray] at (-0.7,-2.5) {$r$};
     \node[anchor=east, gray] at (-0.7,-3.5) {$r+1$};
     \node[anchor=east, gray] at (-0.7,-4.5) {$m$};
-    % --- pivot column labels ---
+    %, pivot column labels ---
     \foreach \c/\lab in {2/{k_1}, 4/{k_2}, 6/{k_3}}
       \node[ThemeAccent, anchor=south] at (\c-0.5,0.25) {$\lab$};
   \end{tikzpicture}
@@ -590,12 +590,12 @@ Every $m \times n$ matrix $A$ is row equivalent to a row-reduced echelon matrix.
 \end{theorem}
 
 \begin{proof}
-By \cref{thm:row_reduction_exists} we already know that $A$ is row equivalent to a row-reduced matrix $A'$. Performing a finite number of row interchanges on $A'$ --- an operation of Type 3, which preserves row equivalence --- we may list the non-zero rows in increasing order of their pivot columns and move all zero rows to the bottom. The result satisfies conditions \textbf{(b)} and \textbf{(c)} of \cref{def:row_reduced_echelon}, and interchanging rows does not disturb condition \textbf{(a)}. Hence we arrive at a row-reduced echelon matrix.
+By \cref{thm:row_reduction_exists} we already know that $A$ is row equivalent to a row-reduced matrix $A'$. Performing a finite number of row interchanges on $A'$ (an operation of Type 3, which preserves row equivalence), we may list the non-zero rows in increasing order of their pivot columns and move all zero rows to the bottom. The result satisfies conditions \textbf{(b)} and \textbf{(c)} of \cref{def:row_reduced_echelon}, and interchanging rows does not disturb condition \textbf{(a)}. Hence we arrive at a row-reduced echelon matrix.
 \end{proof}
 
 \begin{remark}
 \label{rem:why_echelon_helps}
-Why is this useful for solving systems of equations? Let $A x = b$ be a system of linear equations and consider its augmented matrix $(A \mid b)$. We may perform on $(A \mid b)$ the same elementary operations that we perform on $A$, and so obtain a row-equivalent matrix $(A' \mid b')$ in which $A'$ is a row-reduced echelon matrix. By \cref{thm:ero_preserve_solutions}, the systems $A x = b$ and $A' x = b'$ have the same solutions --- but $A' x = b'$ is far easier to solve, since each pivot expresses one variable directly in terms of the pivot-free ones.
+Why is this useful for solving systems of equations? Let $A x = b$ be a system of linear equations and consider its augmented matrix $(A \mid b)$. We may perform on $(A \mid b)$ the same elementary operations that we perform on $A$, and so obtain a row-equivalent matrix $(A' \mid b')$ in which $A'$ is a row-reduced echelon matrix. By \cref{thm:ero_preserve_solutions}, the systems $A x = b$ and $A' x = b'$ have the same solutions, but $A' x = b'$ is far easier to solve, since each pivot expresses one variable directly in terms of the pivot-free ones.
 \end{remark}
 
 \subsection{Worked Examples}

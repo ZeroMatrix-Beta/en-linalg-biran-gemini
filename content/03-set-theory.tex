@@ -233,7 +233,7 @@ that is, the positive integers that are \textit{not} squarefree. This is what \c
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[x=0.46cm, y=1cm]
-    % --- the three sample members of the family ---
+    %, the three sample members of the family ---
     \foreach \row/\n/\lab in {0/2/{$A_2$}, 1/3/{$A_3$}, 2/4/{$A_4$}} {
       \node[left, font=\small] at (0.4, -0.62*\row) {\lab};
       \draw[gray!45] (1,-0.62*\row) -- (24.6,-0.62*\row);
@@ -244,11 +244,11 @@ that is, the positive integers that are \textit{not} squarefree. This is what \c
     \foreach \k in {9,18} \fill[ThemePurple] (\k,-0.62) circle (2.4pt);
     % A_4: multiples of 16
     \foreach \k in {16} \fill[ThemePurple] (\k,-1.24) circle (2.4pt);
-    % --- the union ---
+    %, the union ---
     \node[left, font=\small] at (0.4,-2.15) {$\bigcup_n A_n$};
     \draw[gray!45] (1,-2.15) -- (24.6,-2.15);
     \foreach \k in {4,8,9,12,16,18,20,24} \fill[ThemeAccent] (\k,-2.15) circle (2.6pt);
-    % --- the integer axis ---
+    %, the integer axis ---
     \draw[->, gray!70] (1,-2.85) -- (25.2,-2.85) node[right, black, font=\small] {$\mathbb{Z}$};
     \foreach \k in {1,...,24} \draw[gray!60] (\k,-2.78) -- (\k,-2.92);
     \foreach \k in {4,8,12,16,20,24} \node[below, font=\tiny] at (\k,-2.95) {\k};
@@ -290,19 +290,19 @@ If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ re
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=1.35, >=Stealth]
-    % --- axes ---
+    %, axes ---
     \draw[->, gray!70] (-0.9,0) -- (2.9,0) node[right, black, font=\small] {$\mathbb{R}$};
     \draw[->, gray!70] (0,-0.7) -- (0,2.8) node[above, black, font=\small] {$\mathbb{R}$};
-    % --- the product ---
+    %, the product ---
     \fill[ThemePurple!25] (0,1) rectangle (2,2);
     \draw[ThemePurple, thick] (0,1) rectangle (2,2);
     \node[ThemePurple, font=\small] at (1,1.5) {$X \times Y$};
-    % --- the two factors, marked on their own axes ---
+    %, the two factors, marked on their own axes ---
     \draw[ThemeAccent, line width=1.7pt] (0,0) -- (2,0);
     \node[ThemeAccent, below, font=\scriptsize] at (1,-0.42) {$X = [0,2]$};
     \draw[ThemeGreen, line width=1.7pt] (0,1) -- (0,2);
     \node[ThemeGreen, font=\scriptsize, rotate=90, anchor=south] at (-0.58,1.5) {$Y = [1,2]$};
-    % --- a sample point and its two coordinates ---
+    %, a sample point and its two coordinates ---
     \fill[black] (1.4,1.7) circle (1.5pt);
     \node[above right, font=\scriptsize] at (1.4,1.7) {$(x,y)$};
     \draw[dotted, gray!80] (1.4,1.7) -- (1.4,0);
@@ -311,7 +311,7 @@ If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ re
     \fill[ThemeGreen] (0,1.7) circle (1.4pt);
     \node[below, ThemeAccent, font=\scriptsize] at (1.4,-0.05) {$x$};
     \node[left, ThemeGreen, font=\scriptsize] at (-0.05,1.7) {$y$};
-    % --- ticks ---
+    %, ticks ---
     \draw[gray!70] (2,0.07) -- (2,-0.07);
     \draw[gray!70] (0.07,1) -- (-0.07,1) node[left, black, font=\scriptsize] {$1$};
     \draw[gray!70] (0.07,2) -- (-0.07,2) node[left, black, font=\scriptsize] {$2$};

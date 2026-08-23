@@ -131,29 +131,29 @@ We denote these two specific roots as $\varphi := \frac{1 + \sqrt{5}}{2} \approx
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=1.35, >=Stealth]
-    % --- background grid ---
+    %, background grid ---
     \draw[step=0.5, gray!15, very thin] (-1.7,-1.2) rectangle (2.2,2.2);
-    % --- axes ---
+    %, axes ---
     \draw[->, gray!70] (-1.80,0) -- (2.45,0) node[right, black, font=\small] {$a_0$};
     \draw[->, gray!70] (0,-1.30) -- (0,2.40) node[above, black, font=\small] {$a_1$};
-    % --- the two eigen-directions (drawn faintly here, revisited later) ---
+    %, the two eigen-directions (drawn faintly here, revisited later) ---
     \draw[ThemeAccent!55, thick] (-0.74,-1.20) -- (1.36,2.20);
     \node[ThemeAccent, above left, font=\scriptsize] at (1.30,2.06) {ratio $\varphi$};
     \draw[ThemeGreen!55, thick] (-1.70,1.05) -- (1.94,-1.20);
     \node[ThemeGreen, below left, font=\scriptsize] at (1.92,-1.06) {ratio $\psi$};
-    % --- the two building blocks ---
+    %, the two building blocks ---
     \draw[->, ThemePurple, very thick] (0,0) -- (1,0);
     \fill[ThemePurple] (1,0) circle (1.7pt);
     \node[ThemePurple, below, font=\scriptsize] at (1.02,-0.06) {$\mathcal{F}_{1,0}$};
     \draw[->, ThemePurple, very thick] (0,0) -- (0,1);
     \fill[ThemePurple] (0,1) circle (1.7pt);
     \node[ThemePurple, left, font=\scriptsize] at (-0.06,1.02) {$\mathcal{F}_{0,1}$};
-    % --- the two geometric Fibonacci sequences ---
+    %, the two geometric Fibonacci sequences ---
     \fill[ThemeAccent] (1,1.618) circle (1.7pt);
     \node[ThemeAccent, right, font=\scriptsize] at (1.06,1.64) {$\mathcal{F}_{1,\varphi}$};
     \fill[ThemeGreen] (1,-0.618) circle (1.7pt);
     \node[ThemeGreen, right, font=\scriptsize] at (1.06,-0.64) {$\mathcal{F}_{1,\psi}$};
-    % --- a general element, decomposed along the two building blocks ---
+    %, a general element, decomposed along the two building blocks ---
     \fill[EmphBlue] (1.7,0.8) circle (1.7pt);
     \node[EmphBlue, above right, font=\scriptsize] at (1.66,0.82) {$\mathcal{F}_{a_0,a_1}$};
     \draw[EmphBlue, dotted, thick] (1.7,0) -- (1.7,0.8) -- (0,0.8);
@@ -189,27 +189,27 @@ turn.
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=0.50]
-    % --- the Fibonacci squares tiling a 13 x 8 rectangle ---
+    %, the Fibonacci squares tiling a 13 x 8 rectangle ---
     \draw[ThemePurple!55, fill=ThemePurple!5]  (5,0) rectangle (13,8);
     \draw[ThemePurple!55, fill=ThemePurple!9]  (0,0) rectangle (5,5);
     \draw[ThemePurple!55, fill=ThemePurple!13] (0,5) rectangle (3,8);
     \draw[ThemePurple!55, fill=ThemePurple!17] (3,6) rectangle (5,8);
     \draw[ThemePurple!55, fill=ThemePurple!21] (3,5) rectangle (4,6);
     \draw[ThemePurple!55, fill=ThemePurple!25] (4,5) rectangle (5,6);
-    % --- side lengths ---
+    %, side lengths ---
     \node[ThemePurple, font=\small] at (9,4)     {$8$};
     \node[ThemePurple, font=\small] at (2.5,2.5) {$5$};
     \node[ThemePurple, font=\small] at (1.5,6.5) {$3$};
     \node[ThemePurple, font=\small] at (4,7)     {$2$};
     \node[ThemePurple, font=\tiny]  at (3.5,5.5) {$1$};
     \node[ThemePurple, font=\tiny]  at (4.5,5.5) {$1$};
-    % --- the golden spiral: five quarter turns, each of radius a Fibonacci number ---
+    %, the golden spiral: five quarter turns, each of radius a Fibonacci number ---
     \draw[ThemeAccent, very thick] (3,6) arc[start angle=180, end angle=360, radius=1];
     \draw[ThemeAccent, very thick] (5,6) arc[start angle=0,   end angle=90,  radius=2];
     \draw[ThemeAccent, very thick] (3,8) arc[start angle=90,  end angle=180, radius=3];
     \draw[ThemeAccent, very thick] (0,5) arc[start angle=180, end angle=270, radius=5];
     \draw[ThemeAccent, very thick] (5,0) arc[start angle=270, end angle=360, radius=8];
-    % --- the enclosing 13 x 8 rectangle ---
+    %, the enclosing 13 x 8 rectangle ---
     \draw[ThemePurple, thick] (0,0) rectangle (13,8);
     \draw[<->, gray!80] (0,-0.9) -- (13,-0.9)
       node[midway, text=black, fill=white, inner sep=1pt, font=\scriptsize] {$13 = a_7$};
@@ -406,25 +406,25 @@ themselves, as drawn in \cref{fig:shift_eigenlines}.
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=1.0, >=Stealth]
-    % --- the two invariant lines, labelled at their empty lower ends ---
+    %, the two invariant lines, labelled at their empty lower ends ---
     \draw[ThemeAccent!70, thick] (-1.20,-1.94) -- (1.88,3.04);
     \node[ThemeAccent, below right, font=\scriptsize] at (-1.22,-1.92) {$\mathbb{R} \cdot \mathcal{F}_{1,\varphi}$};
     \draw[ThemeGreen!70, thick] (-2.00,1.24) -- (2.90,-1.79);
     \node[ThemeGreen, below left, font=\scriptsize] at (2.92,-1.77) {$\mathbb{R} \cdot \mathcal{F}_{1,\psi}$};
-    % --- axes ---
+    %, axes ---
     \draw[->, gray!70] (-2.20,0) -- (3.25,0) node[right, black, font=\small] {$a_0$};
     \draw[->, gray!70] (0,-2.15) -- (0,3.30) node[above, black, font=\small] {$a_1$};
-    % --- eigenvector for phi and its image (stretched by phi) ---
+    %, eigenvector for phi and its image (stretched by phi) ---
     \draw[->, ThemeAccent, very thick] (0,0) -- (1,1.618);
     \node[text=ThemeAccent, fill=white, inner sep=1pt, right, font=\scriptsize] at (1.10,1.50) {$\mathcal{F}_{1,\varphi}$};
     \draw[->, ThemeAccent, very thick, dashed] (0,0) -- (1.618,2.618);
     \node[ThemeAccent, right, font=\scriptsize] at (1.72,2.62) {$S(\mathcal{F}_{1,\varphi})$};
-    % --- eigenvector for psi and its image (flipped and contracted by psi) ---
+    %, eigenvector for psi and its image (flipped and contracted by psi) ---
     \draw[->, ThemeGreen, very thick] (0,0) -- (1,-0.618);
     \node[text=ThemeGreen, fill=white, inner sep=1pt, below right, font=\scriptsize] at (1.00,-0.82) {$\mathcal{F}_{1,\psi}$};
     \draw[->, ThemeGreen, very thick, dashed] (0,0) -- (-0.618,0.382);
     \node[text=ThemeGreen, fill=white, inner sep=1pt, above left, font=\scriptsize] at (-0.60,0.58) {$S(\mathcal{F}_{1,\psi})$};
-    % --- a generic sequence, whose direction is NOT preserved ---
+    %, a generic sequence, whose direction is NOT preserved ---
     \draw[->, ThemePurple, thick] (0,0) -- (2.6,-0.5);
     \node[ThemePurple, below, font=\scriptsize] at (2.62,-0.58) {$\mathcal{A}$};
     \draw[->, ThemePurple, thick, dashed] (0,0) -- (-0.5,2.1);
@@ -477,19 +477,19 @@ Furthermore, this implies that the ratio of consecutive terms satisfies:
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[x=0.46cm, y=2.5cm, >=Stealth]
-    % --- limiting value phi ---
+    %, limiting value phi ---
     \draw[ThemeAccent, dashed, thick] (0.4,1.61803) -- (12.1,1.61803);
     \node[ThemeAccent, right, font=\small] at (12.1,1.61803) {$\varphi$};
-    % --- axes ---
+    %, axes ---
     \draw[->, gray!70] (0.4,0.95) -- (12.3,0.95) node[below, black, font=\small] {$n$};
     \draw[->, gray!70] (0.4,0.95) -- (0.4,2.34) node[left, black, font=\small] {$\dfrac{a_{n+1}}{a_n}$};
-    % --- y ticks ---
+    %, y ticks ---
     \foreach \y in {1,1.5,2}
       \draw[gray!70] (0.32,\y) -- (0.48,\y) node[left=2pt, black, font=\scriptsize] {$\y$};
-    % --- x ticks ---
+    %, x ticks ---
     \foreach \n in {2,4,6,8,10}
       \draw[gray!70] (\n,0.90) -- (\n,1.00) node[below=3pt, black, font=\scriptsize] {$\n$};
-    % --- the ratios a_{n+1}/a_n ---
+    %, the ratios a_{n+1}/a_n ---
     \draw[ThemePurple, thin]
       (1,1) -- (2,2) -- (3,1.5) -- (4,1.66667) -- (5,1.6) -- (6,1.625)
       -- (7,1.61538) -- (8,1.61905) -- (9,1.61765) -- (10,1.61818) -- (11,1.61798);

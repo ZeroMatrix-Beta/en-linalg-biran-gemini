@@ -312,7 +312,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 
   For injectivity, let $(u_1, \dots, u_r) \in \ker \Phi$, that is, $u_1 + \dots + u_r = 0$ with $u_i \in U_i$. Since the sum is direct, part \textbf{(a)} of \cref{ex:direct_sum_conditions} gives $u_1 = \dots = u_r = 0$, so $\ker \Phi = \{0\}$. Hence $\Phi$ is an isomorphism.
 
-  The isomorphism is canonical in the sense that its definition involves no choice whatsoever --- no bases, no complements --- only the addition of $V$. This is what licenses the identification of $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$ whenever the sum is direct.
+  The isomorphism is canonical in the sense that its definition involves no choice whatsoever, no bases, no complements, only the addition of $V$. This is what licenses the identification of $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$ whenever the sum is direct.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:finite_eigenvalues}]
@@ -450,7 +450,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
   \textbf{A non-zero polynomial has at most $\deg$ many zeros.} We claim that a polynomial $0 \ne r(x) \in K[x]$ of degree $d$ has at most $d$ distinct zeros in $K$. We induct on $d$. If $d = 0$, then $r$ is a non-zero constant and has no zeros at all. Let $d \ge 1$. If $r$ has no zero, there is nothing to prove; otherwise pick a zero $\lambda \in K$. By the Conclusion of the digression above, $r(x) = (x - \lambda) \cdot q(x)$ with $\deg q(x) = d-1$. If $\mu \ne \lambda$ is another zero of $r$, then $(\mu - \lambda) \cdot q(\mu) = 0$ with $\mu - \lambda \ne 0$, and since a field has no zero divisors, $q(\mu) = 0$. So every zero of $r$ other than $\lambda$ is a zero of $q$, of which there are at most $d-1$ by the inductive hypothesis. Hence $r$ has at most $d$ zeros.
 
-  \textbf{Infinite fields.} If $K$ is infinite, then no non-zero polynomial can vanish at every point of $K$, since it has only finitely many zeros. Consequently $r(x) = 0$, that is, $p(x) = q(x)$: over an infinite field, distinct polynomials always define distinct functions. This settles $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$ --- for these fields the phenomenon of \cref{rem:poly_vs_func} cannot occur, and one may safely identify a polynomial with the function it defines.
+  \textbf{Infinite fields.} If $K$ is infinite, then no non-zero polynomial can vanish at every point of $K$, since it has only finitely many zeros. Consequently $r(x) = 0$, that is, $p(x) = q(x)$: over an infinite field, distinct polynomials always define distinct functions. This settles $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$, for these fields the phenomenon of \cref{rem:poly_vs_func} cannot occur, and one may safely identify a polynomial with the function it defines.
 
   \textbf{Finite fields.} If $K$ is finite, the phenomenon always occurs. Indeed, put
   \[ r(x) := \prod_{a \in K} (x - a) \in K[x]. \]
@@ -733,7 +733,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
   Consequently,
   \[ (\lambda - x) \cdot q(x) = p(x) = (\lambda - x) \cdot \big( c \cdot (\mu_2 - x) \cdot \dots \cdot (\mu_m - x) \big). \]
-  The polynomial ring $K[x]$ over a field has no zero divisors --- the degree of a product is the sum of the degrees --- so we may cancel the non-zero factor $(\lambda - x)$ and obtain
+  The polynomial ring $K[x]$ over a field has no zero divisors, the degree of a product is the sum of the degrees, so we may cancel the non-zero factor $(\lambda - x)$ and obtain
   \[ q(x) = c \cdot (\mu_2 - x) \cdot \dots \cdot (\mu_m - x), \]
   which is a product of linear factors and a constant, as claimed.
 \end{exercisesolution}
@@ -868,12 +868,12 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 \begin{proof}
   Because $\mathbb{C}$ is algebraically closed, every matrix is trigonalizable (\cref{cor:complex_trigonalizable}). Thus, there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that
   \[ P^{-1} A P = \begin{pmatrix} \lambda_1 & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix}, \]
-  where $\lambda_1, \dots, \lambda_n \in \mathbb{C}$ are \qt{the} eigenvalues of $A$ --- or more precisely the zeros of $P_A(x)$, each of them appearing on the diagonal as many times as its algebraic multiplicity --- and $b_{ij} \in \mathbb{C}$ for $1 \le i < j \le n$. Note that, equivalently,
+  where $\lambda_1, \dots, \lambda_n \in \mathbb{C}$ are \qt{the} eigenvalues of $A$, or more precisely the zeros of $P_A(x)$, each of them appearing on the diagonal as many times as its algebraic multiplicity, and $b_{ij} \in \mathbb{C}$ for $1 \le i < j \le n$. Note that, equivalently,
   \begin{equation} \label{eq:trigonalized_A}
     A = P \begin{pmatrix} \lambda_1 & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix} P^{-1}.
   \end{equation}
 
-  To ensure diagonalizability, we must prevent repeated eigenvalues, and we fix this by a tiny perturbation of the diagonal --- one chosen afresh for each $k$. Let $k \in \mathbb{Z}_{\ge 1}$ and pick $\lambda_1(k), \dots, \lambda_n(k) \in \mathbb{C}$ such that
+  To ensure diagonalizability, we must prevent repeated eigenvalues, and we fix this by a tiny perturbation of the diagonal, one chosen afresh for each $k$. Let $k \in \mathbb{Z}_{\ge 1}$ and pick $\lambda_1(k), \dots, \lambda_n(k) \in \mathbb{C}$ such that
   \begin{enumerate}
     \item $\left| \lambda_i(k) - \lambda_i \right| < \frac{1}{2023 \cdot k}$ for every $i$, and
     \item $\lambda_1(k), \dots, \lambda_n(k)$ are pairwise distinct.
@@ -950,7 +950,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
 \end{proof}
 
 \begin{exercise}[Where the Argument Breaks over Other Fields]\label{ex:multi_var_other_fields}
-  What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$ --- even for $r = 1$ --- with, for example, $K = \mathbb{Z}_2$, or some other field, finite or infinite?
+  What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$, even for $r = 1$, with, for example, $K = \mathbb{Z}_2$, or some other field, finite or infinite?
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -1026,7 +1026,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 
 \begin{proof}
   \begin{enumerate}
-    \item Let $U := \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$, so $U$ is a $T$-invariant subspace of $V$ containing $v$. Clearly $U \subseteq \langle v \rangle_T$; and by part \textbf{(b)} of \cref{ex:cyclic_minimal} --- which identifies $\langle v \rangle_T$ as the smallest $T$-invariant subspace containing $v$ --- we also have $\langle v \rangle_T \subseteq U$. Hence $U = \langle v \rangle_T$. Since the elements of $\mathcal{B}$ are linearly independent by assumption and span this space, they form a basis for it.
+    \item Let $U := \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$, so $U$ is a $T$-invariant subspace of $V$ containing $v$. Clearly $U \subseteq \langle v \rangle_T$; and by part \textbf{(b)} of \cref{ex:cyclic_minimal} (which identifies $\langle v \rangle_T$ as the smallest $T$-invariant subspace containing $v$), we also have $\langle v \rangle_T \subseteq U$. Hence $U = \langle v \rangle_T$. Since the elements of $\mathcal{B}$ are linearly independent by assumption and span this space, they form a basis for it.
     \item This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
   \end{enumerate}
 \end{proof}
@@ -1135,7 +1135,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
     (2,1): &\quad (ac + cd) + (-ac - cd) + 0 = 0, \\
     (2,2): &\quad (bc + d^2) + (-ad - d^2) + (ad - bc) = 0.
   \end{align*}
-  Hence $P_A(A) = \left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)$, confirming \cref{thm:cayley_hamilton} for $n = 2$. Note that every cancellation above is an identity in the four symbols $a, b, c, d$ with integer coefficients --- it uses nothing about the field $K$, which is precisely the observation exploited in \cref{ex:q_ij_2x2}.
+  Hence $P_A(A) = \left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)$, confirming \cref{thm:cayley_hamilton} for $n = 2$. Note that every cancellation above is an identity in the four symbols $a, b, c, d$ with integer coefficients, it uses nothing about the field $K$, which is precisely the observation exploited in \cref{ex:q_ij_2x2}.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:cayley_inverse}]
@@ -1156,7 +1156,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \begin{exercisesolution}[Proof of \cref{ex:conjugation_continuous}]
   Identify $\M_{n \times n}(\mathbb{C})$ with $\mathbb{C}^{n^2}$ by listing the entries; under this identification, convergence of matrices is exactly entrywise convergence, which is what the statement of \cref{lemma:sequence_diagonalizable} asks for. A map into $\mathbb{C}^{n^2}$ is continuous if and only if each of its $n^2$ coordinate functions is continuous, so it suffices to look at one entry of $PXQ$ at a time. By the definition of matrix multiplication,
   \[ (P X Q)_{ij} = \sum_{k=1}^n \sum_{\ell=1}^n P_{ik} \, X_{k\ell} \, Q_{\ell j}. \]
-  Here $P_{ik}$ and $Q_{\ell j}$ are fixed complex numbers, so the right-hand side is a linear --- in particular polynomial --- expression in the $n^2$ coordinates $X_{k\ell}$ of $X$. Polynomial functions $\mathbb{C}^{n^2} \to \mathbb{C}$ are continuous, being built from the (continuous) coordinate projections by finitely many additions and multiplications. Hence every entry of $PXQ$ depends continuously on $X$, and so does $PXQ$ itself.
+  Here $P_{ik}$ and $Q_{\ell j}$ are fixed complex numbers, so the right-hand side is a linear, in particular polynomial, expression in the $n^2$ coordinates $X_{k\ell}$ of $X$. Polynomial functions $\mathbb{C}^{n^2} \to \mathbb{C}$ are continuous, being built from the (continuous) coordinate projections by finitely many additions and multiplications. Hence every entry of $PXQ$ depends continuously on $X$, and so does $PXQ$ itself.
 
   Taking $Q := P^{-1}$ gives the case used in \cref{lemma:sequence_diagonalizable}: we have $\lim_{k \to \infty} P B_k P^{-1} = P \left( \lim_{k \to \infty} B_k \right) P^{-1}$ whenever the limit on the right exists.
 \end{exercisesolution}
@@ -1164,7 +1164,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \begin{exercisesolution}[Solution of \cref{ex:multi_var_other_fields}]
   Two separate things go wrong, and it is worth keeping them apart.
 
-  \textbf{The proof breaks immediately.} The argument is analytic: it differentiates $f$ as a \emph{function} on $\mathbb{R}^r$, and differentiation rests on limits, which a bare field $K$ does not provide. One can of course define the formal derivative of a polynomial without any analysis, but the step that made the proof work --- \qt{$f$ vanishes identically, therefore all its derivatives vanish identically} --- is a statement about functions and is no longer available. Even granting formal derivatives, the last step divides by $i_1! \cdot \dots \cdot i_r!$, and in a field of characteristic $p$ those factorials can be $0$: for $K = \mathbb{Z}_2$ and $i = 2$ already $2! = 0$ in $K$.
+  \textbf{The proof breaks immediately.} The argument is analytic: it differentiates $f$ as a \emph{function} on $\mathbb{R}^r$, and differentiation rests on limits, which a bare field $K$ does not provide. One can of course define the formal derivative of a polynomial without any analysis, but the step that made the proof work, \qt{$f$ vanishes identically, therefore all its derivatives vanish identically}, is a statement about functions and is no longer available. Even granting formal derivatives, the last step divides by $i_1! \cdot \dots \cdot i_r!$, and in a field of characteristic $p$ those factorials can be $0$: for $K = \mathbb{Z}_2$ and $i = 2$ already $2! = 0$ in $K$.
 
   \textbf{For finite $K$ the statement itself is false}, so no repair of the proof is possible. Take $K = \mathbb{Z}_2$ and $r = 1$. Then $f(x) := x^2 + x$ satisfies $f(0) = 0$ and $f(1) = 1 + 1 = 0$, so $f$ vanishes at every point of $K$, yet $f$ is not the zero polynomial. This is exactly the phenomenon of \cref{rem:poly_vs_func}, and \cref{ex:poly_vs_func} shows that it occurs over every finite field.
 
@@ -1172,7 +1172,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \[ f(x_1, \dots, x_r) = \sum_{j} g_j(x_1, \dots, x_{r-1}) \cdot x_r^{\,j}, \]
   and fix any $(a_1, \dots, a_{r-1}) \in K^{r-1}$. The one-variable polynomial $\sum_j g_j(a_1, \dots, a_{r-1}) \, x_r^{\,j}$ then vanishes at every point of $K$, so by the case $r = 1$ all of its coefficients $g_j(a_1, \dots, a_{r-1})$ are $0$. As $(a_1, \dots, a_{r-1})$ was arbitrary, each $g_j$ vanishes identically on $K^{r-1}$, hence $g_j \equiv 0$ by the inductive hypothesis, and therefore $f \equiv 0$.
 
-  This is why the proof of Cayley-Hamilton over an arbitrary field routes through $\mathbb{R}$: \cref{lemma:multi_var_poly} is applied only over $\mathbb{R}$, where it is both true and easy, and its conclusion --- that the $q_{ij}$ are the zero polynomial \emph{formally} --- is then field-independent.
+  This is why the proof of Cayley-Hamilton over an arbitrary field routes through $\mathbb{R}$: \cref{lemma:multi_var_poly} is applied only over $\mathbb{R}$, where it is both true and easy, and its conclusion, that the $q_{ij}$ are the zero polynomial \emph{formally}, is then field-independent.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:cyclic_minimal}]
@@ -1184,5 +1184,5 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 
       Thus $\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} \subseteq U$. Since $U$ is a linear subspace, it contains every linear combination of its elements, and therefore contains the span of that set, which is exactly $\langle v \rangle_T$. Hence $\langle v \rangle_T \subseteq U$.
   \end{enumerate}
-  Together, \textbf{(a)} and \textbf{(b)} say that $\langle v \rangle_T$ is itself a $T$-invariant subspace containing $v$ and is contained in every other one --- that is, it is the smallest such subspace, which is the property used in the proof of \cref{lemma:cyclic_basis_companion}.
+  Together, \textbf{(a)} and \textbf{(b)} say that $\langle v \rangle_T$ is itself a $T$-invariant subspace containing $v$ and is contained in every other one, that is, it is the smallest such subspace, which is the property used in the proof of \cref{lemma:cyclic_basis_companion}.
 \end{exercisesolution}
