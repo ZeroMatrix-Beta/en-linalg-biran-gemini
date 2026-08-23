@@ -1,7 +1,17 @@
+% Source: 25.isometries.v03, which numbers from 25.a.1 through 25.a.10.
 \renewcommand{\thetheorem}{25.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{24}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+% ---------------------------------------------------------------------------
 
+% Extractor: Gemini 3.1 Pro
 \chapter{Orthogonal and Unitary Maps / Isometries}
 
 \section{Linear Isometries}
@@ -68,7 +78,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$ or $\m
 \begin{proof}
 We will prove some of the equivalences here; the rest are left as exercises (and for the exercise sheet).
 
-\textbf{(b)} $\implies$ \textbf{(a)}: Using the polarization identity for the real case (on \cpageref{exc:reconstruct_scalar_prod}), we have:
+\textbf{(b)} $\implies$ \textbf{(a)}: Using the polarization identity for the real case (\cref{exc:polarization}), we have:
 \begin{align*}
     \langle Tv, Tw \rangle &= \frac{1}{2} \left( \|Tv + Tw\|^2 - \|Tv\|^2 - \|Tw\|^2 \right) \\
     &= \frac{1}{2} \left( \|T(v + w)\|^2 - \|Tv\|^2 - \|Tw\|^2 \right) \\
@@ -80,8 +90,25 @@ We will prove some of the equivalences here; the rest are left as exercises (and
 \[ \langle Te_i, Te_j \rangle = \langle e_i, e_j \rangle = \delta_{ij}. \]
 This implies that $Te_1, \dots, Te_k$ is also an orthonormal system.
 
-The remaining implications, in particular \textbf{(d)} $\implies$ \textbf{(e)}, are established in the exercise solutions at the end of this chapter.
+\textbf{(d)} $\implies$ \textbf{(e)}: Assume there exists an orthonormal basis $\mathcal{B} = (e_1, \dots, e_n)$ of $V$ such that $Te_1, \dots, Te_n$ is also an orthonormal basis. Let $1 \leq j \leq n$. Then, for all $1 \leq i \leq n$, the defining property \eqref{eq:adjoint_property} of the adjoint map gives
+\begin{equation}
+\label{eq:isometry_adjoint_on_basis}
+    \langle e_i, e_j \rangle = \delta_{ij} = \langle Te_i, Te_j \rangle = \langle e_i, T^*Te_j \rangle.
+\end{equation}
+Since $(e_1, \dots, e_n)$ is a basis for $V$, the equality \eqref{eq:isometry_adjoint_on_basis} extends by linearity in the first argument to
+\[ \langle v, e_j \rangle = \langle v, T^*Te_j \rangle \quad \text{for all } v \in V, \]
+and therefore, $T^*Te_j = e_j$. This last equality holds for all $1 \leq j \leq n$, so the linear map $T^* \circ T$ agrees with $\id_V$ on the basis $\mathcal{B}$. Thus, $T^* \circ T = \id_V$, which proves \textbf{(d)} $\implies$ \textbf{(f)}.
+
+Finally, $T^* \circ T = \id_V$ shows that $T$ is injective, and since $V$ is finite-di\-men\-sional, $T$ is an isomorphism by \cref{cor:equal_dim_iso}. Consequently, $T^* = T^* \circ T \circ T^{-1} = T^{-1}$, and therefore, $T \circ T^* = \id_V$, which proves \textbf{(e)}.
+
+The remaining implications are left as exercises, as Prof. Biran indicates.
 \end{proof}
+
+% Creator: Opus 5 (High)
+\begin{ainote}
+In the handwritten notes, this proof is labeled as proving \textbf{(d)} $\implies$ \textbf{(e)}. However, the first part actually proves \textbf{(d)} $\implies$ \textbf{(f)} (which is $T^* \circ T = \id_V$), from which \textbf{(e)} is then deduced. We have clarified the steps here.
+\end{ainote}
+% Extractor: Gemini 3.1 Pro
 
 \section{Orthogonal and Unitary Matrices}
 
@@ -99,8 +126,15 @@ Let $V$ be an $n$-di\-men\-sional inner product space over $\mathbb{R}$ (resp. $
 \end{proposition}
 
 \begin{proof}
-This is left as an exercise.
+This is left as an exercise --- see \cref{exc:orth_unitary_matrix_rep}.
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Isometries versus Orthogonal and Unitary Matrices]
+\label{exc:orth_unitary_matrix_rep}
+This is the step Prof. Biran marks with \qt{Exc.} in the proof of \cref{prop:orth_unitary_matrix_rep}. Let $\mathcal{B}$ be an orthonormal basis for $V$ and let $T \in \End(V)$. Show that $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Unit(n)$). (The point is that $\mathcal{B}$ is orthonormal, so that \cref{prop:matrix_representation_adjoint} applies and turns the adjoint map $T^*$ into the conjugate transpose of the representation matrix.)
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 Note that for all $A \in \Orth(n)$, we have $\det(A) = \pm 1$. Indeed, by \cref{thm:det_multiplicative,thm:det_transpose},
 \[ 1 = \det(I) = \det(AA\transp) = \det(A) \cdot \det(A\transp) = \det(A) \cdot \det(A) = \det(A)^2. \]
@@ -131,10 +165,17 @@ Let $G$ be any of the sets $\Orth(n), \SOrth(n), \Unit(n)$, or $\SUnit(n)$. Then
 \end{proposition}
 
 \begin{proof}
-This is left as an exercise.
+This is left as an exercise --- see \cref{exc:group_properties}.
 \end{proof}
 
-\section{Classification of the Elements of O(2), O(3), etc.}
+% Extractor: Opus 5 (High)
+\begin{exercise}[The Four Sets are Groups]
+\label{exc:group_properties}
+This is the claim Prof. Biran circles with \qt{Exc.} Prove the three statements of \cref{prop:group_properties} for each of $\Orth(n)$, $\SOrth(n)$, $\Unit(n)$, and $\SUnit(n)$. Together with the associativity of matrix multiplication, they say precisely that each of these four sets is a group, and hence a subgroup of $\GL_n(\mathbb{R})$ resp. $\GL_n(\mathbb{C})$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
+
+\section{Classification of the Elements of \texorpdfstring{$\Orth(2)$, $\Orth(3)$}{O(2), O(3)}, etc.}
 
 % Lemma. (25.a.6)
 \begin{lemma}
@@ -240,6 +281,20 @@ If $u_2 = u_2'$, then $A = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\
 If $u_2 = u_2''$, then $A = \left(\begin{smallmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{smallmatrix}\right) = R_\theta \cdot \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$, and $\det A = -1$.
 
 In the second case, a direct calculation shows that $v_1 = \left(\begin{smallmatrix} \cos(\frac{\theta}{2}) \\ \sin(\frac{\theta}{2}) \end{smallmatrix}\right)$ and $v_2 = \left(\begin{smallmatrix} \cos(\frac{\theta}{2} + \frac{\pi}{2}) \\ \sin(\frac{\theta}{2} + \frac{\pi}{2}) \end{smallmatrix}\right)$ are eigenvectors of $A$ for the eigenvalues $\lambda_1 = 1$ and $\lambda_2 = -1$, respectively.
+
+% Creator: Opus 5 (High)
+Let us carry that calculation out. For any $\varphi \in \mathbb{R}$, the angle-subtraction identities give
+\[
+    A \begin{pmatrix} \cos\varphi \\ \sin\varphi \end{pmatrix}
+    = \begin{pmatrix} \cos\theta \cos\varphi + \sin\theta \sin\varphi \\ \sin\theta \cos\varphi - \cos\theta \sin\varphi \end{pmatrix}
+    = \begin{pmatrix} \cos(\theta - \varphi) \\ \sin(\theta - \varphi) \end{pmatrix}.
+\]
+For $v_1$ we have $\varphi = \frac{\theta}{2}$, hence $\theta - \varphi = \frac{\theta}{2} = \varphi$, and therefore, $Av_1 = v_1$. For $v_2$ we have $\varphi = \frac{\theta}{2} + \frac{\pi}{2}$, hence $\theta - \varphi = \frac{\theta}{2} - \frac{\pi}{2} = \varphi - \pi$, and since $\cos(\varphi - \pi) = -\cos\varphi$ and $\sin(\varphi - \pi) = -\sin\varphi$, this yields $Av_2 = -v_2$.
+
+Finally, $\|v_1\| = \|v_2\| = 1$, and
+\[ \langle v_1, v_2 \rangle = \cos\left(\tfrac{\theta}{2}\right)\cos\left(\tfrac{\theta}{2} + \tfrac{\pi}{2}\right) + \sin\left(\tfrac{\theta}{2}\right)\sin\left(\tfrac{\theta}{2} + \tfrac{\pi}{2}\right) = \cos\left(-\tfrac{\pi}{2}\right) = 0, \]
+so the basis $\mathcal{B} = (v_1, v_2)$ appearing in statement \textbf{(b)} is in fact an \emph{orthonormal} basis. This sharpening is what \cref{cor:2d_isometry_matrix} below relies on.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
 
 \begin{summary}
@@ -257,6 +312,21 @@ Moreover, there exists an orthonormal basis $\mathcal{B}$ for $V$ such that:
     \item If $\det(T) = -1$, then $[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.
 \end{enumerate}
 \end{corollary}
+
+% Creator: Opus 5 (High)
+\begin{proof}
+The notes state this corollary without proof, so we supply the short argument; it is nothing more than \cref{prop:classification_o2} transported from $\mathbb{R}^2$ to $V$ along a coordinate map.
+
+By \cref{cor:orthonormal_basis_exists}, $V$ admits an orthonormal basis $\mathcal{C} := (c_1, c_2)$. Put $A := [T]_{\mathcal{C}}^{\mathcal{C}}$. Since $T$ is an isometry and $\mathcal{C}$ is orthonormal, \cref{prop:orth_unitary_matrix_rep} gives $A \in \Orth(2)$, and by \cref{cor:det_endomorphism} together with the computation following \cref{prop:orth_unitary_matrix_rep}, we obtain $\det(T) = \det(A) = \pm 1$.
+
+Consider the coordinate map $\Phi \colon V \to \mathbb{R}^2$, $\Phi(w) := [w]_{\mathcal{C}}$. Because $\mathcal{C}$ is orthonormal, $\Phi$ is itself a linear isometry, and by construction $\Phi \circ T = T_A \circ \Phi$. Consequently, if $(v_1, v_2)$ is an orthonormal basis for $\mathbb{R}^2$, then $\mathcal{B} := (\Phi^{-1}(v_1), \Phi^{-1}(v_2))$ is an orthonormal basis for $V$ with $[T]_{\mathcal{B}}^{\mathcal{B}} = [T_A]_{(v_1, v_2)}^{(v_1, v_2)}$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $\det(T) = 1$, then $\det A = 1$, so $A = R_\theta$ for some $\theta \in [0, 2\pi)$ by \cref{prop:classification_o2}. Here we may take $(v_1, v_2)$ to be the standard basis of $\mathbb{R}^2$, that is, $\mathcal{B} := \mathcal{C}$, and then $[T]_{\mathcal{B}}^{\mathcal{B}} = A = R_\theta$.
+    \item If $\det(T) = -1$, then $\det A = -1$, so \cref{prop:classification_o2} supplies a basis $(v_1, v_2)$ for $\mathbb{R}^2$ with $[T_A]_{(v_1, v_2)}^{(v_1, v_2)} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$; by the calculation at the end of its proof, this basis is orthonormal. Transporting it back gives an orthonormal basis $\mathcal{B}$ for $V$ with $[T]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$.
+\end{enumerate}
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 % Prop. (25.a.9)
 \begin{proposition}[Classification of $\SOrth(3)$]
@@ -303,7 +373,11 @@ Indeed, if $v \in L$, this implies $0 = \langle v, v_1 \rangle$. Because $A \in 
 which implies that $Av \in L$.
 
 By \cref{thm:orthogonal_complement_finite_dim}, we also have $\mathbb{R}^3 = \Sp(v_1) \oplus L$, hence $\dim L = 2$ by \cref{cor:dim_orthogonal_complement}.
-Now, $T_A|_L \colon L \to L$ is a linear isometry. Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By \cref{prop:orth_unitary_matrix_rep}, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \Orth(2)$.
+Now, $T_A|_L \colon L \to L$ is a linear isometry.
+% Creator: Opus 5 (High)
+(Indeed, $T_A$ preserves the standard scalar product of $\mathbb{R}^3$ by \cref{prop:orth_unitary_matrix_rep}, hence so does its restriction to $L$, and that restriction is well defined as a map $L \to L$ precisely because of the invariance just established).
+% Extractor: Gemini 3.1 Pro
+Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By \cref{prop:orth_unitary_matrix_rep}, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \Orth(2)$.
 
 \textbf{Case (a):} $\lambda = 1$. Take the basis $\mathcal{B} := (v_1, w_1, w_2)$. Then
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \multicolumn{2}{c}{\multirow{2}{*}{$Q$}} \\ 0 & & \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & Q \end{pmatrix}. \]
@@ -318,7 +392,20 @@ Take $\mathcal{B}' := (v_1, w_1, w_2)$. Then
 And for the reordered basis $\mathcal{B} := (w_1, v_1, w_2)$, we have 
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & R_\pi \end{pmatrix}. \]
 Note that in case \textbf{(b)} too, $1$ is an eigenvalue of $A$ (corresponding to the eigenvector $w_1$).
+
+% Creator: Opus 5 (High)
+It remains to read off the two supplementary statements from these cases. For \textbf{(a)}, suppose $-1$ is an eigenvalue of $A$. Then we are free to take $\lambda := -1$ as the real eigenvalue chosen at the start of the proof, which puts us in case \textbf{(b)}; that case produced an orthonormal basis with $[T_A]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_\pi \end{smallmatrix}\right)$, that is, $\theta = \pi$. For \textbf{(b)}, we argue by contraposition: if $\theta = \pi$, then
+\[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}, \]
+which is a diagonal matrix carrying $-1$ on its diagonal. Since $A$ and $[T_A]_{\mathcal{B}}^{\mathcal{B}}$ are similar, they have the same eigenvalues, so $-1$ is an eigenvalue of $A$.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
+
+% Extractor: Opus 5 (High)
+\begin{exercise}[Why the Two Conditions in \texorpdfstring{\cref{prop:classification_so3}}{Prop. 25.a.9} \textbf{(b)} Agree]
+\label{exc:why_only_real_eigenvalue}
+Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{(b)} with a \qt{why?}. Justify it: for $A \in \SOrth(3)$, show that $-1$ is not an eigenvalue of $A$ if and only if $1$ is the only real eigenvalue of $A$.
+\end{exercise}
+% Extractor: Gemini 3.1 Pro
 
 % Prop. (25.a.10)
 \begin{proposition}[Classification of $\Orth(3) \setminus \SOrth(3)$]
@@ -343,25 +430,9 @@ where $\theta = (\theta' + \pi) \pmod{2\pi}$.
 \end{proof}
 
 
-\section*{Exercise Solutions}
-\addcontentsline{toc}{section}{Exercise Solutions}
-
-\begin{exercisesolution}[Proof of \cref{thm:isometry_equivalences} \textbf{(d)} $\implies$ \textbf{(e)}]
-\begin{ainote}
-In the handwritten notes, this proof is labeled as proving \textbf{(d)} $\implies$ \textbf{(e)}. However, the first part actually proves \textbf{(d)} $\implies$ \textbf{(f)} (which is $T^* \circ T = \id_V$), from which \textbf{(e)} is then deduced. We have clarified the steps here.
-\end{ainote}
-
-Assume there exists an orthonormal basis $\mathcal{B} = (e_1, \dots, e_n)$ of $V$ such that $Te_1, \dots, Te_n$ is also an orthonormal basis. Let $1 \leq j \leq n$. Then, for all $1 \leq i \leq n$, the defining property \eqref{eq:adjoint_property} of the adjoint map gives
-\begin{equation}
-\label{eq:isometry_adjoint_on_basis}
-    \langle e_i, e_j \rangle = \delta_{ij} = \langle Te_i, Te_j \rangle = \langle e_i, T^*Te_j \rangle.
-\end{equation}
-Since $(e_1, \dots, e_n)$ is a basis for $V$, the equality \eqref{eq:isometry_adjoint_on_basis} extends by linearity in the first argument to
-\[ \langle v, e_j \rangle = \langle v, T^*Te_j \rangle \quad \text{for all } v \in V, \]
-and therefore, $T^*Te_j = e_j$. This last equality holds for all $1 \leq j \leq n$, so the linear map $T^* \circ T$ agrees with $\id_V$ on the basis $\mathcal{B}$. Thus, $T^* \circ T = \id_V$, which proves \textbf{(d)} $\implies$ \textbf{(f)}.
-
-Finally, $T^* \circ T = \id_V$ shows that $T$ is injective, and since $V$ is finite-di\-men\-sional, $T$ is an isomorphism by \cref{cor:equal_dim_iso}. Consequently, $T^* = T^* \circ T \circ T^{-1} = T^{-1}$, and therefore, $T \circ T^* = \id_V$, which proves \textbf{(e)}.
-\end{exercisesolution}
+% Creator: Gemini 3.1 Pro
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_isometries}
 
 \begin{exercisesolution}[Proof of \cref{prop:orth_unitary_matrix_rep}]
 Let $\mathcal{B} = (e_1, \dots, e_n)$ be an orthonormal basis for $V$. 
@@ -387,4 +458,15 @@ We will prove this generically for $G = \Unit(n)$ and $G = \SUnit(n)$ (the real 
     \item Let $A \in \Unit(n)$. This implies $A^* A = I_n$, meaning $A^{-1} = A^*$. We check if $A^{-1}$ is unitary: $(A^{-1})^* A^{-1} = (A^*)^* A^* = A A^* = I_n$. Thus, $A^{-1} \in \Unit(n)$. 
     If additionally $A \in \SUnit(n)$, then by \cref{cor:det_inverse}, $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{1} = 1$, so $A^{-1} \in \SUnit(n)$.
 \end{enumerate}
+\end{exercisesolution}
+
+% Creator: Opus 5 (High)
+\begin{exercisesolution}[Proof of \cref{exc:why_only_real_eigenvalue}]
+Let $A \in \SOrth(3)$. Two facts about the real eigenvalues of $A$ are already available. First, $\SOrth(3) \subseteq \Orth(3)$, so by \cref{lem:eigenvalues_orthogonal} every real eigenvalue of $A$ equals $1$ or $-1$. Second, by the first assertion of \cref{prop:classification_so3}, the value $1$ \emph{is} an eigenvalue of $A$. Taken together, the set of real eigenvalues of $A$ is either $\{1\}$ or $\{1, -1\}$, and no other possibility occurs.
+
+Now suppose $-1$ is not an eigenvalue of $A$. Then the set of real eigenvalues cannot be $\{1, -1\}$, so it equals $\{1\}$, which says exactly that $1$ is the only real eigenvalue of $A$.
+
+Conversely, suppose $1$ is the only real eigenvalue of $A$. Since $-1$ is a real number different from $1$, it cannot be an eigenvalue of $A$.
+
+Note that the first assertion of \cref{prop:classification_so3} is what makes the equivalence work: without it, an orthogonal matrix could a priori have $-1$ as its only real eigenvalue, and then both conditions would fail simultaneously for the wrong reason.
 \end{exercisesolution}
