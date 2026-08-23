@@ -1,0 +1,722 @@
+% Source: 28.Jordan.b.v01, nineteen pages. This section continues chapter 28,
+% which was opened in 28-jordan-a.tex. Do NOT reset the chapter counter here.
+%
+% Prof. Biran numbers his four preparatory lemmata "Lemma 1" through
+% "Lemma 4" and leaves everything else unnumbered. We print the global
+% 28.b.N scheme, as everywhere else in the book, and record his own numbering
+% in a comment above each label.
+\renewcommand{\thetheorem}{28.b.\arabic{theorem}}
+\setcounter{theorem}{0}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This whole file was transcribed from the scans by Opus 5 (High); there was
+% no earlier transcription of 28.b to audit.
+% ---------------------------------------------------------------------------
+
+% Extractor: Opus 5 (High)
+\section{Proof of the Existence of the Jordan Normal Form}
+
+\subsection{Preparations}
+
+% Lemma 1.
+\begin{lemma}[The Generalized Eigenspace]
+\label{lem:generalized_eigenspace}
+Let $V$ be a finite-di\-men\-sional vector space over $K$, and put $n := \dim V$. Let $T \in \End(V)$ and let $\lambda \in K$ be an eigenvalue of $T$. Consider the \newterm{generalized eigenspace}
+\[
+    \gEig_T(\lambda) := \bigcup_{j=1}^{\infty} \ker\left(T - \lambda \id_V\right)^j.
+\]
+Then:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\gEig_T(\lambda)$ is a subspace of $V$. In fact, $\gEig_T(\lambda) = \ker\left(T - \lambda \id_V\right)^n$.
+    \item If $v \in \gEig_T(\lambda)$ is an eigenvector of $T$ corresponding to some eigenvalue $\mu$ of $T$, then $\mu = \lambda$. In other words, the only eigenvectors of $T$ that belong to $\gEig_T(\lambda)$ are the eigenvectors of $\lambda$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item We have the chain of nested subspaces
+    \[
+        \{0\} \subsetneq \ker(T - \lambda \id_V) \subseteq \ker(T - \lambda \id_V)^2 \subseteq \dots \subseteq \ker(T - \lambda \id_V)^n \subseteq \ker(T - \lambda \id_V)^{n+1} \subseteq V,
+    \]
+    where the first inclusion is strict because $\lambda$ is an eigenvalue of $T$, so that $\ker(T - \lambda \id_V)$ is at least $1$-di\-men\-sional, and where $V$ is $n$-di\-men\-sional.
+
+    We therefore have a sequence of $n+1$ nested subspaces of $V$, inside a space of dimension $n$, whose first member is already at least $1$-di\-men\-sional. The dimensions cannot strictly increase at every step, and consequently, there exists $1 \le k \le n$ such that
+    \begin{equation}
+    \label{eq:kernel_chain_stabilizes}
+        \ker(T - \lambda \id_V)^k = \ker(T - \lambda \id_V)^{k+1}.
+    \end{equation}
+
+    We claim that
+    \[
+        \ker(T - \lambda \id_V)^k = \ker(T - \lambda \id_V)^{k+1} = \ker(T - \lambda \id_V)^{k+2} = \dots = \ker(T - \lambda \id_V)^{k+\ell}
+    \]
+    for all $\ell \ge 1$. In particular, $\ker(T - \lambda \id_V)^k = \ker(T - \lambda \id_V)^n$.
+
+    \textit{Proof of the claim.} Let us first show that $\ker(T - \lambda \id_V)^{k+2} = \ker(T - \lambda \id_V)^{k}$. It is enough to show the inclusion $\ker(T - \lambda \id_V)^{k+2} \subseteq \ker(T - \lambda \id_V)^{k}$, because the reverse inclusion is obvious.
+
+    Let $v \in \ker(T - \lambda \id_V)^{k+2}$, so that $(T - \lambda \id_V)^{k+2} v = 0$. Put $w := (T - \lambda \id_V)v$. Then $(T - \lambda \id_V)^{k+1} w = 0$, which means that
+    \[
+        w \in \ker(T - \lambda \id_V)^{k+1} = \ker(T - \lambda \id_V)^{k},
+    \]
+    where the equality is \eqref{eq:kernel_chain_stabilizes}. Consequently, $(T - \lambda \id_V)^{k} w = 0$, that is, $(T - \lambda \id_V)^{k+1} v = 0$, and therefore, $v \in \ker(T - \lambda \id_V)^{k+1}$. This proves that
+    \[
+        \ker(T - \lambda \id_V)^{k+2} \subseteq \ker(T - \lambda \id_V)^{k+1} = \ker(T - \lambda \id_V)^{k},
+    \]
+    and hence $\ker(T - \lambda \id_V)^{k+2} = \ker(T - \lambda \id_V)^{k}$.
+
+    Applying the same argument again and again, we obtain $\ker(T - \lambda \id_V)^{k} = \ker(T - \lambda \id_V)^{k+\ell}$ for all $\ell \ge 1$, which proves the claim.
+
+    It follows that
+    \[
+        \gEig_T(\lambda) = \bigcup_{j=1}^{\infty} \ker(T - \lambda \id_V)^j = \ker(T - \lambda \id_V)^k = \ker(T - \lambda \id_V)^n.
+    \]
+    Being a kernel of a linear map, this is a subspace of $V$.
+
+    \item Let $v$ be an eigenvector of $T$ with eigenvalue $\mu$, and assume that $v \in \gEig_T(\lambda)$. We have $Tv = \mu v$, hence $T^j v = \mu^j v$ for all $j \ge 0$, and consequently, $q(T)v = q(\mu) \cdot v$ for every polynomial $q(x) \in K[x]$.
+
+    Apply this to $q(x) := (x - \lambda)^n$. We obtain
+    \[
+        q(T)v = (T - \lambda \id_V)^n v = q(\mu) \cdot v = (\mu - \lambda)^n v.
+    \]
+    The left-hand side vanishes by part \textbf{(a)}, since $v \in \gEig_T(\lambda) = \ker(T - \lambda \id_V)^n$. Therefore, $(\mu - \lambda)^n v = 0$. As $v \neq 0$, this forces $(\mu - \lambda)^n = 0$, and hence $\mu = \lambda$.
+\end{enumerate}
+\end{proof}
+
+% Def.
+\begin{definition}[Invariant Subspace]
+\label{def:s_invariant_subspace}
+Let $W$ be a vector space over $K$ and $S \in \End(W)$. A subspace $\mathcal{U} \subseteq W$ is called \newterm{$S$-invariant} if $S(\mathcal{U}) \subseteq \mathcal{U}$, that is, if $Su \in \mathcal{U}$ for all $u \in \mathcal{U}$. If $\mathcal{U}$ is $S$-invariant, then $S$ defines an endomorphism $S|_{\mathcal{U}} \colon \mathcal{U} \to \mathcal{U}$.
+\end{definition}
+
+\begin{exercise}[The Characteristic Polynomial of a Restriction]
+\label{exc:char_poly_restriction_divides}
+Let $S \colon W \to W$ be an endomorphism and let $\mathcal{U} \subseteq W$ be a subspace invariant under $S$. Denote by $S_U := S|_{\mathcal{U}} \colon \mathcal{U} \to \mathcal{U}$ the induced endomorphism. Show that $P_{S_U}(x)$ divides $P_S(x)$.
+
+(Prof. Biran's hint: choose a basis $\mathcal{B}$ for $\mathcal{U}$ and extend it to a basis $\mathcal{C}$ for $W$. Then
+\[
+    [S]_{\mathcal{C}}^{\mathcal{C}} = \left(\begin{array}{c|c} [S_U]_{\mathcal{B}}^{\mathcal{B}} & M \\ \hline 0 & N \end{array}\right),
+\]
+which implies $P_S(x) = P_{S_U}(x) \cdot P_N(x)$).
+\end{exercise}
+
+% Lemma 2.
+\begin{lemma}[Kernels of Polynomials in $T$ are Invariant]
+\label{lem:kernel_poly_invariant}
+Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. Let $f(x) \in K[x]$. Then $\ker f(T)$ is a $T$-invariant subspace of $V$. In particular, if $\lambda$ is an eigenvalue of $T$, then $\gEig_T(\lambda)$ is a $T$-invariant subspace.
+\end{lemma}
+
+\begin{proof}
+Let $v \in \ker f(T)$. Since $T$ and $f(T)$ commute,
+\[
+    f(T)\, Tv = T f(T) v = T \cdot 0 = 0,
+\]
+and therefore, $Tv \in \ker f(T)$. This shows that $\ker f(T)$ is $T$-invariant.
+
+Now apply this to $f(x) := (x - \lambda)^n$, where $n := \dim V$. We obtain that
+\[
+    \ker f(T) = \ker(T - \lambda \id_V)^n = \gEig_T(\lambda)
+\]
+is $T$-invariant, the last equality being \cref{lem:generalized_eigenspace} \textbf{(a)}.
+\end{proof}
+
+\begin{notation}[Splitting into Linear Factors]
+\label{not:splf}
+Prof. Biran introduces the abbreviation \qt{splf} for \qt{splits as a product of linear factors (in $K[x]$)}, noting that it is a non-standard abbreviation to be used only in these lectures. We keep the full phrase in the prose below, but record the abbreviation here so that the notes can be read alongside this text.
+\end{notation}
+
+% Lemma 3.
+\begin{lemma}[The Characteristic Polynomial on a Generalized Eigenspace]
+\label{lem:char_poly_on_generalized_eigenspace}
+Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$ such that $P_T(x)$ splits as a product of linear factors. Let $\lambda \in K$ be an eigenvalue of $T$ and denote
+\[
+    T_\lambda := T|_{\gEig_T(\lambda)} \in \End\left(\gEig_T(\lambda)\right),
+\]
+which is well defined by \cref{lem:kernel_poly_invariant}. Then $P_{T_\lambda}(x) = (\lambda - x)^m$, where $m \le m_a(\lambda; T)$, and $m_a(\lambda; T)$ denotes the algebraic multiplicity of $\lambda$ for $T$.
+
+Moreover, if $\mu$ is another eigenvalue of $T$ with $\mu \neq \lambda$, then
+\[
+    \gEig_T(\lambda) \cap \gEig_T(\mu) = \{0\}.
+\]
+\end{lemma}
+
+\begin{proof}
+Write $P_T(x) = (\lambda - x)^{m_a(\lambda)} \cdot q(x)$, where $q(\lambda) \neq 0$ and $m_a(\lambda) := m_a(\lambda; T)$. Since $P_T(x)$ splits as a product of linear factors, so does $q(x)$.
+
+By \cref{exc:char_poly_restriction_divides}, $P_{T_\lambda}(x)$ divides $P_T(x)$. It is therefore enough to show that $P_{T_\lambda}(x)$ has no zeroes other than $\lambda$, because this will imply that $P_{T_\lambda}(x)$ divides $(\lambda - x)^{m_a(\lambda)}$, which is exactly the assertion.
+
+So let $\lambda'$ be a zero of $P_{T_\lambda}(x)$. Then $T_\lambda \in \End\left(\gEig_T(\lambda)\right)$ has $\lambda'$ as an eigenvalue, and an eigenvector for it lies in $\gEig_T(\lambda)$ by construction. By \cref{lem:generalized_eigenspace} \textbf{(b)}, $\lambda' = \lambda$.
+
+For the second assertion, suppose $\mu \neq \lambda$ is another eigenvalue of $T$ and put
+\[
+    \mathcal{U} := \gEig_T(\lambda) \cap \gEig_T(\mu).
+\]
+Assume by contradiction that $\mathcal{U} \neq \{0\}$, so that $\dim \mathcal{U} \ge 1$. The subspace $\mathcal{U}$ is $T$-invariant, being an intersection of two $T$-invariant subspaces, so $T|_{\mathcal{U}}$ is an endomorphism of $\mathcal{U}$ and $P_{T|_{\mathcal{U}}}(x)$ is a polynomial of degree $\dim \mathcal{U} \ge 1$.
+
+Since $\mathcal{U} \subseteq \gEig_T(\lambda)$ and $\mathcal{U} \subseteq \gEig_T(\mu)$, the polynomial $P_{T|_{\mathcal{U}}}(x)$ divides both
+\[
+    P_{T_\lambda}(x) = (\lambda - x)^{m_a(\lambda)} \qquad \text{and} \qquad P_{T_\mu}(x) = (\mu - x)^{m_a(\mu)},
+\]
+again by \cref{exc:char_poly_restriction_divides}. This is impossible, because $\lambda \neq \mu$ and a non-constant polynomial cannot divide two coprime polynomials. Consequently, $\dim \mathcal{U} = 0$, that is, $\mathcal{U} = \{0\}$.
+\end{proof}
+
+% Lemma 4.
+\begin{lemma}[Generalized Eigenspaces Form a Direct Sum]
+\label{lem:generalized_eigenspaces_direct_sum}
+Under the same assumptions as in \cref{lem:char_poly_on_generalized_eigenspace}, if $\lambda_1, \dots, \lambda_r$ are distinct eigenvalues of $T$, then the sum
+\[
+    \gEig_T(\lambda_1) + \dots + \gEig_T(\lambda_r)
+\]
+forms a direct sum.
+\end{lemma}
+
+\begin{proof}
+We proceed by induction on $r$. For $r = 1$ there is nothing to prove, and for $r = 2$ the statement follows from \cref{lem:char_poly_on_generalized_eigenspace}.
+
+Assume the lemma holds for $r-1$ distinct eigenvalues, so that
+\[
+    \gEig_T(\lambda_1) + \dots + \gEig_T(\lambda_{r-1}) = \gEig_T(\lambda_1) \oplus \dots \oplus \gEig_T(\lambda_{r-1}) =: W_1.
+\]
+Put $W_2 := \gEig_T(\lambda_r)$, and write $T_{W_1} := T|_{W_1}$ and $T_{W_2} := T|_{W_2}$.
+
+Assume by contradiction that $\mathcal{U} := W_1 \cap W_2 \neq \{0\}$, so that $\dim \mathcal{U} \ge 1$. Each $\gEig_T(\lambda_i)$ is $T$-invariant by \cref{lem:kernel_poly_invariant}, and hence so are $W_1$, $W_2$ and $\mathcal{U}$. Put $T_{\mathcal{U}} := T|_{\mathcal{U}}$.
+
+By \cref{lem:char_poly_on_generalized_eigenspace},
+\[
+    P_{T_{W_1}}(x) = (\lambda_1 - x)^{m_1} \cdots (\lambda_{r-1} - x)^{m_{r-1}}, \qquad P_{T_{W_2}}(x) = (\lambda_r - x)^{m_r}.
+\]
+By \cref{exc:char_poly_restriction_divides}, $P_{T_{\mathcal{U}}}(x)$ divides both $P_{T_{W_1}}(x)$ and $P_{T_{W_2}}(x)$, which is impossible because $\deg P_{T_{\mathcal{U}}}(x) \ge 1$ and the two polynomials have no common zero, the eigenvalues $\lambda_1, \dots, \lambda_r$ being distinct. This is a contradiction, and therefore, $\mathcal{U} = \{0\}$.
+
+Consequently, $\gEig_T(\lambda_1) + \dots + \gEig_T(\lambda_r)$ forms a direct sum.
+\end{proof}
+
+% Prop.
+\begin{proposition}[Decomposition into Generalized Eigenspaces]
+\label{prop:decomposition_generalized_eigenspaces}
+Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. Assume that $P_T(x)$ splits into a product of linear factors in $K[x]$. Then
+\[
+    V = \bigoplus_{\lambda \text{ eigenvalue of } T} \gEig_T(\lambda).
+\]
+\end{proposition}
+
+\begin{proof}
+We proceed by induction on the number of different eigenvalues of $T$, equivalently the number of distinct zeroes of $P_T(x)$. Denote this number by $z_T$, and put $n := \dim V$.
+
+\textbf{Base of the induction, $z_T = 1$.} We have $P_T(x) = (\lambda - x)^n$. By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $P_T(T) = 0$, so $(\lambda \id_V - T)^n = 0$. Consequently,
+\[
+    V = \ker(T - \lambda \id_V)^n = \gEig_T(\lambda),
+\]
+the last equality by \cref{lem:generalized_eigenspace} \textbf{(a)}.
+
+\textbf{The induction step.} Let $\ell \ge 2$ and assume the proposition holds for all endomorphisms $T'$ satisfying the assumptions of the proposition with $z_{T'} \le \ell - 1$. Let $T \in \End(V)$ be such that $P_T(x)$ splits into a product of linear factors and $z_T = \ell$. Let $\lambda$ be an eigenvalue of $T$ and write
+\[
+    P_T(x) = (x - \lambda)^k q(x), \qquad k \ge 1, \quad q(x) \in K[x], \quad q(\lambda) \neq 0.
+\]
+
+We claim that
+\begin{equation}
+\label{eq:image_kernel_decomposition}
+    V = \Img q(T) \oplus \ker q(T)
+\end{equation}
+and moreover that
+\begin{equation}
+\label{eq:generalized_kernel_decomposition}
+    V = \gEig_T(\lambda) \oplus \ker q(T).
+\end{equation}
+
+To prove \eqref{eq:image_kernel_decomposition}, note that $\dim V = \dim \Img q(T) + \dim \ker q(T)$ by \cref{thm:rank_nullity}, and that $\Img q(T) + \ker q(T) \subseteq V$. It is therefore enough to show that
+\begin{equation}
+\label{eq:image_kernel_trivial_intersection}
+    \Img q(T) \cap \ker q(T) = \{0\}.
+\end{equation}
+
+We will show the following two statements:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\Img q(T) \subseteq \gEig_T(\lambda)$, and
+    \item $\gEig_T(\lambda) \cap \ker q(T) = \{0\}$.
+\end{enumerate}
+These imply that
+\[
+    \Img q(T) \cap \ker q(T) \subseteq \gEig_T(\lambda) \cap \ker q(T) = \{0\},
+\]
+which is \eqref{eq:image_kernel_trivial_intersection}, and hence \eqref{eq:image_kernel_decomposition}. Also, \textbf{(b)} says that $\gEig_T(\lambda) + \ker q(T)$ is a direct sum, so together with \textbf{(a)} and \eqref{eq:image_kernel_decomposition} we obtain \eqref{eq:generalized_kernel_decomposition}, and also that the inclusion in \textbf{(a)} is in fact an equality, $\Img q(T) = \gEig_T(\lambda)$. So instead of proving the claim, we prove \textbf{(a)} and \textbf{(b)}.
+
+\textit{Proof of \textbf{(a)}.} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}),
+\[
+    0 = P_T(T) = (T - \lambda \id_V)^k \circ q(T),
+\]
+and therefore, $\Img q(T) \subseteq \ker(T - \lambda \id_V)^k \subseteq \gEig_T(\lambda)$.
+
+\textit{Proof of \textbf{(b)}.} By \cref{lem:kernel_poly_invariant}, both $\ker q(T)$ and $\gEig_T(\lambda)$ are $T$-invariant, and consequently so is
+\[
+    Y := \gEig_T(\lambda) \cap \ker q(T).
+\]
+We want to show that $Y = \{0\}$. Assume by contradiction that $Y \neq \{0\}$, that is, $\dim Y \ge 1$. Since $Y$ is invariant under $T$, the restriction $T|_Y$ defines an endomorphism $T_Y \colon Y \to Y$.
+
+By assumption $P_T(x)$ splits into a product of linear factors. As $P_{T_Y}(x)$ divides $P_T(x)$ by \cref{exc:char_poly_restriction_divides}, and $\deg P_{T_Y}(x) \ge 1$ because $\dim Y \ge 1$, the polynomial $P_{T_Y}(x)$ also splits as a product of linear factors. Consequently, $P_{T_Y}(x)$ has a zero in $K$, so $T_Y$ has at least one eigenvalue and an eigenvector $v \in Y$.
+
+But we have seen in \cref{lem:generalized_eigenspace} \textbf{(b)} that the only eigenvectors of $T$ lying inside $\gEig_T(\lambda)$ are the eigenvectors of $\lambda$. So $Tv = \lambda v$, and therefore,
+\[
+    q(T)v = q(\lambda) \cdot v \neq 0,
+\]
+because $q(\lambda) \neq 0$ and $v \neq 0$. At the same time $v \in Y = \gEig_T(\lambda) \cap \ker q(T) \subseteq \ker q(T)$, so $q(T)v = 0$. This is a contradiction, and hence $Y = \{0\}$. This proves \textbf{(b)}.
+
+Now put $W := \ker q(T)$, which we recall is $T$-invariant, and define $S := T|_W \colon W \to W$. By \cref{exc:char_poly_restriction_divides}, $P_S(x)$ divides $P_T(x)$. Also, $\lambda$ is not a zero of $P_S(x)$, because $\lambda$ cannot be an eigenvalue of $S$: if $Tv = \lambda v$ for some $0 \neq v \in W$, then
+\[
+    \underbrace{q(T)v}_{= \, 0} = \underbrace{q(\lambda) v}_{\neq \, 0},
+\]
+which is impossible. Consequently, the number $z_S$ of different zeroes of $P_S(x)$ is strictly smaller than the number $z_T = \ell$ of different zeroes of $P_T(x)$.
+
+By the induction hypothesis,
+\[
+    W = \bigoplus_{\mu \text{ eigenvalue of } S} \gEig_S(\mu).
+\]
+Recall from \eqref{eq:generalized_kernel_decomposition} that $V = \gEig_T(\lambda) \oplus W$, and therefore,
+\begin{equation}
+\label{eq:V_decomposed_via_S}
+    V = \gEig_T(\lambda) \oplus \bigoplus_{\mu \text{ eigenvalue of } S} \gEig_S(\mu).
+\end{equation}
+But for every eigenvalue $\mu$ of $S$ we have $\gEig_S(\mu) \subseteq \gEig_T(\mu)$. By \cref{lem:generalized_eigenspaces_direct_sum}, the sum
+\[
+    V' := \sum_{\eta \text{ eigenvalue of } T} \gEig_T(\eta)
+\]
+forms a direct sum, and $V'$ contains the right-hand side of \eqref{eq:V_decomposed_via_S}. Consequently, $V' = V$, which is the assertion.
+\end{proof}
+
+\subsection{Proof of the Existence}
+
+% Def.
+\begin{definition}[Nilpotent Endomorphisms and Matrices]
+\label{def:nilpotent}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $V$ be a finite-di\-men\-sional vector space over $K$ and $N \in \End(V)$. We call $N$ \newterm{nilpotent} if there exists $k \in \mathbb{Z}_{\ge 1}$ such that $N^k = 0$.
+    \item A matrix $A \in \M_{n \times n}(K)$ is called \newterm{nilpotent} if there exists $k$ such that $A^k = 0$.
+\end{enumerate}
+The minimal $k \in \mathbb{Z}_{\ge 1}$ such that $N^k = 0$ (resp. $A^k = 0$) is called the \newterm{nilpotency index} of $N$ (resp. of $A$).
+\end{definition}
+
+\begin{example}
+The Jordan matrix $J_{0,n} \in \M_{n \times n}(K)$ is nilpotent of index $n$, by \cref{lem:powers_jordan_blocks} \textbf{(a)}.
+\end{example}
+
+\begin{exercise}[Basic Properties of Nilpotent Endomorphisms]
+\label{exc:nilpotent_properties}
+Prof. Biran collects the following five statements as an exercise. Throughout, $V$ is a finite-di\-men\-sional vector space over $K$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $N \in \End(V)$ is nilpotent, then $0$ is an eigenvalue of $N$, and it is the only eigenvalue of $N$.
+    \item If $N \in \End(V)$ is nilpotent, then $N^{\dim V} = 0$. Hence the nilpotency index of $N$ is at most $\dim V$. (Prof. Biran's hint: by the definition of the generalized eigenspace we have $\gEig_N(0) = \bigcup_{j=1}^\infty \ker(N^j) = V$. By \cref{lem:generalized_eigenspace}, $\gEig_N(0) = \ker\left(N^{\dim V}\right)$, and therefore, $\ker\left(N^{\dim V}\right) = V$, which gives $N^{\dim V} = 0$).
+    \item Suppose that $N \in \End(V)$ is nilpotent and that $P_N(x)$ splits as a product of linear factors in $K[x]$. Then $P_N(x) = (-x)^{\dim V}$. (Prof. Biran notes that this assumption is not really necessary, but assumes it for simplicity).
+    \item Let $T \in \End(V)$ and assume $P_T(x)$ splits as a product of linear factors over $K[x]$. Let $\eta \in K$ and define $S := T - \eta \id_V$. Then $P_S(x)$ also splits as a product of linear factors over $K[x]$. In fact, $P_S(x) = P_T(x + \eta)$.
+    \item Let $T \in \End(V)$ and assume that $\lambda \in K$ is the only eigenvalue of $T$ and that $P_T(x)$ splits as a product of linear factors in $K[x]$. Define $N := T - \lambda \id_V$. Then $P_N(x) = (-x)^{\dim V}$ and $N^{\dim V} = 0$.
+\end{enumerate}
+\end{exercise}
+
+% Cor. (from the exercises)
+\begin{corollary}[Nilpotency Index on a Generalized Eigenspace]
+\label{cor:nilpotency_on_generalized_eigenspace}
+Let $T \in \End(V)$ and let $\lambda \in K$ be an eigenvalue of $T$. We have seen that $\gEig_T(\lambda) = \ker(T - \lambda \id_V)^{\dim V}$, so that
+\[
+    \left. (T - \lambda \id_V)^{\dim V} \right|_{\gEig_T(\lambda)} = 0.
+\]
+In fact we have the sharper statement
+\[
+    \left. (T - \lambda \id_V)^{m} \right|_{\gEig_T(\lambda)} = 0, \qquad \text{where } m := \dim \gEig_T(\lambda),
+\]
+and note that $m \le \dim V$. Moreover, if $P_T(x)$ splits as a product of linear factors, then
+\[
+    \dim \gEig_T(\lambda) = m_a(\lambda; T).
+\]
+\end{corollary}
+
+\begin{proof}
+The first statement follows from \cref{exc:nilpotent_properties}, applied to the restriction of $T - \lambda \id_V$ to $\gEig_T(\lambda)$, which is nilpotent on that subspace.
+
+For the statement about $\dim \gEig_T(\lambda)$, use \cref{prop:decomposition_generalized_eigenspaces}, which gives $V = \bigoplus_\lambda \gEig_T(\lambda)$, together with the fact that
+\[
+    P_{T|_{\gEig_T(\lambda)}}(x) = (\lambda - x)^{\dim \gEig_T(\lambda)}
+\]
+from \cref{lem:char_poly_on_generalized_eigenspace}. Multiplying these characteristic polynomials over all eigenvalues recovers $P_T(x)$, and comparing the exponent of $(\lambda - x)$ on both sides gives $\dim \gEig_T(\lambda) = m_a(\lambda; T)$.
+\end{proof}
+
+\subsubsection*{Back to the proof of existence of the Jordan Normal Form}
+
+\begin{claim}[Reduction to the Nilpotent Case]
+\label{claim:reduction_to_nilpotent}
+In order to prove the existence of the Jordan Normal Form, it is enough to prove it for $N \in \End(\mathcal{U})$ with $N^m = 0$, where $m = \dim \mathcal{U}$.
+\end{claim}
+
+\begin{proof}[Reason]
+Let $T \in \End(V)$ with $P_T(x)$ splitting as a product of linear factors. We have seen in \cref{prop:decomposition_generalized_eigenspaces} that
+\[
+    V = \bigoplus_{\lambda} \gEig_T(\lambda).
+\]
+Since each subspace $\gEig_T(\lambda)$ is $T$-invariant, we can consider
+\[
+    N_\lambda := \left. (T - \lambda \id_V) \right|_{\gEig_T(\lambda)},
+\]
+and we have that $N_\lambda$ sends $\gEig_T(\lambda)$ to $\gEig_T(\lambda)$, so $N_\lambda \in \End\left(\gEig_T(\lambda)\right)$. Also, $P_{N_\lambda}(x)$ splits as a product of linear factors, because $P_T(x)$ has this property. Consequently,
+\[
+    N_\lambda^{m_\lambda} = \left. (T - \lambda \id_V)^{m_\lambda}\right|_{\gEig_T(\lambda)} = 0, \qquad \text{where } m_\lambda := \dim \gEig_T(\lambda),
+\]
+by \cref{cor:nilpotency_on_generalized_eigenspace}.
+
+If we obtain a Jordan Normal Form for $N_\lambda$, that is, a basis $\mathcal{B}_\lambda$ for $\gEig_T(\lambda)$ such that $[N_\lambda]_{\mathcal{B}_\lambda}^{\mathcal{B}_\lambda}$ is in Jordan Normal Form, then we also get a Jordan Normal Form for $T|_{\gEig_T(\lambda)}$, because
+\[
+    \left[\left. T \right|_{\gEig_T(\lambda)}\right]_{\mathcal{B}_\lambda}^{\mathcal{B}_\lambda} = [N_\lambda]_{\mathcal{B}_\lambda}^{\mathcal{B}_\lambda} + \lambda \cdot I_{m_\lambda}.
+\]
+Doing this on each $\gEig_T(\lambda)$ separately, where $\lambda$ runs over the eigenvalues of $T$, we obtain a basis $\mathcal{B} = (\mathcal{B}_{\lambda_1}, \dots, \mathcal{B}_{\lambda_r})$ for $V$ such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is in Jordan Normal Form.
+
+In conclusion, it is enough to show the existence of a Jordan Normal Form for each $N_\lambda$.
+\end{proof}
+
+\begin{remark}[Change in Notation]
+\label{rem:change_of_notation_nilpotent}
+From here on, $V$ is a finite-di\-men\-sional vector space, $n = \dim V$, and $N \in \End(V)$ is nilpotent with $P_N(x)$ splitting as a product of linear factors, so that $N^n = 0$. Previously this $V$ was $\gEig_T(\lambda)$, this $N$ was $N_\lambda$, and this $n$ was $m_\lambda$.
+\end{remark}
+
+\begin{proof}[Proof of the existence of the Jordan Normal Form for a nilpotent $N$]
+We do induction on $n = \dim V$.
+
+\textbf{The case $n = 1$.} We have $N = 0$, and consequently $[N]_{\mathcal{B}}^{\mathcal{B}} = 0$ for every basis $\mathcal{B}$, which is already in Jordan Normal Form.
+
+\textbf{The induction step.} Let $n > 1$, and assume we have already proved the existence of a Jordan Normal Form for all $N$ as above on vector spaces of dimension at most $n-1$. Let $V$ be of dimension $n$ and $N \in \End(V)$ nilpotent with $P_N(x)$ splitting as a product of linear factors. Define
+\[
+    k := \min\{ j \ge 1 \mid N^j = 0 \} \le n.
+\]
+If $k = 1$, then $N = 0$ and $[N]_{\mathcal{B}}^{\mathcal{B}} = 0$ for every basis $\mathcal{B}$. So assume $k > 1$. Then $N^{k-1} \neq 0$, because $k$ was minimal, and consequently there exists $e_k \in V$ such that $N^{k-1} e_k \neq 0$, while $N^k e_k = 0$ because $N^k = 0$. Define
+\[
+    e_j := N^{k-j} e_k, \qquad j = 1, \dots, k-1,
+\]
+so that the list $e_1, e_2, \dots, e_{k-1}, e_k$ is precisely $N^{k-1}e_k, N^{k-2}e_k, \dots, Ne_k, e_k$.
+
+\begin{claim*}
+\label{claim:jordan_chain_independent}
+The vectors $e_1, \dots, e_k$ are linearly independent.
+\end{claim*}
+
+\begin{proof}[Proof of the claim]
+Suppose that
+\begin{equation}
+\label{eq:jordan_chain_relation}
+    c_1 e_1 + \dots + c_k e_k = 0.
+\end{equation}
+Apply $N^{k-1}$ to \eqref{eq:jordan_chain_relation}. For all $1 \le j \le k-1$ we have
+\[
+    N^{k-1} e_j = N^{k-1} N^{k-j} e_k = N^{2k - (j+1)} e_k = 0,
+\]
+because $2k - (j+1) \ge k$ and $N^k = 0$. What remains is
+\[
+    0 + \dots + 0 + c_k \underbrace{N^{k-1} e_k}_{= \, e_1 \, \neq \, 0} = 0,
+\]
+and therefore, $c_k = 0$.
+
+Now apply $N^{k-2}$ to \eqref{eq:jordan_chain_relation}. By the same reasoning all terms vanish except the one involving $e_{k-1}$, giving
+\[
+    0 + \dots + 0 + c_{k-1} \underbrace{N^{k-2} e_{k-1}}_{= \, N^{k-1}e_k \, = \, e_1 \, \neq \, 0} + 0 = 0,
+\]
+and therefore, $c_{k-1} = 0$. Continuing in this way, we obtain $c_{k-2} = \dots = c_1 = 0$. This proves the claim.
+\end{proof}
+
+Note that $W := \Sp(e_1, \dots, e_k)$ is $N$-invariant, so $N|_W \in \End(W)$. Moreover, with $\mathcal{B}_1 := (e_1, \dots, e_k)$,
+\[
+    [N|_W]_{\mathcal{B}_1}^{\mathcal{B}_1} = \begin{pmatrix} 0 & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & 0 \end{pmatrix} = J_{0,k},
+\]
+which is a Jordan matrix, and in fact the biggest block of $N$.
+
+Since $W$ is $N$-invariant, $N$ induces a map
+\[
+    N' \colon V/W \to V/W, \qquad N'[v] := [Nv],
+\]
+on the quotient space of \cref{def:quotient_space}. Clearly $N'$ is nilpotent (see \cref{exc:induced_map_nilpotent}). Moreover $P_{N'}(x)$ divides $P_N(x)$, and hence $P_{N'}(x)$ splits as a product of linear factors.
+
+To see why $P_{N'}(x)$ divides $P_N(x)$, extend $e_1, \dots, e_k$ to a basis $\mathcal{C} = (e_1, \dots, e_k, v_{k+1}, \dots, v_n)$ of $V$. Let $[v_j] \in V/W$, for $j = k+1, \dots, n$, be the images of $v_j$ in the quotient. Then $\mathcal{C}' = ([v_{k+1}], \dots, [v_n])$ is a basis for $V/W$, and we have
+\[
+    [N]_{\mathcal{C}}^{\mathcal{C}} = \left(\begin{array}{c|c} [N|_W]_{\mathcal{B}_1}^{\mathcal{B}_1} & * \\ \hline 0 & [N']_{\mathcal{C}'}^{\mathcal{C}'} \end{array}\right),
+\]
+where the top left block has size $k \times k$, which implies $P_N(x) = P_{N|_W}(x) \cdot P_{N'}(x)$.
+
+Now, $\dim V/W = \dim V - \dim W = n - k < n$ by \cref{prop:dim_quotient}. We may therefore apply the induction hypothesis to $N' \in \End(V/W)$. We obtain a basis $\mathcal{B}' = (u_1, \dots, u_\ell)$ of $V/W$, where $\ell = n-k$, such that $[N']_{\mathcal{B}'}^{\mathcal{B}'}$ is in Jordan Normal Form. We can write $u_i = [f_i]$ with $f_i \in V$, for $i = 1, \dots, \ell$. Note that
+\[
+    \mathcal{B}_2 := (e_1, \dots, e_k, f_1, \dots, f_\ell)
+\]
+is a basis for $V$, and we have
+\begin{equation}
+\label{eq:N_in_basis_B2}
+    [N]_{\mathcal{B}_2}^{\mathcal{B}_2} = \left(\begin{array}{c|c} J_{0,k} & * \\ \hline 0 & [N']_{\mathcal{B}'}^{\mathcal{B}'} \end{array}\right) = \left(\begin{array}{c|cc} J_{0,k} & * & * \\ \hline 0 & J_{0,m} & \\ 0 & & \ddots \end{array}\right),
+\end{equation}
+where $J_{0,m}$ is the first Jordan block of $[N']_{\mathcal{B}'}^{\mathcal{B}'}$.
+
+Note that $m \le k$, and in fact every Jordan block in $[N']_{\mathcal{B}'}^{\mathcal{B}'}$ has size at most $k$. Indeed, if $m \ge k+1$, then $J_{0,m}^{m-1} \neq 0$, and consequently $J_{0,m}^{k} \neq 0$ because $k \le m-1$. This would give $\left([N]_{\mathcal{B}_2}^{\mathcal{B}_2}\right)^k \neq 0$. But $k$ was defined so that $N^k = 0$, a contradiction.
+
+We will now modify the elements $f_1, \dots, f_m$ into $e_{k+1}, \dots, e_{k+m}$ such that $[f_i] = [e_{k+i}]$ and such that, in the basis
+\[
+    \mathcal{B}_3 := (e_1, \dots, e_k, e_{k+1}, \dots, e_{k+m}, f_{m+1}, \dots, f_\ell),
+\]
+the matrix $[N]_{\mathcal{B}_3}^{\mathcal{B}_3}$ has no $*$ block above the second, $m \times m$, block, that is,
+\[
+    [N]_{\mathcal{B}_3}^{\mathcal{B}_3} = \left(\begin{array}{c|c|c} J_{0,k} & 0 & * \\ \hline 0 & J_{0,m} & \\ 0 & & \ddots \end{array}\right).
+\]
+
+To prove this, note that by \eqref{eq:N_in_basis_B2}, for all $1 \le j \le m$ we have
+\[
+    N^{m-j} f_m = f_j + (\text{something from } W),
+\]
+because $J_{0,m}^{m-j} \varepsilon_m = \varepsilon_j$, where $\varepsilon_1, \dots, \varepsilon_m$ is the standard basis for $K^m$. Also $N^m f_m \in W$, because $J_{0,m}^m = 0$. Consequently,
+\[
+    N^m f_m = c_1 e_1 + \dots + c_k e_k \qquad \text{for some } c_1, \dots, c_k \in K.
+\]
+
+\begin{claim*}
+\label{claim:top_coefficients_vanish}
+We have $c_{k-m+1} = \dots = c_k = 0$.
+\end{claim*}
+
+\begin{proof}[Proof of the claim]
+Recall that $m \le k$, and therefore,
+\[
+    0 = N^k f_m = N^{k-m} \circ N^m f_m = N^{k-m}\left(c_1 e_1 + \dots + c_k e_k\right) = c_{k-m+1} e_1 + \dots + c_k e_m,
+\]
+where the first equality holds because $N^k = 0$, the third step needs $k - m \ge 0$, and the last uses that
+\[
+    J_{0,k}^r \cdot \varepsilon_j = \begin{cases} 0 & \text{if } j \le r, \\ \varepsilon_{j-r} & \text{if } r+1 \le j \le k. \end{cases}
+\]
+Since $e_1, \dots, e_m$ are linearly independent, we obtain $c_{k-m+1} = \dots = c_k = 0$, which proves the claim.
+\end{proof}
+
+We now define
+\[
+    e_{k+m} := f_m - \left(c_1 e_{m+1} + c_2 e_{m+2} + \dots + c_{k-m} e_k\right),
+\]
+where, if $m = k$, we simply define $e_{k+m} := f_m$. We then set
+\[
+    e_{k+m-1} := N e_{k+m}, \quad e_{k+m-2} := N^2 e_{k+m}, \quad \dots, \quad e_{k+1} := N^{m-1} e_{k+m}.
+\]
+Note that
+\[
+    e_{k+m} \xrightarrow{\;N\;} e_{k+m-1} \xrightarrow{\;N\;} e_{k+m-2} \longmapsto \dots \xrightarrow{\;N\;} e_{k+1},
+\]
+and
+\begin{align*}
+    N e_{k+1} &= N \circ N^{m-1} e_{k+m} = N^m\left(f_m - c_1 e_{m+1} - c_2 e_{m+2} - \dots - c_{k-m} e_k\right) \\
+    &= \underbrace{\left(c_1 e_1 + \dots + c_{k-m} e_{k-m}\right)}_{\text{by the previous claim}} - \underbrace{\left(c_1 e_1 + \dots + c_{k-m} e_{k-m}\right)}_{\text{because } [N|_W]_{\mathcal{B}_1}^{\mathcal{B}_1} \, = \, J_{0,k}} = 0.
+\end{align*}
+So $e_{k+1} \xmapsto{\;N\;} 0$, and the vectors $e_{k+1}, \dots, e_{k+m}$ form a Jordan chain of their own.
+
+The elements of $\mathcal{B}_3$ are linearly independent, and hence form a basis for $V$; this is left as an exercise, see \cref{exc:B3_is_a_basis}. It is easy to see now that
+\[
+    [N]_{\mathcal{B}_3}^{\mathcal{B}_3} = \left(\begin{array}{c|c|c} J_{0,k} & 0 & * \\ \hline 0 & J_{0,m} & \\ 0 & & \ddots \end{array}\right).
+\]
+
+Now continue in the same way with the next blocks after $J_{0,m}$, if there are any, until we obtain a basis $\mathcal{B}$ such that $[N]_{\mathcal{B}}^{\mathcal{B}}$ is in Jordan Normal Form.
+\end{proof}
+
+\begin{exercise}[The Induced Map on the Quotient is Nilpotent]
+\label{exc:induced_map_nilpotent}
+This is the step Prof. Biran marks with \qt{check!}. Let $N \in \End(V)$ be nilpotent and let $W \subseteq V$ be an $N$-invariant subspace. Show that the induced map $N' \colon V/W \to V/W$, $N'[v] := [Nv]$, is well defined and nilpotent.
+\end{exercise}
+
+\begin{exercise}[The Modified Family is a Basis]
+\label{exc:B3_is_a_basis}
+This is the step Prof. Biran marks with \qt{Exc.} in the proof above. Show that the elements of
+\[
+    \mathcal{B}_3 = (e_1, \dots, e_k, e_{k+1}, \dots, e_{k+m}, f_{m+1}, \dots, f_\ell)
+\]
+are linearly independent, and hence form a basis for $V$. (Prof. Biran's hint: $e_{k+j} = f_{k+j} + (\text{something from } W)$).
+\end{exercise}
+
+\subsection{Proof of the Uniqueness}
+
+% Lemma.
+\begin{lemma}[Counting Jordan Blocks by Kernel Dimensions]
+\label{lem:counting_blocks_by_kernels}
+Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $N \in \End(V)$ be nilpotent. Let $A$ be a matrix in Jordan Normal Form such that $A = [N]_{\mathcal{B}}^{\mathcal{B}}$ in some basis $\mathcal{B}$ for $V$. Then:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\dim \ker(N) = \#\{\text{Jordan blocks in } A\}$.
+    \item $\dim \ker(N^2) = \#\{\text{Jordan blocks in } A\} + \#\{\text{Jordan blocks of dimension} \ge 2 \text{ in } A\}$.
+    \item $\dim \ker(N^3) = \#\{\text{Jordan blocks in } A\} + \#\{\text{Jordan blocks of dimension} \ge 2 \text{ in } A\} + \#\{\text{Jordan blocks of dimension} \ge 3 \text{ in } A\}$.
+    \item And so on: for every $r \ge 1$,
+    \[
+        \dim \ker(N^r) = \sum_{i=1}^{r} \#\{\text{Jordan blocks of dimension} \ge i \text{ in } A\}.
+    \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Here and below we identify matrices $M$ with the linear maps $T_M(v) := M \cdot v$ they define.
+
+For one Jordan block $J_{0,n}$ we have
+\[
+    \dim \ker\left(J_{0,n}^r\right) = r \quad \text{for all } r \le n, \qquad \text{and} \qquad \dim \ker\left(J_{0,n}^r\right) = n \quad \text{for } r > n,
+\]
+which follows from \cref{lem:powers_jordan_blocks} \textbf{(a)}: the matrix $J_{0,n}^r$ has $1$'s on the $r$-th diagonal above the main diagonal and $0$'s elsewhere, so its rank is $n-r$ for $r \le n$, and $0$ for $r > n$.
+
+If
+\[
+    A = \begin{pmatrix} J_{0,n_1} & & & \\ & J_{0,n_2} & & \\ & & \ddots & \\ & & & J_{0,n_\ell} \end{pmatrix}, \qquad \text{then} \qquad A^r = \begin{pmatrix} J_{0,n_1}^r & & & \\ & J_{0,n_2}^r & & \\ & & \ddots & \\ & & & J_{0,n_\ell}^r \end{pmatrix}
+\]
+by \cref{exc:powers_of_block_diagonal}, and the kernel of a block diagonal matrix is the direct sum of the kernels of its blocks.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Each Jordan block in $A$ contributes exactly $1$ to the dimension of $\ker(A)$. This proves \textbf{(a)}.
+    \item For $r = 2$, each Jordan block in $A$ of dimension $1$ contributes $1$ to $\ker(A^2)$, and each Jordan block of dimension $\ge 2$ in $A$ contributes $2$ to $\ker(A^2)$. So in total we have
+    \begin{align*}
+        \dim \ker(A^2) &= \#\{\text{Jordan blocks of dimension } 1 \text{ in } A\} \\
+        &\quad + 2 \cdot \#\{\text{Jordan blocks of dimension} \ge 2 \text{ in } A\} \\
+        &= \#\{\text{Jordan blocks in } A\} \\
+        &\quad + \#\{\text{Jordan blocks of dimension} \ge 2 \text{ in } A\}.
+    \end{align*}
+    \item Statements \textbf{(c)} and \textbf{(d)} are proved in the same way.
+\end{enumerate}
+\end{proof}
+
+\begin{proof}[Proof of the uniqueness of the Jordan Normal Form]
+Assume that $A$ and $A'$ are two matrices in Jordan Normal Form that both represent $T \in \End(V)$. Consequently, $P_A(x) = P_T(x) = P_{A'}(x)$.
+
+Now,
+\[
+    P_A(x) = \prod_{\lambda} (\lambda - x)^{\#\{\lambda\text{'s in the diagonal of } A\}},
+\]
+and similarly for $P_{A'}(x)$. This shows that every $\lambda$ appears the same number of times in the diagonals of both $A$ and $A'$.
+
+Let $\lambda$ be an eigenvalue of $T$. By permuting the Jordan blocks in each of $A$ and $A'$, we obtain two matrices $B$ and $B'$, also in Jordan Normal Form, that both represent $T$ in some bases, and such that
+\[
+    B = \left(\begin{array}{cccc|c} J_{\lambda, n_1} & & & & \\ & J_{\lambda, n_2} & & & \\ & & \ddots & & \\ & & & J_{\lambda, n_\ell} & \\ \hline & & & & \text{JNF with eigenvalues} \neq \lambda \end{array}\right)
+\]
+and
+\[
+    B' = \left(\begin{array}{cccc|c} J_{\lambda, m_1} & & & & \\ & J_{\lambda, m_2} & & & \\ & & \ddots & & \\ & & & J_{\lambda, m_{\ell'}} & \\ \hline & & & & \text{JNF with eigenvalues} \neq \lambda \end{array}\right).
+\]
+We have seen above that $n_1 + \dots + n_\ell = m_1 + \dots + m_{\ell'}$; denote this common value by $r$.
+
+Consider $S := T - \lambda \id_V$. Note that both $C := B - \lambda I$ and $C' := B' - \lambda I$ are matrices that represent $S$, and
+\[
+    C = \left(\begin{array}{cccc|c} J_{0, n_1} & & & & \\ & J_{0, n_2} & & & \\ & & \ddots & & \\ & & & J_{0, n_\ell} & \\ \hline & & & & \text{JNF with eigenvalues} \neq 0 \end{array}\right),
+\]
+and similarly for $C'$, with the blocks $J_{0,m_1}, \dots, J_{0,m_{\ell'}}$.
+
+Define
+\[
+    D := \begin{pmatrix} J_{0,n_1} & & \\ & \ddots & \\ & & J_{0,n_\ell} \end{pmatrix}, \qquad D' := \begin{pmatrix} J_{0,m_1} & & \\ & \ddots & \\ & & J_{0,m_{\ell'}} \end{pmatrix}.
+\]
+Both $D$ and $D'$ are nilpotent matrices of size $r \times r$.
+
+Note that for every $k$,
+\[
+    \dim \ker S^k = \dim \ker C^k = \dim \ker D^k,
+\]
+because the complementary part of $C$, namely the Jordan Normal Form with all eigenvalues different from $0$, is invertible and so contributes nothing to the kernel. Similarly, for every $k$,
+\[
+    \dim \ker S^k = \dim \ker (C')^k = \dim \ker (D')^k.
+\]
+Consequently,
+\begin{equation}
+\label{eq:equal_kernel_dimensions}
+    \dim \ker D^k = \dim \ker (D')^k \qquad \text{for all } k \ge 1.
+\end{equation}
+
+We now apply \cref{lem:counting_blocks_by_kernels} to \eqref{eq:equal_kernel_dimensions} for the various values of $k$.
+\begin{description}
+    \item[$k=1$.] We obtain $\ell = \ell'$, that is, the number of Jordan blocks in $D$ and in $D'$ coincide.
+    \item[$k=2$.] We obtain $\#\{i \mid n_i \ge 2\} = \#\{j \mid m_j \ge 2\}$, which implies $\#\{i \mid n_i = 1\} = \#\{j \mid m_j = 1\}$.
+    \item[$k=3$.] We obtain $\#\{i \mid n_i \ge 3\} = \#\{j \mid m_j \ge 3\}$, which implies $\#\{i \mid n_i = 2\} = \#\{j \mid m_j = 2\}$.
+\end{description}
+Continuing in this way, we obtain that for every $k$,
+\[
+    \#\{i \mid n_i = k\} = \#\{j \mid m_j = k\}.
+\]
+Consequently, up to permutation of blocks, $D$ and $D'$ coincide, and therefore, the blocks in $B$ and $B'$ that correspond to $\lambda$ are the same, up to permutation.
+
+This holds for all eigenvalues $\lambda$ of $T$, and consequently, $A$ and $A'$ are the same up to permutation of the Jordan blocks.
+\end{proof}
+
+% Creator: Opus 5 (High)
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_jordan_b}
+
+\begin{exercisesolution}[Proof of \cref{exc:char_poly_restriction_divides}]
+Choose a basis $\mathcal{B} := (u_1, \dots, u_d)$ for $\mathcal{U}$ and extend it to a basis $\mathcal{C} := (u_1, \dots, u_d, w_{d+1}, \dots, w_p)$ for $W$, which is possible by the basis extension theorem.
+
+Because $\mathcal{U}$ is $S$-invariant, each $S u_i$ lies in $\mathcal{U}$, so its coordinate vector with respect to $\mathcal{C}$ has zeroes in the last $p - d$ entries. The first $d$ columns of $[S]_{\mathcal{C}}^{\mathcal{C}}$ therefore have the shape claimed, and consequently
+\[
+    [S]_{\mathcal{C}}^{\mathcal{C}} = \left(\begin{array}{c|c} [S_U]_{\mathcal{B}}^{\mathcal{B}} & M \\ \hline 0 & N \end{array}\right)
+\]
+for some $M$ and $N$ of the appropriate sizes.
+
+Subtracting $x$ from the diagonal preserves this block upper triangular shape, so by \cref{prop:block_matrix},
+\[
+    P_S(x) = \det\left([S]_{\mathcal{C}}^{\mathcal{C}} - x I_p\right) = \det\left([S_U]_{\mathcal{B}}^{\mathcal{B}} - x I_d\right) \cdot \det\left(N - x I_{p-d}\right) = P_{S_U}(x) \cdot P_N(x).
+\]
+Hence $P_{S_U}(x)$ divides $P_S(x)$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:nilpotent_properties}]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $k$ be the nilpotency index of $N$, so $N^k = 0$ and $N^{k-1} \neq 0$ (with the convention $N^0 = \id_V$). Pick $v$ with $N^{k-1} v \neq 0$ and put $u := N^{k-1} v$. Then $u \neq 0$ and $Nu = N^k v = 0$, so $u$ is an eigenvector for the eigenvalue $0$. Hence $0$ is an eigenvalue of $N$.
+
+    Conversely, let $\mu$ be any eigenvalue of $N$ with eigenvector $w \neq 0$. Then $N^k w = \mu^k w$, and since $N^k = 0$ this gives $\mu^k w = 0$, hence $\mu^k = 0$ and therefore $\mu = 0$. So $0$ is the only eigenvalue.
+
+    \item By the definition of the generalized eigenspace and the fact that some power of $N$ vanishes,
+    \[
+        \gEig_N(0) = \bigcup_{j=1}^\infty \ker\left(N^j\right) = V.
+    \]
+    By \cref{lem:generalized_eigenspace} \textbf{(a)} applied with $T := N$ and $\lambda := 0$, we also have $\gEig_N(0) = \ker\left(N^{\dim V}\right)$. Combining the two gives $\ker\left(N^{\dim V}\right) = V$, that is, $N^{\dim V} = 0$. In particular the nilpotency index, being the least such exponent, is at most $\dim V$.
+
+    \item By part \textbf{(a)}, the only eigenvalue of $N$ is $0$. Since $P_N(x)$ splits as a product of linear factors, it is a product of factors of the form $(\mu - x)$ with $\mu$ an eigenvalue of $N$, hence $\mu = 0$ in every factor. As $\deg P_N(x) = \dim V$ and $P_N$ is normalized so that its leading term is $(-x)^{\dim V}$, we get $P_N(x) = (-x)^{\dim V}$.
+
+    \item Let $\mathcal{B}$ be any basis for $V$ and put $A := [T]_{\mathcal{B}}^{\mathcal{B}}$. Then $[S]_{\mathcal{B}}^{\mathcal{B}} = A - \eta I$, and consequently
+    \[
+        P_S(x) = \det\left(A - \eta I - x I\right) = \det\left(A - (x+\eta) I\right) = P_T(x + \eta).
+    \]
+    If $P_T(x) = \prod_i (\lambda_i - x)$, then $P_S(x) = \prod_i (\lambda_i - \eta - x)$, which is again a product of linear factors. So $P_S(x)$ splits as a product of linear factors.
+
+    \item By part \textbf{(d)} with $\eta := \lambda$, the polynomial $P_N(x) = P_T(x + \lambda)$ splits as a product of linear factors. If $\mu$ were an eigenvalue of $N$, then $\mu + \lambda$ would be an eigenvalue of $T$, and since $\lambda$ is the only eigenvalue of $T$ this forces $\mu = 0$. So $0$ is the only eigenvalue of $N$, and exactly as in part \textbf{(c)} we obtain $P_N(x) = (-x)^{\dim V}$.
+
+    By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $P_N(N) = 0$, that is, $(-N)^{\dim V} = 0$, and therefore, $N^{\dim V} = 0$.
+\end{enumerate}
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:induced_map_nilpotent}]
+\textbf{Well defined.} Suppose $[v] = [v']$, that is, $v - v' \in W$. Since $W$ is $N$-invariant, $N(v - v') \in W$, and consequently $[Nv] = [Nv']$. So $N'$ does not depend on the representative chosen, and it is clearly linear because $N$ is.
+
+\textbf{Nilpotent.} Let $k$ be such that $N^k = 0$. An easy induction gives $(N')^j [v] = [N^j v]$ for all $j \ge 1$: the case $j = 1$ is the definition, and
+\[
+    (N')^{j+1}[v] = N'\left((N')^j [v]\right) = N'\left[N^j v\right] = \left[N^{j+1} v\right].
+\]
+Consequently,
+\[
+    (N')^k [v] = \left[N^k v\right] = [0] = 0_{V/W} \qquad \text{for every } [v] \in V/W,
+\]
+that is, $(N')^k = 0$. So $N'$ is nilpotent, with nilpotency index at most that of $N$.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:B3_is_a_basis}]
+Recall that $\mathcal{B}_2 = (e_1, \dots, e_k, f_1, \dots, f_\ell)$ is a basis for $V$, and that $\mathcal{B}_3$ is obtained from it by replacing $f_1, \dots, f_m$ with $e_{k+1}, \dots, e_{k+m}$. Since $\mathcal{B}_3$ has $k + \ell = n$ elements, it is enough to prove linear independence.
+
+The key point is Prof. Biran's hint: for each $1 \le j \le m$ we have
+\begin{equation}
+\label{eq:e_shifted_by_W}
+    e_{k+j} = f_j + w_j \qquad \text{for some } w_j \in W = \Sp(e_1, \dots, e_k).
+\end{equation}
+For $j = m$ this is the definition of $e_{k+m}$, whose correction term $c_1 e_{m+1} + \dots + c_{k-m} e_k$ lies in $W$. For $j < m$ it follows because $e_{k+j} = N^{m-j} e_{k+m}$ and, as established in the proof, $N^{m-j} f_m = f_j + (\text{something from } W)$, while $N^{m-j}$ maps $W$ into $W$ by $N$-invariance.
+
+Now suppose
+\[
+    \sum_{i=1}^{k} a_i e_i + \sum_{j=1}^{m} b_j e_{k+j} + \sum_{i=m+1}^{\ell} d_i f_i = 0.
+\]
+Substituting \eqref{eq:e_shifted_by_W} and collecting the terms lying in $W$, this becomes
+\[
+    \underbrace{\left(\sum_{i=1}^{k} a_i e_i + \sum_{j=1}^{m} b_j w_j\right)}_{\in \, W} + \sum_{j=1}^{m} b_j f_j + \sum_{i=m+1}^{\ell} d_i f_i = 0.
+\]
+Pass to the quotient $V/W$. The first bracket dies, and we are left with
+\[
+    \sum_{j=1}^{m} b_j [f_j] + \sum_{i=m+1}^{\ell} d_i [f_i] = 0 \quad \text{in } V/W.
+\]
+But $([f_1], \dots, [f_\ell]) = \mathcal{B}'$ is a basis for $V/W$, so all $b_j$ and all $d_i$ vanish.
+
+The relation therefore reduces to $\sum_{i=1}^{k} a_i e_i = 0$, and $e_1, \dots, e_k$ are linearly independent by the first claim in the proof, so all $a_i$ vanish as well. Hence $\mathcal{B}_3$ is linearly independent, and being of the right cardinality, it is a basis for $V$.
+\end{exercisesolution}
