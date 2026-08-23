@@ -729,7 +729,13 @@
 }
 
 % What goes into the marks.
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ \ ---\ \ #1}{}}
+% The \extramarks{}{} matters: without it, a chapter that contains no
+% \section at all (chapter 26 is one) keeps showing the *previous* chapter's
+% last subsection in the right-hand footer, since only \sectionmark clears it.
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\chaptername\ \thechapter\ \ ---\ \ #1}{}%
+  \extramarks{}{}%
+}
 \renewcommand{\sectionmark}[1]{%
   \markright{\thesection\ \ ---\ \ #1}%
   \extramarks{}{}%
