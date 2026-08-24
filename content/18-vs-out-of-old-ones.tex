@@ -100,6 +100,8 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 \end{proof}
 
 \begin{corollary}[Dimensionality of the Homomorphism Space]
+% cor:18.a.3
+  \label{cor:dim_hom}
   If $V$ and $W$ are finite-di\-men\-sional vector spaces, then the homomorphism space $\Hom(V,W)$ is also finite-di\-men\-sional, and $\dim \Hom(V,W) = \dim V \cdot \dim W$.
 \end{corollary}
 
@@ -108,10 +110,11 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
   \[
   \Hom(V,W) \cong \M_{m \times n}(K).
   \]
-  This means $\Hom(V,W)$ is a finite-dimensional space. Furthermore,
+  This means $\Hom(V,W)$ is a finite-dimensional space. Furthermore, isomorphic spaces have the same dimension by \cref{cor:iso_iff_equal_dimension}, so
   \[
-  \dim \Hom(V,W) = \dim \M_{m \times n}(K) = m \cdot n.
+  \dim \Hom(V,W) = \dim \M_{m \times n}(K) = m \cdot n,
   \]
+  the last equality because the $m \cdot n$ matrix units $E_{ij}$ form a basis of $\M_{m \times n}(K)$.
 \end{proof}
 
 \subsection{Rings of Endomorphisms}
@@ -120,7 +123,7 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 The notes say at this point only \qt{explain briefly the structure of a ring}
 and \qt{explain what is a homomorphism of rings}, since both were given orally.
 The book uses both notions from here on, and already used the word
-\qt{ring} in \cpageref{rem:matrix_ring}, so we record them.
+\qt{ring} on \cpageref{rem:matrix_ring}, so we record them.
 
 \begin{aidefinition}[Ring]
 \label{aidef:ring}
@@ -164,7 +167,7 @@ A bijective homomorphism of rings is called an \newterm{isomorphism of rings}; i
 % expansion of it and contains everything the sketch does.
 % Creator: Gemini 3.1 Pro
 \begin{proof}
-  First, we verify that $(\End(V), +, \circ)$ satisfies the ring axioms. We already know that $(\End(V), +)$ is an abelian group from the proposition regarding the vector space structure of $\Hom(V,W)$. We now verify the properties related to multiplication (composition):
+  First, we verify that $(\End(V), +, \circ)$ satisfies the ring axioms. We already know that $(\End(V), +)$ is an abelian group from the proposition regarding the vector space structure of $\Hom(V,W)$, \cref{prop:hom_vector_space} with $W = V$. We now verify the properties related to multiplication (composition):
   \begin{enumerate}
     \item \textbf{Associativity of Multiplication}: For any $T_1, T_2, T_3 \in \End(V)$, function composition is inherently associative. That is, $(T_1 \circ T_2) \circ T_3 = T_1 \circ (T_2 \circ T_3)$.
     \item \textbf{Existence of Multiplicative Identity}: The identity map $\id_V \colon V \to V$ is an endomorphism. For any $T \in \End(V)$, we have $T \circ \id_V = T$ and $\id_V \circ T = T$. Thus, $\id_V$ is the multiplicative identity.
@@ -186,12 +189,12 @@ A bijective homomorphism of rings is called an \newterm{isomorphism of rings}; i
   \end{enumerate}
   Thus, $\End(V)$ is a ring with unity $\id_V$. It is generally not commutative, as demonstrated by matrix multiplication.
 
-  Now, assume $V$ is finite-dimensional with $\dim V = n$, and let $\mathcal{B}$ be a basis for $V$. We have already established that $\Psi_{\mathcal{B}}^{\mathcal{B}} \colon \End(V) \to \M_{n \times n}(K)$ is a linear isomorphism. To prove it is a ring isomorphism, we must show it preserves the multiplicative structure and the multiplicative identity.
+  Now, assume $V$ is finite-dimensional with $\dim V = n$, and let $\mathcal{B}$ be a basis for $V$. We have already established that $\Psi_{\mathcal{B}}^{\mathcal{B}} \colon \End(V) \to \M_{n \times n}(K)$ is a linear isomorphism, this being \cref{thm:homomorphism_isomorphism} with $W = V$ and $\mathcal{C} = \mathcal{B}$. To prove it is a ring isomorphism, we must show it preserves the multiplicative structure and the multiplicative identity.
 
   \begin{enumerate}
-    \item \textbf{Preservation of Multiplication}: For any $T_1, T_2 \in \End(V)$, a fundamental result from Linear Algebra I states that the matrix representation of a composition of linear maps is the product of their matrix representations. That is,
+    \item \textbf{Preservation of Multiplication}: For any $T_1, T_2 \in \End(V)$, a fundamental result from Linear Algebra I states that the matrix representation of a composition of linear maps is the product of their matrix representations (the composition rule, on \cpageref{prop:representation_matrix_of_composition}). That is,
     \[ \Psi_{\mathcal{B}}^{\mathcal{B}}(T_1 \circ T_2) = [T_1 \circ T_2]_{\mathcal{B}}^{\mathcal{B}} = [T_1]_{\mathcal{B}}^{\mathcal{B}} \cdot [T_2]_{\mathcal{B}}^{\mathcal{B}} = \Psi_{\mathcal{B}}^{\mathcal{B}}(T_1) \cdot \Psi_{\mathcal{B}}^{\mathcal{B}}(T_2). \]
-    \item \textbf{Preservation of Multiplicative Identity}: The matrix representation of the identity endomorphism with respect to any basis $\mathcal{B}$ is the identity matrix $I_n$.
+    \item \textbf{Preservation of Multiplicative Identity}: The matrix representation of the identity endomorphism with respect to any basis $\mathcal{B}$ is the identity matrix $I_n$ (the Proposition on \cpageref{prop:identity_represents_id}).
     \[ \Psi_{\mathcal{B}}^{\mathcal{B}}(\id_V) = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n. \]
   \end{enumerate}
   Since $\Psi_{\mathcal{B}}^{\mathcal{B}}$ is a bijective linear map that preserves both multiplication and the multiplicative identity, it is an isomorphism of rings.
@@ -202,6 +205,8 @@ A bijective homomorphism of rings is called an \newterm{isomorphism of rings}; i
 An important special case of $\Hom(V,W)$ is when $W=K$.
 
 \begin{definition}[The Dual Space and Linear Functionals]
+% def:18.a.5
+  \label{def:dual_space}
   Let $V$ be a vector space over $K$. The \newterm{dual space} of $V$ is defined to be the vector space $V^* := \Hom(V,K)$. The elements of $V^*$ are linear maps $\ell \colon V \to K$, and are sometimes called \newterm{functionals}.
 \end{definition}
 
@@ -212,7 +217,7 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
 \end{corollary}
 
 \begin{proof}
-  We have $\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K = \dim V \cdot 1 = \dim V$.
+  We have $\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K = \dim V \cdot 1 = \dim V$, using \cref{cor:dim_hom} for the middle equality and, for the one after it, that $K$ is one-dimensional as a vector space over itself, with basis $(1)$.
 \end{proof}
 
 Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. % Extractor: Opus 5 (High)
@@ -225,7 +230,18 @@ Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell)
 
 % Extractor: Gemini 3.1 Pro
 
-Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$.
+% Creator: Opus 5 (Max)
+% The v_i^* are Prof. Biran's, defined here in running prose, with 18.a.7
+% standing directly underneath as a statement about them. Unnumbered, so that
+% 18.a.1--18.a.12 are untouched; cite it with \cpageref.
+\begin{definition*}[The Functionals Dual to a Basis]
+\label{def:dual_basis_functionals}
+% Extractor: Gemini 3.1 Pro
+Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$
+% Creator: Opus 5 (Max)
+(this is \cref{thm:existence_uniqueness_linear_map}: prescribing the values on a basis arbitrarily determines one and only one linear map).
+\end{definition*}
+% Extractor: Gemini 3.1 Pro
 
 % lem:18.a.7
 \begin{lemma}[Construction of the Dual Basis]
@@ -234,9 +250,9 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
 \end{lemma}
 
 \begin{proof}
-  Let $\ell \in V^*$. We claim that $\ell = \sum_{i=1}^n \ell(v_i) \cdot v_i^*$, or in other words, we claim that $\ell(v) = \sum_{i=1}^n \ell(v_i) \cdot v_i^*(v)$. Indeed, both sides of the equation are linear maps $V \to K$, and therefore, it is enough to check that it holds for $v = v_1, v = v_2, \dots, v = v_n$, because $v_1, \dots, v_n$ form a basis for $V$. And indeed, for $v = v_k$, we have:
+  Let $\ell \in V^*$. We claim that $\ell = \sum_{i=1}^n \ell(v_i) \cdot v_i^*$, or in other words, we claim that $\ell(v) = \sum_{i=1}^n \ell(v_i) \cdot v_i^*(v)$. Indeed, both sides of the equation are linear maps $V \to K$, and therefore, it is enough to check that it holds for $v = v_1, v = v_2, \dots, v = v_n$, because $v_1, \dots, v_n$ form a basis for $V$ (two linear maps that agree on a basis are equal, by the uniqueness half of \cref{thm:existence_uniqueness_linear_map}). And indeed, for $v = v_k$, we have:
   \[ \sum_{i=1}^n \ell(v_i) \cdot v_i^*(v_k) = \sum_{i=1}^n \ell(v_i) \cdot \delta_{ik} = \ell(v_k). \]
-  The claim just proven shows that $v_1^*, \dots, v_n^*$ span $V^*$. Since $\dim V^* = \dim V = n$, it follows that $v_1^*, \dots, v_n^*$ form a basis for $V^*$.
+  The claim just proven shows that $v_1^*, \dots, v_n^*$ span $V^*$. Since $\dim V^* = \dim V = n$ by \cref{cor:dim_dual}, it follows that $v_1^*, \dots, v_n^*$ form a basis for $V^*$: a list of $n$ vectors spanning an $n$-dimensional space is a basis, by \cref{thm:basis_equivalent_characterizations}.
 \end{proof}
 
 \begin{question}Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B}$ and $\mathcal{C}$ be two bases for $V$. $\mathcal{B}^*$ and $\mathcal{C}^*$ are two bases for $V^*$. What is the relation between $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*}$ and $[\id_V]_{\mathcal{B}}^{\mathcal{C}}$?
@@ -249,16 +265,16 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   \[
   [\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = \left( [\id_V]_{\mathcal{C}}^{\mathcal{B}} \right)\transp = \left( \left( [\id_V]_{\mathcal{B}}^{\mathcal{C}} \right)^{-1} \right)\transp.
   \]
-  Thus, the coordinate transformation in the dual space corresponds to the transpose of the inverse transformation in the primal space.
+  Thus, the coordinate transformation in the dual space corresponds to the transpose of the inverse transformation in the primal space. The second equality is \cref{cor:change_of_basis_formula}, which gives $[\id_V]_{\mathcal{C}}^{\mathcal{B}} = ([\id_V]_{\mathcal{B}}^{\mathcal{C}})^{-1}$.
 \end{proposition}
 
 \begin{proof}
   Let $\mathcal{B} = (v_1, \dots, v_n)$, and let $\mathcal{C} = (w_1, \dots, w_n)$. We have 
   \[[\id_V]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} | & & | \\ [v_1]_{\mathcal{C}} & \dots & [v_n]_{\mathcal{C}} \\ | & & | \end{pmatrix}.\]
-  Let $A := [\id_V]_{\mathcal{C}}^{\mathcal{B}}$ and write $A = (a_{ij})$. By definition, $v_i = \sum_{k=1}^n a_{ki} w_k$.
+  Let $A := [\id_V]_{\mathcal{C}}^{\mathcal{B}}$ and write $A = (a_{ij})$. By definition, $v_i = \sum_{k=1}^n a_{ki} w_k$, its $i$-th column being $[v_i]_{\mathcal{C}}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}).
   Let $\mathcal{C}^* = (w_1^*, \dots, w_n^*)$ be the dual basis of $\mathcal{C}$. We apply the previous lemma to $\ell = w_j^*$ and the basis $\mathcal{B}$:
   \[ w_j^* = \sum_{i=1}^n w_j^*(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*\left(\sum_{k=1}^n a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
-  Here, only $k = j$ remains from the inner sum. This implies that $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([\id_V]_{\mathcal{C}}^{\mathcal{B}})\transp$.
+  Here, only $k = j$ remains from the inner sum. This says that $[w_j^*]_{\mathcal{B}^*} = (a_{j1}, \dots, a_{jn})\transp$, which is the $j$-th column of $A\transp$; reading those columns off by the same column description, this implies that $[\id_{V^*}]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([\id_V]_{\mathcal{C}}^{\mathcal{B}})\transp$.
 \end{proof}
 
 \subsection{The Dual Map}
@@ -301,17 +317,22 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
 \end{summary}
 
 \begin{lemma}[Transposition of the Representation Matrix]
+% lem:18.a.11
+  \label{lem:dual_map_transpose}
   Let $S \colon V \to W$ be a linear map between two finite-di\-men\-sional vector spaces $V$ and $W$ over $K$. Let $\mathcal{B}$ be a basis for $V$, and let $\mathcal{C}$ be a basis for $W$. Consider $S^* \colon W^* \to V^*$ and the bases $\mathcal{C}^*, \mathcal{B}^*$ for $W^*, V^*$, respectively. Then, $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$.
 \end{lemma}
 
 \begin{proof}
   Write $\mathcal{B} = (v_1, \dots, v_n)$, $\mathcal{C} = (w_1, \dots, w_m)$, and $A := [S]_{\mathcal{C}}^{\mathcal{B}} = (a_{ij})$. The matrix $A$ satisfies $S(v_j) = \sum_{i=1}^m a_{ij} w_i$. Now, for $w_j^* \in \mathcal{C}^*$, we have
   \[ S^*(w_j^*) = w_j^* \circ S = \sum_{i=1}^n (w_j^* \circ S)(v_i) \cdot v_i^* = \sum_{i=1}^n w_j^*(S(v_i)) \cdot v_i^*, \]
-  where the second equality follows from the Lemma on the Dual Basis. Substituting $S(v_i)$, we get
+  where the second equality follows from the Lemma on the Dual Basis, \cref{lem:dual_basis}, applied to the functional $w_j^* \circ S \in V^*$ and the basis $\mathcal{B}$. Substituting $S(v_i)$, we get
   \[ \sum_{i=1}^n w_j^*\left(\sum_{k=1}^m a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
   % Comment at Gemini: dont use a transposed row-vector here:
-  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$). 
+  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$).
+% Creator: Opus 5 (Max)
+  These coordinates are, for $1 \le j \le m$, precisely the columns of $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}), and they agree column by column with those of $A\transp$. Hence $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$, as claimed.
 \end{proof}
+% Extractor: Gemini 3.1 Pro
 
 \subsection{Reflexivity}
 Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$, obtained by applying the dual operation one more time to $V^*$. $V^{**}$ is sometimes called the \newterm{bidual space} of $V$. Is there any relation between $V^{**}$ and $V$?
@@ -334,9 +355,9 @@ Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$,
   \end{align*}
   Similarly, one shows that $\tau(v' + v'') = \tau(v') + \tau(v'')$.
 
-  We now claim that $\tau$ is injective. To see this, we will show that $\ker(\tau) = 0$. Indeed, let $v \in \ker(\tau)$, meaning $\tau(v) = 0$. Then, $\ell(v) = 0$ for all $\ell \in V^*$. Choose a basis $\mathcal{B} = (v_1, \dots, v_n)$ for $V$. Write $v = c_1 v_1 + \dots + c_n v_n$. Apply $v_k^*$ to $v$, and we obtain $v_k^*(c_1 v_1 + \dots + c_n v_n) = 0$. But $v_k^*(c_1 v_1 + \dots + c_n v_n) = c_k$. Therefore, $c_k = 0$, and this holds for $1 \leq k \leq n$, which implies that $v = 0$. This proves that $\tau$ is injective.
+  We now claim that $\tau$ is injective. To see this, we will show that $\ker(\tau) = 0$, which suffices by \cref{prop:injectivity_kernel} \textbf{(a)}. Indeed, let $v \in \ker(\tau)$, meaning $\tau(v) = 0$. Then, $\ell(v) = 0$ for all $\ell \in V^*$. Choose a basis $\mathcal{B} = (v_1, \dots, v_n)$ for $V$. Write $v = c_1 v_1 + \dots + c_n v_n$. Apply $v_k^*$ to $v$, and we obtain $v_k^*(c_1 v_1 + \dots + c_n v_n) = 0$. But $v_k^*(c_1 v_1 + \dots + c_n v_n) = c_k$. Therefore, $c_k = 0$, and this holds for $1 \leq k \leq n$, which implies that $v = 0$. This proves that $\tau$ is injective.
 
-  To finish the proof, note that $\dim(V^*)^* = \dim V^* = \dim V$. Therefore, since $\tau \colon V \to (V^*)^*$ is injective, it must be an isomorphism.
+  To finish the proof, note that $\dim(V^*)^* = \dim V^* = \dim V$, by two applications of \cref{cor:dim_dual}. Therefore, since $\tau \colon V \to (V^*)^*$ is injective, it must be an isomorphism: between two spaces of the same finite dimension, an injective linear map is already bijective, by \cref{cor:equal_dim_iso} \textbf{(c)}.
 \end{proof}
 
 \begin{remark}
@@ -344,7 +365,16 @@ Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$,
 \end{remark}
 
 \subsection{Naturality}
-The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is defined in the same way. To distinguish $\tau$'s for different spaces, we denote it by $\tau_V \colon V \to (V^*)^*$. Let $V$ and $W$ be two vector spaces over $K$. Then, for any linear map $T \colon V \to W$, we have the following naturality condition, represented by a commutative diagram:
+The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is defined in the same way. To distinguish $\tau$'s for different spaces, we denote it by $\tau_V \colon V \to (V^*)^*$.
+
+% Creator: Opus 5 (Max)
+% The naturality condition stood in the running prose as a picture alone, with
+% no statement attached to it and no proof. Unnumbered, so that Prof. Biran's
+% 18.a.1--18.a.12 are untouched; cite it with \cpageref.
+\begin{proposition*}[Naturality of the Canonical Map to the Bidual]
+\label{prop:naturality_of_tau}
+% Extractor: Gemini 3.1 Pro
+Let $V$ and $W$ be two vector spaces over $K$. Then, for any linear map $T \colon V \to W$, we have the following naturality condition, represented by a commutative diagram:
 
 \begin{center}
   \begin{tikzpicture}[node distance=3cm, auto, thick]
@@ -359,6 +389,20 @@ The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is define
     \draw[->] (Vdual) to node {$(T^*)^*$} (Wdual);
   \end{tikzpicture}
 \end{center}
+% Creator: Opus 5 (Max)
+In other words, $(T^*)^* \circ \tau_V = \tau_W \circ T$.
+\end{proposition*}
+
+\begin{proof}
+Both sides are maps $V \to (W^*)^*$, so it is enough to compare their values at an arbitrary $v \in V$; those values are functionals on $W^*$, so it is enough in turn to compare them at an arbitrary $\ell \in W^*$. Unwinding the definition of the dual map, \cref{lem:dual_map}, twice, and that of $\tau$, which is the same formula for every space,
+\begin{align*}
+\Big( (T^*)^*\big(\tau_V(v)\big) \Big)(\ell)
+  &= \big(\tau_V(v) \circ T^*\big)(\ell) = \tau_V(v)\big(T^*(\ell)\big) = \big(T^*(\ell)\big)(v) \\
+  &= (\ell \circ T)(v) = \ell\big(T(v)\big) = \tau_W\big(T(v)\big)(\ell).
+\end{align*}
+Hence $(T^*)^*(\tau_V(v)) = \tau_W(T(v))$ for every $v \in V$, which is precisely the commutativity of the square. Note that nothing here requires $V$ or $W$ to be finite-di\-men\-sional.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 \begin{exercise}[Canonical Evaluation on Dual Bases]
   \label{exc:tau_on_dual_bases}
@@ -472,7 +516,7 @@ The two agree on every member of a basis of $V^*$, hence $\tau(v_i) = (v_i^*)^*$
 % prop:18.b.2
 \begin{proposition}[Isomorphism to a Complementary Subspace]
   \label{prop:direct_sum_complement}
-  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Suppose $U' \subseteq V$ is another subspace that acts as a complement of $U$ in $V$, which implies that $U + U' = V$ and $U \cap U' = \{0\}$. Then, the map
+  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Suppose $U' \subseteq V$ is another subspace that acts as a complement of $U$ in $V$, which by \cref{def:complement} means that $U + U' = V$ and $U \cap U' = \{0\}$. Then, the map
   \[
   \varphi \colon U \oplus U' \to V, \quad \varphi(u, u') := u + u'
   \]
@@ -600,6 +644,7 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We wi
 We begin by defining a relation on $V$. For $v_1, v_2 \in V$, we define $v_1 \sim v_2$ if and only if $v_1 - v_2 \in U$.
 
 \begin{lemma*}[Equivalence Relation on $V$]
+\label{lem:quotient_equivalence_relation}
   The relation $\sim$ defines an equivalence relation on $V$.
 \end{lemma*}
 
@@ -619,7 +664,7 @@ We denote the equivalence class of $v \in V$ by $[v]$. Thus,
 % def:18.c.1
 \begin{definition}[The Quotient Space]
   \label{def:quotient_space}
-  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We define $V/U := V/\sim$ to be the set of equivalence classes of the equivalence relation $\sim$. So, the elements of $V/U$ are $[v]$, where $v \in V$. 
+  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We define $V/U := V/\sim$ to be the set of equivalence classes of the equivalence relation $\sim$, which is one by the Lemma on \cpageref{lem:quotient_equivalence_relation}. So, the elements of $V/U$ are $[v]$, where $v \in V$.
   
   Alternatively, each element in $V/U$ is a set of the form $v + U$, where $v \in V$. The space $V/U$ is called the quotient of $V$ by $U$ (or modulo $U$).
 \end{definition}
@@ -755,16 +800,18 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   Kernel: We claim that $\ker(\pi) = U$. First, let $v \in \ker(\pi)$, meaning $\pi(v) = 0$. Then, $[v] = [0]$, which implies $v = v - 0 \in U$. Hence, $\ker(\pi) \subseteq U$. Conversely, let $u \in U$. Then, $u \sim 0$ because $u - 0 \in U$. Therefore, $\pi(u) = [u] = [0] = 0$, so $u \in \ker(\pi)$. This shows that $U \subseteq \ker(\pi)$, completing the proof.
 \end{proof}
 
-\begin{proposition}[Dimension of the Quotient Space] \label{prop:dim_quotient}
+\begin{proposition}[Dimension of the Quotient Space]
+% prop:18.c.4
+  \label{prop:dim_quotient}
   Suppose that $V$ is a finite-dimensional vector space. Then, $V/U$ is also finite-dimensional, and $\dim V/U = \dim V - \dim U$.
 \end{proposition}
 
 \begin{proof}
-  We have seen that $\pi \colon V \to V/U$ is a surjective linear map. This guarantees that $V/U$ is finite-dimensional. (Generally, if $T \colon W' \to W''$ is a surjective linear map and $W'$ is finite-dimensional, then $W''$ is also finite-dimensional, because the images of a basis of $W'$ span $W''$).
+  We have seen that $\pi \colon V \to V/U$ is a surjective linear map, this being \cref{prop:quotient_map}. This guarantees that $V/U$ is finite-dimensional. (Generally, if $T \colon W' \to W''$ is a surjective linear map and $W'$ is finite-dimensional, then $W''$ is also finite-dimensional, because the images of a basis of $W'$ span $W''$).
 
-  We now apply the Rank-Nullity Theorem to $\pi$:
+  We now apply the Rank-Nullity Theorem, \cref{thm:rank_nullity}, to $\pi$:
   \[ \dim V = \dim \ker(\pi) + \dim \Img(\pi). \]
-  Since $\ker(\pi) = U$ and $\Img(\pi) = V/U$, we obtain $\dim V/U = \dim V - \dim U$.
+  Since $\ker(\pi) = U$ and $\Img(\pi) = V/U$, again by \cref{prop:quotient_map}, we obtain $\dim V/U = \dim V - \dim U$.
 \end{proof}
 
 \subsection{The Isomorphism Theorem and Universal Property}
@@ -818,6 +865,8 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 % Extractor: Gemini 3.1 Pro
 
 \begin{theorem}[Universal Property of Quotient Spaces]
+% thm:18.c.6
+  \label{thm:universal_property_quotient}
   Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. The quotient space $V/U$ has the following universal property: For every vector space $W$ and every linear map $T \colon V \to W$ for which $T(U) = 0$ (i.e., for which $\ker(T) \supseteq U$), there exists a unique linear map $T' \colon V/U \to W$ such that $T = T' \circ \pi$. Moreover, $\ker(T') = \ker(T)/U$.
 \end{theorem}
 
@@ -848,9 +897,11 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 
 \subsection{Quotients, Complements, and Dual Spaces}
 
-Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $W \subseteq V$ be a complement of $U$ (i.e., $W$ is a subspace such that $U \cap W = \{0\}$ and $U + W = V$).
+Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $W \subseteq V$ be a complement of $U$ in the sense of \cref{def:complement} (i.e., $W$ is a subspace such that $U \cap W = \{0\}$ and $U + W = V$).
 
-\begin{proposition}[Canonical Isomorphism from a Complement] \label{prop:iso_complement}
+\begin{proposition}[Canonical Isomorphism from a Complement]
+% prop:18.c.7
+  \label{prop:iso_complement}
   Under the assumptions above, there is a canonical isomorphism $Q \colon W \to V/U$, defined by $Q(w) := [w] \in V/U$ for all $w \in W$.
 \end{proposition}
 
@@ -874,6 +925,8 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 \subsection{Quotients, Complements, and Annihilators}
 
 \begin{proposition}[Annihilators and Dual Quotients]
+% prop:18.c.8
+  \label{prop:annihilator_dual_quotient}
   Let $U \subseteq V$ be a subspace, and define the \newterm{annihilator} $U^\perp := \{\ell \in V^* \mid \ell|_U = 0\}$. Then:
   \begin{enumerate}
     \item $U^\perp \subseteq V^*$ is a linear subspace.
@@ -896,9 +949,9 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
       \end{enumerate}
     \end{exercise}
     
-    We claim that $L$ is an isomorphism. To see this, we define a map $P \colon U^\perp \to (V/U)^*$ as follows. Let $T \in U^\perp$, i.e., $T \colon V \to K$ such that $T|_U = 0$. By the Universal Property of Quotients, there exists a unique $T' \colon V/U \to K$ such that $T = T' \circ \pi$. Define $P(T) := T'$.
+    We claim that $L$ is an isomorphism. To see this, we define a map $P \colon U^\perp \to (V/U)^*$ as follows. Let $T \in U^\perp$, i.e., $T \colon V \to K$ such that $T|_U = 0$. By the Universal Property of Quotients, \cref{thm:universal_property_quotient} applied with $W = K$, there exists a unique $T' \colon V/U \to K$ such that $T = T' \circ \pi$. Define $P(T) := T'$.
 
-    We claim that $L \circ P = \id_{U^\perp}$ and $P \circ L = \id_{(V/U)^*}$. Indeed, for all $S \colon V/U \to K$, we have $P \circ L(S) = P(S \circ \pi) = S$, because of the uniqueness statement in the theorem about the universal property of quotient spaces. Also, for all $T \in U^\perp$, $L \circ P(T) = L(T') = T' \circ \pi = T$. This proves that $L$ is bijective, and since we know $L$ is linear, it is an isomorphism. It follows that $P$ is also a linear isomorphism.
+    We claim that $L \circ P = \id_{U^\perp}$ and $P \circ L = \id_{(V/U)^*}$. Indeed, for all $S \colon V/U \to K$, we have $P \circ L(S) = P(S \circ \pi) = S$, because of the uniqueness statement in \cref{thm:universal_property_quotient}. Also, for all $T \in U^\perp$, $L \circ P(T) = L(T') = T' \circ \pi = T$. This proves that $L$ is bijective, and since we know $L$ is linear, it is an isomorphism. It follows that $P$ is also a linear isomorphism, being the inverse map of the bijective linear map $L$ (\cref{lem:bijective_is_iso}).
 
     \item Assume $V$ is finite-dimensional. Consider the restriction map $R \colon V^* \to U^*$ defined by $R(\varphi) := \varphi|_U$ for all $\varphi \in V^*$. 
 
@@ -907,10 +960,10 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
       Show that $R$ is a linear map.
     \end{exercise}
 
-    We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$. This proves $\Img(R) = U^*$.
+    We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$, which is possible by the Steinitz Exchange Lemma in the form of \cref{lem:strong_steinitz}. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$; prescribing the values on a basis in this way does define one and only one linear map, by \cref{thm:existence_uniqueness_linear_map}. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$, and two linear maps on $U$ agreeing on a basis of $U$ are equal (the uniqueness half of the same theorem). This proves $\Img(R) = U^*$.
 
-    We claim that $\ker(R) = U^\perp$. Indeed, this follows directly from definitions: $\ker(R) = \{\varphi \in V^* \mid \varphi|_U = 0\} = U^\perp$. 
-    By the First Isomorphism Theorem, $R$ induces an isomorphism $\overline{R} \colon V^*/U^\perp \xrightarrow{\cong} U^*$.
+    We claim that $\ker(R) = U^\perp$. Indeed, this follows directly from definitions: $\ker(R) = \{\varphi \in V^* \mid \varphi|_U = 0\} = U^\perp$.
+    By the First Isomorphism Theorem, \cref{thm:first_isomorphism} applied to $R$, we get an induced isomorphism $\overline{R} \colon V^*/\ker(R) \to \Img(R)$, which is to say $\overline{R} \colon V^*/U^\perp \xrightarrow{\cong} U^*$.
   \end{enumerate}
 \end{proof}
 
@@ -1044,4 +1097,57 @@ $(\Img T)^\perp = \ker(T^*)$. Several stood in the transcript as
 \verb|\begin{proof}| blocks reading \qt{Exercise}, which leaves a stated result
 with no proof anywhere. All of them are now exercises, and each of the three
 sections ends with the solutions.
+
+\textbf{A later pass looking only for gaps in rigour} found nothing false in
+this chapter, but five numbered results of Prof. Biran's carrying no
+\verb|\label| at all, so that nothing could cite them: 18.a.3, 18.a.5, 18.a.11,
+18.c.6 and 18.c.8. Two of them were being cited already, in words rather than
+by reference: the proof of \cref{cor:dim_dual} runs
+$\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K$ on \cref{cor:dim_hom} without
+saying so, and the proof of \cref{prop:annihilator_dual_quotient} appeals twice
+to \qt{the theorem about the universal property of quotient spaces}, which is
+\cref{thm:universal_property_quotient} directly above it. All five are labelled
+now, with the handwritten numbers recorded above them as everywhere else, and
+the printed 18.a.1--18.a.12, 18.b.1--18.b.2 and 18.c.1--18.c.8 are unchanged.
+
+\textbf{A proof that stops one line early.} The proof of
+\cref{lem:dual_map_transpose} computes the coordinates of $S^*(w_j^*)$ in
+$\mathcal{B}^*$, observes that they form column $j$ of $A\transp$, and ends
+there, without ever saying that this identifies
+$[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ with $A\transp$, which is what was to be
+shown. The concluding sentence is supplied.
+
+\textbf{Two things stated in running prose.} The same pattern as in the chapter
+on linear maps and bases. The functionals $v_i^*$, on which
+\cref{lem:dual_basis} standing directly underneath is a statement, were defined
+in a paragraph of prose; they have an unnumbered Definition now, on
+\cpageref{def:dual_basis_functionals}. And the naturality of $\tau$ was
+asserted as a commutative square with no statement attached to it and no proof:
+it is the Proposition on \cpageref{prop:naturality_of_tau}, with the four-line
+verification that unwinds the definitions. Both are unnumbered, so nothing
+moved.
+
+\textbf{Silent steps.} Some fifteen now name the result they rest on, across
+all three sections. The ones with real content: that isomorphic spaces have
+equal dimension, which is what carries \cref{cor:dim_hom}; that two linear maps
+agreeing on a basis are equal and that prescribing values on a basis determines
+a linear map, which are the two halves of
+\cref{thm:existence_uniqueness_linear_map} and are used three times between the
+dual basis and the surjectivity of the restriction map; that $n$ spanning
+vectors in an $n$-dimensional space are a basis; that an injective map between
+spaces of equal finite dimension is already an isomorphism, which finishes
+\cref{thm:natural_map_injective}; the column description of a representation
+matrix, twice; and the basis extension behind
+\cref{prop:annihilator_dual_quotient} \textbf{(c)}. \Cref{cor:endomorphism_ring}
+appealed to \qt{a fundamental result from Linear Algebra I} for the matrix of a
+composition; that result is the composition rule earlier in this book, and is
+now pointed at.
+
+Two smaller things. \Cref{prop:direct_sum_complement} said that $U'$ being a
+complement \qt{implies} $U + U' = V$ and $U \cap U' = \{0\}$, where those two
+conditions are the definition of a complement, \cref{def:complement}, not a
+consequence of it. And one \verb|\cpageref| was introduced by \qt{in} rather
+than \qt{on}, which typesets as \qt{in page 136}; the same slip survives in the
+chapters on bases and on miscellaneous topics, which this pass has not yet
+reached.
 \end{ainote}
