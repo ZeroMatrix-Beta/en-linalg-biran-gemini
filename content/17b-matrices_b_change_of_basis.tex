@@ -44,7 +44,7 @@ and similarly:
 \begin{equation*}
     I_n = [\id_V]_{\mathcal{B}'}^{\mathcal{B}'} = [\id_V]_{\mathcal{B}'}^{\mathcal{B}} \cdot [\id_V]_{\mathcal{B}}^{\mathcal{B}'}
 \end{equation*}
-This demonstrates that $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is invertible and that its inverse is indeed $([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1}$. The proof for $[\id_W]_{\mathcal{C}}^{\mathcal{C}'}$ follows the exact same logic.
+This demonstrates that $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is invertible and that its inverse is indeed $[\id_V]_{\mathcal{B}'}^{\mathcal{B}}$, which is the asserted identity $[\id_V]_{\mathcal{B}}^{\mathcal{B}'} = ([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1}$. The proof for $[\id_W]_{\mathcal{C}}^{\mathcal{C}'}$ follows the exact same logic.
 \end{proof}
 
 \begin{definition}[Change of Basis Matrix]
@@ -70,11 +70,11 @@ Let $T: V \to W$ be an isomorphism between two finite-di\-men\-sional vector spa
 \end{proposition}
 
 \begin{proof}
-Let $n := \dim V = \dim W$. By the properties of composed linear maps and representation matrices, we have:
+Let $n := \dim V = \dim W$, the two dimensions agreeing because an isomorphism carries a basis to a basis. By the properties of composed linear maps and representation matrices (the composition rule on \cpageref{prop:representation_matrix_of_composition}, together with \cref{rem:identity_represents_id} for the last equality), we have:
 \begin{equation*}
     [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n
 \end{equation*}
-and conversely:
+and likewise:
 \begin{equation*}
     [T]_{\mathcal{C}}^{\mathcal{B}} \cdot [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} = [\id_W]_{\mathcal{C}}^{\mathcal{C}} = I_n
 \end{equation*}
@@ -133,7 +133,7 @@ where $O_{p,q}$ stands for the zero matrix in $\M_{p \times q}(K)$.
 \begin{proof}
 Put $\ell := \dim \ker(T)$. By the rank theorem, we know that $r = n - \ell$. Let $v_1, \dots, v_\ell$ be a basis of $\ker(T)$, and extend it to a full basis $(v_1, \dots, v_\ell, v_{\ell+1}, \dots, v_n)$ of $V$. It will be useful to work below with the rearranged basis:
 \begin{equation*}
-    \mathcal{B} = (v_{\ell+1}, \dots, v_n, v_1, \dots, v_\ell)
+    \mathcal{B} := (v_{\ell+1}, \dots, v_n, v_1, \dots, v_\ell)
 \end{equation*}
 In the proof of the rank theorem, we have seen that $T(v_{\ell+1}), \dots, T(v_n)$ form a basis for $\Img(T)$. Define $w_i := T(v_{\ell+i})$ for $i = 1, \dots, r$ (i.e., $w_1 = T(v_{\ell+1}), \dots, w_r = T(v_{\ell+r})$), and extend this list to a basis of $W$:
 \begin{equation*}
@@ -164,9 +164,9 @@ Now, we apply the previous proposition to $T_A$, yielding that:
 \end{equation*}
 for some basis $\mathcal{B}$ of $K^n$ and some basis $\mathcal{C}$ of $K^m$. Using the change of basis formula, we can rewrite this as:
 \begin{equation*}
-    \underbrace{[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}}_{=: P} \cdot \underbrace{[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}}_{= A} \cdot \underbrace{[\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}}_{=: Q} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
+    \underbrace{[\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}}_{=: P} \cdot \underbrace{[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}}_{= A} \cdot \underbrace{[\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}}_{=: Q} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
 \end{equation*}
-where $\mathcal{E}_n$ and $\mathcal{E}_m$ are the standard bases of $K^n$ and $K^m$, respectively. Setting $P = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$ and $Q = [\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ concludes the proof.
+where $\mathcal{E}_n$ and $\mathcal{E}_m$ are the standard bases of $K^n$ and $K^m$, respectively, and where the bases meet diagonally as they must: the superscript $\mathcal{E}_m$ of the left factor matches the subscript $\mathcal{E}_m$ of the middle one, and the subscript $\mathcal{E}_n$ of the right factor matches the superscript $\mathcal{E}_n$ of the middle one. Setting $P := [\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}$ and $Q := [\id_{K^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ concludes the proof.
 \end{proof}
 
 \begin{remark}
@@ -202,6 +202,13 @@ Note that $T_Q(K^n) = K^n$ because $T_Q$ is an isomorphism. Consequently, the di
     \rank_{\text{col}}(B) = \dim \Img(T_B) = \dim T_P(\Img(T_A)) = \dim \Img(T_A) = \rank_{\text{col}}(A)
 \end{equation*}
 where the second to last equality holds because $T_P$ is an isomorphism, preserving the dimension of subspaces.
+
+% Creator: Opus 5 (Max)
+The last statement of the corollary now follows. The two implications just proved say that the equivalence classes are exactly the sets of matrices of a common column rank, so distinct ranks give distinct classes, and every value $0 \le r \le \min\{m, n\}$ actually occurs, since
+\[
+\begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \in \M_{m \times n}(K)
+\]
+has columns $e_1, \dots, e_r, 0, \dots, 0$ and hence column rank $r$. There is therefore precisely one class for each such $r$.
 \end{proof}
 
 % Creator: Opus 5 (High)
@@ -263,4 +270,30 @@ Also here: the block form asserted at the end of the proof of
 declared to follow from the definitions, and the notation was brought to the
 house macros in three places, where $\M$ and $\GL$ had been typeset as plain
 $M$ and $GL$.
+
+% Creator: Opus 5 (Max)
+A later pass, looking only for gaps in rigour, found two slips in the
+bookkeeping of bases. The proof of \cref{cor:change_of_basis_formula} closed by
+saying that the inverse of $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is
+$([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1}$, one inverse too many: the two
+displays just above it show that the inverse is
+$[\id_V]_{\mathcal{B}'}^{\mathcal{B}}$, which is exactly the identity the
+corollary asserts.
+
+More seriously, in the proof of \cref{cor:matrix_equivalence_normal_form} the
+left factor was written $[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$. Its bases
+do not meet those of the middle factor $[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}$
+the way the composition rule requires, so the product as printed does not
+compose, and the matrix named $P$ was the inverse of the one meant. It has to
+be $[\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}$, which is also the matrix that
+the solution to part \textbf{(b)} of
+\cref{exc:equivalence_similarity_properties} arrives at independently. The
+correction is made and the diagonal matching is now said in words.
+
+Two smaller things: the final sentence of
+\cref{cor:matrix_rank_equivalence_classification}, that there is precisely one
+class for each rank $r$, was stated but not argued, and now is; and the proof
+of \cref{prop:representation_of_isomorphisms} said \qt{conversely} where it
+merely composes in the other order, and left unsaid why $\dim V = \dim W$ and
+which two earlier results its display uses.
 \end{ainote}
