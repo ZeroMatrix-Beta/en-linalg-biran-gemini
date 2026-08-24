@@ -157,6 +157,11 @@ You are authorized to improve the prose and apply the established "House Style" 
 \DeclareMathOperator{\GL}{GL}
 ```
 
+* **Whose Statement Is It? (Unnumbered vs. `ai` Environments):** Prof. Biran's printed numbering must never shift, so a statement that is being given an environment for the *first* time must never consume the `theorem` counter. Which environment it gets depends on **whose statement it is**:
+  * **Prof. Biran's, but unhoused.** If the statement is already in the notes and simply has no environment of its own (it sits in running prose, or under a "Notation" heading, or inside a Remark), use the **unnumbered** version: `definition*`, `proposition*`, `lemma*`, `theorem*`, `corollary*`. Give it a `\label` and cite it with `\cpageref` plus a descriptive name, for example `the Definition on \cpageref{def:representation_matrix}`. **Never `\cref` an unnumbered environment:** a `\label` inside one attaches to whatever counter was stepped last, so `\cref` would silently print the enclosing chapter number.
+  * **Yours.** If the statement is nowhere in the notes, whether it closes a gap the notes leave implicit or lifts a step out of a transcribed proof to make it citable, use the **`ai`** version: `aitheorem`, `ailemma`, `aiproposition`, `aicorollary`, `aidefinition`. These are numbered and so take the ordinary `\cref`, but they run on a counter of their own and carry the robot marker, so they never shift Prof. Biran's numbers and the reader can always tell them from the lecture material. Label them `aithm:`, `ailem:`, `aiprop:`, `aicor:`, `aidef:`.
+  * The test is **where the statement appears, not how hard it is**. A result Prof. Biran states without proving is still his and gets an unnumbered environment. A result he never states, even one assembled entirely out of three of his own, is yours and gets an `ai` environment. Both routes leave 17.e.1, 17.e.2, ... exactly where they were; the choice between them is a claim about provenance.
+
 * **Math Operators**: Use the following custom operators:
 
 ```latex

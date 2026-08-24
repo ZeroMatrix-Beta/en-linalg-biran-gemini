@@ -1,9 +1,8 @@
 # Rigour audit (reading the LaTeX alone)
 
 Working notes for the second audit pass over this book. Branch
-`review/verify-against-source`. Last updated after ch. 17d was pushed
-(`eeb79e5`); the pass stopped part way into ch. 17e with **no edits made to
-that file**.
+`review/verify-against-source`. Last updated after ch. 17e was pushed
+(`0e28b77`), which finishes the matrices chapter, 17a to 17e.
 
 This is a different pass from the source-verification audit. That one compared
 `content/*.tex` against Prof. Biran's scans in `source/` and restored what the
@@ -22,9 +21,25 @@ that contradicts the book's own conventions.
    unnumbered environment attaches to whatever counter was stepped last, so
    `\cref` silently prints the enclosing chapter number. `tools/check-crefs.sh`
    exists to catch exactly that.
-3. **Only reach for `aidefinition` / `ailemma` / `aitheorem` when the statement
-   is not Prof. Biran's at all.** Through ch. 17d, no such case arose: every
-   addition was one of his own statements finally getting a home.
+3. **Unnumbered for Prof. Biran's statements, `ai` for your own.** The two
+   routes both leave his numbering alone, so the choice between them is not a
+   typesetting decision, it is a claim about **provenance**, and a reader uses
+   it to tell the lecture material from the machine's additions:
+   - the statement stands *somewhere* in the notes, only without an
+     environment (running prose, a \qt{Notation} heading, inside a Remark)
+     $\Rightarrow$ unnumbered `definition*` / `proposition*` / `lemma*`, cited
+     with `\cpageref`;
+   - the statement is *nowhere* in the notes, whether it closes a gap they
+     leave implicit or lifts a step out of one of his proofs to make it
+     citable $\Rightarrow$ `aidefinition` / `ailemma` / `aiproposition`, which
+     are numbered on their own counter, carry the robot marker, and take the
+     ordinary `\cref`.
+
+   The test is *where the statement appears, not how hard it is*: a result he
+   states without proving is still his; a result he never states, even one
+   assembled entirely out of three of his own, is yours. Through ch. 17d no
+   `ai` case arose, and ch. 17e produced the first one. This rule now also
+   lives in `gemini.md`, so it survives this file.
 4. **Expand with parenthetical remarks.** `(i.e., ...)`, `(recall: ...)`,
    `(see ...)` add the reason for a step without rewording the sentence around
    it, which keeps the diff honest and the author's voice intact. A snappy
@@ -46,9 +61,11 @@ that contradicts the book's own conventions.
 | 17b | `content/17b-matrices_b_change_of_basis.tex` | done, pushed (`0c1499c`) |
 | 17c | `content/17c-matrices_c_column_rank_and_row_rank.tex` | done, pushed (`b9078db`) |
 | 17d | `content/17d-matrices_d_more_on_matrices_and_lineq.tex` | done, pushed (`eeb79e5`) |
-| 17e | `content/17e-matrices_e_elemntary_row_operations_revisited.tex` | **stopped part way through, no edits made** |
+| 17e | `content/17e-matrices_e_elemntary_row_operations_revisited.tex` | done, pushed (`0e28b77`) |
 | 10a, 11 | the bases chapters | not started; these were the original starting point before the redirect to ch. 16 |
 | 18 onwards | | not started |
+
+Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
 
 Each chapter's own `ainote` at the end of its file records what the pass did to
 it, in the book itself. This file is the view across chapters.
@@ -114,6 +131,53 @@ free variables to the solution it determines was defined in running prose, with
 Prop. 17.d.1 standing directly underneath as a statement about it. It has its
 own unnumbered definition now.
 
+### Ch. 17e, a product that does not compose, and the first `ai` result
+
+**The size mismatch.** The three types of elementary matrix are defined in
+`\M_{n x n}(K)`, which is what Lemma 17.e.1 needs, since it multiplies
+`A \in \M_{n x p}(K)` from the *left*. The `importantremark` on column
+operations that follows then multiplies the same `A` from the *right* by the
+same matrices. `A \cdot Q_{ij}(\alpha)` is defined only for a `p x p` factor,
+so **none of its three products exists unless `n = p`**. This is the ch. 17b
+failure mode again, a printed product that does not compose, and it is invisible
+to `check-repmatrix.pl`, which only knows about representation matrices. The
+remark now states that its elementary matrices are those of `\M_{p x p}(K)`.
+The mathematics of the three statements was right; only the sizes were.
+
+**The first `ai` result of the pass.** Both theorems of the chapter lean on
+*`A \in \M_{n x n}(K)` is invertible if and only if `\rank(A) = n`*, in opposite
+directions: the proof of Thm. 17.e.3 opens with \qt{`A` is invertible, and hence
+`\rank(A) = n`}, and the proof of Thm. 17.e.4 closes with the converse. Neither
+direction is stated anywhere in the book; each is assembled on the spot out of
+Lemma 17.c.3, Cor. 15.b.10 and Prop. 12.2. Because the equivalence is nowhere in
+the notes, it became `aiprop:invertible_iff_full_rank` rather than a
+`proposition*`, the first time rule 3 has pointed that way. It is `\cref`-able
+like any numbered statement and runs on the `ai` counter, so 17.e.1 to 17.e.5
+did not move.
+
+**Seven silent steps** now name their reason: the existence of the row-reduced
+echelon form; the invariance of rank under row operations, twice; the fact that
+the only `n x n` row-reduced echelon matrix of rank `n` is `I_n`, which was
+asserted flat and now has the pivot-counting argument behind it; the passage
+from left-multiplication by a chain of elementary matrices to a sequence of row
+operations, once in each direction of Thm. 17.e.4; and the order reversal in
+inverting a product.
+
+**A gap between a statement and its own proof.** Thm. 17.e.3 asks for
+`k >= 1`, but its proof takes the elementary matrices from Gauss elimination,
+which performs no operation at all when `A = I_n` and so yields `k = 0`. The
+proof now closes that with `T_1 := S_1(1) = I_n`, an elementary matrix of Type
+III because `1 != 0`.
+
+**Presentation, where it obscured the logic.** The proof after the column
+operations remark argues both that remark and the lemma above it, and its title
+now says so, since an untitled `proof` sitting under the remark reads as a proof
+of the remark alone. And where it said \qt{But taking the transpose again},
+nothing was being transposed: the step is the observation that the rows of
+`A\transp` are the columns of `A`. The logic was right either way. One arithmetic
+slip in a solution written by an earlier pass: `P_{ij} = I_n - E_{ii} - E_{jj} +
+E_{ij} + E_{ji}` involves four matrix units, not five.
+
 ## Tooling
 
 ### `tools/check-repmatrix.pl`
@@ -175,38 +239,25 @@ searching, and put any perl beyond a trivial one-liner into a file and run
   book are followed by a `\begin{proof}`, and several of those are legitimate
   remarks sitting between a proposition and its proof.
 
-## Where the pass stopped: ch. 17e
+## Checked in ch. 17e and found correct
 
-Read as far as Thm. 17.e.3, roughly the first 130 lines. **Nothing was changed
-in the file.** The observations below are preliminary and none of them has been
-verified to the standard of the chapters above; treat them as a starting point,
-not as findings.
+Recorded so that nobody re-derives them: `Q_{ij}(\alpha) = I_n + \alpha E_{ij}`
+agrees with the row operation defining it, and the three `4 x 4` examples are
+right. `Q_{ij}(\alpha)\transp = Q_{ji}(\alpha)`, and the row operation it
+induces on `A\transp` is the right one; `P_{ij}` and `S_i(\alpha)` are
+symmetric, which is why \qt{a similar logic} really does carry **(b')** and
+**(c')**. The explicit form `P_{ij} = I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}`
+is right, and so is the worked `2 x 2` inverse at the end, verified by
+multiplying back. Lemma 17.e.2 needs `\alpha != 0` for
+`S_i(\alpha)^{-1} = S_i(\alpha^{-1})`, and gets it from the Type III
+definition. The telescoping in `A \cdot B = (T_1^{-1} ... T_k^{-1})(T_k ... T_1)`
+is right.
 
-Checked and correct so far:
-
-- `Q_{ij}(\alpha) = I_n + \alpha E_{ij}` agrees with the row operation that
-  defines it, and the three `4 x 4` examples are right.
-- In the proof, `Q_{ij}(\alpha)\transp = Q_{ji}(\alpha)` is correct, and the
-  row operation it induces on `A\transp` is the right one.
-- Thm. 17.e.3 with `k >= 1` is fine even for `A = I_n`, since `S_i(1) = I_n` is
-  itself an elementary matrix.
-
-Worth looking at:
-
-- The `importantremark` on column operations sits **between Lemma 17.e.1 and its
-  proof**, and the proof then argues statements **(a)** to **(c)** of the lemma
-  and **(a')** to **(c')** of the remark. One `proof` environment covering two
-  environments is at least confusing, and a reader cannot tell what the proof
-  is attached to.
-- The transpose argument in that proof takes the transpose twice and says so
-  twice (\qt{But taking the transpose again} followed by \qt{Taking the
-  transpose of both sides}). The logic is right; the presentation obscures it.
-- The section writes elementary row operations as `R_i + \alpha R_j -> R_i`,
-  whereas `gemini.md` and ch. 6 use `E_i`. Here the deviation looks deliberate
-  and correct, since `E_{ij}` is already taken by the matrix units of
-  `not:matrix_units`, but the inconsistency with ch. 6 should be recorded
-  somewhere rather than left to be rediscovered.
-- The rest of the file, from Thm. 17.e.3 onwards, has not been read.
+One deviation that is deliberate and was left alone: this section writes
+elementary row operations as `R_i + \alpha R_j -> R_i`, where `gemini.md` and
+ch. 6 use `E_i`. The switch is Prof. Biran's own and is forced here, since
+`E_{ij}` is already the matrix units of `not:matrix_units`. The chapter's
+`ainote` records it.
 
 ## Open questions
 
