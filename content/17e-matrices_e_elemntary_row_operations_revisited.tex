@@ -73,8 +73,18 @@ Let $A \in \M_{n \times p}(K)$. Multiplying $A$ from the left by an elementary m
 \end{enumerate}
 \end{lemma}
 
+% Creator: Opus 5 (Max)
+% The elementary matrices were defined in \M_{n x n}(K), which is what the
+% lemma above needs, since it multiplies A in \M_{n x p}(K) from the left.
+% Here they multiply A from the right, so they have to be the p x p ones:
+% otherwise none of the three products below is defined, unless n = p.
 \begin{importantremark}[Column Operations]
-The same principle holds true for elementary column operations, but via right-multiplication:
+\label{rem:column_operations}
+% Extractor: Gemini 3.1 Pro
+The same principle holds true for elementary column operations, but via right-multiplication.
+% Creator: Opus 5 (Max)
+Here the elementary matrices are the ones of $\M_{p \times p}(K)$, that is, their indices run over $1 \le i \le p$, $1 \le j \le p$: it is the $p$ columns of $A \in \M_{n \times p}(K)$ that are being operated on, and a product such as $A \cdot Q_{ij}(\alpha)$ is defined only for a $p \times p$ factor on the right.
+% Extractor: Gemini 3.1 Pro
 \begin{enumerate}[label=\textbf{(\alph*')}]
     \item Multiplying $A$ from the right with $Q_{ij}(\alpha)$ results in the column operation $C_j + \alpha C_i \longrightarrow C_j$:
     \begin{equation*}
@@ -91,18 +101,26 @@ The same principle holds true for elementary column operations, but via right-mu
 \end{enumerate}
 \end{importantremark}
 
-\begin{proof}
+% Creator: Opus 5 (Max)
+% The single proof below argues (a)--(c) of the lemma and (a')--(c') of the
+% remark, with the remark standing between the lemma and it; the title says so,
+% since otherwise the reader cannot tell what is being proved.
+\begin{proof}[Proof of \cref{lemma:row_operations_matrix_multiplication} and of \cref{rem:column_operations}]
+% Extractor: Gemini 3.1 Pro
 Statements \textbf{(a)}, \textbf{(b)}, and \textbf{(c)} can be proven directly by calculating the matrix multiplications; the notes leave this calculation to the reader, and it is carried out for \textbf{(a)} among the solutions at the end of the section.
 
 Statements \textbf{(a')}, \textbf{(b')}, and \textbf{(c')} can be deduced from the row operation versions by passing to the transposed matrix. For example, to prove \textbf{(a')}:
 \begin{equation*}
     (A \cdot Q_{ij}(\alpha))\transp = Q_{ij}(\alpha)\transp \cdot A\transp = Q_{ji}(\alpha) \cdot A\transp
 \end{equation*}
-By part \textbf{(a)}, this is exactly the matrix obtained from $A\transp$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$. But taking the transpose again, this is equal to:
+By part \textbf{(a)}, applied to $A\transp \in \M_{p \times n}(K)$ with the roles of $n$ and $p$ interchanged, this is exactly the matrix obtained from $A\transp$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$.
+% Creator: Opus 5 (Max)
+Now the rows of $A\transp$ are the columns of $A$, so performing that row operation on $A\transp$ is the same as performing the column operation $C_j + \alpha C_i \longrightarrow C_j$ on $A$ and transposing the result. Hence the matrix above is equal to:
+% Extractor: Gemini 3.1 Pro
 \begin{equation*}
     \left( \text{matrix obtained from } A \text{ after applying } C_j + \alpha C_i \longrightarrow C_j \right)\transp
 \end{equation*}
-Taking the transpose of both sides, it follows that $A \cdot Q_{ij}(\alpha)$ is the matrix obtained from $A$ after the column operation $C_j + \alpha C_i \longrightarrow C_j$. The proofs for (b') and (c') follow a similar logic.
+Taking the transpose of both sides, it follows that $A \cdot Q_{ij}(\alpha)$ is the matrix obtained from $A$ after the column operation $C_j + \alpha C_i \longrightarrow C_j$. The proofs for \textbf{(b')} and \textbf{(c')} follow a similar logic, using that $P_{ij}\transp = P_{ij}$ and $S_i(\alpha)\transp = S_i(\alpha)$ in place of $Q_{ij}(\alpha)\transp = Q_{ji}(\alpha)$.
 \end{proof}
 
 \begin{lemma}[Inverses of Elementary Matrices]
@@ -120,6 +138,23 @@ Every elementary matrix is invertible, and the inverse of each is an elementary 
 The notes leave this proof as an exercise. \textit{(Hint:} Note that $P_{ij} \cdot P_{ij}$ is the matrix obtained from $P_{ij}$ by exchanging rows $i$ and $j$, which brings us immediately back to $I_n$. Apply similar logical steps for the other types.\textit{)}
 \end{exercise}
 
+% Creator: Opus 5 (Max)
+% The two theorems below both lean on this, in opposite directions: the proof of
+% 17.e.3 opens with "A is invertible, and hence rank(A) = n", and the proof of
+% 17.e.4 closes with "A must have rank n, which means that A is invertible".
+% The equivalence is nowhere stated in the notes, in either direction: it is a
+% step of a transcribed proof being made citable, which is what the ai-family
+% is for. It runs on the AI counter, so 17.e.1--17.e.5 are untouched.
+\begin{aiproposition}[Invertibility and Full Rank]
+\label{aiprop:invertible_iff_full_rank}
+Let $A \in \M_{n \times n}(K)$. Then $A$ is invertible if and only if $\rank(A) = n$.
+\end{aiproposition}
+
+\begin{proof}
+By \cref{lemma:invertible_iff_T_A_iso}, $A$ is invertible if and only if the associated map $T_A: K^n \to K^n$ is an isomorphism. Source and target here have the same dimension $n$, so by \cref{cor:equal_dim_iso} \textbf{(c)} this happens if and only if $T_A$ is surjective, that is, if and only if $\Img(T_A) = K^n$. Since $\Img(T_A)$ is a subspace of $K^n$, \cref{prop:subspace_dimension_constraints} turns that last condition into $\dim \Img(T_A) = n$. Finally, $\dim \Img(T_A) = \rankcol(A) = \rank(A)$ by \cref{rem:rank_notation_and_properties} \textbf{(c)} and \textbf{(a)}.
+\end{proof}
+
+% Extractor: Gemini 3.1 Pro
 \begin{theorem}[Decomposition into Elementary Matrices]
 % thm:17.e.3
 \label{thm:elementary_matrix_decomposition}
@@ -127,25 +162,28 @@ For every invertible matrix $A \in \GL_n(K)$, there exists an integer $k \ge 1$ 
 \begin{equation*}
     T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
 \end{equation*}
-Furthermore, we have $A = T_1^{-1} \dots T_k^{-1}$ and $A^{-1} = T_k \dots T_1$. In particular, any invertible matrix $A$ can be written as a finite product of elementary matrices.
+Furthermore, we have $A = T_1^{-1} \dots T_k^{-1}$ and $A^{-1} = T_k \dots T_1$. In particular, any invertible matrix $A$ can be written as a finite product of elementary matrices (recall from \cref{lemma:elementary_matrix_inverses} that each $T_{\ell}^{-1}$ is again an elementary matrix).
 \end{theorem}
 
 \begin{proof}
-We already know that every matrix $A \in \M_{n \times n}(K)$ can be brought to a row-reduced echelon matrix, which we will call $A'$, using the Gaussian elimination algorithm. 
+We already know that every matrix $A \in \M_{n \times n}(K)$ can be brought to a row-reduced echelon matrix, which we will call $A'$, using the Gaussian elimination algorithm (\cref{thm:echelon_form_exists}).
 
-In our case, $A$ is invertible, and hence $\rank(A) = n$. Because row operations do not change the rank, we have $\rank(A') = \rank(A)$, which implies that $\rank(A') = n$. The only $n \times n$ row-reduced echelon matrix with rank $n$ is the identity matrix, meaning $A' = I_n$. 
+In our case, $A$ is invertible, and hence $\rank(A) = n$ by \cref{aiprop:invertible_iff_full_rank}. Because row operations do not change the rank (row-equivalent matrices have the same row space by \cref{prop:row_space_invariance}, hence the same row rank, which is the rank by \cref{rem:rank_notation_and_properties} \textbf{(a)}), we have $\rank(A') = \rank(A)$, which implies that $\rank(A') = n$. The only $n \times n$ row-reduced echelon matrix with rank $n$ is the identity matrix, meaning $A' = I_n$. Indeed, the rank of $A'$ is its number of pivots by \cref{rem:rank_notation_and_properties} \textbf{(b)}, so $A'$ carries $n$ pivots in $n$ columns, one in each; since the pivots move strictly to the right as one descends the rows, the pivot of the $\ell$-th row lies in the $\ell$-th column, and since $A'$ is row-reduced, that pivot is the only non-zero entry of its column.
 
 Since each step in the Gaussian elimination algorithm corresponds to an elementary operation, we can deduce from \cref{lemma:row_operations_matrix_multiplication} that there exist elementary matrices $T_1, \dots, T_k$ (of types I, II, and III) such that:
 \begin{equation*}
     T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
 \end{equation*}
-By left-multiplying successively with the inverses of these elementary matrices, we isolate $A$ and deduce that $A = T_1^{-1} \dots T_k^{-1}$. Taking the inverse of $A$ yields $A^{-1} = T_k \dots T_1$.
+% Creator: Opus 5 (Max)
+(If $A = I_n$ to begin with, the algorithm performs no operation at all and this argument produces no matrices; the statement still holds as written, with $k := 1$ and $T_1 := S_1(1) = I_n$, which is an elementary matrix of Type III because $1 \neq 0$.)
+% Extractor: Gemini 3.1 Pro
+By left-multiplying successively with the inverses of these elementary matrices, which exist by \cref{lemma:elementary_matrix_inverses}, we isolate $A$ and deduce that $A = T_1^{-1} \dots T_k^{-1}$. Taking the inverse of $A$ yields $A^{-1} = T_k \dots T_1$, since inverting a product reverses its order and undoes each factor, by \cref{prop:gl_group_structure}.
 \end{proof}
 
 \begin{theorem}[Matrix Inversion Algorithm]
 % thm:17.e.4
 \label{thm:matrix_inversion_algorithm}
-Let $A \in \M_{n \times n}(K)$. Construct the augmented matrix by placing $A$ alongside $I_n$, denoted as $(A \mid I_n)$. Then, $A$ is invertible if and only if $(A \mid I_n)$ can be brought, via a sequence of elementary row operations, to the form $(I_n \mid B)$ for some matrix $B \in \M_{n \times n}(K)$. Furthermore, if this is the case, we have $A^{-1} = B$.
+Let $A \in \M_{n \times n}(K)$. Construct the augmented matrix by placing $A$ alongside $I_n$, denoted as $(A \mid I_n) \in \M_{n \times 2n}(K)$, that is, the matrix whose first $n$ columns are those of $A$ and whose last $n$ columns are those of $I_n$. Then, $A$ is invertible if and only if $(A \mid I_n)$ can be brought, via a sequence of elementary row operations, to the form $(I_n \mid B)$ for some matrix $B \in \M_{n \times n}(K)$. Furthermore, if this is the case, we have $A^{-1} = B$.
 \end{theorem}
 
 Before proving this theorem, we require an intermediate technical result.
@@ -170,6 +208,10 @@ Assume that $A$ is invertible. By \Cref{thm:elementary_matrix_decomposition}, th
 \begin{equation*}
     T_k \dots T_1 \cdot \left(A \mid I_n\right) = \left(T_k \dots T_1 \cdot A \mid T_k \dots T_1 \cdot I_n\right) = \left(I_n \mid T_k \dots T_1\right)
 \end{equation*}
+% Creator: Opus 5 (Max)
+Left-multiplying by $T_1$, then by $T_2$, and so on up to $T_k$ is, by \cref{lemma:row_operations_matrix_multiplication}, nothing other than performing the corresponding $k$ elementary row operations in that order. So $(A \mid I_n)$ can indeed be brought to the required form by a sequence of elementary row operations.
+% Extractor: Gemini 3.1 Pro
+
 Let us define $B := T_k \dots T_1$. We can clearly see that:
 \begin{equation*}
     B \cdot A = (T_k \dots T_1) \cdot A = I_n
@@ -180,7 +222,7 @@ and using the decomposition of $A$ provided by \cref{thm:elementary_matrix_decom
 \end{equation*}
 This explicitly implies that $A^{-1} = B$.
 
-Conversely, assume that $(A \mid I_n)$ can be brought to $(I_n \mid B)$ by a sequence of elementary row operations, for some matrix $B \in \M_{n \times n}(K)$. This directly implies that the matrix $A$ itself is row-equivalent to $I_n$. Consequently, $A$ must have rank $n$, which inherently means that $A$ is invertible. This concludes the proof.
+Conversely, assume that $(A \mid I_n)$ can be brought to $(I_n \mid B)$ by a sequence of elementary row operations, for some matrix $B \in \M_{n \times n}(K)$. This directly implies that the matrix $A$ itself is row-equivalent to $I_n$: each of those operations is left-multiplication by an elementary matrix (\cref{lemma:row_operations_matrix_multiplication}), and by \cref{lemma:block_matrix_multiplication} such a multiplication acts on the two blocks separately, so the left-hand block undergoes on its own exactly the same sequence of row operations, ending at $I_n$. Consequently, $A$ must have rank $n$, again because row operations leave the row space, and with it the rank, unchanged (\cref{prop:row_space_invariance} and \cref{rem:rank_notation_and_properties} \textbf{(a)}), which inherently means that $A$ is invertible by \cref{aiprop:invertible_iff_full_rank}. This concludes the proof.
 \end{proof}
 
 \begin{example}[Computing the Inverse of a Two-by-Two Matrix]
@@ -207,7 +249,7 @@ The left side is now the identity matrix $I_2$, which means the right side is ou
 \label{sec:solutions_eros_revisited}
 
 \begin{exercisesolution}[Proof of \cref{exc:permutation_matrix_form}]
-Both sides are $n \times n$ matrices, so it suffices to compare entries. Write $M := I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$, and recall that the $(k,\ell)$-entry of $E_{pq}$ is $1$ if $(k,\ell) = (p,q)$ and $0$ otherwise, while the $(k,\ell)$-entry of $I_n$ is $\delta_{k\ell}$. Since $i \neq j$, the five matrix units involved sit in five distinct positions, and the entries of $M$ are:
+Both sides are $n \times n$ matrices, so it suffices to compare entries. Write $M := I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$, and recall that the $(k,\ell)$-entry of $E_{pq}$ is $1$ if $(k,\ell) = (p,q)$ and $0$ otherwise, while the $(k,\ell)$-entry of $I_n$ is $\delta_{k\ell}$. Since $i \neq j$, the four matrix units involved sit in four distinct positions, and the entries of $M$ are:
 \begin{itemize}
     \item $M_{kk} = 1$ for $k \notin \{i, j\}$, from $I_n$ alone;
     \item $M_{ii} = 1 - 1 = 0$ and $M_{jj} = 1 - 1 = 0$;
@@ -242,7 +284,7 @@ For Type III, $S_i(\alpha) S_i(\alpha^{-1})$ scales the $i$-th row of $S_i(\alph
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lemma:block_matrix_multiplication}]
-Write $(C \mid D) \in \M_{n \times 2n}(K)$ for the matrix whose first $n$ columns are those of $C$ and whose last $n$ columns are those of $D$. By the column-wise description of a product, multiplying on the left by $B$ acts on each column separately:
+Write $(C \mid D) \in \M_{n \times 2n}(K)$ for the matrix whose first $n$ columns are those of $C$ and whose last $n$ columns are those of $D$, and call these columns $u_1, \dots, u_{2n}$. By the column-wise description of a product (\cref{sec:matrix_multiplication}), multiplying on the left by $B$ acts on each column separately:
 \[
 B \cdot \begin{pmatrix} | & & | \\ u_1 & \dots & u_{2n} \\ | & & | \end{pmatrix} = \begin{pmatrix} | & & | \\ B u_1 & \dots & B u_{2n} \\ | & & | \end{pmatrix}.
 \]
@@ -275,4 +317,46 @@ prompt and once with a hint.
 
 Finally, the transcript's example of a Type II matrix was $P_{3,4}$, correctly
 computed but not the notes' example; it is back to Prof. Biran's $P_{2,4}$.
+
+A later pass looking only for gaps in rigour found one product that does not
+compose. The elementary matrices are defined in $\M_{n \times n}(K)$, which is
+what \cref{lemma:row_operations_matrix_multiplication} needs, since it
+multiplies $A \in \M_{n \times p}(K)$ from the left. But
+\cref{rem:column_operations} multiplies the same $A$ from the right by the same
+matrices, and $A \cdot Q_{ij}(\alpha)$ is defined only for a $p \times p$
+factor. The remark now says that its elementary matrices are the ones of
+$\M_{p \times p}(K)$; the mathematics of all three statements is otherwise
+untouched, and the proof gains the note that it applies \textbf{(a)} to
+$A\transp$ with the roles of $n$ and $p$ interchanged.
+
+The chapter also carries the same pattern seen in the chapter on linear maps
+and bases: two of its steps rest on facts the book never
+states. \Cref{thm:elementary_matrix_decomposition} opens with \qt{$A$ is
+invertible, and hence $\rank(A) = n$}, and the proof of
+\cref{thm:matrix_inversion_algorithm} closes with the converse implication;
+neither direction is stated anywhere in the notes, each being assembled on the
+spot from \cref{lemma:invertible_iff_T_A_iso}, \cref{cor:equal_dim_iso} and
+\cref{prop:subspace_dimension_constraints}. Since the equivalence is nowhere in
+the lecture material, it is stated as
+\cref{aiprop:invertible_iff_full_rank} rather than as an unnumbered
+Proposition: the ai-family carries the robot marker that tells a reader this is
+not Prof. Biran's, and runs on its own counter, so 17.e.1--17.e.5 stay where
+they are.
+
+Seven further steps now name the reason they hold: the existence of the
+row-reduced echelon form, the invariance of the rank under row operations
+(twice), the identification of the only $n \times n$ row-reduced echelon matrix
+of rank $n$, the passage from left-multiplication by a chain of elementary
+matrices to a sequence of row operations (twice, once in each direction of
+\cref{thm:matrix_inversion_algorithm}), and the reversal of order when a
+product is inverted. The statement of
+\cref{thm:elementary_matrix_decomposition} asks for $k \ge 1$ while its proof
+produces no elementary matrix at all when $A = I_n$; the proof now closes that
+gap with $T_1 := S_1(1) = I_n$.
+
+Two smaller things. The proof following \cref{rem:column_operations} argues
+both that remark and the lemma above it, so its title now says which; and
+where it read \qt{But taking the transpose again}, nothing was in fact being
+transposed, the step being the observation that the rows of $A\transp$ are the
+columns of $A$. The logic was right either way.
 \end{ainote}
