@@ -93,7 +93,7 @@ We compute the product of a $2 \times 3$ matrix and a $3 \times 2$ matrix:
 \begin{equation*}
     \begin{pmatrix} 3 & 2 & 1 \\ 1 & 0 & 2 \end{pmatrix} \cdot \begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 4 & 0 \end{pmatrix} = \begin{pmatrix} 3 \cdot 1 + 2 \cdot 0 + 1 \cdot 4 & 3 \cdot 2 + 2 \cdot 1 + 1 \cdot 0 \\ 1 \cdot 1 + 0 \cdot 0 + 2 \cdot 4 & 1 \cdot 2 + 0 \cdot 1 + 2 \cdot 0 \end{pmatrix} = \begin{pmatrix} 7 & 8 \\ 9 & 2 \end{pmatrix}
 \end{equation*}
-Conversely, multiplying the $3 \times 2$ matrix by the $2 \times 3$ matrix yields a $3 \times 3$ matrix:
+In the other order, multiplying the $3 \times 2$ matrix by the $2 \times 3$ matrix yields a $3 \times 3$ matrix:
 \begin{equation*}
     \begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 4 & 0 \end{pmatrix} \cdot \begin{pmatrix} 3 & 2 & 1 \\ 1 & 0 & 2 \end{pmatrix} = \begin{pmatrix} 5 & 2 & 5 \\ 1 & 0 & 2 \\ 12 & 8 & 4 \end{pmatrix}
 \end{equation*}
@@ -121,7 +121,7 @@ If $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$, then $A \cdot B$ i
 
 \subsection{Connections to Linear Maps}
 
-As a conclusion from our previous discussions on linear maps, let $T: V \to W$ and $S: W \to U$ be linear maps between finite-dimensional vector spaces. Let $\mathcal{B}$, $\mathcal{C}$, and $\mathcal{E}$ be bases for $V$, $W$, and $U$, respectively. The matrix representation of the composition $S \circ T$ is given by the product of their respective representation matrices:
+As a conclusion from our previous discussions on linear maps (the computation on \cpageref{prop:representation_matrix_of_composition}), let $T: V \to W$ and $S: W \to U$ be linear maps between finite-dimensional vector spaces. Let $\mathcal{B}$, $\mathcal{C}$, and $\mathcal{E}$ be bases for $V$, $W$, and $U$, respectively. The matrix representation of the composition $S \circ T$ is given by the product of their respective representation matrices:
 \[
     [S \circ T]_{\mathcal{E}}^{\mathcal{B}} = [S]_{\mathcal{E}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}}
 \]
@@ -138,7 +138,7 @@ Here $\mathcal{B}$ is a basis of the source $V$, $\mathcal{C}$ a basis of the sp
 
 \subsection{Notation and The Identity Matrix}
 
-Let $\mathcal{I}$ be an index set. For $i, j \in \mathcal{I}$, we define the \textbf{Kronecker-delta} as:
+Let $\mathcal{I}$ be an index set. For $i, j \in \mathcal{I}$, we define the \newterm{Kronecker-delta} as:
 \begin{equation*}
     \delta_{ij} := \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}
 \end{equation*}
@@ -182,41 +182,45 @@ Matrix multiplication satisfies the following algebraic properties:
 \end{proposition}
 
 \begin{proof}
-Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear maps defined by left-multiplication with the matrices $A$, $B$, and $C$, respectively (i.e., $T_A(v) = A \cdot v$ for all $v \in K^n$, $T_B(w) = B \cdot w$ for all $w \in K^p$, and $T_C(u) = C \cdot u$ for all $u \in K^q$). For any dimension $r$, we denote the standard basis of $K^r$ by $\mathcal{E}_r$. We have already established that:
+Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear maps defined by left-multiplication with the matrices $A$, $B$, and $C$, respectively (i.e., $T_A(v) = A \cdot v$ for all $v \in K^n$, $T_B(w) = B \cdot w$ for all $w \in K^p$, and $T_C(u) = C \cdot u$ for all $u \in K^q$). For any dimension $r$, we denote the standard basis of $K^r$ by $\mathcal{E}_r$. We have already established that (\cref{ex:representation_matrices}, first item):
 \begin{equation*}
-    [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A, \quad [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} = B, \quad \text{and} \quad [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = C
+    [T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} = A, \quad [T_B]_{\mathcal{E}_n}^{\mathcal{E}_p} = B, \quad \text{and} \quad [T_C]_{\mathcal{E}_p}^{\mathcal{E}_q} = C
 \end{equation*}
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We rely on the associativity of function composition, which states that $(T_A \circ T_B) \circ T_C = T_A \circ (T_B \circ T_C)$. These are both maps from $K^q$ to $K^m$. We now pass to the matrix representation of these maps with respect to the standard bases $\mathcal{E}_q$ and $\mathcal{E}_m$:
     \begin{equation*}
-        [(T_A \circ T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ (T_B \circ T_C)]_{\mathcal{E}_q}^{\mathcal{E}_m}
+        [(T_A \circ T_B) \circ T_C]_{\mathcal{E}_m}^{\mathcal{E}_q} = [T_A \circ (T_B \circ T_C)]_{\mathcal{E}_m}^{\mathcal{E}_q}
     \end{equation*}
-    By applying the rule for the matrix representation of composed maps, we get:
+    By applying the rule for the matrix representation of composed maps (on \cpageref{prop:representation_matrix_of_composition}), we get:
     \begin{equation*}
-        [T_A \circ T_B]_{\mathcal{E}_p}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_n}
+        [T_A \circ T_B]_{\mathcal{E}_m}^{\mathcal{E}_p} \cdot [T_C]_{\mathcal{E}_p}^{\mathcal{E}_q} = [T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} \cdot [T_B \circ T_C]_{\mathcal{E}_n}^{\mathcal{E}_q}
     \end{equation*}
     Expanding further, we obtain:
     \begin{equation*}
-        \left([T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_B]_{\mathcal{E}_p}^{\mathcal{E}_n}\right) \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot \left([T_B]_{\mathcal{E}_p}^{\mathcal{E}_n} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_p}\right)
+        \left([T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} \cdot [T_B]_{\mathcal{E}_n}^{\mathcal{E}_p}\right) \cdot [T_C]_{\mathcal{E}_p}^{\mathcal{E}_q} = [T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} \cdot \left([T_B]_{\mathcal{E}_n}^{\mathcal{E}_p} \cdot [T_C]_{\mathcal{E}_p}^{\mathcal{E}_q}\right)
     \end{equation*}
     Substituting the matrices back in yields $(A \cdot B) \cdot C = A \cdot (B \cdot C)$.
     
-    \item From the properties of linear maps, we know that $(T_A + T_B) \circ T_C = T_A \circ T_C + T_B \circ T_C$. Passing to the matrix representations, we have:
+    \item
+% Creator: Opus 5 (Max)
+    The shapes here are the ones of statement \textbf{(b)} and not the ones fixed above, since $A$ and $B$ must now be summable: we have $A, B \in \M_{m \times n}(K)$ and $C \in \M_{n \times p}(K)$, so that $T_A, T_B: K^n \to K^m$ and $T_C: K^p \to K^n$.
+% Extractor: Gemini 3.1 Pro
+    From the properties of linear maps, we know that $(T_A + T_B) \circ T_C = T_A \circ T_C + T_B \circ T_C$. Passing to the matrix representations, we have:
     \begin{equation*}
-        [(T_A + T_B) \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} = [T_A \circ T_C + T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
+        [(T_A + T_B) \circ T_C]_{\mathcal{E}_m}^{\mathcal{E}_p} = [T_A \circ T_C + T_B \circ T_C]_{\mathcal{E}_m}^{\mathcal{E}_p}
     \end{equation*}
     This implies that:
     \begin{equation*}
-        [T_A + T_B]_{\mathcal{E}_n}^{\mathcal{E}_m} \cdot [T_C]_{\mathcal{E}_q}^{\mathcal{E}_n} = [T_A \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m} + [T_B \circ T_C]_{\mathcal{E}_q}^{\mathcal{E}_m}
+        [T_A + T_B]_{\mathcal{E}_m}^{\mathcal{E}_n} \cdot [T_C]_{\mathcal{E}_n}^{\mathcal{E}_p} = [T_A \circ T_C]_{\mathcal{E}_m}^{\mathcal{E}_p} + [T_B \circ T_C]_{\mathcal{E}_m}^{\mathcal{E}_p}
     \end{equation*}
-    Which directly gives us $(A + B) \cdot C = A \cdot C + B \cdot C$. The other distributive identity in \textbf{(b)} is proven similarly.
+    Which directly gives us $(A + B) \cdot C = A \cdot C + B \cdot C$ (both steps use that a sum of maps given by matrices is again given by a matrix, namely $T_M + T_N = T_{M+N}$ for $M, N$ of equal shape, since both sides send $v$ to $Mv + Nv = (M+N)v$; in particular $[T_A + T_B]_{\mathcal{E}_m}^{\mathcal{E}_n} = A + B$). The other distributive identity in \textbf{(b)} is proven similarly.
     
     \item The identity matrix $I_m$ represents the identity map: $I_m = [\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{E}_m}$. Since composing with the identity map does not change a function, we have $\id_{K^m} \circ T_A = T_A$. Therefore:
     \begin{equation*}
-        [\id_{K^m} \circ T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_m} = A
+        [\id_{K^m} \circ T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} = [T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} = A
     \end{equation*}
-    This implies that $I_m \cdot A = A$. The proof for $A I_n = A$ follows the same logic.
+    This implies that $I_m \cdot A = A$ (the composition rule turns the left-hand side into $[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{E}_m} \cdot [T_A]_{\mathcal{E}_m}^{\mathcal{E}_n} = I_m \cdot A$). The proof for $A I_n = A$ follows the same logic.
     
     \item Let $T_A: K^n \to K^m$ and $T_B: K^p \to K^n$ be the linear maps associated with $A$ and $B$, respectively. We want to show that $\alpha(AB) = (\alpha A)B = A(\alpha B)$. This is equivalent to showing that the corresponding linear maps are equal.
     
@@ -291,6 +295,7 @@ An $n \times n$ matrix $A \in \M_{n \times n}(K)$ is called \newterm{invertible}
 \end{definition}
 
 \begin{remark}
+\label{rem:uniqueness_of_inverse_matrix}
 If $A$ is invertible, then there exists \textbf{only one} matrix $B$ such that $A \cdot B = B \cdot A = I_n$.
 \end{remark}
 
@@ -303,7 +308,7 @@ This proves the uniqueness.
 \end{proof}
 
 \begin{definition}[Inverse Matrix and the General Linear Group]
-If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ is called the \newterm{inverse} of $A$ and is denoted by $A^{-1}$. We have:
+If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ (unique by \cref{rem:uniqueness_of_inverse_matrix}) is called the \newterm{inverse} of $A$ and is denoted by $A^{-1}$. We have:
 \begin{equation*}
     A \cdot A^{-1} = A^{-1} \cdot A = I_n
 \end{equation*}
@@ -335,6 +340,29 @@ Let $G$ be a group. Then:
 \end{enumerate}
 \end{proposition}
 
+% Creator: Opus 5 (Max)
+% The notes state these four properties without proof and, unlike the four
+% items they do mark "Exc.", leave no exercise for them. Each is one line, so
+% they are proved here rather than left standing unargued. The enumerate
+% mirrors the one in the statement, as the house style requires.
+\begin{proof}
+\begin{enumerate}
+    \item Let $e$ and $e'$ both be units of $G$. Then, $e = e \cdot e' = e'$, where the first equality holds because $e'$ is a unit, and the second because $e$ is one.
+    \item Let $h$ and $h'$ both be inverses of $g$. Then,
+    \[
+    h = h \cdot e = h \cdot (g \cdot h') = (h \cdot g) \cdot h' = e \cdot h' = h',
+    \]
+    using associativity in the middle step.
+    \item The defining equations $g \cdot g^{-1} = g^{-1} \cdot g = e$ say, read the other way round, that $g$ is an inverse of $g^{-1}$. By \textbf{(b)} the inverse is unique, and therefore, $(g^{-1})^{-1} = g$.
+    \item We check that $g_2^{-1} \cdot g_1^{-1}$ is a two-sided inverse of $g_1 \cdot g_2$:
+    \[
+    (g_1 g_2)(g_2^{-1} g_1^{-1}) = g_1 (g_2 g_2^{-1}) g_1^{-1} = g_1 \cdot e \cdot g_1^{-1} = g_1 g_1^{-1} = e,
+    \]
+    and symmetrically $(g_2^{-1} g_1^{-1})(g_1 g_2) = e$. By \textbf{(b)} again, $(g_1 g_2)^{-1} = g_2^{-1} g_1^{-1}$.
+\end{enumerate}
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 \begin{proposition}[The General Linear Group]
 % prop:17.a.7
 \label{prop:gl_group_structure}
@@ -353,7 +381,7 @@ and, multiplying from the right,
 \begin{equation*}
     (AB)(B^{-1}A^{-1}) = ABB^{-1}A^{-1} = AI_nA^{-1} = AA^{-1} = I_n
 \end{equation*}
-This proves that $AB$ is invertible with inverse $B^{-1}A^{-1}$, and therefore, $AB \in \GL_n(K)$. The other statements in the proposition follow immediately from what we have proved earlier regarding the uniqueness of inverses.
+This proves that $AB$ is invertible with inverse $B^{-1}A^{-1}$, and therefore, $AB \in \GL_n(K)$. The remaining group axioms are already available: associativity is \cref{prop:matrix_multiplication_properties} \textbf{(a)}, the identity element is $I_n$ by \cref{prop:matrix_multiplication_properties} \textbf{(c)}, and inverses exist by the very definition of $\GL_n(K)$. The other statements in the proposition follow immediately from what we have proved earlier regarding the uniqueness of inverses, namely \cref{prop:group_basic_properties} \textbf{(c)} and \textbf{(d)}.
 \end{proof}
 
 \begin{corollary}[Unique Solution via Matrix Inverse]
@@ -532,4 +560,34 @@ Finally, terms being defined for the first time, the product, the
 Kronecker-delta, the identity matrix, invertible, the inverse, upper and lower
 triangular, diagonal, were marked with \verb|\qt| rather than
 \verb|\newterm|, which the house style reserves for exactly this.
+
+% Creator: Opus 5 (Max)
+A later pass looked only for gaps in rigour, and turned up one real error. The
+whole proof of \cref{prop:matrix_multiplication_properties} carried its
+representation matrices the wrong way round: it wrote
+$[T_A]_{\mathcal{E}_n}^{\mathcal{E}_m}$ for the map $T_A \colon K^n \to K^m$,
+putting the basis of the target on top. The convention of this book, and the
+one used in \cref{sec:change_of_basis} and everywhere after, is that the
+superscript carries the basis of the source. Since every occurrence in that
+proof was swapped, the argument was internally consistent and read perfectly
+well, which is exactly why it survived; but each matrix in it named the wrong
+map. All of them are now the right way round.
+
+Statement \textbf{(b)} of that proposition has different shapes from
+\textbf{(a)} and \textbf{(d)}, because $A$ and $B$ have to be summable there.
+Its proof nonetheless inherited the maps fixed for \textbf{(a)}, so that $T_C$
+quietly changed from $K^q \to K^p$ into $K^q \to K^n$ halfway through. The
+shapes for \textbf{(b)} are now stated where they change, and the displays use
+them. The step from maps back to matrices in \textbf{(b)} also needs
+$T_M + T_N = T_{M+N}$, which is one line and is now given.
+
+\Cref{prop:group_basic_properties} stood with neither a proof nor an exercise,
+although the notes mark four other statements of this section \qt{Exc.} and
+this one is not among them. Its four items are one line each and are proved
+above. The proof of \cref{prop:gl_group_structure} appealed to \qt{what we
+have proved earlier}; it now names the results, including the two axioms it
+borrows from \cref{prop:matrix_multiplication_properties}. Three pointers were
+added where a fact was used without one, and the uniqueness of the inverse
+matrix, which the definition immediately after it relies on for the word
+\qt{the}, was given a label and is cited there.
 \end{ainote}
