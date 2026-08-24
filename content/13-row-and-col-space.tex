@@ -193,12 +193,12 @@ Both spaces now have a dimension, and these two numbers deserve names of their o
 \label{def:row_and_column_rank}
 Let $A \in \M_{m \times n}(K)$. We define the \newterm{row rank} and the \newterm{column rank} of $A$ as
 \[
-\rank_{\text{row}}(A) := \dim \RowS(A), \qquad \rank_{\text{col}}(A) := \dim \ColS(A).
+\rankrow(A) := \dim \RowS(A), \qquad \rankcol(A) := \dim \ColS(A).
 \]
 \end{definition}
 
 \begin{remark}
-The notes flag right here that these two numbers always coincide, $\rank_{\text{row}}(A) = \rank_{\text{col}}(A)$, and postpone the proof. In this chapter the equality already falls out of the two basis theorems below, in \cref{thm:rank_equality}; we return to it in \cref{thm:rank_row_column_equality}, where it is proved once more, this time from the theory of linear maps and without any appeal to Gauss elimination.
+The notes flag right here that these two numbers always coincide, $\rankrow(A) = \rankcol(A)$, and postpone the proof. In this chapter the equality already falls out of the two basis theorems below, in \cref{thm:rank_equality}; we return to it in \cref{thm:rank_row_column_equality}, where it is proved once more, this time from the theory of linear maps and without any appeal to Gauss elimination.
 \end{remark}
 
 \subsection{Constructing Bases}
@@ -294,7 +294,7 @@ By construction, $U = \RowS(A)$. The matrix $M$ is row-equivalent to $A$, so $\R
 % thm:13.13
 \begin{theorem}[The Rank Equality]
 \label{thm:rank_equality}
-For any $A \in \M_{m \times n}(K)$, $\dim \RowS(A) = \dim \ColS(A)$, or equivalently, in the terminology of \cref{def:row_and_column_rank}, $\rank_{\text{row}}(A) = \rank_{\text{col}}(A)$. This shared dimension is the \newterm{rank} of $A$, denoted $\rank(A)$.
+For any $A \in \M_{m \times n}(K)$, $\dim \RowS(A) = \dim \ColS(A)$, or equivalently, in the terminology of \cref{def:row_and_column_rank}, $\rankrow(A) = \rankcol(A)$. This shared dimension is the \newterm{rank} of $A$, denoted $\rank(A)$.
 \end{theorem}
 \begin{proof}
 Let $r$ be the number of pivots in the RREF of $A$. By \cref{thm:basis_col_space}, $\dim \ColS(A) = r$. By \cref{thm:row_basis}, $\dim \RowS(A) = r$. Thus, the dimensions are exactly equal.
@@ -349,7 +349,7 @@ For all matrices $A, B \in \M_{m \times n}(K)$ and every scalar $\lambda \in K$,
 \begin{remark}
 Statement \textbf{(d)} is the reason the transpose is the natural bookkeeping device for the two ranks. Taking dimensions in \cref{prop:transpose_properties} \textbf{(d)} gives
 \[
-\rank_{\text{row}}(A\transp) = \rank_{\text{col}}(A), \qquad \rank_{\text{col}}(A\transp) = \rank_{\text{row}}(A),
+\rankrow(A\transp) = \rankcol(A), \qquad \rankcol(A\transp) = \rankrow(A),
 \]
 so every statement about row rank is a statement about the column rank of the transposed matrix, and conversely.
 \end{remark}
@@ -376,7 +376,7 @@ in Biran's text: the transcript asserts the preservation of linear relations
 between columns in an important remark and then rests
 \cref{thm:basis_col_space} on it, so it is stated and proved here as an
 AI-Lemma, on the strength of \cref{thm:ero_preserve_solutions}. And the notes
-defer $\rank_{\text{row}}(A) = \rank_{\text{col}}(A)$ to a later lecture, while
+defer $\rankrow(A) = \rankcol(A)$ to a later lecture, while
 this chapter already reaches it in \cref{thm:rank_equality}; the argument is
 sound and is kept, with the relation to \cref{thm:rank_row_column_equality}
 recorded in a remark. In the worked span computation on

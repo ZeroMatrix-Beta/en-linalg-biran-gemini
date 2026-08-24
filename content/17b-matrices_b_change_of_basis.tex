@@ -70,7 +70,7 @@ Let $T: V \to W$ be an isomorphism between two finite-di\-men\-sional vector spa
 \end{proposition}
 
 \begin{proof}
-Let $n := \dim V = \dim W$, the two dimensions agreeing because an isomorphism carries a basis to a basis. By the properties of composed linear maps and representation matrices (the composition rule on \cpageref{prop:representation_matrix_of_composition}, together with \cref{rem:identity_represents_id} for the last equality), we have:
+Let $n := \dim V = \dim W$, the two dimensions agreeing because an isomorphism carries a basis to a basis. By the properties of composed linear maps and representation matrices (the composition rule on \cpageref{prop:representation_matrix_of_composition}, together with the Proposition on \cpageref{prop:identity_represents_id} for the last equality), we have:
 \begin{equation*}
     [T^{-1}]_{\mathcal{B}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n
 \end{equation*}
@@ -151,11 +151,11 @@ Let $A \in \M_{m \times n}(K)$. Then, there exist invertible matrices $P \in \GL
 \begin{equation*}
     PAQ = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}
 \end{equation*}
-where $r = \rank_{\text{col}}(A)$. In particular, $\rank_{\text{col}}(A) \le \min\{m, n\}$.
+where $r = \rankcol(A)$. In particular, $\rankcol(A) \le \min\{m, n\}$.
 \end{corollary}
 
 \begin{proof}
-Consider the linear map $T_A: K^n \to K^m$ defined by left-multiplication, $T_A(v) = A \cdot v$. Then, $r = \rank_{\text{col}}(A) = \dim \Img(T_A)$, because we have previously seen that 
+Consider the linear map $T_A: K^n \to K^m$ defined by left-multiplication, $T_A(v) = A \cdot v$. Then, $r = \rankcol(A) = \dim \Img(T_A)$, because we have previously seen that 
 \[\Img(T_A) = \Sp(T_A(e_1), \dots, T_A(e_n)) = \Sp(\text{columns of } A).\]
 
 Now, we apply the previous proposition to $T_A$, yielding that:
@@ -170,13 +170,13 @@ where $\mathcal{E}_n$ and $\mathcal{E}_m$ are the standard bases of $K^n$ and $K
 \end{proof}
 
 \begin{remark}
-The fact that $\rank_{\text{col}}(A) \le \min\{m, n\}$ also follows from observing the linear map $T_A: K^n \to K^m$. We have:
+The fact that $\rankcol(A) \le \min\{m, n\}$ also follows from observing the linear map $T_A: K^n \to K^m$. We have:
 \begin{equation*}
-    \rank_{\text{col}}(A) = \dim \Img(T_A) = n - \dim \ker(T_A) \le n
+    \rankcol(A) = \dim \Img(T_A) = n - \dim \ker(T_A) \le n
 \end{equation*}
 and simultaneously,
 \begin{equation*}
-    \rank_{\text{col}}(A) = \dim \Img(T_A) \le \dim K^m = m
+    \rankcol(A) = \dim \Img(T_A) \le \dim K^m = m
 \end{equation*}
 \end{remark}
 
@@ -187,11 +187,11 @@ Recall that we have an equivalence relation on $\M_{m \times n}(K)$: $A \sim B$ 
 \begin{corollary}[Classification of Matrices by Rank]
 % cor:17.b.8
 \label{cor:matrix_rank_equivalence_classification}
-Let $A, B \in \M_{m \times n}(K)$. Then, $A \sim B$ if and only if $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$. Moreover, for every $0 \le r \le \min\{m, n\}$, there is precisely one equivalence class of matrices $A$ with $\rank_{\text{col}} = r$.
+Let $A, B \in \M_{m \times n}(K)$. Then, $A \sim B$ if and only if $\rankcol(A) = \rankcol(B)$. Moreover, for every $0 \le r \le \min\{m, n\}$, there is precisely one equivalence class of matrices $A$ with $\rankcol = r$.
 \end{corollary}
 
 \begin{proof}
-Let $A, B \in \M_{m \times n}(K)$. First, assume that $\rank_{\text{col}}(A) = \rank_{\text{col}}(B)$, and denote this common column rank by $r$. By \cref{cor:matrix_equivalence_normal_form}, we know that $A \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ and $B \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. Since $\sim$ is an equivalence relation, it naturally follows that $A \sim B$.
+Let $A, B \in \M_{m \times n}(K)$. First, assume that $\rankcol(A) = \rankcol(B)$, and denote this common column rank by $r$. By \cref{cor:matrix_equivalence_normal_form}, we know that $A \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ and $B \sim \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. Since $\sim$ is an equivalence relation, it naturally follows that $A \sim B$.
 
 Conversely, assume that $A \sim B$. This implies that there exist matrices $P \in \GL_m(K)$ and $Q \in \GL_n(K)$ such that $B = PAQ$. Transitioning to the associated linear maps, this means $T_B = T_P \circ T_A \circ T_Q$. We analyze the image of $T_B$:
 \begin{equation*}
@@ -199,7 +199,7 @@ Conversely, assume that $A \sim B$. This implies that there exist matrices $P \i
 \end{equation*}
 Note that $T_Q(K^n) = K^n$ because $T_Q$ is an isomorphism. Consequently, the dimension of the image is:
 \begin{equation*}
-    \rank_{\text{col}}(B) = \dim \Img(T_B) = \dim T_P(\Img(T_A)) = \dim \Img(T_A) = \rank_{\text{col}}(A)
+    \rankcol(B) = \dim \Img(T_B) = \dim T_P(\Img(T_A)) = \dim \Img(T_A) = \rankcol(A)
 \end{equation*}
 where the second to last equality holds because $T_P$ is an isomorphism, preserving the dimension of subspaces.
 

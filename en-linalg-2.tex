@@ -661,6 +661,11 @@
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\rank}{rank}
+% Column and row rank. These were spelled out as \rank_{\text{col}} in 29
+% places across four chapters; the macros keep the two from drifting apart
+% typographically, the way \ColS and \RowS already do for the spaces.
+\newcommand{\rankcol}{\rank_{\text{col}}}
+\newcommand{\rankrow}{\rank_{\text{row}}}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\id}{id}
