@@ -66,8 +66,12 @@ Let $v_{1} = (1, 1, 1)\transp$ and $v_{2} = (1, 0, -1)\transp \in K^{3}$. To des
 &\xrightarrow{\; -1 \cdot E_{2} \to E_{2} \;}
 \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ 0 & -2 & b_{3}-b_{1} \end{array} \right) \\[0.5em]
 &\xrightarrow{\; 2 \cdot E_{2} + E_{3} \to E_{3} \;}
-\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right)
+\left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right) \\[0.5em]
+&\xrightarrow{\; -1 \cdot E_{2} + E_{1} \to E_{1} \;}
+\left( \begin{array}{cc|c} 1 & 0 & b_{2} \\ 0 & 1 & b_{1}-b_{2} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right)
 \end{align*}
+The last step clears the entry above the second pivot, which is what makes the left block row-reduced and not merely echelon; it does not affect the zero row, and it has the pleasant side effect that the solution can now be read off directly, as $x_{1} = b_{2}$ and $x_{2} = b_{1} - b_{2}$.
+
 The system is consistent if and only if the expression corresponding to the zero-row evaluates to zero. Thus, the span is perfectly described by that single plane equation:
 \[
 \Sp(v_{1}, v_{2}) = \{ (b_{1}, b_{2}, b_{3})\transp \in K^{3} \mid b_{1} - 2b_{2} + b_{3} = 0 \}.
@@ -101,7 +105,7 @@ Let $v_{1}, \dots, v_{n} \in K^{m}$.
     \[
     \Sp(v_{1}, \dots, v_{n}) = \left\{ b \in K^{m} \;\middle|\; b'' = 0 \right\} \subsetneq K^{m},
     \]
-    The inclusion is strict: $b''$ has at least one entry, and the linear form $\alpha_{1} b_{1} + \dots + \alpha_{m} b_{m}$ computing it cannot have all its coefficients equal to zero, since the row operations leading to it are reversible and hence cannot annihilate a whole row.
+    The inclusion is strict: $b''$ has at least one entry, and the linear form $\alpha_{1} b_{1} + \dots + \alpha_{m} b_{m}$ computing it cannot have all its coefficients equal to zero, since the row operations leading to it are reversible and hence cannot annihilate a whole row. (Spelled out: those operations act on the last column alone as a map $b \mapsto \binom{b'}{b''}$ of $K^{m}$ to itself, and each of the three types of \cref{def:elementary_row_operations} can be undone by another one, so the map is a bijection. Were some coordinate of the image identically zero, the image would lie in a proper subspace of $K^{m}$ and the map could not be onto.) Choosing $b$ with that entry of $b''$ non-zero therefore gives an inconsistent system, and such a $b$ exists.
 \end{enumerate}
 \end{proof}
 
@@ -160,10 +164,11 @@ such that $A_{i+1}$ is obtained from $A_{i}$ by a single elementary row operatio
 \end{proof}
 
 \begin{importantremark}
+\label{rem:row_ops_and_columns}
 Row operations \textbf{do} change the column space, as seen by $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \to \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$. However, they \textbf{preserve} the linear relations between columns: $\sum \alpha_{i} w_{i} = 0 \iff \sum \alpha_{i} w'_{i} = 0$.
 \end{importantremark}
 
-This second assertion carries the entire weight of \cref{thm:basis_col_space} below, which transfers a statement about the echelon form back to the original matrix. The notes do not prove it, so we record it here, together with the two consequences in which it is actually used.
+The second assertion of \cref{rem:row_ops_and_columns} carries the entire weight of \cref{thm:basis_col_space} below, which transfers a statement about the echelon form back to the original matrix. The notes do not prove it, so we record it here, together with the two consequences in which it is actually used.
 
 \begin{ailemma}[Row Operations Preserve the Relations Between Columns]
 \label{ailem:column_relations_preserved}
@@ -259,7 +264,7 @@ The non-zero rows of the row-reduced echelon matrix $B$ form a basis for $\RowS(
 \end{theorem}
 
 \begin{proof}
-By \cref{prop:row_space_invariance}, $\RowS(A) = \RowS(B)$. Let $r$ be the number of pivots in $B$. The non-zero rows of $B$ are $w'_1, \dots, w'_r$. By definition, they span $\RowS(B)$. 
+By \cref{prop:row_space_invariance}, $\RowS(A) = \RowS(B)$. Let $r$ be the number of pivots in $B$. The non-zero rows of $B$ are $w'_1, \dots, w'_r$, the zero rows of a row-reduced echelon matrix standing below them. They span $\RowS(B)$: by \cref{def:matrix_subspaces} that space is spanned by \emph{all} rows of $B$, and discarding the zero ones changes no linear combination.
 
 To show linear independence, consider the indices of the pivot columns $j_1, \dots, j_r$. For each row $i \in \{1, \dots, r\}$, the entry in the $j_i$-th column is $1$, while in all other rows $k \neq i$, the entry in the $j_i$-th column is $0$. 
 Suppose $\sum_{i=1}^r \alpha_i w'_i = 0$. Looking at the $j_k$-th component of this vector sum, we have:
@@ -383,4 +388,32 @@ recorded in a remark. In the worked span computation on
 \cpageref{ex:span_calc} the elimination now carries Prof. Biran's arrow labels
 and includes the normalisation step $-1 \cdot E_{2} \to E_{2}$, without which
 the displayed chain never reaches a row-reduced echelon matrix.
+
+The rigour pass found nothing false in this chapter. What it did was finish
+three arguments that stopped just short. The elimination in
+\cpageref{ex:span_calc} still ended one operation before a row-reduced echelon
+form, since the entry above the second pivot was never cleared, although the
+paragraph setting up the method says the reduction goes that far; the step is
+added, and it lets the solution be read off. In the proof of
+\cref{thm:coordinate_constraints} \textbf{(b)}, the strictness of the inclusion
+rested on row operations being \qt{reversible and hence unable to annihilate a
+whole row}, which is right but leaves the reader to reconstruct why: those
+operations act on the last column as a bijection of $K^{m}$, and a coordinate
+that vanished identically would confine the image to a proper subspace. And in
+the proof of \cref{thm:row_basis}, that the non-zero rows of $B$ span $\RowS(B)$
+was credited to the definition, whereas \cref{def:matrix_subspaces} spans
+\emph{all} the rows; what is needed is that discarding the zero ones changes no
+linear combination.
+
+The important remark on row operations and columns is now labelled
+\cref{rem:row_ops_and_columns}, since the sentence introducing
+\cref{ailem:column_relations_preserved} refers back to its second assertion.
+
+One thing was left alone deliberately. The rank of a matrix, $\rank(A)$, is
+named inside the statement of \cref{thm:rank_equality} rather than in a
+definition of its own. That is unusual, but the notion is not thereby
+uncitable, \cref{thm:rank_equality} being numbered, and nothing later in the
+book appeals to a definition of matrix rank that does not exist; the two places
+that say \qt{by definition, $\rank(\cdot)$} in ch. 17c mean the rank of a linear
+map, which \cref{def:rank_linear_map} supplies.
 \end{ainote}
