@@ -29,7 +29,7 @@ Then $m \le n$, and moreover, one can delete exactly $m$ vectors from the spanni
 
 \begin{proof}
 The fact that $m \le n$ was already proven in Lemma D. To prove the \qt{moreover} part, we simply apply the exact step-by-step substitution procedure described in the proof of Lemma D. 
-For steps $j = 1, 2, \dots, m$, we sequentially add $u_j$ to the front of the list. At each step, the list becomes dependent (Lemma C), and we forcefully eject a redundant $v_k$ vector (Lemma B) to restore independence while perfectly preserving the span. After $m$ steps, we have injected all $m$ independent vectors and deleted exactly $m$ of the original spanning vectors. The resulting mixed list still spans $V$. See also \cpageref{rem:steinitz_stronger_form}, where the same statement is drawn out of the proof of Lemma D directly.
+For steps $j = 1, 2, \dots, m$, we sequentially add $u_j$ to the list, behind the vectors $u_1, \dots, u_{j-1}$ already inserted. At each step the list has $n+1$ vectors and still spans $V$, so it is dependent (Lemma C), and we forcefully eject a redundant $v_k$ vector (Lemma B), which preserves the span and brings the length back to $n$. The ejected vector is never one of the $u$'s, by \cref{lem:drop_index_beyond_head}; this is the general step recorded on \cpageref{rem:steinitz_general_step}. After $m$ steps, we have injected all $m$ independent vectors and deleted exactly $m$ of the original spanning vectors. The resulting mixed list still spans $V$. See also \cpageref{rem:steinitz_stronger_form}, where the same statement is drawn out of the proof of Lemma D directly.
 \end{proof}
 
 \subsection{The Existence and Uniqueness of Dimension}
@@ -79,12 +79,14 @@ The proof is algorithmic and is based on $n$ steps. At each step we consider ano
     \item[Step $j$, for $2 \le j \le n$.] If $v_j \in \Sp(v_1, \dots, v_{j-1})$ we drop $v_j$. Otherwise we keep it.
 \end{description}
 
+(The two steps apply one and the same test. For $j = 1$ the vectors preceding $v_1$ form the empty list, so $\Sp(v_1, \dots, v_{j-1}) = \Sp(\emptyset) = \{0_V\}$ by \cref{rem:span_of_empty_set}, and \qt{$v_1 \in \Sp(\emptyset)$} says exactly \qt{$v_1 = 0_V$}. This is the degenerate case treated in the solution to \cref{exc:redundancy_j_equals_one}.)
+
 After performing the $n$ steps above we obtain a new, possibly shorter, list
 \[
 v_{i_1}, v_{i_2}, \dots, v_{i_m}, \qquad \text{where } 1 \le i_1 < i_2 < \dots < i_m \le n.
 \]
 
-We claim that $\Sp(v_{i_1}, \dots, v_{i_m}) = V$. Indeed, in any of the steps $1 \le j \le n$ we dropped the vector $v_j$ only if $v_j \in \Sp(v_1, \dots, v_{j-1})$, and by \cref{lem:targeted_redundancy} such a vector may be dropped without changing the span. Therefore,
+We claim that $\Sp(v_{i_1}, \dots, v_{i_m}) = V$. Indeed, in any of the steps $1 \le j \le n$ we dropped the vector $v_j$ only if $v_j \in \Sp(v_1, \dots, v_{j-1})$, and by \cref{lem:targeted_redundancy} such a vector may be dropped without changing the span. (That lemma produces one particular index $j$, whereas here the index is whichever one the step is at; but the two-inclusion argument proving its second assertion uses only the property $v_j \in \Sp(v_1, \dots, v_{j-1})$ and never how $j$ was found, so it applies to every index having that property.) Therefore,
 \[
 \Sp(v_{i_1}, \dots, v_{i_m}) = \Sp(v_1, \dots, v_n) = V.
 \]
@@ -93,7 +95,7 @@ We also claim that $v_{i_1}, \dots, v_{i_m}$ is linearly independent. Indeed, fo
 \[
 v_{i_k} \notin \Sp(v_1, v_2, \dots, v_{i_k - 1}),
 \]
-and since $v_{i_1}, \dots, v_{i_{k-1}}$ are all taken from among $v_1, \dots, v_{i_k - 1}$, this gives in particular
+and since $v_{i_1}, \dots, v_{i_{k-1}}$ are all taken from among $v_1, \dots, v_{i_k - 1}$, so that $\Sp(v_{i_1}, \dots, v_{i_{k-1}}) \subseteq \Sp(v_1, \dots, v_{i_k - 1})$ by \cref{lem:span_is_smallest} \textbf{(b)}, this gives in particular
 \[
 v_{i_k} \notin \Sp(v_{i_1}, v_{i_2}, \dots, v_{i_{k-1}}).
 \]
@@ -143,7 +145,7 @@ Specifically:
     \item If the zero vector $0_V$ is in the list, drop it.
     \item Read the list from left to right. If a vector $w_j$ is a linear combination of its strictly preceding vectors (i.e., $w_j \in \Sp(w_1, \dots, w_{j-1})$), drop it.
 \end{enumerate}
-By Lemma B, dropping this redundant vector does not change the span of the list. We repeat this until we have checked every vector. The remaining list still spans $V$. Furthermore, by \cref{lem:no_predecessor_span}, it must be linearly independent, because we systematically deleted every vector that could be written as a combination of the vectors preceding it. Thus, the remaining list is a finite basis. This is precisely the algorithm of \cref{lem:spanning_list_contains_basis}, applied to the spanning list $w_1, \dots, w_k$.
+By Lemma B (\cref{lem:targeted_redundancy}), dropping this redundant vector does not change the span of the list. We repeat this until we have checked every vector. The remaining list still spans $V$. Furthermore, by \cref{lem:no_predecessor_span}, it must be linearly independent, because we systematically deleted every vector that could be written as a combination of the vectors preceding it. Thus, the remaining list is a finite basis. This is precisely the algorithm of \cref{lem:spanning_list_contains_basis}, applied to the spanning list $w_1, \dots, w_k$.
 \end{proof}
 
 \subsubsection*{Statement 2: Every basis of V is finite.}
@@ -153,8 +155,8 @@ We prove this by contradiction. Suppose there exists a basis $\mathcal{A}$ of $V
 
 From Statement 1, we know that $V$ definitely possesses at least one finite basis. Let us call this finite basis $S = \{v_1, \dots, v_n\}$. The size of this finite basis is exactly $n$.
 
-Because $\mathcal{A}$ is infinite, it contains infinitely many linearly independent vectors. Therefore, we can arbitrarily select $n + 100$ distinct vectors from $\mathcal{A}$. Let us call them $u_1, \dots, u_{n+100}$. 
-Because they belong to a basis, this chosen list of $n+100$ vectors is strictly linearly independent. 
+Because $\mathcal{A}$ is infinite, it contains infinitely many linearly independent vectors. Therefore, we can arbitrarily select $n + 100$ distinct vectors from $\mathcal{A}$. Let us call them $u_1, \dots, u_{n+100}$.
+Because they belong to a basis, this chosen list of $n+100$ vectors is strictly linearly independent (a subset of an independent set is independent, by \cref{lem:subsets_of_independent_sets}).
 
 We now have two lists:
 \begin{itemize}
@@ -162,7 +164,7 @@ We now have two lists:
     \item An independent list containing $n+100$ elements.
 \end{itemize}
 
-By the Steinitz Exchange Theorem (Lemma D), the number of elements in any independent list must be less than or equal to the number of elements in any spanning list. Therefore, we must have:
+By the Steinitz Exchange Theorem (Lemma D, \cref{thm:steinitz}), the number of elements in any independent list must be less than or equal to the number of elements in any spanning list. Therefore, we must have:
 \[
 n + 100 \le n
 \]
@@ -192,7 +194,7 @@ Because they are bases, both sets are simultaneously independent and spanning. T
 \end{center}
 
 \begin{enumerate}
-    \item Because $\mathcal{A}$ is linearly independent and $\mathcal{B}$ spans $V$, Lemma D dictates that $|\mathcal{A}| \le |\mathcal{B}|$.
+    \item Because $\mathcal{A}$ is linearly independent and $\mathcal{B}$ spans $V$, Lemma D (\cref{thm:steinitz}) dictates that $|\mathcal{A}| \le |\mathcal{B}|$.
     \item Reversing their roles, because $\mathcal{B}$ is linearly independent and $\mathcal{A}$ spans $V$, Lemma D dictates that $|\mathcal{B}| \le |\mathcal{A}|$.
 \end{enumerate}
 
@@ -205,8 +207,10 @@ Because the number of elements in a basis is a rigid, absolute invariant of the 
 
 \begin{definition}[Dimension]
 \label{def:dimension}
-Let $V$ be a finite-dimensional vector space over $K$. We define the \textbf{dimension} of $V$ to be the number of elements in any basis of $V$.
-We denote this integer by $\dim V := n \in \mathbb{Z}_{\ge 0}$.
+Let $V$ be a finite-dimensional vector space over $K$. We define the \textbf{dimension} of $V$ to be the number of elements in any basis of $V$: if $\mathcal{B}$ is a basis of $V$ and $n$ is the number of its elements, we set
+\[
+\dim V := n \in \mathbb{Z}_{\ge 0}.
+\]
 
 If $V$ is not finite-dimensional, we write $\dim V = \infty$.
 \end{definition}
@@ -217,7 +221,8 @@ $\dim V$ is \textbf{well defined}: the definition does not depend on the specifi
 \end{importantremark}
 
 \begin{remark}[The Zero Space]
-Consider the zero vector space $V = \{0_V\}$. Its only spanning set is $\{0_V\}$, which is linearly dependent. The only linearly independent subset that spans it is the empty set $\emptyset$. 
+\label{rem:dimension_of_zero_space}
+Consider the zero vector space $V = \{0_V\}$. It has exactly two subsets, $\emptyset$ and $\{0_V\}$, and both of them span it: $\Sp(\{0_V\}) = \{0_V\} = V$, and $\Sp(\emptyset) = \{0_V\} = V$ as well, by \cref{rem:span_of_empty_set}. Of the two, however, $\{0_V\}$ is linearly dependent, since a list containing the zero vector never is (\cref{lem:independence_basics} \textbf{(d)}). The only linearly independent subset that spans $V$ is therefore the empty set $\emptyset$, which is independent by \cref{rem:empty_list_independent}.
 Therefore, the basis of the zero space is $\emptyset$. Because the empty set contains $0$ elements, we have:
 \[
 \dim \{0_V\} = 0
@@ -250,7 +255,7 @@ The standard basis for the matrix space $\M_{m \times n}(K)$ consists of the ind
 \end{example}
 
 \begin{example}[Function Spaces]
-Let $S$ be an arbitrary set. Recall that the space of all functions from $S$ to $K$, denoted as $K^S := \{f \mid f: S \to K\}$, forms a vector space over $K$. 
+Let $S$ be a \emph{finite} set. Recall from \cref{ex:function_space} that the space of all functions from $S$ to $K$, denoted as $K^S := \{f \mid f: S \to K\}$, forms a vector space over $K$.
 
 The dimension of this space matches the cardinality of the underlying set $S$:
 \[
@@ -258,14 +263,46 @@ The dimension of this space matches the cardinality of the underlying set $S$:
 \]
 
 \begin{exercise}[Basis for the Space of Functions on a Finite Set]
+\label{exc:basis_of_function_space}
 If $S$ is a finite set, say $S = \{s_1, \dots, s_n\}$, can you construct an explicit basis for $K^S$? \\
 \textit{(Hint: Try to define a family of functions $f_i$ where each function outputs $1$ for exactly one specific element $s_i$, and $0$ for all other elements).}
 \end{exercise}
 
 \begin{remark}
-When the domain $S$ is an infinite set, the space $K^S$ is infinite-dimensional. In this case, we unfortunately do not have a \qt{nice} or easily describable basis for it.
+\label{rem:infinite_function_space}
+When the domain $S$ is an infinite set, the space $K^S$ is infinite-dimensional. In this case, we unfortunately do not have a \qt{nice} or easily describable basis for it, and the formula above no longer applies: by \cref{def:dimension} we simply write $\dim K^S = \infty$. It is worth seeing why the obvious candidate fails. The functions $f_s$ of the exercise above are still linearly independent for infinite $S$, but they no longer span $K^S$, because a linear combination is a \emph{finite} sum and so can only produce functions that vanish outside a finite set. \Cref{exc:k_infinity_independent} is exactly this phenomenon for $S = \mathbb{Z}_{\ge 0}$.
 \end{remark}
 \end{example}
+
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_bases_part_b}
+
+\begin{exercisesolution}[Solution to \cref{exc:basis_of_function_space}]
+Let $S = \{s_1, \dots, s_n\}$ be finite, and follow the hint: for each $1 \le i \le n$ define $f_i \in K^S$ by
+\[
+f_i(s_j) :=
+\begin{cases}
+1 & \text{if } j = i, \\
+0 & \text{if } j \ne i.
+\end{cases}
+\]
+We claim that $\mathcal{B} := \{f_1, \dots, f_n\}$ is a basis of $K^S$.
+
+\textbf{Spanning.} Let $f \in K^S$ be any function and put $a_i := f(s_i) \in K$. For every $1 \le j \le n$,
+\[
+\left( \sum_{i=1}^{n} a_i f_i \right)(s_j) = \sum_{i=1}^{n} a_i f_i(s_j) = a_j = f(s_j),
+\]
+because every term with $i \ne j$ vanishes. The two functions therefore agree at every element of $S$, and so they are equal by \cref{def:equality_of_functions}. Hence $f = \sum_{i=1}^{n} a_i f_i \in \Sp(\mathcal{B})$.
+
+\textbf{Independence.} Suppose $a_1 f_1 + \dots + a_n f_n$ is the zero function. Evaluating at $s_j$ and using the same computation gives $a_j = 0$, and this for every $1 \le j \le n$. So the only linear combination producing the zero function is the trivial one.
+
+Note also that the $f_i$ are pairwise distinct, since $f_i(s_i) = 1 \ne 0 = f_j(s_i)$ whenever $i \ne j$, so $\mathcal{B}$ really has $n$ elements and not fewer. By \cref{def:dimension},
+\[
+\dim K^S = n = |S|,
+\]
+which is the formula stated in the example. The construction is the same one that gives the standard basis $e_1, \dots, e_n$ of $K^n$: taking $S = \{1, 2, \dots, n\}$ turns $f_i$ into $e_i$.
+\end{exercisesolution}
 
 \begin{ainote}
 The notes prepare the Basis Theorem with two lemmas that the transcript had
@@ -278,8 +315,44 @@ at \cref{prop:dependence_is_redundancy}, which is about a vector lying in the
 span of \emph{all} the others, whereas the filter only ever tests a vector
 against the ones preceding it. \Cref{lem:no_predecessor_span} is the statement
 that closes that gap. Also restored:
-\cpageref{rem:dimension_well_defined}, which the notes flag explicitly. The
+\cref{rem:dimension_well_defined}, which the notes flag explicitly. The
 notes state \cref{lem:strong_steinitz} here and refer back to the closing remark
 of the previous lecture for its proof; both are kept, and the cross-reference is
 made explicit.
+
+The rigour pass corrected three things. The proof of \cref{lem:strong_steinitz}
+inserted each $u_j$ at the front of the list, the same reversed bookkeeping that
+the proof of \cref{thm:steinitz} carried before this pass, and it described the
+ejection of a $v_k$ as restoring independence. It does not: dropping a redundant
+vector preserves the span and returns the length to $n$, and says nothing at all
+about independence, which may perfectly well still fail, as it does whenever the
+original spanning list was itself redundant. What the procedure maintains is
+that the $u$'s standing at the head are independent, and that is what lets
+\cref{lem:drop_index_beyond_head} keep the ejected vector among the $v$'s.
+
+\Cref{def:dimension} set $\dim V := n$ with $n$ never introduced; the basis
+whose elements $n$ counts is now named. The remark on the zero space asserted
+that $\{0_V\}$ is its only spanning set, and then, in the next sentence, that
+$\emptyset$ spans it too. Both $\emptyset$ and $\{0_V\}$ span it; only the
+former is independent, which is the point being made.
+
+The example on function spaces stated $\dim K^S = |S|$ for an arbitrary set $S$.
+That holds only when $S$ is finite. For infinite $S$ the space $K^S$ is not
+finite-di\-men\-sional, so \cref{def:dimension} assigns it $\infty$ and the
+equation does not typecheck; the functions $f_s$ stay independent but stop
+spanning, since a linear combination is a finite sum. The example is now stated
+for finite $S$ and the following remark carries the infinite case. Its exercise
+was unlabelled and is now written up, giving the basis that the example's
+formula counts.
+
+Steps taken silently now cite \cref{rem:span_of_empty_set},
+\cref{lem:span_is_smallest} \textbf{(b)} for the monotonicity of the span,
+\cref{lem:subsets_of_independent_sets}, \cref{lem:independence_basics}
+\textbf{(d)}, \cref{rem:empty_list_independent} and \cref{thm:steinitz}, which
+Statements 2 and 3 of \cref{thm:basis_theorem} had invoked as \qt{Lemma D} in
+words only. One gap is flagged rather than closed: \cref{lem:targeted_redundancy}
+attaches its second assertion to the one index its proof produces, whereas
+\cref{lem:spanning_list_contains_basis} drops whichever index its step is at.
+The two-inclusion argument there uses only the predecessor property, never how
+the index was found, and a parenthetical now says so.
 \end{ainote}
