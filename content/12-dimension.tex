@@ -16,6 +16,29 @@ Let $V$ be a finite-di\-men\-sional vector space over a field $K$. The following
 \end{enumerate}
 \end{summary}
 
+% Creator: Opus 5
+% Neither item is proved anywhere in the book, and item (2), the basis
+% extension property, is used some ten times from ch. 14 onwards. Both follow
+% in a few lines from the two lemmas of ch. 11. The derivation deliberately
+% avoids \cref{thm:basis_equivalent_characterizations} below, whose own proof
+% appeals to both items, which would make the argument circular.
+The notes record these two principles as a summary of the previous lecture and
+do not prove them. Everything in this chapter rests on them, and item
+\textbf{(2)}, the \newterm{basis extension property}, is used repeatedly in the
+chapters that follow, so we supply the derivation here. It is short, and it uses
+nothing beyond the two lemmas of the previous chapter.
+
+\begin{proof}[Proof of \cref{sum:finite_dim_properties}]
+\textbf{(1)} This is \cref{lem:spanning_list_contains_basis}, which extracts a basis from within the list $(v_1, \dots, v_n)$ itself. Reading its elements in increasing order of index gives the sublist $(v_{i_1}, \dots, v_{i_d})$, and $d = \dim V$ by \cref{def:dimension}, since every basis of $V$ has that many elements.
+
+\textbf{(2)} Let $(u_1, \dots, u_m)$ be linearly independent, and let $\mathcal{B} = (b_1, \dots, b_d)$ be a basis of $V$, which exists and has $d = \dim V$ elements by \cref{thm:basis_theorem}. In particular $\Sp(b_1, \dots, b_d) = V$, so \cref{lem:strong_steinitz} applies to the independent list $(u_1, \dots, u_m)$ and the spanning list $\mathcal{B}$. It yields $m \le d$ together with $d - m$ survivors $w_1, \dots, w_{d-m}$ of $\mathcal{B}$ such that
+\[
+\Sp(u_1, \dots, u_m, w_1, \dots, w_{d-m}) = V.
+\]
+This list spans $V$ and has exactly $d$ entries. By \cref{lem:spanning_list_contains_basis} it contains a sublist which is a basis of $V$, and that sublist has $d$ elements, again because every basis of $V$ does. A sublist of a list of length $d$ that itself has length $d$ is the whole list. Hence $(u_1, \dots, u_m, w_1, \dots, w_{d-m})$ is a basis of $V$, and it extends the given list.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 % thm:12.1
 \begin{theorem}[Equivalent Characterizations of a Basis]
 \label{thm:basis_equivalent_characterizations}
@@ -55,13 +78,13 @@ Suppose that $n = \dim V < \infty$, and let $v_1, \dots, v_k$ be a list of vecto
 \[
 \dim V = k' \le k < n = \dim V,
 \]
-a contradiction.
+a contradiction. (The first equality is \cref{def:dimension}, applied to the basis just produced, and the second step holds because a sublist is no longer than the list it comes from.)
 
 \textbf{(2)} Assume that $k > n$, and suppose by contradiction that $v_1, \dots, v_k$ are linearly independent. By item \textbf{(2)} of the summary on \cpageref{sum:finite_dim_properties} we can extend this list to a basis of $V$. Then
 \[
 \dim V \ge k > n = \dim V,
 \]
-a contradiction.
+a contradiction. (The first inequality holds because that basis contains all $k$ vectors of the list, and has $\dim V$ elements by \cref{def:dimension}.)
 \end{proof}
 
 % prop:12.2
@@ -75,11 +98,11 @@ Let $n := \dim V$. We first establish that $U$ possesses a finite basis. If $U =
 
 If $\Sp(v_1) \neq U$, we choose a second vector $v_2 \in U \setminus \Sp(v_1)$. It follows from the properties of linear independence (\cref{lem:no_predecessor_span}) that the list $\{v_1, v_2\}$ is linearly independent. We proceed iteratively: after $j$ steps, we obtain a linearly independent list $\{v_1, \dots, v_j\} \subseteq U$. If $\Sp(v_1, \dots, v_j) = U$, the process terminates. Otherwise, we choose $v_{j+1} \in U \setminus \Sp(v_1, \dots, v_j)$. By the principle that adding a vector outside the span of a linearly independent set preserves independence (again \cref{lem:no_predecessor_span}), the expanded list $\{v_1, \dots, v_{j+1}\}$ remains linearly independent.
 
-Crucially, in a space $V$ of dimension $n$, no linearly independent list can exceed length $n$. Consequently, this algorithmic procedure must terminate in $k$ steps, where $k \le n$. At this stage, we have a list $\{v_1, \dots, v_k\}$ that is linearly independent and spans $U$, thereby constituting a basis for $U$. This implies $U$ is finite-dimensional and $\dim U = k \le n = \dim V$.
+Crucially, in a space $V$ of dimension $n$, no linearly independent list can exceed length $n$; this is \cref{thm:wrong_length_lists} \textbf{(2)}. Consequently, this algorithmic procedure must terminate in $k$ steps, where $k \le n$. At this stage, we have a list $\{v_1, \dots, v_k\}$ that is linearly independent and spans $U$, thereby constituting a basis for $U$. This implies $U$ is finite-dimensional and $\dim U = k \le n = \dim V$.
 
 It remains to settle when equality holds. One direction is immediate: if $U = V$, then clearly $\dim U = \dim V$. The converse is the substantial one.
 
-Furthermore, if $\dim U = \dim V = n$, then $U$ contains a linearly independent list of length $n$. By \Cref{thm:basis_equivalent_characterizations}, such a list satisfies property \textbf{(a)} and is therefore also a basis for $V$. This implies $\Sp(v_1, \dots, v_n) = V$. Since $U = \Sp(v_1, \dots, v_n)$ by the construction of the basis, we conclude $U = V$.
+Conversely, if $\dim U = \dim V = n$, then $U$ contains a linearly independent list of length $n$, namely a basis $v_1, \dots, v_n$ of $U$, which stays independent when read as a list in $V$, independence being a condition on linear combinations and not on the ambient space. By \Cref{thm:basis_equivalent_characterizations}, such a list satisfies property \textbf{(a)} and is therefore also a basis for $V$. This implies $\Sp(v_1, \dots, v_n) = V$. Since $U = \Sp(v_1, \dots, v_n)$ by the construction of the basis, we conclude $U = V$.
 \end{proof}
 
 \begin{ainote}
@@ -94,4 +117,23 @@ it was. The trivial direction of the equality claim in
 $\dim U = \dim V$, was also missing and is supplied. The notes restate
 \cref{lem:no_predecessor_span} in full at this point as a recollection from the
 earlier lecture; it is only cross-referenced here.
+
+The rigour pass supplied the proof of \cref{sum:finite_dim_properties}. The
+notes give the two principles as a recollection of the previous lecture and
+prove neither, and nothing else in the book proves them either, although item
+\textbf{(2)}, the basis extension property, is used some ten times from ch. 14
+onwards, occasionally credited in passing to \qt{the Steinitz Exchange Lemma}.
+Both follow from \cref{lem:spanning_list_contains_basis} and
+\cref{lem:strong_steinitz} in a few lines. The derivation avoids
+\cref{thm:basis_equivalent_characterizations}, which stands below it and whose
+own proof appeals to both items; going through it would be circular.
+
+Also: the converse half of the equality claim in
+\cref{prop:subspace_dimension_constraints} opened with \qt{Furthermore}, which
+announces a further fact rather than the converse that the sentence above it had
+just set up, and the independent list it produces is a basis of $U$, which is
+what makes it independent in $V$ as well. Four silent steps now name their
+reason, among them \cref{thm:wrong_length_lists} \textbf{(2)}, which the proof
+of \cref{prop:subspace_dimension_constraints} restates in words although it
+stands two results above.
 \end{ainote}
