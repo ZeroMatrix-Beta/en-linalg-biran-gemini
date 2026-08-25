@@ -29,7 +29,7 @@ In linear algebra, determining whether a matrix is invertible is a fundamental p
 \end{proposition}
 
 \begin{proof}
-  First, we show that $A$ is not invertible if and only if its rank is strictly less than $2$. Because $A$ is a $2 \times 2$ matrix, having a rank less than 2 implies that its column vectors are linearly dependent.
+  First, $A$ is not invertible if and only if its rank is strictly less than $2$; this is \cref{aiprop:invertible_iff_full_rank}, read in the contrapositive. Because $A$ is a $2 \times 2$ matrix, having a rank less than 2 implies that its column vectors are linearly dependent: the column rank equals the rank by \cref{thm:rank_equality}, so two columns spanning a space of dimension at most $1$ cannot be independent, by \cref{thm:wrong_length_lists} \textbf{(2)}.
 
 % Extractor: Opus 5
   \begin{exercise}[Dependence of Two Columns]\label{exc:lin_dep_2x2}
@@ -50,6 +50,10 @@ In linear algebra, determining whether a matrix is invertible is a fundamental p
 To confirm the sufficiency of this condition and to find the explicit inverse, the formula for $A^{-1}$ can be verified by direct matrix multiplication:
 \[
 \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \frac{1}{ad-bc} \begin{pmatrix} ad-bc & bd-bd \\ -ac+ac & -bc+ad \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
+\]
+An inverse has to satisfy the identity in both orders, and the product taken the other way round is the same computation:
+\[
+\frac{1}{ad-bc} \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \frac{1}{ad-bc} \begin{pmatrix} ad-bc & -ab+ab \\ cd-dc & -cb+ad \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
 \]
 
 \begin{goals}\label{goals:determinants}
@@ -124,9 +128,9 @@ Therefore, $D$ is completely determined by its values on the following four pair
 \end{definition}
 
 \begin{proposition}[Adjacent Swap Property]\label{prop:alternating_swap}
-  Let $D$ be a \newterm{alternating} function. Assume that $D$ has the property that whenever $A$ has two equal adjacent rows, then $D(A) = 0$. Then the following are equivalent:
-  \begin{enumerate}
-    \item $D$ is alternating.
+  Let $D : \M_{n \times n}(K) \to K$ be an $n$-linear function, and assume that $D$ has the property that whenever $A$ has two equal \emph{adjacent} rows, then $D(A) = 0$. Then both of the following hold:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $D$ is alternating, that is, $D(A) = 0$ whenever \emph{any} two rows of $A$ are equal, adjacent or not.
     \item For any matrix $B$, if $B'$ is obtained from $B$ by interchanging two of its rows, then $D(B') = -D(B)$.
   \end{enumerate}
 \end{proposition}
@@ -207,6 +211,15 @@ Therefore, $D$ is completely determined by its values on the following four pair
   For all $n \ge 1$, at least one determinant function exists.
 \end{corollary}
 
+% Creator: Opus 5
+% Stated without proof in both the notes and the transcript, although the proof
+% of \cref{lem:permutation_parity} below rests on it. The induction is three
+% lines and its base case is worth stating, since alternating is vacuous for
+% n = 1.
+\begin{proof}
+  By induction on $n$. For $n = 1$, the function $D(A) := A_{11}$ is $1$-linear, and it satisfies $D(I_1) = 1$; it is alternating for the empty reason that a $1 \times 1$ matrix has only one row and so cannot have two equal ones. For the step, suppose a determinant function $D$ on $\M_{(n-1) \times (n-1)}(K)$ exists, with $n \ge 2$. Then \cref{thm:recursive_det}, applied with any fixed $j$, produces the determinant function $E_j$ on $\M_{n \times n}(K)$.
+\end{proof}
+
 \begin{example}[Three-by-Three Determinant Expansion]
   Consider $A \in \M_{3 \times 3}(K)$. Using the uniquely defined $2 \times 2$ determinant function $|B| := B_{11}B_{22} - B_{12}B_{21}$, we can explicitly write out $E_1(A)$ (expanding along the first column) as:
   \[
@@ -272,7 +285,7 @@ In other words, $(-1)^{m'} = (-1)^m$. The parity depends only on the permutation
 
 A permutation $\sigma$ is called \newterm{even} if $m$ is even, and \newterm{odd} if $m$ is odd. The number $\sgn(\sigma) := (-1)^m \in \{-1, 1\}$ is called the \newterm{sign} of $\sigma$.
 
-\begin{proof}[Proof of Lemma]
+\begin{proof}[Proof of \Cref{lem:permutation_parity}]
   We know from previous results (\cref{cor:det_exists}) that determinant functions $E : \M_{n \times n}(K) \to K$ exist for $n \ge 1$. Let us fix one such determinant function $E$ (we denote it by $E$ to distinguish it from $D$ in the previous discussion).
 
   Consider the evaluation $E(\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)})$. If $(\sigma(1), \dots, \sigma(n))$ can be obtained from $(1, \dots, n)$ by a sequence of $m$ transpositions, then the matrix with rows $\epsilon_{\sigma(1)}, \dots, \epsilon_{\sigma(n)}$ can be obtained from the identity matrix $I$ by a sequence of $m$ interchanges of pairs of rows.
@@ -287,6 +300,15 @@ A permutation $\sigma$ is called \newterm{even} if $m$ is even, and \newterm{odd
   \]
   This identically implies that $(-1)^m = (-1)^{m'}$, proving the lemma.
 \end{proof}
+
+% Creator: Opus 5
+% The order of results here looks circular at a glance and is not. Worth
+% saying once, because a reader who notices it has no way to check without
+% tracing the whole section.
+\begin{remark}[No Circularity Here]
+\label{rem:no_circularity_sign}
+The argument just given proves a fact about permutations by using determinants, and the Leibniz formula below will express the determinant using $\sgn$. That is not a circle. What the proof needs is only \cref{cor:det_exists}, the \emph{existence} of some determinant function, and that was obtained from \cref{thm:recursive_det} by a recursion on $n$ in which the sign of a permutation never appears: the signs there are the explicit factors $(-1)^{i+j}$ attached to positions, not to permutations. Only after $\sgn$ has been shown to be well defined is it used, in \cref{thm:unique_det}, to write down the one determinant function in closed form.
+\end{remark}
 
 Returning to our original function $D(A)$, we have seen that:
 \[
@@ -306,13 +328,25 @@ By the alternating property of $D$, performing the transpositions necessary to s
 \end{theorem}
 
 \begin{proof}
-  This follows immediately from \eqref{eq:det_relation}. Indeed, if $D$ is a determinant function, then $D(I) = 1$. Substituting this into \eqref{eq:det_relation} yields the exact formula for $D(A)$ stated in the theorem, proving that the function is entirely unique.
+  Existence is \cref{cor:det_exists}, so only uniqueness is at issue, and that follows immediately from \eqref{eq:det_relation}. Indeed, if $D$ is a determinant function, then $D(I) = 1$. Substituting this into \eqref{eq:det_relation} yields the exact formula for $D(A)$ stated in the theorem, proving that the function is entirely unique.
 \end{proof}
 
 \begin{corollary}[Scaling of Alternating Functions]
   \label{cor:det_pullout}
   For any $n$-linear alternating function $D : \M_{n \times n}(K) \to K$, we have $D(A) = \det(A) \cdot D(I)$ for all $A \in \M_{n \times n}(K)$.
 \end{corollary}
+
+% Creator: Opus 5
+% Stated without proof, although it is the engine of three later results:
+% multiplicativity, the block-matrix formula and \cref{cor:det_columns}. It is
+% two lines, and the point is that the expansion above never used D(I) = 1.
+\begin{proof}
+  Note that the expansion leading to \eqref{eq:det_relation} used only that $D$ is $n$-linear and alternating, never that $D(I) = 1$. Substituting \eqref{eq:det_relation} into that expansion gives
+  \[
+  D(A) = \sum_{\sigma} A(1,\sigma(1)) \cdots A(n,\sigma(n)) \cdot \sgn(\sigma) \cdot D(I) = \left( \sum_{\sigma} \sgn(\sigma) A(1,\sigma(1)) \cdots A(n,\sigma(n)) \right) D(I),
+  \]
+  and the bracket is $\det(A)$ by \cref{thm:unique_det}.
+\end{proof}
 
 \subsection{The Symmetric Group}
 
@@ -421,10 +455,10 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
 \begin{theorem}[Invariance Under Row Operations]
   \label{thm:row_operations}
   Let $A \in \M_{n \times n}(K)$.
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row (i.e., $c \cdot E_j + E_i \to E_i$ for $i \neq j$), or by doing the analogous operation on columns, then $\det(B) = \det(A)$.
     \item If $B$ is obtained from $A$ by interchanging two rows (i.e., $E_i \leftrightarrow E_j$ for $i \neq j$), or columns, then $\det(B) = -\det(A)$.
-    \item If $B$ is obtained from $A$ by multiplying a row by a scalar (i.e., $c \cdot E_i \to E_i$), then $\det(B) = c \det(A)$.
+    \item If $B$ is obtained from $A$ by multiplying a row, or a column, by a scalar (i.e., $c \cdot E_i \to E_i$), then $\det(B) = c \det(A)$.
   \end{enumerate}
 \end{theorem}
 
@@ -438,6 +472,8 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
     &= \det(A) + 0 = \det(A).
   \end{align*}
   The second term identically vanishes because two rows are equal ($\alpha_j$ appears twice). If $j > i$, the proof is similar.
+
+  In each of the three statements, the assertion about columns follows from the one about rows: a column operation on $A$ is the corresponding row operation on $A\transp$, and $\det(A\transp) = \det(A)$ by \cref{thm:det_transpose}.
 \end{proof}
 
 \subsection{Determinants of Block Matrices}
@@ -540,17 +576,24 @@ The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \newterm{$i,j$ cof
   \]
 \end{proof}
 
-\begin{summary} For $A \in \M_{n \times n}(K)$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = \delta_{jk} \cdot \det(A)$, where $\delta_{jk}$ is the Kronecker delta (which is 1 if $j=k$, and 0 otherwise).
+\begin{summary}
+\label{sum:cofactor_orthogonality}
+For $A \in \M_{n \times n}(K)$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = \delta_{jk} \cdot \det(A)$, where $\delta_{jk}$ is the Kronecker delta (which is 1 if $j=k$, and 0 otherwise).
 \end{summary}
 
 \begin{definition*}[Classical Adjoint]\label{def:classical_adjoint}
   The transpose of the matrix of cofactors, $(C_{ij})\transp$, is called the \newterm{classical adjoint} (or \newterm{adjugate}) of $A$, denoted $\adj A \in \M_{n \times n}(K)$. Explicitly, $(\adj A)_{ij} = C_{ji} = (-1)^{i+j} \det A(j|i)$.
 \end{definition*}
 
-Our summary formula above immediately implies the matrix equation:
+\Cref{sum:cofactor_orthogonality} immediately implies the matrix equation:
 \begin{equation} \label{eq:adj_property_right}
   (\adj A) \cdot A = (\det A) \cdot I
 \end{equation}
+The bookkeeping is worth doing once. The entry of $(\adj A) \cdot A$ in place $(j,k)$ is
+\[
+\big( (\adj A) \cdot A \big)_{jk} = \sum_{i=1}^{n} (\adj A)_{ji} \, A_{ik} = \sum_{i=1}^{n} C_{ij} \, A_{ik} = \delta_{jk} \cdot \det A,
+\]
+using $(\adj A)_{ji} = C_{ij}$ from the Definition on \cpageref{def:classical_adjoint} for the middle equality and \cref{sum:cofactor_orthogonality} for the last, and $\delta_{jk} \det A$ is exactly the entry of $(\det A) \cdot I$ in that place.
 
 \begin{lemma*}[Left Adjugate Identity]\label{lem:adj_property_left}
   It is also true that $A \cdot (\adj A) = (\det A) \cdot I$.
@@ -604,7 +647,7 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
 \end{theorem}
 
 \begin{proof}[Proof of \Cref{thm:cramers_rule}]
-  We have seen previously in Linear Algebra I that if $A$ is invertible, then $A x = b$ has a unique solution. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
+  Since $\det A \neq 0$, the matrix $A$ is invertible by \cref{thm:inverse_adjoint}. Then $x := A^{-1} b$ solves the system, because $A(A^{-1}b) = b$, and it is the only solution: any $x$ with $Ax = b$ satisfies $x = A^{-1}(Ax) = A^{-1}b$. So the system has a unique solution, and there is no need to appeal to Linear Algebra I for it. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
 \end{proof}
 
 \begin{example}[Solving a System using Cramer's Rule]
@@ -641,13 +684,32 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$, and put $n := \dim V$
   Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $T : V \to V$ be a linear map. Then, $\det([T]_{\mathcal{B}}^{\mathcal{B}})$ does NOT depend on the choice of the basis $\mathcal{B}$ of $V$. We denote this intrinsic scalar simply by $\det(T) \in K$.
 \end{corollary}
 
-The function $\det : \End(V) \to K, T \mapsto \det(T)$ has the following elegant properties:
-\begin{enumerate}
+% Creator: Opus 5
+% The notes list these four properties in running prose, with no environment and
+% no proof, and ch. 21 uses the second of them to characterise eigenvalues.
+% Unnumbered, so that 20.c.1--20.c.8 do not move; cite it with \cpageref.
+\begin{proposition*}[Properties of the Determinant of an Endomorphism]
+\label{prop:det_endomorphism_properties}
+Let $V$ be a vector space over $K$ with $1 \le \dim V < \infty$. The function $\det : \End(V) \to K$, $T \mapsto \det(T)$, has the following elegant properties:
+\begin{enumerate}[label=\textbf{(\alph*)}]
   \item $\det(S \circ T) = \det(S) \cdot \det(T)$ for all $S, T \in \End(V)$.
   \item $T$ is an isomorphism if and only if $\det T \neq 0$. If $T$ is an isomorphism, then $\det(T^{-1}) = \frac{1}{\det T}$.
   \item $\det(\id_V) = 1$.
   \item $\det(0) = 0 \in K$ (where $0$ is the zero linear map).
 \end{enumerate}
+\end{proposition*}
+
+\begin{proof}
+Fix a basis $\mathcal{B}$ of $V$ and write $n := \dim V$, so that $\det(T) = \det [T]_{\mathcal{B}}^{\mathcal{B}}$ by \cref{cor:det_endomorphism}. Each statement is then the corresponding statement about matrices.
+
+\textbf{(a)} The composition rule gives $[S \circ T]_{\mathcal{B}}^{\mathcal{B}} = [S]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}}$, and \cref{thm:det_multiplicative} turns the product of matrices into the product of determinants.
+
+\textbf{(b)} By \cref{prop:representation_of_isomorphisms}, $T$ is an isomorphism precisely when $[T]_{\mathcal{B}}^{\mathcal{B}}$ is invertible, which by \cref{thm:inverse_adjoint} happens precisely when $\det [T]_{\mathcal{B}}^{\mathcal{B}} \neq 0$. The formula for $\det(T^{-1})$ is then \cref{cor:det_inverse}.
+
+\textbf{(c)} $[\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n$ and $\det(I_n) = 1$, the latter being the normalisation in \cref{def:determinant_func}.
+
+\textbf{(d)} $[0]_{\mathcal{B}}^{\mathcal{B}}$ is the zero matrix, and every summand of the Leibniz formula of \cref{thm:unique_det} then carries a factor $0$. This is where $\dim V \ge 1$ is needed: for $n \ge 1$ each summand has at least one factor. \qedhere
+\end{proof}
 
 \begin{importantremark}
   \label{rem:det_needs_endomorphism}
@@ -703,4 +765,38 @@ Prof. Biran marks three things \qt{exc.}: the column dichotomy just mentioned,
 $|S_n| = n!$, and the lower-triangular block shape. Two of them stood in the
 text as \verb|remark[Exercise]| and one as a parenthesis; all three are now
 exercises, solved above.
+
+The rigour pass supplied three missing proofs and repaired one statement.
+\Cref{prop:alternating_swap} opened \qt{let $D$ be an alternating function} and
+then offered \qt{$D$ is alternating} as one of two equivalent conditions,
+assuming what it concludes; its hypothesis is that $D$ is $n$-linear and
+vanishes on matrices with two equal \emph{adjacent} rows, and both listed
+statements are conclusions drawn from that. Its list, and that of
+\cref{thm:row_operations}, also printed as $1,2,3$ while both proofs refer to
+\textbf{(a)}, \textbf{(b)} and \textbf{(c)}.
+
+\Cref{cor:det_exists} and \cref{cor:det_pullout} were both stated without proof.
+The first carries \cref{lem:permutation_parity}, and the second is the engine of
+\cref{thm:det_multiplicative}, \cref{prop:block_matrix} and
+\cref{cor:det_columns}; each proof is three lines. \Cref{thm:unique_det} asserts
+existence as well as uniqueness and its proof addressed only uniqueness, which
+is now said. The order of these results looks circular and is not, so
+\cref{rem:no_circularity_sign} says once why: existence comes from a recursion
+in which the sign of a permutation never appears.
+
+The four properties of $\det : \End(V) \to K$ stood in running prose with no
+environment, although \cref{rem:eigenvalue_reformulations} in the previous
+chapter turns on the second of them; they are now the unnumbered Proposition on
+\cpageref{prop:det_endomorphism_properties}, with proofs, so 20.c.1--20.c.8 do
+not move. Statement \textbf{(d)} needs $\dim V \ge 1$, which is now a hypothesis.
+
+Smaller things: the inverse in \cref{prop:inv_2x2} was verified in one order
+only, and an inverse must satisfy the identity in both; the rank criterion the
+same proof opens with is \cref{aiprop:invertible_iff_full_rank} from ch. 17e;
+the passage from \cref{sum:cofactor_orthogonality} to
+\eqref{eq:adj_property_right}, which the text calls immediate, is one line of
+index bookkeeping and is now written out; and the proof of
+\cref{thm:cramers_rule} appealed to \qt{Linear Algebra I} for the unique
+solubility of $Ax = b$, which \cref{thm:inverse_adjoint} two results above
+already gives.
 \end{ainote}
