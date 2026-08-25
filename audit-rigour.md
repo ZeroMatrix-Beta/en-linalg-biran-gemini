@@ -47,6 +47,11 @@ that contradicts the book's own conventions.
 5. **Change prose only when the mathematics in it is wrong.** A word that
    carries mathematical content counts: replacing \qt{conversely} by \qt{in the
    other order} where nothing is converted is a correction, not a restyling.
+   Rules 4 and 5 now also live in `gemini.md`, under \qt{Auditing an Existing
+   Chapter}, so they survive this file the way rule 3 does. That entry also
+   scopes the \qt{freedom to expand the prose} of `gemini.md` §2 to the
+   transcription pass, which is where it belongs; read against an
+   already-written chapter it says the opposite of these two rules.
 6. **Provenance tags** as everywhere else in the book: `% Creator: Opus 5`
    opens a block written in this pass, and `% Extractor: Gemini 3.1 Pro` closes
    it so the code that follows is attributed again. **No reasoning-effort level

@@ -14,6 +14,8 @@ The provided notes are your primary source. Stick to Prof. Biran's approach, log
 You are authorized to improve the prose and apply the established "House Style" to make the document feel consistent and professional, while retaining the author's original voice.
 *In other words:* You are expected to "translate" handwritten shorthand and abbreviations into sophisticated, full-sentence academic English. While you have the freedom to expand the prose for clarity, you must stay "in character" with the professor’s vocabulary. If his notes suggest a minimalist style, maintain that spirit even in your expanded version.
 
+**This licence covers transcription only**, that is, the pass in which a passage is first written from the scans. Once a passage stands in the book as finished English, every later pass over it works under the opposite presumption. See *Auditing an Existing Chapter* below.
+
 ## 3. SPECIFIC EXPANSION RULES
 
 * Transform lecture shorthand like "iff" into the full phrase "if and only if" in prose.
@@ -156,6 +158,11 @@ You are authorized to improve the prose and apply the established "House Style" 
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\GL}{GL}
 ```
+
+* **Auditing an Existing Chapter (the prose is frozen):** The licence to expand prose in Section 2 belongs to the *transcription* pass, when a passage is first written from the scans. When a later pass reads a chapter that is already written, whether a source-verification pass or a rigour audit, the presumption inverts and the finished English is treated as fixed:
+  * **Change prose only when the mathematics in it is wrong.** A word that carries mathematical content counts as mathematics: replacing "conversely" by "in the other order" where nothing is being converted is a correction, not a restyling. Everything else stays, including phrasing you would not have chosen yourself.
+  * **Supply missing reasons with parenthetical remarks, not by rewriting the sentence.** `(i.e., ...)`, `(recall: ...)`, `(by \cref{...})`, `(see ...)` name the result a step rests on while leaving the sentence around them intact. This is the main tool of an audit pass. A short second proof is welcome where one genuinely exists.
+  * The reason is that the diff must stay honest. A rewritten paragraph hides which line the audit actually changed, and it quietly replaces the author's voice with the machine's. A reviewer has to be able to read the diff and see the mathematics that moved.
 
 * **Whose Statement Is It? (Unnumbered vs. `ai` Environments):** Prof. Biran's printed numbering must never shift, so a statement that is being given an environment for the *first* time must never consume the `theorem` counter. Which environment it gets depends on **whose statement it is**:
   * **Prof. Biran's, but unhoused.** If the statement is already in the notes and simply has no environment of its own (it sits in running prose, or under a "Notation" heading, or inside a Remark), use the **unnumbered** version: `definition*`, `proposition*`, `lemma*`, `theorem*`, `corollary*`. Give it a `\label` and cite it with `\cpageref` plus a descriptive name, for example `the Definition on \cpageref{def:representation_matrix}`. **Never `\cref` an unnumbered environment:** a `\label` inside one attaches to whatever counter was stepped last, so `\cref` would silently print the enclosing chapter number.
