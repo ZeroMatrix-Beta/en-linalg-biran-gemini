@@ -91,8 +91,8 @@ Let $V$ be an inner product space (possibly of infinite dimension), and let $U \
 \end{theorem}
 
 \begin{proof}
-By \cref{lem:orthogonal_complement_properties}, we already have $U \cap U^\perp = \{0\}$. So, it is enough to show that $U + U^\perp = V$.
-Put $r := \dim U$ and pick an orthonormal basis $(e_1, \dots, e_r)$ for $U$. (Note: this is not necessarily the standard basis or anything similar). Let $v \in V$.
+By \cref{lem:orthogonal_complement_properties} \textbf{(c)}, the intersection $U \cap U^\perp$ is either empty or $\{0\}$; it is not empty, since $U$ is a subspace and so contains $0$, which lies in $U^\perp$ as well. Hence $U \cap U^\perp = \{0\}$, and it is enough to show that $U + U^\perp = V$.
+Put $r := \dim U$ and pick an orthonormal basis $(e_1, \dots, e_r)$ for $U$, which exists by \cref{cor:orthonormal_basis_exists} because $U$ is finite-di\-men\-sional. (Note: this is not necessarily the standard basis or anything similar). Let $v \in V$.
 We introduce the temporary notation $\widetilde{P}_U(v) := \langle v, e_1 \rangle e_1 + \dots + \langle v, e_r \rangle e_r \in U$. (This is the orthogonal projection of $v$ onto $U$.)
 We have
 \begin{equation}
@@ -137,7 +137,7 @@ The map $P_U$ has the following properties:
 \end{proposition}
 
 \begin{proof}
-Properties \textbf{(a)}--\textbf{(d)} follow from the general fact that if $W_1, W_2$ are vector subspaces of $W$ and $W_1 \oplus W_2 = W$, then the map $P_{W_1} \colon W \to W_1$, defined by $P_{W_1}(w) = w_1$, where we write $w = w_1 + w_2$ in a unique way with $w_1 \in W_1, w_2 \in W_2$, is a linear map. Furthermore, $\Img P_{W_1} = W_1$, $\ker P_{W_1} = W_2$, and for all $w \in W$ we have $w - P_{W_1}(w) \in W_2$. (Thus, $w = P_{W_1}(w) + (w - P_{W_1}(w))$ is the unique decomposition of $w$ as $w = w_1 + w_2$). We also have $P_{W_1}(w) = w$ for all $w \in W_1$.
+Properties \textbf{(a)}--\textbf{(d)} follow from the general fact that if $W_1, W_2$ are vector subspaces of $W$ and $W_1 \oplus W_2 = W$, then the map $P_{W_1} \colon W \to W_1$, defined by $P_{W_1}(w) = w_1$, where we write $w = w_1 + w_2$ in a unique way with $w_1 \in W_1, w_2 \in W_2$, is a linear map. (That map is well defined precisely because the decomposition is unique, which is \cref{cor:trivial_intersection} \textbf{(d)}. It is linear because if $w = w_1 + w_2$ and $w' = w_1' + w_2'$ are the decompositions of $w$ and $w'$, then $\alpha w + \beta w' = (\alpha w_1 + \beta w_1') + (\alpha w_2 + \beta w_2')$ exhibits a decomposition of $\alpha w + \beta w'$ with the first summand in $W_1$ and the second in $W_2$; by uniqueness it \emph{is} the decomposition, so $P_{W_1}(\alpha w + \beta w') = \alpha w_1 + \beta w_1' = \alpha P_{W_1}(w) + \beta P_{W_1}(w')$.) Furthermore, $\Img P_{W_1} = W_1$, $\ker P_{W_1} = W_2$, and for all $w \in W$ we have $w - P_{W_1}(w) \in W_2$. (Thus, $w = P_{W_1}(w) + (w - P_{W_1}(w))$ is the unique decomposition of $w$ as $w = w_1 + w_2$). We also have $P_{W_1}(w) = w$ for all $w \in W_1$.
 
 For statement \textbf{(e)}, we can write
 \begin{equation}
@@ -169,7 +169,7 @@ If $V$ is a finite-di\-men\-sional inner product space and $U \subseteq V$ is a 
 
 % Creator: Opus 5
 \begin{proof}
-Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:orthogonal_complement_finite_dim} applies: $U + U^\perp = V$ and $U \cap U^\perp = \{0\}$, so the sum $U + U^\perp$ is direct and equals $V$. Choosing a basis for $U$ and a basis for $U^\perp$ and concatenating them therefore produces a basis for $V$, whence
+Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:orthogonal_complement_finite_dim} applies: $U + U^\perp = V$ and $U \cap U^\perp = \{0\}$, so the sum $U + U^\perp$ is direct and equals $V$. Choosing a basis for $U$ and a basis for $U^\perp$, both of which exist because $U$ and $U^\perp$ are subspaces of the finite-di\-men\-sional $V$ (\cref{prop:subspace_dimension_constraints}), and concatenating them therefore produces a basis for $V$, by the basis criterion of \cref{ex:direct_sum_conditions}, whence
 \[
     \dim U + \dim U^\perp = \dim \left( U \oplus U^\perp \right) = \dim V. \qedhere
 \]
@@ -436,3 +436,32 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 
   This is what the proof of the extension of the QR-decomposition on \cpageref{thm:qr_decomposition_all} arranges in advance: rather than letting the process stall, it selects the indices $i_1 < \dots < i_r$ first and applies Gram-Schmidt only to $v_{i_1}, \dots, v_{i_r}$, which are linearly independent by construction.
 \end{exercisesolution}
+
+\begin{ainote}
+Nothing in this section is false, and the source-verification pass had already
+restored the QR construction and unnumbered the QR extension, which is why
+\cpageref{thm:qr_decomposition_all} is a \verb|theorem*| and 22.b.12 lands where
+Prof. Biran puts it.
+
+The rigour pass named four steps. The proof of
+\cref{thm:orthogonal_complement_finite_dim} reads $U \cap U^\perp = \{0\}$ off
+\cref{lem:orthogonal_complement_properties} \textbf{(c)}, which offers a choice
+between $\emptyset$ and $\{0\}$; what excludes the first is that $U$, being a
+subspace, contains $0$. That proof also picks an orthonormal basis of $U$
+without saying where one comes from, which is \cref{cor:orthonormal_basis_exists}
+of the previous section.
+
+\Cref{prop:orthogonal_projection_properties} rests its first four parts on a
+general fact about projections along a direct sum, asserted in one sentence and
+proved nowhere in the book. The well-definedness of that projection is the
+uniqueness in \cref{cor:trivial_intersection} \textbf{(d)}, and its linearity
+follows from the same uniqueness in two lines; both are now written out.
+Finally, \cref{cor:dim_orthogonal_complement} concatenates two bases into one
+without naming the basis criterion of \cref{ex:direct_sum_conditions}.
+
+The two places where the text says \qt{exercise} in the middle of a proof, the
+identity $0^\perp = V$ and the monotonicity
+\cref{lem:orthogonal_complement_properties} \textbf{(d)}, already had their
+solutions at the end of the section, and \textbf{(d)} is used in the proof of
+\textbf{(e)} directly above it.
+\end{ainote}
