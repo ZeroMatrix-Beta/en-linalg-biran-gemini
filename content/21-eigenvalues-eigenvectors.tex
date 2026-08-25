@@ -125,12 +125,55 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \end{proposition}
 
 \begin{proof}
-  The scalar $\lambda$ is an eigenvalue if and only if there exists a non-zero vector $v \in V$ such that $Tv - \lambda v = 0$. This is equivalent to stating that $(T - \lambda \cdot \id_V)v = 0$, which implies that $\ker(T - \lambda \cdot \id_V) \ne \{0\}$.
-  This implies that $T - \lambda \cdot \id_V$ is not injective.
+  Every step below is an equivalence, which is what the statement requires. The scalar $\lambda$ is an eigenvalue if and only if there exists a non-zero vector $v \in V$ such that $Tv - \lambda v = 0$, by \cref{def:eigenvalue_eigenvector}. This says exactly that $(T - \lambda \cdot \id_V)v = 0$ for some $v \ne 0$, that is, that $\ker(T - \lambda \cdot \id_V) \ne \{0_V\}$. And by \cref{prop:injectivity_kernel} \textbf{(a)}, a linear map is injective precisely when its kernel is trivial, so the last condition holds if and only if $T - \lambda \cdot \id_V$ fails to be injective.
 \end{proof}
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
   Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. We define the \newterm{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \id_V)$, where $x$ is a formal variable. We define the characteristic polynomial of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
 \end{definition}
+
+% Creator: Opus 5
+% Two things the definition above passes over: det was only ever defined for
+% matrices over a field, and the entries of A - x I_n live in K[x]; and P_T
+% presupposes a basis. Both are settled by material already in the book, but
+% neither is said, so a reader has no way to know the definition is legitimate.
+\begin{remark}[How to Read \texorpdfstring{$\det(A - x I_n)$}{det(A - xI)}]
+\label{rem:char_poly_well_defined}
+Two words are in order about what \cref{def:char_poly} means.
+
+First, the entries of $A - x \cdot I_n$ are not scalars but elements of $K[x]$, whereas $\det$ was defined in ch. 20 for matrices over a field. What is meant is the Leibniz formula of \cref{thm:unique_det},
+\[
+\det B = \sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1,\sigma 1} \cdots B_{n, \sigma n},
+\]
+which is a polynomial expression in the entries and therefore makes sense verbatim over any commutative ring, $K[x]$ included. Read that way, $P_A(x)$ is an element of $K[x]$. Evaluation at a scalar $\mu \in K$ is a ring homomorphism $K[x] \to K$, so it may be carried inside that sum; consequently
+\[
+P_A(\mu) = \det(A - \mu \cdot I_n),
+\]
+the determinant on the right now being an ordinary one, over $K$. We use this repeatedly and it is the only bridge between the formal polynomial and the scalars.
+
+Second, $P_T(x)$ is defined through a basis, since $\det$ of an endomorphism is. It does not depend on which one: two bases give similar matrices, by the computation in \cref{cor:det_endomorphism}, and similar matrices have equal characteristic polynomials by \cref{lem:properties_char_poly} \textbf{(e)}. So $P_T(x) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$ for every basis $\mathcal{B}$, which is what the proof of \cref{rem:char_poly_degree} uses.
+\end{remark}
+
+% Creator: Opus 5
+% This is the fact that makes the characteristic polynomial worth defining, and
+% the book uses it three times, at the start of both proofs of
+% \cref{thm:trig_condition} and in \cref{lemma:cayley_diagonalizable}, which
+% says outright "the roots of the characteristic polynomial are exactly the
+% eigenvalues". It is stated nowhere. The scan 21.eigenvectors.a is missing from
+% source/, so it cannot be checked whether Prof. Biran states it; an ai
+% environment is therefore the honest choice, since the rule keys on where a
+% statement demonstrably appears, and this one appears nowhere in the book.
+\begin{aiproposition}[Eigenvalues are the Roots of the Characteristic Polynomial]
+\label{aiprop:eigenvalue_iff_root}
+Let $V$ be a finite-di\-men\-sional vector space over $K$ with $\dim V \ge 1$, let $T \in \End(V)$ and let $\lambda \in K$. Then $\lambda$ is an eigenvalue of $T$ if and only if $P_T(\lambda) = 0$.
+\end{aiproposition}
+
+\begin{proof}
+Each step is an equivalence. By \cref{prop:eigen_injective}, $\lambda$ is an eigenvalue of $T$ if and only if $T - \lambda \cdot \id_V$ is not injective. Its domain and target are both $V$, so \cref{cor:equal_dim_iso} \textbf{(c)} applies and injectivity is the same as bijectivity here; by \cref{lem:bijective_is_iso}, that is the same as being an isomorphism. So $\lambda$ is an eigenvalue if and only if $T - \lambda \cdot \id_V$ is \emph{not} an isomorphism, which by part \textbf{(b)} of the Proposition on \cpageref{prop:det_endomorphism_properties} happens exactly when
+\[
+\det(T - \lambda \cdot \id_V) = 0.
+\]
+Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polynomial, by the evaluation identity of \cref{rem:char_poly_well_defined}.
+\end{proof}
 
 \begin{definition}[Eigenspace]\label{def:eigenspace}
   Let $V$ be a vector space over $K$ and $T \in \End(V)$. Let $\lambda$ be an eigenvalue of $T$. The \newterm{eigenspace} corresponding to $\lambda$ is defined as:
@@ -140,7 +183,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 
 \begin{lemma}[Properties of the Characteristic Polynomial]\label{lem:properties_char_poly}
   Let $A \in \M_{n \times n}(K)$. Then:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $P_A(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$ (i.e., $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots + c_1 x + \dots + c_0$, with $c_i \in K$ for all $i$, and $c_n = (-1)^n$).
     \item $P_{A\transp}(x) = P_A(x)$.
     \item If $A = \begin{pmatrix} \lambda_1 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_n \end{pmatrix}$ has upper triangular form, then $P_A(x) = (\lambda_1 - x) \cdot \dots \cdot (\lambda_n - x)$.
@@ -183,7 +226,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 
 \begin{lemma}[Properties of Trace]\label{lem:properties_trace}
   For all $A, B \in \M_{n \times n}(K)$, we have:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\Tr(A \cdot B) = \Tr(B \cdot A)$.
     \item If $A$ and $B$ are similar matrices, then $\Tr(A) = \Tr(B).$
   \end{enumerate}
@@ -228,7 +271,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 
 \begin{exercise}[Equivalent Conditions for Direct Sums]\label{ex:direct_sum_conditions}
   $U_1 + \dots + U_r$ is a direct sum if and only if any of the following conditions hold:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The only way to write $0 = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$, is with $u_1 = \dots = u_r = 0$.
     \item For all $2 \le j \le r$, we have $U_j \cap (U_1 + \dots + U_{j-1}) = \{0\}$.
   \end{enumerate}
@@ -509,7 +552,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Since $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \subseteq V$ is a linear subspace, we have $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$.
   This implies that $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$.
 
-  \textbf{(e)} $\implies$ \textbf{(a)}: If $V \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$, then since $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k)$ is a direct sum and also a linear subspace of $V$, we must have $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$.
+  \textbf{(e)} $\implies$ \textbf{(a)}: Suppose $V \cong \Eig_T(\lambda_1) \oplus \dots \oplus \Eig_T(\lambda_k)$. Isomorphic spaces have equal dimension, by \cref{cor:iso_iff_equal_dimension}, and the dimension of an external direct sum is the sum of the dimensions, so $\dim V = \sum_{i=1}^k \dim \Eig_T(\lambda_i)$. Put $W := \Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) \subseteq V$. The sum is direct by \cref{prop:direct_sum_eigenspaces}, so concatenating bases of the summands gives a basis of $W$ by \cref{ex:direct_sum_conditions}, whence $\dim W = \sum_{i=1}^k \dim \Eig_T(\lambda_i) = \dim V$. A subspace of the same finite dimension as the whole space is the whole space, by \cref{prop:subspace_dimension_constraints}, so $\Eig_T(\lambda_1) + \dots + \Eig_T(\lambda_k) = V$.
   If we choose a basis $v_1^{(i)}, \dots, v_{\ell_i}^{(i)}$ for $\Eig_T(\lambda_i)$ for all $i$ (where $\ell_i = m_g(T; \lambda_i)$), then the union $(v_1^{(1)}, \dots, v_{\ell_1}^{(1)}, \dots, v_1^{(k)}, \dots, v_{\ell_k}^{(k)})$ is a basis of $V$ and all the vectors in it are eigenvectors of $T$.
 \end{proof}
 
@@ -518,7 +561,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{corollary}
 
 \begin{proof}
-  If $m_a(T; \lambda) = 1$, this implies that $m_g(T; \lambda) = 1$. Now use point \textbf{(c)} of \cref{thm:diag_equiv}.
+  Let $\lambda$ be an eigenvalue of $T$. Then $\Eig_T(\lambda) \ne \{0_V\}$, since it contains an eigenvector, so $m_g(T;\lambda) \ge 1$; and $m_g(T;\lambda) \le m_a(T;\lambda) = 1$ by \cref{prop:mult_inequality}. Hence $m_g(T;\lambda) = 1 = m_a(T;\lambda)$. Now use point \textbf{(c)} of \cref{thm:diag_equiv}.
 \end{proof}
 
 
@@ -601,7 +644,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \begin{equation}
     [T_A]_{\mathcal{C}}^{\mathcal{C}} = \begin{pmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{pmatrix}.
   \end{equation}
-  Denote by $\mathcal{E}$ the standard basis of $K^n$. We know that $[T_A]_{\mathcal{C}}^{\mathcal{C}} = [\id]_{\mathcal{C}}^{\mathcal{E}} \cdot [T_A]_{\mathcal{E}}^{\mathcal{E}} \cdot [\id]_{\mathcal{E}}^{\mathcal{C}} = Q^{-1}AQ$, where $Q = [\id]_{\mathcal{C}}^{\mathcal{E}}$.
+  Denote by $\mathcal{E}$ the standard basis of $K^n$, and put $Q := [\id]_{\mathcal{E}}^{\mathcal{C}}$, the matrix whose columns are the vectors of $\mathcal{C}$ written in the standard basis, so that $Q^{-1} = [\id]_{\mathcal{C}}^{\mathcal{E}}$. We know that $[T_A]_{\mathcal{C}}^{\mathcal{C}} = [\id]_{\mathcal{C}}^{\mathcal{E}} \cdot [T_A]_{\mathcal{E}}^{\mathcal{E}} \cdot [\id]_{\mathcal{E}}^{\mathcal{C}} = Q^{-1}AQ$.
   Consequently, $Q^{-1}AQ = \left(\begin{smallmatrix} \lambda_2 & \dots & * \\ 0 & \ddots & \vdots \\ 0 & \dots & \lambda_{n+1} \end{smallmatrix}\right)$.
   
   \noindent
@@ -788,8 +831,22 @@ A similar logic applies seamlessly to any abstract operator $T \in \End(V)$, whe
 \begin{definition}[The Minimal Polynomial]
   % def:21.d.1
   \label{def:minimal_poly}
-  Let $V$ be a vector space over $K$ and $T \in \End(V)$. A \newterm{minimal polynomial} for $T$ is a non-zero, monic polynomial $m_T(x) \in K[x]$ of the minimal possible degree such that $m_T(T) = 0$.
+  Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. A \newterm{minimal polynomial} for $T$ is a non-zero, monic polynomial $m_T(x) \in K[x]$ of the minimal possible degree such that $m_T(T) = 0$.
 \end{definition}
+
+% Creator: Opus 5
+% The definition as it stood placed no restriction on V, and it speaks of "the
+% minimal possible degree" without anything guaranteeing that some annihilating
+% polynomial exists at all; and the notation m_T, used ever after, presupposes
+% uniqueness, which is never argued. Both are one line given the claim above.
+\begin{remark}[The Minimal Polynomial Exists and is Unique]
+\label{rem:minimal_poly_well_defined}
+Two points are needed before the notation $m_T(x)$ is legitimate, and the hypothesis that $V$ be finite-di\-men\-sional is what supplies the first of them.
+
+\textbf{Existence.} Some non-zero polynomial annihilates $T$, by the Claim on \cpageref{claim:existence_annihilating} applied to $[T]_{\mathcal{B}}^{\mathcal{B}}$ for any basis $\mathcal{B}$; the set of degrees of such polynomials is a non-empty set of non-negative integers and so has a least element. Dividing by the leading coefficient makes a polynomial of that least degree monic without changing its degree or the fact that it annihilates $T$. Without finite-di\-men\-sionality this fails: the argument counts powers of $T$ inside a space of dimension $n^2$, and there are endomorphisms of infinite-di\-men\-sional spaces that no non-zero polynomial annihilates.
+
+\textbf{Uniqueness.} If $f$ and $g$ are both monic of that least degree $d$ with $f(T) = g(T) = 0$, then $h := f - g$ satisfies $h(T) = 0$ and $\deg h < d$, the leading terms cancelling. Were $h \ne 0$, dividing it by its leading coefficient would produce a monic annihilating polynomial of degree less than $d$, contradicting minimality. So $h = 0$ and $f = g$. This is what licenses speaking of \emph{the} minimal polynomial and writing $m_T(x)$.
+\end{remark}
 
 While the minimal polynomial guarantees that an operator satisfies \textit{some} polynomial equation, one of the most celebrated theorems in mathematics provides a canonical polynomial that always works: the characteristic polynomial.
 
@@ -797,7 +854,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   % thm:21.d.2
   \label{thm:cayley_hamilton}
   Let $A \in \M_{n \times n}(K)$. Then
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item  $P_A(A) = 0$.
     \item Let $V$ be a finite-dimensional vector space over $K$, and $T \in \End(V)$. Then $P_T(T) = 0$.
   \end{enumerate}
@@ -859,7 +916,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   % lemma:21.d.4
   \label{lemma:sequence_diagonalizable}
   Let $A \in \M_{n \times n}(\mathbb{C})$ be any arbitrary matrix. Then there exists a sequence of matrices $(A_k)_{k=1}^\infty$ such that:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Each $A_k$ is diagonalizable.
     \item $\lim_{k \to \infty} A_k = A$, in the entrywise sense that $\lim_{k \to \infty} A_k(i,j) = A(i,j)$ for all $1 \le i \le n$ and $1 \le j \le n$.
   \end{enumerate}
@@ -874,7 +931,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \end{equation}
 
   To ensure diagonalizability, we must prevent repeated eigenvalues, and we fix this by a tiny perturbation of the diagonal, one chosen afresh for each $k$. Let $k \in \mathbb{Z}_{\ge 1}$ and pick $\lambda_1(k), \dots, \lambda_n(k) \in \mathbb{C}$ such that
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\left| \lambda_i(k) - \lambda_i \right| < \frac{1}{2023 \cdot k}$ for every $i$, and
     \item $\lambda_1(k), \dots, \lambda_n(k)$ are pairwise distinct.
   \end{enumerate}
@@ -997,7 +1054,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 % Extractor: Opus 5
 \begin{exercise}[Minimality of the Cyclic Subspace]\label{ex:cyclic_minimal}
   Let $V$ be a vector space over $K$, let $T \in \End(V)$ and let $v \in V$. Prove:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\langle v \rangle_T$ is invariant under $T$, that is, $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
     \item $\langle v \rangle_T$ is the smallest linear subspace of $V$ that contains $v$ and is $T$-invariant. That is, if $U \subseteq V$ is a linear subspace with $v \in U$ and $T(U) \subseteq U$, then $\langle v \rangle_T \subseteq U$.
   \end{enumerate}
@@ -1008,7 +1065,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   % lemma:21.d.8
   \label{lemma:cyclic_basis_companion}
   Suppose that $v, Tv, \dots, T^{d-1}v$ ($d \ge 1$) are linearly independent, and $T^d v = c_0 v + c_1 Tv + \dots + c_{d-1}T^{d-1}v$. Then:
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\mathcal{B} = (v, Tv, \dots, T^{d-1}v)$ forms a basis for $\langle v \rangle_T$.
     \item Let $S = T|_{\langle v \rangle_T}$. Then $[S]_{\mathcal{B}}^{\mathcal{B}}$ is a companion matrix:
     \[
@@ -1025,7 +1082,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{lemma}
 
 \begin{proof}
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $U := \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$, so $U$ is a $T$-invariant subspace of $V$ containing $v$. Clearly $U \subseteq \langle v \rangle_T$; and by part \textbf{(b)} of \cref{ex:cyclic_minimal} (which identifies $\langle v \rangle_T$ as the smallest $T$-invariant subspace containing $v$), we also have $\langle v \rangle_T \subseteq U$. Hence $U = \langle v \rangle_T$. Since the elements of $\mathcal{B}$ are linearly independent by assumption and span this space, they form a basis for it.
     \item This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
   \end{enumerate}
@@ -1176,7 +1233,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:cyclic_minimal}]
-  \begin{enumerate}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $u \in \langle v \rangle_T$. By the definition of the span, $u = a_0 v + a_1 Tv + \dots + a_m T^m v$ for some $m \in \mathbb{Z}_{\ge 0}$ and $a_0, \dots, a_m \in K$. Applying the linear map $T$ gives
       \[ Tu = a_0 Tv + a_1 T^2 v + \dots + a_m T^{m+1} v, \]
       which is again a linear combination of vectors of the form $T^k v$, and hence lies in $\langle v \rangle_T$. Therefore $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
@@ -1186,3 +1243,63 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \end{enumerate}
   Together, \textbf{(a)} and \textbf{(b)} say that $\langle v \rangle_T$ is itself a $T$-invariant subspace containing $v$ and is contained in every other one, that is, it is the smallest such subspace, which is the property used in the proof of \cref{lemma:cyclic_basis_companion}.
 \end{exercisesolution}
+
+\begin{ainote}
+The scan \verb|21.eigenvectors.a| is absent from \verb|source/|, so the material
+of \S 21.a could not be collated against Prof. Biran's notes; parts b, c and d
+were checked page by page. That gap decides one question below.
+
+The rigour pass found one error of substance and several statements resting on
+a fact the book never states.
+
+\textbf{A change-of-basis matrix named as its own inverse.} In the first proof
+of \cref{thm:trig_condition}, the transition matrix was introduced as
+$Q = [\id]_{\mathcal{C}}^{\mathcal{E}}$ and the conjugation written
+$Q^{-1} A Q$. With the source basis on top, as this book writes it,
+$[\id]_{\mathcal{C}}^{\mathcal{E}}$ is the \emph{left} factor of the displayed
+product, so that product is $Q A Q^{-1}$; the matrix meant is
+$Q := [\id]_{\mathcal{E}}^{\mathcal{C}}$, whose columns are the vectors of
+$\mathcal{C}$ in standard coordinates. This is the failure mode of ch. 17b
+again, a product that composes perfectly while the letter naming one factor
+denotes its inverse, and \verb|check-repmatrix.pl| cannot see it: the bases do
+meet correctly, only the abbreviation is wrong.
+
+\textbf{Eigenvalues and roots.} The proof of
+\cref{lemma:cayley_diagonalizable} says \qt{the roots of the characteristic
+polynomial are exactly the eigenvalues}, and both proofs of
+\cref{thm:trig_condition} open by drawing an eigenvector out of a zero of
+$P_T(x)$. That equivalence is the reason the characteristic polynomial is worth
+defining, and it appears nowhere in the book. It is now
+\cref{aiprop:eigenvalue_iff_root}. Because the scan for \S 21.a is missing, it
+cannot be checked whether Prof. Biran states it, and the rule keys on where a
+statement demonstrably appears: an \verb|ai| environment is therefore the honest
+choice, and it leaves 21.a.1 to 21.a.9 untouched either way.
+
+\textbf{What $\det(A - x I_n)$ means.} \Cref{def:char_poly} takes a determinant
+of a matrix whose entries lie in $K[x]$, whereas ch. 20 defines $\det$ over a
+field, and it defines $P_T$ through a basis without saying that the result does
+not depend on it. Both are settled by material already in the book, the Leibniz
+formula being a polynomial identity valid over any commutative ring and
+\cref{lem:properties_char_poly} \textbf{(e)} giving the basis-independence, and
+\cref{rem:char_poly_well_defined} now says so. The evaluation identity
+$P_A(\mu) = \det(A - \mu I_n)$ recorded there is the only bridge between the
+formal polynomial and the scalars, and it is used every time a root is turned
+into an eigenvector.
+
+\textbf{The minimal polynomial.} \Cref{def:minimal_poly} placed no restriction
+on $V$, although the existence of an annihilating polynomial is proved by
+counting powers of $T$ in a space of dimension $n^2$; and the notation $m_T(x)$,
+used ever after, presupposes a uniqueness never argued.
+\Cref{rem:minimal_poly_well_defined} supplies both, and the hypothesis is now
+finite-di\-men\-sional.
+
+\textbf{Smaller repairs.} The proof of \cref{prop:eigen_injective} argued an
+equivalence with two implications pointing the same way. Part \textbf{(e)}
+$\Rightarrow$ \textbf{(a)} of \cref{thm:diag_equiv} concluded that a direct sum
+of eigenspaces filled $V$ from its being a subspace, which needs the dimension
+count that an abstract isomorphism supplies. \Cref{cor:sufficient_diag} passed
+from $m_a = 1$ to $m_g = 1$ without noting that $m_g \ge 1$ holds because an
+eigenvalue has an eigenvector. And ten \verb|enumerate| environments printed
+their items as $1, 2, 3$ while the proofs and the surrounding prose refer to
+them as \textbf{(a)}, \textbf{(b)}, \textbf{(c)}.
+\end{ainote}
