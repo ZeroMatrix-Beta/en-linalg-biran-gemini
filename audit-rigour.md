@@ -73,7 +73,7 @@ that contradicts the book's own conventions.
 | 17e | `content/17e-matrices_e_elemntary_row_operations_revisited.tex` | done, pushed (`0e28b77`) |
 | 18 | `content/18-vs-out-of-old-ones.tex` | done, pushed (`05a9289`) |
 | 10a | `content/10a-bases-part-a.tex` | done, pushed (`dce0ec0`) |
-| 11 | `content/11-bases-part-b.tex` | next |
+| 11 | `content/11-bases-part-b.tex` | done, pushed (`76f618f`) |
 | 19 onwards | | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -348,6 +348,57 @@ to exclude; the solution is written up. Chs. 1--11 have 19 exercises and no
 solutions at all, so this is the first of a backlog that the pass will meet
 again in ch. 11.
 
+### Ch. 11, the first outright false statements of the pass
+
+Chs. 16 to 18 turned up index errors, products that do not compose and steps
+without reasons, but no printed sentence that was simply untrue. Ch. 11 has two.
+
+**The zero space.** The remark defining `\dim \{0_V\} = 0` opened with \qt{its
+only spanning set is `\{0_V\}`}, and then said in its very next sentence that
+the empty set spans it too. The zero space has exactly two subsets and **both**
+span it; what separates them is that `\{0_V\}` is dependent (ch. 9,
+`lem:independence_basics` **(d)**) and `\emptyset` is not
+(`rem:empty_list_independent`). That is the whole content of the remark, and the
+opening sentence denied it.
+
+**`\dim K^S = |S|`, stated for an arbitrary set.** `K^S` is the *full* function
+space of `ex:function_space` in ch. 7, not the finitely supported one, and the
+formula holds only for finite `S`. The cleanest way to see the failure stays
+inside the book: for infinite `S` the space is not finite-dimensional, so
+`def:dimension` assigns it `\infty` and the equation does not typecheck at all,
+the book's `\dim` having no values other than `\mathbb{Z}_{\ge 0}` and
+`\infty`. Concretely the indicator functions `f_s` remain independent but stop
+spanning, since a linear combination is a finite sum; ch. 9's
+`exc:k_infinity_independent` already records exactly this for sequences and had
+been sitting there unconnected. The example now reads \qt{finite `S`} and the
+remark below it carries the infinite case. Worth noting that the surrounding
+material was already right: the exercise asks for a basis *when `S` is finite*,
+and the remark already said `K^S` is infinite-dimensional. Only the displayed
+formula overreached.
+
+**A definition with a free symbol.** `def:dimension` read
+\qt{$\dim V := n \in \mathbb{Z}_{\ge 0}$} with `n` introduced nowhere. The basis
+whose elements `n` counts is now named.
+
+**Lemma D' inherited the ch. 10a bug.** Its proof inserted each `u_j` at the
+front, the same reversed bookkeeping, and additionally described ejecting the
+redundant `v_k` as restoring independence. It does not. Dropping a redundant
+vector preserves the span and restores the length to `n`; it says nothing about
+independence, which may still fail, and does whenever the original spanning list
+was redundant to begin with. What the procedure maintains is that the `u`'s at
+the head are independent, which is what makes `lem:drop_index_beyond_head` bite.
+
+**One gap flagged rather than closed.** `lem:targeted_redundancy` (10.a.4)
+attaches its second assertion to the one index its proof produces, while
+`lem:spanning_list_contains_basis` drops whichever index its step happens to be
+at. Prof. Biran makes the same small leap. The two-inclusion argument uses only
+the predecessor property and never how the index was found, so a parenthetical
+says so rather than manufacturing an `ai` lemma for something this routine.
+
+Also: Exercise 11.1 was unlabelled and is now written up, and six silent steps
+cite their reason, among them `thm:steinitz` itself, which Statements 2 and 3 of
+the Basis Theorem had invoked as \qt{Lemma D} in words only.
+
 ## Checked in ch. 17e and found correct
 
 Recorded so that nobody re-derives them: `Q_{ij}(\alpha) = I_n + \alpha E_{ij}`
@@ -370,12 +421,18 @@ ch. 6 use `E_i`. The switch is Prof. Biran's own and is forced here, since
 
 ## Open questions
 
-- **Where next.** Ch. 11 finishes the bases pair, and after that the choice is
-  ch. 19 onwards.
-- **Exercise solutions in chs. 1--11.** Those chapters carry 19 exercises
-  between them and not one solution, while every chapter from 14 on has them.
-  Ch. 10a's single exercise is now written up. Whether the pass should also
-  clear 01--09 as it goes, or leave them, has not been decided.
+- **Where next.** The bases pair is done. Ch. 19 onwards is the remaining
+  forward direction; chs. 12 and 13 sit between the finished bases chapters and
+  ch. 14, and have not been through this pass either.
+- **Exercise solutions in chs. 1--9.** Those chapters carry 17 exercises between
+  them and not one solution, while every chapter from 14 on has them. The single
+  exercises in 10a and 11 are now written up. Whether the pass should also clear
+  01--09 as it goes, or leave them, has not been decided.
+- **Look for hand-drawn figures.** The user asked that Prof. Biran's own
+  sketches be rendered in TikZ where the scans have them. Ch. 10a's scan is
+  plain text on the pages read, and note that several TikZ figures already in the
+  book are the transcription's inventions rather than his, so their presence
+  proves nothing. Check the scan when a chapter's subject is geometric.
 - `\qt{in \cpageref{...}}` prints \qt{in page 123}; it should be \qt{on}. The
   occurrences in chs. 18 and 10a are fixed. **One remains**, in
   `content/19-misc.tex:196`, in a chapter the pass has not reached. Fix it when
