@@ -72,7 +72,8 @@ that contradicts the book's own conventions.
 | 17d | `content/17d-matrices_d_more_on_matrices_and_lineq.tex` | done, pushed (`eeb79e5`) |
 | 17e | `content/17e-matrices_e_elemntary_row_operations_revisited.tex` | done, pushed (`0e28b77`) |
 | 18 | `content/18-vs-out-of-old-ones.tex` | done, pushed (`05a9289`) |
-| 10a, 11 | the bases chapters | not started; these were the original starting point before the redirect to ch. 16 |
+| 10a | `content/10a-bases-part-a.tex` | done, pushed (`dce0ec0`) |
+| 11 | `content/11-bases-part-b.tex` | next |
 | 19 onwards | | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -295,6 +296,58 @@ Also: Prop. 18.b.2 said that `U'` being a complement \qt{implies} `U + U' = V`
 and `U ∩ U' = {0}`, where those two conditions *are* the definition of a
 complement, not a consequence of it.
 
+### Ch. 10a, a proof that disagrees with the two remarks explaining it
+
+The pass came back to the bases chapters, the original starting point before
+the redirect to ch. 16.
+
+**The exchange ran backwards.** The proof of the Steinitz Exchange Theorem
+(10.a.7) inserted each `u_j` at the *front* of the list, so the independent head
+accumulated in reverse as `u_j, ..., u_1` and the proof closed on
+`u_{n+1}, u_n, ..., u_1`. Both remarks sitting underneath it use the forward
+order: `rem:steinitz_general_step` says the list reads
+`u_1, ..., u_{j-1}, w_1, ...` and inserts `u_j` after `u_{j-1}`, and
+`rem:steinitz_stronger_form` ends at `u_1, ..., u_m, v_{i_1}, ...`. Both of
+those had been **restored from the notes** by the source-verification pass, so
+the transcript's proof was the odd one out. Nothing was false either way, since
+neither independence nor span depends on the order, but a proof that
+contradicts the two remarks written to explain it is not something a reader can
+be asked to reconcile. The proof now follows the notes.
+
+This is the one case so far where the tex-only rule was not enough. Both
+orderings are internally consistent, so the LaTeX alone cannot say which is the
+deviation; only the scan can. Two pages of `source/10.basis.a.v03.pdf` settled
+it. Worth remembering as the shape of question that justifies opening a scan
+during this pass: not \qt{is this right} but \qt{which of these two right things
+is his}.
+
+**`\Sp(\emptyset)` written as `\emptyset`.** Step 1 of the same proof excluded
+`u_1` as the droppable vector by noting that the span of the vectors preceding
+it is empty. That span is `\Sp(\emptyset) = \{0_V\}` (ch. 8,
+`rem:span_of_empty_set`), not `\emptyset`, and the difference is the entire
+argument: the step works because `u_1 \ne 0_V`, which is a statement about
+`\{0_V\}` and vacuous about `\emptyset`.
+
+**The ch. 16 pattern again.** Finitely supported functions and the linear
+combination `\sum_{u \in S} c(u) u` indexed by an arbitrary `S` were introduced
+in running prose under no heading, although Prop. 10.a.2 directly above is a
+statement about exactly that notion and its proof uses the sum throughout. The
+scan confirms the notion is Prof. Biran's own, and that he writes \qt{Def.} on
+that same page when he means one, so the omission is real and rule 3 points at
+`definition*`. It is now the unnumbered Definition on
+`\cpageref{def:finitely_supported}`.
+
+**Seven silent steps** name their reason, and the proof of Lemma A (10.a.3)
+stopped at `V \subseteq \Sp(u, v_2, ..., v_n)` without the reverse inclusion,
+so it never actually concluded that the new list spans `V`.
+
+**The first exercise solution in the early chapters.** Exercise 10.1 asks what
+happens when the drop index is `j = 1`. The answer is that it happens exactly
+when `v_1 = 0_V`, which is precisely the case Step 1 of the Steinitz proof has
+to exclude; the solution is written up. Chs. 1--11 have 19 exercises and no
+solutions at all, so this is the first of a backlog that the pass will meet
+again in ch. 11.
+
 ## Checked in ch. 17e and found correct
 
 Recorded so that nobody re-derives them: `Q_{ij}(\alpha) = I_n + \alpha E_{ij}`
@@ -317,15 +370,17 @@ ch. 6 use `E_i`. The switch is Prof. Biran's own and is forced here, since
 
 ## Open questions
 
-- **Where next.** The user chose ch. 18 over looping back to the bases
-  chapters, so the live choice is now ch. 19 onwards versus 10a and 11, which
-  were the original starting point before the redirect to ch. 16.
+- **Where next.** Ch. 11 finishes the bases pair, and after that the choice is
+  ch. 19 onwards.
+- **Exercise solutions in chs. 1--11.** Those chapters carry 19 exercises
+  between them and not one solution, while every chapter from 14 on has them.
+  Ch. 10a's single exercise is now written up. Whether the pass should also
+  clear 01--09 as it goes, or leave them, has not been decided.
 - `\qt{in \cpageref{...}}` prints \qt{in page 123}; it should be \qt{on}. The
-  occurrence in ch. 18 is fixed. **Two remain**, in
-  `content/10a-bases-part-a.tex:295` and `content/19-misc.tex:196`, both in
-  chapters the pass has not reached. Fix them when it gets there, or sweep with
-  `\bqt{in \\cpageref}` through the Grep tool (not through Bash, see the trap
-  above).
+  occurrences in chs. 18 and 10a are fixed. **One remains**, in
+  `content/19-misc.tex:196`, in a chapter the pass has not reached. Fix it when
+  it gets there, or sweep with `\bqt{in \\cpageref}` through the Grep tool (not
+  through Bash, see the trap above).
 - Ch. 17c calls a vector space `P` in Lemma 17.c.2 while `P` is an invertible
   matrix two statements later. Nothing is wrong and it was left alone
   deliberately, but the collision is a trap for the eye and is flagged in that
