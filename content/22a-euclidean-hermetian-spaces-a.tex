@@ -69,6 +69,7 @@ Let $V$ be a vector space over $\mathbb{C}$. A \newterm{Hermitian product} (or i
     \[
         \forall 0 \neq v \in V, \quad \langle v, v \rangle > 0.
     \]
+    (The inequality makes sense because $\langle v, v \rangle$ is real: property \textbf{(c)} applied with $w := v$ gives $\langle v, v \rangle = \overline{\langle v, v \rangle}$, and a complex number equal to its own conjugate has zero imaginary part. Without \textbf{(c)} the condition \qt{$\langle v, v \rangle > 0$} would not even be well formed, there being no order on $\mathbb{C}$.)
 \end{enumerate}
 We call $(V, \langle \cdot, \cdot \rangle)$ a \newterm{Hermitian} (or unitary) space.
 \end{definition}
@@ -225,7 +226,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 
 \begin{claim*}
 \label{claim:hermitian_product_iff_pos_def}
-    $\langle \cdot, \cdot \rangle_A$ is a Hermitian product if and only if $A$ is positive definite.
+    $\langle \cdot, \cdot \rangle_A$ is a Hermitian product if and only if $A$ is Hermitian and positive definite. (Both halves of the hypothesis are needed on the right, since \cref{def:positive_definite_matrix_complex} declares positive definiteness only for a Hermitian matrix; that $A$ must be Hermitian is the first thing the proof below extracts.)
 \end{claim*}
 
 \begin{exercise}[Positive Definiteness of \texorpdfstring{$2\times2$}{2x2} Hermitian Matrices]\label{exc:pos_def_2x2_complex}
@@ -519,7 +520,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
     \[
         w_j \in \Sp(w_1, \dots, w_{j-1}, v_j) = \Sp(v_1, \dots, v_{j-1}, v_j) \quad \text{(inductive hypothesis)}.
     \]
-    This implies $\Sp(w_1, \dots, w_{j-1}, w_j) \subseteq \Sp(v_1, \dots, v_{j-1}, v_j)$. But both these vector spaces have dimension $j$ (because $v_1, \dots, v_j$ are linearly independent, and also $w_1, \dots, w_j$ are linearly independent, being an orthogonal system). This implies $\Sp(w_1, \dots, w_{j-1}, w_j) = \Sp(v_1, \dots, v_{j-1}, v_j)$.
+    This implies $\Sp(w_1, \dots, w_{j-1}, w_j) \subseteq \Sp(v_1, \dots, v_{j-1}, v_j)$. But both these vector spaces have dimension $j$ (because $v_1, \dots, v_j$ are linearly independent, and also $w_1, \dots, w_j$ are linearly independent, being an orthogonal system, by \cref{thm:properties_orthogonal_systems} \textbf{(a)}). A subspace of the same finite dimension as the space containing it is that space, by \cref{prop:subspace_dimension_constraints}, so $\Sp(w_1, \dots, w_{j-1}, w_j) = \Sp(v_1, \dots, v_{j-1}, v_j)$.
 \end{proof}
 
 % Cor. (22.a.17)
@@ -527,6 +528,13 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
 \label{cor:orthonormal_basis_exists}
     Every finite-di\-men\-sional inner product space has an orthonormal basis.
 \end{corollary}
+
+% Creator: Opus 5
+% Stated without proof, though it is the result the whole Gram-Schmidt section
+% exists to produce and chs. 22b, 24 and 25 all start from it. Two lines.
+\begin{proof}
+    Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space with $n := \dim V < \infty$. If $n = 0$ the empty family is an orthonormal basis, vacuously. Otherwise $V$ has a basis $(v_1, \dots, v_n)$ by \cref{thm:basis_theorem}; feeding it to \cref{thm:gram_schmidt} produces, by part \textbf{(b)} of that theorem, the orthonormal basis $\left( \frac{w_1}{\|w_1\|}, \dots, \frac{w_n}{\|w_n\|} \right)$ of $V$.
+\end{proof}
 
 Geometric idea behind the Gram-Schmidt process.
 \begin{center}
@@ -759,3 +767,31 @@ We'll see more about this soon.
   \[ a_{ij} = \frac{\langle T(v_j), w_i \rangle}{\langle w_i, w_i \rangle} . \]
   This is \cref{thm:properties_orthogonal_systems} \textbf{(b)} applied to the vector $T(v_j) \in \Sp(w_1, \dots, w_m) = W$.
 \end{exercisesolution}
+
+\begin{ainote}
+The rigour pass found this chapter sound and its exercises already fully solved.
+Four things were added.
+
+\Cref{cor:orthonormal_basis_exists} stood without a proof, although it is the
+result the whole Gram-Schmidt section exists to produce, and chs. 22b, 24 and 25
+all begin from it. Two lines suffice, the only point worth stating being that
+$\dim V = 0$ is covered by the empty family.
+
+The positivity axiom of \cref{def:hermitian_product_complex} writes
+\qt{$\langle v, v \rangle > 0$} for a quantity whose values lie in $\mathbb{C}$,
+where there is no order. What makes the condition well formed is the Hermitian
+axiom immediately above it, which forces $\langle v, v \rangle$ to equal its own
+conjugate and hence to be real. The definition now says so.
+\Cref{def:positive_definite_matrix_complex} already made the corresponding
+remark for matrices, so the omission here was a local one.
+
+The Claim on \cpageref{claim:hermitian_product_iff_pos_def} asked for $A$
+\qt{positive definite}, a property \cref{def:positive_definite_matrix_complex}
+declares only for Hermitian matrices; the statement now carries both halves,
+which is also what its proof extracts first and what
+\cref{exc:real_case_of_claim} says in the real case.
+
+And the last step of the proof of \cref{thm:gram_schmidt}, that two spans of
+equal dimension coincide, now names \cref{prop:subspace_dimension_constraints}
+and \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
+\end{ainote}
