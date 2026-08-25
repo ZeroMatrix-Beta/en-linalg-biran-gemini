@@ -106,7 +106,7 @@ Let $V$ and $W$ be vector spaces over a field $K$, and let $T: V \to W$ be a lin
 % thm:15.a.3
 \begin{theorem}[Existence and Uniqueness of Linear Maps on a Basis]
 \label{thm:existence_uniqueness_linear_map}
-Let $V$ be a finite-dimensional vector space, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Given any arbitrary sequence of vectors $w_1, \dots, w_n \in W$, there exists a unique linear map $T: V \to W$ such that:
+Let $V$ and $W$ be vector spaces over $K$ with $V$ finite-dimensional, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Given any arbitrary sequence of vectors $w_1, \dots, w_n \in W$, there exists a unique linear map $T: V \to W$ such that:
 \[
 T(v_i) = w_i, \quad \forall \, 1 \le i \le n.
 \]
@@ -409,7 +409,7 @@ Let $V$ be a finite-di\-men\-sional vector space, and let $T: V \to W$ be a line
 \end{theorem}
 
 \begin{proof}
-Let $k := \dim \ker(T)$ and $n := \dim V$. Let $(u_1, \dots, u_k)$ be a basis for $\ker(T)$. By the Steinitz Exchange Lemma, we can extend this linearly independent set to a full basis for $V$, denoted by $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_{n-k})$. We claim that the family $\mathcal{C} = (T(v_1), \dots, T(v_{n-k}))$ forms a basis for $\Img(T)$.
+Being a subspace of the finite-di\-men\-sional space $V$, the kernel $\ker(T)$ is itself finite-di\-men\-sional by \cref{prop:subspace_dimension_constraints}, so it has a basis. Let $k := \dim \ker(T)$ and $n := \dim V$, and let $(u_1, \dots, u_k)$ be a basis for $\ker(T)$. By the basis extension property, item \textbf{(2)} of \cref{sum:finite_dim_properties}, we can extend this linearly independent set to a full basis for $V$, denoted by $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_{n-k})$. We claim that the family $\mathcal{C} = (T(v_1), \dots, T(v_{n-k}))$ forms a basis for $\Img(T)$.
 
 \begin{enumerate}
     \item \textbf{Spanning:} Let $w \in \Img(T)$. By definition, there exists some $v \in V$ such that $w = T(v)$. We can express $v$ uniquely as a linear combination of the basis vectors in $\mathcal{B}$:
@@ -487,7 +487,7 @@ Let $T: V \to W$ be a linear map, where $V$ and $W$ are finite-di\-men\-sional v
 
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Since $\Img(T)$ is a subspace of $W$, we have $\dim \Img(T) \le \dim W < \dim V$. By \cref{thm:rank_nullity},
+    \item Since $\Img(T)$ is a subspace of $W$, we have $\dim \Img(T) \le \dim W < \dim V$ by \cref{prop:subspace_dimension_constraints}. By \cref{thm:rank_nullity},
     \[
     \dim \ker(T) = \dim V - \dim \Img(T) > 0,
     \]
@@ -501,7 +501,7 @@ Let $T: V \to W$ be a linear map, where $V$ and $W$ are finite-di\-men\-sional v
     \[
     T \text{ injective} \iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \iff \dim V = \dim \Img(T) \iff \dim W = \dim \Img(T),
     \]
-    the third step by \cref{thm:rank_nullity} and the last by the assumption $\dim V = \dim W$. Since $\Img(T)$ is a subspace of $W$, the final equality holds if and only if $\Img(T) = W$, that is, if and only if $T$ is surjective. As each of the two properties implies the other, either one already makes $T$ bijective. \qedhere
+    the third step by \cref{thm:rank_nullity} and the last by the assumption $\dim V = \dim W$. Since $\Img(T)$ is a subspace of $W$, the final equality holds if and only if $\Img(T) = W$, this being the equality case of \cref{prop:subspace_dimension_constraints}, that is, if and only if $T$ is surjective. As each of the two properties implies the other, either one already makes $T$ bijective. \qedhere
 \end{enumerate}
 \end{proof}
 
@@ -643,7 +643,7 @@ Throughout, we use the identity
 so that $\Img(S \circ T)$ is the image of the restricted linear map $S|_{\Img(T)}: \Img(T) \to U$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Since $\Img(T) \subseteq W$, we have $S(\Img(T)) \subseteq S(W) = \Img(S)$, and both are subspaces of $U$ by \cpageref{exc:images_preimages_subspaces}, whence $\rank(S \circ T) \le \rank(S)$. Applying \cref{thm:rank_nullity} to $S|_{\Img(T)}$ gives
+    \item Since $\Img(T) \subseteq W$, we have $S(\Img(T)) \subseteq S(W) = \Img(S)$, and both are subspaces of $U$ by \cref{exc:images_preimages_subspaces} \textbf{(a)}, so \cref{prop:subspace_dimension_constraints} gives $\rank(S \circ T) \le \rank(S)$. Applying \cref{thm:rank_nullity} to $S|_{\Img(T)}$ gives
     \[
     \rank(S \circ T) = \dim \Img\big(S|_{\Img(T)}\big) = \dim \Img(T) - \dim \ker\big(S|_{\Img(T)}\big) \le \rank(T),
     \]
@@ -697,4 +697,22 @@ the matrix in \cref{lem:all_linear_maps_are_matrices} is asserted by the
 transcript but not proved, and not claimed at all in the notes; a one-line proof
 is added. Two cross-references used \verb|\eqref| on a definition and on a
 theorem, which typesets as a bare equation number; they are now \verb|\cref|.
+
+The rigour pass found one defect of statement and five silent steps.
+\Cref{thm:existence_uniqueness_linear_map} introduced $V$ and a basis of it, and
+then spoke of vectors $w_1, \dots, w_n \in W$ and of a map $T: V \to W$ without
+$W$ ever having been named; it is now introduced with $V$, as a vector space
+over the same field.
+
+The proof of \cref{thm:rank_nullity} extends a basis of $\ker(T)$ to one of $V$
+\qt{by the Steinitz Exchange Lemma}. What it uses is the basis extension
+property, item \textbf{(2)} of \cref{sum:finite_dim_properties}, which is proved
+in ch. 12; and before a basis of $\ker(T)$ can be spoken of at all, that
+subspace has to be known to be finite-di\-men\-sional, which is
+\cref{prop:subspace_dimension_constraints}. That same proposition is what
+justifies three further steps in \cref{cor:equal_dim_iso} and in the solution to
+\cref{exc:rank_of_composition}: that a subspace has no larger dimension than the
+space containing it, and that equality of the two forces them to coincide. The
+last of these is the equality case, and it is what turns
+\qt{$\dim \Img(T) = \dim W$} into surjectivity in part \textbf{(c)}.
 \end{ainote}
