@@ -77,8 +77,15 @@ that contradicts the book's own conventions.
 | 12 | `content/12-dimension.tex` | done, pushed (`0f0586d`) |
 | 13 | `content/13-row-and-col-space.tex` | done, pushed (`1c2ce5c`) |
 | 14 | `content/14-sums-of-vector-spaces.tex` | done, pushed (`3a264d5`) |
-| 15a, 15b | the linear-maps chapters | not started |
-| 19 onwards | | not started |
+| 15 | `content/15a-linear-maps.tex` | done, pushed (`9121804`); this one file holds both 15.a and 15.b |
+| 19 | `content/19-misc.tex` | done, pushed (`e8a9875`) |
+| 20 | `content/20-determinants.tex` | done, pushed (`d4bc841`) |
+| 21 | `content/21-eigenvalues-eigenvectors.tex` | done, pushed (`394f9d4`) |
+| 22a | `content/22a-euclidean-hermetian-spaces-a.tex` | done, pushed (`9198c79`) |
+| 22b | `content/22b-euclidean-hermetian-spaces-b.tex` | done, pushed (`2477582`) |
+| 23a | `content/23a-dual-spaces-inner-products-a.tex` | done, pushed (`71b01c9`) |
+| **24 onwards** | 24, 25, 26, 27, 28a, 28b | **not started; this is where to resume** |
+| 1--9 | the foundational chapters | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
 
