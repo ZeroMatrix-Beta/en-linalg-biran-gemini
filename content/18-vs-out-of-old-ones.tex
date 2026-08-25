@@ -119,7 +119,7 @@ Therefore, $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$.
 
 \subsection{Rings of Endomorphisms}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 The notes say at this point only \qt{explain briefly the structure of a ring}
 and \qt{explain what is a homomorphism of rings}, since both were given orally.
 The book uses both notions from here on, and already used the word
@@ -220,7 +220,7 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
   We have $\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K = \dim V \cdot 1 = \dim V$, using \cref{cor:dim_hom} for the middle equality and, for the one after it, that $K$ is one-dimensional as a vector space over itself, with basis $(1)$.
 \end{proof}
 
-Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. % Extractor: Opus 5 (High)
+Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. % Extractor: Opus 5
 The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell) := f_{\ell}$ is a linear map, and it is in fact an isomorphism; the notes leave the verification to the reader, and it is carried out among the solutions at the end of this section.
 
 \begin{exercise}[The Row Space as the Dual of the Column Space]
@@ -230,7 +230,7 @@ Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell)
 
 % Extractor: Gemini 3.1 Pro
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The v_i^* are Prof. Biran's, defined here in running prose, with 18.a.7
 % standing directly underneath as a statement about them. Unnumbered, so that
 % 18.a.1--18.a.12 are untouched; cite it with \cpageref.
@@ -238,7 +238,7 @@ Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell)
 \label{def:dual_basis_functionals}
 % Extractor: Gemini 3.1 Pro
 Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 (this is \cref{thm:existence_uniqueness_linear_map}: prescribing the values on a basis arbitrarily determines one and only one linear map).
 \end{definition*}
 % Extractor: Gemini 3.1 Pro
@@ -298,7 +298,7 @@ Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v
   Let $U, V, W$ be vector spaces over $K$, and let $T \colon V \to W$ and $S \colon W \to U$ be linear maps. Consider the dual maps $T^* \colon W^* \to V^*$ and $S^* \colon U^* \to W^*$. Then, $(S \circ T)^* = T^* \circ S^*$.
 \end{proposition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 The notes mark this proof as an exercise; it is carried out among the solutions at the end of the section, together with the following one.
 
 \begin{exercise}[Duals of Compositions, of the Identity and of the Zero Map]
@@ -329,7 +329,7 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
   \[ \sum_{i=1}^n w_j^*\left(\sum_{k=1}^m a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
   % Comment at Gemini: dont use a transposed row-vector here:
   The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$).
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
   These coordinates are, for $1 \le j \le m$, precisely the columns of $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}), and they agree column by column with those of $A\transp$. Hence $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$, as claimed.
 \end{proof}
 % Extractor: Gemini 3.1 Pro
@@ -367,7 +367,7 @@ Let $V$ be a vector space over $K$. We have $V^*$, but also $V^{**} := (V^*)^*$,
 \subsection{Naturality}
 The map $\tau \colon V \to (V^*)^*$ exists for every space $V$, and it is defined in the same way. To distinguish $\tau$'s for different spaces, we denote it by $\tau_V \colon V \to (V^*)^*$.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The naturality condition stood in the running prose as a picture alone, with
 % no statement attached to it and no proof. Unnumbered, so that Prof. Biran's
 % 18.a.1--18.a.12 are untouched; cite it with \cpageref.
@@ -389,7 +389,7 @@ Let $V$ and $W$ be two vector spaces over $K$. Then, for any linear map $T \colo
     \draw[->] (Vdual) to node {$(T^*)^*$} (Wdual);
   \end{tikzpicture}
 \end{center}
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 In other words, $(T^*)^* \circ \tau_V = \tau_W \circ T$.
 \end{proposition*}
 
@@ -409,7 +409,7 @@ Hence $(T^*)^*(\tau_V(v)) = \tau_W(T(v))$ for every $v \in V$, which is precisel
   Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the dual basis, and let $(\mathcal{B}^*)^* = ((v_1^*)^*, \dots, (v_n^*)^*)$ be the basis for $(V^*)^*$ which is dual to $\mathcal{B}^*$. Show that $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$, meaning $\tau(v_i) = (v_i^*)^*$ for all $1 \leq i \leq n$.
 \end{exercise}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_hom_dual}
 
@@ -486,7 +486,7 @@ The two agree on every member of a basis of $V^*$, hence $\tau(v_i) = (v_i^*)^*$
   The zero element of this space is given by $0_{V \times W} := (0_V, 0_W)$. This new vector space $V \times W$ is usually denoted by $V \oplus W$ and is called the direct sum of $V$ and $W$.
 \end{proposition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Axioms for $V \oplus W$, and the Canonical Maps]
   \label{exc:direct_sum_axioms}
   Verify that all vector space axioms are satisfied by $V \times W$ under the componentwise operations above, so that \cref{prop:direct_sum_structure} holds. Check also that the four canonical maps of the following remark are linear, that $p_V$ and $p_W$ are surjective, and that $i_V$ and $i_W$ are injective.
@@ -610,7 +610,7 @@ endowed with coordinatewise operations.
 
 For an infinite family of vector spaces $\{U_i\}_{i \in I}$, we define the direct sum $\bigoplus_{i \in I} U_i$ as the set of functions $t \colon I \to \bigcup_{i \in I} U_i$ such that $t(i) \in U_i$ for all $i \in I$, and $t(i) \neq 0$ for at most finitely many indices $i \in I$. This ensures that any element of the direct sum can be represented as a finite formal sum of components.
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_direct_sums}
 
@@ -776,7 +776,7 @@ We want to turn $V/U$ into a vector space over $K$. We define addition as $[v_1]
   It remains to show that they satisfy the axioms of a vector space. These follow directly from the corresponding axioms in $V$; the notes leave that verification to the reader, and it is carried out among the solutions at the end of this section.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Axioms for $V/U$]
   \label{exc:quotient_axioms}
   Complete the proof of \cref{prop:quotient_operations} by checking that the operations on $V/U$ satisfy the axioms of a vector space.
@@ -856,7 +856,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   \end{enumerate}
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Commutativity of the Diagram in \cref{thm:first_isomorphism}]
   \label{exc:first_iso_diagram}
   Check that $T = i \circ \overline{T} \circ \pi$, where $i \colon \Img(T) \to W$ is the inclusion.
@@ -973,7 +973,7 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
   \[ (\Img T)^\perp = \ker(T^*). \]
 \end{exercise}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_quotients}
 

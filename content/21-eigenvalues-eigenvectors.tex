@@ -277,7 +277,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   If $V$ is finite-di\-men\-sional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
 \end{exercise}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_eigen_motivation}
 
@@ -354,7 +354,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   For example, if $K = \mathbb{Z}_2$, then $p(x) = x$ and $q(x) = x^2$ are different polynomials, but they define the same function $\mathbb{Z}_2 \rightarrow \mathbb{Z}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
 \end{importantremark}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Polynomials versus Polynomial Functions]\label{ex:poly_vs_func}
   Settle the question raised at the end of \cref{rem:poly_vs_func}: for which fields $K$ do two distinct polynomials $p(x), q(x) \in K[x]$ always define distinct functions $K \to K$? In particular, what happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$?
 \end{exercise}
@@ -441,7 +441,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   We also found that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
 \end{example}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_multiplicities}
 
@@ -560,12 +560,12 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Let $V$ be a finite-dimensional vector space over $\mathbb{C}$. Then every $T \in \End(V)$ is trigonalizable.
 \end{corollary}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{proof}
   The characteristic polynomial $P_T(x)$ lies in $\mathbb{C}[x]$, so by \cref{thm:fta} it splits as a product of linear factors. Now apply \cref{thm:trig_condition}.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Splitting Passes to the Cofactor]\label{ex:factor_splits}
   Let $\lambda \in K$ and let $p(x), q(x) \in K[x]$ be non-zero polynomials with $p(x) = (\lambda - x) \cdot q(x)$. Show that if $p(x)$ splits into a product of linear factors over $K$, then so does $q(x)$.
   (This is the step Prof. Biran leaves as an exercise in both proofs of \cref{thm:trig_condition}, applied to $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$.)
@@ -655,7 +655,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
 \subsection{An Alternative (And More Elegant) Proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Bases of a Quotient Space]\label{ex:quotient_basis}
   Let $V$ be a finite-di\-men\-sional vector space over $K$, let $U \subseteq V$ be a linear subspace, and let $(u_1, \dots, u_r)$ be a basis for $U$, extended to a basis $(u_1, \dots, u_r, w_{r+1}, \dots, w_n)$ of $V$. Show that the equivalence classes $([w_{r+1}], \dots, [w_n])$ form a basis for the quotient space $V/U$. (In particular, $\dim V/U = \dim V - \dim U$.)
 \end{exercise}
@@ -718,7 +718,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   This completes the inductive step, showing that $T$ is trigonalizable.
 \end{proof}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_diagonalizability}
 
@@ -803,7 +803,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \end{enumerate}
 \end{theorem}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Cayley-Hamilton for $2 \times 2$ Matrices]\label{ex:cayley_2x2}
   Let $A := \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$. Its characteristic polynomial is
   \[ P_A(x) = \det\begin{pmatrix} a-x & b \\ c & d-x \end{pmatrix} = (a-x)(d-x) - bc = x^2 - \underbrace{(a+d)}_{\Tr(A)} \, x + \underbrace{(ad-bc)}_{\det(A)}. \]
@@ -890,7 +890,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \[ \lim_{k \to \infty} A_k = P \left( \lim_{k \to \infty} \begin{pmatrix} \lambda_1(k) & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n(k) \end{pmatrix} \right) P^{-1} = P \begin{pmatrix} \lambda_1 & & b_{ij} \\ & \ddots & \\ 0 & & \lambda_n \end{pmatrix} P^{-1} = A. \qedhere \]
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Continuity of Two-Sided Multiplication]\label{ex:conjugation_continuous}
   Let $P, Q \in \M_{n \times n}(\mathbb{C})$ be given matrices. Show that the map
   \[ \M_{n \times n}(\mathbb{C}) \longrightarrow \M_{n \times n}(\mathbb{C}), \qquad X \longmapsto P X Q, \]
@@ -925,7 +925,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
   Suppose $f(x_1, \dots, x_r) \in \mathbb{R}[x_1, \dots, x_r]$ satisfies $f(a_1, \dots, a_r) = 0$ for all $(a_1, \dots, a_r) \in \mathbb{R}^r$. Then $f \equiv 0$ as a formal polynomial (all coefficients are 0).
 \end{lemma}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{proof}
   Write $f(x_1, \dots, x_r) = \sum_{\underline{i} \in \mathcal{I}} c_{\underline{i}} x_1^{i_1} \dots x_r^{i_r}$, fix a multi-index $\underline{i} = (i_1, \dots, i_r) \in \mathcal{I}$, and put $m := i_1 + \dots + i_r$. We show that $c_{\underline{i}} = 0$.
 
@@ -955,7 +955,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
 % Extractor: Gemini 3.1 Pro
 
 \begin{proof}[Analytic Proof of Cayley-Hamilton over every field $K$]
-  % Extractor: Opus 5 (High)
+  % Extractor: Opus 5
   The point of departure is that the determinant is given by one and the same formula over every field: for every $n \times n$ matrix $B$ over every field $K$,
   \begin{equation} \label{eq:leibniz_universal}
     \det B = \sum_{\sigma \in S_n} \sgn(\sigma) \cdot B_{1, \sigma 1} \cdot \dots \cdot B_{n, \sigma n}.
@@ -968,7 +968,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
   Since Cayley-Hamilton holds for $\mathbb{C}$ (and thus for any matrix in $\mathbb{R}$), we know $q_{ij}(A_{11}, \dots) = 0$ for all evaluations in $\mathbb{R}^{n^2}$. By \cref{lemma:multi_var_poly}, $q_{ij} \equiv 0$ as formal polynomials. Because they are formally the zero polynomial, evaluating them over \textit{any} field $K$ will always yield 0. Thus, $P_A(A) = 0$ for any matrix over any field.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{example}[The Polynomials $q_{ij}$ for $n = 2$]\label{ex:q_ij_2x2}
   Let $n = 2$ and $A := \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$, so that $P_A(x) = (a-x)(d-x) - bc = x^2 - (a+d)x + (ad-bc)$ as in \cref{ex:cayley_2x2}. Then
   \begin{align*}
@@ -994,7 +994,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   where, as usual, $T^0 := \id_V$.
 \end{definition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Minimality of the Cyclic Subspace]\label{ex:cyclic_minimal}
   Let $V$ be a vector space over $K$, let $T \in \End(V)$ and let $v \in V$. Prove:
   \begin{enumerate}
@@ -1059,7 +1059,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   where $M_{11}$ is the submatrix obtained by deleting the first row and first column, and $M_{1d}$ is the submatrix obtained by deleting the first row and $d$-th column.
   Notice that $M_{1d}$ is an upper triangular matrix with entirely $1$s on its main diagonal. Thus, $\det(M_{1d}) = 1$. The matrix $M_{11}$ is exactly the $(d-1) \times (d-1)$ matrix of the same shape, built from the constants $c_1, \dots, c_{d-1}$ in place of $c_0, \dots, c_{d-1}$.
 
-  % Extractor: Opus 5 (High)
+  % Extractor: Opus 5
   We can now run the induction on $d$ explicitly. For $d = 1$ the matrix is the $1 \times 1$ matrix $(c_0 - x)$, whose determinant is $c_0 - x = (-1)^1 (x - c_0)$, which is the asserted formula. Let $d \ge 2$ and assume the formula for size $d-1$. Applied to $M_{11}$, whose constants are $c_1, \dots, c_{d-1}$, it gives
   \[ \det(M_{11}) = (-1)^{d-1} \left( x^{d-1} - c_{d-1}x^{d-2} - \dots - c_2 x - c_1 \right). \]
   Substituting this and $\det(M_{1d}) = 1$ into the cofactor expansion above yields
@@ -1119,7 +1119,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   Note also that the two sides do not even live in the same place: $\det(A - x I)$ is a \emph{scalar}, whereas $P_A(A)$ is an $n \times n$ \emph{matrix}, so the very first equality of the \qt{proof} equates a scalar with a matrix.
 \end{remark}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_minimal_poly}
 

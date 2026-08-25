@@ -40,7 +40,7 @@ where $a_1, \dots, a_n \in K$ are the unique scalars in $K$ such that $v = a_1 v
 Note that $[v]_{\mathcal{B}}$ is uniquely defined, since every $v \in V$ has a unique representation as a linear combination of the basis vectors $v_1, \dots, v_n$.
 \end{remark}
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The notes introduce $\Phi_{\mathcal{B}}$ in running prose and never name it,
 % although the proposition below is titled after it and chapter 18 calls it
 % "the coordinate map" and uses it throughout. Unnumbered, so that Prof.
@@ -53,7 +53,7 @@ Define a map $\Phi_{\mathcal{B}}: V \to K^n$ given by:
 \[
 \Phi_{\mathcal{B}}(v) := [v]_{\mathcal{B}} \in K^n.
 \]
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 We call $\Phi_{\mathcal{B}}$ the \newterm{coordinate map} of the basis $\mathcal{B}$.
 \end{definition*}
 % Extractor: Gemini 3.1 Pro
@@ -125,7 +125,7 @@ a_n
 \end{pmatrix}
 := a_1 v_1 + \dots + a_n v_n.
 \]
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 Exhibiting this map is in fact a second, shorter proof that $\Phi_{\mathcal{B}}$ is bijective: both composites are the identity, since $\mathcal{B}$ is a basis, and hence every $v \in V$ is recovered from its own coordinates by $a_1 v_1 + \dots + a_n v_n$, while every tuple $(a_1, \dots, a_n)\transp \in K^n$ is by \cref{def:coordinate_vector} the coordinate vector of that same combination.
 % Extractor: Gemini 3.1 Pro
 \end{remark}
@@ -201,7 +201,7 @@ K^n \arrow[r, "\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}"'] & K^m
 \end{center}
 Since $\Phi_{\mathcal{B}}^{-1}$, $T$, and $\Phi_{\mathcal{C}}$ are all linear maps, the map $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}: K^n \to K^m$ is also linear. By previous results (\cref{lem:all_linear_maps_are_matrices}), any linear map $K^n \to K^m$ can be written using a matrix $A \in \M_{m \times n}(K)$. In other words, there exists a unique matrix $A \in \M_{m \times n}(K)$ such that $\Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} = T_A$.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The central object of the whole book, and the notes define it in running
 % prose only. Unnumbered, to leave Prof. Biran's numbering 16.1--16.4 intact;
 % the hypotheses and the defining identity are restated so that the block
@@ -226,7 +226,7 @@ is called the \newterm{representation matrix} of $T$ with respect to the bases $
 
 Let $T: V \to W$ be a linear map, let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$, and let $\mathcal{C} = (w_1, \dots, w_m)$ be a basis for $W$. We wish to determine the entries of its representation matrix $A := [T]_{\mathcal{C}}^{\mathcal{B}} \in \M_{m \times n}(K)$. By definition (see \cpageref{def:representation_matrix}), $A$ is the unique matrix such that the linear map $T_A: K^n \to K^m$, given by left-multiplication by $A$, satisfies $T_A = \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1}$.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The single most-used formula of the book: chapters 17b, 18, 22a and 25 all
 % appeal to it, and every one of them calls it "the definition of the
 % representation matrix", although it is a derived fact and the notes leave it
@@ -261,7 +261,7 @@ Recall that the coordinate vector of the basis vector $v_j \in V$ with respect t
 \[
 T_A(e_j) = \Phi_{\mathcal{C}}(T(v_j)) = [T(v_j)]_{\mathcal{C}}.
 \]
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 Since the $j$-th column of $A$ is $T_A(e_j)$, this is exactly the asserted block-column form. The description by entries is the same statement read coordinate by coordinate: writing $[T(v_j)]_{\mathcal{C}} = (a_{1j}, \dots, a_{mj})\transp$ says, by \cref{def:coordinate_vector}, that $T(v_j) = \sum_{i=1}^m a_{ij} w_i$.
 \end{proof}
 % Extractor: Gemini 3.1 Pro
@@ -400,7 +400,7 @@ a_{mj}
 \]
 This reveals the following.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The composition rule is the punchline of the chapter and is used constantly
 % from chapter 17 onwards, yet the notes leave it in running prose. Stated in
 % terms of entries, which is what the computation above actually establishes:
@@ -420,7 +420,7 @@ In the notation introduced in the next chapter, this reads
 where the matrix dimensions follow $(p \times m) \cdot (m \times n) = (p \times n)$.
 \end{proposition*}
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 \begin{remark}
 There is a shorter route to the same statement, in the spirit of the second proof of \cref{prop:matrix_evaluation}. Put $A := [T]_{\mathcal{B}}^{\mathcal{A}}$, $B := [S]_{\mathcal{C}}^{\mathcal{B}}$, and $C := [S \circ T]_{\mathcal{C}}^{\mathcal{A}}$. Each of the three matrices is defined by the corresponding commutative diagram, and therefore,
 \[
@@ -435,7 +435,7 @@ In order to obtain $[S \circ T]_{\mathcal{C}}^{\mathcal{A}}$ from $[T]_{\mathcal
 \medskip
 \noindent--- Yes, but not entirely\dots
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{ainote}
 This chapter came through the transcription essentially intact: every statement
 of the notes is present, in the notes' order, and the printed numbers
@@ -465,7 +465,7 @@ asserted identity is exactly the commutative diagram defining
 $[T]_{\mathcal{C}}^{\mathcal{B}}$. The computational proof that precedes it in
 the text above is not Prof. Biran's.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 A second pass, this one looking only for gaps in rigour, found that the
 chapter states four of its central facts in running prose and never in an
 environment: the coordinate map $\Phi_{\mathcal{B}}$, which

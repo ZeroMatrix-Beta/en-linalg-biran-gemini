@@ -1,8 +1,8 @@
 # Rigour audit (reading the LaTeX alone)
 
 Working notes for the second audit pass over this book. Branch
-`review/verify-against-source`. Last updated after ch. 17e was pushed
-(`0e28b77`), which finishes the matrices chapter, 17a to 17e.
+`review/verify-against-source`. Last updated after ch. 18 was pushed
+(`05a9289`). Chs. 16, 17a--17e and 18 are done.
 
 This is a different pass from the source-verification audit. That one compared
 `content/*.tex` against Prof. Biran's scans in `source/` and restored what the
@@ -47,9 +47,13 @@ that contradicts the book's own conventions.
 5. **Change prose only when the mathematics in it is wrong.** A word that
    carries mathematical content counts: replacing \qt{conversely} by \qt{in the
    other order} where nothing is converted is a correction, not a restyling.
-6. **Provenance tags** as everywhere else in the book: `% Creator: Opus 5 (Max)`
+6. **Provenance tags** as everywhere else in the book: `% Creator: Opus 5`
    opens a block written in this pass, and `% Extractor: Gemini 3.1 Pro` closes
-   it so the code that follows is attributed again.
+   it so the code that follows is attributed again. **No reasoning-effort level
+   in the tag.** Earlier sessions wrote `Opus 5 (High)` and `Opus 5 (Max)`; all
+   156 of those were swept back to plain `Opus 5`, since the effort setting
+   varies per session, records nothing about who wrote the prose, and does not
+   appear on the `Gemini 3.1 Pro` tags either.
 7. **One chapter per commit**, build before committing, then push.
 
 ## Status
@@ -62,8 +66,9 @@ that contradicts the book's own conventions.
 | 17c | `content/17c-matrices_c_column_rank_and_row_rank.tex` | done, pushed (`b9078db`) |
 | 17d | `content/17d-matrices_d_more_on_matrices_and_lineq.tex` | done, pushed (`eeb79e5`) |
 | 17e | `content/17e-matrices_e_elemntary_row_operations_revisited.tex` | done, pushed (`0e28b77`) |
+| 18 | `content/18-vs-out-of-old-ones.tex` | done, pushed (`05a9289`) |
 | 10a, 11 | the bases chapters | not started; these were the original starting point before the redirect to ch. 16 |
-| 18 onwards | | not started |
+| 19 onwards | | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
 
@@ -239,6 +244,52 @@ searching, and put any perl beyond a trivial one-liner into a file and run
   book are followed by a `\begin{proof}`, and several of those are legitimate
   remarks sitting between a proposition and its proof.
 
+### Ch. 18, five results nobody could cite
+
+**Nothing in ch. 18 is false.** It is the biggest chapter the pass has met,
+three lectures in one file (18.a on $\Hom$, duals and biduals; 18.b on direct
+sums; 18.c on quotients), and the source-verification pass had already been
+through it. What the rigour pass found was of a different kind.
+
+**Five numbered results of Prof. Biran's carried no `\label` at all**, so
+nothing in the book could cite them: 18.a.3, 18.a.5, 18.a.11, 18.c.6 and
+18.c.8. Two of them were being cited already, in words instead of by reference:
+the proof of 18.a.6 runs `dim V* = dim Hom(V,K) = dim V . dim K` on 18.a.3
+without naming it, and the proof of 18.c.8 appeals twice to \qt{the theorem
+about the universal property of quotient spaces}, which is 18.c.6 directly
+above it. All five are labelled now; the aux file confirms the printed numbers
+18.a.1--18.a.12, 18.b.1--18.b.2 and 18.c.1--18.c.8 are unchanged.
+
+Worth having a script for: `perl` over the file, flagging every
+`\begin{theorem|lemma|proposition|corollary|definition}` with no `\label{` in
+the next three lines. That is what found these, and it takes seconds. Nothing
+in ch. 16 or 17 was missing a label, so this is the first chapter where it paid.
+
+**A proof that stops one line early.** Lemma 18.a.11 computes the coordinates
+of `S*(w_j*)` in `B*`, observes they form column `j` of `A^T`, and ends there,
+without ever saying that this identifies `[S*]_{B*}^{C*}` with `A^T`, which is
+the claim. The concluding sentence is supplied.
+
+**Two things stated in running prose**, the ch. 16 pattern again, both now
+unnumbered so nothing moves. The functionals `v_i^*`, with Lemma 18.a.7
+standing directly underneath as a statement about them, were defined in a
+paragraph. And the naturality of `\tau` was asserted as a commutative square
+alone, with no statement attached to it and no proof; it is a `proposition*`
+now, with the four-line verification that unwinds the definitions.
+
+**Some fifteen silent steps** name their reason. The ones with content: that
+isomorphic spaces have equal dimension; the two halves of Thm. 15.a.3, used
+three times; that `n` spanning vectors in an `n`-dimensional space are a basis;
+that injective plus equal finite dimension gives an isomorphism, which finishes
+Thm. 18.a.12; the column description of a representation matrix, twice; and the
+basis extension behind 18.c.8 **(c)**. Cor. 18.a.4 appealed to \qt{a
+fundamental result from Linear Algebra I} for the matrix of a composition,
+which is the composition rule earlier in this same book.
+
+Also: Prop. 18.b.2 said that `U'` being a complement \qt{implies} `U + U' = V`
+and `U ∩ U' = {0}`, where those two conditions *are* the definition of a
+complement, not a consequence of it.
+
 ## Checked in ch. 17e and found correct
 
 Recorded so that nobody re-derives them: `Q_{ij}(\alpha) = I_n + \alpha E_{ij}`
@@ -261,11 +312,15 @@ ch. 6 use `E_i`. The switch is Prof. Biran's own and is forced here, since
 
 ## Open questions
 
-- Whether to go on through ch. 18 and the rest, or to loop back to the bases
-  chapters (10a, 11), which were the original starting point before the redirect
-  to ch. 16.
-- `content/18-vs-out-of-old-ones.tex` twice writes \qt{in \cpageref{...}}, which
-  prints \qt{in page 123}. Should be \qt{on}. Noticed in passing, not fixed.
+- **Where next.** The user chose ch. 18 over looping back to the bases
+  chapters, so the live choice is now ch. 19 onwards versus 10a and 11, which
+  were the original starting point before the redirect to ch. 16.
+- `\qt{in \cpageref{...}}` prints \qt{in page 123}; it should be \qt{on}. The
+  occurrence in ch. 18 is fixed. **Two remain**, in
+  `content/10a-bases-part-a.tex:295` and `content/19-misc.tex:196`, both in
+  chapters the pass has not reached. Fix them when it gets there, or sweep with
+  `\bqt{in \\cpageref}` through the Grep tool (not through Bash, see the trap
+  above).
 - Ch. 17c calls a vector space `P` in Lemma 17.c.2 while `P` is an invertible
   matrix two statements later. Nothing is wrong and it was left alone
   deliberately, but the collision is a trap for the eye and is flagged in that

@@ -104,7 +104,7 @@ Finally, $T^* \circ T = \id_V$ shows that $T$ is injective, and since $V$ is fin
 The remaining implications are left as exercises, as Prof. Biran indicates.
 \end{proof}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{ainote}
 In the handwritten notes, this proof is labeled as proving \textbf{(d)} $\implies$ \textbf{(e)}. However, the first part actually proves \textbf{(d)} $\implies$ \textbf{(f)} (which is $T^* \circ T = \id_V$), from which \textbf{(e)} is then deduced. We have clarified the steps here.
 \end{ainote}
@@ -129,7 +129,7 @@ Let $V$ be an $n$-di\-men\-sional inner product space over $\mathbb{R}$ (resp. $
 This is left as an exercise, see \cref{exc:orth_unitary_matrix_rep}.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Isometries versus Orthogonal and Unitary Matrices]
 \label{exc:orth_unitary_matrix_rep}
 This is the step Prof. Biran marks with \qt{Exc.} in the proof of \cref{prop:orth_unitary_matrix_rep}. Let $\mathcal{B}$ be an orthonormal basis for $V$ and let $T \in \End(V)$. Show that $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Unit(n)$). (The point is that $\mathcal{B}$ is orthonormal, so that \cref{prop:matrix_representation_adjoint} applies and turns the adjoint map $T^*$ into the conjugate transpose of the representation matrix.)
@@ -168,7 +168,7 @@ Let $G$ be any of the sets $\Orth(n), \SOrth(n), \Unit(n)$, or $\SUnit(n)$. Then
 This is left as an exercise, see \cref{exc:group_properties}.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Four Sets are Groups]
 \label{exc:group_properties}
 This is the claim Prof. Biran circles with \qt{Exc.} Prove the three statements of \cref{prop:group_properties} for each of $\Orth(n)$, $\SOrth(n)$, $\Unit(n)$, and $\SUnit(n)$. Together with the associativity of matrix multiplication, they say precisely that each of these four sets is a group, and hence a subgroup of $\GL_n(\mathbb{R})$ resp. $\GL_n(\mathbb{C})$.
@@ -282,7 +282,7 @@ If $u_2 = u_2''$, then $A = \left(\begin{smallmatrix} \cos\theta & \sin\theta \\
 
 In the second case, a direct calculation shows that $v_1 = \left(\begin{smallmatrix} \cos(\frac{\theta}{2}) \\ \sin(\frac{\theta}{2}) \end{smallmatrix}\right)$ and $v_2 = \left(\begin{smallmatrix} \cos(\frac{\theta}{2} + \frac{\pi}{2}) \\ \sin(\frac{\theta}{2} + \frac{\pi}{2}) \end{smallmatrix}\right)$ are eigenvectors of $A$ for the eigenvalues $\lambda_1 = 1$ and $\lambda_2 = -1$, respectively.
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 Let us carry that calculation out. For any $\varphi \in \mathbb{R}$, the angle-subtraction identities give
 \[
     A \begin{pmatrix} \cos\varphi \\ \sin\varphi \end{pmatrix}
@@ -313,7 +313,7 @@ Moreover, there exists an orthonormal basis $\mathcal{B}$ for $V$ such that:
 \end{enumerate}
 \end{corollary}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{proof}
 The notes state this corollary without proof, so we supply the short argument; it is nothing more than \cref{prop:classification_o2} transported from $\mathbb{R}^2$ to $V$ along a coordinate map.
 
@@ -374,7 +374,7 @@ which implies that $Av \in L$.
 
 By \cref{thm:orthogonal_complement_finite_dim}, we also have $\mathbb{R}^3 = \Sp(v_1) \oplus L$, hence $\dim L = 2$ by \cref{cor:dim_orthogonal_complement}.
 Now, $T_A|_L \colon L \to L$ is a linear isometry.
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 (Indeed, $T_A$ preserves the standard scalar product of $\mathbb{R}^3$ by \cref{prop:orth_unitary_matrix_rep}, hence so does its restriction to $L$, and that restriction is well defined as a map $L \to L$ precisely because of the invariance just established).
 % Extractor: Gemini 3.1 Pro
 Let $\mathcal{L} = (w_1, w_2)$ be an orthonormal basis for $L$. By \cref{prop:orth_unitary_matrix_rep}, the representation matrix is $Q := [T_A|_L]_{\mathcal{L}}^{\mathcal{L}} \in \Orth(2)$.
@@ -393,14 +393,14 @@ And for the reordered basis $\mathcal{B} := (w_1, v_1, w_2)$, we have
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & R_\pi \end{pmatrix}. \]
 Note that in case \textbf{(b)} too, $1$ is an eigenvalue of $A$ (corresponding to the eigenvector $w_1$).
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 It remains to read off the two supplementary statements from these cases. For \textbf{(a)}, suppose $-1$ is an eigenvalue of $A$. Then we are free to take $\lambda := -1$ as the real eigenvalue chosen at the start of the proof, which puts us in case \textbf{(b)}; that case produced an orthonormal basis with $[T_A]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_\pi \end{smallmatrix}\right)$, that is, $\theta = \pi$. For \textbf{(b)}, we argue by contraposition: if $\theta = \pi$, then
 \[ [T_A]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}, \]
 which is a diagonal matrix carrying $-1$ on its diagonal. Since $A$ and $[T_A]_{\mathcal{B}}^{\mathcal{B}}$ are similar, they have the same eigenvalues, so $-1$ is an eigenvalue of $A$.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Why the Two Conditions in \texorpdfstring{\cref{prop:classification_so3}}{Prop. 25.a.9} \textbf{(b)} Agree]
 \label{exc:why_only_real_eigenvalue}
 Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{(b)} with a \qt{why?}. Justify it: for $A \in \SOrth(3)$, show that $-1$ is not an eigenvalue of $A$ if and only if $1$ is the only real eigenvalue of $A$.
@@ -460,7 +460,7 @@ We will prove this generically for $G = \Unit(n)$ and $G = \SUnit(n)$ (the real 
 \end{enumerate}
 \end{exercisesolution}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{exercisesolution}[Proof of \cref{exc:why_only_real_eigenvalue}]
 Let $A \in \SOrth(3)$. Two facts about the real eigenvalues of $A$ are already available. First, $\SOrth(3) \subseteq \Orth(3)$, so by \cref{lem:eigenvalues_orthogonal} every real eigenvalue of $A$ equals $1$ or $-1$. Second, by the first assertion of \cref{prop:classification_so3}, the value $1$ \emph{is} an eigenvalue of $A$. Taken together, the set of real eigenvalues of $A$ is either $\{1\}$ or $\{1, -1\}$, and no other possibility occurs.
 

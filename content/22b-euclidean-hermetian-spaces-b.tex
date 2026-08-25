@@ -167,7 +167,7 @@ This shows that $w = 0$, and therefore, $v = u \in U$. We have proven that $(U^\
 If $V$ is a finite-di\-men\-sional inner product space and $U \subseteq V$ is a subspace, then $\dim U + \dim U^\perp = \dim V$.
 \end{corollary}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{proof}
 Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:orthogonal_complement_finite_dim} applies: $U + U^\perp = V$ and $U \cap U^\perp = \{0\}$, so the sum $U + U^\perp$ is direct and equals $V$. Choosing a basis for $U$ and a basis for $U^\perp$ and concatenating them therefore produces a basis for $V$, whence
 \[
@@ -238,12 +238,12 @@ where $v_k \in \mathbb{C}_{\text{col}}^n$ for $1 \leq k \leq n$. We compute the 
 \end{align}
 Now, $A$ is unitary if and only if $v_1, \dots, v_n$ form an orthonormal system, which is equivalent to saying that the resulting matrix in \eqref{eq:unitary_matrix_product} is exactly $I_n$. This proves \textbf{(a)} $\iff$ \textbf{(b)}.
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 For the remaining equivalences, suppose $A^* A = I_n$. Taking determinants and using $\det(A^*) = \det(\overline{A}\transp) = \det(\overline{A}) = \overline{\det(A)}$, we obtain $\left| \det(A) \right|^2 = 1$, so $\det(A) \ne 0$ and $A$ is invertible. Multiplying $A^* A = I_n$ on the right by $A^{-1}$ gives $A^* = A^{-1}$, which is \textbf{(d)}; and then $A A^* = A A^{-1} = I_n$, which is \textbf{(c)}. Conversely, \textbf{(c)} gives by the same argument $A^* = A^{-1}$ and hence \textbf{(b)}, so all four statements are equivalent.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Orthogonal Case of the Characterization]
 \label{exc:char_orthogonal_matrices_proof}
 Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R})$ and the standard scalar product on $\mathbb{R}^n$, thereby proving \cref{lem:char_orthogonal_matrices}. (Prof. Biran remarks that it is \qt{similar}; the point of writing it out is to see exactly where the complex conjugations of the Hermitian case disappear.)
@@ -259,7 +259,7 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
 \end{enumerate}
 \end{corollary}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item By \cref{lem:char_orthogonal_matrices}, $A \in \Orth(n)$ if and only if $A\transp A = I_n$, and equally if and only if $A A\transp = I_n$. Applying the same characterization to the matrix $A\transp$, whose transpose is $A$, the condition $A\transp \in \Orth(n)$ reads $(A\transp)\transp A\transp = A A\transp = I_n$, the very same equation. Hence $A \in \Orth(n) \iff A\transp \in \Orth(n)$. Finally, the columns of $A\transp$ are exactly the rows of $A$, so $A\transp \in \Orth(n)$ says precisely that the rows of $A$ form an orthonormal system, and an orthonormal system of $n$ vectors in $\mathbb{R}^n$ is a basis by \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
@@ -291,7 +291,7 @@ with $v_k \in K_{\text{col}}^n$. Since $A \in \GL_n(K)$, the vectors $v_1, \dots
     \Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_j) \qquad \forall \; 1 \le j \le n.
 \end{equation}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 Fix $1 \le j \le n$. By \eqref{eq:qr_nested_spans} the vector $v_j$ lies in $\Sp(e_1, \dots, e_j)$, and since $(e_1, \dots, e_j)$ is orthonormal, \cref{thm:properties_orthogonal_systems} \textbf{(b)} identifies its coefficients: they are $\langle v_j, e_i \rangle / \langle e_i, e_i \rangle = \langle v_j, e_i \rangle$. So the whole list expands as
 \begin{align*}
     v_1 &= \langle v_1, e_1 \rangle e_1, \\
@@ -346,12 +346,12 @@ Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \do
 \]
 and let $R$ be built exactly as in the previous proof, by $R_{ij} := \langle v_j, e_i \rangle$.
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$, upper triangular for the same reason as before, while the remaining columns are the arbitrary entries denoted by $*$. Hence $A = Q \cdot R$ with $R$ of the stated form.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Extending an Orthonormal System to an Orthonormal Basis]
 \label{exc:extend_orthonormal_system}
 Let $V$ be a finite-di\-men\-sional inner product space and let $(e_1, \dots, e_r)$ be an orthonormal system in $V$ with $r \le n := \dim V$. Show that it can be extended to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $V$. (This is the step marked \qt{how?} in the proof above.)
@@ -364,7 +364,7 @@ Let $V$ be an inner product space. Suppose $v_1, \dots, v_m \in V$ are not neces
 
 Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$ that spans $\Sp(v_1, \dots, v_{i_k})$ and we encounter a vector $v_{i_{k+1}} \in \Sp(v_1, v_2, \dots, v_{i_k})$. How will the next vector in the Gram-Schmidt process look like?
 \end{exercise}
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_orthogonal_complement}
 

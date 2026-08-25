@@ -67,7 +67,7 @@ In the second case ($\theta=2\pi$), the spanning vector is $(-1,0)$, which gives
   If such a continuous family of isomorphisms $T_z$ existed, it would allow us to construct a global homeomorphism $\Phi \colon M \to S \times \mathbb{R}$. Removing the zero-section (the center circle where $v=0$) from both spaces would imply that $M \setminus \{0\} \cong S \times (\mathbb{R} \setminus \{0\})$.
 
   However, $S \times (\mathbb{R} \setminus \{0\})$ consists of two disconnected cylinders, an \qt{upper} and a \qt{lower} half. In contrast, if you cut a Möbius strip down its centre line, it remains a single connected piece. This topological contradiction demonstrates that we cannot consistently and continuously identify all $L_z$ with $\mathbb{R}$. Abstraction is therefore necessary to handle \qt{twisted} families of spaces.
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
   This belongs to a branch of mathematics called topology. The conclusion for us is the one the notes draw: each $L_z$ is a one-dimensional vector space over $\mathbb{R}$, so $L_z \cong \mathbb{R}$ for every single $z$, and yet the whole family cannot be identified with $\mathbb{R}$ in a continuous way.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
@@ -81,7 +81,7 @@ In our strict definition of a vector space, there is always a distinguished orig
   A subset $X \subseteq V$ is called an \newterm{affine space} if there exists a linear subspace $U \subseteq V$ and a translation vector $x_0 \in V$ such that $X = x_0 + U$.
 
   We say that $X$ is modeled on the subspace $U$, and we write the \newterm{direction space} as $\vec{X} := U$. The elements of $X$ are called \newterm{points}, while the elements of $\vec{X}$ are called \newterm{vectors}.
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
   The \newterm{dimension} of $X$ is defined as $\dim X := \dim U$.
 \end{definition}
 
@@ -101,7 +101,7 @@ The point $x_0$ in \cref{def:affine_space} is not uniquely determined by $X$, un
   \end{enumerate}
 \end{proposition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{proof}
 For \textbf{(b)}, write $p = x_0 + u$ with $u \in \vec{X}$. Then $p + v = x_0 + (u + v) \in x_0 + \vec{X} = X$, since $u + v \in \vec{X}$. For \textbf{(c)}, write $p = x_0 + u$ and $q = x_0 + v$ with $u, v \in \vec{X}$; then $q - p = v - u \in \vec{X}$. Statement \textbf{(a)} is the observation that on $X$ there is no longer a zero: an affine space has forgotten its origin.
 \end{proof}
@@ -176,7 +176,7 @@ is defined. These are proportions, not distances: no notion of length is involve
   \end{tikzpicture}
 \end{center}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{theorem}[Thales' Theorem in Affine Geometry]
   \label{thm:thales_affine}
   Let $V$ be a $3$-dimensional vector space over $K$, and let $H, H', H''$ be three distinct parallel $2$-dimensional affine planes in $V$. Let $\ell_1, \ell_2$ be two affine lines, neither of them weakly parallel to $H$, and put
@@ -285,7 +285,7 @@ The problem of finding a geometric sequence $(1, \lambda, \lambda^2, \dots)$ ins
   The vector $v$ is called an \newterm{eigenvector} of $T$ associated with the eigenvalue $\lambda$.
 \end{definition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{remark}[Reformulations of the Eigenvalue Condition]
 \label{rem:eigenvalue_reformulations}
 Unwinding the definition, $\lambda$ is an eigenvalue of $T$ if and only if the linear map $T - \lambda \cdot \id_V \colon V \to V$ has a non-trivial kernel, since $T(v) = \lambda v$ says exactly that $(T - \lambda \id_V)(v) = 0$.

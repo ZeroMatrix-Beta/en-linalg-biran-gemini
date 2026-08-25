@@ -120,7 +120,7 @@ T(v) := \sum_{i=1}^n a_i w_i.
 \end{equation}
 Because the coordinates $a_i$ are uniquely determined for each $v$, the map $T$ is well-defined.
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 We claim that $T$ is linear. Indeed, let $v, v' \in V$. There exist $a_1, \dots, a_n \in K$ with $v = a_1 v_1 + \dots + a_n v_n$ and $a'_1, \dots, a'_n \in K$ with $v' = a'_1 v_1 + \dots + a'_n v_n$, so that
 \[
 v + v' = (a_1 + a'_1) v_1 + \dots + (a_n + a'_n) v_n.
@@ -171,7 +171,7 @@ w_1 & \dots & w_n \\
 \end{pmatrix}.
 \]
 The linear transformation $T_A: K^n \to K^m$ defined by $v \mapsto A \cdot v$ satisfies $T_A(e_j) = w_j$ for all $j$.
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 Indeed, multiplying $A$ by $e_i$ picks out the $i$-th column of $A$:
 \[
 T_A(e_i) = \begin{pmatrix} | & & | & & | \\ w_1 & \dots & w_i & \dots & w_n \\ | & & | & & | \end{pmatrix} \cdot \begin{pmatrix} 0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{pmatrix} = \begin{pmatrix} | \\ w_i \\ | \end{pmatrix},
@@ -191,7 +191,7 @@ For every linear transformation $T: K^n \to K^m$, there exists a unique matrix $
 \begin{proof}
 Let $w_i := T(e_i)$ for each $i \in \{1, \dots, n\}$. As demonstrated in the preceding example, the matrix $A$ formed by using these specific vectors as columns defines a linear map $T_A$ that perfectly agrees with $T$ on the standard basis $\mathcal{E}$. Because $\mathcal{E}$ is a basis for $K^n$, \cref{thm:existence_uniqueness_linear_map} strictly implies that $T$ and $T_A$ must be the exact same map.
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 The matrix is moreover unique, which the notes do not claim but which costs one line: if $B \in \M_{m \times n}(K)$ also satisfies $T = T_B$, then the $i$-th column of $B$ equals $B \cdot e_i = T_B(e_i) = T(e_i) = w_i$ for every $i$, so $B$ and $A$ have the same columns and $B = A$.
 \end{proof}
 % Source: 15.linear maps.b ("Kernel and Image"), which numbers from 15.b.1.
@@ -233,7 +233,7 @@ Using standard notation from set theory, we can concisely write the kernel as th
 \end{enumerate}
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{example}[The Kernel of a Matrix Transformation]
 \label{ex:kernel_of_T_A}
 Let $A \in \M_{m \times n}(K)$ and consider the linear map $T_A: K^n \to K^m$, recalling that $T_A(x) = A \cdot x$ for all $x \in K^n$. Then
@@ -256,7 +256,7 @@ Recall that a map is called \newterm{bijective} if it is both injective and surj
 
 % Extractor: Gemini 3.1 Pro
 \begin{proof}
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 Statement \textbf{(b)} is a restatement of the definition of surjectivity, since $\Img(T) = T(V)$, so there is nothing to prove. We turn to \textbf{(a)}.
 
 % Extractor: Gemini 3.1 Pro
@@ -269,7 +269,7 @@ T(v_1 - v_2) = T(v_1) - T(v_2) = 0_W.
 This implies that $v_1 - v_2 \in \ker(T)$. By our assumption, the only element in the kernel is the zero vector, and therefore, $v_1 - v_2 = 0_V$, which yields $v_1 = v_2$. Consequently, $T$ is injective.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Images and Preimages of Subspaces]
 \label{exc:images_preimages_subspaces}
 Let $T: V \to W$ be a linear map. Show that:
@@ -306,7 +306,7 @@ V \arrow[r, "T", shift left=1.2ex] & W \arrow[l, "S", shift left=1.2ex]
 
 \end{definition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{remark}
 \label{rem:iso_is_bijective}
 An isomorphism $T: V \to W$ is obviously bijective: the linear map $S$ of \cref{def:isomorphism} is in particular an inverse map of $T$ in the set-theoretic sense recalled above. The converse is the substantial question, and it is not a matter of definition, because the definition of an isomorphism demands that the inverse be \emph{linear}: is every bijective linear map an isomorphism?
@@ -395,7 +395,7 @@ w = T(v) = T\left( \sum_{i=1}^{n} a_i v_i \right) = \sum_{i=1}^{n} a_i T(v_i).
 So $w \in \Sp(T(v_1), \dots, T(v_n))$, which proves the second inclusion.
 \end{proof}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 The dimension of the image is the quantity the next theorem is about; it is given the name $\rank(T)$ at the end of this section, in \cref{def:rank_linear_map}.
 
 % Extractor: Gemini 3.1 Pro
@@ -442,7 +442,7 @@ Let $k := \dim \ker(T)$ and $n := \dim V$. Let $(u_1, \dots, u_k)$ be a basis fo
 Therefore, $\mathcal{C}$ is linearly independent and spans the image, making it a basis for $\Img(T)$. Consequently, $\dim \Img(T) = n - k = \dim V - \dim \ker(T)$.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{remark}
 The spanning step above can be shortened: applying \cref{lem:image_spanned_by_basis} to the basis $\mathcal{B}$ gives
 \[
@@ -451,7 +451,7 @@ The spanning step above can be shortened: applying \cref{lem:image_spanned_by_ba
 which is how the notes obtain it. Only the independence of $\mathcal{C}$ then remains to be checked.
 \end{remark}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 The theorem also admits a second, more structural proof, which replaces the manipulation of coordinates by a single well-chosen decomposition of $V$. It uses the existence of a complement from \cref{prop:existence_complement} and the fact that isomorphisms carry bases to bases, \cref{thm:iso_preserves_bases} below; neither of these depends on the rank theorem, so no circularity arises.
 
 \begin{proof}[Second proof of \Cref{thm:rank_nullity}]
@@ -476,7 +476,7 @@ Finally, the dimension formula of \cref{prop:properties_of_sums} \textbf{(c)}, a
 % cor:15.b.10
 \begin{corollary}[Dimension Obstructions to Injectivity and Surjectivity]
 \label{cor:equal_dim_iso}
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 Let $T: V \to W$ be a linear map, where $V$ and $W$ are finite-di\-men\-sional vector spaces. Then:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item If $\dim W < \dim V$, then $T$ is \textbf{not} injective.
@@ -544,7 +544,7 @@ Let $T: V \to W$ be an isomorphism between two vector spaces $V$ and $W$. Let $\
 \end{enumerate}
 \end{theorem}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 The notes state this theorem without proof. Since the second proof of
 \cref{thm:rank_nullity} above appeals to it, we supply one; it is short, and it
 uses nothing beyond the definition of an isomorphism.
@@ -580,7 +580,7 @@ Let $T \in \Hom(V, W)$ be a linear map such that $\dim \Img(T) < \infty$. We def
 \]
 \end{definition}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Rank of a Composition]
 \label{exc:rank_of_composition}
 Let $T: V \to W$ and $S: W \to U$ be linear maps, where $U$, $V$ and $W$ are finite-di\-men\-sional. Show that:
@@ -591,7 +591,7 @@ Let $T: V \to W$ and $S: W \to U$ be linear maps, where $U$, $V$ and $W$ are fin
 \end{enumerate}
 \end{exercise}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 
 \begin{exercisesolution}[Linearity Criterion (on \cpageref{exer:linearity_criterion})]

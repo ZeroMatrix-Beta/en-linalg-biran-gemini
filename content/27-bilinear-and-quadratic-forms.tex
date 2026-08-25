@@ -101,7 +101,7 @@ This implies:
 \end{enumerate}
 \end{example}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[A Symmetric Matrix Gives a Symmetric Bilinear Form]
 \label{exc:symmetric_matrix_symmetric_form}
 This is the step Prof. Biran marks with \qt{exc.} in the example above. Let $B \in \M_{n \times n}(K)$ with $B\transp = B$, and let $B \colon K^n \times K^n \to K$ be the bilinear form $B(v, w) := v\transp B w$. Show that it is symmetric, that is, $B(v, w) = B(w, v)$ for all $v, w \in K^n$.
@@ -132,7 +132,7 @@ If $B$ is symmetric and defines $q := q_B$, then for all $v, w \in V$ we have:
 \end{enumerate}
 \end{theorem*}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Why \texorpdfstring{$2 \neq 0$}{2 =/= 0} Forces \texorpdfstring{$4 \neq 0$}{4 =/= 0}]
 \label{exc:two_nonzero_four_nonzero}
 This is the question Prof. Biran annotates the Polarization Identity with. Let $K$ be a field in which $2 \neq 0$. Show that then also $4 \neq 0$, so that the divisions by $4$ in part \textbf{(a)} really are legitimate.
@@ -231,7 +231,7 @@ This proves $k = k'$.
 The proofs for $\ell$ and $n - (k + \ell)$ are similar.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Rescaling a Basis Leaves a Basis]
 \label{exc:scaled_family_is_basis}
 This is the step marked \qt{Exc.} in the proof above. Let $\mathcal{C}'' := (v''_1, \dots, v''_n)$ be a basis for $V$, let $c_1, \dots, c_n \in K \setminus \{0\}$, and put $v_i := c_i v''_i$. Show that $\mathcal{C} := (v_1, \dots, v_n)$ is again a basis for $V$.
@@ -287,7 +287,7 @@ We have
 since $Q \in \Orth(n)$. Hence, the matrices $[B]_{\mathcal{D}}$ and $[B]_{\mathcal{D}'}$ are similar, which means their eigenvalues are exactly the same.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Transition Matrix Between Two Orthonormal Bases]
 \label{exc:transition_between_orthonormal_bases}
 This is the step marked \qt{exc.} in the proof above, and it is what makes the whole argument work: it converts the congruence $Q\transp [B]_{\mathcal{D}'} Q$ of \cref{lem:change_of_basis_bilinear} into a similarity, so that eigenvalues are preserved. Let $V$ be a Euclidean space and let $\mathcal{D}, \mathcal{D}'$ be two orthonormal bases for $V$. Show that $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \Orth(n)$.
@@ -336,7 +336,7 @@ Now, $B|_{W^{\perp_B} \times W^{\perp_B}}$ is a symmetric bilinear form on an $(
 Take $\mathcal{C} := (v_1, \dots, v_n)$. Since $v_1 \in W$ and $v_2, \dots, v_n \in W^{\perp_B}$, we obtain that $B(v_i, v_j) = 0$ for all $i \neq j$.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Orthogonal Complement with Respect to a Bilinear Form]
 \label{exc:orthogonal_complement_wrt_B}
 This is the step marked \qt{Exc.} in the proof above. With $B$, $V$ and $v_1$ as there, show that
@@ -448,7 +448,7 @@ The proof of \qt{\textbf{(b)} $\implies$ \textbf{(a)}} follows now by induction.
 \textbf{(a)} $\implies$ \textbf{(b)}: Left as an exercise, see \cref{exc:sylvester_criterion_forward}. Similar ideas apply.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Shifting the Last Basis Vector Leaves a Basis]
 \label{exc:shifted_family_is_basis}
 This is the step Prof. Biran marks with \qt{exc.\ show this is a basis. Hint: $w' \in W$} in the proof above. Let $\mathcal{C} := (e_1, \dots, e_n, e_{n+1})$ be a basis for $V$ and let $w' \in W := \Sp(e_1, \dots, e_n)$. Show that $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$ is again a basis for $V$.
@@ -464,7 +464,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_bilinear_quadratic}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{exercisesolution}[Proof of \cref{exc:symmetric_matrix_symmetric_form}]
 Let $v, w \in K^n$. The product $w\transp B v$ is a $1 \times 1$ matrix, that is, a scalar, and therefore, it equals its own transpose. Using this together with $B\transp = B$, we compute
 \[
@@ -490,7 +490,7 @@ Thus, $\alpha w_1 + \beta w_2 \in W^{\perp_B}$, proving it is a subspace.
 We are given a basis $\mathcal{C}'' := (v''_1, \dots, v''_n)$. The new set $\mathcal{C} := (v_1, \dots, v_n)$ is formed by scaling each vector in $\mathcal{C}''$ by a non-zero scalar $c_i$ (where $c_i = 1/\lambda_i$ or $c_i = 1$). Since scaling basis vectors by non-zero scalars preserves linear independence and the span, $\mathcal{C}$ remains a basis for $V$.
 \end{exercisesolution}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{exercisesolution}[Proof of \cref{exc:sylvester_needs_symmetry}]
 Suppose that $\mathcal{C}$ is a basis for $V$ in which $M := [B]_{\mathcal{C}}$ has the form displayed in \cref{thm:sylvesters_inertia}. That matrix is symmetric, $M\transp = M$. Now let $v, w \in V$ be arbitrary and let $c, d \in \mathbb{R}^n$ be their coordinate vectors with respect to $\mathcal{C}$. By \cref{lem:matrix_rep_bilinear_form}, $B(v, w) = c\transp M d$, and since a $1 \times 1$ matrix equals its own transpose,
 \[
@@ -526,7 +526,7 @@ Because $\mathcal{C}$ is a basis, all coefficients must be zero. In particular, 
 \begin{exercisesolution}[Proof of \cref{exc:sylvester_criterion_forward}]
 Assume $B$ is positive definite. Let $\mathcal{C} = (e_1, \dots, e_n)$ be any basis for $V$. For any $1 \le \ell \le n$, consider the subspace $W_\ell := \Sp(e_1, \dots, e_\ell)$. Since $B$ is positive definite on $V$, its restriction $B|_{W_\ell \times W_\ell}$ is also positive definite. The matrix representation of this restriction in the basis $\mathcal{E}_\ell := (e_1, \dots, e_\ell)$ is exactly the $\ell \times \ell$ principal submatrix of $[B]_{\mathcal{C}}$, so it is the $\ell$-th principal minor that we must show is positive.
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 Apply \cref{thm:sylvesters_inertia} to the symmetric bilinear form $B|_{W_\ell \times W_\ell}$ on $W_\ell$. It supplies a basis $\mathcal{F}$ of $W_\ell$ in which the matrix of the restriction is $I_k \oplus (-I_m) \oplus 0$ with $k + m \le \ell$. Here $k$ is the largest dimension of a subspace on which the form is positive definite; since the form is positive definite on all of $W_\ell$, which has dimension $\ell$, we get $k = \ell$, and therefore, $m = 0$ and there is no zero block. In other words,
 \[ \left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{F}} = I_\ell, \qquad \text{so} \qquad \det\left[B|_{W_\ell \times W_\ell}\right]_{\mathcal{F}} = 1 > 0. \]
 Now pass back to the basis $\mathcal{E}_\ell$. By \cref{lem:change_of_basis_bilinear}, with $S := [\id_{W_\ell}]_{\mathcal{F}}^{\mathcal{E}_\ell}$,

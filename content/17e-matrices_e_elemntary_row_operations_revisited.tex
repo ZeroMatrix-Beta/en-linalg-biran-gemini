@@ -73,7 +73,7 @@ Let $A \in \M_{n \times p}(K)$. Multiplying $A$ from the left by an elementary m
 \end{enumerate}
 \end{lemma}
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The elementary matrices were defined in \M_{n x n}(K), which is what the
 % lemma above needs, since it multiplies A in \M_{n x p}(K) from the left.
 % Here they multiply A from the right, so they have to be the p x p ones:
@@ -82,7 +82,7 @@ Let $A \in \M_{n \times p}(K)$. Multiplying $A$ from the left by an elementary m
 \label{rem:column_operations}
 % Extractor: Gemini 3.1 Pro
 The same principle holds true for elementary column operations, but via right-multiplication.
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 Here the elementary matrices are the ones of $\M_{p \times p}(K)$, that is, their indices run over $1 \le i \le p$, $1 \le j \le p$: it is the $p$ columns of $A \in \M_{n \times p}(K)$ that are being operated on, and a product such as $A \cdot Q_{ij}(\alpha)$ is defined only for a $p \times p$ factor on the right.
 % Extractor: Gemini 3.1 Pro
 \begin{enumerate}[label=\textbf{(\alph*')}]
@@ -101,7 +101,7 @@ Here the elementary matrices are the ones of $\M_{p \times p}(K)$, that is, thei
 \end{enumerate}
 \end{importantremark}
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The single proof below argues (a)--(c) of the lemma and (a')--(c') of the
 % remark, with the remark standing between the lemma and it; the title says so,
 % since otherwise the reader cannot tell what is being proved.
@@ -114,7 +114,7 @@ Statements \textbf{(a')}, \textbf{(b')}, and \textbf{(c')} can be deduced from t
     (A \cdot Q_{ij}(\alpha))\transp = Q_{ij}(\alpha)\transp \cdot A\transp = Q_{ji}(\alpha) \cdot A\transp
 \end{equation*}
 By part \textbf{(a)}, applied to $A\transp \in \M_{p \times n}(K)$ with the roles of $n$ and $p$ interchanged, this is exactly the matrix obtained from $A\transp$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$.
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 Now the rows of $A\transp$ are the columns of $A$, so performing that row operation on $A\transp$ is the same as performing the column operation $C_j + \alpha C_i \longrightarrow C_j$ on $A$ and transposing the result. Hence the matrix above is equal to:
 % Extractor: Gemini 3.1 Pro
 \begin{equation*}
@@ -132,13 +132,13 @@ Every elementary matrix is invertible, and the inverse of each is an elementary 
 \end{equation*}
 \end{lemma}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Proof of \cref{lemma:elementary_matrix_inverses}]
 \label{exc:elementary_matrix_inverses}
 The notes leave this proof as an exercise. \textit{(Hint:} Note that $P_{ij} \cdot P_{ij}$ is the matrix obtained from $P_{ij}$ by exchanging rows $i$ and $j$, which brings us immediately back to $I_n$. Apply similar logical steps for the other types.\textit{)}
 \end{exercise}
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 % The two theorems below both lean on this, in opposite directions: the proof of
 % 17.e.3 opens with "A is invertible, and hence rank(A) = n", and the proof of
 % 17.e.4 closes with "A must have rank n, which means that A is invertible".
@@ -174,7 +174,7 @@ Since each step in the Gaussian elimination algorithm corresponds to an elementa
 \begin{equation*}
     T_k \cdot T_{k-1} \dots T_1 \cdot A = I_n
 \end{equation*}
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 (If $A = I_n$ to begin with, the algorithm performs no operation at all and this argument produces no matrices; the statement still holds as written, with $k := 1$ and $T_1 := S_1(1) = I_n$, which is an elementary matrix of Type III because $1 \neq 0$.)
 % Extractor: Gemini 3.1 Pro
 By left-multiplying successively with the inverses of these elementary matrices, which exist by \cref{lemma:elementary_matrix_inverses}, we isolate $A$ and deduce that $A = T_1^{-1} \dots T_k^{-1}$. Taking the inverse of $A$ yields $A^{-1} = T_k \dots T_1$, since inverting a product reverses its order and undoes each factor, by \cref{prop:gl_group_structure}.
@@ -197,7 +197,7 @@ Let $B, C, D \in \M_{n \times n}(K)$. Then:
 \end{equation*}
 \end{lemma}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Proof of \cref{lemma:block_matrix_multiplication}]
 \label{exc:block_matrix_multiplication}
 The notes leave this proof as an exercise: it follows directly from the definition of matrix multiplication. \textit{(Hint:} Consider the $(k,\ell)$-th entry of $B \cdot (C \mid D)$ and show that it matches the $(k,\ell)$-th entry of $(B \cdot C \mid B \cdot D)$.\textit{)}
@@ -208,7 +208,7 @@ Assume that $A$ is invertible. By \Cref{thm:elementary_matrix_decomposition}, th
 \begin{equation*}
     T_k \dots T_1 \cdot \left(A \mid I_n\right) = \left(T_k \dots T_1 \cdot A \mid T_k \dots T_1 \cdot I_n\right) = \left(I_n \mid T_k \dots T_1\right)
 \end{equation*}
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 Left-multiplying by $T_1$, then by $T_2$, and so on up to $T_k$ is, by \cref{lemma:row_operations_matrix_multiplication}, nothing other than performing the corresponding $k$ elementary row operations in that order. So $(A \mid I_n)$ can indeed be brought to the required form by a sequence of elementary row operations.
 % Extractor: Gemini 3.1 Pro
 
@@ -244,7 +244,7 @@ The left side is now the identity matrix $I_2$, which means the right side is ou
 \end{equation*}
 \end{example}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_eros_revisited}
 

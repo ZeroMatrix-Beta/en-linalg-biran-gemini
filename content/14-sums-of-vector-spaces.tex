@@ -44,7 +44,7 @@ Let $U, W \subseteq V$ be subspaces. Then, the following properties hold:
 \end{proposition}
 
 \begin{proof}
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \textbf{(a)} Clearly $U + W \subseteq \Sp(U \cup W)$, by the characterisation of $\Sp(U \cup W)$ as the set of all linear combinations of elements from $U \cup W$. But we also have $\Sp(U \cup W) \subseteq U + W$. Indeed, if $v \in \Sp(U \cup W)$, then
 \[
 v = \underbrace{\sum_{i=1}^{s} a_i u_i}_{\in U} + \underbrace{\sum_{j=1}^{r} b_j w_j}_{\in W},
@@ -95,7 +95,7 @@ Statement \textbf{(c)} now follows by simply counting the basis vectors produced
 \end{align*}
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Combined Family Spans the Sum]
 \label{exc:combined_family_spans}
 The proof above verifies that the family
@@ -109,7 +109,7 @@ is linearly independent. Check that it also spans $U + W$, which the notes leave
 % cor:14.3
 \begin{corollary}[Equivalent Conditions for Trivial Intersection]
 \label{cor:trivial_intersection}
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 Let $V$ be a vector space, and let $U, W \subseteq V$ be two finite-di\-men\-sional linear subspaces. The following statements are equivalent:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\dim(U + W) = \dim U + \dim W$.
@@ -122,7 +122,7 @@ Let $V$ be a vector space, and let $U, W \subseteq V$ be two finite-di\-men\-sio
 \end{corollary}
 
 \begin{proof}
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 The equivalence \textbf{(a)} $\iff$ \textbf{(b)} follows from the previous \cref{prop:properties_of_sums} \textbf{(c)}, whose dimension formula reads $\dim(U + W) = \dim U + \dim W - \dim(U \cap W)$. And \textbf{(b)} $\iff$ \textbf{(c)} holds because there is only one linear subspace of dimension $0$, namely the space $\{0_V\}$.
 
 The remaining three statements are tied to \textbf{(c)} by the cycle of implications \textbf{(c)} $\implies$ \textbf{(d)} $\implies$ \textbf{(e)} $\implies$ \textbf{(c)}.
@@ -168,13 +168,13 @@ We claim that $W$ is a valid complement of $U$. Indeed, since the combined basis
 Since $\mathcal{B}_V$ is a basis for $V$, all of its constituent vectors are strictly linearly independent. This forces all scalar coefficients to be zero: $a_i = 0$ for all $i$ and $b_j = 0$ for all $j$. Thus, $x = 0$, proving that $U \cap W = \{0\}$.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{importantremark}
 \label{rem:complement_not_unique}
 If $U \subsetneq V$, then there are many different subspaces $W \subseteq V$ which are complements of $U$. In general, there is no canonical choice for a complement $W$.
 \end{importantremark}
 
-% Creator: Opus 5 (High) , TikZ rendering of the sketch in the notes
+% Creator: Opus 5, TikZ rendering of the sketch in the notes
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}[scale=1.0, font=\small]
@@ -206,7 +206,7 @@ If $U \subsetneq V$, then there are many different subspaces $W \subseteq V$ whi
   \label{fig:complements_not_unique}
 \end{figure}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \subsection{Solutions to the Exercises}
 
 \begin{exercisesolution}[Proof that the Combined Family Spans $U + W$ (on \cpageref{exc:combined_family_spans})]

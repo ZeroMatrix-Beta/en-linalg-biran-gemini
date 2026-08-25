@@ -38,7 +38,7 @@ with $\lambda_1, \dots, \lambda_k > 0$, where $k = \rank A$, such that $A = P D 
 
 \begin{remark}
 Recall that we previously defined the equivalence of matrices. Here, the factorization $A = P D Q^{-1}$ demonstrates that we have an orthogonal (or unitary) equivalence.
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 The definition in question is \cref{def:equivalence_and_similarity} \textbf{(a)}: two matrices $A, B \in \M_{m \times n}(K)$ are equivalent when $B = PAQ$ for some $P \in \GL_m(K)$ and $Q \in \GL_n(K)$. The theorem sharpens this considerably, because the two invertible matrices may be taken to be orthogonal (resp. unitary) rather than merely invertible.
 % Extractor: Gemini 3.1 Pro
 \end{remark}
@@ -54,7 +54,7 @@ Indeed, for all $0 \neq v \in K^n$, we have:
 \end{equation}
 This implies that $T_B v \neq 0$. Therefore, $\ker T_B = \{0\}$, hence $T_B$ is injective.
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 Two steps in the chain \eqref{eq:svd_pos_def} deserve a word. The third equality is the defining property \eqref{eq:adjoint_property} of the adjoint, which is available for $T_A$ because the standard basis of $K^n$ is orthonormal, so that $(T_A)^* = T_{A^*}$ by \cref{prop:matrix_representation_adjoint}. The final inequality is strict precisely because of the standing assumption: $\rank A = n$ says that $T_A$ is injective by \cref{thm:rank_nullity}, so $v \neq 0$ forces $Av \neq 0$, and positive definiteness of the inner product then yields $\langle Av, Av \rangle > 0$.
 % Extractor: Gemini 3.1 Pro
 
@@ -70,7 +70,7 @@ By the Spectral Theorems for matrices (\cref{thm:spectral_thm_matrices}), $B$ is
 Q^{-1} A^* A Q = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
 \]
 where $\eta_j \in \mathbb{R}$, and $\eta_j > 0$ for all $j$.
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 (For $K = \mathbb{R}$ this is part \textbf{(b)} of that theorem, because $B = A\transp A$ is then a real symmetric matrix; for $K = \mathbb{C}$ it is part \textbf{(a)}, because a self-adjoint matrix is in particular normal, $B B^* = B B = B^* B$).
 % Extractor: Gemini 3.1 Pro
 
@@ -100,7 +100,7 @@ c_1 & \dots & c_n \\
 \end{pmatrix}
 = I_n.
 \]
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 Reading off the entries of this product, the identity $C^* C = I_n$ says precisely that $\langle c_j, c_i \rangle = \overline{c_i}\transp c_j = \delta_{ij}$ for all $1 \leq i, j \leq n$, which is the assertion that $c_1, \dots, c_n$ is an orthonormal system.
 % Extractor: Gemini 3.1 Pro
 Extend $c_1, \dots, c_n$ to an orthonormal basis $c_1, \dots, c_n, f_{n+1}, \dots, f_m$ of $K^m$ and define:
@@ -108,7 +108,7 @@ Extend $c_1, \dots, c_n$ to an orthonormal basis $c_1, \dots, c_n, f_{n+1}, \dot
 P := \begin{pmatrix} | & & | & | & & | \\ c_1 & \dots & c_n & f_{n+1} & \dots & f_m \\ | & & | & | & & | \end{pmatrix} \in \M_{m \times m}(K).
 \]
 Clearly, $P \in \Orth(m)$ (or $\Unit(m)$).
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 (The extension is possible by \cref{exc:extend_orthonormal_system}, and $P$ is orthogonal, resp. unitary, directly by \cref{def:orthogonal_unitary_matrices}, since its columns are by construction an orthonormal basis of $K^m$).
 % Extractor: Gemini 3.1 Pro
 

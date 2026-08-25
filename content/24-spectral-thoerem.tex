@@ -187,7 +187,7 @@ As $\|Tv_2\| = \|T^*v_2\|$, we similarly obtain $a_{23} = \dots = a_{2n} = 0$.
 We can continue this process by induction, and show that for all $1 \leq k < n$ we have $a_{k, k+1} = \dots = a_{k,n} = 0$. Hence, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is diagonal. Since $\mathcal{B}$ is an orthonormal basis that diagonalizes $T$, it consists of eigenvectors, proving that $T$ is orthogonally diagonalizable.
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[Gram-Schmidt Preserves Upper Triangularity]
 \label{exc:gram_schmidt_keeps_triangular}
 This is the step marked \qt{exc.: check this} in the proof above. Let $\mathcal{C} := (u_1, \dots, u_n)$ be a basis for $V$ with $[T]_{\mathcal{C}}^{\mathcal{C}}$ upper triangular, and let $\mathcal{B} := (v_1, \dots, v_n)$ be the orthonormal basis produced from it by Gram-Schmidt. Show that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is again upper triangular. (Prof. Biran's hint: the point is that $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$.)
@@ -288,7 +288,7 @@ Let $K = \mathbb{R}$ or $\mathbb{C}$. Recall that a matrix $A \in \M_{n \times n
     \item For $K = \mathbb{R}$: Symmetric matrices and orthogonal matrices $\Orth(n)$ are normal.
     \item For $K = \mathbb{C}$: Self adjoint matrices and unitary matrices $\Unit(n)$ are normal.
 \end{enumerate}
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 In each case the verification is immediate: a self adjoint $A$ has $A^* = A$, so both products read $A \cdot A$; and a unitary $A$ has $A A^* = A^* A = I_n$ by \cref{lem:char_unitary_matrices}. The real statements are the special cases $A\transp = A$ and $A A\transp = A\transp A = I_n$ of these, since over $\mathbb{R}$ the adjoint is the transpose.
 % Extractor: Gemini 3.1 Pro
 \end{example}
@@ -297,7 +297,7 @@ In each case the verification is immediate: a self adjoint $A$ has $A^* = A$, so
 There exist symmetric matrices in $\M_{n \times n}(\mathbb{C})$ that are not normal. For example, let $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$. We have $A\transp = A$, so it is symmetric. However, $A^* = \left(\begin{smallmatrix} -i & -i \\ -i & 1 \end{smallmatrix}\right)$. A quick calculation shows that $A \cdot A^* \neq A^* \cdot A$, so $A$ is not normal.
 \end{remark}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{exercise}[The Symmetric Matrix that is Not Normal]
 \label{exc:symmetric_not_normal}
 Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* A$}: verify for $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$ that the two products really do differ.
@@ -342,7 +342,7 @@ First, suppose $T$ is self adjoint, so $T = T^*$. Let $\mathcal{B}$ be an arbitr
 Conversely, suppose that for any orthonormal basis $\mathcal{B}$ of $V$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint, i.e., $[T]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. Again, using the identity $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, we see that $[T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}}$. Because the map sending an endomorphism to its representation matrix with respect to a fixed basis is an isomorphism, this equality of matrices implies the equality of the maps, hence $T = T^*$, meaning $T$ is self adjoint.
 \end{exercisesolution}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{exercisesolution}[Solution of \cref{exc:symmetric_not_normal}]
 With $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$ we have $A^* = \overline{A}\transp = \left(\begin{smallmatrix} -i & -i \\ -i & 1 \end{smallmatrix}\right)$, and, using $i \cdot (-i) = -i^2 = 1$ throughout,
 \[

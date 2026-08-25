@@ -59,7 +59,7 @@ Let $T: V \to W$ be a linear map, and let $S: W \to W'$ and $L: P \to V$ be isom
 \end{enumerate}
 \end{proof}
 
-% Extractor: Opus 5 (High)
+% Extractor: Opus 5
 \begin{lemma}[Invertibility and Isomorphism]
 % lemma:17.c.3
 \label{lemma:invertible_iff_T_A_iso}
@@ -71,11 +71,11 @@ Suppose first that $A$ is invertible. Then $T_{A^{-1}} = (T_A)^{-1}$, so $T_A$ i
 
 Conversely, suppose that $T_A$ is an isomorphism. We know that $A = [T_A]_{\mathcal{E}_n}^{\mathcal{E}_n}$, and by a previous result the representation matrix of an isomorphism is invertible (\cref{prop:representation_of_isomorphisms}), so $A$ is invertible.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 This is the same statement as \cref{prop:invertibility_isomorphism_equivalence}, which was proved directly from the definition of invertibility; the two lines here instead read it off the change of basis machinery of \cref{sec:change_of_basis}. Prof. Biran states it in both places, and both proofs are worth having.
 \end{proof}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{remark}[Invertibility of the Transpose]
 \label{rem:transpose_invertibility}
 It is worth recording alongside this that $A \in \GL_n(K)$ if and only if $A\transp \in \GL_n(K)$, with $(A\transp)^{-1} = (A^{-1})\transp$. This is \cref{exc:transpose_properties_multiplication} \textbf{(b)} of \cref{sec:matrix_multiplication}, and it needs nothing from the present section: applying $(XY)\transp = Y\transp X\transp$ to $A^{-1}A = A A^{-1} = I_n$ exhibits $(A^{-1})\transp$ as a two-sided inverse of $A\transp$, and the converse follows by applying the same argument to $A\transp$ and using $(A\transp)\transp = A$.
@@ -121,7 +121,7 @@ Therefore, we conclude that $\rankrow(A) = r = \rankcol(A)$, completing the proo
 Although $\rankcol(A) = \rankrow(A)$, the column space and the row space are, in general, different vector spaces. First of all, if $A \in \M_{m \times n}(K)$, then the column space is a subspace of $K^m$, whereas the row space is a subspace of $K_{\text{row}}^n$ (which is isomorphic to $K^n$). But even in the case where $m = n$ (i.e., $A \in \M_{n \times n}(K)$), these two spaces are generally distinct! They share the exact same dimension, but they are not the same space.
 \end{importantremark}
 
-% Creator: Opus 5 (High)
+% Creator: Opus 5
 \begin{ainote}
 The transcript has all four numbered statements of this section, but 17.c.3 is
 not the one in the notes. Prof. Biran's Lemma 2 records that $A$ is invertible
@@ -140,7 +140,7 @@ Two citations were vague, \qt{a previous proposition regarding the
 equivalence of matrices} is \cref{cor:matrix_equivalence_normal_form}, and
 $\GL$ was typeset as plain $GL$ in the main proof.
 
-% Creator: Opus 5 (Max)
+% Creator: Opus 5
 A later pass looking only for gaps in rigour found nothing wrong here, only
 steps taken silently. Three of them now name their reason: the chain in the
 notation remark rests on the invariance of the row space under row operations
