@@ -28,14 +28,28 @@ A subset $S \subseteq V$ is a basis of $V$ if and only if every vector $v \in V$
 
 To prove this rigorously, especially since $S$ might be an infinite set, like the set of all polynomials, we must first formalize what we mean by \qt{a unique way as a linear combination.} In a vector space, we can only ever add a \textit{finite} number of vectors together. 
 
-We formalize this using \textbf{finitely supported functions}. Let $c: S \to K$ be a function that assigns a scalar coefficient to every vector in $S$. We require that $c$ is non-zero on only finitely many elements. In other words, the \qt{support} of the function:
+We formalize this using \textbf{finitely supported functions}.
+
+% Creator: Opus 5
+% The notes introduce finitely supported functions and the linear combination
+% indexed by $S$ in running prose, under no heading, although the proposition
+% above is a statement about exactly this notion and its proof uses the sum
+% throughout. Prof. Biran does write "Def." when he means one, on the same
+% page, so the absence here is real. Unnumbered, to leave the numbering
+% 10.a.1--10.a.7 untouched; cite it with \cpageref.
+\begin{definition*}[Finitely Supported Function and Linear Combination over a Set]
+\label{def:finitely_supported}
+Let $V$ be a vector space over $K$ and let $S \subseteq V$. A function $c: S \to K$, which assigns a scalar coefficient to every vector in $S$, is called \newterm{finitely supported} if it is non-zero on only finitely many elements, that is, if the \qt{support} of the function,
 \[
-\text{supp}(c) := \{u \in S \mid c(u) \ne 0\}
+\text{supp}(c) := \{u \in S \mid c(u) \ne 0\},
 \]
-must be a finite set. We can then define our linear combination as the sum:
+is a finite set. For such a $c$, the associated \textbf{linear combination of elements of $S$} is the sum
 \[
-\sum_{u \in S} c(u) \cdot u
+\sum_{u \in S} c(u) \cdot u \in V.
 \]
+\end{definition*}
+% Extractor: Gemini 3.1 Pro
+
 Because $\text{supp}(c)$ is finite, the number of non-zero terms in this sum is strictly finite, making it a perfectly valid vector operation. (Furthermore, because vector addition is commutative, the order in which we sum these elements does not matter).
 
 \begin{center}
@@ -73,7 +87,7 @@ Subtracting one from the other yields:
 \[
 \sum_{u \in S} \big(c(u) - c'(u)\big) u = 0_V
 \]
-Because $S$ is a basis, it is linearly independent. The only way a linear combination of independent vectors can equal $0_V$ is if all coefficients are zero. Thus, $c(u) - c'(u) = 0 \implies c(u) = c'(u)$ for all $u \in S$. The representation is unique.
+Because $S$ is a basis, it is linearly independent. The only way a linear combination of independent vectors can equal $0_V$ is if all coefficients are zero (this is precisely \cref{def:independent_set}, applied to the finitely many $u \in S$ at which $c$ and $c'$ differ). Thus, $c(u) - c'(u) = 0 \implies c(u) = c'(u)$ for all $u \in S$. The representation is unique.
 
 \textbf{Direction 2 ($\Longleftarrow$):} Assume every $v \in V$ has a unique representation. Since every vector can be represented, $S$ clearly spans $V$. We must show $S$ is independent. 
 Consider the linear combination $\sum_{u \in S} c(u) u = 0_V$. We already know one valid representation for the zero vector: assigning $0$ to every coefficient. Since the hypothesis guarantees representations are \textit{unique}, the all-zero assignment must be the \textit{only} representation. Thus, $S$ is linearly independent. 
@@ -150,7 +164,7 @@ Since $v_1, \dots, v_n$ are linearly independent, all coefficients must be zero.
 \[
 v_1 = a_1^{-1} u - a_1^{-1} a_2 v_2 - \dots - a_1^{-1} a_n v_n
 \]
-This shows $v_1 \in \Sp(u, v_2, \dots, v_n)$. Since all the other basis vectors $v_2, \dots, v_n$ are trivially in this span, all vectors of the original basis are contained within it. Thus $V = \Sp(v_1, \dots, v_n) \subseteq \Sp(u, v_2, \dots, v_n)$.
+This shows $v_1 \in \Sp(u, v_2, \dots, v_n)$. Since all the other basis vectors $v_2, \dots, v_n$ are trivially in this span, all vectors of the original basis are contained within it. Thus $V = \Sp(v_1, \dots, v_n) \subseteq \Sp(u, v_2, \dots, v_n)$. The reverse inclusion is immediate, since $u, v_2, \dots, v_n$ all lie in $V$ and $V$ is a subspace of itself, so the two spans are equal and the new list spans $V$.
 \end{proof}
 
 \begin{lemma}[Lemma B: Targeted Redundancy]
@@ -250,28 +264,28 @@ Let $u_1, \dots, u_m$ be a linearly independent list in $V$. Let $v_1, \dots, v_
 \begin{proof}
 We proceed by injecting the independent $u$ vectors into the spanning list one by one, forcefully replacing $v$ vectors to maintain a constant list length of $n$.
 
-\textbf{Step 1:} Add $u_1$ to the front of the spanning list: $u_1, v_1, \dots, v_n$. Because the $v_i$'s span $V$, Lemma C dictates this new list is dependent. By Lemma B, there is a redundant vector in this list that can be dropped without altering the span. 
-Could the redundant vector be $u_1$? No. Lemma B specifies the redundant vector is in the span of the vectors \textit{preceding} it. $u_1$ is at the very front (its preceding span is $\emptyset$), and $u_1 \ne 0_V$ because it is part of an independent set. Thus, the redundant vector must be one of the $v_i$'s, say $v_k$. We drop $v_k$. 
+\textbf{Step 1:} Add $u_1$ to the front of the spanning list: $u_1, v_1, \dots, v_n$. Because the $v_i$'s span $V$, Lemma C (\cref{lem:span_overcrowding}) dictates this new list is dependent. By Lemma B (\cref{lem:targeted_redundancy}), there is a redundant vector in this list that can be dropped without altering the span.
+Could the redundant vector be $u_1$? No. Lemma B specifies the redundant vector is in the span of the vectors \textit{preceding} it. $u_1$ is at the very front, so that span is $\Sp(\emptyset) = \{0_V\}$ (see \cref{rem:span_of_empty_set}), and $u_1 \ne 0_V$ because it is part of an independent list (\cref{lem:independence_basics} \textbf{(d)}). Thus, the redundant vector must be one of the $v_i$'s, say $v_k$. We drop $v_k$.
 Our list is now $u_1, v_1, \dots, \widehat{v_k}, \dots, v_n$. It still spans $V$, and it has exactly $n$ elements.
 
-\textbf{Step 2:} Add $u_2$ to the front: $u_2, u_1, \dots, \widehat{v_k}, \dots, v_n$. By Lemma C, this is dependent. By Lemma B, a redundant vector exists. It cannot be $u_2$ (front of the line). It cannot be $u_1$, because $u_1$ cannot be in the span of $u_2$ (since the $u$'s are independent). Therefore, the redundant vector \textit{must} be another $v$. We drop it. Length remains $n$.
+\textbf{Step 2:} Add $u_2$ directly behind $u_1$: $u_1, u_2, v_1, \dots, \widehat{v_k}, \dots, v_n$. By Lemma C, this is dependent. By Lemma B, a redundant vector exists. It can be neither $u_1$ nor $u_2$: those two head the list and are linearly independent, so Lemma B\textquotesingle{} (\cref{lem:drop_index_beyond_head}) forces the drop index to lie strictly beyond them. Therefore, the redundant vector \textit{must} be another $v$. We drop it. Length remains $n$.
 
 \textbf{The Contradiction:} Assume, for the sake of contradiction, that $m > n$. 
-We can continue the above process exactly $n$ times. After step $n$, we will have systematically ejected every single $v_i$ from the list, leaving us with a list consisting purely of $u$-vectors: $u_n, u_{n-1}, \dots, u_1$. 
-Crucially, because we only ever used Lemma B to drop vectors, this list of $u$-vectors \textbf{still spans $V$}. 
+We can continue the above process exactly $n$ times. After step $n$, we will have systematically ejected every single $v_i$ from the list, leaving us with a list consisting purely of $u$-vectors: $u_1, u_2, \dots, u_n$.
+Crucially, because we only ever used Lemma B to drop vectors, this list of $u$-vectors \textbf{still spans $V$}.
 
-Because $m > n$, we still have at least one vector left in our independent set: $u_{n+1}$. Let us add it to the front of our current spanning list:
+Because $m > n$, we still have at least one vector left in our independent set: $u_{n+1}$. Let us add it to our current spanning list:
 \[
-u_{n+1}, u_n, u_{n-1}, \dots, u_1
+u_1, u_2, \dots, u_n, u_{n+1}
 \]
-Because the set $u_n, \dots, u_1$ spans $V$, Lemma C states that this new combined list must be linearly dependent. However, this list is just a subset of our original $u_1, \dots, u_m$, which was explicitly assumed to be linearly independent! This is a fatal mathematical contradiction.
+Because $u_1, \dots, u_n$ spans $V$, Lemma C states that $u_{n+1}, u_1, \dots, u_n$ is linearly dependent, and hence so is the list above, the order being immaterial by \cref{lem:independence_basics} \textbf{(b)}. However, this list is just a subset of our original $u_1, \dots, u_m$, which was explicitly assumed to be linearly independent, and so it is independent itself by \cref{lem:subsets_of_independent_sets}. This is a fatal mathematical contradiction.
 
 Therefore, our assumption that $m > n$ must be false. We conclude that $m \le n$.
 \end{proof}
 
 \begin{remark}[The General Step]
 \label{rem:steinitz_general_step}
-At step $j$ of the argument above, the list reads $u_1, \dots, u_{j-1}, w_1, \dots, w_{n-(j-1)}$, where the $w$'s are the survivors of the original spanning list, and we insert $u_j$ after $u_{j-1}$. \Cref{lem:span_overcrowding} makes the resulting list of $n+1$ vectors dependent, and \cref{lem:targeted_redundancy} supplies a vector that may be dropped without changing the span. That vector is never one of $u_1, \dots, u_j$: those are linearly independent, being part of an independent list, so \cref{lem:drop_index_beyond_head} forces the drop index to lie strictly beyond them. The ejected vector is therefore always one of the $w$'s, which is what keeps the length at exactly $n$ while the $u$'s accumulate at the front.
+At step $j$ of the argument above, the list reads $u_1, \dots, u_{j-1}, w_1, \dots, w_{n-(j-1)}$, where the $w$'s are the survivors of the original spanning list, and we insert $u_j$ after $u_{j-1}$. \Cref{lem:span_overcrowding} makes the resulting list of $n+1$ vectors dependent, and \cref{lem:targeted_redundancy} supplies a vector that may be dropped without changing the span. That vector is never one of $u_1, \dots, u_j$: those are linearly independent, being part of an independent list (\cref{lem:subsets_of_independent_sets}), so \cref{lem:drop_index_beyond_head} forces the drop index to lie strictly beyond them. The ejected vector is therefore always one of the $w$'s, which is what keeps the length at exactly $n$ while the $u$'s accumulate at the front.
 \end{remark}
 
 \begin{remark}[We Have Proved More Than $m \le n$]
@@ -283,6 +297,31 @@ The argument gives more than the inequality. It shows that $m \le n$ \textbf{and
 Indeed, we already know that $m \le n$. Apply the procedure from the proof for the steps $j = 1, \dots, m$. In each step we add another $u_j$ to the list and drop one of the $v_i$'s, while keeping the span equal to $V$. After $j = m$ steps we obtain the claimed list $u_1, \dots, u_m, v_{i_1}, \dots, v_{i_{n-m}}$.
 \end{remark}
 
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_bases_part_a}
+
+\begin{exercisesolution}[Solution to \cref{exc:redundancy_j_equals_one}]
+The index $j$ supplied by \cref{lem:targeted_redundancy} may indeed be $1$, and in that case the conclusion degenerates in a way that is worth reading carefully. The vectors strictly preceding $v_1$ form the empty list, so
+\[
+\Sp(v_1, \dots, v_{j-1}) = \Sp(\emptyset) = \{0_V\}
+\]
+by \cref{rem:span_of_empty_set}. The conclusion $v_j \in \Sp(v_1, \dots, v_{j-1})$ therefore says nothing weaker or stronger than
+\[
+v_1 = 0_V.
+\]
+
+This case occurs exactly when $v_1 = 0_V$. In one direction, the proof takes $j$ to be the largest index with $a_j \ne 0$, so $j = 1$ means $a_1 \ne 0$ while $a_2 = \dots = a_n = 0$; the dependency relation then reads $a_1 v_1 = 0_V$, and multiplying by $a_1^{-1}$ gives $v_1 = 0_V$. In the other direction, if $v_1 = 0_V$ then
+\[
+1 \cdot v_1 + 0 \cdot v_2 + \dots + 0 \cdot v_n = 0_V
+\]
+is a non-trivial dependency whose largest non-zero index is $1$, so the proof may return $j = 1$. (This is \cref{lem:independence_basics} \textbf{(d)} seen from the other side: a list containing $0_V$ is never independent, and here the redundant vector is the zero vector itself.)
+
+The second assertion of the lemma survives unchanged: dropping $v_1 = 0_V$ leaves $\Sp(v_2, \dots, v_n) = \Sp(v_1, \dots, v_n)$, since the zero vector contributes nothing to any linear combination.
+
+This degenerate case is precisely what Step 1 in the proof of \cref{thm:steinitz} has to rule out. There $u_1$ heads the list, so $j = 1$ would say $u_1 = 0_V$; but $u_1$ belongs to an independent list and is therefore non-zero, so the drop index cannot be $1$ and one of the $v_i$'s must be ejected instead. From Step 2 on, the head is no longer a single vector and this role is taken over by \cref{lem:drop_index_beyond_head}.
+\end{exercisesolution}
+
 \begin{ainote}
 The notes name their four lemmas A--D differently from this transcript: what is
 called \cref{lem:targeted_redundancy} here is Lemma A in the notes, and the
@@ -292,12 +331,34 @@ references in the later chapters valid, and the restored lemma is lettered
 B\textquotesingle. \Cref{lem:simple_exchange} does not appear in this part of
 the notes. Also restored: the finite-set reading of uniqueness before the proof
 of \cref{prop:unique_representation}, the explicit form of $E_{i,j}$ and the
-basis of $\M_{2 \times 2}(K)$ in \cpageref{ex:basis_matrices}, the second half
+basis of $\M_{2 \times 2}(K)$ on \cpageref{ex:basis_matrices}, the second half
 of the proof of \cref{lem:targeted_redundancy} (the notes prove the equality of
 spans by two inclusions; the transcript asserted it),
-\cpageref{exc:redundancy_j_equals_one}, and
-\cpageref{rem:steinitz_stronger_form}, which the later chapters rely on. The
-proof of \cref{prop:unique_representation} is given in the notes under the
-simplifying assumption that $S$ is finite, with the infinite case noted as
-similar; the transcript proves it for general $S$ and that is kept.
+\cref{exc:redundancy_j_equals_one}, and \cref{rem:steinitz_stronger_form},
+which the later chapters rely on. The proof of
+\cref{prop:unique_representation} is given in the notes under the simplifying
+assumption that $S$ is finite, with the infinite case noted as similar; the
+transcript proves it for general $S$ and that is kept.
+
+The rigour pass over this chapter corrected two things and named several
+reasons. In the proof of \cref{thm:steinitz}, the span of the vectors preceding
+$u_1$ was given as $\emptyset$; it is $\Sp(\emptyset) = \{0_V\}$, which is what
+makes $u_1 \ne 0_V$ the relevant fact there. And the same proof ran its
+exchange backwards: it inserted each $u_j$ at the front, so the head
+accumulated as $u_j, \dots, u_1$ and the proof ended at
+$u_{n+1}, u_n, \dots, u_1$. The notes insert $u_j$ behind $u_{j-1}$ and end at
+$u_1, \dots, u_n, u_{n+1}$, which is also what both remarks below the proof
+say, \cref{rem:steinitz_general_step} for the general step and
+\cref{rem:steinitz_stronger_form} for the stronger form. Nothing was false
+either way, since independence and span do not depend on the order, but the
+proof disagreed with the two remarks that explain it; the proof now follows the
+notes. Steps that were taken silently now cite \cref{rem:span_of_empty_set},
+\cref{lem:independence_basics} \textbf{(b)} and \textbf{(d)},
+\cref{lem:subsets_of_independent_sets} and \cref{def:independent_set}, and the
+proof of \cref{lem:simple_exchange} now closes the spanning half with the
+reverse inclusion instead of stopping at $V \subseteq \Sp(u, v_2, \dots, v_n)$.
+The notes introduce finitely supported functions in running prose, under no
+heading, on a page where they do write \qt{Def.} for the basis; that passage is
+now the unnumbered Definition on \cpageref{def:finitely_supported}. The
+solution to \cref{exc:redundancy_j_equals_one} is supplied.
 \end{ainote}
