@@ -176,6 +176,30 @@ V := \left\{ f \colon \mathbb{R} \to \mathbb{R} \;\middle|\; f \text{ is twice d
 \exinfo{This exercise is Problem 5 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
+\begin{exercise}[Dimension of a Shifted Span]
+\label{exc:shifted_span_dimension}
+Suppose that $\{v_1, \dots, v_m\}$ is a linearly independent subset of a vector space $V$, and let $w \in V$ be an arbitrary vector. Prove that
+\[
+\dim \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \ge m - 1.
+\]
+\exinfo{This exercise is Problem 4 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Descending Chains of Subspaces]
+\label{exc:descending_chains_subspaces}
+Let $V$ be a vector space over a field $F$, and let
+\[
+V \supseteq U_0 \supseteq U_1 \supseteq U_2 \supseteq \dots \supseteq U_k \supseteq \dots
+\]
+be a sequence of nested linear subspaces.
+\begin{enumerate}
+    \item If $V$ is finite-dimensional, prove that the sequence stabilises: there exists $N \in \mathbb{N}$ such that $U_n = U_N$ for all $n \ge N$.
+    \item Is this necessarily true if $V$ is infinite-dimensional?
+    \item Assume that $V$ is infinite-dimensional and that $\dim U_n \ge 1$ for all $n \in \mathbb{N}$. What can you say about $\bigcap_{n=0}^\infty U_n$? Can this intersection be $\{0\}$?
+\end{enumerate}
+\exinfo{This exercise is Problem 6 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{ainote}
 \Cref{thm:wrong_length_lists}, and the trivial direction of the equality claim in
 \cref{prop:subspace_dimension_constraints}, were missing from this transcript and

@@ -79,6 +79,37 @@ T_A \left(\begin{smallmatrix} x_1 \\ \vdots \\ x_n \end{smallmatrix}\right) := A
 Recall from matrix arithmetic that $A \cdot (\alpha \cdot x) = \alpha \cdot (A \cdot x)$ and $A \cdot (x + y) = A \cdot x + A \cdot y$. Consequently, $T_A$ is a linear map.
 \end{example}
 
+\begin{exercise}[Linearity of Integral and Evaluation Map on Polynomials]
+\label{exc:polynomial_integral_eval_linear_map}
+Let $b, c \in \mathbb{R}$ and let $\mathbb{R}[x]$ denote the space of polynomial functions in one variable with real coefficients. Define the map $T \colon \mathbb{R}[x] \to \mathbb{R}^2$ by
+\[
+T(p) := \left( 3p(4) + 5p^3(6) + b p(1)p(2), \; \int_{-1}^2 x^2 p(x) \, dx + c (p(0))^2 \right)\transp.
+\]
+Show that $T$ is linear if and only if $b = c = 0$.
+\exinfo{This exercise is Problem 2 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Identifying Linear Maps]
+\label{exc:identifying_linear_maps_mc}
+Which of the following maps are linear?
+\begin{enumerate}
+    \item $f \colon \mathbb{R}^2 \to \mathbb{R}^3, \quad (x, y) \mapsto (x + y, 2x, 0)$;
+    \item $f \colon \mathbb{R}^2 \to \mathbb{R}^3, \quad (x, y) \mapsto (x + y, 2xy, 0)$;
+    \item $f \colon K^3 \to K^2, \quad (x, y, z) \mapsto (\alpha x + \beta y + \gamma z, \; \delta x + \varepsilon y + \eta z)$ for fixed constants $\alpha, \beta, \gamma, \delta, \varepsilon, \eta \in K$.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Matrix Representation of a Linear Map]
+\label{exc:matrix_map_mc}
+Consider the matrix $A = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix}$. Which of the following linear maps is given by $x \mapsto A \cdot x$?
+\begin{enumerate}
+    \item $f \colon \mathbb{R}^2 \to \mathbb{R}^3, \quad f(x, y) = (2x + y, x, 2y)\transp$;
+    \item $f \colon \mathbb{R}^3 \to \mathbb{R}^2, \quad f(x, y, z) = (2x + y, x + 2z)\transp$.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 % prop:15.a.2
 \begin{proposition}[Basic Properties of Linear Maps]
 \label{prop:properties_linear_maps}
