@@ -425,6 +425,7 @@ L(S) = L(S_0) = L(S_1) = \dots = L(S_k) = L(S'). \qedhere
 \label{exc:converse_ero_solution_set}
 We have seen in \cref{thm:ero_preserve_solutions} that if the augmented matrices $(A \mid b)$ and $(A' \mid b')$ of two linear systems of equations are row equivalent, then the two systems have the same solution set. Is the converse true: if two systems over a field $K$ have the same set of solutions, are their augmented matrices necessarily row equivalent? If yes, prove it; if not, provide a counterexample.
 \exinfo{This exercise is Problem 4 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:converse_ero_solution_set}
 \end{exercise}
 
 \subsection{Row-Reduced Matrices}
@@ -703,6 +704,7 @@ Using Gaussian elimination, find the set of all solutions in $\mathbb{R}^4$ to t
 \end{cases}
 \]
 \exinfo{This exercise is Problem 1 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:gauss_elimination_4vars}
 \end{exercise}
 
 \begin{exercise}[Simultaneous Row Reduction for Multiple Right-Hand Sides]
@@ -723,6 +725,7 @@ Consider the following two systems of linear equations over $\mathbb{R}$:
 \]
 Solve both systems simultaneously by row-reducing the single $3 \times 5$ augmented matrix $(A \mid b_1 \mid b_2)$.
 \exinfo{This exercise is Problem 3 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:simultaneous_row_reduction}
 \end{exercise}
 
 \begin{example}[Conditions for consistency]
@@ -813,6 +816,7 @@ For which values of the parameters $a \in \mathbb{R}$ and $b \in \mathbb{R}$ doe
 \]
 For all such pairs $(a, b)$, determine the complete solution set.
 \exinfo{This exercise is Problem 2 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:two_parameter_linear_system}
 \end{exercise}
 
 \begin{exercise}[Parametric Solvability of a Linear System]
@@ -829,6 +833,7 @@ Fix constants $b_1, b_2, b_3 \in \mathbb{R}$. Consider the system of linear equa
 \]
 Determine necessary and sufficient conditions on $b_1, b_2, b_3$ for this system to possess at least one solution, and describe the solution set $S \subseteq \mathbb{R}^3$ when solutions exist.
 \exinfo{This exercise is Problem 4 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:parametric_linear_system_solvability}
 \end{exercise}
 
 \begin{example}[A system with infinitely many solutions]
@@ -876,6 +881,7 @@ Observe the shape of the answer: one particular solution plus an arbitrary multi
 \label{exc:inconsistent_2x2_system}
 Let $A \in M_{2 \times 2}(\mathbb{R})$ be a $2 \times 2$ real matrix and let $b \in \mathbb{R}^2$ be a vector such that the system of equations $Ax = b$ has no solutions. Show that one row of the matrix $A$ must be a scalar multiple of the other.
 \exinfo{This exercise is Problem 5 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:inconsistent_2x2_system}
 \end{exercise}
 
 \begin{ainote}
@@ -905,3 +911,5 @@ of row operations was chosen, all wait for the rank of a matrix, in chs. 13 and
 (All three examples were recomputed entry by entry and their answers substituted
 back into the original systems; they are correct, fractions included.)
 \end{ainote}
+
+\input{content/06-systems-of-linear-equations-solutions.tex}

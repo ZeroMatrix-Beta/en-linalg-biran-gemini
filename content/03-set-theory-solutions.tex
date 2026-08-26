@@ -1,0 +1,47 @@
+﻿% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:archimedean_intersection}]
+\label{sol:archimedean_intersection}
+We claim that
+\[
+\bigcap_{n=1}^\infty \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\} = \{0\}.
+\]
+Let $I_n := \left[-\frac{1}{n}, \frac{1}{n}\right] = \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\}$ for each $n \in \mathbb{N}$.
+\begin{enumerate}
+    \item \textbf{Containment $\{0\} \subseteq \bigcap_{n=1}^\infty I_n$:} For every $n \in \mathbb{N}$, $-\frac{1}{n} < 0 < \frac{1}{n}$, and hence $0 \in I_n$ for all $n \ge 1$. Consequently, $0 \in \bigcap_{n=1}^\infty I_n$.
+
+    \item \textbf{Containment $\bigcap_{n=1}^\infty I_n \subseteq \{0\}$:} Suppose for contradiction that there exists some $x \in \bigcap_{n=1}^\infty I_n$ with $x \ne 0$. Then $|x| > 0$, so $\frac{1}{|x|} > 0$. By the Archimedean property of the real numbers, there exists a natural number $N \in \mathbb{N}$ such that $N > \frac{1}{|x|}$, which is equivalent to
+    \[
+    \frac{1}{N} < |x|.
+    \]
+    This implies that $x > \frac{1}{N}$ (if $x > 0$) or $x < -\frac{1}{N}$ (if $x < 0$). In either case, $x \notin \left[-\frac{1}{N}, \frac{1}{N}\right] = I_N$. But this contradicts the assumption that $x \in \bigcap_{n=1}^\infty I_n \subseteq I_N$.
+\end{enumerate}
+Therefore, the only element belonging to the intersection is $0$, which establishes the claim.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:cartesian_product_intersections}]
+\label{sol:cartesian_product_intersections}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $(x, y) \in X \times Y$ be an arbitrary element. We show equality of sets by a chain of logical equivalences:
+    \begin{align*}
+    (x, y) \in (A \times B) \cap (A' \times B') &\iff (x, y) \in A \times B \;\text{ and }\; (x, y) \in A' \times B' \\
+    &\iff (x \in A \text{ and } y \in B) \;\text{ and }\; (x \in A' \text{ and } y \in B') \\
+    &\iff (x \in A \text{ and } x \in A') \;\text{ and }\; (y \in B \text{ and } y \in B') \\
+    &\iff (x \in A \cap A') \;\text{ and }\; (y \in B \cap B') \\
+    &\iff (x, y) \in (A \cap A') \times (B \cap B').
+    \end{align*}
+    Since $(x,y)$ was arbitrary, $(A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B')$.
+
+    \item In general, $(A \times B) \cup (A' \times B') \ne (A \cup A') \times (B \cup B')$. In fact, the inclusion $(A \times B) \cup (A' \times B') \subseteq (A \cup A') \times (B \cup B')$ always holds, but the reverse inclusion fails whenever $A \setminus A' \ne \emptyset$ and $B' \setminus B \ne \emptyset$.
+    
+    \textbf{Concrete Counterexample:} Let $X = Y = \mathbb{R}$, and set $A = [0, 1], B = [0, 1]$ and $A' = [2, 3], B' = [2, 3]$. 
+    \begin{itemize}
+        \item The union $(A \times B) \cup (A' \times B') = ([0, 1] \times [0, 1]) \cup ([2, 3] \times [2, 3])$ is the union of two disjoint squares along the diagonal of the plane.
+        \item The Cartesian product $(A \cup A') \times (B \cup B') = ([0, 1] \cup [2, 3]) \times ([0, 1] \cup [2, 3])$ contains four squares:
+        \[
+        ([0,1] \times [0,1]) \cup ([0,1] \times [2,3]) \cup ([2,3] \times [0,1]) \cup ([2,3] \times [2,3]).
+        \]
+    \end{itemize}
+    For instance, the point $(0, 2)$ lies in $(A \cup A') \times (B \cup B')$, because $0 \in A \subseteq A \cup A'$ and $2 \in B' \subseteq B \cup B'$. However, $(0, 2) \notin A \times B$ (since $2 \notin [0,1]$) and $(0, 2) \notin A' \times B'$ (since $0 \notin [2,3]$), so $(0, 2) \notin (A \times B) \cup (A' \times B')$.
+\end{enumerate}
+\end{exercisesolution}

@@ -243,6 +243,7 @@ Let $x, y \in \mathbb{R}$. Formulate the contrapositive of the implication
 x \ne y \implies \bigl( \exists \varepsilon > 0 : |x - y| > \varepsilon \bigr).
 \]
 \exinfo{This exercise is Problem 5 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:logic_contrapositive_reals}
 \end{exercise}
 
 \begin{exercise}[Negation and De Morgan's Laws for Statements and Sets]
@@ -261,6 +262,7 @@ x \ne y \implies \bigl( \exists \varepsilon > 0 : |x - y| > \varepsilon \bigr).
     \end{enumerate}
 \end{enumerate}
 \exinfo{This exercise is Problem 2 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:contrapositive}
 \end{exercise}
 
 \subsection{Predicates and Quantifiers}
@@ -294,6 +296,7 @@ Let $\mathbb{N} = \{1, 2, 3, \dots\}$ denote the set of natural numbers.
     \item Show by formal transformation in first-order logic that both statements are logically equivalent.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:first_order_logic_naturals}
 \end{exercise}
 
 Quantifiers may of course be combined. For instance,
@@ -374,6 +377,7 @@ Let $x, y, z$ be variables and let $R, S$ be relations. Distribute the negation 
 \neg \Bigl( \forall x \, \exists y \, \exists z : \bigl( R(x, y) \wedge R(z, x) \bigr) \vee \bigl( R(x, y) \wedge S(z, x) \bigr) \Bigr).
 \]
 \exinfo{This exercise is Problem 4 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:logic_distribute_negation}
 \end{exercise}
 
 \begin{definition}[Unique Existence]
@@ -394,6 +398,7 @@ $\exists! x \in \mathbb{R} : x^2 = 4$ is False (since $x = \pm 2$). However, $\e
 \label{sec:solutions_logic}
 
 \begin{exercisesolution}[Proof of \cref{prop:contrapositive} and of \cref{exer:de_morgan}]
+\label{sol:contrapositive}
 Each of the four claims is settled by writing out the truth table and checking that the two columns in question agree row by row. That is what an equivalence of statements amounts to, by \cref{def:equivalence}.
 
 \textbf{The contrapositive.} Comparing the third column with the sixth:
@@ -471,3 +476,7 @@ The warning the chapter gives itself, in \cref{rem:inclusive_or}, is worth
 repeating: \qt{or} is always inclusive. The second De Morgan law depends on it,
 and so does the reading of \qt{$A$ or $B$} in every later statement.
 \end{ainote}
+
+\input{content/02-logic-solutions.tex}
+
+

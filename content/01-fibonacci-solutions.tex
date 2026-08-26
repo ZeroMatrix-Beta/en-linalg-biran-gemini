@@ -1,0 +1,129 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:fib_dimension_two_samples}]
+\label{sol:fib_dimension_two_samples}
+Let $F = (\alpha_n)_{n=0}^\infty$ and $G = (\beta_n)_{n=0}^\infty$ be two sequences in $\Fib$. Consider the difference sequence $D := F - G = (\delta_n)_{n=0}^\infty$, where $\delta_n := \alpha_n - \beta_n$ for all $n \ge 0$. 
+
+By \cref{prop:fib_closure}, $\Fib$ is closed under linear combinations, so $D \in \Fib$. Therefore, by \cref{thm:binet_formula}, there exist unique real constants $c_1, c_2 \in \mathbb{R}$ such that
+\[
+\delta_n = c_1 \varphi^n + c_2 \psi^n \quad \text{for all } n \ge 0,
+\]
+where $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi = \frac{1-\sqrt{5}}{2}$ are the two roots of $x^2 - x - 1 = 0$.
+
+Suppose we check equality at two distinct indices $i < j$. The condition $\alpha_i = \beta_i$ and $\alpha_j = \beta_j$ is equivalent to $\delta_i = 0$ and $\delta_j = 0$, which yields the linear system of equations in the unknowns $(c_1, c_2)$:
+\[
+\begin{cases}
+c_1 \varphi^i + c_2 \psi^i = 0, \\
+c_1 \varphi^j + c_2 \psi^j = 0.
+\end{cases}
+\]
+In matrix form, this reads:
+\[
+\begin{pmatrix}
+\varphi^i & \psi^i \\
+\varphi^j & \psi^j
+\end{pmatrix}
+\begin{pmatrix}
+c_1 \\
+c_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}.
+\]
+The determinant of this $2 \times 2$ coefficient matrix is:
+\begin{align*}
+\det \begin{pmatrix} \varphi^i & \psi^i \\ \varphi^j & \psi^j \end{pmatrix} &= \varphi^i \psi^j - \varphi^j \psi^i \\
+&= \varphi^i \psi^i \left(\psi^{j-i} - \varphi^{j-i}\right).
+\end{align*}
+Since $\varphi \cdot \psi = \frac{1-5}{4} = -1 \ne 0$, we have $\varphi^i \psi^i = (-1)^i \ne 0$. Furthermore, because $\varphi > 1$ and $-1 < \psi < 0$, we have $|\varphi| > |\psi|$, and thus for any integer $k = j - i > 0$, $\varphi^k \ne \psi^k$. Hence,
+\[
+\psi^{j-i} - \varphi^{j-i} \ne 0,
+\]
+which proves that the determinant is non-zero.
+
+A $2 \times 2$ homogeneous linear system with a non-zero determinant has only the trivial solution $c_1 = c_2 = 0$. Consequently, $\delta_n = 0$ for all $n \ge 0$, which implies $D = \mathcal{F}_{0,0}$ and therefore $F = G$. Thus, sampling two distinct indices is always sufficient to determine equality of Fibonacci sequences.
+
+\begin{ainote}
+\textbf{Alternative Elementary Proof via Recurrence Shifting:}
+An alternative perspective avoids the geometric eigenbasis and works directly with the recurrence relation. Let $\delta_i = 0$. Using the recurrence $\delta_{m+2} = \delta_{m+1} + \delta_m$, we can compute both forwards and backwards from index $i$:
+\begin{align*}
+\text{Forward: } \delta_{i+1} &= \delta_{i+1}, \quad \delta_{i+2} = \delta_{i+1}, \quad \delta_{i+3} = 2\delta_{i+1}, \quad \dots \quad \delta_{i+k} = F_k \delta_{i+1}, \\
+\text{Backward: } \delta_{i-1} &= \delta_{i+1} - \delta_i = \delta_{i+1}, \quad \delta_{i-2} = -\delta_{i+1}, \quad \dots \quad \delta_{i-\ell} = (-1)^{\ell+1} F_\ell \delta_{i+1},
+\end{align*}
+where $(F_k)$ is the standard Fibonacci sequence $\mathcal{F}_{0,1} = (0, 1, 1, 2, 3, \dots)$.
+Since $j > i$, the second condition gives $0 = \delta_j = \delta_{i+(j-i)} = F_{j-i} \delta_{i+1}$. Because $j - i \ge 1$, we have $F_{j-i} > 0$, forcing $\delta_{i+1} = 0$. Since $\delta_i = 0$ and $\delta_{i+1} = 0$, every term $\delta_n = 0$, so $F = G$.
+\end{ainote}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:golden_ratio_part1}]
+\label{sol:golden_ratio_part1}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item We seek the explicit formula for $\mathcal{F}_{1,0} = (b_n)_{n=0}^\infty$. Since $\mathcal{F}_{1,0} \in \Fib$, we can express it as a linear combination of the two geometric basis sequences $\mathcal{F}_{1,\varphi} = (\varphi^n)$ and $\mathcal{F}_{1,\psi} = (\psi^n)$:
+    \[
+    b_n = c_1 \varphi^n + c_2 \psi^n.
+    \]
+    Using the initial conditions $b_0 = 1$ and $b_1 = 0$, we obtain:
+    \[
+    \begin{cases}
+    c_1 + c_2 = 1, \\
+    c_1 \varphi + c_2 \psi = 0.
+    \end{cases}
+    \]
+    From the second equation, $c_2 = -\frac{\varphi}{\psi} c_1$. Substituting this into the first equation:
+    \[
+    c_1 \left(1 - \frac{\varphi}{\psi}\right) = 1 \implies c_1 \left(\frac{\psi - \varphi}{\psi}\right) = 1 \implies c_1 = \frac{\psi}{\psi - \varphi}.
+    \]
+    Since $\psi - \varphi = \frac{1-\sqrt{5}}{2} - \frac{1+\sqrt{5}}{2} = -\sqrt{5}$, we find
+    \[
+    c_1 = \frac{\psi}{-\sqrt{5}} = -\frac{\psi}{\sqrt{5}} = \frac{\sqrt{5}-1}{2\sqrt{5}}, \quad c_2 = 1 - c_1 = \frac{\varphi}{\sqrt{5}} = \frac{\sqrt{5}+1}{2\sqrt{5}}.
+    \]
+    Therefore, the $n$-th term of $\mathcal{F}_{1,0}$ is:
+    \[
+    b_n = -\frac{\psi}{\sqrt{5}} \varphi^n + \frac{\varphi}{\sqrt{5}} \psi^n = \frac{\varphi \psi (\psi^{n-1} - \varphi^{n-1})}{\sqrt{5}}.
+    \]
+    Using $\varphi \psi = -1$, this simplifies for all $n \ge 1$ to:
+    \[
+    b_n = \frac{\varphi^{n-1} - \psi^{n-1}}{\sqrt{5}} = a_{n-1},
+    \]
+    where $a_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}$ is the classical Fibonacci sequence $\mathcal{F}_{0,1}$. Note that for $n = 0$, this yields $b_0 = 1$.
+
+    \item Let $\mathcal{F}_{a,b} = (x_n)_{n=0}^\infty$ be the generalized Fibonacci sequence with initial values $x_0 = a$ and $x_1 = b$. By \cref{cor:fib_linear_combination},
+    \[
+    \mathcal{F}_{a,b} = a \mathcal{F}_{1,0} + b \mathcal{F}_{0,1}.
+    \]
+    Therefore, for every $n \ge 0$,
+    \[
+    x_n = a b_n + b a_n = a \left(\frac{-\psi \varphi^n + \varphi \psi^n}{\sqrt{5}}\right) + b \left(\frac{\varphi^n - \psi^n}{\sqrt{5}}\right) = \left(\frac{b - a\psi}{\sqrt{5}}\right) \varphi^n + \left(\frac{a\varphi - b}{\sqrt{5}}\right) \psi^n.
+    \]
+    Using $\psi = \frac{1-\sqrt{5}}{2}$ and $\varphi = \frac{1+\sqrt{5}}{2}$, we can also write this as:
+    \[
+    x_n = \frac{1}{\sqrt{5}} \left[ \left(b - a \frac{1-\sqrt{5}}{2}\right) \left(\frac{1+\sqrt{5}}{2}\right)^n + \left(a \frac{1+\sqrt{5}}{2} - b\right) \left(\frac{1-\sqrt{5}}{2}\right)^n \right].
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:golden_ratio_part2}]
+\label{sol:golden_ratio_part2}
+Let $F_n$ denote the $n$-th classical Fibonacci number ($F_0 = 0, F_1 = 1, F_2 = 1, F_3 = 2, \dots$). We are given that the limit
+\[
+L := \lim_{n \to \infty} \frac{F_n}{F_{n-1}}
+\]
+exists and is non-zero. Dividing the Fibonacci recurrence $F_n = F_{n-1} + F_{n-2}$ by $F_{n-1}$ (which is positive for $n \ge 2$) gives:
+\[
+\frac{F_n}{F_{n-1}} = 1 + \frac{F_{n-2}}{F_{n-1}} = 1 + \frac{1}{\frac{F_{n-1}}{F_{n-2}}}.
+\]
+Taking the limit as $n \to \infty$ on both sides and using the algebraic limit laws (since $L \ne 0$), we obtain:
+\[
+L = 1 + \frac{1}{L} \implies L^2 - L - 1 = 0.
+\]
+The solutions to this quadratic equation are $L = \frac{1 \pm \sqrt{5}}{2}$. Since $F_n > 0$ for all $n \ge 1$, the ratio $\frac{F_n}{F_{n-1}} > 0$ is strictly positive for all $n \ge 2$, so the limit must satisfy $L \ge 0$. This rules out the negative root $\frac{1-\sqrt{5}}{2}$.
+
+Therefore, the exact value of the limit is the golden ratio:
+\[
+L = \varphi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887\dots
+\]
+\end{exercisesolution}

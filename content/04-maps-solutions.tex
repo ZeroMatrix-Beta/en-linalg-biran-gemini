@@ -1,0 +1,128 @@
+\section{Solutions}\label{sec:solutions_maps}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:left_right_inverses}]
+\label{sol:left_right_inverses}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Assume $g_1 \colon Y \to X$ is a left-inverse of $f$ ($g_1 \circ f = \id_X$) and $g_2 \colon Y \to X$ is a right-inverse of $f$ ($f \circ g_2 = \id_Y$). Using the associativity of map composition, we compute:
+    \[
+    g_1 = g_1 \circ \id_Y = g_1 \circ (f \circ g_2) = (g_1 \circ f) \circ g_2 = \id_X \circ g_2 = g_2.
+    \]
+    Thus, $g_1 = g_2$. Since this unique map $g := g_1 = g_2$ satisfies both $g \circ f = \id_X$ and $f \circ g = \id_Y$, it is by definition the two-sided inverse of $f$, denoted $f^{-1}$. The existence of a two-sided inverse guarantees that $f$ is bijective.
+
+    \item Consider the projection map onto the first coordinate:
+    \[
+    f \colon \mathbb{R}^2 \longrightarrow \mathbb{R}, \qquad f(x_1, x_2) := x_1.
+    \]
+    Define the inclusion map $g \colon \mathbb{R} \to \mathbb{R}^2$ by $g(y) := (y, 0)$. Then for all $y \in \mathbb{R}$,
+    \[
+    (f \circ g)(y) = f(g(y)) = f(y, 0) = y = \id_{\mathbb{R}}(y),
+    \]
+    so $g$ is a right-inverse of $f$. However, $f$ is not injective (and therefore not bijective) because, for example, $f(1, 0) = 1 = f(1, 1)$ with $(1, 0) \ne (1, 1)$.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:affine_map_planar_region}]
+\label{sol:affine_map_planar_region}
+The region is defined by the intersection of three half-planes in $\mathbb{R}^2$:
+\[
+R = \bigl\{ (x, y) \in \mathbb{R}^2 \;\big|\; x \ge 0, \; y \ge 0, \; y \le ax + b \bigr\}.
+\]
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Case $a = 2, b = 1$:} The line equation is $y = 2x + 1$. For $x \ge 0$, the function value $f(x) = 2x + 1 \ge 1 > 0$ is always strictly positive and increases unboundedly as $x \to \infty$. 
+    
+    The region $R_1$ is an unbounded domain in the first quadrant, bounded on the left by the vertical segment from $(0,0)$ to $(0,1)$ on the $y$-axis, bounded below by the non-negative $x$-axis $\{ (x, 0) \mid x \ge 0\}$, and bounded above by the half-line $y = 2x + 1$ for $x \ge 0$.
+
+    \item \textbf{Case $a = -2, b = 1$:} The line equation is $y = -2x + 1$. It intersects the $y$-axis ($x = 0$) at $(0, 1)$ and the $x$-axis ($y = 0$) at $(\frac{1}{2}, 0)$. For $x > \frac{1}{2}$, we have $f(x) < 0$, which conflicts with the requirement $y \ge 0$.
+    
+    Therefore, the region $R_2$ is a closed and bounded right triangle in the first quadrant with vertices at $(0, 0)$, $(\frac{1}{2}, 0)$, and $(0, 1)$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+    % Left figure: a = 2, b = 1
+    \begin{scope}[xshift=-3.5cm]
+        \fill[ThemeAccent!20] (0,0) -- (1.5,0) -- (1.5,4) -- (0,1) -- cycle;
+        \draw[->, gray!70] (-0.3,0) -- (2.0,0) node[right, black, font=\footnotesize] {$x$};
+        \draw[->, gray!70] (0,-0.3) -- (0,4.3) node[above, black, font=\footnotesize] {$y$};
+        \draw[ThemeAccent, thick] (0,1) -- (1.5,4) node[above right, font=\footnotesize] {$y = 2x+1$};
+        \draw[ThemePurple, thick] (0,0) -- (0,1);
+        \draw[ThemePurple, thick] (0,0) -- (1.5,0);
+        \fill (0,1) circle (1.5pt) node[left, font=\footnotesize] {$(0,1)$};
+        \node[ThemeAccent!80!black, font=\footnotesize] at (0.75,1.2) {$R_1$};
+        \node[below, font=\footnotesize] at (0.8,-0.6) {\textbf{(a)} $a=2, b=1$ (unbounded)};
+    \end{scope}
+    
+    % Right figure: a = -2, b = 1
+    \begin{scope}[xshift=2.5cm]
+        \fill[ThemeGreen!25] (0,0) -- (1.5,0) -- (0,3) -- cycle;
+        \draw[->, gray!70] (-0.3,0) -- (2.3,0) node[right, black, font=\footnotesize] {$x$};
+        \draw[->, gray!70] (0,-0.3) -- (0,3.5) node[above, black, font=\footnotesize] {$y$};
+        \draw[ThemeGreen, thick] (0,3) -- (1.5,0) node[above right, font=\footnotesize] {$y = -2x+1$};
+        \draw[ThemePurple, thick] (0,0) -- (0,3);
+        \draw[ThemePurple, thick] (0,0) -- (1.5,0);
+        \fill (0,3) circle (1.5pt) node[left, font=\footnotesize] {$(0,1)$};
+        \fill (1.5,0) circle (1.5pt) node[below, font=\footnotesize] {$(\frac{1}{2},0)$};
+        \node[ThemeGreen!80!black, font=\footnotesize] at (0.5,0.8) {$R_2$};
+        \node[below, font=\footnotesize] at (0.8,-0.6) {\textbf{(b)} $a=-2, b=1$ (triangle)};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:images_preimages_operations}]
+\label{sol:images_preimages_operations}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Proof of $f(f^{-1}(B)) \subseteq B$:} Let $y \in f(f^{-1}(B))$. By definition of the image of a subset, there exists $x \in f^{-1}(B)$ such that $y = f(x)$. By definition of the preimage, $x \in f^{-1}(B)$ implies $f(x) \in B$. Hence $y \in B$.
+    
+    \textbf{Condition for equality:} Equality $f(f^{-1}(B)) = B$ holds for all $B \subseteq Y$ if and only if $f$ is surjective.
+    \begin{itemize}
+        \item If $f$ is surjective, then for every $y \in B$, there exists $x \in X$ such that $f(x) = y \in B$. Thus $x \in f^{-1}(B)$, which implies $y = f(x) \in f(f^{-1}(B))$. This gives $B \subseteq f(f^{-1}(B))$ and hence equality.
+        \item If $f$ is not surjective, take $y_0 \in Y \setminus \Img(f)$ and set $B := \{y_0\}$. Then $f^{-1}(B) = \emptyset$, so $f(f^{-1}(B)) = f(\emptyset) = \emptyset \ne \{y_0\} = B$.
+    \end{itemize}
+
+    \item \textbf{Proof of $f^{-1}(f(A)) \supseteq A$:} Let $x \in A$. Then $f(x) \in f(A)$. By definition of the inverse image, this means $x \in f^{-1}(f(A))$.
+    
+    \textbf{Condition for equality:} Equality $f^{-1}(f(A)) = A$ holds for all $A \subseteq X$ if and only if $f$ is injective.
+    \begin{itemize}
+        \item If $f$ is injective, let $x \in f^{-1}(f(A))$. Then $f(x) \in f(A)$, so there exists $a \in A$ such that $f(x) = f(a)$. Since $f$ is injective, $x = a \in A$. Thus $f^{-1}(f(A)) \subseteq A$, proving equality.
+        \item If $f$ is not injective, there exist $x_1 \ne x_2 \in X$ such that $f(x_1) = f(x_2)$. Setting $A := \{x_1\}$, we have $f(A) = \{f(x_1)\}$, and therefore $f^{-1}(f(A)) = f^{-1}(\{f(x_1)\}) \supseteq \{x_1, x_2\} \ne \{x_1\} = A$.
+    \end{itemize}
+
+    \item \textbf{Union identities:}
+    \begin{align*}
+    y \in f(A \cup A') &\iff \exists x \in A \cup A' : f(x) = y \\
+    &\iff (\exists x \in A : f(x) = y) \text{ or } (\exists x \in A' : f(x) = y) \\
+    &\iff y \in f(A) \text{ or } y \in f(A') \iff y \in f(A) \cup f(A').
+    \end{align*}
+    Similarly for preimages:
+    \begin{align*}
+    x \in f^{-1}(B \cup B') &\iff f(x) \in B \cup B' \iff f(x) \in B \text{ or } f(x) \in B' \\
+    &\iff x \in f^{-1}(B) \text{ or } x \in f^{-1}(B') \iff x \in f^{-1}(B) \cup f^{-1}(B').
+    \end{align*}
+
+    \item \textbf{Intersections and image:} If $y \in f(A \cap A')$, there exists $x \in A \cap A'$ with $f(x) = y$. Since $x \in A$, $y = f(x) \in f(A)$, and since $x \in A'$, $y = f(x) \in f(A')$. Hence $y \in f(A) \cap f(A')$, proving $f(A \cap A') \subseteq f(A) \cap f(A')$.
+    
+    If $f$ is injective, let $y \in f(A) \cap f(A')$. Then $y = f(a)$ for some $a \in A$ and $y = f(a')$ for some $a' \in A'$. Injectivity forces $a = a'$, so $a \in A \cap A'$ and $y = f(a) \in f(A \cap A')$.
+    
+    For differences when $f$ is injective:
+    \begin{align*}
+    y \in f(A \setminus A') &\iff \exists x \in A \setminus A' : f(x) = y \\
+    &\iff (\exists x \in A : f(x) = y) \text{ and } (\forall x' \in A' : f(x') \ne y) \\
+    &\iff y \in f(A) \text{ and } y \notin f(A') \iff y \in f(A) \setminus f(A').
+    \end{align*}
+
+    \item \textbf{Preimages commute with intersection and complement:}
+    \begin{align*}
+    x \in f^{-1}(B \cap B') &\iff f(x) \in B \cap B' \iff f(x) \in B \text{ and } f(x) \in B' \\
+    &\iff x \in f^{-1}(B) \text{ and } x \in f^{-1}(B') \iff x \in f^{-1}(B) \cap f^{-1}(B').
+    \end{align*}
+    For the complement:
+    \begin{align*}
+    x \in f^{-1}(Y \setminus B) &\iff f(x) \in Y \setminus B \iff f(x) \notin B \\
+    &\iff x \notin f^{-1}(B) \iff x \in X \setminus f^{-1}(B).
+    \end{align*}
+\end{enumerate}
+\end{exercisesolution}

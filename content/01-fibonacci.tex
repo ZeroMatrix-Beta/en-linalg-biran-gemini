@@ -113,6 +113,7 @@ Let $F = (\alpha_0, \alpha_1, \alpha_2, \dots)$ and $G = (\beta_0, \beta_1, \bet
 
 \textbf{Claim:} It is sufficient to check equality at two distinct indices $i \ne j$ to determine with certainty whether $F = G$. Explain why this claim is true.
 \exinfo{This exercise is Problem 6 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:fib_dimension_two_samples}
 \end{exercise}
 
 \subsection{Deriving the Explicit Formula}
@@ -288,6 +289,7 @@ Recall that the classical Fibonacci sequence $\mathcal{F}_{0,1} = (a_0, a_1, \do
     \item Write an explicit formula for the general Fibonacci sequence $\mathcal{F}_{a,b}$ that depends only on the initial values $a, b$ and the index $n$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:golden_ratio_part1}
 \end{exercise}
 
 \subsection{Where the Idea Came From: Symmetries of \texorpdfstring{$\Fib$}{Fib}}
@@ -341,6 +343,7 @@ that is, it simply forgets the first term of the sequence.
 \label{exc:shift_is_linear}
 Check that $S$ is linear.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:shift_is_linear_b}
 \end{exercise}
 
 Mathematicians like to probe a map $T \colon X \to X$ by looking for its special, or
@@ -548,6 +551,7 @@ L := \lim_{n \to \infty} \frac{F_n}{F_{n-1}}
 \]
 exists and is non-zero, compute its exact value.
 \exinfo{This exercise is Problem 3 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025. Taken from Dr.~Menny Akka Ginosar's notes on Fibonacci sequences.}
+\exsol{sol:golden_ratio_part2}
 \end{exercise}
 
 Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n := \binom{a_{n+1}}{a_n}$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
@@ -588,6 +592,7 @@ This formulation shows that the behavior of the sequence is entirely governed by
     \item \textbf{Cassini's Identity:} Show that $a_{n+1} a_{n-1} - a_n^2 = (-1)^n$ for all $n \ge 1$. Hint: Use the determinant of the matrix $M^n$.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:shift_is_linear_b}
 \end{exercise}
 
 % Creator: Opus 5
@@ -595,6 +600,7 @@ This formulation shows that the behavior of the sequence is entirely governed by
 \label{sec:solutions_fibonacci}
 
 \begin{exercisesolution}[Proof of \cref{exc:shift_is_linear}, also \cref{exc:ch1_list} \textbf{(b)}]
+\label{sol:shift_is_linear_b}
 Let $\mathcal{A} = (a_0, a_1, a_2, \dots)$ and $\mathcal{B} = (b_0, b_1, b_2, \dots)$ be in $\Fib$ and let $\alpha \in \mathbb{R}$. Both operations on $\Fib$ are term-wise, and the shift acts on each term separately, so the two axioms of \cref{def:linear_map_fib} are read off directly:
 \[
     S(\mathcal{A} + \mathcal{B}) = S(a_0 + b_0, \, a_1 + b_1, \, \dots) = (a_1 + b_1, \, a_2 + b_2, \, \dots) = S(\mathcal{A}) + S(\mathcal{B}),
@@ -606,6 +612,7 @@ Both computations use \cref{prop:fib_closure} implicitly, in that the sequences 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(a)}]
+\label{sol:ch1_list_a}
 We repeat the derivation of \cref{thm:binet_formula} with $\mathcal{F}_{0,1}$ replaced by an arbitrary $\mathcal{F}_{a_0, a_1}$. By \cref{cor:fib_linear_combination} we look for $\alpha, \beta \in \mathbb{R}$ with $\alpha \cdot \mathcal{F}_{1,\varphi} + \beta \cdot \mathcal{F}_{1,\psi} = \mathcal{F}_{a_0, a_1}$, and comparing the terms with $n = 0$ and $n = 1$ gives
 \[
 \begin{cases}
@@ -625,6 +632,7 @@ Two checks. For $a_0 = 0$ and $a_1 = 1$ this collapses to $\frac{1}{\sqrt{5}}(\v
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(c)}]
+\label{sol:ch1_list_c}
 The displayed expression is not a finite computation, so it has to be given a meaning, and the standard one is as a limit. Define a sequence by
 \[
     x_1 := 1, \qquad x_{n+1} := 1 + \frac{1}{x_n},
@@ -643,6 +651,7 @@ The meaning of the picture, then, is that the golden ratio is the number whose c
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(d)}]
+\label{sol:ch1_list_d}
 Let $\mathcal{F}_{a_0, a_1} = (\alpha_0, \alpha_1, \alpha_2, \dots)$ be a Fibonacci sequence which is also arithmetic, say with common difference $d$, so that $\alpha_n - \alpha_{n-1} = d$ for all $n \ge 1$. For $n \ge 2$ the Fibonacci recurrence gives $\alpha_n - \alpha_{n-1} = \alpha_{n-2}$, and comparing the two expressions yields
 \[
     \alpha_{n-2} = d \qquad \text{for all } n \ge 2,
@@ -653,6 +662,7 @@ Conversely $\mathcal{F}_{0,0}$ is arithmetic, with $d = 0$. So the zero sequence
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(e)}]
+\label{sol:ch1_list_e}
 By \cref{thm:binet_formula}, for $n \ge 1$,
 \[
     \frac{a_n}{a_{n-1}} = \frac{\varphi^n - \psi^n}{\varphi^{n-1} - \psi^{n-1}} = \varphi \cdot \frac{1 - (\psi/\varphi)^n}{1 - (\psi/\varphi)^{n-1}} \cdot \frac{1}{1},
@@ -665,6 +675,7 @@ The oscillation visible in \cref{fig:fib_ratio_to_phi} is the sign of $(\psi/\va
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(f)}]
+\label{sol:ch1_list_f}
 Write $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ as in the text. We first claim that
 \[
     M^n = \begin{pmatrix} a_{n+1} & a_n \\ a_n & a_{n-1} \end{pmatrix} \qquad \text{for all } n \ge 1,
@@ -703,3 +714,7 @@ a constant sequence obeys the recurrence only when $d = d + d$. No growth
 estimate enters, and the conclusion covers sequences with negative terms. This is
 \cref{exc:ch1_list} \textbf{(d)}; the details are in the solutions above.
 \end{ainote}
+
+\input{content/01-fibonacci-solutions.tex}
+
+

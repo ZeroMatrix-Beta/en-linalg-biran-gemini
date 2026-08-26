@@ -1,0 +1,85 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:logic_contrapositive_reals}]
+\label{sol:logic_contrapositive_reals}
+Let $P$ be the statement $x \ne y$ and $Q$ be the statement $\exists \varepsilon > 0 : |x - y| > \varepsilon$.
+The contrapositive of the implication $P \implies Q$ is $\neg Q \implies \neg P$ (\cref{prop:contrapositive}).
+
+We negate the conclusion $Q$ using quantifier negation (\cref{prop:negating_quantifiers}):
+\[
+\neg Q \iff \neg \bigl( \exists \varepsilon > 0 : |x - y| > \varepsilon \bigr) \iff \forall \varepsilon > 0 : |x - y| \le \varepsilon.
+\]
+The negation of the hypothesis $P$ is:
+\[
+\neg P \iff \neg(x \ne y) \iff x = y.
+\]
+Therefore, the contrapositive statement is:
+\[
+\bigl( \forall \varepsilon > 0 : |x - y| \le \varepsilon \bigr) \implies x = y.
+\]
+\begin{ainote}
+This contrapositive is a fundamental characterization of equality in the real numbers: two real numbers whose distance is smaller than every positive $\varepsilon$ are necessarily equal (often used as the definition of convergence or Hausdorff separation in analysis).
+\end{ainote}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:first_order_logic_naturals}]
+\label{sol:first_order_logic_naturals}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item A natural number $m \in \mathbb{N}$ is the largest natural number if every natural number is less than or equal to $m$, that is, $\forall k \in \mathbb{N} : k \le m$. The statement \qt{there does not exist a largest natural number} is the negation of the existence of such an $m$:
+    \[
+    \neg \Bigl( \exists m \in \mathbb{N}, \, \forall k \in \mathbb{N} : k \le m \Bigr).
+    \]
+
+    \item The statement \qt{for every natural number $n$, there exists a strictly larger natural number} is formulated directly with quantifiers as:
+    \[
+    \forall n \in \mathbb{N}, \, \exists m \in \mathbb{N} : m > n.
+    \]
+
+    \item We transform the first statement using the standard rules of first-order predicate logic and quantifier negation (\cref{prop:negating_quantifiers}):
+    \begin{align*}
+    \neg \Bigl( \exists m \in \mathbb{N}, \, \forall k \in \mathbb{N} : k \le m \Bigr) &\iff \forall m \in \mathbb{N}, \, \neg \Bigl( \forall k \in \mathbb{N} : k \le m \Bigr) \\
+    &\iff \forall m \in \mathbb{N}, \, \exists k \in \mathbb{N} : \neg(k \le m) \\
+    &\iff \forall m \in \mathbb{N}, \, \exists k \in \mathbb{N} : k > m.
+    \end{align*}
+    Relabeling the dummy variable $m$ as $n$ and $k$ as $m$, this becomes precisely:
+    \[
+    \forall n \in \mathbb{N}, \, \exists m \in \mathbb{N} : m > n.
+    \]
+    Thus, the two statements are logically equivalent.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:logic_distribute_negation}]
+\label{sol:logic_distribute_negation}
+We distribute the negation $\neg$ inward step by step:
+\begin{enumerate}
+    \item First, apply the quantifier negation rules (\cref{prop:negating_quantifiers}) to move the negation past the three leading quantifiers $\forall x$, $\exists y$, $\exists z$:
+    \begin{align*}
+    \neg \Bigl( \forall x \, \exists y \, \exists z : \dots \Bigr) &\iff \exists x \, \neg \Bigl( \exists y \, \exists z : \dots \Bigr) \\
+    &\iff \exists x \, \forall y \, \neg \Bigl( \exists z : \dots \Bigr) \\
+    &\iff \exists x \, \forall y \, \forall z : \neg \Bigl( \bigl( R(x, y) \wedge R(z, x) \bigr) \vee \bigl( R(x, y) \wedge S(z, x) \bigr) \Bigr).
+    \end{align*}
+
+    \item Next, apply De Morgan's law for disjunction, $\neg(P \vee Q) \iff \neg P \wedge \neg Q$:
+    \[
+    \neg \Bigl( \bigl( R(x, y) \wedge R(z, x) \bigr) \vee \bigl( R(x, y) \wedge S(z, x) \bigr) \Bigr) \iff \neg \bigl( R(x, y) \wedge R(z, x) \bigr) \wedge \neg \bigl( R(x, y) \wedge S(z, x) \bigr).
+    \]
+
+    \item Apply De Morgan's law for conjunction, $\neg(U \wedge V) \iff \neg U \vee \neg V$, to each of the two conjuncts:
+    \begin{align*}
+    \neg \bigl( R(x, y) \wedge R(z, x) \bigr) &\iff \neg R(x, y) \vee \neg R(z, x), \\
+    \neg \bigl( R(x, y) \wedge S(z, x) \bigr) &\iff \neg R(x, y) \vee \neg S(z, x).
+    \end{align*}
+
+    \item Alternatively, by distributing the common term $\neg R(x, y)$ using the distributive law of $\vee$ over $\wedge$, we can write:
+    \[
+    \bigl( \neg R(x, y) \vee \neg R(z, x) \bigr) \wedge \bigl( \neg R(x, y) \vee \neg S(z, x) \bigr) \iff \neg R(x, y) \vee \bigl( \neg R(z, x) \wedge \neg S(z, x) \bigr).
+    \]
+\end{enumerate}
+Therefore, the fully distributed proposition is:
+\[
+\exists x \, \forall y \, \forall z : \bigl( \neg R(x, y) \vee \neg R(z, x) \bigr) \wedge \bigl( \neg R(x, y) \vee \neg S(z, x) \bigr),
+\]
+or equivalently, $\exists x \, \forall y \, \forall z : \neg R(x, y) \vee \bigl( \neg R(z, x) \wedge \neg S(z, x) \bigr)$.
+\end{exercisesolution}

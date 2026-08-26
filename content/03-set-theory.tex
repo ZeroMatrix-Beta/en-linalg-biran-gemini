@@ -296,6 +296,7 @@ Let $\mathbb{N} = \{1, 2, 3, \dots\}$. Describe and determine the following inte
 \bigcap_{n=1}^\infty \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\}.
 \]
 \exinfo{This exercise is Problem 2 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025. Taken from Prof.~Einsiedler's Analysis lecture notes.}
+\exsol{sol:archimedean_intersection}
 \end{exercise}
 
 \subsection{Cartesian Products}
@@ -373,6 +374,7 @@ Let $X, Y$ be sets, let $A, A' \subseteq X$, and let $B, B' \subseteq Y$.
     \item Convince yourself (for example by drawing a diagram in the plane) that no analogous identity holds for unions of sets, that is, $(A \times B) \cup (A' \times B') \ne (A \cup A') \times (B \cup B')$ in general.
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025. Taken from Prof.~Einsiedler's Analysis lecture notes.}
+\exsol{sol:cartesian_product_intersections}
 \end{exercise}
 
 \subsection{Power Sets and Cardinality}
@@ -405,6 +407,7 @@ Let $A$ be a finite set. Prove by induction that the cardinality of its power se
 |\mathcal{P}(A)| = 2^{|A|}
 \]
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:power_set_cardinality}
 \end{exercise}
 
 \subsection{A Note on the Foundations: Russell's Paradox}
@@ -458,6 +461,7 @@ This paradox led to the development of Axiomatic Set Theory (e.g., Zermelo-Fraen
 \label{sec:solutions_set_theory}
 
 \begin{exercisesolution}[Proof of \cref{exc:power_set_cardinality}]
+\label{sol:power_set_cardinality}
 We induct on $n := |A|$, the cardinality of \cref{def:cardinality}.
 
 \textbf{Base, $n = 0$.} The only set with no elements is $\emptyset$, and its only subset is $\emptyset$ itself: it is one, by the Claim on \cpageref{claim:empty_set_is_subset}, and any other would have to contain an element of $\emptyset$, of which there are none. So $\mathcal{P}(\emptyset) = \{\emptyset\}$, which has one element, and $2^0 = 1$.
@@ -501,3 +505,6 @@ than collecting everything with a given property. \qt{The set of all vector
 spaces} is not available, which is why the isomorphism results of chs. 15 and 18
 are always stated between two given spaces.
 \end{ainote}
+
+\input{content/03-set-theory-solutions.tex}
+
