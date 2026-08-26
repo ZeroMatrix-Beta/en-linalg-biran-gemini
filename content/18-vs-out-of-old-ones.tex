@@ -238,6 +238,16 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
   We have $\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K = \dim V \cdot 1 = \dim V$, using \cref{cor:dim_hom} for the middle equality and, for the one after it, that $K$ is one-dimensional as a vector space over itself, with basis $(1)$.
 \end{proof}
 
+\begin{exercise}[Dimension of Kernel of Linear Functionals]
+\label{exc:dim_kernel_linear_functional_sc}
+Let $V$ be a vector space over a field $K$ with $\dim V = 4$. Does there exist a linear functional $\varphi \in V^*$ such that $\dim \ker(\varphi) = 2$?
+\begin{enumerate}
+    \item True
+    \item False
+\end{enumerate}
+\exinfo{This exercise is Single Choice Question 1 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. % Extractor: Opus 5
 The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell) := f_{\ell}$ is a linear map, and it is in fact an isomorphism; the notes leave the verification to the reader, and it is carried out among the solutions at the end of this section.
 
@@ -350,6 +360,35 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
 % Creator: Opus 5
   These coordinates are, for $1 \le j \le m$, precisely the columns of $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}), and they agree column by column with those of $A\transp$. Hence $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$, as claimed.
 \end{proof}
+
+\begin{exercise}[Dual Map Injectivity and Surjectivity Equivalences]
+\label{exc:dual_map_equivalences_sc}
+Let $f \colon V \to W$ be a linear map between vector spaces over $K$. Which of the following five assertions is \emph{not} equivalent to the others in general?
+\begin{enumerate}
+    \item $f$ is injective.
+    \item The dual map $f^* \colon W^* \to V^*$ is surjective.
+    \item The zero element of $V$ is the only element mapped to the zero element of $W$ ($\ker f = \{0\}$).
+    \item There exists a linear map $g \colon W \to V$ such that $f \circ g = \id_W$.
+    \item For every $v \in V \setminus \{0\}$, there exists $\ell \in W^*$ such that $\ell(f(v)) \ne 0$.
+    \item All five assertions are equivalent.
+\end{enumerate}
+\exinfo{This exercise is Single Choice Question 4 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Isomorphisms between Hom Spaces and Trace Pairing]
+\label{exc:hom_dual_isomorphism_trace_pairing}
+Let $V$ and $W$ be finite-dimensional vector spaces over a field $K$.
+\begin{enumerate}
+    \item Show that $\Hom(V, W) \cong \Hom(W^*, V^*)$ via the assignment $T \mapsto T^*$.
+    \item Let $\operatorname{tr} \in \Hom(V, V)^*$ be the trace functional defined by $\operatorname{tr}(T) := \operatorname{tr}([T]_{\mathcal{B}}^{\mathcal{B}}) = \sum_{i=1}^n ([T]_{\mathcal{B}}^{\mathcal{B}})_{ii}$ for any chosen basis $\mathcal{B}$ of $V$.
+    Show that the linear map
+    \[
+    \Theta \colon \Hom(V, V) \longrightarrow \Hom(V, V)^*, \qquad T \longmapsto \left( S \mapsto \operatorname{tr}(S \circ T) \right)
+    \]
+    is an isomorphism of vector spaces.
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \subsection{Reflexivity}
@@ -425,6 +464,17 @@ Hence $(T^*)^*(\tau_V(v)) = \tau_W(T(v))$ for every $v \in V$, which is precisel
 \begin{exercise}[Canonical Evaluation on Dual Bases]
   \label{exc:tau_on_dual_bases}
   Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the dual basis, and let $(\mathcal{B}^*)^* = ((v_1^*)^*, \dots, (v_n^*)^*)$ be the basis for $(V^*)^*$ which is dual to $\mathcal{B}^*$. Show that $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$, meaning $\tau(v_i) = (v_i^*)^*$ for all $1 \leq i \leq n$.
+  \exinfo{This exercise is Problem 2 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Every Finite-Dimensional Space is a Dual Space]
+\label{exc:every_finite_dim_is_dual_sc}
+Is every finite-dimensional vector space $V$ over $K$ isomorphic to the dual space of some finite-dimensional vector space?
+\begin{enumerate}
+    \item True
+    \item False
+\end{enumerate}
+\exinfo{This exercise is Single Choice Question 2 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 % Creator: Opus 5
