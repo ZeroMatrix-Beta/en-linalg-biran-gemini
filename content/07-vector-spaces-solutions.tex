@@ -1,0 +1,302 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:extended_reals_not_vector_space}]
+\label{sol:extended_reals_not_vector_space}
+The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operations is \textbf{not} a vector space over $\mathbb{R}$. Several vector space axioms fail:
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Failure of Associativity of Addition (V1):}
+    Consider the elements $\infty, \infty, -\infty \in V$. Computing the sum with different bracketings gives:
+    \[
+    (\infty + \infty) + (-\infty) = \infty + (-\infty) = 0,
+    \]
+    whereas
+    \[
+    \infty + \bigl(\infty + (-\infty)\bigr) = \infty + 0 = \infty.
+    \]
+    Since $0 \ne \infty$, we have $(\infty + \infty) + (-\infty) \ne \infty + (\infty + (-\infty))$, so addition is not associative.
+
+    \item \textbf{Failure of Scalar Distributivity (V7):}
+    Axiom (V7) requires $(a + b) \cdot v = a \cdot v + b \cdot v$ for all $a, b \in \mathbb{R}$ and $v \in V$. Choose $a = 2$, $b = -1$, and $v = \infty$. Then:
+    \[
+    (a + b) \cdot v = (2 - 1) \cdot \infty = 1 \cdot \infty = \infty,
+    \]
+    while
+    \[
+    a \cdot v + b \cdot v = 2 \cdot \infty + (-1) \cdot \infty = \infty + (-\infty) = 0.
+    \]
+    Since $\infty \ne 0$, axiom (V7) fails.
+\end{enumerate}
+Therefore, $V$ fails to be a vector space over $\mathbb{R}$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:positive_reals_vector_space_mc}]
+\label{sol:positive_reals_vector_space_mc}
+We examine the three candidate definitions of scalar multiplication on $(\mathbb{R}_{>0}^2, \oplus)$:
+
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} \lambda x_1 \\ \lambda x_2 \end{pmatrix}$:
+    This operation is not even well-defined as a map $\mathbb{R} \times \mathbb{R}_{>0}^2 \to \mathbb{R}_{>0}^2$. For instance, choosing $\lambda = -1$ and $(1, 1) \in \mathbb{R}_{>0}^2$ yields $(-1, -1) \notin \mathbb{R}_{>0}^2$. Hence candidate (1) fails.
+
+    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} e^{\lambda} x_1 \\ e^{\lambda} x_2 \end{pmatrix}$:
+    This fails axiom (V6), which requires $1 \odot v = v$. Indeed,
+    \[
+    1 \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} e x_1 \\ e x_2 \end{pmatrix} \ne \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}.
+    \]
+    It also fails scalar distributivity (V7) because $(\lambda + \mu) \odot v$ would have components $e^{\lambda+\mu} x_i$, whereas $(\lambda \odot v) \oplus (\mu \odot v)$ has components $(e^\lambda x_i)(e^\mu x_i) = e^{\lambda+\mu} x_i^2$.
+
+    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} x_1^{\lambda} \\ x_2^{\lambda} \end{pmatrix}$:
+    This definition turns $(\mathbb{R}_{>0}^2, \oplus, \odot)$ into a valid vector space over $\mathbb{R}$:
+    \begin{itemize}
+        \item \textbf{Well-definedness:} For any $x_1, x_2 > 0$ and $\lambda \in \mathbb{R}$, $x_1^\lambda > 0$ and $x_2^\lambda > 0$, so $\lambda \odot x \in \mathbb{R}_{>0}^2$.
+        \item \textbf{Zero Vector and Inverses:} The zero vector is $0_V = (1, 1)$, since $(x_1, x_2) \oplus (1, 1) = (x_1 \cdot 1, x_2 \cdot 1) = (x_1, x_2)$. The additive inverse of $(x_1, x_2)$ is $(x_1^{-1}, x_2^{-1})$.
+        \item \textbf{Axiom (V5):} $\lambda \odot (\mu \odot x) = \lambda \odot (x_1^\mu, x_2^\mu) = ((x_1^\mu)^\lambda, (x_2^\mu)^\lambda) = (x_1^{\lambda\mu}, x_2^{\lambda\mu}) = (\lambda\mu) \odot x$.
+        \item \textbf{Axiom (V6):} $1 \odot x = (x_1^1, x_2^1) = (x_1, x_2) = x$.
+        \item \textbf{Axiom (V7):} $(\lambda + \mu) \odot x = (x_1^{\lambda+\mu}, x_2^{\lambda+\mu}) = (x_1^\lambda x_1^\mu, x_2^\lambda x_2^\mu) = (x_1^\lambda, x_2^\lambda) \oplus (x_1^\mu, x_2^\mu) = (\lambda \odot x) \oplus (\mu \odot x)$.
+        \item \textbf{Axiom (V8):} $\lambda \odot (x \oplus y) = \lambda \odot (x_1 y_1, x_2 y_2) = ((x_1 y_1)^\lambda, (x_2 y_2)^\lambda) = (x_1^\lambda y_1^\lambda, x_2^\lambda y_2^\lambda) = (x_1^\lambda, x_2^\lambda) \oplus (y_1^\lambda, y_2^\lambda) = (\lambda \odot x) \oplus (\lambda \odot y)$.
+    \end{itemize}
+\end{enumerate}
+Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vector space (which is isomorphic to the standard $\mathbb{R}^2$ via the componentwise logarithm map $\ln \colon \mathbb{R}_{>0}^2 \to \mathbb{R}^2$).
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:verifying_subspaces_r_f2}]
+\label{sol:verifying_subspaces_r_f2}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{The subset $S_1 \subseteq \mathbb{R}^3$:}
+    The condition $x_1 = x_2 = 2x_3$ can be written as the system of homogeneous linear equations:
+    \[
+    \begin{cases}
+    x_1 - 2x_3 = 0, \\
+    x_2 - 2x_3 = 0.
+    \end{cases}
+    \]
+    By \cref{thm:solution_set_subspace}, the solution set of any homogeneous linear system is a linear subspace. Alternatively, $S_1 = \{\lambda(2, 2, 1) \mid \lambda \in \mathbb{R}\} = \operatorname{span}\{(2, 2, 1)\}$, which contains $0$ and is closed under addition and scalar multiplication. Thus $S_1$ is a \textbf{linear subspace}.
+
+    \item \textbf{The subset $S_2 \subseteq \mathbb{R}^2$:}
+    \begin{itemize}
+        \item \textbf{Over $\mathbb{R}$:} For any $(x_1, x_2) \in \mathbb{R}^2$, we have $x_1^2 \ge 0$ and $x_2^4 \ge 0$. The sum of non-negative real numbers is zero if and only if each term is zero:
+        \[
+        x_1^2 + x_2^4 = 0 \iff x_1 = 0 \text{ and } x_2 = 0.
+        \]
+        Thus $S_2 = \{(0, 0)\} = \{0_{\mathbb{R}^2}\}$, which is the trivial subspace. Hence $S_2$ \textbf{is a subspace} over $\mathbb{R}$.
+        \item \textbf{Over $\mathbb{F}_2$:} In the field $\mathbb{F}_2 = \{0, 1\}$, every element satisfies $a^2 = a$ and $a^4 = a$. Therefore, the equation becomes $x_1 + x_2 = 0 \iff x_1 = x_2$. The solution set in $\mathbb{F}_2^2$ is
+        \[
+        S_2 = \{(0, 0), (1, 1)\} = \operatorname{span}_{\mathbb{F}_2}\{(1, 1)\},
+        \]
+        which is a $1$-dimensional \textbf{linear subspace} of $\mathbb{F}_2^2$.
+    \end{itemize}
+
+    \item \textbf{The subset $S_3 \subseteq \mathbb{R}^2$:}
+    \begin{itemize}
+        \item \textbf{Over $\mathbb{R}$:} For any $\lambda \in \mathbb{R}$, we have $\lambda^2 \ge 0$. As $\mu$ ranges over $\mathbb{R}$, the first coordinate $\mu + \lambda$ covers all of $\mathbb{R}$. Thus $S_3 = \mathbb{R} \times [0, \infty)$ is the upper closed half-plane.
+        Taking $(0, 1) \in S_3$ (with $\mu = -1, \lambda = 1$) and multiplying by $-1 \in \mathbb{R}$ gives $(-1) \cdot (0, 1) = (0, -1) \notin S_3$. Thus $S_3$ is not closed under scalar multiplication and is \textbf{not a linear subspace} over $\mathbb{R}$.
+        \item \textbf{Over $\mathbb{F}_2$:} In $\mathbb{F}_2$, $\lambda^2 = \lambda$ for all $\lambda \in \mathbb{F}_2$. Thus
+        \[
+        S_3 = \{(\mu + \lambda, \lambda) \mid \mu, \lambda \in \mathbb{F}_2\}.
+        \]
+        Choosing $(\mu, \lambda) \in \{(0,0), (1,0), (0,1), (1,1)\}$ gives the vectors $(0,0), (1,0), (1,1), (0,1)$ respectively. Thus $S_3 = \mathbb{F}_2^2$, which \textbf{is a linear subspace} over $\mathbb{F}_2$.
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:subspace_identification_mc}]
+\label{sol:subspace_identification_mc}
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{Subspace.} The set is defined by the homogeneous linear system $\begin{cases} 3x_1 + 5x_2 + 3x_3 = 0 \\ 2x_2 + x_3 = 0 \end{cases}$. By \cref{thm:solution_set_subspace}, its solution set is a linear subspace of $\mathbb{R}^3$.
+    \item \textbf{Not a subspace.} The zero vector $(0,0,0)$ satisfies $0 + 0 + 0 = 0 \ne 3$, so $0 \notin S$.
+    \item \textbf{Not a subspace.} The zero vector does not satisfy $0 > 0$, so $0 \notin S$. Moreover, $(1, 0) \in S$ but $(-1) \cdot (1, 0) = (-1, 0) \notin S$ since $-1 \ngtr 0$.
+    \item \textbf{Subspace.} The set is $\{x(0, 1, 2, 3) \mid x \in \mathbb{R}\} = \operatorname{span}\{(0, 1, 2, 3)\}$, which is a 1-dimensional line through the origin in $\mathbb{R}^4$.
+    \item \textbf{Not a subspace.} Taking $x = 1$ gives $u = (1, 1, 1, 1) \in S$, and taking $x = -1$ gives $v = (1, -1, 1, -1) \in S$. Their sum is $u + v = (2, 0, 2, 0)$. If $(2, 0, 2, 0) \in S$, there must exist $x \in \mathbb{R}$ such that $x = 0$ (fourth component) and $x^4 = 2$ (first component), which is impossible since $0^4 = 0 \ne 2$. Thus $S$ is not closed under addition.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:union_three_subspaces}]
+\label{sol:union_three_subspaces}
+The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$, depending on the base field $K$ and the ambient space $V$.
+
+\begin{itemize}
+    \item \textbf{Example where it IS a subspace:}
+    Let $K = \mathbb{F}_2$ and $V = \mathbb{F}_2^2$. The space $V$ consists of $4$ vectors: $(0,0), (1,0), (0,1), (1,1)$. Consider the three $1$-dimensional subspaces:
+    \[
+    V_1 = \{(0,0), (1,0)\}, \qquad V_2 = \{(0,0), (0,1)\}, \qquad V_3 = \{(0,0), (1,1)\}.
+    \]
+    No subspace is contained in any other (each has size $2$ and their pairwise intersections are $\{(0,0)\}$). Their union is
+    \[
+    V_1 \cup V_2 \cup V_3 = \{(0,0), (1,0), (0,1), (1,1)\} = \mathbb{F}_2^2 = V,
+    \]
+    which is the entire space $V$, and therefore a linear subspace.
+
+    \item \textbf{Example where it is NOT a subspace:}
+    Let $K = \mathbb{R}$ and $V = \mathbb{R}^2$. Let $V_1 = \operatorname{span}\{(1,0)\}$, $V_2 = \operatorname{span}\{(0,1)\}$, and $V_3 = \operatorname{span}\{(1,1)\}$. None is contained in another.
+    The vectors $u = (1, 0) \in V_1$ and $v = (1, 1) \in V_3$ both belong to the union $V_1 \cup V_2 \cup V_3$, but their sum $u + v = (2, 1)$ does not lie on the $x$-axis ($V_1$), the $y$-axis ($V_2$), or the diagonal line $y = x$ ($V_3$). Thus $u + v \notin V_1 \cup V_2 \cup V_3$, showing that the union is not closed under addition.
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:parametric_linear_system_subspace}]
+\label{sol:parametric_linear_system_subspace}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Determination of the Solution Set $S$:}
+    We form the augmented matrix and apply elementary row operations:
+    \[
+    \begin{pmatrix}
+    1 & m & \big| & -3 \\
+    m & 4 & \big| & \phantom{-}6
+    \end{pmatrix}
+    \xrightarrow{R_2 - m R_1}
+    \begin{pmatrix}
+    1 & m & \big| & -3 \\
+    0 & 4 - m^2 & \big| & 6 + 3m
+    \end{pmatrix}.
+    \]
+    We distinguish three cases according to the pivot $4 - m^2 = (2 - m)(2 + m)$:
+    \begin{itemize}
+        \item \textbf{Case 1: $m \ne 2$ and $m \ne -2$.}
+        Then $4 - m^2 \ne 0$, so the system has a unique solution:
+        \[
+        y = \frac{6 + 3m}{4 - m^2} = \frac{3(2 + m)}{(2 - m)(2 + m)} = \frac{3}{2 - m}.
+        \]
+        Back-substituting into the first equation $x + my = -3$ yields:
+        \[
+        x = -3 - my = -3 - \frac{3m}{2 - m} = \frac{-3(2 - m) - 3m}{2 - m} = \frac{-6}{2 - m}.
+        \]
+        Thus, $S = \left\{ \left(-\frac{6}{2 - m}, \, \frac{3}{2 - m}\right) \right\}$.
+        \item \textbf{Case 2: $m = 2$.}
+        The second row becomes $(0 \quad 0 \mid 12)$, which corresponds to $0x + 0y = 12$. This is impossible, so $S = \emptyset$.
+        \item \textbf{Case 3: $m = -2$.}
+        The second row becomes $(0 \quad 0 \mid 0)$, and the first row gives $x - 2y = -3$, i.e., $x = 2y - 3$. Setting $y = t \in \mathbb{R}$, we obtain
+        \[
+        S = \{(-3 + 2t, \, t) \mid t \in \mathbb{R}\} = \begin{pmatrix} -3 \\ 0 \end{pmatrix} + \operatorname{span}\left\{\begin{pmatrix} 2 \\ 1 \end{pmatrix}\right\}.
+        \]
+    \end{itemize}
+
+    \item \textbf{When is $S$ a Linear Subspace?}
+    A linear subspace must contain the zero vector $(0, 0)$ by (LSS1).
+    \begin{itemize}
+        \item For $m \ne \pm 2$, the unique solution has $x = -\frac{6}{2 - m} \ne 0$, so $(0, 0) \notin S$.
+        \item For $m = 2$, $S = \emptyset$, so $(0, 0) \notin S$.
+        \item For $m = -2$, substituting $(0, 0)$ into $x - 2y = -3$ gives $0 - 0 = -3$, which is false, so $(0, 0) \notin S$.
+    \end{itemize}
+    Therefore, $S$ is \textbf{never} a linear subspace of $\mathbb{R}^2$ for any $m \in \mathbb{R}$. (This also follows directly from \cref{thm:solution_set_subspace}, since the right-hand side $(-3, 6) \ne (0, 0)$ is non-zero for all $m$.)
+
+    \item \textbf{Geometric Interpretation:}
+    \begin{itemize}
+        \item For $m \ne \pm 2$: $S$ is a single point, representing the unique intersection of two non-parallel lines in $\mathbb{R}^2$.
+        \item For $m = 2$: $S$ is the empty set, representing two strictly parallel lines that do not intersect.
+        \item For $m = -2$: $S$ is an affine line in $\mathbb{R}^2$ with direction vector $(2, 1)$ not passing through the origin (the two equations describe the identical line $x - 2y = -3$).
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:even_odd_function_subspaces}]
+\label{sol:even_odd_function_subspaces}
+Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with inverse $2^{-1} = \frac{1}{2} \in K$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{$V_{\mathrm{even}}$ and $V_{\mathrm{odd}}$ are Subspaces:}
+    \begin{itemize}
+        \item The zero function $0_V \colon x \mapsto 0$ satisfies $0(-x) = 0 = 0(x) = -0(x)$ for all $x \in K$, so $0_V \in V_{\mathrm{even}}$ and $0_V \in V_{\mathrm{odd}}$.
+        \item Let $f, g \in V_{\mathrm{even}}$ and $\alpha, \beta \in K$. For any $x \in K$:
+        \[
+        (\alpha f + \beta g)(-x) = \alpha f(-x) + \beta g(-x) = \alpha f(x) + \beta g(x) = (\alpha f + \beta g)(x),
+        \]
+        so $\alpha f + \beta g \in V_{\mathrm{even}}$.
+        \item Let $f, g \in V_{\mathrm{odd}}$ and $\alpha, \beta \in K$. For any $x \in K$:
+        \[
+        (\alpha f + \beta g)(-x) = \alpha f(-x) + \beta g(-x) = \alpha (-f(x)) + \beta (-g(x)) = -(\alpha f + \beta g)(x),
+        \]
+        so $\alpha f + \beta g \in V_{\mathrm{odd}}$.
+    \end{itemize}
+    By \cref{lem:subspace_criterion}, $V_{\mathrm{even}}$ and $V_{\mathrm{odd}}$ are linear subspaces of $V$.
+
+    \item \textbf{Proof that $V_{\mathrm{even}} + V_{\mathrm{odd}} = V$:}
+    Clearly $V_{\mathrm{even}} + V_{\mathrm{odd}} \subseteq V$. Conversely, let $f \in V$ be arbitrary. Define two functions $f_{\mathrm{even}}, f_{\mathrm{odd}} \colon K \to K$ by:
+    \[
+    f_{\mathrm{even}}(x) := \frac{f(x) + f(-x)}{2}, \qquad f_{\mathrm{odd}}(x) := \frac{f(x) - f(-x)}{2}.
+    \]
+    These are well-defined since $2 \ne 0$. For all $x \in K$:
+    \[
+    f_{\mathrm{even}}(-x) = \frac{f(-x) + f(-(-x))}{2} = \frac{f(-x) + f(x)}{2} = f_{\mathrm{even}}(x) \implies f_{\mathrm{even}} \in V_{\mathrm{even}},
+    \]
+    and
+    \begin{align*}
+    f_{\mathrm{odd}}(-x) &= \frac{f(-x) - f(-(-x))}{2} = \frac{f(-x) - f(x)}{2} \\
+    &= -\frac{f(x) - f(-x)}{2} = -f_{\mathrm{odd}}(x) \implies f_{\mathrm{odd}} \in V_{\mathrm{odd}}.
+    \end{align*}
+    Furthermore,
+    \[
+    f_{\mathrm{even}}(x) + f_{\mathrm{odd}}(x) = \frac{f(x) + f(-x) + f(x) - f(-x)}{2} = \frac{2f(x)}{2} = f(x).
+    \]
+    Thus $f = f_{\mathrm{even}} + f_{\mathrm{odd}} \in V_{\mathrm{even}} + V_{\mathrm{odd}}$, showing $V \subseteq V_{\mathrm{even}} + V_{\mathrm{odd}}$.
+
+    \item \textbf{Proof that $V_{\mathrm{even}} \cap V_{\mathrm{odd}} = \{0\}$:}
+    Let $f \in V_{\mathrm{even}} \cap V_{\mathrm{odd}}$. Then for every $x \in K$, we simultaneously have $f(-x) = f(x)$ and $f(-x) = -f(x)$. Therefore,
+    \[
+    f(x) = -f(x) \implies f(x) + f(x) = 0 \implies (1 + 1) f(x) = 0 \implies 2 f(x) = 0.
+    \]
+    Since $2 \ne 0$ in $K$, multiplying by $2^{-1}$ yields $f(x) = 0$ for all $x \in K$. Hence $f = 0_V$, so $V_{\mathrm{even}} \cap V_{\mathrm{odd}} = \{0\}$.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:power_set_f2_vector_space}]
+\label{sol:power_set_f2_vector_space}
+We verify the eight vector space axioms (V1)--(V8) for $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ over $\mathbb{F}_2 = \{0, 1\}$. It is helpful to use the characteristic function $\chi_A \colon X \to \mathbb{F}_2$ defined by $\chi_A(x) = 1$ if $x \in A$ and $\chi_A(x) = 0$ if $x \notin A$. For symmetric difference, $\chi_{A \mathbin{\triangle} B}(x) = \chi_A(x) + \chi_B(x) \pmod 2$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{(V1) Associativity of Addition:}
+    For any $A, B, C \in \mathcal{P}(X)$,
+    \begin{align*}
+    \chi_{(A \mathbin{\triangle} B) \mathbin{\triangle} C}(x) &= (\chi_A(x) + \chi_B(x)) + \chi_C(x) \\
+    &= \chi_A(x) + (\chi_B(x) + \chi_C(x)) = \chi_{A \mathbin{\triangle} (B \mathbin{\triangle} C)}(x) \pmod 2,
+    \end{align*}
+    using associativity in $\mathbb{F}_2$. Hence $(A \mathbin{\triangle} B) \mathbin{\triangle} C = A \mathbin{\triangle} (B \mathbin{\triangle} C)$.
+
+    \item \textbf{(V2) Neutral Element:}
+    The empty set $\emptyset$ satisfies $\chi_\emptyset(x) = 0$. For all $A \in \mathcal{P}(X)$,
+    \[
+    A \mathbin{\triangle} \emptyset = (A \cup \emptyset) \setminus (A \cap \emptyset) = A \setminus \emptyset = A.
+    \]
+
+    \item \textbf{(V3) Commutativity of Addition:}
+    $A \mathbin{\triangle} B = (A \cup B) \setminus (A \cap B) = (B \cup A) \setminus (B \cap A) = B \mathbin{\triangle} A$.
+
+    \item \textbf{(V4) Additive Inverse:}
+    Every element is its own additive inverse:
+    \[
+    A \mathbin{\triangle} A = (A \cup A) \setminus (A \cap A) = A \setminus A = \emptyset.
+    \]
+
+    \item \textbf{(V5) Associativity of Scalar Multiplication:}
+    We verify $\lambda \cdot (\mu \cdot A) = (\lambda \mu) \cdot A$ for all $\lambda, \mu \in \mathbb{F}_2$:
+    \begin{itemize}
+        \item If $\lambda = 0$ or $\mu = 0$, then $\lambda \mu = 0$ and both sides equal $\emptyset$.
+        \item If $\lambda = 1$ and $\mu = 1$, then $\lambda \mu = 1$ and both sides equal $1 \cdot (1 \cdot A) = A$.
+    \end{itemize}
+
+    \item \textbf{(V6) Unit Element:}
+    $1 \cdot A = A$ by the definition of the scalar multiplication.
+
+    \item \textbf{(V7) Distributivity in Scalars:}
+    We check $(\lambda + \mu) \cdot A = (\lambda \cdot A) \mathbin{\triangle} (\mu \cdot A)$ for $\lambda, \mu \in \mathbb{F}_2$:
+    \begin{itemize}
+        \item $\lambda = 0, \mu = 0$: $(0+0)\cdot A = \emptyset = \emptyset \mathbin{\triangle} \emptyset$.
+        \item $\lambda = 1, \mu = 0$: $(1+0)\cdot A = 1\cdot A = A = A \mathbin{\triangle} \emptyset$.
+        \item $\lambda = 0, \mu = 1$: $(0+1)\cdot A = 1\cdot A = A = \emptyset \mathbin{\triangle} A$.
+        \item $\lambda = 1, \mu = 1$: in $\mathbb{F}_2$, $1 + 1 = 0$, so $(1+1)\cdot A = 0 \cdot A = \emptyset$. On the other hand, $(1\cdot A) \mathbin{\triangle} (1\cdot A) = A \mathbin{\triangle} A = \emptyset$.
+    \end{itemize}
+    In all cases, equality holds.
+
+    \item \textbf{(V8) Distributivity in Vectors:}
+    We check $\lambda \cdot (A \mathbin{\triangle} B) = (\lambda \cdot A) \mathbin{\triangle} (\lambda \cdot B)$ for $\lambda \in \mathbb{F}_2$:
+    \begin{itemize}
+        \item If $\lambda = 0$: $0 \cdot (A \mathbin{\triangle} B) = \emptyset = \emptyset \mathbin{\triangle} \emptyset = (0 \cdot A) \mathbin{\triangle} (0 \cdot B)$.
+        \item If $\lambda = 1$: $1 \cdot (A \mathbin{\triangle} B) = A \mathbin{\triangle} B = (1 \cdot A) \mathbin{\triangle} (1 \cdot B)$.
+    \end{itemize}
+\end{enumerate}
+Hence $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ is a vector space over $\mathbb{F}_2$.
+\end{exercisesolution}

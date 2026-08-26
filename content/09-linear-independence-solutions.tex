@@ -1,0 +1,198 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:linear_independence_r4_lists}]
+\label{sol:linear_independence_r4_lists}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{The set $S_1$:}
+    We form the matrix whose columns are the four vectors of $S_1$ and perform elementary row operations to determine its row echelon form:
+    \begin{align*}
+    A &= \begin{pmatrix}
+    1 & 2 & 1 & 2 \\
+    0 & 3 & 3 & 0 \\
+    0 & -3 & -4 & 1 \\
+    1 & 9 & 7 & 3
+    \end{pmatrix}
+    \xrightarrow{R_4 - R_1}
+    \begin{pmatrix}
+    1 & 2 & 1 & 2 \\
+    0 & 3 & 3 & 0 \\
+    0 & -3 & -4 & 1 \\
+    0 & 7 & 6 & 1
+    \end{pmatrix} \\
+    &\xrightarrow{\substack{R_2 / 3 \\ R_3 + R_2 \\ R_4 - 7(R_2/3)}}
+    \begin{pmatrix}
+    1 & 2 & 1 & 2 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & -1 & 1 \\
+    0 & 0 & -1 & 1
+    \end{pmatrix}
+    \xrightarrow{R_4 - R_3}
+    \begin{pmatrix}
+    1 & 2 & 1 & 2 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & -1 & 1 \\
+    0 & 0 & 0 & 0
+    \end{pmatrix}.
+    \end{align*}
+    The echelon form has only $3$ pivots for $4$ columns, so the homogeneous system $A c = 0$ has non-trivial solutions (the fourth variable is free). Setting $c_4 = 1$ gives $c_3 = 1$, $c_2 = -1$, and $c_1 = -1$. Indeed,
+    \[
+    -\begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix} - \begin{pmatrix} 2 \\ 3 \\ -3 \\ 9 \end{pmatrix} + \begin{pmatrix} 1 \\ 3 \\ -4 \\ 7 \end{pmatrix} + \begin{pmatrix} 2 \\ 0 \\ 1 \\ 3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}.
+    \]
+    Therefore, $S_1$ is \textbf{linearly dependent}.
+
+    \item \textbf{The set $S_2$:}
+    We form the matrix with the vectors of $S_2$ as columns and row-reduce:
+    \[
+    B = \begin{pmatrix}
+    1 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    0 & 1 & -1 & 0 \\
+    1 & 0 & 0 & -1
+    \end{pmatrix}
+    \xrightarrow{R_4 - R_1}
+    \begin{pmatrix}
+    1 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    0 & 1 & -1 & 0 \\
+    0 & 0 & 0 & -2
+    \end{pmatrix}
+    \xrightarrow{R_3 - R_2}
+    \begin{pmatrix}
+    1 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & -2 & 0 \\
+    0 & 0 & 0 & -2
+    \end{pmatrix}.
+    \]
+    The matrix has $4$ pivots in $4$ columns, so the system $B c = 0$ has only the trivial solution $c_1 = c_2 = c_3 = c_4 = 0$.
+    Therefore, $S_2$ is \textbf{linearly independent}.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:linear_independence_various_contexts}]
+\label{sol:linear_independence_various_contexts}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{The set $S = \{(1, 0, 0), (0, 2, t), (2, 4, t^2)\} \subseteq \mathbb{R}^3$:}
+    We row-reduce the matrix with these vectors as columns:
+    \[
+    \begin{pmatrix}
+    1 & 0 & 2 \\
+    0 & 2 & 4 \\
+    0 & t & t^2
+    \end{pmatrix}
+    \xrightarrow{R_3 - \frac{t}{2} R_2}
+    \begin{pmatrix}
+    1 & 0 & 2 \\
+    0 & 2 & 4 \\
+    0 & 0 & t^2 - 2t
+    \end{pmatrix}.
+    \]
+    The third pivot is $t(t - 2)$.
+    \begin{itemize}
+        \item If $t \notin \{0, 2\}$, the matrix has $3$ pivots, so $S$ is \textbf{linearly independent}.
+        \item If $t = 0$, the third column is $(2, 4, 0) = 2(1, 0, 0) + 2(0, 2, 0)$, so $S$ is \textbf{linearly dependent}.
+        \item If $t = 2$, the third column is $(2, 4, 4) = 2(1, 0, 0) + 2(0, 2, 2)$, so $S$ is \textbf{linearly dependent}.
+    \end{itemize}
+
+    \item \textbf{Columns of an Upper Triangular Matrix with Non-Zero Diagonal:}
+    Let $v_1, \dots, v_n$ denote the columns of $A$. Suppose $\sum_{j=1}^n c_j v_j = 0$.
+    The $n$-th coordinate equation reads $c_n A_{nn} = 0$. Since $A_{nn} \ne 0$, this implies $c_n = 0$.
+    Proceeding by backward induction: suppose $c_{k+1} = \dots = c_n = 0$ for some $1 \le k < n$. The $k$-th coordinate equation is:
+    \[
+    c_k A_{kk} + c_{k+1} A_{k, k+1} + \dots + c_n A_{kn} = c_k A_{kk} + 0 = 0.
+    \]
+    Since $A_{kk} \ne 0$, this forces $c_k = 0$.
+    Hence $c_1 = \dots = c_n = 0$, so the columns are \textbf{linearly independent}.
+
+    \item \textbf{The functions $f(x) = \sin(x)$ and $g(x) = \cos(x)$ in $\mathrm{Abb}(\mathbb{R}, \mathbb{R})$:}
+    Suppose $c_1 \sin(x) + c_2 \cos(x) = 0$ for all $x \in \mathbb{R}$.
+    \begin{itemize}
+        \item Evaluating at $x = 0$: $c_1 \sin(0) + c_2 \cos(0) = c_2 \cdot 1 = 0 \implies c_2 = 0$.
+        \item Evaluating at $x = \frac{\pi}{2}$: $c_1 \sin(\frac{\pi}{2}) + c_2 \cos(\frac{\pi}{2}) = c_1 \cdot 1 + 0 = 0 \implies c_1 = 0$.
+    \end{itemize}
+    Thus $c_1 = c_2 = 0$, so $\{\sin(x), \cos(x)\}$ is \textbf{linearly independent}.
+
+    \item \textbf{The functions $f(x) = e^{rx}$ and $g(x) = e^{sx}$ for $r \ne s$:}
+    Suppose $c_1 e^{rx} + c_2 e^{sx} = 0$ for all $x \in \mathbb{R}$.
+    Dividing by $e^{sx} > 0$ yields $c_1 e^{(r-s)x} + c_2 = 0$ for all $x \in \mathbb{R}$.
+    Evaluating at $x = 0$ gives $c_1 + c_2 = 0$, so $c_2 = -c_1$.
+    Then $c_1 (e^{(r-s)x} - 1) = 0$ for all $x \in \mathbb{R}$.
+    Since $r \ne s$, choosing $x = 1$ gives $e^{r-s} - 1 \ne 0$, which forces $c_1 = 0$, and thus $c_2 = 0$.
+    Hence $\{e^{rx}, e^{sx}\}$ is \textbf{linearly independent}.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:rational_functions_independent}]
+\label{sol:rational_functions_independent}
+By \cref{def:independent_family}, the family $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent if and only if every finite subfamily is linearly independent.
+
+Let $n \ge 1$ and let $a_1 < a_2 < \dots < a_n$ be distinct non-negative real numbers. Suppose there exist scalars $c_1, \dots, c_n \in \mathbb{R}$ such that:
+\[
+\sum_{i=1}^{n} c_i \varphi_{a_i}(x) = \sum_{i=1}^{n} \frac{c_i}{a_i + x} = 0 \qquad \text{for all } x > 0.
+\]
+Multiplying both sides by the common denominator $P(x) := \prod_{j=1}^n (a_j + x)$ (which is strictly positive for all $x > 0$), we obtain:
+\[
+\sum_{i=1}^{n} c_i \prod_{\substack{j=1 \\ j \ne i}}^{n} (a_j + x) = 0 \qquad \text{for all } x > 0.
+\]
+The left-hand side is a polynomial $Q(x) \in \mathbb{R}[x]$ of degree at most $n-1$. Since $Q(x) = 0$ on the infinite interval $(0, \infty)$, $Q(x)$ must be the zero polynomial, and thus $Q(x) = 0$ for all $x \in \mathbb{R}$.
+
+For each fixed index $k \in \{1, \dots, n\}$, evaluate $Q(x)$ at $x = -a_k$:
+\begin{itemize}
+    \item For any $i \ne k$, the product $\prod_{j \ne i} (a_j + x)$ contains the factor $(a_k + x)$, which vanishes at $x = -a_k$.
+    \item For $i = k$, the product is $\prod_{j \ne k} (a_j - a_k)$, which is non-zero because the $a_j$ are pairwise distinct.
+\end{itemize}
+Therefore, evaluating at $x = -a_k$ yields:
+\[
+Q(-a_k) = c_k \prod_{\substack{j=1 \\ j \ne k}}^{n} (a_j - a_k) = 0 \implies c_k = 0.
+\]
+Since this holds for every $k \in \{1, \dots, n\}$, we have $c_1 = c_2 = \dots = c_n = 0$.
+Hence every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent, so the entire uncountable family is linearly independent over $\mathbb{R}$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:matrix_span_and_independence}]
+\label{sol:matrix_span_and_independence}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Linear Independence of $\{A_1, A_2\}$:}
+    Suppose $\alpha_1 A_1 + \alpha_2 A_2 = 0 \in \M_{2 \times 3}(\mathbb{R})$. Then:
+    \[
+    \alpha_1 \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \alpha_2 \begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 1 \end{pmatrix}
+    = \begin{pmatrix} \alpha_2 & \alpha_1 + 2\alpha_2 & 3\alpha_2 \\ 0 & 0 & \alpha_1 + \alpha_2 \end{pmatrix}
+    = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}.
+    \]
+    Entry $(1, 1)$ gives $\alpha_2 = 0$. Substituting $\alpha_2 = 0$ into entry $(1, 2)$ gives $\alpha_1 = 0$. Thus $\alpha_1 = \alpha_2 = 0$, so $\{A_1, A_2\}$ is \textbf{linearly independent}.
+
+    \item \textbf{Proof that $\Sp(A_1, A_2) = M$:}
+    \begin{itemize}
+        \item \textbf{$\Sp(A_1, A_2) \subseteq M$:} Every matrix in $\Sp(A_1, A_2)$ has the form $\begin{pmatrix} \alpha_2 & \alpha_1 + 2\alpha_2 & 3\alpha_2 \\ 0 & 0 & \alpha_1 + \alpha_2 \end{pmatrix}$. Setting $a = \alpha_2, b = \alpha_1 + 2\alpha_2, c = 3\alpha_2, d = 0, e = 0, f = \alpha_1 + \alpha_2$, we see that $d = e = 0$, $3a = 3\alpha_2 = c$, and $b - a = (\alpha_1 + 2\alpha_2) - \alpha_2 = \alpha_1 + \alpha_2 = f$. Thus every condition of $M$ is satisfied, so $\Sp(A_1, A_2) \subseteq M$.
+        \item \textbf{$M \subseteq \Sp(A_1, A_2)$:} Let $A = \begin{pmatrix} a & b & c \\ d & e & f \end{pmatrix} \in M$. Then $d = e = 0$, $c = 3a$, and $f = b - a$. Choosing $\alpha_2 := a$ and $\alpha_1 := b - 2a$, we have:
+        \begin{align*}
+        \alpha_1 A_1 + \alpha_2 A_2 &= \begin{pmatrix} a & (b - 2a) + 2a & 3a \\ 0 & 0 & (b - 2a) + a \end{pmatrix} \\
+        &= \begin{pmatrix} a & b & 3a \\ 0 & 0 & b - a \end{pmatrix} = \begin{pmatrix} a & b & c \\ d & e & f \end{pmatrix} = A.
+        \end{align*}
+        Thus $A \in \Sp(A_1, A_2)$, proving $M \subseteq \Sp(A_1, A_2)$.
+    \end{itemize}
+
+    \item \textbf{Choosing $A_3$:}
+    Take $A_3 := \begin{pmatrix} 0 & 0 & 0 \\ 1 & 0 & 0 \end{pmatrix} = E_{21}$.
+    Since entry $(2, 1)$ of $A_3$ is $d = 1 \ne 0$, $A_3 \notin M = \Sp(A_1, A_2)$. By \cref{prop:dependence_is_redundancy}, adjoining a vector outside the span preserves linear independence, so $\{A_1, A_2, A_3\}$ is linearly independent.
+    
+    Such an $A_3$ \textbf{cannot} be chosen so that $\Sp(A_1, A_2, A_3) = \M_{2 \times 3}(\mathbb{R})$. Indeed, any linear combination of $3$ matrices depends on at most $3$ free parameters, whereas the space $\M_{2 \times 3}(\mathbb{R})$ has dimension $6$ and requires $6$ parameters (the standard basis has $6$ matrices $E_{ij}$).
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:monotonicity_independence_spanning_mc}]
+\label{sol:monotonicity_independence_spanning_mc}
+Let $V$ be a vector space and $S_1 \subsetneq S_2 \subseteq V$.
+
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{Sometimes.} If $S_1 = \{e_1\} \subset \mathbb{R}^2$ and $S_2 = \{e_1, e_2\}$, then $S_2$ is linearly independent. But if $S_2 = \{e_1, 2e_1\}$, then $S_2$ is linearly dependent.
+    \item \textbf{Always.} By \cref{lem:subsets_of_independent_sets}, any subset of a linearly independent set is linearly independent.
+    \item \textbf{Always.} Since $S_1 \subseteq S_2$, we have $V = \Sp(S_1) \subseteq \Sp(S_2) \subseteq V$, which forces $\Sp(S_2) = V$.
+    \item \textbf{Sometimes.} In $\mathbb{R}^2$, let $S_2 = \{e_1, e_2, e_1 + e_2\}$, which spans $\mathbb{R}^2$. If $S_1 = \{e_1, e_2\}$, then $\Sp(S_1) = \mathbb{R}^2$ (spans). If $S_1 = \{e_1\}$, then $\Sp(S_1) \ne \mathbb{R}^2$ (does not span).
+    \item \textbf{Never.} A basis $S_1$ is a maximal linearly independent set. Since $S_1$ spans $V$, any vector $v \in S_2 \setminus S_1$ is a linear combination of elements of $S_1$, so $S_2$ is linearly dependent and cannot be a basis.
+    \item \textbf{Never.} A basis $S_2$ is a minimal generating set. Since $S_2$ is linearly independent, removing any element strictly reduces the span: for any $v \in S_2 \setminus S_1$, $v \notin \Sp(S_1)$, so $\Sp(S_1) \ne V$ and $S_1$ cannot be a basis.
+\end{enumerate}
+\end{exercisesolution}

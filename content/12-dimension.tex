@@ -118,6 +118,7 @@ Compute the dimension and find an explicit basis for each of the following vecto
     \item The space of matrices $A \in \M_{n \times n}(\mathbb{F}_2)$ such that the sum of the columns of $A$ is the zero vector in $\mathbb{F}_2^n$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:matrix_subspaces_dimension_bases}
 \end{exercise}
 
 \begin{exercise}[Subspace Dimension, Defining Equations, and Basis Selection]
@@ -136,6 +137,7 @@ v_4 = \begin{pmatrix} 0 \\ 2 \\ 1 \\ 1 \end{pmatrix}.
 \end{enumerate}
 \exhint{For part (b), if $\dim W = 3$, find a non-zero normal vector $n = (n_1, n_2, n_3, n_4)\transp \in \mathbb{R}^4$ orthogonal to all $w \in W$ (i.e., $\sum_{i=1}^4 n_i w_i = 0$ for all $w \in W$). Then $W$ is described by the single equation $n_1 x_1 + n_2 x_2 + n_3 x_3 + n_4 x_4 = 0$.}
 \exinfo{This exercise is Problem 2 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:subspace_dimension_equations_basis_selection}
 \end{exercise}
 
 \begin{exercise}[Bases and Dimensions of Various Spaces]
@@ -155,6 +157,7 @@ Determine an explicit basis and the dimension of each of the following vector sp
     \item The same space $V = \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ viewed as a vector space over $\mathbb{R}$.
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:bases_dimensions_various_spaces}
 \end{exercise}
 
 \begin{exercise}[Dimension of Polynomials with a Linear Factor]
@@ -164,6 +167,7 @@ Let $K$ be a field, fix the polynomial $g(X) := X + 5 \in K[X]$, and let $d \ge 
 W := \{h \in K[X] \mid \deg(h) \le d \text{ and } \exists f \in K[X] \text{ such that } h = g \cdot f\} \subseteq K[X]_d.
 \]
 \exinfo{This exercise is Problem 4 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:polynomials_linear_factor_dimension}
 \end{exercise}
 
 \begin{exercise}[Basis and Dimension of Second-Order Harmonic ODE]
@@ -174,6 +178,7 @@ V := \left\{ f \colon \mathbb{R} \to \mathbb{R} \;\middle|\; f \text{ is twice d
 \]
 \exhint{Recall from analysis that the only continuous solution to the initial value problem $y'' + y = 0$ with $y(0) = 0$ and $y'(0) = 0$ is the identically zero function $y \equiv 0$. Consider evaluating functions and their first derivatives at $0$.}
 \exinfo{This exercise is Problem 5 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:harmonic_ode_solution_space}
 \end{exercise}
 
 \begin{exercise}[Dimension of a Shifted Span]
@@ -183,6 +188,7 @@ Suppose that $\{v_1, \dots, v_m\}$ is a linearly independent subset of a vector 
 \dim \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \ge m - 1.
 \]
 \exinfo{This exercise is Problem 4 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:shifted_span_dimension}
 \end{exercise}
 
 \begin{exercise}[Descending Chains of Subspaces]
@@ -198,6 +204,7 @@ be a sequence of nested linear subspaces.
     \item Assume that $V$ is infinite-dimensional and that $\dim U_n \ge 1$ for all $n \in \mathbb{N}$. What can you say about $\bigcap_{n=0}^\infty U_n$? Can this intersection be $\{0\}$?
 \end{enumerate}
 \exinfo{This exercise is Problem 6 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:descending_chains_subspaces}
 \end{exercise}
 
 \begin{ainote}
@@ -219,3 +226,6 @@ whose own proof appeals to both items: going through it would be circular. That
 is the reason for the longer route, and a later simplification should not undo
 it.
 \end{ainote}
+
+\input{content/12-dimension-solutions.tex}
+

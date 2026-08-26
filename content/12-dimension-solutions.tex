@@ -1,0 +1,343 @@
+﻿\section{Solutions}
+\label{sec:solutions_dimension}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:matrix_subspaces_dimension_bases}]
+\label{sol:matrix_subspaces_dimension_bases}
+Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matrix having entry $1$ in the $(i, j)$-position and $0$ elsewhere, for $1 \le i, j \le n$. The set of all $n^2$ elementary matrices forms the standard basis of $\M_{n \times n}(\mathbb{R})$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Upper triangular matrices.} A matrix $A = (a_{ij}) \in \M_{n \times n}(\mathbb{R})$ is upper triangular if and only if $a_{ij} = 0$ whenever $i > j$. Any such matrix can be expressed uniquely as
+    \[
+        A = \sum_{1 \le i \le j \le n} a_{ij} E_{ij}.
+    \]
+    The family $\mathcal{B} := \{E_{ij} \mid 1 \le i \le j \le n\}$ is a subset of the standard basis, hence linearly independent, and it spans the subspace of upper triangular matrices. Thus $\mathcal{B}$ is a basis. The number of basis elements is
+    \[
+        \sum_{i=1}^n (n - i + 1) = \sum_{k=1}^n k = \frac{n(n+1)}{2}.
+    \]
+    Consequently, the dimension of the space is $\frac{n(n+1)}{2}$.
+
+    \item \textbf{Diagonal matrices.} A matrix $A = (a_{ij})$ is diagonal if and only if $a_{ij} = 0$ for all $i \neq j$. Every diagonal matrix can be written uniquely as
+    \[
+        A = \sum_{i=1}^n a_{ii} E_{ii}.
+    \]
+    The set $\mathcal{B} := \{E_{ii} \mid 1 \le i \le n\}$ is linearly independent and spans the subspace of diagonal matrices. Hence $\mathcal{B}$ is a basis, and the dimension is $n$.
+
+    \item \textbf{Symmetric matrices.} A matrix $A = (a_{ij})$ is symmetric if and only if $a_{ji} = a_{ij}$ for all $1 \le i, j \le n$. For $1 \le i \le n$, set $D_i := E_{ii}$, and for $1 \le i < j \le n$, set $S_{ij} := E_{ij} + E_{ji}$. Each $D_i$ and $S_{ij}$ is symmetric since $D_i\transp = D_i$ and $S_{ij}\transp = (E_{ij} + E_{ji})\transp = E_{ji} + E_{ij} = S_{ij}$.
+    
+    Any symmetric matrix $A \in W$ satisfies
+    \[
+        A = \sum_{i=1}^n a_{ii} D_i + \sum_{1 \le i < j \le n} a_{ij} S_{ij}.
+    \]
+    To verify linear independence, suppose that
+    \[
+        \sum_{i=1}^n \alpha_{ii} D_i + \sum_{1 \le i < j \le n} \alpha_{ij} S_{ij} = 0.
+    \]
+    Examining the diagonal entries yields $\alpha_{ii} = 0$ for each $1 \le i \le n$. For $i < j$, the $(i, j)$-entry of the linear combination is $\alpha_{ij}$, which implies $\alpha_{ij} = 0$. Thus the family
+    \[
+        \mathcal{B} := \{D_i \mid 1 \le i \le n\} \cup \{S_{ij} \mid 1 \le i < j \le n\}
+    \]
+    is linearly independent and spans $W$, so it is a basis. Its cardinality is
+    \[
+        n + \binom{n}{2} = n + \frac{n(n-1)}{2} = \frac{n(n+1)}{2}.
+    \]
+    Therefore, $\dim W = \frac{n(n+1)}{2}$.
+
+    \item \textbf{Matrices over $\mathbb{F}_2$ with vanishing column sum.} Let $W \subseteq \M_{n \times n}(\mathbb{F}_2)$ denote this subspace. A matrix $A = (a_{ij}) \in \M_{n \times n}(\mathbb{F}_2)$ belongs to $W$ if and only if for each row index $1 \le i \le n$, the sum of the entries across that row vanishes in $\mathbb{F}_2$:
+    \[
+        \sum_{j=1}^n a_{ij} = 0 \iff a_{in} = \sum_{j=1}^{n-1} a_{ij} \quad \text{in } \mathbb{F}_2.
+    \]
+    Thus, for each of the $n$ rows, the first $n-1$ entries can be chosen arbitrarily, while the $n$-th entry is uniquely determined by the zero-sum condition.
+    
+    For each $1 \le i \le n$ and $1 \le k \le n-1$, define the matrix
+    \[
+        A_k^{(i)} := E_{ik} + E_{in} \in \M_{n \times n}(\mathbb{F}_2).
+    \]
+    In $A_k^{(i)}$, row $i$ has $1$ in column $k$ and $1$ in column $n$ (whose sum is $1 + 1 = 0 \in \mathbb{F}_2$), and all other rows are zero, so $A_k^{(i)} \in W$. Any $A \in W$ can be decomposed as
+    \[
+        A = \sum_{i=1}^n \sum_{k=1}^{n-1} a_{ik} A_k^{(i)}.
+    \]
+    To verify linear independence, suppose that $\sum_{i=1}^n \sum_{k=1}^{n-1} \lambda_{ik} A_k^{(i)} = 0$. For any fixed pair $(i, k)$ with $1 \le k \le n-1$, the $(i, k)$-entry of the sum is precisely $\lambda_{ik}$, forcing $\lambda_{ik} = 0$.
+    
+    Thus the collection $\mathcal{B} := \{A_k^{(i)} \mid 1 \le i \le n,\, 1 \le k \le n-1\}$ is a basis of $W$, and its cardinality is $n(n-1)$. Hence $\dim W = n(n-1)$.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:subspace_dimension_equations_basis_selection}]
+\label{sol:subspace_dimension_equations_basis_selection}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item We determine the dimension of $W = \Sp(v_1, v_2, v_3, v_4)$ by applying elementary row operations to the matrix whose columns are the given vectors:
+    \[
+        M := \begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            2 & 0 & 4 & 2 \\
+            1 & -1 & 2 & 1 \\
+            2 & 1 & 3 & 1
+        \end{pmatrix}.
+    \]
+    Subtracting multiples of the first row from the lower rows via $E_2 - 2E_1 \to E_2$, $E_3 - E_1 \to E_3$, and $E_4 - 2E_1 \to E_4$ yields
+    \[
+        \begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            0 & 0 & 2 & 2 \\
+            0 & -1 & 1 & 1 \\
+            0 & 1 & 1 & 1
+        \end{pmatrix}.
+    \]
+    Swapping $E_2 \leftrightarrow E_4$ produces
+    \[
+        \begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 1 \\
+            0 & -1 & 1 & 1 \\
+            0 & 0 & 2 & 2
+        \end{pmatrix}.
+    \]
+    Adding the second row to the third row ($E_3 + E_2 \to E_3$) gives
+    \[
+        \begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 1 \\
+            0 & 0 & 2 & 2 \\
+            0 & 0 & 2 & 2
+        \end{pmatrix},
+    \]
+    and subtracting the third row from the fourth row ($E_4 - E_3 \to E_4$) results in the row echelon form
+    \[
+        \begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 1 \\
+            0 & 0 & 2 & 2 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}.
+    \]
+    There are $3$ non-zero pivot rows, so the column rank is $3$. Therefore, $\dim W = 3$.
+
+    \item Since $\dim W = 3$ inside $\mathbb{R}^4$, the subspace $W$ is a hyperplane and can be defined by a single homogeneous linear equation $n_1 x_1 + n_2 x_2 + n_3 x_3 + n_4 x_4 = 0$, where $n = (n_1, n_2, n_3, n_4)\transp \in \mathbb{R}^4 \setminus \{0\}$ is orthogonal to every vector in $W$.
+    
+    It suffices to enforce orthogonality on the spanning vectors $v_1, v_2, v_4$:
+    \[
+        \begin{aligned}
+            n_1 + 2n_2 + n_3 + 2n_4 &= 0, \\
+            -n_3 + n_4 &= 0, \\
+            2n_2 + n_3 + n_4 &= 0.
+        \end{aligned}
+    \]
+    The second equation gives $n_4 = n_3$. Substituting this into the third equation yields $2n_2 + 2n_3 = 0$, so $n_2 = -n_3$. Substituting both into the first equation gives
+    \[
+        n_1 + 2(-n_3) + n_3 + 2n_3 = n_1 + n_3 = 0 \implies n_1 = -n_3.
+    \]
+    Setting $n_3 := -1$ gives $n_1 = 1$, $n_2 = 1$, and $n_4 = -1$, yielding the normal vector $n = (1, 1, -1, -1)\transp$. We readily check that $\langle n, v_3 \rangle = 1(1) + 1(4) - 1(2) - 1(3) = 0$.
+    
+    Therefore, the subspace $W$ is precisely the solution set of the single equation
+    \[
+        x_1 + x_2 - x_3 - x_4 = 0.
+    \]
+
+    \item Since $\dim W = 3$, any basis chosen from $\{v_1, v_2, v_3, v_4\}$ must consist of exactly $3$ vectors. There are $\binom{4}{3} = 4$ three-element subsets:
+    \begin{itemize}
+        \item Observe that $v_3 = v_1 + v_4$, since
+        \[
+            \begin{pmatrix} 1 \\ 2 \\ 1 \\ 2 \end{pmatrix} + \begin{pmatrix} 0 \\ 2 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 4 \\ 2 \\ 3 \end{pmatrix}.
+        \]
+        Thus the subset $\{v_1, v_3, v_4\}$ is linearly dependent and spans only a $2$-dimensional subspace; it is not a basis.
+        \item For $\{v_1, v_2, v_4\}$, the Gaussian elimination in part \textbf{(a)} established that the corresponding columns are linearly independent. By \cref{thm:basis_equivalent_characterizations}, any linearly independent list of length $3$ in a $3$-dimensional space is a basis.
+        \item For $\{v_1, v_2, v_3\}$, since $v_4 = v_3 - v_1$, we have $\Sp(v_1, v_2, v_3) = \Sp(v_1, v_2, v_3, v_4) = W$. By \cref{thm:basis_equivalent_characterizations}, this spanning set of size $3$ is a basis.
+        \item For $\{v_2, v_3, v_4\}$, since $v_1 = v_3 - v_4$, we have $\Sp(v_2, v_3, v_4) = W$, so this is likewise a basis.
+    \end{itemize}
+    Thus there are exactly $3$ such bases:
+    \[
+        \mathcal{B}_1 := \{v_1, v_2, v_3\}, \qquad \mathcal{B}_2 := \{v_1, v_2, v_4\}, \qquad \mathcal{B}_3 := \{v_2, v_3, v_4\}.
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:bases_dimensions_various_spaces}]
+\label{sol:bases_dimensions_various_spaces}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{System of linear equations.} The system is
+    \[
+        \begin{aligned}
+            x + y - z &= 0, \\
+            3x + y + 2z &= 0, \\
+            2x + 3z &= 0.
+        \end{aligned}
+    \]
+    Row reducing the coefficient matrix:
+    \[
+        \begin{pmatrix}
+            1 & 1 & -1 \\
+            3 & 1 & 2 \\
+            2 & 0 & 3
+        \end{pmatrix}
+        \xrightarrow{\substack{E_2 - 3E_1 \to E_2 \\ E_3 - 2E_1 \to E_3}}
+        \begin{pmatrix}
+            1 & 1 & -1 \\
+            0 & -2 & 5 \\
+            0 & -2 & 5
+        \end{pmatrix}
+        \xrightarrow{E_3 - E_2 \to E_3}
+        \begin{pmatrix}
+            1 & 1 & -1 \\
+            0 & -2 & 5 \\
+            0 & 0 & 0
+        \end{pmatrix}.
+    \]
+    The second row gives $-2y + 5z = 0 \implies y = \frac{5}{2}z$. Substituting into the first row yields $x = z - y = z - \frac{5}{2}z = -\frac{3}{2}z$. Choosing $z := 2$ gives the solution vector $(-3, 5, 2)\transp$.
+    
+    Thus the solution set is $S = \Sp\left( \begin{pmatrix} -3 \\ 5 \\ 2 \end{pmatrix} \right)$. Since the vector is non-zero, $\mathcal{B} := \left\{ \begin{pmatrix} -3 \\ 5 \\ 2 \end{pmatrix} \right\}$ is a basis of $S$, and $\dim S = 1$.
+
+    \item \textbf{Trivial space $\{0\}$.} The empty set $\emptyset$ is linearly independent and spans $\{0\}$ (because the empty sum of vectors evaluates to $0$). Thus $\mathcal{B} := \emptyset$ is a basis of $\{0\}$, and $\dim(\{0\}) = |\emptyset| = 0$.
+
+    \item \textbf{$V = \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ over $\mathbb{C}$.} The condition $z + iw = 0$ is equivalent to $z = -iw$. Every vector in $V$ is of the form
+    \[
+        \begin{pmatrix} z \\ w \end{pmatrix} = \begin{pmatrix} -iw \\ w \end{pmatrix} = w \begin{pmatrix} -i \\ 1 \end{pmatrix} \quad (w \in \mathbb{C}).
+    \]
+    The single vector $v_1 := (-i, 1)\transp \in \mathbb{C}^2$ is non-zero, hence linearly independent over $\mathbb{C}$, and it generates $V$. Thus $\mathcal{B} := \left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix} \right\}$ is a basis of $V$ over $\mathbb{C}$, and $\dim_{\mathbb{C}} V = 1$.
+
+    \item \textbf{$V = \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ over $\mathbb{R}$.} Writing the free parameter $w \in \mathbb{C}$ in terms of real and imaginary parts as $w = a + ib$ with $a, b \in \mathbb{R}$, we obtain
+    \[
+        \begin{pmatrix} z \\ w \end{pmatrix} = (a + ib) \begin{pmatrix} -i \\ 1 \end{pmatrix} = a \begin{pmatrix} -i \\ 1 \end{pmatrix} + b \begin{pmatrix} 1 \\ i \end{pmatrix}.
+    \]
+    Let $u_1 := (-i, 1)\transp$ and $u_2 := (1, i)\transp$. These two vectors belong to $V$ and generate $V$ as a real vector space. To verify linear independence over $\mathbb{R}$, suppose that $a u_1 + b u_2 = 0$ for $a, b \in \mathbb{R}$. Looking at the second coordinate gives
+    \[
+        a(1) + b(i) = a + ib = 0 \implies a = 0 \quad \text{and} \quad b = 0.
+    \]
+    Hence $\mathcal{B} := \left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ i \end{pmatrix} \right\}$ is a basis of $V$ over $\mathbb{R}$, and $\dim_{\mathbb{R}} V = 2$.
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:polynomials_linear_factor_dimension}]
+\label{sol:polynomials_linear_factor_dimension}
+Let $g(X) := X + 5 \in K[X]$. An element $h \in K[X]$ belongs to $W$ if and only if $\deg(h) \le d$ and $h(X) = g(X) f(X)$ for some polynomial $f(X) \in K[X]$.
+
+For any non-zero polynomial $f \in K[X]$, the degree formula yields
+\[
+    \deg(h) = \deg(g \cdot f) = \deg(g) + \deg(f) = 1 + \deg(f).
+\]
+Therefore, $\deg(h) \le d$ is equivalent to $\deg(f) \le d - 1$. The subspace of polynomials of degree at most $d - 1$ is spanned by the standard monomial basis $\{1, X, X^2, \dots, X^{d-1}\}$. Writing $f(X) = \sum_{j=0}^{d-1} a_j X^j$ with coefficients $a_j \in K$, we obtain
+\[
+    h(X) = g(X) \sum_{j=0}^{d-1} a_j X^j = \sum_{j=0}^{d-1} a_j X^j g(X).
+\]
+This shows that the set of $d$ polynomials
+\[
+    \mathcal{B} := \{g(X), X g(X), X^2 g(X), \dots, X^{d-1} g(X)\}
+\]
+spans $W$.
+
+To prove linear independence, consider a vanishing linear combination
+\[
+    \sum_{j=0}^{d-1} c_j X^j g(X) = 0 \iff g(X) \cdot \left( \sum_{j=0}^{d-1} c_j X^j \right) = 0.
+\]
+Since $K[X]$ is an integral domain and $g(X) = X + 5 \neq 0$, the second factor must vanish identically:
+\[
+    \sum_{j=0}^{d-1} c_j X^j = 0.
+\]
+Because the standard monomials $1, X, \dots, X^{d-1}$ are linearly independent in $K[X]$, it follows that $c_0 = c_1 = \dots = c_{d-1} = 0$.
+
+Thus $\mathcal{B}$ is a basis of $W$. Since it contains exactly $d$ polynomials, we conclude that $\dim W = d$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:harmonic_ode_solution_space}]
+\label{sol:harmonic_ode_solution_space}
+We determine the dimension and an explicit basis for the real vector space
+\[
+    V := \left\{ f \colon \mathbb{R} \to \mathbb{R} \;\middle|\; f \text{ is twice differentiable and } f'' + f = 0 \right\}.
+\]
+
+\textbf{Step 1: Two particular solutions.} The functions $s(x) := \sin x$ and $c(x) := \cos x$ are infinitely differentiable and satisfy $s''(x) = -\sin x = -s(x)$ and $c''(x) = -\cos x = -c(x)$, so $s, c \in V$.
+
+\textbf{Step 2: The spanning property.} Let $f \in V$ be arbitrary. Set $a := f(0) \in \mathbb{R}$ and $b := f'(0) \in \mathbb{R}$. Define the auxiliary function
+\[
+    g(x) := f(x) - a \cos x - b \sin x.
+\]
+Because the differential operator $L(f) := f'' + f$ is linear, the difference of solutions is again a solution, so $g \in V$, meaning $g'' + g = 0$. Evaluating $g$ and its first derivative at $x = 0$:
+\[
+    g(0) = f(0) - a \cos 0 - b \sin 0 = a - a(1) - b(0) = 0,
+\]
+\[
+    g'(0) = f'(0) + a \sin 0 - b \cos 0 = b + a(0) - b(1) = 0.
+\]
+According to the uniqueness theorem for linear second-order ordinary differential equations (as recalled in the hint), the only solution to the initial value problem $y'' + y = 0$ with $y(0) = 0$ and $y'(0) = 0$ is the identically zero function $y \equiv 0$.
+Consequently, $g(x) = 0$ for all $x \in \mathbb{R}$, which yields
+\[
+    f(x) = a \cos x + b \sin x.
+\]
+This proves that $\{\cos x, \sin x\}$ spans $V$.
+
+\textbf{Step 3: Linear independence.} Suppose that $\lambda_1 \cos x + \lambda_2 \sin x = 0$ for all $x \in \mathbb{R}$, where $\lambda_1, \lambda_2 \in \mathbb{R}$. Evaluating at $x = 0$ gives $\lambda_1(1) + \lambda_2(0) = \lambda_1 = 0$. Evaluating at $x = \pi/2$ gives $\lambda_1(0) + \lambda_2(1) = \lambda_2 = 0$. Thus $\cos x$ and $\sin x$ are linearly independent over $\mathbb{R}$.
+
+\textbf{Conclusion.} The set $\mathcal{B} := \{\cos x, \sin x\}$ is an explicit basis of $V$, and $\dim V = 2$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Proof of \cref{exc:shifted_span_dimension}]
+\label{sol:shifted_span_dimension}
+Let $\{v_1, \dots, v_m\}$ be a linearly independent subset of $V$, let $w \in V$, and define the subspace
+\[
+    W := \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \subseteq V.
+\]
+For each index $i \in \{2, \dots, m\}$, consider the difference of generators:
+\[
+    u_i := (v_i + w) - (v_1 + w) = v_i - v_1.
+\]
+Since both $v_i + w$ and $v_1 + w$ belong to $W$, their difference $u_i = v_i - v_1$ belongs to $W$ for all $2 \le i \le m$.
+
+We show that the list of $m - 1$ vectors $\{u_2, \dots, u_m\} = \{v_2 - v_1, \dots, v_m - v_1\}$ is linearly independent. Suppose that $\alpha_2, \dots, \alpha_m \in K$ are scalars such that
+\[
+    \sum_{i=2}^m \alpha_i u_i = 0 \iff \sum_{i=2}^m \alpha_i (v_i - v_1) = 0.
+\]
+Rearranging terms by grouping the vectors $v_1, \dots, v_m$ gives
+\[
+    \left( -\sum_{i=2}^m \alpha_i \right) v_1 + \sum_{i=2}^m \alpha_i v_i = 0.
+\]
+Because the original family $\{v_1, v_2, \dots, v_m\}$ is linearly independent, every scalar in this linear combination must vanish. In particular, examining the coefficient of $v_i$ for each $2 \le i \le m$ yields
+\[
+    \alpha_i = 0 \quad \text{for all } 2 \le i \le m.
+\]
+Hence $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of cardinality $m - 1$. By \cref{prop:subspace_dimension_constraints}, every subspace containing a linearly independent set of $m - 1$ elements must have dimension at least $m - 1$. Therefore,
+\[
+    \dim \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \ge m - 1.
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:descending_chains_subspaces}]
+\label{sol:descending_chains_subspaces}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Finite-dimensional case.} Suppose that $\dim V = d < \infty$. By \cref{prop:subspace_dimension_constraints}, every linear subspace of $V$ is finite-dimensional with $\dim U \le \dim V$. Since the sequence is nested with $U_{n+1} \subseteq U_n$, applying \cref{prop:subspace_dimension_constraints} gives $\dim U_{n+1} \le \dim U_n$ for all $n \ge 0$.
+    
+    Thus the sequence of dimensions
+    \[
+        d \ge \dim U_0 \ge \dim U_1 \ge \dim U_2 \ge \dots \ge 0
+    \]
+    is a non-increasing sequence of non-negative integers. Because a non-increasing sequence in $\mathbb{Z}_{\ge 0}$ cannot decrease infinitely often, it must eventually become constant: there exist $N \in \mathbb{N}$ and an integer $k \in \{0, \dots, d\}$ such that
+    \[
+        \dim U_n = k \quad \text{for all } n \ge N.
+    \]
+    For any $n \ge N$, we have $U_{n+1} \subseteq U_n$ and $\dim U_{n+1} = \dim U_n = k$. By the equality criterion of \cref{prop:subspace_dimension_constraints}, an inclusion of finite-dimensional subspaces with equal dimensions forces equality of the subspaces:
+    \[
+        U_{n+1} = U_n \quad \text{for all } n \ge N.
+    \]
+    By induction, $U_n = U_N$ for all $n \ge N$, so the sequence stabilizes.
+
+    \item \textbf{Infinite-dimensional case.} This is not necessarily true if $V$ is infinite-dimensional. Consider the polynomial space $V := F[X]$ over the field $F$. For each $n \ge 0$, define the subspace
+    \[
+        U_n := \Sp(X^n, X^{n+1}, X^{n+2}, \dots) = \{p(X) \in F[X] \mid X^n \text{ divides } p(X)\}.
+    \]
+    Clearly $U_{n+1} \subseteq U_n$ for all $n \ge 0$. However, the monomial $X^n$ belongs to $U_n$ but $X^n \notin U_{n+1}$, so $U_{n+1} \subsetneq U_n$ is a strictly proper inclusion for every $n \ge 0$. Consequently, the sequence never stabilizes.
+
+    \item \textbf{Infinite intersection.} If $V$ is infinite-dimensional and $\dim U_n \ge 1$ for all $n \in \mathbb{N}$, the intersection $\bigcap_{n=0}^\infty U_n$ can be $\{0\}$.
+    
+    To see this, consider again the nested sequence $U_n = \Sp(X^n, X^{n+1}, \dots) \subset F[X]$ from part \textbf{(b)}. Each subspace $U_n$ contains the infinite linearly independent set $\{X^k \mid k \ge n\}$, so $\dim U_n = \infty \ge 1$ for all $n$.
+    
+    Now suppose $p(X) \in \bigcap_{n=0}^\infty U_n$. If $p(X) \neq 0$, then $p(X)$ has a well-defined finite degree $m := \deg(p) \ge 0$. But every non-zero polynomial in $U_{m+1}$ has degree at least $m + 1$, which implies $p(X) \notin U_{m+1}$, a contradiction. Hence no non-zero polynomial belongs to the intersection, proving that
+    \[
+        \bigcap_{n=0}^\infty U_n = \{0\}.
+    \]
+\end{enumerate}
+\end{exercisesolution}

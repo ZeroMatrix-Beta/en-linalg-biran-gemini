@@ -118,6 +118,7 @@ For each of the following subsets of $\mathbb{R}^4$, determine whether or not it
     \item $S_2 := \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \\ -1 \end{pmatrix} \right\} \subseteq \mathbb{R}^4$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:linear_independence_r4_lists}
 \end{exercise}
 
 \begin{exercise}[Parametric, Triangular, and Function Linear Independence]
@@ -130,6 +131,7 @@ Determine whether each of the following sets of vectors is linearly independent 
     \item The pair $\{f, g\} \subseteq \mathrm{Abb}(\mathbb{R}, \mathbb{R})$ given by $f(x) = e^{rx}$ and $g(x) = e^{sx}$ for fixed distinct constants $r, s \in \mathbb{R}$.
 \end{enumerate}
 \exinfo{This exercise is Problem 2 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:linear_independence_various_contexts}
 \end{exercise}
 
 \subsection{Arbitrary Families and Linear Dependence}
@@ -230,6 +232,7 @@ For each $a \in \mathbb{R}_{\ge 0}$, consider the rational function
 Prove that the uncountable family $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}} \subseteq \mathrm{Abb}(\mathbb{R}_{>0}, \mathbb{R})$ is linearly independent over $\mathbb{R}$.
 \exhint{Clear denominators to obtain a polynomial equation, and recall that a non-zero polynomial has only finitely many roots.}
 \exinfo{This exercise is Problem 6 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:rational_functions_independent}
 \end{exercise}
 
 \begin{exercise}[Linear Independence of the Standard Sequences in $K^\infty$]
@@ -240,6 +243,7 @@ For each $k \ge 0$ let $e_k \in K^\infty$ be the sequence whose $k$-th entry is 
 \]
 is linearly independent. (Note that this set does \emph{not} span $K^\infty$: a linear combination is a finite sum, so it can only produce sequences with finitely many non-zero entries.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:k_infinity_independent}
 \end{exercise}
 
 We now formally define the opposite of linear independence, specifically focusing on how it applies to an arbitrary family.
@@ -336,6 +340,7 @@ A_1 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \qquad A_2 = \begin{
     \item Find a matrix $A_3 \in \M_{2 \times 3}(\mathbb{R})$ such that $\{A_1, A_2, A_3\}$ is linearly independent. Can such an $A_3$ be chosen so that $\Sp(A_1, A_2, A_3) = \M_{2 \times 3}(\mathbb{R})$?
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:matrix_span_and_independence}
 \end{exercise}
 
 \subsection{Inheritance in Subsets and Supersets}
@@ -415,6 +420,7 @@ Let $V$ be a vector space and let $S_1, S_2 \subseteq V$ be subsets with $S_1 \s
     \item If $S_2$ is a basis for $V$, is $S_1$ always, sometimes, or never a basis for $V$?
 \end{enumerate}
 \exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:monotonicity_independence_spanning_mc}
 \end{exercise}
 
 \begin{ainote}
@@ -439,6 +445,7 @@ because the basis-extraction argument in the chapters on bases relies on it.
 \label{sec:solutions_linear_independence}
 
 \begin{exercisesolution}[Proof of \cref{exc:k_infinity_independent}]
+\label{sol:k_infinity_independent}
 Write $E := \{e_0, e_1, e_2, \dots\} \subseteq K^\infty$, where $e_k$ is the sequence with $1$ in position $k$ and $0$ everywhere else, so that
 \[
     (e_k)_j = \delta_{kj} := \begin{cases} 1 & \text{if } j = k, \\ 0 & \text{if } j \neq k. \end{cases}
@@ -461,6 +468,8 @@ The two halves together are the point of the exercise, and they are the reason t
 The same argument, verbatim with $\delta_{kj}$ replaced by the coefficient of $x^k$, settles \cref{ex:monomials_independent}: the monomials $1, x, x^2, \dots$ are linearly independent in $K[x]$, because a finite combination of distinct monomials is the zero polynomial only when every coefficient is zero, which is what it means for a polynomial to be zero. Unlike $E$ in $K^\infty$, however, that family \emph{does} span $K[x]$, since every polynomial is by definition a finite combination of monomials. That contrast is the difference between $K[x]$ and $K^\infty$ in one line.
 \end{exercisesolution}
 
+\input{content/09-linear-independence-solutions.tex}
+
 \begin{ainote}
 Linear independence is defined three times here, for a list
 (\cref{def:linear_independence}), for an arbitrary family
@@ -479,3 +488,4 @@ by quantifying over its \emph{finite} subfamilies. That is why
 \cref{lem:supersets_of_dependent_sets} are one-line consequences, and it is what
 the exercise above is really testing.
 \end{ainote}
+

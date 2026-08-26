@@ -51,6 +51,7 @@ This theorem is actually true even if $V$ is not finite-dimensional (this is kno
 \label{exc:countable_basis_independent_subsets}
 Let $V$ be a vector space over a field $K$ that admits a countable basis $\mathcal{B} = \{v_1, v_2, \dots\}$. Show that every linearly independent subset $S \subseteq V$ is at most countable (i.e., finite or countable).
 \exinfo{This exercise is Problem 5 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:countable_basis_independent_subsets}
 \end{exercise}
 
 \subsection{Preparation: Two Lemmas}
@@ -273,6 +274,7 @@ The dimension of this space matches the cardinality of the underlying set $S$:
 If $S$ is a finite set, say $S = \{s_1, \dots, s_n\}$, can you construct an explicit basis for $K^S$? \\
 \textit{(Hint: Try to define a family of functions $f_i$ where each function outputs $1$ for exactly one specific element $s_i$, and $0$ for all other elements).}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:basis_of_function_space}
 \end{exercise}
 
 \begin{remark}
@@ -286,6 +288,7 @@ When the domain $S$ is an infinite set, the space $K^S$ is infinite-dimensional.
 \label{sec:solutions_bases_part_b}
 
 \begin{exercisesolution}[Solution to \cref{exc:basis_of_function_space}]
+\label{sol:basis_of_function_space}
 Let $S = \{s_1, \dots, s_n\}$ be finite, and follow the hint: for each $1 \le i \le n$ define $f_i \in K^S$ by
 \[
 f_i(s_j) :=
@@ -311,6 +314,8 @@ Note also that the $f_i$ are pairwise distinct, since $f_i(s_i) = 1 \ne 0 = f_j(
 which is the formula stated in the example. The construction is the same one that gives the standard basis $e_1, \dots, e_n$ of $K^n$: taking $S = \{1, 2, \dots, n\}$ turns $f_i$ into $e_i$.
 \end{exercisesolution}
 
+\input{content/11-bases-part-b-solutions.tex}
+
 \begin{ainote}
 The notes prepare the Basis Theorem with two lemmas the transcript had dropped,
 \cref{lem:no_predecessor_span} and \cref{lem:spanning_list_contains_basis}, both
@@ -333,3 +338,4 @@ $\infty$ and the equation $\dim K^S = |S|$ does not typecheck: the functions
 $f_s$ stay independent but stop spanning, a linear combination being a finite
 sum. The remark following the example carries that case.
 \end{ainote}
+

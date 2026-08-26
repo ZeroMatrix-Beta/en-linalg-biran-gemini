@@ -1,0 +1,31 @@
+﻿% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:countable_basis_independent_subsets}]
+\label{sol:countable_basis_independent_subsets}
+Let $\mathcal{B} = \{v_1, v_2, v_3, \dots\}$ be a countable basis for $V$. For each $n \in \mathbb{N}$, define the subspace
+\[
+V_n := \Sp(v_1, \dots, v_n) \subseteq V.
+\]
+Because $(v_1, \dots, v_n)$ is a linearly independent list of length $n$, it forms a basis of $V_n$, so $\dim V_n = n$. Furthermore, these subspaces form an ascending chain $V_1 \subseteq V_2 \subseteq V_3 \subseteq \dots$, and because $\mathcal{B}$ spans $V$, every vector in $V$ is a finite linear combination of elements of $\mathcal{B}$, so:
+\[
+V = \bigcup_{n=1}^\infty V_n.
+\]
+Now let $S \subseteq V$ be any linearly independent subset. For each $n \in \mathbb{N}$, define
+\[
+S_n := S \cap V_n.
+\]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{Each $S_n$ is finite:}
+    Since $S_n \subseteq S$ and $S$ is linearly independent, $S_n$ is a linearly independent subset of the subspace $V_n$ by \cref{lem:subsets_of_independent_sets}. By the Steinitz Exchange Theorem (\cref{thm:steinitz}), any linearly independent subset of an $n$-dimensional space cannot contain more than $n$ elements. Therefore:
+    \[
+    |S_n| \le \dim V_n = n.
+    \]
+    Thus each $S_n$ is a finite set.
+
+    \item \textbf{$S$ is a countable union of the $S_n$:}
+    For any vector $u \in S$, since $u \in V = \bigcup_{n=1}^\infty V_n$, there exists some index $N \in \mathbb{N}$ such that $u \in V_N$, and hence $u \in S \cap V_N = S_N$. Consequently,
+    \[
+    S = \bigcup_{n=1}^\infty S_n.
+    \]
+\end{enumerate}
+Since $S$ is expressed as a countable union of finite sets, $S$ is at most countable (i.e., finite or countably infinite).
+\end{exercisesolution}

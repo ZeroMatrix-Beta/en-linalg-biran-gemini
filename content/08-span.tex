@@ -185,10 +185,10 @@ Note that \textbf{(a)} and \textbf{(b)} imply that $\Sp(S) \subseteq \widetilde{
 \label{sum:two_definitions_of_span}
 We now have two descriptions of the same object, and we may use whichever is more convenient:
 \[
-\Sp(S) \;=\;
+\Sp(S) =
 \begin{cases}
-\displaystyle \bigcap_{W \in \mathcal{N}} W & \text{(by definition: the smallest subspace containing } S), \\[2ex]
-\text{all linear combinations of vectors from } S & \text{(by \cref{lem:span_is_linear_combinations}).}
+\displaystyle \bigcap_{W \in \mathcal{N}} W & \text{(smallest subspace containing } S), \\[2ex]
+\text{linear combinations from } S & \text{(by \cref{lem:span_is_linear_combinations}).}
 \end{cases}
 \]
 They can be regarded as equivalent definitions of the span.
@@ -204,6 +204,7 @@ Let $V$ be a vector space over a field $K$. Which of the following assertions ar
     \item For any subsets $S_1, S_2 \subseteq V$, we have $\Sp(S_1 \cap S_2) \subseteq \Sp(S_1) \cap \Sp(S_2)$.
 \end{enumerate}
 \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:span_subspaces_mc}
 \end{exercise}
 
 \begin{notation}
@@ -232,6 +233,7 @@ Note that here the number of summands is fixed at $n$, whereas in \cref{lem:span
 \label{exc:span_of_finite_list}
 Prove \cref{lem:span_of_finite_list}, using \cref{lem:span_is_linear_combinations} together with the observation of the remark above about repetitions and omissions.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:span_of_finite_list}
 \end{exercise}
 
 \begin{remark}
@@ -331,12 +333,14 @@ Before turning to computations, let us use the span to list \emph{all} linear su
 \label{exc:same_span_same_line}
 Prove the two equivalences stated on \cpageref{ex:lines_through_origin}: for $0 \ne v, w \in \mathbb{R}^2$, show that $\Sp(v) = \Sp(w)$ if and only if $w = \alpha \cdot v$ for some $\alpha \ne 0$, and that this holds if and only if $L_v = L_w$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:same_span_same_line}
 \end{exercise}
 
 \begin{exercise}[Two Independent Vectors Span the Plane --- Important!]
 \label{exc:two_vectors_span_plane}
 Let $W \subseteq \mathbb{R}^2$ be a linear subspace. Suppose $W = \Sp(v, w)$, where $v \ne 0$ and $w \notin \Sp(v)$. Show that $W = \mathbb{R}^2$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:two_vectors_span_plane}
 \end{exercise}
 
 \begin{exercise}[Subspaces and Spans in Two Dimensions]
@@ -347,6 +351,7 @@ Let $v \in \mathbb{R}^2 \setminus \{(0, 0)\}$ and let $w \in \mathbb{R}^2 \setmi
     \item Prove that the only linear subspaces of $\mathbb{R}^2$ are $\{(0, 0)\}$, $\Sp(u)$ for non-zero $u \in \mathbb{R}^2$, and $\mathbb{R}^2$ itself.
 \end{enumerate}
 \exinfo{This exercise is Problem 2 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:subspaces_two_dimensions}
 \end{exercise}
 
 \begin{summary}
@@ -454,6 +459,7 @@ K^n = \Sp(e_1, \dots, e_n).
 \label{exc:check_standard_span}
 Check the identity $K^n = \Sp(e_1, \dots, e_n)$ in detail.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:check_standard_span}
 \end{exercise}
 
 \begin{example}[Polynomials]
@@ -482,6 +488,7 @@ p_4(x) &= 2x + 3.
     \item Determine the linear span $\Sp(p_1, p_2, p_3, p_4) \subseteq \mathbb{R}[x]$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:polynomial_linear_combination_span}
 \end{exercise}
 
 \begin{example}[Spaces of Matrices]
@@ -525,6 +532,7 @@ so that a matrix may be viewed as a \qt{vector} built out of simpler matrices.
 \label{exc:finite_dimensional_examples}
 Show that $K^n$, $\M_{m \times n}(K)$ and $K[x]_d$ are finite-di\-men\-sional in the sense of \cref{def:finite_dimensional}. What about $K[x]$? Prove your answer.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:finite_dimensional_examples}
 \end{exercise}
 
 \begin{exercise}[Subspaces of Matrices Satisfying a Linear Constraint]
@@ -535,12 +543,14 @@ U := \{A \in \M_{m \times n}(K) \mid A \cdot x = b\} \subseteq \M_{m \times n}(K
 \]
 For which values of $x \in K^n$ and $b \in K^m$ is $U$ a linear subspace of $\M_{m \times n}(K)$?
 \exinfo{This exercise is Problem 4 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:matrix_subspace_vector_constraint}
 \end{exercise}
 
 \begin{exercise}[Infinite-Dimensionality of Polynomial Spaces]
 \label{exc:polynomial_space_infinite_dim}
 Prove that the vector space $K[x]$ of all polynomials over a field $K$ is not finite-dimensional.
 \exinfo{This exercise is Problem 5 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:polynomial_space_infinite_dim}
 \end{exercise}
 
 \begin{exercise}[Generating Sets for Sequence Spaces]
@@ -559,6 +569,7 @@ Let $K$ be a field.
     Find the smallest generating subset of $K_{\mathrm{cst}}^\infty$ and justify your answer.
 \end{enumerate}
 \exinfo{This exercise is Problem 6 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:generating_sets_sequences}
 \end{exercise}
 
 \begin{ainote}
@@ -577,6 +588,7 @@ in full above.
 \label{sec:solutions_span}
 
 \begin{exercisesolution}[Proof of \cref{lem:span_of_finite_list}, which is \cref{exc:span_of_finite_list}]
+\label{sol:span_of_finite_list}
 Write $S := \{v_1, \dots, v_n\}$ and let $R$ denote the right-hand side of the asserted identity, the set of sums $\sum_{i=1}^n \alpha_i v_i$ with $n$ terms in the fixed order given.
 
 By \cref{lem:span_is_linear_combinations}, $\Sp(S)$ is the set of all linear combinations $\sum_{j=1}^{k} \beta_j u_j$ with $k \ge 0$, $\beta_j \in K$ and $u_j \in S$, where $k$ is not fixed and the $u_j$ need not be distinct. We show the two inclusions.
@@ -595,6 +607,7 @@ This is exactly the observation of the Remark above: a repeated vector has its c
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:same_span_same_line}]
+\label{sol:same_span_same_line}
 Let $0 \ne v, w \in \mathbb{R}^2$. We prove the two equivalences in turn.
 
 \textbf{$\Sp(v) = \Sp(w) \iff w = \alpha v$ for some $\alpha \ne 0$.} Suppose the spans agree. Then $w \in \Sp(w) = \Sp(v)$, so $w = \alpha v$ for some $\alpha \in \mathbb{R}$ by \cref{lem:span_of_finite_list}, and $\alpha \ne 0$ because $\alpha = 0$ would give $w = 0$, which is excluded. Conversely, suppose $w = \alpha v$ with $\alpha \ne 0$. Then $w \in \Sp(v)$, and since $\Sp(v)$ is a subspace, $\Sp(w) \subseteq \Sp(v)$ by \cref{lem:span_is_smallest}. Multiplying by $\alpha^{-1}$, which exists because $\alpha \ne 0$, gives $v = \alpha^{-1} w \in \Sp(w)$, and the same argument gives $\Sp(v) \subseteq \Sp(w)$.
@@ -603,6 +616,7 @@ Let $0 \ne v, w \in \mathbb{R}^2$. We prove the two equivalences in turn.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:two_vectors_span_plane}]
+\label{sol:two_vectors_span_plane}
 Let $v = (a, b) \ne 0$ and $w = (c, d) \notin \Sp(v)$, and let $W := \Sp(v, w)$. By \cref{lem:span_of_finite_list}, $W = \{\alpha v + \beta w \mid \alpha, \beta \in \mathbb{R}\}$, so the claim is that every $u = (u_1, u_2) \in \mathbb{R}^2$ can be written in that form.
 
 \textbf{First, $ad - bc \ne 0$.} Suppose instead that $ad = bc$. Since $v \ne 0$, at least one of $a$, $b$ is non-zero; say $a \ne 0$, the case $b \ne 0$ being identical with the two coordinates exchanged. Then $d = \frac{bc}{a}$, and therefore
@@ -630,6 +644,7 @@ This exercise is marked \qt{Important} for a reason: together with the previous 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:check_standard_span}]
+\label{sol:check_standard_span}
 Recall $e_i := (0, \dots, 0, 1, 0, \dots, 0) \in K^n$, with the $1$ in position $i$. The inclusion $\Sp(e_1, \dots, e_n) \subseteq K^n$ holds because $\Sp$ of a subset of $K^n$ is a subspace of $K^n$, by \cref{lem:span_is_smallest}.
 
 For the reverse inclusion, let $x = (x_1, \dots, x_n) \in K^n$. Then
@@ -644,6 +659,7 @@ Two things are worth noticing. The coefficients used are the coordinates of $x$ 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:finite_dimensional_examples}]
+\label{sol:finite_dimensional_examples}
 By \cref{def:finite_dimensional}, a space is finite-di\-men\-sional when some \emph{finite} subset spans it. Three of the four are, and the fourth is not.
 
 \textbf{$K^n$.} The previous solution exhibits the finite generating set $\{e_1, \dots, e_n\}$, of size $n$.
@@ -660,3 +676,7 @@ is a well-defined element of $\mathbb{Z}_{\ge 0} \cup \{-\infty\}$, the maximum 
 
 The contrast between the last two is the useful part. Bounding the degree makes the space finite-di\-men\-sional and removing that bound does not, and the reason is precisely that a linear combination is a \emph{finite} sum, the point recorded in the Important Remark on \cpageref{rem:finite_sums_only}. The same mechanism, in the same words, is what \cref{exc:k_infinity_independent} exploits in the next chapter.
 \end{exercisesolution}
+
+\input{content/08-span-solutions.tex}
+
+

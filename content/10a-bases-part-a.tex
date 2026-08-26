@@ -144,6 +144,7 @@ U := \left\{ f \in \mathrm{Abb}(\mathbb{F}_5, \mathbb{F}_5) \;\middle|\; \sum_{i
 \]
 is a linear subspace. Construct an explicit basis for $U$ and determine its dimension.
 \exinfo{This exercise is Problem 4 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:basis_f5_functions_subspace}
 \end{exercise}
 
 \subsection{The Size of a Basis and Exchange Lemmas}
@@ -215,6 +216,7 @@ is obvious, since every vector of the shorter list occurs in the longer one. The
 \label{exc:redundancy_j_equals_one}
 What happens if $j = 1$ in \cref{lem:targeted_redundancy}?
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:redundancy_j_equals_one}
 \end{exercise}
 
 The next lemma refines the previous one. It pins down \emph{where} in the list the droppable vector can sit: if an initial segment of the list is independent, the droppable vector must lie strictly beyond it. This is what will later stop the exchange process from ever ejecting one of the vectors we are trying to insert.
@@ -313,6 +315,7 @@ Indeed, we already know that $m \le n$. Apply the procedure from the proof for t
 \label{sec:solutions_bases_part_a}
 
 \begin{exercisesolution}[Solution to \cref{exc:redundancy_j_equals_one}]
+\label{sol:redundancy_j_equals_one}
 The index $j$ supplied by \cref{lem:targeted_redundancy} may indeed be $1$, and in that case the conclusion degenerates in a way that is worth reading carefully. The vectors strictly preceding $v_1$ form the empty list, so
 \[
 \Sp(v_1, \dots, v_{j-1}) = \Sp(\emptyset) = \{0_V\}
@@ -333,6 +336,8 @@ The second assertion of the lemma survives unchanged: dropping $v_1 = 0_V$ leave
 This degenerate case is precisely what Step 1 in the proof of \cref{thm:steinitz} has to rule out. There $u_1$ heads the list, so $j = 1$ would say $u_1 = 0_V$; but $u_1$ belongs to an independent list and is therefore non-zero, so the drop index cannot be $1$ and one of the $v_i$'s must be ejected instead. From Step 2 on, the head is no longer a single vector and this role is taken over by \cref{lem:drop_index_beyond_head}.
 \end{exercisesolution}
 
+\input{content/10a-bases-part-a-solutions.tex}
+
 \begin{ainote}
 The notes letter their lemmas A--D differently from this transcript:
 \cref{lem:targeted_redundancy} is their Lemma A, and their Lemma B is
@@ -351,3 +356,4 @@ explain the proof, \cref{rem:steinitz_general_step} and
 \cref{rem:steinitz_stronger_form}, are written for this one, and the later
 chapters cite them.
 \end{ainote}
+

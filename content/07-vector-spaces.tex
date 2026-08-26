@@ -102,6 +102,7 @@ t \cdot (-\infty) := \begin{cases} \infty & \text{if } t < 0, \\ 0 & \text{if } 
 along with $t + \infty = \infty + t := \infty$, $t + (-\infty) = (-\infty) + t := -\infty$, $\infty + \infty := \infty$, $(-\infty) + (-\infty) := -\infty$, and $\infty + (-\infty) = (-\infty) + \infty := 0$.
 Determine whether $V$ endowed with these operations forms a vector space over $\mathbb{R}$.
 \exinfo{This exercise is Problem 4 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:extended_reals_not_vector_space}
 \end{exercise}
 
 \subsection{The Coordinate Space \texorpdfstring{$K^n$}{K to the n}}
@@ -129,6 +130,7 @@ With these operations $K^n$ becomes a vector space over $K$; the proof rests ent
 \label{exc:kn_axioms}
 Check the details: verify each of the eight axioms (V1)--(V8) for $K^n$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:kn_axioms}
 \end{exercise}
 
 \begin{exercise}[Multiplicative Vector Space Structure on Positive Real Pairs]
@@ -145,6 +147,7 @@ Consider the following three candidate definitions of scalar multiplication for 
 \end{enumerate}
 Under which of these candidate definitions does $(\mathbb{R}_{>0}^2, \oplus, \odot)$ form a valid vector space over $\mathbb{R}$?
 \exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:positive_reals_vector_space_mc}
 \end{exercise}
 
 \begin{importantremark}
@@ -187,6 +190,7 @@ where the first equality is \cref{lem:vector_space_basics} \textbf{(c)}. Now $0_
 \label{exc:subspace_axioms}
 Carry out the direct verification of the remaining seven axioms for $U$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:subspace_axioms}
 \end{exercise}
 
 In practice one rarely checks (LSS1)--(LSS3) separately. The following criterion compresses them into two conditions, one of which is a single membership test.
@@ -224,6 +228,7 @@ Determine which of the following subsets are linear subspaces of the given vecto
 \end{enumerate}
 What changes in parts (b) and (c) if the base field $\mathbb{R}$ is replaced by the finite field $\mathbb{F}_2$?
 \exinfo{This exercise is Problem 2 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:verifying_subspaces_r_f2}
 \end{exercise}
 
 \begin{exercise}[Subspace Identification in Coordinate Spaces]
@@ -237,6 +242,7 @@ Which of the following subsets are linear subspaces of the ambient coordinate sp
     \item $\{(x^4, x^3, x^2, x) \mid x \in \mathbb{R}\} \subseteq \mathbb{R}^4$.
 \end{enumerate}
 \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:subspace_identification_mc}
 \end{exercise}
 
 \subsection{Examples of Subspaces}
@@ -277,6 +283,7 @@ Therefore, $b + b = b$, which implies $b = 0$. \hfill $\diamond$
 \label{exc:U_b_converse}
 Prove the direction $\impliedby$ of the claim on \cpageref{claim:U_b_subspace} that $U_b$ is a subspace exactly for $b = 0$: show that if $b = 0$, then $U_0$ satisfies (LSS1), (LSS2) and (LSS3), and is therefore a linear subspace of $K^3$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:U_b_converse}
 \end{exercise}
 
 \begin{exercise}[Unions of Three Linear Subspaces]
@@ -285,6 +292,7 @@ Let $V$ be a vector space over a field $K$, and let $V_1, V_2, V_3 \subseteq V$ 
 Determine with proof whether the union $V_1 \cup V_2 \cup V_3$ is always, sometimes, or never a linear subspace of $V$.
 \exhint{Consider different choices for the base field $K$, such as $\mathbb{F}_2$.}
 \exinfo{This exercise is Problem 6 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:union_three_subspaces}
 \end{exercise}
 
 \subsection{The Solution Set of a Linear System}
@@ -326,6 +334,7 @@ the last equality again by \cref{def:matrix_vector_multiplication}, since the $j
 \label{exc:matrix_vector_scalar}
 Prove statement \textbf{(b)} of \cref{lem:matrix_vector_linearity}.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:matrix_vector_scalar}
 \end{exercise}
 
 \begin{theorem}[When the Solution Set is a Subspace]
@@ -369,6 +378,7 @@ mx + 4y = \phantom{-}6
     \item Provide a geometric interpretation of $S$ in the real plane $\mathbb{R}^2$ for each case of $m$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:parametric_linear_system_subspace}
 \end{exercise}
 
 \subsection{More Examples of Vector Spaces}
@@ -392,6 +402,7 @@ a \cdot (a_0, a_1, \dots, a_k, \dots) &:= (a \cdot a_0, a \cdot a_1, \dots, a \c
 \label{exc:sequence_space_axioms}
 With these operations, $K^\infty$ is a vector space over $K$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:kn_axioms}
 \end{exercise}
 
 \begin{example}[Fibonacci Sequences as a Subspace]
@@ -424,6 +435,7 @@ We define addition $+$ and scalar multiplication $\cdot$ on $K^S$ as follows. Le
 \label{exc:function_space_axioms}
 $K^S$ is a vector space over $K$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:kn_axioms}
 \end{exercise}
 
 \begin{exercise}[Even and Odd Functions as Linear Subspaces]
@@ -439,6 +451,7 @@ V_{\mathrm{odd}} &:= \{f \colon K \to K \mid f(-x) = -f(x) \;\forall x \in K\}.
     \item Show that $V_{\mathrm{even}} \cap V_{\mathrm{odd}} = \{0\}$.
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:even_odd_function_subspaces}
 \end{exercise}
 
 \begin{exercise}[The Power Set as an \texorpdfstring{$\mathbb{F}_2$}{F2}-Vector Space]
@@ -450,6 +463,7 @@ A \bigtriangleup B &:= (A \cup B) \setminus (A \cap B), \\
 \end{align*}
 Show that $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ is a vector space over the field $\mathbb{F}_2$.
 \exinfo{This exercise is Problem 5 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:power_set_f2_vector_space}
 \end{exercise}
 
 \begin{example}[Continuous Functions]
@@ -465,6 +479,7 @@ Then $C(S) \subseteq \mathbb{R}^S$ is a linear subspace.
 \label{exc:continuous_subspace}
 Prove that $C(S)$ is a linear subspace of $\mathbb{R}^S$: check that the constant function $0$ is continuous, and that a sum of two continuous functions, as well as a scalar multiple of a continuous function, is again continuous on $[0,1]$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:continuous_subspace}
 \end{exercise}
 
 \subsubsection{Polynomials \texorpdfstring{$K[x]$}{K[x]}}
@@ -500,6 +515,7 @@ We write $K[x]$ for the set of all polynomials over $K$.
 \label{exc:polynomial_space_axioms}
 With the operations above, $K[x]$ is a vector space over $K$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:kn_axioms}
 \end{exercise}
 
 If we view polynomials as functions $K \to K$, then the polynomials over $K$ give us a linear subspace of $K^K$. This second point of view is however genuinely coarser than the first, and the following warning explains why.
@@ -577,6 +593,7 @@ exercises marked as such above are the ones the notes leave open.
 \label{sec:solutions_vector_spaces}
 
 \begin{exercisesolution}[Proof of \cref{exc:kn_axioms}, \cref{exc:sequence_space_axioms}, \cref{exc:function_space_axioms} and \cref{exc:polynomial_space_axioms}]
+\label{sol:kn_axioms}
 These four exercises ask for the same verification four times, and it is worth doing once in a form that covers all of them, because the reason they are true is the same reason each time.
 
 In each case the underlying set is a set of $K$-valued functions on an index set $I$, and both operations are defined \emph{index by index}:
@@ -608,6 +625,7 @@ For $K[x]$ one extra word is needed, and it is the only difference between the f
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:subspace_axioms}]
+\label{sol:subspace_axioms}
 Let $U \subseteq V$ be a linear subspace and let $u, v, w \in U$ and $a, b \in K$. All eight axioms are statements about elements of $U$, and every element of $U$ is an element of $V$, where the axioms already hold. For the seven axioms that are pure identities, (V1) and (V3) through (V8), there is therefore nothing to check beyond one point: that both sides of the identity are elements of $U$ at all. That is exactly what (LSS2) and (LSS3) of \cref{def:linear_subspace} provide, since each side is built from $u, v, w$ by additions and scalar multiplications.
 
 Two of them do assert existence and so deserve a word. For (V2), the proof of \cref{lem:subspace_is_vector_space} above shows that the zero of $V$ lies in $U$ and serves as a zero there. For (V4), given $u \in U$ the element $(-1) \cdot u$ lies in $U$ by (LSS3), and it satisfies $u + (-1) \cdot u = 0_V$ by \cref{lem:vector_space_basics}, so it is an additive inverse of $u$ inside $U$.
@@ -616,6 +634,7 @@ The moral is worth keeping: a subspace inherits every identity for free, and the
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:U_b_converse}]
+\label{sol:U_b_converse}
 Assume $b = 0$, so that $U_0 = \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = 0\}$. We verify the three conditions of \cref{def:linear_subspace}.
 
 \textbf{(LSS1)} The zero vector $(0,0,0)$ satisfies $0 + 0 + 0 = 0$, so $0 \in U_0$ and $U_0 \neq \emptyset$.
@@ -636,6 +655,7 @@ So $U_0$ is a linear subspace of $K^3$. Together with the direction proved in th
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:matrix_vector_scalar}]
+\label{sol:matrix_vector_scalar}
 Let $A = (a_{ij})$ with $1 \le i \le m$ and $1 \le j \le n$, let $u \in K^n$ be a column vector and let $a \in K$. We compare the $i$-th entries of the two sides. By \cref{def:matrix_vector_multiplication}, the $j$-th entry of $a \cdot u$ is $a \cdot u_j$, and therefore,
 \[
     \bigl(A \cdot (a \cdot u)\bigr)_i = a_{i1}(a u_1) + a_{i2}(a u_2) + \dots + a_{in}(a u_n).
@@ -648,6 +668,7 @@ This holds for every $1 \le i \le m$, so the two column vectors are equal.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:continuous_subspace}]
+\label{sol:continuous_subspace}
 We check the three conditions of \cref{def:linear_subspace} for $C(S) \subseteq \mathbb{R}^S$, with $S = [0,1]$. Each rests on a standard fact from analysis about limits, which is where this example steps outside algebra.
 
 \textbf{(LSS1)} The constant function $0$ is continuous at every point of $[0,1]$, since $|0 - 0| = 0 < \varepsilon$ for every $\varepsilon > 0$ and every choice of $\delta$. So $0 \in C(S)$.
@@ -664,6 +685,7 @@ Hence $C(S)$ is a linear subspace of $\mathbb{R}^S$. It is worth noticing that t
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of the Claim on Polynomials of Bounded Degree, on \cpageref{claim:bounded_degree_subspace}]
+\label{sol:bounded_degree_subspace}
 We use the criterion of \cref{lem:subspace_criterion}. The zero polynomial has degree $-\infty \le d$, so it lies in $K[x]_d$ and the set is non-empty. Now let $f, g \in K[x]_d$ and $a, b \in K$, and write
 \[
     f = \sum_{k \ge 0} f_k x^k, \qquad g = \sum_{k \ge 0} g_k x^k,
@@ -674,6 +696,7 @@ Notice that the inequality $\deg(a f + b g) \le d$ can be strict even when $\deg
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of the Claim on Matrix Spaces, on \cpageref{claim:matrix_space}]
+\label{sol:matrix_space}
 This is the first solution above once more, with index set $I = \{1, \dots, m\} \times \{1, \dots, n\}$: a matrix is exactly a function assigning an element of $K$ to each pair $(i,j)$, and both operations are defined entry by entry. Every one of (V1)--(V8) is therefore an identity checked at each entry separately, where it becomes one of the field axioms. The zero vector is the matrix with $0$ in every entry, as claimed, and the additive inverse of $(a_{ij})$ is $(-a_{ij})$.
 
 In the language of \cref{ex:function_space} this says that $\M_{m \times n}(K)$ is the function space $K^{I}$ for that index set. The identification is not merely formal: it is what makes $\dim \M_{m \times n}(K) = m \cdot n$ evident later, the standard basis being the matrix units, one for each index.
@@ -692,3 +715,7 @@ and $a p + b q \in W$.
 
 The contrast between the two parts is the point. A condition of the form \qt{some linear expression in the coefficients vanishes} always cuts out a subspace, because $0$ satisfies it and the expression respects linear combinations. A condition of the form \qt{some coefficient does \emph{not} vanish}, which is what $\deg f = d$ says about $f_d$, never does, for the same reason read backwards. Both halves of that observation are the substance of \cref{thm:solution_set_subspace} in a different costume, and $\varphi$ above is the first linear functional in the book, a notion ch. 18 takes up in earnest.
 \end{answer}
+
+\input{content/07-vector-spaces-solutions.tex}
+
+

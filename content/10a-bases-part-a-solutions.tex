@@ -1,0 +1,51 @@
+﻿% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:basis_f5_functions_subspace}]
+\label{sol:basis_f5_functions_subspace}
+Let $V := \mathrm{Abb}(\mathbb{F}_5, \mathbb{F}_5)$ denote the vector space of all functions from the finite field $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$ to $\mathbb{F}_5$. For each $j \in \mathbb{F}_5$, let $\delta_j \in V$ denote the indicator function
+\[
+\delta_j(i) = \begin{cases} 1 & \text{if } i = j, \\ 0 & \text{if } i \ne j. \end{cases}
+\]
+The list $\mathcal{E} = (\delta_0, \delta_1, \delta_2, \delta_3, \delta_4)$ forms the standard basis of $V$, so $\dim V = 5$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{$U$ is a Linear Subspace:}
+    Define the map $\varphi \colon V \to \mathbb{F}_5$ by $\varphi(f) := \sum_{i=0}^4 f(i)$.
+    For all $f, g \in V$ and $\alpha, \beta \in \mathbb{F}_5$:
+    \[
+    \varphi(\alpha f + \beta g) = \sum_{i=0}^4 (\alpha f + \beta g)(i) = \sum_{i=0}^4 \bigl(\alpha f(i) + \beta g(i)\bigr) = \alpha \sum_{i=0}^4 f(i) + \beta \sum_{i=0}^4 g(i) = \alpha \varphi(f) + \beta \varphi(g).
+    \]
+    Thus $\varphi$ is a linear map, and $U = \{f \in V \mid \varphi(f) = 0\} = \ker(\varphi)$.
+    The zero function satisfies $\varphi(0) = 0 \implies 0 \in U$. If $f, g \in U$ and $\alpha, \beta \in \mathbb{F}_5$, then $\varphi(\alpha f + \beta g) = \alpha \cdot 0 + \beta \cdot 0 = 0$, so $\alpha f + \beta g \in U$.
+    By \cref{lem:subspace_criterion}, $U$ is a linear subspace of $V$.
+
+    \item \textbf{Explicit Basis for $U$:}
+    For each $k \in \{1, 2, 3, 4\}$, define the function $b_k := \delta_k - \delta_0 \in V$, which evaluates to:
+    \[
+    b_k(i) = \begin{cases} -1 = 4 & \text{if } i = 0, \\ 1 & \text{if } i = k, \\ 0 & \text{otherwise.} \end{cases}
+    \]
+    Each $b_k \in U$ since $\sum_{i=0}^4 b_k(i) = (-1) + 1 + 0 + 0 + 0 = 0 \in \mathbb{F}_5$.
+    
+    We show that $\mathcal{B} = (b_1, b_2, b_3, b_4)$ is a basis of $U$:
+    \begin{itemize}
+        \item \textbf{Spanning:} Let $f \in U$, so $f(0) + f(1) + f(2) + f(3) + f(4) = 0$, which implies $f(0) = -\sum_{k=1}^4 f(k)$.
+        Every function $f \in V$ expands in the standard basis as $f = \sum_{i=0}^4 f(i) \delta_i$. For $f \in U$:
+        \[
+        f = \left(-\sum_{k=1}^4 f(k)\right) \delta_0 + \sum_{k=1}^4 f(k) \delta_k = \sum_{k=1}^4 f(k) (\delta_k - \delta_0) = \sum_{k=1}^4 f(k) b_k.
+        \]
+        Thus $f \in \Sp(b_1, b_2, b_3, b_4)$, so $\Sp(\mathcal{B}) = U$.
+
+        \item \textbf{Linear Independence:} Suppose $c_1 b_1 + c_2 b_2 + c_3 b_3 + c_4 b_4 = 0_V$.
+        For each $k \in \{1, 2, 3, 4\}$, evaluating this function equation at $i = k$ yields:
+        \[
+        \sum_{j=1}^4 c_j b_j(k) = c_k \cdot 1 = 0 \implies c_k = 0.
+        \]
+        Thus $c_1 = c_2 = c_3 = c_4 = 0$, proving linear independence.
+    \end{itemize}
+
+    \item \textbf{Dimension:}
+    Since $\mathcal{B} = (b_1, b_2, b_3, b_4)$ is a basis of $U$ consisting of $4$ vectors, we have:
+    \[
+    \dim U = 4.
+    \]
+\end{enumerate}
+\end{exercisesolution}
