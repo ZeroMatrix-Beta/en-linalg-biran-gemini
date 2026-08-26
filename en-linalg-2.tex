@@ -98,6 +98,10 @@
 \colorlet{LinkColor}{MidnightBlue}
 \colorlet{FileColor}{Magenta}
 
+% --- Trailing notes on an exercise / example ---
+\colorlet{HintTint}{ProofTint!70!TextMetaNote}
+\colorlet{SolTint}{MidnightBlue!85!ThemeGreen}
+
 % --- Lists ---
 % \colorlet{ItemizeBullet}{BurntOrange}
 % \colorlet{EnumerateBullet}{MidnightBlue}
@@ -552,6 +556,11 @@
   \@namedef{theHaiproposition}{\theHaitheorem}%
   \@namedef{theHaicorollary}{\theHaitheorem}%
   \@namedef{theHaidefinition}{\theHaitheorem}%
+  \renewcommand{\theHexercise}{exercise.\thechapter.\arabic{exercise}}%
+  \renewcommand{\theHexample}{example.\thechapter.\arabic{example}}%
+  \renewcommand{\theHwarmup}{warmup.\thechapter.\arabic{warmup}}%
+  \renewcommand{\theHaiexample}{aiexample.\thechapter.\arabic{aiexample}}%
+  \renewcommand{\theHaiexercise}{aiexercise.\thechapter.\arabic{aiexercise}}%
 }
 \makeatother
 
@@ -559,6 +568,8 @@
 \newtheorem{exercise}{Exercise}[chapter]
 \newtheorem{example}{Example}[chapter]
 \newtheorem{warmup}{Warm up}[chapter]
+\newtheorem{aiexample}{AI-Example}[chapter]
+\newtheorem{aiexercise}{AI-Exercise}[chapter]
 
 % ==========================================
 % CLEVEREF NAMES
@@ -581,8 +592,12 @@
 \Crefname{importantremark}{Important remark}{Important remarks}
 \crefname{example}{Example}{Examples}
 \Crefname{example}{Example}{Examples}
+\crefname{aiexample}{AI-Example}{AI-Examples}
+\Crefname{aiexample}{AI-Example}{AI-Examples}
 \crefname{exercise}{Exercise}{Exercises}
 \Crefname{exercise}{Exercise}{Exercises}
+\crefname{aiexercise}{AI-Exercise}{AI-Exercises}
+\Crefname{aiexercise}{AI-Exercise}{AI-Exercises}
 \crefname{notation}{Notation}{Notations}
 \Crefname{notation}{Notation}{Notations}
 \crefname{summary}{Summary}{Summaries}
@@ -621,7 +636,6 @@
 \Crefname{item}{Part}{Parts}
 
 % ==========================================
-% ==========================================
 % PROOF ENVIRONMENT (with pen nib icon & shadowed Q.E.D. box)
 % ==========================================
 \newcommand{\qedbox}{%
@@ -644,10 +658,50 @@
 \makeatother
 
 \newenvironment{exercisesolution}[1][Solution]{%
+  \phantomsection
   \begin{proof}[#1]%
 }{%
   \end{proof}%
 }
+
+% ==========================================
+% TRAILING NOTES ON AN EXERCISE / EXAMPLE  (\faTag Info, \faLightbulb Hint, \faCheckCircle Solution)
+% ==========================================
+\newlength{\exnoteindent}
+\setlength{\exnoteindent}{2.5em}
+
+% #1 colour, #2 icon, #3 label
+\newcommand{\exnoteopen}[3]{%
+  \par\addvspace{1.2ex plus 0.3ex minus 0.2ex}%
+  \begingroup
+  \centering
+  \addtolength{\leftskip}{\exnoteindent}%
+  \addtolength{\rightskip}{\exnoteindent}%
+  \small\color{#1}%
+  #2\hspace{0.4em}{\normalfont\sffamily\bfseries #3:}\ \itshape\ignorespaces
+}
+\newcommand{\exnoteclose}{%
+  \par
+  \endgroup
+  \addvspace{0.4ex plus 0.2ex}%
+}
+
+\newenvironment{exerciseinfo}{\exnoteopen{TextMetaNote}{\faTag}{Info}}{\exnoteclose}
+\newcommand{\exinfo}[1]{\begin{exerciseinfo}#1\end{exerciseinfo}}
+
+% \faLightbulb[regular] -- outline bulb icon for the hint
+\newenvironment{exercisehint}[1][Hint]{%
+  \exnoteopen{HintTint}{\faLightbulb[regular]}{#1}%
+}{\exnoteclose}
+\newcommand{\exhint}[2][Hint]{\begin{exercisehint}[#1]#2\end{exercisehint}}
+
+% \faCheckCircle[regular] -- outline checkmark circle for forward link to worked solution
+\newenvironment{exercisesol}[1][Solution]{%
+  \exnoteopen{SolTint}{\faCheckCircle[regular]}{#1}%
+}{\exnoteclose}
+\let\exercisesolutionlink\exercisesol
+\let\endexercisesolutionlink\endexercisesol
+\newcommand{\exsol}[2][Solution]{\begin{exercisesol}[#1]\hyperref[#2]{See solution on \cpageref{#2}}\end{exercisesol}}
 
 % --- MATH OPERATORS ---
 \newcommand{\M}{\mathcal{M}}

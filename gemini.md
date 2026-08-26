@@ -143,13 +143,25 @@ You are authorized to improve the prose and apply the established "House Style" 
 \newtheorem{goals}{Goals}[chapter]
 \newtheorem{conclusion}{Conclusion}[chapter]
 \newtheorem{claim}{Claim}[chapter]
+\newtheorem{aiexample}{AI-Example}[chapter]
+\newtheorem{aiexercise}{AI-Exercise}[chapter]
 
 \newtheorem*{ainote}{AI-Note}
 \newenvironment{exercisesolution}[1][Solution]{%
+  \phantomsection
   \begin{proof}[#1]%
 }{%
   \end{proof}%
 }
+
+% --- TRAILING NOTES ON AN EXERCISE / EXAMPLE ---
+\newenvironment{exerciseinfo}{\exnoteopen{TextMetaNote}{\faTag}{Info}}{\exnoteclose}
+\newcommand{\exinfo}[1]{\begin{exerciseinfo}#1\end{exerciseinfo}}
+\newenvironment{exercisehint}[1][Hint]{\exnoteopen{HintTint}{\faLightbulb[regular]}{#1}}{\exnoteclose}
+\newcommand{\exhint}[2][Hint]{\begin{exercisehint}[#1]#2\end{exercisehint}}
+\newenvironment{exercisesol}[1][Solution]{\exnoteopen{SolTint}{\faCheckCircle[regular]}{#1}}{\exnoteclose}
+\newcommand{\exsol}[2][Solution]{\begin{exercisesol}[#1]\hyperref[#2]{See solution on \cpageref{#2}}\end{exercisesol}}
+
 \newcommand{\newterm}[1]{\glqq\textit{#1}\grqq}
 \newcommand{\qt}[1]{\textit{``#1''}}
 
@@ -167,6 +179,27 @@ You are authorized to improve the prose and apply the established "House Style" 
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\GL}{GL}
 ```
+
+* **Trailing Notes on Statements (`\exhint`, `\exinfo`, `\exsol`):**
+  Three blocks that hang off the *end* of an `exercise`, `aiexercise`, or `example`, inside the environment:
+  ```latex
+  \begin{exercise}[Matrix Diagonalization]
+    ... statement ...
+    \exhint[Official hint]{Recall that distinct eigenvalues yield linearly independent eigenvectors.}
+    \exinfo{This exercise is Problem 2.1 of Problem Sheet 6, Linear Algebra II, Spring Semester 2026.}
+    \exsol{sol:matrix_diag}
+  \end{exercise}
+  ```
+  * **`\exhint[Label]{...}`** takes an optional label (default `Hint`). Uses outline lightbulb icon `\faLightbulb[regular]` in `HintTint`. Use `[Official hint]` or `[Tutor's hint]` where appropriate.
+  * **`\exinfo{...}`** gives problem provenance (where it comes from). Renders with `\faTag` in `TextMetaNote`. Always write as a full sentence ending in a period (e.g., "*This exercise is Problem 3.2 of Problem Sheet 3, ...*").
+  * **`\exsol{sol:label}`** provides a clickable forward link to the worked solution in the solutions section/appendix (renders with `\faCheckCircle[regular]` in `SolTint` linking via `\cpageref`).
+  * **Order when multiple appear:** `\exhint` first $\to$ `\exinfo` second $\to$ `\exsol` last.
+  * **Unnumbered & No `\label`:** These trailing blocks are formatting wrappers that sit inside an already-numbered environment; the enclosing `exercise` is what gets referenced.
+
+* **AI-Generated Examples and Exercises (`aiexample`, `aiexercise`):**
+  * **Provenance:** Use `aiexercise` / `aiexample` strictly for practice problems and illustrative examples **invented here** to clarify or reinforce concepts (not transcribed from Prof. Biran's notes or official problem sheets).
+  * **Generator Comment:** Must contain a comment directly inside the environment stating the generating model: `% Generator: <model> (<effort>)` (e.g., `% Generator: Gemini 3.7 Flash (High)`).
+  * **Mandatory Worked Solution:** Every `aiexercise` MUST have a corresponding worked solution in the chapter's solutions subsection wrapped in `\begin{exercisesolution} ... \end{exercisesolution}`.
 
 * **Auditing an Existing Chapter (the prose is frozen):** The licence to expand prose in Section 2 belongs to the *transcription* pass, when a passage is first written from the scans. When a later pass reads a chapter that is already written, whether a source-verification pass or a rigour audit, the presumption inverts and the finished English is treated as fixed:
   * **Change prose only when the mathematics in it is wrong.** A word that carries mathematical content counts as mathematics: replacing "conversely" by "in the other order" where nothing is being converted is a correction, not a restyling. Everything else stays, including phrasing you would not have chosen yourself.

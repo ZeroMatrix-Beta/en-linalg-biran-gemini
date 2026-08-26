@@ -236,14 +236,31 @@ Let $A, B$ be statements. Then
 \]
 \end{proposition}
 
-\begin{exercise}[Double Negation and De Morgan's Laws]
+\begin{exercise}[Contrapositive of Real Inequality Implication]
+\label{exc:logic_contrapositive_reals}
+Let $x, y \in \mathbb{R}$. Formulate the contrapositive of the implication
+\[
+x \ne y \implies \bigl( \exists \varepsilon > 0 : |x - y| > \varepsilon \bigr).
+\]
+\exinfo{This exercise is Problem 5 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Negation and De Morgan's Laws for Statements and Sets]
 \label{exer:de_morgan}
-Prove \cref{prop:contrapositive} via a truth table, and show in the same way that
 \begin{enumerate}
-    \item \textbf{Double Negation:} $\neg(\neg A) = A$;
-    \item \textbf{De Morgan's Laws:} $\neg(A \wedge B) = \neg A \vee \neg B$ and $\neg(A \vee B) = \neg A \wedge \neg B$.
+    \item Let $A$ and $B$ be statements. Show the following logical equivalences:
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item $A$ is equivalent to $\neg(\neg A)$;
+        \item $\neg(A \vee B)$ is equivalent to $\neg A \wedge \neg B$;
+        \item $\neg(A \wedge B)$ is equivalent to $\neg A \vee \neg B$.
+    \end{enumerate}
+    \item Let $A$ and $B$ be two subsets contained in a universe $U$. Show the following set identities:
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item $(A \cup B)^c = A^c \cap B^c$;
+        \item $(A \cap B)^c = A^c \cup B^c$.
+    \end{enumerate}
 \end{enumerate}
-Spell the two De Morgan laws out in words. (The sign $=$ between statements here is the equivalence $\iff$ of \cref{def:equivalence}: two statements are \qt{equal} when they have the same truth value in every row of the table, which is exactly what a truth-table proof establishes).
+\exinfo{This exercise is Problem 2 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 \subsection{Predicates and Quantifiers}
@@ -338,6 +355,15 @@ In practice, we often condense multiple quantifiers of the same type:
     \item $\forall x \in X, \forall y \in X \implies \forall x,y \in X$
 \end{itemize}
 \end{remark}
+
+\begin{exercise}[Negation of Quantified Predicates with Relations]
+\label{exc:logic_distribute_negation}
+Let $x, y, z$ be variables and let $R, S$ be relations. Distribute the negation inside the parentheses in the following proposition:
+\[
+\neg \Bigl( \forall x \, \exists y \, \exists z : \bigl( R(x, y) \wedge R(z, x) \bigr) \vee \bigl( R(x, y) \wedge S(z, x) \bigr) \Bigr).
+\]
+\exinfo{This exercise is Problem 4 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{definition}[Unique Existence]
 \label{def:unique_existence}

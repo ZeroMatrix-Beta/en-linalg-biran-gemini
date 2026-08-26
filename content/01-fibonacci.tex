@@ -107,6 +107,14 @@ As a direct consequence of this structure, in order to find a general formula fo
 We will see later in the course that $\Fib$ represents a $2$-dimensional vector space. Every element in this space can be expressed by a linear combination of some two base elements (but $1$ element alone is not enough). What precisely constitutes a \qt{vector space} and \qt{dimension} will be formally defined later in the course. The corresponding picture is drawn in \cref{fig:fib_plane}.
 \end{remark}
 
+\begin{exercise}[Distinguishing Fibonacci Sequences by Random Samples]
+\label{exc:fib_dimension_two_samples}
+Let $F = (\alpha_0, \alpha_1, \alpha_2, \dots)$ and $G = (\beta_0, \beta_1, \beta_2, \dots)$ be two sequences in $\Fib$. The sequences themselves are not given explicitly, but for any natural number $i$, you can test whether $\alpha_i = \beta_i$. You can query as many distinct indices as you wish.
+
+\textbf{Claim:} It is sufficient to check equality at two distinct indices $i \ne j$ to determine with certainty whether $F = G$. Explain why this claim is true.
+\exinfo{This exercise is Problem 6 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Deriving the Explicit Formula}
 
 Perhaps one of the sequences in $\Fib$ matches a form we already know? 
@@ -271,6 +279,16 @@ Notice that the difference $\varphi - \psi = \sqrt{5}$. Therefore, $\alpha = 1/\
 a_n = \frac{1}{\sqrt{5}} (\varphi^n - \psi^n) = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right)
 \]
 \end{proof}
+
+\begin{exercise}[The Golden Ratio and Generalized Fibonacci Sequences]
+\label{exc:golden_ratio_part1}
+Recall that the classical Fibonacci sequence $\mathcal{F}_{0,1} = (a_0, a_1, \dots)$ satisfies the recurrence $a_n = a_{n-1} + a_{n-2}$ with initial values $a_0 = 0$ and $a_1 = 1$.
+\begin{enumerate}
+    \item Find an explicit closed formula for the sequence $\mathcal{F}_{1,0} = (b_0, b_1, \dots)$ with initial values $b_0 = 1$ and $b_1 = 0$.
+    \item Write an explicit formula for the general Fibonacci sequence $\mathcal{F}_{a,b}$ that depends only on the initial values $a, b$ and the index $n$.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \subsection{Where the Idea Came From: Symmetries of \texorpdfstring{$\Fib$}{Fib}}
 
@@ -520,6 +538,16 @@ Furthermore, this implies that the ratio of consecutive terms satisfies:
   every step while its magnitude decays geometrically.}
   \label{fig:fib_ratio_to_phi}
 \end{figure}
+
+\begin{exercise}[Asymptotic Ratio of Consecutive Fibonacci Numbers]
+\label{exc:golden_ratio_part2}
+Let $\mathcal{F}_{0,1} = (F_0, F_1, F_2, \dots) \in \Fib$ be the classical Fibonacci sequence. Assuming that the limit
+\[
+L := \lim_{n \to \infty} \frac{F_n}{F_{n-1}}
+\]
+exists and is non-zero, compute its exact value.
+\exinfo{This exercise is Problem 3 of Problem Sheet 1, Linear Algebra I, Autumn Semester 2025. Taken from Dr.~Menny Akka Ginosar's notes on Fibonacci sequences.}
+\end{exercise}
 
 Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n := \binom{a_{n+1}}{a_n}$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
 \begin{equation}
