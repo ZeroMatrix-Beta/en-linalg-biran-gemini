@@ -687,6 +687,18 @@ x_1 = -\frac{17}{3}a - \frac{23}{5},
 and these are \emph{all} the solutions of the original system, by \cref{thm:ero_preserve_solutions}.
 \end{example}
 
+\begin{exercise}[Gaussian Elimination on an Underdetermined System]
+\label{exc:gauss_elimination_4vars}
+Using Gaussian elimination, find the set of all solutions in $\mathbb{R}^4$ to the following system of linear equations over $\mathbb{R}$:
+\[
+\begin{cases}
+\phantom{3}x + 2y + 2z + \phantom{5}w = -1 \\
+3x + 6y + 2z + 5w = \phantom{-}1
+\end{cases}
+\]
+\exinfo{This exercise is Problem 1 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{example}[Conditions for consistency]
 \label{ex:consistency_conditions}
 Let us now see how the solutions behave for a general choice of the constants $b_1, b_2, b_3 \in \mathbb{R}$ in the system
@@ -761,6 +773,22 @@ Two cases arise from the last row.
 \end{itemize}
 So the constants $b_1, b_2, b_3$ cannot be chosen freely: the system is consistent if and only if $b_3 - b_2 + 2b_1 = 0$, and when it is, it has infinitely many solutions.
 \end{example}
+
+\begin{exercise}[Parametric Solvability of a Linear System]
+\label{exc:parametric_linear_system_solvability}
+Fix constants $b_1, b_2, b_3 \in \mathbb{R}$. Consider the system of linear equations
+\[
+\begin{pmatrix}
+0 & 7 & -2 \\
+-1 & 2 & -\frac{1}{2} \\
+4 & -1 & 0
+\end{pmatrix}
+\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+= \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}.
+\]
+Determine necessary and sufficient conditions on $b_1, b_2, b_3$ for this system to possess at least one solution, and describe the solution set $S \subseteq \mathbb{R}^3$ when solutions exist.
+\exinfo{This exercise is Problem 4 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{example}[A system with infinitely many solutions]
 \label{ex:infinitely_many_solutions}

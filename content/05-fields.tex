@@ -231,6 +231,26 @@ Let us explore $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$.
 \end{itemize}
 \end{example}
 
+\begin{exercise}[Arithmetic and Powers in the Finite Field \texorpdfstring{$\mathbb{F}_5$}{F5}]
+\label{exc:finite_field_f5_arithmetic}
+Consider the finite field $\mathbb{F}_5 := \mathbb{Z}/5\mathbb{Z} = \{0, 1, 2, 3, 4\}$.
+\begin{enumerate}
+    \item Find all pairs $(x, y) \in \mathbb{F}_5 \times \mathbb{F}_5$ satisfying $x + y = 0$.
+    \item Compute the value of $3^4 + \frac{1}{3}$ in $\mathbb{F}_5$, expressing the result as an element of $\{0, 1, 2, 3, 4\}$.
+    \item Compute the exact value of $4^{2025}$ in $\mathbb{F}_5$.
+\end{enumerate}
+\exinfo{This exercise is Problem 2 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Frobenius Endomorphism in \texorpdfstring{$\mathbb{F}_3$}{F3}]
+\label{exc:frobenius_f3}
+Prove that for all elements $a, b \in \mathbb{F}_3$:
+\[
+(a + b)^3 = a^3 + b^3.
+\]
+\exinfo{This exercise is Problem 3 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Proving Basic Properties from the Axioms}
 
 The power of an axiomatic definition is that if we can prove a theorem using \textit{only} axioms \textbf{(K1)} through \textbf{(K10)}, that theorem is universally true for \textbf{every field in existence}, whether it is the infinite space of real numbers $\mathbb{R}$, or the tiny binary world of $\mathbb{F}_2$.
@@ -300,6 +320,37 @@ b = 0
 \]
 We have proven that if the product is zero and $a$ is not zero, $b$ is forced to be zero.
 \end{proof}
+
+\begin{exercise}[Quadratic Field Extensions]
+\label{exc:quadratic_field_extensions}
+Let $(k, +, \cdot, 0, 1)$ be a field and let $\alpha \in k$ be an element such that the equation $x^2 = \alpha$ has no solution in $k$. Let $\tau$ be a formal symbol outside $k$ satisfying $\tau^2 = \alpha \in k$. Define the set
+\[
+k[\tau] := \{a + b\tau \mid a, b \in k\}
+\]
+equipped with the following addition and multiplication operations:
+\begin{align*}
++ \colon k[\tau] \times k[\tau] &\longrightarrow k[\tau], \quad (a + b\tau, c + d\tau) \longmapsto (a + c) + (b + d)\tau, \\
+\cdot \colon k[\tau] \times k[\tau] &\longrightarrow k[\tau], \quad (a + b\tau, c + d\tau) \longmapsto (ac + \alpha bd) + (bc + ad)\tau,
+\end{align*}
+with neutral elements $0 := 0 + 0\tau$ and $1 := 1 + 0\tau$.
+\begin{enumerate}
+    \item Show that $(k[\tau], +, \cdot, 0, 1)$ is a field.
+    \item Give explicit examples of this construction for different choices of the base field $k$.
+\end{enumerate}
+\exinfo{This exercise is Problem 5 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Sum and Product of Elements in Finite Fields]
+\label{exc:finite_field_sum_product}
+Let $k$ be a finite field.
+\begin{enumerate}
+    \item Let $S := \sum_{x \in k} x$ be the sum of all elements of $k$. Show that $S = 0$ if and only if $k$ has strictly more than two elements ($|k| > 2$).
+    \exhint{For $b \in k^\times := k \setminus \{0\}$, consider the multiplication map $m_b \colon k \to k, x \mapsto bx$.}
+    \item Let $M := \prod_{x \in k^\times} x$ be the product of all non-zero elements of $k$. Show that $M = -1$.
+    \exhint{Consider the inversion map $k^\times \to k^\times, x \mapsto x^{-1}$.}
+\end{enumerate}
+\exinfo{This exercise is Problem 6 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{ainote}
 The point of the chapter is easy to lose behind the ten axioms: from here on the
