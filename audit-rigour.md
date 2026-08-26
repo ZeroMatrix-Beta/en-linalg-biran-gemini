@@ -25,10 +25,16 @@ that contradicts the book's own conventions.
    routes both leave his numbering alone, so the choice between them is not a
    typesetting decision, it is a claim about **provenance**, and a reader uses
    it to tell the lecture material from the machine's additions:
-   - the statement stands *somewhere* in the notes, only without an
-     environment (running prose, a \qt{Notation} heading, inside a Remark)
-     $\Rightarrow$ unnumbered `definition*` / `proposition*` / `lemma*`, cited
-     with `\cpageref`;
+   - the statement stands *somewhere* in the notes with no environment at all,
+     in bare running prose $\Rightarrow$ unnumbered `definition*` /
+     `proposition*` / `lemma*`, cited with `\cpageref`;
+   - the statement is in the notes but already **housed** in a `remark`, a
+     `notation`, a `summary`, an `example` $\Rightarrow$ **leave it in that
+     environment** and label it where it stands. Those all carry numbers, each
+     on a counter of its own reset per chapter, with `\crefname` registered, so
+     the label takes the ordinary `\cref` and prints \qt{Remark 24.2}. Never
+     promote a Remark into a Proposition: it already has a home, and rehousing
+     it rewrites the author's presentation to buy a citation that is free;
    - the statement is *nowhere* in the notes, whether it closes a gap they
      leave implicit or lifts a step out of one of his proofs to make it
      citable $\Rightarrow$ `aidefinition` / `ailemma` / `aiproposition`, which

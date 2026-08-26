@@ -125,16 +125,25 @@ You are authorized to improve the prose and apply the established "House Style" 
 \newtheorem*{corollary*}{Corollary}
 \newtheorem*{claim*}{Claim}
 
-\newtheorem*{remark}{Remark}
-\newtheorem*{exercise}{Exercise}
-\newtheorem*{example}{Example}
-\newtheorem*{summary}{Summary}
-\newtheorem*{warmup}{Warm up}
-\newtheorem*{question}{Question}
-\newtheorem*{answer}{Answer}
-\newtheorem*{importantremark}{Important remark}
-\newtheorem*{goals}{Goals}
-\newtheorem*{conclusion}{Conclusion}
+% --- NOTE-LIKE ENVIRONMENTS: NUMBERED, EACH ON ITS OWN PER-CHAPTER COUNTER ---
+% They print "Remark 24.2", "Notation 6.2", and every one has its \crefname
+% registered, so a \label inside one takes the ordinary \cref. They do not
+% touch the Theorem/Lemma/Definition sequence, so inserting one is free. This
+% is why a statement sitting in a Remark is left in its Remark and simply
+% labelled, never promoted to a proposition*.
+\newtheorem{notation}{Notation}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{summary}{Summary}[chapter]
+\newtheorem{warmup}{Warm up}[chapter]
+\newtheorem{question}{Question}[chapter]
+\newtheorem{answer}{Answer}[chapter]
+\newtheorem{importantremark}{Important remark}[chapter]
+\newtheorem{goals}{Goals}[chapter]
+\newtheorem{conclusion}{Conclusion}[chapter]
+\newtheorem{claim}{Claim}[chapter]
+
 \newtheorem*{ainote}{AI-Note}
 \newenvironment{exercisesolution}[1][Solution]{%
   \begin{proof}[#1]%
@@ -165,7 +174,8 @@ You are authorized to improve the prose and apply the established "House Style" 
   * The reason is that the diff must stay honest. A rewritten paragraph hides which line the audit actually changed, and it quietly replaces the author's voice with the machine's. A reviewer has to be able to read the diff and see the mathematics that moved.
 
 * **Whose Statement Is It? (Unnumbered vs. `ai` Environments):** Prof. Biran's printed numbering must never shift, so a statement that is being given an environment for the *first* time must never consume the `theorem` counter. Which environment it gets depends on **whose statement it is**:
-  * **Prof. Biran's, but unhoused.** If the statement is already in the notes and simply has no environment of its own (it sits in running prose, or under a "Notation" heading, or inside a Remark), use the **unnumbered** version: `definition*`, `proposition*`, `lemma*`, `theorem*`, `corollary*`. Give it a `\label` and cite it with `\cpageref` plus a descriptive name, for example `the Definition on \cpageref{def:representation_matrix}`. **Never `\cref` an unnumbered environment:** a `\label` inside one attaches to whatever counter was stepped last, so `\cref` would silently print the enclosing chapter number.
+  * **Prof. Biran's, but unhoused.** If the statement is already in the notes and has **no environment at all**, sitting in bare running prose, use the **unnumbered** version: `definition*`, `proposition*`, `lemma*`, `theorem*`, `corollary*`. Give it a `\label` and cite it with `\cpageref` plus a descriptive name, for example `the Definition on \cpageref{def:representation_matrix}`. **Never `\cref` an unnumbered environment:** a `\label` inside one attaches to whatever counter was stepped last, so `\cref` would silently print the enclosing chapter number.
+  * **Prof. Biran's, and already housed: leave it where it is.** A statement standing inside a `remark`, a `notation`, a `summary`, an `example`, a `question` or any other note-like environment **keeps that environment**. Never promote a Remark into a `proposition*`, or a Notation into a `definition*`: the statement already has a home, and rehousing it rewrites the author's presentation to buy a citation that costs nothing. Every note-like environment runs on a counter of its own, reset per chapter, with its `\crefname` registered, so a `\label` placed inside one where it stands is cited with the ordinary `\cref` and prints "Remark 24.2", "Notation 6.2". A new environment is called for only when there is no environment whatsoever.
   * **Yours.** If the statement is nowhere in the notes, whether it closes a gap the notes leave implicit or lifts a step out of a transcribed proof to make it citable, use the **`ai`** version: `aitheorem`, `ailemma`, `aiproposition`, `aicorollary`, `aidefinition`. These are numbered and so take the ordinary `\cref`, but they run on a counter of their own and carry the robot marker, so they never shift Prof. Biran's numbers and the reader can always tell them from the lecture material. Label them `aithm:`, `ailem:`, `aiprop:`, `aicor:`, `aidef:`.
   * The test is **where the statement appears, not how hard it is**. A result Prof. Biran states without proving is still his and gets an unnumbered environment. A result he never states, even one assembled entirely out of three of his own, is yours and gets an `ai` environment. Both routes leave 17.e.1, 17.e.2, ... exactly where they were; the choice between them is a claim about provenance.
 
