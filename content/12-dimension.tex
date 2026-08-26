@@ -105,6 +105,77 @@ It remains to settle when equality holds. One direction is immediate: if $U = V$
 Conversely, if $\dim U = \dim V = n$, then $U$ contains a linearly independent list of length $n$, namely a basis $v_1, \dots, v_n$ of $U$, which stays independent when read as a list in $V$, independence being a condition on linear combinations and not on the ambient space. By \Cref{thm:basis_equivalent_characterizations}, such a list satisfies property \textbf{(a)} and is therefore also a basis for $V$. This implies $\Sp(v_1, \dots, v_n) = V$. Since $U = \Sp(v_1, \dots, v_n)$ by the construction of the basis, we conclude $U = V$.
 \end{proof}
 
+\begin{exercise}[Dimension and Bases of Matrix Subspaces]
+\label{exc:matrix_subspaces_dimension_bases}
+Compute the dimension and find an explicit basis for each of the following vector spaces over the given field:
+\begin{enumerate}
+    \item The space of upper triangular matrices in $\M_{n \times n}(\mathbb{R})$ over $\mathbb{R}$.
+    \item The space of diagonal matrices in $\M_{n \times n}(\mathbb{R})$ over $\mathbb{R}$.
+    \item The space of symmetric matrices
+    \[
+    W := \{A \in \M_{n \times n}(\mathbb{R}) \mid A\transp = A\} \subseteq \M_{n \times n}(\mathbb{R}).
+    \]
+    \item The space of matrices $A \in \M_{n \times n}(\mathbb{F}_2)$ such that the sum of the columns of $A$ is the zero vector in $\mathbb{F}_2^n$.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Subspace Dimension, Defining Equations, and Basis Selection]
+\label{exc:subspace_dimension_equations_basis_selection}
+Let $W \subseteq \mathbb{R}^4$ be the linear subspace spanned by the four vectors
+\[
+v_1 = \begin{pmatrix} 1 \\ 2 \\ 1 \\ 2 \end{pmatrix}, \qquad
+v_2 = \begin{pmatrix} 0 \\ 0 \\ -1 \\ 1 \end{pmatrix}, \qquad
+v_3 = \begin{pmatrix} 1 \\ 4 \\ 2 \\ 3 \end{pmatrix}, \qquad
+v_4 = \begin{pmatrix} 0 \\ 2 \\ 1 \\ 1 \end{pmatrix}.
+\]
+\begin{enumerate}
+    \item Compute the dimension $\dim W$.
+    \item Determine a homogeneous system of linear equations whose set of solutions is precisely $W$.
+    \item Find all possible subsets of $\{v_1, v_2, v_3, v_4\}$ that form a basis of $W$. How many such bases are there?
+\end{enumerate}
+\exhint{For part (b), if $\dim W = 3$, find a non-zero normal vector $n = (n_1, n_2, n_3, n_4)\transp \in \mathbb{R}^4$ orthogonal to all $w \in W$ (i.e., $\sum_{i=1}^4 n_i w_i = 0$ for all $w \in W$). Then $W$ is described by the single equation $n_1 x_1 + n_2 x_2 + n_3 x_3 + n_4 x_4 = 0$.}
+\exinfo{This exercise is Problem 2 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Bases and Dimensions of Various Spaces]
+\label{exc:bases_dimensions_various_spaces}
+Determine an explicit basis and the dimension of each of the following vector spaces:
+\begin{enumerate}
+    \item The solution set $S \subseteq \mathbb{R}^3$ of the homogeneous linear system:
+    \[
+    \begin{aligned}
+    x + y - z &= 0, \\
+    3x + y + 2z &= 0, \\
+    2x + 3z &= 0.
+    \end{aligned}
+    \]
+    \item The trivial vector space $\{0\}$.
+    \item The space $V := \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ viewed as a vector space over $\mathbb{C}$.
+    \item The same space $V = \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ viewed as a vector space over $\mathbb{R}$.
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Dimension of Polynomials with a Linear Factor]
+\label{exc:polynomials_linear_factor_dimension}
+Let $K$ be a field, fix the polynomial $g(X) := X + 5 \in K[X]$, and let $d \ge 1$. Compute the dimension of the subspace
+\[
+W := \{h \in K[X] \mid \deg(h) \le d \text{ and } \exists f \in K[X] \text{ such that } h = g \cdot f\} \subseteq K[X]_d.
+\]
+\exinfo{This exercise is Problem 4 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Basis and Dimension of Second-Order Harmonic ODE]
+\label{exc:harmonic_ode_solution_space}
+Determine an explicit basis and compute the dimension of the real vector space
+\[
+V := \left\{ f \colon \mathbb{R} \to \mathbb{R} \;\middle|\; f \text{ is twice differentiable and } f'' + f = 0 \right\}.
+\]
+\exhint{Recall from analysis that the only continuous solution to the initial value problem $y'' + y = 0$ with $y(0) = 0$ and $y'(0) = 0$ is the identically zero function $y \equiv 0$. Consider evaluating functions and their first derivatives at $0$.}
+\exinfo{This exercise is Problem 5 of Problem Sheet 8, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{ainote}
 \Cref{thm:wrong_length_lists}, and the trivial direction of the equality claim in
 \cref{prop:subspace_dimension_constraints}, were missing from this transcript and
