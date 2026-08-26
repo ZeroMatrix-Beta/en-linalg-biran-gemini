@@ -146,6 +146,13 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \exinfo{This exercise is Problem 4 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
+\begin{exercise}[Uncountable Dimension of $\mathbb{R}^\infty$ via Eigenvalues \faHeart]
+  \label{exc:uncountable_dimension_sequence_space}
+  Show that the real vector space $\mathbb{R}^\infty$ of all infinite sequences of real numbers has no countable basis (that is, its dimension as an $\mathbb{R}$-vector space is uncountable).
+  \exhint{By \cref{exc:eigenvalues_infinite_dimensional_sequences}, the shift operator $T : \mathbb{R}^\infty \to \mathbb{R}^\infty$, $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$ has every $\lambda \in \mathbb{R}$ as an eigenvalue with non-zero eigenvector $v_\lambda = (1, \lambda, \lambda^2, \dots)$. Since $\mathbb{R}$ is uncountable and eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent (\cref{prop:lin_indep_eigen}), the family $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ is an uncountable linearly independent subset of $\mathbb{R}^\infty$. Deduce that $\mathbb{R}^\infty$ cannot have a countable spanning set or basis.}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{The Characteristic Polynomial}
 
 \begin{proposition}[Eigenvalue Injective Criterion]\label{prop:eigen_injective}
@@ -166,6 +173,17 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \end{enumerate}
   \exhint{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part (a) immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Eigenfunctions of the Derivative Operator]
+  \label{exc:eigenfunctions_derivative_operator}
+  Consider the $\mathbb{R}$-vector space $C^\infty(\mathbb{R})$ of smooth (infinitely differentiable) functions $f : \mathbb{R} \to \mathbb{R}$, and the differentiation operator
+  \[
+  T : C^\infty(\mathbb{R}) \to C^\infty(\mathbb{R}), \quad f \mapsto f'.
+  \]
+  Compute all eigenvalues and the corresponding eigenfunctions (eigenvectors) of $T$.
+  \exhint{An eigenfunction $f \in C^\infty(\mathbb{R})$ for eigenvalue $\lambda \in \mathbb{R}$ satisfies the differential equation $f'(x) = \lambda f(x)$. Solve this ordinary differential equation to show that every $\lambda \in \mathbb{R}$ is an eigenvalue with eigenspace $\Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x})$.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
@@ -221,6 +239,16 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
   \[ \Eig_T(\lambda) := \{v \in V \mid Tv = \lambda v\} = \ker(T - \lambda \cdot \id_V) = \{v \in V \mid v \text{ is an eigenvector of } \lambda\} \cup \{0\}. \]
   Clearly (by this definition), $\Eig_T(\lambda) \subseteq V$ is a linear subspace.
 \end{definition}
+
+\begin{exercise}[Eigenspaces of an Invertible Endomorphism and Its Inverse]
+  \label{exc:eigenspaces_inverse_endomorphism}
+  Let $K$ be a field and let $V$ be a finite-dimensional vector space over $K$. Assume $T \in \End(V)$ is invertible. Show that for every non-zero scalar $\lambda \in K^*$,
+  \[
+  \Eig_T(\lambda) = \Eig_{T^{-1}}(1/\lambda).
+  \]
+  \exhint{Show that for any vector $v \in V \setminus \{0\}$, $T v = \lambda v \iff v = \lambda T^{-1} v \iff T^{-1} v = \lambda^{-1} v$.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \begin{lemma}[Properties of the Characteristic Polynomial]\label{lem:properties_char_poly}
   Let $A \in \M_{n \times n}(K)$. Then:
@@ -482,6 +510,19 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   This polynomial has no roots in $\mathbb{R}$. And, of course, $A$ has no real eigenvalues.
 \end{example}
 
+\begin{exercise}[Eigenvalues and Eigenspaces over $\mathbb{R}$ and $\mathbb{C}$ \faHeart]
+  \label{exc:eigenvalues_eigenspaces_R_vs_C}
+  In each of the following cases, let $T_i \in \End(\mathbb{R}^2)$ be the endomorphism represented by $A_i$ in the standard basis of $\mathbb{R}^2$, and let $U_i \in \End(\mathbb{C}^2)$ be the endomorphism represented by $A_i$ in the standard basis of $\mathbb{C}^2$:
+  \[
+  A_1 = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \quad
+  A_2 = \begin{pmatrix} 2 & 3 \\ -1 & 1 \end{pmatrix}, \quad
+  A_3 = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}.
+  \]
+  For each $i \in \{1, 2, 3\}$, compute the characteristic polynomial of $T_i$ and of $U_i$, find the eigenvalues of each endomorphism, and determine a basis of eigenvectors for each corresponding eigenspace.
+  \exhint{The characteristic polynomial of $A_i$ is $P_{A_i}(x) = \det(A_i - x I_2)$ regardless of the ground field. Determine whether its roots lie in $\mathbb{R}$ or only in $\mathbb{C}$. For each eigenvalue $\lambda$, compute a basis of $\ker(A_i - \lambda I_2)$ over $\mathbb{R}$ or $\mathbb{C}$ respectively, taking the span over the corresponding field.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{A quick digression about polynomials...}
 Let $0 \ne p(x) \in K[x]$ and $\lambda \in K$. By dividing $p(x)$ by $(x-\lambda)$, we can write:
 \begin{equation} \label{eq:poly_division}
@@ -653,6 +694,21 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \]
   \exhint{For each matrix, calculate the characteristic polynomial and its roots in $\mathbb{Q}$. For each eigenvalue $\lambda$, compute a basis of the eigenspace $\ker(M - \lambda I)$. A matrix is diagonalizable over $\mathbb{Q}$ if and only if its characteristic polynomial splits into linear factors over $\mathbb{Q}$ and the geometric multiplicity equals the algebraic multiplicity for every eigenvalue.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Trace, Determinant, and Characteristic Polynomial Coefficients of Diagonalizable Maps]
+  \label{exc:trace_determinant_char_poly_diagonalizable}
+  Let $K$ be a field and let $V$ be an $n$-dimensional vector space over $K$ with $n > 0$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $T \in \End(V)$ be a diagonalizable endomorphism with eigenvalues $\lambda_1, \dots, \lambda_n \in K$ (counted with multiplicity). Show that
+    \[
+    \Tr(T) = \sum_{i=1}^n \lambda_i \quad \text{and} \quad \det(T) = \prod_{i=1}^n \lambda_i.
+    \]
+    For each $0 \le k \le n$, let $c_k$ be the coefficient of $x^k$ in the characteristic polynomial $P_T(x) = \sum_{k=0}^n c_k x^k$. Give an explicit formula for $c_k$ in terms of the eigenvalues $\lambda_1, \dots, \lambda_n$.
+    \item Let $B \in \M_{2 \times 2}(\mathbb{R})$ be a diagonalizable matrix with $\Tr(B) = 0$. Show that $\det(B) \le 0$.
+  \end{enumerate}
+  \exhint{\textbf{(a)} Choose a basis $\mathcal{B}$ of eigenvectors so that $[T]_{\mathcal{B}}^{\mathcal{B}} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Use the invariance of the trace $\Tr(T) = \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$ and determinant $\det(T) = \det([T]_{\mathcal{B}}^{\mathcal{B}})$. Expanding $P_T(x) = \prod_{i=1}^n (\lambda_i - x)$ yields $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$, where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial. \textbf{(b)} The two real eigenvalues satisfy $\lambda_1 + \lambda_2 = \Tr(B) = 0$, so $\lambda_2 = -\lambda_1$. Hence $\det(B) = \lambda_1 \lambda_2 = -\lambda_1^2 \le 0$.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 \subsection{Trigonalization}
