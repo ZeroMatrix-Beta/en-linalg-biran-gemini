@@ -44,6 +44,33 @@ T(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2).
 \]
 \end{exercise}
 
+\begin{exercise}[Extending a Linear Map by Zero Outside a Subspace]
+\label{exc:extending_linear_map_by_zero}
+Let $V$ and $W$ be vector spaces over a field $K$. Suppose that $U \subsetneq V$ is a proper linear subspace, and let $S \in \Hom_K(U, W)$ be a non-trivial linear map (i.e., $S(u) \ne 0_W$ for some $u \in U$). Define the extended map $T \colon V \to W$ by
+\[
+T(v) :=
+\begin{cases}
+S(v) & \text{if } v \in U, \\
+0_W & \text{if } v \in V \setminus U.
+\end{cases}
+\]
+Is $T$ a linear map? Justify your answer.
+\exinfo{This exercise is Problem 2 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Additive Maps over the Rational Field \texorpdfstring{$\mathbb{Q}$}{Q}]
+\label{exc:additive_maps_over_rationals}
+Let $V, W$ be vector spaces over $\mathbb{Q}$. A map $f \colon V \to W$ is called \newterm{additive} if
+\[
+f(x + y) = f(x) + f(y) \qquad \text{for all } x, y \in V.
+\]
+Show that every additive map is automatically $\mathbb{Q}$-linear, so that
+\[
+\Hom_{\mathbb{Q}}(V, W) = \{f \colon V \to W \mid f \text{ is additive}\}.
+\]
+\exinfo{This exercise is Problem 7 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{example}[Fundamental Examples of Linear Maps]
 \label{ex:fundamental_linear_maps}
 \begin{enumerate}
@@ -309,6 +336,23 @@ Let $T: V \to W$ be a linear map. Show that:
     \item if $W' \subseteq W$ is a linear subspace, then $T^{-1}(W') \subseteq V$ is a linear subspace, where $T^{-1}(W') := \{v \in V \mid T(v) \in W'\}$;
     \item both statements are generalisations of \cref{prop:kernel_image}. Explain why.
 \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Preimage of Subspaces and Dimension Formula]
+\label{exc:preimage_subspace_dimension_formula}
+Let $f \colon V \to W$ be a linear map of vector spaces over $K$.
+\begin{enumerate}
+    \item Show that for every linear subspace $W' \subseteq W$, the preimage
+    \[
+    f^{-1}(W') := \{v \in V \mid f(v) \in W'\}
+    \]
+    is a linear subspace of $V$.
+    \item If $V$ is finite-dimensional, prove the dimension formula:
+    \[
+    \dim f^{-1}(W') = \dim \ker(f) + \dim\big(\Img(f) \cap W'\big).
+    \]
+\end{enumerate}
+\exinfo{This exercise is Problem 5 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 \subsection{Isomorphisms}
@@ -602,6 +646,37 @@ If two vector spaces are isomorphic ($V \cong W$), they possess identical linear
 However, it is crucial to note that identifying $V$ with $W$ requires the explicit choice of an isomorphism $T: V \to W$. Because there is usually no preferred (or \qt{canonical}) choice for this map, it is generally better practice not to forcefully identify different vector spaces simply because they are isomorphic. We will explore the nuances of canonical choices later in the course.
 \end{remark}
 
+\begin{exercise}[Isomorphisms Preserve Linear Independence, Spanning, and Bases]
+\label{exc:isomorphisms_preserve_structures}
+Let $V, W$ be vector spaces over a field $K$ and let $T \colon V \to W$ be an isomorphism. Prove directly that:
+\begin{enumerate}
+    \item $T$ maps every linearly independent subset of $V$ to a linearly independent subset of $W$;
+    \item $T$ maps every spanning set of $V$ to a spanning set of $W$;
+    \item $T$ maps every basis of $V$ to a basis of $W$.
+\end{enumerate}
+\exinfo{This exercise is Problem 6 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Endomorphisms of One-Dimensional Spaces and Canonical Isomorphisms]
+\label{exc:one_dim_endomorphism_canonical_iso}
+Let $V$ be a one-dimensional vector space over a field $K$, and let $T \in \Hom_K(V, V)$.
+\begin{enumerate}
+    \item Show that there exists a unique scalar $\lambda \in K$ such that $T(v) = \lambda v$ for all $v \in V$.
+    \item Explain why any isomorphism $V \to K$ depends essentially on a choice of a basis of $V$, whereas there is a natural (canonical) isomorphism $\Hom_K(V, V) \cong K$ that does not depend on any choice of basis.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Projections and Complementary Subspaces]
+\label{exc:projections_and_complements}
+Let $V$ be a vector space. A linear endomorphism $P \colon V \to V$ is called a \newterm{projection} (or \newterm{idempotent}) if $P^2 := P \circ P = P$.
+\begin{enumerate}
+    \item Show that for every projection $P$, its image $\Img(P)$ is a linear complement of its kernel $\ker(P)$ in $V$, so that $V = \ker(P) \oplus \Img(P)$.
+    \item Conversely, show that for any linear subspaces $W_1, W_2 \subseteq V$ such that $W_1$ is a complement of $W_2$ in $V$ ($V = W_1 \oplus W_2$), there exists a unique projection $P \colon V \to V$ with $\ker(P) = W_1$ and $\Img(P) = W_2$.
+\end{enumerate}
+\exinfo{This exercise is Problem 4 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 % def:15.b.13
 \begin{definition}[Rank of a Linear Map]
 \label{def:rank_linear_map}
@@ -620,6 +695,7 @@ Let $T: V \to W$ and $S: W \to U$ be linear maps, where $U$, $V$ and $W$ are fin
     \item if $S$ is injective, then $\rank(S \circ T) = \rank(T)$;
     \item if $T$ is surjective, then $\rank(S \circ T) = \rank(S)$.
 \end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 % Creator: Opus 5
