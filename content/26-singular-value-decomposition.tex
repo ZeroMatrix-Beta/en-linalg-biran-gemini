@@ -44,7 +44,7 @@ The definition in question is \cref{def:equivalence_and_similarity} \textbf{(a)}
 \end{remark}
 
 \begin{proof}
-We will prove only a special case: we assume $\rank A = n$ (which is true if and only if $T_A$ is injective. Hence, we also assume $n \le m$). 
+We will prove only a special case: we assume $\rank A = n$ (which is true if and only if $T_A$ is injective. Hence, we also assume $n \le m$). Both of these follow from \cref{thm:rank_nullity}: $\rank A = n$ says $\dim \ker T_A = 0$, and the image of the injective $T_A$ is then an $n$-di\-men\-sional subspace of $K^m$, so $n \le m$ by \cref{prop:subspace_dimension_constraints}.
 
 Define $B := A^* \cdot A \in \M_{n \times n}(K)$. We claim that the linear map $T_B \colon K^n \to K^n$ is injective.
 Indeed, for all $0 \neq v \in K^n$, we have:
@@ -59,7 +59,7 @@ Two steps in the chain \eqref{eq:svd_pos_def} deserve a word. The third equality
 % Extractor: Gemini 3.1 Pro
 
 Note also that if $\eta \in K$ is an eigenvalue of $B$, then $\eta \in \mathbb{R}$ (even if $K = \mathbb{C}$) and $\eta > 0$.
-Indeed, $B$ is self adjoint ($B^* = (A^* A)^* = A^* (A^*)^* = A^* A = B$), hence $\eta \in \mathbb{R}$. (This last step is \cref{lem:self_adj_properties} \textbf{(a)}, applied to the self-adjoint endomorphism $T_B$ of $K^n$). To see that $\eta > 0$, let $v$ be an eigenvector for $\eta$, so that $v \neq 0$ and $Bv = \eta v$. Substituting this into \eqref{eq:svd_pos_def} gives
+Indeed, $B$ is self adjoint ($B^* = (A^* A)^* = A^* (A^*)^* = A^* A = B$, by \cref{prop:properties_adjoint_matrix} \textbf{(e)} and \textbf{(c)}), hence $\eta \in \mathbb{R}$. (This last step is \cref{lem:self_adj_properties} \textbf{(a)}, applied to the self-adjoint endomorphism $T_B$ of $K^n$, which is self adjoint because $(T_B)^* = T_{B^*} = T_B$ by \cref{cor:adjoint_matrix_map}). To see that $\eta > 0$, let $v$ be an eigenvector for $\eta$, so that $v \neq 0$ and $Bv = \eta v$. Substituting this into \eqref{eq:svd_pos_def} gives
 \[
 0 < \langle Bv, v \rangle = \langle \eta v, v \rangle = \eta \cdot \langle v, v \rangle,
 \]
@@ -71,7 +71,7 @@ Q^{-1} A^* A Q = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end
 \]
 where $\eta_j \in \mathbb{R}$, and $\eta_j > 0$ for all $j$.
 % Creator: Opus 5
-(For $K = \mathbb{R}$ this is part \textbf{(b)} of that theorem, because $B = A\transp A$ is then a real symmetric matrix; for $K = \mathbb{C}$ it is part \textbf{(a)}, because a self-adjoint matrix is in particular normal, $B B^* = B B = B^* B$).
+(For $K = \mathbb{R}$ this is part \textbf{(b)} of that theorem, because $B = A\transp A$ is then a real symmetric matrix; for $K = \mathbb{C}$ it is part \textbf{(a)}, because a self-adjoint matrix is in particular normal, $B B^* = B B = B^* B$. That the $\eta_j$ are positive reals is the previous paragraph applied to them, which is legitimate because they are eigenvalues of $B$: the diagonal matrix $Q^{-1} B Q$ is similar to $B$, so the two have the same characteristic polynomial by \cref{lem:properties_char_poly} \textbf{(e)}, and the roots of that polynomial are the eigenvalues by \cref{aiprop:eigenvalue_iff_root}).
 % Extractor: Gemini 3.1 Pro
 
 Let $\lambda_j := +\sqrt{\eta_j} > 0$ for $j = 1, \dots, n$.
@@ -84,6 +84,9 @@ We have:
 C^* C &= \begin{pmatrix} \lambda_1^{-1} & & 0 \\ & \ddots & \\ 0 & & \lambda_n^{-1} \end{pmatrix} \underbrace{Q^{-1} A^* A Q}_{=\begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix}} \begin{pmatrix} \lambda_1^{-1} & & 0 \\ & \ddots & \\ 0 & & \lambda_n^{-1} \end{pmatrix} \\
 &= I_n.
 \end{align*}
+% Creator: Opus 5
+(Two adjoints are taken silently here. By \cref{prop:properties_adjoint_matrix} \textbf{(e)}, $C^* = \left(\operatorname{diag}(\lambda_j^{-1})\right)^* Q^* A^*$, and the two factors on the left simplify: the diagonal matrix has real entries, so it is its own adjoint, while $Q^* = Q^{-1}$ because $Q$ is orthogonal, resp. unitary, by \cref{lem:char_orthogonal_matrices} \textbf{(d)}, resp. \cref{lem:char_unitary_matrices} \textbf{(d)}. The final equality is then entry by entry: the product of the three diagonal matrices is $\operatorname{diag}(\eta_j / \lambda_j^2) = I_n$, since $\lambda_j^2 = \eta_j$).
+% Extractor: Gemini 3.1 Pro
 
 It follows that the columns of $C$ form an orthonormal system of vectors in $K^m$. To see this explicitly, let $c_1, \dots, c_n$ be the columns of $C$. The identity $C^* C = I_n$ means:
 \[
@@ -129,6 +132,9 @@ A Q \begin{pmatrix} \lambda_1^{-1} & & 0 \\ & \ddots & \\ 0 & & \lambda_n^{-1} \
 \left. \vphantom{\begin{matrix} 0 \end{matrix}} \right\} m-n
 \end{array}
 \]
+% Creator: Opus 5
+(The right-hand equality is the definition of $P$ read column by column: multiplying $P$ by the $m \times n$ block $\left(\begin{smallmatrix} I_n \\ 0 \end{smallmatrix}\right)$ selects its first $n$ columns, which are $c_1, \dots, c_n$, that is, exactly $C$).
+% Extractor: Gemini 3.1 Pro
 Multiplying from the right by the diagonal matrix of $\lambda_j$'s and then by $Q^{-1}$, we obtain:
 \[
 A = P \cdot \left(
@@ -146,3 +152,37 @@ This proves the theorem (under the assumption that $\rank A = n$).
 For the general case, see the script, chapter 7.5.
 \end{proof}
 
+
+% Creator: Opus 5
+\begin{ainote}
+Nothing in this chapter is false, and the source-verification pass had already
+supplied most of what the argument leaves implicit: the definition of
+equivalence the Remark alludes to, the two steps of \eqref{eq:svd_pos_def}, the
+reading of $C^* C = I_n$ as an orthonormality statement, and the extension of an
+orthonormal system to a basis.
+
+The rigour pass named four more. That $B := A^* A$ is self adjoint is
+\cref{prop:properties_adjoint_matrix} \textbf{(e)} and \textbf{(c)}, and passing
+from the matrix $B$ to the endomorphism $T_B$, which is what
+\cref{lem:self_adj_properties} actually speaks about, is
+\cref{cor:adjoint_matrix_map}. The computation of $C^* C$ takes two adjoints
+silently, of a real diagonal matrix and of $Q$, the second being $Q^* = Q^{-1}$
+by \cref{lem:char_orthogonal_matrices} \textbf{(d)}, resp.
+\cref{lem:char_unitary_matrices} \textbf{(d)}. The identity
+$C = P \cdot \left(\begin{smallmatrix} I_n \ 0 \end{smallmatrix}\right)$ is the
+definition of $P$ read column by column. And the reduction $n \le m$ announced in
+the first line of the proof is \cref{thm:rank_nullity} together with
+\cref{prop:subspace_dimension_constraints}.
+
+The one step that was doing real work unannounced: the proof calls the diagonal
+entries $\eta_j$ of $Q^{-1} B Q$ positive reals, which is the paragraph above
+applied to them, and that paragraph speaks about *eigenvalues* of $B$. The two
+are the same list because $Q^{-1} B Q$ and $B$ are similar, hence share a
+characteristic polynomial by \cref{lem:properties_char_poly} \textbf{(e)}, whose
+roots are the eigenvalues by \cref{aiprop:eigenvalue_iff_root}. Without that,
+$\lambda_j := +\sqrt{\eta_j}$ is not known to be defined.
+
+On the numbering: Prof. Biran numbers nothing in this two-page section, and the
+file's own header explains why printing the single theorem as 26.a.1 shifts
+nothing. That decision is left as it stands.
+\end{ainote}

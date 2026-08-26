@@ -91,8 +91,9 @@ that contradicts the book's own conventions.
 | 22b | `content/22b-euclidean-hermetian-spaces-b.tex` | done, pushed (`2477582`) |
 | 23a | `content/23a-dual-spaces-inner-products-a.tex` | done, pushed (`71b01c9`) |
 | 24 | `content/24-spectral-thoerem.tex` | done, pushed (`8b3fcb9`) |
-| 25 | `content/25-isometries.tex` | done |
-| **26 onwards** | 26, 27, 28a, 28b | **not started; this is where to resume** |
+| 25 | `content/25-isometries.tex` | done, pushed (`6311bc5`) |
+| 26 | `content/26-singular-value-decomposition.tex` | done |
+| **27 onwards** | 27, 28a, 28b | **not started; this is where to resume** |
 | 1--9 | the foundational chapters | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -566,6 +567,25 @@ in `prop:classification_so3`. The coordinate map $\Phi$ in the proof of
 `cor:2d_isometry_matrix` was called an isometry with no argument; ch. 24's
 `ailem:norm_in_orthonormal_basis` **(a)** is exactly the missing half, which is
 the first time the new `ai` lemma has paid for itself outside its own chapter.
+
+### Ch. 26, the square root that was not known to exist
+
+Two pages, one theorem, nothing false, and the source pass had already filled in
+most of the obvious holes. The step that was still doing real work unannounced:
+the proof sets $\lambda_j := +\sqrt{\eta_j}$ where the $\eta_j$ are the diagonal
+entries of $Q^{-1} B Q$, having just proved that the **eigenvalues** of
+$B := A^* A$ are positive reals. The two lists coincide because $Q^{-1} B Q$ and
+$B$ are similar, so `lem:properties_char_poly` **(e)** and
+`aiprop:eigenvalue_iff_root` connect them; until that is said, the square root is
+not known to be defined.
+
+Three smaller ones: $B$ being self adjoint is
+`prop:properties_adjoint_matrix` **(e)** and **(c)**, and moving from the matrix
+$B$ to the endomorphism $T_B$, which is what `lem:self_adj_properties` actually
+speaks about, is `cor:adjoint_matrix_map`; the computation of $C^* C$ takes the
+adjoints of a real diagonal matrix and of $Q$ silently, the second being
+$Q^* = Q^{-1}$; and $n \le m$, announced in the proof's first line, is
+`thm:rank_nullity` with `prop:subspace_dimension_constraints`.
 
 ## Checked in ch. 17e and found correct
 
