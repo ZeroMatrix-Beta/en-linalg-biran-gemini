@@ -1,0 +1,82 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:matrix_powers_2x2}]
+\label{sol:matrix_powers_2x2}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$.
+    Computing the matrix square:
+    \[
+    A^2 = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} a^2 + bc & ab + bd \\ ca + dc & cb + d^2 \end{pmatrix} = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & bc + d^2 \end{pmatrix}.
+    \]
+
+    \item Let $T = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$.
+    We claim that for all $n \in \mathbb{N}$:
+    \[
+    T^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}.
+    \]
+    We prove this formula by mathematical induction on $n \ge 1$:
+    \begin{itemize}
+        \item \emph{Base case ($n = 1$):} $T^1 = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$, which matches the formula with $n = 1$.
+        \item \emph{Induction step:} Assume $T^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}$ holds for some $n \ge 1$. Then:
+        \[
+        T^{n+1} = T^n \cdot T = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1\cdot 1 + n \cdot 0 & 1\cdot 1 + n \cdot 1 \\ 0 \cdot 1 + 1 \cdot 0 & 0 \cdot 1 + 1 \cdot 1 \end{pmatrix} = \begin{pmatrix} 1 & n+1 \\ 0 & 1 \end{pmatrix}.
+        \]
+        This completes the induction step. \qedhere
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:powers_2x2_nilpotency}]
+\label{sol:powers_2x2_nilpotency}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $A \in \M_{2 \times 2}(K)$ such that $A^2 \ne 0$.
+    Suppose for contradiction that $A^k = 0$ for some $k \ge 3$.
+    Taking determinants, $\det(A^k) = (\det A)^k = 0$, which implies $\det A = 0$.
+    For any $2 \times 2$ matrix $A$, direct expansion verifies the identity $A^2 - \Tr(A)A + \det(A)I_2 = 0$.
+    Since $\det A = 0$, this simplifies to:
+    \[
+    A^2 = \Tr(A) A.
+    \]
+    Multiplying repeatedly by $A$ yields $A^m = (\Tr A)^{m-1} A$ for all $m \ge 1$.
+    If $\Tr(A) = 0$, then $A^2 = 0 \cdot A = 0$, which contradicts $A^2 \ne 0$.
+    If $\Tr(A) \ne 0$, then $A^k = (\Tr A)^{k-1} A = 0 \implies A = 0$, which implies $A^2 = 0$, again a contradiction.
+    Therefore, $A^k \ne 0$ for all integers $k \ge 3$.
+
+    \item For any field $K$, consider the non-zero strictly upper triangular matrix:
+    \[
+    A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \in \M_{2 \times 2}(K) \setminus \{0\}.
+    \]
+    Direct calculation gives $A^2 = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = 0$.
+    Thus $A^n = 0$ for $n = 2$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:one_sided_inverse_finite_dim}]
+\label{sol:one_sided_inverse_finite_dim}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $V, W$ be finite-dimensional vector spaces with $\dim V = \dim W = n$, and let $S \in \Hom(V, W)$ and $T \in \Hom(W, V)$ satisfy $T \circ S = \id_V$.
+    \begin{itemize}
+        \item \emph{$S$ is injective:} If $v \in \ker(S)$, then $S(v) = 0$, so $v = \id_V(v) = (T \circ S)(v) = T(S(v)) = T(0) = 0$. Thus $\ker(S) = \{0\}$.
+        \item \emph{$S$ is an isomorphism:} By \cref{cor:equal_dim_iso} \textbf{(c)} (a consequence of the Rank-Nullity Theorem \cref{thm:rank_nullity}), for a linear map between vector spaces of equal finite dimension $\dim V = \dim W = n < \infty$, injectivity is equivalent to bijectivity. Thus $S \colon V \to W$ is an isomorphism.
+        \item \emph{$T = S^{-1}$:} Since $S$ is invertible, we multiply $T \circ S = \id_V$ on the right by $S^{-1}$ to obtain $T = T \circ (S \circ S^{-1}) = (T \circ S) \circ S^{-1} = \id_V \circ S^{-1} = S^{-1}$.
+    \end{itemize}
+
+    \item Let $A, B \in \M_{n \times n}(K)$ such that $AB = I_n$.
+    Consider the endomorphisms $T_A, T_B \in \End(K^n)$ defined by $T_A(v) = Av$ and $T_B(v) = Bv$.
+    The equation $AB = I_n$ implies $T_A \circ T_B = \id_{K^n}$.
+    By part (a) (with $V = W = K^n$), $T_B$ is an isomorphism with $T_B^{-1} = T_A$.
+    Hence $T_B \circ T_A = \id_{K^n}$, which means $BA = I_n$.
+    Thus $A$ is invertible with inverse $A^{-1} = B$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:gl_not_subspace_sc}]
+\label{sol:gl_not_subspace_sc}
+The correct answer is \textbf{(a): not a real linear subspace of $\M_{n \times n}(\mathbb{R})$}.
+
+\textbf{Justification:} A linear subspace must contain the zero element of the ambient vector space.
+However, the zero matrix $0 \in \M_{n \times n}(\mathbb{R})$ has determinant $\det(0) = 0$, so $0 \notin \GL_n(\mathbb{R})$.
+Furthermore, $\GL_n(\mathbb{R})$ is not closed under addition: for instance, $I_n \in \GL_n(\mathbb{R})$ and $-I_n \in \GL_n(\mathbb{R})$, but their sum $I_n + (-I_n) = 0 \notin \GL_n(\mathbb{R})$. \qedhere
+\end{exercisesolution}

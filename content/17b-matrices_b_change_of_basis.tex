@@ -119,6 +119,7 @@ We define two types of relations between matrices:
     \item Show that two square matrices $M, N \in \M_{n \times n}(K)$ are similar if and only if there exists an $n$-di\-men\-sional space $V$, an endomorphism $T: V \to V$, and two bases $\mathcal{B}$ and $\mathcal{B}'$ of $V$ such that $M = [T]_{\mathcal{B}}^{\mathcal{B}}$ and $N = [T]_{\mathcal{B}'}^{\mathcal{B}'}$.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:equivalence_similarity_properties}
 \end{exercise}
 
 \begin{exercise}[Similarity of Matrix Products]
@@ -129,6 +130,7 @@ Let $A, B \in \M_{n \times n}(K)$.
     \item Does the conclusion hold in general if neither $A$ nor $B$ is invertible? (Provide a proof or a counterexample).
 \end{enumerate}
 \exinfo{This exercise is Problem 4 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:similarity_of_matrix_products}
 \end{exercise}
 
 \begin{exercise}[Rank Invariance under Similarity and Fixed Vectors]
@@ -146,6 +148,7 @@ Which of the following statements hold?
     \item If $r < n$, then there exists a non-zero vector $v \in K^n \setminus \{0\}$ such that $Av = v$.
 \end{enumerate}
 \exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:rank_invariance_similarity_mc}
 \end{exercise}
 
 \begin{exercise}[Change of Basis in Polynomial Spaces]
@@ -156,6 +159,7 @@ Consider the two ordered bases of $\mathbb{R}[x]_2$:
 \]
 Determine the change of basis (transition) matrix $Q := [\id_{\mathbb{R}[x]_2}]_{\mathcal{B}}^{\mathcal{C}}$.
 \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:change_of_basis_polynomials_mc}
 \end{exercise}
 
 \begin{exercise}[Properties of Linear Maps and Base Changes]
@@ -168,6 +172,7 @@ Which of the following statements is \emph{false} in general?
     \item The representation matrix of an isomorphism with respect to any choices of bases is invertible.
 \end{enumerate}
 \exinfo{This exercise is Single Choice Question 1 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:linear_maps_and_base_changes_sc}
 \end{exercise}
 
 \begin{proposition}[Normal Form for Linear Maps]
@@ -266,6 +271,7 @@ has columns $e_1, \dots, e_r, 0, \dots, 0$ and hence column rank $r$. There is t
 \label{sec:solutions_change_of_basis}
 
 \begin{exercisesolution}[Proof of \cref{exc:equivalence_similarity_properties}]
+\label{sol:equivalence_similarity_properties}
 Throughout, write $A \sim B$ for equivalence and $A \approx B$ for similarity.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -301,6 +307,8 @@ Throughout, write $A \sim B$ for equivalence and $A \approx B$ for similarity.
     \]
 \end{enumerate}
 \end{exercisesolution}
+
+\input{content/17b-matrices_b_change_of_basis-solutions.tex}
 
 \begin{ainote}
 Every numbered statement of the notes for this section is present in the

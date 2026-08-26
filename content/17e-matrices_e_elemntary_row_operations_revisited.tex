@@ -43,6 +43,7 @@ We define the following three types of elementary matrices:
 \label{exc:permutation_matrix_form}
 Show that the Type II elementary matrix can be written explicitly as $P_{ij} = I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:permutation_matrix_form}
 \end{exercise}
 
 \begin{example}[Examples of Elementary Matrices]
@@ -138,6 +139,7 @@ Every elementary matrix is invertible, and the inverse of each is an elementary 
 \label{exc:elementary_matrix_inverses}
 The notes leave this proof as an exercise. \textit{(Hint:} Note that $P_{ij} \cdot P_{ij}$ is the matrix obtained from $P_{ij}$ by exchanging rows $i$ and $j$, which brings us immediately back to $I_n$. Apply similar logical steps for the other types.\textit{)}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:elementary_matrix_inverses}
 \end{exercise}
 
 % Creator: Opus 5
@@ -204,6 +206,7 @@ Let $B, C, D \in \M_{n \times n}(K)$. Then:
 \label{exc:block_matrix_multiplication}
 The notes leave this proof as an exercise: it follows directly from the definition of matrix multiplication. \textit{(Hint:} Consider the $(k,\ell)$-th entry of $B \cdot (C \mid D)$ and show that it matches the $(k,\ell)$-th entry of $(B \cdot C \mid B \cdot D)$.\textit{)}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:block_matrix_multiplication}
 \end{exercise}
 
 \begin{proof}[Proof of \Cref{thm:matrix_inversion_algorithm}]
@@ -257,6 +260,7 @@ For each of the following matrices, determine whether it is invertible, and if s
     \item $D = \begin{pmatrix} 1 & 2 & -3 & 1 \\ -1 & 3 & -3 & -2 \\ 2 & 0 & 1 & 5 \\ 3 & 1 & -2 & 6 \end{pmatrix}$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 13 (repeated on Problem Sheet 14), Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:explicit_inversion_matrices}
 \end{exercise}
 
 \begin{exercise}[Parametric Gaussian Elimination and Invertibility]
@@ -271,6 +275,7 @@ M_\alpha = \begin{pmatrix}
 \end{pmatrix}.
 \]
 \exinfo{This exercise is Problem 5 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:parametric_gaussian_elimination_invertibility}
 \end{exercise}
 
 \begin{exercise}[Bruhat Decomposition]
@@ -284,6 +289,7 @@ A = B P B'.
 \end{theorem*}
 \exhint{Choose an invertible upper triangular matrix $U$ such that the sum of the number of leading zeros in all rows of $UA$ is maximal. Then find a permutation matrix $Q$ such that $QUA$ is an invertible upper triangular matrix.}
 \exinfo{This exercise is Problem 6 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:bruhat_decomposition}
 \end{exercise}
 
 \begin{exercise}[Parametric $3 \times 3$ Matrix Invertibility]
@@ -294,6 +300,7 @@ A = \begin{pmatrix} 1 & x & 1 \\ 3 & 3 & x \\ 0 & 3 & 1 \end{pmatrix}
 \]
 \emph{not} invertible?
 \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:parametric_3x3_invertibility_mc}
 \end{exercise}
 
 % Creator: Opus 5
@@ -301,6 +308,7 @@ A = \begin{pmatrix} 1 & x & 1 \\ 3 & 3 & x \\ 0 & 3 & 1 \end{pmatrix}
 \label{sec:solutions_eros_revisited}
 
 \begin{exercisesolution}[Proof of \cref{exc:permutation_matrix_form}]
+\label{sol:permutation_matrix_form}
 Both sides are $n \times n$ matrices, so it suffices to compare entries. Write $M := I_n - E_{ii} - E_{jj} + E_{ij} + E_{ji}$, and recall that the $(k,\ell)$-entry of $E_{pq}$ is $1$ if $(k,\ell) = (p,q)$ and $0$ otherwise, while the $(k,\ell)$-entry of $I_n$ is $\delta_{k\ell}$. Since $i \neq j$, the four matrix units involved sit in four distinct positions, and the entries of $M$ are:
 \begin{itemize}
     \item $M_{kk} = 1$ for $k \notin \{i, j\}$, from $I_n$ alone;
@@ -312,6 +320,7 @@ That is exactly the matrix obtained from $I_n$ by exchanging rows $i$ and $j$: r
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lemma:row_operations_matrix_multiplication} \textbf{(a)}]
+\label{sol:row_operations_matrix_multiplication_a}
 Let $A = (a_{k\ell}) \in \M_{n \times p}(K)$. Using $Q_{ij}(\alpha) = I_n + \alpha E_{ij}$ and distributivity,
 \[
 Q_{ij}(\alpha) \cdot A = (I_n + \alpha E_{ij}) A = A + \alpha \, E_{ij} A.
@@ -324,6 +333,7 @@ which is precisely the operation $R_i + \alpha R_j \longrightarrow R_i$. The cal
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lemma:elementary_matrix_inverses}]
+\label{sol:elementary_matrix_inverses}
 For Type II, the hint does it: $P_{ij} \cdot P_{ij}$ is, by \cref{lemma:row_operations_matrix_multiplication} \textbf{(b)}, the matrix obtained from $P_{ij}$ by exchanging its rows $i$ and $j$, and exchanging them a second time restores $I_n$. So $P_{ij}^{-1} = P_{ij}$.
 
 For Type I, apply \cref{lemma:row_operations_matrix_multiplication} \textbf{(a)} twice, or compute directly using $i \neq j$, which gives $E_{ij} E_{ij} = 0$:
@@ -336,12 +346,15 @@ For Type III, $S_i(\alpha) S_i(\alpha^{-1})$ scales the $i$-th row of $S_i(\alph
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lemma:block_matrix_multiplication}]
+\label{sol:block_matrix_multiplication}
 Write $(C \mid D) \in \M_{n \times 2n}(K)$ for the matrix whose first $n$ columns are those of $C$ and whose last $n$ columns are those of $D$, and call these columns $u_1, \dots, u_{2n}$. By the column-wise description of a product (\cref{sec:matrix_multiplication}), multiplying on the left by $B$ acts on each column separately:
 \[
 B \cdot \begin{pmatrix} | & & | \\ u_1 & \dots & u_{2n} \\ | & & | \end{pmatrix} = \begin{pmatrix} | & & | \\ B u_1 & \dots & B u_{2n} \\ | & & | \end{pmatrix}.
 \]
 The first $n$ columns of $(C \mid D)$ are the columns $c_1, \dots, c_n$ of $C$, and the last $n$ are the columns $d_1, \dots, d_n$ of $D$. So the first $n$ columns of $B \cdot (C \mid D)$ are $Bc_1, \dots, Bc_n$, that is, the columns of $B \cdot C$, and the last $n$ are $Bd_1, \dots, Bd_n$, the columns of $B \cdot D$. Hence $B \cdot (C \mid D) = (B \cdot C \mid B \cdot D)$.
 \end{exercisesolution}
+
+\input{content/17e-matrices_e_elemntary_row_operations_revisited-solutions.tex}
 
 \begin{ainote}
 All five numbered statements of the notes are present in the transcript, in the
@@ -412,3 +425,4 @@ where it read \qt{But taking the transpose again}, nothing was in fact being
 transposed, the step being the observation that the rows of $A\transp$ are the
 columns of $A$. The logic was right either way.
 \end{ainote}
+

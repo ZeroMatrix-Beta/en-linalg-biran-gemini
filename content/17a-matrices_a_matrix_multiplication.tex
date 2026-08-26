@@ -112,6 +112,7 @@ Consider the real vector space $\M_{2 \times 2}(\mathbb{R})$.
     Prove your formula by mathematical induction.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:matrix_powers_2x2}
 \end{exercise}
 
 \begin{exercise}[Nilpotency and Powers of $2 \times 2$ Matrices]
@@ -122,6 +123,7 @@ Consider the space $\M_{2 \times 2}(K)$ of $2 \times 2$ matrices over a field $K
     \item Find a field $K$ and a non-zero matrix $A \in \M_{2 \times 2}(K) \setminus \{0\}$ such that $A^n = 0$ for some $n \in \mathbb{N}$.
 \end{enumerate}
 \exinfo{This exercise is Problem 5 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:powers_2x2_nilpotency}
 \end{exercise}
 
 \subsection{Some Special Cases}
@@ -186,6 +188,7 @@ Let $V$ be a finite-di\-men\-sional vector space, and let $n := \dim V$. Let $\i
 \label{exc:identity_represents_id}
 Prove the Proposition on \cpageref{prop:identity_represents_id}.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:identity_represents_id}
 \end{exercise}
 
 \subsection{Properties of Matrix Multiplication}
@@ -229,6 +232,7 @@ Let $K$ be a field.
     \item Consider the subspace $U \subseteq \M_{n \times n}(K)$ of upper triangular matrices. Show that the matrix product of any two elements in $U$ remains in $U$.
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:scaling_map_matrix_d}
 \end{exercise}
 
 \begin{exercise}[One-Sided Inverses in Finite Dimensions]
@@ -238,6 +242,7 @@ Let $K$ be a field.
     \item Let $A, B \in \M_{n \times n}(K)$ such that $A \cdot B = I_n$. Show that $A$ is invertible with inverse $B$ (i.e., $B \cdot A = I_n$ as well).
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:one_sided_inverse_finite_dim}
 \end{exercise}
 
 \begin{exercise}[The General Linear Group is Not a Subspace]
@@ -248,6 +253,7 @@ The set $\GL_n(\mathbb{R})$ of all invertible $n \times n$ real matrices is:
     \item a real linear subspace of $\M_{n \times n}(\mathbb{R})$
 \end{enumerate}
 \exinfo{This exercise is Single Choice Question 3 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:gl_not_subspace_sc}
 \end{exercise}
 
 \begin{proof}
@@ -337,6 +343,7 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$, let $\alpha \in K$, a
 \label{exc:scaling_map_and_statement_d}
 Prove \cref{claim:scaling_map_matrix}, and use it to prove statement \textbf{(d)} of \cref{prop:matrix_multiplication_properties}.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:scaling_map_matrix_d}
 \end{exercise}
 
 \begin{remark}
@@ -507,6 +514,7 @@ We apply this equality for the standard basis vectors $w = e_1, w = e_2, \dots, 
     \item Let $A \in \GL_n(K)$. Prove that $A\transp \in \GL_n(K)$ and that $(A\transp)^{-1} = (A^{-1})\transp$.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:transpose_properties_multiplication}
 \end{exercise}
 
 \begin{definition}[Triangular and Diagonal Matrices]
@@ -538,10 +546,12 @@ at the end of this section, on \cpageref{sec:solutions_matrix_multiplication}.
 \label{sec:solutions_matrix_multiplication}
 
 \begin{exercisesolution}[Proof that the Identity Map is Represented by $I_n$ (on \cpageref{prop:identity_represents_id})]
+\label{sol:identity_represents_id}
 Let $\mathcal{B} = (v_1, \dots, v_n)$. The $j$-th column of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is the coordinate vector of $\id_V(v_j) = v_j$ with respect to $\mathcal{B}$. Writing $v_j = 0 \cdot v_1 + \dots + 1 \cdot v_j + \dots + 0 \cdot v_n$ shows that this coordinate vector is $e_j$, whose $i$-th entry is $\delta_{ij}$. So the $(i,j)$-entry of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is $\delta_{ij}$, which is exactly $I_n$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{claim:scaling_map_matrix} and of \cref{prop:matrix_multiplication_properties} \textbf{(d)}]
+\label{sol:scaling_map_matrix_d}
 The map $Q(v) := \alpha v$ is linear, since $Q(a v + b v') = \alpha(a v + b v') = a \alpha v + b \alpha v' = a Q(v) + b Q(v')$. For its matrix, the $j$-th column of $[Q]_{\mathcal{B}}^{\mathcal{B}}$ is $[Q(v_j)]_{\mathcal{B}} = [\alpha v_j]_{\mathcal{B}} = \alpha e_j$, and a matrix whose $j$-th column is $\alpha e_j$ for every $j$ is precisely $\alpha I_n$.
 
 Now let $\alpha \in K$, $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. Applying the claim in $K^m$ with respect to the standard basis, multiplication by $\alpha$ on $K^m$ is represented by $\alpha I_m$, and therefore $\alpha C = (\alpha I_m) \cdot C$ for every $C \in \M_{m \times q}(K)$; likewise $\alpha A = (\alpha I_m) A$. Using associativity, \cref{prop:matrix_multiplication_properties} \textbf{(a)}, twice:
@@ -556,6 +566,7 @@ again by associativity. Together these give $\alpha(AB) = (\alpha A)B = A(\alpha
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:transpose_properties_multiplication}]
+\label{sol:transpose_properties_multiplication}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Write $A = (a_{ij}) \in \M_{m \times n}(K)$ and $B = (b_{jk}) \in \M_{n \times p}(K)$, and put $C := AB$, so that $c_{ik} = \sum_{\ell=1}^{n} a_{i\ell} b_{\ell k}$. Both $(AB)\transp$ and $B\transp A\transp$ lie in $\M_{p \times m}(K)$, so it suffices to compare entries. The $(k,i)$-entry of $(AB)\transp$ is
     \[
@@ -575,6 +586,7 @@ again by associativity. Together these give $\alpha(AB) = (\alpha A)B = A(\alpha
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lemma:triangular_multiplication_closure}]
+\label{sol:triangular_multiplication_closure}
 We give the upper triangular case; the other two follow from it.
 
 Let $A = (a_{ij})$ and $B = (b_{ij})$ be upper triangular, so that $a_{ik} = 0$ whenever $i > k$, and $b_{kj} = 0$ whenever $k > j$. Write $C := AB = (c_{ij})$, so that $c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}$.
@@ -592,6 +604,8 @@ For the lower triangular case, note that $A$ is lower triangular if and only if 
 \]
 which makes $AB$ lower triangular. Finally, a matrix is diagonal exactly when it is both upper and lower triangular, so the diagonal case follows from the two cases just proved.
 \end{exercisesolution}
+
+\input{content/17a-matrices_a_matrix_multiplication-solutions.tex}
 
 \begin{ainote}
 Every numbered statement of the notes for this section is present, and
@@ -617,3 +631,5 @@ there, while its proof had inherited the maps fixed for \textbf{(a)}.
 The notes mark four things \qt{Exc.}; all four are stated as exercises and solved
 on \cpageref{sec:solutions_matrix_multiplication}.
 \end{ainote}
+
+

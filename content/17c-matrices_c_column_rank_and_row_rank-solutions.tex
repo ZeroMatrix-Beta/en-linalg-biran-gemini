@@ -1,0 +1,126 @@
+﻿\section{Solutions}\label{sec:solutions_column_and_row_rank}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:rank_one_all_ones_matrix}]
+\label{sol:rank_one_all_ones_matrix}
+Let $V$ and $W$ be finite-dimensional vector spaces over $K$ with $n = \dim V$ and $m = \dim W$, and let $T \in \Hom(V, W)$.
+
+\begin{itemize}
+    \item \textbf{($\Leftarrow$) If $[T]_{\mathcal{C}}^{\mathcal{B}} = J_{m \times n}$ (the all-ones matrix):}
+    Every column of $[T]_{\mathcal{C}}^{\mathcal{B}}$ is the vector $(1, 1, \dots, 1)\transp \in K^m$. The column space $\Img(T)$ is therefore the $1$-dimensional subspace spanned by $(1, 1, \dots, 1)\transp$, which means $\rank(T) = \rankcol(J_{m \times n}) = 1$.
+
+    \item \textbf{($\Rightarrow$) If $\rank(T) = 1$:}
+    Then $\dim \Img(T) = 1$. Choose a non-zero vector $w \in \Img(T)$, so that $\Img(T) = \Sp(w)$.
+    By the Rank-Nullity Theorem (\cref{thm:rank_nullity}), $\dim \ker(T) = n - 1$. Choose a basis $(u_2, \dots, u_n)$ of $\ker(T)$.
+    Since $w \in \Img(T)$, there exists $v_1 \in V$ such that $T(v_1) = w \ne 0$. Note $v_1 \notin \ker(T)$.
+    For each $j \in \{2, \dots, n\}$, define:
+    \[
+    v_j := v_1 + u_j.
+    \]
+    Then $T(v_j) = T(v_1) + T(u_j) = w + 0 = w$ for all $j \in \{1, \dots, n\}$.
+    
+    We check that $\mathcal{B} = (v_1, v_2, \dots, v_n)$ is a basis of $V$:
+    Suppose $\sum_{j=1}^n c_j v_j = 0_V$. Expanding the definition of $v_j$:
+    \[
+    c_1 v_1 + \sum_{j=2}^n c_j (v_1 + u_j) = \left(\sum_{j=1}^n c_j\right) v_1 + \sum_{j=2}^n c_j u_j = 0_V.
+    \]
+    Applying $T$ to both sides gives $\left(\sum_{j=1}^n c_j\right) w = 0_W \implies \sum_{j=1}^n c_j = 0$ (since $w \ne 0$).
+    This reduces the equation to $\sum_{j=2}^n c_j u_j = 0_V$. Since $(u_2, \dots, u_n)$ is linearly independent, $c_2 = \dots = c_n = 0$, which then forces $c_1 = 0$. Thus $\mathcal{B}$ is a basis of $V$.
+
+    Now construct a basis $\mathcal{C} = (w_1, \dots, w_m)$ of $W$ such that $w = \sum_{i=1}^m w_i$:
+    \begin{itemize}
+        \item If $m = 1$, set $w_1 := w$.
+        \item If $m \ge 2$, extend $w$ to a basis $(w, w'_2, \dots, w'_m)$ of $W$. Define $w_1 := w - \sum_{i=2}^m w'_i$, and $w_i := w'_i$ for $2 \le i \le m$. Then $\sum_{i=1}^m w_i = w$, and $\mathcal{C} = (w_1, w_2, \dots, w_m)$ is clearly a basis of $W$ because $w = w_1 + \sum_{i=2}^m w'_i \in \Sp(\mathcal{C})$.
+    \end{itemize}
+    With these bases, for every $j \in \{1, \dots, n\}$:
+    \[
+    T(v_j) = w = 1 \cdot w_1 + 1 \cdot w_2 + \dots + 1 \cdot w_m \implies [T(v_j)]_{\mathcal{C}} = \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix}.
+    \]
+    Thus every entry of $[T]_{\mathcal{C}}^{\mathcal{B}}$ is $1$.
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:rank_invariance_invertible_matrix_sc}]
+\label{sol:rank_invariance_invertible_matrix_sc}
+By \cref{lemma:rank_invariance_equivalence} \textbf{(a)}, multiplication on the left by an invertible matrix $B \in \GL_n(K)$ corresponds to composing with the isomorphism $T_B \colon K^n \to K^n$, which preserves the rank of the map. Hence:
+\[
+\rank(BA) = \rank(A).
+\]
+Therefore, the correct choice is \textbf{(3): $\rank(BA) = \rank(A)$}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:rank_2x2_matrix_sc}]
+\label{sol:rank_2x2_matrix_sc}
+Let $A = \begin{pmatrix} 1 & 3 \\ -3 & -9 \end{pmatrix}$.
+Performing the elementary row operation $R_2 \to R_2 + 3R_1$ gives the row echelon form:
+\[
+\begin{pmatrix} 1 & 3 \\ 0 & 0 \end{pmatrix}.
+\]
+The echelon form contains exactly $1$ pivot (non-zero row), so by \cref{rem:rank_notation_and_properties} \textbf{(2)}, $\rank(A) = 1$.
+Therefore, the correct choice is \textbf{(2): $1$}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:invertibility_characterizations_rep_matrix}]
+\label{sol:invertibility_characterizations_rep_matrix}
+Let $M := [T]_{\mathcal{B}}^{\mathcal{A}} \in \M_{n \times n}(K)$.
+By \cref{prop:invertibility_isomorphism_equivalence}, $T$ is an automorphism if and only if $M \in \GL_n(K)$ is invertible, which is equivalent to $\rank(M) = n$.
+
+\begin{itemize}
+    \item \textbf{Equivalence with (2) and (3):}
+    The columns $C_1, \dots, C_n$ of $M$ are $n$ vectors in the $n$-dimensional vector space $K_{\mathrm{col}}^n$.
+    The column rank is $\rankcol(M) = \dim \Sp(C_1, \dots, C_n)$.
+    By \cref{sum:finite_dim_properties}, for $n$ vectors in an $n$-dimensional space, linear independence, spanning the space, and having maximal dimension $n$ are all equivalent.
+    Thus $(1) \iff (2) \iff (3)$.
+
+    \item \textbf{Equivalence with (4) and (5):}
+    By the Main Theorem of this chapter (\cref{thm:rank_row_column_equality}), $\rankrow(M) = \rankcol(M) = \rank(M)$.
+    The rows $R_1, \dots, R_n$ of $M$ are $n$ vectors in the $n$-dimensional space $K_{\mathrm{row}}^n$.
+    Applying the same dimension argument to the row vectors gives $(1) \iff (4) \iff (5)$.
+\end{itemize}
+Thus all five statements are equivalent to $\rank(M) = n$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:ranks_parametric_families_rational_matrices}]
+\label{sol:ranks_parametric_families_rational_matrices}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Matrix $A = (k \cdot \ell)_{1 \le k, \ell \le n}$:}
+    The $k$-th row of $A$ is $R_k = (k \cdot 1, k \cdot 2, \dots, k \cdot n) = k \cdot (1, 2, \dots, n)$.
+    Every row is a scalar multiple of the non-zero vector $R_1 = (1, 2, \dots, n)$.
+    Therefore, $\operatorname{Row}(A) = \Sp(R_1)$, so:
+    \[
+    \rank(A) = 1 \qquad \text{for all } n \ge 1.
+    \]
+
+    \item \textbf{Matrix $B = \left((-1)^{k+\ell}(k + \ell - 1)\right)_{1 \le k, \ell \le n}$:}
+    Notice that $B = D \tilde{B} D$, where $D = \operatorname{diag}(-1, 1, -1, 1, \dots) \in \GL_n(\mathbb{Q})$ and $\tilde{B}_{k\ell} = k + \ell - 1$.
+    Since $D$ is invertible, $\rank(B) = \rank(\tilde{B})$ by \cref{lemma:rank_invariance_equivalence}.
+    The $k$-th row of $\tilde{B}$ is:
+    \[
+    \tilde{R}_k = (k, k+1, \dots, k+n-1) = k (1, 1, \dots, 1) + (0, 1, \dots, n-1).
+    \]
+    Thus every row lies in $\Sp\big((1, \dots, 1), (0, 1, \dots, n-1)\big)$, which is at most $2$-dimensional.
+    \begin{itemize}
+        \item For $n = 1$: $B = (1)$, so $\rank(B) = 1$.
+        \item For $n \ge 2$: The two vectors $(1, 2, \dots, n)$ and $(2, 3, \dots, n+1)$ are linearly independent, so $\rank(B) = 2$.
+    \end{itemize}
+    In summary:
+    \[
+    \rank(B) = \begin{cases} 1 & \text{if } n = 1, \\ 2 & \text{if } n \ge 2. \end{cases}
+    \]
+
+    \item \textbf{Matrix $C = \left(\binom{k+\ell}{k}\right)_{0 \le k, \ell \le n-1}$:}
+    The entries are binomial coefficients $C_{k\ell} = \binom{k+\ell}{k}$.
+    Using Pascal's identity $\binom{k+\ell}{k} - \binom{(k-1)+\ell}{k-1} = \binom{(k-1)+\ell}{k}$, we perform row operations $R_k \to R_k - R_{k-1}$ starting from the bottom row $k = n-1$ up to $k = 1$.
+    Repeating this reduction iteratively transforms $C$ into an upper triangular matrix with all diagonal entries equal to $1$.
+    Equivalently, $C$ admits an explicit $L U$ decomposition $C = L L\transp$ where $L$ is the unipotent lower triangular Pascal matrix with ones on the diagonal.
+    Therefore, $\det(C) = 1 \ne 0$, which proves that $C$ is invertible for all $n \ge 1$.
+    Hence:
+    \[
+    \rank(C) = n \qquad \text{for all } n \ge 1. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}

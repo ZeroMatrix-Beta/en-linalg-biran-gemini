@@ -175,6 +175,7 @@ The notes leave this proof as an exercise, with the following hints.
     This shows that any solution $z$ can be written as $y + x$ for some $x \in \Sol(A, 0)$.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:non_homogeneous_solutions}
 \end{exercise}
 
 \begin{proposition}[Rank Criterion for Solvability]
@@ -228,6 +229,7 @@ Note that:
 \end{equation*}
 Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linearly independent, and therefore, they form a basis for $\ColS(A)$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:unique_solution_rank_criterion}
 \end{exercise}
 
 % Creator: Opus 5
@@ -235,6 +237,7 @@ Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linear
 \label{sec:solutions_more_matrices_lineq}
 
 \begin{exercisesolution}[Proof of \cref{cor:non_homogeneous_solutions}]
+\label{sol:non_homogeneous_solutions}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item As the hint records, for $x = (x_1, \dots, x_n)\transp \in K^n$ the product $A \cdot x$ is the linear combination $x_1 v_1 + \dots + x_n v_n$ of the columns of $A$. Hence
     \[
@@ -251,6 +254,7 @@ Since there are $n$ column vectors, this means that $v_1, \dots, v_n$ are linear
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:unique_solution_rank_criterion}]
+\label{sol:unique_solution_rank_criterion}
 Suppose first that $\rank(A) = \rank(A \mid b) = n$. Since the two ranks agree, \cref{prop:rank_solvability_criterion} gives a solution $y \in \Sol(A, b)$. Since $\rank(A) = n$, the computation at the start of this section gives
 \[
 \dim \Sol(A, 0) = n - \rank(A) = 0,
@@ -304,3 +308,4 @@ of linear equations, where it is introduced, and in the solutions at the end of
 this section, but was written $(A|b)$ in the two propositions. The three
 occurrences are unified.
 \end{ainote}
+
