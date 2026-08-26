@@ -125,9 +125,10 @@ The zero vector is explicitly defined as $0 := (0, \dots, 0) \in K^n$.
 With these operations $K^n$ becomes a vector space over $K$; the proof rests entirely on the fact that $K$ itself satisfies the field axioms. We call $K^n$ also the \newterm{$n$-dimensional coordinate space} over $K$.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}[The Vector Space Axioms for $K^n$]
 \label{exc:kn_axioms}
 Check the details: verify each of the eight axioms (V1)--(V8) for $K^n$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Multiplicative Vector Space Structure on Positive Real Pairs]
@@ -182,9 +183,10 @@ The one axiom that deserves a word is (V2), because it asserts the \emph{existen
 where the first equality is \cref{lem:vector_space_basics} \textbf{(c)}. Now $0_V + w = w$ holds for every $w \in U$, because it already holds for every $w \in V$ by (V2) for $V$. Hence $0_V$ serves as the zero element of $U$.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[The Remaining Seven Axioms for a Linear Subspace]
 \label{exc:subspace_axioms}
 Carry out the direct verification of the remaining seven axioms for $U$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 In practice one rarely checks (LSS1)--(LSS3) separately. The following criterion compresses them into two conditions, one of which is a single membership test.
@@ -271,9 +273,10 @@ But rearranging the terms and using \eqref{eq:U_b_membership}, we also get
 Therefore, $b + b = b$, which implies $b = 0$. \hfill $\diamond$
 \end{example}
 
-\begin{exercise}
+\begin{exercise}[The Converse: $U_0$ is a Linear Subspace]
 \label{exc:U_b_converse}
 Prove the direction $\impliedby$ of the claim on \cpageref{claim:U_b_subspace} that $U_b$ is a subspace exactly for $b = 0$: show that if $b = 0$, then $U_0$ satisfies (LSS1), (LSS2) and (LSS3), and is therefore a linear subspace of $K^3$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Unions of Three Linear Subspaces]
@@ -319,9 +322,10 @@ We prove \textbf{(a)} by comparing the $i$-th entries of both sides. By \cref{de
 the last equality again by \cref{def:matrix_vector_multiplication}, since the $j$-th entry of $u + v$ is $u_j + v_j$. As this holds for every $1 \le i \le m$, the two column vectors are equal.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Proof of \cref{lem:matrix_vector_linearity} \textbf{(b)}]
 \label{exc:matrix_vector_scalar}
 Prove statement \textbf{(b)} of \cref{lem:matrix_vector_linearity}.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{theorem}[When the Solution Set is a Subspace]
@@ -384,9 +388,10 @@ a \cdot (a_0, a_1, \dots, a_k, \dots) &:= (a \cdot a_0, a \cdot a_1, \dots, a \c
 \end{align*}
 \end{example}
 
-\begin{exercise}
+\begin{exercise}[The Vector Space Axioms for the Sequence Space $K^\infty$]
 \label{exc:sequence_space_axioms}
 With these operations, $K^\infty$ is a vector space over $K$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{example}[Fibonacci Sequences as a Subspace]
@@ -415,9 +420,10 @@ K^S := \{f \colon S \to K \mid f \text{ is a function}\}.
 We define addition $+$ and scalar multiplication $\cdot$ on $K^S$ as follows. Let $f, g \in K^S$ and $a \in K$. We define $(f + g) \colon S \to K$ point-wise by $x \mapsto f(x) + g(x)$, where the addition on the right is that of $K$, and we define $(a \cdot f) \colon S \to K$ point-wise by $x \mapsto a \cdot f(x)$.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}[The Vector Space Axioms for the Function Space $K^S$]
 \label{exc:function_space_axioms}
 $K^S$ is a vector space over $K$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Even and Odd Functions as Linear Subspaces]
@@ -455,9 +461,10 @@ C(S) := \{f \in \mathbb{R}^S \mid f \text{ is continuous on } [0,1]\} \subseteq 
 Then $C(S) \subseteq \mathbb{R}^S$ is a linear subspace.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}[Continuous Functions Form a Linear Subspace]
 \label{exc:continuous_subspace}
 Prove that $C(S)$ is a linear subspace of $\mathbb{R}^S$: check that the constant function $0$ is continuous, and that a sum of two continuous functions, as well as a scalar multiple of a continuous function, is again continuous on $[0,1]$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \subsubsection{Polynomials \texorpdfstring{$K[x]$}{K[x]}}
@@ -489,9 +496,10 @@ c \cdot f(x) := c \cdot a_0 + c \cdot a_1 x + c \cdot a_2 x^2 + \dots + c \cdot 
 We write $K[x]$ for the set of all polynomials over $K$.
 \end{notation}
 
-\begin{exercise}
+\begin{exercise}[The Vector Space Axioms for the Polynomial Space {$K[x]$}]
 \label{exc:polynomial_space_axioms}
 With the operations above, $K[x]$ is a vector space over $K$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 If we view polynomials as functions $K \to K$, then the polynomials over $K$ give us a linear subspace of $K^K$. This second point of view is however genuinely coarser than the first, and the following warning explains why.

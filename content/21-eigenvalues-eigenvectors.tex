@@ -384,10 +384,12 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
     \item For all $2 \le j \le r$, we have $U_j \cap (U_1 + \dots + U_{j-1}) = \{0\}$.
   \end{enumerate}
   Under the additional assumption that $U_1, \dots, U_r$ are all finite-dimensional, $U_1 + \dots + U_r$ is a direct sum if and only if whenever $\mathcal{B}_1, \dots, \mathcal{B}_r$ are bases for $U_1, \dots, U_r$ respectively, then $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ forms a basis for $U_1 + \dots + U_r$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Isomorphism between External and Internal Direct Sums]\label{ex:canonical_iso_direct_sum}
   If $U_1 + \dots + U_r$ is a direct sum, then there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{proposition}[Direct Sum of Eigenspaces]\label{prop:direct_sum_eigenspaces}
@@ -424,8 +426,9 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   It remains to connect this to diagonalizability. If the dimension equality holds, then $W = V$, so $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $V$ consisting of eigenvectors of $T$, and therefore, $T$ is diagonalizable by \cref{lem:diagonalizable_matrix_criterion}. Conversely, if $T$ is diagonalizable, pick a basis $\mathcal{C} = (w_1, \dots, w_n)$ of $V$ consisting of eigenvectors. Every $w_j$ lies in $\Eig_T(\lambda_i)$ for some $i$ (the eigenvalues of $T$ are exactly $\lambda_1, \dots, \lambda_r$), hence $w_j \in W$ for all $j$. Consequently, $V = \Sp(w_1, \dots, w_n) \subseteq W$, so $W = V$ and the dimension equality holds.
 \end{proof}
 
-\begin{exercise}\label{ex:finite_eigenvalues}
+\begin{exercise}[Finitely Many Eigenvalues in Finite Dimension]\label{ex:finite_eigenvalues}
   If $V$ is finite-di\-men\-sional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Creator: Opus 5
@@ -508,6 +511,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 % Extractor: Opus 5
 \begin{exercise}[Polynomials versus Polynomial Functions]\label{ex:poly_vs_func}
   Settle the question raised at the end of \cref{rem:poly_vs_func}: for which fields $K$ do two distinct polynomials $p(x), q(x) \in K[x]$ always define distinct functions $K \to K$? In particular, what happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$?
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -797,6 +801,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \begin{exercise}[Splitting Passes to the Cofactor]\label{ex:factor_splits}
   Let $\lambda \in K$ and let $p(x), q(x) \in K[x]$ be non-zero polynomials with $p(x) = (\lambda - x) \cdot q(x)$. Show that if $p(x)$ splits into a product of linear factors over $K$, then so does $q(x)$.
   (This is the step Prof. Biran leaves as an exercise in both proofs of \cref{thm:trig_condition}, applied to $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$.)
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -886,6 +891,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 % Extractor: Opus 5
 \begin{exercise}[Bases of a Quotient Space]\label{ex:quotient_basis}
   Let $V$ be a finite-di\-men\-sional vector space over $K$, let $U \subseteq V$ be a linear subspace, and let $(u_1, \dots, u_r)$ be a basis for $U$, extended to a basis $(u_1, \dots, u_r, w_{r+1}, \dots, w_n)$ of $V$. Show that the equivalence classes $([w_{r+1}], \dots, [w_n])$ form a basis for the quotient space $V/U$. (In particular, $\dim V/U = \dim V - \dim U$.)
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{proof}[Alternative proof of the direction $\impliedby$ of \cref{thm:trig_condition}]
@@ -1085,11 +1091,13 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   Verify \cref{thm:cayley_hamilton} in this case by calculating
   \[ P_A(A) = A^2 - (a+d) \cdot A + (ad-bc) \cdot I_2 \]
   directly, and obtain $\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \begin{exercise}[Expressing Matrix Inverses via Cayley-Hamilton]\label{ex:cayley_inverse}
   Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use \cref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Degree of the Minimal Polynomial Bounded by Rank \faHeart]
@@ -1208,6 +1216,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   Let $P, Q \in \M_{n \times n}(\mathbb{C})$ be given matrices. Show that the map
   \[ \M_{n \times n}(\mathbb{C}) \longrightarrow \M_{n \times n}(\mathbb{C}), \qquad X \longmapsto P X Q, \]
   is continuous. (This is what licenses pulling the limit through $P$ and $P^{-1}$ at the end of the proof above.)
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Joint Convergence of Polynomials and Matrix Sequences]
@@ -1282,6 +1291,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
 
 \begin{exercise}[Where the Argument Breaks over Other Fields]\label{ex:multi_var_other_fields}
   What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$, even for $r = 1$, with, for example, $K = \mathbb{Z}_2$, or some other field, finite or infinite?
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -1332,6 +1342,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
     \item $\langle v \rangle_T$ is invariant under $T$, that is, $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
     \item $\langle v \rangle_T$ is the smallest linear subspace of $V$ that contains $v$ and is $T$-invariant. That is, if $U \subseteq V$ is a linear subspace with $v \in U$ and $T(U) \subseteq U$, then $\langle v \rangle_T \subseteq U$.
   \end{enumerate}
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 

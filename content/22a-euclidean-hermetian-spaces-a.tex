@@ -131,6 +131,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     This shows that $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. \textbf{Warning:} There exist norms that do \emph{not} come from scalar products.
     \item Find an analogous formula to (*) for a Hermitian vector space.
 \end{enumerate}
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \subsection*{Examples}
@@ -215,6 +216,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 \begin{exercise}[Bilinearity of \texorpdfstring{$\langle \cdot, \cdot \rangle_A$}{the form attached to A}]
     \label{exc:bilinear_form_A}
     $\langle \cdot, \cdot \rangle_A$ is bilinear (i.e., linear in both variables).
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 Assume now that $A$ is symmetric. Then $\langle v, w \rangle_A = \langle w, v \rangle_A$ for all $v, w$. Indeed,
@@ -234,6 +236,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
 \begin{exercise}[Positive Definiteness Yields a Scalar Product]
     \label{exc:pos_def_gives_scalar_product}
     If $A$ is positive definite, then $\langle \cdot, \cdot \rangle_A$ is a scalar product.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{claim*}
@@ -282,6 +285,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 
 \begin{exercise}[Positive Definiteness of \texorpdfstring{$2\times2$}{2x2} Hermitian Matrices]\label{exc:pos_def_2x2_complex}
     $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ is positive definite if and only if $a \in \mathbb{R}$, $a > 0$, and $\det A \in \mathbb{R}$, $\det A > 0$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{proof}[Proof of the Claim]
@@ -307,11 +311,13 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 \begin{exercise}[The Real Case of the Claim]
     \label{exc:real_case_of_claim}
     Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R})$ and the form $\langle v, w \rangle_A = v\transp A w$, thereby proving the Claim on \cpageref{claim:scalar_product_forces_pos_def}: if $\langle \cdot, \cdot \rangle_A$ is a scalar product, then $A$ is symmetric and positive definite.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Positive Definiteness Yields a Hermitian Product]
     \label{exc:pos_def_gives_hermitian_product}
     Let $A \in \M_{n \times n}(\mathbb{C})$ be a positive definite Hermitian matrix. Show that $\langle v, w \rangle_A := v\transp A \overline{w}$ is a Hermitian product on $\mathbb{C}^n$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Properties of the Gram Matrix \texorpdfstring{$A\transp A$}{A^T A}]
@@ -375,6 +381,7 @@ We define a scalar product:
 \begin{exercise}[The Integral Pairing is Bilinear and Symmetric]
     \label{exc:integral_pairing}
     Show that $\langle \cdot, \cdot \rangle$ is linear in both variables and symmetric.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = \int_a^b f(x)^2 \, dx$. Since $f \neq 0$, there exists $x_0 \in (a,b)$ such that $f(x_0) \neq 0$. Since $f$ is continuous, so is $f^2$. Hence, there exists $\delta > 0$ such that $[x_0 - \delta, x_0 + \delta] \subseteq [a,b]$ and $f(x) \neq 0$ for all $x \in [x_0 - \delta, x_0 + \delta]$. This implies $f(x)^2 > 0$ for all $x \in [x_0 - \delta, x_0 + \delta]$. Therefore,
@@ -430,6 +437,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     Define $\left\| \binom{a}{b} \right\|' := \max\{|a|, |b|\}$, and $\left\| \binom{a}{b} \right\|'' := |a| + |b|$ for all $\binom{a}{b} \in \mathbb{R}^2$. Show that $\| \cdot \|'$ and $\| \cdot \|''$ are norms, but they are not induced by any scalar product. 
     
     \textit{Hint:} Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Jordan--von Neumann Parallelogram Identity]
@@ -511,6 +519,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \begin{exercise}[The Remaining Two Norm Axioms]
     \label{exc:remaining_norm_axioms}
     Complete the proof of \cref{cor:norm_induced} by verifying the homogeneity $\|\alpha \cdot v\| = |\alpha| \cdot \|v\|$ and the non-degeneracy \qt{$\|v\| = 0 \implies v = 0$} for $\|v\| := \sqrt{\langle v, v \rangle}$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Def. (22.a.13)

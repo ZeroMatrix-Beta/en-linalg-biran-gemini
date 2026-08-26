@@ -55,6 +55,7 @@
 \begin{exercise}[The Axioms for $\Hom(V,W)$]
   \label{exc:hom_axioms}
   Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space, using the zero map $0 \colon V \to W$ as the additive identity. Show also that $\alpha \cdot T$ is linear for all $\alpha \in K$ and $T \in \Hom(V,W)$, and that $\Psi_{\mathcal{C}}^{\mathcal{B}}(T_1 + T_2) = \Psi_{\mathcal{C}}^{\mathcal{B}}(T_1) + \Psi_{\mathcal{C}}^{\mathcal{B}}(T_2)$ in \cref{thm:homomorphism_isomorphism}.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Subsets of Non-Injective and Non-Surjective Linear Maps]
@@ -254,6 +255,7 @@ The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell)
 \begin{exercise}[The Row Space as the Dual of the Column Space]
 \label{exc:row_space_is_dual}
 Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell) := f_{\ell}$, is a linear map and an isomorphism.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -336,6 +338,7 @@ The notes mark this proof as an exercise; it is carried out among the solutions 
     \item $(\id_V)^* = \id_{V^*}$.
     \item $(0 \colon V \to V)^* = (0 \colon V^* \to V^*)$.
   \end{enumerate}
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -558,6 +561,7 @@ The two agree on every member of a basis of $V^*$, hence $\tau(v_i) = (v_i^*)^*$
 \begin{exercise}[The Axioms for $V \oplus W$, and the Canonical Maps]
   \label{exc:direct_sum_axioms}
   Verify that all vector space axioms are satisfied by $V \times W$ under the componentwise operations above, so that \cref{prop:direct_sum_structure} holds. Check also that the four canonical maps of the following remark are linear, that $p_V$ and $p_W$ are surjective, and that $i_V$ and $i_W$ are injective.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Graph of a Linear Map]
@@ -894,6 +898,7 @@ We want to turn $V/U$ into a vector space over $K$. We define addition as $[v_1]
 \begin{exercise}[The Axioms for $V/U$]
   \label{exc:quotient_axioms}
   Complete the proof of \cref{prop:quotient_operations} by checking that the operations on $V/U$ satisfy the axioms of a vector space.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -974,6 +979,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 \begin{exercise}[Commutativity of the Diagram in \cref{thm:first_isomorphism}]
   \label{exc:first_iso_diagram}
   Check that $T = i \circ \overline{T} \circ \pi$, where $i \colon \Img(T) \to W$ is the inclusion.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -997,6 +1003,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
       \item Show that $T'$ is well-defined (i.e., if $[v] = [v']$, then $T(v) = T(v')$).
       \item Show that $T'$ is linear.
     \end{enumerate}
+  \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
   \end{exercise}
 
   The diagram commutes by construction, since for all $v \in V$, $T' \circ \pi(v) = T'([v]) = T(v)$.
@@ -1007,6 +1014,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 \begin{exercise}[Kernel of the Induced Quotient Map]
   \label{exc:kernel_induced_map}
   Prove that $\ker(T') = \ker(T)/U$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Properties of Induced Maps on Quotient Spaces \faHeart]
@@ -1051,6 +1059,7 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 \begin{exercise}[Inverse Isomorphism from a Complement]
   \label{exc:inverse_from_complement}
   Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[Basis of a Quotient Space]
@@ -1089,6 +1098,7 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
         \item Show that for all $S \in (V/U)^*$, $S \circ \pi \in U^\perp$.
         \item Show that $L$ is a linear map.
       \end{enumerate}
+    \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
     \end{exercise}
     
     We claim that $L$ is an isomorphism. To see this, we define a map $P \colon U^\perp \to (V/U)^*$ as follows. Let $T \in U^\perp$, i.e., $T \colon V \to K$ such that $T|_U = 0$. By the Universal Property of Quotients, \cref{thm:universal_property_quotient} applied with $W = K$, there exists a unique $T' \colon V/U \to K$ such that $T = T' \circ \pi$. Define $P(T) := T'$.
@@ -1100,6 +1110,7 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
     \begin{exercise}[Linearity of the Restriction Map]
       \label{exc:restriction_linear}
       Show that $R$ is a linear map.
+    \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
     \end{exercise}
 
     We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$, which is possible by the Steinitz Exchange Lemma in the form of \cref{lem:strong_steinitz}. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$; prescribing the values on a basis in this way does define one and only one linear map, by \cref{thm:existence_uniqueness_linear_map}. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$, and two linear maps on $U$ agreeing on a basis of $U$ are equal (the uniqueness half of the same theorem). This proves $\Img(R) = U^*$.
@@ -1113,6 +1124,7 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
   \label{exc:annihilator_image_kernel_dual}
   Let $T \colon V \to W$ be a linear map between vector spaces. Prove that the annihilator of the image of $T$ is equal to the kernel of its dual map:
   \[ (\Img T)^\perp = \ker(T^*). \]
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Creator: Opus 5

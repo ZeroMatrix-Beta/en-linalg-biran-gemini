@@ -337,9 +337,10 @@ S(a_0, a_1, a_2, \dots, a_n, \dots) := (a_1, a_2, \dots, a_n, \dots),
 that is, it simply forgets the first term of the sequence.
 \end{definition}
 
-\begin{exercise}
+\begin{exercise}[Linearity of the Shift Operator]
 \label{exc:shift_is_linear}
 Check that $S$ is linear.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 Mathematicians like to probe a map $T \colon X \to X$ by looking for its special, or
@@ -555,7 +556,7 @@ Finally, we can represent the recurrence relation using the language of matrices
 \end{equation}
 This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$. It is the shift map of \eqref{eq:shift_in_coordinates} written in the reversed coordinates $\binom{a_{n+1}}{a_n}$, so by \cref{prop:eigenvectors_shift} its eigenvalues are again $\varphi$ and $\psi$.
 
-\begin{exercise}[Interesting Exercises]
+\begin{exercise}[Further Problems on Fibonacci Sequences and the Golden Ratio]
 \label{exc:ch1_list}
 \begin{enumerate}
     \item \textbf{General Formula:} Find an explicit formula for the general Fibonacci sequence $\mathcal{F}_{a_0, a_1}$ that depends only on the initial values $a_0, a_1$ and the index $n$.
@@ -586,6 +587,7 @@ This formulation shows that the behavior of the sequence is entirely governed by
     whose numerical behaviour is plotted in \cref{fig:fib_ratio_to_phi}.
     \item \textbf{Cassini's Identity:} Show that $a_{n+1} a_{n-1} - a_n^2 = (-1)^n$ for all $n \ge 1$. Hint: Use the determinant of the matrix $M^n$.
 \end{enumerate}
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 % Creator: Opus 5

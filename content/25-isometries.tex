@@ -148,6 +148,7 @@ This is left as an exercise, see \cref{exc:orth_unitary_matrix_rep}.
 \begin{exercise}[Isometries versus Orthogonal and Unitary Matrices]
 \label{exc:orth_unitary_matrix_rep}
 This is the step Prof. Biran marks with \qt{Exc.} in the proof of \cref{prop:orth_unitary_matrix_rep}. Let $\mathcal{B}$ be an orthonormal basis for $V$ and let $T \in \End(V)$. Show that $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Unit(n)$). (The point is that $\mathcal{B}$ is orthonormal, so that \cref{prop:matrix_representation_adjoint} applies and turns the adjoint map $T^*$ into the conjugate transpose of the representation matrix.)
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -203,6 +204,7 @@ This is left as an exercise, see \cref{exc:group_properties}.
 \begin{exercise}[The Four Sets are Groups]
 \label{exc:group_properties}
 This is the claim Prof. Biran circles with \qt{Exc.} Prove the three statements of \cref{prop:group_properties} for each of $\Orth(n)$, $\SOrth(n)$, $\Unit(n)$, and $\SUnit(n)$. Together with the associativity of matrix multiplication, they say precisely that each of these four sets is a group, and hence a subgroup of $\GL_n(\mathbb{R})$ resp. $\GL_n(\mathbb{C})$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -435,6 +437,7 @@ which is a diagonal matrix carrying $-1$ on its diagonal. Since $A$ and $[T_A]_{
 \begin{exercise}[Why the Two Conditions in \texorpdfstring{\cref{prop:classification_so3}}{Prop. 25.a.9} \textbf{(b)} Agree]
 \label{exc:why_only_real_eigenvalue}
 Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{(b)} with a \qt{why?}. Justify it: for $A \in \SOrth(3)$, show that $-1$ is not an eigenvalue of $A$ if and only if $1$ is the only real eigenvalue of $A$.
+\exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \end{exercise}
 
 \begin{exercise}[3D Rotation Matrix, Axis, and Angle]
@@ -448,7 +451,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
     \item Determine the axis of rotation $\Sp(v_1)$ and the rotation angle $\theta \in [0, \pi]$ of the linear isometry $T_A \colon \mathbb{R}^3 \to \mathbb{R}^3$.
   \end{enumerate}
   \exhint{(a) Compute $A\transp A = I_3$ and evaluate $\det(A) = 1$ using the Sarrus rule or expansion along a row.
-  (b) The rotation axis corresponds to the eigenspace $\gEig_A(1) = \ker(A - I_3)$. Solve $(A - I_3)v = 0$ to find the normalized axis vector $v_1 = \frac{1}{\sqrt{5}}(1, -2, 0)\transp$ (or equivalent).
+  (b) The rotation axis corresponds to the eigenspace $\Eig_A(1) = \ker(A - I_3)$. Solving $(A - I_3)v = 0$ gives $\Eig_A(1) = \Sp\big((-3, 1, -1)\transp\big)$, so the normalized axis vector is $v_1 = \frac{1}{\sqrt{11}}(-3, 1, -1)\transp$ (or its negative).
   By \cref{prop:classification_so3}, $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, so $\Tr(A) = 1 + 2\cos\theta$. From the matrix, $\Tr(A) = \frac{1}{3}(2 - 2 - 2) = -\frac{2}{3}$. Thus $1 + 2\cos\theta = -\frac{2}{3} \implies \cos\theta = -\frac{5}{6}$, giving $\theta = \arccos(-5/6) \approx 146.44^\circ$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
