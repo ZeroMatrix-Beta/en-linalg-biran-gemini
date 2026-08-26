@@ -99,8 +99,9 @@ that contradicts the book's own conventions.
 | 1 | `content/01-fibonacci.tex` | done, pushed (`d029914`) |
 | 2 | `content/02-logic.tex` | done, pushed (`13f6122`) |
 | 3 | `content/03-set-theory.tex` | done, pushed (`5d4ee79`) |
-| 4 | `content/04-maps.tex` | done |
-| **5--9** | the remaining foundational chapters | **this is where to resume** |
+| 4 | `content/04-maps.tex` | done, pushed (`cfe1639`) |
+| 5 | `content/05-fields.tex` | done |
+| **6--9** | the remaining foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -257,19 +258,34 @@ dozen rebuilds in one session before the cause was found.
 Build from PowerShell instead, which waits properly and leaves nothing behind:
 
 ```powershell
+Get-Process | Where-Object { $_.ProcessName -match 'pdflatex|latexmk|perl' } |
+  Stop-Process -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 2
+Remove-Item en-linalg-2.aux, en-linalg-2.toc, en-linalg-2.out -Force -ErrorAction SilentlyContinue
 $p = Start-Process -FilePath "latexmk" `
   -ArgumentList "-pdf","-interaction=batchmode","en-linalg-2.tex" `
   -NoNewWindow -Wait -PassThru `
   -RedirectStandardOutput "$env:TEMP\lmk.out" -RedirectStandardError "$env:TEMP\lmk.err"
+$deadline = (Get-Date).AddMinutes(8)
+while ((Get-Process | Where-Object { $_.ProcessName -match 'pdflatex|latexmk' }) -and (Get-Date) -lt $deadline) {
+  Start-Sleep -Seconds 3
+}
+Start-Sleep -Seconds 2
 "exit=$($p.ExitCode)"
 (Select-String -Path en-linalg-2.log -Pattern "Output written on en-linalg" -Encoding utf8 | Select-Object -Last 1).Line
-"overfull=" + (Select-String -Path en-linalg-2.log -Pattern "Overfull .hbox" -Encoding utf8 | Measure-Object).Count
+"overfull=" + (Select-String -Path en-linalg-2.log -Pattern "Overfull .hbox"   -Encoding utf8 | Measure-Object).Count
 "undef="    + (Select-String -Path en-linalg-2.log -Pattern "undefined|multiply.defined" -Encoding utf8 | Measure-Object).Count
+"errors="   + (Select-String -Path en-linalg-2.log -Pattern "^! "               -Encoding utf8 | Measure-Object).Count
 ```
 
-If a build has already gone wrong, stop any surviving `pdflatex`/`latexmk`/`perl`
-with `Get-Process`, delete `.aux`, `.toc` and `.out`, and run the block above
-once. The two checkers may still be run from Bash; they only read files.
+**Both halves matter.** The clean at the top removes an aux that an earlier
+broken run may have left truncated. The wait loop at the bottom is there because
+`Start-Process -Wait` returns when `latexmk` exits, while its `pdflatex` child
+can still be writing the log: without the loop, the counts are read off a
+half-written log and the run looks like a failure with a thousand unresolved
+references. Read the counts only after the loop, and treat `errors=0` together
+with `exit=0` as the pass condition. The two checkers may still be run from
+Bash; they only read files.
 
 Then `bash tools/check-crefs.sh` and `perl tools/check-repmatrix.pl`. The
 baseline is **3 overfull hboxes** and no undefined or multiply-defined
@@ -793,6 +809,22 @@ theorem is about the first four, so these are among the most-used notions in it.
 
 Nothing false. The partitions section, added by an earlier pass, is complete and
 correct as it stands.
+
+### Ch. 5, a theorem with nothing to decide, and no proof
+
+`thm:fp_is_field` says \qt{$\mathbb{F}_p$ is a field if and only if $p$ is a
+prime number}, and the definition two lines above it opens \qt{Let $p$ be a prime
+number}. As written the theorem therefore has nothing to decide; it wants to be
+read about $\mathbb{Z}/n\mathbb{Z}$ for an arbitrary modulus $n \ge 2$, and now
+says so. It also carried no proof: the paragraph after it argues one direction,
+and only for the single modulus $4$. The other direction, that a prime modulus
+really does supply inverses, is Bézout, and it is the half that makes finite
+fields exist at all.
+
+The chapter's own `ainote` records that only the field axioms come from the
+notes and everything after them is the transcript's. That makes an unproved
+Theorem more serious rather than less: it is not something Prof. Biran asserted
+and left, it is something the book asserted about itself.
 
 ## Checked in ch. 17e and found correct
 

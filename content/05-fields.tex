@@ -1,6 +1,19 @@
 \renewcommand{\thetheorem}{5.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{4}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription. Note the AI-Note after the field axioms: only
+% Definition 5.1 itself comes from the notes, everything after it is supplied.
+% ---------------------------------------------------------------------------
 
 \chapter{Fields (Körper)}
 
@@ -113,6 +126,7 @@ The secret to building a finite field is \newterm{modular arithmetic} (often cal
 \end{center}
 
 \begin{definition}[The Field $\mathbb{F}_p$]
+\label{def:field_fp}
 Let $p$ be a prime number. The set of integers modulo $p$, denoted as $\mathbb{F}_p$ (or sometimes $\mathbb{Z}/p\mathbb{Z}$), contains exactly $p$ elements:
 \[
 \mathbb{F}_p = \{0, 1, 2, \dots, p-1\}
@@ -123,7 +137,25 @@ Addition and multiplication are performed exactly as regular integers, but if th
 \begin{theorem}
 \label{thm:fp_is_field}
 $\mathbb{F}_p$ is a field if and only if $p$ is a prime number.
+% Creator: Opus 5
+(Read this for an arbitrary modulus: for every integer $n \ge 2$, the set $\mathbb{Z}/n\mathbb{Z} = \{0, 1, \dots, n-1\}$ with addition and multiplication modulo $n$ is a field if and only if $n$ is prime. \Cref{def:field_fp} above already assumes $p$ prime, so without this reading the theorem has nothing to decide).
 \end{theorem}
+
+% The theorem is stated in the transcript without proof, and the paragraph after
+% it argues only one direction, and only for the single modulus 4. Both halves
+% are short once lem:no_zero_divisors is available.
+\begin{proof}
+Fix $n \ge 2$ and write $\mathbb{Z}/n\mathbb{Z} = \{0, 1, \dots, n-1\}$, with the two operations of \cref{def:field_fp}. Axioms \textbf{(K1)}--\textbf{(K6)} and \textbf{(K8)}--\textbf{(K10)} hold for every such $n$, because each of them is an identity between polynomial expressions in the entries, and reducing modulo $n$ respects sums and products; \textbf{(K9)} holds because $n \ge 2$ makes $1$ and $0$ distinct residues. So everything turns on \textbf{(K7)}, the existence of multiplicative inverses.
+
+Suppose first that $n$ is \emph{not} prime, say $n = a \cdot b$ with $1 < a, b < n$. Then $a$ and $b$ are non-zero residues, while $a \cdot b = n \equiv 0$. A field has no such pair, by \cref{lem:no_zero_divisors}, so $\mathbb{Z}/n\mathbb{Z}$ is not a field. This is the argument the discussion below carries out for $n = 4$, where $a = b = 2$.
+
+Suppose now that $n = p$ is prime, and let $a \in \{1, \dots, p-1\}$ be a non-zero residue. Since $p$ is prime and $p$ does not divide $a$, the only common positive divisor of $a$ and $p$ is $1$. By Bézout's identity there are integers $u, v$ with
+\[
+    u \cdot a + v \cdot p = 1,
+\]
+and reducing modulo $p$ kills the second term, leaving $u \cdot a \equiv 1 \pmod p$. The residue of $u$ is therefore a multiplicative inverse of $a$, which is \textbf{(K7)}. Hence $\mathbb{Z}/p\mathbb{Z}$ is a field.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 Why must $p$ be prime? Consider what happens if we try to build a field modulo $4$ (which is not prime). In modulo $4$, we have $2 \cdot 2 = 4 \equiv 0 \pmod 4$. We multiplied two non-zero numbers and got zero! In a true field, this is algebraically impossible, because it destroys the ability to divide (axiom \textbf{(K7)}). Prime numbers beautifully prevent this \qt{zero divisor} problem, as \cref{fig:cayley_tables} makes visible.
 
@@ -239,7 +271,7 @@ Finally, applying \textbf{(K3)} once more, we drop the $+ 0$ to conclude:
 
 \begin{lemma}[Zero Divisors do not exist]
 \label{lem:no_zero_divisors}
-Let $a, b \in K$. If $a \cdot b = 0$, then either $a = 0$ or $b = 0$.
+Let $K$ be a field and let $a, b \in K$. If $a \cdot b = 0$, then either $a = 0$ or $b = 0$.
 \end{lemma}
 
 \begin{proof}
@@ -268,3 +300,29 @@ b = 0
 \]
 We have proven that if the product is zero and $a$ is not zero, $b$ is forced to be zero.
 \end{proof}
+
+\begin{ainote}
+The point of this chapter is easy to lose behind the ten axioms, so it is worth
+stating: from here on the course never again asks what kind of number a scalar
+is. Every result in the book is proved over an unspecified field $K$, and the
+two lemmata just proved are the model for that. They look obvious over
+$\mathbb{R}$, and neither proof uses anything about $\mathbb{R}$; they are
+therefore true in $\mathbb{F}_2$ as well, where \qt{obvious} would be a poor
+guide.
+
+That generality is not free, and two places in the book pay for it. The
+Polarization Identity of ch. 27 needs $2 \neq 0$ in $K$, which fails in
+$\mathbb{F}_2$, and so does everything downstream of it about symmetric bilinear
+forms. And the whole of chs. 22 to 26 works over $\mathbb{R}$ or $\mathbb{C}$
+only, because an inner product needs an order on the scalars in which squares are
+non-negative, which no finite field has. Where a chapter names its field, it is
+usually for one of these two reasons.
+
+The rigour pass proved \cref{thm:fp_is_field}, which the chapter stated without
+one, and gave it a reading under which it has something to decide: as written it
+speaks about $\mathbb{F}_p$, which \cref{def:field_fp} has already declared to
+have $p$ prime. The informal discussion after it argues one direction, and only
+for the single modulus $4$; the other direction, that a prime modulus really does
+supply inverses, needs Bézout and is the half that makes finite fields exist at
+all.
+\end{ainote}
