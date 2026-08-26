@@ -1,0 +1,597 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:invertibility_nilpotency_2x2}]
+\label{sol:invertibility_nilpotency_2x2}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Invertibility condition:}
+    Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$.
+    \begin{itemize}
+        \item If $ad - bc \ne 0$, the matrix $B = \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$ satisfies $AB = BA = I_2$, so $A$ is invertible.
+        \item Conversely, if $A$ is invertible, there exists $A^{-1} \in \M_{2 \times 2}(K)$ such that $A A^{-1} = I_2$. Taking determinants gives $\det(A) \det(A^{-1}) = \det(I_2) = 1$, which forces $\det(A) = ad - bc \ne 0$.
+    \end{itemize}
+
+    \item \textbf{Nilpotency condition:}
+    We compute the characteristic polynomial of $A$ in $K[t]$:
+    \begin{align*}
+    \det(tI_2 - A) &= \det \begin{pmatrix} t - a & -b \\ -c & t - d \end{pmatrix} = (t - a)(t - d) - bc \\
+    &= t^2 - (a + d)t + (ad - bc) = t^2 - (\operatorname{tr} A)t + \det A.
+    \end{align*}
+    Thus $\det(tI_2 - A) = t^2 \iff \operatorname{tr} A = 0$ and $\det A = 0$.
+    \begin{itemize}
+        \item If $\operatorname{tr} A = 0$ and $\det A = 0$, direct computation yields:
+        \[
+        A^2 = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} a & b \\ c & -a \end{pmatrix} = \begin{pmatrix} a^2 + bc & b(a+d) \\ c(a+d) & bc + d^2 \end{pmatrix} = \begin{pmatrix} a^2 + bc & 0 \\ 0 & bc + a^2 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix},
+        \]
+        since $a^2 + bc = -ad + bc = -(ad - bc) = -\det A = 0$.
+        \item Conversely, if $A^2 = 0$, then $(\det A)^2 = \det(A^2) = \det(0) = 0 \implies \det A = 0$.
+        By the Cayley-Hamilton relation for $2 \times 2$ matrices, $A^2 - (\operatorname{tr} A)A + (\det A)I_2 = 0$, which reduces to $(\operatorname{tr} A)A = 0$.
+        If $A \ne 0$, this implies $\operatorname{tr} A = 0$. If $A = 0$, then $\operatorname{tr} A = 0$ and $\det A = 0$ trivially.
+    \end{itemize}
+    Therefore, $A^2 = 0 \iff \det(tI_2 - A) = t^2$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:monomial_matrix_multilinear}]
+\label{sol:monomial_matrix_multilinear}
+Let $D(A) = A(j_1, k_1) A(j_2, k_2) \cdots A(j_n, k_n)$ where $j_i, k_i \in \{1, \dots, n\}$.
+
+\begin{itemize}
+    \item \textbf{($\Leftarrow$) If $j_1, \dots, j_n$ are pairwise distinct:}
+    Then $\{j_1, \dots, j_n\} = \{1, \dots, n\}$. For each row index $r \in \{1, \dots, n\}$, exactly one factor $A(r, k_{\ell})$ with $j_{\ell} = r$ appears in the product.
+    Holding all rows fixed except row $r$, $D(A) = C \cdot A(r, k_{\ell})$ where $C = \prod_{m \ne \ell} A(j_m, k_m)$ is a constant independent of row $r$.
+    The map $A \mapsto C \cdot A(r, k_{\ell})$ is linear in row $r$, so $D$ is $n$-linear.
+
+    \item \textbf{($\Rightarrow$) If $D$ is $n$-linear:}
+    Suppose the indices $j_1, \dots, j_n$ are not pairwise distinct.
+    Then by the Pigeonhole Principle, there exists at least one row index $r \in \{1, \dots, n\}$ that appears $m \ge 2$ times in the list $(j_1, \dots, j_n)$.
+    Scaling row $r$ by a scalar $c \in K$ replaces each entry $A(r, \cdot)$ by $c A(r, \cdot)$, so:
+    \[
+    D(c R_r) = c^m D(A).
+    \]
+    On the other hand, $n$-linearity requires $D(c R_r) = c D(A)$ for all $c \in K$.
+    Choosing $A$ to be the all-ones matrix $J_n$, we have $D(J_n) = 1 \ne 0$, which would require:
+    \[
+    c^m = c \qquad \text{for all } c \in K.
+    \]
+    Since $K \subseteq \mathbb{C}$ is a subfield of $\mathbb{C}$, it is an infinite field containing $\mathbb{Q}$.
+    The polynomial $t^m - t = 0$ has at most $m$ roots in $K$, so $c^m = c$ cannot hold for all $c \in K$ (for example, taking $c = 2$ gives $2^m \ne 2$ since $m \ge 2$).
+    This contradiction shows that the row indices $j_1, \dots, j_n$ must be pairwise distinct. \qedhere
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:multilinear_candidates_3x3}]
+\label{sol:multilinear_candidates_3x3}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $D(A) = A_{11} + A_{22} + A_{33}$ (\textbf{Not $3$-linear}):
+    For $A = I_3$, $D(I_3) = 3$. Scaling the first row by $c = 2$ gives $D(2R_1, R_2, R_3) = 2(1) + 1 + 1 = 4 \ne 2 \cdot D(I_3) = 6$.
+
+    \item $D(A) = A_{11}^2 + 3A_{11} A_{22}$ (\textbf{Not $3$-linear}):
+    The term $A_{11}^2$ is quadratic in row $1$, so scaling row $1$ by $c$ scales $A_{11}^2$ by $c^2 \ne c$. Moreover, row $3$ does not appear.
+
+    \item $D(A) = A_{11} A_{12} A_{33}$ (\textbf{Not $3$-linear}):
+    Row $1$ appears twice (degree $2$ in row $1$), while row $2$ is completely missing.
+
+    \item $D(A) = A_{13} A_{22} A_{32} + 5A_{12} A_{22} A_{32} = (A_{13} + 5A_{12}) A_{22} A_{32}$ (\textbf{Is $3$-linear}):
+    It is the product of three linear forms in row $1$, row $2$, and row $3$, respectively.
+
+    \item $D(A) = 0$ (\textbf{Is $3$-linear}):
+    The zero map trivially satisfies all $3$-linearity conditions.
+
+    \item $D(A) = 1$ (\textbf{Not $3$-linear}):
+    Scaling row $1$ by $c = 0$ gives $D(0, R_2, R_3) = 1 \ne 0 \cdot D(A) = 0$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:det_2x2_alternating_bilinear}]
+\label{sol:det_2x2_alternating_bilinear}
+Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$, so $\det A = ad - bc$.
+
+\begin{itemize}
+    \item \textbf{Linearity in rows:}
+    Fixing $(c, d)$, the map $(a, b) \mapsto ad - bc = d \cdot a - c \cdot b$ is linear in the first row.
+    Fixing $(a, b)$, the map $(c, d) \mapsto ad - bc = -b \cdot c + a \cdot d$ is linear in the second row.
+    If the two rows are equal, then $(a, b) = (c, d)$, so $\det A = ac - bc = ac - ac = 0$, so $\det$ is alternating in rows.
+
+    \item \textbf{Linearity in columns:}
+    Fixing column $2$, $(a, c) \mapsto ad - bc = d \cdot a - b \cdot c$ is linear in column $1$.
+    Fixing column $1$, $(b, d) \mapsto ad - bc = -c \cdot b + a \cdot d$ is linear in column $2$.
+    If the two columns are equal, then $(a, c) = (b, d)$, so $\det A = ab - ba = 0$, so $\det$ is alternating in columns. \qedhere
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:laplace_expansion_3x3_alternating_trilinear}]
+\label{sol:laplace_expansion_3x3_alternating_trilinear}
+Let $A = (C_1, C_2, C_3) \in \M_{3 \times 3}(K)$. Expanding the $2 \times 2$ determinants in the formula:
+\[
+D(A) = A_{11}(A_{22}A_{33} - A_{23}A_{32}) - A_{12}(A_{21}A_{33} - A_{23}A_{31}) + A_{13}(A_{21}A_{32} - A_{22}A_{31}).
+\]
+\begin{itemize}
+    \item \textbf{$3$-linearity in columns:}
+    In every term of the expansion, each column index $1, 2, 3$ appears exactly once as the second index of an entry.
+    Hence $D(A)$ is linear in $C_1$ (holding $C_2, C_3$ fixed), linear in $C_2$, and linear in $C_3$.
+    \item \textbf{Alternating property:}
+    \begin{itemize}
+        \item If $C_1 = C_2$, then $A_{i1} = A_{i2}$ for all $i \in \{1, 2, 3\}$.
+        The third term vanishes because $A_{21}A_{32} - A_{22}A_{31} = A_{21}A_{31} - A_{21}A_{31} = 0$.
+        The first two terms become identical with opposite signs:
+        $A_{11}(A_{21}A_{33} - A_{23}A_{31}) - A_{11}(A_{21}A_{33} - A_{23}A_{31}) = 0$.
+        \item If $C_1 = C_3$ or $C_2 = C_3$, a completely symmetric cancellation occurs.
+    \end{itemize}
+\end{itemize}
+Thus $D$ is an alternating $3$-linear function of the columns.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:triangular_matrix_determinant}]
+\label{sol:triangular_matrix_determinant}
+Let $A \in \M_{n \times n}(K)$ be an upper triangular matrix ($A_{ij} = 0$ for all $i > j$).
+By the Leibniz formula (\cref{thm:unique_det}):
+\[
+\det(A) = \sum_{\sigma \in S_n} \sgn(\sigma) \prod_{i=1}^n A_{i, \sigma(i)}.
+\]
+Suppose $\sigma \in S_n$ is a permutation with $\sigma \ne \id$.
+Let $k \in \{1, \dots, n\}$ be the smallest index such that $\sigma(k) \ne k$.
+Since $\sigma(1) = 1, \dots, \sigma(k-1) = k-1$, we must have $\sigma(k) > k$.
+Because $\sigma \colon \{1, \dots, n\} \to \{1, \dots, n\}$ is a bijection, the remaining elements $\{\sigma(k+1), \dots, \sigma(n)\}$ must be mapped into $\{1, \dots, n\} \setminus \{1, \dots, k-1, \sigma(k)\}$.
+Since there are $n - k$ remaining positions and only $n - k - 1$ values greater than $k$, by the Pigeonhole Principle there must exist some index $j > k$ such that $\sigma(j) \le k < j$.
+For this index $j$, we have $j > \sigma(j)$, which implies $A_{j, \sigma(j)} = 0$.
+Consequently, the product $\prod_{i=1}^n A_{i, \sigma(i)} = 0$ for every $\sigma \ne \id$.
+The only non-zero term is $\sigma = \id$, which yields:
+\[
+\det(A) = \sgn(\id) \prod_{i=1}^n A_{ii} = A_{11} A_{22} \cdots A_{nn}.
+\]
+For a lower triangular matrix, transposing gives an upper triangular matrix with the same diagonal, so $\det(A) = \det(A\transp) = A_{11} \cdots A_{nn}$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:symmetric_group_s4_and_alternating}]
+\label{sol:symmetric_group_s4_and_alternating}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The group $S_4$ contains $4! = 24$ permutations, classified by cycle structure:
+    \begin{itemize}
+        \item \textbf{Identity ($1$ element, $\sgn = +1$):} $\id$.
+        \item \textbf{$2$-cycles / Transpositions ($6$ elements, $\sgn = -1$):}
+        $(1\,2), (1\,3), (1\,4), (2\,3), (2\,4), (3\,4)$.
+        \item \textbf{$3$-cycles ($8$ elements, $\sgn = +1$):} \\
+        $(1\,2\,3), (1\,3\,2), (1\,2\,4), (1\,4\,2), (1\,3\,4), (1\,4\,3), (2\,3\,4), (2\,4\,3)$.
+        \item \textbf{$4$-cycles ($6$ elements, $\sgn = -1$):}
+        $(1\,2\,3\,4), (1\,2\,4\,3), (1\,3\,2\,4), (1\,3\,4\,2), (1\,4\,2\,3), (1\,4\,3\,2)$.
+        \item \textbf{Double transpositions ($3$ elements, $\sgn = +1$):}
+        $(1\,2)(3\,4), (1\,3)(2\,4), (1\,4)(2\,3)$.
+    \end{itemize}
+    There are $1 + 8 + 3 = 12$ even permutations and $6 + 6 = 12$ odd permutations.
+    The complete Leibniz formula for $A \in \M_{4 \times 4}(K)$ is:
+    \begin{align*}
+    \det(A) &= A_{11}A_{22}A_{33}A_{44} + A_{12}A_{23}A_{31}A_{44} + A_{13}A_{21}A_{32}A_{44} + A_{12}A_{24}A_{33}A_{41} \\
+    &\quad + A_{14}A_{21}A_{33}A_{42} + A_{13}A_{24}A_{31}A_{42} + A_{14}A_{22}A_{31}A_{43} + A_{11}A_{23}A_{34}A_{42} \\
+    &\quad + A_{11}A_{24}A_{32}A_{43} + A_{12}A_{21}A_{34}A_{43} + A_{13}A_{22}A_{34}A_{41} + A_{14}A_{23}A_{32}A_{41} \\
+    &\quad - A_{12}A_{21}A_{33}A_{44} - A_{13}A_{22}A_{31}A_{44} - A_{14}A_{22}A_{33}A_{41} - A_{11}A_{23}A_{32}A_{44} \\
+    &\quad - A_{11}A_{24}A_{33}A_{42} - A_{11}A_{22}A_{34}A_{43} - A_{12}A_{23}A_{34}A_{41} - A_{12}A_{24}A_{31}A_{43} \\
+    &\quad - A_{13}A_{21}A_{34}A_{42} - A_{13}A_{24}A_{32}A_{41} - A_{14}A_{21}A_{32}A_{43} - A_{14}A_{23}A_{31}A_{42}.
+    \end{align*}
+
+    \item For $n = 1$: $|S_1| = 1$, so there is $1$ even permutation ($\id$).
+    For $n \ge 2$: Fix the transposition $\tau := (1\,2) \in S_n$.
+    The map $\Phi \colon A_n \to S_n \setminus A_n$ given by $\Phi(\sigma) := \tau \circ \sigma$ is a bijection, since $\sgn(\tau \circ \sigma) = \sgn(\tau) \sgn(\sigma) = -\sgn(\sigma)$, and $\Phi$ is its own inverse.
+    Thus the number of even permutations in $S_n$ is exactly:
+    \[
+    |A_n| = \frac{|S_n|}{2} = \frac{n!}{2}. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:multiplicativity_via_leibniz}]
+\label{sol:multiplicativity_via_leibniz}
+Let $A, B \in \M_{n \times n}(K)$. Write $B$ in terms of its columns $B = (b_1, \dots, b_n)$ where $b_j = \sum_{s_j=1}^n B(s_j, j) e_{s_j}$.
+Then the columns of $AB$ are $A b_j = \sum_{s_j=1}^n B(s_j, j) A e_{s_j}$.
+Using the multilinearity of $\det$ with respect to columns:
+\[
+\det(AB) = \det(A b_1, \dots, A b_n) = \sum_{s_1=1}^n \cdots \sum_{s_n=1}^n \left(\prod_{j=1}^n B(s_j, j)\right) \det(A e_{s_1}, \dots, A e_{s_n}).
+\]
+Because $\det$ is alternating in columns, $\det(A e_{s_1}, \dots, A e_{s_n}) = 0$ whenever two of the indices $s_1, \dots, s_n$ coincide.
+Thus non-zero summands correspond precisely to permutations $\sigma \in S_n$ with $(s_1, \dots, s_n) = (\sigma(1), \dots, \sigma(n))$.
+For any $\sigma \in S_n$, reordering the columns $(A e_{\sigma(1)}, \dots, A e_{\sigma(n)})$ back to $(A e_1, \dots, A e_n)$ requires transpositions that produce a factor of $\sgn(\sigma)$:
+\[
+\det(A e_{\sigma(1)}, \dots, A e_{\sigma(n)}) = \sgn(\sigma) \det(A e_1, \dots, A e_n) = \sgn(\sigma) \det(A).
+\]
+Substituting this back gives:
+\[
+\det(AB) = \det(A) \sum_{\sigma \in S_n} \sgn(\sigma) \prod_{j=1}^n B(\sigma(j), j) = \det(A) \det(B\transp) = \det(A) \det(B). \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:general_determinant_properties_mc}]
+\label{sol:general_determinant_properties_mc}
+\begin{itemize}
+    \item \textbf{(a) True:} Multiplicativity of the determinant (\cref{thm:det_multiplicative}).
+    \item \textbf{(b) True:} $\det A \ne 0 \iff A$ is invertible $\iff$ columns are linearly independent.
+    \item \textbf{(c) True:} $\det(AB) = \det(A)\det(B) = \det(B)\det(A) = \det(BA)$ in the commutative field $\mathbb{R}$.
+    \item \textbf{(d) False:} For $n \ge 2$, $n$-linearity implies $\det(\lambda A) = \lambda^n \det(A) \ne \lambda \det(A)$ in general.
+    \item \textbf{(e) False:} The determinant is multilinear, not linear; for example $\det(I_2 + I_2) = \det(2I_2) = 4 \ne 1 + 1 = 2$.
+\end{itemize}
+The correct statements are \textbf{(a), (b), and (c)}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:determinant_properties_linearity_sc}]
+\label{sol:determinant_properties_linearity_sc}
+Statement \textbf{(c)} is false: the determinant function $\det \colon \M_{n \times n}(K) \to K$ is \emph{not} a linear map for $n \ge 2$, since $\det(A + B) \ne \det(A) + \det(B)$ in general (e.g. $\det(I_n + I_n) = 2^n \ne 1 + 1 = 2$).
+The remaining statements are all true:
+\begin{itemize}
+    \item (a) is the fundamental invertibility theorem (\cref{thm:inverse_adjoint}).
+    \item (b) is the triangular matrix formula (\cref{exc:triangular_matrix_determinant}).
+    \item (d) is true since $\det(\operatorname{diag}(\lambda, 1, \dots, 1)) = \lambda$ for any $\lambda \in K$.
+\end{itemize}
+Therefore, the false statement is \textbf{(c)}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:row_operations_and_determinant_divisibility}]
+\label{sol:row_operations_and_determinant_divisibility}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \leavevmode
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item By $n$-linearity on the $i$-th row, $\det(R_1, \dots, \lambda R_i, \dots, R_n) = \lambda \det(R_1, \dots, R_i, \dots, R_n) = \lambda \det A$.
+        \item By the alternating property (\cref{prop:alternating_swap} \textbf{(b)}), swapping any two rows flips the sign of the determinant: $\det B = -\det A$.
+        \item Expanding by linearity on row $j$: $\det(\dots, R_j + \lambda R_i, \dots) = \det(\dots, R_j, \dots) + \lambda \det(\dots, R_i, \dots) = \det A + 0 = \det A$, since the second matrix has two identical rows $R_i$.
+    \end{enumerate}
+
+    \item Let $M = \begin{pmatrix} 2 & 1 & 3 & 6 \\ 0 & 4 & 7 & 9 \\ 1 & 8 & 1 & 9 \\ 4 & 4 & 0 & 6 \end{pmatrix}$.
+    Perform the Type I row operation $R_4 \to 1000 R_1 + 100 R_2 + 10 R_3 + R_4$. By part \textbf{(a)(iii)}, this preserves the determinant:
+    \[
+    \det(M) = \det \begin{pmatrix}
+      2 & 1 & 3 & 6 \\
+      0 & 4 & 7 & 9 \\
+      1 & 8 & 1 & 9 \\
+      2014 & 1484 & 3710 & 6996
+    \end{pmatrix}.
+    \]
+    Since $2014 = 106 \times 19$, $1484 = 106 \times 14$, $3710 = 106 \times 35$, and $6996 = 106 \times 66$, we factor out $106$ from the fourth row using part \textbf{(a)(i)}:
+    \[
+    \det(M) = 106 \cdot \det \begin{pmatrix}
+      2 & 1 & 3 & 6 \\
+      0 & 4 & 7 & 9 \\
+      1 & 8 & 1 & 9 \\
+      19 & 14 & 35 & 66
+    \end{pmatrix} \in 106 \mathbb{Z}.
+    \]
+    Thus $\det(M)$ is divisible by $106$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:invariance_under_matrix_operations_sc}]
+\label{sol:invariance_under_matrix_operations_sc}
+Interchanging two rows flips the sign of the determinant ($\det \to -\det$), so the determinant in general changes.
+The other operations strictly preserve the determinant:
+\begin{itemize}
+    \item (b) Adding a scalar multiple of one row to another preserves $\det$ (\cref{thm:row_operations} \textbf{(a)}).
+    \item (c) $\det(A\transp) = \det(A)$ (\cref{thm:det_transpose}).
+    \item (d) $\det(P^{-1}AP) = \det(A)$ (\cref{cor:det_endomorphism}).
+\end{itemize}
+Therefore, the correct answer is \textbf{(a)}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:row_transformations_2x2_mc}]
+\label{sol:row_transformations_2x2_mc}
+Given $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4$:
+\begin{itemize}
+    \item \textbf{(a) Incorrect:} $\det \begin{pmatrix} 2a & 2b \\ 2c & 2d \end{pmatrix} = 2^2 \det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4 \times 4 = 16 \ne 8$.
+    \item \textbf{(b) Correct:} Applying $R_2 \to R_2 - R_1$ preserves the determinant, so the value remains $4$.
+    \item \textbf{(c) Correct:} Applying $R_2 \to R_2 + 2R_1$ preserves the determinant, so the value remains $4$.
+    \item \textbf{(d) Correct:} Scaling the second row by $3$ scales the determinant by $3$, giving $3 \times 4 = 12$.
+\end{itemize}
+The correct statements are \textbf{(b), (c), and (d)}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:block_matrix_commuting_blocks}]
+\label{sol:block_matrix_commuting_blocks}
+Let $M = \begin{pmatrix} A & B \\ C & D \end{pmatrix}$ with $AC = CA$ and $\det A \ne 0$.
+Consider the block matrix $N = \begin{pmatrix} I_n & 0 \\ -C & A \end{pmatrix}$.
+Multiplying $N$ and $M$ blockwise:
+\[
+NM = \begin{pmatrix} I_n & 0 \\ -C & A \end{pmatrix} \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \begin{pmatrix} A & B \\ -CA + AC & -CB + AD \end{pmatrix} = \begin{pmatrix} A & B \\ 0 & AD - CB \end{pmatrix},
+\]
+where the lower left block vanishes because $AC = CA$.
+Taking determinants on both sides and using multiplicativity (\cref{thm:det_multiplicative}) and the block determinant formula (\cref{prop:block_matrix} and \cref{exc:block_lower}):
+\[
+\det(NM) = \det(N) \det(M) = \det(I_n) \det(A) \det(M) = \det(A) \det(M).
+\]
+On the other hand:
+\[
+\det(NM) = \det \begin{pmatrix} A & B \\ 0 & AD - CB \end{pmatrix} = \det(A) \det(AD - CB).
+\]
+Since $\det A \ne 0$, dividing both sides by $\det(A)$ yields:
+\[
+\det \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \det(AD - CB). \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:determinants_via_gaussian_elimination}]
+\label{sol:determinants_via_gaussian_elimination}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Matrix $A$:}
+    Interchange $R_1 \leftrightarrow R_3$ (one swap, sign $-1$):
+    \[
+    \begin{pmatrix}
+      1 & 2 & -3 & 1 \\
+      -1 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 0 \\
+      0 & -4 & 2 & -1
+    \end{pmatrix}
+    \xrightarrow{R_2 + R_1 \to R_2}
+    \begin{pmatrix}
+      1 & 2 & -3 & 1 \\
+      0 & 2 & -2 & 1 \\
+      0 & 1 & 0 & 0 \\
+      0 & -4 & 2 & -1
+    \end{pmatrix}
+    \xrightarrow{R_4 + 2R_2 \to R_4}
+    \begin{pmatrix}
+      1 & 2 & -3 & 1 \\
+      0 & 2 & -2 & 1 \\
+      0 & 1 & 0 & 0 \\
+      0 & 0 & -2 & 1
+    \end{pmatrix}.
+    \]
+    Eliminating row $3$ using $R_3 \to 2R_3 - R_2$ gives $(0, 0, 2, -1)$, which is the exact negation of row $4$. Adding row $4$ yields a zero row, so $\rank(A) < 4$ and:
+    \[
+    \det(A) = 0.
+    \]
+
+    \item \textbf{Matrix $B$:}
+    Expanding along the first row (where only $B_{15} = 1$ is non-zero):
+    \[
+    \det(B) = 1 \cdot (-1)^{1+5} \det \begin{pmatrix}
+      -1 & 2 & 0 & 0 \\
+      0 & 1 & 0 & -1 \\
+      0 & 0 & -1 & 0 \\
+      0 & 0 & 0 & 1
+    \end{pmatrix}.
+    \]
+    This $4 \times 4$ submatrix is upper triangular, so its determinant is the product of diagonal entries $(-1)(1)(-1)(1) = 1$.
+    Thus:
+    \[
+    \det(B) = 1.
+    \]
+
+    \item \textbf{Matrix $C$:}
+    Perform Gaussian elimination to bring $C$ to upper triangular form:
+    \[
+    \begin{pmatrix}
+      2 & -3 & 5 & 1 & 4 \\
+      2 & -3 & 1 & -6 & 18 \\
+      4 & -3 & 9 & 6 & 10 \\
+      -2 & 4 & -6 & -1 & -1 \\
+      -6 & 11 & -23 & -14 & 9
+    \end{pmatrix}
+    \xrightarrow{\substack{R_2 - R_1 \to R_2 \\ R_3 - 2R_1 \to R_3 \\ R_4 + R_1 \to R_4 \\ R_5 + 3R_1 \to R_5}}
+    \begin{pmatrix}
+      2 & -3 & 5 & 1 & 4 \\
+      0 & 0 & -4 & -7 & 14 \\
+      0 & 3 & -1 & 4 & 2 \\
+      0 & 1 & -1 & 0 & 3 \\
+      0 & 2 & -8 & -11 & 21
+    \end{pmatrix}.
+    \]
+    Swap $R_2 \leftrightarrow R_4$ (one swap, sign $-1$):
+    \[
+    \xrightarrow{R_2 \leftrightarrow R_4}
+    \begin{pmatrix}
+      2 & -3 & 5 & 1 & 4 \\
+      0 & 1 & -1 & 0 & 3 \\
+      0 & 3 & -1 & 4 & 2 \\
+      0 & 0 & -4 & -7 & 14 \\
+      0 & 2 & -8 & -11 & 21
+    \end{pmatrix}
+    \xrightarrow{\substack{R_3 - 3R_2 \to R_3 \\ R_5 - 2R_2 \to R_5}}
+    \begin{pmatrix}
+      2 & -3 & 5 & 1 & 4 \\
+      0 & 1 & -1 & 0 & 3 \\
+      0 & 0 & 2 & 4 & -7 \\
+      0 & 0 & -4 & -7 & 14 \\
+      0 & 0 & -6 & -11 & 15
+    \end{pmatrix}.
+    \]
+    Eliminate the third column below the diagonal using $R_3$:
+    \[
+    \xrightarrow{\substack{R_4 + 2R_3 \to R_4 \\ R_5 + 3R_3 \to R_5}}
+    \begin{pmatrix}
+      2 & -3 & 5 & 1 & 4 \\
+      0 & 1 & -1 & 0 & 3 \\
+      0 & 0 & 2 & 4 & -7 \\
+      0 & 0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 & -6
+    \end{pmatrix}
+    \xrightarrow{R_5 - R_4 \to R_5}
+    \begin{pmatrix}
+      2 & -3 & 5 & 1 & 4 \\
+      0 & 1 & -1 & 0 & 3 \\
+      0 & 0 & 2 & 4 & -7 \\
+      0 & 0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 0 & -6
+    \end{pmatrix}.
+    \]
+    The matrix is now upper triangular with diagonal $(2, 1, 2, 1, -6)$.
+    Accounting for the single row interchange:
+    \[
+    \det(C) = (-1) \cdot \big(2 \cdot 1 \cdot 2 \cdot 1 \cdot (-6)\big) = (-1) \cdot (-24) = 24. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:vandermonde_determinant}]
+\label{sol:vandermonde_determinant}
+Let $V_n(x_1, \dots, x_n) = \det(x_i^{j-1})_{1 \le i, j \le n}$. We proceed by induction on $n \ge 2$.
+\begin{itemize}
+    \item \textbf{Base case $n = 2$:}
+    $\det \begin{pmatrix} 1 & x_1 \\ 1 & x_2 \end{pmatrix} = x_2 - x_1$, which matches $\prod_{1 \le i < j \le 2} (x_j - x_i)$.
+    \item \textbf{Induction step:}
+    Assume the formula holds for $n-1$. For the $n \times n$ matrix, perform column operations from right to left:
+    \[
+    C_j \longrightarrow C_j - x_1 C_{j-1} \qquad \text{for } j = n, n-1, \dots, 2.
+    \]
+    This clears all entries of the first row except the top-left $1$:
+    \[
+    \begin{pmatrix}
+      1 & 0 & 0 & \cdots & 0 \\
+      1 & x_2 - x_1 & x_2(x_2 - x_1) & \cdots & x_2^{n-2}(x_2 - x_1) \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      1 & x_n - x_1 & x_n(x_n - x_1) & \cdots & x_n^{n-2}(x_n - x_1)
+    \end{pmatrix}.
+    \]
+    Expanding along the first row:
+    \[
+    V_n(x_1, \dots, x_n) = \det \begin{pmatrix}
+      x_2 - x_1 & x_2(x_2 - x_1) & \cdots & x_2^{n-2}(x_2 - x_1) \\
+      \vdots & \vdots & \ddots & \vdots \\
+      x_n - x_1 & x_n(x_n - x_1) & \cdots & x_n^{n-2}(x_n - x_1)
+    \end{pmatrix}.
+    \]
+    Factor out $(x_i - x_1)$ from row $i$ for each $i \in \{2, \dots, n\}$:
+    \[
+    V_n(x_1, \dots, x_n) = \left(\prod_{i=2}^n (x_i - x_1)\right) \cdot V_{n-1}(x_2, \dots, x_n).
+    \]
+    By the induction hypothesis, $V_{n-1}(x_2, \dots, x_n) = \prod_{2 \le i < j \le n} (x_j - x_i)$.
+    Combining these gives:
+    \[
+    V_n(x_1, \dots, x_n) = \left(\prod_{j=2}^n (x_j - x_1)\right) \left(\prod_{2 \le i < j \le n} (x_j - x_i)\right) = \prod_{1 \le i < j \le n} (x_j - x_i). \qedhere
+    \]
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:determinant_5x5_laplace}]
+\label{sol:determinant_5x5_laplace}
+Let $B = \begin{pmatrix}
+  1 & 1 & 1 & 1 & 1 \\
+  0 & 0 & 0 & 2 & 3 \\
+  0 & 0 & 2 & 3 & 0 \\
+  0 & 2 & 3 & 0 & 0 \\
+  2 & 3 & 0 & 0 & 0
+\end{pmatrix}$.
+We expand $\det(B)$ along the first column:
+\[
+\det(B) = 1 \cdot (-1)^{1+1} \det \begin{pmatrix}
+  0 & 0 & 2 & 3 \\
+  0 & 2 & 3 & 0 \\
+  2 & 3 & 0 & 0 \\
+  3 & 0 & 0 & 0
+\end{pmatrix} + 2 \cdot (-1)^{5+1} \det \begin{pmatrix}
+  1 & 1 & 1 & 1 \\
+  0 & 0 & 2 & 3 \\
+  0 & 2 & 3 & 0 \\
+  2 & 3 & 0 & 0
+\end{pmatrix}.
+\]
+\begin{itemize}
+    \item For the first $4 \times 4$ minor (anti-triangular), expanding along the bottom row gives:
+    \[
+    3 \cdot (-1)^{4+1} \det \begin{pmatrix} 0 & 2 & 3 \\ 2 & 3 & 0 \\ 3 & 0 & 0 \end{pmatrix} = -3 \cdot \left( 3 \cdot (-1)^{3+1} \det \begin{pmatrix} 2 & 3 \\ 3 & 0 \end{pmatrix} \right) = -9 \cdot (0 - 9) = 81.
+    \]
+    \item For the second $4 \times 4$ minor, performing $R_4 \to R_4 - 2R_1$ gives:
+    \[
+    \det \begin{pmatrix}
+      1 & 1 & 1 & 1 \\
+      0 & 0 & 2 & 3 \\
+      0 & 2 & 3 & 0 \\
+      0 & 1 & -2 & -2
+    \end{pmatrix}
+    = 1 \cdot \det \begin{pmatrix}
+      0 & 2 & 3 \\
+      2 & 3 & 0 \\
+      1 & -2 & -2
+    \end{pmatrix}
+    = -2(-4 - 0) + 3(-4 - 3) = 8 - 21 = -13.
+    \]
+\end{itemize}
+Thus:
+\[
+\det(B) = 1 \cdot 81 + 2 \cdot (-13) = 81 - 26 = 55.
+\]
+\begin{itemize}
+    \item Over $\mathbb{R}$: $\det(B) = 55 \ne 0$, so $B$ is \textbf{invertible} over $\mathbb{R}$.
+    \item Over $\mathbb{F}_5$: $\det(B) = 55 \equiv 0 \pmod 5$, so $B$ is \textbf{not invertible} over $\mathbb{F}_5$. \qedhere
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:tridiagonal_toeplitz_determinant}]
+\label{sol:tridiagonal_toeplitz_determinant}
+Let $D_n := \det(A_n)$. We verify the base cases:
+\begin{itemize}
+    \item For $n = 1$: $D_1 = \det(2) = 2 = 1 + 1$.
+    \item For $n = 2$: $D_2 = \det \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} = 4 - 1 = 3 = 2 + 1$.
+\end{itemize}
+For $n \ge 3$, expand $\det(A_n)$ along the first row:
+\[
+D_n = 2 \det(A_{n-1}) - 1 \cdot \det \begin{pmatrix}
+  1 & 1 & 0 & \cdots & 0 \\
+  0 & 2 & 1 & \cdots & 0 \\
+  \vdots & 1 & 2 & \ddots & \vdots \\
+  0 & 0 & \cdots & 1 & 2
+\end{pmatrix}_{(n-1) \times (n-1)}.
+\]
+Expanding this second minor along its first column yields $1 \cdot \det(A_{n-2}) = D_{n-2}$.
+Thus we obtain the linear recurrence relation:
+\[
+D_n = 2 D_{n-1} - D_{n-2} \iff D_n - D_{n-1} = D_{n-1} - D_{n-2}.
+\]
+The consecutive differences are constant: $D_n - D_{n-1} = D_2 - D_1 = 3 - 2 = 1$.
+Therefore, $(D_n)_{n \ge 1}$ is an arithmetic progression:
+\[
+D_n = D_1 + (n-1) \cdot 1 = 2 + n - 1 = n + 1 \qquad \text{for all } n \ge 1. \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:parameter_for_3x3_determinant_sc}]
+\label{sol:parameter_for_3x3_determinant_sc}
+Let $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{pmatrix}$.
+Applying row operations $R_2 \to R_2 - R_1$ and $R_3 \to R_3 - R_1$ gives the upper triangular form:
+\[
+\det(A) = \det \begin{pmatrix} 1 & 1 & 1 \\ 0 & x-1 & 0 \\ 0 & 0 & x-1 \end{pmatrix} = 1 \cdot (x-1) \cdot (x-1) = (x-1)^2.
+\]
+We solve the equation $(x-1)^2 = 1$:
+\[
+x - 1 = \pm 1 \implies x = 2 \quad \text{or} \quad x = 0.
+\]
+Among the given options, $x = 2$ is \textbf{(b)}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:properties_2x2_adjugate}]
+\label{sol:properties_2x2_adjugate}
+Let $A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}$, so $\adj A = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}$ and $\det A = A_{11} A_{22} - A_{12} A_{21}$.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Adjugate identity:}
+    \begin{align*}
+    (\adj A) A &= \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix} \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix} \\
+    &= \begin{pmatrix} A_{11}A_{22} - A_{12}A_{21} & A_{12}A_{22} - A_{12}A_{22} \\ -A_{11}A_{21} + A_{11}A_{21} & -A_{12}A_{21} + A_{11}A_{22} \end{pmatrix} \\
+    &= \begin{pmatrix} \det A & 0 \\ 0 & \det A \end{pmatrix} = (\det A) I_2.
+    \end{align*}
+    Similarly, $A (\adj A) = (\det A) I_2$.
+
+    \item \textbf{Determinant of the adjugate:}
+    \[
+    \det(\adj A) = A_{22} A_{11} - (-A_{12})(-A_{21}) = A_{11} A_{22} - A_{12} A_{21} = \det(A).
+    \]
+
+    \item \textbf{Transpose compatibility:}
+    We have $A\transp = \begin{pmatrix} A_{11} & A_{21} \\ A_{12} & A_{22} \end{pmatrix}$.
+    Applying the adjugate definition to $A\transp$:
+    \[
+    \adj(A\transp) = \begin{pmatrix} A_{22} & -A_{21} \\ -A_{12} & A_{11} \end{pmatrix} = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}\transp = (\adj A)\transp. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}
