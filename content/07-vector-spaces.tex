@@ -91,6 +91,19 @@ By adding $-(0 \cdot v)$ to both sides, we yield $0_V = 0 \cdot v$.
 \end{enumerate}
 \end{proof}
 
+\begin{exercise}[Non-Vector Space Structure on the Extended Reals]
+\label{exc:extended_reals_not_vector_space}
+Let $\infty$ and $-\infty$ denote two distinct formal elements outside $\mathbb{R}$. Define an addition and a scalar multiplication on the set $V := \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ by standard arithmetic on $\mathbb{R}$, and for $t \in \mathbb{R}$:
+\[
+t \cdot \infty := \begin{cases} -\infty & \text{if } t < 0, \\ 0 & \text{if } t = 0, \\ \infty & \text{if } t > 0, \end{cases}
+\qquad
+t \cdot (-\infty) := \begin{cases} \infty & \text{if } t < 0, \\ 0 & \text{if } t = 0, \\ -\infty & \text{if } t > 0, \end{cases}
+\]
+along with $t + \infty = \infty + t := \infty$, $t + (-\infty) = (-\infty) + t := -\infty$, $\infty + \infty := \infty$, $(-\infty) + (-\infty) := -\infty$, and $\infty + (-\infty) = (-\infty) + \infty := 0$.
+Determine whether $V$ endowed with these operations forms a vector space over $\mathbb{R}$.
+\exinfo{This exercise is Problem 4 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{The Coordinate Space \texorpdfstring{$K^n$}{K to the n}}
 
 \begin{example}[The Coordinate Space \texorpdfstring{$K^n$}{K to the n}]
@@ -115,6 +128,22 @@ With these operations $K^n$ becomes a vector space over $K$; the proof rests ent
 \begin{exercise}
 \label{exc:kn_axioms}
 Check the details: verify each of the eight axioms (V1)--(V8) for $K^n$.
+\end{exercise}
+
+\begin{exercise}[Multiplicative Vector Space Structure on Positive Real Pairs]
+\label{exc:positive_reals_vector_space_mc}
+Consider the set of pairs of strictly positive real numbers $\mathbb{R}_{>0}^2 := \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 > 0, \, x_2 > 0\}$. Define an addition operation on $\mathbb{R}_{>0}^2$ by componentwise multiplication:
+\[
+\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \oplus \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} := \begin{pmatrix} x_1 y_1 \\ x_2 y_2 \end{pmatrix}.
+\]
+Consider the following three candidate definitions of scalar multiplication for $\lambda \in \mathbb{R}$:
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} \lambda x_1 \\ \lambda x_2 \end{pmatrix}$;
+    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} e^{\lambda} x_1 \\ e^{\lambda} x_2 \end{pmatrix}$;
+    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} x_1^{\lambda} \\ x_2^{\lambda} \end{pmatrix}$.
+\end{enumerate}
+Under which of these candidate definitions does $(\mathbb{R}_{>0}^2, \oplus, \odot)$ form a valid vector space over $\mathbb{R}$?
+\exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 \begin{importantremark}
@@ -183,6 +212,31 @@ which is (LSS2). Finally, let $\alpha \in K$ and $u \in U$. By \textbf{(b)} appl
 which is (LSS3). Hence $U$ is a linear subspace.
 \end{proof}
 
+\begin{exercise}[Verifying Linear Subspaces over \texorpdfstring{$\mathbb{R}$}{R} and \texorpdfstring{$\mathbb{F}_2$}{F2}]
+\label{exc:verifying_subspaces_r_f2}
+Determine which of the following subsets are linear subspaces of the given vector spaces:
+\begin{enumerate}
+    \item $S_1 := \{(x_1, x_2, x_3) \in \mathbb{R}^3 \mid x_1 = x_2 = 2x_3\} \subseteq \mathbb{R}^3$.
+    \item $S_2 := \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1^2 + x_2^4 = 0\} \subseteq \mathbb{R}^2$.
+    \item $S_3 := \{(\mu + \lambda, \lambda^2) \in \mathbb{R}^2 \mid \mu, \lambda \in \mathbb{R}\} \subseteq \mathbb{R}^2$.
+\end{enumerate}
+What changes in parts (b) and (c) if the base field $\mathbb{R}$ is replaced by the finite field $\mathbb{F}_2$?
+\exinfo{This exercise is Problem 2 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Subspace Identification in Coordinate Spaces]
+\label{exc:subspace_identification_mc}
+Which of the following subsets are linear subspaces of the ambient coordinate spaces?
+\begin{enumerate}
+    \item $\{(x_1, x_2, x_3) \in \mathbb{R}^3 \mid 3x_1 + 5x_2 + 3x_3 = 0 \text{ and } 2x_2 + x_3 = 0\} \subseteq \mathbb{R}^3$.
+    \item $\{(x_1, x_2, x_3) \in \mathbb{R}^3 \mid x_1 + x_2 + x_3 = 3\} \subseteq \mathbb{R}^3$.
+    \item $\{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 > x_2\} \subseteq \mathbb{R}^2$.
+    \item $\{(0, x, 2x, 3x) \mid x \in \mathbb{R}\} \subseteq \mathbb{R}^4$.
+    \item $\{(x^4, x^3, x^2, x) \mid x \in \mathbb{R}\} \subseteq \mathbb{R}^4$.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Examples of Subspaces}
 
 \begin{example}[The Trivial Subspace]
@@ -220,6 +274,14 @@ Therefore, $b + b = b$, which implies $b = 0$. \hfill $\diamond$
 \begin{exercise}
 \label{exc:U_b_converse}
 Prove the direction $\impliedby$ of the claim on \cpageref{claim:U_b_subspace} that $U_b$ is a subspace exactly for $b = 0$: show that if $b = 0$, then $U_0$ satisfies (LSS1), (LSS2) and (LSS3), and is therefore a linear subspace of $K^3$.
+\end{exercise}
+
+\begin{exercise}[Unions of Three Linear Subspaces]
+\label{exc:union_three_subspaces}
+Let $V$ be a vector space over a field $K$, and let $V_1, V_2, V_3 \subseteq V$ be linear subspaces such that none of the three is contained in any other.
+Determine with proof whether the union $V_1 \cup V_2 \cup V_3$ is always, sometimes, or never a linear subspace of $V$.
+\exhint{Consider different choices for the base field $K$, such as $\mathbb{F}_2$.}
+\exinfo{This exercise is Problem 6 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 \subsection{The Solution Set of a Linear System}
@@ -288,6 +350,23 @@ so $a \cdot x \in L$. This shows $L$ is a subspace.
 So the solution set of a \emph{homogeneous} system is a linear subspace of $K^n$, while the solution set of an inhomogeneous one is never a subspace; it does not even contain $0$. It is not, however, shapeless: recall the last example of the previous chapter, whose general solution had the form \qt{one particular solution plus an arbitrary multiple of a fixed vector}. We will make that observation precise once we have the notion of dimension.
 \end{importantremark}
 
+\begin{exercise}[Parametric Linear Systems and Subspaces]
+\label{exc:parametric_linear_system_subspace}
+Let $m \in \mathbb{R}$. Consider the system of linear equations in $(x, y) \in \mathbb{R}^2$:
+\[
+\begin{cases}
+\phantom{m}x + my = -3 \\
+mx + 4y = \phantom{-}6
+\end{cases}
+\]
+\begin{enumerate}
+    \item Determine the set of solutions $S \subseteq \mathbb{R}^2$ depending on the parameter $m$.
+    \item For which values of $m$ is $S$ a linear subspace of $\mathbb{R}^2$?
+    \item Provide a geometric interpretation of $S$ in the real plane $\mathbb{R}^2$ for each case of $m$.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{More Examples of Vector Spaces}
 
 \subsubsection{Spaces of Sequences \texorpdfstring{$K^\infty$}{K to the infinity}}
@@ -339,6 +418,32 @@ We define addition $+$ and scalar multiplication $\cdot$ on $K^S$ as follows. Le
 \begin{exercise}
 \label{exc:function_space_axioms}
 $K^S$ is a vector space over $K$.
+\end{exercise}
+
+\begin{exercise}[Even and Odd Functions as Linear Subspaces]
+\label{exc:even_odd_function_subspaces}
+Let $K$ be a field with $1 + 1 \ne 0$, and consider the function space $V := K^K = \mathrm{Abb}(K, K)$ endowed with pointwise addition and scalar multiplication. Define the subsets:
+\begin{align*}
+V_{\mathrm{even}} &:= \{f \colon K \to K \mid f(-x) = f(x) \;\forall x \in K\}, \\
+V_{\mathrm{odd}} &:= \{f \colon K \to K \mid f(-x) = -f(x) \;\forall x \in K\}.
+\end{align*}
+\begin{enumerate}
+    \item Show that $V_{\mathrm{even}}$ and $V_{\mathrm{odd}}$ are linear subspaces of $V$.
+    \item Show that $V_{\mathrm{even}} + V_{\mathrm{odd}} = V$, where $V_{\mathrm{even}} + V_{\mathrm{odd}} := \{v + w \mid v \in V_{\mathrm{even}}, w \in V_{\mathrm{odd}}\}$.
+    \item Show that $V_{\mathrm{even}} \cap V_{\mathrm{odd}} = \{0\}$.
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[The Power Set as an \texorpdfstring{$\mathbb{F}_2$}{F2}-Vector Space]
+\label{exc:power_set_f2_vector_space}
+Let $X$ be a set and let $\mathcal{P}(X)$ be its power set. For all $A, B \in \mathcal{P}(X)$ and $\lambda \in \mathbb{F}_2 = \{0, 1\}$, define the operations:
+\begin{align*}
+A \bigtriangleup B &:= (A \cup B) \setminus (A \cap B), \\
+\lambda \cdot A &:= \begin{cases} \emptyset & \text{if } \lambda = 0, \\ A & \text{if } \lambda = 1. \end{cases}
+\end{align*}
+Show that $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ is a vector space over the field $\mathbb{F}_2$.
+\exinfo{This exercise is Problem 5 of Problem Sheet 5, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 \begin{example}[Continuous Functions]
