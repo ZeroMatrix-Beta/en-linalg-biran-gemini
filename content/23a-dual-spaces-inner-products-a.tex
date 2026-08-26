@@ -93,6 +93,21 @@ The statements about the linearity of $\Phi$ are left as an exercise.
   \exinfo{This exercise is Problem 5 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
+\begin{exercise}[Existence of the Adjoint for Euclidean Homomorphisms]
+  \label{exc:adjoint_existence_finite_dim}
+  Let $f \colon V \to W$ be a linear map between Euclidean vector spaces.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Assume $\dim V < \infty$. Show that there exists a unique linear map $f^* \colon W \to V$ such that
+    \[
+    \langle f(v), w \rangle_W = \langle v, f^*(w) \rangle_V \qquad \text{for all } v \in V, \, w \in W.
+    \]
+    \item Does the statement in (a) always hold if we instead assume $\dim W < \infty$ while $\dim V = \infty$?
+  \end{enumerate}
+  \exhint{(a) For each fixed $w \in W$, the map $\varphi_w \colon V \to \mathbb{R}$ given by $\varphi_w(v) = \langle f(v), w \rangle_W$ is a linear functional on $V$. Since $\dim V < \infty$, the Riesz representation theorem (\cref{thm:dual_space_inner_product_isomorphism}) guarantees a unique vector $v_w \in V$ such that $\varphi_w(v) = \langle v, v_w \rangle_V$. Defining $f^*(w) := v_w$ gives the required map. Show that $f^*$ is linear and unique.
+  (b) No. Consider $V = \mathbb{R}^{(\mathbb{N})}$ (the space of real sequences $(a_i)_{i=1}^\infty$ with only finitely many non-zero terms) equipped with the standard $\ell^2$-scalar product $\langle a, b \rangle = \sum_{i=1}^\infty a_i b_i$, and let $W = \mathbb{R}$. Define $f \colon V \to \mathbb{R}$ by $f(a) = \sum_{i=1}^\infty a_i$. If $f^*$ existed, $f^*(1)$ would be a vector $c \in V$ such that $f(a) = \langle a, c \rangle = \sum a_i c_i$. Taking $a = e_k$ gives $c_k = f(e_k) = 1$ for all $k \in \mathbb{N}$, which has infinitely many non-zero entries and thus does not belong to $V$.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % The notes give \qt{The adjoint map} a heading of its own, but they go on
 % numbering the results under it 23.a.2, 23.a.3, ..., and the source folder has
 % no 23.b at all: this is not a new lettered part of the chapter. Hence a
@@ -285,6 +300,25 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
   \exhint{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
   (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Invariant Subspaces and the Adjoint Map \faHeart]
+  \label{exc:invariant_subspaces_adjoint}
+  Let $V$ be a finite-dimensional inner product space over $K \in \{\mathbb{R}, \mathbb{C}\}$, let $T \in \End(V)$, and let $U \subseteq V$ be a subspace. Prove that $U$ is $T$-invariant if and only if $U^\perp$ is $T^*$-invariant.
+  \exhint{Suppose $T(U) \subseteq U$. Let $w \in U^\perp$. We must show $T^*(w) \in U^\perp$, meaning $\langle u, T^*(w) \rangle = 0$ for all $u \in U$. By definition of the adjoint, $\langle u, T^*(w) \rangle = \langle T(u), w \rangle$. Since $T(u) \in U$ and $w \in U^\perp$, this inner product is zero, so $T^*(w) \in U^\perp$.
+  Conversely, if $U^\perp$ is $T^*$-invariant, applying the forward direction to $T^*$ and $U^\perp$ gives that $(U^\perp)^\perp$ is $(T^*)^*$-invariant. Since $(U^\perp)^\perp = U$ (using $\dim V < \infty$, \cref{cor:bidual_orthogonal_complement}) and $(T^*)^* = T$, this shows $T(U) \subseteq U$.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Cancellation Property of \texorpdfstring{$f^* \circ f$}{f* f} \faHeart]
+  \label{exc:cancellation_adjoint_composite}
+  Let $V$ be a finite-dimensional Euclidean vector space, and let $f, g_1, g_2 \in \End(V)$ be endomorphisms satisfying
+  \[
+  f^* \circ f \circ g_1 = f^* \circ f \circ g_2.
+  \]
+  Prove that $f \circ g_1 = f \circ g_2$.
+  \exhint{Let $h := g_1 - g_2 \in \End(V)$. The hypothesis implies $(f^* \circ f \circ h)(v) = 0$ for all $v \in V$. Taking the inner product with $h(v)$ gives $0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2$. By positive definiteness, $\|f(h(v))\| = 0 \implies f(h(v)) = 0$ for all $v \in V$. Hence $f \circ h = 0$, which proves $f \circ g_1 = f \circ g_2$.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 \subsection*{Matrix representation of adjoint maps}

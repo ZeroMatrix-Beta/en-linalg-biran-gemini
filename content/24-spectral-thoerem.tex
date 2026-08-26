@@ -238,6 +238,22 @@ We can continue this process by induction, and show that for all $1 \leq k < n$ 
 \label{exc:gram_schmidt_keeps_triangular}
 This is the step marked \qt{exc.: check this} in the proof above. Let $\mathcal{C} := (u_1, \dots, u_n)$ be a basis for $V$ with $[T]_{\mathcal{C}}^{\mathcal{C}}$ upper triangular, and let $\mathcal{B} := (v_1, \dots, v_n)$ be the orthonormal basis produced from it by Gram-Schmidt. Show that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is again upper triangular. (Prof. Biran's hint: the point is that $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$.)
 \end{exercise}
+
+\begin{exercise}[Spectral Decomposition into Orthogonal Projections \faHeart]
+  \label{exc:spectral_decomposition_projections}
+  Let $V$ be a finite-dimensional unitary vector space and let $T \in \End(V)$ be a normal operator.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Prove that there exist distinct complex numbers $\lambda_1, \dots, \lambda_k \in \mathbb{C}$ and mutually orthogonal subspaces $W_1, \dots, W_k \subseteq V$ such that
+    \[
+    T = \lambda_1 P_{W_1} + \dots + \lambda_k P_{W_k},
+    \]
+    where $P_{W_j} \colon V \to W_j$ denotes the orthogonal projection onto $W_j$.
+    \item Show that for every subspace $U \subseteq V$, the orthogonal projection $P_U$ is self-adjoint ($P_U^* = P_U$).
+  \end{enumerate}
+  \exhint{(a) By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = \gEig_T(\lambda_1) \oplus \dots \oplus \gEig_T(\lambda_k)$, where $\lambda_1, \dots, \lambda_k$ are the distinct eigenvalues of $T$. By \cref{lem:properties_normal_endo}(d), the eigenspaces $W_j := \gEig_T(\lambda_j)$ are mutually orthogonal. For any $v = w_1 + \dots + w_k$ with $w_j \in W_j$, we have $P_{W_j}(v) = w_j$ and $T(v) = \sum_{j=1}^k \lambda_j w_j = \sum_{j=1}^k \lambda_j P_{W_j}(v)$.
+  (b) Let $v, w \in V$. Decompose $v = u_1 + u_1^\perp$ and $w = u_2 + u_2^\perp$ with $u_1, u_2 \in U$ and $u_1^\perp, u_2^\perp \in U^\perp$. Then $\langle P_U(v), w \rangle = \langle u_1, u_2 + u_2^\perp \rangle = \langle u_1, u_2 \rangle = \langle u_1 + u_1^\perp, u_2 \rangle = \langle v, P_U(w) \rangle$, proving $P_U^* = P_U$.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \begin{remark}
@@ -290,6 +306,18 @@ Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} 
 Show that $T \colon V \to V$ is self adjoint if and only if for every orthonormal basis $\mathcal{B}$ of $V$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint.
 \end{exercise}
 
+\begin{exercise}[Self-Adjointness and Non-Orthonormal Bases]
+  \label{exc:self_adjoint_non_orthonormal_basis}
+  Equip $V = \mathbb{R}_{\le 2}[x]$ with the inner product $\langle p, q \rangle := \int_0^1 p(x) q(x) \, dx$, and define $T \in \End(\mathbb{R}_{\le 2}[x])$ by $T(a_0 + a_1 x + a_2 x^2) := a_1 x$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Show that $T$ is not self-adjoint.
+    \item The representation matrix of $T$ with respect to the standard monomial basis $\mathcal{B} = (1, x, x^2)$ is $[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}$, which is symmetric ($A\transp = A$). Explain why this does not contradict \cref{exc:self_adjoint_matrix_criterion}.
+  \end{enumerate}
+  \exhint{(a) Compute $\langle T(1), x \rangle = \langle 0, x \rangle = 0$, but $\langle 1, T(x) \rangle = \langle 1, x \rangle = \int_0^1 x \, dx = 1/2 \ne 0$. Thus $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, so $T^* \ne T$.
+  (b) \Cref{exc:self_adjoint_matrix_criterion} and \cref{prop:matrix_representation_adjoint} state that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^*$ holds if and only if the basis $\mathcal{B}$ is \emph{orthonormal}. The standard monomial basis $(1, x, x^2)$ is not orthogonal (e.g. $\langle 1, x \rangle = 1/2 \ne 0$), so the symmetry of $[T]_{\mathcal{B}}^{\mathcal{B}}$ does not imply that $T$ is self-adjoint.}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % Thm. (24.a.9)
 % The notes state this theorem without ever introducing T; supplied here.
 \begin{theorem}[Spectral Theorem over $\mathbb{R}$]
@@ -334,6 +362,24 @@ Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C
 The forward direction was proven in \cref{lem:real_orth_diag_is_self_adj}. For the reverse direction, if $T$ is self adjoint, then by \cref{lem:self_adj_properties} \textbf{(b)}, its characteristic polynomial splits over $\mathbb{R}$. This implies $T$ is trigonalizable over $\mathbb{R}$, by \cref{thm:trig_condition}. Furthermore, since $T = T^*$, $T$ trivially commutes with its adjoint, making it normal. By \cref{cor:spectral_thm_real_trigonalizable}, a normal map that is trigonalizable over $\mathbb{R}$ is orthogonally diagonalizable.
 \end{proof}
 
+\begin{exercise}[Differential Operators, Skew-Adjointness, and Fourier Basis \faHeart]
+  \label{exc:differential_operators_fourier}
+  Let $V = C^\infty_{\text{per}}(2\pi, \mathbb{R})$ be the vector space of smooth $2\pi$-periodic functions $f \colon \mathbb{R} \to \mathbb{R}$, equipped with the inner product
+  \[
+  \langle f, g \rangle := \frac{1}{2\pi} \int_0^{2\pi} f(x) g(x) \, dx.
+  \]
+  Consider the derivative operator $D \colon V \to V$, $D(f) := f'$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Is $D$ self-adjoint? Determine the adjoint operator $D^*$.
+    \item Show that $\Delta := -D^2 = -D \circ D$ is self-adjoint.
+    \item Let $U \subset V$ be the subspace spanned by $\{x \mapsto \cos(nx) \mid n \ge 0\} \cup \{x \mapsto \sin(nx) \mid n \ge 1\}$. Find an orthonormal basis of $U$ consisting of eigenvectors of $\Delta|_U$, and determine the eigenvalues and their multiplicities.
+  \end{enumerate}
+  \exhint{(a) Using integration by parts and $2\pi$-periodicity, $\langle Df, g \rangle = \frac{1}{2\pi} [f(x)g(x)]_0^{2\pi} - \frac{1}{2\pi} \int_0^{2\pi} f(x) g'(x) \, dx = -\langle f, Dg \rangle = \langle f, -Dg \rangle$. Thus $D^* = -D$, meaning $D$ is skew-adjoint (hence not self-adjoint).
+  (b) $\Delta^* = (-D^2)^* = -(D^*)^2 = -(-D)^2 = -D^2 = \Delta$.
+  (c) Compute $\Delta(\cos(nx)) = n^2 \cos(nx)$ and $\Delta(\sin(nx)) = n^2 \sin(nx)$. The orthonormal basis is $\{1\} \cup \{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx) \mid n \ge 1\}$. The eigenvalue $\lambda_0 = 0$ has multiplicity $1$ (spanned by $1$), and for each $n \ge 1$, the eigenvalue $\lambda_n = n^2$ has multiplicity $2$ (spanned by $\{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx)\}$).}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{Spectral Theorems for Matrices}
 
 Let $K = \mathbb{R}$ or $\mathbb{C}$. Recall that a matrix $A \in \M_{n \times n}(K)$ is called normal if $A \cdot A^* = A^* \cdot A$ (the second half of \cref{def:normal_endomorphism}, written there as $A \cdot \overline{A}\transp = \overline{A}\transp \cdot A$).
@@ -356,6 +402,30 @@ There exist symmetric matrices in $\M_{n \times n}(\mathbb{C})$ that are not nor
 \begin{exercise}[The Symmetric Matrix that is Not Normal]
 \label{exc:symmetric_not_normal}
 Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* A$}: verify for $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$ that the two products really do differ.
+\end{exercise}
+
+\begin{exercise}[Algebra of Self-Adjoint and Normal Matrices]
+  \label{exc:algebra_self_adjoint_normal_mc}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $A, B \in \M_{n \times n}(\mathbb{C})$ be self-adjoint matrices, and $\lambda \in \mathbb{C}$. Which of $A + B$, $\lambda A$, and $\lambda A$ (as normal) are always self-adjoint or normal?
+    \item Let $A, B \in \M_{n \times n}(\mathbb{C})$ be self-adjoint matrices. Which of $AB$, $AB + BA$, $AB - BA$, and $ABA$ are always self-adjoint or normal?
+    \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a normal matrix and let $p \in \mathbb{C}[t]$ be a polynomial. Determine the validity of the following statements:
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+      \item $p(A)^* = p(A^*)$.
+      \item $A^i (A^*)^j = (A^*)^j A^i$ for all $i, j \in \mathbb{N}$.
+      \item $p(A)$ is normal.
+      \item Every eigenvalue $\lambda$ of $A$ is an eigenvalue of $p(A)$.
+      \item Every eigenvector $v$ of $A$ is an eigenvector of $p(A)$.
+    \end{enumerate}
+  \end{enumerate}
+  \exhint{(a) $(A+B)^* = A^* + B^* = A + B$ is self-adjoint. $(\lambda A)^* = \overline{\lambda} A^*$ is self-adjoint if and only if $\lambda \in \mathbb{R}$. However, $\lambda A$ is always normal since $(\lambda A)^*(\lambda A) = |\lambda|^2 A^2 = (\lambda A)(\lambda A)^*$.
+  (b) $(AB + BA)^* = B^* A^* + A^* B^* = BA + AB$ and $(ABA)^* = A^* B^* A^* = ABA$ are self-adjoint. $(AB - BA)^* = BA - AB = -(AB - BA)$ is skew-adjoint, hence normal. $AB$ is self-adjoint if and only if $AB = BA$.
+  (c) (i) False (the coefficients of $p$ are conjugated: $p(A)^* = \bar{p}(A^*)$).
+  (ii) True (by induction from $A A^* = A^* A$).
+  (iii) True (since $A$ commutes with $A^*$).
+  (iv) False (if $Av = \lambda v$, then $p(A)v = p(\lambda)v$, so $p(\lambda)$ is the eigenvalue, not $\lambda$).
+  (v) True ($p(A)v = p(\lambda)v$).}
+  \exinfo{This exercise compiles the Multiple Choice problems from Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
