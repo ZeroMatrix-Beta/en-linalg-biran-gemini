@@ -108,6 +108,7 @@ The proof above verifies that the family
 \]
 is linearly independent. Check that it also spans $U + W$, which the notes leave to the reader.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:combined_family_spans}
 \end{exercise}
 
 \begin{exercise}[Distributivity of Sum and Intersection of Subspaces]
@@ -126,12 +127,14 @@ Let $V$ be a vector space over $K$, and let $U, V_1, V_2 \subseteq V$ be linear 
     hold for all choices of subspaces? If not, does one inclusion always hold?
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:subspaces_distributivity}
 \end{exercise}
 
 \begin{exercise}[Intersection Dimension of Four-Dimensional Subspaces]
 \label{exc:intersection_four_dim_subspaces}
 Suppose that $U$ and $V$ are both $4$-dimensional subspaces of $\mathbb{C}^6$, viewed as a vector space over $\mathbb{C}$. Prove that there exist two vectors in $U \cap V$ such that neither is a scalar multiple of the other.
 \exinfo{This exercise is Problem 3 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:intersection_four_dim_subspaces}
 \end{exercise}
 
 \begin{exercise}[Sum and Intersection of the Zero-Sum Hyperplane and Diagonal Line]
@@ -143,6 +146,7 @@ D := \{(\alpha, \dots, \alpha) \in K^n \mid \alpha \in K\}.
 \]
 Determine an explicit basis and compute the dimension of $U$, $D$, $U \cap D$, and $U + D$. Be sure to distinguish the case where $n \cdot 1_K = 0$ in the field $K$.
 \exinfo{This exercise is Problem 7 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:hyperplane_and_diagonal_subspaces}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -180,6 +184,7 @@ The remaining three statements are tied to \textbf{(c)} by the cycle of implicat
 Let $V$ be a vector space over a field $F$, and let $U_1, U_2, U_3 \subseteq V$ be three linear subspaces such that $V = U_1 + U_2 + U_3$ and $U_i \cap U_j = \{0\}$ for all $i \ne j \in \{1, 2, 3\}$.
 Is it necessarily true that for every $v \in V$, there exists a unique triple $(u_1, u_2, u_3) \in U_1 \times U_2 \times U_3$ such that $v = u_1 + u_2 + u_3$? Prove the statement or provide a counterexample.
 \exinfo{This exercise is Problem 5 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:pairwise_trivial_vs_direct_sum}
 \end{exercise}
 
 % def:14.4
@@ -261,12 +266,14 @@ Let $F$ be a field. Find an explicit linear complement in $\M_{n \times n}(F)$ f
     \item The subspace $U_{\mathrm{Sym}} \subseteq \M_{n \times n}(F)$ of symmetric matrices (where $\operatorname{char}(F) \ne 2$).
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:linear_complements_matrix_subspaces}
 \end{exercise}
 
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 
 \begin{exercisesolution}[Proof that the Combined Family Spans $U + W$ (on \cpageref{exc:combined_family_spans})]
+\label{sol:combined_family_spans}
 Write $\mathcal{S} := (v_1, \dots, v_k, u_1, \dots, u_{\ell-k}, w_1, \dots, w_{m-k})$ for the combined family.
 
 Every member of $\mathcal{S}$ lies in $U + W$: the vectors $v_i$ and $u_i$ lie in $U$, the vectors $w_j$ lie in $W$, and both $U$ and $W$ are contained in $U + W$ by \cref{prop:properties_of_sums} \textbf{(a)}. Since $U + W$ is a subspace, it follows that $\Sp(\mathcal{S}) \subseteq U + W$.
@@ -281,6 +288,8 @@ w = \sum_{i=1}^{k} \alpha'_i v_i + \sum_{j=1}^{m-k} \gamma_j w_j.
 \]
 Adding the two expressions writes $x$ as a linear combination of the members of $\mathcal{S}$, the coefficient of $v_i$ being $\alpha_i + \alpha'_i$. Hence $U + W \subseteq \Sp(\mathcal{S})$, and the two inclusions give $\Sp(\mathcal{S}) = U + W$.
 \end{exercisesolution}
+
+\input{content/14-sums-of-vector-spaces-solutions.tex}
 
 \begin{ainote}
 \Cref{cor:trivial_intersection} deserves a word. The notes state \emph{five}
@@ -300,3 +309,4 @@ and there is nothing to choose. The figure beside the remark had assumed as much
 all along, taking for $U$ a line rather than a point, which is the sort of
 disagreement between a picture and its caption worth checking for elsewhere.
 \end{ainote}
+

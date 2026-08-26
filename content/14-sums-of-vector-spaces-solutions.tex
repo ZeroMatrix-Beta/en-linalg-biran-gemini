@@ -1,0 +1,142 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:subspaces_distributivity}]
+\label{sol:subspaces_distributivity}
+Neither distributive law holds in general, but in both cases the inclusion from left to right ($\subseteq$) is always satisfied.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Distributivity of Intersection over Sum:}
+    Does $U \cap (V_1 + V_2) = (U \cap V_1) + (U \cap V_2)$ hold?
+    \begin{itemize}
+        \item \textbf{Always valid inclusion:} $(U \cap V_1) + (U \cap V_2) \subseteq U \cap (V_1 + V_2)$.
+        Indeed, $U \cap V_1 \subseteq U$ and $U \cap V_1 \subseteq V_1 \subseteq V_1 + V_2$, so $U \cap V_1 \subseteq U \cap (V_1 + V_2)$. Similarly, $U \cap V_2 \subseteq U \cap (V_1 + V_2)$. Since $U \cap (V_1 + V_2)$ is a subspace, it contains the sum $(U \cap V_1) + (U \cap V_2)$.
+        \item \textbf{Counterexample to equality:} Let $V = \mathbb{R}^2$. Consider the three $1$-dimensional subspaces:
+        \[
+        V_1 = \Sp\left(\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right), \qquad V_2 = \Sp\left(\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right), \qquad U = \Sp\left(\begin{pmatrix} 1 \\ 1 \end{pmatrix}\right).
+        \]
+        Then $V_1 + V_2 = \mathbb{R}^2$, so $U \cap (V_1 + V_2) = U \cap \mathbb{R}^2 = U$ (dimension $1$).
+        However, $U \cap V_1 = \{0\}$ and $U \cap V_2 = \{0\}$, so $(U \cap V_1) + (U \cap V_2) = \{0\}$ (dimension $0$).
+        Thus $U \cap (V_1 + V_2) \ne (U \cap V_1) + (U \cap V_2)$.
+    \end{itemize}
+
+    \item \textbf{Distributivity of Sum over Intersection:}
+    Does $U + (V_1 \cap V_2) = (U + V_1) \cap (U + V_2)$ hold?
+    \begin{itemize}
+        \item \textbf{Always valid inclusion:} $U + (V_1 \cap V_2) \subseteq (U + V_1) \cap (U + V_2)$.
+        Indeed, $U \subseteq U + V_1$ and $U \subseteq U + V_2$, so $U \subseteq (U + V_1) \cap (U + V_2)$. Moreover, $V_1 \cap V_2 \subseteq V_1 \subseteq U + V_1$ and $V_1 \cap V_2 \subseteq V_2 \subseteq U + V_2$, so $V_1 \cap V_2 \subseteq (U + V_1) \cap (U + V_2)$. Thus the sum is contained in the intersection.
+        \item \textbf{Counterexample to equality:} Using the same three subspaces in $\mathbb{R}^2$:
+        $V_1 \cap V_2 = \{0\}$, so $U + (V_1 \cap V_2) = U + \{0\} = U$ (dimension $1$).
+        On the other hand, $U + V_1 = \mathbb{R}^2$ and $U + V_2 = \mathbb{R}^2$, so $(U + V_1) \cap (U + V_2) = \mathbb{R}^2 \cap \mathbb{R}^2 = \mathbb{R}^2$ (dimension $2$).
+        Thus $U + (V_1 \cap V_2) \ne (U + V_1) \cap (U + V_2)$.
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:intersection_four_dim_subspaces}]
+\label{sol:intersection_four_dim_subspaces}
+Let $U, V \subseteq \mathbb{C}^6$ be $4$-dimensional linear subspaces over $\mathbb{C}$. By the dimension formula for sums of subspaces (\cref{prop:properties_of_sums}):
+\[
+\dim_{\mathbb{C}}(U + V) = \dim_{\mathbb{C}} U + \dim_{\mathbb{C}} V - \dim_{\mathbb{C}}(U \cap V).
+\]
+Since $U + V \subseteq \mathbb{C}^6$, we have $\dim_{\mathbb{C}}(U + V) \le \dim_{\mathbb{C}} \mathbb{C}^6 = 6$. Therefore,
+\[
+\dim_{\mathbb{C}}(U \cap V) = \dim_{\mathbb{C}} U + \dim_{\mathbb{C}} V - \dim_{\mathbb{C}}(U + V) \ge 4 + 4 - 6 = 2.
+\]
+Because $\dim_{\mathbb{C}}(U \cap V) \ge 2$, the subspace $U \cap V$ contains a linearly independent pair of vectors $\{u_1, u_2\}$ (for example, the first two vectors of any basis of $U \cap V$).
+By linear independence, $u_1 \ne 0$, $u_2 \ne 0$, and neither vector is a scalar multiple of the other.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:hyperplane_and_diagonal_subspaces}]
+\label{sol:hyperplane_and_diagonal_subspaces}
+Let $H = \{(x_1, \dots, x_n) \in K^n \mid \sum_{i=1}^n x_i = 0\}$ and $D = \{(\lambda, \dots, \lambda) \in K^n \mid \lambda \in K\} = \Sp(\mathbf{1})$, where $\mathbf{1} = (1, \dots, 1)$. Note that $\dim H = n - 1$ and $\dim D = 1$.
+
+A vector $v = (\lambda, \dots, \lambda) \in D$ belongs to $H$ if and only if:
+\[
+\sum_{i=1}^n \lambda = (n \cdot 1_K) \lambda = 0.
+\]
+We distinguish two cases according to the characteristic of the field $K$:
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Case 1: $n \cdot 1_K \ne 0$ in $K$ (i.e., $\operatorname{char}(K) \nmid n$).}
+    Then $(n \cdot 1_K) \lambda = 0 \iff \lambda = 0$.
+    \begin{itemize}
+        \item \textbf{Intersection:} $H \cap D = \{0\}$.
+        \item \textbf{Sum:} By Grassmann's formula, $\dim(H + D) = \dim H + \dim D - \dim(H \cap D) = (n - 1) + 1 - 0 = n$.
+        Since $H + D \subseteq K^n$ has dimension $n$, $H + D = K^n$, and the sum is direct: $K^n = H \oplus D$.
+    \end{itemize}
+
+    \item \textbf{Case 2: $n \cdot 1_K = 0$ in $K$ (i.e., $\operatorname{char}(K) \mid n$).}
+    Then $(n \cdot 1_K) \lambda = 0$ holds for all $\lambda \in K$, which means $D \subseteq H$.
+    \begin{itemize}
+        \item \textbf{Intersection:} $H \cap D = D$, so $\dim(H \cap D) = 1$.
+        \item \textbf{Sum:} Since $D \subseteq H$, we have $H + D = H$, so $\dim(H + D) = n - 1$.
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:pairwise_trivial_vs_direct_sum}]
+\label{sol:pairwise_trivial_vs_direct_sum}
+The condition that $U_i \cap U_j = \{0\}$ for all $i \ne j$ does \textbf{not} imply that $V = U_1 \oplus U_2 \oplus U_3$ is a direct sum.
+
+\textbf{Counterexample:}
+Let $V = \mathbb{R}^2$, and consider the three $1$-dimensional subspaces:
+\[
+U_1 = \Sp\left(\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right), \qquad
+U_2 = \Sp\left(\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right), \qquad
+U_3 = \Sp\left(\begin{pmatrix} 1 \\ 1 \end{pmatrix}\right).
+\]
+\begin{itemize}
+    \item $U_1 + U_2 + U_3 = \mathbb{R}^2 = V$.
+    \item Pairwise intersections are all trivial: $U_1 \cap U_2 = \{0\}$, $U_1 \cap U_3 = \{0\}$, and $U_2 \cap U_3 = \{0\}$.
+    \item However, $(U_1 + U_2) \cap U_3 = \mathbb{R}^2 \cap U_3 = U_3 \ne \{0\}$.
+    \item Alternatively, $\dim U_1 + \dim U_2 + \dim U_3 = 1 + 1 + 1 = 3 > 2 = \dim V$, and the zero vector admits a non-trivial representation:
+    \[
+    \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix},
+    \]
+    with non-zero components in $U_1, U_2, U_3$.
+\end{itemize}
+Thus $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direct sum requires the stronger condition $U_i \cap \sum_{j \ne i} U_j = \{0\}$ for all $i$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:linear_complements_matrix_subspaces}]
+\label{sol:linear_complements_matrix_subspaces}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Complement of Upper Triangular Matrices $U_{\mathrm{UT}}$:}
+    Let $U_{\mathrm{SLT}} \subseteq \M_{n \times n}(F)$ denote the subspace of \emph{strictly lower triangular} matrices:
+    \[
+    U_{\mathrm{SLT}} := \{A = (a_{ij}) \in \M_{n \times n}(F) \mid a_{ij} = 0 \text{ for all } i \le j\}.
+    \]
+    We verify that $\M_{n \times n}(F) = U_{\mathrm{UT}} \oplus U_{\mathrm{SLT}}$:
+    \begin{itemize}
+        \item \textbf{Trivial Intersection:} If $A \in U_{\mathrm{UT}} \cap U_{\mathrm{SLT}}$, then $a_{ij} = 0$ for all $i > j$ (from $U_{\mathrm{UT}}$) and $a_{ij} = 0$ for all $i \le j$ (from $U_{\mathrm{SLT}}$). Hence $a_{ij} = 0$ for all $i, j$, so $A = 0$.
+        \item \textbf{Sum:} For any matrix $M = (m_{ij}) \in \M_{n \times n}(F)$, define $U = (u_{ij})$ and $L = (l_{ij})$ by:
+        \[
+        u_{ij} := \begin{cases} m_{ij} & \text{if } i \le j, \\ 0 & \text{if } i > j, \end{cases}
+        \qquad
+        l_{ij} := \begin{cases} 0 & \text{if } i \le j, \\ m_{ij} & \text{if } i > j. \end{cases}
+        \]
+        Then $U \in U_{\mathrm{UT}}$, $L \in U_{\mathrm{SLT}}$, and $M = U + L$.
+    \end{itemize}
+    Thus $U_{\mathrm{SLT}}$ is an explicit linear complement of $U_{\mathrm{UT}}$.
+
+    \item \textbf{Complement of Symmetric Matrices $U_{\mathrm{Sym}}$:}
+    There are two standard, natural choices of complement:
+    \begin{itemize}
+        \item \textbf{Method 1 (Valid over any field $F$, including $\operatorname{char}(F) = 2$):}
+        Take again the subspace $U_{\mathrm{SLT}}$ of strictly lower triangular matrices.
+        Any matrix $C = (c_{ij}) \in \M_{n \times n}(F)$ decomposes as $C = A + B$, where $A = (a_{ij}) \in U_{\mathrm{Sym}}$ is defined by $a_{ij} := c_{\min(i,j), \max(i,j)}$, and $B = C - A \in U_{\mathrm{SLT}}$ has entries $b_{ij} = c_{ij} - c_{ji}$ for $i > j$ and $0$ for $i \le j$.
+        If $M \in U_{\mathrm{Sym}} \cap U_{\mathrm{SLT}}$, its strictly lower triangular entries are zero (from $U_{\mathrm{Sym}}$ by symmetry with the upper part) and its diagonal and upper entries are zero (from $U_{\mathrm{SLT}}$), so $M = 0$. Thus $\M_{n \times n}(F) = U_{\mathrm{Sym}} \oplus U_{\mathrm{SLT}}$.
+
+        \item \textbf{Method 2 (When $\operatorname{char}(F) \ne 2$):}
+        Let $U_{\mathrm{Skew}}$ denote the subspace of skew-symmetric matrices $\{A \in \M_{n \times n}(F) \mid A\transp = -A\}$.
+        Since $2 \in F^\times$, every matrix $M$ decomposes uniquely as:
+        \[
+        M = \underbrace{\frac{M + M\transp}{2}}_{\in U_{\mathrm{Sym}}} + \underbrace{\frac{M - M\transp}{2}}_{\in U_{\mathrm{Skew}}}.
+        \]
+        If $A \in U_{\mathrm{Sym}} \cap U_{\mathrm{Skew}}$, then $A = A\transp = -A \implies 2A = 0 \implies A = 0$. Thus $\M_{n \times n}(F) = U_{\mathrm{Sym}} \oplus U_{\mathrm{Skew}}$.
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
