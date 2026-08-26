@@ -656,35 +656,20 @@ which is Cassini's identity. For instance $n = 6$ gives $a_7 a_5 - a_6^2 = 13 \c
 \end{exercisesolution}
 
 \begin{ainote}
-A word on what this chapter is doing, since it is the only one in the book that
-answers a question rather than building a theory.
+This is the only chapter that answers a question rather than building a theory,
+and everything in it is one move: replace a question about the single number
+$a_n$ by a question about the whole space $\Fib$ of sequences like it. That space
+is closed under addition and scaling (\cref{prop:fib_closure}), so a formula for
+two convenient sequences yields one for all of them. The convenient ones are the
+geometric sequences, and \cref{prop:eigenvectors_shift} says why they were not a
+lucky guess: they are exactly the sequences the shift map rescales. Every later
+chapter repeats the move with \qt{vector space}, \qt{basis}, \qt{linear map} and
+\qt{eigenvector} in place of the ad-hoc words used here.
 
-Everything here is an instance of one move: replace a question about a single
-object, the number $a_n$, by a question about the whole set of objects like it,
-the space $\Fib$. That set turns out to be closed under addition and scaling
-(\cref{prop:fib_closure}), which is what makes \cref{cor:fib_linear_combination}
-available, and from there a formula for two convenient sequences yields a formula
-for all of them. The two convenient sequences are the geometric ones, and
-\cref{prop:eigenvectors_shift} explains why: they are exactly the sequences the
-shift map rescales, so the search that produced them was forced rather than
-lucky. Every later chapter of the course repeats this move with the words
-\qt{vector space}, \qt{basis}, \qt{linear map} and \qt{eigenvector} in place of
-the ad-hoc ones used here.
-
-The rigour pass over this chapter did three things. The two Definitions opening
-it, of the classical and of the generalized Fibonacci sequence, carried no
-\texttt{\textbackslash label} at all and so could not be cited; they now can.
-The six exercises Prof. Biran leaves at the end, together with the linearity of
-$S$ he asks for in passing, are written up in the section above, which is what
-every chapter from 14 on already does.
-
-And the argument ruling out arithmetic Fibonacci sequences, which the text gives
-in one line, rests on the claim that the difference $a_{n-2}$ \qt{grows and
-cannot remain constant}. The conclusion is right but the reason is not the one
-that works: what the two displayed identities give is that the sequence is
-constant, and a constant sequence obeys the recurrence only when $d = d + d$, so
-$d = 0$. That is the whole argument, it needs no estimate of growth, and it
-covers sequences with negative terms, for which nothing grows. This is
-\cref{exc:ch1_list} \textbf{(d)}, so Prof. Biran evidently intends the details to
-be supplied; they now stand both here and in the solution.
+One caution about the text. The argument ruling out arithmetic Fibonacci
+sequences appeals to the difference $a_{n-2}$ \qt{growing}, which is not what
+makes it work: the displayed identities say the sequence is \emph{constant}, and
+a constant sequence obeys the recurrence only when $d = d + d$. No growth
+estimate enters, and the conclusion covers sequences with negative terms. This is
+\cref{exc:ch1_list} \textbf{(d)}; the details are in the solutions above.
 \end{ainote}

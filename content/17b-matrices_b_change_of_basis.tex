@@ -257,43 +257,23 @@ Every numbered statement of the notes for this section is present in the
 transcript, in the notes' order, and 17.b.1--17.b.8 already matched the
 handwritten numbering; the proofs follow Prof. Biran's.
 
-The four parts of \cref{exc:equivalence_similarity_properties} are his, marked
-\qt{Exc.} in the notes and left unanswered by the transcript; they are solved
-above. Two of them are the substantial ones: equivalence of matrices means
-representing the same linear map in two pairs of bases, and similarity means
-representing the same endomorphism in two bases. Both directions need the
-observation that for an invertible $P$, the columns of $P$ form a basis whose
-transition matrix from the standard basis is $P$ itself.
+The four parts of \cref{exc:equivalence_similarity_properties} are Prof. Biran's,
+marked \qt{Exc.} in the notes and left unanswered by the transcript; they are
+solved above. Two of them carry the content of the section: equivalence of
+matrices means representing the same linear map in two pairs of bases, and
+similarity means representing the same endomorphism in two bases. Both
+directions turn on the observation that for an invertible $P$, the columns of
+$P$ form a basis whose transition matrix from the standard basis is $P$ itself.
 
-Also here: the block form asserted at the end of the proof of
-\cref{prop:linear_map_normal_form} is now verified column by column rather than
-declared to follow from the definitions, and the notation was brought to the
-house macros in three places, where $\M$ and $\GL$ had been typeset as plain
-$M$ and $GL$.
-
-% Creator: Opus 5
-A later pass, looking only for gaps in rigour, found two slips in the
-bookkeeping of bases. The proof of \cref{cor:change_of_basis_formula} closed by
-saying that the inverse of $[\id_V]_{\mathcal{B}}^{\mathcal{B}'}$ is
-$([\id_V]_{\mathcal{B}'}^{\mathcal{B}})^{-1}$, one inverse too many: the two
-displays just above it show that the inverse is
-$[\id_V]_{\mathcal{B}'}^{\mathcal{B}}$, which is exactly the identity the
-corollary asserts.
-
-More seriously, in the proof of \cref{cor:matrix_equivalence_normal_form} the
-left factor was written $[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$. Its bases
-do not meet those of the middle factor $[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}$
-the way the composition rule requires, so the product as printed does not
-compose, and the matrix named $P$ was the inverse of the one meant. It has to
-be $[\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}$, which is also the matrix that
-the solution to part \textbf{(b)} of
-\cref{exc:equivalence_similarity_properties} arrives at independently. The
-correction is made and the diagonal matching is now said in words.
-
-Two smaller things: the final sentence of
-\cref{cor:matrix_rank_equivalence_classification}, that there is precisely one
-class for each rank $r$, was stated but not argued, and now is; and the proof
-of \cref{prop:representation_of_isomorphisms} said \qt{conversely} where it
-merely composes in the other order, and left unsaid why $\dim V = \dim W$ and
-which two earlier results its display uses.
+Two slips in the bookkeeping of bases were corrected, and the second is the kind
+this book is most exposed to. In the proof of
+\cref{cor:matrix_equivalence_normal_form} the left factor was written
+$[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$, whose bases do not meet those of the
+middle factor $[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}$ the way the composition
+rule requires: the product as printed does not compose at all, and the matrix
+named $P$ was the inverse of the one intended. It has to be
+$[\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}$, which is also what the solution to
+part \textbf{(b)} of \cref{exc:equivalence_similarity_properties} arrives at
+independently. The other slip was one inverse too many at the close of
+\cref{cor:change_of_basis_formula}.
 \end{ainote}

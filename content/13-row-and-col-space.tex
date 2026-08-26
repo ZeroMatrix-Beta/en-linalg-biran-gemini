@@ -360,60 +360,25 @@ so every statement about row rank is a statement about the column rank of the tr
 \end{remark}
 
 \begin{ainote}
-Four pieces of the notes were missing from this transcript and are restored
-above: the case distinction in the answer to Questions 1 and 2, where an $A'$
-without zero rows forces $\Sp(w_{1}, \dots, w_{n}) = K^{m}$; the definition of
-row rank and column rank (\cref{def:row_and_column_rank}), used from
-\cref{thm:rank_row_column_equality} onwards but never introduced;
-\cref{cor:basis_algorithm}, which the notes state as an algorithm; and the whole
+Several pieces of the notes were missing from this transcript and are restored
+above, among them \cref{def:row_and_column_rank}, used from
+\cref{thm:rank_row_column_equality} onwards but never introduced, and the whole
 closing section on the transpose, whose notation $A\transp$ the transcript
-already used in this chapter and in fourteen later ones without ever defining
-it. The proof of \cref{prop:row_space_invariance} had been compressed to a
-single sentence; the notes treat the three types of row operation separately and
-prove the Type 2 case by double inclusion, so that argument is restored around
-the sentence that was there. \Cref{thm:coordinate_constraints} is the
-computational counterpart of \cref{thm:wrong_length_lists}, which is how the
-notes present it; the description of the span by the vanishing of $b''$ is put
-back into its proof.
+already used here and in fourteen later chapters without ever defining it.
 
-Two things go beyond the notes. \Cref{ailem:column_relations_preserved} is not
-in Biran's text: the transcript asserts the preservation of linear relations
-between columns in an important remark and then rests
-\cref{thm:basis_col_space} on it, so it is stated and proved here as an
-AI-Lemma, on the strength of \cref{thm:ero_preserve_solutions}. And the notes
-defer $\rankrow(A) = \rankcol(A)$ to a later lecture, while
-this chapter already reaches it in \cref{thm:rank_equality}; the argument is
-sound and is kept, with the relation to \cref{thm:rank_row_column_equality}
-recorded in a remark. In the worked span computation on
-\cpageref{ex:span_calc} the elimination now carries Prof. Biran's arrow labels
-and includes the normalisation step $-1 \cdot E_{2} \to E_{2}$, without which
-the displayed chain never reaches a row-reduced echelon matrix.
+Two things go beyond the notes, and it is worth knowing which.
+\Cref{ailem:column_relations_preserved} is not in Prof. Biran's text: the
+transcript asserts the preservation of linear relations between columns in a
+remark and then rests \cref{thm:basis_col_space} on it, so it is stated and
+proved here as an AI-Lemma, on the strength of
+\cref{thm:ero_preserve_solutions}. And the notes defer
+$\rankrow(A) = \rankcol(A)$ to a later lecture, while this chapter already
+reaches it in \cref{thm:rank_equality}; the argument is sound and is kept.
 
-The rigour pass found nothing false in this chapter. What it did was finish
-three arguments that stopped just short. The elimination in
-\cpageref{ex:span_calc} still ended one operation before a row-reduced echelon
-form, since the entry above the second pivot was never cleared, although the
-paragraph setting up the method says the reduction goes that far; the step is
-added, and it lets the solution be read off. In the proof of
-\cref{thm:coordinate_constraints} \textbf{(b)}, the strictness of the inclusion
-rested on row operations being \qt{reversible and hence unable to annihilate a
-whole row}, which is right but leaves the reader to reconstruct why: those
-operations act on the last column as a bijection of $K^{m}$, and a coordinate
-that vanished identically would confine the image to a proper subspace. And in
-the proof of \cref{thm:row_basis}, that the non-zero rows of $B$ span $\RowS(B)$
-was credited to the definition, whereas \cref{def:matrix_subspaces} spans
-\emph{all} the rows; what is needed is that discarding the zero ones changes no
-linear combination.
-
-The important remark on row operations and columns is now labelled
-\cref{rem:row_ops_and_columns}, since the sentence introducing
-\cref{ailem:column_relations_preserved} refers back to its second assertion.
-
-One thing was left alone deliberately. The rank of a matrix, $\rank(A)$, is
-named inside the statement of \cref{thm:rank_equality} rather than in a
-definition of its own. That is unusual, but the notion is not thereby
-uncitable, \cref{thm:rank_equality} being numbered, and nothing later in the
-book appeals to a definition of matrix rank that does not exist; the two places
-that say \qt{by definition, $\rank(\cdot)$} in ch. 17c mean the rank of a linear
-map, which \cref{def:rank_linear_map} supplies.
+One thing is left as it stands, deliberately. The rank of a matrix is named
+inside the statement of \cref{thm:rank_equality} rather than in a definition of
+its own. That is unusual, but the notion stays citable, that theorem being
+numbered, and nothing later appeals to a definition of matrix rank that does not
+exist: the two places in ch. 17c that say \qt{by definition, $\rank(\cdot)$} mean
+the rank of a linear map, which \cref{def:rank_linear_map} supplies.
 \end{ainote}

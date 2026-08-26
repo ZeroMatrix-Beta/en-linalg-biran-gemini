@@ -529,75 +529,26 @@ which makes $AB$ lower triangular. Finally, a matrix is diagonal exactly when it
 \end{exercisesolution}
 
 \begin{ainote}
-Every numbered statement of the notes for this section is present in the
-transcript, and 17.a.1--17.a.11 already matched the handwritten numbering. What
-was missing sits around them.
+Every numbered statement of the notes for this section is present, and
+17.a.1--17.a.11 already matched the handwritten numbering.
 
-Restored: the preparation the notes give for statement \textbf{(d)} of
-\cref{prop:matrix_multiplication_properties}, namely
-\cref{claim:scaling_map_matrix}, that scaling by $\alpha$ is represented by
-$\alpha I_n$, which is how the notes ask for that statement to be proved; the
-remark that the proposition can also be proved by direct calculation, with Prof.
-Biran's warning that it is \qt{not very pleasant}; and the row-wise description
-of a product in the second special case, which the notes give alongside the
-column-wise one.
+The one real error here was invisible to a reader. The whole proof of
+\cref{prop:matrix_multiplication_properties} carried its representation matrices
+the wrong way round, writing $[T_A]_{\mathcal{E}_n}^{\mathcal{E}_m}$ for the map
+$T_A \colon K^n \to K^m$ and so putting the basis of the \emph{target} on top.
+This book, in \cref{sec:change_of_basis} and everywhere after, puts the basis of
+the source in the superscript. Every occurrence in that proof was swapped the
+same way, so the argument was internally consistent and read perfectly well,
+which is exactly why it survived; but each matrix in it named the wrong map.
 
-Removed: a second, verbatim copy of the remark that $\M_{n \times n}(K)$ is a
-non-com\-mu\-ta\-tive ring. It appeared twice in the transcript, a few lines
-apart, and once in the notes.
+Two smaller repairs are worth knowing about. The proof of
+\cref{lemma:triangular_multiplication_closure} argued that \qt{for $a_{ik}$ to be
+non-zero, $k$ must be less than or equal to $i$}, where the condition runs the
+other way; the conclusion was right and the argument was not. And statement
+\textbf{(b)} of \cref{prop:matrix_multiplication_properties} needs different
+shapes from \textbf{(a)} and \textbf{(d)}, since $A$ and $B$ must be summable
+there, while its proof had inherited the maps fixed for \textbf{(a)}.
 
-Two things were wrong rather than missing. The diagram under \qt{Connections to
-Linear Maps} placed $\Sp(\mathcal{B})$ below $V$ joined by a rotated
-\qt{$\in$}, asserting $\Sp(\mathcal{B}) \in V$, which is not a relation between
-a span and the space containing it; the notes have no such diagram, and it is
-replaced by the composition diagram with the bookkeeping said in words. And the
-proof of \cref{lemma:triangular_multiplication_closure} opened with the word
-\qt{Exercise} and then argued, in the middle of the paragraph, that \qt{for
-$a_{ik}$ to be non-zero, $k$ must be less than or equal to $i$}, the
-condition runs the other way. The conclusion was right and the argument was
-not.
-
-The notes mark four things \qt{Exc.}: the identity matrix remark, the
-preparation claim and statement \textbf{(d)}, the two transpose identities, and
-\cref{lemma:triangular_multiplication_closure}. All four are now stated as
-exercises and solved on \cpageref{sec:solutions_matrix_multiplication}. The
-transcript had instead embedded \qt{proof sketches} inside the exercise
-environment, and one of them derived $A\transp \in \GL_n(K)$ from
-$\det(A\transp) = \det(A)$, determinants are three chapters away, and the
-transpose identity of part \textbf{(a)} produces the inverse directly.
-
-Finally, terms being defined for the first time, the product, the
-Kronecker-delta, the identity matrix, invertible, the inverse, upper and lower
-triangular, diagonal, were marked with \verb|\qt| rather than
-\verb|\newterm|, which the house style reserves for exactly this.
-
-% Creator: Opus 5
-A later pass looked only for gaps in rigour, and turned up one real error. The
-whole proof of \cref{prop:matrix_multiplication_properties} carried its
-representation matrices the wrong way round: it wrote
-$[T_A]_{\mathcal{E}_n}^{\mathcal{E}_m}$ for the map $T_A \colon K^n \to K^m$,
-putting the basis of the target on top. The convention of this book, and the
-one used in \cref{sec:change_of_basis} and everywhere after, is that the
-superscript carries the basis of the source. Since every occurrence in that
-proof was swapped, the argument was internally consistent and read perfectly
-well, which is exactly why it survived; but each matrix in it named the wrong
-map. All of them are now the right way round.
-
-Statement \textbf{(b)} of that proposition has different shapes from
-\textbf{(a)} and \textbf{(d)}, because $A$ and $B$ have to be summable there.
-Its proof nonetheless inherited the maps fixed for \textbf{(a)}, so that $T_C$
-quietly changed from $K^q \to K^p$ into $K^q \to K^n$ halfway through. The
-shapes for \textbf{(b)} are now stated where they change, and the displays use
-them. The step from maps back to matrices in \textbf{(b)} also needs
-$T_M + T_N = T_{M+N}$, which is one line and is now given.
-
-\Cref{prop:group_basic_properties} stood with neither a proof nor an exercise,
-although the notes mark four other statements of this section \qt{Exc.} and
-this one is not among them. Its four items are one line each and are proved
-above. The proof of \cref{prop:gl_group_structure} appealed to \qt{what we
-have proved earlier}; it now names the results, including the two axioms it
-borrows from \cref{prop:matrix_multiplication_properties}. Three pointers were
-added where a fact was used without one, and the uniqueness of the inverse
-matrix, which the definition immediately after it relies on for the word
-\qt{the}, was given a label and is cited there.
+The notes mark four things \qt{Exc.}; all four are stated as exercises and solved
+on \cpageref{sec:solutions_matrix_multiplication}.
 \end{ainote}

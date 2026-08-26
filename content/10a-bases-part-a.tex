@@ -323,42 +323,20 @@ This degenerate case is precisely what Step 1 in the proof of \cref{thm:steinitz
 \end{exercisesolution}
 
 \begin{ainote}
-The notes name their four lemmas A--D differently from this transcript: what is
-called \cref{lem:targeted_redundancy} here is Lemma A in the notes, and the
-notes' Lemma B is \cref{lem:drop_index_beyond_head}, which was missing from the
-transcript altogether. The existing letters are left alone to keep the
-references in the later chapters valid, and the restored lemma is lettered
-B\textquotesingle. \Cref{lem:simple_exchange} does not appear in this part of
-the notes. Also restored: the finite-set reading of uniqueness before the proof
-of \cref{prop:unique_representation}, the explicit form of $E_{i,j}$ and the
-basis of $\M_{2 \times 2}(K)$ on \cpageref{ex:basis_matrices}, the second half
-of the proof of \cref{lem:targeted_redundancy} (the notes prove the equality of
-spans by two inclusions; the transcript asserted it),
-\cref{exc:redundancy_j_equals_one}, and \cref{rem:steinitz_stronger_form},
-which the later chapters rely on. The proof of
-\cref{prop:unique_representation} is given in the notes under the simplifying
-assumption that $S$ is finite, with the infinite case noted as similar; the
-transcript proves it for general $S$ and that is kept.
+The notes letter their lemmas A--D differently from this transcript:
+\cref{lem:targeted_redundancy} is their Lemma A, and their Lemma B is
+\cref{lem:drop_index_beyond_head}, which the transcript had lost altogether and
+which is restored here as B\textquotesingle\ so that the existing references in
+the later chapters stay valid. \Cref{lem:simple_exchange} does not appear in this
+part of the notes, and \cref{prop:unique_representation} is proved there only for
+finite $S$, with the general case noted as similar; the general proof is kept.
 
-The rigour pass over this chapter corrected two things and named several
-reasons. In the proof of \cref{thm:steinitz}, the span of the vectors preceding
-$u_1$ was given as $\emptyset$; it is $\Sp(\emptyset) = \{0_V\}$, which is what
-makes $u_1 \ne 0_V$ the relevant fact there. And the same proof ran its
-exchange backwards: it inserted each $u_j$ at the front, so the head
-accumulated as $u_j, \dots, u_1$ and the proof ended at
-$u_{n+1}, u_n, \dots, u_1$. The notes insert $u_j$ behind $u_{j-1}$ and end at
-$u_1, \dots, u_n, u_{n+1}$, which is also what both remarks below the proof
-say, \cref{rem:steinitz_general_step} for the general step and
-\cref{rem:steinitz_stronger_form} for the stronger form. Nothing was false
-either way, since independence and span do not depend on the order, but the
-proof disagreed with the two remarks that explain it; the proof now follows the
-notes. Steps that were taken silently now cite \cref{rem:span_of_empty_set},
-\cref{lem:independence_basics} \textbf{(b)} and \textbf{(d)},
-\cref{lem:subsets_of_independent_sets} and \cref{def:independent_set}, and the
-proof of \cref{lem:simple_exchange} now closes the spanning half with the
-reverse inclusion instead of stopping at $V \subseteq \Sp(u, v_2, \dots, v_n)$.
-The notes introduce finitely supported functions in running prose, under no
-heading, on a page where they do write \qt{Def.} for the basis; that passage is
-now the unnumbered Definition on \cpageref{def:finitely_supported}. The
-solution to \cref{exc:redundancy_j_equals_one} is supplied.
+One feature of the proof of \cref{thm:steinitz} is worth flagging, because it
+looks arbitrary otherwise. The exchange inserts each $u_j$ \emph{behind}
+$u_{j-1}$, so the head accumulates as $u_1, \dots, u_n$ and the argument ends at
+$u_1, \dots, u_{n+1}$. Independence and span do not depend on the order, so the
+opposite convention would prove the same theorem, but the two remarks that
+explain the proof, \cref{rem:steinitz_general_step} and
+\cref{rem:steinitz_stronger_form}, are written for this one, and the later
+chapters cite them.
 \end{ainote}

@@ -305,54 +305,24 @@ which is the formula stated in the example. The construction is the same one tha
 \end{exercisesolution}
 
 \begin{ainote}
-The notes prepare the Basis Theorem with two lemmas that the transcript had
-dropped: \cref{lem:no_predecessor_span} and
-\cref{lem:spanning_list_contains_basis}, both restored above with their proofs.
-Statement 1 of the theorem is proved in the notes by citing
-\cref{lem:spanning_list_contains_basis}; the transcript inlines the algorithm
-instead, which is kept, with the citation corrected. That citation had pointed
-at \cref{prop:dependence_is_redundancy}, which is about a vector lying in the
-span of \emph{all} the others, whereas the filter only ever tests a vector
-against the ones preceding it. \Cref{lem:no_predecessor_span} is the statement
-that closes that gap. Also restored:
-\cref{rem:dimension_well_defined}, which the notes flag explicitly. The
-notes state \cref{lem:strong_steinitz} here and refer back to the closing remark
-of the previous lecture for its proof; both are kept, and the cross-reference is
-made explicit.
+The notes prepare the Basis Theorem with two lemmas the transcript had dropped,
+\cref{lem:no_predecessor_span} and \cref{lem:spanning_list_contains_basis}, both
+restored above with their proofs. The first of them closes a real gap: the filter
+that extracts a basis only ever tests a vector against the ones \emph{preceding}
+it, whereas \cref{prop:dependence_is_redundancy}, which the transcript cited
+here, is about a vector lying in the span of \emph{all} the others.
 
-The rigour pass corrected three things. The proof of \cref{lem:strong_steinitz}
-inserted each $u_j$ at the front of the list, the same reversed bookkeeping that
-the proof of \cref{thm:steinitz} carried before this pass, and it described the
-ejection of a $v_k$ as restoring independence. It does not: dropping a redundant
-vector preserves the span and returns the length to $n$, and says nothing at all
-about independence, which may perfectly well still fail, as it does whenever the
-original spanning list was itself redundant. What the procedure maintains is
-that the $u$'s standing at the head are independent, and that is what lets
+Two cautions about what the exchange procedure of \cref{lem:strong_steinitz}
+does and does not maintain. Ejecting a redundant $v_k$ preserves the span and
+returns the length to $n$; it says nothing about independence, which may
+perfectly well still fail, and does whenever the original spanning list was
+itself redundant. What is maintained is that the $u$'s standing at the head are
+independent, and that is exactly what lets
 \cref{lem:drop_index_beyond_head} keep the ejected vector among the $v$'s.
 
-\Cref{def:dimension} set $\dim V := n$ with $n$ never introduced; the basis
-whose elements $n$ counts is now named. The remark on the zero space asserted
-that $\{0_V\}$ is its only spanning set, and then, in the next sentence, that
-$\emptyset$ spans it too. Both $\emptyset$ and $\{0_V\}$ span it; only the
-former is independent, which is the point being made.
-
-The example on function spaces stated $\dim K^S = |S|$ for an arbitrary set $S$.
-That holds only when $S$ is finite. For infinite $S$ the space $K^S$ is not
-finite-di\-men\-sional, so \cref{def:dimension} assigns it $\infty$ and the
-equation does not typecheck; the functions $f_s$ stay independent but stop
-spanning, since a linear combination is a finite sum. The example is now stated
-for finite $S$ and the following remark carries the infinite case. Its exercise
-was unlabelled and is now written up, giving the basis that the example's
-formula counts.
-
-Steps taken silently now cite \cref{rem:span_of_empty_set},
-\cref{lem:span_is_smallest} \textbf{(b)} for the monotonicity of the span,
-\cref{lem:subsets_of_independent_sets}, \cref{lem:independence_basics}
-\textbf{(d)}, \cref{rem:empty_list_independent} and \cref{thm:steinitz}, which
-Statements 2 and 3 of \cref{thm:basis_theorem} had invoked as \qt{Lemma D} in
-words only. One gap is flagged rather than closed: \cref{lem:targeted_redundancy}
-attaches its second assertion to the one index its proof produces, whereas
-\cref{lem:spanning_list_contains_basis} drops whichever index its step is at.
-The two-inclusion argument there uses only the predecessor property, never how
-the index was found, and a parenthetical now says so.
+And the example on function spaces holds only for finite $S$. For infinite $S$
+the space $K^S$ is not finite-di\-men\-sional, so \cref{def:dimension} assigns it
+$\infty$ and the equation $\dim K^S = |S|$ does not typecheck: the functions
+$f_s$ stay independent but stop spanning, a linear combination being a finite
+sum. The remark following the example carries that case.
 \end{ainote}

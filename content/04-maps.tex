@@ -512,26 +512,18 @@ For uniqueness, suppose $g: X \to Y$ also satisfies $g|_P = f_P$ for all $P \in 
 \end{proof}
 
 \begin{ainote}
-Four of this chapter's notions are the ones the rest of the book leans on, and it
-is worth saying which, because the chapter presents them all at the same weight.
+The chapter presents its notions all at the same weight, so it is worth saying
+which four the rest of the book leans on.
 
 Injectivity and surjectivity, \cref{def:injective_surjective_bijective}, become
-the two halves of the Rank-Nullity theorem and, through it, the whole theory of
-solving $Ax = b$. The inverse image $f^{-1}(B)$ of
-\cref{def:inverse_image_of_subset} is what the kernel of a linear map is: a
-kernel is $T^{-1}(\{0\})$, and the Important Remark above,
-that this set makes sense whether or not $T$ is invertible, is precisely why the
-kernel is a useful object even for maps that are far from bijective. Composition,
-\cref{def:composition}, becomes matrix multiplication in ch. 17a, and it is
-because composition is defined before matrices that the product of matrices comes
-out associative without a computation. And the restriction $f|_A$ of
-\cref{def:restriction} is what the Jordan chapters use on every page, once a
-subspace is known to be invariant.
-
-The rigour pass added a `\label` to the seven Definitions that had none, so that
-the notions above can be cited at all, and supplied one statement the book uses
-without having: that composition is associative. Ch. 17a proves the
-associativity of matrix multiplication with the words \qt{we rely on the
-associativity of function composition}, and that fact appears nowhere. It is now
-\cref{ailem:composition_associative}, and ch. 17a cites it.
+the two halves of the Rank-Nullity theorem and with it the whole theory of
+solving $Ax = b$. The inverse image of \cref{def:inverse_image_of_subset} is what
+a kernel is, $\ker T = T^{-1}(\{0\})$, and the Important Remark above, that this
+set makes sense whether or not $T$ is invertible, is exactly why kernels are
+useful for maps far from bijective. Composition,
+\cref{def:composition}, becomes matrix multiplication in ch. 17a, and because it
+is defined before matrices, the product of matrices comes out associative by
+\cref{ailem:composition_associative} rather than by a computation with triple
+sums. And the restriction $f|_A$ of \cref{def:restriction} is what the Jordan
+chapters use on every page, once a subspace is known to be invariant.
 \end{ainote}

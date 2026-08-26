@@ -654,65 +654,24 @@ so that $\Img(S \circ T)$ is the image of the restricted linear map $S|_{\Img(T)
 \end{exercisesolution}
 
 \begin{ainote}
-This was the most heavily damaged chapter so far. Of the thirteen numbered
-statements in the notes for \cref{sec:kernel_image_rank}, the transcript kept
-five, and it hid the loss with a counter jump: a
-\verb|\setcounter{theorem}{11}| placed just before
-\cref{thm:iso_preserves_bases}, annotated as aligning the numbering with the
-notes. Restored above, in the notes' own order, so that the printed numbers now
-agree with the handwritten ones throughout: \cref{def:isomorphism},
-\cref{lem:bijective_is_iso}, \cref{lem:composition_linear},
-\cref{def:endomorphism}, \cref{def:monomorphism},
-\cref{lem:image_spanned_by_basis} and \cref{cor:iso_iff_equal_dimension}, along
-with the example of $\ker(T_A)$, the recollection on bijections that motivates
-\cref{def:isomorphism}, and three of the notes' exercises. In
-\cref{prop:injectivity_kernel} the surjectivity criterion was missing, and in
-\cref{cor:equal_dim_iso} the two dimension obstructions, the statements that
-really do the work in practice, had been dropped in favour of the third part
-alone.
+This was the most heavily damaged chapter the restoration met. Of the thirteen
+numbered statements in the notes for \cref{sec:kernel_image_rank}, the transcript
+kept five and hid the loss with a counter jump, a
+\verb|\setcounter{theorem}{11}| annotated as aligning the numbering with the
+notes. The missing eight are restored above in Prof. Biran's own order, so the
+printed numbers now agree with the handwritten ones throughout.
 
-The gap that mattered most was \cref{def:isomorphism} itself. The transcript
-carried a definition of \emph{isomorphic spaces} at the very end of the chapter,
-numbered 15.b.13, while the word \qt{isomorphism} was already used in
-\cref{cor:equal_dim_iso} and \cref{thm:iso_preserves_bases} above it. Worse, the
-old proof of \cref{cor:equal_dim_iso} concluded from bijectivity that the map is
-an isomorphism, which is exactly \cref{lem:bijective_is_iso}, the one result
-in the notes that was missing. That definition has been moved to the notes'
-position, 15.b.3, and merged with the notes' formulation.
+The gap that mattered most was \cref{def:isomorphism}. The transcript carried a
+definition of \emph{isomorphic spaces} at the very end of the chapter, while the
+word \qt{isomorphism} was already in use well above it, and the old proof of
+\cref{cor:equal_dim_iso} concluded from bijectivity that a map is an isomorphism,
+which is exactly \cref{lem:bijective_is_iso}, the one result the transcript had
+dropped. Both are back in the notes' positions.
 
-Since Prof. Biran leaves \cref{thm:iso_preserves_bases} unproved, a proof is
-supplied here. It is also used for a second proof of \cref{thm:rank_nullity},
-added above: rather than manipulating coordinates, one takes a complement $U$ of
+Two additions go beyond the notes. Prof. Biran leaves
+\cref{thm:iso_preserves_bases} unproved, so a proof is supplied; it then yields a
+second proof of \cref{thm:rank_nullity}, which takes a complement $U$ of
 $\ker(T)$ as in \cref{prop:existence_complement} and observes that $T|_U$ is an
-isomorphism onto $\Img(T)$, after which the dimension formula of
-\cref{prop:properties_of_sums} finishes the argument. Neither ingredient depends
-on the rank theorem.
-
-In \cref{sec:intro_linear_maps}, the notes verify in full that the map
-constructed in \cref{thm:existence_uniqueness_linear_map} is linear and that it
-sends $v_i$ to $w_i$; the transcript replaced both verifications with the phrase
-\qt{it is straightforward to show}. They are restored, as is the computation
-showing that $A \cdot e_i$ picks out the $i$-th column of $A$. The uniqueness of
-the matrix in \cref{lem:all_linear_maps_are_matrices} is asserted by the
-transcript but not proved, and not claimed at all in the notes; a one-line proof
-is added. Two cross-references used \verb|\eqref| on a definition and on a
-theorem, which typesets as a bare equation number; they are now \verb|\cref|.
-
-The rigour pass found one defect of statement and five silent steps.
-\Cref{thm:existence_uniqueness_linear_map} introduced $V$ and a basis of it, and
-then spoke of vectors $w_1, \dots, w_n \in W$ and of a map $T: V \to W$ without
-$W$ ever having been named; it is now introduced with $V$, as a vector space
-over the same field.
-
-The proof of \cref{thm:rank_nullity} extends a basis of $\ker(T)$ to one of $V$
-\qt{by the Steinitz Exchange Lemma}. What it uses is the basis extension
-property, item \textbf{(2)} of \cref{sum:finite_dim_properties}, which is proved
-in ch. 12; and before a basis of $\ker(T)$ can be spoken of at all, that
-subspace has to be known to be finite-di\-men\-sional, which is
-\cref{prop:subspace_dimension_constraints}. That same proposition is what
-justifies three further steps in \cref{cor:equal_dim_iso} and in the solution to
-\cref{exc:rank_of_composition}: that a subspace has no larger dimension than the
-space containing it, and that equality of the two forces them to coincide. The
-last of these is the equality case, and it is what turns
-\qt{$\dim \Img(T) = \dim W$} into surjectivity in part \textbf{(c)}.
+isomorphism onto $\Img(T)$. Neither ingredient depends on the rank theorem, so
+the second proof is not circular.
 \end{ainote}

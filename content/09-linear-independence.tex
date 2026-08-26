@@ -400,30 +400,20 @@ The same argument, verbatim with $\delta_{kj}$ replaced by the coefficient of $x
 \end{exercisesolution}
 
 \begin{ainote}
-This chapter is the last of the foundations, and it is the one whose definition
-the whole of the rest of the book runs on, so it is worth saying what the care
-taken here is for.
-
-Linear independence is defined three times: for a list
+Linear independence is defined three times here, for a list
 (\cref{def:linear_independence}), for an arbitrary family
-(\cref{def:independent_family}), and for a set (\cref{def:independent_set}). The
-repetition is not pedantry. A list can repeat a vector and is then never
+(\cref{def:independent_family}) and for a set (\cref{def:independent_set}), and
+the repetition is not pedantry. A list that repeats a vector is never
 independent, by \cref{rem:family_repetition_dependent}, while the set of its
-values may well be; the two notions therefore genuinely differ, and the Question
-and Answer on \cpageref{q:family_vs_set} exist to keep them apart. Every later
-chapter that writes \qt{let $v_1, \dots, v_n$ be linearly independent} means the
-list, and every one that writes \qt{$S$ is linearly independent} means the set.
+values may well be; the Question and Answer on \cpageref{q:family_vs_set} exist
+to keep the two apart. Every later chapter writing \qt{let $v_1, \dots, v_n$ be
+linearly independent} means the list, and every one writing \qt{$S$ is linearly
+independent} means the set.
 
 The definition for arbitrary families is what makes the infinite case work, and
-its shape is worth noticing: independence of an infinite family is defined by
-quantifying over its \emph{finite} subfamilies. That is why
+its shape is the thing to notice: independence of an infinite family is defined
+by quantifying over its \emph{finite} subfamilies. That is why
 \cref{lem:subsets_of_independent_sets} and
 \cref{lem:supersets_of_dependent_sets} are one-line consequences, and it is what
 the exercise above is really testing.
-
-The rigour pass wrote up that exercise, which chs. 7, 8 and 12 all appeal to, and
-gave labels to the two examples the later chapters point at. It found nothing
-false; the one error in this material, the coefficients $1$ and $1$ where $1$ and
-$-1$ are needed in \cref{lem:independence_basics} \textbf{(c)}, had already been
-caught by the source-verification pass and is recorded in the AI-Note above.
 \end{ainote}

@@ -443,52 +443,25 @@ of the notes is present, in the notes' order, and the printed numbers
 Prof. Biran's own; his notes end there, in the middle of the thought that
 chapter 17 picks up.
 
-What needed repair was small and mostly typographic. The third example carried a
-\verb|\setcounter{enumi}{1}|, annotated as matching the professor's numbering,
-which made the list print two items labelled \textbf{(b)}; the notes label that
-item $2'$ because it revisits the previous one, so the counter manipulation is
-dropped and the revisiting is said in words instead. The sentence introducing
-the commutative diagram ended in the word \qt{test}, evidently a leftover. A
-\verb|\usetikzlibrary{babel}| sat in the middle of the document, although the
-preamble already loads that library. Prof. Biran's aside \qt{check the
-details!} on the first representation-matrix example is restored, and his
-closing line is now set as the reply it is rather than as a stray hyphen.
+What the chapter does not do is give its four central facts an environment: the
+coordinate map $\Phi_{\mathcal{B}}$, which
+\cref{prop:coordinate_map_isomorphism} is named after and which ch. 18 uses
+throughout; the representation matrix itself; the column description of
+$[T]_{\mathcal{C}}^{\mathcal{B}}$, which chs. 17b, 18, 22a and 25 all cite as
+\qt{the definition of the representation matrix} although it is a derived fact;
+and the composition rule that is the punchline here. All four stood in running
+prose. Each now has an unnumbered environment of its own, so that 16.1--16.4 are
+untouched, cited with \verb|\cpageref| rather than \verb|\cref|.
 
-The proof that $\Phi_{\mathcal{B}}$ is an isomorphism cited the definition of
-isomorphic spaces for the step that bijectivity suffices. That step is
-\cref{lem:bijective_is_iso}, which the transcript of the previous chapter had
-dropped altogether and which is now restored; the citation points there.
+One warning, because the third example invites the mistake. It calls $D \colon
+K[x]_3 \to K[x]_3$ \qt{the same map} as $D \colon K[x]_3 \to K[x]_2$, which
+\cref{def:equality_of_functions} expressly denies: the target is part of the data
+of a map, and the extra zero row in that example is precisely what the enlarged
+target records.
 
-One addition of the transcript is worth keeping and worth flagging: the notes
-prove \cref{prop:matrix_evaluation} only structurally, by observing that the
-asserted identity is exactly the commutative diagram defining
-$[T]_{\mathcal{C}}^{\mathcal{B}}$. The computational proof that precedes it in
-the text above is not Prof. Biran's.
-
-% Creator: Opus 5
-A second pass, this one looking only for gaps in rigour, found that the
-chapter states four of its central facts in running prose and never in an
-environment: the coordinate map $\Phi_{\mathcal{B}}$, which
-\cref{prop:coordinate_map_isomorphism} is named after and which chapter 18
-uses throughout; the representation matrix itself; the column description of
-$[T]_{\mathcal{C}}^{\mathcal{B}}$, which chapters 17b, 18, 22a and 25 all cite
-as \qt{the definition of the representation matrix} although it is a derived
-fact; and the composition rule that is the punchline of the chapter. Each of
-the four now has an environment of its own. All four are deliberately
-unnumbered, so that Prof. Biran's numbering 16.1--16.4 is unchanged and
-nothing downstream shifts; they are cited with \verb|\cpageref| rather than
-with \verb|\cref|. The prose inside them is the transcript's, with only the
-hypotheses restated so that each block stands on its own.
-
-Three assertions were given their reason in a parenthesis: the diagram above
-commutes by construction, its lower arrow being defined as that very
-composition; the comparison of coefficients in the composition computation
-rests on the uniqueness of a representation in a basis; and the third example
-called $D \colon K[x]_3 \to K[x]_3$ \qt{the same map} as $D \colon K[x]_3 \to
-K[x]_2$, which \cref{def:equality_of_functions} expressly denies, the target
-being part of the data of a map. The extra zero row in that example is exactly
-what the enlarged target records. Finally, two short second proofs were added,
-both marked as mine: the explicit inverse of $\Phi_{\mathcal{B}}$, which the
-notes already write down, proves bijectivity by itself, and the composition
-rule drops out of the three defining diagrams in a single line.
+Finally, one addition of the transcript worth flagging. The notes prove
+\cref{prop:matrix_evaluation} only structurally, by observing that the asserted
+identity \emph{is} the commutative diagram defining
+$[T]_{\mathcal{C}}^{\mathcal{B}}$. The computational proof above it is not Prof.
+Biran's.
 \end{ainote}

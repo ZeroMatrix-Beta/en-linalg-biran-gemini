@@ -461,30 +461,20 @@ The example above is the case $n = 3$: the eight subsets of $\{1,2,3\}$ split in
 \end{exercisesolution}
 
 \begin{ainote}
-The reason a linear algebra course opens with set theory is not that the theory is
-needed in any depth, but that three of its constructions are the raw material of
-everything that follows, and it is worth naming them here.
+A linear algebra course opens with set theory not because the theory is needed in
+any depth, but because three of its constructions are the raw material of
+everything after. The Cartesian product of \cref{def:cartesian_product} is what
+makes $K^n$ an object at all, and later the domain of a bilinear form
+$B \colon V \times V \to K$. The subset relation of \cref{def:subset} becomes the
+linear subspace, the most-used notion in the book, and with it the two-inclusion
+proof pattern that recurs on almost every page. The family union and intersection
+of \cref{def:family_union_intersection} are what let the span of an arbitrary set
+be defined as an intersection of subspaces in ch. 8, where the index family is
+genuinely infinite.
 
-The Cartesian product of \cref{def:cartesian_product} is what makes $K^n$ a
-sensible object at all, and later, in the definition of a bilinear form
-$B \colon V \times V \to K$, it is the domain. The subset relation of
-\cref{def:subset} becomes the linear subspace, which is the single most-used
-notion in the book, and the two-inclusion proof pattern $P \subseteq Q$ and
-$Q \subseteq P$ recurs on almost every page. And the family union and
-intersection of \cref{def:family_union_intersection} are what allow the span of
-an arbitrary set to be defined as an intersection of subspaces in ch. 8, where
-the index family is genuinely infinite.
-
-Russell's paradox at the end is not a curiosity either. It is the reason that
-every construction in this book carves a new object out of one already known to
-exist, rather than collecting everything with a given property. \qt{The set of all
-vector spaces} is not available, which is why the isomorphism results of chs. 15
-and 18 are always stated between two given spaces.
-
-The rigour pass added the labels the chapter's Definitions were missing, wrote up
-the power-set exercise, and supplied proofs for the two `claim*` blocks, which
-carried none. The first of them, that $\emptyset \subseteq Q$, is the first place
-in the book where the vacuous truth of an implication with a false premise does
-real work rather than producing a joke about flat Earths, and it is worth
-pointing that out where it happens.
+Russell's paradox at the end is not a curiosity either. It is why every
+construction here carves a new object out of one already known to exist, rather
+than collecting everything with a given property. \qt{The set of all vector
+spaces} is not available, which is why the isomorphism results of chs. 15 and 18
+are always stated between two given spaces.
 \end{ainote}
