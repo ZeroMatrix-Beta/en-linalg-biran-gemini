@@ -324,6 +324,16 @@ Prove the two equivalences stated on \cpageref{ex:lines_through_origin}: for $0 
 Let $W \subseteq \mathbb{R}^2$ be a linear subspace. Suppose $W = \Sp(v, w)$, where $v \ne 0$ and $w \notin \Sp(v)$. Show that $W = \mathbb{R}^2$.
 \end{exercise}
 
+\begin{exercise}[Subspaces and Spans in Two Dimensions]
+\label{exc:subspaces_two_dimensions}
+Let $v \in \mathbb{R}^2 \setminus \{(0, 0)\}$ and let $w \in \mathbb{R}^2 \setminus \{(0, 0)\}$ be non-zero vectors such that $w \ne \alpha v$ for all $\alpha \in \mathbb{R}$.
+\begin{enumerate}
+    \item Show that $\Sp(v, w) = \mathbb{R}^2$.
+    \item Prove that the only linear subspaces of $\mathbb{R}^2$ are $\{(0, 0)\}$, $\Sp(u)$ for non-zero $u \in \mathbb{R}^2$, and $\mathbb{R}^2$ itself.
+\end{enumerate}
+\exinfo{This exercise is Problem 2 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{summary}
 \label{sum:subspaces_of_plane}
 $\mathbb{R}^2$ has the following linear subspaces, and no others:
@@ -442,6 +452,22 @@ V = \Sp\bigl(\{1, x, x^2, \dots, x^n, \dots\}\bigr).
 \]
 \end{example}
 
+\begin{exercise}[Linear Combinations and Span of Polynomials]
+\label{exc:polynomial_linear_combination_span}
+Consider the following four polynomials in $\mathbb{R}[x]$:
+\begin{align*}
+p_1(x) &= x^3 + x^2, \\
+p_2(x) &= x^2 - 2x - 4, \\
+p_3(x) &= 3x + 4, \\
+p_4(x) &= 2x + 3.
+\end{align*}
+\begin{enumerate}
+    \item Express the polynomial $q(x) = 2x^3 + 3x^2 - 1$ as an explicit linear combination of $p_1, p_2, p_3, p_4$.
+    \item Determine the linear span $\Sp(p_1, p_2, p_3, p_4) \subseteq \mathbb{R}[x]$.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{example}[Spaces of Matrices]
 \label{ex:span_matrix_space}
 Let $\M := \M_{m \times n}(K)$ be the space of all $m \times n$ matrices with entries in $K$. For $1 \le k \le m$ and $1 \le \ell \le n$, let $E_{k\ell} \in \M$ be the matrix that has all its entries $0$ except the entry in position $(k, \ell)$, which is $1$. In other words, $E_{k\ell} = (a_{ij})$, where
@@ -482,6 +508,40 @@ so that a matrix may be viewed as a \qt{vector} built out of simpler matrices.
 \begin{exercise}
 \label{exc:finite_dimensional_examples}
 Show that $K^n$, $\M_{m \times n}(K)$ and $K[x]_d$ are finite-di\-men\-sional in the sense of \cref{def:finite_dimensional}. What about $K[x]$? Prove your answer.
+\end{exercise}
+
+\begin{exercise}[Subspaces of Matrices Satisfying a Linear Constraint]
+\label{exc:matrix_subspace_vector_constraint}
+Let $K$ be a field. Fix a vector $x \in K^n$ and a vector $b \in K^m$. Define the subset of matrices
+\[
+U := \{A \in \M_{m \times n}(K) \mid A \cdot x = b\} \subseteq \M_{m \times n}(K).
+\]
+For which values of $x \in K^n$ and $b \in K^m$ is $U$ a linear subspace of $\M_{m \times n}(K)$?
+\exinfo{This exercise is Problem 4 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Infinite-Dimensionality of Polynomial Spaces]
+\label{exc:polynomial_space_infinite_dim}
+Prove that the vector space $K[x]$ of all polynomials over a field $K$ is not finite-dimensional.
+\exinfo{This exercise is Problem 5 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Generating Sets for Sequence Spaces]
+\label{exc:generating_sets_sequences}
+Let $K$ be a field.
+\begin{enumerate}
+    \item Let $K_0^\infty \subseteq K^\infty$ denote the space of finitely supported sequences:
+    \[
+    K_0^\infty := \{(a_0, a_1, \dots) \in K^\infty \mid \exists N \ge 0 \text{ such that } a_n = 0 \;\forall n \ge N\}.
+    \]
+    Find the smallest (with respect to set inclusion) generating subset $E \subseteq K_0^\infty$ and justify your answer.
+    \item Let $K_{\mathrm{cst}}^\infty \subseteq K^\infty$ denote the space of eventually constant sequences:
+    \[
+    K_{\mathrm{cst}}^\infty := \{(a_0, a_1, \dots) \in K^\infty \mid \exists c \in K, \, \exists N \ge 0 \text{ such that } a_n = c \;\forall n \ge N\}.
+    \]
+    Find the smallest generating subset of $K_{\mathrm{cst}}^\infty$ and justify your answer.
+\end{enumerate}
+\exinfo{This exercise is Problem 6 of Problem Sheet 6, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
 \begin{ainote}
