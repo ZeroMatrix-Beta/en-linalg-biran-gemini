@@ -101,8 +101,9 @@ that contradicts the book's own conventions.
 | 3 | `content/03-set-theory.tex` | done, pushed (`5d4ee79`) |
 | 4 | `content/04-maps.tex` | done, pushed (`cfe1639`) |
 | 5 | `content/05-fields.tex` | done, pushed (`c09a79e`) |
-| 6 | `content/06-systems-of-linear-equations.tex` | done |
-| **7--9** | the remaining foundational chapters | **this is where to resume** |
+| 6 | `content/06-systems-of-linear-equations.tex` | done, pushed (`394b3fd`) |
+| 7 | `content/07-vector-spaces.tex` | done |
+| **8, 9** | the last two foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -261,8 +262,9 @@ Build from PowerShell instead, which waits properly and leaves nothing behind:
 ```powershell
 Get-Process | Where-Object { $_.ProcessName -match 'pdflatex|latexmk|perl' } |
   Stop-Process -Force -ErrorAction SilentlyContinue
-Start-Sleep -Seconds 2
-Remove-Item en-linalg-2.aux, en-linalg-2.toc, en-linalg-2.out -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 3
+Remove-Item en-linalg-2.aux, en-linalg-2.toc, en-linalg-2.out, `
+            en-linalg-2.fls, en-linalg-2.fdb_latexmk -Force -ErrorAction SilentlyContinue
 $p = Start-Process -FilePath "latexmk" `
   -ArgumentList "-pdf","-interaction=batchmode","en-linalg-2.tex" `
   -NoNewWindow -Wait -PassThru `
@@ -845,6 +847,34 @@ Notation had no labels, and the closing sentence of the last one refers to
 \qt{our \textbf{(c)} question} without saying where that question is or where it
 is answered; it now names both, the list of goals and
 `cor:non_homogeneous_solutions` in ch. 17d.
+
+### Ch. 7, eight exercises, two claims and a question, all unanswered
+
+Nothing false. What the chapter had was a great deal left open: eight exercises,
+two `claim*` blocks with no proof (`claim:bounded_degree_subspace` and
+`claim:matrix_space`), and a two-part `question` (`q:degree_exactly_d`) that is
+never returned to. All of it is now written up.
+
+Four of the exercises ask for the eight vector-space axioms in $K^n$,
+$K^\infty$, $K^S$ and $K[x]$, and writing the verification out four times would
+be worse than useless. They share one solution, which makes the actual reason
+visible: all four are sets of $K$-valued functions on an index set with
+operations defined index by index, so every axiom evaluates index by index into
+one of the field axioms **(K1)**--**(K10)**. The matrix-space claim is the same
+solution again with index set $\{1,\dots,m\} \times \{1,\dots,n\}$, which is also
+why $\dim \M_{m \times n}(K) = mn$ later. The one genuine difference is $K[x]$,
+where closure has to be checked because of the finite-support condition, and that
+is exactly the distinction ch. 9's `exc:k_infinity_independent` turns on.
+
+The answer to the question is worth having on the page: $\{f : \deg f = d\}$ is
+never a subspace, while the coefficient-sum-zero set is, and the contrast is the
+general one. A condition saying that a linear expression in the coefficients
+*vanishes* always cuts out a subspace; one saying a coefficient *does not vanish*
+never does.
+
+A LaTeX trap met here: `$K[x]_d$` inside the optional argument of
+`exercisesolution` ends the argument at the `]` of `K[x]`. Brace the whole
+argument, or keep the title free of brackets.
 
 ## Checked in ch. 17e and found correct
 

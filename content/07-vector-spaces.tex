@@ -1,6 +1,18 @@
 \renewcommand{\thetheorem}{7.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{6}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription.
+% ---------------------------------------------------------------------------
 
 \chapter{Vector Spaces}
 
@@ -101,6 +113,7 @@ With these operations $K^n$ becomes a vector space over $K$; the proof rests ent
 \end{example}
 
 \begin{exercise}
+\label{exc:kn_axioms}
 Check the details: verify each of the eight axioms (V1)--(V8) for $K^n$.
 \end{exercise}
 
@@ -141,6 +154,7 @@ where the first equality is \cref{lem:vector_space_basics} \textbf{(c)}. Now $0_
 \end{proof}
 
 \begin{exercise}
+\label{exc:subspace_axioms}
 Carry out the direct verification of the remaining seven axioms for $U$.
 \end{exercise}
 
@@ -292,6 +306,7 @@ a \cdot (a_0, a_1, \dots, a_k, \dots) &:= (a \cdot a_0, a \cdot a_1, \dots, a \c
 \end{example}
 
 \begin{exercise}
+\label{exc:sequence_space_axioms}
 With these operations, $K^\infty$ is a vector space over $K$.
 \end{exercise}
 
@@ -322,6 +337,7 @@ We define addition $+$ and scalar multiplication $\cdot$ on $K^S$ as follows. Le
 \end{example}
 
 \begin{exercise}
+\label{exc:function_space_axioms}
 $K^S$ is a vector space over $K$.
 \end{exercise}
 
@@ -369,6 +385,7 @@ We write $K[x]$ for the set of all polynomials over $K$.
 \end{notation}
 
 \begin{exercise}
+\label{exc:polynomial_space_axioms}
 With the operations above, $K[x]$ is a vector space over $K$.
 \end{exercise}
 
@@ -441,3 +458,124 @@ proofs of \cref{lem:vector_space_basics} \textbf{(e)}, \textbf{(f)} and
 \textbf{(h)} are left as exercises in the notes and are supplied here; the
 exercises marked as such above are the ones the notes leave open.
 \end{ainote}
+
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_vector_spaces}
+
+\begin{exercisesolution}[Proof of \cref{exc:kn_axioms}, \cref{exc:sequence_space_axioms}, \cref{exc:function_space_axioms} and \cref{exc:polynomial_space_axioms}]
+These four exercises ask for the same verification four times, and it is worth doing once in a form that covers all of them, because the reason they are true is the same reason each time.
+
+In each case the underlying set is a set of $K$-valued functions on an index set $I$, and both operations are defined \emph{index by index}:
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+space & index set $I$ & element & restriction \\
+\hline
+$K^n$ & $\{1, \dots, n\}$ & $(x_1, \dots, x_n)$ & none \\
+$K^\infty$ & $\mathbb{Z}_{\ge 0}$ & $(a_0, a_1, \dots)$ & none \\
+$K^S$ & $S$ & $f \colon S \to K$ & none \\
+$K[x]$ & $\mathbb{Z}_{\ge 0}$ & coefficients $(a_0, a_1, \dots)$ & finitely many $a_k \neq 0$ \\
+\hline
+\end{tabular}
+\end{center}
+Write $u(i)$ for the entry of $u$ at index $i$. In every one of the four, the operations are
+\[
+    (u + v)(i) = u(i) + v(i), \qquad (a \cdot u)(i) = a \cdot u(i) \qquad \text{for all } i \in I,
+\]
+with the right-hand sides computed in $K$.
+
+Now look at any one of the eight axioms, say (V1), $u + (v + w) = (u + v) + w$. Two elements of the space are equal exactly when they agree at every index, so the axiom holds if and only if
+\[
+    u(i) + \bigl(v(i) + w(i)\bigr) = \bigl(u(i) + v(i)\bigr) + w(i) \qquad \text{for every } i \in I,
+\]
+and that is the associativity axiom \textbf{(K1)} of the field $K$, applied once for each $i$. The same argument settles the other seven: each of (V1)--(V8) is an identity between two expressions built from $+$ and $\cdot$, both sides evaluate index by index, and the resulting identity in $K$ is one of \textbf{(K1)}--\textbf{(K10)}. Concretely, (V1) and (V3) come from \textbf{(K1)} and \textbf{(K2)}; the zero element is the function with $0$ at every index and the inverse of $u$ is $i \mapsto -u(i)$, so (V2) and (V4) come from \textbf{(K3)} and \textbf{(K4)}; (V5) and (V6) come from \textbf{(K5)} and \textbf{(K6)}; and (V7) and (V8) come from the two halves of distributivity, \textbf{(K8)}.
+
+For $K[x]$ one extra word is needed, and it is the only difference between the four cases: one must know that the operations do not leave the set. If $u$ has $a_k = 0$ for all $k > N$ and $v$ has $b_k = 0$ for all $k > M$, then $u + v$ has all coefficients beyond $\max(N, M)$ equal to zero, and $a \cdot u$ has all coefficients beyond $N$ equal to zero. So both results are again polynomials, and the axioms then hold for the reason above. This finiteness condition is exactly what makes $K[x]$ smaller than $K^\infty$, and \cref{exc:k_infinity_independent} in ch. 9 turns on the same distinction.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:subspace_axioms}]
+Let $U \subseteq V$ be a linear subspace and let $u, v, w \in U$ and $a, b \in K$. All eight axioms are statements about elements of $U$, and every element of $U$ is an element of $V$, where the axioms already hold. For the seven axioms that are pure identities, (V1) and (V3) through (V8), there is therefore nothing to check beyond one point: that both sides of the identity are elements of $U$ at all. That is exactly what (LSS2) and (LSS3) of \cref{def:linear_subspace} provide, since each side is built from $u, v, w$ by additions and scalar multiplications.
+
+Two of them do assert existence and so deserve a word. For (V2), the proof of \cref{lem:subspace_is_vector_space} above shows that the zero of $V$ lies in $U$ and serves as a zero there. For (V4), given $u \in U$ the element $(-1) \cdot u$ lies in $U$ by (LSS3), and it satisfies $u + (-1) \cdot u = 0_V$ by \cref{lem:vector_space_basics}, so it is an additive inverse of $u$ inside $U$.
+
+The moral is worth keeping: a subspace inherits every identity for free, and the only things ever in question are closure and the presence of $0$. This is why \cref{lem:subspace_criterion} can compress the whole check into two conditions.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:U_b_converse}]
+Assume $b = 0$, so that $U_0 = \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = 0\}$. We verify the three conditions of \cref{def:linear_subspace}.
+
+\textbf{(LSS1)} The zero vector $(0,0,0)$ satisfies $0 + 0 + 0 = 0$, so $0 \in U_0$ and $U_0 \neq \emptyset$.
+
+\textbf{(LSS2)} Let $x, y \in U_0$, so $x_1 + x_2 + x_3 = 0$ and $y_1 + y_2 + y_3 = 0$. Then
+\[
+    (x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = (x_1 + x_2 + x_3) + (y_1 + y_2 + y_3) = 0 + 0 = 0,
+\]
+using commutativity and associativity of addition in $K$ to regroup. Hence $x + y \in U_0$.
+
+\textbf{(LSS3)} Let $x \in U_0$ and $a \in K$. Then
+\[
+    a x_1 + a x_2 + a x_3 = a \cdot (x_1 + x_2 + x_3) = a \cdot 0 = 0
+\]
+by distributivity \textbf{(K8)} and \cref{lem:mult_by_zero}. Hence $a \cdot x \in U_0$.
+
+So $U_0$ is a linear subspace of $K^3$. Together with the direction proved in the text, this establishes the Claim on \cpageref{claim:U_b_subspace}. Note where the two halves differ: the forward direction used only closure under addition, and produced the equation $b + b = b$; the converse needs all three conditions, but each is a one-line consequence of the field axioms.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:matrix_vector_scalar}]
+Let $A = (a_{ij})$ with $1 \le i \le m$ and $1 \le j \le n$, let $u \in K^n$ be a column vector and let $a \in K$. We compare the $i$-th entries of the two sides. By \cref{def:matrix_vector_multiplication}, the $j$-th entry of $a \cdot u$ is $a \cdot u_j$, and therefore,
+\[
+    \bigl(A \cdot (a \cdot u)\bigr)_i = a_{i1}(a u_1) + a_{i2}(a u_2) + \dots + a_{in}(a u_n).
+\]
+Each summand may be rewritten as $a \cdot (a_{ij} u_j)$, using commutativity and associativity of multiplication in $K$, axioms \textbf{(K5)} and \textbf{(K10)}. Pulling the common factor $a$ out by distributivity \textbf{(K8)},
+\[
+    \bigl(A \cdot (a \cdot u)\bigr)_i = a \cdot \bigl(a_{i1}u_1 + \dots + a_{in}u_n\bigr) = a \cdot \bigl(A \cdot u\bigr)_i = \bigl(a \cdot (A \cdot u)\bigr)_i.
+\]
+This holds for every $1 \le i \le m$, so the two column vectors are equal.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of \cref{exc:continuous_subspace}]
+We check the three conditions of \cref{def:linear_subspace} for $C(S) \subseteq \mathbb{R}^S$, with $S = [0,1]$. Each rests on a standard fact from analysis about limits, which is where this example steps outside algebra.
+
+\textbf{(LSS1)} The constant function $0$ is continuous at every point of $[0,1]$, since $|0 - 0| = 0 < \varepsilon$ for every $\varepsilon > 0$ and every choice of $\delta$. So $0 \in C(S)$.
+
+\textbf{(LSS2)} Let $f, g \in C(S)$ and let $x_0 \in [0,1]$. Given $\varepsilon > 0$, continuity of $f$ and of $g$ at $x_0$ supplies $\delta_1, \delta_2 > 0$ with $|f(x) - f(x_0)| < \varepsilon/2$ for $|x - x_0| < \delta_1$ and $|g(x) - g(x_0)| < \varepsilon/2$ for $|x - x_0| < \delta_2$. Put $\delta := \min(\delta_1, \delta_2)$. For $|x - x_0| < \delta$ the triangle inequality gives
+\[
+    \bigl|(f+g)(x) - (f+g)(x_0)\bigr| \le |f(x) - f(x_0)| + |g(x) - g(x_0)| < \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon .
+\]
+So $f + g$ is continuous at $x_0$, and $x_0$ was arbitrary.
+
+\textbf{(LSS3)} Let $f \in C(S)$ and $a \in \mathbb{R}$. If $a = 0$ then $a \cdot f$ is the zero function, covered by (LSS1). If $a \neq 0$, then given $\varepsilon > 0$ choose $\delta > 0$ with $|f(x) - f(x_0)| < \varepsilon / |a|$ for $|x - x_0| < \delta$; then $|a f(x) - a f(x_0)| = |a| \cdot |f(x) - f(x_0)| < \varepsilon$. So $a \cdot f$ is continuous.
+
+Hence $C(S)$ is a linear subspace of $\mathbb{R}^S$. It is worth noticing that this is the first subspace in the book whose defining condition is not algebraic: nothing in the argument would work over an arbitrary field, because $|\cdot|$ and $\varepsilon$ have no meaning there.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of the Claim on Polynomials of Bounded Degree, on \cpageref{claim:bounded_degree_subspace}]
+We use the criterion of \cref{lem:subspace_criterion}. The zero polynomial has degree $-\infty \le d$, so it lies in $K[x]_d$ and the set is non-empty. Now let $f, g \in K[x]_d$ and $a, b \in K$, and write
+\[
+    f = \sum_{k \ge 0} f_k x^k, \qquad g = \sum_{k \ge 0} g_k x^k,
+\]
+where $f_k = 0$ and $g_k = 0$ for every $k > d$. The coefficient of $x^k$ in $a f + b g$ is $a f_k + b g_k$, which vanishes for every $k > d$ as well. Hence $\deg(a f + b g) \le d$, so $a f + b g \in K[x]_d$.
+
+Notice that the inequality $\deg(a f + b g) \le d$ can be strict even when $\deg f = \deg g = d$: over any field, $f = x^d$ and $g = -x^d$ give $f + g = 0$, of degree $-\infty$. That is exactly why the definition uses $\le d$ rather than $= d$, and it is the content of \cref{q:degree_exactly_d} \textbf{(a)}.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Proof of the Claim on Matrix Spaces, on \cpageref{claim:matrix_space}]
+This is the first solution above once more, with index set $I = \{1, \dots, m\} \times \{1, \dots, n\}$: a matrix is exactly a function assigning an element of $K$ to each pair $(i,j)$, and both operations are defined entry by entry. Every one of (V1)--(V8) is therefore an identity checked at each entry separately, where it becomes one of the field axioms. The zero vector is the matrix with $0$ in every entry, as claimed, and the additive inverse of $(a_{ij})$ is $(-a_{ij})$.
+
+In the language of \cref{ex:function_space} this says that $\M_{m \times n}(K)$ is the function space $K^{I}$ for that index set. The identification is not merely formal: it is what makes $\dim \M_{m \times n}(K) = m \cdot n$ evident later, the standard basis being the matrix units, one for each index.
+\end{exercisesolution}
+
+\begin{answer}
+Both parts of \cref{q:degree_exactly_d}.
+
+\textbf{(a) No.} The set $\{f \in K[x] \mid \deg(f) = d\}$ is never a subspace, for any $d \in \mathbb{Z}_{\ge 0}$. The quickest reason is that it fails (LSS1): the zero polynomial has degree $-\infty \neq d$, so it is not in the set, and by \cref{lem:subspace_criterion} a subspace must contain $0$. Closure fails too, and more informatively: $x^d$ and $1 - x^d$ both have degree $d$, while their sum $1$ has degree $0$.
+
+\textbf{(b) Yes.} Write $W$ for the set in question and let $\varphi \colon K[x]_5 \to K$ send $p = a_0 + a_1 x + \dots + a_5 x^5$ to $\sum_{i=0}^{5} a_i$. Then $W = \{p \in K[x]_5 \mid \varphi(p) = 0\}$, and we check the criterion of \cref{lem:subspace_criterion} directly. The zero polynomial has all coefficients $0$, whose sum is $0$, so $0 \in W$. And if $p, q \in W$ and $a, b \in K$, then the $i$-th coefficient of $a p + b q$ is $a p_i + b q_i$, so
+\[
+    \sum_{i=0}^{5} (a p_i + b q_i) = a \sum_{i=0}^{5} p_i + b \sum_{i=0}^{5} q_i = a \cdot 0 + b \cdot 0 = 0,
+\]
+and $a p + b q \in W$.
+
+The contrast between the two parts is the point. A condition of the form \qt{some linear expression in the coefficients vanishes} always cuts out a subspace, because $0$ satisfies it and the expression respects linear combinations. A condition of the form \qt{some coefficient does \emph{not} vanish}, which is what $\deg f = d$ says about $f_d$, never does, for the same reason read backwards. Both halves of that observation are the substance of \cref{thm:solution_set_subspace} in a different costume, and $\varphi$ above is the first linear functional in the book, a notion ch. 18 takes up in earnest.
+\end{answer}
