@@ -93,8 +93,9 @@ that contradicts the book's own conventions.
 | 24 | `content/24-spectral-thoerem.tex` | done, pushed (`8b3fcb9`) |
 | 25 | `content/25-isometries.tex` | done, pushed (`6311bc5`) |
 | 26 | `content/26-singular-value-decomposition.tex` | done, pushed (`d1b8d9b`) |
-| 27 | `content/27-bilinear-and-quadratic-forms.tex` | done |
-| **28a, 28b** | 28, 28b | **not started; this is where to resume** |
+| 27 | `content/27-bilinear-and-quadratic-forms.tex` | done, pushed (`b90fd0c`) |
+| 28a | `content/28-jordan-a.tex` | done |
+| **28b** | `content/28b-jordan-b.tex` | **not started; this is where to resume** |
 | 1--9 | the foundational chapters | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -622,6 +623,24 @@ Flagged rather than changed: in the Example of standard forms the letter `B` is
 both the matrix and the form it defines, so the defining line reads
 `B(v,w) := v^T B w`. The same species as ch. 17c's `P`; a parenthetical now says
 which is which.
+
+### Ch. 28a, the corollary that computes the wrong object
+
+Nothing false, and the source pass had already written up all six \qt{exc.}
+marks. What the rigour pass found were two silent passages between $T$ and its
+representation matrix, in the proof of `cor:multiplicities_min_poly_jnf`. The
+first, `m_g(T, λ) = m_g(A, λ)`, is `prop:matrix_evaluation` with
+`prop:coordinate_map_isomorphism`. The second is more serious: the whole second
+half of the proof works with the matrix `A` and concludes a statement about
+$\mu_T$, and the two minimal polynomials agree only because
+`q(A) = [q(T)]_B^B` for every polynomial `q`, the representation map being a
+ring homomorphism and injective by `thm:homomorphism_isomorphism`. Without that
+sentence the corollary computes the minimal polynomial of the wrong object.
+
+Also: `\Spec` is used exactly once in the whole book, in the statement of that
+corollary, and defined nowhere; the operator is declared in the preamble and the
+word \qt{spectrum} is explained only in ch. 24's opening AI-Note. The statement
+now says which set it means.
 
 ## Checked in ch. 17e and found correct
 

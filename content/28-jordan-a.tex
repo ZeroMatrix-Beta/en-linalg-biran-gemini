@@ -87,11 +87,12 @@ The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The characteristic polynomial is the determinant of an upper triangular matrix:
     \[
-    P_{J_{\lambda, n}}(x) = \det \begin{pmatrix} \lambda-x & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & \lambda-x \end{pmatrix} = (\lambda-x)^n.
+    P_{J_{\lambda, n}}(x) = \det \begin{pmatrix} \lambda-x & 1 & & 0 \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ 0 & & & \lambda-x \end{pmatrix} = (\lambda-x)^n,
     \]
-    The only root of $P_{J_{\lambda, n}}(x)$ is $\lambda$, so $\lambda$ is the only eigenvalue of $J_{\lambda, n}$.
-    
-    \item From part \textbf{(a)}, the root $\lambda$ has multiplicity $n$, so $m_a(J_{\lambda, n}; \lambda) = n$.
+    which is \cref{lem:properties_char_poly} \textbf{(c)}, the case of an upper triangular matrix with all diagonal entries equal to $\lambda$.
+    The only root of $P_{J_{\lambda, n}}(x)$ is $\lambda$, so $\lambda$ is the only eigenvalue of $J_{\lambda, n}$, by \cref{aiprop:eigenvalue_iff_root}.
+
+    \item From part \textbf{(a)}, the root $\lambda$ has multiplicity $n$, so $m_a(J_{\lambda, n}; \lambda) = n$ (by \cref{def:geom_alg_mult}, the algebraic multiplicity being the multiplicity of $\lambda$ as a root of the characteristic polynomial).
     
     \item To find $\Eig_{J_{\lambda, n}}(\lambda)$, we need to solve the equation $(J_{\lambda, n} - \lambda I_n)x = 0$:
     \[
@@ -141,6 +142,7 @@ Prof. Biran annotates the uniqueness claim with \qt{explain}. Make the statement
 % Extractor: Gemini 3.1 Pro
 
 \begin{remark}
+\label{rem:jordan_basis}
 The basis $\mathcal{B}$ is called a \newterm{Jordan basis} for $T$. The resulting block diagonal matrix is called the \newterm{Jordan Normal Form} (JNF) of $T$. A similar theorem holds for matrices $A \in \M_{n \times n}(K)$: there exists an invertible matrix $P$ such that $P^{-1} A P$ is in Jordan Normal Form.
 \end{remark}
 
@@ -274,21 +276,26 @@ Furthermore, the minimal polynomial $\mu_T(x)$ is given by:
 \[
 \mu_T(x) = \prod_{\lambda \in \Spec(T)} (x - \lambda)^{s(\lambda)},
 \]
-where $s(\lambda)$ is the size of the largest block labeled by $\lambda$, i.e., $s(\lambda) = \max \{ n_j \mid 1 \le j \le k, \lambda_j = \lambda \}$.
+where $\Spec(T) := \{ \lambda_1, \dots, \lambda_k \}$ is the \newterm{spectrum} of $T$, that is, its set of eigenvalues, each counted once, and where $s(\lambda)$ is the size of the largest block labeled by $\lambda$, i.e., $s(\lambda) = \max \{ n_j \mid 1 \le j \le k, \lambda_j = \lambda \}$.
 \end{corollary}
 
 \begin{proof}
 \textbf{Geometric Multiplicity:} Suppose that $A \in \M_{n \times n}(K)$ has the block diagonal shape $A = \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ with $B \in \M_{\ell \times \ell}(K)$ and $C \in \M_{m \times m}(K)$. Let $0 \neq u = \binom{v}{w}$ with $v \in K^\ell$ and $w \in K^m$. Then $u$ is an eigenvector of $A$ for the eigenvalue $\lambda$ if and only if $Bv = \lambda v$ and $Cw = \lambda w$.
 
-Moreover, the eigenspace decomposes as $\Eig_A(\lambda) = \Eig_B(\lambda) \oplus \Eig_C(\lambda)$. In particular, $m_g(A, \lambda) = m_g(B, \lambda) + m_g(C, \lambda)$. (We use the convention here that if $\lambda$ is not an eigenvalue of a matrix $D$, then $m_g(D, \lambda) = 0$).
+Moreover, the eigenspace decomposes as $\Eig_A(\lambda) = \Eig_B(\lambda) \oplus \Eig_C(\lambda)$, which is the criterion just proved, read as a statement about sets rather than about a single $u$. In particular, $m_g(A, \lambda) = m_g(B, \lambda) + m_g(C, \lambda)$. (We use the convention here that if $\lambda$ is not an eigenvalue of a matrix $D$, then $m_g(D, \lambda) = 0$).
 
 Now recall from \cref{lem:properties_jordan_matrix} that for a single Jordan block, $m_g(J_{\lambda, r}; \lambda') = \begin{cases} 1 & \text{if } \lambda' = \lambda \\ 0 & \text{if } \lambda' \neq \lambda \end{cases}$.
-Applying this additively to $A := [T]_{\mathcal{B}}^{\mathcal{B}}$, we obtain:
+Applying this additively to $A := [T]_{\mathcal{B}}^{\mathcal{B}}$, by induction on the number of blocks, we obtain:
 \[
 m_g(T, \lambda) = m_g(A, \lambda) = \sum_{i=1}^k m_g(J_{\lambda_i, n_i}; \lambda) = \# \{ i \mid \lambda_i = \lambda \}.
 \]
+% Creator: Opus 5
+(The first equality is the passage from $T$ to its representation matrix. It holds because the coordinate map $\Phi_{\mathcal{B}}$ carries $\Eig_T(\lambda)$ onto $\Eig_A(\lambda)$: for $v \in V$, $Tv = \lambda v$ if and only if $A \cdot [v]_{\mathcal{B}} = \lambda [v]_{\mathcal{B}}$, by \cref{prop:matrix_evaluation}, and $\Phi_{\mathcal{B}}$ is an isomorphism by \cref{prop:coordinate_map_isomorphism}, so the two eigenspaces have the same dimension).
+% Extractor: Gemini 3.1 Pro
 
-\textbf{Minimal Polynomial:} Let $A := \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ as above. We have $A^k = \left(\begin{smallmatrix} B^k & 0 \\ 0 & C^k \end{smallmatrix}\right)$ (check! See \cref{exc:powers_of_block_diagonal}). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \left(\begin{smallmatrix} q(B) & 0 \\ 0 & q(C) \end{smallmatrix}\right)$.
+\textbf{Minimal Polynomial:} Throughout this half we work with $A := [T]_{\mathcal{B}}^{\mathcal{B}}$ in place of $T$, which is legitimate because $T$ and $A$ have the same minimal polynomial: $q(A) = [q(T)]_{\mathcal{B}}^{\mathcal{B}}$ for every $q(x) \in K[x]$, since $S \mapsto [S]_{\mathcal{B}}^{\mathcal{B}}$ respects sums, scalar multiples and compositions, and it is injective by \cref{thm:homomorphism_isomorphism}; hence $q(T) = 0$ if and only if $q(A) = 0$.
+
+Let $A := \left(\begin{smallmatrix} B & 0 \\ 0 & C \end{smallmatrix}\right)$ as above. We have $A^k = \left(\begin{smallmatrix} B^k & 0 \\ 0 & C^k \end{smallmatrix}\right)$ (check! See \cref{exc:powers_of_block_diagonal}). This implies that for every polynomial $q(x) \in K[x]$, we have $q(A) = \left(\begin{smallmatrix} q(B) & 0 \\ 0 & q(C) \end{smallmatrix}\right)$.
 
 Consider a single Jordan matrix $J_{\lambda, n}$. For every $q(x) \in K[x]$, we have:
 \[
@@ -412,3 +419,46 @@ By \cref{lem:powers_jordan_blocks} \textbf{(a)}, for every $j \ge 1$ the matrix 
 \[ q(J_{\lambda,n}) = q(\lambda) \cdot I_n + (\text{strictly upper triangular}). \]
 This is exactly the assertion: $q(J_{\lambda,n})$ is upper triangular, and each of its diagonal entries equals $q(\lambda)$.
 \end{exercisesolution}
+
+% Creator: Opus 5
+\begin{ainote}
+Nothing false, and the source-verification pass had already written up all six of
+Prof. Biran's \qt{exc.} marks, including the two \qt{why?}s on the exponents of
+the minimal polynomial and the \qt{explain} on the uniqueness claim.
+
+\textbf{A notation used once and defined nowhere.} \Cref{cor:multiplicities_min_poly_jnf}
+writes its product over $\lambda \in \Spec(T)$, the only occurrence of $\Spec$ in
+the book: the operator is declared in the preamble, the word \qt{spectrum} is
+explained only in the AI-Note opening ch. 24, and the corollary's own proof works
+throughout with $\{\lambda_1, \dots, \lambda_k\}$ instead. The statement now says
+which set that is.
+
+\textbf{Two passages between $T$ and its matrix, both silent.} The proof computes
+$m_g(T, \lambda) = m_g(A, \lambda)$ for $A := [T]_{\mathcal{B}}^{\mathcal{B}}$
+without argument; the reason is that $\Phi_{\mathcal{B}}$ carries
+$\Eig_T(\lambda)$ onto $\Eig_A(\lambda)$, which is
+\cref{prop:matrix_evaluation} together with
+\cref{prop:coordinate_map_isomorphism}. The whole second half then proves a
+statement about the minimal polynomial of the \emph{matrix} $A$ and concludes one
+about $\mu_T$; these agree because $q(A) = [q(T)]_{\mathcal{B}}^{\mathcal{B}}$ for
+every polynomial $q$, the representation map being a ring homomorphism and
+injective by \cref{thm:homomorphism_isomorphism}. This is the more serious of the
+two, since without it the corollary computes the minimal polynomial of the wrong
+object.
+
+Smaller ones: the determinant of the triangular $J_{\lambda, n} - x I_n$ is
+\cref{lem:properties_char_poly} \textbf{(c)}; passing from \qt{the only root} to
+\qt{the only eigenvalue} is \cref{aiprop:eigenvalue_iff_root}; the algebraic
+multiplicity is read off \cref{def:geom_alg_mult}; and the two-block additivity
+of $m_g$ reaches $k$ blocks by an induction that is now named.
+
+The Remark introducing the terms \newterm{Jordan basis} and \newterm{Jordan
+Normal Form} keeps its Remark and simply carries a label now, so later chapters
+can cite it where it stands.
+
+Checked and found correct: the shift description $T_N e_i = e_{i-1}$ agrees with
+$N = J_{0,n}$; the binomial expansion of $(\lambda I_n + N)^k$ is legitimate
+because the two commute; and every one of the six exercise solutions was
+re-verified, including the two roots $\cos\theta \pm i\sin\theta$ of
+$x^2 - 2\cos\theta \cdot x + 1$.
+\end{ainote}
