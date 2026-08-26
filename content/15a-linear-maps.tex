@@ -43,6 +43,7 @@ Prove that a map $T: V \to W$ is linear if and only if for all $\alpha_1, \alpha
 T(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2).
 \]
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:linearity_criterion}
 \end{exercise}
 
 \begin{exercise}[Extending a Linear Map by Zero Outside a Subspace]
@@ -57,6 +58,7 @@ S(v) & \text{if } v \in U, \\
 \]
 Is $T$ a linear map? Justify your answer.
 \exinfo{This exercise is Problem 2 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:extending_linear_map_by_zero}
 \end{exercise}
 
 \begin{exercise}[Additive Maps over the Rational Field \texorpdfstring{$\mathbb{Q}$}{Q}]
@@ -70,6 +72,7 @@ Show that every additive map is automatically $\mathbb{Q}$-linear, so that
 \Hom_{\mathbb{Q}}(V, W) = \{f \colon V \to W \mid f \text{ is additive}\}.
 \]
 \exinfo{This exercise is Problem 7 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:additive_maps_over_rationals}
 \end{exercise}
 
 \begin{example}[Fundamental Examples of Linear Maps]
@@ -115,6 +118,7 @@ T(p) := \left( 3p(4) + 5p^3(6) + b p(1)p(2), \; \int_{-1}^2 x^2 p(x) \, dx + c (
 \]
 Show that $T$ is linear if and only if $b = c = 0$.
 \exinfo{This exercise is Problem 2 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:polynomial_integral_eval_linear_map}
 \end{exercise}
 
 \begin{exercise}[Identifying Linear Maps]
@@ -126,6 +130,7 @@ Which of the following maps are linear?
     \item $f \colon K^3 \to K^2, \quad (x, y, z) \mapsto (\alpha x + \beta y + \gamma z, \; \delta x + \varepsilon y + \eta z)$ for fixed constants $\alpha, \beta, \gamma, \delta, \varepsilon, \eta \in K$.
 \end{enumerate}
 \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:identifying_linear_maps_mc}
 \end{exercise}
 
 \begin{exercise}[Matrix Representation of a Linear Map]
@@ -136,6 +141,7 @@ Consider the matrix $A = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix}$.
     \item $f \colon \mathbb{R}^3 \to \mathbb{R}^2, \quad f(x, y, z) = (2x + y, x + 2z)\transp$.
 \end{enumerate}
 \exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 9, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:matrix_map_mc}
 \end{exercise}
 
 % prop:15.a.2
@@ -338,6 +344,7 @@ Let $T: V \to W$ be a linear map. Show that:
     \item both statements are generalisations of \cref{prop:kernel_image}. Explain why.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:images_preimages_subspaces}
 \end{exercise}
 
 \begin{exercise}[Preimage of Subspaces and Dimension Formula]
@@ -355,6 +362,7 @@ Let $f \colon V \to W$ be a linear map of vector spaces over $K$.
     \]
 \end{enumerate}
 \exinfo{This exercise is Problem 5 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:preimage_subspace_dimension_formula}
 \end{exercise}
 
 \subsection{Isomorphisms}
@@ -430,6 +438,7 @@ Let $a, b \in K$ and $v_1, v_2 \in V$. Then
 \label{exc:iso_equivalence_relation}
 Show that $\cong$, that is, being isomorphic, defines an equivalence relation on the set of vector spaces over $K$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:iso_equivalence_relation}
 \end{exercise}
 
 % def:15.b.6
@@ -576,9 +585,10 @@ Let $T: V \to W$ be a linear map, where $V$ and $W$ are finite-di\-men\-sional v
     \]
     so $\Img(T) \subsetneq W$, and $T$ is not surjective by \cref{prop:injectivity_kernel} \textbf{(b)}.
     \item Here the chain of equivalences reads
-    \[
-    T \text{ injective} \iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \iff \dim V = \dim \Img(T) \iff \dim W = \dim \Img(T),
-    \]
+    \begin{align*}
+    T \text{ injective} &\iff \ker(T) = \{0_V\} \iff \dim \ker(T) = 0 \\
+    &\iff \dim V = \dim \Img(T) \iff \dim W = \dim \Img(T),
+    \end{align*}
     the third step by \cref{thm:rank_nullity} and the last by the assumption $\dim V = \dim W$. Since $\Img(T)$ is a subspace of $W$, the final equality holds if and only if $\Img(T) = W$, this being the equality case of \cref{prop:subspace_dimension_constraints}, that is, if and only if $T$ is surjective. As each of the two properties implies the other, either one already makes $T$ bijective. \qedhere
 \end{enumerate}
 \end{proof}
@@ -658,6 +668,7 @@ Let $V, W$ be vector spaces over a field $K$ and let $T \colon V \to W$ be an is
     \item $T$ maps every basis of $V$ to a basis of $W$.
 \end{enumerate}
 \exinfo{This exercise is Problem 6 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:isomorphisms_preserve_structures}
 \end{exercise}
 
 \begin{exercise}[Endomorphisms of One-Dimensional Spaces and Canonical Isomorphisms]
@@ -668,6 +679,7 @@ Let $V$ be a one-dimensional vector space over a field $K$, and let $T \in \Hom_
     \item Explain why any isomorphism $V \to K$ depends essentially on a choice of a basis of $V$, whereas there is a natural (canonical) isomorphism $\Hom_K(V, V) \cong K$ that does not depend on any choice of basis.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:one_dim_endomorphism_canonical_iso}
 \end{exercise}
 
 \begin{exercise}[Linear Functionals with the Same Kernel]
@@ -675,6 +687,7 @@ Let $V$ be a one-dimensional vector space over a field $K$, and let $T \in \Hom_
 Let $V$ be a vector space over a field $K$. Suppose that $T_1, T_2 \in \Hom_K(V, K)$ are two linear functionals such that $\ker(T_1) = \ker(T_2)$. Show that there exists a scalar $c \in K$ such that $T_1 = c T_2$.
 \exhint{If the common kernel is $V$, both maps are zero. If not, consider a one-dimensional complement of the kernel and use \cref{exc:one_dim_endomorphism_canonical_iso}.}
 \exinfo{This exercise is Problem 6 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:functionals_same_kernel_proportional}
 \end{exercise}
 
 \begin{exercise}[Projections and Complementary Subspaces]
@@ -685,6 +698,7 @@ Let $V$ be a vector space. A linear endomorphism $P \colon V \to V$ is called a 
     \item Conversely, show that for any linear subspaces $W_1, W_2 \subseteq V$ such that $W_1$ is a complement of $W_2$ in $V$ ($V = W_1 \oplus W_2$), there exists a unique projection $P \colon V \to V$ with $\ker(P) = W_1$ and $\Img(P) = W_2$.
 \end{enumerate}
 \exinfo{This exercise is Problem 4 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:projections_and_complements}
 \end{exercise}
 
 \begin{exercise}[Invertibility from a Three-Map Composition]
@@ -695,6 +709,7 @@ S \circ T \circ U = \id_V.
 \]
 Show that $T$ is invertible and that its inverse is given by $T^{-1} = U \circ S$.
 \exinfo{This exercise is Problem 2 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:invertibility_three_map_composition}
 \end{exercise}
 
 \begin{exercise}[Properties and Existence of Endomorphisms and Automorphisms]
@@ -706,6 +721,7 @@ Let $V$ be a finite-dimensional vector space over a field $K$. Prove or disprove
     \item There does not exist any linear map $T \colon \mathbb{R}^5 \to \mathbb{R}^5$ such that $\rank(T) = \dim \ker(T)$.
 \end{enumerate}
 \exinfo{This exercise is Problem 4 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:endomorphism_properties_true_false}
 \end{exercise}
 
 % def:15.b.13
@@ -727,12 +743,14 @@ Let $T: V \to W$ and $S: W \to U$ be linear maps, where $U$, $V$ and $W$ are fin
     \item if $T$ is surjective, then $\rank(S \circ T) = \rank(S)$.
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:rank_of_composition}
 \end{exercise}
 
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 
 \begin{exercisesolution}[Linearity Criterion (on \cpageref{exer:linearity_criterion})]
+\label{sol:linearity_criterion}
 Suppose first that $T$ is linear. Then, for all $\alpha_1, \alpha_2 \in K$ and $v_1, v_2 \in V$,
 \[
 T(\alpha_1 v_1 + \alpha_2 v_2) = T(\alpha_1 v_1) + T(\alpha_2 v_2) = \alpha_1 T(v_1) + \alpha_2 T(v_2),
@@ -747,6 +765,7 @@ which is homogeneity. So $T$ satisfies both conditions of \cref{def:linear_map}.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Images and Preimages of Subspaces (on \cpageref{exc:images_preimages_subspaces})]
+\label{sol:images_preimages_subspaces}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Since $0_V \in V'$ and $T(0_V) = 0_W$, we have $0_W \in T(V')$. Let $a, b \in K$ and $w_1, w_2 \in T(V')$, say $w_1 = T(v_1)$ and $w_2 = T(v_2)$ with $v_1, v_2 \in V'$. Then $a v_1 + b v_2 \in V'$, because $V'$ is a subspace, and
     \[
@@ -762,6 +781,7 @@ which is homogeneity. So $T$ satisfies both conditions of \cref{def:linear_map}.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Isomorphism is an Equivalence Relation (on \cpageref{exc:iso_equivalence_relation})]
+\label{sol:iso_equivalence_relation}
 \textbf{Reflexivity.} The identity $\id_V: V \to V$ is linear and satisfies $\id_V \circ \id_V = \id_V$, so it is an isomorphism, and $V \cong V$.
 
 \textbf{Symmetry.} Let $V \cong W$, witnessed by an isomorphism $T: V \to W$ with linear inverse $S: W \to V$. Then $S$ is itself linear with linear inverse $T$, since $T \circ S = \id_W$ and $S \circ T = \id_V$. So $S$ is an isomorphism and $W \cong V$.
@@ -774,6 +794,7 @@ and symmetrically $(T' \circ T) \circ (S \circ S') = \id_U$. So $T' \circ T$ is 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Rank of a Composition (on \cpageref{exc:rank_of_composition})]
+\label{sol:rank_of_composition}
 Throughout, we use the identity
 \[
 \Img(S \circ T) = \{S(T(v)) \mid v \in V\} = \{S(w) \mid w \in \Img(T)\} = S\big(\Img(T)\big),
@@ -790,6 +811,8 @@ so that $\Img(S \circ T)$ is the image of the restricted linear map $S|_{\Img(T)
     \item If $T$ is surjective, then $\Img(T) = W$, and therefore $\Img(S \circ T) = S(W) = \Img(S)$, so that $\rank(S \circ T) = \rank(S)$. \qedhere
 \end{enumerate}
 \end{exercisesolution}
+
+\input{content/15a-linear-maps-solutions.tex}
 
 \begin{ainote}
 This was the most heavily damaged chapter the restoration met. Of the thirteen
@@ -813,3 +836,5 @@ $\ker(T)$ as in \cref{prop:existence_complement} and observes that $T|_U$ is an
 isomorphism onto $\Img(T)$. Neither ingredient depends on the rank theorem, so
 the second proof is not circular.
 \end{ainote}
+
+
