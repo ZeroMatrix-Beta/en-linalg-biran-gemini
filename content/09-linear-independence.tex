@@ -110,6 +110,28 @@ Setting $a_1 e_1 + a_2 e_2 + \dots + a_n e_n = 0_{K^n}$ yields the column vector
 Let $V$ be a vector space and $v \in V$. The single-element set $\{v\}$ is linearly independent if and only if $v \ne 0_V$. (If $v = 0_V$, we know from \cref{lem:independence_basics} that it is not independent. If $v \ne 0_V$, then $a \cdot v = 0_V \implies a = 0$).
 \end{example}
 
+\begin{exercise}[Linear Independence of Vectors in \texorpdfstring{$\mathbb{R}^4$}{R4}]
+\label{exc:linear_independence_r4_lists}
+For each of the following subsets of $\mathbb{R}^4$, determine whether or not it is linearly independent over $\mathbb{R}$:
+\begin{enumerate}
+    \item $S_1 := \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ 3 \\ -3 \\ 9 \end{pmatrix}, \begin{pmatrix} 1 \\ 3 \\ -4 \\ 7 \end{pmatrix}, \begin{pmatrix} 2 \\ 0 \\ 1 \\ 3 \end{pmatrix} \right\} \subseteq \mathbb{R}^4$;
+    \item $S_2 := \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \\ -1 \end{pmatrix} \right\} \subseteq \mathbb{R}^4$.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Parametric, Triangular, and Function Linear Independence]
+\label{exc:linear_independence_various_contexts}
+Determine whether each of the following sets of vectors is linearly independent over $\mathbb{R}$:
+\begin{enumerate}
+    \item The set $\{(1, 0, 0), (0, 2, t), (2, 4, t^2)\} \subseteq \mathbb{R}^3$ for a parameter $t \in \mathbb{R}$.
+    \item The set of columns of an upper triangular matrix $A \in \M_{n \times n}(\mathbb{R})$ whose diagonal entries all satisfy $A_{ii} \ne 0$ for all $1 \le i \le n$.
+    \item The pair $\{f, g\} \subseteq \mathrm{Abb}(\mathbb{R}, \mathbb{R})$ given by $f(x) = \sin(x)$ and $g(x) = \cos(x)$.
+    \item The pair $\{f, g\} \subseteq \mathrm{Abb}(\mathbb{R}, \mathbb{R})$ given by $f(x) = e^{rx}$ and $g(x) = e^{sx}$ for fixed distinct constants $r, s \in \mathbb{R}$.
+\end{enumerate}
+\exinfo{This exercise is Problem 2 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Arbitrary Families and Linear Dependence}
 
 As we advance in linear algebra, we frequently need to deal with infinite collections of vectors (such as the set of all polynomials). We must rigorously extend our definition to handle this. Before we do, we should say what a family actually is.
@@ -198,6 +220,17 @@ Let $\emptyset \ne S \subseteq V$ be a set of vectors. We say that $S$ is \textb
 \label{ex:monomials_independent}
 In the space of bounded polynomials $K[x]_d$, the set of standard monomials $\{1, x, x^2, \dots, x^d\}$ is linearly independent. This remains true even for the \textbf{infinite family} of all monomials $\mathcal{F} = \{1, x, x^2, \dots\} \subseteq K[x]$. Any finite subset of this family will just be a finite collection of distinct monomials, which can only sum to the zero polynomial if all their coefficients are strictly zero.
 \end{example}
+
+\begin{exercise}[Linear Independence of a Family of Rational Functions]
+\label{exc:rational_functions_independent}
+For each $a \in \mathbb{R}_{\ge 0}$, consider the rational function
+\[
+\varphi_a \colon \mathbb{R}_{>0} \longrightarrow \mathbb{R}, \qquad x \longmapsto \frac{1}{a + x}.
+\]
+Prove that the uncountable family $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}} \subseteq \mathrm{Abb}(\mathbb{R}_{>0}, \mathbb{R})$ is linearly independent over $\mathbb{R}$.
+\exhint{Clear denominators to obtain a polynomial equation, and recall that a non-zero polynomial has only finitely many roots.}
+\exinfo{This exercise is Problem 6 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{exercise}
 \label{exc:k_infinity_independent}
@@ -290,6 +323,20 @@ We can subtract $v_k$ from both sides to obtain:
 This equation is a linear combination of the full list $v_1, \dots, v_n$ that equals $0_V$. Furthermore, the coefficient of $v_k$ is $-1$, which is non-zero. Since we have found a non-trivial linear combination equaling $0_V$, the list is linearly dependent by definition.
 \end{proof}
 
+\begin{exercise}[Linear Independence and Span in Matrix Spaces]
+\label{exc:matrix_span_and_independence}
+Consider the matrices $A_1, A_2 \in \M_{2 \times 3}(\mathbb{R})$ given by
+\[
+A_1 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \qquad A_2 = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 1 \end{pmatrix}.
+\]
+\begin{enumerate}
+    \item Show that $\{A_1, A_2\}$ is linearly independent over $\mathbb{R}$.
+    \item Let $M := \left\{ \begin{pmatrix} a & b & c \\ d & e & f \end{pmatrix} \in \M_{2 \times 3}(\mathbb{R}) \;\middle|\; d = e = 0, \; b - a = f, \; 3a = c \right\}$. Prove that $\Sp(A_1, A_2) = M$.
+    \item Find a matrix $A_3 \in \M_{2 \times 3}(\mathbb{R})$ such that $\{A_1, A_2, A_3\}$ is linearly independent. Can such an $A_3$ be chosen so that $\Sp(A_1, A_2, A_3) = \M_{2 \times 3}(\mathbb{R})$?
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Inheritance in Subsets and Supersets}
 
 How does linear independence behave when we add or remove vectors from a set? There is a strict, logical hierarchy to how these properties are inherited. 
@@ -354,6 +401,20 @@ a_1 v_1 + \dots + a_k v_k = 0_V
 \]
 Since $S \subseteq S''$, the vectors $v_1, \dots, v_k$ also belong to $S''$. Therefore, this exact same non-trivial linear combination exists within $S''$, immediately satisfying the definition of linear dependence for $S''$.
 \end{proof}
+
+\begin{exercise}[Monotonicity of Independence, Spanning, and Bases]
+\label{exc:monotonicity_independence_spanning_mc}
+Let $V$ be a vector space and let $S_1, S_2 \subseteq V$ be subsets with $S_1 \subsetneq S_2$.
+\begin{enumerate}
+    \item If $S_1$ is linearly independent, is $S_2$ always, sometimes, or never linearly independent?
+    \item If $S_2$ is linearly independent, is $S_1$ always, sometimes, or never linearly independent?
+    \item If $S_1$ is a generating set for $V$, is $S_2$ always, sometimes, or never a generating set for $V$?
+    \item If $S_2$ is a generating set for $V$, is $S_1$ always, sometimes, or never a generating set for $V$?
+    \item If $S_1$ is a basis for $V$, is $S_2$ always, sometimes, or never a basis for $V$?
+    \item If $S_2$ is a basis for $V$, is $S_1$ always, sometimes, or never a basis for $V$?
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{ainote}
 \Cref{def:family} and the surrounding discussion of families, the index-set

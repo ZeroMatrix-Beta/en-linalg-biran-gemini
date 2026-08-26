@@ -194,6 +194,18 @@ We now have two descriptions of the same object, and we may use whichever is mor
 They can be regarded as equivalent definitions of the span.
 \end{summary}
 
+\begin{exercise}[Properties of Span and Subspaces]
+\label{exc:span_subspaces_mc}
+Let $V$ be a vector space over a field $K$. Which of the following assertions are true?
+\begin{enumerate}
+    \item For any fixed $v \in V$, the set $W := \{w \in V \mid \exists \lambda \in K : w = \lambda v\}$ is a linear subspace of $V$.
+    \item A subset $W \subseteq V$ is a linear subspace if and only if $\Sp(W) = W$.
+    \item For any subsets $S_1, S_2 \subseteq V$, we have $\Sp(S_1 \cup S_2) = \Sp(S_1) + \Sp(S_2)$.
+    \item For any subsets $S_1, S_2 \subseteq V$, we have $\Sp(S_1 \cap S_2) \subseteq \Sp(S_1) \cap \Sp(S_2)$.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{notation}
 \label{not:span_of_a_list}
 Let $n \in \mathbb{N}$ and $v_1, \dots, v_n \in V$. We write
