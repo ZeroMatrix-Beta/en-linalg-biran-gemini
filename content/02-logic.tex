@@ -1,7 +1,18 @@
 \renewcommand{\thetheorem}{2.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{1}
-
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription.
+% ---------------------------------------------------------------------------
 
 \chapter{Logic and Mathematics}
 
@@ -10,6 +21,7 @@ Before advancing into the formal theory of vector spaces, we must establish the 
 \subsection{Mathematical Statements and Basic Operators}
 
 \begin{definition}[Mathematical Statement]
+\label{def:mathematical_statement}
 A \newterm{mathematical statement} (or logical statement) is a declarative sentence that is definitively either \textbf{True (T)} or \textbf{False (F)}. It is a fundamental axiom of logic that a statement cannot be both true and false simultaneously.
 \end{definition}
 
@@ -166,6 +178,7 @@ The statement $(x > 1) \vee (x < 2)$ is True for all $x \in \mathbb{R}$, since e
 \subsection{Implications and Equivalences}
 
 \begin{definition}[Implication]
+\label{def:implication}
 The statement $A \implies B$ (\qt{$A$ implies $B$}) is defined to be False only when $A$ is True and $B$ is False. In all other cases, it is True.
 \[
 \begin{array}{|c|c|c|}
@@ -190,6 +203,7 @@ is a mathematically \textbf{True} statement. Causality is irrelevant in formal l
 \end{remark}
 
 \begin{definition}[Equivalence]
+\label{def:equivalence}
 The statement $A \iff B$ (\qt{$A$ if and only if $B$}) holds when $A \implies B$ and $B \implies A$ are both True. This means $A$ and $B$ share the same truth value.
 \[
 \begin{array}{|c|c|c|}
@@ -211,7 +225,7 @@ Both of the following statements are True:
 \[
 (x^2 > 0) \iff (x \ne 0), \qquad (0 = 1) \iff \qt{\text{The Earth is flat}}.
 \]
-The second one is True because both sides are False. Again, causality is irrelevant.
+The second one is True because both sides are False. Again, causality is irrelevant. (In the first one, $x$ ranges over $\mathbb{R}$, as in the conjunction example above; the equivalence uses that a non-zero real has positive square, which is a fact about $\mathbb{R}$ and not a matter of logic).
 \end{example}
 
 \begin{proposition}[Contrapositive]
@@ -229,7 +243,7 @@ Prove \cref{prop:contrapositive} via a truth table, and show in the same way tha
     \item \textbf{Double Negation:} $\neg(\neg A) = A$;
     \item \textbf{De Morgan's Laws:} $\neg(A \wedge B) = \neg A \vee \neg B$ and $\neg(A \vee B) = \neg A \wedge \neg B$.
 \end{enumerate}
-Spell the two De Morgan laws out in words.
+Spell the two De Morgan laws out in words. (The sign $=$ between statements here is the equivalence $\iff$ of \cref{def:equivalence}: two statements are \qt{equal} when they have the same truth value in every row of the table, which is exactly what a truth-table proof establishes).
 \end{exercise}
 
 \subsection{Predicates and Quantifiers}
@@ -237,6 +251,7 @@ Spell the two De Morgan laws out in words.
 A \newterm{predicate} $P(x)$ is a statement whose truth depends on a variable $x$. We use quantifiers to convert predicates into absolute statements.
 
 \begin{definition}[Quantifiers]
+\label{def:quantifiers}
 \begin{itemize}
     \item \textbf{Universal ($\forall$):} \qt{For every $x$ in $X$, $P(x)$ holds.}
     \item \textbf{Existential ($\exists$):} \qt{There exists at least one $x$ in $X$ such that $P(x)$ holds.}
@@ -309,6 +324,7 @@ The order of quantifiers is non-commutative. Consider $X$ (ETH students), $Y$ (c
 \subsection{Negation and Unique Existence}
 
 \begin{proposition}[Negating Quantifiers]
+\label{prop:negating_quantifiers}
 \begin{align*}
 \neg (\forall x \in X : A(x)) &\iff \exists x \in X : \neg A(x) \\
 \neg (\exists x \in X : A(x)) &\iff \forall x \in X : \neg A(x)
@@ -324,6 +340,7 @@ In practice, we often condense multiple quantifiers of the same type:
 \end{remark}
 
 \begin{definition}[Unique Existence]
+\label{def:unique_existence}
 The notation $\exists! x \in X : P(x)$ means there exists exactly one $x$ satisfying the predicate. Formally:
 \[
 (\exists x \in X : P(x)) \wedge (\forall x, y \in X : (P(x) \wedge P(y) \implies x = y))
@@ -334,3 +351,97 @@ The notation $\exists! x \in X : P(x)$ means there exists exactly one $x$ satisf
 \label{ex:unique_existence_roots}
 $\exists! x \in \mathbb{R} : x^2 = 4$ is False (since $x = \pm 2$). However, $\exists! x \in \mathbb{R} : (x \ge 0) \wedge (x^2 = 4)$ is True.
 \end{example}
+
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_logic}
+
+\begin{exercisesolution}[Proof of \cref{prop:contrapositive} and of \cref{exer:de_morgan}]
+Each of the four claims is settled by writing out the truth table and checking that the two columns in question agree row by row. That is what an equivalence of statements amounts to, by \cref{def:equivalence}.
+
+\textbf{The contrapositive.} Comparing the third column with the sixth:
+\[
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+A & B & A \implies B & \neg B & \neg A & \neg B \implies \neg A \\
+\hline
+\text{T} & \text{T} & \text{T} & \text{F} & \text{F} & \text{T} \\
+\text{T} & \text{F} & \text{F} & \text{T} & \text{F} & \text{F} \\
+\text{F} & \text{T} & \text{T} & \text{F} & \text{T} & \text{T} \\
+\text{F} & \text{F} & \text{T} & \text{T} & \text{T} & \text{T} \\
+\hline
+\end{array}
+\]
+The two columns are identical, which proves \cref{prop:contrapositive}. The single row where they could have differed is the second, and there both are False for the same reason: a true premise with a false conclusion.
+
+\textbf{Double negation.} Here two rows suffice:
+\[
+\begin{array}{|c|c|c|}
+\hline
+A & \neg A & \neg(\neg A) \\
+\hline
+\text{T} & \text{F} & \text{T} \\
+\text{F} & \text{T} & \text{F} \\
+\hline
+\end{array}
+\]
+The first and third columns agree, so $\neg(\neg A) \iff A$.
+
+\textbf{The first De Morgan law.} Comparing the fourth column with the seventh:
+\[
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+A & B & A \wedge B & \neg(A \wedge B) & \neg A & \neg B & \neg A \vee \neg B \\
+\hline
+\text{T} & \text{T} & \text{T} & \text{F} & \text{F} & \text{F} & \text{F} \\
+\text{T} & \text{F} & \text{F} & \text{T} & \text{F} & \text{T} & \text{T} \\
+\text{F} & \text{T} & \text{F} & \text{T} & \text{T} & \text{F} & \text{T} \\
+\text{F} & \text{F} & \text{F} & \text{T} & \text{T} & \text{T} & \text{T} \\
+\hline
+\end{array}
+\]
+
+\textbf{The second De Morgan law.} Comparing the fourth column with the seventh:
+\[
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+A & B & A \vee B & \neg(A \vee B) & \neg A & \neg B & \neg A \wedge \neg B \\
+\hline
+\text{T} & \text{T} & \text{T} & \text{F} & \text{F} & \text{F} & \text{F} \\
+\text{T} & \text{F} & \text{T} & \text{F} & \text{F} & \text{T} & \text{F} \\
+\text{F} & \text{T} & \text{T} & \text{F} & \text{T} & \text{F} & \text{F} \\
+\text{F} & \text{F} & \text{F} & \text{T} & \text{T} & \text{T} & \text{T} \\
+\hline
+\end{array}
+\]
+
+\textbf{In words.} The first law says that for \qt{$A$ and $B$} to fail it is necessary and sufficient that \emph{at least one} of the two fails. The second says that for \qt{$A$ or $B$} to fail it is necessary and sufficient that \emph{both} fail, which is where the inclusive reading of \qt{or} recorded in \cref{rem:inclusive_or} makes itself felt: were \qt{or} exclusive, the second law would be false in the top row.
+
+Two remarks worth carrying forward. First, the De Morgan laws are the statement-level version of \cref{prop:negating_quantifiers}: a universal quantifier is a long conjunction and an existential one a long disjunction, so negating either turns it into the other, exactly as here. Second, the contrapositive is the shape of every proof by contraposition in this book, of which the proof of \cref{prop:eigen_injective} in ch. 21 is a typical example.
+\end{exercisesolution}
+
+\begin{ainote}
+This chapter is the only one in the book with no linear algebra in it, and it is
+easy to read past. It is worth saying what later chapters actually draw on.
+
+Three things, mainly. The contrapositive of \cref{prop:contrapositive} is the
+shape of a large fraction of the proofs that follow: whenever a proof opens
+\qt{suppose the conclusion fails}, it is this proposition being used.
+\Cref{prop:negating_quantifiers} is what makes a negated definition usable, and
+it is applied silently every time a proof shows that a family is \emph{not}
+linearly independent by exhibiting one non-trivial relation. And
+\cref{def:unique_existence} is the pattern of nearly every uniqueness claim in
+the book: existence, then a proof that two candidates coincide. The proof of the
+uniqueness of the representation matrix in ch. 16 and the uniqueness half of
+\cref{thm:existence_uniqueness_linear_map} are both exactly this.
+
+The one warning the chapter itself flags, in \cref{rem:inclusive_or}, is worth
+repeating: \qt{or} is always inclusive here. The second De Morgan law depends on
+it, and so does the reading of \qt{$A$ or $B$} in every later statement.
+
+The rigour pass added labels to the five Definitions and the Proposition that
+carried none, so that the results above can be cited at all, and wrote up the
+exercise, which is also the missing proof of \cref{prop:contrapositive}: the
+chapter states the contrapositive and then defers its proof to the exercise, so
+without a solution the proposition stood unproved.
+\end{ainote}

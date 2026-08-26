@@ -96,8 +96,9 @@ that contradicts the book's own conventions.
 | 27 | `content/27-bilinear-and-quadratic-forms.tex` | done, pushed (`b90fd0c`) |
 | 28a | `content/28-jordan-a.tex` | done, pushed (`8666eb5`) |
 | 28b | `content/28b-jordan-b.tex` | done, pushed (`307ecb5`) |
-| 1 | `content/01-fibonacci.tex` | done |
-| **2--9** | the remaining foundational chapters | **this is where to resume** |
+| 1 | `content/01-fibonacci.tex` | done, pushed (`d029914`) |
+| 2 | `content/02-logic.tex` | done |
+| **3--9** | the remaining foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -244,8 +245,16 @@ checked by hand and is right.
 ### The build and check recipe
 
 ```bash
-latexmk -pdf -interaction=nonstopmode en-linalg-2.tex
+latexmk -pdf -interaction=batchmode en-linalg-2.tex < /dev/null
 ```
+
+Use `batchmode` with stdin closed, not `nonstopmode`. Under `nonstopmode` from
+the Bash tool the `pdflatex` child regularly hangs after the run returns, keeps
+`en-linalg-2.aux` open, and eventually leaves it full of NUL bytes, at which
+point every later build dies on \qt{Text line contains an invalid character}
+while reading its own aux. The cure once it has happened is to stop the
+`latexmk`/`pdflatex`/`perl` trio with `Get-Process`, delete `.aux`, `.toc` and
+`.out`, and build again with the line above.
 
 Then `bash tools/check-crefs.sh` and `perl tools/check-repmatrix.pl`. The
 baseline is **3 overfull hboxes** and no undefined or multiply-defined
@@ -713,6 +722,25 @@ matrix identity behind Cassini is the one the eigenvalue chapters return to.
 The chapter's `ainote` was written the way the corrected rule asks: it says what
 the chapter is doing, namely replacing a question about one number by a question
 about the space of all such sequences, before recording what the pass changed.
+
+### Ch. 2, a proposition whose proof was an exercise nobody solved
+
+`prop:contrapositive` is stated and then not proved: the chapter defers it to
+`exer:de_morgan`, and chs. 1--9 carry no solutions, so it stood unproved while
+being the shape of a large share of the proofs that follow. The exercise, which
+also asks for double negation and the two De Morgan laws, is now written up, with
+all four truth tables.
+
+**Five Definitions and one Proposition carried no `\label`**: mathematical
+statement, implication, equivalence, quantifiers, unique existence, and
+\qt{Negating Quantifiers}. The last three are used constantly in later chapters,
+`\exists!` most of all, and none of them could be cited.
+
+Two smaller things. The equivalence $(x^2 > 0) \iff (x \ne 0)$ in
+`ex:equivalences` has no domain attached, and it is a fact about $\mathbb{R}$
+rather than about logic. And `exer:de_morgan` writes $=$ between statements where
+the chapter has just defined $\iff$ for exactly that relation; a parenthetical now
+says the two are the same thing here.
 
 ## Checked in ch. 17e and found correct
 
