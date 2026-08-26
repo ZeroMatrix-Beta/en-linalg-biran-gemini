@@ -621,6 +621,13 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
     Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space with $n := \dim V < \infty$. If $n = 0$ the empty family is an orthonormal basis, vacuously. Otherwise $V$ has a basis $(v_1, \dots, v_n)$ by \cref{thm:basis_theorem}; feeding it to \cref{thm:gram_schmidt} produces, by part \textbf{(b)} of that theorem, the orthonormal basis $\left( \frac{w_1}{\|w_1\|}, \dots, \frac{w_n}{\|w_n\|} \right)$ of $V$.
 \end{proof}
 
+\begin{exercise}[Extending an Orthonormal System to an Orthonormal Basis]
+  \label{exc:extend_orthonormal_system}
+  Let $V$ be a finite-dimensional Euclidean vector space and let $S \subseteq V$ be an orthonormal system. Show that $S$ can be extended to an orthonormal basis of $V$.
+  \exhint{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 Geometric idea behind the Gram-Schmidt process.
 \begin{center}
     \begin{tikzpicture}[scale=1.2]

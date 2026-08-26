@@ -147,6 +147,18 @@ For statement \textbf{(e)}, we can write
 Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we have also seen in that proof that part (II) belongs to $U^\perp$. This implies that \eqref{eq:orthogonal_decomposition_v} is the unique decomposition of $v$ with respect to $V \cong U \oplus U^\perp$. Hence, $P_U(v) = \text{(I)}$.
 \end{proof}
 
+\begin{exercise}[Orthogonal Projections and Complementary Subspaces]
+  \label{exc:orthogonal_projection_computation}
+  Let $U \subseteq \mathbb{R}^3$ (with the standard scalar product) be the subspace spanned by the vectors $v_1 = (1, 1, 1)\transp$ and $v_2 = (0, 2, 1)\transp$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Find an orthonormal basis for $U$ and an orthonormal basis for $U^\perp$.
+    \item Compute the representation matrices of the orthogonal projections $P_U \colon \mathbb{R}^3 \to U$ and $P_{U^\perp} \colon \mathbb{R}^3 \to U^\perp$ with respect to the standard basis of $\mathbb{R}^3$ and the respective bases obtained in part (a).
+  \end{enumerate}
+  \exhint{(a) Apply Gram-Schmidt to $(v_1, v_2)$ to obtain an orthonormal basis $\mathcal{C}_U = (w_1, w_2)$ of $U$. Then find a non-zero vector $v_3 \in U^\perp$ (e.g., by solving the linear system $\langle x, v_1 \rangle = 0$ and $\langle x, v_2 \rangle = 0$, or via the cross product $v_1 \times v_2$) and normalize it to obtain an orthonormal basis $\mathcal{C}_{U^\perp} = (w_3)$ of $U^\perp$.
+  (b) The projection $P_U \colon \mathbb{R}^3 \to U$ acts by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$. The representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ has column $j$ given by the coordinate vector of $P_U(e_j)$ with respect to $\mathcal{C}_U$, namely $\begin{pmatrix} \langle e_j, w_1 \rangle \\ \langle e_j, w_2 \rangle \end{pmatrix}$. Similarly for $P_{U^\perp}$.}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % Cor. (22.b.6)
 \begin{corollary}[Bidual Orthogonal Complement]
 \label{cor:bidual_orthogonal_complement}
@@ -174,6 +186,24 @@ Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:ortho
     \dim U + \dim U^\perp = \dim \left( U \oplus U^\perp \right) = \dim V. \qedhere
 \]
 \end{proof}
+
+\begin{exercise}[Orthogonal Complements in Infinite-Dimensional Spaces]
+  \label{exc:infinite_dim_orthogonal_complements}
+  For each of the following inner product spaces $(V, \langle \cdot, \cdot \rangle)$, determine the orthogonal complement $U^\perp$ of the given subset $U \subseteq V$:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $V_1 = \left\{ (a_n)_{n=0}^\infty \subset \mathbb{R} \;\middle|\; \sum_{n=0}^\infty |a_n|^2 < \infty \right\}$ with $\langle (a_n), (b_n) \rangle = \sum_{n=0}^\infty a_n b_n$, and
+    \[
+    U_1 = \left\{ (a_n)_{n=0}^\infty \in V_1 \;\middle|\; \exists N \ge 0 \text{ such that } a_m = 0 \text{ for all } m \ge N \right\}.
+    \]
+    \item $V_2 = C[0, 1]$ with $\langle f, g \rangle = \int_0^1 f(x) g(x) \, dx$, and
+    \[
+    U_2 = \left\{ f \in V_2 \;\middle|\; \int_0^{1/2} f(x) \, dx = 0 \right\}.
+    \]
+  \end{enumerate}
+  \exhint{(a) The standard sequence basis vectors $e_k = (\delta_{kn})_{n=0}^\infty$ all lie in $U_1$. If $v = (v_n) \in U_1^\perp$, then $\langle v, e_k \rangle = v_k = 0$ for all $k \ge 0$, which forces $v = 0$. Hence $U_1^\perp = \{0\}$ (note that $U_1 \neq V_1$, so $(U_1^\perp)^\perp \neq U_1$).
+  (b) Let $h \in U_2^\perp$. For any $x_0 \in (1/2, 1)$, test functions $f \in U_2$ supported near $x_0$ show by continuity that $h(x) = 0$ on $(1/2, 1]$. Similarly, testing against functions whose integral over $[0, 1/2]$ is zero shows that $h$ must be constant on $[0, 1/2)$. By continuity at $x = 1/2$, this constant must match $h(1/2) = 0$, so $h \equiv 0$ on $[0, 1]$. Thus $U_2^\perp = \{0\}$.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \subsection*{Orthogonal and Unitary Matrices}
@@ -266,6 +296,26 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
     \item Identical, with \cref{lem:char_unitary_matrices} in place of \cref{lem:char_orthogonal_matrices} and $A^*$ in place of $A\transp$: the condition $A^* \in \Unit(n)$ reads $(A^*)^* A^* = A A^* = I_n$, which is one of the equivalent forms of $A \in \Unit(n)$; and the columns of $A^*$ are the conjugates of the rows of $A$, which form an orthonormal system exactly when the rows do. \qedhere
 \end{enumerate}
 \end{proof}
+
+\begin{exercise}[Properties of Orthogonality, Unitary Matrices, and Complements]
+  \label{exc:orthogonality_unitary_true_false}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item For which vectors $v, w \in \mathbb{R}^2$ does equality hold in the triangle inequality $\|v + w\| = \|v\| + \|w\|$?
+    \item Disprove the assertion: if $v_1, v_2, v_3 \in V$ satisfy $v_1 \perp v_2$ and $v_2 \perp v_3$, then $v_1 \perp v_3$.
+    \item Let $S, T \subseteq V$ be subsets of an inner product space. Show that $S \subseteq T^\perp \iff T \subseteq S^\perp \iff S \perp T$, and give an example showing that $\Sp(S) \cap \Sp(T) = \{0\}$ does not imply $S \perp T$.
+    \item Determine which of the following complex matrices are Hermitian and which are unitary:
+    \[
+    A_1 = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}, \quad A_2 = \frac{1}{i}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad A_3 = \frac{1}{\sqrt{5}}\begin{pmatrix} i & -2 \\ 2 & i \end{pmatrix}, \quad A_4 = \begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}.
+    \]
+    \item If $U, V \in \Unit(n)$ and $\lambda = e^{2\pi i \theta}$ ($\theta \in \mathbb{R}$), prove that $\lambda U$, $U^{-1}$, and $UV$ are unitary, while $U + V$ is generally not unitary.
+  \end{enumerate}
+  \exhint{(a) Equality holds if and only if $v$ and $w$ are linearly dependent with non-negative scaling factor: $v = c w$ or $w = c v$ with $c \ge 0$.
+  (b) In $\mathbb{R}^2$, take $v_1 = e_1$, $v_2 = e_2$, and $v_3 = e_1$; then $v_1 \perp v_2$ and $v_2 \perp v_3$, but $\langle v_1, v_3 \rangle = 1 \ne 0$.
+  (c) Any non-orthogonal linearly independent pair of lines in $\mathbb{R}^2$ intersects only at $\{0\}$ but are not orthogonal.
+  (d) Check $A^* = A$ for Hermitian and $A^* A = I_2$ for unitary. $A_1$ is Hermitian (not unitary); $A_2$ is unitary (skew-Hermitian); $A_3$ is unitary (skew-Hermitian); $A_4$ is both Hermitian and unitary.
+  (e) $(\lambda U)^* (\lambda U) = |\lambda|^2 U^* U = 1 \cdot I_n = I_n$; $(U^{-1})^* U^{-1} = (U^*)^* U^* = U U^* = I_n$; $(UV)^* UV = V^* U^* U V = V^* I_n V = I_n$. For the sum, $I_n + I_n = 2I_n$ is not unitary.}
+  \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \subsection*{QR-Decomposition}
@@ -317,6 +367,21 @@ that is, $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $R_{ij} = 0$ for 
 The columns of $Q$ are $e_1, \dots, e_n$, an orthonormal basis of $K^n$, so $Q \in \Orth(n)$ when $K = \mathbb{R}$ and $Q \in \Unit(n)$ when $K = \mathbb{C}$ (\cref{def:orthogonal_unitary_matrices}); and $R$ is upper triangular by construction. Hence $A = Q \cdot R$ as required.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
+
+\begin{exercise}[Computing a QR-Decomposition and Solving Linear Systems]
+  \label{exc:qr_decomposition_computation}
+  Consider the matrix
+  \[
+  A = \begin{pmatrix} -1 & 1 & -1 \\ 2 & 0 & 1 \\ -2 & 1 & 0 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R}).
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Compute a decomposition $A = QR$ into an orthogonal matrix $Q \in \Orth(3)$ and an upper triangular matrix $R \in \M_{3 \times 3}(\mathbb{R})$ with positive diagonal entries.
+    \item Use this $QR$-decomposition to solve the linear system of equations $A x = b$ for $b = (0, 3, -3)\transp$.
+  \end{enumerate}
+  \exhint{Apply the Gram-Schmidt orthogonalization process to the columns $v_1, v_2, v_3$ of $A$ as in the proof of \cref{thm:qr_decomposition_invertible} to obtain an orthonormal basis $e_1, e_2, e_3$ of $\mathbb{R}^3$. These vectors form the columns of $Q$. The entries of $R$ are $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $0$ for $i > j$.
+  To solve $Ax = b$, write $QRx = b \iff Rx = Q\transp b$, and solve this upper triangular system via back-substitution.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 % The notes state this extension without a number -- it follows the numbered
 % Thm. 22.b.12 as unnumbered prose -- so it is a theorem*, not a theorem.

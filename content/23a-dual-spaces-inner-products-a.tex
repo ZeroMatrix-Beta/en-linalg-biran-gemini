@@ -63,6 +63,21 @@ Define $u := \sum_{i=1}^n \overline{\varphi(e_i)} \cdot e_i$. It follows that $\
 The statements about the linearity of $\Phi$ are left as an exercise.
 \end{proof}
 
+\begin{exercise}[Dual Inner Product and Isometry via Riesz Map]
+  \label{exc:dual_space_inner_product_isometry}
+  Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector space, and consider the isomorphism
+  \[
+  \delta \colon V \longrightarrow V^* := \Hom(V, \mathbb{R}), \qquad v \longmapsto \delta(v) := \langle v, \cdot \rangle.
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Show that there exists a unique scalar product $\langle \cdot, \cdot \rangle^*$ on $V^*$ such that $\delta$ is an isometry, i.e., $\langle \delta(v), \delta(w) \rangle^* = \langle v, w \rangle$ for all $v, w \in V$.
+    \item Let $\mathcal{B} = (v_1, \dots, v_n)$ be an ordered basis of $V$, and let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the corresponding dual basis of $V^*$. Express the representation matrix of $\langle \cdot, \cdot \rangle^*$ with respect to $\mathcal{B}^*$ in terms of the representation matrix $G = [\langle \cdot, \cdot \rangle]_{\mathcal{B}} = (\langle v_i, v_j \rangle)_{i,j=1}^n$.
+  \end{enumerate}
+  \exhint{(a) Since $\delta$ is a vector space isomorphism, the isometry requirement forces $\langle \varphi, \psi \rangle^* := \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle$ for all $\varphi, \psi \in V^*$. Check that this formula indeed satisfies all axioms of a scalar product (bilinearity, symmetry, and positivity) using the linearity and injectivity of $\delta^{-1}$.
+  (b) The basis change from the dual basis $\mathcal{B}^*$ to the basis $\delta(\mathcal{B}) = (\delta(v_1), \dots, \delta(v_n))$ of $V^*$ is given by the Gram matrix $G$: since $v_i^* = \sum_{k=1}^n (G^{-1})_{ik} \delta(v_k)$, it follows that the representation matrix of $\langle \cdot, \cdot \rangle^*$ with respect to $\mathcal{B}^*$ is $[\langle \cdot, \cdot \rangle^*]_{\mathcal{B}^*} = G^{-1}$.}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % The notes give \qt{The adjoint map} a heading of its own, but they go on
 % numbering the results under it 23.a.2, 23.a.3, ..., and the source folder has
 % no 23.b at all: this is not a new lettered part of the chapter. Hence a

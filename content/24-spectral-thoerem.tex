@@ -135,6 +135,19 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
 \end{enumerate}
 \end{proof}
 
+\begin{exercise}[Orthogonality of Eigenvectors for Symmetric Matrices \faHeart]
+  \label{exc:symmetric_matrix_orthogonal_eigenvectors}
+  Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Show that $A\transp A$ is symmetric and positive definite if and only if $A$ is invertible.
+    \item Show that $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
+    \item Let $(\lambda_1, v_1)$ and $(\lambda_2, v_2)$ be eigenvalue-eigenvector pairs of $A$ with non-zero eigenvalues $\lambda_1, \lambda_2 \in \mathbb{R}$. Prove that if $\lambda_1 \ne \lambda_2$, then $v_1 \perp v_2$ with respect to the standard scalar product on $\mathbb{R}^n$.
+  \end{enumerate}
+  \exhint{For (a) and (b), recall that $\|Av\|^2 = v\transp (A\transp A) v$ and $\ker(A\transp A) = \ker(A)$.
+  For (c), since $A$ is symmetric, we have $\langle Av_1, v_2 \rangle = (Av_1)\transp v_2 = v_1\transp A\transp v_2 = v_1\transp A v_2 = \langle v_1, Av_2 \rangle$. Evaluating both sides using $Av_1 = \lambda_1 v_1$ and $Av_2 = \lambda_2 v_2$ gives $\lambda_1 \langle v_1, v_2 \rangle = \lambda_2 \langle v_1, v_2 \rangle \iff (\lambda_1 - \lambda_2) \langle v_1, v_2 \rangle = 0$. Since $\lambda_1 \ne \lambda_2$, it follows that $\langle v_1, v_2 \rangle = 0$, so $v_1 \perp v_2$.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % Creator: Opus 5
 % The engine of the proof below, which reads norms off columns four separate
 % times and calls it "since B is orthonormal". The identity is stated nowhere
