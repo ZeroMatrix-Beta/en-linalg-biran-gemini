@@ -97,8 +97,9 @@ that contradicts the book's own conventions.
 | 28a | `content/28-jordan-a.tex` | done, pushed (`8666eb5`) |
 | 28b | `content/28b-jordan-b.tex` | done, pushed (`307ecb5`) |
 | 1 | `content/01-fibonacci.tex` | done, pushed (`d029914`) |
-| 2 | `content/02-logic.tex` | done |
-| **3--9** | the remaining foundational chapters | **this is where to resume** |
+| 2 | `content/02-logic.tex` | done, pushed (`13f6122`) |
+| 3 | `content/03-set-theory.tex` | done |
+| **4--9** | the remaining foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -244,17 +245,30 @@ checked by hand and is right.
 
 ### The build and check recipe
 
-```bash
-latexmk -pdf -interaction=batchmode en-linalg-2.tex < /dev/null
+**Do not build through the Bash tool.** Every `latexmk` started from Bash leaves
+a `latexmk`/`pdflatex`/`perl` trio running after the call returns. Those hold
+`en-linalg-2.aux` and `.toc` open, and when they are eventually killed they
+leave the files truncated or full of NUL bytes, at which point the next build
+dies on \qt{Text line contains an invalid character} or \qt{File ended while
+scanning use of `\@writefile`} while reading the book's own aux. This cost half a
+dozen rebuilds in one session before the cause was found.
+
+Build from PowerShell instead, which waits properly and leaves nothing behind:
+
+```powershell
+$p = Start-Process -FilePath "latexmk" `
+  -ArgumentList "-pdf","-interaction=batchmode","en-linalg-2.tex" `
+  -NoNewWindow -Wait -PassThru `
+  -RedirectStandardOutput "$env:TEMP\lmk.out" -RedirectStandardError "$env:TEMP\lmk.err"
+"exit=$($p.ExitCode)"
+(Select-String -Path en-linalg-2.log -Pattern "Output written on en-linalg" -Encoding utf8 | Select-Object -Last 1).Line
+"overfull=" + (Select-String -Path en-linalg-2.log -Pattern "Overfull .hbox" -Encoding utf8 | Measure-Object).Count
+"undef="    + (Select-String -Path en-linalg-2.log -Pattern "undefined|multiply.defined" -Encoding utf8 | Measure-Object).Count
 ```
 
-Use `batchmode` with stdin closed, not `nonstopmode`. Under `nonstopmode` from
-the Bash tool the `pdflatex` child regularly hangs after the run returns, keeps
-`en-linalg-2.aux` open, and eventually leaves it full of NUL bytes, at which
-point every later build dies on \qt{Text line contains an invalid character}
-while reading its own aux. The cure once it has happened is to stop the
-`latexmk`/`pdflatex`/`perl` trio with `Get-Process`, delete `.aux`, `.toc` and
-`.out`, and build again with the line above.
+If a build has already gone wrong, stop any surviving `pdflatex`/`latexmk`/`perl`
+with `Get-Process`, delete `.aux`, `.toc` and `.out`, and run the block above
+once. The two checkers may still be run from Bash; they only read files.
 
 Then `bash tools/check-crefs.sh` and `perl tools/check-repmatrix.pl`. The
 baseline is **3 overfull hboxes** and no undefined or multiply-defined
@@ -741,6 +755,25 @@ Two smaller things. The equivalence $(x^2 > 0) \iff (x \ne 0)$ in
 rather than about logic. And `exer:de_morgan` writes $=$ between statements where
 the chapter has just defined $\iff$ for exactly that relation; a parenthetical now
 says the two are the same thing here.
+
+### Ch. 3, the four operations the book runs on, defined in a bare list
+
+Intersection, union, difference and complement are introduced in a plain
+`enumerate` in running prose, with nothing to cite and with `=` where each line
+is a definition and wants `:=`. They are now `def:set_operations`, unnumbered,
+the four naming lines kept verbatim.
+
+**Both `claim*` blocks carried no proof.** That $\emptyset \subseteq Q$ is the
+first place in the book where the vacuous truth of an implication with a false
+premise does real work rather than producing a joke about flat Earths, and it is
+worth saying where it happens. And the Russell claim, that neither $S$ nor $R$ is
+a set, needs one further step than the paradox itself: $R$ is not a set because
+\qt{$R \in R$} would then be a statement with no truth value, and $S$ is not one
+because $R$ could be carved out of it.
+
+Six Definitions carried no `\label`, among them subset, Cartesian product, power
+set and cardinality, which the rest of the book uses on nearly every page. The
+power-set exercise is written up.
 
 ## Checked in ch. 17e and found correct
 

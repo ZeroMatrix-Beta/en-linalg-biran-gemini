@@ -1,6 +1,18 @@
 \renewcommand{\thetheorem}{3.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{2}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription.
+% ---------------------------------------------------------------------------
 
 \chapter{Set Theory}
 
@@ -9,6 +21,7 @@ In this chapter, we formalize the language of sets, which provides the universal
 \subsection{Basic Definitions and Notation}
 
 \begin{definition}[Set]
+\label{def:set}
 A \newterm{set} is a collection of distinct objects, which are referred to as the \textit{elements} of the set.
 \end{definition}
 
@@ -37,6 +50,7 @@ The set of integers whose square is less than or equal to $9$ is written as:
 \end{example}
 
 \begin{definition}[The Empty Set]
+\label{def:empty_set}
 The \newterm{empty set}, denoted by $\emptyset$ or $\{\}$, is the unique set containing no elements.
 \end{definition}
 
@@ -47,6 +61,7 @@ It is important to note that a set is allowed to contain another set as one of i
 We now define how sets relate to one another in terms of containment.
 
 \begin{definition}[Subset and Proper Subset]
+\label{def:subset}
 Let $P$ and $Q$ be sets.
 \begin{enumerate}
     \item We say $P$ is a \newterm{subset} of $Q$, denoted $P \subseteq Q$, if every element of $P$ is also an element of $Q$. Formally: $\forall x \in P : x \in Q$.
@@ -73,19 +88,36 @@ since $5^2 = 25 > 20$.
 \end{example}
 
 \begin{claim*}
+\label{claim:empty_set_is_subset}
 For any set $Q$, the empty set is a subset of $Q$ (i.e., $\emptyset \subseteq Q$).
 \end{claim*}
 
+% Creator: Opus 5
+\begin{proof}
+By \cref{def:subset}, $\emptyset \subseteq Q$ means $\forall x \in \emptyset : x \in Q$. There is no $x \in \emptyset$, so the premise of that implication is never satisfied, and the statement is vacuously true in the sense of the Remark following \cref{def:implication}. It is worth pausing on this, because it is the first place where the convention that an implication with a false premise counts as True does real work rather than producing a curiosity about flat Earths.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 \subsection{Set Operations}
 
-Just as we have logical operators for statements, we have operations to combine or modify sets. Let $A$ and $B$ be subsets of a universal set $X$.
+Just as we have logical operators for statements, we have operations to combine or modify sets.
 
+% Creator: Opus 5
+% The four operations the whole book runs on, introduced in a bare list in
+% running prose with nothing to point at. Unnumbered, so that Prof. Biran's
+% numbering is untouched; the four naming lines below are the transcript's, with
+% = replaced by := since each of them is a definition and not an identity.
+\begin{definition*}[Intersection, Union, Difference and Complement]
+\label{def:set_operations}
+Let $A$ and $B$ be subsets of a universal set $X$.
+% Extractor: Gemini 3.1 Pro
 \begin{enumerate}
-    \item \textbf{Intersection:} $A \cap B = \{x \in X \mid x \in A \wedge x \in B\}$.
-    \item \textbf{Union:} $A \cup B = \{x \in X \mid x \in A \vee x \in B\}$.
-    \item \textbf{Difference:} $A \setminus B = \{x \in X \mid x \in A \wedge x \notin B\}$.
-    \item \textbf{Complement:} The complement of $A$ in $X$ is $A^c = X \setminus A = \{x \in X \mid x \notin A\}$.
+    \item \textbf{Intersection:} $A \cap B := \{x \in X \mid x \in A \wedge x \in B\}$.
+    \item \textbf{Union:} $A \cup B := \{x \in X \mid x \in A \vee x \in B\}$.
+    \item \textbf{Difference:} $A \setminus B := \{x \in X \mid x \in A \wedge x \notin B\}$.
+    \item \textbf{Complement:} The complement of $A$ in $X$ is $A^c := X \setminus A = \{x \in X \mid x \notin A\}$.
 \end{enumerate}
+\end{definition*}
 
 \begin{figure}[ht!]
   \centering
@@ -262,6 +294,7 @@ that is, the positive integers that are \textit{not} squarefree. This is what \c
 To handle ordered pairs and higher-dimensional structures, we introduce the Cartesian product.
 
 \begin{definition}[Cartesian Product]
+\label{def:cartesian_product}
 The \newterm{Cartesian product} of two sets $X$ and $Y$ is the set of all ordered pairs $(x, y)$ where $x \in X$ and $y \in Y$:
 \[
 X \times Y := \{(x, y) \mid x \in X, y \in Y\}
@@ -323,6 +356,7 @@ If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ re
 \subsection{Power Sets and Cardinality}
 
 \begin{definition}[Power Set]
+\label{def:power_set}
 Let $X$ be a set. The \newterm{power set} of $X$, denoted by $\mathcal{P}(X)$ or $2^X$, is the set of all subsets of $X$:
 \[
 \mathcal{P}(X) := \{Q \mid Q \subseteq X\}
@@ -338,10 +372,12 @@ Note that $\mathcal{P}(X)$ contains $8$ elements.
 \end{example}
 
 \begin{definition}[Cardinality]
+\label{def:cardinality}
 If $X$ is a finite set, meaning a set with finitely many elements $X = \{x_1, \dots, x_n\}$, we say that the \newterm{cardinality} of $X$ is the number of elements in $X$, denoted by $|X| := n$ or $\text{card}(X) := n$.
 \end{definition}
 
 \begin{exercise}[Cardinality of the Power Set]
+\label{exc:power_set_cardinality}
 Let $A$ be a finite set. Prove by induction that the cardinality of its power set is given by:
 \[
 |\mathcal{P}(A)| = 2^{|A|}
@@ -380,7 +416,75 @@ The two implications close into the cycle drawn in \cref{fig:russell_cycle}: eac
 \end{figure}
 
 \begin{claim*}
+\label{claim:russell_no_set}
 Neither $S$ nor $R$ can be regarded as a set.
 \end{claim*}
 
+% Creator: Opus 5
+\begin{proof}
+Both halves are the contradiction just derived, read backwards. If $R$ were a set, then \qt{$R \in R$} would be a mathematical statement in the sense of \cref{def:mathematical_statement}, and so would have exactly one of the truth values T and F; the two bullet points above show that each of them forces the other, so it has neither. Hence $R$ is not a set. And if $S$ were a set, then $R$ would be one too, being carved out of $S$ by the property $P \notin P$, which is the only step in the construction of $R$ that needs justifying. So $S$ is not a set either.
+
+Notice which assumption is being discarded. Nothing in the derivation is faulty: what fails is the naive principle that every property defines a set. The axiomatic theories mentioned below replace that principle by one that only allows a property to carve a subset out of a set already known to exist, which is exactly the step that this argument turns against itself.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 This paradox led to the development of Axiomatic Set Theory (e.g., Zermelo-Fraenkel), which places specific restrictions on how sets can be constructed to ensure mathematical consistency.
+
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_set_theory}
+
+\begin{exercisesolution}[Proof of \cref{exc:power_set_cardinality}]
+We induct on $n := |A|$, the cardinality of \cref{def:cardinality}.
+
+\textbf{Base, $n = 0$.} The only set with no elements is $\emptyset$, and its only subset is $\emptyset$ itself: it is one, by the Claim on \cpageref{claim:empty_set_is_subset}, and any other would have to contain an element of $\emptyset$, of which there are none. So $\mathcal{P}(\emptyset) = \{\emptyset\}$, which has one element, and $2^0 = 1$.
+
+\textbf{Step.} Suppose the claim holds for every set of cardinality $n$, and let $|A| = n+1$. Since $n + 1 \ge 1$ we may pick an element $a \in A$; put $A' := A \setminus \{a\}$, so that $|A'| = n$. Split the subsets of $A$ according to whether they contain $a$:
+\[
+    \mathcal{P}(A) = \underbrace{\{Q \subseteq A \mid a \notin Q\}}_{=: \, \mathcal{Q}_0} \; \cup \; \underbrace{\{Q \subseteq A \mid a \in Q\}}_{=: \, \mathcal{Q}_1},
+\]
+and this union is disjoint, since no $Q$ can both contain $a$ and not contain it.
+
+A subset of $A$ avoiding $a$ is precisely a subset of $A'$, so $\mathcal{Q}_0 = \mathcal{P}(A')$ and $|\mathcal{Q}_0| = 2^n$ by the induction hypothesis. For $\mathcal{Q}_1$, the assignment
+\[
+    \mathcal{P}(A') \longrightarrow \mathcal{Q}_1, \qquad Q' \longmapsto Q' \cup \{a\},
+\]
+is a bijection: it lands in $\mathcal{Q}_1$; it is injective, because removing $a$ again recovers $Q'$; and it is surjective, because any $Q \in \mathcal{Q}_1$ is the image of $Q \setminus \{a\} \subseteq A'$. Hence $|\mathcal{Q}_1| = |\mathcal{P}(A')| = 2^n$ as well.
+
+Adding the two disjoint parts,
+\[
+    |\mathcal{P}(A)| = 2^n + 2^n = 2^{n+1} = 2^{|A|},
+\]
+which completes the induction.
+
+The example above is the case $n = 3$: the eight subsets of $\{1,2,3\}$ split into the four that avoid $3$, which are the subsets of $\{1,2\}$, and the four obtained from those by adjoining $3$. This is also where the alternative notation $2^X$ for the power set comes from.
+\end{exercisesolution}
+
+\begin{ainote}
+The reason a linear algebra course opens with set theory is not that the theory is
+needed in any depth, but that three of its constructions are the raw material of
+everything that follows, and it is worth naming them here.
+
+The Cartesian product of \cref{def:cartesian_product} is what makes $K^n$ a
+sensible object at all, and later, in the definition of a bilinear form
+$B \colon V \times V \to K$, it is the domain. The subset relation of
+\cref{def:subset} becomes the linear subspace, which is the single most-used
+notion in the book, and the two-inclusion proof pattern $P \subseteq Q$ and
+$Q \subseteq P$ recurs on almost every page. And the family union and
+intersection of \cref{def:family_union_intersection} are what allow the span of
+an arbitrary set to be defined as an intersection of subspaces in ch. 8, where
+the index family is genuinely infinite.
+
+Russell's paradox at the end is not a curiosity either. It is the reason that
+every construction in this book carves a new object out of one already known to
+exist, rather than collecting everything with a given property. \qt{The set of all
+vector spaces} is not available, which is why the isomorphism results of chs. 15
+and 18 are always stated between two given spaces.
+
+The rigour pass added the labels the chapter's Definitions were missing, wrote up
+the power-set exercise, and supplied proofs for the two `claim*` blocks, which
+carried none. The first of them, that $\emptyset \subseteq Q$, is the first place
+in the book where the vacuous truth of an implication with a false premise does
+real work rather than producing a joke about flat Earths, and it is worth
+pointing that out where it happens.
+\end{ainote}
