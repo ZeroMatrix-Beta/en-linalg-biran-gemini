@@ -57,7 +57,19 @@ If $T \colon V \to W$ is a linear isometry, then:
 \end{center}
 \end{remark}
 
-From now on, we will concentrate on the case where $W = V$, meaning $T \in \End(V)$. If such a map $T$ is an isometry, we also call it an \newterm{orthogonal endomorphism} if $K = \mathbb{R}$, or a \newterm{unitary endomorphism} if $K = \mathbb{C}$.
+From now on, we will concentrate on the case where $W = V$, meaning $T \in \End(V)$.
+
+% Creator: Opus 5
+% The two terms the whole rest of the chapter is about, introduced in running
+% prose and then used by 25.a.3, 25.a.6, 25.a.8 and by both exercises with
+% nothing to point at. Unnumbered, to leave Prof. Biran's numbering
+% 25.a.1--25.a.10 intact; the naming sentence below is the transcript's, verbatim.
+\begin{definition*}[Orthogonal and Unitary Endomorphism]
+\label{def:orthogonal_unitary_endomorphism}
+Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$) and let $T \in \End(V)$.
+% Extractor: Gemini 3.1 Pro
+If such a map $T$ is an isometry, we also call it an \newterm{orthogonal endomorphism} if $K = \mathbb{R}$, or a \newterm{unitary endomorphism} if $K = \mathbb{C}$.
+\end{definition*}
 
 % Thm. (25.a.2)
 \begin{theorem}[Characterization of Isometries]
@@ -78,13 +90,16 @@ Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$ or $\m
 \begin{proof}
 We will prove some of the equivalences here; the rest are left as exercises (and for the exercise sheet).
 
-\textbf{(b)} $\implies$ \textbf{(a)}: Using the polarization identity for the real case (\cref{exc:polarization}), we have:
+\textbf{(b)} $\implies$ \textbf{(a)}: Using the polarization identity for the real case (\cref{exc:polarization} \textbf{(a)}), we have:
 \begin{align*}
     \langle Tv, Tw \rangle &= \frac{1}{2} \left( \|Tv + Tw\|^2 - \|Tv\|^2 - \|Tw\|^2 \right) \\
     &= \frac{1}{2} \left( \|T(v + w)\|^2 - \|Tv\|^2 - \|Tw\|^2 \right) \\
     &= \frac{1}{2} \left( \|v + w\|^2 - \|v\|^2 - \|w\|^2 \right) \\
     &= \langle v, w \rangle.
 \end{align*}
+% Creator: Opus 5
+The identity used here is stated for a Euclidean space, so this settles only the case $K = \mathbb{R}$, whereas the theorem is asserted over $\mathbb{R}$ and over $\mathbb{C}$ alike. The complex case runs identically once the Hermitian polarization identity of \cref{exc:polarization} \textbf{(b)} is put in place of the real one: that identity, worked out in the solutions to ch. 22a, writes $\langle u, v \rangle$ in terms of $\|u\|$, $\|v\|$, $\|u+v\|$ and $\|u+iv\|$ alone, and a $T$ satisfying \textbf{(b)} leaves all four unchanged.
+% Extractor: Gemini 3.1 Pro
 
 \textbf{(a)} $\implies$ \textbf{(c)}: Let $e_1, \dots, e_k$ be an orthonormal system. Then, for all $1 \leq i, j \leq k$, we have:
 \[ \langle Te_i, Te_j \rangle = \langle e_i, e_j \rangle = \delta_{ij}. \]
@@ -97,7 +112,7 @@ This implies that $Te_1, \dots, Te_k$ is also an orthonormal system.
 \end{equation}
 Since $(e_1, \dots, e_n)$ is a basis for $V$, the equality \eqref{eq:isometry_adjoint_on_basis} extends by linearity in the first argument to
 \[ \langle v, e_j \rangle = \langle v, T^*Te_j \rangle \quad \text{for all } v \in V, \]
-and therefore, $T^*Te_j = e_j$. This last equality holds for all $1 \leq j \leq n$, so the linear map $T^* \circ T$ agrees with $\id_V$ on the basis $\mathcal{B}$. Thus, $T^* \circ T = \id_V$, which proves \textbf{(d)} $\implies$ \textbf{(f)}.
+and therefore, $T^*Te_j = e_j$ (by \cref{lem:basic_properties_inner_prod} \textbf{(c)}). This last equality holds for all $1 \leq j \leq n$, so the linear map $T^* \circ T$ agrees with $\id_V$ on the basis $\mathcal{B}$. Thus, $T^* \circ T = \id_V$ (by the uniqueness half of \cref{thm:existence_uniqueness_linear_map}), which proves \textbf{(d)} $\implies$ \textbf{(f)}.
 
 Finally, $T^* \circ T = \id_V$ shows that $T$ is injective, and since $V$ is finite-di\-men\-sional, $T$ is an isomorphism by \cref{cor:equal_dim_iso}. Consequently, $T^* = T^* \circ T \circ T^{-1} = T^{-1}$, and therefore, $T \circ T^* = \id_V$, which proves \textbf{(e)}.
 
@@ -136,12 +151,28 @@ This is the step Prof. Biran marks with \qt{Exc.} in the proof of \cref{prop:ort
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
-Note that for all $A \in \Orth(n)$, we have $\det(A) = \pm 1$. Indeed, by \cref{thm:det_multiplicative,thm:det_transpose},
+% Creator: Opus 5
+% Stated in running prose, then cited in words by the proof of
+% cor:2d_isometry_matrix ("the computation following prop:orth_unitary_matrix_rep")
+% and used again by prop:classification_o3_minus_so3, which needs det A = -1 for
+% A outside SO(3). Unnumbered, to leave 25.a.1--25.a.10 intact; the sentences
+% below are the transcript's, verbatim.
+\begin{proposition*}[Determinant of an Orthogonal or Unitary Matrix]
+\label{prop:det_orth_unit_matrices}
+% Extractor: Gemini 3.1 Pro
+Note that for all $A \in \Orth(n)$, we have $\det(A) = \pm 1$. Similarly, for all $A \in \Unit(n)$, we have $|\det(A)| = 1$. (Note that $\det(A) \in \mathbb{C}$).
+\end{proposition*}
+
+\begin{proof}
+Indeed, by \cref{thm:det_multiplicative,thm:det_transpose},
 \[ 1 = \det(I) = \det(AA\transp) = \det(A) \cdot \det(A\transp) = \det(A) \cdot \det(A) = \det(A)^2. \]
 
-Similarly, for all $A \in \Unit(n)$, we have $|\det(A)| = 1$. Indeed, by the same two results,
+Similarly, by the same two results,
 \[ 1 = \det(AA^*) = \det(A) \cdot \det(\overline{A}\transp) = \det(A) \cdot \det(\overline{A}) = \det(A) \cdot \overline{\det(A)} = |\det(A)|^2. \]
-(Note that $\det(A) \in \mathbb{C}$).
+% Creator: Opus 5
+Both chains open with $A A\transp = I_n$, resp. $A A^* = I_n$, which is \cref{lem:char_orthogonal_matrices} \textbf{(c)}, resp. \cref{lem:char_unitary_matrices} \textbf{(c)}. The fourth equality of the second chain is $\det(\overline{A}) = \overline{\det(A)}$, which holds because the Leibniz formula of \cref{thm:unique_det} writes $\det$ as a sum of products of entries and complex conjugation respects both sums and products.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 % Def. (25.a.4)
 \begin{definition}[Special Orthogonal and Unitary Groups]
@@ -184,7 +215,7 @@ Let $A \in \Orth(n)$. If $\lambda$ is a real eigenvalue of $A$, then $\lambda = 
 \end{lemma}
 
 \begin{proof}
-Suppose $Av = \lambda v$, where $0 \neq v \in \mathbb{R}^n$. Since the standard basis of $\mathbb{R}^n$ is orthonormal, \cref{prop:orth_unitary_matrix_rep} shows that $T_A$ is an isometry, and therefore, it preserves the standard scalar product. Then:
+Suppose $Av = \lambda v$, where $0 \neq v \in \mathbb{R}^n$. Since the standard basis $\mathcal{E}_n$ of $\mathbb{R}^n$ is orthonormal and represents $T_A$ by $A$ itself ($[T_A]_{\mathcal{E}_n}^{\mathcal{E}_n} = A$, by the Proposition on \cpageref{prop:columns_of_representation_matrix}), \cref{prop:orth_unitary_matrix_rep} shows that $T_A$ is an isometry, and therefore, it preserves the standard scalar product. Then:
 \[ \langle v, v \rangle = \langle Av, Av \rangle = \langle \lambda v, \lambda v \rangle = \lambda^2 \langle v, v \rangle. \]
 As $v \neq 0$, we have $\langle v, v \rangle \neq 0$, which implies $\lambda^2 = 1$, and therefore $\lambda = \pm 1$.
 \end{proof}
@@ -246,7 +277,7 @@ Now, let
 Since $A$ is orthogonal, its columns form an orthonormal basis by \cref{def:orthogonal_unitary_matrices}. Thus, $\|u_1\| = 1$, which implies $u_1 = \left(\begin{smallmatrix} \cos\theta \\ \sin\theta \end{smallmatrix}\right)$ for some $\theta \in [0, 2\pi)$. 
 We also have $u_1 \perp u_2$ and $\|u_2\| = 1$. 
 
-By \cref{cor:dim_orthogonal_complement}, the orthogonal complement of $u_1$ is a line, namely:
+By \cref{cor:dim_orthogonal_complement}, the orthogonal complement of $u_1$ is a line, and the vector displayed below does lie on it, since $\langle \left(\begin{smallmatrix} \cos\theta \\ \sin\theta \end{smallmatrix}\right), \left(\begin{smallmatrix} -\sin\theta \\ \cos\theta \end{smallmatrix}\right) \rangle = -\cos\theta\sin\theta + \sin\theta\cos\theta = 0$ and it is non-zero. Hence:
 \[ \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}^\perp = \Sp \begin{pmatrix} \cos(\theta + \frac{\pi}{2}) \\ \sin(\theta + \frac{\pi}{2}) \end{pmatrix} = \Sp \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}. \]
 Within the space $\Sp\left(\begin{smallmatrix} -\sin\theta \\ \cos\theta \end{smallmatrix}\right)$, there are precisely two elements with norm $1$, namely:
 \[ u_2' = \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}, \quad u_2'' = \begin{pmatrix} \sin\theta \\ -\cos\theta \end{pmatrix}. \]
@@ -317,9 +348,9 @@ Moreover, there exists an orthonormal basis $\mathcal{B}$ for $V$ such that:
 \begin{proof}
 The notes state this corollary without proof, so we supply the short argument; it is nothing more than \cref{prop:classification_o2} transported from $\mathbb{R}^2$ to $V$ along a coordinate map.
 
-By \cref{cor:orthonormal_basis_exists}, $V$ admits an orthonormal basis $\mathcal{C} := (c_1, c_2)$. Put $A := [T]_{\mathcal{C}}^{\mathcal{C}}$. Since $T$ is an isometry and $\mathcal{C}$ is orthonormal, \cref{prop:orth_unitary_matrix_rep} gives $A \in \Orth(2)$, and by \cref{cor:det_endomorphism} together with the computation following \cref{prop:orth_unitary_matrix_rep}, we obtain $\det(T) = \det(A) = \pm 1$.
+By \cref{cor:orthonormal_basis_exists}, $V$ admits an orthonormal basis $\mathcal{C} := (c_1, c_2)$. Put $A := [T]_{\mathcal{C}}^{\mathcal{C}}$. Since $T$ is an isometry and $\mathcal{C}$ is orthonormal, \cref{prop:orth_unitary_matrix_rep} gives $A \in \Orth(2)$, and by \cref{cor:det_endomorphism} together with the Proposition on \cpageref{prop:det_orth_unit_matrices}, we obtain $\det(T) = \det(A) = \pm 1$.
 
-Consider the coordinate map $\Phi \colon V \to \mathbb{R}^2$, $\Phi(w) := [w]_{\mathcal{C}}$. Because $\mathcal{C}$ is orthonormal, $\Phi$ is itself a linear isometry, and by construction $\Phi \circ T = T_A \circ \Phi$. Consequently, if $(v_1, v_2)$ is an orthonormal basis for $\mathbb{R}^2$, then $\mathcal{B} := (\Phi^{-1}(v_1), \Phi^{-1}(v_2))$ is an orthonormal basis for $V$ with $[T]_{\mathcal{B}}^{\mathcal{B}} = [T_A]_{(v_1, v_2)}^{(v_1, v_2)}$.
+Consider the coordinate map $\Phi \colon V \to \mathbb{R}^2$, $\Phi(w) := [w]_{\mathcal{C}}$. Because $\mathcal{C}$ is orthonormal, $\Phi$ is itself a linear isometry: it preserves the norm by \cref{ailem:norm_in_orthonormal_basis} \textbf{(a)}, and the polarization argument proving \textbf{(b)} $\implies$ \textbf{(a)} in \cref{thm:isometry_equivalences} never uses that the two spaces coincide, so it recovers the scalar product here as well. By construction $\Phi \circ T = T_A \circ \Phi$. Consequently, if $(v_1, v_2)$ is an orthonormal basis for $\mathbb{R}^2$, then $\mathcal{B} := (\Phi^{-1}(v_1), \Phi^{-1}(v_2))$ is an orthonormal basis for $V$ with $[T]_{\mathcal{B}}^{\mathcal{B}} = [T_A]_{(v_1, v_2)}^{(v_1, v_2)}$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item If $\det(T) = 1$, then $\det A = 1$, so $A = R_\theta$ for some $\theta \in [0, 2\pi)$ by \cref{prop:classification_o2}. Here we may take $(v_1, v_2)$ to be the standard basis of $\mathbb{R}^2$, that is, $\mathcal{B} := \mathcal{C}$, and then $[T]_{\mathcal{B}}^{\mathcal{B}} = A = R_\theta$.
@@ -362,7 +393,7 @@ So, $T_A$ is a rotation with angle $\theta$ around the axis $\Sp(v_1)$. Moreover
 \end{center}
 
 \begin{proof}
-The characteristic polynomial $P_A(x)$ of $A$ is a polynomial of degree $3$ with real coefficients. By a theorem from analysis (the Intermediate Value Theorem), every polynomial of odd degree with real coefficients has a real zero, so there exists $\lambda \in \mathbb{R}$ with $P_A(\lambda) = 0$. This implies that $A$ has at least one real eigenvalue. 
+The characteristic polynomial $P_A(x)$ of $A$ is a polynomial of degree $3$ with real coefficients. By a theorem from analysis (the Intermediate Value Theorem), every polynomial of odd degree with real coefficients has a real zero, so there exists $\lambda \in \mathbb{R}$ with $P_A(\lambda) = 0$. This implies that $A$ has at least one real eigenvalue, by \cref{aiprop:eigenvalue_iff_root}.
 By \cref{lem:eigenvalues_orthogonal}, $\lambda = \pm 1$.
 
 Let $v_1 \in \mathbb{R}^3$ be an eigenvector of $\lambda$. By normalizing it if necessary, we may assume $\|v_1\| = 1$. Consider the subspace
@@ -416,7 +447,7 @@ for some $\theta \in [0, 2\pi)$. (So $T_A$ does a rotation by $\theta$ around $\
 \end{proposition}
 
 \begin{proof}
-Let $A' := -A = (-I) \cdot A$. Since $-I \in \Orth(3)$, \cref{prop:group_properties} gives $A' \in \Orth(3)$, and by \cref{thm:det_multiplicative}, $\det A' = \det(-I) \cdot \det A = (-1)^3 \cdot \det A = (-1) \cdot (-1) = 1$.
+Let $A' := -A = (-I) \cdot A$. Since $-I \in \Orth(3)$, \cref{prop:group_properties} gives $A' \in \Orth(3)$, and by \cref{thm:det_multiplicative}, $\det A' = \det(-I) \cdot \det A = (-1)^3 \cdot \det A = (-1) \cdot (-1) = 1$ (the last step because $\det A = \pm 1$ by the Proposition on \cpageref{prop:det_orth_unit_matrices}, while $\det A \neq 1$ since $A \notin \SOrth(3)$).
 This implies $A' \in \SOrth(3)$. By \cref{prop:classification_so3}, there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^3$, and $\theta' \in [0, 2\pi)$, such that $[T_{A'}]_{\mathcal{B}}^{\mathcal{B}} = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R_{\theta'} \end{smallmatrix}\right)$. 
 This implies:
 \begin{align*}
@@ -439,12 +470,12 @@ Let $\mathcal{B} = (e_1, \dots, e_n)$ be an orthonormal basis for $V$.
 First, suppose $T$ is an orthogonal (resp. unitary) endomorphism. By \cref{thm:isometry_equivalences}, $T \circ T^* = \id_V$ and $T^* \circ T = \id_V$. 
 Taking the representation matrix with respect to $\mathcal{B}$, we have:
 \[ [T^* \circ T]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}} = I_n. \]
-By the properties of representation matrices, this splits into $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$. Since $\mathcal{B}$ is an orthonormal basis, \cref{prop:matrix_representation_adjoint} gives $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. 
+By the properties of representation matrices (the composition rule, the Proposition on \cpageref{prop:representation_matrix_of_composition}), this splits into $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$. Since $\mathcal{B}$ is an orthonormal basis, \cref{prop:matrix_representation_adjoint} gives $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. 
 Thus, $\left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$, which by \cref{lem:char_orthogonal_matrices} (resp. \cref{lem:char_unitary_matrices}) means that the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is orthogonal (resp. unitary).
 
 Conversely, assume that $A := [T]_{\mathcal{B}}^{\mathcal{B}}$ is orthogonal (resp. unitary). This means $A^* A = I_n$. 
 Again because $\mathcal{B}$ is an orthonormal basis, \cref{prop:matrix_representation_adjoint} yields $A^* = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = [T^*]_{\mathcal{B}}^{\mathcal{B}}$. 
-Substituting this back yields $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$, and therefore $[T^* \circ T]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}}$. This implies the maps are equal, so $T^* \circ T = \id_V$. By \cref{thm:isometry_equivalences}, this guarantees $T$ is an isometry.
+Substituting this back yields $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}} = I_n$, and therefore $[T^* \circ T]_{\mathcal{B}}^{\mathcal{B}} = [\id_V]_{\mathcal{B}}^{\mathcal{B}}$. This implies the maps are equal (by \cref{thm:homomorphism_isomorphism}), so $T^* \circ T = \id_V$. By \cref{thm:isometry_equivalences}, this guarantees $T$ is an isometry.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:group_properties}]
@@ -470,3 +501,51 @@ Conversely, suppose $1$ is the only real eigenvalue of $A$. Since $-1$ is a real
 
 Note that the first assertion of \cref{prop:classification_so3} is what makes the equivalence work: without it, an orthogonal matrix could a priori have $-1$ as its only real eigenvalue, and then both conditions would fail simultaneously for the wrong reason.
 \end{exercisesolution}
+% Creator: Opus 5
+\begin{ainote}
+Two of Prof. Biran's statements were sitting in running prose with nothing to
+cite. The names \newterm{orthogonal endomorphism} and \newterm{unitary
+endomorphism}, which \cref{prop:orth_unitary_matrix_rep},
+\cref{lem:eigenvalues_orthogonal}, \cref{cor:2d_isometry_matrix} and both
+exercises all use, were introduced in a single sentence between 25.a.2 and
+25.a.3; they are now the Definition on
+\cpageref{def:orthogonal_unitary_endomorphism}. And $\det A = \pm 1$ for
+$A \in \Orth(n)$, with $|\det A| = 1$ for $A \in \Unit(n)$, was a paragraph of
+running prose that \cref{cor:2d_isometry_matrix} had to cite in words, as
+\qt{the computation following \cref{prop:orth_unitary_matrix_rep}}; it is now
+the Proposition on \cpageref{prop:det_orth_unit_matrices}, with that paragraph
+as its proof. Both unnumbered, so that 25.a.1 to 25.a.10 do not move.
+
+One gap in a proof. The implication \textbf{(b)} $\implies$ \textbf{(a)} of
+\cref{thm:isometry_equivalences} is proved with the polarization identity of
+\cref{exc:polarization} \textbf{(a)}, which is stated for a Euclidean space,
+while the theorem is asserted over $\mathbb{R}$ and over $\mathbb{C}$ alike. The
+complex half needed the Hermitian identity of \cref{exc:polarization}
+\textbf{(b)}, which the solutions to ch. 22a do supply; the proof now says so.
+
+Three silent steps in the same proof and the ones after it now name their
+reason: passing from $\langle v, e_j \rangle = \langle v, T^*Te_j \rangle$ for
+all $v$ to $T^*Te_j = e_j$ is \cref{lem:basic_properties_inner_prod}
+\textbf{(c)}; concluding $T^* \circ T = \id_V$ from agreement on a basis is the
+uniqueness half of \cref{thm:existence_uniqueness_linear_map}; and
+$\det(\overline{A}) = \overline{\det(A)}$, the fourth equality of the unitary
+determinant computation, holds because the Leibniz formula of
+\cref{thm:unique_det} is a sum of products and conjugation respects both.
+
+Also: the odd-degree polynomial argument opening the proof of
+\cref{prop:classification_so3} produces a root of $P_A$, and turning that into
+an eigenvalue is \cref{aiprop:eigenvalue_iff_root}. The coordinate map $\Phi$ in
+the proof of \cref{cor:2d_isometry_matrix} was called an isometry without
+argument; it preserves the norm by \cref{ailem:norm_in_orthonormal_basis}
+\textbf{(a)}, and the polarization step of \cref{thm:isometry_equivalences}
+never uses that the two spaces coincide.
+
+Checked and found correct: the two unit vectors orthogonal to
+$(\cos\theta, \sin\theta)\transp$ really are $\pm(-\sin\theta, \cos\theta)\transp$;
+$R_\theta \cdot \operatorname{diag}(1, -1)$ really is
+$\left(\begin{smallmatrix} \cos\theta & \sin\theta \ \sin\theta & -\cos\theta
+\end{smallmatrix}\right)$; the reordering $(v_1, w_1, w_2) \to (w_1, v_1, w_2)$
+in case \textbf{(b)} of \cref{prop:classification_so3} does turn
+$\operatorname{diag}(-1, 1, -1)$ into $\operatorname{diag}(1, -1, -1)$; and
+$-R_{\theta'} = R_{\theta' + \pi}$.
+\end{ainote}

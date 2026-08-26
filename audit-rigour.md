@@ -90,8 +90,9 @@ that contradicts the book's own conventions.
 | 22a | `content/22a-euclidean-hermetian-spaces-a.tex` | done, pushed (`9198c79`) |
 | 22b | `content/22b-euclidean-hermetian-spaces-b.tex` | done, pushed (`2477582`) |
 | 23a | `content/23a-dual-spaces-inner-products-a.tex` | done, pushed (`71b01c9`) |
-| 24 | `content/24-spectral-thoerem.tex` | done |
-| **25 onwards** | 25, 26, 27, 28a, 28b | **not started; this is where to resume** |
+| 24 | `content/24-spectral-thoerem.tex` | done, pushed (`8b3fcb9`) |
+| 25 | `content/25-isometries.tex` | done |
+| **26 onwards** | 26, 27, 28a, 28b | **not started; this is where to resume** |
 | 1--9 | the foundational chapters | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -533,6 +534,38 @@ naming `rem:char_poly_well_defined`.
 A standing convention was made explicit: the chapter says \qt{inner product
 space} throughout while using $T^*$, and ch. 23a's adjoint exists only in finite
 dimension.
+
+### Ch. 25, a proof that covers only half its own hypothesis
+
+**The one real gap: `thm:isometry_equivalences` **(b)** $\Rightarrow$ **(a)** is
+proved only over $\mathbb{R}$.** The theorem is stated over $\mathbb{R}$ and
+over $\mathbb{C}$ alike, and the proof reaches for `exc:polarization`, whose
+part **(a)** begins \qt{Let $V$ be a Euclidean space}. Part **(b)** of that same
+exercise asks the reader to find the Hermitian analogue, and ch. 22a's solutions
+do work it out, so the complex half was available all along and simply never
+invoked. The proof now says which identity carries which field.
+
+**Two statements of his in bare running prose.** The names \qt{orthogonal
+endomorphism} and \qt{unitary endomorphism} were introduced in one sentence
+between 25.a.2 and 25.a.3, and are then used by 25.a.3, 25.a.6, 25.a.8 and both
+exercises. And $\det A = \pm 1$ on $\Orth(n)$, $|\det A| = 1$ on $\Unit(n)$, was
+a paragraph that `cor:2d_isometry_matrix` had to cite *in words*, as \qt{the
+computation following \cref{prop:orth_unitary_matrix_rep}}, which is the clearest
+possible sign that a statement wants an environment. Both are unnumbered now,
+`def:orthogonal_unitary_endomorphism` and `prop:det_orth_unit_matrices`, the
+second keeping the existing paragraph as its proof; 25.a.1--25.a.10 confirmed
+unmoved in the aux file.
+
+**Silent steps now named**: `lem:basic_properties_inner_prod` **(c)** for
+`<v,e_j> = <v,T*Te_j>` for all `v` giving `T*Te_j = e_j`; the uniqueness half of
+`thm:existence_uniqueness_linear_map` for concluding `T*T = id` from agreement
+on a basis; `thm:unique_det` for `det(conj A) = conj(det A)`, the one equality of
+the unitary determinant chain that is not simply multiplicativity;
+`aiprop:eigenvalue_iff_root` for turning the odd-degree root into an eigenvalue
+in `prop:classification_so3`. The coordinate map $\Phi$ in the proof of
+`cor:2d_isometry_matrix` was called an isometry with no argument; ch. 24's
+`ailem:norm_in_orthonormal_basis` **(a)** is exactly the missing half, which is
+the first time the new `ai` lemma has paid for itself outside its own chapter.
 
 ## Checked in ch. 17e and found correct
 
