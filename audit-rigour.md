@@ -102,8 +102,9 @@ that contradicts the book's own conventions.
 | 4 | `content/04-maps.tex` | done, pushed (`cfe1639`) |
 | 5 | `content/05-fields.tex` | done, pushed (`c09a79e`) |
 | 6 | `content/06-systems-of-linear-equations.tex` | done, pushed (`394b3fd`) |
-| 7 | `content/07-vector-spaces.tex` | done |
-| **8, 9** | the last two foundational chapters | **this is where to resume** |
+| 7 | `content/07-vector-spaces.tex` | done, pushed (`239739f`) |
+| 8 | `content/08-span.tex` | done |
+| **9** | `content/09-linear-independence.tex` | **the last one; this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -875,6 +876,30 @@ never does.
 A LaTeX trap met here: `$K[x]_d$` inside the optional argument of
 `exercisesolution` ends the argument at the `]` of `K[x]`. Brace the whole
 argument, or keep the title free of brackets.
+
+### Ch. 8, five exercises, one of them load-bearing
+
+Nothing false, and unusually well labelled already: every exercise had a label
+and the chapter's own `ainote` records exactly which figures are the transcript's.
+What was missing were the five solutions.
+
+One of them carries the chapter's main claim. `exc:two_vectors_span_plane`, which
+the notes mark \qt{Important}, is what justifies the words \qt{and no others} in
+the Summary on `sum:subspaces_of_plane`: without it, nothing rules out a fourth
+kind of subspace of $\mathbb{R}^2$. The solution proves it with explicit
+coefficients rather than by citing `prop:inv_2x2`, which lives twelve chapters
+later; the quantity $ad - bc$ appears, but as a computation, not as a
+determinant.
+
+The other four: `lem:span_of_finite_list`, where the content is that repetitions
+and omissions are absorbed into the coefficients; the identification of $L_v$
+with $\Sp(v)$; $K^n = \Sp(e_1, \dots, e_n)$, whose coefficients are visibly the
+coordinates, which is what makes $\Phi_{\mathcal{B}}$ well defined in ch. 16; and
+the finite-dimensionality of $K^n$, $\M_{m \times n}(K)$ and $K[x]_d$ together
+with the failure of it for $K[x]$. That last argument is the one worth having on
+the page: a finite spanning set has a maximal degree $N$, so it cannot reach
+$x^{N+1}$, and the reason is that a linear combination is a finite sum, the point
+of `rem:finite_sums_only`.
 
 ## Checked in ch. 17e and found correct
 
