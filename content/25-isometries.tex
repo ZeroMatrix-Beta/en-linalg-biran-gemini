@@ -436,6 +436,42 @@ which is a diagonal matrix carrying $-1$ on its diagonal. Since $A$ and $[T_A]_{
 \label{exc:why_only_real_eigenvalue}
 Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{(b)} with a \qt{why?}. Justify it: for $A \in \SOrth(3)$, show that $-1$ is not an eigenvalue of $A$ if and only if $1$ is the only real eigenvalue of $A$.
 \end{exercise}
+
+\begin{exercise}[3D Rotation Matrix, Axis, and Angle]
+  \label{exc:rotation_matrix_axis_angle}
+  Consider the real matrix
+  \[
+  A := \frac{1}{3} \begin{pmatrix} 2 & -2 & 1 \\ -1 & -2 & -2 \\ 2 & 1 & -2 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R}).
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Show that $A \in \SOrth(3)$, i.e., $A$ is orthogonal and $\det(A) = 1$.
+    \item Determine the axis of rotation $\Sp(v_1)$ and the rotation angle $\theta \in [0, \pi]$ of the linear isometry $T_A \colon \mathbb{R}^3 \to \mathbb{R}^3$.
+  \end{enumerate}
+  \exhint{(a) Compute $A\transp A = I_3$ and evaluate $\det(A) = 1$ using the Sarrus rule or expansion along a row.
+  (b) The rotation axis corresponds to the eigenspace $\gEig_A(1) = \ker(A - I_3)$. Solve $(A - I_3)v = 0$ to find the normalized axis vector $v_1 = \frac{1}{\sqrt{5}}(1, -2, 0)\transp$ (or equivalent).
+  By \cref{prop:classification_so3}, $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, so $\Tr(A) = 1 + 2\cos\theta$. From the matrix, $\Tr(A) = \frac{1}{3}(2 - 2 - 2) = -\frac{2}{3}$. Thus $1 + 2\cos\theta = -\frac{2}{3} \implies \cos\theta = -\frac{5}{6}$, giving $\theta = \arccos(-5/6) \approx 146.44^\circ$.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Trace of an Orthogonal Endomorphism]
+  \label{exc:trace_orthogonal_endomorphism}
+  Let $V$ be an $n$-dimensional Euclidean vector space and let $f \in \End(V)$ be an orthogonal endomorphism. Prove that
+  \[
+  |\Tr(f)| \le n.
+  \]
+  For which orthogonal endomorphisms $f$ does equality hold?
+  \exhint{Let $\mathcal{B}$ be an orthonormal basis of $V$. Then $A := [f]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$. By the real classification of isometries (or passing to $\mathbb{C}$), the eigenvalues of $A$ are complex numbers $\lambda_j$ with $|\lambda_j| = 1$. Thus $|\Tr(f)| = |\sum_{j=1}^n \lambda_j| \le \sum_{j=1}^n |\lambda_j| = n$ by the triangle inequality.
+  Equality $|\Tr(f)| = n$ holds if and only if all eigenvalues $\lambda_j$ lie on the same ray in $\mathbb{C}$ and have modulus $1$, which forces $\lambda_1 = \dots = \lambda_n = 1$ (so $f = \id_V$) or $\lambda_1 = \dots = \lambda_n = -1$ (so $f = -\id_V$).}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[\texorpdfstring{$\SOrth(3)$}{SO(3)} Rotations Mapping Two-Dimensional Subspaces]
+  \label{exc:so3_rotations_subspaces}
+  Let $E_1, E_2 \subset \mathbb{R}^3$ be two-dimensional subspaces. Describe the set of all rotations $T \in \SOrth(3)$ such that $T(E_1) = E_2$ in terms of orthonormal bases of $E_1$ and $E_2$.
+  \exhint{First consider $E_1 = E_2 = \Sp(e_1, e_2)$. Since $T \in \SOrth(3)$ preserves orthogonal complements, $T(\Sp(e_3)) = \Sp(e_3)$, so $T(e_3) = \pm e_3$. If $T(e_3) = e_3$, then $T|_{E_1} \in \SOrth(2)$ is a 2D rotation $R_\theta$. If $T(e_3) = -e_3$, $\det(T) = 1$ forces $\det(T|_{E_1}) = -1$, so $T|_{E_1}$ is a reflection in $E_1$.
+  For general $E_1, E_2$, choose rotations $M_1, M_2 \in \SOrth(3)$ mapping $\Sp(e_1, e_2)$ to $E_1$ and $E_2$ respectively. Then all rotations taking $E_1$ to $E_2$ are of the form $T = M_2 \circ D \circ M_1^{-1}$, where $D \in \SOrth(3)$ stabilizes $\Sp(e_1, e_2)$.}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 % Prop. (25.a.10)
