@@ -1,6 +1,19 @@
 \renewcommand{\thetheorem}{9.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{8}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription; the first AI-Note at the end records which blocks the
+% source-verification pass restored and which are the transcript's own.
+% ---------------------------------------------------------------------------
 
 \chapter{Linear Independence}
 
@@ -85,6 +98,7 @@ We can easily spot that $2 v_1 - v_2 = 0_{\mathbb{R}^2}$. Because we have coeffi
 \end{example}
 
 \begin{example}[The Standard Basis in $K^n$]
+\label{ex:standard_basis_independent}
 Consider the standard basis vectors in $K^n$:
 \[
 e_1 = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, \quad e_2 = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \quad \dots \quad, \quad e_n = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}
@@ -181,6 +195,7 @@ Let $\emptyset \ne S \subseteq V$ be a set of vectors. We say that $S$ is \textb
 \end{definition}
 
 \begin{example}[Families of Polynomials]
+\label{ex:monomials_independent}
 In the space of bounded polynomials $K[x]_d$, the set of standard monomials $\{1, x, x^2, \dots, x^d\}$ is linearly independent. This remains true even for the \textbf{infinite family} of all monomials $\mathcal{F} = \{1, x, x^2, \dots\} \subseteq K[x]$. Any finite subset of this family will just be a finite collection of distinct monomials, which can only sum to the zero polynomial if all their coefficients are strictly zero.
 \end{example}
 
@@ -355,4 +370,60 @@ and $-1$, which is kept. Because this transcript indexes sequences from $0$
 $e_1, e_2, \dots$ as in the notes. \Cref{prop:dependence_is_redundancy} and the
 two diagrams are not in the notes at this point; the proposition is kept here
 because the basis-extraction argument in the chapters on bases relies on it.
+\end{ainote}
+
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_linear_independence}
+
+\begin{exercisesolution}[Proof of \cref{exc:k_infinity_independent}]
+Write $E := \{e_0, e_1, e_2, \dots\} \subseteq K^\infty$, where $e_k$ is the sequence with $1$ in position $k$ and $0$ everywhere else, so that
+\[
+    (e_k)_j = \delta_{kj} := \begin{cases} 1 & \text{if } j = k, \\ 0 & \text{if } j \neq k. \end{cases}
+\]
+
+\textbf{$E$ is linearly independent.} By \cref{def:independent_set}, an infinite set is linearly independent exactly when every relation among \emph{finitely many} of its distinct members is trivial. So let $k_1 < k_2 < \dots < k_r$ be distinct indices, let $a_1, \dots, a_r \in K$, and suppose
+\[
+    a_1 e_{k_1} + a_2 e_{k_2} + \dots + a_r e_{k_r} = 0 \in K^\infty .
+\]
+Two sequences are equal exactly when they agree in every entry, and the operations on $K^\infty$ are entry-wise, so we may read off entry $k_i$ of both sides for any fixed $1 \le i \le r$. On the left,
+\[
+    \sum_{j=1}^{r} a_j \, (e_{k_j})_{k_i} = \sum_{j=1}^{r} a_j \, \delta_{k_j k_i} = a_i,
+\]
+because the indices $k_1, \dots, k_r$ are distinct, so exactly one term of the sum survives. On the right, entry $k_i$ of the zero sequence is $0$. Hence $a_i = 0$, and since $i$ was arbitrary, all the coefficients vanish. So $E$ is linearly independent.
+
+\textbf{$E$ does not span $K^\infty$.} Consider the constant sequence $c := (1, 1, 1, \dots)$. Any element of $\Sp(E)$ is a finite linear combination $\sum_{j=1}^{r} a_j e_{k_j}$, by \cref{lem:span_is_linear_combinations}, and such a sequence has entry $0$ at every index outside the finite set $\{k_1, \dots, k_r\}$. It therefore has at most $r$ non-zero entries, whereas $c$ has infinitely many. So $c \notin \Sp(E)$.
+
+The two halves together are the point of the exercise, and they are the reason the parenthetical in its statement is worth reading twice. Independence is a condition about finite relations, so it survives passing to an infinite family untouched; spanning is a condition about finite sums \emph{reaching} a given vector, and it does not. The gap between them is exactly the reason $K^\infty$ is not finite-di\-men\-sional, and the same phenomenon, with indicator functions in place of the $e_k$, is what ch. 12 uses to show that $K^S$ is infinite-di\-men\-sional when $S$ is infinite.
+
+The same argument, verbatim with $\delta_{kj}$ replaced by the coefficient of $x^k$, settles \cref{ex:monomials_independent}: the monomials $1, x, x^2, \dots$ are linearly independent in $K[x]$, because a finite combination of distinct monomials is the zero polynomial only when every coefficient is zero, which is what it means for a polynomial to be zero. Unlike $E$ in $K^\infty$, however, that family \emph{does} span $K[x]$, since every polynomial is by definition a finite combination of monomials. That contrast is the difference between $K[x]$ and $K^\infty$ in one line.
+\end{exercisesolution}
+
+\begin{ainote}
+This chapter is the last of the foundations, and it is the one whose definition
+the whole of the rest of the book runs on, so it is worth saying what the care
+taken here is for.
+
+Linear independence is defined three times: for a list
+(\cref{def:linear_independence}), for an arbitrary family
+(\cref{def:independent_family}), and for a set (\cref{def:independent_set}). The
+repetition is not pedantry. A list can repeat a vector and is then never
+independent, by \cref{rem:family_repetition_dependent}, while the set of its
+values may well be; the two notions therefore genuinely differ, and the Question
+and Answer on \cpageref{q:family_vs_set} exist to keep them apart. Every later
+chapter that writes \qt{let $v_1, \dots, v_n$ be linearly independent} means the
+list, and every one that writes \qt{$S$ is linearly independent} means the set.
+
+The definition for arbitrary families is what makes the infinite case work, and
+its shape is worth noticing: independence of an infinite family is defined by
+quantifying over its \emph{finite} subfamilies. That is why
+\cref{lem:subsets_of_independent_sets} and
+\cref{lem:supersets_of_dependent_sets} are one-line consequences, and it is what
+the exercise above is really testing.
+
+The rigour pass wrote up that exercise, which chs. 7, 8 and 12 all appeal to, and
+gave labels to the two examples the later chapters point at. It found nothing
+false; the one error in this material, the coefficients $1$ and $1$ where $1$ and
+$-1$ are needed in \cref{lem:independence_basics} \textbf{(c)}, had already been
+caught by the source-verification pass and is recorded in the AI-Note above.
 \end{ainote}

@@ -1,8 +1,11 @@
 # Rigour audit (reading the LaTeX alone)
 
 Working notes for the second audit pass over this book. Branch
-`review/verify-against-source`. Last updated after ch. 18 was pushed
-(`05a9289`). Chs. 16, 17a--17e and 18 are done.
+`review/verify-against-source`. **The pass is complete: every chapter, 1 through
+28b, has been through it.** Last updated after ch. 9 was pushed, which finished
+the run. The status table below records where each chapter landed, and the
+sections after it record what the pass found; the Open questions at the end are
+the standing work that survives it.
 
 This is a different pass from the source-verification audit. That one compared
 `content/*.tex` against Prof. Biran's scans in `source/` and restored what the
@@ -103,8 +106,11 @@ that contradicts the book's own conventions.
 | 5 | `content/05-fields.tex` | done, pushed (`c09a79e`) |
 | 6 | `content/06-systems-of-linear-equations.tex` | done, pushed (`394b3fd`) |
 | 7 | `content/07-vector-spaces.tex` | done, pushed (`239739f`) |
-| 8 | `content/08-span.tex` | done |
-| **9** | `content/09-linear-independence.tex` | **the last one; this is where to resume** |
+| 8 | `content/08-span.tex` | done, pushed (`568ff7f`) |
+| 9 | `content/09-linear-independence.tex` | done |
+
+**The pass is complete.** Every chapter of the book, 1 through 28b, has been
+through it.
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -901,6 +907,22 @@ the page: a finite spanning set has a maximal degree $N$, so it cannot reach
 $x^{N+1}$, and the reason is that a linear combination is a finite sum, the point
 of `rem:finite_sums_only`.
 
+### Ch. 9, the exercise three chapters lean on
+
+Nothing false. The chapter has exactly one exercise,
+`exc:k_infinity_independent`, and chs. 7, 8 and 12 all appeal to it; it is now
+written up, both halves. The standard vectors of $K^\infty$ are independent,
+because independence is a condition about *finite* relations and each such
+relation is read off a single entry, and they do not span, because a finite
+combination has finitely many non-zero entries while $(1,1,1,\dots)$ does not.
+The gap between the two halves is the whole reason $K^\infty$ is
+infinite-di\-men\-sional, and ch. 12 runs the same argument with indicator
+functions.
+
+The one error in this material, the coefficients $1$ and $1$ where $1$ and $-1$
+are needed in `lem:independence_basics` **(c)**, had already been caught by the
+source-verification pass.
+
 ## Checked in ch. 17e and found correct
 
 Recorded so that nobody re-derives them: `Q_{ij}(\alpha) = I_n + \alpha E_{ij}`
@@ -923,26 +945,34 @@ ch. 6 use `E_i`. The switch is Prof. Biran's own and is forced here, since
 
 ## Open questions
 
-- **Where next.** Chs. 10a to 18 are now done in one unbroken run, except for
-  15a and 15b. Those two and ch. 19 onwards are what remain, plus chs. 1--9.
+- **Where next.** ~~Chs. 10a to 18 …~~ **The pass is complete: every chapter of
+  the book, 1 through 28b, has been through it.** What remains is the standing
+  work below, not a chapter list.
 - **A check worth running elsewhere.** Ch. 14 turned up a remark whose figure
   assumed a hypothesis the remark itself had dropped. Where a chapter has a
   figure, read the caption against the statement it illustrates; the picture is
   often the more careful of the two.
-- **Exercise solutions in chs. 1--9.** Those chapters carry 17 exercises between
-  them and not one solution, while every chapter from 14 on has them. The single
-  exercises in 10a and 11 are now written up. Whether the pass should also clear
-  01--09 as it goes, or leave them, has not been decided.
+- ~~**Exercise solutions in chs. 1--9.**~~ **Decided and done.** All of them are
+  written up, chapter by chapter: seven in ch. 1, one in ch. 2 (which was also
+  the missing proof of `prop:contrapositive`), one in ch. 3, eight in ch. 7, five
+  in ch. 8 and one in ch. 9, together with the two `claim*` blocks and the open
+  `question` in ch. 7 and the two `claim*` blocks in ch. 3. Every chapter of the
+  book now carries its solutions.
+- **A pattern worth naming, from the nine foundational chapters.** Their
+  characteristic defect is not a false statement but an *unciteable* one: 34
+  Definitions across chs. 1--5 carried no `\label` at all, including subset,
+  Cartesian product, power set, injectivity and the inverse image, which are
+  among the most-used notions in the book. Where a chapter is old enough to
+  predate the labelling convention, check the labels before checking the
+  mathematics.
 - **Look for hand-drawn figures.** The user asked that Prof. Biran's own
   sketches be rendered in TikZ where the scans have them. Ch. 10a's scan is
   plain text on the pages read, and note that several TikZ figures already in the
   book are the transcription's inventions rather than his, so their presence
   proves nothing. Check the scan when a chapter's subject is geometric.
-- `\qt{in \cpageref{...}}` prints \qt{in page 123}; it should be \qt{on}. The
-  occurrences in chs. 18 and 10a are fixed. **One remains**, in
-  `content/19-misc.tex:196`, in a chapter the pass has not reached. Fix it when
-  it gets there, or sweep with `\bqt{in \\cpageref}` through the Grep tool (not
-  through Bash, see the trap above).
+- ~~`\qt{in \cpageref{...}}` prints \qt{in page 123}~~ **Closed.** A sweep with
+  the Grep tool for `in \\cpageref` across `content/` now returns nothing, so the
+  remaining occurrence in ch. 19 had already been fixed.
 - Ch. 17c calls a vector space `P` in Lemma 17.c.2 while `P` is an invertible
   matrix two statements later. Nothing is wrong and it was left alone
   deliberately, but the collision is a trap for the eye and is flagged in that
