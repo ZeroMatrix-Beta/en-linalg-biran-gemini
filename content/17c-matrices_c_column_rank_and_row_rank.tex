@@ -33,6 +33,13 @@ Let $A \in \M_{m \times n}(K)$. Then, $\rankcol(A) = \rankrow(A)$.
 \end{enumerate}
 \end{remark}
 
+\begin{exercise}[Rank-One Maps and All-Ones Representation Matrix]
+\label{exc:rank_one_all_ones_matrix}
+Suppose that $V$ and $W$ are finite-dimensional vector spaces over a field $K$, and let $T \in \Hom(V, W)$.
+Prove that $\rank(T) = 1$ if and only if there exists an ordered basis $\mathcal{B}$ of $V$ and an ordered basis $\mathcal{C}$ of $W$ such that every entry of the representation matrix $[T]_{\mathcal{C}}^{\mathcal{B}}$ is equal to $1$.
+\exinfo{This exercise is Problem 1 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Preparation for the Proof}
 
 \begin{lemma}[Rank Invariance under Composition with Isomorphisms]
@@ -81,6 +88,19 @@ This is the same statement as \cref{prop:invertibility_isomorphism_equivalence},
 It is worth recording alongside this that $A \in \GL_n(K)$ if and only if $A\transp \in \GL_n(K)$, with $(A\transp)^{-1} = (A^{-1})\transp$. This is \cref{exc:transpose_properties_multiplication} \textbf{(b)} of \cref{sec:matrix_multiplication}, and it needs nothing from the present section: applying $(XY)\transp = Y\transp X\transp$ to $A^{-1}A = A A^{-1} = I_n$ exhibits $(A^{-1})\transp$ as a two-sided inverse of $A\transp$, and the converse follows by applying the same argument to $A\transp$ and using $(A\transp)\transp = A$.
 \end{remark}
 
+\begin{exercise}[Characterizations of Invertibility via Representation Matrices]
+\label{exc:invertibility_characterizations_rep_matrix}
+Let $V$ be an $n$-dimensional vector space over a field $K$. Let $T \in \Hom(V, V)$, and let $\mathcal{A} = (u_1, \dots, u_n)$ and $\mathcal{B} = (v_1, \dots, v_n)$ be ordered bases of $V$. Prove that the following assertions are equivalent:
+\begin{enumerate}
+    \item $T$ is invertible (an automorphism).
+    \item The columns of $[T]_{\mathcal{B}}^{\mathcal{A}}$ are linearly independent in $K_{\mathrm{col}}^n$.
+    \item The columns of $[T]_{\mathcal{B}}^{\mathcal{A}}$ span $K_{\mathrm{col}}^n$.
+    \item The rows of $[T]_{\mathcal{B}}^{\mathcal{A}}$ are linearly independent in $K_{\mathrm{row}}^n$.
+    \item The rows of $[T]_{\mathcal{B}}^{\mathcal{A}}$ span $K_{\mathrm{row}}^n$.
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 % Extractor: Gemini 3.1 Pro
 
 \begin{lemma}[Rank Invariance under Matrix Equivalence]
@@ -120,6 +140,18 @@ Therefore, we conclude that $\rankrow(A) = r = \rankcol(A)$, completing the proo
 \begin{importantremark}[Column Space versus Row Space]
 Although $\rankcol(A) = \rankrow(A)$, the column space and the row space are, in general, different vector spaces. First of all, if $A \in \M_{m \times n}(K)$, then the column space is a subspace of $K^m$, whereas the row space is a subspace of $K_{\text{row}}^n$ (which is isomorphic to $K^n$). But even in the case where $m = n$ (i.e., $A \in \M_{n \times n}(K)$), these two spaces are generally distinct! They share the exact same dimension, but they are not the same space.
 \end{importantremark}
+
+\begin{exercise}[Ranks of Parametric Families of Rational Matrices]
+\label{exc:ranks_parametric_families_rational_matrices}
+Determine the ranks of the following $n \times n$ matrices in $\M_{n \times n}(\mathbb{Q})$ as functions of the positive integer $n \ge 1$:
+\begin{enumerate}
+    \item $A = (k \cdot \ell)_{1 \le k, \ell \le n}$;
+    \item $B = \left( (-1)^{k+\ell} (k + \ell - 1) \right)_{1 \le k, \ell \le n}$;
+    \item $C = \left( \frac{(k + \ell)!}{k! \, \ell!} \right)_{0 \le k, \ell \le n-1}$.
+\end{enumerate}
+\exhint{For (c), notice that $C_{k\ell} = \binom{k+\ell}{k}$. Use elementary row operations to reduce the matrix and find a recurrence or use induction on $n$.}
+\exinfo{This exercise is Problem 6 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 % Creator: Opus 5
 \begin{ainote}

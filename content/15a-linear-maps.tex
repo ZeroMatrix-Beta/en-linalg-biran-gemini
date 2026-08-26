@@ -684,6 +684,27 @@ Let $V$ be a vector space. A linear endomorphism $P \colon V \to V$ is called a 
 \exinfo{This exercise is Problem 4 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
+\begin{exercise}[Invertibility from a Three-Map Composition]
+\label{exc:invertibility_three_map_composition}
+Suppose $V$ is a finite-dimensional vector space over $K$, and let $S, T, U \in \Hom(V, V)$ be endomorphisms satisfying
+\[
+S \circ T \circ U = \id_V.
+\]
+Show that $T$ is invertible and that its inverse is given by $T^{-1} = U \circ S$.
+\exinfo{This exercise is Problem 2 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Properties and Existence of Endomorphisms and Automorphisms]
+\label{exc:endomorphism_properties_true_false}
+Let $V$ be a finite-dimensional vector space over a field $K$. Prove or disprove each of the following statements:
+\begin{enumerate}
+    \item Let $V' \subseteq V$ be a linear subspace. Every automorphism $f \colon V' \to V'$ can be extended to an automorphism $\bar{f} \colon V \to V$ (i.e., $\bar{f}|_{V'} = f$).
+    \item For every endomorphism $f \colon V \to V$, its image $\Img(f)$ is a linear complement of its kernel $\ker(f)$ in $V$.
+    \item There does not exist any linear map $T \colon \mathbb{R}^5 \to \mathbb{R}^5$ such that $\rank(T) = \dim \ker(T)$.
+\end{enumerate}
+\exinfo{This exercise is Problem 4 of Problem Sheet 12, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 % def:15.b.13
 \begin{definition}[Rank of a Linear Map]
 \label{def:rank_linear_map}
