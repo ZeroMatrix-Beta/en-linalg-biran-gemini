@@ -120,6 +120,55 @@ We define two types of relations between matrices:
 \end{enumerate}
 \end{exercise}
 
+\begin{exercise}[Similarity of Matrix Products]
+\label{exc:similarity_of_matrix_products}
+Let $A, B \in \M_{n \times n}(K)$.
+\begin{enumerate}
+    \item Show that if at least one of $A$ or $B$ is invertible, then $AB$ and $BA$ are similar.
+    \item Does the conclusion hold in general if neither $A$ nor $B$ is invertible? (Provide a proof or a counterexample).
+\end{enumerate}
+\exinfo{This exercise is Problem 4 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Rank Invariance under Similarity and Fixed Vectors]
+\label{exc:rank_invariance_similarity_mc}
+Let $A \in \M_{n \times n}(K)$ and $P \in \GL_n(K)$. Set
+\[
+r := \rank(A - I_n) \qquad \text{and} \qquad s := \rank(P A P^{-1} - I_n).
+\]
+Which of the following statements hold?
+\begin{enumerate}
+    \item $r = s$.
+    \item $r \ne s$.
+    \item $r > s$.
+    \item $r < s$.
+    \item If $r < n$, then there exists a non-zero vector $v \in K^n \setminus \{0\}$ such that $Av = v$.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Change of Basis in Polynomial Spaces]
+\label{exc:change_of_basis_polynomials_mc}
+Consider the two ordered bases of $\mathbb{R}[x]_2$:
+\[
+\mathcal{B} = (1, x, x^2), \qquad \mathcal{C} = \left( x^2, (x+1)^2, (x+2)^2 \right).
+\]
+Determine the change of basis (transition) matrix $Q := [\id_{\mathbb{R}[x]_2}]_{\mathcal{B}}^{\mathcal{C}}$.
+\exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Properties of Linear Maps and Base Changes]
+\label{exc:linear_maps_and_base_changes_sc}
+Which of the following statements is \emph{false} in general?
+\begin{enumerate}
+    \item The change of basis matrix is the representation matrix of the identity map with respect to the corresponding bases.
+    \item Every finite-dimensional vector space over $K$ is isomorphic to $K^n$ for some $n \ge 0$.
+    \item The rank of any linear map $f \colon K^n \to K^m$ is at least $\min\{n, m\}$.
+    \item The representation matrix of an isomorphism with respect to any choices of bases is invertible.
+\end{enumerate}
+\exinfo{This exercise is Single Choice Question 1 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{proposition}[Normal Form for Linear Maps]
 % prop:17.b.6
 \label{prop:linear_map_normal_form}

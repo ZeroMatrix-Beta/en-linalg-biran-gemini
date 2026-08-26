@@ -217,6 +217,22 @@ Which of the following statements are true?
 \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
+\begin{exercise}[Complex Multiplication as a Real Linear Map]
+\label{exc:complex_multiplication_real_linear_map_sc}
+Consider $\mathbb{C}$ as a real two-dimensional vector space with ordered basis $\mathcal{B} := (1, i)$. The matrix
+\[
+[\dots]_{\mathcal{B}}^{\mathcal{B}} := \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}
+\]
+is the representation matrix with respect to $\mathcal{B}$ of the linear map $\mathbb{C} \to \mathbb{C}$ given by:
+\begin{enumerate}
+    \item Complex conjugation $z \mapsto \bar{z}$
+    \item $z \mapsto \operatorname{Re}(z)$
+    \item $z \mapsto \operatorname{Im}(z)$
+    \item $z \mapsto iz$
+\end{enumerate}
+\exinfo{This exercise is Single Choice Question 2 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Representation Matrices}
 
 Now we arrive at the main question. Let $V$ and $W$ be vector spaces over $K$, let $n := \dim V$ and $m := \dim W$, and let $T: V \to W$ be a linear map. Fix a basis $\mathcal{B}$ for $V$ and a basis $\mathcal{C}$ for $W$. Consider the following diagram, in which the two paths from $V$ to $K^m$ agree, so that the diagram is commutative (the lower arrow is defined to be that very composition, so that commutativity holds by construction):

@@ -230,6 +230,15 @@ Let $K$ be a field.
 \exinfo{This exercise is Problem 3 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
+\begin{exercise}[One-Sided Inverses in Finite Dimensions]
+\label{exc:one_sided_inverse_finite_dim}
+\begin{enumerate}
+    \item Let $V$ and $W$ be two finite-dimensional vector spaces over a field $K$ with $\dim V = \dim W = n$. Let $S \in \Hom(V, W)$ and $T \in \Hom(W, V)$ such that $T \circ S = \id_V$. Show that $S$ is an isomorphism and $T = S^{-1}$.
+    \item Let $A, B \in \M_{n \times n}(K)$ such that $A \cdot B = I_n$. Show that $A$ is invertible with inverse $B$ (i.e., $B \cdot A = I_n$ as well).
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{proof}
 Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear maps defined by left-multiplication with the matrices $A$, $B$, and $C$, respectively (i.e., $T_A(v) = A \cdot v$ for all $v \in K^n$, $T_B(w) = B \cdot w$ for all $w \in K^p$, and $T_C(u) = C \cdot u$ for all $u \in K^q$). For any dimension $r$, we denote the standard basis of $K^r$ by $\mathcal{E}_r$. We have already established that (\cref{ex:representation_matrices}, first item):
 \begin{equation*}

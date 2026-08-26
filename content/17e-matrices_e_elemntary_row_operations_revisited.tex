@@ -244,6 +244,45 @@ The left side is now the identity matrix $I_2$, which means the right side is ou
 \end{equation*}
 \end{example}
 
+\begin{exercise}[Explicit Inversion of Matrices]
+\label{exc:explicit_inversion_matrices}
+For each of the following matrices, determine whether it is invertible, and if so, compute its inverse using Gaussian elimination:
+\begin{enumerate}
+    \item $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$;
+    \item $B = \begin{pmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix}$;
+    \item $C = \begin{pmatrix} 2 & 1 & 1 & 1 \\ 1 & 2 & 1 & 1 \\ 1 & 1 & 2 & 1 \\ 1 & 1 & 1 & 2 \end{pmatrix}$;
+    \item $D = \begin{pmatrix} 1 & 2 & -3 & 1 \\ -1 & 3 & -3 & -2 \\ 2 & 0 & 1 & 5 \\ 3 & 1 & -2 & 6 \end{pmatrix}$.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Parametric Gaussian Elimination and Invertibility]
+\label{exc:parametric_gaussian_elimination_invertibility}
+Determine, using Gaussian elimination, all values of the parameter $\alpha \in \mathbb{Q}$ for which the following matrix in $\M_{4 \times 4}(\mathbb{Q})$ is invertible:
+\[
+M_\alpha = \begin{pmatrix}
+1 & 3 & -4 & 2 \\
+2 & 1 & -2 & 1 \\
+3 & -1 & -2 & -2\alpha \\
+-6 & 2 & 1 & \alpha^2
+\end{pmatrix}.
+\]
+\exinfo{This exercise is Problem 5 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Bruhat Decomposition]
+\label{exc:bruhat_decomposition}
+Prove the following theorem:
+\begin{theorem*}[Bruhat Decomposition]
+For every invertible matrix $A \in \GL_n(K)$, there exists a permutation matrix $P$ (a matrix having exactly one entry $1$ in every row and every column, and all other entries $0$) and two invertible upper triangular matrices $B, B'$ such that
+\[
+A = B P B'.
+\]
+\end{theorem*}
+\exhint{Choose an invertible upper triangular matrix $U$ such that the sum of the number of leading zeros in all rows of $UA$ is maximal. Then find a permutation matrix $Q$ such that $QUA$ is an invertible upper triangular matrix.}
+\exinfo{This exercise is Problem 6 of Problem Sheet 13, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_eros_revisited}
