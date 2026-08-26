@@ -1,6 +1,18 @@
 \renewcommand{\thetheorem}{1.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{0}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription.
+% ---------------------------------------------------------------------------
 
 \chapter{The Fibonacci Sequence}
 \stepcounter{section}
@@ -9,6 +21,7 @@
 We begin our study with the classical Fibonacci sequence, a sequence of numbers that naturally emerges in various mathematical and biological contexts.
 
 \begin{definition}[The Fibonacci Sequence]
+\label{def:classical_fibonacci}
 The \newterm{Fibonacci sequence} is an infinite sequence of integers $a_0, a_1, a_2, a_3, \dots, a_n, \dots$ defined by the following recurrence relation:
 \begin{equation} \label{eq:standard_fib_recurrence}
 \begin{cases}
@@ -35,6 +48,7 @@ A natural, central question arises: Is there a closed, explicit formula for the 
 Clearly, the recurrence relation for the Fibonacci sequence is fundamentally different. To find a formula for $a_n$, it is highly beneficial to step back and generalize the problem.
 
 \begin{definition}[Generalized Fibonacci Sequence]
+\label{def:generalized_fibonacci}
 Let $a_0, a_1 \in \mathbb{R}$ be given initial real numbers. We define a sequence $\mathcal{A}$ to be a \newterm{Fibonacci sequence} if it satisfies the relation:
 \begin{equation} \label{eq:generalized_fib_recurrence}
 \begin{cases}
@@ -98,6 +112,8 @@ We will see later in the course that $\Fib$ represents a $2$-dimensional vector 
 Perhaps one of the sequences in $\Fib$ matches a form we already know? 
 
 First, we can rule out arithmetic sequences. Except for the trivial zero sequence $\mathcal{F}_{0,0}$, no Fibonacci sequence can be arithmetic. The reason is straightforward: for an arithmetic sequence, the difference between consecutive terms must be constant, meaning $a_n - a_{n-1} = d$. However, for a Fibonacci sequence, $a_n - a_{n-1} = a_{n-2}$. This difference grows and cannot remain constant. Thus, arithmetic sequences are unsuitable for this purpose.
+% Creator: Opus 5
+(Prof. Biran leaves the details of this as \cref{exc:ch1_list} \textbf{(d)}, and they are worth having, because the appeal to growth is not quite the argument: what the two displays give is that $a_{n-2} = d$ for every $n \ge 2$, that is, that the sequence is \emph{constant}, equal to $d$ throughout. A constant sequence obeys the Fibonacci recurrence exactly when $d = d + d$, which forces $d = 0$. No estimate of growth is needed, and the conclusion holds for negative and non-monotone sequences alike).
 
 Next, we ask: perhaps for some choice of $a_0, a_1$, the sequence $\mathcal{F}_{a_0, a_1}$ coincides with a geometric sequence? Let us try a geometric sequence of the form $\mathcal{G} = (1, q, q^2, q^3, \dots, q^n, \dots)$. 
 
@@ -304,6 +320,7 @@ that is, it simply forgets the first term of the sequence.
 \end{definition}
 
 \begin{exercise}
+\label{exc:shift_is_linear}
 Check that $S$ is linear.
 \end{exercise}
 
@@ -511,6 +528,7 @@ Finally, we can represent the recurrence relation using the language of matrices
 This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$. It is the shift map of \eqref{eq:shift_in_coordinates} written in the reversed coordinates $\binom{a_{n+1}}{a_n}$, so by \cref{prop:eigenvectors_shift} its eigenvalues are again $\varphi$ and $\psi$.
 
 \begin{exercise}[Interesting Exercises]
+\label{exc:ch1_list}
 \begin{enumerate}
     \item \textbf{General Formula:} Find an explicit formula for the general Fibonacci sequence $\mathcal{F}_{a_0, a_1}$ that depends only on the initial values $a_0, a_1$ and the index $n$.
     \item \textbf{The Shift Operator:} Let $S: \Fib \to \Fib$ be the shift map defined by $S(a_0, a_1, \dots) = (a_1, a_2, \dots)$. Formally verify that $S$ is a \textit{linear map}.
@@ -541,3 +559,132 @@ This formulation shows that the behavior of the sequence is entirely governed by
     \item \textbf{Cassini's Identity:} Show that $a_{n+1} a_{n-1} - a_n^2 = (-1)^n$ for all $n \ge 1$. Hint: Use the determinant of the matrix $M^n$.
 \end{enumerate}
 \end{exercise}
+
+% Creator: Opus 5
+\subsection{Solutions to the Exercises}
+\label{sec:solutions_fibonacci}
+
+\begin{exercisesolution}[Proof of \cref{exc:shift_is_linear}, also \cref{exc:ch1_list} \textbf{(b)}]
+Let $\mathcal{A} = (a_0, a_1, a_2, \dots)$ and $\mathcal{B} = (b_0, b_1, b_2, \dots)$ be in $\Fib$ and let $\alpha \in \mathbb{R}$. Both operations on $\Fib$ are term-wise, and the shift acts on each term separately, so the two axioms of \cref{def:linear_map_fib} are read off directly:
+\[
+    S(\mathcal{A} + \mathcal{B}) = S(a_0 + b_0, \, a_1 + b_1, \, \dots) = (a_1 + b_1, \, a_2 + b_2, \, \dots) = S(\mathcal{A}) + S(\mathcal{B}),
+\]
+\[
+    S(\alpha \mathcal{A}) = S(\alpha a_0, \, \alpha a_1, \, \dots) = (\alpha a_1, \, \alpha a_2, \, \dots) = \alpha \, S(\mathcal{A}).
+\]
+Both computations use \cref{prop:fib_closure} implicitly, in that the sequences $\mathcal{A} + \mathcal{B}$ and $\alpha \mathcal{A}$ are again in $\Fib$, so that $S$ may be applied to them at all.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(a)}]
+We repeat the derivation of \cref{thm:binet_formula} with $\mathcal{F}_{0,1}$ replaced by an arbitrary $\mathcal{F}_{a_0, a_1}$. By \cref{cor:fib_linear_combination} we look for $\alpha, \beta \in \mathbb{R}$ with $\alpha \cdot \mathcal{F}_{1,\varphi} + \beta \cdot \mathcal{F}_{1,\psi} = \mathcal{F}_{a_0, a_1}$, and comparing the terms with $n = 0$ and $n = 1$ gives
+\[
+\begin{cases}
+    \alpha + \beta = a_0, \
+    \alpha \varphi + \beta \psi = a_1.
+\end{cases}
+\]
+Substituting $\beta = a_0 - \alpha$ into the second equation gives $\alpha(\varphi - \psi) = a_1 - a_0 \psi$, and since $\varphi - \psi = \sqrt{5} \neq 0$,
+\[
+    \alpha = \frac{a_1 - a_0 \psi}{\sqrt{5}}, \qquad \beta = a_0 - \alpha = \frac{a_0 \varphi - a_1}{\sqrt{5}}.
+\]
+Reading off the $n$-th term, the general Fibonacci sequence $\mathcal{F}_{a_0, a_1} = (\alpha_0, \alpha_1, \alpha_2, \dots)$ satisfies
+\[
+    \alpha_n = \frac{1}{\sqrt{5}} \left( (a_1 - a_0 \psi) \, \varphi^n - (a_1 - a_0 \varphi) \, \psi^n \right) \qquad \text{for all } n \ge 0.
+\]
+Two checks. For $a_0 = 0$ and $a_1 = 1$ this collapses to $\frac{1}{\sqrt{5}}(\varphi^n - \psi^n)$, which is Binet's formula. For $a_0 = 1$ and $a_1 = 0$ it gives $\frac{1}{\sqrt{5}}(\varphi \psi^n - \psi \varphi^n)$, whose values at $n = 0$ and $n = 1$ are $\frac{\varphi - \psi}{\sqrt{5}} = 1$ and $\frac{\varphi\psi - \psi\varphi}{\sqrt{5}} = 0$, as they must be.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(c)}]
+The displayed expression is not a finite computation, so it has to be given a meaning, and the standard one is as a limit. Define a sequence by
+\[
+    x_1 := 1, \qquad x_{n+1} := 1 + \frac{1}{x_n},
+\]
+so that $x_n$ is the continued fraction truncated after $n$ layers, and read the infinite fraction as $\lim_{n \to \infty} x_n$, provided that limit exists.
+
+Two things then have to be said. First, \emph{if} the limit $x$ exists, it is $\varphi$: every $x_n \ge 1$, so $x \ge 1 > 0$, and passing to the limit in the recursion gives $x = 1 + \frac{1}{x}$, that is, $x^2 = x + 1$. That is exactly the equation of \cref{lem:geometric_fibonacci}, whose roots are $\varphi$ and $\psi$; since $\psi < 0$ and $x > 0$, we get $x = \varphi$.
+
+Second, the limit does exist, and the reason is this chapter's own subject. Starting from $x_1 = 1 = a_2/a_1$, an induction gives
+\[
+    x_n = \frac{a_{n+1}}{a_n},
+\]
+because $1 + \frac{a_n}{a_{n+1}} = \frac{a_{n+1} + a_n}{a_{n+1}} = \frac{a_{n+2}}{a_{n+1}}$ by the recurrence. So the convergents of the continued fraction are precisely the ratios of consecutive Fibonacci numbers, and part \textbf{(e)} below shows that these converge to $\varphi$.
+
+The meaning of the picture, then, is that the golden ratio is the number whose continued fraction expansion consists of nothing but $1$'s, and that its convergents are the Fibonacci quotients plotted in \cref{fig:fib_ratio_to_phi}.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(d)}]
+Let $\mathcal{F}_{a_0, a_1} = (\alpha_0, \alpha_1, \alpha_2, \dots)$ be a Fibonacci sequence which is also arithmetic, say with common difference $d$, so that $\alpha_n - \alpha_{n-1} = d$ for all $n \ge 1$. For $n \ge 2$ the Fibonacci recurrence gives $\alpha_n - \alpha_{n-1} = \alpha_{n-2}$, and comparing the two expressions yields
+\[
+    \alpha_{n-2} = d \qquad \text{for all } n \ge 2,
+\]
+that is, $\alpha_m = d$ for every $m \ge 0$: the sequence is constant. Now impose the recurrence once on this constant sequence: $d = \alpha_2 = \alpha_1 + \alpha_0 = d + d$, so $d = 0$ and $\mathcal{F}_{a_0,a_1} = \mathcal{F}_{0,0}$.
+
+Conversely $\mathcal{F}_{0,0}$ is arithmetic, with $d = 0$. So the zero sequence is the only arithmetic Fibonacci sequence, which is what the text asserts before \cref{lem:geometric_fibonacci}. Note that no growth estimate entered: the argument is finished by the single equation $d = d + d$, and it applies to sequences with negative terms just as well.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(e)}]
+By \cref{thm:binet_formula}, for $n \ge 1$,
+\[
+    \frac{a_n}{a_{n-1}} = \frac{\varphi^n - \psi^n}{\varphi^{n-1} - \psi^{n-1}} = \varphi \cdot \frac{1 - (\psi/\varphi)^n}{1 - (\psi/\varphi)^{n-1}} \cdot \frac{1}{1},
+\]
+where the second expression is obtained by dividing numerator and denominator by $\varphi^n$ and $\varphi^{n-1}$ respectively. Now $\left|\psi/\varphi\right| = \frac{|1 - \sqrt{5}|}{1 + \sqrt{5}} = \frac{\sqrt{5}-1}{\sqrt{5}+1} < 1$, so $(\psi/\varphi)^n \to 0$, and both the numerator and the denominator of the middle fraction tend to $1$. Note also that $a_{n-1} \neq 0$ for $n \ge 2$, so the quotient is defined. Consequently
+\[
+    \lim_{n \to \infty} \frac{a_n}{a_{n-1}} = \varphi = \frac{1 + \sqrt{5}}{2}.
+\]
+The oscillation visible in \cref{fig:fib_ratio_to_phi} is the sign of $(\psi/\varphi)^n$, which alternates, while its magnitude decays geometrically.
+\end{exercisesolution}
+
+\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(f)}]
+Write $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ as in the text. We first claim that
+\[
+    M^n = \begin{pmatrix} a_{n+1} & a_n \\ a_n & a_{n-1} \end{pmatrix} \qquad \text{for all } n \ge 1,
+\]
+where $(a_n)$ is the classical Fibonacci sequence $\mathcal{F}_{0,1}$. For $n = 1$ the right-hand side is $\left(\begin{smallmatrix} a_2 & a_1 \\ a_1 & a_0 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right) = M$. Assuming the claim for $n$,
+\begin{align*}
+    M^{n+1} = M^n \cdot M
+    &= \begin{pmatrix} a_{n+1} & a_n \\ a_n & a_{n-1} \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \\
+    &= \begin{pmatrix} a_{n+1} + a_n & a_{n+1} \\ a_n + a_{n-1} & a_n \end{pmatrix}
+     = \begin{pmatrix} a_{n+2} & a_{n+1} \\ a_{n+1} & a_n \end{pmatrix},
+\end{align*}
+using the recurrence twice, which is the claim for $n+1$.
+
+Now take determinants. The determinant is multiplicative, so $\det(M^n) = (\det M)^n$, and $\det M = 1 \cdot 0 - 1 \cdot 1 = -1$. Reading the determinant off the claim instead gives $a_{n+1} a_{n-1} - a_n^2$. Equating the two,
+\[
+    a_{n+1} a_{n-1} - a_n^2 = (-1)^n \qquad \text{for all } n \ge 1,
+\]
+which is Cassini's identity. For instance $n = 6$ gives $a_7 a_5 - a_6^2 = 13 \cdot 5 - 8^2 = 65 - 64 = 1 = (-1)^6$.
+\end{exercisesolution}
+
+\begin{ainote}
+A word on what this chapter is doing, since it is the only one in the book that
+answers a question rather than building a theory.
+
+Everything here is an instance of one move: replace a question about a single
+object, the number $a_n$, by a question about the whole set of objects like it,
+the space $\Fib$. That set turns out to be closed under addition and scaling
+(\cref{prop:fib_closure}), which is what makes \cref{cor:fib_linear_combination}
+available, and from there a formula for two convenient sequences yields a formula
+for all of them. The two convenient sequences are the geometric ones, and
+\cref{prop:eigenvectors_shift} explains why: they are exactly the sequences the
+shift map rescales, so the search that produced them was forced rather than
+lucky. Every later chapter of the course repeats this move with the words
+\qt{vector space}, \qt{basis}, \qt{linear map} and \qt{eigenvector} in place of
+the ad-hoc ones used here.
+
+The rigour pass over this chapter did three things. The two Definitions opening
+it, of the classical and of the generalized Fibonacci sequence, carried no
+\texttt{\textbackslash label} at all and so could not be cited; they now can.
+The six exercises Prof. Biran leaves at the end, together with the linearity of
+$S$ he asks for in passing, are written up in the section above, which is what
+every chapter from 14 on already does.
+
+And the argument ruling out arithmetic Fibonacci sequences, which the text gives
+in one line, rests on the claim that the difference $a_{n-2}$ \qt{grows and
+cannot remain constant}. The conclusion is right but the reason is not the one
+that works: what the two displayed identities give is that the sequence is
+constant, and a constant sequence obeys the recurrence only when $d = d + d$, so
+$d = 0$. That is the whole argument, it needs no estimate of growth, and it
+covers sequences with negative terms, for which nothing grows. This is
+\cref{exc:ch1_list} \textbf{(d)}, so Prof. Biran evidently intends the details to
+be supplied; they now stand both here and in the solution.
+\end{ainote}

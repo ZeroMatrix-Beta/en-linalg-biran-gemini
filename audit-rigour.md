@@ -95,8 +95,9 @@ that contradicts the book's own conventions.
 | 26 | `content/26-singular-value-decomposition.tex` | done, pushed (`d1b8d9b`) |
 | 27 | `content/27-bilinear-and-quadratic-forms.tex` | done, pushed (`b90fd0c`) |
 | 28a | `content/28-jordan-a.tex` | done, pushed (`8666eb5`) |
-| 28b | `content/28b-jordan-b.tex` | done |
-| **1--9** | the foundational chapters | **not started; this is where to resume** |
+| 28b | `content/28b-jordan-b.tex` | done, pushed (`307ecb5`) |
+| 1 | `content/01-fibonacci.tex` | done |
+| **2--9** | the remaining foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -259,6 +260,24 @@ because perl receives `\r`. This makes a search look clean when it is not, and
 it cost two false \qt{no matches} during this pass. Use the Grep tool for
 searching, and put any perl beyond a trivial one-liner into a file and run
 `perl thatfile.pl`. `perl` is on PATH because latexmk needs it; `python` is not.
+
+**The same halving silently corrupts LaTeX written through a heredoc.** Every
+`\\` row separator inside `cat >> file <<'EOF' ... EOF` arrives as a single `\`,
+which LaTeX reads as an inter-word space: the matrix typesets as one long row,
+nothing is reported, and the build stays clean. Four matrices in the AI-Notes of
+chs. 24, 25 and 26 shipped that way before the defect was noticed, in ch. 1,
+only because a mangled `pmatrix` finally overflowed the margin and pushed the
+overfull-hbox count above the baseline of three. **Any block containing `\\`
+must go through the Write or Edit tools.** Sweep for survivors with the Grep
+tool and the pattern `matrix\}[^$]*[^\\]\\ `.
+
+**Two more build hazards on this machine.** A failed `pdflatex` run can leave
+`en-linalg-2.aux` truncated, and the next run then dies with
+\qt{Missing \\begin\{document\}} or a runaway `\@newl@bel` argument; delete the
+`.aux`, `.toc` and `.out` and build again. And a hung `latexmk`/`pdflatex`/`perl`
+chain keeps those files open, so `rm` reports \qt{Device or resource busy}; check
+with `Get-Process` and stop the three processes before retrying. Neither is a
+LaTeX error, and neither is worth debugging as one.
 
 ## Standing decisions taken during this pass
 
@@ -670,6 +689,30 @@ The chapter's `ainote` was written the way the corrected rule asks for: it gives
 the architecture of the two proofs, existence as a reduction plus a chain
 construction, uniqueness as a basis-free count of $\dim \ker(T - \lambda)^r$, and
 only then records what the pass named.
+
+### Ch. 1, an argument that appeals to growth and does not need to
+
+The chapter rules out arithmetic Fibonacci sequences in one line: the difference
+of consecutive terms is $a_{n-2}$, which \qt{grows and cannot remain constant}.
+The conclusion is right and the reason is not the one that works. What the two
+displays give is $a_{n-2} = d$ for every $n \ge 2$, that is, that the sequence is
+*constant*; a constant sequence obeys the recurrence only when $d = d + d$, so
+$d = 0$. No growth estimate is involved, and the argument covers sequences with
+negative terms, for which nothing grows. Prof. Biran evidently intends the gap to
+be filled: it is exercise **(d)** of his own closing list.
+
+**The chapter's two opening Definitions carried no `\label` at all**, so nothing
+could cite the definition of a Fibonacci sequence or of $\Fib$. Both do now.
+
+**And the seven exercises are written up**, which is the first instalment of the
+open question below about chs. 1--9. They are worth the space: the continued
+fraction of exercise **(c)** turns out to have the Fibonacci quotients as its
+convergents, so it and exercise **(e)** are the same statement twice, and the
+matrix identity behind Cassini is the one the eigenvalue chapters return to.
+
+The chapter's `ainote` was written the way the corrected rule asks: it says what
+the chapter is doing, namely replacing a question about one number by a question
+about the space of all such sequences, before recording what the pass changed.
 
 ## Checked in ch. 17e and found correct
 
