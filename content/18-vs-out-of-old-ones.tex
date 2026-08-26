@@ -560,6 +560,20 @@ The two agree on every member of a basis of $V^*$, hence $\tau(v_i) = (v_i^*)^*$
   Verify that all vector space axioms are satisfied by $V \times W$ under the componentwise operations above, so that \cref{prop:direct_sum_structure} holds. Check also that the four canonical maps of the following remark are linear, that $p_V$ and $p_W$ are surjective, and that $i_V$ and $i_W$ are injective.
 \end{exercise}
 
+\begin{exercise}[Graph of a Linear Map]
+\label{exc:graph_of_linear_map}
+Let $V$ and $W$ be vector spaces over a field $K$, and let $T \colon V \to W$ be a function. We define the \newterm{graph} of $T$, denoted by $\Gamma(T)$, as the subset of the direct sum $V \oplus W$ given by
+\[
+\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V\}.
+\]
+Prove that $T$ is a linear map if and only if its graph $\Gamma(T)$ is a linear subspace of $V \oplus W$.
+\begin{remark}
+Formally, a function $T \colon V \to W$ can be viewed as a subset $T \subseteq V \times W = V \oplus W$ such that for each $v \in V$ there exists a unique $w \in W$ with $(v, w) \in T$. Thus, a function from $V$ to $W$ is linear if and only if it is a linear subspace of $V \oplus W$.
+\end{remark}
+\exhint{Classically, prove the two directions separately: show first that if $T$ is linear, then $\Gamma(T)$ is closed under addition and scalar multiplication; then show that if $\Gamma(T)$ is a subspace, $T$ preserves addition and scalar multiplication.}
+\exinfo{This exercise is Problem 3 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
+
 % Extractor: Gemini 3.1 Pro
 
 \begin{remark}[Canonical Maps associated with Direct Sums]
@@ -667,6 +681,38 @@ Thus, $\mathbb{R}^3 = U \oplus U'$. Geometrically, this means any point in 3D sp
     \filldraw (0,0,0) circle (1.5pt) node[below] {$0$};
   \end{tikzpicture}
 \end{center}
+
+\begin{exercise}[Subspaces, Complements, and Dual Spaces \faHeart]
+\label{exc:subspace_complement_dual_decomposition}
+Let $V$ be a finite-dimensional vector space over a field $K$.
+\begin{enumerate}
+    \item Let $U \subseteq V$ be a linear subspace and $W \subseteq V$ a linear complement ($V = U \oplus W$). Define an explicit isomorphism between $V$ and the external direct sum $U \oplus W$.
+    \item Show that every linear functional $\alpha \colon U \to K$ can be extended to a linear functional $\tilde{\alpha} \colon V \to K$ (i.e., $\tilde{\alpha}|_U = \alpha$). Does $\tilde{\alpha}$ depend on the choice of the complement $W$ of $U$?
+    \item Construct a canonical isomorphism
+    \[
+    V^* \cong U^* \oplus W^*.
+    \]
+\end{enumerate}
+\exhint{(a) Recall the canonical map $(u, w) \mapsto u + w$ from the lecture. (b) Every linear map is uniquely determined by its values on a basis; extend a basis of $U$ to $V$ using a basis of $W$. (c) For $\ell \in V^*$, consider the restricted functionals $\ell|_U = \ell \circ \iota_U \in U^*$ and $\ell|_W = \ell \circ \iota_W \in W^*$. Use these to define a linear map $\psi \colon V^* \to U^* \oplus W^*$ and prove that it is bijective.}
+\exinfo{This exercise is Problem 4 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
+
+\begin{exercise}[Direct Sum Decompositions of Homomorphism Spaces \faHeart]
+\label{exc:hom_direct_sum_decompositions}
+Let $U, V, W_1, W_2$ be finite-dimensional vector spaces over a field $K$.
+\begin{enumerate}
+    \item Construct an explicit natural isomorphism
+    \[
+    \Hom(V, W_1 \oplus W_2) \cong \Hom(V, W_1) \oplus \Hom(V, W_2).
+    \]
+    \item Construct an explicit natural isomorphism
+    \[
+    \Hom(V \oplus U, W_1) \cong \Hom(V, W_1) \oplus \Hom(U, W_1).
+    \]
+\end{enumerate}
+\exhint{While dimension-counting shows the spaces are isomorphic, the goal is to construct explicit coordinate-free isomorphisms: (a) For $f \in \Hom(V, W_1 \oplus W_2)$, consider the compositions $\pi_{W_1} \circ f$ and $\pi_{W_2} \circ f$ with the canonical projections, and define $\Phi(f) := (\pi_{W_1} \circ f, \pi_{W_2} \circ f)$; exhibit its inverse explicitly. (b) For $f \in \Hom(V \oplus U, W_1)$, consider the precompositions $f \circ \iota_V$ and $f \circ \iota_U$ with the canonical inclusions.}
+\exinfo{This exercise is Problem 6 (parts a and b) of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
 
 \subsection{Generalization to Multiple Summands}
 
@@ -963,6 +1009,23 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   Prove that $\ker(T') = \ker(T)/U$.
 \end{exercise}
 
+\begin{exercise}[Properties of Induced Maps on Quotient Spaces \faHeart]
+\label{exc:properties_induced_quotient_maps}
+Let $V$ and $W$ be vector spaces over a field $K$, let $U \subseteq V$ be a linear subspace, and let $f \colon V \to W$ be a linear map such that $U \subseteq \ker(f)$. Consider the induced linear map
+\[
+\bar{f} \colon V/U \longrightarrow W, \qquad v + U \longmapsto f(v),
+\]
+guaranteed by the universal property of quotient spaces. Show that:
+\begin{enumerate}
+    \item $\ker(\bar{f}) = \ker(f)/U$.
+    \item $\bar{f}$ is injective if and only if $U = \ker(f)$.
+    \item $\bar{f}$ is surjective if and only if $f$ is surjective.
+    \item If $f$ is surjective, then $\bar{f}$ induces a canonical isomorphism $V/\ker(f) \cong W$.
+\end{enumerate}
+\exhint{(a) Note that $[v] \in \ker(\bar{f}) \iff f(v) = 0 \iff v \in \ker(f)$. (b) Use (a) and the fact that for a subspace $X \subseteq Y$, $Y/X = \{0\} \iff Y = X$. (c), (d) Combine (b) and the definition of $\Img(\bar{f})$.}
+\exinfo{This exercise is Problem 2 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
+
 \subsection{Quotients, Complements, and Dual Spaces}
 
 Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $W \subseteq V$ be a complement of $U$ in the sense of \cref{def:complement} (i.e., $W$ is a subspace such that $U \cap W = \{0\}$ and $U + W = V$).
@@ -988,6 +1051,17 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
 \begin{exercise}[Inverse Isomorphism from a Complement]
   \label{exc:inverse_from_complement}
   Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$.
+\end{exercise}
+
+\begin{exercise}[Basis of a Quotient Space]
+\label{exc:basis_of_quotient_space_r5}
+Consider the linear subspace
+\[
+U := \operatorname{span}\left( \begin{pmatrix} 2 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 2 \\ 2 \\ 2 \end{pmatrix} \right) \subseteq V := \mathbb{R}^5.
+\]
+Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb{R}^5$ whose image under the canonical quotient map $\pi \colon V \to V/U$ forms a basis of the quotient space $V/U$.
+\exhint{Recall that $V/U \cong U'$ for any complement $U'$ of $U$. Find which standard basis vectors can be selected to form a complement of $U$ in $\mathbb{R}^5$.}
+\exinfo{This exercise is Problem 1 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \end{exercise}
 
 \subsection{Quotients, Complements, and Annihilators}
