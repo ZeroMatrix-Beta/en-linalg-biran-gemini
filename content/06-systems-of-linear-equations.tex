@@ -421,6 +421,12 @@ L(S) = L(S_0) = L(S_1) = \dots = L(S_k) = L(S'). \qedhere
 \]
 \end{proof}
 
+\begin{exercise}[Converse of Solution Set Invariance under EROs]
+\label{exc:converse_ero_solution_set}
+We have seen in \cref{thm:ero_preserve_solutions} that if the augmented matrices $(A \mid b)$ and $(A' \mid b')$ of two linear systems of equations are row equivalent, then the two systems have the same solution set. Is the converse true: if two systems over a field $K$ have the same set of solutions, are their augmented matrices necessarily row equivalent? If yes, prove it; if not, provide a counterexample.
+\exinfo{This exercise is Problem 4 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Row-Reduced Matrices}
 
 \Cref{thm:ero_preserve_solutions} tells us that we may row-reduce as much as we like without changing the answer. It remains to decide \emph{how far} the reduction can be pushed. The next two definitions describe the two successive normal forms we aim for.
@@ -699,6 +705,26 @@ Using Gaussian elimination, find the set of all solutions in $\mathbb{R}^4$ to t
 \exinfo{This exercise is Problem 1 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
+\begin{exercise}[Simultaneous Row Reduction for Multiple Right-Hand Sides]
+\label{exc:simultaneous_row_reduction}
+Consider the following two systems of linear equations over $\mathbb{R}$:
+\[
+(S_1): \begin{cases}
+\phantom{2}x + \phantom{2}y + \phantom{2}z = 6 \\
+\phantom{2}x + 2y + 2z = 11 \\
+2x + 3y - 4z = 3
+\end{cases}
+\qquad\text{and}\qquad
+(S_2): \begin{cases}
+\phantom{2}x + \phantom{2}y + \phantom{2}z = 7 \\
+\phantom{2}x + 2y + 2z = 10 \\
+2x + 3y - 4z = 3
+\end{cases}
+\]
+Solve both systems simultaneously by row-reducing the single $3 \times 5$ augmented matrix $(A \mid b_1 \mid b_2)$.
+\exinfo{This exercise is Problem 3 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{example}[Conditions for consistency]
 \label{ex:consistency_conditions}
 Let us now see how the solutions behave for a general choice of the constants $b_1, b_2, b_3 \in \mathbb{R}$ in the system
@@ -774,6 +800,21 @@ Two cases arise from the last row.
 So the constants $b_1, b_2, b_3$ cannot be chosen freely: the system is consistent if and only if $b_3 - b_2 + 2b_1 = 0$, and when it is, it has infinitely many solutions.
 \end{example}
 
+\begin{exercise}[Solvability and Solutions of a Two-Parameter System]
+\label{exc:two_parameter_linear_system}
+For which values of the parameters $a \in \mathbb{R}$ and $b \in \mathbb{R}$ does the following system of linear equations admit at least one solution $(x, y, z) \in \mathbb{R}^3$?
+\[
+\begin{cases}
+\phantom{-}x + 2y - 3z = 10 \\
+\phantom{-}3x + 7y - 9z = b \\
+-3x - 5y + az = b \\
+\phantom{-}2x + 4y - 3z = 5
+\end{cases}
+\]
+For all such pairs $(a, b)$, determine the complete solution set.
+\exinfo{This exercise is Problem 2 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{exercise}[Parametric Solvability of a Linear System]
 \label{exc:parametric_linear_system_solvability}
 Fix constants $b_1, b_2, b_3 \in \mathbb{R}$. Consider the system of linear equations
@@ -830,6 +871,12 @@ x = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 1 +
 \]
 Observe the shape of the answer: one particular solution plus an arbitrary multiple of a fixed vector. That the solution set of a system should always look like this is precisely the kind of structure our \textbf{(c)} question asked about, in the list of goals on \cpageref{goals:solution_set}, and we will return to it once we have the language of vector spaces. The promise is kept in ch. 17d, where \cref{cor:non_homogeneous_solutions} says exactly this for an arbitrary consistent system.
 \end{example}
+
+\begin{exercise}[Inconsistency in \texorpdfstring{$2 \times 2$}{2x2} Systems and Linear Dependence]
+\label{exc:inconsistent_2x2_system}
+Let $A \in M_{2 \times 2}(\mathbb{R})$ be a $2 \times 2$ real matrix and let $b \in \mathbb{R}^2$ be a vector such that the system of equations $Ax = b$ has no solutions. Show that one row of the matrix $A$ must be a scalar multiple of the other.
+\exinfo{This exercise is Problem 5 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{ainote}
 The lecture notes for this chapter use $F$ for the base field and $R_i$ for the
