@@ -175,6 +175,20 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \exinfo{This exercise is Problem 6 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
+\begin{exercise}[Resolvent Identity and Eigenvalues of Matrix Products]
+  \label{exc:resolvent_identity_matrix_products}
+  Let $A, B \in \M_{n \times n}(K)$ be $n \times n$ matrices over a field $K$. Show:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The matrix $I_n - AB$ is invertible if and only if $I_n - BA$ is invertible, in which case
+    \[
+    (I_n - BA)^{-1} = I_n + B (I_n - AB)^{-1} A.
+    \]
+    \item Use \textbf{(a)} to show that $AB$ and $BA$ have precisely the same eigenvalues in $K$.
+  \end{enumerate}
+  \exhint{\textbf{(a)} Verify directly by multiplying $(I_n - BA)$ with $(I_n + B(I_n - AB)^{-1}A)$ and simplifying using $BA B = B (AB)$. \textbf{(b)} For any $\lambda \in K^*$, notice that $\lambda I_n - AB = \lambda(I_n - A(B/\lambda))$ is invertible if and only if $\lambda I_n - BA = \lambda(I_n - (B/\lambda)A)$ is invertible by part (a). For $\lambda = 0$, $AB$ is singular if and only if $\det(AB) = \det(A)\det(B) = 0 \iff \det(BA) = 0 \iff BA$ is singular.}
+  \exinfo{This exercise is Problem 8 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \begin{exercise}[Eigenfunctions of the Derivative Operator]
   \label{exc:eigenfunctions_derivative_operator}
   Consider the $\mathbb{R}$-vector space $C^\infty(\mathbb{R})$ of smooth (infinitely differentiable) functions $f : \mathbb{R} \to \mathbb{R}$, and the differentiation operator
@@ -184,6 +198,17 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   Compute all eigenvalues and the corresponding eigenfunctions (eigenvectors) of $T$.
   \exhint{An eigenfunction $f \in C^\infty(\mathbb{R})$ for eigenvalue $\lambda \in \mathbb{R}$ satisfies the differential equation $f'(x) = \lambda f(x)$. Solve this ordinary differential equation to show that every $\lambda \in \mathbb{R}$ is an eigenvalue with eigenspace $\Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x})$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[The Volterra Integration Operator has No Eigenvalues]
+  \label{exc:volterra_integration_no_eigenvalues}
+  Let $V = C^0(\mathbb{R})$ be the real vector space of continuous functions $f : \mathbb{R} \to \mathbb{R}$. Define the linear integration operator $T : V \to V$ by
+  \[
+  (T f)(x) := \int_0^x f(t) \, dt.
+  \]
+  Show that $T$ has no eigenvalues.
+  \exhint{Suppose $T f = \lambda f$ for some non-zero function $f \in C^0(\mathbb{R})$ and scalar $\lambda \in \mathbb{R}$. If $\lambda = 0$, then $\int_0^x f(t)\, dt = 0$ for all $x$, so differentiating yields $f(x) = 0$, a contradiction. If $\lambda \neq 0$, then $f(x) = \frac{1}{\lambda} \int_0^x f(t)\, dt$ is differentiable with $f'(x) = \frac{1}{\lambda} f(x)$ and $f(0) = 0$. The unique solution to this initial value problem is $f(x) \equiv 0$, again contradicting $f \neq 0$.}
+  \exinfo{This exercise is Problem 9 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
@@ -711,6 +736,21 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \exinfo{This exercise is Problem 5 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
+\begin{exercise}[Multiplicities on Direct Sums and Simultaneous Diagonalizability \faHeart]
+  \label{exc:direct_sum_multiplicities_and_simultaneous_diagonalizability}
+  Let $V$ be a finite-dimensional vector space over a field $K$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $f \in \End(V)$ and suppose $V = V_1 \oplus \dots \oplus V_r$ is a direct sum decomposition of $V$ into $f$-invariant subspaces $V_i$. Show that for every $\lambda \in K$, the algebraic (resp.\ geometric) multiplicity of $\lambda$ as an eigenvalue of $f$ is the sum of the algebraic (resp.\ geometric) multiplicities of $\lambda$ as an eigenvalue of the restrictions $f|_{V_i}$:
+    \[
+    m_a(f; \lambda) = \sum_{i=1}^r m_a(f|_{V_i}; \lambda), \quad m_g(f; \lambda) = \sum_{i=1}^r m_g(f|_{V_i}; \lambda).
+    \]
+    \item Deduce that $f$ is diagonalizable if and only if each restriction $f|_{V_i}$ is diagonalizable on $V_i$.
+    \item Let $f, g \in \End(V)$. Show that $f$ and $g$ are simultaneously diagonalizable (that is, there exists a single basis $\mathcal{B}$ of $V$ consisting of simultaneous eigenvectors for both $f$ and $g$) if and only if they commute ($f \circ g = g \circ f$) and each is separately diagonalizable.
+  \end{enumerate}
+  \exhint{\textbf{(a)} In a basis adapted to $V_1 \oplus \dots \oplus V_r$, $[f]$ is block diagonal, so $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$, which adds the algebraic multiplicities. For geometric multiplicities, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$. \textbf{(b)} $f$ is diagonalizable $\iff \sum_\lambda m_g(f;\lambda) = \dim V = \sum_i \dim V_i$. \textbf{(c)} $(\implies)$ In a simultaneous eigenbasis, $[f]$ and $[g]$ are diagonal, hence commute. $(\impliedby)$ If $f \circ g = g \circ f$, each eigenspace $V_\lambda = \Eig_f(\lambda)$ is $g$-invariant ($f(g(v)) = g(f(v)) = \lambda g(v)$). By part (b), since $g$ is diagonalizable on $V = \bigoplus_\lambda V_\lambda$, each restriction $g|_{V_\lambda}$ is diagonalizable, yielding a basis of $V_\lambda$ composed of eigenvectors of both $f$ and $g$.}
+  \exinfo{This exercise is Problem 7 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{Trigonalization}
 (= bringing a matrix/endomorphism to upper triangular form)
 
@@ -906,6 +946,21 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   This completes the inductive step, showing that $T$ is trigonalizable.
 \end{proof}
 
+\begin{exercise}[Classification of Real $2 \times 2$ Matrices up to Similarity]
+  \label{exc:real_2x2_similarity_classification}
+  Show that every invertible real $2 \times 2$ matrix $A \in \GL(2, \mathbb{R})$ satisfies precisely one of the following three conditions:
+  \begin{itemize}
+    \item $A$ is diagonalizable over $\mathbb{R}$;
+    \item $A$ is trigonalizable over $\mathbb{R}$ with algebraic multiplicity $2$ and geometric multiplicity $1$ for its unique eigenvalue;
+    \item there exists an invertible matrix $P \in \GL(2, \mathbb{R})$ such that
+    \[
+    P^{-1} A P = \begin{pmatrix} a & b \\ -b & a \end{pmatrix} \quad \text{for some } a, b \in \mathbb{R} \text{ with } b \neq 0.
+    \]
+  \end{itemize}
+  \exhint{Analyze the discriminant $\Delta = \Tr(A)^2 - 4\det(A)$ of the characteristic polynomial $P_A(x) = x^2 - \Tr(A)x + \det(A)$. If $\Delta > 0$, $A$ has two distinct real eigenvalues and is diagonalizable. If $\Delta = 0$, $A$ has a single real eigenvalue $\lambda = \Tr(A)/2$; either $A = \lambda I_2$ (diagonalizable) or $m_g(A;\lambda) = 1$ (strictly trigonalizable). If $\Delta < 0$, $P_A(x)$ has complex conjugate roots $\lambda, \bar{\lambda} = a \pm ib$ with $b \neq 0$. Let $v = u + iw \in \mathbb{C}^2 \setminus \{0\}$ be an eigenvector for $a + ib$; show that $(u, w)$ is an $\mathbb{R}$-basis of $\mathbb{R}^2$ with representation matrix $\left(\begin{smallmatrix} a & b \\ -b & a \end{smallmatrix}\right)$.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_diagonalizability}
@@ -993,6 +1048,24 @@ Two points are needed before the notation $m_T(x)$ is legitimate, and the hypoth
 \textbf{Uniqueness.} If $f$ and $g$ are both monic of that least degree $d$ with $f(T) = g(T) = 0$, then $h := f - g$ satisfies $h(T) = 0$ and $\deg h < d$, the leading terms cancelling. Were $h \ne 0$, dividing it by its leading coefficient would produce a monic annihilating polynomial of degree less than $d$, contradicting minimality. So $h = 0$ and $f = g$. This is what licenses speaking of \emph{the} minimal polynomial and writing $m_T(x)$.
 \end{remark}
 
+\begin{exercise}[Eigenvalues are Roots of Annihilating Polynomials]
+  \label{exc:eigenvalues_are_roots_of_annihilating_polynomials}
+  Let $K$ be a field, $A \in \M_{n \times n}(K)$, and let $p(x) \in K[x]$ be a non-trivial polynomial such that $p(A) = 0$. Show that every eigenvalue of $A$ is a root of $p(x)$.
+  \exhint{Let $v \in K^n \setminus \{0\}$ be an eigenvector of $A$ with eigenvalue $\lambda$. Show by induction that $A^k v = \lambda^k v$ for all $k \ge 0$, so $p(A) v = p(\lambda) v$. Since $p(A) = 0$, we have $p(\lambda) v = 0$, which implies $p(\lambda) = 0$ since $v \neq 0$.}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Annihilating Quadratic Polynomial and Even Dimension \faHeart]
+  \label{exc:annihilating_quadratic_even_dimension}
+  Prove or disprove: There exists a real $n \times n$ matrix $A \in \M_{n \times n}(\mathbb{R})$ satisfying
+  \[
+  A^2 + 2A + 5I_n = 0
+  \]
+  if and only if $n$ is even.
+  \exhint{The claim is true. ($\implies$) If $n$ is odd, the characteristic polynomial $P_A(x) \in \mathbb{R}[x]$ has odd degree $n$ and hence must have at least one real root $\lambda \in \mathbb{R}$. By \cref{exc:eigenvalues_are_roots_of_annihilating_polynomials}, $\lambda$ must satisfy $\lambda^2 + 2\lambda + 5 = (\lambda+1)^2 + 4 = 0$, which has no solutions in $\mathbb{R}$, contradiction. ($\impliedby$) If $n = 2m$ is even, consider the $2 \times 2$ matrix $J = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}$, which satisfies $J^2 + 2J + 5I_2 = 0$. The block diagonal matrix $A = \operatorname{diag}(J, \dots, J)$ consisting of $m$ blocks of $J$ satisfies $A^2 + 2A + 5I_n = 0$.}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 While the minimal polynomial guarantees that an operator satisfies \textit{some} polynomial equation, one of the most celebrated theorems in mathematics provides a canonical polynomial that always works: the characteristic polynomial.
 
 \begin{theorem}[Cayley-Hamilton]
@@ -1017,6 +1090,27 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
 
 \begin{exercise}[Expressing Matrix Inverses via Cayley-Hamilton]\label{ex:cayley_inverse}
   Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use \cref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
+\end{exercise}
+
+\begin{exercise}[Degree of the Minimal Polynomial Bounded by Rank \faHeart]
+  \label{exc:degree_minimal_poly_bounded_by_rank}
+  Let $A \in \M_{n \times n}(K)$ be a matrix of rank $r$. Show that the degree of the minimal polynomial $m_A(x)$ satisfies
+  \[
+  \deg(m_A) \le r + 1.
+  \]
+  \exhint{Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = r$. Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is well-defined. By the Cayley-Hamilton theorem applied to $F$, there is a monic polynomial $q(x) \in K[x]$ of degree $r = \dim W$ such that $q(F) = 0$, meaning $q(T_A)(w) = 0$ for all $w \in W$. For any $v \in K^n$, $T_A(v) \in W$, so $q(T_A)(T_A(v)) = 0$. Thus the polynomial $p(x) := x q(x)$, which has degree $r + 1$, satisfies $p(A) = 0$. Since the minimal polynomial $m_A(x)$ divides $p(x)$, $\deg(m_A) \le \deg(p) = r + 1$.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Dimension of Matrix Power Subspaces and Inversion via Cayley-Hamilton \faHeart]
+  \label{exc:subspace_matrix_powers_and_inverse}
+  Let $K$ be a field.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $A \in \M_{n \times n}(K)$. Prove that the subspace $\Sp(I_n, A, A^2, A^3, \dots) \subseteq \M_{n \times n}(K)$ has dimension at most $n$.
+    \item Let $A := \begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \\ 3 & 1 & 2 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$. Find a polynomial $p(x) \in \mathbb{R}[x]$ such that $p(A) = A^{-1}$.
+  \end{enumerate}
+  \exhint{\textbf{(a)} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $A^n$ is a linear combination of $I_n, A, \dots, A^{n-1}$. By induction, every power $A^m$ for $m \ge n$ belongs to $\Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$. \textbf{(b)} Compute the characteristic polynomial $P_A(x) = \det(A - x I_3) = -x^3 + 6x^2 + 9x + 18$. By Cayley-Hamilton, $-A^3 + 6A^2 + 9A + 18 I_3 = 0$. Multiply by $A^{-1}$ to obtain $A^{-1} = \frac{1}{18}(A^2 - 6A - 9 I_3)$, so $p(x) = \frac{1}{18}(x^2 - 6x - 9)$.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 \subsection*{Proof of Cayley-Hamilton Theorem (Analytic Approach)}
@@ -1272,6 +1366,26 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \end{align*}
   which is exactly the formula claimed. Here we used $(-1)^{d+1} = (-1)^{d-1} = -(-1)^d$ in both of the last two steps.
 \end{proof}
+
+\begin{exercise}[Characteristic Polynomial of a Companion Matrix]
+  \label{exc:char_poly_companion_matrix}
+  Let $K$ be a field, $n \ge 2$, and let $c_0, c_1, \dots, c_{n-1} \in K$. Consider the companion matrix
+  \[
+  A := \begin{pmatrix}
+    0 & 0 & \dots & 0 & -c_0 \\
+    1 & 0 & \dots & 0 & -c_1 \\
+    0 & 1 & \dots & 0 & -c_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \dots & 1 & -c_{n-1}
+  \end{pmatrix} \in \M_{n \times n}(K).
+  \]
+  Prove by induction on $n$ that
+  \[
+  P_A(x) = (-1)^n (x^n + c_{n-1} x^{n-1} + \dots + c_1 x + c_0).
+  \]
+  \exhint{Compute $P_A(x) = \det(A - x I_n)$ using Laplace expansion along the first row (or last column) and apply the induction hypothesis to the resulting $(n-1) \times (n-1)$ submatrix.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \begin{proof}[Algebraic Proof of Cayley-Hamilton]
