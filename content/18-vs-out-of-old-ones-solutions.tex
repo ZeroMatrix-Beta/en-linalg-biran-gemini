@@ -1,0 +1,242 @@
+% Solutions to Chapter 18 Exercises
+
+% --- Section 18.a: Hom, Duals and Biduals ---
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:hom_non_injective_non_surjective_not_subspaces}]
+\label{sol:hom_non_injective_non_surjective_not_subspaces}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $n := \dim V$ and $m := \dim W$ with $2 \le n \le m$.
+    Choose an ordered basis $(v_1, \dots, v_n)$ of $V$ and linearly independent vectors $(w_1, \dots, w_n)$ in $W$ (which exist since $m \ge n$).
+    Define two linear maps $T_1, T_2 \in \Hom(V, W)$ by specifying their values on the basis:
+    \[
+    T_1(v_1) := 0_W, \quad T_1(v_k) := w_k \quad (2 \le k \le n),
+    \]
+    \[
+    T_2(v_1) := w_1, \quad T_2(v_k) := 0_W \quad (2 \le k \le n).
+    \]
+    Since $v_1 \in \ker(T_1) \setminus \{0\}$ and $v_2 \in \ker(T_2) \setminus \{0\}$, neither $T_1$ nor $T_2$ is injective, so $T_1, T_2 \in \mathcal{S}$.
+    However, their sum satisfies:
+    \[
+    (T_1 + T_2)(v_k) = w_k \qquad \text{for all } 1 \le k \le n.
+    \]
+    Since $(w_1, \dots, w_n)$ is linearly independent in $W$, if $\sum_{k=1}^n c_k v_k \in \ker(T_1 + T_2)$, then $\sum_{k=1}^n c_k w_k = 0_W$, which forces $c_1 = \dots = c_n = 0$. Hence $\ker(T_1 + T_2) = \{0_V\}$, so $T_1 + T_2$ is injective by \cref{prop:injectivity_kernel} \textbf{(a)}.
+    Thus $T_1 + T_2 \notin \mathcal{S}$, which proves that $\mathcal{S}$ is not closed under addition, hence not a subspace.
+
+    \item Let $n := \dim V$ and $m := \dim W$ with $n \ge m \ge 2$.
+    Choose an ordered basis $(v_1, \dots, v_n)$ of $V$ and an ordered basis $(w_1, \dots, w_m)$ of $W$.
+    Define $S_1, S_2 \in \Hom(V, W)$ by:
+    \[
+    S_1(v_1) := 0_W, \quad S_1(v_k) := w_k \quad (2 \le k \le m), \quad S_1(v_k) := 0_W \quad (m < k \le n),
+    \]
+    \[
+    S_2(v_1) := w_1, \quad S_2(v_k) := 0_W \quad (2 \le k \le n).
+    \]
+    Then $\Img(S_1) = \Sp(w_2, \dots, w_m)$ has dimension $m-1 < m$, and $\Img(S_2) = \Sp(w_1)$ has dimension $1 < m$ (since $m \ge 2$).
+    Thus $S_1, S_2 \in \mathcal{T}$.
+    However, $(S_1 + S_2)(v_k) = w_k$ for all $1 \le k \le m$, so $\Img(S_1 + S_2) \supseteq \Sp(w_1, \dots, w_m) = W$.
+    Thus $S_1 + S_2$ is surjective, so $S_1 + S_2 \notin \mathcal{T}$.
+    Hence $\mathcal{T}$ is not closed under addition, so it is not a linear subspace. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:dim_kernel_linear_functional_sc}]
+\label{sol:dim_kernel_linear_functional_sc}
+Let $\varphi \in V^* = \Hom(V, K)$ with $\dim V = 4$.
+By the Rank-Nullity Theorem (\cref{thm:rank_nullity}):
+\[
+\dim V = \dim \ker(\varphi) + \dim \Img(\varphi).
+\]
+Since $\Img(\varphi)$ is a linear subspace of the 1-dimensional space $K$, its dimension is either $0$ (if $\varphi = 0$) or $1$ (if $\varphi \ne 0$).
+Consequently, $\dim \ker(\varphi) = 4 - 0 = 4$ or $\dim \ker(\varphi) = 4 - 1 = 3$.
+It is impossible for $\dim \ker(\varphi)$ to equal $2$.
+Therefore, the statement is \textbf{False} (Option 2).
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:dual_map_equivalences_sc}]
+\label{sol:dual_map_equivalences_sc}
+Assertions (1), (2), (3), and (5) are all equivalent characterizations of the \emph{injectivity} of the linear map $f \colon V \to W$:
+\begin{itemize}
+    \item (1) $\iff$ (3) is the fundamental definition of injectivity ($\ker f = \{0\}$).
+    \item (1) $\iff$ (2) is the duality equivalence between injectivity of $f$ and surjectivity of $f^*$.
+    \item (1) $\iff$ (5) states that $f(v) \ne 0_W$ for all $v \ne 0_V$, and non-zero vectors in $W$ are detected by linear functionals in $W^*$.
+\end{itemize}
+In contrast, Assertion (4) ($\exists g \colon W \to V$ such that $f \circ g = \id_W$) states that $f$ has a right inverse, which is equivalent to $f$ being \emph{surjective}, not injective.
+Therefore, Assertion \textbf{(4)} is not equivalent to the others.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:hom_dual_isomorphism_trace_pairing}]
+\label{sol:hom_dual_isomorphism_trace_pairing}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Consider the map $\Phi \colon \Hom(V, W) \to \Hom(W^*, V^*)$ defined by $\Phi(T) := T^*$.
+    By \cref{lem:dual_map}, $(\alpha T_1 + T_2)^* = \alpha T_1^* + T_2^*$, so $\Phi$ is linear.
+    To show injectivity: suppose $T^* = 0$. Then for every $\ell \in W^*$ and every $v \in V$:
+    \[
+    T^*(\ell)(v) = \ell(T(v)) = 0.
+    \]
+    If $T(v) \ne 0_W$ for some $v \in V$, we could extend $T(v)$ to a basis of $W$ and construct a functional $\ell \in W^*$ with $\ell(T(v)) = 1 \ne 0$, a contradiction.
+    Hence $T(v) = 0$ for all $v \in V$, so $T = 0$. Thus $\ker(\Phi) = \{0\}$.
+    Since $\dim \Hom(V, W) = (\dim V)(\dim W) = (\dim W^*)(\dim V^*) = \dim \Hom(W^*, V^*) < \infty$, the injective map $\Phi$ is an isomorphism.
+
+    \item Consider $\Theta \colon \Hom(V, V) \to \Hom(V, V)^*$ given by $\Theta(T)(S) := \operatorname{tr}(S \circ T)$.
+    By linearity of composition and of the trace, $\Theta$ is a linear map.
+    To show injectivity: suppose $T \in \ker(\Theta)$, so $\operatorname{tr}(S \circ T) = 0$ for all $S \in \Hom(V, V)$.
+    Fix an ordered basis $\mathcal{B}$ of $V$, and let $A := [T]_{\mathcal{B}}^{\mathcal{B}} = (a_{ij}) \in \M_{n \times n}(K)$.
+    For any pair $(p, q)$ with $1 \le p, q \le n$, let $S_{pq} \in \Hom(V, V)$ be the operator whose representation matrix is the elementary matrix $E_{pq}$.
+    Then $[S_{pq} \circ T]_{\mathcal{B}}^{\mathcal{B}} = E_{pq} A$.
+    The trace is:
+    \[
+    \operatorname{tr}(S_{pq} \circ T) = \operatorname{tr}(E_{pq} A) = \sum_{i=1}^n (E_{pq} A)_{ii} = \sum_{i=1}^n \delta_{ip} a_{qi} = a_{qp}.
+    \]
+    Since $\Theta(T)(S_{pq}) = 0$, we have $a_{qp} = 0$ for all $1 \le p, q \le n$.
+    Thus $A = 0$, which implies $T = 0$.
+    Hence $\ker(\Theta) = \{0\}$. Since $\dim \Hom(V, V)^* = \dim \Hom(V, V) = n^2$, $\Theta$ is an isomorphism. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:every_finite_dim_is_dual_sc}]
+\label{sol:every_finite_dim_is_dual_sc}
+Let $V$ be any finite-dimensional vector space over $K$.
+Setting $W := V^*$, we obtain a finite-dimensional space $W$ whose dual is $W^* = (V^*)^*$.
+By the canonical evaluation isomorphism of \cref{thm:natural_map_injective}, $V \cong (V^*)^* = W^*$.
+Therefore, every finite-dimensional space is isomorphic to the dual of a finite-dimensional space.
+The statement is \textbf{True} (Option 1).
+\end{exercisesolution}
+
+% --- Section 18.b: Direct Sums ---
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:graph_of_linear_map}]
+\label{sol:graph_of_linear_map}
+Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V\}$.
+
+\begin{itemize}
+    \item \textbf{($\Rightarrow$) If $T$ is linear:}
+    \begin{enumerate}
+        \item Since $T(0_V) = 0_W$, $(0_V, 0_W) \in \Gamma(T)$, so $\Gamma(T) \ne \emptyset$.
+        \item Let $(u, T(u)), (v, T(v)) \in \Gamma(T)$. Then $(u, T(u)) + (v, T(v)) = (u+v, T(u)+T(v)) = (u+v, T(u+v)) \in \Gamma(T)$ by additivity of $T$.
+        \item For $\alpha \in K$, $\alpha(v, T(v)) = (\alpha v, \alpha T(v)) = (\alpha v, T(\alpha v)) \in \Gamma(T)$ by homogeneity of $T$.
+    \end{enumerate}
+    Thus $\Gamma(T)$ is a linear subspace of $V \oplus W$.
+
+    \item \textbf{($\Leftarrow$) If $\Gamma(T)$ is a linear subspace of $V \oplus W$:}
+    For any $u, v \in V$, the elements $(u, T(u))$ and $(v, T(v))$ belong to $\Gamma(T)$.
+    Because $\Gamma(T)$ is closed under addition, their sum $(u+v, T(u)+T(v))$ must belong to $\Gamma(T)$.
+    By definition of $\Gamma(T)$, an element whose first component is $u+v$ has second component $T(u+v)$.
+    Since $T$ is a well-defined function, $T(u+v) = T(u) + T(v)$.
+    Similarly, closure under scalar multiplication gives $\alpha(v, T(v)) = (\alpha v, \alpha T(v)) \in \Gamma(T)$, which implies $T(\alpha v) = \alpha T(v)$.
+    Hence $T$ is a linear map.
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:subspace_complement_dual_decomposition}]
+\label{sol:subspace_complement_dual_decomposition}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Define $\theta \colon U \oplus W \to V$ by $\theta(u, w) := u + w$.
+    Linearity is immediate from the vector space operations.
+    Since $V = U + W$, $\theta$ is surjective.
+    If $\theta(u, w) = 0$, then $u = -w \in U \cap W = \{0\}$, so $u = 0$ and $w = 0$, which proves $\ker(\theta) = \{0\}$.
+    Thus $\theta$ is an isomorphism.
+
+    \item Let $\alpha \in U^*$. Since $V = U \oplus W$, every $v \in V$ can be uniquely written as $v = u + w$ with $u \in U, w \in W$.
+    Define $\tilde{\alpha} \colon V \to K$ by $\tilde{\alpha}(u + w) := \alpha(u)$.
+    Then $\tilde{\alpha}$ is linear and $\tilde{\alpha}|_U(u) = \tilde{\alpha}(u + 0) = \alpha(u)$, so $\tilde{\alpha}$ extends $\alpha$.
+    The extension $\tilde{\alpha}$ \emph{does} depend on the choice of the complement $W$: choosing a different complement $W'$ where $w' = u_0 + w_0$ ($u_0 \in U \setminus \{0\}, w_0 \in W$) yields $\tilde{\alpha}_{W'}(w') = 0 \ne \alpha(u_0) = \tilde{\alpha}_W(w')$.
+
+    \item Define $\psi \colon V^* \to U^* \oplus W^*$ by $\psi(\ell) := (\ell|_U, \ell|_W)$.
+    Linearity of $\psi$ follows from the pointwise definition of operations on functionals.
+    If $\psi(\ell) = (0, 0)$, then $\ell$ vanishes on both $U$ and $W$.
+    Since $V = U + W$, for any $v = u + w$ we have $\ell(v) = \ell(u) + \ell(w) = 0 + 0 = 0$, so $\ell = 0$.
+    Thus $\ker(\psi) = \{0\}$.
+    Since $\dim(U^* \oplus W^*) = \dim U + \dim W = \dim V = \dim V^*$, $\psi$ is an isomorphism. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:hom_direct_sum_decompositions}]
+\label{sol:hom_direct_sum_decompositions}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $\pi_1 \colon W_1 \oplus W_2 \to W_1$ and $\pi_2 \colon W_1 \oplus W_2 \to W_2$ be the canonical projections.
+    Define $\Phi \colon \Hom(V, W_1 \oplus W_2) \to \Hom(V, W_1) \oplus \Hom(V, W_2)$ by:
+    \[
+    \Phi(f) := (\pi_1 \circ f, \, \pi_2 \circ f).
+    \]
+    The map $\Phi$ is linear. We define its inverse $\Psi \colon \Hom(V, W_1) \oplus \Hom(V, W_2) \to \Hom(V, W_1 \oplus W_2)$ by:
+    \[
+    \Psi(g_1, g_2)(v) := (g_1(v), g_2(v)).
+    \]
+    Then $\Phi(\Psi(g_1, g_2)) = (\pi_1(g_1, g_2), \pi_2(g_1, g_2)) = (g_1, g_2)$ and $\Psi(\Phi(f))(v) = ((\pi_1 \circ f)(v), (\pi_2 \circ f)(v)) = f(v)$.
+    Thus $\Phi$ is an isomorphism.
+
+    \item Let $\iota_V \colon V \to V \oplus U$ and $\iota_U \colon U \to V \oplus U$ be the canonical inclusions.
+    Define $\Theta \colon \Hom(V \oplus U, W_1) \to \Hom(V, W_1) \oplus \Hom(U, W_1)$ by:
+    \[
+    \Theta(f) := (f \circ \iota_V, \, f \circ \iota_U).
+    \]
+    Its inverse $\Omega \colon \Hom(V, W_1) \oplus \Hom(U, W_1) \to \Hom(V \oplus U, W_1)$ is given by:
+    \[
+    \Omega(h_1, h_2)(v, u) := h_1(v) + h_2(u).
+    \]
+    For any $(v, u) \in V \oplus U$, $\Omega(\Theta(f))(v, u) = f(v, 0) + f(0, u) = f(v, u)$ by linearity of $f$.
+    Thus $\Theta$ is an isomorphism. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% --- Section 18.c: Quotients ---
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:properties_induced_quotient_maps}]
+\label{sol:properties_induced_quotient_maps}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item By definition, $[v] \in \ker(\bar{f}) \iff \bar{f}([v]) = 0 \iff f(v) = 0 \iff v \in \ker(f)$.
+    The set of such classes is precisely the quotient subspace $\ker(f)/U \subseteq V/U$.
+
+    \item $\bar{f}$ is injective $\iff \ker(\bar{f}) = \{0_{V/U}\} \iff \ker(f)/U = \{[0]\} \iff \ker(f) = U$.
+
+    \item $\Img(\bar{f}) = \{\bar{f}([v]) \mid [v] \in V/U\} = \{f(v) \mid v \in V\} = \Img(f)$.
+    Thus $\bar{f}$ is surjective if and only if $\Img(f) = W$, which means $f$ is surjective.
+
+    \item If $f$ is surjective, setting $U := \ker(f)$ gives $\ker(\bar{f}) = \{0\}$ and $\Img(\bar{f}) = W$.
+    Thus the induced map $\bar{f} \colon V/\ker(f) \to W$ is both injective and surjective, hence a canonical isomorphism. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:basis_of_quotient_space_r5}]
+\label{sol:basis_of_quotient_space_r5}
+Let $u_1 = (2, 2, 2, 2, 2)\transp, u_2 = (1, 2, 2, 2, 2)\transp, u_3 = (1, 1, 2, 2, 2)\transp \in \mathbb{R}^5$.
+Subtracting generators yields:
+\[
+u_1 - u_2 = (1, 0, 0, 0, 0)\transp = e_1 \in U,
+\]
+\[
+u_2 - u_3 = (0, 1, 0, 0, 0)\transp = e_2 \in U,
+\]
+\[
+u_3 - e_1 - e_2 = (0, 0, 2, 2, 2)\transp \implies (0, 0, 1, 1, 1)\transp \in U.
+\]
+Thus $U = \Sp(e_1, e_2, (0, 0, 1, 1, 1)\transp)$, which has $\dim U = 3$.
+Consequently, $\dim(\mathbb{R}^5/U) = 5 - 3 = 2$.
+To find a basis of the quotient space of the form $([e_i], [e_j])$, we need $e_i, e_j$ to span a complement of $U$ in $\mathbb{R}^5$.
+Selecting $e_4, e_5 \in \mathbb{R}^5$, the matrix with columns $(e_1, e_2, (0,0,1,1,1)\transp, e_4, e_5)$ is:
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1
+\end{pmatrix},
+\]
+which is lower triangular with determinant $1 \ne 0$, hence invertible.
+Therefore, $\Sp(e_4, e_5)$ is a complement to $U$, and the subset of the standard basis is:
+\[
+(e_4, e_5), \qquad \text{with quotient basis } \big(\pi(e_4), \pi(e_5)\big) = \big([e_4], [e_5]\big).
+\]
+(Equally valid choices are $(e_3, e_4)$ or $(e_3, e_5)$).
+\end{exercisesolution}

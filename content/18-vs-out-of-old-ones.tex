@@ -56,6 +56,7 @@
   \label{exc:hom_axioms}
   Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space, using the zero map $0 \colon V \to W$ as the additive identity. Show also that $\alpha \cdot T$ is linear for all $\alpha \in K$ and $T \in \Hom(V,W)$, and that $\Psi_{\mathcal{C}}^{\mathcal{B}}(T_1 + T_2) = \Psi_{\mathcal{C}}^{\mathcal{B}}(T_1) + \Psi_{\mathcal{C}}^{\mathcal{B}}(T_2)$ in \cref{thm:homomorphism_isomorphism}.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:hom_axioms}
 \end{exercise}
 
 \begin{exercise}[Subsets of Non-Injective and Non-Surjective Linear Maps]
@@ -74,6 +75,7 @@ Let $V$ and $W$ be finite-dimensional vector spaces over a field $K$.
     is not a linear subspace of $\Hom(V, W)$.
 \end{enumerate}
 \exinfo{This exercise is Problem 4 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:hom_non_injective_non_surjective_not_subspaces}
 \end{exercise}
 
 For example, consider the distributivity axiom. For all $\alpha \in K$ and $T_1, T_2 \in \Hom(V,W)$, we have $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$. Indeed, for $v \in V$,
@@ -247,6 +249,7 @@ Let $V$ be a vector space over a field $K$ with $\dim V = 4$. Does there exist a
     \item False
 \end{enumerate}
 \exinfo{This exercise is Single Choice Question 1 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:dim_kernel_linear_functional_sc}
 \end{exercise}
 
 Let $V = K_{\text{col}}^n$. Then, we can identify $V^*$ with $K_{\text{row}}^n$ as follows: If $\ell \in K_{\text{row}}^n$, then $\ell$ defines a functional $f_{\ell} \colon K_{\text{col}}^n \to K$ by $f_{\ell}(v) := \ell \cdot v \in \M_{1 \times 1}(K) \cong K$. % Extractor: Opus 5
@@ -256,6 +259,7 @@ The map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$ defined by $D(\ell)
 \label{exc:row_space_is_dual}
 Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell) := f_{\ell}$, is a linear map and an isomorphism.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:row_space_is_dual}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -339,6 +343,7 @@ The notes mark this proof as an exercise; it is carried out among the solutions 
     \item $(0 \colon V \to V)^* = (0 \colon V^* \to V^*)$.
   \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:dual_functoriality}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -376,6 +381,7 @@ Let $f \colon V \to W$ be a linear map between vector spaces over $K$. Which of 
     \item All five assertions are equivalent.
 \end{enumerate}
 \exinfo{This exercise is Single Choice Question 4 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:dual_map_equivalences_sc}
 \end{exercise}
 
 \begin{exercise}[Isomorphisms between Hom Spaces and Trace Pairing]
@@ -391,6 +397,7 @@ Let $V$ and $W$ be finite-dimensional vector spaces over a field $K$.
     is an isomorphism of vector spaces.
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:hom_dual_isomorphism_trace_pairing}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -468,6 +475,7 @@ Hence $(T^*)^*(\tau_V(v)) = \tau_W(T(v))$ for every $v \in V$, which is precisel
   \label{exc:tau_on_dual_bases}
   Let $V$ be a finite-di\-men\-sional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. Let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the dual basis, and let $(\mathcal{B}^*)^* = ((v_1^*)^*, \dots, (v_n^*)^*)$ be the basis for $(V^*)^*$ which is dual to $\mathcal{B}^*$. Show that $\tau(\mathcal{B}) = (\mathcal{B}^*)^*$, meaning $\tau(v_i) = (v_i^*)^*$ for all $1 \leq i \leq n$.
   \exinfo{This exercise is Problem 2 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:tau_on_dual_bases}
 \end{exercise}
 
 \begin{exercise}[Every Finite-Dimensional Space is a Dual Space]
@@ -478,6 +486,7 @@ Is every finite-dimensional vector space $V$ over $K$ isomorphic to the dual spa
     \item False
 \end{enumerate}
 \exinfo{This exercise is Single Choice Question 2 of Problem Sheet 14, Linear Algebra I, Autumn Semester 2025.}
+\exsol{sol:every_finite_dim_is_dual_sc}
 \end{exercise}
 
 % Creator: Opus 5
@@ -485,6 +494,7 @@ Is every finite-dimensional vector space $V$ over $K$ isomorphic to the dual spa
 \label{sec:solutions_hom_dual}
 
 \begin{exercisesolution}[Proof of \cref{exc:hom_axioms}]
+\label{sol:hom_axioms}
 For the linearity of $\alpha \cdot T$: for $a \in K$ and $v, v' \in V$,
 \[
 (\alpha T)(a v + v') = \alpha \, T(av + v') = \alpha \big( a T(v) + T(v') \big) = a \cdot \alpha T(v) + \alpha T(v') = a \, (\alpha T)(v) + (\alpha T)(v').
@@ -504,6 +514,7 @@ because the coordinate map $\Phi_{\mathcal{C}}$ is linear. Columnwise addition o
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:row_space_is_dual}]
+\label{sol:row_space_is_dual}
 Linearity of $D$: for $\ell, \ell' \in K^n_{\text{row}}$, $\alpha \in K$ and every $v \in K^n_{\text{col}}$,
 \[
 f_{\alpha \ell + \ell'}(v) = (\alpha \ell + \ell') \cdot v = \alpha (\ell \cdot v) + \ell' \cdot v = \alpha f_{\ell}(v) + f_{\ell'}(v),
@@ -514,6 +525,7 @@ Injectivity: if $D(\ell) = 0$, then $\ell \cdot v = 0$ for every $v \in K^n_{\te
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:dual_functoriality} and of \cref{exc:dual_functoriality}]
+\label{sol:dual_functoriality}
 For the composition rule, both $(S \circ T)^*$ and $T^* \circ S^*$ are maps $U^* \to V^*$, so it suffices to evaluate them at an arbitrary $\ell \in U^*$:
 \[
 (S \circ T)^*(\ell) = \ell \circ (S \circ T) = (\ell \circ S) \circ T = T^*(\ell \circ S) = T^*\big(S^*(\ell)\big) = (T^* \circ S^*)(\ell),
@@ -527,6 +539,7 @@ using only the associativity of composition. Hence $(S \circ T)^* = T^* \circ S^
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:tau_on_dual_bases}]
+\label{sol:tau_on_dual_bases}
 Both $\tau(v_i)$ and $(v_i^*)^*$ are elements of $(V^*)^*$, that is, functionals on $V^*$. Since $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ is a basis of $V^*$, it suffices to check that they agree on each $v_j^*$. By the definition of $\tau$,
 \[
 \tau(v_i)(v_j^*) = v_j^*(v_i) = \delta_{ji} = \delta_{ij},
@@ -562,6 +575,7 @@ The two agree on every member of a basis of $V^*$, hence $\tau(v_i) = (v_i^*)^*$
   \label{exc:direct_sum_axioms}
   Verify that all vector space axioms are satisfied by $V \times W$ under the componentwise operations above, so that \cref{prop:direct_sum_structure} holds. Check also that the four canonical maps of the following remark are linear, that $p_V$ and $p_W$ are surjective, and that $i_V$ and $i_W$ are injective.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:direct_sum_axioms}
 \end{exercise}
 
 \begin{exercise}[Graph of a Linear Map]
@@ -576,6 +590,7 @@ Formally, a function $T \colon V \to W$ can be viewed as a subset $T \subseteq V
 \end{remark}
 \exhint{Classically, prove the two directions separately: show first that if $T$ is linear, then $\Gamma(T)$ is closed under addition and scalar multiplication; then show that if $\Gamma(T)$ is a subspace, $T$ preserves addition and scalar multiplication.}
 \exinfo{This exercise is Problem 3 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\exsol{sol:graph_of_linear_map}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -699,6 +714,7 @@ Let $V$ be a finite-dimensional vector space over a field $K$.
 \end{enumerate}
 \exhint{(a) Recall the canonical map $(u, w) \mapsto u + w$ from the lecture. (b) Every linear map is uniquely determined by its values on a basis; extend a basis of $U$ to $V$ using a basis of $W$. (c) For $\ell \in V^*$, consider the restricted functionals $\ell|_U = \ell \circ \iota_U \in U^*$ and $\ell|_W = \ell \circ \iota_W \in W^*$. Use these to define a linear map $\psi \colon V^* \to U^* \oplus W^*$ and prove that it is bijective.}
 \exinfo{This exercise is Problem 4 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\exsol{sol:subspace_complement_dual_decomposition}
 \end{exercise}
 
 \begin{exercise}[Direct Sum Decompositions of Homomorphism Spaces \faHeart]
@@ -716,6 +732,7 @@ Let $U, V, W_1, W_2$ be finite-dimensional vector spaces over a field $K$.
 \end{enumerate}
 \exhint{While dimension-counting shows the spaces are isomorphic, the goal is to construct explicit coordinate-free isomorphisms: (a) For $f \in \Hom(V, W_1 \oplus W_2)$, consider the compositions $\pi_{W_1} \circ f$ and $\pi_{W_2} \circ f$ with the canonical projections, and define $\Phi(f) := (\pi_{W_1} \circ f, \pi_{W_2} \circ f)$; exhibit its inverse explicitly. (b) For $f \in \Hom(V \oplus U, W_1)$, consider the precompositions $f \circ \iota_V$ and $f \circ \iota_U$ with the canonical inclusions.}
 \exinfo{This exercise is Problem 6 (parts a and b) of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\exsol{sol:hom_direct_sum_decompositions}
 \end{exercise}
 
 \subsection{Generalization to Multiple Summands}
@@ -733,6 +750,7 @@ For an infinite family of vector spaces $\{U_i\}_{i \in I}$, we define the direc
 \label{sec:solutions_direct_sums}
 
 \begin{exercisesolution}[Proof of \cref{exc:direct_sum_axioms}]
+\label{sol:direct_sum_axioms}
 Every axiom for $V \times W$ is checked coordinatewise and reduces to the same axiom in $V$ and in $W$. For instance, for $(v_1,w_1), (v_2,w_2), (v_3,w_3) \in V \times W$,
 \[
 \big((v_1,w_1) + (v_2,w_2)\big) + (v_3,w_3) = (v_1 + v_2 + v_3, \; w_1 + w_2 + w_3) = (v_1,w_1) + \big((v_2,w_2) + (v_3,w_3)\big),
@@ -899,6 +917,7 @@ We want to turn $V/U$ into a vector space over $K$. We define addition as $[v_1]
   \label{exc:quotient_axioms}
   Complete the proof of \cref{prop:quotient_operations} by checking that the operations on $V/U$ satisfy the axioms of a vector space.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:quotient_axioms}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -980,6 +999,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   \label{exc:first_iso_diagram}
   Check that $T = i \circ \overline{T} \circ \pi$, where $i \colon \Img(T) \to W$ is the inclusion.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:first_iso_diagram}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -1004,7 +1024,8 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
       \item Show that $T'$ is linear.
     \end{enumerate}
   \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
-  \end{exercise}
+  \exsol{sol:induced_map_well_defined}
+\end{exercise}
 
   The diagram commutes by construction, since for all $v \in V$, $T' \circ \pi(v) = T'([v]) = T(v)$.
 
@@ -1015,6 +1036,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
   \label{exc:kernel_induced_map}
   Prove that $\ker(T') = \ker(T)/U$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:kernel_induced_map}
 \end{exercise}
 
 \begin{exercise}[Properties of Induced Maps on Quotient Spaces \faHeart]
@@ -1032,6 +1054,7 @@ guaranteed by the universal property of quotient spaces. Show that:
 \end{enumerate}
 \exhint{(a) Note that $[v] \in \ker(\bar{f}) \iff f(v) = 0 \iff v \in \ker(f)$. (b) Use (a) and the fact that for a subspace $X \subseteq Y$, $Y/X = \{0\} \iff Y = X$. (c), (d) Combine (b) and the definition of $\Img(\bar{f})$.}
 \exinfo{This exercise is Problem 2 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\exsol{sol:properties_induced_quotient_maps}
 \end{exercise}
 
 \subsection{Quotients, Complements, and Dual Spaces}
@@ -1060,6 +1083,7 @@ Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. Let $
   \label{exc:inverse_from_complement}
   Describe the inverse of $Q$, $Q^{-1} \colon V/U \xrightarrow{\cong} W$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:inverse_from_complement}
 \end{exercise}
 
 \begin{exercise}[Basis of a Quotient Space]
@@ -1071,6 +1095,7 @@ U := \operatorname{span}\left( \begin{pmatrix} 2 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatri
 Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb{R}^5$ whose image under the canonical quotient map $\pi \colon V \to V/U$ forms a basis of the quotient space $V/U$.
 \exhint{Recall that $V/U \cong U'$ for any complement $U'$ of $U$. Find which standard basis vectors can be selected to form a complement of $U$ in $\mathbb{R}^5$.}
 \exinfo{This exercise is Problem 1 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
+\exsol{sol:basis_of_quotient_space_r5}
 \end{exercise}
 
 \subsection{Quotients, Complements, and Annihilators}
@@ -1099,7 +1124,8 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
         \item Show that $L$ is a linear map.
       \end{enumerate}
     \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
-    \end{exercise}
+    \exsol{sol:annihilator_L}
+\end{exercise}
     
     We claim that $L$ is an isomorphism. To see this, we define a map $P \colon U^\perp \to (V/U)^*$ as follows. Let $T \in U^\perp$, i.e., $T \colon V \to K$ such that $T|_U = 0$. By the Universal Property of Quotients, \cref{thm:universal_property_quotient} applied with $W = K$, there exists a unique $T' \colon V/U \to K$ such that $T = T' \circ \pi$. Define $P(T) := T'$.
 
@@ -1111,7 +1137,8 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
       \label{exc:restriction_linear}
       Show that $R$ is a linear map.
     \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
-    \end{exercise}
+    \exsol{sol:restriction_linear}
+\end{exercise}
 
     We claim that $R$ is surjective. Indeed, let $\psi \in U^*$. We need to show that there exists $\varphi \in V^*$ such that $\varphi|_U = \psi$. The finite-dimensionality of $V$ is important here. Pick a basis $u_1, \dots, u_k$ for $U$, and extend it to a basis $u_1, \dots, u_k, v_{k+1}, \dots, v_n$ of $V$, which is possible by the Steinitz Exchange Lemma in the form of \cref{lem:strong_steinitz}. Define a linear map $\varphi \colon V \to K$ by $\varphi(u_i) := \psi(u_i)$ for all $1 \leq i \leq k$, and $\varphi(v_j) := 0$ for all $k < j \leq n$; prescribing the values on a basis in this way does define one and only one linear map, by \cref{thm:existence_uniqueness_linear_map}. Clearly, $\varphi|_U = \psi$ because $\varphi$ and $\psi$ coincide on the elements of a basis of $U$, and two linear maps on $U$ agreeing on a basis of $U$ are equal (the uniqueness half of the same theorem). This proves $\Img(R) = U^*$.
 
@@ -1125,6 +1152,7 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
   Let $T \colon V \to W$ be a linear map between vector spaces. Prove that the annihilator of the image of $T$ is equal to the kernel of its dual map:
   \[ (\Img T)^\perp = \ker(T^*). \]
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:annihilator_image_kernel_dual}
 \end{exercise}
 
 % Creator: Opus 5
@@ -1132,6 +1160,7 @@ Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb
 \label{sec:solutions_quotients}
 
 \begin{exercisesolution}[Proof of \cref{exc:quotient_axioms}]
+\label{sol:quotient_axioms}
 Every axiom is inherited from $V$ by passing to classes. For instance, associativity: for $v_1, v_2, v_3 \in V$,
 \[
 \big([v_1] + [v_2]\big) + [v_3] = [v_1 + v_2] + [v_3] = [(v_1 + v_2) + v_3] = [v_1 + (v_2 + v_3)] = [v_1] + \big([v_2] + [v_3]\big),
@@ -1140,6 +1169,7 @@ where the middle step is associativity in $V$. Commutativity is identical. The c
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:first_iso_diagram}]
+\label{sol:first_iso_diagram}
 Both $T$ and $i \circ \overline{T} \circ \pi$ are maps $V \to W$, so we evaluate at an arbitrary $v \in V$:
 \[
 \big(i \circ \overline{T} \circ \pi\big)(v) = i\big(\overline{T}([v])\big) = i\big(T(v)\big) = T(v),
@@ -1148,6 +1178,7 @@ using the definition of $\pi$, then the definition of $\overline{T}$ on the clas
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:induced_map_well_defined}]
+\label{sol:induced_map_well_defined}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Suppose $[v] = [v']$. Then $v - v' \in U \subseteq \ker(T)$ by the hypothesis $T(U) = 0$, so $T(v - v') = 0$ and hence $T(v) = T(v')$. So the value $T'([v]) := T(v)$ does not depend on the representative chosen.
     \item For $\alpha \in K$ and $[v], [v'] \in V/U$,
@@ -1159,6 +1190,7 @@ using the definition of $\pi$, then the definition of $\overline{T}$ on the clas
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:kernel_induced_map}]
+\label{sol:kernel_induced_map}
 First note that $\ker(T) \supseteq U$, so the quotient $\ker(T)/U$ makes sense and is a subspace of $V/U$: its elements are the classes $[v]$ with $v \in \ker(T)$.
 
 Let $x \in V/U$ and write $x = [v]$. Then
@@ -1169,6 +1201,7 @@ where the second step is the definition of $T'$. The middle equivalence is legit
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:inverse_from_complement}]
+\label{sol:inverse_from_complement}
 Let $x \in V/U$. Since $V = U + W$, any representative $v$ of $x$ can be written as $v = u + w$ with $u \in U$ and $w \in W$, and then $x = [v] = [w]$. The map
 \[
 Q^{-1} \colon V/U \to W, \qquad Q^{-1}(x) := w, \quad \text{where } x = [u + w] \text{ with } u \in U, \, w \in W,
@@ -1179,6 +1212,7 @@ Equivalently, and more compactly: $Q^{-1} = p_W \circ (\text{choice of represent
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:annihilator_L}]
+\label{sol:annihilator_L}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $S \in (V/U)^*$ and $u \in U$. Then $\pi(u) = [u] = 0_{V/U}$, because $u \in U = \ker(\pi)$, and therefore
     \[
@@ -1186,14 +1220,16 @@ Equivalently, and more compactly: $Q^{-1} = p_W \circ (\text{choice of represent
     \]
     So $S \circ \pi$ vanishes on $U$, that is, $S \circ \pi \in U^\perp$.
     \item For $S, S' \in (V/U)^*$ and $\alpha \in K$, and every $v \in V$,
-    \[
-    L(\alpha S + S')(v) = \big((\alpha S + S') \circ \pi\big)(v) = (\alpha S + S')\big(\pi(v)\big) = \alpha \, S(\pi(v)) + S'(\pi(v)) = \big(\alpha L(S) + L(S')\big)(v),
-    \]
+    \begin{align*}
+    L(\alpha S + S')(v) &= \big((\alpha S + S') \circ \pi\big)(v) = (\alpha S + S')\big(\pi(v)\big) \\
+    &= \alpha \, S(\pi(v)) + S'(\pi(v)) = \big(\alpha L(S) + L(S')\big)(v),
+    \end{align*}
     so $L(\alpha S + S') = \alpha L(S) + L(S')$. \qedhere
 \end{enumerate}
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:restriction_linear}]
+\label{sol:restriction_linear}
 For $\varphi, \varphi' \in V^*$, $\alpha \in K$ and every $u \in U$,
 \[
 R(\alpha \varphi + \varphi')(u) = (\alpha \varphi + \varphi')|_U(u) = \alpha \varphi(u) + \varphi'(u) = \big(\alpha R(\varphi) + R(\varphi')\big)(u),
@@ -1202,12 +1238,15 @@ since the operations on $V^*$ are defined pointwise. Two functionals on $U$ agre
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:annihilator_image_kernel_dual}]
+\label{sol:annihilator_image_kernel_dual}
 Both sides are subsets of $W^*$. For $\ell \in W^*$, the notes' chain of equivalences reads
 \[
 \ell \in (\Img T)^\perp \iff \ell|_{\Img(T)} = 0 \iff \ell \circ T = 0 \iff T^*(\ell) = 0 \iff \ell \in \ker(T^*).
 \]
 The middle equivalence is the only one with content: $\ell \circ T$ is the zero map on $V$ exactly when $\ell(T(v)) = 0$ for every $v \in V$, and the values $T(v)$ are precisely the elements of $\Img(T)$, so this says exactly that $\ell$ vanishes on $\Img(T)$. The remaining steps are the definitions of $U^\perp$, of $T^*$, and of the kernel.
 \end{exercisesolution}
+
+\input{content/18-vs-out-of-old-ones-solutions.tex}
 
 \begin{ainote}
 The three lectures behind this chapter, 18.a on $\Hom$, duals and biduals,
@@ -1305,3 +1344,4 @@ than \qt{on}, which typesets as \qt{in page 136}; the same slip survives in the
 chapters on bases and on miscellaneous topics, which this pass has not yet
 reached.
 \end{ainote}
+
