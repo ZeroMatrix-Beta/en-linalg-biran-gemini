@@ -29,13 +29,13 @@ Let $V$ be an inner product space and $T \colon V \to V$ an endomorphism. We say
 % Lemma. (24.a.2)
 \begin{lemma}
 \label{lem:orth_diag_implies_commute}
-If $T$ is orthogonally diagonalizable, then $T \circ T^* = T^* \circ T$.
+If $T$ is orthogonally diagonalizable, then $T \circ T^* = T^* \circ T$. (Here, and wherever an adjoint appears in this chapter, $V$ is understood to be finite-di\-men\-sional: the construction of $T^*$ in the previous chapter inverts the map $\Phi_V$, and every statement about adjoints, \cref{lem:properties_adjoint_map} included, assumes as much.)
 \end{lemma}
 
 \begin{proof}
 Let $\mathcal{B}$ be an orthonormal basis for $V$ such that all the vectors in $\mathcal{B}$ are eigenvectors of $T$. This implies that the representation matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is a diagonal matrix. 
 
-Since $\mathcal{B}$ is an orthonormal basis, we also know that the matrix of the adjoint map is the conjugate transpose of the matrix of the map, meaning $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. Since the conjugate transpose of a diagonal matrix is still a diagonal matrix, $[T^*]_{\mathcal{B}}^{\mathcal{B}}$ is also a diagonal matrix. 
+Since $\mathcal{B}$ is an orthonormal basis, we also know that the matrix of the adjoint map is the conjugate transpose of the matrix of the map, meaning $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$ (this is \cref{prop:matrix_representation_adjoint}, applied with $\mathcal{C} := \mathcal{B}$). Since the conjugate transpose of a diagonal matrix is still a diagonal matrix, $[T^*]_{\mathcal{B}}^{\mathcal{B}}$ is also a diagonal matrix. 
 
 Recall that if $M$ and $N$ are diagonal matrices of the form
 \[
@@ -49,11 +49,11 @@ then they must commute, meaning $M \cdot N = N \cdot M$. Therefore, we have:
 \[
     [T]_{\mathcal{B}}^{\mathcal{B}} \cdot [T^*]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mathcal{B}}^{\mathcal{B}}.
 \]
-By the properties of representation matrices, this implies that
+By the properties of representation matrices (namely the composition rule, the Proposition on \cpageref{prop:representation_matrix_of_composition}), this implies that
 \[
     [T \circ T^*]_{\mathcal{B}}^{\mathcal{B}} = [T^* \circ T]_{\mathcal{B}}^{\mathcal{B}},
 \]
-and therefore, $T \circ T^* = T^* \circ T$.
+and therefore, $T \circ T^* = T^* \circ T$ (two endomorphisms with the same representation matrix in the same basis are equal, since $\Psi_{\mathcal{B}}^{\mathcal{B}}$ is an isomorphism by \cref{thm:homomorphism_isomorphism}).
 \end{proof}
 
 % Def. (24.a.3)
@@ -71,7 +71,7 @@ Is the converse statement true?
 \end{question}
 
 Over $K = \mathbb{R}$, the answer is NO! 
-For example, consider the matrix $A = \left(\begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix}\right)$. The linear map $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$ is a clockwise rotation by $90^\circ$, so there are no eigenvalues (in $\mathbb{R}$) and no eigenvectors. Thus, it cannot be diagonalizable. 
+For example, consider the matrix $A = \left(\begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix}\right)$. The linear map $T_A \colon \mathbb{R}^2 \to \mathbb{R}^2$ is a clockwise rotation by $90^\circ$, so there are no eigenvalues (in $\mathbb{R}$) and no eigenvectors (this is the transpose of the rotation of \cref{ex:no_real_eigenvalues}, and has the same characteristic polynomial $P_A(x) = x^2 + 1$, which has no root in $\mathbb{R}$; now apply \cref{aiprop:eigenvalue_iff_root}). Thus, it cannot be diagonalizable.
 However, $\overline{A}\transp = A\transp = \left(\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix}\right)$, and we can easily check that $A \cdot A\transp = A\transp \cdot A = I_2$, meaning $A$ is indeed normal.
 
 What about over $\mathbb{C}$?
@@ -102,9 +102,9 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
     \[
         \|Tv\|^2 = \langle Tv, Tv \rangle = \langle v, T^*Tv \rangle = \langle v, TT^*v \rangle = \langle T^*v, T^*v \rangle = \|T^*v\|^2,
     \]
-    where we used the definition of the adjoint and the fact that $T$ is normal ($T \circ T^* = T^* \circ T$).
+    where we used the defining property \eqref{eq:adjoint_property} of the adjoint twice, in the first and in the last step, and the fact that $T$ is normal ($T \circ T^* = T^* \circ T$) in the middle.
     
-    \item We expand the compositions:
+    \item We expand the compositions, using $(T - \lambda \id_V)^* = T^* - \overline{\lambda} \id_V$, which is \cref{lem:properties_adjoint_map} \textbf{(b)}, \textbf{(c)} and \textbf{(e)} taken together:
     \begin{align*}
         (T - \lambda \id_V) \circ (T - \lambda \id_V)^* &= (T - \lambda \id_V) \circ (T^* - \overline{\lambda} \id_V) \\
         &= T \circ T^* - \overline{\lambda} T - \lambda T^* + \lambda \overline{\lambda} \id_V. \quad (*)
@@ -135,11 +135,44 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
 \end{enumerate}
 \end{proof}
 
+% Creator: Opus 5
+% The engine of the proof below, which reads norms off columns four separate
+% times and calls it "since B is orthonormal". The identity is stated nowhere
+% in the book: chs. 22a and 22b build orthonormal bases at length without ever
+% recording that coordinates taken in one compute the norm. Lifted out of the
+% proof so it can be cited; an ai environment, since the statement appears
+% nowhere in the notes, only inside this argument.
+\begin{ailemma}[Norm of a Vector in an Orthonormal Basis]
+\label{ailem:norm_in_orthonormal_basis}
+Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and let $\mathcal{B} := (v_1, \dots, v_n)$ be an orthonormal basis for $V$. Then:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item For every $v = \sum_{i=1}^n a_i v_i \in V$ we have $\|v\|^2 = \sum_{i=1}^n |a_i|^2$. That is, $\Phi_{\mathcal{B}}$ carries the norm of $V$ to the standard norm of $K^n$.
+    \item Let $T \in \End(V)$ and write $[T]_{\mathcal{B}}^{\mathcal{B}} = (a_{ij})$. Then, for every $1 \leq j \leq n$,
+    \[
+        \|T v_j\|^2 = \sum_{i=1}^n |a_{ij}|^2,
+    \]
+    the norm of $T v_j$ being read off the $j$-th column of $[T]_{\mathcal{B}}^{\mathcal{B}}$.
+\end{enumerate}
+\end{ailemma}
+
+\begin{proof}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Expand in both arguments, using linearity in the first variable and anti-linearity in the second (\cref{def:hermitian_product_complex}):
+    \[
+        \|v\|^2 = \left\langle \sum_{i=1}^n a_i v_i, \sum_{j=1}^n a_j v_j \right\rangle = \sum_{i=1}^n \sum_{j=1}^n a_i \overline{a_j} \langle v_i, v_j \rangle = \sum_{i=1}^n a_i \overline{a_i} = \sum_{i=1}^n |a_i|^2,
+    \]
+    where the third equality holds because $\langle v_i, v_j \rangle = \delta_{ij}$, the basis being orthonormal, so that only the diagonal terms survive. Over $K = \mathbb{R}$ the conjugation is trivial and the same computation reads $\|v\|^2 = \sum_i a_i^2$.
+
+    \item By the column description of the representation matrix (the Proposition on \cpageref{prop:columns_of_representation_matrix}), the entries $a_{1j}, \dots, a_{nj}$ of the $j$-th column are exactly the coefficients in $T v_j = \sum_{i=1}^n a_{ij} v_i$. Now apply \textbf{(a)} to $v := T v_j$.
+\end{enumerate}
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 \begin{proof}[Proof of the Spectral Theorem over $\mathbb{C}$ (\cref{thm:spectral_thm_c})]
 We only need to prove the direction \qt{$T$ is normal $\implies T$ is orthogonally diagonalizable}, as the reverse direction was already established in \cref{lem:orth_diag_implies_commute}.
 
 By a previous theorem (\cref{cor:complex_trigonalizable}), $T$ is trigonalizable (here we explicitly use the fact that $K = \mathbb{C}$ and the Fundamental Theorem of Algebra). That is, there exists a basis $\mathcal{C}$ for $V$ such that $[T]_{\mathcal{C}}^{\mathcal{C}}$ is an upper triangular matrix.
-By applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$, we obtain a new basis $\mathcal{B} := (v_1, \dots, v_n)$ which is orthonormal, and such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is still upper triangular. (This is left as an exercise to check, see \cref{exc:gram_schmidt_keeps_triangular}. The main point is that if $\mathcal{C} = (u_1, \dots, u_n)$, then Gram-Schmidt gives an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$).
+By applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$, we obtain a new basis $\mathcal{B} := (v_1, \dots, v_n)$ which is orthonormal, and such that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is still upper triangular. (This is left as an exercise to check, see \cref{exc:gram_schmidt_keeps_triangular}. The main point is that if $\mathcal{C} = (u_1, \dots, u_n)$, then Gram-Schmidt gives an orthonormal basis $\mathcal{B} = (v_1, \dots, v_n)$ with $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$, which is \cref{thm:gram_schmidt} \textbf{(c)}).
 
 We claim that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is actually diagonal. To see this, let us write the matrix explicitly as $[T]_{\mathcal{B}}^{\mathcal{B}} = (a_{ij})_{1 \leq i \leq n, 1 \leq j \leq n}$:
 \[
@@ -151,8 +184,8 @@ We claim that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is actually diagonal. To see thi
         0 & 0 & \dots & a_{nn}
     \end{pmatrix}.
 \]
-Since $\mathcal{B}$ is orthonormal, the norm of $Tv_1$ is simply the norm of the first column of the matrix, which means $\|Tv_1\|^2 = |a_{11}|^2$. 
-We also know that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, which means taking the conjugate transpose:
+Since $\mathcal{B}$ is orthonormal, the norm of $Tv_1$ is simply the norm of the first column of the matrix (\cref{ailem:norm_in_orthonormal_basis} \textbf{(b)}), which means $\|Tv_1\|^2 = |a_{11}|^2$, the entries below $a_{11}$ in that column vanishing by upper triangularity.
+We also know that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$ (again \cref{prop:matrix_representation_adjoint}, which applies because $\mathcal{B}$ is orthonormal), which means taking the conjugate transpose:
 \[
     \left( \overline{[T]_{\mathcal{B}}^{\mathcal{B}}} \right)\transp = 
     \begin{pmatrix}
@@ -162,7 +195,7 @@ We also know that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{
         \overline{a_{1n}} & \overline{a_{2n}} & \dots & \overline{a_{nn}}
     \end{pmatrix}.
 \]
-Thus, the first column of $[T^*]_{\mathcal{B}}^{\mathcal{B}}$ is the conjugate transpose of the first row of $[T]_{\mathcal{B}}^{\mathcal{B}}$. Therefore, we have:
+Thus, the first column of $[T^*]_{\mathcal{B}}^{\mathcal{B}}$ is the conjugate transpose of the first row of $[T]_{\mathcal{B}}^{\mathcal{B}}$. Therefore, we have (by \cref{ailem:norm_in_orthonormal_basis} \textbf{(b)} applied to $T^*$, together with $|\overline{a}| = |a|$):
 \[
     \|T^*v_1\|^2 = \sum_{k=1}^n |a_{1k}|^2 = |a_{11}|^2 + |a_{12}|^2 + \dots + |a_{1n}|^2.
 \]
@@ -184,7 +217,7 @@ This shows that the matrix now looks like:
 Now, consider $v_2$. We have $\|Tv_2\|^2 = |a_{22}|^2$ and $\|T^*v_2\|^2 = |a_{22}|^2 + |a_{23}|^2 + \dots + |a_{2n}|^2$. 
 As $\|Tv_2\| = \|T^*v_2\|$, we similarly obtain $a_{23} = \dots = a_{2n} = 0$. 
 
-We can continue this process by induction, and show that for all $1 \leq k < n$ we have $a_{k, k+1} = \dots = a_{k,n} = 0$. Hence, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is diagonal. Since $\mathcal{B}$ is an orthonormal basis that diagonalizes $T$, it consists of eigenvectors, proving that $T$ is orthogonally diagonalizable.
+We can continue this process by induction, and show that for all $1 \leq k < n$ we have $a_{k, k+1} = \dots = a_{k,n} = 0$. (The induction hypothesis is what makes each step legitimate. Suppose rows $1, \dots, k-1$ have already been cleared beyond the diagonal. The $k$-th column of $[T]_{\mathcal{B}}^{\mathcal{B}}$ then has $a_{ik} = 0$ for $i > k$ by upper triangularity and $a_{ik} = 0$ for $i < k$ by those earlier steps, so $\|Tv_k\|^2 = |a_{kk}|^2$; the $k$-th column of $[T^*]_{\mathcal{B}}^{\mathcal{B}}$ is the conjugated $k$-th row of $[T]_{\mathcal{B}}^{\mathcal{B}}$, untouched so far, so $\|T^*v_k\|^2 = \sum_{j \geq k} |a_{kj}|^2$. Equating the two clears row $k$ in turn.) Hence, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is diagonal. Since $\mathcal{B}$ is an orthonormal basis that diagonalizes $T$, it consists of eigenvectors (the $j$-th column of a diagonal $[T]_{\mathcal{B}}^{\mathcal{B}}$ says $Tv_j = a_{jj} v_j$, by the Proposition on \cpageref{prop:columns_of_representation_matrix}), proving that $T$ is orthogonally diagonalizable.
 \end{proof}
 
 % Extractor: Opus 5
@@ -204,6 +237,15 @@ In the proof above, we used $K = \mathbb{C}$ \emph{only} at one place: when we s
 Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$, and let $T \colon V \to V$ be an endomorphism which is normal. If $T$ is trigonalizable (which by \cref{thm:trig_condition} is true if and only if the characteristic polynomial $P_T(x)$ factors as a product of linear factors over $\mathbb{R}$), then $T$ is orthogonally diagonalizable.
 \end{corollary}
 
+% Creator: Opus 5
+% The remark above is the argument, but the corollary carries no proof at all,
+% and the claim that the rest of the argument survives over R is worth
+% checking rather than asserting.
+\begin{proof}
+Read the proof of \cref{thm:spectral_thm_c} again with $K = \mathbb{R}$. Trigonalizability is now a hypothesis instead of a consequence of \cref{cor:complex_trigonalizable}, and every step after it is available over $\mathbb{R}$: \cref{thm:gram_schmidt}, \cref{ailem:norm_in_orthonormal_basis}, \cref{prop:matrix_representation_adjoint} and \cref{lem:properties_normal_endo} are all stated for $K = \mathbb{R}$ as well as for $K = \mathbb{C}$, and over $\mathbb{R}$ the conjugations appearing there are the identity.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
+
 \subsection{The Spectral Theorem over \texorpdfstring{$\mathbb{R}$}{R}}
 
 We've seen that over $\mathbb{R}$, the statement \qt{$T \in \End(V)$ is normal $\implies T$ is orthogonally diagonalizable} does not hold in general. We need a stronger condition.
@@ -219,7 +261,7 @@ Let $\mathcal{B}$ be an orthonormal basis such that $[T]_{\mathcal{B}}^{\mathcal
 \[
     [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)\transp = [T]_{\mathcal{B}}^{\mathcal{B}},
 \]
-where the first equality holds because we are over $\mathbb{R}$, and the second equality holds because $[T]_{\mathcal{B}}^{\mathcal{B}}$ is a diagonal matrix. Because their representation matrices with respect to the same basis are equal, it follows that $T^* = T$.
+where the first equality is \cref{prop:matrix_representation_adjoint}, whose conjugation drops away because we are over $\mathbb{R}$, and the second equality holds because $[T]_{\mathcal{B}}^{\mathcal{B}}$ is a diagonal matrix. Because their representation matrices with respect to the same basis are equal, it follows that $T^* = T$ (by \cref{thm:homomorphism_isomorphism} once more).
 \end{proof}
 
 % Def. (24.a.8)
@@ -227,7 +269,7 @@ where the first equality holds because we are over $\mathbb{R}$, and the second 
 \label{def:self_adjoint}
 Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and $T \in \End(V)$. $T$ is called \newterm{self adjoint} if $T^* = T$. 
 
-Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} if $A^* = A$. (Note that over $K = \mathbb{R}$, a self adjoint matrix is precisely a symmetric matrix, $A\transp = A$).
+Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} if $A^* = A$, where $A^* := \overline{A}\transp$ is the adjoint matrix of \cref{def:adjoint_hermitian_matrices}. (Note that over $K = \mathbb{R}$, a self adjoint matrix is precisely a symmetric matrix, $A\transp = A$).
 \end{definition}
 
 \begin{exercise}[Matrix Representation of Self-Adjoint Maps]
@@ -262,12 +304,12 @@ Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C
     \]
     Since $v \neq 0$, we must have $\lambda = \overline{\lambda}$, which implies $\lambda \in \mathbb{R}$.
     
-    \item For $K = \mathbb{C}$, this follows immediately from the Fundamental Theorem of Algebra. So assume $K = \mathbb{R}$. Let $\mathcal{B}$ be an orthonormal basis for $V$ and consider the matrix $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(\mathbb{R})$. The statement would follow if we show that the characteristic polynomial $P_A(x)$ factors as a product of linear terms with real coefficients. 
+    \item For $K = \mathbb{C}$, this follows immediately from the Fundamental Theorem of Algebra (\cref{thm:fta}). So assume $K = \mathbb{R}$. Let $\mathcal{B}$ be an orthonormal basis for $V$ (one exists by \cref{cor:orthonormal_basis_exists}) and consider the matrix $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(\mathbb{R})$, where $n := \dim V$. The statement would follow if we show that the characteristic polynomial $P_A(x)$ factors as a product of linear terms with real coefficients, since $P_T = P_A$ for the representation matrix $A$ of $T$ in any basis (the second half of \cref{rem:char_poly_well_defined}).
     
-    Now, $T^* = T$, hence $A = [T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = A^* = A\transp$. 
+    Now, $T^* = T$, hence $A = [T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = A^* = A\transp$, the third equality by \cref{prop:matrix_representation_adjoint} and the last because $A$ has real entries.
     Consider $\mathbb{C}^n$ endowed with its standard inner product, and view $A$ as a matrix in $\M_{n \times n}(\mathbb{C})$. Let $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ be the corresponding linear map. The standard basis $\mathcal{E}_n = (e_1, \dots, e_n)$ is orthonormal, and $[T_A]_{\mathcal{E}_n}^{\mathcal{E}_n} = A$. 
     
-    We know that $P_{T_A}(x) = P_A(x)$. When viewed as a polynomial over $\mathbb{C}$ (i.e., in $\mathbb{C}[x]$), it factors as a product of linear terms:
+    We know that $P_{T_A}(x) = P_A(x)$ (once more \cref{rem:char_poly_well_defined}, the standard basis representing $T_A$ by $A$). When viewed as a polynomial over $\mathbb{C}$ (i.e., in $\mathbb{C}[x]$), it factors as a product of linear terms:
     \[
         P_A(x) = \prod_{k=1}^n (x - \lambda_k) \in \mathbb{C}[x], \quad (*)
     \]
@@ -276,12 +318,12 @@ Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C
 \end{proof}
 
 \begin{proof}[Proof of the Spectral Theorem over $\mathbb{R}$ (\cref{thm:spectral_thm_r})]
-The forward direction was proven in \cref{lem:real_orth_diag_is_self_adj}. For the reverse direction, if $T$ is self adjoint, then by \cref{lem:self_adj_properties}, its characteristic polynomial splits over $\mathbb{R}$. This implies $T$ is trigonalizable over $\mathbb{R}$. Furthermore, since $T = T^*$, $T$ trivially commutes with its adjoint, making it normal. By \cref{cor:spectral_thm_real_trigonalizable}, a normal map that is trigonalizable over $\mathbb{R}$ is orthogonally diagonalizable.
+The forward direction was proven in \cref{lem:real_orth_diag_is_self_adj}. For the reverse direction, if $T$ is self adjoint, then by \cref{lem:self_adj_properties} \textbf{(b)}, its characteristic polynomial splits over $\mathbb{R}$. This implies $T$ is trigonalizable over $\mathbb{R}$, by \cref{thm:trig_condition}. Furthermore, since $T = T^*$, $T$ trivially commutes with its adjoint, making it normal. By \cref{cor:spectral_thm_real_trigonalizable}, a normal map that is trigonalizable over $\mathbb{R}$ is orthogonally diagonalizable.
 \end{proof}
 
 \subsection{Spectral Theorems for Matrices}
 
-Let $K = \mathbb{R}$ or $\mathbb{C}$. Recall that a matrix $A \in \M_{n \times n}(K)$ is called normal if $A \cdot A^* = A^* \cdot A$.
+Let $K = \mathbb{R}$ or $\mathbb{C}$. Recall that a matrix $A \in \M_{n \times n}(K)$ is called normal if $A \cdot A^* = A^* \cdot A$ (the second half of \cref{def:normal_endomorphism}, written there as $A \cdot \overline{A}\transp = \overline{A}\transp \cdot A$).
 
 \begin{example}[Classes of Normal Matrices]
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -308,8 +350,8 @@ Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* 
 \begin{theorem}[Matrix Spectral Theorems]
 \label{thm:spectral_thm_matrices}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item If $A \in \M_{n \times n}(\mathbb{C})$ is normal, then there exists a unitary matrix $U \in \Unit(n)$ such that $U^{-1} A U$ is diagonal. (Note that $U^{-1} = U^*$).
-    \item If $A \in \M_{n \times n}(\mathbb{R})$ is a symmetric matrix, then there exists an orthogonal matrix $O \in \Orth(n)$ such that $O^{-1} A O$ is diagonal. (Note that $O^{-1} = O\transp$).
+    \item If $A \in \M_{n \times n}(\mathbb{C})$ is normal, then there exists a unitary matrix $U \in \Unit(n)$ such that $U^{-1} A U$ is diagonal. (Note that $U^{-1} = U^*$, by \cref{lem:char_unitary_matrices} \textbf{(d)}).
+    \item If $A \in \M_{n \times n}(\mathbb{R})$ is a symmetric matrix, then there exists an orthogonal matrix $O \in \Orth(n)$ such that $O^{-1} A O$ is diagonal. (Note that $O^{-1} = O\transp$, by \cref{lem:char_orthogonal_matrices} \textbf{(d)}).
 \end{enumerate}
 \end{theorem}
 
@@ -321,6 +363,11 @@ The proof is left as an exercise, based on the following key points translating 
     \item $A \in \M_{n \times n}(\mathbb{R})$ is symmetric if and only if $T_A \colon \mathbb{R}^n \to \mathbb{R}^n$ is self adjoint, when we endow $\mathbb{R}^n$ with its standard inner product.
     \item If $\mathcal{B}$ is an orthonormal basis for $\mathbb{R}^n$, then the transition matrix $O := [\id_{\mathbb{R}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ is orthogonal.
 \end{enumerate}
+% Creator: Opus 5
+% All four points are asserted with no reason, and the solution below leans on
+% every one of them. Each is one citation away.
+None of the four is hard, and each rests on a result already available. Points \textbf{(a)} and \textbf{(c)} follow from $(T_A)^* = T_{A^*}$, which is \cref{cor:adjoint_matrix_map}: composing gives $T_A \circ (T_A)^* = T_{A A^*}$ and $(T_A)^* \circ T_A = T_{A^* A}$, and $B \mapsto T_B$ is injective, so the two compositions agree exactly when $A A^* = A^* A$; for \textbf{(c)} read the same identity with $A^* = A$ and recall that over $\mathbb{R}$ the adjoint matrix is the transpose. Points \textbf{(b)} and \textbf{(d)} are the definition of a unitary and of an orthogonal matrix, \cref{def:orthogonal_unitary_matrices}: the columns of $[\id]_{\mathcal{E}_n}^{\mathcal{B}}$ are the coordinate vectors of the members of $\mathcal{B}$ in the standard basis, by the Proposition on \cpageref{prop:columns_of_representation_matrix}, hence the members of $\mathcal{B}$ themselves, and those form an orthonormal system by hypothesis.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
 
 % Creator: Gemini 3.1 Pro
@@ -337,9 +384,9 @@ Now, consider the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$. The $k$-th column of
 
 \begin{exercisesolution}[Proof of \cref{exc:self_adjoint_matrix_criterion}] ~\\
 Let $T \in \End(V)$.
-First, suppose $T$ is self adjoint, so $T = T^*$. Let $\mathcal{B}$ be an arbitrary orthonormal basis for $V$. By the properties of representation matrices for adjoint maps in orthonormal bases, we have $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. Since $T = T^*$, we substitute to get $[T]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, which means the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint.
+First, suppose $T$ is self adjoint, so $T = T^*$. Let $\mathcal{B}$ be an arbitrary orthonormal basis for $V$. By the properties of representation matrices for adjoint maps in orthonormal bases (\cref{prop:matrix_representation_adjoint}), we have $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. Since $T = T^*$, we substitute to get $[T]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, which means the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint.
 
-Conversely, suppose that for any orthonormal basis $\mathcal{B}$ of $V$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint, i.e., $[T]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. Again, using the identity $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, we see that $[T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}}$. Because the map sending an endomorphism to its representation matrix with respect to a fixed basis is an isomorphism, this equality of matrices implies the equality of the maps, hence $T = T^*$, meaning $T$ is self adjoint.
+Conversely, suppose that for any orthonormal basis $\mathcal{B}$ of $V$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint, i.e., $[T]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. One such basis exists, by \cref{cor:orthonormal_basis_exists}, and one is all the argument needs. Again, using the identity $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, we see that $[T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}}$. Because the map sending an endomorphism to its representation matrix with respect to a fixed basis is an isomorphism (\cref{thm:homomorphism_isomorphism}), this equality of matrices implies the equality of the maps, hence $T = T^*$, meaning $T$ is self adjoint.
 \end{exercisesolution}
 
 % Creator: Opus 5
@@ -360,9 +407,9 @@ The example is not an accident: over $\mathbb{C}$ it is $A^* = A$, and not $A\tr
 
 \begin{exercisesolution}[Proof of \cref{thm:spectral_thm_matrices}]
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a normal matrix. By point \textbf{(a)}, the linear map $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ is a normal endomorphism with respect to the standard inner product. By the Spectral Theorem over $\mathbb{C}$ (\cref{thm:spectral_thm_c}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B} := (v_1, \dots, v_n)$ for $\mathbb{C}^n$ consisting of eigenvectors of $T_A$. 
+    \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a normal matrix. By point \textbf{(a)} of the proof sketch above, the linear map $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ is a normal endomorphism with respect to the standard inner product. By the Spectral Theorem over $\mathbb{C}$ (\cref{thm:spectral_thm_c}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B} := (v_1, \dots, v_n)$ for $\mathbb{C}^n$ consisting of eigenvectors of $T_A$. 
     
-    The representation matrix of $T_A$ with respect to $\mathcal{B}$, which is $[T_A]_{\mathcal{B}}^{\mathcal{B}}$, is a diagonal matrix $D$. Let $\mathcal{E}_n$ be the standard basis for $\mathbb{C}^n$. The transition matrix from $\mathcal{B}$ to $\mathcal{E}_n$ is $U := [\id_{\mathbb{C}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$, whose columns are precisely the vectors $v_1, \dots, v_n$. Since $\mathcal{B}$ is an orthonormal basis, point \textbf{(b)} guarantees that $U$ is a unitary matrix. 
+    The representation matrix of $T_A$ with respect to $\mathcal{B}$, which is $[T_A]_{\mathcal{B}}^{\mathcal{B}}$, is a diagonal matrix $D$. Let $\mathcal{E}_n$ be the standard basis for $\mathbb{C}^n$. The transition matrix from $\mathcal{B}$ to $\mathcal{E}_n$ is $U := [\id_{\mathbb{C}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$, whose columns are precisely the vectors $v_1, \dots, v_n$. Since $\mathcal{B}$ is an orthonormal basis, point \textbf{(b)} of that sketch guarantees that $U$ is a unitary matrix. 
     
     Using the change of basis formula, we have:
     \[
@@ -370,9 +417,9 @@ The example is not an accident: over $\mathbb{C}$ it is $A^* = A$, and not $A\tr
     \]
     Thus, $U^{-1} A U$ is diagonal.
     
-    \item Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix. By point \textbf{(c)}, the linear map $T_A \colon \mathbb{R}^n \to \mathbb{R}^n$ is self adjoint. By the Spectral Theorem over $\mathbb{R}$ (\cref{thm:spectral_thm_r}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^n$ consisting of eigenvectors of $T_A$, making $[T_A]_{\mathcal{B}}^{\mathcal{B}}$ a diagonal matrix $D$. 
+    \item Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix. By point \textbf{(c)} of the proof sketch above, the linear map $T_A \colon \mathbb{R}^n \to \mathbb{R}^n$ is self adjoint. By the Spectral Theorem over $\mathbb{R}$ (\cref{thm:spectral_thm_r}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B}$ for $\mathbb{R}^n$ consisting of eigenvectors of $T_A$, making $[T_A]_{\mathcal{B}}^{\mathcal{B}}$ a diagonal matrix $D$. 
     
-    Let $O := [\id_{\mathbb{R}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ be the transition matrix. Since $\mathcal{B}$ is an orthonormal basis in $\mathbb{R}^n$, point \textbf{(d)} guarantees that $O$ is an orthogonal matrix. 
+    Let $O := [\id_{\mathbb{R}^n}]_{\mathcal{E}_n}^{\mathcal{B}}$ be the transition matrix. Since $\mathcal{B}$ is an orthonormal basis in $\mathbb{R}^n$, point \textbf{(d)} of that sketch guarantees that $O$ is an orthogonal matrix. 
     By the change of basis formula:
     \[
         D = [T_A]_{\mathcal{B}}^{\mathcal{B}} = [\id_{\mathbb{R}^n}]_{\mathcal{B}}^{\mathcal{E}_n} \cdot [T_A]_{\mathcal{E}_n}^{\mathcal{E}_n} \cdot [\id_{\mathbb{R}^n}]_{\mathcal{E}_n}^{\mathcal{B}} = O^{-1} \cdot A \cdot O.
@@ -380,3 +427,54 @@ The example is not an accident: over $\mathbb{C}$ it is $A^* = A$, and not $A\tr
     Thus, $O^{-1} A O$ is diagonal.
 \end{enumerate}
 \end{exercisesolution}
+% Creator: Opus 5
+\begin{ainote}
+The rigour pass found nothing false in this chapter, and one thing genuinely
+missing: the identity that makes the proof of \cref{thm:spectral_thm_c} work at
+all. That proof reads $\|Tv_1\|^2 = |a_{11}|^2$, then
+$\|T^*v_1\|^2 = \sum_k |a_{1k}|^2$, then the same twice more for $v_2$, each
+time on the strength of \qt{$\mathcal{B}$ is orthonormal}. The fact behind it,
+that coordinates taken in an orthonormal basis compute the norm, is stated
+nowhere in the book: chs. 22a and 22b construct orthonormal bases at length,
+prove Pythagoras for two vectors, and never write down the $n$-term version. It
+is now \cref{ailem:norm_in_orthonormal_basis}, lifted out of the proof so that
+the four steps can point at it. An \texttt{ai} environment, since the statement
+appears nowhere in the notes, only inside this one argument.
+
+Named, and previously silent: the identity
+$[T^*]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^*$, which
+this chapter uses five separate times and never once credits, is
+\cref{prop:matrix_representation_adjoint} of the previous chapter, and it is
+where orthonormality enters each of those five arguments. Passing from an
+equality of representation matrices to an equality of maps, done three times,
+is \cref{thm:homomorphism_isomorphism}. The four points of the proof sketch of
+\cref{thm:spectral_thm_matrices} were asserted without any reason at all,
+although the solution below them leans on every one; they now have their two
+citations, \cref{cor:adjoint_matrix_map} and
+\cref{def:orthogonal_unitary_matrices}. \Cref{cor:spectral_thm_real_trigonalizable}
+had no proof, only the remark above it observing that $K = \mathbb{C}$ was used
+once; the proof now checks that claim result by result.
+
+Two places where the argument was right but stopped a step short. The induction
+at the end of the proof of \cref{thm:spectral_thm_c} is not a repetition of the
+first step: at stage $k$ it needs the entries above the $k$-th diagonal entry to
+have been cleared by stages $1, \dots, k-1$, which is exactly what makes
+$\|Tv_k\|^2 = |a_{kk}|^2$; the parenthetical there spells that out. And the
+proof of \cref{lem:self_adj_properties} \textbf{(b)} passes from $P_A$ to $P_T$
+twice without naming \cref{rem:char_poly_well_defined}, which is the result that
+licenses it.
+
+Finally, a standing convention was made explicit in
+\cref{lem:orth_diag_implies_commute}: the chapter says \qt{inner product space}
+throughout while using $T^*$, and the adjoint of ch. 23a exists only in finite
+dimension.
+
+Checked and found correct, so that nobody re-derives them: the rotation
+$\left(\begin{smallmatrix} 0 & 1 \ -1 & 0 \end{smallmatrix}\right)$ really is
+clockwise and really is normal; the two products $A A^*$ and $A^* A$ for
+$A = \left(\begin{smallmatrix} i & i \ i & 1 \end{smallmatrix}\right)$ differ
+exactly in the off-diagonal conjugate pair $1 \pm i$; and the change-of-basis
+chain $D = [\id]_{\mathcal{B}}^{\mathcal{E}_n} \cdot A \cdot
+[\id]_{\mathcal{E}_n}^{\mathcal{B}}$ composes correctly in the house convention,
+with the source basis on top throughout.
+\end{ainote}

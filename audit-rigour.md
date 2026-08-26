@@ -90,7 +90,8 @@ that contradicts the book's own conventions.
 | 22a | `content/22a-euclidean-hermetian-spaces-a.tex` | done, pushed (`9198c79`) |
 | 22b | `content/22b-euclidean-hermetian-spaces-b.tex` | done, pushed (`2477582`) |
 | 23a | `content/23a-dual-spaces-inner-products-a.tex` | done, pushed (`71b01c9`) |
-| **24 onwards** | 24, 25, 26, 27, 28a, 28b | **not started; this is where to resume** |
+| 24 | `content/24-spectral-thoerem.tex` | done |
+| **25 onwards** | 25, 26, 27, 28a, 28b | **not started; this is where to resume** |
 | 1--9 | the foundational chapters | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -258,14 +259,18 @@ searching, and put any perl beyond a trivial one-liner into a file and run
 - **`\rankcol` and `\rankrow`** were added to the preamble next to `\rank`, and
   replace the spelled-out `\rank_{\text{col}}` in 56 places across chs. 13, 17b,
   17c and 17d, so the two can no longer drift apart typographically.
-- **A `remark` that is really a proposition becomes `proposition*`.** Applied in
-  17a to the identity map being represented by `I_n` (which the notes mark
-  \qt{Exc.}, so they ask for a proof of it) and to the uniqueness of the inverse
-  matrix (whose proof follows it immediately). Both unnumbered, their references
-  moved to `\cpageref` with descriptive names. Apply this per chapter as the
-  audit reaches it, not as a blanket sweep: about eleven `remark` blocks in the
-  book are followed by a `\begin{proof}`, and several of those are legitimate
-  remarks sitting between a proposition and its proof.
+- ~~**A `remark` that is really a proposition becomes `proposition*`.**~~
+  **Revoked by the user on 2026-08-26: \qt{pls dont change remark to theorem}.**
+  A Remark keeps its Remark. The premise of the old rule was that a `remark`
+  was unnumbered and therefore not citable, which is simply false:
+  `en-linalg-2.tex:505` declares it `\newtheorem{remark}{Remark}[chapter]`, so
+  it carries a number on a counter of its own, reset per chapter, with its
+  `\crefname` registered at `:578`. A `\label` placed inside a Remark where it
+  stands takes the ordinary `\cref` and prints \qt{Remark 24.2}, and inserting
+  one never disturbs the Theorem/Lemma/Definition sequence. The promotion buys
+  a citation that was already free, at the cost of rewriting the author's
+  presentation. The two conversions made in ch. 17a stand as they are, but no
+  further ones are to be made; rule 3 above and `gemini.md` now say so.
 
 ### Ch. 18, five results nobody could cite
 
@@ -491,6 +496,43 @@ off: it extended a basis \qt{by the Steinitz Exchange Lemma}, and now names item
 **(2)** of `sum:finite_dim_properties`. It also needs `U` to be
 finite-dimensional before it can speak of a basis of `U`, which is
 `prop:subspace_dimension_constraints`.
+
+### Ch. 24, the identity that carries the Spectral Theorem
+
+**Nothing false.** One thing genuinely missing, and it is the engine of the
+chapter. The proof of the Spectral Theorem over $\mathbb{C}$ reads
+`||Tv_1||^2 = |a_11|^2`, then `||T*v_1||^2 = sum_k |a_1k|^2`, then the same
+twice more for `v_2`, each time on the strength of \qt{$\mathcal{B}$ is
+orthonormal}. The fact underneath, that coordinates taken in an orthonormal
+basis compute the norm, **is stated nowhere in the book**: chs. 22a and 22b
+build orthonormal bases at length, prove Pythagoras for two vectors, and never
+write the $n$-term version. It is now `ailem:norm_in_orthonormal_basis`, lifted
+out of the proof so the four steps can point at it. `ai`, since the statement
+appears nowhere in the notes, only inside this one argument.
+
+`prop:matrix_representation_adjoint` (23.a.4), the identity
+`[T*]_B^B = ([T]_B^B)*`, is used **five times** in this chapter and credited
+none of them, although it is exactly where orthonormality enters each argument.
+Passing from an equality of representation matrices to an equality of maps,
+three times, is `thm:homomorphism_isomorphism`.
+
+The four points of the proof sketch of `thm:spectral_thm_matrices` were asserted
+with no reason at all, while the solution below them leans on every one; two
+citations cover all four, `cor:adjoint_matrix_map` and
+`def:orthogonal_unitary_matrices`. `cor:spectral_thm_real_trigonalizable` had no
+proof, only the remark above it observing that $K = \mathbb{C}$ was used once;
+the proof now checks that claim result by result.
+
+Two arguments stopping a step short: the induction closing the proof of
+`thm:spectral_thm_c` is not a repetition of its first step, since at stage $k$
+it needs stages $1, \dots, k-1$ to have cleared the entries above the $k$-th
+diagonal entry, which is what makes `||Tv_k||^2 = |a_kk|^2`; and the proof of
+`lem:self_adj_properties` **(b)** passes from $P_A$ to $P_T$ twice without
+naming `rem:char_poly_well_defined`.
+
+A standing convention was made explicit: the chapter says \qt{inner product
+space} throughout while using $T^*$, and ch. 23a's adjoint exists only in finite
+dimension.
 
 ## Checked in ch. 17e and found correct
 
