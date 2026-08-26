@@ -1,12 +1,25 @@
 \renewcommand{\thetheorem}{4.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{3}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription.
+% ---------------------------------------------------------------------------
 
 \chapter{Maps}
 
 \subsection{Functions and their Domains}
 
 \begin{definition}[Map / Function]
+\label{def:map}
 Let $X$ and $Y$ be sets. A map $f: X \to Y$ (also called a function or transformation) is an assignment that assigns to every element $x \in X$ a uniquely defined element $f(x) \in Y$. 
 \end{definition}
 
@@ -111,7 +124,9 @@ Concretely: $f: \mathbb{R} \to \mathbb{R}, \mathbb{R} \ni x \mapsto x^5 \in \mat
 
 \subsection{Images and Restrictions}
 
-\begin{definition}[Image of a Map]Let $f: X \to Y$ be a map. The \textit{image} of $f$ is the set:
+\begin{definition}[Image of a Map]
+\label{def:image_of_map}
+Let $f: X \to Y$ be a map. The \textit{image} of $f$ is the set:
 \[
 f(X) := \{y \in Y \mid \exists x \in X \text{ s.t. } f(x) = y\}
 \]
@@ -119,6 +134,7 @@ f(X) := \{y \in Y \mid \exists x \in X \text{ s.t. } f(x) = y\}
 \end{definition}
 
 \begin{definition}[Restriction and Extension]
+\label{def:restriction}
 Let $f: X \to Y$ be a map, and let $A \subseteq X$ be a subset. We can define a new map $f|_A: A \to Y$, called the \textit{restriction} of $f$ to $A$, simply by $f|_A(x) := f(x)$ for all $x \in A$.
 Conversely, $f$ is called an \textit{extension} of $f|_A$.
 \end{definition}
@@ -148,6 +164,7 @@ Conversely, $f$ is called an \textit{extension} of $f|_A$.
 \subsection{Injectivity, Surjectivity, Bijectivity}
 
 \begin{definition}[Injectivity, Surjectivity, and Bijectivity]
+\label{def:injective_surjective_bijective}
 Let $f: X \to Y$ be a map.
 \begin{enumerate}
     \item We say $f$ is \textbf{injective} if $\forall x_1, x_2 \in X$, $f(x_1) = f(x_2) \implies x_1 = x_2$. (Equivalently, by contrapositive: $x_1 \ne x_2 \implies f(x_1) \ne f(x_2)$).
@@ -166,6 +183,7 @@ Consider variations of the squaring function, which explicitly demonstrate the i
 \end{example}
 
 \begin{definition}[Inverse Map]
+\label{def:inverse_map}
 Let $f: X \to Y$ be a bijection. The \textit{inverse map} $f^{-1}: Y \to X$ is the map that assigns to every $y \in Y$ the unique $x \in X$ such that $f(x) = y$.
 \end{definition}
 
@@ -248,6 +266,34 @@ Let $f, g: \mathbb{R} \to \mathbb{R}$ with $f(x) = x^2$ and $g(x) = x+1$.
 \end{align*}
 Clearly, $g \circ f \ne f \circ g$.
 \end{example}
+
+% Creator: Opus 5
+% Composition is associative, and the book never says so, although ch. 17a
+% derives the associativity of matrix multiplication from it in as many words:
+% "We rely on the associativity of function composition". The statement appears
+% nowhere in the notes, so it is an ai environment rather than an unnumbered one.
+\begin{ailemma}[Associativity of Composition]
+\label{ailem:composition_associative}
+Let $f \colon W \to X$, $g \colon X \to Y$ and $h \colon Y \to Z$ be maps. Then
+\[
+    (h \circ g) \circ f = h \circ (g \circ f),
+\]
+both sides being maps $W \to Z$. Composition is therefore associative, and an iterated composition may be written $h \circ g \circ f$ without brackets.
+\end{ailemma}
+
+\begin{proof}
+Two maps with the same domain and target are equal exactly when they agree at every element, by \cref{def:equality_of_functions}. Let $w \in W$. Unwinding \cref{def:composition} on each side,
+\[
+    \bigl((h \circ g) \circ f\bigr)(w) = (h \circ g)\bigl(f(w)\bigr) = h\Bigl(g\bigl(f(w)\bigr)\Bigr),
+\]
+\[
+    \bigl(h \circ (g \circ f)\bigr)(w) = h\bigl((g \circ f)(w)\bigr) = h\Bigl(g\bigl(f(w)\bigr)\Bigr).
+\]
+The two right-hand sides are the same element of $Z$, so the two maps agree at every $w \in W$.
+
+The proof is short, but the statement is not idle: it is what allows the associativity of matrix multiplication to be proved in ch. 17a by transporting this identity through the representation matrices, rather than by manipulating the triple sums directly.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 \begin{lemma}[Composition of Injective and Surjective Maps]
 \label{lem:composition_inj_surj}
@@ -368,13 +414,16 @@ We can often immediately determine the injectivity, surjectivity, and bijectivit
 
 \subsection{Image and Inverse Image of Subsets}
 
-\begin{definition}[Image of a Subset]Let $f: X \to Y$ be a map, and let $A \subseteq X$. The \textit{image of $A$ under $f$} is:
+\begin{definition}[Image of a Subset]
+\label{def:image_of_subset}
+Let $f: X \to Y$ be a map, and let $A \subseteq X$. The \textit{image of $A$ under $f$} is:
 \[
 f(A) := \{y \in Y \mid \exists x \in A \text{ s.t. } f(x) = y\} = \{f(x) \mid x \in A\}
 \]
 \end{definition}
 
 \begin{definition}[Inverse Image of a Subset]
+\label{def:inverse_image_of_subset}
 Let $f: X \to Y$ be a map, and let $B \subseteq Y$. The \textit{inverse image of $B$ under $f$} is:
 \[
 f^{-1}(B) := \{x \in X \mid f(x) \in B\} \subseteq X
@@ -461,3 +510,28 @@ This assigns to every $x \in X$ a uniquely determined element of $Y$, so $f$ is 
 
 For uniqueness, suppose $g: X \to Y$ also satisfies $g|_P = f_P$ for all $P \in \mathcal{P}$. Given $x \in X$, choose the piece $P$ containing $x$; then $g(x) = g|_P(x) = f_P(x) = f(x)$. Hence $g = f$.
 \end{proof}
+
+\begin{ainote}
+Four of this chapter's notions are the ones the rest of the book leans on, and it
+is worth saying which, because the chapter presents them all at the same weight.
+
+Injectivity and surjectivity, \cref{def:injective_surjective_bijective}, become
+the two halves of the Rank-Nullity theorem and, through it, the whole theory of
+solving $Ax = b$. The inverse image $f^{-1}(B)$ of
+\cref{def:inverse_image_of_subset} is what the kernel of a linear map is: a
+kernel is $T^{-1}(\{0\})$, and the Important Remark above,
+that this set makes sense whether or not $T$ is invertible, is precisely why the
+kernel is a useful object even for maps that are far from bijective. Composition,
+\cref{def:composition}, becomes matrix multiplication in ch. 17a, and it is
+because composition is defined before matrices that the product of matrices comes
+out associative without a computation. And the restriction $f|_A$ of
+\cref{def:restriction} is what the Jordan chapters use on every page, once a
+subspace is known to be invariant.
+
+The rigour pass added a `\label` to the seven Definitions that had none, so that
+the notions above can be cited at all, and supplied one statement the book uses
+without having: that composition is associative. Ch. 17a proves the
+associativity of matrix multiplication with the words \qt{we rely on the
+associativity of function composition}, and that fact appears nowhere. It is now
+\cref{ailem:composition_associative}, and ch. 17a cites it.
+\end{ainote}

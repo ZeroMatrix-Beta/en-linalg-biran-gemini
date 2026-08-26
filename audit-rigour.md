@@ -98,8 +98,9 @@ that contradicts the book's own conventions.
 | 28b | `content/28b-jordan-b.tex` | done, pushed (`307ecb5`) |
 | 1 | `content/01-fibonacci.tex` | done, pushed (`d029914`) |
 | 2 | `content/02-logic.tex` | done, pushed (`13f6122`) |
-| 3 | `content/03-set-theory.tex` | done |
-| **4--9** | the remaining foundational chapters | **this is where to resume** |
+| 3 | `content/03-set-theory.tex` | done, pushed (`5d4ee79`) |
+| 4 | `content/04-maps.tex` | done |
+| **5--9** | the remaining foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -774,6 +775,24 @@ because $R$ could be carved out of it.
 Six Definitions carried no `\label`, among them subset, Cartesian product, power
 set and cardinality, which the rest of the book uses on nearly every page. The
 power-set exercise is written up.
+
+### Ch. 4, the associativity nobody stated
+
+**Composition is associative, and the book never says so.** Ch. 17a proves the
+associativity of matrix multiplication with the words \qt{we rely on the
+associativity of function composition, which states that
+$(T_A \circ T_B) \circ T_C = T_A \circ (T_B \circ T_C)$}, and that statement
+appears in no chapter. It is now `ailem:composition_associative`, in ch. 4 where
+composition is defined, and ch. 17a cites it. An `ai` environment, since it is
+nowhere in the notes: the same case as `aiprop:eigenvalue_iff_root` in ch. 21.
+
+Seven Definitions carried no `\label`: map, image of a map, restriction,
+injective/surjective/bijective, inverse map, image of a subset, inverse image of
+a subset. The book's kernel is the inverse image of $\{0\}$ and its Rank-Nullity
+theorem is about the first four, so these are among the most-used notions in it.
+
+Nothing false. The partitions section, added by an earlier pass, is complete and
+correct as it stands.
 
 ## Checked in ch. 17e and found correct
 
