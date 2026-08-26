@@ -407,6 +407,16 @@ By the alternating property of $D$, performing the transpositions necessary to s
   and the bracket is $\det(A)$ by \cref{thm:unique_det}.
 \end{proof}
 
+\begin{exercise}[Determinant of Triangular Matrices via the Leibniz Formula \faHeart]
+  \label{exc:triangular_matrix_determinant}
+  An $n \times n$ matrix $A$ is called \emph{upper triangular} if $A_{ij} = 0$ for all $i > j$, and \emph{lower triangular} if $A_{ij} = 0$ for all $i < j$. Show using the Leibniz formula that the determinant of any triangular matrix is given by the product of its diagonal entries:
+  \[
+  \det(A) = A_{11} A_{22} \cdots A_{nn}.
+  \]
+  \exhint{Use the Leibniz formula $\det A = \sum_{\sigma \in S_n} \sgn(\sigma) A(1,\sigma(1)) \cdots A(n,\sigma(n))$. For an upper triangular matrix ($A_{ij} = 0$ for $i > j$), show that if $\sigma \neq \id$, there must exist an index $i \in \{1, \dots, n\}$ such that $\sigma(i) < i$, which forces the corresponding factor in the product to be zero. A similar argument applies to lower triangular matrices.}
+  \exinfo{This exercise is Problem 7 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{The Symmetric Group}
 
 Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots, n\}$. The set $S_n$ has the algebraic structure of a group under composition: if $\sigma, \tau \in S_n$, their composition is $(\sigma \circ \tau)(x) = \sigma(\tau(x))$. The identity function $\id$ is the neutral element. The inverse $\sigma^{-1}$ exists because $\sigma$ is bijective. Furthermore, the size of the symmetric group is $|S_n| = n!$.
@@ -430,6 +440,21 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
   \sgn(\sigma \circ \tau) = (-1)^{m+\ell} = (-1)^m \cdot (-1)^{\ell} = \sgn(\sigma) \cdot \sgn(\tau).
   \]
 \end{proof}
+
+\begin{exercise}[The Symmetric Group $S_4$ and Even Permutations in $S_n$ \faHeart]
+  \label{exc:symmetric_group_s4_and_alternating}
+  \leavevmode
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Explicitly list all $24$ permutations of degree $4$ in $S_4$, specify which are even and which are odd, and use this to write out the complete Leibniz formula
+    \[
+    \det(A) = \sum_{\sigma \in S_4} \sgn(\sigma) A(1,\sigma(1)) A(2,\sigma(2)) A(3,\sigma(3)) A(4,\sigma(4))
+    \]
+    for the determinant of a $4 \times 4$ matrix $A$. Notice that for $n \ge 4$, inspecting diagonal products alone is not sufficient to determine the determinant.
+    \item How many even permutations are contained in $S_n$ for an arbitrary integer $n \ge 1$?
+  \end{enumerate}
+  \exhint{\textbf{(a)} Permutations of the same cycle structure have the same sign (e.g., $4$-cycles have sign $-1$, products of two disjoint transpositions have sign $+1$, $3$-cycles have sign $+1$, single transpositions have sign $-1$, and the identity has sign $+1$). List all $4! = 24$ permutations grouped by cycle type to write down the $24$ terms. \textbf{(b)} The case $n=1$ is trivial. For $n \ge 2$, fix a transposition $\tau \in S_n$ (e.g., $\tau = (1\;2)$) and show that the map $\sigma \mapsto \tau \circ \sigma$ is a bijection between the set of even permutations and the set of odd permutations.}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \subsection{Multiplicativity of the Determinant}
 
@@ -460,6 +485,54 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
 \begin{proof}
   Assume $A$ is invertible, and denote its inverse by $A^{-1}$. Since $A \cdot A^{-1} = I$, taking the determinant of both sides and applying \cref{thm:det_multiplicative} yields $\det(A) \cdot \det(A^{-1}) = \det(I) = 1$. This automatically implies that $\det(A)$ cannot be zero, and dividing by $\det(A)$ yields the expected formula.
 \end{proof}
+
+\begin{exercise}[Direct Proof of Multiplicativity of the Determinant via the Leibniz Formula]
+  \label{exc:multiplicativity_via_leibniz}
+  Prove the following proposition directly using the Leibniz formula:
+  \begin{proposition*}
+    Let $K$ be a field and let $A, B \in \M_{n \times n}(K)$. Then
+    \[
+    \det(A B) = \det(A) \cdot \det(B).
+    \]
+  \end{proposition*}
+  \exhint{Let $\{e_i\}_{i=1}^n$ denote the standard basis of $K^n$ and write the matrix $B$ as a list of column vectors $B = \left( \sum_{s_1=1}^n B(s_1, 1) e_{s_1}, \dots, \sum_{s_n=1}^n B(s_n, n) e_{s_n} \right)$. Expand $\det(AB) = \det(A B e_1, \dots, A B e_n)$ using the multilinearity of the determinant:
+  \[
+  \det(AB) = \sum_{s_1=1}^n \cdots \sum_{s_n=1}^n \left( \prod_{i=1}^n B(s_i, i) \right) \det(A e_{s_1}, \dots, A e_{s_n}).
+  \]
+  Show that terms where the indices $s_1, \dots, s_n$ are not distinct vanish, so the sum reduces to permutations $\sigma \in S_n$. Then prove and apply the lemma:
+  \begin{lemma*}
+    For all $A \in \M_{n \times n}(K)$ and all $\sigma \in S_n$,
+    \[
+    \det(A e_{\sigma(1)}, \dots, A e_{\sigma(n)}) = \sgn(\sigma) \det(A).
+    \]
+  \end{lemma*}}
+  \exinfo{This exercise is Problem 10 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[General Properties of Determinants (Multiple Choice)]
+  \label{exc:general_determinant_properties_mc}
+  Which of the following statements are correct for arbitrary matrices $A, B \in \M_{n \times n}(\mathbb{R})$ with $n \ge 2$?
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\det(A B) = \det(A) \det(B)$.
+    \item If $\det(A) \neq 0$, then the column vectors $a_1, \dots, a_n$ of $A$ are linearly independent.
+    \item $\det(A B) = \det(B A)$.
+    \item For every non-zero real number $\lambda$, $\det(\lambda A) = \lambda \det(A)$.
+    \item $\det(A + B) = \det(A) + \det(B)$.
+  \end{enumerate}
+  \exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Properties of the Determinant Mapping (Single Choice)]
+  \label{exc:determinant_properties_linearity_sc}
+  Let $K$ be a field and let $\M_{n \times n}(K)$ be the vector space of $n \times n$ matrices over $K$. Which of the following statements is in general \textbf{false}?
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item A square matrix $A$ over $K$ is invertible if and only if $\det(A) \neq 0$.
+    \item The determinant of an upper triangular matrix depends only on its diagonal entries.
+    \item For every $n \ge 0$, the determinant $\det : \M_{n \times n}(K) \to K$ is a linear map.
+    \item For every $n > 0$, the determinant mapping $\det : \M_{n \times n}(K) \to K$ is surjective.
+  \end{enumerate}
+  \exinfo{This exercise is Single Choice Question 2 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \renewcommand{\thetheorem}{20.c.\arabic{theorem}}
 \setcounter{theorem}{0}
@@ -535,6 +608,55 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
   In each of the three statements, the assertion about columns follows from the one about rows: a column operation on $A$ is the corresponding row operation on $A\transp$, and $\det(A\transp) = \det(A)$ by \cref{thm:det_transpose}.
 \end{proof}
 
+\begin{exercise}[Row Operations and Determinants \faHeart]
+  \label{exc:row_operations_and_determinant_divisibility}
+  \leavevmode
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $K$ be a field, $\lambda \in K$, and $A \in \M_{n \times n}(K)$. Show:
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+      \item If $B$ is obtained from $A$ by multiplying row $i$ by $\lambda$ ($R_i \to \lambda R_i$), then $\det B = \lambda \det A$.
+      \item If $B$ is obtained from $A$ by swapping rows $i$ and $j$ ($R_i \leftrightarrow R_j$), then $\det B = -\det A$.
+      \item If $B$ is obtained from $A$ by adding $\lambda$ times row $i$ to row $j$ ($R_j \to R_j + \lambda R_i$ with $i \neq j$), then $\det B = \det A$.
+    \end{enumerate}
+    \item The numbers $2014, 1484, 3710$, and $6996$ are all divisible by $106$. Show without explicitly computing the numerical value that
+    \[
+    \det \begin{pmatrix}
+      2 & 1 & 3 & 6 \\
+      0 & 4 & 7 & 9 \\
+      1 & 8 & 1 & 9 \\
+      4 & 4 & 0 & 6
+    \end{pmatrix}
+    \]
+    is also divisible by $106$.
+  \end{enumerate}
+  \exhint{\textbf{(a)} These are the fundamental computational rules for determinants under elementary row operations; see \cref{thm:row_operations}. \textbf{(b)} Perform the elementary row operation $R_4 \to 1000 R_1 + 100 R_2 + 10 R_3 + R_4$ to obtain the fourth row $(2014, 1484, 3710, 6996)$, and observe that a common factor in any row can be factored out of the determinant.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Invariance Under Matrix Operations (Single Choice)]
+  \label{exc:invariance_under_matrix_operations_sc}
+  Under which of the following operations does the determinant of a matrix in general \textbf{not} remain unchanged?
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Interchanging two rows.
+    \item Adding a scalar multiple of one row to another row.
+    \item Transposing the matrix.
+    \item Replacing the matrix by a similar matrix.
+  \end{enumerate}
+  \exinfo{This exercise is Single Choice Question 3 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Row Transformations of a $2 \times 2$ Determinant (Multiple Choice)]
+  \label{exc:row_transformations_2x2_mc}
+  Suppose $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4$. Which of the following statements are correct?
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $\det \begin{pmatrix} 2a & 2b \\ 2c & 2d \end{pmatrix} = 8$.
+    \item $\det \begin{pmatrix} a & b \\ c-a & d-b \end{pmatrix} = 4$.
+    \item $\det \begin{pmatrix} a & b \\ c+2a & d+2b \end{pmatrix} = 4$.
+    \item $\det \begin{pmatrix} a & b \\ 3c & 3d \end{pmatrix} = 12$.
+  \end{enumerate}
+  \exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{Determinants of Block Matrices}
 
 Calculating the determinant of a large matrix by expanding all permutations is computationally expensive. Block matrices provide a powerful shortcut. Consider a block matrix $M$ of the form $M = \left(\begin{smallmatrix} A & B \\ 0 & C \end{smallmatrix}\right)$, where $A \in \M_{r \times r}(K)$, $C \in \M_{s \times s}(K)$, and $B \in \M_{r \times s}(K)$.
@@ -567,6 +689,16 @@ Calculating the determinant of a large matrix by expanding all permutations is c
 \begin{exercise}[The Other Block Shape]
   \label{exc:block_lower}
   Show that $\det \left(\begin{smallmatrix} A & 0 \\ B & C \end{smallmatrix}\right) = \det(A) \cdot \det(C)$, where $A \in \M_{r \times r}(K)$, $C \in \M_{s \times s}(K)$, and $B \in \M_{s \times r}(K)$. (Hint: Use column operations to reduce $B$ to zero, or consider the transpose of the matrix and apply \cref{prop:block_matrix}.)
+\end{exercise}
+
+\begin{exercise}[Determinant of a Block Matrix with Commuting Blocks]
+  \label{exc:block_matrix_commuting_blocks}
+  Let $K$ be a field and let $A, B, C, D \in \M_{n \times n}(K)$. Assume that $A$ and $C$ commute ($A C = C A$) and that $\det A \neq 0$. Show that
+  \[
+  \det \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \det(A D - C B).
+  \]
+  \exhint{Multiply the given block matrix from the left by $\begin{pmatrix} I_n & 0 \\ -C & A \end{pmatrix}$. Use the block matrix determinant formula $\det \begin{pmatrix} X & 0 \\ Y & Z \end{pmatrix} = \det(X) \det(Z)$ and the multiplicativity of the determinant, together with the commutativity relation $A C = C A$, to conclude.}
+  \exinfo{This exercise is Problem 9 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 \begin{example}[Calculation of a $4 \times 4$ Determinant]
@@ -602,7 +734,53 @@ Calculating the determinant of a large matrix by expanding all permutations is c
   \]
 \end{example}
 
+\begin{exercise}[Determinant Computation via Gaussian Elimination]
+  \label{exc:determinants_via_gaussian_elimination}
+  Compute the determinants of the following matrices:
+  \[
+  A = \begin{pmatrix}
+    0 & 1 & 0 & 0 \\
+    -1 & 0 & 1 & 0 \\
+    1 & 2 & -3 & 1 \\
+    0 & -4 & 2 & -1
+  \end{pmatrix}, \quad
+  B = \begin{pmatrix}
+    0 & 0 & 0 & 0 & 1 \\
+    -1 & 2 & 0 & 0 & 1 \\
+    0 & 1 & 0 & -1 & 0 \\
+    0 & 0 & -1 & 0 & 1 \\
+    0 & 0 & 0 & 1 & 0
+  \end{pmatrix},
+  \]
+  \[
+  C = \begin{pmatrix}
+    2 & -3 & 5 & 1 & 4 \\
+    2 & -3 & 1 & -6 & 18 \\
+    4 & -3 & 9 & 6 & 10 \\
+    -2 & 4 & -6 & -1 & -1 \\
+    -6 & 11 & -23 & -14 & 9
+  \end{pmatrix}.
+  \]
+  \exhint{Use elementary row operations (Gaussian elimination) to reduce each matrix to triangular form, keeping track of any row swaps and row scalings.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
+\begin{exercise}[The Vandermonde Determinant \faHeart]
+  \label{exc:vandermonde_determinant}
+  Let $n \ge 2$ and let $x_1, \dots, x_n \in K$. Show that
+  \[
+  \det \begin{pmatrix}
+    1 & x_1 & x_1^2 & \cdots & x_1^{n-1} \\
+    1 & x_2 & x_2^2 & \cdots & x_2^{n-1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & x_n & x_n^2 & \cdots & x_n^{n-1}
+  \end{pmatrix}
+  = \prod_{1 \le i < j \le n} (x_j - x_i).
+  \]
+  \textit{Remark.} Products of this form are called \emph{Vandermonde determinants}, and the matrix is known as the \emph{Vandermonde matrix}.
+  \exhint{Use induction on $n$. Subtract the first row from each of the subsequent rows, factor out $(x_i - x_1)$ from the $i$-th row for each $i \ge 2$, and use the identity $x_i^m - x_1^m = (x_i - x_1) \sum_{k=0}^{m-1} x_i^k x_1^{m-1-k}$ along with column operations to reduce the remaining $(n-1) \times (n-1)$ determinant to the Vandermonde determinant of order $n-1$.}
+  \exinfo{This exercise is Problem 8 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \subsection{Cofactor Expansion and the Classical Adjoint}
 
@@ -615,6 +793,56 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
   \det(A) = \sum_{i=1}^n (-1)^{i+j} A_{ij} \det A(i|j), \quad \text{for any } j = 1, \dots, n.
   \]
 \end{corollary}
+
+\begin{exercise}[Determinant of a $5 \times 5$ Matrix via Laplace Expansion]
+  \label{exc:determinant_5x5_laplace}
+  Compute the determinant of the matrix
+  \[
+  B = \begin{pmatrix}
+    1 & 1 & 1 & 1 & 1 \\
+    0 & 0 & 0 & 2 & 3 \\
+    0 & 0 & 2 & 3 & 0 \\
+    0 & 2 & 3 & 0 & 0 \\
+    2 & 3 & 0 & 0 & 0
+  \end{pmatrix}
+  \]
+  over the field $\mathbb{R}$ and over the finite field $\mathbb{F}_5$. Is $B$ invertible over each of these fields?
+  \exhint{Compute the determinant using Laplace expansion, for instance along rows or columns containing many zero entries.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Determinant of a Tridiagonal Toeplitz Matrix \faHeart]
+  \label{exc:tridiagonal_toeplitz_determinant}
+  Let $A_n \in \M_{n \times n}(\mathbb{R})$ be the tridiagonal matrix
+  \[
+  A_n = \begin{pmatrix}
+    2 & 1 & 0 & \cdots & 0 \\
+    1 & 2 & 1 & \cdots & 0 \\
+    0 & 1 & 2 & \cdots & 0 \\
+    \vdots & \vdots & \ddots & \ddots & \vdots \\
+    0 & 0 & \cdots & 1 & 2
+  \end{pmatrix}.
+  \]
+  Prove that $\det(A_n) = n+1$ for all $n \ge 1$.
+  \exhint{Use induction on $n$. Expand the determinant along the first row (or column) to establish the recurrence relation $\det(A_n) = 2 \det(A_{n-1}) - \det(A_{n-2})$. Since this relates $\det(A_n)$ to two preceding terms, verify two base cases ($n=1$ and $n=2$).}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Parameter for Determinant Value (Single Choice)]
+  \label{exc:parameter_for_3x3_determinant_sc}
+  For which $x \in \mathbb{R}$ does the identity
+  \[
+  \det \begin{pmatrix} 1 & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{pmatrix} = 1
+  \]
+  hold?
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $x = -2$
+    \item $x = 2$
+    \item $x = -1$
+    \item $x = 1$
+  \end{enumerate}
+  \exinfo{This exercise is Single Choice Question 1 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \newterm{$i,j$ cofactor} of $A$. We can succinctly write the expansion of $\det(A)$ by the cofactors of the $j$-th column as $\det(A) = \sum_{i=1}^n A_{ij} \cdot C_{ij}$.
 
@@ -664,6 +892,22 @@ using $(\adj A)_{ji} = C_{ij}$ from the Definition on \cpageref{def:classical_ad
   This perfectly matches $(\adj A)_{ji}$, which is exactly $((\adj A)\transp)_{ij}$. Thus, $\adj A\transp = (\adj A)\transp$.
   Applying \eqref{eq:adj_property_right} to the matrix $A\transp$ gives $(\adj A\transp) \cdot A\transp = (\det A\transp) \cdot I$. Using our transpose identities, this becomes $(\adj A)\transp \cdot A\transp = (\det A) \cdot I$. Taking the transpose of both sides finally yields $A \cdot (\adj A) = (\det A) \cdot I$.
 \end{proof}
+
+\begin{exercise}[Properties of the $2 \times 2$ Adjugate Matrix]
+  \label{exc:properties_2x2_adjugate}
+  Let $K$ be a field. For a $2 \times 2$ matrix $A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix} \in \M_{2 \times 2}(K)$, the adjugate of $A$ is defined by
+  \[
+  \adj A = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}.
+  \]
+  Let $\det$ be the unique determinant function on $\M_{2 \times 2}(K)$. Show:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $(\adj A) A = A (\adj A) = (\det A) I_2$;
+    \item $\det(\adj A) = \det(A)$;
+    \item $\adj(A\transp) = (\adj A)\transp$.
+  \end{enumerate}
+  \exhint{Perform direct algebraic calculations using the explicit entries of $A$ and $\adj A$.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \begin{theorem}[Inverse via Adjugate]
   \label{thm:inverse_adjoint}
