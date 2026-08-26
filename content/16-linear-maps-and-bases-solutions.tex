@@ -1,0 +1,186 @@
+\section{Solutions}\label{sec:solutions_linear_maps_and_bases}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:properties_coordinate_maps_mc}]
+\label{sol:properties_coordinate_maps_mc}
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{Statement (1) is TRUE:}
+    By \cref{prop:coordinate_map_isomorphism}, for any choice of basis $\mathcal{B}$, the coordinate assignment map $\Phi_{\mathcal{B}} \colon V \to \mathbb{R}^n, v \mapsto [v]_{\mathcal{B}}$ is an isomorphism of vector spaces, and hence is linear.
+
+    \item \textbf{Statement (2) is FALSE:}
+    Consider the projection onto the $x$-axis $f \colon \mathbb{R}^2 \to \mathbb{R}^2$ given by $f(x, y) = (x, 0)$.
+    Then $\ker(f) = \{(0, y) \mid y \in \mathbb{R}\} = \Sp(e_2)$ and $\Img(f) = \{(x, 0) \mid x \in \mathbb{R}\} = \Sp(e_1)$.
+    The intersection $\ker(f) \cap \Img(f) = \{(0, 0)\}$ contains no non-zero vectors.
+
+    \item \textbf{Statement (3) is TRUE:}
+    For a linear endomorphism $f \colon \mathbb{R}^n \to \mathbb{R}^n$ between finite-dimensional spaces of the same dimension, having $\ker(f) = \{0\}$ is equivalent to injectivity, which by \cref{cor:equal_dim_iso} \textbf{(c)} is equivalent to bijectivity (invertibility).
+\end{enumerate}
+Thus statements \textbf{(1)} and \textbf{(3)} are true, while statement \textbf{(2)} is false.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:geometric_interpretation_matrix_mc}]
+\label{sol:geometric_interpretation_matrix_mc}
+We are given $M = [f]_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$. By definition, the $j$-th column of $M$ contains the coordinate vector with respect to $\mathcal{B}$ of the image of the $j$-th vector of $\mathcal{A}$.
+
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{TRUE:} When $\mathcal{A} = \mathcal{B} = (e_1, e_2)$, $f(e_1) = 0 e_1 + 1 e_2 = e_2$ and $f(e_2) = -1 e_1 + 0 e_2 = -e_1$. In matrix coordinates, $f(x, y) = (-y, x)$, which is counterclockwise rotation by $\pi/2$.
+    \item \textbf{TRUE:} Let $\mathcal{A} = (e_1, e_2)$ and $\mathcal{B} = (b_1, b_2) = (e_2, -e_1)$.
+    Then $[f(e_1)]_{\mathcal{B}} = \binom{0}{1} \implies f(e_1) = b_2 = -e_1$, and $[f(e_2)]_{\mathcal{B}} = \binom{-1}{0} \implies f(e_2) = -b_1 = -e_2$.
+    Hence $f(v) = -v$ for all $v \in \mathbb{R}^2$, which is point reflection across the origin.
+    \item \textbf{TRUE:} If $\mathcal{A} = (e_1, e_2)$ and $f = \id$, then $[e_1]_{\mathcal{B}} = \binom{0}{1} \implies b_2 = e_1$ and $[e_2]_{\mathcal{B}} = \binom{-1}{0} \implies -b_1 = e_2 \implies b_1 = -e_2$.
+    Thus $\mathcal{B} = (b_1, b_2) = (-e_2, e_1)$.
+    \item \textbf{TRUE:} Let $\mathcal{B} = (e_1, e_2)$ and let $f$ be reflection across the $y$-axis ($f(x, y) = (-x, y)$).
+    For $\mathcal{A} = (a_1, a_2)$, $[f(a_1)]_{\mathcal{B}} = \binom{0}{1} = e_2 \implies f(a_1) = e_2 \implies a_1 = f^{-1}(e_2) = e_2$.
+    $[f(a_2)]_{\mathcal{B}} = \binom{-1}{0} = -e_1 \implies f(a_2) = -e_1 \implies a_2 = f^{-1}(-e_1) = e_1$.
+    Thus $\mathcal{A} = (e_2, e_1)$.
+\end{enumerate}
+All four statements are true.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:complex_multiplication_real_linear_map_sc}]
+\label{sol:complex_multiplication_real_linear_map_sc}
+Consider the linear map $T \colon \mathbb{C} \to \mathbb{C}$ given by $T(z) = iz$.
+Using the ordered basis $\mathcal{B} = (1, i)$:
+\begin{align*}
+T(1) &= i \cdot 1 = 0 \cdot 1 + 1 \cdot i \implies [T(1)]_{\mathcal{B}} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \\
+T(i) &= i \cdot i = -1 = -1 \cdot 1 + 0 \cdot i \implies [T(i)]_{\mathcal{B}} = \begin{pmatrix} -1 \\ 0 \end{pmatrix}.
+\end{align*}
+Forming the matrix whose columns are these coordinate vectors:
+\[
+[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
+\]
+Therefore, the correct choice is \textbf{(4): $z \mapsto iz$}.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:polynomial_differential_operator_matrix}]
+\label{sol:polynomial_differential_operator_matrix}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Linearity:}
+    Let $p, q \in \mathbb{R}[X]_n$ and $\alpha, \beta \in \mathbb{R}$. Using the linearity of the standard derivative operators:
+    \begin{align*}
+    F(\alpha p + \beta q) &= (\alpha p + \beta q)'' + (\alpha p + \beta q)' \\
+    &= (\alpha p'' + \beta q'') + (\alpha p' + \beta q') \\
+    &= \alpha (p'' + p') + \beta (q'' + q') = \alpha F(p) + \beta F(q).
+    \end{align*}
+    Thus $F$ is a linear operator.
+
+    \item \textbf{Representation Matrix $[F]_{\mathcal{B}}^{\mathcal{B}}$:}
+    Let $\mathcal{B} = (1, X, X^2, \dots, X^n)$. Evaluate $F$ on each basis element $X^k$ ($0 \le k \le n$):
+    \begin{itemize}
+        \item For $k = 0$: $F(1) = 1'' + 1' = 0 + 0 = 0$.
+        \item For $k = 1$: $F(X) = X'' + X' = 0 + 1 = 1$.
+        \item For $k \ge 2$: $F(X^k) = (X^k)'' + (X^k)' = k(k-1)X^{k-2} + kX^{k-1}$.
+    \end{itemize}
+    The $k$-th column (indexed from $0$ to $n$) of $[F]_{\mathcal{B}}^{\mathcal{B}} \in \M_{(n+1) \times (n+1)}(\mathbb{R})$ is therefore:
+    \[
+    [F]_{\mathcal{B}}^{\mathcal{B}} =
+    \begin{pmatrix}
+    0 & 1 & 2 & 0 & 0 & \dots & 0 \\
+    0 & 0 & 2 & 6 & 0 & \dots & 0 \\
+    0 & 0 & 0 & 3 & 12 & \dots & 0 \\
+    0 & 0 & 0 & 0 & 4 & \dots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & n(n-1) \\
+    0 & 0 & 0 & 0 & 0 & \dots & n \\
+    0 & 0 & 0 & 0 & 0 & \dots & 0
+    \end{pmatrix}.
+    \]
+    Explicitly, the entry in row $i$ and column $j$ (where $0 \le i, j \le n$) is given by:
+    \[
+    A_{ij} = \begin{cases}
+    j & \text{if } i = j - 1, \\
+    j(j-1) & \text{if } i = j - 2, \\
+    0 & \text{otherwise.}
+    \end{cases}
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:differentiation_customized_bases}]
+\label{sol:differentiation_customized_bases}
+Let $\mathcal{C} = (1, x, x^2)$ be the standard monomial basis of $\mathbb{R}[x]_2$.
+We seek a basis $\mathcal{B} = (b_0, b_1, b_2, b_3)$ of $\mathbb{R}[x]_3$ such that $[D(b_j)]_{\mathcal{C}}$ matches column $j$ of the given matrix:
+\[
+[D]_{\mathcal{C}}^{\mathcal{B}} =
+\begin{pmatrix}
+0 & 1 & -1 & -1 \\
+0 & 0 & 2 & -1 \\
+0 & 0 & 0 & 3
+\end{pmatrix}.
+\]
+Translating each column into a polynomial condition $b'_j(x) = D(b_j)(x)$:
+\begin{itemize}
+    \item \textbf{Column 0:} $b'_0(x) = 0 \implies b_0(x) = 1$.
+    \item \textbf{Column 1:} $b'_1(x) = 1 \cdot 1 + 0 \cdot x + 0 \cdot x^2 = 1 \implies b_1(x) = x$.
+    \item \textbf{Column 2:} $b'_2(x) = -1 \cdot 1 + 2 \cdot x + 0 \cdot x^2 = 2x - 1 \implies b_2(x) = x^2 - x$.
+    \item \textbf{Column 3:} $b'_3(x) = -1 \cdot 1 - 1 \cdot x + 3 \cdot x^2 = 3x^2 - x - 1 \implies b_3(x) = x^3 - \frac{1}{2}x^2 - x$.
+\end{itemize}
+Since $\deg(b_j) = j$ for each $j \in \{0, 1, 2, 3\}$, the polynomials $(b_0, b_1, b_2, b_3)$ have strictly increasing degrees, hence form a basis $\mathcal{B}$ of $\mathbb{R}[x]_3$.
+Thus, an explicit choice of bases is:
+\[
+\mathcal{B} = \left(1, \; x, \; x^2 - x, \; x^3 - \frac{1}{2}x^2 - x\right), \qquad \mathcal{C} = (1, \; x, \; x^2).
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:change_of_bases_composition}]
+\label{sol:change_of_bases_composition}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Basis Verification:}
+    \begin{itemize}
+        \item For $\mathcal{A} \subseteq \mathbb{R}^4$: Form the matrix with columns $a_1, a_2, a_3, a_4$:
+        \begin{align*}
+        \det \begin{pmatrix} 1 & 1 & 1 & 2 \\ 0 & 4 & 1 & 0 \\ 1 & 2 & 1 & 3 \\ 0 & 2 & 1 & 0 \end{pmatrix}
+        &= \det \begin{pmatrix} 1 & 1 & 1 & 2 \\ 0 & 2 & 0 & 0 \\ 1 & 2 & 1 & 3 \\ 0 & 2 & 1 & 0 \end{pmatrix} \quad (R_2 \to R_2 - R_4) \\
+        &= 2 \cdot (-1)^{2+2} \det \begin{pmatrix} 1 & 1 & 2 \\ 1 & 1 & 3 \\ 0 & 1 & 0 \end{pmatrix} \\
+        &= 2 \cdot (-1) \cdot (3 - 2) = -2 \ne 0.
+        \end{align*}
+        Since $\det \ne 0$, $\mathcal{A}$ is a basis of $\mathbb{R}^4$.
+        \item For $\mathcal{C} \subseteq \mathbb{R}^3$:
+        \[
+        \det \begin{pmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 4 & 1 & 2 \end{pmatrix}
+        = 1(0 - 1) - 2(6 - 4) + 1(3 - 0) = -1 - 4 + 3 = -2 \ne 0.
+        \]
+        Thus $\mathcal{C}$ is a basis of $\mathbb{R}^3$.
+    \end{itemize}
+
+    \item \textbf{Formula for $g \circ f$:}
+    \begin{align*}
+    (g \circ f)\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix}
+    &= g\begin{pmatrix} x_1 + 2x_2 + x_3 \\ x_1 - x_4 \end{pmatrix} \\
+    &= \begin{pmatrix} (x_1 + 2x_2 + x_3) + (x_1 - x_4) \\ (x_1 + 2x_2 + x_3) - (x_1 - x_4) \\ 3(x_1 + 2x_2 + x_3) \end{pmatrix}
+    = \begin{pmatrix} 2x_1 + 2x_2 + x_3 - x_4 \\ 2x_2 + x_3 + x_4 \\ 3x_1 + 6x_2 + 3x_3 \end{pmatrix}.
+    \end{align*}
+
+    \item \textbf{Representation Matrices:}
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item Since $\mathcal{B} = (e_1, e_2)$ is the standard basis of $\mathbb{R}^2$:
+        \begin{align*}
+        f(a_1) &= \begin{pmatrix} 2 \\ 1 \end{pmatrix}, \quad f(a_2) = \begin{pmatrix} 11 \\ -1 \end{pmatrix}, \quad f(a_3) = \begin{pmatrix} 4 \\ 0 \end{pmatrix}, \quad f(a_4) = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \\
+        &\implies [f]_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 2 & 11 & 4 & 5 \\ 1 & -1 & 0 & 2 \end{pmatrix}.
+        \end{align*}
+
+        \item For $[g]_{\mathcal{C}}^{\mathcal{B}}$: Compute $g(e_1) = \begin{pmatrix} 1 \\ 1 \\ 3 \end{pmatrix}$ and $g(e_2) = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}$.
+        Solving $\begin{pmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 4 & 1 & 2 \end{pmatrix} [\alpha]_{\mathcal{C}} = g(e_i)$ yields:
+        \[
+        [g(e_1)]_{\mathcal{C}} = \begin{pmatrix} -1 \\ -1 \\ 4 \end{pmatrix}, \qquad [g(e_2)]_{\mathcal{C}} = \begin{pmatrix} -1 \\ 0 \\ 2 \end{pmatrix}
+        \implies [g]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} -1 & -1 \\ -1 & 0 \\ 4 & 2 \end{pmatrix}.
+        \]
+
+        \item Multiplying the matrices:
+        \begin{align*}
+        [g \circ f]_{\mathcal{C}}^{\mathcal{A}} &= [g]_{\mathcal{C}}^{\mathcal{B}} [f]_{\mathcal{B}}^{\mathcal{A}}
+        = \begin{pmatrix} -1 & -1 \\ -1 & 0 \\ 4 & 2 \end{pmatrix} \begin{pmatrix} 2 & 11 & 4 & 5 \\ 1 & -1 & 0 & 2 \end{pmatrix} \\
+        &= \begin{pmatrix}
+        -3 & -10 & -4 & -7 \\
+        -2 & -11 & -4 & -5 \\
+        10 & 42 & 16 & 24
+        \end{pmatrix}.
+        \end{align*}
+        Direct evaluation confirms $(g \circ f)(a_1) = \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix} = -3 c_1 - 2 c_2 + 10 c_3$, matching the first column.
+    \end{enumerate}
+\end{enumerate}
+\end{exercisesolution}
