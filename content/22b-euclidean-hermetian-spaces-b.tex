@@ -159,6 +159,28 @@ Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we ha
   \exinfo{This exercise is Problem 4 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
+\begin{exercise}[Best Approximation Theorem \faHeart]
+  \label{exc:best_approximation_subspace}
+  Let $V$ be an inner product space, let $U \subseteq V$ be a finite-dimensional subspace, and let $P_U \colon V \to U$ denote the orthogonal projection onto $U$. Let $v \in V$. Show that for every $u \in U$,
+  \[
+  \|v - P_U(v)\| \le \|v - u\|,
+  \]
+  with equality if and only if $u = P_U(v)$. Thus, $P_U(v)$ is the unique point in $U$ closest to $v$.
+  \exhint{Write $v - u = (v - P_U(v)) + (P_U(v) - u)$. Note that $P_U(v) - u \in U$, while $v - P_U(v) \in U^\perp$ by \cref{prop:orthogonal_projection_properties}(c). Since $(v - P_U(v)) \perp (P_U(v) - u)$, apply Pythagoras' theorem (\cref{thm:pythagoras}) to obtain $\|v - u\|^2 = \|v - P_U(v)\|^2 + \|P_U(v) - u\|^2 \ge \|v - P_U(v)\|^2$, with equality if and only if $\|P_U(v) - u\|^2 = 0 \iff u = P_U(v)$.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Least-Squares Polynomial Approximation of \texorpdfstring{$\sin(x)$}{sin(x)}]
+  \label{exc:least_squares_polynomial_sine}
+  Find a polynomial $p \in \mathbb{R}[x]$ of degree at most $5$ that minimizes the mean squared error
+  \[
+  \int_{-\pi}^\pi |\sin(x) - p(x)|^2 \, dx.
+  \]
+  \exhint{Equip $V = C[-\pi, \pi]$ with the scalar product $\langle f, g \rangle = \int_{-\pi}^\pi f(x) g(x) \, dx$. By the Best Approximation Theorem (\cref{exc:best_approximation_subspace}), the minimizing polynomial is precisely the orthogonal projection $p = P_U(\sin x)$ onto the subspace $U = \mathbb{R}_{\le 5}[x]$.
+  Since $\sin(x)$ is an odd function, $\langle \sin x, x^{2k} \rangle = 0$ for all $k \ge 0$, so $p(x)$ is an odd polynomial $p(x) = c_1 x + c_3 x^3 + c_5 x^5$. Apply Gram-Schmidt to the odd basis $(x, x^3, x^5)$ (or set up the $3 \times 3$ normal equations $\langle p, x^k \rangle = \langle \sin x, x^k \rangle$ for $k = 1, 3, 5$) to compute the coefficients $c_1, c_3, c_5$.}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % Cor. (22.b.6)
 \begin{corollary}[Bidual Orthogonal Complement]
 \label{cor:bidual_orthogonal_complement}

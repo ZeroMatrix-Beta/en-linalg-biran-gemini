@@ -78,6 +78,21 @@ The statements about the linearity of $\Phi$ are left as an exercise.
   \exinfo{This exercise is Problem 6 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
+\begin{exercise}[Failure of Riesz Representation in Infinite Dimensions]
+  \label{exc:riesz_failure_infinite_dimensions}
+  Let $V = C[-1, 1]$ be the vector space of real continuous functions equipped with the inner product $\langle f, g \rangle := \int_{-1}^1 f(x) g(x) \, dx$. Consider the linear functional
+  \[
+  \varphi \colon V \longrightarrow \mathbb{R}, \qquad f \longmapsto f(0).
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Show that there does not exist any function $g \in V$ such that $\varphi(f) = \langle f, g \rangle$ for all $f \in V$.
+    \item Explain why this does not contradict \cref{thm:dual_space_inner_product_isomorphism}.
+  \end{enumerate}
+  \exhint{(a) Suppose such a continuous $g \in C[-1, 1]$ exists. For each $n \in \mathbb{N}$, consider the continuous tent functions $f_n(x) = \max\{0, 1 - n|x|\}$. Then $\varphi(f_n) = f_n(0) = 1$, but $\langle f_n, g \rangle = \int_{-1/n}^{1/n} f_n(x) g(x) \, dx \to 0$ as $n \to \infty$ because $|g(x)| \le M$ is bounded. This yields $1 = 0$, a contradiction.
+  (b) \Cref{thm:dual_space_inner_product_isomorphism} assumes that $\dim V < \infty$, whereas $C[-1, 1]$ is infinite-dimensional.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % The notes give \qt{The adjoint map} a heading of its own, but they go on
 % numbering the results under it 23.a.2, 23.a.3, ..., and the source folder has
 % no 23.b at all: this is not a new lettered part of the chapter. Hence a
@@ -252,6 +267,25 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
 % Extractor: Gemini 3.1 Pro
 \end{enumerate}
 \end{proof}
+
+\begin{exercise}[Combinatorial Gradient, Adjoint Divergence, and Graph Laplacian]
+  \label{exc:graph_laplacian_adjoint}
+  Let $G = (V, E)$ be a finite directed graph with vertices $V$ and directed edges $E \subseteq \{(v_{\text{init}}, v_{\text{term}}) \in V \times V \mid v_{\text{init}} \neq v_{\text{term}}\}$. Consider the real function spaces $\mathbb{R}^V = \{f \colon V \to \mathbb{R}\}$ and $\mathbb{R}^E = \{\varphi \colon E \to \mathbb{R}\}$ equipped with the standard inner products
+  \[
+  \langle f_1, f_2 \rangle_V := \sum_{v \in V} f_1(v) f_2(v), \qquad \langle \varphi_1, \varphi_2 \rangle_E := \sum_{e \in E} \varphi_1(e) \varphi_2(e).
+  \]
+  Define the \newterm{combinatorial derivative} (gradient) $T \colon \mathbb{R}^V \to \mathbb{R}^E$ by $(Tf)(e) := f(v_{\text{term}}) - f(v_{\text{init}})$ for $e = (v_{\text{init}}, v_{\text{term}})$, and define $S \colon \mathbb{R}^E \to \mathbb{R}^V$ by
+  \[
+  (S\varphi)(v) := \sum_{\substack{v_{\text{init}} \in V \\ (v_{\text{init}}, v) \in E}} \varphi(v_{\text{init}}, v) - \sum_{\substack{v_{\text{term}} \in V \\ (v, v_{\text{term}}) \in E}} \varphi(v, v_{\text{term}}).
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Show that $T^* = S$, and compute the composite $\Delta := T^* \circ T = S \circ T \colon \mathbb{R}^V \to \mathbb{R}^V$ (the \newterm{combinatorial Laplace operator} of $G$).
+    \item Assume that $G$ is undirected (i.e., $(v, w) \in E \iff (w, v) \in E$) and $d$-regular (each vertex has degree $d$). Show that $\Delta = T^* T$ has eigenvalue $0$, and explain why the geometric multiplicity $m_g(0)$ equals the number of connected components of $G$.
+  \end{enumerate}
+  \exhint{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
+  (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \subsection*{Matrix representation of adjoint maps}
 

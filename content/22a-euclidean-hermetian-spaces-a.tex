@@ -179,6 +179,34 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \end{enumerate}
 \end{definition}
 
+\begin{exercise}[Properties of the Adjoint Matrix]
+  \label{exc:properties_adjoint_matrix_rules}
+  Let $K \in \{\mathbb{R}, \mathbb{C}\}$, $A, B \in \M_{n \times m}(K)$, and $C \in \M_{m \times p}(K)$. Prove the following fundamental algebraic properties of the adjoint matrix operation $M \mapsto M^* = \overline{M}\transp$:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item $(A + B)^* = A^* + B^*$.
+    \item $(\lambda A)^* = \overline{\lambda} A^*$ for all $\lambda \in K$.
+    \item $(A^*)^* = A$.
+    \item $I_n^* = I_n$.
+    \item $(A \cdot C)^* = C^* \cdot A^*$.
+  \end{enumerate}
+  \exhint{Compute the $(i, j)$-entry for each side of the equations. For part (e), the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Hermitian Matrices, Trace, and Subspaces]
+  \label{exc:hermitian_trace_subspaces_sc}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item For which complex numbers $x \in \mathbb{C}$ is the matrix $A = \begin{pmatrix} x & -x \\ x & x \end{pmatrix}$ unitary?
+    \item Determine which of the following subsets of $\M_{n \times n}(\mathbb{C})$ form $\mathbb{C}$-linear subspaces:
+    the unitary matrices, the self-adjoint (Hermitian) matrices, the symmetric matrices, and the normal matrices.
+    \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. Prove that $\Tr(A) \in \mathbb{R}$ and $\det(A) \in \mathbb{R}$.
+  \end{enumerate}
+  \exhint{(a) Compute $A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
+  (b) The symmetric matrices form a $\mathbb{C}$-subspace because $(A + \alpha B)\transp = A\transp + \alpha B\transp = A + \alpha B$ for all $\alpha \in \mathbb{C}$. The Hermitian matrices do not form a $\mathbb{C}$-subspace, because $(i A)^* = -i A^* = -i A \ne i A$ for $A \ne 0$.
+  (c) Since $A^* = A$, we have $\overline{\Tr(A)} = \Tr(\overline{A}) = \Tr(\overline{A}\transp) = \Tr(A^*) = \Tr(A)$, so $\Tr(A) \in \mathbb{R}$. Similarly, $\overline{\det(A)} = \det(\overline{A}) = \det(\overline{A}\transp) = \det(A^*) = \det(A)$, so $\det(A) \in \mathbb{R}$.}
+  \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \noindent\textbf{Important example.} Let $A \in \M_{n \times n}(\mathbb{R})$. Define $\langle \cdot, \cdot \rangle_A : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ by
 \[
     \langle v, w \rangle_A = v\transp \cdot A \cdot w.
@@ -626,6 +654,21 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
   Let $V$ be a finite-dimensional Euclidean vector space and let $S \subseteq V$ be an orthonormal system. Show that $S$ can be extended to an orthonormal basis of $V$.
   \exhint{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
+\begin{exercise}[Gram-Schmidt on Polynomials and Upper Triangular Derivative \faHeart]
+  \label{exc:gram_schmidt_polynomials_derivative}
+  Let $K = \mathbb{R}$, and consider the inner product on $V = \mathbb{R}_{\le 2}[x]$ defined by
+  \[
+  \langle p, q \rangle := \int_0^1 p(x) q(x) \, dx.
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Apply the Gram-Schmidt orthogonalization process to the standard monomial basis $(1, x, x^2)$ to obtain an orthonormal basis $\mathcal{C} = (u_1, u_2, u_3)$ of $\mathbb{R}_{\le 2}[x]$.
+    \item Find an orthonormal basis of $\mathbb{R}_{\le 2}[x]$ such that the representation matrix of the derivative operator $D \colon \mathbb{R}_{\le 2}[x] \to \mathbb{R}_{\le 2}[x]$, $p \mapsto p'$, is an upper triangular matrix.
+  \end{enumerate}
+  \exhint{(a) Starting with $b_1 = 1$, we have $\|b_1\|^2 = \int_0^1 1 \, dx = 1$, so $u_1 = 1$. Next, $v_2 = x - \langle x, u_1 \rangle u_1 = x - 1/2$, and $\|v_2\|^2 = 1/12$, so $u_2 = \sqrt{3}(2x - 1)$. Finally, $v_3 = x^2 - \langle x^2, u_1 \rangle u_1 - \langle x^2, u_2 \rangle u_2 = x^2 - x + 1/6$, with $\|v_3\|^2 = 1/180$, so $u_3 = \sqrt{5}(6x^2 - 6x + 1)$.
+  (b) The basis $\mathcal{C} = (u_1, u_2, u_3)$ obtained in part (a) already satisfies $\deg(u_k) = k-1$. Since differentiation lowers the polynomial degree, $D(u_1) = 0$, $D(u_2) \in \Sp(u_1)$, and $D(u_3) \in \Sp(u_1, u_2)$, so the representation matrix $[D]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \end{exercise}
 
 Geometric idea behind the Gram-Schmidt process.
