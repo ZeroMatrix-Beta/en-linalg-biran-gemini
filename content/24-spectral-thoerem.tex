@@ -146,6 +146,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
   \exhint{For (a) and (b), recall that $\|Av\|^2 = v\transp (A\transp A) v$ and $\ker(A\transp A) = \ker(A)$.
   For (c), since $A$ is symmetric, we have $\langle Av_1, v_2 \rangle = (Av_1)\transp v_2 = v_1\transp A\transp v_2 = v_1\transp A v_2 = \langle v_1, Av_2 \rangle$. Evaluating both sides using $Av_1 = \lambda_1 v_1$ and $Av_2 = \lambda_2 v_2$ gives $\lambda_1 \langle v_1, v_2 \rangle = \lambda_2 \langle v_1, v_2 \rangle \iff (\lambda_1 - \lambda_2) \langle v_1, v_2 \rangle = 0$. Since $\lambda_1 \ne \lambda_2$, it follows that $\langle v_1, v_2 \rangle = 0$, so $v_1 \perp v_2$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:symmetric_matrix_orthogonal_eigenvectors}
 \end{exercise}
 
 % Creator: Opus 5
@@ -238,6 +239,7 @@ We can continue this process by induction, and show that for all $1 \leq k < n$ 
 \label{exc:gram_schmidt_keeps_triangular}
 This is the step marked \qt{exc.: check this} in the proof above. Let $\mathcal{C} := (u_1, \dots, u_n)$ be a basis for $V$ with $[T]_{\mathcal{C}}^{\mathcal{C}}$ upper triangular, and let $\mathcal{B} := (v_1, \dots, v_n)$ be the orthonormal basis produced from it by Gram-Schmidt. Show that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is again upper triangular. (Prof. Biran's hint: the point is that $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k)$ for all $1 \leq k \leq n$.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:gram_schmidt_keeps_triangular}
 \end{exercise}
 
 \begin{exercise}[Spectral Decomposition into Orthogonal Projections \faHeart]
@@ -254,6 +256,7 @@ This is the step marked \qt{exc.: check this} in the proof above. Let $\mathcal{
   \exhint{(a) By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = \gEig_T(\lambda_1) \oplus \dots \oplus \gEig_T(\lambda_k)$, where $\lambda_1, \dots, \lambda_k$ are the distinct eigenvalues of $T$. By \cref{lem:properties_normal_endo}(d), the eigenspaces $W_j := \gEig_T(\lambda_j)$ are mutually orthogonal. For any $v = w_1 + \dots + w_k$ with $w_j \in W_j$, we have $P_{W_j}(v) = w_j$ and $T(v) = \sum_{j=1}^k \lambda_j w_j = \sum_{j=1}^k \lambda_j P_{W_j}(v)$.
   (b) Let $v, w \in V$. Decompose $v = u_1 + u_1^\perp$ and $w = u_2 + u_2^\perp$ with $u_1, u_2 \in U$ and $u_1^\perp, u_2^\perp \in U^\perp$. Then $\langle P_U(v), w \rangle = \langle u_1, u_2 + u_2^\perp \rangle = \langle u_1, u_2 \rangle = \langle u_1 + u_1^\perp, u_2 \rangle = \langle v, P_U(w) \rangle$, proving $P_U^* = P_U$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:spectral_decomposition_projections}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -306,6 +309,7 @@ Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} 
 \label{exc:self_adjoint_matrix_criterion}
 Show that $T \colon V \to V$ is self adjoint if and only if for every orthonormal basis $\mathcal{B}$ of $V$, the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:self_adjoint_matrix_criterion}
 \end{exercise}
 
 \begin{exercise}[Self-Adjointness and Non-Orthonormal Bases]
@@ -318,6 +322,7 @@ Show that $T \colon V \to V$ is self adjoint if and only if for every orthonorma
   \exhint{(a) Compute $\langle T(1), x \rangle = \langle 0, x \rangle = 0$, but $\langle 1, T(x) \rangle = \langle 1, x \rangle = \int_0^1 x \, dx = 1/2 \ne 0$. Thus $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, so $T^* \ne T$.
   (b) \Cref{exc:self_adjoint_matrix_criterion} and \cref{prop:matrix_representation_adjoint} state that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^*$ holds if and only if the basis $\mathcal{B}$ is \emph{orthonormal}. The standard monomial basis $(1, x, x^2)$ is not orthogonal (e.g. $\langle 1, x \rangle = 1/2 \ne 0$), so the symmetry of $[T]_{\mathcal{B}}^{\mathcal{B}}$ does not imply that $T$ is self-adjoint.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:self_adjoint_non_orthonormal_basis}
 \end{exercise}
 
 % Thm. (24.a.9)
@@ -380,6 +385,7 @@ The forward direction was proven in \cref{lem:real_orth_diag_is_self_adj}. For t
   (b) $\Delta^* = (-D^2)^* = -(D^*)^2 = -(-D)^2 = -D^2 = \Delta$.
   (c) Compute $\Delta(\cos(nx)) = n^2 \cos(nx)$ and $\Delta(\sin(nx)) = n^2 \sin(nx)$. The orthonormal basis is $\{1\} \cup \{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx) \mid n \ge 1\}$. The eigenvalue $\lambda_0 = 0$ has multiplicity $1$ (spanned by $1$), and for each $n \ge 1$, the eigenvalue $\lambda_n = n^2$ has multiplicity $2$ (spanned by $\{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx)\}$).}
   \exinfo{This exercise is Problem 6 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:differential_operators_fourier}
 \end{exercise}
 
 \subsection{Spectral Theorems for Matrices}
@@ -405,6 +411,7 @@ There exist symmetric matrices in $\M_{n \times n}(\mathbb{C})$ that are not nor
 \label{exc:symmetric_not_normal}
 Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* A$}: verify for $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$ that the two products really do differ.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:symmetric_not_normal}
 \end{exercise}
 
 \begin{exercise}[Algebra of Self-Adjoint and Normal Matrices]
@@ -429,6 +436,7 @@ Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* 
   (iv) False (if $Av = \lambda v$, then $p(A)v = p(\lambda)v$, so $p(\lambda)$ is the eigenvalue, not $\lambda$).
   (v) True ($p(A)v = p(\lambda)v$).}
   \exinfo{This exercise compiles the Multiple Choice problems from Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:algebra_self_adjoint_normal_mc}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -460,7 +468,8 @@ None of the four is hard, and each rests on a result already available. Points \
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_spectral_theorems}
 
-\begin{exercisesolution}[Proof of \cref{exc:gram_schmidt_keeps_triangular}]~\\
+\begin{exercisesolution}[Proof of \cref{exc:gram_schmidt_keeps_triangular}]
+\label{sol:gram_schmidt_keeps_triangular}~\\
 Let $\mathcal{C} := (u_1, \dots, u_n)$ be a basis for $V$ such that the representation matrix $[T]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular. This means that for any $1 \leq k \leq n$, the vector $T(u_k)$ is a linear combination of $u_1, \dots, u_k$. In other words, $T(u_k) \in \Sp(u_1, \dots, u_k)$. Consequently, the subspace $W_k := \Sp(u_1, \dots, u_k)$ is $T$-invariant, meaning $T(W_k) \subseteq W_k$.
 
 Applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$ produces an orthonormal basis $\mathcal{B} := (v_1, \dots, v_n)$ with the property that for every $1 \leq k \leq n$, the spans are preserved: $\Sp(v_1, \dots, v_k) = \Sp(u_1, \dots, u_k) = W_k$. 
@@ -468,7 +477,8 @@ Applying the Gram-Schmidt orthogonalization process to the basis $\mathcal{C}$ p
 Now, consider the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$. The $k$-th column of this matrix consists of the coordinates of $T(v_k)$ with respect to the basis $\mathcal{B}$. Since $v_k \in W_k$ and $W_k$ is $T$-invariant, we must have $T(v_k) \in W_k = \Sp(v_1, \dots, v_k)$. This means $T(v_k)$ can be written strictly as a linear combination of $v_1, \dots, v_k$, meaning all coefficients for vectors $v_j$ with $j > k$ are exactly zero. Therefore, $[T]_{\mathcal{B}}^{\mathcal{B}}$ is an upper triangular matrix.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Proof of \cref{exc:self_adjoint_matrix_criterion}] ~\\
+\begin{exercisesolution}[Proof of \cref{exc:self_adjoint_matrix_criterion}]
+\label{sol:self_adjoint_matrix_criterion} ~\\
 Let $T \in \End(V)$.
 First, suppose $T$ is self adjoint, so $T = T^*$. Let $\mathcal{B}$ be an arbitrary orthonormal basis for $V$. By the properties of representation matrices for adjoint maps in orthonormal bases (\cref{prop:matrix_representation_adjoint}), we have $[T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$. Since $T = T^*$, we substitute to get $[T]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^*$, which means the matrix $[T]_{\mathcal{B}}^{\mathcal{B}}$ is self adjoint.
 
@@ -477,6 +487,7 @@ Conversely, suppose that for any orthonormal basis $\mathcal{B}$ of $V$, the mat
 
 % Creator: Opus 5
 \begin{exercisesolution}[Solution of \cref{exc:symmetric_not_normal}]
+\label{sol:symmetric_not_normal}
 With $A = \left(\begin{smallmatrix} i & i \\ i & 1 \end{smallmatrix}\right)$ we have $A^* = \overline{A}\transp = \left(\begin{smallmatrix} -i & -i \\ -i & 1 \end{smallmatrix}\right)$, and, using $i \cdot (-i) = -i^2 = 1$ throughout,
 \[
     A \cdot A^* = \begin{pmatrix} i & i \\ i & 1 \end{pmatrix} \begin{pmatrix} -i & -i \\ -i & 1 \end{pmatrix} = \begin{pmatrix} 1 + 1 & 1 + i \\ 1 - i & 1 + 1 \end{pmatrix} = \begin{pmatrix} 2 & 1+i \\ 1-i & 2 \end{pmatrix},
@@ -492,6 +503,7 @@ The example is not an accident: over $\mathbb{C}$ it is $A^* = A$, and not $A\tr
 % Creator: Gemini 3.1 Pro
 
 \begin{exercisesolution}[Proof of \cref{thm:spectral_thm_matrices}]
+\label{sol:spectral_thm_matrices}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a normal matrix. By point \textbf{(a)} of the proof sketch above, the linear map $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ is a normal endomorphism with respect to the standard inner product. By the Spectral Theorem over $\mathbb{C}$ (\cref{thm:spectral_thm_c}), $T_A$ is orthogonally diagonalizable. Thus, there exists an orthonormal basis $\mathcal{B} := (v_1, \dots, v_n)$ for $\mathbb{C}^n$ consisting of eigenvectors of $T_A$. 
     
@@ -513,6 +525,8 @@ The example is not an accident: over $\mathbb{C}$ it is $A^* = A$, and not $A\tr
     Thus, $O^{-1} A O$ is diagonal.
 \end{enumerate}
 \end{exercisesolution}
+
+\input{content/24-spectral-thoerem-solutions.tex}
 % Creator: Opus 5
 \begin{ainote}
 The rigour pass found nothing false in this chapter, and one thing genuinely
@@ -564,3 +578,5 @@ chain $D = [\id]_{\mathcal{B}}^{\mathcal{E}_n} \cdot A \cdot
 [\id]_{\mathcal{E}_n}^{\mathcal{B}}$ composes correctly in the house convention,
 with the source basis on top throughout.
 \end{ainote}
+
+

@@ -1,0 +1,163 @@
+﻿% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:dual_space_inner_product_isometry}]
+\label{sol:dual_space_inner_product_isometry}
+Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector space, and $\delta \colon V \to V^*$, $v \mapsto \langle v, \cdot \rangle$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Existence and uniqueness of dual scalar product:}
+    Since $\dim V < \infty$, the Riesz representation map $\delta \colon V \to V^*$ is a linear isomorphism by \cref{thm:dual_space_inner_product_isomorphism}.
+    For $\delta$ to be an isometry, any such scalar product $\langle \cdot, \cdot \rangle^*$ on $V^*$ must satisfy:
+    \[
+    \langle \varphi, \psi \rangle^* = \langle \delta(\delta^{-1}(\varphi)), \delta(\delta^{-1}(\psi)) \rangle^* = \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle \qquad \forall \varphi, \psi \in V^*.
+    \]
+    This proves uniqueness. We check that $\langle \varphi, \psi \rangle^* := \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle$ satisfies the scalar product axioms:
+    \begin{itemize}
+        \item \emph{Bilinearity:} For $\varphi_1, \varphi_2, \psi \in V^*$ and $\alpha \in \mathbb{R}$:
+        \begin{align*}
+        \langle \varphi_1 + \alpha \varphi_2, \psi \rangle^* &= \langle \delta^{-1}(\varphi_1 + \alpha \varphi_2), \delta^{-1}(\psi) \rangle = \langle \delta^{-1}(\varphi_1) + \alpha \delta^{-1}(\varphi_2), \delta^{-1}(\psi) \rangle \\
+        &= \langle \delta^{-1}(\varphi_1), \delta^{-1}(\psi) \rangle + \alpha \langle \delta^{-1}(\varphi_2), \delta^{-1}(\psi) \rangle = \langle \varphi_1, \psi \rangle^* + \alpha \langle \varphi_2, \psi \rangle^*.
+        \end{align*}
+        \item \emph{Symmetry:} $\langle \varphi, \psi \rangle^* = \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle = \langle \delta^{-1}(\psi), \delta^{-1}(\varphi) \rangle = \langle \psi, \varphi \rangle^*$.
+        \item \emph{Positivity:} $\langle \varphi, \varphi \rangle^* = \langle \delta^{-1}(\varphi), \delta^{-1}(\varphi) \rangle \ge 0$, with equality if and only if $\delta^{-1}(\varphi) = 0 \iff \varphi = 0$.
+    \end{itemize}
+
+    \item \textbf{Matrix representation in the dual basis:}
+    Let $\mathcal{B} = (v_1, \dots, v_n)$ with Gram matrix $G = (\langle v_i, v_j \rangle)_{i,j=1}^n$.
+    For the dual basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$, let $u_i := \delta^{-1}(v_i^*) \in V$, so $\langle u_i, v_j \rangle = v_i^*(v_j) = \delta_{ij}$.
+    Expanding $u_i = \sum_{k=1}^n c_{ik} v_k$, the relation becomes $\sum_{k=1}^n c_{ik} \langle v_k, v_j \rangle = \delta_{ij}$, which in matrix form reads $C G = I_n$, so $C = G^{-1}$.
+    Then:
+    \[
+    \langle v_i^*, v_j^* \rangle^* = \langle u_i, u_j \rangle = \left\langle \sum_{k=1}^n (G^{-1})_{ik} v_k, \sum_{\ell=1}^n (G^{-1})_{j\ell} v_\ell \right\rangle = \sum_{k,\ell=1}^n (G^{-1})_{ik} G_{k\ell} (G^{-1})_{j\ell} = (G^{-1})_{ij}.
+    \]
+    Thus $[\langle \cdot, \cdot \rangle^*]_{\mathcal{B}^*} = G^{-1}$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:riesz_failure_infinite_dimensions}]
+\label{sol:riesz_failure_infinite_dimensions}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Suppose there exists a continuous function $g \in C[-1, 1]$ such that $\varphi(f) = \int_{-1}^1 f(x) g(x) \, dx = f(0)$ for all $f \in C[-1, 1]$.
+    Since $g$ is continuous on the compact interval $[-1, 1]$, it is bounded: $|g(x)| \le M$ for all $x \in [-1, 1]$ for some constant $M > 0$.
+    For each $n \in \mathbb{N}$, consider the continuous function:
+    \[
+    f_n(x) := \max\{0, 1 - n|x|\} \in C[-1, 1].
+    \]
+    We have $\varphi(f_n) = f_n(0) = 1$.
+    On the other hand, the support of $f_n$ is $[-1/n, 1/n]$, and $0 \le f_n(x) \le 1$, so:
+    \[
+    |\langle f_n, g \rangle| = \left| \int_{-1/n}^{1/n} f_n(x) g(x) \, dx \right| \le \int_{-1/n}^{1/n} |f_n(x)| \cdot |g(x)| \, dx \le M \int_{-1/n}^{1/n} 1 \, dx = \frac{2M}{n}.
+    \]
+    Taking the limit as $n \to \infty$:
+    \[
+    1 = \lim_{n \to \infty} \varphi(f_n) = \lim_{n \to \infty} \langle f_n, g \rangle = 0,
+    \]
+    which is a contradiction. Hence no such $g \in C[-1, 1]$ exists.
+
+    \item This does not contradict \cref{thm:dual_space_inner_product_isomorphism} because that theorem requires the vector space $V$ to be finite-dimensional, whereas $C[-1, 1]$ is infinite-dimensional. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:adjoint_existence_finite_dim}]
+\label{sol:adjoint_existence_finite_dim}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Existence and uniqueness of $f^*$ when $\dim V < \infty$:}
+    For each fixed $w \in W$, define the functional $\psi_w \colon V \to \mathbb{R}$ by $\psi_w(v) := \langle f(v), w \rangle_W$.
+    Since $f$ and $\langle \cdot, w \rangle_W$ are linear, $\psi_w \in V^*$.
+    Because $\dim V < \infty$, the Riesz representation theorem (\cref{thm:dual_space_inner_product_isomorphism}) guarantees that there is a unique vector in $V$, which we denote by $f^*(w)$, such that:
+    \[
+    \psi_w(v) = \langle v, f^*(w) \rangle_V \qquad \forall v \in V.
+    \]
+    This defines the mapping $f^* \colon W \to V$.
+    To prove linearity of $f^*$, let $w_1, w_2 \in W$ and $\alpha \in \mathbb{R}$. For all $v \in V$:
+    \begin{align*}
+    \langle v, f^*(w_1 + \alpha w_2) \rangle_V &= \langle f(v), w_1 + \alpha w_2 \rangle_W = \langle f(v), w_1 \rangle_W + \alpha \langle f(v), w_2 \rangle_W \\
+    &= \langle v, f^*(w_1) \rangle_V + \alpha \langle v, f^*(w_2) \rangle_V = \langle v, f^*(w_1) + \alpha f^*(w_2) \rangle_V.
+    \end{align*}
+    By non-degeneracy of the scalar product on $V$, $f^*(w_1 + \alpha w_2) = f^*(w_1) + \alpha f^*(w_2)$, so $f^*$ is linear.
+
+    \item \textbf{Counterexample when $\dim W < \infty$ and $\dim V = \infty$:}
+    Let $V = \mathbb{R}^{(\mathbb{N})}$ be the space of real sequences $(a_i)_{i=1}^\infty$ with only finitely many non-zero terms, equipped with $\langle a, b \rangle = \sum_{i=1}^\infty a_i b_i$, and let $W = \mathbb{R}$ with standard multiplication as inner product.
+    Define $f \colon V \to \mathbb{R}$ by $f(a) := \sum_{i=1}^\infty a_i$.
+    If $f^*$ existed, $f^*(1)$ would be a sequence $c = (c_i)_{i=1}^\infty \in V$ satisfying:
+    \[
+    \langle a, c \rangle = f(a) \cdot 1 = \sum_{i=1}^\infty a_i \qquad \forall a \in V.
+    \]
+    Testing with the standard basis vectors $a = e_k = (\delta_{ki})_{i=1}^\infty \in V$ gives $c_k = \langle e_k, c \rangle = f(e_k) = 1$ for all $k \in \mathbb{N}$.
+    Thus $c = (1, 1, 1, \dots)$, which has infinitely many non-zero entries and hence does not belong to $V$. Thus no adjoint $f^*$ exists. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:graph_laplacian_adjoint}]
+\label{sol:graph_laplacian_adjoint}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Adjoint computation $T^* = S$ and Laplacian:}
+    Let $f \in \mathbb{R}^V$ and $\varphi \in \mathbb{R}^E$. We compute:
+    \begin{align*}
+    \langle Tf, \varphi \rangle_E &= \sum_{e \in E} (Tf)(e) \varphi(e) = \sum_{(v_{\text{init}}, v_{\text{term}}) \in E} \big(f(v_{\text{term}}) - f(v_{\text{init}})\big) \varphi(v_{\text{init}}, v_{\text{term}}) \\
+    &= \sum_{(v_{\text{init}}, v) \in E} f(v) \varphi(v_{\text{init}}, v) - \sum_{(v, v_{\text{term}}) \in E} f(v) \varphi(v, v_{\text{term}}) \\
+    &= \sum_{v \in V} f(v) \left( \sum_{(v_{\text{init}}, v) \in E} \varphi(v_{\text{init}}, v) - \sum_{(v, v_{\text{term}}) \in E} \varphi(v, v_{\text{term}}) \right) \\
+    &= \sum_{v \in V} f(v) (S\varphi)(v) = \langle f, S\varphi \rangle_V.
+    \end{align*}
+    Thus $T^* = S$, so $\Delta = T^* \circ T = S \circ T$.
+    Evaluating on $f \in \mathbb{R}^V$ at $v \in V$:
+    \begin{align*}
+    (\Delta f)(v) &= \sum_{(v_{\text{init}}, v) \in E} (f(v) - f(v_{\text{init}})) - \sum_{(v, v_{\text{term}}) \in E} (f(v_{\text{term}}) - f(v)) \\
+    &= \operatorname{deg}_{\text{in}}(v) f(v) + \operatorname{deg}_{\text{out}}(v) f(v) - \sum_{(u, v) \in E} f(u) - \sum_{(v, w) \in E} f(w).
+    \end{align*}
+
+    \item \textbf{Kernel and connected components:}
+    Since $\Delta = T^* T$, for any $f \in \mathbb{R}^V$:
+    \[
+    \langle \Delta f, f \rangle_V = \langle T^* T f, f \rangle_V = \langle Tf, Tf \rangle_E = \|Tf\|_E^2.
+    \]
+    Thus $\Delta f = 0 \iff \|Tf\|_E = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$.
+    This means that $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$.
+    If $G$ has $k$ connected components $C_1, \dots, C_k$, a basis of $\ker(\Delta)$ is given by the indicator functions $(\mathbf{1}_{C_1}, \dots, \mathbf{1}_{C_k})$.
+    Therefore, $\dim\ker(\Delta) = m_g(\Delta; 0) = k$, the number of connected components. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:invariant_subspaces_adjoint}]
+\label{sol:invariant_subspaces_adjoint}
+Let $V$ be a finite-dimensional inner product space, $T \in \End(V)$, and $U \subseteq V$ a subspace.
+\begin{itemize}
+    \item \emph{($\Rightarrow$):} Suppose $U$ is $T$-invariant, meaning $T(U) \subseteq U$.
+    Let $w \in U^\perp$. We must show that $T^*(w) \in U^\perp$, i.e., $\langle u, T^*(w) \rangle = 0$ for all $u \in U$.
+    By the definition of the adjoint map:
+    \[
+    \langle u, T^*(w) \rangle = \langle T(u), w \rangle.
+    \]
+    Since $u \in U$ and $U$ is $T$-invariant, $T(u) \in U$.
+    Since $w \in U^\perp$, we have $\langle T(u), w \rangle = 0$.
+    Thus $\langle u, T^*(w) \rangle = 0$ for all $u \in U$, which proves $T^*(w) \in U^\perp$. Hence $U^\perp$ is $T^*$-invariant.
+
+    \item \emph{($\Leftarrow$):} Suppose $U^\perp$ is $T^*$-invariant.
+    Applying the forward implication to the endomorphism $T^*$ and the subspace $U^\perp$, we deduce that $(U^\perp)^\perp$ is $(T^*)^*$-invariant.
+    Since $\dim V < \infty$, \cref{cor:bidual_orthogonal_complement} gives $(U^\perp)^\perp = U$, and by \cref{lem:properties_adjoint_map} \textbf{(b)}, $(T^*)^* = T$.
+    Hence $U$ is $T$-invariant. \qedhere
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:cancellation_adjoint_composite}]
+\label{sol:cancellation_adjoint_composite}
+Let $h := g_1 - g_2 \in \End(V)$.
+The given condition $f^* \circ f \circ g_1 = f^* \circ f \circ g_2$ can be rewritten as:
+\[
+f^* \circ f \circ (g_1 - g_2) = (f^* \circ f \circ h) = 0.
+\]
+For every vector $v \in V$, we therefore have $(f^* \circ f)(h(v)) = 0$.
+Taking the inner product with $h(v)$:
+\[
+0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2.
+\]
+By the positivity axiom of the inner product, $\|f(h(v))\| = 0$ implies $f(h(v)) = 0$.
+Since this holds for every $v \in V$, we conclude that $f \circ h = 0$.
+Expanding $h = g_1 - g_2$:
+\[
+f \circ (g_1 - g_2) = 0 \implies f \circ g_1 = f \circ g_2. \qedhere
+\]
+\end{exercisesolution}

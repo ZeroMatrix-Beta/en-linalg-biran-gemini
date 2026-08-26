@@ -149,6 +149,7 @@ This is left as an exercise, see \cref{exc:orth_unitary_matrix_rep}.
 \label{exc:orth_unitary_matrix_rep}
 This is the step Prof. Biran marks with \qt{Exc.} in the proof of \cref{prop:orth_unitary_matrix_rep}. Let $\mathcal{B}$ be an orthonormal basis for $V$ and let $T \in \End(V)$. Show that $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Unit(n)$). (The point is that $\mathcal{B}$ is orthonormal, so that \cref{prop:matrix_representation_adjoint} applies and turns the adjoint map $T^*$ into the conjugate transpose of the representation matrix.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:orth_unitary_matrix_rep}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -205,6 +206,7 @@ This is left as an exercise, see \cref{exc:group_properties}.
 \label{exc:group_properties}
 This is the claim Prof. Biran circles with \qt{Exc.} Prove the three statements of \cref{prop:group_properties} for each of $\Orth(n)$, $\SOrth(n)$, $\Unit(n)$, and $\SUnit(n)$. Together with the associativity of matrix multiplication, they say precisely that each of these four sets is a group, and hence a subgroup of $\GL_n(\mathbb{R})$ resp. $\GL_n(\mathbb{C})$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:group_properties}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -438,6 +440,7 @@ which is a diagonal matrix carrying $-1$ on its diagonal. Since $A$ and $[T_A]_{
 \label{exc:why_only_real_eigenvalue}
 Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{(b)} with a \qt{why?}. Justify it: for $A \in \SOrth(3)$, show that $-1$ is not an eigenvalue of $A$ if and only if $1$ is the only real eigenvalue of $A$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:why_only_real_eigenvalue}
 \end{exercise}
 
 \begin{exercise}[3D Rotation Matrix, Axis, and Angle]
@@ -454,6 +457,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
   (b) The rotation axis corresponds to the eigenspace $\Eig_A(1) = \ker(A - I_3)$. Solving $(A - I_3)v = 0$ gives $\Eig_A(1) = \Sp\big((-3, 1, -1)\transp\big)$, so the normalized axis vector is $v_1 = \frac{1}{\sqrt{11}}(-3, 1, -1)\transp$ (or its negative).
   By \cref{prop:classification_so3}, $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, so $\Tr(A) = 1 + 2\cos\theta$. From the matrix, $\Tr(A) = \frac{1}{3}(2 - 2 - 2) = -\frac{2}{3}$. Thus $1 + 2\cos\theta = -\frac{2}{3} \implies \cos\theta = -\frac{5}{6}$, giving $\theta = \arccos(-5/6) \approx 146.44^\circ$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:rotation_matrix_axis_angle}
 \end{exercise}
 
 \begin{exercise}[Trace of an Orthogonal Endomorphism]
@@ -466,6 +470,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
   \exhint{Let $\mathcal{B}$ be an orthonormal basis of $V$. Then $A := [f]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$. By the real classification of isometries (or passing to $\mathbb{C}$), the eigenvalues of $A$ are complex numbers $\lambda_j$ with $|\lambda_j| = 1$. Thus $|\Tr(f)| = |\sum_{j=1}^n \lambda_j| \le \sum_{j=1}^n |\lambda_j| = n$ by the triangle inequality.
   Equality $|\Tr(f)| = n$ holds if and only if all eigenvalues $\lambda_j$ lie on the same ray in $\mathbb{C}$ and have modulus $1$, which forces $\lambda_1 = \dots = \lambda_n = 1$ (so $f = \id_V$) or $\lambda_1 = \dots = \lambda_n = -1$ (so $f = -\id_V$).}
   \exinfo{This exercise is Problem 5 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:trace_orthogonal_endomorphism}
 \end{exercise}
 
 \begin{exercise}[\texorpdfstring{$\SOrth(3)$}{SO(3)} Rotations Mapping Two-Dimensional Subspaces]
@@ -474,6 +479,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
   \exhint{First consider $E_1 = E_2 = \Sp(e_1, e_2)$. Since $T \in \SOrth(3)$ preserves orthogonal complements, $T(\Sp(e_3)) = \Sp(e_3)$, so $T(e_3) = \pm e_3$. If $T(e_3) = e_3$, then $T|_{E_1} \in \SOrth(2)$ is a 2D rotation $R_\theta$. If $T(e_3) = -e_3$, $\det(T) = 1$ forces $\det(T|_{E_1}) = -1$, so $T|_{E_1}$ is a reflection in $E_1$.
   For general $E_1, E_2$, choose rotations $M_1, M_2 \in \SOrth(3)$ mapping $\Sp(e_1, e_2)$ to $E_1$ and $E_2$ respectively. Then all rotations taking $E_1$ to $E_2$ are of the form $T = M_2 \circ D \circ M_1^{-1}$, where $D \in \SOrth(3)$ stabilizes $\Sp(e_1, e_2)$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:so3_rotations_subspaces}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -505,6 +511,7 @@ where $\theta = (\theta' + \pi) \pmod{2\pi}$.
 \label{sec:solutions_isometries}
 
 \begin{exercisesolution}[Proof of \cref{prop:orth_unitary_matrix_rep}]
+\label{sol:orth_unitary_matrix_rep}
 Let $\mathcal{B} = (e_1, \dots, e_n)$ be an orthonormal basis for $V$. 
 First, suppose $T$ is an orthogonal (resp. unitary) endomorphism. By \cref{thm:isometry_equivalences}, $T \circ T^* = \id_V$ and $T^* \circ T = \id_V$. 
 Taking the representation matrix with respect to $\mathcal{B}$, we have:
@@ -518,6 +525,7 @@ Substituting this back yields $[T^*]_{\mathcal{B}}^{\mathcal{B}} \cdot [T]_{\mat
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:group_properties}]
+\label{sol:group_properties}
 We will prove this generically for $G = \Unit(n)$ and $G = \SUnit(n)$ (the real cases are identical, replacing the conjugate transpose $^*$ with the transpose $\transp$).
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The identity matrix $I_n$ satisfies $I_n^* \cdot I_n = I_n \cdot I_n = I_n$, so $I_n \in \Unit(n)$. Furthermore, $\det(I_n) = 1$, so $I_n \in \SUnit(n)$.
@@ -532,6 +540,7 @@ We will prove this generically for $G = \Unit(n)$ and $G = \SUnit(n)$ (the real 
 
 % Creator: Opus 5
 \begin{exercisesolution}[Proof of \cref{exc:why_only_real_eigenvalue}]
+\label{sol:why_only_real_eigenvalue}
 Let $A \in \SOrth(3)$. Two facts about the real eigenvalues of $A$ are already available. First, $\SOrth(3) \subseteq \Orth(3)$, so by \cref{lem:eigenvalues_orthogonal} every real eigenvalue of $A$ equals $1$ or $-1$. Second, by the first assertion of \cref{prop:classification_so3}, the value $1$ \emph{is} an eigenvalue of $A$. Taken together, the set of real eigenvalues of $A$ is either $\{1\}$ or $\{1, -1\}$, and no other possibility occurs.
 
 Now suppose $-1$ is not an eigenvalue of $A$. Then the set of real eigenvalues cannot be $\{1, -1\}$, so it equals $\{1\}$, which says exactly that $1$ is the only real eigenvalue of $A$.
@@ -540,6 +549,8 @@ Conversely, suppose $1$ is the only real eigenvalue of $A$. Since $-1$ is a real
 
 Note that the first assertion of \cref{prop:classification_so3} is what makes the equivalence work: without it, an orthogonal matrix could a priori have $-1$ as its only real eigenvalue, and then both conditions would fail simultaneously for the wrong reason.
 \end{exercisesolution}
+
+\input{content/25-isometries-solutions.tex}
 % Creator: Opus 5
 \begin{ainote}
 Two of Prof. Biran's statements were sitting in running prose with nothing to
@@ -588,3 +599,5 @@ in case \textbf{(b)} of \cref{prop:classification_so3} does turn
 $\operatorname{diag}(-1, 1, -1)$ into $\operatorname{diag}(1, -1, -1)$; and
 $-R_{\theta'} = R_{\theta' + \pi}$.
 \end{ainote}
+
+

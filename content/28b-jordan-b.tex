@@ -1,4 +1,4 @@
-% Source: 28.Jordan.b.v01, nineteen pages. This section continues chapter 28,
+﻿% Source: 28.Jordan.b.v01, nineteen pages. This section continues chapter 28,
 % which was opened in 28-jordan-a.tex. Do NOT reset the chapter counter here.
 %
 % Prof. Biran numbers his four preparatory lemmata "Lemma 1" through
@@ -104,6 +104,7 @@ Let $S \colon W \to W$ be an endomorphism and let $\mathcal{U} \subseteq W$ be a
 \]
 which implies $P_S(x) = P_{S_U}(x) \cdot P_N(x)$).
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:char_poly_restriction_divides}
 \end{exercise}
 
 % Lemma 2.
@@ -316,6 +317,7 @@ Prof. Biran collects the following five statements as an exercise. Throughout, $
     \item Let $T \in \End(V)$ and assume that $\lambda \in K$ is the only eigenvalue of $T$ and that $P_T(x)$ splits as a product of linear factors in $K[x]$. Define $N := T - \lambda \id_V$. Then $P_N(x) = (-x)^{\dim V}$ and $N^{\dim V} = 0$.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:nilpotent_properties}
 \end{exercise}
 
 % Cor. (from the exercises)
@@ -521,6 +523,7 @@ Now continue in the same way with the next blocks after $J_{0,m}$, if there are 
 \label{exc:induced_map_nilpotent}
 This is the step Prof. Biran marks with \qt{check!}. Let $N \in \End(V)$ be nilpotent and let $W \subseteq V$ be an $N$-invariant subspace. Show that the induced map $N' \colon V/W \to V/W$, $N'[v] := [Nv]$, is well defined and nilpotent.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:induced_map_nilpotent}
 \end{exercise}
 
 \begin{exercise}[The Modified Family is a Basis]
@@ -531,6 +534,7 @@ This is the step Prof. Biran marks with \qt{Exc.} in the proof above. Show that 
 \]
 are linearly independent, and hence form a basis for $V$. (Prof. Biran's hint: $e_{k+j} = f_{k+j} + (\text{something from } W)$).
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:B3_is_a_basis}
 \end{exercise}
 
 \subsection{Proof of the Uniqueness}
@@ -643,6 +647,7 @@ This holds for all eigenvalues $\lambda$ of $T$, and consequently, $A$ and $A'$ 
 \label{sec:solutions_jordan_b}
 
 \begin{exercisesolution}[Proof of \cref{exc:char_poly_restriction_divides}]
+\label{sol:char_poly_restriction_divides}
 Choose a basis $\mathcal{B} := (u_1, \dots, u_d)$ for $\mathcal{U}$ and extend it to a basis $\mathcal{C} := (u_1, \dots, u_d, w_{d+1}, \dots, w_p)$ for $W$, which is possible by the basis extension theorem.
 
 Because $\mathcal{U}$ is $S$-invariant, each $S u_i$ lies in $\mathcal{U}$, so its coordinate vector with respect to $\mathcal{C}$ has zeroes in the last $p - d$ entries. The first $d$ columns of $[S]_{\mathcal{C}}^{\mathcal{C}}$ therefore have the shape claimed, and consequently
@@ -659,6 +664,7 @@ Hence $P_{S_U}(x)$ divides $P_S(x)$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:nilpotent_properties}]
+\label{sol:nilpotent_properties}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $k$ be the nilpotency index of $N$, so $N^k = 0$ and $N^{k-1} \neq 0$ (with the convention $N^0 = \id_V$). Pick $v$ with $N^{k-1} v \neq 0$ and put $u := N^{k-1} v$. Then $u \neq 0$ and $Nu = N^k v = 0$, so $u$ is an eigenvector for the eigenvalue $0$. Hence $0$ is an eigenvalue of $N$.
 
@@ -685,6 +691,7 @@ Hence $P_{S_U}(x)$ divides $P_S(x)$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:induced_map_nilpotent}]
+\label{sol:induced_map_nilpotent}
 \textbf{Well defined.} Suppose $[v] = [v']$, that is, $v - v' \in W$. Since $W$ is $N$-invariant, $N(v - v') \in W$, and consequently $[Nv] = [Nv']$. So $N'$ does not depend on the representative chosen, and it is clearly linear because $N$ is.
 
 \textbf{Nilpotent.} Let $k$ be such that $N^k = 0$. An easy induction gives $(N')^j [v] = [N^j v]$ for all $j \ge 1$: the case $j = 1$ is the definition, and
@@ -699,6 +706,7 @@ that is, $(N')^k = 0$. So $N'$ is nilpotent, with nilpotency index at most that 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:B3_is_a_basis}]
+\label{sol:B3_is_a_basis}
 Recall that $\mathcal{B}_2 = (e_1, \dots, e_k, f_1, \dots, f_\ell)$ is a basis for $V$, and that $\mathcal{B}_3$ is obtained from it by replacing $f_1, \dots, f_m$ with $e_{k+1}, \dots, e_{k+m}$. Since $\mathcal{B}_3$ has $k + \ell = n$ elements, it is enough to prove linear independence.
 
 The key point is Prof. Biran's hint: for each $1 \le j \le m$ we have
@@ -782,3 +790,5 @@ the characteristic polynomials of the summands back together in
 the observation that $\dim \ker S^k = \dim \ker C^k$ is once again the passage
 from an endomorphism to a representation matrix.
 \end{ainote}
+
+

@@ -1,4 +1,4 @@
-﻿% Source: 23.dual-spaces-inner-products.a, which numbers from 23.a.1.
+% Source: 23.dual-spaces-inner-products.a, which numbers from 23.a.1.
 \renewcommand{\thetheorem}{23.a.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{22}
@@ -76,6 +76,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
   \exhint{(a) Since $\delta$ is a vector space isomorphism, the isometry requirement forces $\langle \varphi, \psi \rangle^* := \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle$ for all $\varphi, \psi \in V^*$. Check that this formula indeed satisfies all axioms of a scalar product (bilinearity, symmetry, and positivity) using the linearity and injectivity of $\delta^{-1}$.
   (b) The basis change from the dual basis $\mathcal{B}^*$ to the basis $\delta(\mathcal{B}) = (\delta(v_1), \dots, \delta(v_n))$ of $V^*$ is given by the Gram matrix $G$: since $v_i^* = \sum_{k=1}^n (G^{-1})_{ik} \delta(v_k)$, it follows that the representation matrix of $\langle \cdot, \cdot \rangle^*$ with respect to $\mathcal{B}^*$ is $[\langle \cdot, \cdot \rangle^*]_{\mathcal{B}^*} = G^{-1}$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:dual_space_inner_product_isometry}
 \end{exercise}
 
 \begin{exercise}[Failure of Riesz Representation in Infinite Dimensions]
@@ -91,6 +92,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
   \exhint{(a) Suppose such a continuous $g \in C[-1, 1]$ exists. For each $n \in \mathbb{N}$, consider the continuous tent functions $f_n(x) = \max\{0, 1 - n|x|\}$. Then $\varphi(f_n) = f_n(0) = 1$, but $\langle f_n, g \rangle = \int_{-1/n}^{1/n} f_n(x) g(x) \, dx \to 0$ as $n \to \infty$ because $|g(x)| \le M$ is bounded. This yields $1 = 0$, a contradiction.
   (b) \Cref{thm:dual_space_inner_product_isomorphism} assumes that $\dim V < \infty$, whereas $C[-1, 1]$ is infinite-dimensional.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:riesz_failure_infinite_dimensions}
 \end{exercise}
 
 \begin{exercise}[Existence of the Adjoint for Euclidean Homomorphisms]
@@ -106,6 +108,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
   \exhint{(a) For each fixed $w \in W$, the map $\varphi_w \colon V \to \mathbb{R}$ given by $\varphi_w(v) = \langle f(v), w \rangle_W$ is a linear functional on $V$. Since $\dim V < \infty$, the Riesz representation theorem (\cref{thm:dual_space_inner_product_isomorphism}) guarantees a unique vector $v_w \in V$ such that $\varphi_w(v) = \langle v, v_w \rangle_V$. Defining $f^*(w) := v_w$ gives the required map. Show that $f^*$ is linear and unique.
   (b) No. Consider $V = \mathbb{R}^{(\mathbb{N})}$ (the space of real sequences $(a_i)_{i=1}^\infty$ with only finitely many non-zero terms) equipped with the standard $\ell^2$-scalar product $\langle a, b \rangle = \sum_{i=1}^\infty a_i b_i$, and let $W = \mathbb{R}$. Define $f \colon V \to \mathbb{R}$ by $f(a) = \sum_{i=1}^\infty a_i$. If $f^*$ existed, $f^*(1)$ would be a vector $c \in V$ such that $f(a) = \langle a, c \rangle = \sum a_i c_i$. Taking $a = e_k$ gives $c_k = f(e_k) = 1$ for all $k \in \mathbb{N}$, which has infinitely many non-zero entries and thus does not belong to $V$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:adjoint_existence_finite_dim}
 \end{exercise}
 
 % The notes give \qt{The adjoint map} a heading of its own, but they go on
@@ -300,6 +303,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
   \exhint{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
   (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:graph_laplacian_adjoint}
 \end{exercise}
 
 \begin{exercise}[Invariant Subspaces and the Adjoint Map \faHeart]
@@ -308,6 +312,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
   \exhint{Suppose $T(U) \subseteq U$. Let $w \in U^\perp$. We must show $T^*(w) \in U^\perp$, meaning $\langle u, T^*(w) \rangle = 0$ for all $u \in U$. By definition of the adjoint, $\langle u, T^*(w) \rangle = \langle T(u), w \rangle$. Since $T(u) \in U$ and $w \in U^\perp$, this inner product is zero, so $T^*(w) \in U^\perp$.
   Conversely, if $U^\perp$ is $T^*$-invariant, applying the forward direction to $T^*$ and $U^\perp$ gives that $(U^\perp)^\perp$ is $(T^*)^*$-invariant. Since $(U^\perp)^\perp = U$ (using $\dim V < \infty$, \cref{cor:bidual_orthogonal_complement}) and $(T^*)^* = T$, this shows $T(U) \subseteq U$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:invariant_subspaces_adjoint}
 \end{exercise}
 
 \begin{exercise}[Cancellation Property of \texorpdfstring{$f^* \circ f$}{f* f} \faHeart]
@@ -319,6 +324,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
   Prove that $f \circ g_1 = f \circ g_2$.
   \exhint{Let $h := g_1 - g_2 \in \End(V)$. The hypothesis implies $(f^* \circ f \circ h)(v) = 0$ for all $v \in V$. Taking the inner product with $h(v)$ gives $0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2$. By positive definiteness, $\|f(h(v))\| = 0 \implies f(h(v)) = 0$ for all $v \in V$. Hence $f \circ h = 0$, which proves $f \circ g_1 = f \circ g_2$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:cancellation_adjoint_composite}
 \end{exercise}
 
 \subsection*{Matrix representation of adjoint maps}
@@ -387,6 +393,7 @@ This is left as an exercise. (The verification is carried out in the solutions a
 \label{sec:solutions_dual_spaces_inner_products}
 
 \begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]
+\label{sol:linearity_phi_u}
 Let $v_1, v_2 \in V$ and $c \in K$. We have:
 \[
     \varphi_u(v_1 + v_2) = \langle v_1 + v_2, u \rangle = \langle v_1, u \rangle + \langle v_2, u \rangle = \varphi_u(v_1) + \varphi_u(v_2),
@@ -399,6 +406,7 @@ Thus, $\varphi_u$ is a linear map.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{thm:dual_space_inner_product_isomorphism}]
+\label{sol:dual_space_inner_product_isomorphism}
 For $K = \mathbb{R}$, we have $\Phi(u) = \varphi_u$. Then:
 \[
     \Phi(u_1+u_2)(v) = \langle v, u_1+u_2 \rangle = \langle v, u_1 \rangle + \langle v, u_2 \rangle = \Phi(u_1)(v) + \Phi(u_2)(v),
@@ -424,6 +432,7 @@ This last paragraph is also the verification Prof. Biran marks with \qt{check!} 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of Additivity of $T'$ (on \cpageref{exc:additivity_T_prime})]
+\label{sol:additivity_T_prime}
 We have:
 \begin{align*}
     T'(w_1 + w_2) &= (\Phi_V^{-1} \circ T^* \circ \Phi_W)(w_1 + w_2) \\
@@ -435,6 +444,7 @@ We have:
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(c)}]
+\label{sol:properties_adjoint_map_c}
 Let $v \in V$ and $w \in W$. We have:
 \[
     \langle v, (\lambda T)^*(w) \rangle = \langle (\lambda T)(v), w \rangle = \langle \lambda T(v), w \rangle = \lambda \langle T(v), w \rangle = \lambda \langle v, T^*(w) \rangle = \langle v, \overline{\lambda} T^*(w) \rangle.
@@ -443,6 +453,7 @@ This holds for all $v \in V$, so $(\lambda T)^*(w) = \overline{\lambda} T^*(w)$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(e)}]
+\label{sol:properties_adjoint_map_e}
 Let $v, w \in V$. We have:
 \[
     \langle v, (\id_V)^*(w) \rangle = \langle \id_V(v), w \rangle = \langle v, w \rangle.
@@ -451,6 +462,7 @@ This holds for all $v \in V$, so $(\id_V)^*(w) = w = \id_V(w)$. Thus $(\id_V)^* 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:properties_adjoint_matrix}]
+\label{sol:properties_adjoint_matrix}
 These statements follow directly from the properties of matrix transpose and complex conjugation:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\overline{(A+B)}\transp = (\overline{A} + \overline{B})\transp = \overline{A}\transp + \overline{B}\transp$.
@@ -460,6 +472,8 @@ These statements follow directly from the properties of matrix transpose and com
     \item $\overline{(A \cdot C)}\transp = (\overline{A} \cdot \overline{C})\transp = \overline{C}\transp \cdot \overline{A}\transp$.
 \end{enumerate}
 \end{exercisesolution}
+
+\input{content/23a-dual-spaces-inner-products-a-solutions.tex}
 \begin{ainote}
 The source-verification pass had already put this section right: it restored the
 subsection headings the transcription had dropped, corrected the direction of
@@ -485,3 +499,5 @@ references are not circular, and it checks each time that the subspace it feeds
 to \cref{cor:bidual_orthogonal_complement} is finite-di\-men\-sional. That is
 the sort of bookkeeping the pass usually has to add.
 \end{ainote}
+
+

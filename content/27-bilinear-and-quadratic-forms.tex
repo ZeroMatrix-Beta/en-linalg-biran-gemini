@@ -109,6 +109,7 @@ This implies:
 \label{exc:symmetric_matrix_symmetric_form}
 This is the step Prof. Biran marks with \qt{exc.} in the example above. Let $B \in \M_{n \times n}(K)$ with $B\transp = B$, and let $B \colon K^n \times K^n \to K$ be the bilinear form $B(v, w) := v\transp B w$. Show that it is symmetric, that is, $B(v, w) = B(w, v)$ for all $v, w \in K^n$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:symmetric_matrix_symmetric_form}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -161,6 +162,7 @@ Subtracting the two versions of this identity gives $q(v+w) - q(v-w) = 4 B(v, w)
 \label{exc:two_nonzero_four_nonzero}
 This is the question Prof. Biran annotates the Polarization Identity with. Let $K$ be a field in which $2 \neq 0$. Show that then also $4 \neq 0$, so that the divisions by $4$ in part \textbf{(a)} really are legitimate.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:two_nonzero_four_nonzero}
 \end{exercise}
 
 \begin{exercise}[Polarization Identity for Quadratic Forms]
@@ -171,6 +173,7 @@ This is the question Prof. Biran annotates the Polarization Identity with. Let $
   \]
   \exhint{Expand $q_B(v + w) = B(v + w, v + w) = B(v, v) + B(v, w) + B(w, v) + B(w, w)$ using bilinearity. By symmetry, $B(w, v) = B(v, w)$, so $q_B(v + w) = q_B(v) + 2B(v, w) + q_B(w)$. Subtracting $q_B(v) + q_B(w)$ from both sides and dividing by $2$ (which is valid since $\operatorname{char}(K) \neq 2$) gives the result.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:polarization_quadratic_forms_series26}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -271,12 +274,14 @@ The proofs for $\ell$ and $n - (k + \ell)$ are similar.
 \label{exc:scaled_family_is_basis}
 This is the step marked \qt{Exc.} in the proof above. Let $\mathcal{C}'' := (v''_1, \dots, v''_n)$ be a basis for $V$, let $c_1, \dots, c_n \in K \setminus \{0\}$, and put $v_i := c_i v''_i$. Show that $\mathcal{C} := (v_1, \dots, v_n)$ is again a basis for $V$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:scaled_family_is_basis}
 \end{exercise}
 
 \begin{exercise}[Why Symmetry Cannot Be Dropped in \texorpdfstring{\cref{thm:sylvesters_inertia}}{Sylvester's Law of Inertia}]
 \label{exc:sylvester_needs_symmetry}
 Prof. Biran annotates the word \qt{symmetric} in the statement of \cref{thm:sylvesters_inertia} with \qt{explain}. Explain why the hypothesis cannot simply be dropped: show that if $[B]_{\mathcal{C}}$ has the form displayed in the theorem for \emph{some} basis $\mathcal{C}$, then $B$ is necessarily symmetric. (Hint: that displayed matrix is symmetric, and \cref{lem:change_of_basis_bilinear} tells you what happens to it under a change of basis). Then give a bilinear form on $\mathbb{R}^2$ for which the conclusion of the theorem fails.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:sylvester_needs_symmetry}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -329,6 +334,7 @@ since $Q \in \Orth(n)$, so that $Q\transp = Q^{-1}$ by \cref{lem:char_orthogonal
 \label{exc:transition_between_orthonormal_bases}
 This is the step marked \qt{exc.} in the proof above, and it is what makes the whole argument work: it converts the congruence $Q\transp [B]_{\mathcal{D}'} Q$ of \cref{lem:change_of_basis_bilinear} into a similarity, so that eigenvalues are preserved. Let $V$ be a Euclidean space and let $\mathcal{D}, \mathcal{D}'$ be two orthonormal bases for $V$. Show that $[\id_V]_{\mathcal{D}'}^{\mathcal{D}} \in \Orth(n)$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:transition_between_orthonormal_bases}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -381,6 +387,7 @@ This is the step marked \qt{Exc.} in the proof above. With $B$, $V$ and $v_1$ as
 \[ W^{\perp_B} := \{ w \in V \mid B(v_1, w) = 0 \} \]
 is a linear subspace of $V$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:orthogonal_complement_wrt_B}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -492,12 +499,14 @@ The proof of \qt{\textbf{(b)} $\implies$ \textbf{(a)}} follows now by induction.
 \label{exc:shifted_family_is_basis}
 This is the step Prof. Biran marks with \qt{exc.\ show this is a basis. Hint: $w' \in W$} in the proof above. Let $\mathcal{C} := (e_1, \dots, e_n, e_{n+1})$ be a basis for $V$ and let $w' \in W := \Sp(e_1, \dots, e_n)$. Show that $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$ is again a basis for $V$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:shifted_family_is_basis}
 \end{exercise}
 
 \begin{exercise}[The Forward Direction of \texorpdfstring{\cref{thm:sylvesters_criterion}}{Sylvester's Criterion}]
 \label{exc:sylvester_criterion_forward}
 This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove that \textbf{(a)} $\implies$ \textbf{(b)} in \cref{thm:sylvesters_criterion}: if $B$ is positive definite, then the principal minors $\det(B(e_j, e_k))_{j,k = 1, \dots, \ell}$ are positive for $1 \le \ell \le n$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:sylvester_criterion_forward}
 \end{exercise}
 
 \begin{exercise}[Testing Positive Definiteness via Sylvester's Criterion]
@@ -513,6 +522,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
   For $B$: $\Delta_1 = 6 > 0$, $\Delta_2 = 42 - 9 = 33 > 0$, and $\det(B) = 6(56-9) - 3(24-12) + 4(9-28) = 282 - 36 - 76 = 170 > 0$, so $B$ is positive definite.
   For $C$: compute the successive leading principal minors $\Delta_1, \Delta_2, \Delta_3, \Delta_4 > 0$ to verify that $C$ is positive definite.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:sylvester_criterion_matrix_tests}
 \end{exercise}
 
 \begin{exercise}[Equivalent Characterizations of Positive Definiteness \faHeart]
@@ -528,6 +538,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
   (B) $\implies$ (C): By the Spectral Theorem for symmetric matrices (\cref{thm:spectral_thm_matrices}), $A = O D O\transp$ with $O \in \Orth(n)$ and $D = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$ where each $\lambda_i > 0$. Set $\sqrt{D} := \operatorname{diag}(\sqrt{\lambda_1}, \dots, \sqrt{\lambda_n})$ and $S := O \sqrt{D} O\transp$. Then $S\transp = S$, $S^2 = O D O\transp = A$, and $\det(S) = \prod \sqrt{\lambda_i} > 0$, so $S$ is invertible.
   (C) $\implies$ (A): For any $v \ne 0$, $v\transp A v = v\transp S^2 v = v\transp S\transp S v = \|Sv\|^2$. Since $S$ is invertible and $v \ne 0$, $Sv \ne 0$, hence $\|Sv\|^2 > 0$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:positive_definite_equivalent_characterizations}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -537,6 +548,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
 
 % Creator: Opus 5
 \begin{exercisesolution}[Proof of \cref{exc:symmetric_matrix_symmetric_form}]
+\label{sol:symmetric_matrix_symmetric_form}
 Let $v, w \in K^n$. The product $w\transp B v$ is a $1 \times 1$ matrix, that is, a scalar, and therefore, it equals its own transpose. Using this together with $B\transp = B$, we compute
 \[
     B(w, v) = w\transp B v = \left(w\transp B v\right)\transp = v\transp B\transp w = v\transp B w = B(v, w),
@@ -546,10 +558,12 @@ which is precisely the symmetry of the bilinear form.
 
 % Creator: Gemini 3.1 Pro
 \begin{exercisesolution}[Proof of \cref{exc:two_nonzero_four_nonzero}]
+\label{sol:two_nonzero_four_nonzero}
 Assume $2 \neq 0$ in a field $K$. This means $1 + 1 \neq 0$. If $4 = 0$, then $2 + 2 = 0$, which means $2 \cdot 2 = 0$. Since $K$ is a field, it has no zero divisors. Thus, $2 \cdot 2 = 0$ implies $2 = 0$, which contradicts our assumption. Therefore, $4 \neq 0$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:orthogonal_complement_wrt_B}]
+\label{sol:orthogonal_complement_wrt_B}
 Let $w_1, w_2 \in W^{\perp_B}$ and $\alpha, \beta \in K$. We need to show that $\alpha w_1 + \beta w_2 \in W^{\perp_B}$. By definition of $W^{\perp_B}$, we have $B(v_1, w_1) = 0$ and $B(v_1, w_2) = 0$. Using the linearity of $B$ in the second argument, we compute:
 \[
 B(v_1, \alpha w_1 + \beta w_2) = \alpha B(v_1, w_1) + \beta B(v_1, w_2) = \alpha \cdot 0 + \beta \cdot 0 = 0.
@@ -558,11 +572,13 @@ Thus, $\alpha w_1 + \beta w_2 \in W^{\perp_B}$, proving it is a subspace.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:scaled_family_is_basis}]
+\label{sol:scaled_family_is_basis}
 We are given a basis $\mathcal{C}'' := (v''_1, \dots, v''_n)$. The new set $\mathcal{C} := (v_1, \dots, v_n)$ is formed by scaling each vector in $\mathcal{C}''$ by a non-zero scalar $c_i$ (where $c_i = 1/\lambda_i$ or $c_i = 1$). Since scaling basis vectors by non-zero scalars preserves linear independence and the span, $\mathcal{C}$ remains a basis for $V$.
 \end{exercisesolution}
 
 % Creator: Opus 5
 \begin{exercisesolution}[Proof of \cref{exc:sylvester_needs_symmetry}]
+\label{sol:sylvester_needs_symmetry}
 Suppose that $\mathcal{C}$ is a basis for $V$ in which $M := [B]_{\mathcal{C}}$ has the form displayed in \cref{thm:sylvesters_inertia}. That matrix is symmetric, $M\transp = M$. Now let $v, w \in V$ be arbitrary and let $c, d \in \mathbb{R}^n$ be their coordinate vectors with respect to $\mathcal{C}$. By \cref{lem:matrix_rep_bilinear_form}, $B(v, w) = c\transp M d$, and since a $1 \times 1$ matrix equals its own transpose,
 \[
     B(w, v) = d\transp M c = \left(d\transp M c\right)\transp = c\transp M\transp d = c\transp M d = B(v, w).
@@ -575,6 +591,7 @@ which is bilinear with $B(e_1, e_2) = 1$ and $B(e_2, e_1) = -1$, hence not symme
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:transition_between_orthonormal_bases}]
+\label{sol:transition_between_orthonormal_bases}
 Write $\mathcal{D} = (d_1, \dots, d_n)$ and $\mathcal{D}' = (d'_1, \dots, d'_n)$, and put $Q := [\id_V]_{\mathcal{D}'}^{\mathcal{D}}$. By the definition of a transition matrix, column $j$ of $Q$ holds the coordinates of $d_j$ in the basis $\mathcal{D}'$, that is,
 \[ d_j = \sum_{p=1}^n Q_{p,j} \, d'_p \qquad \text{for all } 1 \le j \le n. \]
 Since $\mathcal{D}$ is orthonormal, $\langle d_j, d_k \rangle = \delta_{jk}$, and since $\mathcal{D}'$ is orthonormal, $\langle d'_p, d'_q \rangle = \delta_{pq}$. Expanding by bilinearity,
@@ -586,6 +603,7 @@ Hence $Q\transp Q = I_n$, which is exactly the statement that $Q \in \Orth(n)$. 
 
 % Creator: Gemini 3.1 Pro
 \begin{exercisesolution}[Proof of \cref{exc:shifted_family_is_basis}]
+\label{sol:shifted_family_is_basis}
 We are given the basis $\mathcal{C} = (e_1, \dots, e_n, e_{n+1})$. We define $\mathcal{C}' := (e_1, \dots, e_n, e_{n+1} - w')$, where $w' \in W = \Sp(e_1, \dots, e_n)$. We can write $w' = \sum_{i=1}^n \alpha_i e_i$. 
 Suppose a linear combination of $\mathcal{C}'$ equals zero:
 \[
@@ -595,6 +613,7 @@ Because $\mathcal{C}$ is a basis, all coefficients must be zero. In particular, 
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:sylvester_criterion_forward}]
+\label{sol:sylvester_criterion_forward}
 Assume $B$ is positive definite. Let $\mathcal{C} = (e_1, \dots, e_n)$ be any basis for $V$. For any $1 \le \ell \le n$, consider the subspace $W_\ell := \Sp(e_1, \dots, e_\ell)$. Since $B$ is positive definite on $V$, its restriction $B|_{W_\ell \times W_\ell}$ is also positive definite. The matrix representation of this restriction in the basis $\mathcal{E}_\ell := (e_1, \dots, e_\ell)$ is exactly the $\ell \times \ell$ principal submatrix of $[B]_{\mathcal{C}}$, so it is the $\ell$-th principal minor that we must show is positive.
 
 % Creator: Opus 5
@@ -606,6 +625,8 @@ and taking determinants gives $\det\left[B|_{W_\ell \times W_\ell}\right]_{\math
 
 Note that the basis $\mathcal{C}$ was arbitrary throughout, so what we have actually proved is the stronger implication \textbf{(a)} $\implies$ \textbf{(c)}. Since \textbf{(c)} $\implies$ \textbf{(b)} is immediate, the cycle \textbf{(a)} $\implies$ \textbf{(c)} $\implies$ \textbf{(b)} $\implies$ \textbf{(a)} closes, and all three conditions of \cref{thm:sylvesters_criterion} are equivalent. The notes state the three conditions but only ever discuss the passage between \textbf{(a)} and \textbf{(b)}, leaving \textbf{(c)} unproved; this is what closes that gap.
 \end{exercisesolution}
+
+\input{content/27-bilinear-and-quadratic-forms-solutions.tex}
 % Creator: Opus 5
 \begin{ainote}
 \textbf{Two inverted representation-matrix indices}, the error class this pass
@@ -658,3 +679,5 @@ the defining line reads $B(v, w) := v\transp B w$. Nothing is wrong, and the
 notes do it too, but it is a trap for the eye of the same kind as the $P$ of ch.
 17c; a parenthetical now says which $B$ is which.
 \end{ainote}
+
+

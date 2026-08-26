@@ -1,0 +1,148 @@
+﻿% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:symmetric_matrix_orthogonal_eigenvectors}]
+\label{sol:symmetric_matrix_orthogonal_eigenvectors}
+Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Positive definiteness of $A\transp A$:}
+    For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (Av)\transp (Av) = \|Av\|^2 \ge 0$.
+    Thus $v\transp (A\transp A) v > 0$ for all $v \ne 0 \iff \|Av\| > 0$ for all $v \ne 0 \iff Av \ne 0$ for all $v \ne 0 \iff \ker A = \{0\} \iff A$ is invertible.
+
+    \item \textbf{Rank equality:}
+    We have $\ker(A\transp A) = \ker(A)$ because if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$.
+    By the Rank-Nullity Theorem:
+    \[
+    \operatorname{rank}(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \operatorname{rank}(A).
+    \]
+
+    \item \textbf{Orthogonality of eigenvectors:}
+    Let $Av_1 = \lambda_1 v_1$ and $Av_2 = \lambda_2 v_2$ with $\lambda_1 \ne \lambda_2$.
+    Using symmetry of $A$:
+    \[
+    \langle Av_1, v_2 \rangle = (Av_1)\transp v_2 = v_1\transp A\transp v_2 = v_1\transp A v_2 = \langle v_1, Av_2 \rangle.
+    \]
+    Substituting the eigenvalue equations gives:
+    \[
+    \lambda_1 \langle v_1, v_2 \rangle = \lambda_2 \langle v_1, v_2 \rangle \implies (\lambda_1 - \lambda_2) \langle v_1, v_2 \rangle = 0.
+    \]
+    Since $\lambda_1 \ne \lambda_2$, we must have $\langle v_1, v_2 \rangle = 0$, so $v_1 \perp v_2$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:spectral_decomposition_projections}]
+\label{sol:spectral_decomposition_projections}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Spectral decomposition:}
+    Let $T \in \End(V)$ be a normal operator on a finite-dimensional unitary space $V$.
+    By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = W_1 \oplus \dots \oplus W_k$, where $W_j := \gEig_T(\lambda_j)$ are the distinct eigenspaces of $T$ corresponding to distinct eigenvalues $\lambda_1, \dots, \lambda_k \in \mathbb{C}$.
+    By \cref{lem:properties_normal_endo} \textbf{(d)}, the eigenspaces $W_j$ are mutually orthogonal: $W_i \perp W_j$ for $i \ne j$.
+    Therefore, every $v \in V$ decomposes uniquely as $v = \sum_{j=1}^k w_j$ with $w_j = P_{W_j}(v) \in W_j$.
+    Applying $T$:
+    \[
+    T(v) = \sum_{j=1}^k T(w_j) = \sum_{j=1}^k \lambda_j w_j = \sum_{j=1}^k \lambda_j P_{W_j}(v).
+    \]
+    Since this holds for all $v \in V$, we obtain the spectral resolution $T = \sum_{j=1}^k \lambda_j P_{W_j}$.
+
+    \item \textbf{Self-adjointness of orthogonal projections:}
+    Let $U \subseteq V$ be any subspace, and decompose $v, w \in V$ as $v = u_1 + u_1^\perp$ and $w = u_2 + u_2^\perp$ with $u_1, u_2 \in U$ and $u_1^\perp, u_2^\perp \in U^\perp$.
+    Then:
+    \[
+    \langle P_U(v), w \rangle = \langle u_1, u_2 + u_2^\perp \rangle = \langle u_1, u_2 \rangle = \langle u_1 + u_1^\perp, u_2 \rangle = \langle v, P_U(w) \rangle.
+    \]
+    By definition of the adjoint, this proves $P_U^* = P_U$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:self_adjoint_non_orthonormal_basis}]
+\label{sol:self_adjoint_non_orthonormal_basis}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{$T$ is not self-adjoint:}
+    We test $T$ on basis polynomials $p(x) = 1$ and $q(x) = x$:
+    \begin{align*}
+    \langle T(1), x \rangle &= \langle 0, x \rangle = 0, \\
+    \langle 1, T(x) \rangle &= \langle 1, x \rangle = \int_0^1 x \, dx = \frac{1}{2}.
+    \end{align*}
+    Since $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, we have $T^* \ne T$, so $T$ is not self-adjoint.
+
+    \item \textbf{Why this does not contradict \cref{exc:self_adjoint_matrix_criterion}:}
+    \Cref{exc:self_adjoint_matrix_criterion} and \cref{prop:matrix_representation_adjoint} state that $[T^*]_\mathcal{B}^\mathcal{B} = ([T]_\mathcal{B}^\mathcal{B})^*$ holds when the basis $\mathcal{B}$ is \emph{orthonormal}.
+    The standard monomial basis $\mathcal{B} = (1, x, x^2)$ is not orthonormal with respect to the $L^2(0, 1)$ inner product, since for example $\langle 1, x \rangle = 1/2 \ne 0$.
+    In a non-orthonormal basis, the representation matrix of the adjoint is $[T^*]_\mathcal{B}^\mathcal{B} = G^{-1} ([T]_\mathcal{B}^\mathcal{B})^* G$, where $G = [\langle \cdot, \cdot \rangle]_\mathcal{B}$ is the Gram matrix.
+    Thus symmetry of $[T]_\mathcal{B}^\mathcal{B}$ does not imply self-adjointness of $T$ unless $\mathcal{B}$ is orthonormal ($G = I$). \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:differential_operators_fourier}]
+\label{sol:differential_operators_fourier}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Adjoint of $D$:}
+    For $f, g \in C^\infty_{\text{per}}(2\pi, \mathbb{R})$, using integration by parts:
+    \[
+    \langle Df, g \rangle = \frac{1}{2\pi} \int_0^{2\pi} f'(x) g(x) \, dx = \frac{1}{2\pi} \big[ f(x) g(x) \big]_0^{2\pi} - \frac{1}{2\pi} \int_0^{2\pi} f(x) g'(x) \, dx.
+    \]
+    By $2\pi$-periodicity, $f(2\pi)g(2\pi) - f(0)g(0) = 0$. Thus:
+    \[
+    \langle Df, g \rangle = -\langle f, Dg \rangle = \langle f, -Dg \rangle.
+    \]
+    Therefore, $D^* = -D$. Since $D^* = -D \ne D$ (for non-constant functions), $D$ is skew-adjoint, not self-adjoint.
+
+    \item \textbf{Self-adjointness of $\Delta = -D^2$:}
+    Using the product rule for adjoints:
+    \[
+    \Delta^* = (-D^2)^* = -(D \circ D)^* = -(D^* \circ D^*) = -((-D) \circ (-D)) = -D^2 = \Delta.
+    \]
+    Thus $\Delta$ is self-adjoint.
+
+    \item \textbf{Eigenbasis and spectrum of $\Delta|_U$:}
+    Evaluating $\Delta = -d^2/dx^2$ on the basis functions:
+    \begin{align*}
+    \Delta(1) &= 0 = 0 \cdot 1, \\
+    \Delta(\cos(nx)) &= -(-n^2 \cos(nx)) = n^2 \cos(nx), \\
+    \Delta(\sin(nx)) &= -(-n^2 \sin(nx)) = n^2 \sin(nx).
+    \end{align*}
+    Orthonormality under $\langle f, g \rangle = \frac{1}{2\pi}\int_0^{2\pi} f(x)g(x)\,dx$:
+    \begin{itemize}
+        \item $\|1\|^2 = \frac{1}{2\pi} \int_0^{2\pi} 1\,dx = 1 \implies u_0(x) = 1$.
+        \item $\|\cos(nx)\|^2 = \frac{1}{2\pi} \int_0^{2\pi} \cos^2(nx)\,dx = \frac{1}{2} \implies c_n(x) = \sqrt{2}\cos(nx)$ for $n \ge 1$.
+        \item $\|\sin(nx)\|^2 = \frac{1}{2\pi} \int_0^{2\pi} \sin^2(nx)\,dx = \frac{1}{2} \implies s_n(x) = \sqrt{2}\sin(nx)$ for $n \ge 1$.
+    \end{itemize}
+    The orthonormal basis of $U$ is $\{1\} \cup \{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx) \mid n \ge 1\}$.
+    The eigenvalues are:
+    \begin{itemize}
+        \item $\lambda_0 = 0$ with multiplicity $m_g(0) = 1$ and eigenspace $\Sp(1)$.
+        \item $\lambda_n = n^2$ ($n \ge 1$) with multiplicity $m_g(n^2) = 2$ and eigenspace $\Sp(\cos(nx), \sin(nx))$. \qedhere
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:algebra_self_adjoint_normal_mc}]
+\label{sol:algebra_self_adjoint_normal_mc}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Linear combinations of self-adjoint matrices $A^* = A, B^* = B$:}
+    \begin{itemize}
+        \item $A + B$: $(A+B)^* = A^* + B^* = A + B$, always self-adjoint (and hence normal).
+        \item $\lambda A$: $(\lambda A)^* = \overline{\lambda} A^* = \overline{\lambda} A$. This equals $\lambda A$ if and only if $\lambda = \overline{\lambda}$, i.e., $\lambda \in \mathbb{R}$.
+        \item $\lambda A$ is always normal: $(\lambda A)^* (\lambda A) = (\overline{\lambda} A)(\lambda A) = |\lambda|^2 A^2 = (\lambda A)(\lambda A)^*$.
+    \end{itemize}
+
+    \item \textbf{Products of self-adjoint matrices $A, B$:}
+    \begin{itemize}
+        \item $AB$: $(AB)^* = B^* A^* = BA$. Self-adjoint if and only if $AB = BA$.
+        \item $AB + BA$: $(AB + BA)^* = (AB)^* + (BA)^* = BA + AB = AB + BA$, always self-adjoint.
+        \item $AB - BA$: $(AB - BA)^* = BA - AB = -(AB - BA)$, always skew-adjoint (hence normal, since $[X, X^*] = [X, -X] = 0$).
+        \item $ABA$: $(ABA)^* = A^* B^* A^* = ABA$, always self-adjoint.
+    \end{itemize}
+
+    \item \textbf{Properties of polynomial evaluations $p(A)$ for normal $A$:}
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item \emph{False:} For $p(t) = \sum c_k t^k$, $p(A)^* = \sum \overline{c_k} (A^*)^k = \bar{p}(A^*)$, which equals $p(A^*)$ only if all coefficients $c_k$ are real.
+        \item \emph{True:} Since $A A^* = A^* A$, powers commute: $A^i (A^*)^j = (A^*)^j A^i$ for all $i, j \in \mathbb{N}$.
+        \item \emph{True:} Since $p(A) = \sum c_i A^i$ and $p(A)^* = \sum \overline{c_j} (A^*)^j$, and $A^i$ commutes with $(A^*)^j$, $p(A)$ commutes with $p(A)^*$, so $p(A)$ is normal.
+        \item \emph{False:} If $Av = \lambda v$, then $p(A)v = p(\lambda)v$. The eigenvalue is $p(\lambda)$, which in general differs from $\lambda$.
+        \item \emph{True:} If $Av = \lambda v$, then $A^k v = \lambda^k v$, so $p(A)v = p(\lambda)v$, showing $v$ is an eigenvector of $p(A)$. \qedhere
+    \end{enumerate}
+\end{enumerate}
+\end{exercisesolution}
