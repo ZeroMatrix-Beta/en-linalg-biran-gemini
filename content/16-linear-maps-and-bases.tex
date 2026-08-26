@@ -134,6 +134,17 @@ Exhibiting this map is in fact a second, shorter proof that $\Phi_{\mathcal{B}}$
 The previous \cref{prop:coordinate_map_isomorphism} gives yet another proof for the following Corollary.
 \end{remark}
 
+\begin{exercise}[Properties of Coordinate Maps and Endomorphisms]
+\label{exc:properties_coordinate_maps_mc}
+Which of the following statements are true?
+\begin{enumerate}
+    \item Let $V$ be an $n$-dimensional vector space over $\mathbb{R}$. The coordinate map $V \to \mathbb{R}^n$, $v \mapsto [v]_{\mathcal{B}}$, with respect to any chosen basis $\mathcal{B}$ of $V$, is linear.
+    \item Let $f \colon \mathbb{R}^2 \to \mathbb{R}^2$ be a linear map with $\ker(f) \ne \{0\}$ and $\Img(f) \ne \{0\}$. Then there always exists a non-zero vector $v \in \mathbb{R}^2$ such that $v \in \ker(f) \cap \Img(f)$.
+    \item If the kernel of a linear map $f \colon \mathbb{R}^n \to \mathbb{R}^n$ is trivial, then the map $f$ is invertible.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 % cor:16.3
 \begin{corollary}[Classification of Finite-Dimensional Vector Spaces]
 \label{cor:vs_isomorphic_to_kn}
@@ -189,6 +200,22 @@ Finally, using the fact that $\Phi_{\mathcal{B}}$ is linear, we calculate:
 \left[\binom{x}{y}\right]_{\mathcal{B}} = x \left[\binom{1}{0}\right]_{\mathcal{B}} + y \left[\binom{0}{1}\right]_{\mathcal{B}} = \begin{pmatrix} x/2 \\ x/2 \end{pmatrix} + \begin{pmatrix} y/2 \\ -y/2 \end{pmatrix} = \begin{pmatrix} \frac{x+y}{2} \\ \frac{x-y}{2} \end{pmatrix}.
 \]
 \end{example}
+
+\begin{exercise}[Geometric Interpretations of Representation Matrices]
+\label{exc:geometric_interpretation_matrix_mc}
+Let $\mathcal{A}$ and $\mathcal{B}$ be bases of $\mathbb{R}^2$, and denote by $\{e_1, e_2\}$ the standard basis. Let $f \colon \mathbb{R}^2 \to \mathbb{R}^2$ be the linear map whose representation matrix with respect to $\mathcal{A}$ in the domain and $\mathcal{B}$ in the codomain is
+\[
+M = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
+\]
+Which of the following statements are true?
+\begin{enumerate}
+    \item If $\mathcal{A} = \mathcal{B} = \{e_1, e_2\}$, then $f$ is a rotation around the origin by angle $\pi/2$.
+    \item If $\mathcal{A}$ is the standard basis and $\mathcal{B} = \{e_2, -e_1\}$, then $f$ is the point reflection (symmetry) with respect to the origin $(0, 0)$.
+    \item If $\mathcal{A}$ is the standard basis and $f$ is the identity map, then $\mathcal{B} = \{-e_2, e_1\}$.
+    \item If $\mathcal{B}$ is the standard basis and $f$ is the reflection across the $y$-axis, then $\mathcal{A} = \{e_2, e_1\}$.
+\end{enumerate}
+\exinfo{This exercise is Multiple Choice Question 1 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \subsection{Representation Matrices}
 
@@ -349,6 +376,31 @@ Equating both expressions gives $[T]_{\mathcal{C}}^{\mathcal{B}} \cdot [v]_{\mat
 \end{enumerate}
 \end{example}
 
+\begin{exercise}[Representation Matrix of a Polynomial Differential Operator]
+\label{exc:polynomial_differential_operator_matrix}
+Let $\mathbb{R}[X]_n$ be the vector space of polynomials of degree $\le n$ with real coefficients.
+\begin{enumerate}
+    \item Show that the map $F \colon \mathbb{R}[X]_n \to \mathbb{R}[X]_n$, $p \mapsto p'' + p'$ is linear, where $p'$ and $p''$ denote the first and second derivatives of $p$.
+    \item Determine the representation matrix $[F]_{\mathcal{B}}^{\mathcal{B}}$ with respect to the standard monomial basis $\mathcal{B} = (1, X, X^2, \dots, X^n)$ of $\mathbb{R}[X]_n$.
+\end{enumerate}
+\exinfo{This exercise is Problem 2 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
+\begin{exercise}[Differentiation Matrix Under Customized Bases]
+\label{exc:differentiation_customized_bases}
+Let $\mathbb{R}[x]_d$ denote the real vector space of polynomials of degree $\le d$, and let $D \in \Hom_\mathbb{R}(\mathbb{R}[x]_3, \mathbb{R}[x]_2)$ be the differentiation map $D(p) = p'$.
+Find an explicit basis $\mathcal{B}$ of $\mathbb{R}[x]_3$ and a basis $\mathcal{C}$ of $\mathbb{R}[x]_2$ such that the representation matrix of $D$ is
+\[
+[D]_{\mathcal{C}}^{\mathcal{B}} =
+\begin{pmatrix}
+0 & 1 & -1 & -1 \\
+0 & 0 & 2 & -1 \\
+0 & 0 & 0 & 3
+\end{pmatrix}.
+\]
+\exinfo{This exercise is Problem 7 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 
 \subsection{Representing Composition of Linear Maps by Matrices}
 
@@ -434,6 +486,32 @@ In order to obtain $[S \circ T]_{\mathcal{C}}^{\mathcal{A}}$ from $[T]_{\mathcal
 
 \medskip
 \noindent--- Yes, but not entirely\dots
+
+\begin{exercise}[Change of Bases and Composition of Linear Maps]
+\label{exc:change_of_bases_composition}
+Consider the linear maps $f \colon \mathbb{R}^4 \to \mathbb{R}^2$ and $g \colon \mathbb{R}^2 \to \mathbb{R}^3$ defined by
+\[
+f\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} x_1 + 2x_2 + x_3 \\ x_1 - x_4 \end{pmatrix}, \qquad
+g\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 \\ x_1 - x_2 \\ 3x_1 \end{pmatrix}.
+\]
+Consider the ordered bases:
+\[
+\mathcal{A} = \left( \begin{pmatrix} 1 \\ 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 4 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ 0 \\ 3 \\ 0 \end{pmatrix} \right), \quad
+\mathcal{B} = \text{standard basis of } \mathbb{R}^2, \quad
+\mathcal{C} = \left( \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix}, \begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 2 \end{pmatrix} \right).
+\]
+\begin{enumerate}
+    \item Show that $\mathcal{A}$ is a basis of $\mathbb{R}^4$ and $\mathcal{C}$ is a basis of $\mathbb{R}^3$.
+    \item Determine the formula for the composition $g \circ f \colon \mathbb{R}^4 \to \mathbb{R}^3$.
+    \item Compute the representation matrices:
+    \begin{enumerate}[label=\textbf{(\roman*)}]
+        \item $[f]_{\mathcal{B}}^{\mathcal{A}}$ of $f$ with respect to $\mathcal{A}$ and $\mathcal{B}$;
+        \item $[g]_{\mathcal{C}}^{\mathcal{B}}$ of $g$ with respect to $\mathcal{B}$ and $\mathcal{C}$;
+        \item $[g \circ f]_{\mathcal{C}}^{\mathcal{A}}$ of $g \circ f$ with respect to $\mathcal{A}$ and $\mathcal{C}$, and verify $[g \circ f]_{\mathcal{C}}^{\mathcal{A}} = [g]_{\mathcal{C}}^{\mathcal{B}} [f]_{\mathcal{B}}^{\mathcal{A}}$.
+    \end{enumerate}
+\end{enumerate}
+\exinfo{This exercise is Problem 5 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 % Creator: Opus 5
 \begin{ainote}

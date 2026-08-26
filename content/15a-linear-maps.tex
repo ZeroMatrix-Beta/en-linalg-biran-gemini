@@ -667,6 +667,13 @@ Let $V$ be a one-dimensional vector space over a field $K$, and let $T \in \Hom_
 \exinfo{This exercise is Problem 1 of Problem Sheet 10, Linear Algebra I, Autumn Semester 2025.}
 \end{exercise}
 
+\begin{exercise}[Linear Functionals with the Same Kernel]
+\label{exc:functionals_same_kernel_proportional}
+Let $V$ be a vector space over a field $K$. Suppose that $T_1, T_2 \in \Hom_K(V, K)$ are two linear functionals such that $\ker(T_1) = \ker(T_2)$. Show that there exists a scalar $c \in K$ such that $T_1 = c T_2$.
+\exhint{If the common kernel is $V$, both maps are zero. If not, consider a one-dimensional complement of the kernel and use \cref{exc:one_dim_endomorphism_canonical_iso}.}
+\exinfo{This exercise is Problem 6 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{exercise}[Projections and Complementary Subspaces]
 \label{exc:projections_and_complements}
 Let $V$ be a vector space. A linear endomorphism $P \colon V \to V$ is called a \newterm{projection} (or \newterm{idempotent}) if $P^2 := P \circ P = P$.

@@ -100,6 +100,20 @@ In the other order, multiplying the $3 \times 2$ matrix by the $2 \times 3$ matr
 If $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$, then $A \cdot B$ is defined, but $B \cdot A$ is not defined, unless $p = m$.
 \end{example}
 
+\begin{exercise}[Powers of $2 \times 2$ Matrices]
+\label{exc:matrix_powers_2x2}
+Consider the real vector space $\M_{2 \times 2}(\mathbb{R})$.
+\begin{enumerate}
+    \item Compute the matrix square $A^2$ for a general matrix $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$.
+    \item Find an explicit formula for the entries of the $n$-th power $T^n$ for all $n \in \mathbb{N}$, where
+    \[
+    T = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.
+    \]
+    Prove your formula by mathematical induction.
+\end{enumerate}
+\exinfo{This exercise is Problem 1 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Some Special Cases}
 
 \begin{enumerate}
@@ -186,6 +200,25 @@ Matrix multiplication satisfies the following algebraic properties:
     \end{equation*}
 \end{enumerate}
 \end{proposition}
+
+\begin{exercise}[Block Diagonal and Upper Triangular Matrix Multiplication]
+\label{exc:block_diagonal_upper_triangular_mult}
+Let $K$ be a field.
+\begin{enumerate}
+    \item For $k \ge 1$, let $A_1, B_1 \in \M_{k \times k}(K)$ and $A_2, B_2 \in \M_{(n-k) \times (n-k)}(K)$. Consider the block diagonal matrices
+    \[
+    A = \begin{pmatrix} A_1 & 0_{k \times (n-k)} \\ 0_{(n-k) \times k} & A_2 \end{pmatrix}, \qquad
+    B = \begin{pmatrix} B_1 & 0_{k \times (n-k)} \\ 0_{(n-k) \times k} & B_2 \end{pmatrix} \in \M_{n \times n}(K).
+    \]
+    Show that
+    \[
+    A \cdot B = \begin{pmatrix} A_1 \cdot B_1 & 0_{k \times (n-k)} \\ 0_{(n-k) \times k} & A_2 \cdot B_2 \end{pmatrix}.
+    \]
+    \item Show that if $A_1$ and $A_2$ are invertible, then $A$ is invertible, and compute its inverse.
+    \item Consider the subspace $U \subseteq \M_{n \times n}(K)$ of upper triangular matrices. Show that the matrix product of any two elements in $U$ remains in $U$.
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
 
 \begin{proof}
 Let $T_A: K^n \to K^m$, $T_B: K^p \to K^n$, and $T_C: K^q \to K^p$ be the linear maps defined by left-multiplication with the matrices $A$, $B$, and $C$, respectively (i.e., $T_A(v) = A \cdot v$ for all $v \in K^n$, $T_B(w) = B \cdot w$ for all $w \in K^p$, and $T_C(u) = C \cdot u$ for all $u \in K^q$). For any dimension $r$, we denote the standard basis of $K^r$ by $\mathcal{E}_r$. We have already established that (\cref{ex:representation_matrices}, first item):

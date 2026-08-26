@@ -57,6 +57,24 @@
   Complete the proof that $\Hom(V,W)$ is a vector space by checking that it satisfies all the axioms of a vector space, using the zero map $0 \colon V \to W$ as the additive identity. Show also that $\alpha \cdot T$ is linear for all $\alpha \in K$ and $T \in \Hom(V,W)$, and that $\Psi_{\mathcal{C}}^{\mathcal{B}}(T_1 + T_2) = \Psi_{\mathcal{C}}^{\mathcal{B}}(T_1) + \Psi_{\mathcal{C}}^{\mathcal{B}}(T_2)$ in \cref{thm:homomorphism_isomorphism}.
 \end{exercise}
 
+\begin{exercise}[Subsets of Non-Injective and Non-Surjective Linear Maps]
+\label{exc:hom_non_injective_non_surjective_not_subspaces}
+Let $V$ and $W$ be finite-dimensional vector spaces over a field $K$.
+\begin{enumerate}
+    \item Suppose that $2 \le \dim V \le \dim W$. Show that the set
+    \[
+    \mathcal{S} := \{T \in \Hom(V, W) \mid T \text{ is not injective}\}
+    \]
+    is not a linear subspace of $\Hom(V, W)$.
+    \item Suppose that $\dim V \ge \dim W \ge 2$. Show that the set
+    \[
+    \mathcal{T} := \{T \in \Hom(V, W) \mid T \text{ is not surjective}\}
+    \]
+    is not a linear subspace of $\Hom(V, W)$.
+\end{enumerate}
+\exinfo{This exercise is Problem 4 of Problem Sheet 11, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 For example, consider the distributivity axiom. For all $\alpha \in K$ and $T_1, T_2 \in \Hom(V,W)$, we have $\alpha \cdot (T_1 + T_2) = \alpha \cdot T_1 + \alpha \cdot T_2$. Indeed, for $v \in V$,
 \begin{align*}
   (\alpha \cdot (T_1 + T_2))(v) &= \alpha \cdot (T_1 + T_2)(v) = \alpha(T_1(v) + T_2(v)) \\
