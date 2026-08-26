@@ -48,6 +48,18 @@ The shift map $S : \Fib \longrightarrow \Fib$ defined by $S(a_0, a_1, \dots, a_n
 Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathcal{F}) = \lambda \cdot \mathcal{F}$ for some $\lambda$.
 \[ S(\mathcal{F}) = \lambda \cdot \mathcal{F} \iff \lambda = \frac{1\pm\sqrt{5}}{2} \text{ and } \mathcal{F} = (a, a\lambda, a\lambda^2, \dots, a\lambda^n, \dots) \]
 
+\begin{exercise}[Fibonacci Sequence Space and the Shift Operator]
+  \label{exc:fibonacci_sequence_space_shift_eigenvalues}
+  Let $\Fib \subset \mathbb{R}^\infty$ be the set of all sequences $(a_0, a_1, a_2, \dots, a_n, \dots) = (a_n)_{n=0}^\infty$ in $\mathbb{R}^\infty$ satisfying the recurrence relation $a_n = a_{n-1} + a_{n-2}$ for all $n \ge 2$. Show:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The linear map $F : \Fib \to \mathbb{R}^2$, $F((a_n)_{n=0}^\infty) := (a_0, a_1)$ is an isomorphism.
+    \item Consider the shift operator $T : \mathbb{R}^\infty \to \mathbb{R}^\infty$, $(a_0, a_1, a_2, \dots) \mapsto (a_1, a_2, a_3, \dots)$. Determine all eigenvalues and eigenvectors of $T$. Show that $T(\Fib) \subseteq \Fib$, and find all eigenvalues and eigenvectors of the restricted operator $T|_{\Fib} : \Fib \to \Fib$.
+    \item Show that the eigenvectors of $T|_{\Fib}$ found in part \textbf{(b)} form a basis of $\Fib$.
+  \end{enumerate}
+  \exhint{\textbf{(a)} Check that $F$ is linear and that any sequence in $\Fib$ is uniquely determined by its first two terms $(a_0, a_1)$, proving bijectivity. \textbf{(b)} For $Tx = \lambda x$, show that $x = (c, c\lambda, c\lambda^2, \dots)$ for some scalar $c$. For this geometric sequence to satisfy the Fibonacci recurrence, $\lambda$ must satisfy $\lambda^2 = \lambda + 1$, which yields the eigenvalues $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi = \frac{1-\sqrt{5}}{2}$. \textbf{(c)} Since $\dim \Fib = 2$ and the two eigenvalues are distinct, the corresponding eigenvectors are linearly independent and hence form a basis for $\Fib$.}
+  \exinfo{This exercise is Problem 7 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \begin{definition}[Eigenvalue and Eigenvector]\label{def:eigenvalue_eigenvector}
   Let $V$ be a vector space over $K$ and $T: V \rightarrow V$ a linear map (an endomorphism of $V$). We say that $\lambda \in K$ is an \newterm{eigenvalue} (a.k.a. \newterm{characteristic value}) of $T$ if there exists a vector $v \ne 0$ such that $Tv = \lambda v$. Any vector $v \ne 0$ with the property that $Tv = \lambda v$ is called an \newterm{eigenvector} (of $T$) for the eigenvalue $\lambda$.
 \end{definition}
@@ -118,6 +130,22 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   But since $v_{n+1} \ne 0$ (because $v_{n+1}$ is an eigenvector), this implies that $a_{n+1} = 0$.
 \end{proof}
 
+\begin{exercise}[Eigenvalues on Infinite-Dimensional Sequence Spaces \faHeart]
+  \label{exc:eigenvalues_infinite_dimensional_sequences}
+  Let $K^\infty$ be the space of all infinite sequences $(x_0, x_1, x_2, \dots)$ in $K$, and let $K_0^\infty \subset K^\infty$ be the subspace of sequences that are eventually zero (i.e., sequences for which there exists $N \in \mathbb{N}$ such that $x_n = 0$ for all $n \ge N$).
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Find all eigenvalues and eigenvectors of the shift endomorphism
+    \[
+    T : K^\infty \to K^\infty, \quad (x_0, x_1, x_2, \dots) \mapsto (x_1, x_2, x_3, \dots).
+    \]
+    \item Do the same for the restriction $T|_{K_0^\infty} : K_0^\infty \to K_0^\infty$.
+    \item Construct an endomorphism of $K_0^\infty$ whose set of eigenvalues is precisely $\{0, 1, 2, 3, \dots\}$.
+    \item Construct an endomorphism of $K_0^\infty$ that has no eigenvalues.
+  \end{enumerate}
+  \exhint{\textbf{(a)} Show that $T(x) = \lambda x$ implies $x_n = c \lambda^n$ for some $c \in K$, so every $\lambda \in K$ is an eigenvalue with eigenvector $(1, \lambda, \lambda^2, \dots)$. \textbf{(b)} The eigenvectors of $T|_{K_0^\infty}$ are the eigenvectors of $T$ that belong to $K_0^\infty$; show that a geometric sequence $(1, \lambda, \lambda^2, \dots)$ is eventually zero if and only if $\lambda = 0$. \textbf{(c)} Consider the standard basis vectors $e_k = (\delta_{kn})_{n \ge 0}$ of $K_0^\infty$ and define an endomorphism by $S(e_k) := k e_k$. \textbf{(d)} Consider a shift operator such as the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and show that $Mx = \lambda x$ forces $x = 0$.}
+  \exinfo{This exercise is Problem 4 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \subsection{The Characteristic Polynomial}
 
 \begin{proposition}[Eigenvalue Injective Criterion]\label{prop:eigen_injective}
@@ -127,6 +155,19 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
 \begin{proof}
   Every step below is an equivalence, which is what the statement requires. The scalar $\lambda$ is an eigenvalue if and only if there exists a non-zero vector $v \in V$ such that $Tv - \lambda v = 0$, by \cref{def:eigenvalue_eigenvector}. This says exactly that $(T - \lambda \cdot \id_V)v = 0$ for some $v \ne 0$, that is, that $\ker(T - \lambda \cdot \id_V) \ne \{0_V\}$. And by \cref{prop:injectivity_kernel} \textbf{(a)}, a linear map is injective precisely when its kernel is trivial, so the last condition holds if and only if $T - \lambda \cdot \id_V$ fails to be injective.
 \end{proof}
+
+\begin{exercise}[Eigenvalues of Composed Endomorphisms]
+  \label{exc:eigenvalues_of_composed_endomorphisms}
+  Let $V$ be a $K$-vector space and let $F, G \in \End(V)$. Show:
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item If $v \in V$ is an eigenvector of $F \circ G$ with eigenvalue $\lambda$ and $G(v) \neq 0$, then $G(v)$ is an eigenvector of $G \circ F$ with eigenvalue $\lambda$.
+    \item If $V$ is finite-dimensional, then $F \circ G$ and $G \circ F$ have exactly the same eigenvalues.
+    \item Give a counterexample to \textbf{(b)} when $V$ is infinite-dimensional.
+  \end{enumerate}
+  \exhint{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part (a) immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
+  \exinfo{This exercise is Problem 6 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
   Let $V$ be a finite-di\-men\-sional vector space over $K$ and $T \in \End(V)$. We define the \newterm{characteristic polynomial} of $T$ as $P_T(x) := \det(T - x \cdot \id_V)$, where $x$ is a formal variable. We define the characteristic polynomial of a matrix $A \in \M_{n \times n}(K)$ in the same way: $P_A(x) := \det(A - x \cdot I_n)$.
 \end{definition}
@@ -212,6 +253,13 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
   \textbf{(e)} $P_B(x) = \det(B - x \cdot I_n) = \det(P^{-1}AP - x \cdot I_n) = \det(P^{-1}(A - x \cdot I_n)P) = \det(A - x \cdot I_n) = P_A(x)$.
 \end{proof}
 
+\begin{exercise}[Characteristic Polynomial of an Inverse Matrix]
+  \label{exc:char_poly_inverse_matrix}
+  For an arbitrary invertible $n \times n$ matrix $A \in \GL(n, K)$, express the characteristic polynomial $P_{A^{-1}}(x)$ in terms of the characteristic polynomial $P_A(x)$ of $A$.
+  \exhint{Use the relation $A^{-1} - x I_n = -x A^{-1} (A - x^{-1} I_n)$ and the multiplicativity of the determinant to establish $P_{A^{-1}}(x) = \frac{(-x)^n}{\det A} P_A(x^{-1})$.}
+  \exinfo{This exercise is Problem 3 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 \begin{remark}\label{rem:char_poly_degree}
   If $V$ is an $n$-di\-men\-sional vector space over $K$ and $T \in \End(V)$, then $P_T(x)$ is a polynomial of degree $n$ with leading coefficient $(-1)^n$.
 \end{remark}
@@ -264,6 +312,13 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 
   Finally, $c_0 = P_A(0) = \det(A - 0 \cdot I_n) = \det(A)$ (obtained by substituting $x=0$).
 \end{proof}
+
+\begin{exercise}[Eigenvalues of Nilpotent Matrices \faHeart]
+  \label{exc:nilpotent_matrix_eigenvalues}
+  Let $A \in \M_{n \times n}(K)$ be a nilpotent matrix, meaning there exists an integer $m \ge 1$ such that $A^m = 0$. Show that the only possible eigenvalue of $A$ in $K$ is $0$. Under what exact conditions is $0$ an eigenvalue of $A$?
+  \exhint{If $v \neq 0$ satisfies $A v = \lambda v$, then $A^m v = \lambda^m v = 0$, which implies $\lambda^m = 0$ and hence $\lambda = 0$. Moreover, $0$ is an eigenvalue if and only if $\ker A \neq \{0\}$, which holds for every nilpotent matrix on a space of dimension $n \ge 1$ because $(\det A)^m = \det(A^m) = 0 \implies \det A = 0$.}
+  \exinfo{This exercise is Problem 5 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \begin{definition}[Direct Sum]\label{def:direct_sum}
   Let $V$ be a vector space over $K$ and $U_1, \dots, U_r \subseteq V$ subspaces. Denote $W := U_1 + \dots + U_r \subseteq V$. We say that $W$ is a \newterm{direct sum} of $U_1, \dots, U_r$ (or that $U_1 + \dots + U_r$ is a direct sum) if every $w \in W$ has a unique representation as $w = u_1 + \dots + u_r$, with $u_i \in U_i$ for all $i$.
@@ -484,6 +539,25 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   We also found that $\Eig_J(\lambda)$ is a $1$-dimensional space, which means $m_g(J;\lambda) = 1$.
 \end{example}
 
+\begin{exercise}[Algebraic and Geometric Multiplicities of a $3 \times 3$ Matrix \faHeart]
+  \label{exc:multiplicities_3x3_matrix}
+  Consider the matrix
+  \[
+  A = \begin{pmatrix}
+    3 & 0 & -2 \\
+    2 & 0 & -2 \\
+    0 & 1 & 1
+  \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R}).
+  \]
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Determine the characteristic polynomial $P_A(x)$ of $A$.
+    \item Determine all eigenvalues of $A$.
+    \item Recall that the \emph{geometric multiplicity} of an eigenvalue $\lambda$ is $\dim \Eig_A(\lambda)$ and the \emph{algebraic multiplicity} is the multiplicity of $\lambda$ as a root of $P_A(x)$. Determine the algebraic and geometric multiplicities of all eigenvalues of $A$.
+  \end{enumerate}
+  \exhint{\textbf{(a)} Compute $P_A(x) = \det(A - x I_3)$. \textbf{(b)} Factor $P_A(x)$ to find its roots. \textbf{(c)} For each eigenvalue $\lambda$, compute $m_g(A; \lambda) = 3 - \rank(A - \lambda I_3)$ and compare with $m_a(A; \lambda)$.}
+  \exinfo{This exercise is Problem 1 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
+
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_multiplicities}
@@ -564,7 +638,22 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Let $\lambda$ be an eigenvalue of $T$. Then $\Eig_T(\lambda) \ne \{0_V\}$, since it contains an eigenvector, so $m_g(T;\lambda) \ge 1$; and $m_g(T;\lambda) \le m_a(T;\lambda) = 1$ by \cref{prop:mult_inequality}. Hence $m_g(T;\lambda) = 1 = m_a(T;\lambda)$. Now use point \textbf{(c)} of \cref{thm:diag_equiv}.
 \end{proof}
 
-
+\begin{exercise}[Diagonalizability over $\mathbb{Q}$ \faHeart]
+  \label{exc:diagonalizability_over_Q}
+  Compute the characteristic polynomial, eigenvalues, and eigenvectors over the field $\mathbb{Q}$ for each of the following matrices, and determine whether the matrix is diagonalizable over $\mathbb{Q}$:
+  \[
+  A := \begin{pmatrix} 1 & -1 \\ 2 & 4 \end{pmatrix}, \quad
+  B := \begin{pmatrix} 2 & 2 & 3 \\ 1 & 2 & 1 \\ 2 & -2 & 1 \end{pmatrix}, \quad
+  C := \begin{pmatrix}
+    -4 & -3 & -1 & -7 \\
+    -3 & -1 & -1 & -4 \\
+    6 & 4 & 3 & 8 \\
+    3 & 3 & 1 & 6
+  \end{pmatrix}.
+  \]
+  \exhint{For each matrix, calculate the characteristic polynomial and its roots in $\mathbb{Q}$. For each eigenvalue $\lambda$, compute a basis of the eigenspace $\ker(M - \lambda I)$. A matrix is diagonalizable over $\mathbb{Q}$ if and only if its characteristic polynomial splits into linear factors over $\mathbb{Q}$ and the geometric multiplicity equals the algebraic multiplicity for every eigenvalue.}
+  \exinfo{This exercise is Problem 2 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\end{exercise}
 
 \subsection{Trigonalization}
 (= bringing a matrix/endomorphism to upper triangular form)
