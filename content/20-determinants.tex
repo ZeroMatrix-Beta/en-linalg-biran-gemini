@@ -56,6 +56,21 @@ An inverse has to satisfy the identity in both orders, and the product taken the
 \frac{1}{ad-bc} \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \frac{1}{ad-bc} \begin{pmatrix} ad-bc & -ab+ab \\ cd-dc & -cb+ad \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
 \]
 
+\begin{exercise}[Invertibility and Nilpotency of $2 \times 2$ Matrices \faHeart]
+\label{exc:invertibility_nilpotency_2x2}
+Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$ be a $2 \times 2$ matrix over a field $K$.
+\begin{enumerate}
+    \item Show that $A$ is invertible if and only if $ad - bc \neq 0$.
+    \item Show that
+    \[
+    A^2 = 0 \quad \Longleftrightarrow \quad \det(tI_2 - A) = t^2
+    \]
+    as polynomials in the polynomial ring $K[t]$.
+\end{enumerate}
+\exhint{(a) For the forward implication, use the explicit adjugate formula for $A^{-1}$; for the reverse implication, use the multiplicativity of the determinant $\det(AB) = \det(A)\det(B)$. (b) First show that $\det(tI_2 - A) = t^2 - (\operatorname{tr} A)t + \det A$, where $\operatorname{tr}(A) = a + d$, and compare coefficients.}
+\exinfo{This exercise is Problem 2 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
+
 \begin{goals}\label{goals:determinants}
   While the $2 \times 2$ formula is easy to memorize, it does not immediately suggest how to handle larger matrices. Our main goals now are to make the determinant conceptually rigorous and to generalize the determinant function to arbitrary $n \times n$ matrices.
 \end{goals}
@@ -94,6 +109,17 @@ Saying that $D$ is $n$-linear means that for any chosen row index $i$, the follo
   Therefore, $D$ is indeed $n$-linear.
 \end{example}
 
+\begin{exercise}[Monomial Matrix Functions and Multilinearity \faHeart]
+\label{exc:monomial_matrix_multilinear}
+Let $K$ be a subfield of the complex numbers $\mathbb{C}$, and let $n$ be a positive integer. Let $j_1, \dots, j_n$ and $k_1, \dots, k_n$ be positive integers in $\{1, \dots, n\}$. For each $A \in \M_{n \times n}(K)$, define
+\[
+D(A) := A(j_1, k_1) A(j_2, k_2) \cdots A(j_n, k_n).
+\]
+Prove that $D$ is $n$-linear (as a function of the rows of $A$) if and only if the row indices $j_1, \dots, j_n$ are pairwise distinct.
+\exhint{If two row indices are equal, say $j_1 = j_2$, show that scaling that row by $c \in K$ scales the product by $c^2$ rather than $c$ (explain why $K \subseteq \mathbb{C}$ prevents $c^2 = c$ for all $c$, in contrast to finite fields like $\mathbb{F}_2$). If all $j_i$ are distinct, each row appears exactly once in the product, so $n$-linearity holds directly.}
+\exinfo{This exercise is Problem 4 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
+
 \begin{example}[Diagonal Product]\label{ex:diagonal_product}
   A more concrete example: $D(A) := A_{11} \cdot A_{22} \cdot \dots \cdot A_{nn}$ (i.e., the product of the terms on the main diagonal) is an $n$-linear function.
 \end{example}
@@ -117,11 +143,33 @@ Therefore, $D$ is completely determined by its values on the following four pair
   By expanding $(aD+bE)(\dots, \alpha_i + \alpha'_i, \dots)$ and $(aD+bE)(\dots, \lambda \alpha_i, \dots)$ using the individual linearities of $D$ and $E$, we see the result naturally holds.
 \end{proof}
 
+\begin{exercise}[Multilinear Candidate Functions on $3 \times 3$ Matrices \faHeart]
+\label{exc:multilinear_candidates_3x3}
+Each of the following expressions defines a function $D \colon \M_{3 \times 3}(\mathbb{R}) \to \mathbb{R}$. In which of these cases is $D$ a $3$-linear function of the rows of the matrix?
+\begin{enumerate}
+    \item $D(A) = A_{11} + A_{22} + A_{33}$;
+    \item $D(A) = A_{11}^2 + 3A_{11} A_{22}$;
+    \item $D(A) = A_{11} A_{12} A_{33}$;
+    \item $D(A) = A_{13} A_{22} A_{32} + 5A_{12} A_{22} A_{32}$;
+    \item $D(A) = 0$;
+    \item $D(A) = 1$.
+\end{enumerate}
+\exhint{Here, $3$-linear with respect to the rows is meant. For those functions that fail to be $3$-linear, provide an explicit counterexample to linearity in some row.}
+\exinfo{This exercise is Problem 3 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
+
 \begin{example}[Two-by-Two Determinant Function]\label{ex:2_linear_det}
   Consider $D : \M_{2 \times 2}(K) \to K$ defined by $D(A) := A_{11}A_{22} - A_{12}A_{21}$. The function $D$ is $2$-linear because it can be written as $D = D_1 + D_2$, where $D_1(A) = A_{11}A_{22}$ and $D_2(A) = -A_{12}A_{21}$, both of which are 2-linear by our previous example. Furthermore, $D(I) = 1$, and if $A'$ is obtained from $A$ by interchanging the rows, then $D(A') = -D(A)$.
 
   Indeed, $D(A') = D\left(\begin{smallmatrix} A_{21} & A_{22} \\ A_{11} & A_{12} \end{smallmatrix}\right) = A_{21} \cdot A_{12} - A_{22}A_{11} = -(A_{11}A_{22} - A_{12}A_{21}) = -D(A)$.
 \end{example}
+
+\begin{exercise}[The $2 \times 2$ Determinant as an Alternating $2$-Linear Form \faHeart]
+\label{exc:det_2x2_alternating_bilinear}
+Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$, is an alternating $2$-linear function with respect to both its rows and its columns.
+\exhint{Using the explicit formula $\det A = ad - bc$, verify that $\det$ is linear in each column (holding the other fixed) and linear in each row (holding the other fixed), and show that $\det A = 0$ whenever the two columns (or the two rows) are equal.}
+\exinfo{This exercise is Problem 1 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
 
 \begin{definition}[Alternating Function]\label{def:alternating_func}
   Let $D : \M_{n \times n}(K) \to K$ be an $n$-linear function. We say that $D$ is \newterm{alternating} if for every matrix $A$ in which some two rows are equal, we have $D(A) = 0$.
@@ -227,6 +275,17 @@ Therefore, $D$ is completely determined by its values on the following four pair
   \]
   We can similarly construct $E_2(A)$ and $E_3(A)$ along the other columns, and all of these form valid determinant functions on $M_{3 \times 3}(K)$.
 \end{example}
+
+\begin{exercise}[Laplace Expansion for $3 \times 3$ Matrices]
+\label{exc:laplace_expansion_3x3_alternating_trilinear}
+Let $K$ be a field. Consider the function $D \colon \M_{3 \times 3}(K) \to K$ defined by
+\[
+D(A) := A_{11} \det \begin{pmatrix} A_{22} & A_{23} \\ A_{32} & A_{33} \end{pmatrix} - A_{12} \det \begin{pmatrix} A_{21} & A_{23} \\ A_{31} & A_{33} \end{pmatrix} + A_{13} \det \begin{pmatrix} A_{21} & A_{22} \\ A_{31} & A_{32} \end{pmatrix}.
+\]
+Show directly that $D$ is an alternating and $3$-linear function as a function of the columns of $A$.
+\exhint{Verify column linearity by expanding the $2 \times 2$ determinants and checking linearity in each of the three column vectors; verify the alternating property by checking that $D(A) = 0$ whenever two columns of $A$ coincide.}
+\exinfo{This exercise is Problem 5 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
+\end{exercise}
 
 \renewcommand{\thetheorem}{20.b.\arabic{theorem}}
 \setcounter{theorem}{0}
