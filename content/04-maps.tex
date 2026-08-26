@@ -254,6 +254,20 @@ f^{-1} \circ f = \id_X \quad \text{and} \quad f \circ f^{-1} = \id_Y
 \]
 \end{example}
 
+\begin{exercise}[Left and Right Inverses and Bijectivity]
+\label{exc:left_right_inverses}
+Let $f \colon X \to Y$ be a map.
+\begin{enumerate}
+    \item Assume there exist maps $g_1 \colon Y \to X$ and $g_2 \colon Y \to X$ such that
+    \[
+    g_1 \circ f = \id_X \qquad \text{and} \qquad f \circ g_2 = \id_Y.
+    \]
+    Show that $g_1 = g_2$. Deduce that $g_1 = g_2 = f^{-1}$ and that $f$ is bijective.
+    \item Give an explicit example of a function $f \colon X \to Y$ that admits a right-inverse (a map $g \colon Y \to X$ with $f \circ g = \id_Y$) but is not bijective.
+\end{enumerate}
+\exinfo{This exercise is Problem 5 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \begin{remark}
 If $g \circ f$ is defined, $f \circ g$ is in general NOT defined (unless $Z=X$). But even when $Z=X$, in general $g \circ f \ne f \circ g$. Commutativity is not guaranteed.
 \end{remark}
@@ -412,6 +426,20 @@ We can often immediately determine the injectivity, surjectivity, and bijectivit
 \label{fig:graph_line_tests}
 \end{figure}
 
+\begin{exercise}[Planar Regions Defined by Affine Functions]
+\label{exc:affine_map_planar_region}
+Let $f \colon \mathbb{R} \to \mathbb{R}, x \mapsto ax + b$ for fixed $a, b \in \mathbb{R}$ with $a \ne 0$. Sketch the planar region
+\[
+\bigl\{ (x, y) \in \mathbb{R}^2 \mid y \le f(x) \bigr\} \cap \bigl\{ (x, y) \in \mathbb{R}^2 \mid x \ge 0 \bigr\} \cap \bigl\{ (x, y) \in \mathbb{R}^2 \mid y \ge 0 \bigr\}
+\]
+in the following two cases:
+\begin{enumerate}
+    \item $a = 2$ and $b = 1$;
+    \item $a = -2$ and $b = 1$.
+\end{enumerate}
+\exinfo{This exercise is Problem 4 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025.}
+\end{exercise}
+
 \subsection{Image and Inverse Image of Subsets}
 
 \begin{definition}[Image of a Subset]
@@ -444,6 +472,22 @@ f^{-1}(\{-1\}) &= \emptyset \\
 f^{-1}(\{-1, 0\}) &= \{0\}
 \end{align*}
 \end{example}
+
+\begin{exercise}[Images, Preimages, and Set-Theoretic Operations]
+\label{exc:images_preimages_operations}
+Let $f \colon X \to Y$ be a map, and let $A, A' \subseteq X$ and $B, B' \subseteq Y$.
+\begin{enumerate}
+    \item Prove that $f(f^{-1}(B)) \subseteq B$. Under what necessary and sufficient condition on $f$ is equality guaranteed for all $B \subseteq Y$?
+    \item Prove that $f^{-1}(f(A)) \supseteq A$. Under what necessary and sufficient condition on $f$ is equality guaranteed for all $A \subseteq X$?
+    \item Show the identities:
+    \[
+    f(A \cup A') = f(A) \cup f(A'), \qquad f^{-1}(B \cup B') = f^{-1}(B) \cup f^{-1}(B').
+    \]
+    \item Prove that $f(A \cap A') \subseteq f(A) \cap f(A')$, with equality holding if $f$ is injective. In that case, verify that $f(A \setminus A') = f(A) \setminus f(A')$ also holds.
+    \item Prove that $f^{-1}(B \cap B') = f^{-1}(B) \cap f^{-1}(B')$ and $f^{-1}(Y \setminus B) = X \setminus f^{-1}(B)$.
+\end{enumerate}
+\exinfo{This exercise is Problem 6 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025. Taken from Prof.~Einsiedler's Analysis lecture notes.}
+\end{exercise}
 
 \subsection{Partitions}
 

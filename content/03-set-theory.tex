@@ -289,6 +289,15 @@ that is, the positive integers that are \textit{not} squarefree. This is what \c
   \label{fig:indexed_family}
 \end{figure}
 
+\begin{exercise}[The Archimedean Principle and Countable Intersections]
+\label{exc:archimedean_intersection}
+Let $\mathbb{N} = \{1, 2, 3, \dots\}$. Describe and determine the following intersection of closed intervals:
+\[
+\bigcap_{n=1}^\infty \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\}.
+\]
+\exinfo{This exercise is Problem 2 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025. Taken from Prof.~Einsiedler's Analysis lecture notes.}
+\end{exercise}
+
 \subsection{Cartesian Products}
 
 To handle ordered pairs and higher-dimensional structures, we introduce the Cartesian product.
@@ -349,9 +358,22 @@ If $X = \mathbb{R}$, then $X^2 = \mathbb{R} \times \mathbb{R} = \mathbb{R}^2$ re
     \draw[gray!70] (0.07,1) -- (-0.07,1) node[left, black, font=\scriptsize] {$1$};
     \draw[gray!70] (0.07,2) -- (-0.07,2) node[left, black, font=\scriptsize] {$2$};
   \end{tikzpicture}
-  \caption{The Cartesian product $X \times Y$ for $X = [0,2]$ and $Y = [1,2]$. A point of the product is precisely a choice of one coordinate from each factor: dropping the point $(x,y)$ onto the horizontal axis returns $x \in X$, and onto the vertical axis returns $y \in Y$.}
+  \caption{The Cartesian product $X \times Y$ of two intervals in $\mathbb{R}$. A point $(x,y)$ belongs to the product if and only if its first coordinate lies in $X$ and its second coordinate lies in $Y$.}
   \label{fig:cartesian_rectangle}
 \end{figure}
+
+\begin{exercise}[Distributivity of Cartesian Products over Intersections]
+\label{exc:cartesian_product_intersections}
+Let $X, Y$ be sets, let $A, A' \subseteq X$, and let $B, B' \subseteq Y$.
+\begin{enumerate}
+    \item Prove the identity:
+    \[
+    (A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B').
+    \]
+    \item Convince yourself (for example by drawing a diagram in the plane) that no analogous identity holds for unions of sets, that is, $(A \times B) \cup (A' \times B') \ne (A \cup A') \times (B \cup B')$ in general.
+\end{enumerate}
+\exinfo{This exercise is Problem 3 of Problem Sheet 2, Linear Algebra I, Autumn Semester 2025. Taken from Prof.~Einsiedler's Analysis lecture notes.}
+\end{exercise}
 
 \subsection{Power Sets and Cardinality}
 
