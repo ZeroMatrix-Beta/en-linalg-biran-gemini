@@ -100,8 +100,9 @@ that contradicts the book's own conventions.
 | 2 | `content/02-logic.tex` | done, pushed (`13f6122`) |
 | 3 | `content/03-set-theory.tex` | done, pushed (`5d4ee79`) |
 | 4 | `content/04-maps.tex` | done, pushed (`cfe1639`) |
-| 5 | `content/05-fields.tex` | done |
-| **6--9** | the remaining foundational chapters | **this is where to resume** |
+| 5 | `content/05-fields.tex` | done, pushed (`c09a79e`) |
+| 6 | `content/06-systems-of-linear-equations.tex` | done |
+| **7--9** | the remaining foundational chapters | **this is where to resume** |
 
 **Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
@@ -825,6 +826,25 @@ The chapter's own `ainote` records that only the field axioms come from the
 notes and everything after them is the transcript's. That makes an unproved
 Theorem more serious rather than less: it is not something Prof. Biran asserted
 and left, it is something the book asserted about itself.
+
+### Ch. 6, nothing false in three long computations
+
+The largest of the foundational chapters and the best-audited: an earlier pass
+had already labelled every Definition and Theorem and had written the proof of
+`thm:ero_preserve_solutions` as three `claim*` blocks. The rigour pass found
+nothing false.
+
+**All three worked examples were recomputed entry by entry**, and the final
+answers substituted back into the original systems. They are correct, fractions
+and all, including the six-step reduction of `ex:full_reduction` and the
+consistency condition $b_3 - b_2 + 2b_1 = 0$ of `ex:consistency_conditions`.
+Recorded here so that nobody redoes them.
+
+What the chapter needed was pointers. The three examples and the augmented-matrix
+Notation had no labels, and the closing sentence of the last one refers to
+\qt{our \textbf{(c)} question} without saying where that question is or where it
+is answered; it now names both, the list of goals and
+`cor:non_homogeneous_solutions` in ch. 17d.
 
 ## Checked in ch. 17e and found correct
 

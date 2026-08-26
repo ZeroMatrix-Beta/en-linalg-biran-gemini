@@ -1,6 +1,19 @@
 \renewcommand{\thetheorem}{6.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{5}
+% ---------------------------------------------------------------------------
+% Provenance of the prose in this file.
+%   % Extractor: <model>   the block below was transcribed from Prof. Biran's
+%                          handwritten notes by that model
+%   % Creator:   <model>   the block below was written by that model and has no
+%                          counterpart in the notes
+% A tag holds until the next tag.
+%
+% This chapter was written before the convention existed, so the prose carries
+% no tags except on the blocks added by later passes. Untagged prose is the
+% original transcription; the AI-Notes at the end record which figures and
+% expansions are the transcript's rather than the notes'.
+% ---------------------------------------------------------------------------
 
 \chapter{Systems of Linear Equations}
 
@@ -289,6 +302,7 @@ Our aim for the rest of this chapter is to study the set of solutions $L(S)$ of 
 \subsection{Elementary Row Operations}
 
 \begin{notation}
+\label{not:augmented_matrix}
 We do not need to write down the unknowns $x_1, \dots, x_n$ at every step: the coefficient matrix $A$ and the constant vector $b$ already carry all the information. We therefore record the system as its \newterm{augmented matrix} (or \newterm{extended matrix})
 \[
 (A \mid b) \in \M_{m \times (n+1)}(K),
@@ -421,6 +435,7 @@ An $m \times n$ matrix $A$ is called \newterm{row-reduced} if the following two 
 \end{definition}
 
 \begin{example}[Row-reduced and not row-reduced]
+\label{ex:row_reduced_examples}
 Consider the following four matrices over $\mathbb{Q}$:
 \[
 A = \begin{pmatrix}
@@ -601,6 +616,7 @@ Why is this useful for solving systems of equations? Let $A x = b$ be a system o
 \subsection{Worked Examples}
 
 \begin{example}[Solving a system by full reduction]
+\label{ex:full_reduction}
 Consider the system over $\mathbb{R}$ whose augmented matrix is
 \[
 \begin{pmatrix}
@@ -672,6 +688,7 @@ and these are \emph{all} the solutions of the original system, by \cref{thm:ero_
 \end{example}
 
 \begin{example}[Conditions for consistency]
+\label{ex:consistency_conditions}
 Let us now see how the solutions behave for a general choice of the constants $b_1, b_2, b_3 \in \mathbb{R}$ in the system
 \[
 \begin{pmatrix}
@@ -746,6 +763,7 @@ So the constants $b_1, b_2, b_3$ cannot be chosen freely: the system is consiste
 \end{example}
 
 \begin{example}[A system with infinitely many solutions]
+\label{ex:infinitely_many_solutions}
 As a final illustration, consider
 \begin{equation*}
 \begin{cases}
@@ -782,7 +800,7 @@ Here $x_2$ is the free variable. Let $x_2 := \alpha \in \mathbb{R}$. The general
 \[
 x = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 1 + 2\alpha \\ \alpha \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} + \alpha \begin{pmatrix} 2 \\ 1 \\ 0 \\ 0 \end{pmatrix}.
 \]
-Observe the shape of the answer: one particular solution plus an arbitrary multiple of a fixed vector. That the solution set of a system should always look like this is precisely the kind of structure our \textbf{(c)} question asked about, and we will return to it once we have the language of vector spaces.
+Observe the shape of the answer: one particular solution plus an arbitrary multiple of a fixed vector. That the solution set of a system should always look like this is precisely the kind of structure our \textbf{(c)} question asked about, in the list of goals on \cpageref{goals:solution_set}, and we will return to it once we have the language of vector spaces. The promise is kept in ch. 17d, where \cref{cor:non_homogeneous_solutions} says exactly this for an arbitrary consistent system.
 \end{example}
 
 \begin{ainote}
@@ -793,4 +811,34 @@ step of the proof of \cref{thm:row_reduction_exists}, and the final example abov
 are expanded slightly beyond what the notes show; the geometric picture in
 \cref{fig:two_planes} and the staircase in \cref{fig:echelon_staircase} were added
 here. Everything else follows the notes directly.
+\end{ainote}
+
+\begin{ainote}
+This chapter is the one the rest of the book keeps coming back to, so it is worth
+saying which of its questions stay open at the end of it.
+
+The three worked examples exhibit three different answers, and none of the three
+is explained here. \Cref{ex:full_reduction} has a one-parameter family of
+solutions, \cref{ex:consistency_conditions} has either none or a one-parameter
+family depending on the constants, and \cref{ex:infinitely_many_solutions} ends
+with the solution set written as one particular solution plus a multiple of a
+fixed vector. Why those are the only shapes available, why the number of free
+parameters is $n$ minus the number of pivots, and why the number of pivots does
+not depend on which sequence of row operations was used, are all questions this
+chapter raises and cannot answer. They are settled in ch. 13 and ch. 17d, once
+the rank of a matrix exists.
+
+What the chapter does establish is the one thing the method needs:
+\cref{thm:ero_preserve_solutions}, that row operations change nothing about the
+solution set. Everything else here is bookkeeping in the service of that theorem,
+and its proof, through the three `claim*` blocks, is the model for the
+reversibility arguments used again in ch. 17e.
+
+The rigour pass found nothing false. All three worked examples were recomputed
+entry by entry and the final answers substituted back into the original systems;
+they are correct, including the fractions in \cref{ex:full_reduction}. The
+examples and the augmented-matrix Notation were given labels so that the later
+chapters can point at them, and the reference to \qt{our \textbf{(c)} question}
+now names the list of goals it means and the corollary in ch. 17d that keeps the
+promise.
 \end{ainote}
