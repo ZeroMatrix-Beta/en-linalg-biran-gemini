@@ -132,6 +132,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \item Find an analogous formula to (*) for a Hermitian vector space.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:polarization_a}
 \end{exercise}
 
 \subsection*{Examples}
@@ -162,6 +163,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
   \exhint{Recall the properties of the trace: $\Tr(A + B) = \Tr(A) + \Tr(B)$, $\Tr(\alpha A) = \alpha \Tr(A)$, $\Tr(M\transp) = \Tr(M)$, and $\Tr(MN) = \Tr(NM)$. Using these, show bilinearity and symmetry $\langle A, B \rangle = \Tr(A\transp B) = \Tr((A\transp B)\transp) = \Tr(B\transp A) = \langle B, A \rangle$. For positivity, compute $\langle A, A \rangle = \Tr(A\transp A) = \sum_{i,j=1}^n a_{ij}^2 \ge 0$, which is zero if and only if all entries $a_{ij} = 0$, i.e., $A = 0$.
   The standard elementary matrices $\{E_{ij} \mid 1 \le i, j \le n\}$ form an orthonormal basis since $\langle E_{ij}, E_{k\ell} \rangle = \delta_{ik}\delta_{j\ell}$. The induced norm is $\|A\|_{HS} = \sqrt{\Tr(A\transp A)} = \sqrt{\sum_{i=1}^n \sum_{j=1}^n a_{ij}^2}$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:frobenius_hilbert_schmidt_inner_product}
 \end{exercise}
 
 % Def. (22.a.6)
@@ -192,6 +194,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
   \end{enumerate}
   \exhint{Compute the $(i, j)$-entry for each side of the equations. For part (e), the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:properties_adjoint_matrix_rules}
 \end{exercise}
 
 \begin{exercise}[Hermitian Matrices, Trace, and Subspaces]
@@ -206,6 +209,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
   (b) The symmetric matrices form a $\mathbb{C}$-subspace because $(A + \alpha B)\transp = A\transp + \alpha B\transp = A + \alpha B$ for all $\alpha \in \mathbb{C}$. The Hermitian matrices do not form a $\mathbb{C}$-subspace, because $(i A)^* = -i A^* = -i A \ne i A$ for $A \ne 0$.
   (c) Since $A^* = A$, we have $\overline{\Tr(A)} = \Tr(\overline{A}) = \Tr(\overline{A}\transp) = \Tr(A^*) = \Tr(A)$, so $\Tr(A) \in \mathbb{R}$. Similarly, $\overline{\det(A)} = \det(\overline{A}) = \det(\overline{A}\transp) = \det(A^*) = \det(A)$, so $\det(A) \in \mathbb{R}$.}
   \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:hermitian_trace_subspaces_sc}
 \end{exercise}
 
 \noindent\textbf{Important example.} Let $A \in \M_{n \times n}(\mathbb{R})$. Define $\langle \cdot, \cdot \rangle_A : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ by
@@ -217,6 +221,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \label{exc:bilinear_form_A}
     $\langle \cdot, \cdot \rangle_A$ is bilinear (i.e., linear in both variables).
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:bilinear_form_A}
 \end{exercise}
 
 Assume now that $A$ is symmetric. Then $\langle v, w \rangle_A = \langle w, v \rangle_A$ for all $v, w$. Indeed,
@@ -237,6 +242,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
     \label{exc:pos_def_gives_scalar_product}
     If $A$ is positive definite, then $\langle \cdot, \cdot \rangle_A$ is a scalar product.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:pos_def_gives_scalar_product}
 \end{exercise}
 
 \begin{claim*}
@@ -265,6 +271,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
   a scalar product on $\mathbb{R}^2$?
   \exhint{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:pos_def_examples_real_b}
 \end{exercise}
 
 The situation for Hermitian products is similar.
@@ -286,6 +293,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 \begin{exercise}[Positive Definiteness of \texorpdfstring{$2\times2$}{2x2} Hermitian Matrices]\label{exc:pos_def_2x2_complex}
     $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ is positive definite if and only if $a \in \mathbb{R}$, $a > 0$, and $\det A \in \mathbb{R}$, $\det A > 0$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:pos_def_2x2_complex}
 \end{exercise}
 
 \begin{proof}[Proof of the Claim]
@@ -312,12 +320,14 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \label{exc:real_case_of_claim}
     Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R})$ and the form $\langle v, w \rangle_A = v\transp A w$, thereby proving the Claim on \cpageref{claim:scalar_product_forces_pos_def}: if $\langle \cdot, \cdot \rangle_A$ is a scalar product, then $A$ is symmetric and positive definite.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:real_case_of_claim}
 \end{exercise}
 
 \begin{exercise}[Positive Definiteness Yields a Hermitian Product]
     \label{exc:pos_def_gives_hermitian_product}
     Let $A \in \M_{n \times n}(\mathbb{C})$ be a positive definite Hermitian matrix. Show that $\langle v, w \rangle_A := v\transp A \overline{w}$ is a Hermitian product on $\mathbb{C}^n$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:pos_def_gives_hermitian_product}
 \end{exercise}
 
 \begin{exercise}[Properties of the Gram Matrix \texorpdfstring{$A\transp A$}{A^T A}]
@@ -332,6 +342,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
   (b) For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (A v)\transp (A v) = \|A v\|^2 \ge 0$. Thus $v\transp (A\transp A) v > 0$ for all $v \neq 0$ if and only if $Av \neq 0$ for all $v \neq 0$, which is equivalent to $\ker(A) = \{0\}$, i.e., $A$ is invertible.
   (c) Show that $\ker(A\transp A) = \ker(A)$: if $v \in \ker(A)$, then clearly $A\transp A v = 0$; conversely, if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$. By the rank-nullity theorem, $\operatorname{rank}(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \operatorname{rank}(A)$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:gram_matrix_properties}
 \end{exercise}
 
 \subsection*{The geometry on \texorpdfstring{$V$}{V} depends on the choice of inner product}
@@ -382,6 +393,7 @@ We define a scalar product:
     \label{exc:integral_pairing}
     Show that $\langle \cdot, \cdot \rangle$ is linear in both variables and symmetric.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:integral_pairing}
 \end{exercise}
 
 Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = \int_a^b f(x)^2 \, dx$. Since $f \neq 0$, there exists $x_0 \in (a,b)$ such that $f(x_0) \neq 0$. Since $f$ is continuous, so is $f^2$. Hence, there exists $\delta > 0$ such that $[x_0 - \delta, x_0 + \delta] \subseteq [a,b]$ and $f(x) \neq 0$ for all $x \in [x_0 - \delta, x_0 + \delta]$. This implies $f(x)^2 > 0$ for all $x \in [x_0 - \delta, x_0 + \delta]$. Therefore,
@@ -407,6 +419,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
   \exhint{(a) Bilinearity and symmetry follow from the linearity and symmetry of the integral. For positivity, let $p(x) \neq 0$. The integrand $p(t)^2 e^{-t}$ is continuous and non-negative on $[0, \infty)$. Since $p$ has at most $n$ roots, $p(t)^2 > 0$ on some non-empty interval, which implies $\int_0^\infty p(t)^2 e^{-t} \, dt > 0$.
   (b) With respect to the basis $\mathcal{B} = (1, x, \dots, x^n) = (b_0, b_1, \dots, b_n)$, the entries of the matrix $A = (a_{ij})_{0 \le i, j \le n}$ are given by $a_{ij} = \langle x^i, x^j \rangle = \int_0^\infty t^{i+j} e^{-t} \, dt = (i+j)!$, using the Gamma integral $\int_0^\infty t^k e^{-t} \, dt = k!$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:exponential_weighted_polynomial_inner_product}
 \end{exercise}
 
 \subsection*{Norms and angles}
@@ -438,6 +451,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     
     \textit{Hint:} Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:non_inner_product_norms}
 \end{exercise}
 
 \begin{exercise}[Jordan--von Neumann Parallelogram Identity]
@@ -456,6 +470,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
   \exhint{(a) The forward direction follows by expanding $\|x+y\|^2 + \|x-y\|^2$ using $\langle \cdot, \cdot \rangle$. For the converse, define $\langle x, y \rangle := \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$. Symmetry is immediate. Use the parallelogram identity to verify additivity $\langle x+z, y \rangle = \langle x, y \rangle + \langle z, y \rangle$. Then by induction show $\langle nx, y \rangle = n \langle x, y \rangle$ for $n \in \mathbb{N}$, extend to $q \in \mathbb{Q}$, and use continuity of the norm to extend to all scalars $t \in \mathbb{R}$.
   (b) Verify the norm axioms for $\|\cdot\|_1$. To show it does not come from a scalar product, choose $x = e_1$ and $y = e_2$ in $\mathbb{R}^n$ ($n \ge 2$) and check that the parallelogram identity fails: $\|x+y\|_1^2 + \|x-y\|_1^2 = 2^2 + 2^2 = 8$, whereas $2\|x\|_1^2 + 2\|y\|_1^2 = 2(1) + 2(1) = 4 \neq 8$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:jordan_von_neumann_parallelogram}
 \end{exercise}
 
 % Thm. (22.a.11)
@@ -520,6 +535,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     \label{exc:remaining_norm_axioms}
     Complete the proof of \cref{cor:norm_induced} by verifying the homogeneity $\|\alpha \cdot v\| = |\alpha| \cdot \|v\|$ and the non-degeneracy \qt{$\|v\| = 0 \implies v = 0$} for $\|v\| := \sqrt{\langle v, v \rangle}$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:remaining_norm_axioms}
 \end{exercise}
 
 % Def. (22.a.13)
@@ -559,6 +575,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
   \]
   \exhint{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:rotation_invariance_angle}
 \end{exercise}
 
 \subsection*{The Gram-Schmidt orthogonalization process.}
@@ -659,10 +676,11 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
 \end{proof}
 
 \begin{exercise}[Extending an Orthonormal System to an Orthonormal Basis]
-  \label{exc:extend_orthonormal_system}
+  \label{exc:extend_orthonormal_system_sheet23}
   Let $V$ be a finite-dimensional Euclidean vector space and let $S \subseteq V$ be an orthonormal system. Show that $S$ can be extended to an orthonormal basis of $V$.
   \exhint{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+  \exsol{sol:extend_orthonormal_system}
 \end{exercise}
 
 \begin{exercise}[Gram-Schmidt on Polynomials and Upper Triangular Derivative \faHeart]
@@ -678,6 +696,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
   \exhint{(a) Starting with $b_1 = 1$, we have $\|b_1\|^2 = \int_0^1 1 \, dx = 1$, so $u_1 = 1$. Next, $v_2 = x - \langle x, u_1 \rangle u_1 = x - 1/2$, and $\|v_2\|^2 = 1/12$, so $u_2 = \sqrt{3}(2x - 1)$. Finally, $v_3 = x^2 - \langle x^2, u_1 \rangle u_1 - \langle x^2, u_2 \rangle u_2 = x^2 - x + 1/6$, with $\|v_3\|^2 = 1/180$, so $u_3 = \sqrt{5}(6x^2 - 6x + 1)$.
   (b) The basis $\mathcal{C} = (u_1, u_2, u_3)$ obtained in part (a) already satisfies $\deg(u_k) = k-1$. Since differentiation lowers the polynomial degree, $D(u_1) = 0$, $D(u_2) \in \Sp(u_1)$, and $D(u_3) \in \Sp(u_1, u_2)$, so the representation matrix $[D]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:gram_schmidt_polynomials_derivative}
 \end{exercise}
 
 Geometric idea behind the Gram-Schmidt process.
@@ -738,6 +757,7 @@ We'll see more about this soon.
 \label{sec:solutions_euclidean_hermitian_a}
 
 \begin{exercisesolution}[Proof of \cref{lem:basic_properties_inner_prod}]
+\label{sol:basic_properties_inner_prod}
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Homogeneity in the first variable with $\alpha := 0$ gives
       \[ \langle 0, v \rangle = \langle 0 \cdot 0, v \rangle = 0 \cdot \langle 0, v \rangle = 0, \]
@@ -750,6 +770,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:polarization} \textbf{(a)}]
+\label{sol:polarization_a}
   Let $V$ be a Euclidean space and $u, v \in V$. Expanding by bilinearity and then using symmetry,
   \[ \|u+v\|^2 = \langle u+v, u+v \rangle = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle = \|u\|^2 + 2\langle u, v \rangle + \|v\|^2. \]
   Rearranging gives exactly
@@ -758,6 +779,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:polarization} \textbf{(b)}]
+\label{sol:polarization_b}
   Let $V$ be a Hermitian space. Here $\langle u, v \rangle$ is in general not real, so one formula must recover two real numbers, and we obtain them one at a time.
 
   \textbf{The real part.} Expanding as above, but now with $\langle v, u \rangle = \overline{\langle u, v \rangle}$,
@@ -778,6 +800,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:bilinear_form_A}]
+\label{sol:bilinear_form_A}
   Everything follows from the distributivity and homogeneity of matrix multiplication. For the first variable, using $(v_1 + v_2)\transp = v_1\transp + v_2\transp$ and $(\alpha v)\transp = \alpha v\transp$,
   \[ \langle v_1 + v_2, w \rangle_A = (v_1 + v_2)\transp A w = v_1\transp A w + v_2\transp A w = \langle v_1, w \rangle_A + \langle v_2, w \rangle_A, \]
   \[ \langle \alpha v, w \rangle_A = (\alpha v)\transp A w = \alpha \left( v\transp A w \right) = \alpha \langle v, w \rangle_A. \]
@@ -788,6 +811,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:pos_def_gives_scalar_product}]
+\label{sol:pos_def_gives_scalar_product}
   Let $A \in \M_{n \times n}(\mathbb{R})$ be positive definite; by \cref{def:positive_definite_matrix_real} this includes the requirement that $A$ be symmetric. We check the four axioms of \cref{def:scalar_product_real} for $\langle v, w \rangle_A := v\transp A w$.
 
   Linearity in each of the two variables is \cref{exc:bilinear_form_A}. Symmetry is the computation carried out in the text above: since $A\transp = A$ and a $1 \times 1$ matrix equals its own transpose,
@@ -796,6 +820,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:pos_def_examples_real} \textbf{(b)}]
+\label{sol:pos_def_examples_real_b}
   Let $A = \left(\begin{smallmatrix} a & b \\ b & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$, which is symmetric, and write $v = \left(\begin{smallmatrix} x \\ y \end{smallmatrix}\right)$. Then
   \[ Q(v) := v\transp A v = a x^2 + 2bxy + d y^2. \]
 
@@ -811,6 +836,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:pos_def_2x2_complex}]
+\label{sol:pos_def_2x2_complex}
   Let $A = \left(\begin{smallmatrix} a & b \\ \overline{b} & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{C})$ be Hermitian. The two reality assertions are automatic: $A^* = A$ forces $a = \overline{a}$ and $d = \overline{d}$, so $a, d \in \mathbb{R}$, and consequently
   \[ \det A = ad - b\overline{b} = ad - |b|^2 \in \mathbb{R}. \]
   So only the two inequalities are at issue. Write $v = \left(\begin{smallmatrix} x \\ y \end{smallmatrix}\right) \in \mathbb{C}^2$ and compute
@@ -829,6 +855,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:real_case_of_claim}]
+\label{sol:real_case_of_claim}
   Let $A \in \M_{n \times n}(\mathbb{R})$ and suppose $\langle v, w \rangle_A := v\transp A w$ is a scalar product on $\mathbb{R}^n$. Symmetry of the product says $v\transp A w = w\transp A v$ for all $v, w \in \mathbb{R}^n$. Take $v := e_i$ and $w := e_j$ from the standard basis. As in the complex computation of the text,
   \[ e_i\transp A e_j = a_{ij}, \qquad e_j\transp A e_i = a_{ji}, \]
   since $A e_j$ is the $j$-th column of $A$ and left multiplication by $e_i\transp$ selects its $i$-th entry. Hence $a_{ij} = a_{ji}$ for all $i, j$, that is, $A\transp = A$: the matrix is symmetric.
@@ -839,6 +866,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:pos_def_gives_hermitian_product}]
+\label{sol:pos_def_gives_hermitian_product}
   Let $A \in \M_{n \times n}(\mathbb{C})$ be Hermitian and positive definite, and put $\langle v, w \rangle_A := v\transp A \overline{w}$. We verify the four axioms of \cref{def:hermitian_product_complex}.
 
   \textbf{Linearity in the first variable.} As in \cref{exc:bilinear_form_A}, $(v_1 + v_2)\transp A \overline{w} = v_1\transp A \overline{w} + v_2\transp A \overline{w}$ and $(\alpha v)\transp A \overline{w} = \alpha \left( v\transp A \overline{w} \right)$.
@@ -856,6 +884,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:integral_pairing}]
+\label{sol:integral_pairing}
   First, the pairing is well defined and finite, Prof. Biran's \qt{Why?}. If $f, g \in C[a,b]$, then $f \cdot g$ is continuous on the closed bounded interval $[a,b]$, hence Riemann integrable there, and its integral is a real number.
 
   \textbf{Linearity in the first variable.} By the linearity of the integral,
@@ -871,6 +900,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:non_inner_product_norms}]
+\label{sol:non_inner_product_norms}
   Write $v = \left(\begin{smallmatrix} a \\ b \end{smallmatrix}\right)$ and $v' = \left(\begin{smallmatrix} a' \\ b' \end{smallmatrix}\right)$.
 
   \textbf{Both are norms.} For $\| \cdot \|''$ the three axioms are immediate from the corresponding properties of the absolute value on $\mathbb{R}$:
@@ -893,6 +923,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:remaining_norm_axioms}]
+\label{sol:remaining_norm_axioms}
   First note that $\|v\| := \sqrt{\langle v, v \rangle}$ makes sense: in the Hermitian case $\langle v, v \rangle = \overline{\langle v, v \rangle}$ by the Hermitian property, so $\langle v, v \rangle$ is real; it is $0$ for $v = 0$ by \cref{lem:basic_properties_inner_prod} \textbf{(a)} and positive otherwise, so the square root is defined and lies in $\mathbb{R}_{\ge 0}$.
 
   \textbf{Homogeneity.} For $\alpha \in K$ and $v \in V$,
@@ -903,6 +934,7 @@ We'll see more about this soon.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:matrix_representation_orthonormal}]
+\label{sol:matrix_representation_orthonormal}
   By the definition of the representation matrix, the $j$-th column of $[T]_{\mathcal{C}}^{\mathcal{B}} = (a_{ij})$ holds the coordinates of $T(v_j)$ in the basis $\mathcal{C}$, that is,
   \[ T(v_j) = \sum_{i=1}^m a_{ij} \, w_i . \]
   Fix $1 \le k \le m$ and pair both sides with $w_k$. Using linearity in the first variable and the orthogonality $\langle w_i, w_k \rangle = 0$ for $i \ne k$,
@@ -911,6 +943,8 @@ We'll see more about this soon.
   \[ a_{ij} = \frac{\langle T(v_j), w_i \rangle}{\langle w_i, w_i \rangle} . \]
   This is \cref{thm:properties_orthogonal_systems} \textbf{(b)} applied to the vector $T(v_j) \in \Sp(w_1, \dots, w_m) = W$.
 \end{exercisesolution}
+
+\input{content/22a-euclidean-hermetian-spaces-a-solutions.tex}
 
 \begin{ainote}
 The rigour pass found this chapter sound and its exercises already fully solved.
@@ -939,3 +973,5 @@ And the last step of the proof of \cref{thm:gram_schmidt}, that two spans of
 equal dimension coincide, now names \cref{prop:subspace_dimension_constraints}
 and \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
 \end{ainote}
+
+

@@ -1,0 +1,195 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:orthogonal_projection_computation}]
+\label{sol:orthogonal_projection_computation}
+Let $U = \Sp(v_1, v_2) \subseteq \mathbb{R}^3$ with $v_1 = (1, 1, 1)\transp$ and $v_2 = (0, 2, 1)\transp$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Orthonormal bases for $U$ and $U^\perp$:}
+    Applying the Gram-Schmidt process to $(v_1, v_2)$:
+    \begin{align*}
+    w_1 &= \frac{v_1}{\|v_1\|} = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \\
+    \langle v_2, w_1 \rangle &= \frac{0 + 2 + 1}{\sqrt{3}} = \sqrt{3}, \\
+    v_2 - \langle v_2, w_1 \rangle w_1 &= \begin{pmatrix} 0 \\ 2 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix}, \\
+    w_2 &= \frac{1}{\sqrt{2}}\begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix}.
+    \end{align*}
+    Thus $\mathcal{C}_U = (w_1, w_2)$ is an orthonormal basis for $U$.
+    For $U^\perp$, a normal vector is given by the cross product $v_1 \times v_2 = (-1, -1, 2)\transp$. Normalizing gives:
+    \[
+    w_3 = \frac{1}{\sqrt{6}}\begin{pmatrix} -1 \\ -1 \\ 2 \end{pmatrix}.
+    \]
+    Thus $\mathcal{C}_{U^\perp} = (w_3)$ is an orthonormal basis for $U^\perp$.
+
+    \item \textbf{Representation matrices of the orthogonal projections:}
+    The projection $P_U \colon \mathbb{R}^3 \to U$ is given by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$.
+    The $j$-th column of the representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ is $\binom{\langle e_j, w_1 \rangle}{\langle e_j, w_2 \rangle}$:
+    \[
+    [P_U]_{\mathcal{C}_U}^{\mathcal{E}_3} = \begin{pmatrix}
+      \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+      -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0
+    \end{pmatrix}.
+    \]
+    Similarly, for $P_{U^\perp} \colon \mathbb{R}^3 \to U^\perp$:
+    \[
+    [P_{U^\perp}]_{\mathcal{C}_{U^\perp}}^{\mathcal{E}_3} = \begin{pmatrix}
+      -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}
+    \end{pmatrix}. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:best_approximation_subspace}]
+\label{sol:best_approximation_subspace}
+Let $V$ be an inner product space, $U \subseteq V$ a finite-dimensional subspace, $v \in V$, and $u \in U$.
+We decompose the difference $v - u$ as:
+\[
+v - u = \big(v - P_U(v)\big) + \big(P_U(v) - u\big).
+\]
+By \cref{prop:orthogonal_projection_properties} \textbf{(c)}, $v - P_U(v) \in U^\perp$.
+Since $P_U(v) \in U$ and $u \in U$, we have $P_U(v) - u \in U$.
+Therefore, $\big(v - P_U(v)\big) \perp \big(P_U(v) - u\big)$.
+Applying Pythagoras' theorem (\cref{thm:pythagoras}):
+\[
+\|v - u\|^2 = \|v - P_U(v)\|^2 + \|P_U(v) - u\|^2 \ge \|v - P_U(v)\|^2.
+\]
+Taking square roots yields $\|v - P_U(v)\| \le \|v - u\|$.
+Equality holds if and only if $\|P_U(v) - u\|^2 = 0 \iff u = P_U(v)$, proving that $P_U(v)$ is the unique closest point in $U$ to $v$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:least_squares_polynomial_sine}]
+\label{sol:least_squares_polynomial_sine}
+Equip $V = C[-\pi, \pi]$ with the inner product $\langle f, g \rangle = \int_{-\pi}^\pi f(x) g(x) \, dx$.
+By the Best Approximation Theorem (\cref{exc:best_approximation_subspace}), the minimizing polynomial is the orthogonal projection $p = P_U(\sin x)$ onto $U = \mathbb{R}_{\le 5}[x]$.
+Since $\sin(x)$ is an odd function, $\langle \sin x, x^{2k} \rangle = 0$ for all even powers.
+Thus $p(x)$ is an odd polynomial: $p(x) = c_1 x + c_3 x^3 + c_5 x^5$.
+The coefficients satisfy the normal equations $\langle p(x), x^k \rangle = \langle \sin x, x^k \rangle$ for $k \in \{1, 3, 5\}$:
+\begin{align*}
+\langle \sin x, x \rangle &= \int_{-\pi}^\pi x \sin x \, dx = 2\pi, \\
+\langle \sin x, x^3 \rangle &= \int_{-\pi}^\pi x^3 \sin x \, dx = 2\pi^3 - 12\pi, \\
+\langle \sin x, x^5 \rangle &= \int_{-\pi}^\pi x^5 \sin x \, dx = 2\pi^5 - 40\pi^3 + 240\pi.
+\end{align*}
+Computing the inner products of basis monomials $\langle x^i, x^j \rangle = \int_{-\pi}^\pi x^{i+j} \, dx = \frac{2\pi^{i+j+1}}{i+j+1}$ for odd $i, j$:
+\[
+\begin{pmatrix}
+  \frac{2\pi^3}{3} & \frac{2\pi^5}{5} & \frac{2\pi^7}{7} \\
+  \frac{2\pi^5}{5} & \frac{2\pi^7}{7} & \frac{2\pi^9}{9} \\
+  \frac{2\pi^7}{7} & \frac{2\pi^9}{9} & \frac{2\pi^{11}}{11}
+\end{pmatrix}
+\begin{pmatrix} c_1 \\ c_3 \\ c_5 \end{pmatrix}
+=
+\begin{pmatrix}
+  2\pi \\
+  2\pi^3 - 12\pi \\
+  2\pi^5 - 40\pi^3 + 240\pi
+\end{pmatrix}.
+\]
+Solving this linear system gives the explicit coefficients of the least-squares polynomial approximation:
+\begin{align*}
+c_1 &= \frac{105(33\pi^4 - 2376\pi^2 + 10450)}{8\pi^6}, \\
+c_3 &= \frac{315(-11\pi^4 + 792\pi^2 - 3465)}{4\pi^8}, \\
+c_5 &= \frac{693(5\pi^4 - 360\pi^2 + 1575)}{8\pi^{10}}. \qedhere
+\end{align*}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:infinite_dim_orthogonal_complements}]
+\label{sol:infinite_dim_orthogonal_complements}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $V_1 = \ell^2(\mathbb{N}_0)$ and $U_1 = K_0^\infty \subset V_1$.
+    For every $k \ge 0$, the sequence $e_k = (\delta_{kn})_{n=0}^\infty$ belongs to $U_1$.
+    If $v = (v_n)_{n=0}^\infty \in U_1^\perp$, then for every $k \ge 0$:
+    \[
+    v_k = \langle v, e_k \rangle = 0.
+    \]
+    Thus $v = (0, 0, 0, \dots) = 0$, which proves that $U_1^\perp = \{0\}$.
+    (Note that $U_1 \ne V_1$, so $(U_1^\perp)^\perp = \{0\}^\perp = V_1 \ne U_1$).
+
+    \item Let $V_2 = C[0, 1]$ and $U_2 = \left\{ f \in C[0, 1] \;\middle|\; \int_0^{1/2} f(x) \, dx = 0 \right\}$.
+    Let $h \in U_2^\perp$.
+    \begin{itemize}
+        \item For any $g \in C[0, 1]$ supported in $(1/2, 1]$, we have $\int_0^{1/2} g(x)\,dx = 0$, so $g \in U_2$.
+        Hence $\int_{1/2}^1 h(x) g(x)\,dx = \langle h, g \rangle = 0$ for all such $g$, which implies $h(x) = 0$ on $(1/2, 1]$.
+        \item For any $f \in C[0, 1/2]$ with $\int_0^{1/2} f(x)\,dx = 0$, extending $f$ by $0$ to $[0, 1]$ gives an element of $U_2$, so $\int_0^{1/2} h(x) f(x)\,dx = 0$.
+        This implies that $h$ must be a constant $C$ on $[0, 1/2]$.
+        \item Since $h \in C[0, 1]$ is continuous at $x = 1/2$, we must have $C = \lim_{x \to (1/2)^+} h(x) = 0$.
+    \end{itemize}
+    Thus $h(x) = 0$ for all $x \in [0, 1]$, proving that $U_2^\perp = \{0\}$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:orthogonality_unitary_true_false}]
+\label{sol:orthogonality_unitary_true_false}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Equality $\|v + w\| = \|v\| + \|w\|$ in an inner product space holds if and only if $\langle v, w \rangle = \|v\| \|w\|$, which by the Cauchy-Schwarz equality criterion holds if and only if $v$ and $w$ are linearly dependent with a non-negative scalar ($v = c w$ or $w = c v$ with $c \ge 0$).
+
+    \item In $\mathbb{R}^2$ with standard inner product, let $v_1 = e_1 = (1, 0)\transp$, $v_2 = e_2 = (0, 1)\transp$, and $v_3 = e_1 = (1, 0)\transp$.
+    Then $v_1 \perp v_2$ and $v_2 \perp v_3$, but $\langle v_1, v_3 \rangle = 1 \ne 0$, disproving the claim.
+
+    \item \begin{itemize}
+        \item $S \subseteq T^\perp \iff \forall s \in S, \forall t \in T, \langle s, t \rangle = 0 \iff T \subseteq S^\perp \iff S \perp T$.
+        \item In $\mathbb{R}^2$, let $S = \{(1, 0)\transp\}$ and $T = \{(1, 1)\transp\}$.
+        Then $\Sp(S) \cap \Sp(T) = \{0\}$, but $\langle (1, 0)\transp, (1, 1)\transp \rangle = 1 \ne 0$, so $S \not\perp T$.
+    \end{itemize}
+
+    \item \begin{itemize}
+        \item $A_1 = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$: $A_1^* = A_1$ (Hermitian), but $A_1^* A_1 = 4I_2 \ne I_2$ (not unitary).
+        \item $A_2 = -i I_2$: $A_2^* = i I_2 \ne A_2$ (not Hermitian, skew-Hermitian), but $A_2^* A_2 = (i)(-i)I_2 = I_2$ (unitary).
+        \item $A_3 = \frac{1}{\sqrt{5}}\begin{pmatrix} i & -2 \\ 2 & i \end{pmatrix}$: $A_3^* = \frac{1}{\sqrt{5}}\begin{pmatrix} -i & 2 \\ -2 & -i \end{pmatrix} \ne A_3$ (not Hermitian), and $A_3^* A_3 = \frac{1}{5}\begin{pmatrix} 1+4 & 2i - 2i \\ -2i + 2i & 4+1 \end{pmatrix} = I_2$ (unitary).
+        \item $A_4 = \begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}$: $A_4^* = \begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix} = A_4$ (Hermitian), and $A_4^* A_4 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I_2$ (unitary).
+    \end{itemize}
+
+    \item Let $U, V \in \Unit(n)$ and $\lambda = e^{2\pi i \theta}$.
+    \begin{itemize}
+        \item $(\lambda U)^* (\lambda U) = \overline{\lambda} U^* \lambda U = |\lambda|^2 U^* U = 1 \cdot I_n = I_n$, so $\lambda U \in \Unit(n)$.
+        \item $(U^{-1})^* U^{-1} = (U^*)^* U^* = U U^* = I_n$, so $U^{-1} \in \Unit(n)$.
+        \item $(UV)^* (UV) = V^* U^* U V = V^* I_n V = V^* V = I_n$, so $UV \in \Unit(n)$.
+        \item $U + V$ is not unitary in general: for $U = V = I_n$, $U + V = 2I_n$, which satisfies $(2I_n)^*(2I_n) = 4I_n \ne I_n$. \qedhere
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:qr_decomposition_computation}]
+\label{sol:qr_decomposition_computation}
+Let $A = \begin{pmatrix} -1 & 1 & -1 \\ 2 & 0 & 1 \\ -2 & 1 & 0 \end{pmatrix}$ with column vectors $v_1, v_2, v_3$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Computation of $QR$-decomposition:}
+    Applying Gram-Schmidt to the columns of $A$:
+    \begin{itemize}
+        \item First column: $\|v_1\| = \sqrt{(-1)^2 + 2^2 + (-2)^2} = \sqrt{9} = 3$.
+        \[
+        e_1 = \frac{v_1}{3} = \frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ -2 \end{pmatrix}, \qquad R_{11} = 3.
+        \]
+        \item Second column: $R_{12} = \langle v_2, e_1 \rangle = \frac{-1(1) + 2(0) - 2(1)}{3} = -1$.
+        \[
+        w_2 = v_2 - R_{12} e_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + \frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ -2 \end{pmatrix} = \frac{1}{3}\begin{pmatrix} 2 \\ 2 \\ 1 \end{pmatrix}.
+        \]
+        $R_{22} = \|w_2\| = \frac{1}{3}\sqrt{4 + 4 + 1} = 1 \implies e_2 = \frac{1}{3}\begin{pmatrix} 2 \\ 2 \\ 1 \end{pmatrix}$.
+        \item Third column: $R_{13} = \langle v_3, e_1 \rangle = \frac{1 + 2 + 0}{3} = 1$, $R_{23} = \langle v_3, e_2 \rangle = \frac{-2 + 2 + 0}{3} = 0$.
+        \[
+        w_3 = v_3 - R_{13} e_1 - R_{23} e_2 = \begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix} - \frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ -2 \end{pmatrix} = \frac{1}{3}\begin{pmatrix} -2 \\ 1 \\ 2 \end{pmatrix}.
+        \]
+        $R_{33} = \|w_3\| = \frac{1}{3}\sqrt{4 + 1 + 4} = 1 \implies e_3 = \frac{1}{3}\begin{pmatrix} -2 \\ 1 \\ 2 \end{pmatrix}$.
+    \end{itemize}
+    Thus the $QR$-decomposition is:
+    \[
+    Q = \frac{1}{3}\begin{pmatrix} -1 & 2 & -2 \\ 2 & 2 & 1 \\ -2 & 1 & 2 \end{pmatrix}, \qquad
+    R = \begin{pmatrix} 3 & -1 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}.
+    \]
+
+    \item \textbf{Solving $Ax = b$ for $b = (0, 3, -3)\transp$:}
+    Since $Q$ is orthogonal, $Ax = b \iff QRx = b \iff Rx = Q\transp b$.
+    We compute $Q\transp b$:
+    \[
+    Q\transp b = \frac{1}{3}\begin{pmatrix} -1 & 2 & -2 \\ 2 & 2 & 1 \\ -2 & 1 & 2 \end{pmatrix} \begin{pmatrix} 0 \\ 3 \\ -3 \end{pmatrix} = \begin{pmatrix} 4 \\ 1 \\ -1 \end{pmatrix}.
+    \]
+    We solve the upper triangular system $Rx = \begin{pmatrix} 4 \\ 1 \\ -1 \end{pmatrix}$:
+    \begin{align*}
+    x_3 &= -1, \\
+    x_2 &= 1, \\
+    3x_1 - x_2 + x_3 &= 4 \implies 3x_1 - 1 - 1 = 4 \implies 3x_1 = 6 \implies x_1 = 2.
+    \end{align*}
+    Thus the unique solution is $x = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$. \qedhere
+\end{enumerate}
+\end{exercisesolution}

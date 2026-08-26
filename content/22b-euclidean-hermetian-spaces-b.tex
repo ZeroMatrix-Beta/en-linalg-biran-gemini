@@ -1,4 +1,4 @@
-﻿% Source: 22.euclidean-hermitian-spaces.b, which numbers from 22.b.1.
+% Source: 22.euclidean-hermitian-spaces.b, which numbers from 22.b.1.
 \renewcommand{\thetheorem}{22.b.\arabic{theorem}}
 \setcounter{theorem}{0}
 % This file continues chapter 22, which was opened in 22a. Do NOT reset the
@@ -157,6 +157,7 @@ Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we ha
   \exhint{(a) Apply Gram-Schmidt to $(v_1, v_2)$ to obtain an orthonormal basis $\mathcal{C}_U = (w_1, w_2)$ of $U$. Then find a non-zero vector $v_3 \in U^\perp$ (e.g., by solving the linear system $\langle x, v_1 \rangle = 0$ and $\langle x, v_2 \rangle = 0$, or via the cross product $v_1 \times v_2$) and normalize it to obtain an orthonormal basis $\mathcal{C}_{U^\perp} = (w_3)$ of $U^\perp$.
   (b) The projection $P_U \colon \mathbb{R}^3 \to U$ acts by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$. The representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ has column $j$ given by the coordinate vector of $P_U(e_j)$ with respect to $\mathcal{C}_U$, namely $\begin{pmatrix} \langle e_j, w_1 \rangle \\ \langle e_j, w_2 \rangle \end{pmatrix}$. Similarly for $P_{U^\perp}$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:orthogonal_projection_computation}
 \end{exercise}
 
 \begin{exercise}[Best Approximation Theorem \faHeart]
@@ -168,6 +169,7 @@ Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we ha
   with equality if and only if $u = P_U(v)$. Thus, $P_U(v)$ is the unique point in $U$ closest to $v$.
   \exhint{Write $v - u = (v - P_U(v)) + (P_U(v) - u)$. Note that $P_U(v) - u \in U$, while $v - P_U(v) \in U^\perp$ by \cref{prop:orthogonal_projection_properties}(c). Since $(v - P_U(v)) \perp (P_U(v) - u)$, apply Pythagoras' theorem (\cref{thm:pythagoras}) to obtain $\|v - u\|^2 = \|v - P_U(v)\|^2 + \|P_U(v) - u\|^2 \ge \|v - P_U(v)\|^2$, with equality if and only if $\|P_U(v) - u\|^2 = 0 \iff u = P_U(v)$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:best_approximation_subspace}
 \end{exercise}
 
 \begin{exercise}[Least-Squares Polynomial Approximation of \texorpdfstring{$\sin(x)$}{sin(x)}]
@@ -179,6 +181,7 @@ Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we ha
   \exhint{Equip $V = C[-\pi, \pi]$ with the scalar product $\langle f, g \rangle = \int_{-\pi}^\pi f(x) g(x) \, dx$. By the Best Approximation Theorem (\cref{exc:best_approximation_subspace}), the minimizing polynomial is precisely the orthogonal projection $p = P_U(\sin x)$ onto the subspace $U = \mathbb{R}_{\le 5}[x]$.
   Since $\sin(x)$ is an odd function, $\langle \sin x, x^{2k} \rangle = 0$ for all $k \ge 0$, so $p(x)$ is an odd polynomial $p(x) = c_1 x + c_3 x^3 + c_5 x^5$. Apply Gram-Schmidt to the odd basis $(x, x^3, x^5)$ (or set up the $3 \times 3$ normal equations $\langle p, x^k \rangle = \langle \sin x, x^k \rangle$ for $k = 1, 3, 5$) to compute the coefficients $c_1, c_3, c_5$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:least_squares_polynomial_sine}
 \end{exercise}
 
 % Cor. (22.b.6)
@@ -225,6 +228,7 @@ Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:ortho
   \exhint{(a) The standard sequence basis vectors $e_k = (\delta_{kn})_{n=0}^\infty$ all lie in $U_1$. If $v = (v_n) \in U_1^\perp$, then $\langle v, e_k \rangle = v_k = 0$ for all $k \ge 0$, which forces $v = 0$. Hence $U_1^\perp = \{0\}$ (note that $U_1 \neq V_1$, so $(U_1^\perp)^\perp \neq U_1$).
   (b) Let $h \in U_2^\perp$. For any $x_0 \in (1/2, 1)$, test functions $f \in U_2$ supported near $x_0$ show by continuity that $h(x) = 0$ on $(1/2, 1]$. Similarly, testing against functions whose integral over $[0, 1/2]$ is zero shows that $h$ must be constant on $[0, 1/2)$. By continuity at $x = 1/2$, this constant must match $h(1/2) = 0$, so $h \equiv 0$ on $[0, 1]$. Thus $U_2^\perp = \{0\}$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:infinite_dim_orthogonal_complements}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -300,6 +304,7 @@ For the remaining equivalences, suppose $A^* A = I_n$. Taking determinants and u
 \label{exc:char_orthogonal_matrices_proof}
 Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R})$ and the standard scalar product on $\mathbb{R}^n$, thereby proving \cref{lem:char_orthogonal_matrices}. (Prof. Biran remarks that it is \qt{similar}; the point of writing it out is to see exactly where the complex conjugations of the Hermitian case disappear.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:char_orthogonal_matrices_proof}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -338,6 +343,7 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
   (d) Check $A^* = A$ for Hermitian and $A^* A = I_2$ for unitary. $A_1$ is Hermitian (not unitary); $A_2$ is unitary (skew-Hermitian); $A_3$ is unitary (skew-Hermitian); $A_4$ is both Hermitian and unitary.
   (e) $(\lambda U)^* (\lambda U) = |\lambda|^2 U^* U = 1 \cdot I_n = I_n$; $(U^{-1})^* U^{-1} = (U^*)^* U^* = U U^* = I_n$; $(UV)^* UV = V^* U^* U V = V^* I_n V = I_n$. For the sum, $I_n + I_n = 2I_n$ is not unitary.}
   \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:orthogonality_unitary_true_false}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -404,6 +410,7 @@ The columns of $Q$ are $e_1, \dots, e_n$, an orthonormal basis of $K^n$, so $Q \
   \exhint{Apply the Gram-Schmidt orthogonalization process to the columns $v_1, v_2, v_3$ of $A$ as in the proof of \cref{thm:qr_decomposition_invertible} to obtain an orthonormal basis $e_1, e_2, e_3$ of $\mathbb{R}^3$. These vectors form the columns of $Q$. The entries of $R$ are $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $0$ for $i > j$.
   To solve $Ax = b$, write $QRx = b \iff Rx = Q\transp b$, and solve this upper triangular system via back-substitution.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:qr_decomposition_computation}
 \end{exercise}
 
 % The notes state this extension without a number -- it follows the numbered
@@ -444,6 +451,7 @@ The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) 
 \label{exc:extend_orthonormal_system}
 Let $V$ be a finite-di\-men\-sional inner product space and let $(e_1, \dots, e_r)$ be an orthonormal system in $V$ with $r \le n := \dim V$. Show that it can be extended to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ of $V$. (This is the step marked \qt{how?} in the proof above.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:extend_orthonormal_system}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -453,12 +461,14 @@ Let $V$ be an inner product space. Suppose $v_1, \dots, v_m \in V$ are not neces
 
 Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$ that spans $\Sp(v_1, \dots, v_{i_k})$ and we encounter a vector $v_{i_{k+1}} \in \Sp(v_1, v_2, \dots, v_{i_k})$. How will the next vector in the Gram-Schmidt process look like?
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:gram_schmidt_dependent}
 \end{exercise}
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_orthogonal_complement}
 
 \begin{exercisesolution}[Proof of \cref{lem:orthogonal_complement_properties} \textbf{(b)}, the identity $0^\perp = V$]
+\label{sol:orthogonal_complement_properties_b}
   Here $0$ denotes the subset $\{0\} \subseteq V$, so by \cref{def:orthogonal_complement}
   \[ 0^\perp = \{ v \in V \mid \langle v, 0 \rangle = 0 \}. \]
   By \cref{lem:basic_properties_inner_prod} \textbf{(a)} we have $\langle v, 0 \rangle = 0$ for \emph{every} $v \in V$, so the defining condition is satisfied by every vector of $V$ and $0^\perp = V$.
@@ -467,12 +477,14 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lem:orthogonal_complement_properties} \textbf{(d)}]
+\label{sol:orthogonal_complement_properties_d}
   Assume $S \subseteq T$ and let $v \in T^\perp$, so that $\langle v, t \rangle = 0$ for every $t \in T$. Every $s \in S$ is in particular an element of $T$, so $\langle v, s \rangle = 0$ for every $s \in S$, that is, $v \in S^\perp$. Hence $T^\perp \subseteq S^\perp$, which is the assertion $S^\perp \supseteq T^\perp$.
 
   Note that the inclusion reverses: passing to a larger set imposes more conditions on $v$, so fewer vectors survive.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:char_orthogonal_matrices_proof}, that is, of \cref{lem:char_orthogonal_matrices}]
+\label{sol:char_orthogonal_matrices_proof}
   Write
   \[
       A = \begin{pmatrix} | & & | \\ v_1 & \dots & v_n \\ | & & | \end{pmatrix}, \qquad v_k \in \mathbb{R}^n_{\text{col}},
@@ -497,6 +509,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:extend_orthonormal_system}]
+\label{sol:extend_orthonormal_system}
   An orthonormal system is in particular an orthogonal system, hence linearly independent by \cref{thm:properties_orthogonal_systems} \textbf{(a)}. So $(e_1, \dots, e_r)$ can be extended to a basis $(e_1, \dots, e_r, u_{r+1}, \dots, u_n)$ of $V$.
 
   Now apply the Gram-Schmidt process (\cref{thm:gram_schmidt}) to that basis, producing $w_1, \dots, w_n$. The point is that Gram-Schmidt does not disturb an initial segment that is already orthonormal. Indeed $w_1 = e_1$, and if $2 \le j \le r$ and $w_i = e_i$ for all $i < j$, then
@@ -511,6 +524,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:gram_schmidt_dependent}]
+\label{sol:gram_schmidt_dependent}
   \textbf{The next vector is $0$.} Suppose that after $k$ successful steps we have an orthogonal system $e_1, \dots, e_k$ with
   \[ U := \Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k}), \]
   and that the next vector to be processed satisfies $v_{i_{k+1}} \in \Sp(v_1, \dots, v_{i_k}) = U$. The Gram-Schmidt formula prescribes
@@ -526,6 +540,8 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 
   This is what the proof of the extension of the QR-decomposition on \cpageref{thm:qr_decomposition_all} arranges in advance: rather than letting the process stall, it selects the indices $i_1 < \dots < i_r$ first and applies Gram-Schmidt only to $v_{i_1}, \dots, v_{i_r}$, which are linearly independent by construction.
 \end{exercisesolution}
+
+\input{content/22b-euclidean-hermetian-spaces-b-solutions.tex}
 
 \begin{ainote}
 Nothing in this section is false, and the source-verification pass had already
@@ -555,3 +571,5 @@ identity $0^\perp = V$ and the monotonicity
 solutions at the end of the section, and \textbf{(d)} is used in the proof of
 \textbf{(e)} directly above it.
 \end{ainote}
+
+
