@@ -1,0 +1,520 @@
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:fibonacci_sequence_space_shift_eigenvalues}]
+\label{sol:fibonacci_sequence_space_shift_eigenvalues}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Isomorphism $F \colon \Fib \to \mathbb{R}^2$:}
+    The map $F((a_n)_{n=0}^\infty) := (a_0, a_1)$ is linear because sequence addition and scalar multiplication in $\Fib \subset \mathbb{R}^\infty$ are defined componentwise.
+    \begin{itemize}
+        \item \emph{Injectivity:} If $F((a_n)) = (0, 0)$, then $a_0 = a_1 = 0$. By induction using the recurrence $a_n = a_{n-1} + a_{n-2}$, we have $a_n = 0$ for all $n \ge 0$. Hence $\ker F = \{0\}$.
+        \item \emph{Surjectivity:} For any $(x_0, x_1) \in \mathbb{R}^2$, define the sequence $(a_n)$ by $a_0 := x_0$, $a_1 := x_1$, and $a_n := a_{n-1} + a_{n-2}$ for all $n \ge 2$. Then $(a_n) \in \Fib$ and $F((a_n)) = (x_0, x_1)$.
+    \end{itemize}
+    Thus $F$ is an isomorphism, which shows $\dim \Fib = 2$.
+
+    \item \textbf{Eigenvalues and Eigenvectors of $T$ and $T|_{\Fib}$:}
+    Let $T(a) = \lambda a$ for $a = (a_n)_{n=0}^\infty \ne 0$ and $\lambda \in \mathbb{R}$. This requires $a_{n+1} = \lambda a_n$ for all $n \ge 0$, which yields the geometric sequence $a_n = a_0 \lambda^n$.
+    Every $\lambda \in \mathbb{R}$ is an eigenvalue of $T$ with $1$-dimensional eigenspace $\Eig_T(\lambda) = \Sp\big((1, \lambda, \lambda^2, \dots)\big)$.
+
+    For $(a_n) \in \Fib$, $T((a_n)) = (a_1, a_2, a_3, \dots)$. For $n \ge 2$, the $(n+1)$-th term satisfies $a_{n+1} = a_n + a_{n-1}$, so $T(\Fib) \subseteq \Fib$.
+    A geometric sequence $(c \lambda^n)_{n=0}^\infty$ with $c \ne 0$ belongs to $\Fib$ if and only if $\lambda^2 = \lambda + 1$, i.e., $\lambda^2 - \lambda - 1 = 0$.
+    This quadratic has two distinct real roots:
+    \[
+    \varphi = \frac{1+\sqrt{5}}{2} \quad \text{and} \quad \psi = \frac{1-\sqrt{5}}{2}.
+    \]
+    Thus $T|_{\Fib}$ has exactly two eigenvalues, $\varphi$ and $\psi$, with corresponding eigenvectors $v_\varphi = (1, \varphi, \varphi^2, \dots)$ and $v_\psi = (1, \psi, \psi^2, \dots)$.
+
+    \item \textbf{Basis of $\Fib$:}
+    Since $\varphi \ne \psi$, the eigenvectors $v_\varphi$ and $v_\psi$ correspond to distinct eigenvalues and are therefore linearly independent (\cref{prop:lin_indep_eigen}).
+    Since $\dim \Fib = 2$, the set $\{v_\varphi, v_\psi\}$ forms a basis of $\Fib$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:eigenvalues_infinite_dimensional_sequences}]
+\label{sol:eigenvalues_infinite_dimensional_sequences}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Eigenvalues of $T$ on $K^\infty$:}
+    $T(x) = \lambda x \iff x_{n+1} = \lambda x_n$ for all $n \ge 0 \iff x_n = x_0 \lambda^n$.
+    Every $\lambda \in K$ is an eigenvalue of $T$, with eigenspace $\Eig_T(\lambda) = \Sp\big((1, \lambda, \lambda^2, \dots)\big)$.
+
+    \item \textbf{Eigenvalues of $T|_{K_0^\infty}$:}
+    An eigenvector $(1, \lambda, \lambda^2, \dots)$ belongs to $K_0^\infty$ if and only if $\lambda^n = 0$ for all sufficiently large $n$, which holds if and only if $\lambda = 0$.
+    Thus $\lambda = 0$ is the unique eigenvalue of $T|_{K_0^\infty}$, with eigenspace $\Eig(0) = \Sp\big((1, 0, 0, \dots)\big)$.
+
+    \item \textbf{Endomorphism with eigenvalues $\mathbb{N}_0$:}
+    Let $(e_k)_{k \ge 0}$ be the standard basis of $K_0^\infty$, where $e_k = (\delta_{kn})_{n \ge 0}$. Define $S \in \End(K_0^\infty)$ by $S(e_k) := k e_k$ for each $k \in \mathbb{N}_0$.
+    Then every $k \in \mathbb{N}_0$ is an eigenvalue with eigenvector $e_k$. Conversely, if $S(x) = \lambda x$ for $x = \sum_{k=0}^N c_k e_k \ne 0$, then $\sum_{k=0}^N k c_k e_k = \sum_{k=0}^N \lambda c_k e_k$, which implies $(k - \lambda) c_k = 0$ for all $k$. Picking any index $k$ with $c_k \ne 0$ yields $\lambda = k \in \mathbb{N}_0$.
+
+    \item \textbf{Endomorphism with no eigenvalues:}
+    Consider the right shift operator $R \colon K_0^\infty \to K_0^\infty$ defined by $R((x_0, x_1, \dots)) := (0, x_0, x_1, \dots)$.
+    If $R(x) = \lambda x$, then $(0, x_0, x_1, \dots) = (\lambda x_0, \lambda x_1, \dots)$.
+    The first coordinate gives $\lambda x_0 = 0$. If $\lambda \ne 0$, then $x_0 = 0$, and inductively $x_n = \lambda^{-1} x_{n-1} = 0$ for all $n \ge 0$, so $x = 0$. If $\lambda = 0$, then $x_0 = 0, x_1 = 0, \dots$, so $x = 0$.
+    In either case there is no non-zero eigenvector, so $R$ has no eigenvalues. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:uncountable_dimension_sequence_space}]
+\label{sol:uncountable_dimension_sequence_space}
+For each $\lambda \in \mathbb{R}$, consider the vector $v_\lambda := (1, \lambda, \lambda^2, \lambda^3, \dots) \in \mathbb{R}^\infty$.
+As shown in \cref{exc:eigenvalues_infinite_dimensional_sequences}, $v_\lambda$ is an eigenvector of the shift operator $T \colon \mathbb{R}^\infty \to \mathbb{R}^\infty$ with eigenvalue $\lambda$.
+By \cref{prop:lin_indep_eigen}, eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent.
+Since the set of real numbers $\mathbb{R}$ is uncountable, the family $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ is an uncountable linearly independent subset of $\mathbb{R}^\infty$.
+If $\mathbb{R}^\infty$ had a countable basis $\mathcal{B}$, every element of $\mathbb{R}^\infty$ would be a finite linear combination of elements of $\mathcal{B}$, which would bound the cardinality of any linearly independent subset by $|\mathcal{B}| \le \aleph_0$.
+Since $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ has cardinality $2^{\aleph_0} > \aleph_0$, $\mathbb{R}^\infty$ cannot have a countable basis.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:eigenvalues_of_composed_endomorphisms}]
+\label{sol:eigenvalues_of_composed_endomorphisms}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $(F \circ G)(v) = \lambda v$ with $v \ne 0$ and $G(v) \ne 0$.
+    Applying $G$ to both sides yields:
+    \[
+    (G \circ F)(G(v)) = G\big((F \circ G)(v)\big) = G(\lambda v) = \lambda G(v).
+    \]
+    Since $G(v) \ne 0$, $G(v)$ is an eigenvector of $G \circ F$ with eigenvalue $\lambda$.
+
+    \item Let $V$ be finite-dimensional.
+    \begin{itemize}
+        \item If $\lambda \ne 0$ is an eigenvalue of $F \circ G$ with eigenvector $v$, then $G(v) \ne 0$ (otherwise $(F \circ G)(v) = F(0) = 0 \ne \lambda v$), so by part \textbf{(a)}, $\lambda$ is an eigenvalue of $G \circ F$.
+        \item If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not injective, hence not invertible. In finite dimensions, $\det(F \circ G) = \det(F) \det(G) = 0$, so $\det(G \circ F) = \det(G) \det(F) = 0$, which implies $G \circ F$ is not invertible and therefore has $0$ as an eigenvalue.
+    \end{itemize}
+    By symmetry, $F \circ G$ and $G \circ F$ have exactly the same eigenvalues.
+
+    \item Let $V = \mathbb{R}^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$, and let $G$ be the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.
+    Then $G \circ F = \id_V$, whose only eigenvalue is $1$.
+    On the other hand, $(F \circ G)(1, 0, 0, \dots) = F(0, 0, \dots) = (0, 0, \dots) = 0 \cdot (1, 0, 0, \dots)$, so $0$ is an eigenvalue of $F \circ G$, but not of $G \circ F$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:resolvent_identity_matrix_products}]
+\label{sol:resolvent_identity_matrix_products}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Direct multiplication gives:
+    \begin{align*}
+    (I_n - BA)\big(I_n + B(I_n - AB)^{-1}A\big) &= I_n + B(I_n - AB)^{-1}A - BA - BAB(I_n - AB)^{-1}A \\
+    &= I_n - BA + B\big(I_n - AB\big)(I_n - AB)^{-1}A \\
+    &= I_n - BA + BA = I_n.
+    \end{align*}
+    Similarly, $\big(I_n + B(I_n - AB)^{-1}A\big)(I_n - BA) = I_n$.
+    Thus $I_n - BA$ is invertible if and only if $I_n - AB$ is invertible, with the asserted inverse formula.
+
+    \item For any scalar $\lambda \in K^*$, notice that:
+    \[
+    \lambda I_n - AB = \lambda\left(I_n - A\left(\frac{1}{\lambda}B\right)\right) \quad \text{and} \quad \lambda I_n - BA = \lambda\left(I_n - \left(\frac{1}{\lambda}B\right)A\right).
+    \]
+    By part \textbf{(a)}, $\lambda I_n - AB$ is invertible if and only if $\lambda I_n - BA$ is invertible.
+    Hence $\lambda \in K^*$ is an eigenvalue of $AB \iff \lambda I_n - AB$ is singular $\iff \lambda I_n - BA$ is singular $\iff \lambda$ is an eigenvalue of $BA$.
+    For $\lambda = 0$, $\det(AB) = \det(A)\det(B) = \det(B)\det(A) = \det(BA)$, so $0$ is an eigenvalue of $AB$ if and only if $0$ is an eigenvalue of $BA$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:eigenfunctions_derivative_operator}]
+\label{sol:eigenfunctions_derivative_operator}
+An eigenfunction $f \in C^\infty(\mathbb{R})$ with eigenvalue $\lambda \in \mathbb{R}$ satisfies $f'(x) = \lambda f(x)$ for all $x \in \mathbb{R}$.
+Multiplying by the integrating factor $e^{-\lambda x}$ gives $(e^{-\lambda x} f(x))' = 0$, which implies $e^{-\lambda x} f(x) = C$ for some constant $C \in \mathbb{R}$.
+Thus $f(x) = C e^{\lambda x}$.
+For every $\lambda \in \mathbb{R}$, the function $x \mapsto e^{\lambda x}$ is non-zero and infinitely differentiable, so every $\lambda \in \mathbb{R}$ is an eigenvalue of $T$, with $1$-dimensional eigenspace:
+\[
+\Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x}). \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:volterra_integration_no_eigenvalues}]
+\label{sol:volterra_integration_no_eigenvalues}
+Suppose $T f = \lambda f$ for some $f \in C^0(\mathbb{R}) \setminus \{0\}$ and $\lambda \in \mathbb{R}$.
+\begin{itemize}
+    \item If $\lambda = 0$, then $(T f)(x) = \int_0^x f(t)\,dt = 0$ for all $x \in \mathbb{R}$.
+    By the Fundamental Theorem of Calculus, differentiating both sides gives $f(x) = 0$ for all $x$, contradicting $f \ne 0$.
+    \item If $\lambda \ne 0$, then $f(x) = \frac{1}{\lambda} \int_0^x f(t)\,dt$.
+    Since the integral of a continuous function is $C^1$, $f$ is continuously differentiable. Differentiating yields:
+    \[
+    f'(x) = \frac{1}{\lambda} f(x) \quad \text{with initial condition} \quad f(0) = \frac{1}{\lambda}\int_0^0 f(t)\,dt = 0.
+    \]
+    The unique solution to this initial value problem is $f(x) = f(0) e^{x/\lambda} = 0$, again contradicting $f \ne 0$.
+\end{itemize}
+Thus the Volterra integration operator has no eigenvalues.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:eigenspaces_inverse_endomorphism}]
+\label{sol:eigenspaces_inverse_endomorphism}
+Let $T \in \End(V)$ be invertible and $\lambda \in K^*$.
+For any vector $v \in V$:
+\[
+T v = \lambda v \iff v = T^{-1}(\lambda v) = \lambda T^{-1} v \iff T^{-1} v = \lambda^{-1} v.
+\]
+Therefore:
+\[
+\Eig_T(\lambda) = \{v \in V \mid Tv = \lambda v\} = \{v \in V \mid T^{-1} v = (1/\lambda) v\} = \Eig_{T^{-1}}(1/\lambda). \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:char_poly_inverse_matrix}]
+\label{sol:char_poly_inverse_matrix}
+Let $A \in \GL(n, K)$. We rewrite $A^{-1} - x I_n$ as:
+\[
+A^{-1} - x I_n = -x A^{-1} (A - x^{-1} I_n).
+\]
+Taking determinants and using multiplicativity (\cref{thm:det_multiplicative}):
+\begin{align*}
+P_{A^{-1}}(x) &= \det(A^{-1} - x I_n) = \det(-x A^{-1}) \cdot \det(A - x^{-1} I_n) \\
+&= (-x)^n \det(A^{-1}) P_A(x^{-1}) = \frac{(-x)^n}{\det A} P_A(x^{-1}). \qedhere
+\end{align*}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:nilpotent_matrix_eigenvalues}]
+\label{sol:nilpotent_matrix_eigenvalues}
+Let $A \in \M_{n \times n}(K)$ with $A^m = 0$ for some $m \ge 1$.
+If $v \in K^n \setminus \{0\}$ satisfies $A v = \lambda v$, then by induction $A^k v = \lambda^k v$ for all $k \ge 1$.
+In particular, $0 = A^m v = \lambda^m v$, which implies $\lambda^m = 0$ since $v \ne 0$.
+In any field, $\lambda^m = 0 \implies \lambda = 0$. Thus $0$ is the only possible eigenvalue of $A$.
+
+Furthermore, $0$ is an eigenvalue of $A$ if and only if $\ker A \ne \{0\} \iff \det A = 0$.
+Since $(\det A)^m = \det(A^m) = \det(0) = 0$, we have $\det A = 0$ whenever $n \ge 1$.
+Therefore, for every nilpotent matrix of dimension $n \ge 1$, $0$ is always an eigenvalue.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:eigenvalues_eigenspaces_R_vs_C}]
+\label{sol:eigenvalues_eigenspaces_R_vs_C}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Matrix $A_1 = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$:}
+    $P_{A_1}(x) = (1-x)(-x) = x^2 - x = x(x-1)$.
+    Eigenvalues are $\lambda_1 = 0, \lambda_2 = 1$.
+    \begin{itemize}
+        \item Over $\mathbb{R}$: $\Eig_{T_1}(0) = \Sp\big(\binom{0}{1}\big)$, $\Eig_{T_1}(1) = \Sp\big(\binom{1}{0}\big)$.
+        \item Over $\mathbb{C}$: $\Eig_{U_1}(0) = \Sp_\mathbb{C}\big(\binom{0}{1}\big)$, $\Eig_{U_1}(1) = \Sp_\mathbb{C}\big(\binom{1}{0}\big)$.
+    \end{itemize}
+
+    \item \textbf{Matrix $A_2 = \begin{pmatrix} 2 & 3 \\ -1 & 1 \end{pmatrix}$:}
+    $P_{A_2}(x) = (2-x)(1-x) - (-3) = x^2 - 3x + 5$.
+    The discriminant is $\Delta = 9 - 20 = -11 < 0$.
+    \begin{itemize}
+        \item Over $\mathbb{R}$: $P_{A_2}(x)$ has no real roots, so $T_2$ has no eigenvalues.
+        \item Over $\mathbb{C}$: Eigenvalues are $\lambda_{1,2} = \frac{3 \pm i\sqrt{11}}{2}$.
+        For $\lambda_1 = \frac{3+i\sqrt{11}}{2}$, solving $(A_2 - \lambda_1 I_2)v = 0$ gives $\Eig_{U_2}(\lambda_1) = \Sp_\mathbb{C}\big(\binom{-1-i\sqrt{11}}{2}\big)$.
+        For $\lambda_2 = \frac{3-i\sqrt{11}}{2}$, $\Eig_{U_2}(\lambda_2) = \Sp_\mathbb{C}\big(\binom{-1+i\sqrt{11}}{2}\big)$.
+    \end{itemize}
+
+    \item \textbf{Matrix $A_3 = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$:}
+    $P_{A_3}(x) = (1-x)^2 - 1 = x^2 - 2x = x(x-2)$.
+    Eigenvalues are $\lambda_1 = 0, \lambda_2 = 2$.
+    \begin{itemize}
+        \item Over $\mathbb{R}$: $\Eig_{T_3}(0) = \Sp\big(\binom{1}{-1}\big)$, $\Eig_{T_3}(2) = \Sp\big(\binom{1}{1}\big)$.
+        \item Over $\mathbb{C}$: $\Eig_{U_3}(0) = \Sp_\mathbb{C}\big(\binom{1}{-1}\big)$, $\Eig_{U_3}(2) = \Sp_\mathbb{C}\big(\binom{1}{1}\big)$. \qedhere
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:multiplicities_3x3_matrix}]
+\label{sol:multiplicities_3x3_matrix}
+Let $A = \begin{pmatrix} 3 & 0 & -2 \\ 2 & 0 & -2 \\ 0 & 1 & 1 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Characteristic polynomial:}
+    \begin{align*}
+    P_A(x) &= \det \begin{pmatrix} 3-x & 0 & -2 \\ 2 & -x & -2 \\ 0 & 1 & 1-x \end{pmatrix} = (3-x)\big(-x(1-x) + 2\big) - 2(2 - 0) \\
+    &= (3-x)(x^2 - x + 2) - 4 = -x^3 + 4x^2 - 5x + 2 = -(x-1)^2(x-2).
+    \end{align*}
+
+    \item \textbf{Eigenvalues:}
+    The roots of $P_A(x)$ are $\lambda_1 = 1$ and $\lambda_2 = 2$.
+
+    \item \textbf{Multiplicities:}
+    \begin{itemize}
+        \item For $\lambda_2 = 2$: $m_a(A; 2) = 1$, and since $1 \le m_g(A; 2) \le m_a(A; 2) = 1$, we have $m_g(A; 2) = 1$.
+        \item For $\lambda_1 = 1$: $m_a(A; 1) = 2$. We compute the eigenspace:
+        \[
+        A - I_3 = \begin{pmatrix} 2 & 0 & -2 \\ 2 & -1 & -2 \\ 0 & 1 & 0 \end{pmatrix} \xrightarrow{\text{RREF}} \begin{pmatrix} 1 & 0 & -1 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}.
+        \]
+        Thus $\rank(A - I_3) = 2$, which gives $m_g(A; 1) = 3 - \rank(A - I_3) = 3 - 2 = 1$.
+    \end{itemize}
+    In summary: $m_a(A; 1) = 2, m_g(A; 1) = 1$ and $m_a(A; 2) = 1, m_g(A; 2) = 1$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:diagonalizability_over_Q}]
+\label{sol:diagonalizability_over_Q}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Matrix $A = \begin{pmatrix} 1 & -1 \\ 2 & 4 \end{pmatrix}$:}
+    $P_A(x) = (1-x)(4-x) + 2 = x^2 - 5x + 6 = (x-2)(x-3)$.
+    The eigenvalues are $\lambda_1 = 2, \lambda_2 = 3 \in \mathbb{Q}$.
+    Since $A$ has $2$ distinct eigenvalues on a $2$-dimensional space, $A$ is \textbf{diagonalizable over $\mathbb{Q}$}.
+    Eigenspaces: $\Eig_A(2) = \Sp\big(\binom{1}{-1}\big)$, $\Eig_A(3) = \Sp\big(\binom{1}{-2}\big)$.
+
+    \item \textbf{Matrix $B = \begin{pmatrix} 2 & 2 & 3 \\ 1 & 2 & 1 \\ 2 & -2 & 1 \end{pmatrix}$:}
+    Computing the characteristic polynomial:
+    \[
+    P_B(x) = \det(B - x I_3) = -x^3 + 5x^2 + x - 5 = -(x-5)(x-1)(x+1).
+    \]
+    The eigenvalues are $\lambda_1 = 5, \lambda_2 = 1, \lambda_3 = -1 \in \mathbb{Q}$.
+    Since all $3$ eigenvalues are distinct and in $\mathbb{Q}$, $B$ is \textbf{diagonalizable over $\mathbb{Q}$}.
+    Eigenspaces: $\Eig_B(5) = \Sp\big(\binom{8}{3}{6}\big)$, $\Eig_B(1) = \Sp\big(\binom{1}{1}{-1}\big)$, $\Eig_B(-1) = \Sp\big(\binom{1}{0}{-1}\big)$.
+
+    \item \textbf{Matrix $C = \begin{pmatrix} -4 & -3 & -1 & -7 \\ -3 & -1 & -1 & -4 \\ 6 & 4 & 3 & 8 \\ 3 & 3 & 1 & 6 \end{pmatrix}$:}
+    Computing $P_C(x) = (x-1)^4$, so $\lambda = 1$ is the only eigenvalue with $m_a(C; 1) = 4$.
+    Row reducing $C - I_4$:
+    \[
+    C - I_4 = \begin{pmatrix} -5 & -3 & -1 & -7 \\ -3 & -2 & -1 & -4 \\ 6 & 4 & 2 & 8 \\ 3 & 3 & 1 & 5 \end{pmatrix} \xrightarrow{\text{RREF}} \begin{pmatrix} 1 & 0 & 0 & 2 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}.
+    \]
+    Thus $\rank(C - I_4) = 3$, which implies $m_g(C; 1) = 4 - 3 = 1 < 4 = m_a(C; 1)$.
+    Therefore, $C$ is \textbf{not diagonalizable over $\mathbb{Q}$}. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:trace_determinant_char_poly_diagonalizable}]
+\label{sol:trace_determinant_char_poly_diagonalizable}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Let $\mathcal{B}$ be a basis of eigenvectors of $T$. Then $[T]_\mathcal{B}^\mathcal{B} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$.
+    By basis invariance of trace and determinant:
+    \[
+    \Tr(T) = \Tr([T]_\mathcal{B}^\mathcal{B}) = \sum_{i=1}^n \lambda_i, \qquad \det(T) = \det([T]_\mathcal{B}^\mathcal{B}) = \prod_{i=1}^n \lambda_i.
+    \]
+    Expanding the factored characteristic polynomial:
+    \[
+    P_T(x) = \prod_{i=1}^n (\lambda_i - x) = \sum_{k=0}^n (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n) x^k,
+    \]
+    where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial.
+    Thus $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$ for each $0 \le k \le n$.
+
+    \item Since $B \in \M_{2 \times 2}(\mathbb{R})$ is diagonalizable over $\mathbb{R}$, it has two real eigenvalues $\lambda_1, \lambda_2 \in \mathbb{R}$.
+    We have $\lambda_1 + \lambda_2 = \Tr(B) = 0$, which gives $\lambda_2 = -\lambda_1$.
+    Therefore:
+    \[
+    \det(B) = \lambda_1 \lambda_2 = \lambda_1(-\lambda_1) = -\lambda_1^2 \le 0. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:direct_sum_multiplicities_and_simultaneous_diagonalizability}]
+\label{sol:direct_sum_multiplicities_and_simultaneous_diagonalizability}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item For each $i$, choose a basis $\mathcal{B}_i$ for $V_i$. The concatenation $\mathcal{B} = (\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $V = \bigoplus_{i=1}^r V_i$.
+    The matrix representation $[f]_\mathcal{B}^\mathcal{B}$ is block diagonal with diagonal blocks $[f|_{V_i}]_{\mathcal{B}_i}^{\mathcal{B}_i}$.
+    By \cref{prop:block_matrix}, $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$.
+    The multiplicity of $(x - \lambda)$ in a product of polynomials is the sum of its multiplicities in the individual factors, so $m_a(f; \lambda) = \sum_{i=1}^r m_a(f|_{V_i}; \lambda)$.
+    Furthermore, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$, so taking dimensions gives $m_g(f; \lambda) = \sum_{i=1}^r m_g(f|_{V_i}; \lambda)$.
+
+    \item By \cref{thm:diag_equiv}, $f$ is diagonalizable $\iff \sum_\lambda m_g(f; \lambda) = \dim V$.
+    Using part \textbf{(a)} and $\dim V = \sum_{i=1}^r \dim V_i$:
+    \[
+    \sum_{\lambda} m_g(f; \lambda) = \sum_{i=1}^r \sum_{\lambda} m_g(f|_{V_i}; \lambda) \le \sum_{i=1}^r \dim V_i = \dim V,
+    \]
+    with equality if and only if $\sum_\lambda m_g(f|_{V_i}; \lambda) = \dim V_i$ for every $i \in \{1, \dots, r\}$, which means every $f|_{V_i}$ is diagonalizable.
+
+    \item \textbf{Simultaneous diagonalizability:}
+    \begin{itemize}
+        \item \emph{($\Rightarrow$):} If $\mathcal{B}$ is a common eigenbasis, $[f]_\mathcal{B}^\mathcal{B}$ and $[g]_\mathcal{B}^\mathcal{B}$ are diagonal matrices, which commute, so $f \circ g = g \circ f$, and both maps are diagonalizable.
+        \item \emph{($\Leftarrow$):} Since $f$ is diagonalizable, $V = \bigoplus_{j=1}^k \Eig_f(\lambda_j)$.
+        For any $v \in \Eig_f(\lambda_j)$, we have $f(g(v)) = g(f(v)) = g(\lambda_j v) = \lambda_j g(v)$, so $g(v) \in \Eig_f(\lambda_j)$.
+        Thus each eigenspace $\Eig_f(\lambda_j)$ is $g$-invariant.
+        Since $g$ is diagonalizable on $V$, by part \textbf{(b)} the restriction $g|_{\Eig_f(\lambda_j)}$ is diagonalizable on $\Eig_f(\lambda_j)$.
+        Choosing an eigenbasis of $g|_{\Eig_f(\lambda_j)}$ for each $j$ yields a basis of $V$ whose vectors are simultaneous eigenvectors of both $f$ and $g$. \qedhere
+    \end{itemize}
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:real_2x2_similarity_classification}]
+\label{sol:real_2x2_similarity_classification}
+Let $A \in \GL(2, \mathbb{R})$. The characteristic polynomial is $P_A(x) = x^2 - \Tr(A)x + \det(A)$, with discriminant $\Delta = \Tr(A)^2 - 4\det(A)$.
+\begin{itemize}
+    \item \textbf{Case 1: $\Delta > 0$.}
+    $P_A(x)$ has two distinct real roots $\lambda_1 \ne \lambda_2$. By \cref{cor:sufficient_diag}, $A$ is \textbf{diagonalizable over $\mathbb{R}$}.
+
+    \item \textbf{Case 2: $\Delta = 0$.}
+    $P_A(x)$ has a unique real root $\lambda = \frac{\Tr(A)}{2}$ of algebraic multiplicity $m_a(A; \lambda) = 2$.
+    \begin{itemize}
+        \item If $m_g(A; \lambda) = 2$, then $\ker(A - \lambda I_2) = \mathbb{R}^2$, so $A = \lambda I_2$, which is \textbf{diagonalizable}.
+        \item If $m_g(A; \lambda) = 1$, $A$ is \textbf{trigonalizable} with algebraic multiplicity $2$ and geometric multiplicity $1$ (and not diagonalizable).
+    \end{itemize}
+
+    \item \textbf{Case 3: $\Delta < 0$.}
+    $P_A(x)$ has complex conjugate roots $\lambda = a + ib$ and $\bar{\lambda} = a - ib$ with $b \ne 0$.
+    Let $v = u + iw \in \mathbb{C}^2 \setminus \{0\}$ be an eigenvector of $A$ for $\lambda = a + ib$.
+    Then $A(u + iw) = (a + ib)(u + iw) = (au - bw) + i(bu + aw)$, so equating real and imaginary parts gives:
+    \[
+    Au = au - bw \quad \text{and} \quad Aw = bu + aw.
+    \]
+    The vectors $u, w \in \mathbb{R}^2$ are linearly independent over $\mathbb{R}$ (if $u = c w$, then $v = (c+i)w$ would make $w$ a real eigenvector for the non-real eigenvalue $a+ib$, impossible).
+    In the basis $\mathcal{B} = (u, -w)$, the matrix of $T_A$ is $\begin{pmatrix} a & b \\ -b & a \end{pmatrix}$, so $P^{-1} A P = \begin{pmatrix} a & b \\ -b & a \end{pmatrix}$ with $P = (u \mid -w) \in \GL(2, \mathbb{R})$.
+\end{itemize}
+Since $\Delta > 0$, $\Delta = 0$, and $\Delta < 0$ partition all real quadratic polynomials, precisely one condition holds.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:eigenvalues_are_roots_of_annihilating_polynomials}]
+\label{sol:eigenvalues_are_roots_of_annihilating_polynomials}
+Let $\lambda \in K$ be an eigenvalue of $A$ with eigenvector $v \in K^n \setminus \{0\}$.
+By induction, $A^k v = \lambda^k v$ for all $k \ge 0$.
+Writing $p(x) = \sum_{i=0}^d c_i x^i$, we have:
+\[
+p(A) v = \left(\sum_{i=0}^d c_i A^i\right) v = \sum_{i=0}^d c_i A^i v = \sum_{i=0}^d c_i \lambda^i v = p(\lambda) v.
+\]
+Since $p(A) = 0$ by assumption, $p(A) v = 0$, which yields $p(\lambda) v = 0$.
+Because $v \ne 0$, this forces $p(\lambda) = 0$, showing that $\lambda$ is a root of $p(x)$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:annihilating_quadratic_even_dimension}]
+\label{sol:annihilating_quadratic_even_dimension}
+The statement is \textbf{true}: such a matrix $A \in \M_{n \times n}(\mathbb{R})$ exists if and only if $n$ is even.
+\begin{itemize}
+    \item \textbf{($\Rightarrow$):} Suppose $A \in \M_{n \times n}(\mathbb{R})$ satisfies $A^2 + 2A + 5I_n = 0$.
+    If $n$ is odd, the characteristic polynomial $P_A(x) \in \mathbb{R}[x]$ has odd degree $n$, so by the Intermediate Value Theorem it must have at least one real root $\lambda \in \mathbb{R}$.
+    By \cref{exc:eigenvalues_are_roots_of_annihilating_polynomials}, $\lambda$ must satisfy $\lambda^2 + 2\lambda + 5 = 0 \iff (\lambda + 1)^2 = -4$.
+    Since $(\lambda + 1)^2 \ge 0$ for all $\lambda \in \mathbb{R}$, this equation has no real solutions, a contradiction. Thus $n$ must be even.
+
+    \item \textbf{($\Leftarrow$):} Suppose $n = 2m$ is even. Consider the $2 \times 2$ block:
+    \[
+    J = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}.
+    \]
+    Direct computation shows $J^2 + 2J + 5I_2 = \begin{pmatrix} -3 & 4 \\ -4 & -3 \end{pmatrix} + \begin{pmatrix} -2 & -4 \\ 4 & -2 \end{pmatrix} + \begin{pmatrix} 5 & 0 \\ 0 & 5 \end{pmatrix} = 0$.
+    Defining the block diagonal matrix $A := \operatorname{diag}(J, \dots, J) \in \M_{2m \times 2m}(\mathbb{R})$ with $m$ copies of $J$ gives:
+    \[
+    A^2 + 2A + 5I_n = \operatorname{diag}(J^2 + 2J + 5I_2, \dots, J^2 + 2J + 5I_2) = 0. \qedhere
+    \]
+\end{itemize}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:degree_minimal_poly_bounded_by_rank}]
+\label{sol:degree_minimal_poly_bounded_by_rank}
+Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = \rank(A) = r$.
+Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is a well-defined endomorphism on the $r$-dimensional space $W$.
+By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}) applied to $F$, the characteristic polynomial $P_F(x) \in K[x]$ is a monic polynomial of degree $r$ such that $P_F(F) = 0$.
+This means $P_F(T_A)(w) = 0$ for all $w \in W$.
+For any arbitrary vector $v \in K^n$, we have $T_A(v) \in W$, which implies:
+\[
+\big(P_F(T_A) \circ T_A\big)(v) = P_F(T_A)\big(T_A(v)\big) = 0.
+\]
+Therefore, the polynomial $p(x) := x P_F(x) \in K[x]$, which is monic of degree $r + 1$, satisfies $p(A) = 0$.
+By the definition of the minimal polynomial, $m_A(x)$ divides any annihilating polynomial, so:
+\[
+\deg(m_A) \le \deg(p) = r + 1. \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:subspace_matrix_powers_and_inverse}]
+\label{sol:subspace_matrix_powers_and_inverse}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $P_A(A) = 0$, where $P_A(x) = (-1)^n x^n + c_{n-1} x^{n-1} + \dots + c_0$.
+    Rearranging gives $A^n = (-1)^{n-1}(c_{n-1} A^{n-1} + \dots + c_0 I_n) \in \Sp(I_n, A, \dots, A^{n-1})$.
+    By induction, multiplying by $A$ shows that $A^m \in \Sp(I_n, A, \dots, A^{n-1})$ for all $m \ge n$.
+    Therefore, $\Sp(I_n, A, A^2, A^3, \dots) = \Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$.
+
+    \item Let $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \\ 3 & 1 & 2 \end{pmatrix}$. We compute $P_A(x) = \det(A - x I_3)$:
+    \[
+    P_A(x) = -x^3 + 6x^2 + 9x + 18.
+    \]
+    By Cayley-Hamilton, $-A^3 + 6A^2 + 9A + 18I_3 = 0$.
+    Multiplying by $A^{-1}$ and rearranging yields:
+    \[
+    18 A^{-1} = A^2 - 6A - 9I_3 \implies A^{-1} = \frac{1}{18}\big(A^2 - 6A - 9I_3\big).
+    \]
+    Thus $p(x) = \frac{1}{18}(x^2 - 6x - 9)$ satisfies $p(A) = A^{-1}$. \qedhere
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:similarity_of_matrix_polynomials}]
+\label{sol:similarity_of_matrix_polynomials}
+We first prove by induction that $(Q^{-1} A Q)^i = Q^{-1} A^i Q$ for all $i \ge 0$.
+For $i = 0$, $(Q^{-1} A Q)^0 = I_n = Q^{-1} I_n Q$. If the formula holds for $i$, then:
+\[
+(Q^{-1} A Q)^{i+1} = (Q^{-1} A Q)^i (Q^{-1} A Q) = (Q^{-1} A^i Q)(Q^{-1} A Q) = Q^{-1} A^i (Q Q^{-1}) A Q = Q^{-1} A^{i+1} Q.
+\]
+Now let $p(x) = \sum_{i=0}^d c_i x^i \in K[x]$. By linearity:
+\[
+p(Q^{-1} A Q) = \sum_{i=0}^d c_i (Q^{-1} A Q)^i = \sum_{i=0}^d c_i Q^{-1} A^i Q = Q^{-1} \left( \sum_{i=0}^d c_i A^i \right) Q = Q^{-1} p(A) Q. \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:density_of_diagonalizable_matrices}]
+\label{sol:density_of_diagonalizable_matrices}
+Let $A \in \M_{n \times n}(\mathbb{C})$ and $\varepsilon > 0$.
+By \cref{cor:complex_trigonalizable}, $A$ is similar to an upper triangular matrix: $A = P T P^{-1}$ with $T = (\lambda_i \delta_{ij} + t_{ij})_{i \le j}$.
+Choose numbers $\delta_1, \dots, \delta_n \in \mathbb{C}$ such that:
+\begin{enumerate}[label=\textbf{(\roman*)}]
+    \item $\lambda_1 + \delta_1, \dots, \lambda_n + \delta_n$ are pairwise distinct;
+    \item $|\delta_i| < \delta$ for all $i$, where $\delta := \frac{\varepsilon}{n^2 \|P\| \|P^{-1}\| + 1}$ (using the Frobenius norm).
+\end{enumerate}
+Define $T' := T + \operatorname{diag}(\delta_1, \dots, \delta_n)$ and $B := P T' P^{-1}$.
+The diagonal entries of $T'$ are the distinct numbers $\lambda_i + \delta_i$, so $T'$ (and hence $B$) has $n$ distinct eigenvalues and is therefore diagonalizable.
+Moreover:
+\[
+|B_{ij} - A_{ij}| \le \|B - A\| = \|P (T' - T) P^{-1}\| \le \|P\| \|\operatorname{diag}(\delta_1, \dots, \delta_n)\| \|P^{-1}\| < \varepsilon
+\]
+for all $1 \le i, j \le n$.
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:convergence_of_matrix_polynomials}]
+\label{sol:convergence_of_matrix_polynomials}
+Since $A_k \to A$ entrywise, by continuity of matrix multiplication we have $A_k^i \to A^i$ entrywise for each fixed power $0 \le i \le d$.
+Since also $c_i^{(k)} \to c_i$ in $\mathbb{C}$, the scalar-matrix product converges: $\lim_{k \to \infty} c_i^{(k)} A_k^i = c_i A^i$.
+Summing over the finitely many terms $i = 0, 1, \dots, d$:
+\[
+\lim_{k \to \infty} p_k(A_k) = \lim_{k \to \infty} \sum_{i=0}^d c_i^{(k)} A_k^i = \sum_{i=0}^d \lim_{k \to \infty} c_i^{(k)} A_k^i = \sum_{i=0}^d c_i A^i = p(A). \qedhere
+\]
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:cayley_hamilton_via_density}]
+\label{sol:cayley_hamilton_via_density}
+\begin{enumerate}
+    \item \textbf{Diagonal matrices:} If $D = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$, then $P_D(x) = \prod_{i=1}^n (\lambda_i - x)$, and evaluating at $D$ yields $P_D(D) = \operatorname{diag}(P_D(\lambda_1), \dots, P_D(\lambda_n)) = 0$.
+    \item \textbf{Diagonalizable matrices:} If $M = Q D Q^{-1}$ with $D$ diagonal, then $P_M(x) = P_D(x)$, and by \cref{exc:similarity_of_matrix_polynomials}:
+    \[
+    P_M(M) = P_M(Q D Q^{-1}) = Q P_M(D) Q^{-1} = Q P_D(D) Q^{-1} = Q \cdot 0 \cdot Q^{-1} = 0.
+    \]
+    \item \textbf{General complex matrices:} Let $A \in \M_{n \times n}(\mathbb{C})$. By \cref{exc:density_of_diagonalizable_matrices}, there exists a sequence of diagonalizable matrices $A_k \to A$.
+    The characteristic polynomials $P_{A_k}(x)$ converge coefficient-wise to $P_A(x)$ by continuity of the determinant.
+    Applying \cref{exc:convergence_of_matrix_polynomials}:
+    \[
+    P_A(A) = \lim_{k \to \infty} P_{A_k}(A_k) = \lim_{k \to \infty} 0 = 0. \qedhere
+    \]
+\end{enumerate}
+\end{exercisesolution}
+
+% Solution by Gemini 3.7 Flash (High)
+\begin{exercisesolution}[Solution to \cref{exc:char_poly_companion_matrix}]
+\label{sol:char_poly_companion_matrix}
+We proceed by induction on $n \ge 2$.
+\begin{itemize}
+    \item \textbf{Base case $n = 2$:}
+    \[
+    P_A(x) = \det \begin{pmatrix} -x & -c_0 \\ 1 & -c_1 - x \end{pmatrix} = (-x)(-c_1 - x) - (-c_0) = x^2 + c_1 x + c_0 = (-1)^2(x^2 + c_1 x + c_0).
+    \]
+    \item \textbf{Induction step:} Assume the formula holds for matrices of size $n - 1$.
+    Computing $\det(A - x I_n)$ by Laplace expansion along the first row:
+    \[
+    P_A(x) = \begin{vmatrix}
+      -x & 0 & \dots & 0 & -c_0 \\
+      1 & -x & \dots & 0 & -c_1 \\
+      0 & 1 & \dots & 0 & -c_2 \\
+      \vdots & \vdots & \ddots & \vdots & \vdots \\
+      0 & 0 & \dots & 1 & -c_{n-1} - x
+    \end{vmatrix}
+    = (-x) \det(M_{11}) + (-1)^{1+n}(-c_0) \det(M_{1n}),
+    \]
+    where $M_{11}$ is the companion matrix of size $n-1$ for $(c_1, \dots, c_{n-1})$, and $M_{1n}$ is lower triangular with $1$s on the diagonal (so $\det M_{1n} = 1$).
+    By the induction hypothesis, $\det(M_{11}) = (-1)^{n-1}(x^{n-1} + c_{n-1}x^{n-2} + \dots + c_1)$.
+    Substituting this into the expansion gives:
+    \begin{align*}
+    P_A(x) &= (-x)(-1)^{n-1}(x^{n-1} + c_{n-1}x^{n-2} + \dots + c_1) + (-1)^n c_0 \\
+    &= (-1)^n (x^n + c_{n-1}x^{n-1} + \dots + c_1 x + c_0). \qedhere
+    \end{align*}
+\end{itemize}
+\end{exercisesolution}

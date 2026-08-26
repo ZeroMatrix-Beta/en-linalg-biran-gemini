@@ -58,6 +58,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \end{enumerate}
   \exhint{\textbf{(a)} Check that $F$ is linear and that any sequence in $\Fib$ is uniquely determined by its first two terms $(a_0, a_1)$, proving bijectivity. \textbf{(b)} For $Tx = \lambda x$, show that $x = (c, c\lambda, c\lambda^2, \dots)$ for some scalar $c$. For this geometric sequence to satisfy the Fibonacci recurrence, $\lambda$ must satisfy $\lambda^2 = \lambda + 1$, which yields the eigenvalues $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi = \frac{1-\sqrt{5}}{2}$. \textbf{(c)} Since $\dim \Fib = 2$ and the two eigenvalues are distinct, the corresponding eigenvectors are linearly independent and hence form a basis for $\Fib$.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:fibonacci_sequence_space_shift_eigenvalues}
 \end{exercise}
 
 \begin{definition}[Eigenvalue and Eigenvector]\label{def:eigenvalue_eigenvector}
@@ -144,6 +145,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \end{enumerate}
   \exhint{\textbf{(a)} Show that $T(x) = \lambda x$ implies $x_n = c \lambda^n$ for some $c \in K$, so every $\lambda \in K$ is an eigenvalue with eigenvector $(1, \lambda, \lambda^2, \dots)$. \textbf{(b)} The eigenvectors of $T|_{K_0^\infty}$ are the eigenvectors of $T$ that belong to $K_0^\infty$; show that a geometric sequence $(1, \lambda, \lambda^2, \dots)$ is eventually zero if and only if $\lambda = 0$. \textbf{(c)} Consider the standard basis vectors $e_k = (\delta_{kn})_{n \ge 0}$ of $K_0^\infty$ and define an endomorphism by $S(e_k) := k e_k$. \textbf{(d)} Consider a shift operator such as the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and show that $Mx = \lambda x$ forces $x = 0$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:eigenvalues_infinite_dimensional_sequences}
 \end{exercise}
 
 \begin{exercise}[Uncountable Dimension of $\mathbb{R}^\infty$ via Eigenvalues \faHeart]
@@ -151,6 +153,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   Show that the real vector space $\mathbb{R}^\infty$ of all infinite sequences of real numbers has no countable basis (that is, its dimension as an $\mathbb{R}$-vector space is uncountable).
   \exhint{By \cref{exc:eigenvalues_infinite_dimensional_sequences}, the shift operator $T : \mathbb{R}^\infty \to \mathbb{R}^\infty$, $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$ has every $\lambda \in \mathbb{R}$ as an eigenvalue with non-zero eigenvector $v_\lambda = (1, \lambda, \lambda^2, \dots)$. Since $\mathbb{R}$ is uncountable and eigenvectors corresponding to pairwise distinct eigenvalues are linearly independent (\cref{prop:lin_indep_eigen}), the family $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ is an uncountable linearly independent subset of $\mathbb{R}^\infty$. Deduce that $\mathbb{R}^\infty$ cannot have a countable spanning set or basis.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:uncountable_dimension_sequence_space}
 \end{exercise}
 
 \subsection{The Characteristic Polynomial}
@@ -173,6 +176,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \end{enumerate}
   \exhint{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part (a) immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:eigenvalues_of_composed_endomorphisms}
 \end{exercise}
 
 \begin{exercise}[Resolvent Identity and Eigenvalues of Matrix Products]
@@ -187,6 +191,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   \end{enumerate}
   \exhint{\textbf{(a)} Verify directly by multiplying $(I_n - BA)$ with $(I_n + B(I_n - AB)^{-1}A)$ and simplifying using $BA B = B (AB)$. \textbf{(b)} For any $\lambda \in K^*$, notice that $\lambda I_n - AB = \lambda(I_n - A(B/\lambda))$ is invertible if and only if $\lambda I_n - BA = \lambda(I_n - (B/\lambda)A)$ is invertible by part (a). For $\lambda = 0$, $AB$ is singular if and only if $\det(AB) = \det(A)\det(B) = 0 \iff \det(BA) = 0 \iff BA$ is singular.}
   \exinfo{This exercise is Problem 8 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:resolvent_identity_matrix_products}
 \end{exercise}
 
 \begin{exercise}[Eigenfunctions of the Derivative Operator]
@@ -198,6 +203,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   Compute all eigenvalues and the corresponding eigenfunctions (eigenvectors) of $T$.
   \exhint{An eigenfunction $f \in C^\infty(\mathbb{R})$ for eigenvalue $\lambda \in \mathbb{R}$ satisfies the differential equation $f'(x) = \lambda f(x)$. Solve this ordinary differential equation to show that every $\lambda \in \mathbb{R}$ is an eigenvalue with eigenspace $\Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x})$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:eigenfunctions_derivative_operator}
 \end{exercise}
 
 \begin{exercise}[The Volterra Integration Operator has No Eigenvalues]
@@ -209,6 +215,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   Show that $T$ has no eigenvalues.
   \exhint{Suppose $T f = \lambda f$ for some non-zero function $f \in C^0(\mathbb{R})$ and scalar $\lambda \in \mathbb{R}$. If $\lambda = 0$, then $\int_0^x f(t)\, dt = 0$ for all $x$, so differentiating yields $f(x) = 0$, a contradiction. If $\lambda \neq 0$, then $f(x) = \frac{1}{\lambda} \int_0^x f(t)\, dt$ is differentiable with $f'(x) = \frac{1}{\lambda} f(x)$ and $f(0) = 0$. The unique solution to this initial value problem is $f(x) \equiv 0$, again contradicting $f \neq 0$.}
   \exinfo{This exercise is Problem 9 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:volterra_integration_no_eigenvalues}
 \end{exercise}
 
 \begin{definition}[Characteristic Polynomial]\label{def:char_poly}
@@ -273,6 +280,7 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
   \]
   \exhint{Show that for any vector $v \in V \setminus \{0\}$, $T v = \lambda v \iff v = \lambda T^{-1} v \iff T^{-1} v = \lambda^{-1} v$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:eigenspaces_inverse_endomorphism}
 \end{exercise}
 
 \begin{lemma}[Properties of the Characteristic Polynomial]\label{lem:properties_char_poly}
@@ -311,6 +319,7 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
   For an arbitrary invertible $n \times n$ matrix $A \in \GL(n, K)$, express the characteristic polynomial $P_{A^{-1}}(x)$ in terms of the characteristic polynomial $P_A(x)$ of $A$.
   \exhint{Use the relation $A^{-1} - x I_n = -x A^{-1} (A - x^{-1} I_n)$ and the multiplicativity of the determinant to establish $P_{A^{-1}}(x) = \frac{(-x)^n}{\det A} P_A(x^{-1})$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:char_poly_inverse_matrix}
 \end{exercise}
 
 \begin{remark}\label{rem:char_poly_degree}
@@ -371,6 +380,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   Let $A \in \M_{n \times n}(K)$ be a nilpotent matrix, meaning there exists an integer $m \ge 1$ such that $A^m = 0$. Show that the only possible eigenvalue of $A$ in $K$ is $0$. Under what exact conditions is $0$ an eigenvalue of $A$?
   \exhint{If $v \neq 0$ satisfies $A v = \lambda v$, then $A^m v = \lambda^m v = 0$, which implies $\lambda^m = 0$ and hence $\lambda = 0$. Moreover, $0$ is an eigenvalue if and only if $\ker A \neq \{0\}$, which holds for every nilpotent matrix on a space of dimension $n \ge 1$ because $(\det A)^m = \det(A^m) = 0 \implies \det A = 0$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:nilpotent_matrix_eigenvalues}
 \end{exercise}
 
 \begin{definition}[Direct Sum]\label{def:direct_sum}
@@ -385,11 +395,13 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \end{enumerate}
   Under the additional assumption that $U_1, \dots, U_r$ are all finite-dimensional, $U_1 + \dots + U_r$ is a direct sum if and only if whenever $\mathcal{B}_1, \dots, \mathcal{B}_r$ are bases for $U_1, \dots, U_r$ respectively, then $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ forms a basis for $U_1 + \dots + U_r$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:direct_sum_conditions}
 \end{exercise}
 
 \begin{exercise}[Isomorphism between External and Internal Direct Sums]\label{ex:canonical_iso_direct_sum}
   If $U_1 + \dots + U_r$ is a direct sum, then there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:canonical_iso_direct_sum}
 \end{exercise}
 
 \begin{proposition}[Direct Sum of Eigenspaces]\label{prop:direct_sum_eigenspaces}
@@ -429,6 +441,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \begin{exercise}[Finitely Many Eigenvalues in Finite Dimension]\label{ex:finite_eigenvalues}
   If $V$ is finite-di\-men\-sional, then $T$ can have only finitely many eigenvalues. (Of course, it is implicitly assumed $\lambda_j \ne \lambda_k$ for all $j \ne k$).
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:finite_eigenvalues}
 \end{exercise}
 
 % Creator: Opus 5
@@ -436,6 +449,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \label{sec:solutions_eigen_motivation}
 
 \begin{exercisesolution}[Proof of \cref{ex:direct_sum_conditions}]
+\label{sol:direct_sum_conditions}
   Throughout, write $W := U_1 + \dots + U_r$.
 
   \textbf{Directness implies (a).} The zero vector always admits the representation $0 = 0 + \dots + 0$ with $0 \in U_i$ for every $i$. If the sum is direct, this representation is the only one, which is precisely \textbf{(a)}.
@@ -458,6 +472,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:canonical_iso_direct_sum}]
+\label{sol:canonical_iso_direct_sum}
   Consider the map
   \[ \Phi : U_1 \oplus \dots \oplus U_r \longrightarrow U_1 + \dots + U_r, \qquad \Phi(u_1, \dots, u_r) := u_1 + \dots + u_r. \]
   Addition and scalar multiplication in the external direct sum $U_1 \oplus \dots \oplus U_r$ are performed componentwise, so
@@ -470,6 +485,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:finite_eigenvalues}]
+\label{sol:finite_eigenvalues}
   Put $n := \dim V$ and let $\lambda_1, \dots, \lambda_m \in K$ be pairwise distinct eigenvalues of $T$. Choose, for each $i$, an eigenvector $v_i \ne 0$ for $\lambda_i$. By \cref{prop:lin_indep_eigen}, the vectors $v_1, \dots, v_m$ are linearly independent, and a linearly independent list in an $n$-di\-men\-sional space has at most $n$ members. Hence $m \le n$.
 
   Since $m$ was the number of \emph{any} list of pairwise distinct eigenvalues, $T$ has at most $n = \dim V$ distinct eigenvalues; in particular, only finitely many.
@@ -512,6 +528,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \begin{exercise}[Polynomials versus Polynomial Functions]\label{ex:poly_vs_func}
   Settle the question raised at the end of \cref{rem:poly_vs_func}: for which fields $K$ do two distinct polynomials $p(x), q(x) \in K[x]$ always define distinct functions $K \to K$? In particular, what happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$?
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:poly_vs_func}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -550,6 +567,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   For each $i \in \{1, 2, 3\}$, compute the characteristic polynomial of $T_i$ and of $U_i$, find the eigenvalues of each endomorphism, and determine a basis of eigenvectors for each corresponding eigenspace.
   \exhint{The characteristic polynomial of $A_i$ is $P_{A_i}(x) = \det(A_i - x I_2)$ regardless of the ground field. Determine whether its roots lie in $\mathbb{R}$ or only in $\mathbb{C}$. For each eigenvalue $\lambda$, compute a basis of $\ker(A_i - \lambda I_2)$ over $\mathbb{R}$ or $\mathbb{C}$ respectively, taking the span over the corresponding field.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:eigenvalues_eigenspaces_R_vs_C}
 \end{exercise}
 
 \subsection{A quick digression about polynomials...}
@@ -626,6 +644,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{enumerate}
   \exhint{\textbf{(a)} Compute $P_A(x) = \det(A - x I_3)$. \textbf{(b)} Factor $P_A(x)$ to find its roots. \textbf{(c)} For each eigenvalue $\lambda$, compute $m_g(A; \lambda) = 3 - \rank(A - \lambda I_3)$ and compare with $m_a(A; \lambda)$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:multiplicities_3x3_matrix}
 \end{exercise}
 
 % Creator: Opus 5
@@ -633,6 +652,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \label{sec:solutions_multiplicities}
 
 \begin{exercisesolution}[Solution of \cref{ex:poly_vs_func}]
+\label{sol:poly_vs_func}
   The assignment $p(x) \mapsto \hat{p}$, where $\hat{p} : K \to K$ denotes the function $\hat{p}(a) := p(a)$, is $K$-linear, so two polynomials $p(x), q(x) \in K[x]$ define the same function if and only if their difference $r(x) := p(x) - q(x)$ vanishes at \emph{every} point of $K$. The question is therefore: which non-zero polynomials vanish identically as functions?
 
   \textbf{A non-zero polynomial has at most $\deg$ many zeros.} We claim that a polynomial $0 \ne r(x) \in K[x]$ of degree $d$ has at most $d$ distinct zeros in $K$. We induct on $d$. If $d = 0$, then $r$ is a non-zero constant and has no zeros at all. Let $d \ge 1$. If $r$ has no zero, there is nothing to prove; otherwise pick a zero $\lambda \in K$. By the Conclusion of the digression above, $r(x) = (x - \lambda) \cdot q(x)$ with $\deg q(x) = d-1$. If $\mu \ne \lambda$ is another zero of $r$, then $(\mu - \lambda) \cdot q(\mu) = 0$ with $\mu - \lambda \ne 0$, and since a field has no zero divisors, $q(\mu) = 0$. So every zero of $r$ other than $\lambda$ is a zero of $q$, of which there are at most $d-1$ by the inductive hypothesis. Hence $r$ has at most $d$ zeros.
@@ -723,6 +743,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \]
   \exhint{For each matrix, calculate the characteristic polynomial and its roots in $\mathbb{Q}$. For each eigenvalue $\lambda$, compute a basis of the eigenspace $\ker(M - \lambda I)$. A matrix is diagonalizable over $\mathbb{Q}$ if and only if its characteristic polynomial splits into linear factors over $\mathbb{Q}$ and the geometric multiplicity equals the algebraic multiplicity for every eigenvalue.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:diagonalizability_over_Q}
 \end{exercise}
 
 \begin{exercise}[Trace, Determinant, and Characteristic Polynomial Coefficients of Diagonalizable Maps]
@@ -738,6 +759,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{enumerate}
   \exhint{\textbf{(a)} Choose a basis $\mathcal{B}$ of eigenvectors so that $[T]_{\mathcal{B}}^{\mathcal{B}} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Use the invariance of the trace $\Tr(T) = \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$ and determinant $\det(T) = \det([T]_{\mathcal{B}}^{\mathcal{B}})$. Expanding $P_T(x) = \prod_{i=1}^n (\lambda_i - x)$ yields $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$, where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial. \textbf{(b)} The two real eigenvalues satisfy $\lambda_1 + \lambda_2 = \Tr(B) = 0$, so $\lambda_2 = -\lambda_1$. Hence $\det(B) = \lambda_1 \lambda_2 = -\lambda_1^2 \le 0$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:trace_determinant_char_poly_diagonalizable}
 \end{exercise}
 
 \begin{exercise}[Multiplicities on Direct Sums and Simultaneous Diagonalizability \faHeart]
@@ -753,6 +775,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{enumerate}
   \exhint{\textbf{(a)} In a basis adapted to $V_1 \oplus \dots \oplus V_r$, $[f]$ is block diagonal, so $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$, which adds the algebraic multiplicities. For geometric multiplicities, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$. \textbf{(b)} $f$ is diagonalizable $\iff \sum_\lambda m_g(f;\lambda) = \dim V = \sum_i \dim V_i$. \textbf{(c)} $(\implies)$ In a simultaneous eigenbasis, $[f]$ and $[g]$ are diagonal, hence commute. $(\impliedby)$ If $f \circ g = g \circ f$, each eigenspace $V_\lambda = \Eig_f(\lambda)$ is $g$-invariant ($f(g(v)) = g(f(v)) = \lambda g(v)$). By part (b), since $g$ is diagonalizable on $V = \bigoplus_\lambda V_\lambda$, each restriction $g|_{V_\lambda}$ is diagonalizable, yielding a basis of $V_\lambda$ composed of eigenvectors of both $f$ and $g$.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:direct_sum_multiplicities_and_simultaneous_diagonalizability}
 \end{exercise}
 
 \subsection{Trigonalization}
@@ -802,6 +825,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Let $\lambda \in K$ and let $p(x), q(x) \in K[x]$ be non-zero polynomials with $p(x) = (\lambda - x) \cdot q(x)$. Show that if $p(x)$ splits into a product of linear factors over $K$, then so does $q(x)$.
   (This is the step Prof. Biran leaves as an exercise in both proofs of \cref{thm:trig_condition}, applied to $P_T(x) = (\lambda_1 - x) \cdot P_A(x)$.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:factor_splits}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -892,6 +916,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \begin{exercise}[Bases of a Quotient Space]\label{ex:quotient_basis}
   Let $V$ be a finite-di\-men\-sional vector space over $K$, let $U \subseteq V$ be a linear subspace, and let $(u_1, \dots, u_r)$ be a basis for $U$, extended to a basis $(u_1, \dots, u_r, w_{r+1}, \dots, w_n)$ of $V$. Show that the equivalence classes $([w_{r+1}], \dots, [w_n])$ form a basis for the quotient space $V/U$. (In particular, $\dim V/U = \dim V - \dim U$.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:quotient_basis}
 \end{exercise}
 
 \begin{proof}[Alternative proof of the direction $\impliedby$ of \cref{thm:trig_condition}]
@@ -965,6 +990,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   \end{itemize}
   \exhint{Analyze the discriminant $\Delta = \Tr(A)^2 - 4\det(A)$ of the characteristic polynomial $P_A(x) = x^2 - \Tr(A)x + \det(A)$. If $\Delta > 0$, $A$ has two distinct real eigenvalues and is diagonalizable. If $\Delta = 0$, $A$ has a single real eigenvalue $\lambda = \Tr(A)/2$; either $A = \lambda I_2$ (diagonalizable) or $m_g(A;\lambda) = 1$ (strictly trigonalizable). If $\Delta < 0$, $P_A(x)$ has complex conjugate roots $\lambda, \bar{\lambda} = a \pm ib$ with $b \neq 0$. Let $v = u + iw \in \mathbb{C}^2 \setminus \{0\}$ be an eigenvector for $a + ib$; show that $(u, w)$ is an $\mathbb{R}$-basis of $\mathbb{R}^2$ with representation matrix $\left(\begin{smallmatrix} a & b \\ -b & a \end{smallmatrix}\right)$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:real_2x2_similarity_classification}
 \end{exercise}
 
 % Creator: Opus 5
@@ -972,6 +998,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \label{sec:solutions_diagonalizability}
 
 \begin{exercisesolution}[Proof of \cref{ex:factor_splits}]
+\label{sol:factor_splits}
   If $q(x)$ is a non-zero constant there is nothing to prove, so assume $\deg q(x) \ge 1$ and hence $\deg p(x) \ge 2$. By hypothesis
   \[ p(x) = c \cdot (\mu_1 - x) \cdot \dots \cdot (\mu_m - x) \]
   for some $c \in K \setminus \{0\}$, some $\mu_1, \dots, \mu_m \in K$ and $m := \deg p(x)$.
@@ -988,6 +1015,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:quotient_basis}]
+\label{sol:quotient_basis}
   Recall that the quotient map $\pi : V \to V/U$, $\pi(v) := [v]$, is linear and satisfies $[u] = 0$ exactly for $u \in U$.
 
   \textbf{Spanning.} Let $[v] \in V/U$ be arbitrary and expand $v$ in the basis of $V$:
@@ -1059,6 +1087,7 @@ Two points are needed before the notation $m_T(x)$ is legitimate, and the hypoth
   Let $K$ be a field, $A \in \M_{n \times n}(K)$, and let $p(x) \in K[x]$ be a non-trivial polynomial such that $p(A) = 0$. Show that every eigenvalue of $A$ is a root of $p(x)$.
   \exhint{Let $v \in K^n \setminus \{0\}$ be an eigenvector of $A$ with eigenvalue $\lambda$. Show by induction that $A^k v = \lambda^k v$ for all $k \ge 0$, so $p(A) v = p(\lambda) v$. Since $p(A) = 0$, we have $p(\lambda) v = 0$, which implies $p(\lambda) = 0$ since $v \neq 0$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:eigenvalues_are_roots_of_annihilating_polynomials}
 \end{exercise}
 
 \begin{exercise}[Annihilating Quadratic Polynomial and Even Dimension \faHeart]
@@ -1070,6 +1099,7 @@ Two points are needed before the notation $m_T(x)$ is legitimate, and the hypoth
   if and only if $n$ is even.
   \exhint{The claim is true. ($\implies$) If $n$ is odd, the characteristic polynomial $P_A(x) \in \mathbb{R}[x]$ has odd degree $n$ and hence must have at least one real root $\lambda \in \mathbb{R}$. By \cref{exc:eigenvalues_are_roots_of_annihilating_polynomials}, $\lambda$ must satisfy $\lambda^2 + 2\lambda + 5 = (\lambda+1)^2 + 4 = 0$, which has no solutions in $\mathbb{R}$, contradiction. ($\impliedby$) If $n = 2m$ is even, consider the $2 \times 2$ matrix $J = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}$, which satisfies $J^2 + 2J + 5I_2 = 0$. The block diagonal matrix $A = \operatorname{diag}(J, \dots, J)$ consisting of $m$ blocks of $J$ satisfies $A^2 + 2A + 5I_n = 0$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:annihilating_quadratic_even_dimension}
 \end{exercise}
 
 While the minimal polynomial guarantees that an operator satisfies \textit{some} polynomial equation, one of the most celebrated theorems in mathematics provides a canonical polynomial that always works: the characteristic polynomial.
@@ -1092,12 +1122,14 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \[ P_A(A) = A^2 - (a+d) \cdot A + (ad-bc) \cdot I_2 \]
   directly, and obtain $\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:cayley_2x2}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
 \begin{exercise}[Expressing Matrix Inverses via Cayley-Hamilton]\label{ex:cayley_inverse}
   Let $A \in \M_{n \times n}(K)$ be an invertible matrix. Use \cref{thm:cayley_hamilton} to prove that the inverse matrix $A^{-1}$ can be expressed as a polynomial in $A$ of degree at most $n-1$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:cayley_inverse}
 \end{exercise}
 
 \begin{exercise}[Degree of the Minimal Polynomial Bounded by Rank \faHeart]
@@ -1108,6 +1140,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \]
   \exhint{Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = r$. Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is well-defined. By the Cayley-Hamilton theorem applied to $F$, there is a monic polynomial $q(x) \in K[x]$ of degree $r = \dim W$ such that $q(F) = 0$, meaning $q(T_A)(w) = 0$ for all $w \in W$. For any $v \in K^n$, $T_A(v) \in W$, so $q(T_A)(T_A(v)) = 0$. Thus the polynomial $p(x) := x q(x)$, which has degree $r + 1$, satisfies $p(A) = 0$. Since the minimal polynomial $m_A(x)$ divides $p(x)$, $\deg(m_A) \le \deg(p) = r + 1$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:degree_minimal_poly_bounded_by_rank}
 \end{exercise}
 
 \begin{exercise}[Dimension of Matrix Power Subspaces and Inversion via Cayley-Hamilton \faHeart]
@@ -1119,6 +1152,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \end{enumerate}
   \exhint{\textbf{(a)} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $A^n$ is a linear combination of $I_n, A, \dots, A^{n-1}$. By induction, every power $A^m$ for $m \ge n$ belongs to $\Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$. \textbf{(b)} Compute the characteristic polynomial $P_A(x) = \det(A - x I_3) = -x^3 + 6x^2 + 9x + 18$. By Cayley-Hamilton, $-A^3 + 6A^2 + 9A + 18 I_3 = 0$. Multiply by $A^{-1}$ to obtain $A^{-1} = \frac{1}{18}(A^2 - 6A - 9 I_3)$, so $p(x) = \frac{1}{18}(x^2 - 6x - 9)$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:subspace_matrix_powers_and_inverse}
 \end{exercise}
 
 \subsection*{Proof of Cayley-Hamilton Theorem (Analytic Approach)}
@@ -1167,6 +1201,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \]
   \exhint{Show first by induction that $(Q^{-1} A Q)^i = Q^{-1} A^i Q$ for all $i \ge 0$. Then by linearity, for any polynomial $p(x) = \sum_{i=0}^d c_i x^i$, we have $p(Q^{-1}AQ) = \sum_{i=0}^d c_i (Q^{-1} A Q)^i = \sum_{i=0}^d c_i Q^{-1} A^i Q = Q^{-1} \left(\sum_{i=0}^d c_i A^i\right) Q = Q^{-1} p(A) Q$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:similarity_of_matrix_polynomials}
 \end{exercise}
 
 \begin{lemma}[Density of Diagonalizable Matrices]
@@ -1209,6 +1244,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   Let $\varepsilon > 0$ and let $A = (a_{ij}) \in \M_{n \times n}(\mathbb{C})$. Show that there exists a diagonalizable matrix $B = (b_{ij}) \in \M_{n \times n}(\mathbb{C})$ such that $|b_{ij} - a_{ij}| < \varepsilon$ for all $1 \le i, j \le n$.
   \exhint{Trigonalize $A = P T P^{-1}$ with $T$ upper triangular (\cref{cor:complex_trigonalizable}). Perturb the diagonal entries of $T$ by distinct complex numbers $\delta_i$ with $|\delta_i| < \delta$ to obtain an upper triangular matrix $T'$ with pairwise distinct diagonal entries (hence diagonalizable). By choosing $\delta > 0$ sufficiently small, the matrix $B := P T' P^{-1}$ is diagonalizable and satisfies $|b_{ij} - a_{ij}| < \varepsilon$ for all $i,j$, thanks to the continuity of $X \mapsto P X P^{-1}$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:density_of_diagonalizable_matrices}
 \end{exercise}
 
 % Extractor: Opus 5
@@ -1217,6 +1253,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \[ \M_{n \times n}(\mathbb{C}) \longrightarrow \M_{n \times n}(\mathbb{C}), \qquad X \longmapsto P X Q, \]
   is continuous. (This is what licenses pulling the limit through $P$ and $P^{-1}$ at the end of the proof above.)
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:conjugation_continuous}
 \end{exercise}
 
 \begin{exercise}[Joint Convergence of Polynomials and Matrix Sequences]
@@ -1228,6 +1265,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \]
   \exhint{Using any submultiplicative matrix norm (such as the Frobenius norm $\|M\| = \sqrt{\sum |m_{ij}|^2}$, for which $\|MN\| \le \|M\|\|N\|$), show that $A_k^i \to A^i$ for each $0 \le i \le d$. Then write $\|p_k(A_k) - p(A)\| \le \sum_{i=0}^d \|c_i^{(k)} A_k^i - c_i A^i\| \le \sum_{i=0}^d (|c_i^{(k)} - c_i| \|A_k^i\| + |c_i| \|A_k^i - A^i\|) \to 0$ as $k \to \infty$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:convergence_of_matrix_polynomials}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -1251,6 +1289,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   Use \cref{exc:similarity_of_matrix_polynomials,exc:density_of_diagonalizable_matrices,exc:convergence_of_matrix_polynomials} to prove the Cayley-Hamilton theorem for all complex matrices: $P_A(A) = 0$ for every $A \in \M_{n \times n}(\mathbb{C})$.
   \exhint{First, verify $P_D(D) = 0$ for any diagonal matrix $D = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Next, for any diagonalizable matrix $M = Q D Q^{-1}$, use \cref{exc:similarity_of_matrix_polynomials} to deduce $P_M(M) = P_M(Q D Q^{-1}) = Q P_M(D) Q^{-1} = Q P_D(D) Q^{-1} = 0$. Finally, for an arbitrary matrix $A \in \M_{n \times n}(\mathbb{C})$, choose a sequence of diagonalizable matrices $A_k \to A$ (\cref{exc:density_of_diagonalizable_matrices}). The characteristic polynomials $P_{A_k}(x)$ converge coefficient-wise to $P_A(x)$ by continuity of the determinant. Applying \cref{exc:convergence_of_matrix_polynomials} yields $P_A(A) = \lim_{k \to \infty} P_{A_k}(A_k) = \lim_{k \to \infty} 0 = 0$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:cayley_hamilton_via_density}
 \end{exercise}
 
 To generalize this result from $\mathbb{C}$ to any arbitrary field $K$, we rely on a formal algebraic identity regarding multi-variable polynomials.
@@ -1292,6 +1331,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
 \begin{exercise}[Where the Argument Breaks over Other Fields]\label{ex:multi_var_other_fields}
   What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$, even for $r = 1$, with, for example, $K = \mathbb{Z}_2$, or some other field, finite or infinite?
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:multi_var_other_fields}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -1343,6 +1383,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
     \item $\langle v \rangle_T$ is the smallest linear subspace of $V$ that contains $v$ and is $T$-invariant. That is, if $U \subseteq V$ is a linear subspace with $v \in U$ and $T(U) \subseteq U$, then $\langle v \rangle_T \subseteq U$.
   \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:cyclic_minimal}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -1431,6 +1472,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \]
   \exhint{Compute $P_A(x) = \det(A - x I_n)$ using Laplace expansion along the first row (or last column) and apply the induction hypothesis to the resulting $(n-1) \times (n-1)$ submatrix.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
+\exsol{sol:char_poly_companion_matrix}
 \end{exercise}
 % Extractor: Gemini 3.1 Pro
 
@@ -1486,6 +1528,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \label{sec:solutions_minimal_poly}
 
 \begin{exercisesolution}[Solution of \cref{ex:cayley_2x2}]
+\label{sol:cayley_2x2}
   Write $A := \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$ and compute the three summands separately:
   \[ A^2 = \begin{pmatrix} a^2 + bc & ab + bd \\ ac + cd & bc + d^2 \end{pmatrix}, \qquad
      -(a+d) \cdot A = \begin{pmatrix} -a^2 - ad & -ab - bd \\ -ac - cd & -ad - d^2 \end{pmatrix}, \]
@@ -1501,6 +1544,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:cayley_inverse}]
+\label{sol:cayley_inverse}
   Write $P_A(x) = c_n x^n + c_{n-1}x^{n-1} + \dots + c_1 x + c_0$. Its constant coefficient is
   \[ c_0 = P_A(0) = \det(A - 0 \cdot I_n) = \det(A), \]
   which is non-zero precisely because $A$ is invertible. By \cref{thm:cayley_hamilton},
@@ -1516,6 +1560,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:conjugation_continuous}]
+\label{sol:conjugation_continuous}
   Identify $\M_{n \times n}(\mathbb{C})$ with $\mathbb{C}^{n^2}$ by listing the entries; under this identification, convergence of matrices is exactly entrywise convergence, which is what the statement of \cref{lemma:sequence_diagonalizable} asks for. A map into $\mathbb{C}^{n^2}$ is continuous if and only if each of its $n^2$ coordinate functions is continuous, so it suffices to look at one entry of $PXQ$ at a time. By the definition of matrix multiplication,
   \[ (P X Q)_{ij} = \sum_{k=1}^n \sum_{\ell=1}^n P_{ik} \, X_{k\ell} \, Q_{\ell j}. \]
   Here $P_{ik}$ and $Q_{\ell j}$ are fixed complex numbers, so the right-hand side is a linear, in particular polynomial, expression in the $n^2$ coordinates $X_{k\ell}$ of $X$. Polynomial functions $\mathbb{C}^{n^2} \to \mathbb{C}$ are continuous, being built from the (continuous) coordinate projections by finitely many additions and multiplications. Hence every entry of $PXQ$ depends continuously on $X$, and so does $PXQ$ itself.
@@ -1524,6 +1569,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{ex:multi_var_other_fields}]
+\label{sol:multi_var_other_fields}
   Two separate things go wrong, and it is worth keeping them apart.
 
   \textbf{The proof breaks immediately.} The argument is analytic: it differentiates $f$ as a \emph{function} on $\mathbb{R}^r$, and differentiation rests on limits, which a bare field $K$ does not provide. One can of course define the formal derivative of a polynomial without any analysis, but the step that made the proof work, \qt{$f$ vanishes identically, therefore all its derivatives vanish identically}, is a statement about functions and is no longer available. Even granting formal derivatives, the last step divides by $i_1! \cdot \dots \cdot i_r!$, and in a field of characteristic $p$ those factorials can be $0$: for $K = \mathbb{Z}_2$ and $i = 2$ already $2! = 0$ in $K$.
@@ -1538,6 +1584,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:cyclic_minimal}]
+\label{sol:cyclic_minimal}
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $u \in \langle v \rangle_T$. By the definition of the span, $u = a_0 v + a_1 Tv + \dots + a_m T^m v$ for some $m \in \mathbb{Z}_{\ge 0}$ and $a_0, \dots, a_m \in K$. Applying the linear map $T$ gives
       \[ Tu = a_0 Tv + a_1 T^2 v + \dots + a_m T^{m+1} v, \]
@@ -1548,6 +1595,8 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \end{enumerate}
   Together, \textbf{(a)} and \textbf{(b)} say that $\langle v \rangle_T$ is itself a $T$-invariant subspace containing $v$ and is contained in every other one, that is, it is the smallest such subspace, which is the property used in the proof of \cref{lemma:cyclic_basis_companion}.
 \end{exercisesolution}
+
+\input{content/21-eigenvalues-eigenvectors-solutions.tex}
 
 \begin{ainote}
 The scan \verb|21.eigenvectors.a| is absent from \verb|source/|, so the material
@@ -1608,3 +1657,5 @@ eigenvalue has an eigenvector. And ten \verb|enumerate| environments printed
 their items as $1, 2, 3$ while the proofs and the surrounding prose refer to
 them as \textbf{(a)}, \textbf{(b)}, \textbf{(c)}.
 \end{ainote}
+
+
