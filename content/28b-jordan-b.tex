@@ -148,7 +148,7 @@ Moreover, if $\mu$ is another eigenvalue of $T$ with $\mu \neq \lambda$, then
 \begin{proof}
 Write $P_T(x) = (\lambda - x)^{m_a(\lambda)} \cdot q(x)$, where $q(\lambda) \neq 0$ and $m_a(\lambda) := m_a(\lambda; T)$. Since $P_T(x)$ splits as a product of linear factors, so does $q(x)$.
 
-By \cref{exc:char_poly_restriction_divides}, $P_{T_\lambda}(x)$ divides $P_T(x)$. It is therefore enough to show that $P_{T_\lambda}(x)$ has no zeroes other than $\lambda$, because this will imply that $P_{T_\lambda}(x)$ divides $(\lambda - x)^{m_a(\lambda)}$, which is exactly the assertion.
+By \cref{exc:char_poly_restriction_divides}, $P_{T_\lambda}(x)$ divides $P_T(x)$. It is therefore enough to show that $P_{T_\lambda}(x)$ has no zeroes other than $\lambda$, because this will imply that $P_{T_\lambda}(x)$ divides $(\lambda - x)^{m_a(\lambda)}$, which is exactly the assertion. (A divisor of a polynomial that splits into linear factors splits itself, by unique factorization in $K[x]$; so $P_{T_\lambda}(x)$ is a product of factors $(\lambda' - x)$ with each $\lambda'$ a zero of it, and if $\lambda$ is the only such zero, then $P_{T_\lambda}(x) = (\lambda - x)^m$ with $m \le m_a(\lambda)$, the leading coefficient being right because $P_S(x) = \det(S - x \cdot \id)$ always has leading term $(-x)^{\deg}$).
 
 So let $\lambda'$ be a zero of $P_{T_\lambda}(x)$. Then $T_\lambda \in \End\left(\gEig_T(\lambda)\right)$ has $\lambda'$ as an eigenvalue, and an eigenvector for it lies in $\gEig_T(\lambda)$ by construction. By \cref{lem:generalized_eigenspace} \textbf{(b)}, $\lambda' = \lambda$.
 
@@ -192,7 +192,7 @@ By \cref{lem:char_poly_on_generalized_eigenspace},
 \]
 By \cref{exc:char_poly_restriction_divides}, $P_{T_{\mathcal{U}}}(x)$ divides both $P_{T_{W_1}}(x)$ and $P_{T_{W_2}}(x)$, which is impossible because $\deg P_{T_{\mathcal{U}}}(x) \ge 1$ and the two polynomials have no common zero, the eigenvalues $\lambda_1, \dots, \lambda_r$ being distinct. This is a contradiction, and therefore, $\mathcal{U} = \{0\}$.
 
-Consequently, $\gEig_T(\lambda_1) + \dots + \gEig_T(\lambda_r)$ forms a direct sum.
+Consequently, $\gEig_T(\lambda_1) + \dots + \gEig_T(\lambda_r)$ forms a direct sum. (What the induction has just supplied is exactly criterion \textbf{(b)} of \cref{ex:direct_sum_conditions}, one index at a time: at step $r$ it gives $W_2 \cap W_1 = \{0\}$, that is, $\gEig_T(\lambda_r) \cap \left(\gEig_T(\lambda_1) + \dots + \gEig_T(\lambda_{r-1})\right) = \{0\}$, while the earlier steps give the same for every smaller index).
 \end{proof}
 
 % Prop.
@@ -334,13 +334,13 @@ and note that $m \le \dim V$. Moreover, if $P_T(x)$ splits as a product of linea
 \end{corollary}
 
 \begin{proof}
-The first statement follows from \cref{exc:nilpotent_properties}, applied to the restriction of $T - \lambda \id_V$ to $\gEig_T(\lambda)$, which is nilpotent on that subspace.
+The first statement follows from \cref{exc:nilpotent_properties} \textbf{(b)}, applied to the restriction of $T - \lambda \id_V$ to $\gEig_T(\lambda)$, which is an endomorphism of that subspace because $\gEig_T(\lambda)$ is $T$-invariant by \cref{lem:kernel_poly_invariant}, and is nilpotent on it because $\gEig_T(\lambda) = \ker(T - \lambda \id_V)^{\dim V}$.
 
 For the statement about $\dim \gEig_T(\lambda)$, use \cref{prop:decomposition_generalized_eigenspaces}, which gives $V = \bigoplus_\lambda \gEig_T(\lambda)$, together with the fact that
 \[
     P_{T|_{\gEig_T(\lambda)}}(x) = (\lambda - x)^{\dim \gEig_T(\lambda)}
 \]
-from \cref{lem:char_poly_on_generalized_eigenspace}. Multiplying these characteristic polynomials over all eigenvalues recovers $P_T(x)$, and comparing the exponent of $(\lambda - x)$ on both sides gives $\dim \gEig_T(\lambda) = m_a(\lambda; T)$.
+from \cref{lem:char_poly_on_generalized_eigenspace}. Multiplying these characteristic polynomials over all eigenvalues recovers $P_T(x)$, and comparing the exponent of $(\lambda - x)$ on both sides gives $\dim \gEig_T(\lambda) = m_a(\lambda; T)$. (The multiplication is legitimate because taking a basis of each summand and concatenating them, which is a basis of $V$ by \cref{ex:direct_sum_conditions}, represents $T$ by a block diagonal matrix whose blocks are the $[T|_{\gEig_T(\lambda)}]$; \cref{prop:block_matrix} then splits the determinant, and \cref{rem:char_poly_well_defined} says that the polynomial so computed is $P_T$).
 \end{proof}
 
 \subsubsection*{Back to the proof of existence of the Jordan Normal Form}
@@ -359,7 +359,7 @@ Since each subspace $\gEig_T(\lambda)$ is $T$-invariant, we can consider
 \[
     N_\lambda := \left. (T - \lambda \id_V) \right|_{\gEig_T(\lambda)},
 \]
-and we have that $N_\lambda$ sends $\gEig_T(\lambda)$ to $\gEig_T(\lambda)$, so $N_\lambda \in \End\left(\gEig_T(\lambda)\right)$. Also, $P_{N_\lambda}(x)$ splits as a product of linear factors, because $P_T(x)$ has this property. Consequently,
+and we have that $N_\lambda$ sends $\gEig_T(\lambda)$ to $\gEig_T(\lambda)$, so $N_\lambda \in \End\left(\gEig_T(\lambda)\right)$. Also, $P_{N_\lambda}(x)$ splits as a product of linear factors, because $P_T(x)$ has this property: the restriction $T|_{\gEig_T(\lambda)}$ inherits the property by \cref{exc:char_poly_restriction_divides}, and subtracting $\lambda \id$ preserves it by \cref{exc:nilpotent_properties} \textbf{(d)}. Consequently,
 \[
     N_\lambda^{m_\lambda} = \left. (T - \lambda \id_V)^{m_\lambda}\right|_{\gEig_T(\lambda)} = 0, \qquad \text{where } m_\lambda := \dim \gEig_T(\lambda),
 \]
@@ -415,7 +415,7 @@ because $2k - (j+1) \ge k$ and $N^k = 0$. What remains is
 \]
 and therefore, $c_k = 0$.
 
-Now apply $N^{k-2}$ to \eqref{eq:jordan_chain_relation}. By the same reasoning all terms vanish except the one involving $e_{k-1}$, giving
+Now apply $N^{k-2}$ to \eqref{eq:jordan_chain_relation}. By the same reasoning all terms with $j \le k-2$ vanish, while the term with $j = k$ has already been removed, its coefficient $c_k$ being zero by the step just carried out. What is left is the term involving $e_{k-1}$, giving
 \[
     0 + \dots + 0 + c_{k-1} \underbrace{N^{k-2} e_{k-1}}_{= \, N^{k-1}e_k \, = \, e_1 \, \neq \, 0} + 0 = 0,
 \]
@@ -575,9 +575,9 @@ by \cref{exc:powers_of_block_diagonal}, and the kernel of a block diagonal matri
 \end{proof}
 
 \begin{proof}[Proof of the uniqueness of the Jordan Normal Form]
-Assume that $A$ and $A'$ are two matrices in Jordan Normal Form that both represent $T \in \End(V)$. Consequently, $P_A(x) = P_T(x) = P_{A'}(x)$.
+Assume that $A$ and $A'$ are two matrices in Jordan Normal Form that both represent $T \in \End(V)$. Consequently, $P_A(x) = P_T(x) = P_{A'}(x)$, by \cref{rem:char_poly_well_defined}, which says that the characteristic polynomial computed from a representation matrix does not depend on the basis.
 
-Now,
+Now, $A$ being upper triangular, \cref{lem:properties_char_poly} \textbf{(c)} gives
 \[
     P_A(x) = \prod_{\lambda} (\lambda - x)^{\#\{\lambda\text{'s in the diagonal of } A\}},
 \]
@@ -609,7 +609,7 @@ Note that for every $k$,
 \[
     \dim \ker S^k = \dim \ker C^k = \dim \ker D^k,
 \]
-because the complementary part of $C$, namely the Jordan Normal Form with all eigenvalues different from $0$, is invertible and so contributes nothing to the kernel. Similarly, for every $k$,
+because the complementary part of $C$, namely the Jordan Normal Form with all eigenvalues different from $0$, is invertible and so contributes nothing to the kernel. (It is invertible because it is upper triangular with all diagonal entries non-zero, so its determinant is a product of non-zero scalars; a power of it is invertible too, and the kernel of a block diagonal matrix is the direct sum of the kernels of its blocks. The first equality, $\dim \ker S^k = \dim \ker C^k$, is the passage from an endomorphism to a representation matrix, exactly as in the proof of \cref{cor:multiplicities_min_poly_jnf}: the coordinate map carries $\ker S^k$ isomorphically onto $\ker C^k$). Similarly, for every $k$,
 \[
     \dim \ker S^k = \dim \ker (C')^k = \dim \ker (D')^k.
 \]
@@ -720,3 +720,61 @@ But $([f_1], \dots, [f_\ell]) = \mathcal{B}'$ is a basis for $V/W$, so all $b_j$
 
 The relation therefore reduces to $\sum_{i=1}^{k} a_i e_i = 0$, and $e_1, \dots, e_k$ are linearly independent by the first claim in the proof, so all $a_i$ vanish as well. Hence $\mathcal{B}_3$ is linearly independent, and being of the right cardinality, it is a basis for $V$.
 \end{exercisesolution}
+
+% Creator: Opus 5
+\begin{ainote}
+It is worth stepping back from nineteen pages of induction to see the shape of
+the argument, because the two halves of this section are doing quite different
+things.
+
+The \emph{existence} proof is a reduction followed by a construction. The
+reduction is \cref{prop:decomposition_generalized_eigenspaces}: once $P_T$
+splits, $V$ falls apart into the generalized eigenspaces
+$\gEig_T(\lambda) = \ker(T - \lambda \id_V)^n$, each of them $T$-invariant, so
+that $T$ may be studied one eigenvalue at a time. On a single generalized
+eigenspace, $T - \lambda \id_V$ is nilpotent, and adding back the scalar
+$\lambda I$ turns a Jordan form for the nilpotent map into one for $T$; that is
+all \cref{claim:reduction_to_nilpotent} says. What remains is a purely nilpotent
+question, and the construction answers it by chasing a single vector: take $e_k$
+with $N^{k-1} e_k \neq 0$, and the chain
+$e_k \mapsto N e_k \mapsto \dots \mapsto N^{k-1} e_k \mapsto 0$ is automatically
+independent and spans an invariant $W$ on which $N$ is exactly $J_{0,k}$. Pass to
+$V/W$, apply the induction hypothesis there, and the only real work left is the
+correction $e_{k+m} := f_m - (c_1 e_{m+1} + \dots + c_{k-m} e_k)$, which shifts
+the lifted vectors by an element of $W$ so as to kill the $*$ block that a naive
+lift leaves behind.
+
+The \emph{uniqueness} proof is of a completely different character: it is a
+counting argument, and it is the reason \cref{lem:counting_blocks_by_kernels}
+exists. The numbers $\dim \ker(T - \lambda \id_V)^r$ are defined without
+reference to any basis, and the lemma says that this list of numbers determines,
+by successive differences, how many Jordan blocks of each size carry $\lambda$.
+Two Jordan forms of the same $T$ therefore produce the same list, and hence the
+same blocks. Nothing about the construction above is used, which is why
+uniqueness holds even though the Jordan basis is very far from unique.
+
+One warning about reading the notes alongside this text. Prof. Biran numbers his
+four preparatory lemmata \qt{Lemma 1} to \qt{Lemma 4} and leaves the rest
+unnumbered, so the labels 28.b.1 to 28.b.7 here are the book's own; a comment
+above each label records his numbering where he gives one. The abbreviation
+\qt{splf} of \cref{not:splf} is his and appears throughout the scans, but the
+prose here always writes the phrase out.
+
+\medskip
+The rigour pass over this section found nothing false. Five steps were resting on
+a reason that was left unsaid, and now name it: that a divisor of a split
+polynomial splits, in the proof of
+\cref{lem:char_poly_on_generalized_eigenspace}, without which
+$P_{T_\lambda}(x) = (\lambda - x)^m$ does not follow from having no other zero;
+criterion \textbf{(b)} of \cref{ex:direct_sum_conditions}, which is what the
+induction of \cref{lem:generalized_eigenspaces_direct_sum} actually verifies;
+\cref{prop:block_matrix} with \cref{rem:char_poly_well_defined} for multiplying
+the characteristic polynomials of the summands back together in
+\cref{cor:nilpotency_on_generalized_eigenspace}; \cref{exc:nilpotent_properties}
+\textbf{(d)} for the splitting of $P_{N_\lambda}$ in
+\cref{claim:reduction_to_nilpotent}; and, in the uniqueness proof,
+\cref{rem:char_poly_well_defined} and \cref{lem:properties_char_poly}
+\textbf{(c)} for the two identities the whole count starts from, together with
+the observation that $\dim \ker S^k = \dim \ker C^k$ is once again the passage
+from an endomorphism to a representation matrix.
+\end{ainote}

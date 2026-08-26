@@ -94,9 +94,11 @@ that contradicts the book's own conventions.
 | 25 | `content/25-isometries.tex` | done, pushed (`6311bc5`) |
 | 26 | `content/26-singular-value-decomposition.tex` | done, pushed (`d1b8d9b`) |
 | 27 | `content/27-bilinear-and-quadratic-forms.tex` | done, pushed (`b90fd0c`) |
-| 28a | `content/28-jordan-a.tex` | done |
-| **28b** | `content/28b-jordan-b.tex` | **not started; this is where to resume** |
-| 1--9 | the foundational chapters | not started |
+| 28a | `content/28-jordan-a.tex` | done, pushed (`8666eb5`) |
+| 28b | `content/28b-jordan-b.tex` | done |
+| **1--9** | the foundational chapters | **not started; this is where to resume** |
+
+**Chs. 10a to 28b are now complete.** Only the nine foundational chapters remain.
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
 
@@ -641,6 +643,33 @@ Also: `\Spec` is used exactly once in the whole book, in the statement of that
 corollary, and defined nowhere; the operator is declared in the preamble and the
 word \qt{spectrum} is explained only in ch. 24's opening AI-Note. The statement
 now says which set it means.
+
+### Ch. 28b, nothing false in nineteen pages
+
+This file was transcribed from the scans by Opus 5 in the first place, with no
+earlier transcription to audit, and it shows: the pass found nothing false and
+no missing hypothesis. Five steps were resting on an unstated reason and now name
+it, the first of them load-bearing:
+
+- that **a divisor of a split polynomial splits**, in
+  `lem:char_poly_on_generalized_eigenspace`. Without it, \qt{$P_{T_\lambda}$ has
+  no zero other than $\lambda$} does not give $P_{T_\lambda} = (\lambda - x)^m$,
+  which is the whole assertion;
+- criterion **(b)** of `ex:direct_sum_conditions`, which is what the induction of
+  `lem:generalized_eigenspaces_direct_sum` actually verifies;
+- `prop:block_matrix` with `rem:char_poly_well_defined`, for multiplying the
+  characteristic polynomials of the summands back together in
+  `cor:nilpotency_on_generalized_eigenspace`;
+- `exc:nilpotent_properties` **(d)**, for the splitting of $P_{N_\lambda}$;
+- in the uniqueness proof, `rem:char_poly_well_defined` and
+  `lem:properties_char_poly` **(c)** for the two identities the entire count
+  starts from, plus the recurring passage $\dim \ker S^k = \dim \ker C^k$ from an
+  endomorphism to a representation matrix.
+
+The chapter's `ainote` was written the way the corrected rule asks for: it gives
+the architecture of the two proofs, existence as a reduction plus a chain
+construction, uniqueness as a basis-free count of $\dim \ker(T - \lambda)^r$, and
+only then records what the pass named.
 
 ## Checked in ch. 17e and found correct
 
