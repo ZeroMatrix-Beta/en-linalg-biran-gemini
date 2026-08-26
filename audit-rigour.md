@@ -92,8 +92,9 @@ that contradicts the book's own conventions.
 | 23a | `content/23a-dual-spaces-inner-products-a.tex` | done, pushed (`71b01c9`) |
 | 24 | `content/24-spectral-thoerem.tex` | done, pushed (`8b3fcb9`) |
 | 25 | `content/25-isometries.tex` | done, pushed (`6311bc5`) |
-| 26 | `content/26-singular-value-decomposition.tex` | done |
-| **27 onwards** | 27, 28a, 28b | **not started; this is where to resume** |
+| 26 | `content/26-singular-value-decomposition.tex` | done, pushed (`d1b8d9b`) |
+| 27 | `content/27-bilinear-and-quadratic-forms.tex` | done |
+| **28a, 28b** | 28, 28b | **not started; this is where to resume** |
 | 1--9 | the foundational chapters | not started |
 
 Ch. 17, the matrices chapter, is finished: 17a to 17e are all done.
@@ -586,6 +587,41 @@ speaks about, is `cor:adjoint_matrix_map`; the computation of $C^* C$ takes the
 adjoints of a real diagonal matrix and of $Q$ silently, the second being
 $Q^* = Q^{-1}$; and $n \le m$, announced in the proof's first line, is
 `thm:rank_nullity` with `prop:subspace_dimension_constraints`.
+
+### Ch. 27, two more inverted indices
+
+**The second real error of the pass, and it is the same error twice.** Both are
+transition matrices with the basis of the target on top, and both sit outside any
+product, so `tools/check-repmatrix.pl` cannot see them:
+
+- the proof of `thm:sylvesters_inertia` introduces the orthogonal $P$ as
+  `[id]_{C''}^{C'} = P`, while its own next sentence says
+  `v''_j = sum_i P_ij v'_i`, which is `[id]_{C'}^{C''}`, and while
+  `[B]_{C''} = P^T A P` holds for that reading and no other;
+- the proof of `thm:sylvesters_criterion` writes `S = [id]_{C'}^{C}` for the
+  matrix that `[B]_{C'} = S^T [B]_C S` forces to be `[id]_{C}^{C'}`.
+
+`lem:change_of_basis_bilinear` itself, the outline of `thm:sylvesters_euclidean`
+and the solution to `exc:sylvester_criterion_forward` were checked against the
+same convention and are right, so the chapter was not systematically swapped the
+way ch. 17a's Prop. 17.a.2 was.
+
+**Two results asserted without proof.** The Polarization Identity, unnumbered on
+`\cpageref{thm:polarization_identity_bilinear}`, carried none although it starts
+the induction of `thm:diagonalization_symmetric_bilinear`; it is two expansions.
+And `lem:matrix_rep_bilinear_form` proves only that a matrix representation
+*exists*, then calls it **the** matrix representation: uniqueness is what lets
+the next proof read `([B]_C)_{jk} = B(v_j, v_k)` off the name in its first line.
+
+**A step whose point was the half that was missing.** The Remark before the
+Conclusion shows that `(B + B^T)/2` gives the same quadratic form as `B`, without
+computing it and without saying that this matrix is *symmetric*, which is the
+entire content of the Conclusion underneath it.
+
+Flagged rather than changed: in the Example of standard forms the letter `B` is
+both the matrix and the form it defines, so the defining line reads
+`B(v,w) := v^T B w`. The same species as ch. 17c's `P`; a parenthetical now says
+which is which.
 
 ## Checked in ch. 17e and found correct
 

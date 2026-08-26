@@ -34,7 +34,7 @@ Let $V$ be a vector space over $K$ and $\mathcal{C} := (e_1, \dots, e_n)$ a basi
 \[
 B\left(\sum_{i=1}^n c_i e_i, \sum_{j=1}^n d_j e_j\right) = (c_1, \dots, c_n) \cdot [B]_{\mathcal{C}} \cdot (d_1, \dots, d_n)\transp \quad \forall c_i, d_j \in K.
 \]
-The matrix $[B]_{\mathcal{C}}$ is called the \newterm{matrix representation} of $B$ in the basis $\mathcal{C}$.
+The matrix $[B]_{\mathcal{C}}$ is called the \newterm{matrix representation} of $B$ in the basis $\mathcal{C}$. (It is unique, which is what entitles us to the definite article; see the end of the proof).
 \end{lemma}
 
 \begin{proof}
@@ -45,6 +45,9 @@ B\left(\sum_{i=1}^n c_i e_i, \sum_{j=1}^n d_j e_j\right) &= \sum_{i=1}^n c_i B\l
 &= \sum_{i=1}^n \sum_{j=1}^n c_i d_j B(e_i, e_j) \\
 &= (c_1, \dots, c_n) \cdot [B]_{\mathcal{C}} \cdot \begin{pmatrix} d_1 \\ \vdots \\ d_n \end{pmatrix}.
 \end{align*}
+% Creator: Opus 5
+For uniqueness, suppose $M \in \M_{n \times n}(K)$ also satisfies the displayed identity. Fix $i$ and $j$ and choose the coefficients $c_1, \dots, c_n$ to be $1$ at the index $i$ and $0$ elsewhere, and $d_1, \dots, d_n$ to be $1$ at the index $j$ and $0$ elsewhere. The left-hand side is then $B(e_i, e_j)$ and the right-hand side is the single entry $M_{ij}$, so $M_{ij} = B(e_i, e_j) = ([B]_{\mathcal{C}})_{ij}$ for all $i$ and $j$, that is, $M = [B]_{\mathcal{C}}$.
+% Extractor: Gemini 3.1 Pro
 \end{proof}
 
 We saw that also for $T \in \End(V)$ and $\mathcal{C}$ a basis for $V$, we have a matrix representation $[T]_{\mathcal{C}}^{\mathcal{C}} \in \M_{n \times n}(K)$, and that if $\mathcal{D}$ is another basis for $V$, then
@@ -69,7 +72,7 @@ Let $V$ be a finite-dimensional vector space over $K$ and $\mathcal{C}, \mathcal
 \end{lemma}
 
 \begin{proof}
-Let $\mathcal{C} := (v_1, \dots, v_n)$ and $\mathcal{D} := (w_1, \dots, w_n)$. We have $([B]_{\mathcal{C}})_{j,k} = B(v_j, v_k)$, and $([B]_{\mathcal{D}})_{j,k} = B(w_j, w_k)$. Recall that column $j$ in $[\id_V]_{\mathcal{C}}^{\mathcal{D}}$ contains the coordinates of $w_j$ in the basis $\mathcal{C}$:
+Let $\mathcal{C} := (v_1, \dots, v_n)$ and $\mathcal{D} := (w_1, \dots, w_n)$. We have $([B]_{\mathcal{C}})_{j,k} = B(v_j, v_k)$, and $([B]_{\mathcal{D}})_{j,k} = B(w_j, w_k)$ (this is how the previous proof constructed those matrices, and by the uniqueness just established there is no other reading). Recall that column $j$ in $[\id_V]_{\mathcal{C}}^{\mathcal{D}}$ contains the coordinates of $w_j$ in the basis $\mathcal{C}$, by the Proposition on \cpageref{prop:columns_of_representation_matrix} applied to $\id_V$:
 \[
 w_j = \sum_{p=1}^n \left([\id_V]_{\mathcal{C}}^{\mathcal{D}}\right)_{p,j} \cdot v_p.
 \]
@@ -97,7 +100,7 @@ This implies:
 \leavevmode
 \begin{enumerate}
     \item Let $(V, \langle \cdot, \cdot \rangle)$ be a Euclidean vector space. Then $B(v, w) := \langle v, w \rangle$ is a symmetric, positive definite bilinear form. Its associated quadratic form is $q(v) = \|v\|^2$.
-    \item Let $B \in \M_{n \times n}(K)$. Then $B \colon K^n \times K^n \to K$ defined by $B(v, w) := v\transp B w$ is a bilinear form. If $B\transp = B$ (i.e., $B$ is a symmetric matrix), then $B$ is a symmetric bilinear form (left as an exercise, see \cref{exc:symmetric_matrix_symmetric_form}). The associated quadratic form is $q(v) = v\transp B v$.
+    \item Let $B \in \M_{n \times n}(K)$. Then $B \colon K^n \times K^n \to K$ defined by $B(v, w) := v\transp B w$ is a bilinear form. (The letter $B$ is doing double duty here, standing both for the matrix and for the form it defines; throughout this item, $B$ written with two arguments is the form and $B$ written alone is the matrix). If $B\transp = B$ (i.e., $B$ is a symmetric matrix), then $B$ is a symmetric bilinear form (left as an exercise, see \cref{exc:symmetric_matrix_symmetric_form}). The associated quadratic form is $q(v) = v\transp B v$.
 \end{enumerate}
 \end{example}
 
@@ -116,6 +119,13 @@ q_B(v) = v\transp B v = (v\transp B v)\transp = v\transp B\transp v = q_{B\trans
 where we used the fact that $v\transp B v$ is a scalar, and thus equals its own transpose.
 
 Assume now that $2 \neq 0$ in $K$ (i.e., $1 + 1 \neq 0$). Then $\frac{1}{2}(B + B\transp)$ also gives the same quadratic form as $B$.
+% Creator: Opus 5
+Indeed, for all $v \in K^n$,
+\[
+q_{\frac{1}{2}(B + B\transp)}(v) = \tfrac{1}{2}\left( v\transp B v + v\transp B\transp v \right) = \tfrac{1}{2}\left( q_B(v) + q_{B\transp}(v) \right) = q_B(v),
+\]
+the last step by the identity just proved. What makes this worth recording is not the equality itself but the symmetry of the new matrix: $\left(\frac{1}{2}(B + B\transp)\right)\transp = \frac{1}{2}(B\transp + B)$, so every quadratic form on $K^n$ is $q_A$ for a \emph{symmetric} $A$, which is exactly what the Conclusion below asserts.
+% Extractor: Gemini 3.1 Pro
 \end{remark}
 
 \begin{conclusion}
@@ -131,6 +141,19 @@ If $B$ is symmetric and defines $q := q_B$, then for all $v, w \in V$ we have:
     \item $B(v, w) = \frac{1}{2}(q(v + w) - q(v) - q(w))$.
 \end{enumerate}
 \end{theorem*}
+
+% Creator: Opus 5
+% The notes state the identity with no proof; it is two expansions, and the
+% chapter uses it at a decisive point (the base case of 27.a.7), so it is worth
+% having on the page.
+\begin{proof}
+Bilinearity and the symmetry of $B$ give, for all $v, w \in V$,
+\[
+    q(v \pm w) = B(v \pm w, v \pm w) = B(v, v) \pm B(v, w) \pm B(w, v) + B(w, w) = q(v) \pm 2 B(v, w) + q(w).
+\]
+Subtracting the two versions of this identity gives $q(v+w) - q(v-w) = 4 B(v, w)$, which is \textbf{(a)}, division by $4$ being legitimate by \cref{exc:two_nonzero_four_nonzero}. Taking only the version with the plus sign and moving $q(v)$ and $q(w)$ to the left gives $q(v+w) - q(v) - q(w) = 2 B(v, w)$, which is \textbf{(b)}.
+\end{proof}
+% Extractor: Gemini 3.1 Pro
 
 % Extractor: Opus 5
 \begin{exercise}[Why \texorpdfstring{$2 \neq 0$}{2 =/= 0} Forces \texorpdfstring{$4 \neq 0$}{4 =/= 0}]
@@ -166,10 +189,10 @@ n - (k + \ell) &= \max \{ \dim Z \mid Z \subseteq V \text{ is a subspace and } B
 \end{remark}
 
 \begin{proof}
-Choose any basis $\mathcal{C}'$ for $V$ and let $A := [B]_{\mathcal{C}'} \in \M_{n \times n}(\mathbb{R})$. Note that $A$ is a symmetric matrix (since $B$ is symmetric). By the Spectral Theorem for matrices (\cref{thm:spectral_thm_matrices} \textbf{(b)}), this implies that $A$ is orthogonally diagonalizable, i.e., there exists $P \in \Orth(n)$ such that $P^{-1} A P$ is a diagonal matrix. But $P^{-1} = P\transp$, so $P\transp A P$ is diagonal.
+Choose any basis $\mathcal{C}'$ for $V$ and let $A := [B]_{\mathcal{C}'} \in \M_{n \times n}(\mathbb{R})$. Note that $A$ is a symmetric matrix (since $B$ is symmetric: $A_{ij} = B(v'_i, v'_j) = B(v'_j, v'_i) = A_{ji}$). By the Spectral Theorem for matrices (\cref{thm:spectral_thm_matrices} \textbf{(b)}), this implies that $A$ is orthogonally diagonalizable, i.e., there exists $P \in \Orth(n)$ such that $P^{-1} A P$ is a diagonal matrix. But $P^{-1} = P\transp$ (by \cref{lem:char_orthogonal_matrices} \textbf{(d)}), so $P\transp A P$ is diagonal.
 
-Let $\mathcal{C}''$ be the (unique) basis of $V$ such that $[\id_V]_{\mathcal{C}''}^{\mathcal{C}'} = P$. (That is, if $\mathcal{C}' = (v'_1, \dots, v'_n)$ and $\mathcal{C}'' = (v''_1, \dots, v''_n)$, then $v''_j = \sum_{i=1}^n P_{ij} v'_i$ for all $j$).
-We have 
+Let $\mathcal{C}''$ be the (unique) basis of $V$ such that $[\id_V]_{\mathcal{C}'}^{\mathcal{C}''} = P$. (That is, if $\mathcal{C}' = (v'_1, \dots, v'_n)$ and $\mathcal{C}'' = (v''_1, \dots, v''_n)$, then $v''_j = \sum_{i=1}^n P_{ij} v'_i$ for all $j$).
+We have, by \cref{lem:change_of_basis_bilinear} applied to the pair $\mathcal{C}'$, $\mathcal{C}''$,
 \[
 [B]_{\mathcal{C}''} = P\transp A P = \begin{pmatrix} \eta_1 & & 0 \\ & \ddots & \\ 0 & & \eta_n \end{pmatrix},
 \]
@@ -284,7 +307,7 @@ We have
 \[
 [B]_{\mathcal{D}} = Q\transp \cdot [B]_{\mathcal{D}'} \cdot Q = Q^{-1} [B]_{\mathcal{D}'} Q,
 \]
-since $Q \in \Orth(n)$. Hence, the matrices $[B]_{\mathcal{D}}$ and $[B]_{\mathcal{D}'}$ are similar, which means their eigenvalues are exactly the same.
+since $Q \in \Orth(n)$, so that $Q\transp = Q^{-1}$ by \cref{lem:char_orthogonal_matrices} \textbf{(d)}. Hence, the matrices $[B]_{\mathcal{D}}$ and $[B]_{\mathcal{D}'}$ are similar, which means their eigenvalues are exactly the same: similar matrices share a characteristic polynomial by \cref{lem:properties_char_poly} \textbf{(e)}, and the eigenvalues are its roots by \cref{aiprop:eigenvalue_iff_root}. This is precisely where the congruence $Q\transp [B]_{\mathcal{D}'} Q$ of \cref{lem:change_of_basis_bilinear}, which in general does \emph{not} preserve eigenvalues, is upgraded to a similarity, and it is the reason the theorem must insist on orthonormal bases.
 \end{proof}
 
 % Extractor: Opus 5
@@ -427,7 +450,7 @@ This implies that the matrix representation in the new basis is block diagonal:
 \[
 [B]_{\mathcal{C}'} = \begin{pmatrix} C & 0 \\ 0 & d \end{pmatrix} = S\transp [B]_{\mathcal{C}} S,
 \]
-where $d = B(e_{n+1} - w', e_{n+1} - w')$, $S = [\id_V]_{\mathcal{C}'}^{\mathcal{C}}$, and $C = [B|_{W \times W}]_{\mathcal{C}_W}$.
+where $d = B(e_{n+1} - w', e_{n+1} - w')$, $S = [\id_V]_{\mathcal{C}}^{\mathcal{C}'}$, and $C = [B|_{W \times W}]_{\mathcal{C}_W}$.
 
 Taking the determinant, we get:
 \[
@@ -535,3 +558,55 @@ and taking determinants gives $\det\left[B|_{W_\ell \times W_\ell}\right]_{\math
 
 Note that the basis $\mathcal{C}$ was arbitrary throughout, so what we have actually proved is the stronger implication \textbf{(a)} $\implies$ \textbf{(c)}. Since \textbf{(c)} $\implies$ \textbf{(b)} is immediate, the cycle \textbf{(a)} $\implies$ \textbf{(c)} $\implies$ \textbf{(b)} $\implies$ \textbf{(a)} closes, and all three conditions of \cref{thm:sylvesters_criterion} are equivalent. The notes state the three conditions but only ever discuss the passage between \textbf{(a)} and \textbf{(b)}, leaving \textbf{(c)} unproved; this is what closes that gap.
 \end{exercisesolution}
+% Creator: Opus 5
+\begin{ainote}
+\textbf{Two inverted representation-matrix indices}, the error class this pass
+exists to catch, both in transition matrices and both invisible to
+`tools/check-repmatrix.pl' because neither stands inside a product.
+
+In the proof of \cref{thm:sylvesters_inertia}, the orthogonal $P$ produced by the
+Spectral Theorem was introduced as $[\id_V]_{\mathcal{C}''}^{\mathcal{C}'} = P$,
+with the basis of the target on top. The parenthetical immediately after it says
+$v''_j = \sum_i P_{ij} v'_i$, that is, column $j$ of $P$ holds the coordinates of
+$v''_j$ in $\mathcal{C}'$, which is $[\id_V]_{\mathcal{C}'}^{\mathcal{C}''}$; and
+$[B]_{\mathcal{C}''} = P\transp A P$ is what
+\cref{lem:change_of_basis_bilinear} yields for that reading and no other. The
+same swap occurs in the proof of \cref{thm:sylvesters_criterion}, where
+$S = [\id_V]_{\mathcal{C}'}^{\mathcal{C}}$ was written for the matrix that the
+identity $[B]_{\mathcal{C}'} = S\transp [B]_{\mathcal{C}} S$ forces to be
+$[\id_V]_{\mathcal{C}}^{\mathcal{C}'}$. Both are corrected;
+\cref{lem:change_of_basis_bilinear} itself, the proof outline of
+\cref{thm:sylvesters_euclidean} and the solution to
+\cref{exc:sylvester_criterion_forward} were all checked and are right.
+
+\textbf{Two results asserted without proof.} The Polarization Identity on
+\cpageref{thm:polarization_identity_bilinear} carried none, although it is what
+starts the induction of \cref{thm:diagonalization_symmetric_bilinear}; it is two
+expansions and now has them. And \cref{lem:matrix_rep_bilinear_form} proves only
+that a matrix representation \emph{exists}, then calls it \qt{the} matrix
+representation; uniqueness is what entitles the later chapters to read
+$([B]_{\mathcal{C}})_{jk} = B(v_j, v_k)$ off the name alone, as the proof of
+\cref{lem:change_of_basis_bilinear} does in its first line, and it too is now
+proved.
+
+\textbf{One step whose point was the missing half.} The Remark before the
+Conclusion shows that $\frac{1}{2}(B + B\transp)$ gives the same quadratic form
+as $B$, without computing it and, more to the point, without saying that this
+matrix is \emph{symmetric}, which is the whole content of the Conclusion that
+follows. Both are supplied.
+
+Steps that now name their reason: \cref{lem:char_orthogonal_matrices}
+\textbf{(d)} for the three appearances of $P\transp = P^{-1}$;
+the Proposition on \cpageref{prop:columns_of_representation_matrix} for what a
+column of a transition matrix contains; \cref{lem:properties_char_poly} \textbf{(e)} with
+\cref{aiprop:eigenvalue_iff_root} for \qt{similar, hence the same eigenvalues} in
+\cref{thm:sylvesters_euclidean}, which is the exact point at which the congruence
+of \cref{lem:change_of_basis_bilinear} has to be upgraded to a similarity, and so
+the reason that theorem insists on orthonormal bases.
+
+Flagged rather than changed: in the second item of the Example of standard forms
+the letter $B$ denotes both the matrix and the bilinear form it defines, so that
+the defining line reads $B(v, w) := v\transp B w$. Nothing is wrong, and the
+notes do it too, but it is a trap for the eye of the same kind as the $P$ of ch.
+17c; a parenthetical now says which $B$ is which.
+\end{ainote}
