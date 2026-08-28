@@ -28,6 +28,8 @@ run "cref targets resolve to numbered environments" \
     bash tools/check-crefs.sh
 run "adjacent representation matrices compose" \
     perl tools/check-repmatrix.pl
+run "every definition puts a term in the index" \
+    perl tools/check-index.pl
 
 echo
 if [ "$fail" -eq 0 ]; then
