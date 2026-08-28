@@ -137,7 +137,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 
 \subsection*{Examples}
 
-\begin{enumerate}[label=\textbf{(\arabic*)}]
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item The standard scalar product on $\mathbb{R}^n$. Let $\mathbb{R}^n = \mathbb{R}^n_{\text{col}}$. For all $u, v \in \mathbb{R}^n$, define $\langle u, v \rangle = u\transp \cdot v \in \M_{1 \times 1}(\mathbb{R}) = \mathbb{R}$.
     \begin{align*}
         \left\langle \begin{pmatrix} u_1 \\ \vdots \\ u_n \end{pmatrix}, \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \right\rangle &= \sum_{i=1}^n u_i \cdot v_i \\
@@ -192,7 +192,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \item $I_n^* = I_n$.
     \item $(A \cdot C)^* = C^* \cdot A^*$.
   \end{enumerate}
-  \exhint[Official Hint]{Compute the $(i, j)$-entry for each side of the equations. For part (e), the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
+  \exhint[Official Hint]{Compute the $(i, j)$-entry for each side of the equations. For part \textbf{(e)}, the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:properties_adjoint_matrix_rules}
 \end{exercise}
@@ -694,7 +694,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
     \item Find an orthonormal basis of $\mathbb{R}_{\le 2}[x]$ such that the representation matrix of the derivative operator $D \colon \mathbb{R}_{\le 2}[x] \to \mathbb{R}_{\le 2}[x]$, $p \mapsto p'$, is an upper triangular matrix.
   \end{enumerate}
   \exhint[Hint (Y. St\"aubli)]{(a) Starting with $b_1 = 1$, we have $\|b_1\|^2 = \int_0^1 1 \, dx = 1$, so $u_1 = 1$. Next, $v_2 = x - \langle x, u_1 \rangle u_1 = x - 1/2$, and $\|v_2\|^2 = 1/12$, so $u_2 = \sqrt{3}(2x - 1)$. Finally, $v_3 = x^2 - \langle x^2, u_1 \rangle u_1 - \langle x^2, u_2 \rangle u_2 = x^2 - x + 1/6$, with $\|v_3\|^2 = 1/180$, so $u_3 = \sqrt{5}(6x^2 - 6x + 1)$.
-  (b) The basis $\mathcal{C} = (u_1, u_2, u_3)$ obtained in part (a) already satisfies $\deg(u_k) = k-1$. Since differentiation lowers the polynomial degree, $D(u_1) = 0$, $D(u_2) \in \Sp(u_1)$, and $D(u_3) \in \Sp(u_1, u_2)$, so the representation matrix $[D]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular.}
+  (b) The basis $\mathcal{C} = (u_1, u_2, u_3)$ obtained in part \textbf{(a)} already satisfies $\deg(u_k) = k-1$. Since differentiation lowers the polynomial degree, $D(u_1) = 0$, $D(u_2) \in \Sp(u_1)$, and $D(u_3) \in \Sp(u_1, u_2)$, so the representation matrix $[D]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:gram_schmidt_polynomials_derivative}
 \end{exercise}

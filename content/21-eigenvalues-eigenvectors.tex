@@ -174,7 +174,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
     \item If $V$ is finite-dimensional, then $F \circ G$ and $G \circ F$ have exactly the same eigenvalues.
     \item Give a counterexample to \textbf{(b)} when $V$ is infinite-dimensional.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part (a) immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
+  \exhint[Official Hint]{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part \textbf{(a)} immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:eigenvalues_of_composed_endomorphisms}
 \end{exercise}
@@ -189,7 +189,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
     \]
     \item Use \textbf{(a)} to show that $AB$ and $BA$ have precisely the same eigenvalues in $K$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Verify directly by multiplying $(I_n - BA)$ with $(I_n + B(I_n - AB)^{-1}A)$ and simplifying using $BA B = B (AB)$. \textbf{(b)} For any $\lambda \in K^*$, notice that $\lambda I_n - AB = \lambda(I_n - A(B/\lambda))$ is invertible if and only if $\lambda I_n - BA = \lambda(I_n - (B/\lambda)A)$ is invertible by part (a). For $\lambda = 0$, $AB$ is singular if and only if $\det(AB) = \det(A)\det(B) = 0 \iff \det(BA) = 0 \iff BA$ is singular.}
+  \exhint[Official Hint]{\textbf{(a)} Verify directly by multiplying $(I_n - BA)$ with $(I_n + B(I_n - AB)^{-1}A)$ and simplifying using $BA B = B (AB)$. \textbf{(b)} For any $\lambda \in K^*$, notice that $\lambda I_n - AB = \lambda(I_n - A(B/\lambda))$ is invertible if and only if $\lambda I_n - BA = \lambda(I_n - (B/\lambda)A)$ is invertible by part \textbf{(a)}. For $\lambda = 0$, $AB$ is singular if and only if $\det(AB) = \det(A)\det(B) = 0 \iff \det(BA) = 0 \iff BA$ is singular.}
   \exinfo{This exercise is Problem 8 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:resolvent_identity_matrix_products}
 \end{exercise}
@@ -308,7 +308,7 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
 
   \textbf{(b)} $P_{A\transp}(x) = \det(A\transp - x \cdot I_n) = \det((A - x \cdot I_n)\transp) = \det(A - x \cdot I_n) = P_A(x)$.
 
-  \textbf{(c)+(d)} These properties follow directly from the definition of the determinant and its behavior with block matrices, as established in Chapter 20 (Determinants). For example, for (c), the determinant of an upper triangular matrix is the product of its diagonal entries. For (d), the determinant of a block triangular matrix is the product of the determinants of its diagonal blocks.
+  \textbf{(c)+(d)} These properties follow directly from the definition of the determinant and its behavior with block matrices, as established in Chapter 20 (Determinants). For example, for \textbf{(c)}, the determinant of an upper triangular matrix is the product of its diagonal entries. For \textbf{(d)}, the determinant of a block triangular matrix is the product of the determinants of its diagonal blocks.
   % Original: Exercise: Follows from properties of the determinant we have already proved.
 
   \textbf{(e)} $P_B(x) = \det(B - x \cdot I_n) = \det(P^{-1}AP - x \cdot I_n) = \det(P^{-1}(A - x \cdot I_n)P) = \det(A - x \cdot I_n) = P_A(x)$.
@@ -773,7 +773,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     \item Deduce that $f$ is diagonalizable if and only if each restriction $f|_{V_i}$ is diagonalizable on $V_i$.
     \item Let $f, g \in \End(V)$. Show that $f$ and $g$ are simultaneously diagonalizable (that is, there exists a single basis $\mathcal{B}$ of $V$ consisting of simultaneous eigenvectors for both $f$ and $g$) if and only if they commute ($f \circ g = g \circ f$) and each is separately diagonalizable.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} In a basis adapted to $V_1 \oplus \dots \oplus V_r$, $[f]$ is block diagonal, so $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$, which adds the algebraic multiplicities. For geometric multiplicities, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$. \textbf{(b)} $f$ is diagonalizable $\iff \sum_\lambda m_g(f;\lambda) = \dim V = \sum_i \dim V_i$. \textbf{(c)} $(\implies)$ In a simultaneous eigenbasis, $[f]$ and $[g]$ are diagonal, hence commute. $(\impliedby)$ If $f \circ g = g \circ f$, each eigenspace $V_\lambda = \Eig_f(\lambda)$ is $g$-invariant ($f(g(v)) = g(f(v)) = \lambda g(v)$). By part (b), since $g$ is diagonalizable on $V = \bigoplus_\lambda V_\lambda$, each restriction $g|_{V_\lambda}$ is diagonalizable, yielding a basis of $V_\lambda$ composed of eigenvectors of both $f$ and $g$.}
+  \exhint[Official Hint]{\textbf{(a)} In a basis adapted to $V_1 \oplus \dots \oplus V_r$, $[f]$ is block diagonal, so $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$, which adds the algebraic multiplicities. For geometric multiplicities, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$. \textbf{(b)} $f$ is diagonalizable $\iff \sum_\lambda m_g(f;\lambda) = \dim V = \sum_i \dim V_i$. \textbf{(c)} $(\implies)$ In a simultaneous eigenbasis, $[f]$ and $[g]$ are diagonal, hence commute. $(\impliedby)$ If $f \circ g = g \circ f$, each eigenspace $V_\lambda = \Eig_f(\lambda)$ is $g$-invariant ($f(g(v)) = g(f(v)) = \lambda g(v)$). By part \textbf{(b)}, since $g$ is diagonalizable on $V = \bigoplus_\lambda V_\lambda$, each restriction $g|_{V_\lambda}$ is diagonalizable, yielding a basis of $V_\lambda$ composed of eigenvectors of both $f$ and $g$.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:direct_sum_multiplicities_and_simultaneous_diagonalizability}
 \end{exercise}

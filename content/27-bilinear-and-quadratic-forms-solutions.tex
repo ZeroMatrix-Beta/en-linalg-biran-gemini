@@ -63,8 +63,8 @@ We apply Sylvester's Criterion (\cref{thm:sylvesters_criterion}), which states t
 \begin{exercisesolution}[Solution to \cref{exc:positive_definite_equivalent_characterizations}]
 \label{sol:positive_definite_equivalent_characterizations}
 Let $A \in \M_{n \times n}(\mathbb{R})$ be symmetric. We prove the cycle of implications \textbf{(A)} $\implies$ \textbf{(B)} $\implies$ \textbf{(C)} $\implies$ \textbf{(A)}.
-\begin{itemize}
-    \item \textbf{(A) $\implies$ (B):}
+\begin{description}
+    \item[\textbf{(A) $\implies$ (B):}]
     Let $\lambda$ be an eigenvalue of $A$ with non-zero eigenvector $v \in \mathbb{R}^n \setminus \{0\}$.
     By positive definiteness of $A$:
     \[
@@ -73,7 +73,7 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be symmetric. We prove the cycle of impl
     Since $v \ne 0$, $\|v\|^2 > 0$, and dividing by $\|v\|^2$ gives $\lambda > 0$.
     Thus all eigenvalues of $A$ are strictly positive.
 
-    \item \textbf{(B) $\implies$ (C):}
+    \item[\textbf{(B) $\implies$ (C):}]
     Since $A$ is real symmetric, the Spectral Theorem (\cref{thm:spectral_thm_matrices}) ensures there exists an orthogonal matrix $O \in \Orth(n)$ such that:
     \[
     A = O D O\transp, \qquad D = \operatorname{diag}(\lambda_1, \dots, \lambda_n).
@@ -88,7 +88,7 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be symmetric. We prove the cycle of impl
     \]
     Moreover, $\det(S) = \det(O)\det(\sqrt{D})\det(O\transp) = \prod_{i=1}^n \sqrt{\lambda_i} > 0$, so $S$ is invertible.
 
-    \item \textbf{(C) $\implies$ (A):}
+    \item[\textbf{(C) $\implies$ (A):}]
     Let $S \in \M_{n \times n}(\mathbb{R})$ be an invertible symmetric matrix such that $S^2 = A$.
     For any non-zero vector $v \in \mathbb{R}^n \setminus \{0\}$:
     \[
@@ -96,6 +96,6 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be symmetric. We prove the cycle of impl
     \]
     Since $S$ is invertible and $v \ne 0$, we have $Sv \ne 0$.
     By positive definiteness of the Euclidean norm, $\|Sv\|^2 > 0$, so $v\transp A v > 0$, proving that $A$ is positive definite. \qedhere
-\end{itemize}
+\end{description}
 \exinfo{Official Solution (Problem Sheet 26, Exercise 4). Proves cyclic equivalence between positive definiteness, positive eigenvalues, and positive symmetric square root factorization.}
 \end{exercisesolution}

@@ -6,7 +6,7 @@ We claim that
 \bigcap_{n=1}^\infty \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\} = \{0\}.
 \]
 Let $I_n := \left[-\frac{1}{n}, \frac{1}{n}\right] = \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\}$ for each $n \in \mathbb{N}$.
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Containment $\{0\} \subseteq \bigcap_{n=1}^\infty I_n$:} For every $n \in \mathbb{N}$, $-\frac{1}{n} < 0 < \frac{1}{n}$, and hence $0 \in I_n$ for all $n \ge 1$. Consequently, $0 \in \bigcap_{n=1}^\infty I_n$.
 
     \item \textbf{Containment $\bigcap_{n=1}^\infty I_n \subseteq \{0\}$:} Suppose for contradiction that there exists some $x \in \bigcap_{n=1}^\infty I_n$ with $x \ne 0$. Then $|x| > 0$, so $\frac{1}{|x|} > 0$. By the Archimedean property of the real numbers, there exists a natural number $N \in \mathbb{N}$ such that $N > \frac{1}{|x|}$, which is equivalent to

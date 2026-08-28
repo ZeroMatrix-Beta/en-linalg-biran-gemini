@@ -103,7 +103,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
     \[
     \langle f(v), w \rangle_W = \langle v, f^*(w) \rangle_V \qquad \text{for all } v \in V, \, w \in W.
     \]
-    \item Does the statement in (a) always hold if we instead assume $\dim W < \infty$ while $\dim V = \infty$?
+    \item Does the statement in \textbf{(a)} always hold if we instead assume $\dim W < \infty$ while $\dim V = \infty$?
   \end{enumerate}
   \exhint[Official Hint]{(a) For each fixed $w \in W$, the map $\varphi_w \colon V \to \mathbb{R}$ given by $\varphi_w(v) = \langle f(v), w \rangle_W$ is a linear functional on $V$. Since $\dim V < \infty$, the Riesz representation theorem (\cref{thm:dual_space_inner_product_isomorphism}) guarantees a unique vector $v_w \in V$ such that $\varphi_w(v) = \langle v, v_w \rangle_V$. Defining $f^*(w) := v_w$ gives the required map. Show that $f^*$ is linear and unique.
   (b) No. Consider $V = \mathbb{R}^{(\mathbb{N})}$ (the space of real sequences $(a_i)_{i=1}^\infty$ with only finitely many non-zero terms) equipped with the standard $\ell^2$-scalar product $\langle a, b \rangle = \sum_{i=1}^\infty a_i b_i$, and let $W = \mathbb{R}$. Define $f \colon V \to \mathbb{R}$ by $f(a) = \sum_{i=1}^\infty a_i$. If $f^*$ existed, $f^*(1)$ would be a vector $c \in V$ such that $f(a) = \langle a, c \rangle = \sum a_i c_i$. Taking $a = e_k$ gives $c_k = f(e_k) = 1$ for all $k \in \mathbb{N}$, which has infinitely many non-zero entries and thus does not belong to $V$.}

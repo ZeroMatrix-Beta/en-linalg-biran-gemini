@@ -144,7 +144,7 @@ For statement \textbf{(e)}, we can write
 \label{eq:orthogonal_decomposition_v}
     v = \underbrace{\left( \sum_{i=1}^r \langle v, e_i \rangle \cdot e_i \right)}_{\text{(I)}} + \underbrace{\left( v - \sum_{i=1}^r \langle v, e_i \rangle e_i \right)}_{\text{(II)}}.
 \end{equation}
-Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we have also seen in that proof that part (II) belongs to $U^\perp$. This implies that \eqref{eq:orthogonal_decomposition_v} is the unique decomposition of $v$ with respect to $V \cong U \oplus U^\perp$. Hence, $P_U(v) = \text{(I)}$.
+Now, part \textbf{(I)} is exactly $\widetilde{P}_U(v)$ from the previous proof, and we have also seen in that proof that part \textbf{(II)} belongs to $U^\perp$. This implies that \eqref{eq:orthogonal_decomposition_v} is the unique decomposition of $v$ with respect to $V \cong U \oplus U^\perp$. Hence, $P_U(v) = \text{(I)}$.
 \end{proof}
 
 \begin{exercise}[Orthogonal Projections and Complementary Subspaces]
@@ -152,7 +152,7 @@ Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we ha
   Let $U \subseteq \mathbb{R}^3$ (with the standard scalar product) be the subspace spanned by the vectors $v_1 = (1, 1, 1)\transp$ and $v_2 = (0, 2, 1)\transp$.
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Find an orthonormal basis for $U$ and an orthonormal basis for $U^\perp$.
-    \item Compute the representation matrices of the orthogonal projections $P_U \colon \mathbb{R}^3 \to U$ and $P_{U^\perp} \colon \mathbb{R}^3 \to U^\perp$ with respect to the standard basis of $\mathbb{R}^3$ and the respective bases obtained in part (a).
+    \item Compute the representation matrices of the orthogonal projections $P_U \colon \mathbb{R}^3 \to U$ and $P_{U^\perp} \colon \mathbb{R}^3 \to U^\perp$ with respect to the standard basis of $\mathbb{R}^3$ and the respective bases obtained in part \textbf{(a)}.
   \end{enumerate}
   \exhint[Official Hint]{(a) Apply Gram-Schmidt to $(v_1, v_2)$ to obtain an orthonormal basis $\mathcal{C}_U = (w_1, w_2)$ of $U$. Then find a non-zero vector $v_3 \in U^\perp$ (e.g., by solving the linear system $\langle x, v_1 \rangle = 0$ and $\langle x, v_2 \rangle = 0$, or via the cross product $v_1 \times v_2$) and normalize it to obtain an orthonormal basis $\mathcal{C}_{U^\perp} = (w_3)$ of $U^\perp$.
   (b) The projection $P_U \colon \mathbb{R}^3 \to U$ acts by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$. The representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ has column $j$ given by the coordinate vector of $P_U(e_j)$ with respect to $\mathcal{C}_U$, namely $\begin{pmatrix} \langle e_j, w_1 \rangle \\ \langle e_j, w_2 \rangle \end{pmatrix}$. Similarly, for $P_{U^\perp}$.}
