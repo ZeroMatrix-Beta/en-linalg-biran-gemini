@@ -588,7 +588,7 @@ Prove that $T$ is a linear map if and only if its graph $\Gamma(T)$ is a linear 
 \begin{remark}
 Formally, a function $T \colon V \to W$ can be viewed as a subset $T \subseteq V \times W = V \oplus W$ such that for each $v \in V$ there exists a unique $w \in W$ with $(v, w) \in T$. Thus, a function from $V$ to $W$ is linear if and only if it is a linear subspace of $V \oplus W$.
 \end{remark}
-\exhint{Classically, prove the two directions separately: show first that if $T$ is linear, then $\Gamma(T)$ is closed under addition and scalar multiplication; then show that if $\Gamma(T)$ is a subspace, $T$ preserves addition and scalar multiplication.}
+\exhint[Hint (Y. St\"aubli)]{Classically, prove the two directions separately: show first that if $T$ is linear, then $\Gamma(T)$ is closed under addition and scalar multiplication; then show that if $\Gamma(T)$ is a subspace, $T$ preserves addition and scalar multiplication.}
 \exinfo{This exercise is Problem 3 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:graph_of_linear_map}
 \end{exercise}
@@ -712,7 +712,7 @@ Let $V$ be a finite-dimensional vector space over a field $K$.
     V^* \cong U^* \oplus W^*.
     \]
 \end{enumerate}
-\exhint{(a) Recall the canonical map $(u, w) \mapsto u + w$ from the lecture. (b) Every linear map is uniquely determined by its values on a basis; extend a basis of $U$ to $V$ using a basis of $W$. (c) For $\ell \in V^*$, consider the restricted functionals $\ell|_U = \ell \circ \iota_U \in U^*$ and $\ell|_W = \ell \circ \iota_W \in W^*$. Use these to define a linear map $\psi \colon V^* \to U^* \oplus W^*$ and prove that it is bijective.}
+\exhint[Official Hint]{(a) Recall the canonical map $(u, w) \mapsto u + w$ from the lecture. (b) Every linear map is uniquely determined by its values on a basis; extend a basis of $U$ to $V$ using a basis of $W$. (c) For $\ell \in V^*$, consider the restricted functionals $\ell|_U = \ell \circ \iota_U \in U^*$ and $\ell|_W = \ell \circ \iota_W \in W^*$. Use these to define a linear map $\psi \colon V^* \to U^* \oplus W^*$ and prove that it is bijective.}
 \exinfo{This exercise is Problem 4 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:subspace_complement_dual_decomposition}
 \end{exercise}
@@ -730,7 +730,7 @@ Let $U, V, W_1, W_2$ be finite-dimensional vector spaces over a field $K$.
     \Hom(V \oplus U, W_1) \cong \Hom(V, W_1) \oplus \Hom(U, W_1).
     \]
 \end{enumerate}
-\exhint{While dimension-counting shows the spaces are isomorphic, the goal is to construct explicit coordinate-free isomorphisms: (a) For $f \in \Hom(V, W_1 \oplus W_2)$, consider the compositions $\pi_{W_1} \circ f$ and $\pi_{W_2} \circ f$ with the canonical projections, and define $\Phi(f) := (\pi_{W_1} \circ f, \pi_{W_2} \circ f)$; exhibit its inverse explicitly. (b) For $f \in \Hom(V \oplus U, W_1)$, consider the precompositions $f \circ \iota_V$ and $f \circ \iota_U$ with the canonical inclusions.}
+\exhint[Official Hint]{While dimension-counting shows the spaces are isomorphic, the goal is to construct explicit coordinate-free isomorphisms: (a) For $f \in \Hom(V, W_1 \oplus W_2)$, consider the compositions $\pi_{W_1} \circ f$ and $\pi_{W_2} \circ f$ with the canonical projections, and define $\Phi(f) := (\pi_{W_1} \circ f, \pi_{W_2} \circ f)$; exhibit its inverse explicitly. (b) For $f \in \Hom(V \oplus U, W_1)$, consider the precompositions $f \circ \iota_V$ and $f \circ \iota_U$ with the canonical inclusions.}
 \exinfo{This exercise is Problem 6 (parts a and b) of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:hom_direct_sum_decompositions}
 \end{exercise}
@@ -1052,7 +1052,7 @@ guaranteed by the universal property of quotient spaces. Show that:
     \item $\bar{f}$ is surjective if and only if $f$ is surjective.
     \item If $f$ is surjective, then $\bar{f}$ induces a canonical isomorphism $V/\ker(f) \cong W$.
 \end{enumerate}
-\exhint{(a) Note that $[v] \in \ker(\bar{f}) \iff f(v) = 0 \iff v \in \ker(f)$. (b) Use (a) and the fact that for a subspace $X \subseteq Y$, $Y/X = \{0\} \iff Y = X$. (c), (d) Combine (b) and the definition of $\Img(\bar{f})$.}
+\exhint[Official Hint]{(a) Note that $[v] \in \ker(\bar{f}) \iff f(v) = 0 \iff v \in \ker(f)$. (b) Use (a) and the fact that for a subspace $X \subseteq Y$, $Y/X = \{0\} \iff Y = X$. (c), (d) Combine (b) and the definition of $\Img(\bar{f})$.}
 \exinfo{This exercise is Problem 2 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:properties_induced_quotient_maps}
 \end{exercise}
@@ -1093,7 +1093,7 @@ Consider the linear subspace
 U := \operatorname{span}\left( \begin{pmatrix} 2 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 2 \\ 2 \\ 2 \end{pmatrix} \right) \subseteq V := \mathbb{R}^5.
 \]
 Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb{R}^5$ whose image under the canonical quotient map $\pi \colon V \to V/U$ forms a basis of the quotient space $V/U$.
-\exhint{Recall that $V/U \cong U'$ for any complement $U'$ of $U$. Find which standard basis vectors can be selected to form a complement of $U$ in $\mathbb{R}^5$.}
+\exhint[Official Hint]{Recall that $V/U \cong U'$ for any complement $U'$ of $U$. Find which standard basis vectors can be selected to form a complement of $U$ in $\mathbb{R}^5$.}
 \exinfo{This exercise is Problem 1 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:basis_of_quotient_space_r5}
 \end{exercise}

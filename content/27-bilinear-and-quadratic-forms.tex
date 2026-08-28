@@ -171,7 +171,7 @@ This is the question Prof. Biran annotates the Polarization Identity with. Let $
   \[
   B(v, w) = \frac{1}{2} \big( q_B(v + w) - q_B(v) - q_B(w) \big).
   \]
-  \exhint{Expand $q_B(v + w) = B(v + w, v + w) = B(v, v) + B(v, w) + B(w, v) + B(w, w)$ using bilinearity. By symmetry, $B(w, v) = B(v, w)$, so $q_B(v + w) = q_B(v) + 2B(v, w) + q_B(w)$. Subtracting $q_B(v) + q_B(w)$ from both sides and dividing by $2$ (which is valid since $\operatorname{char}(K) \neq 2$) gives the result.}
+  \exhint[Official Hint]{Expand $q_B(v + w) = B(v + w, v + w) = B(v, v) + B(v, w) + B(w, v) + B(w, w)$ using bilinearity. By symmetry, $B(w, v) = B(v, w)$, so $q_B(v + w) = q_B(v) + 2B(v, w) + q_B(w)$. Subtracting $q_B(v) + q_B(w)$ from both sides and dividing by $2$ (which is valid since $\operatorname{char}(K) \neq 2$) gives the result.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:polarization_quadratic_forms_series26}
 \end{exercise}
@@ -517,7 +517,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
   B := \begin{pmatrix} 6 & 3 & 4 \\ 3 & 7 & 3 \\ 4 & 3 & 8 \end{pmatrix}, \qquad
   C := \begin{pmatrix} 3 & 0 & -1 & 0 \\ 0 & 6 & 1 & 1 \\ -1 & 1 & 8 & 2 \\ 0 & 1 & 2 & 5 \end{pmatrix}.
   \]
-  \exhint{Apply Sylvester's Criterion (\cref{thm:sylvesters_criterion}): a real symmetric matrix is positive definite if and only if all its leading principal minors $\Delta_k := \det(M_{1 \le i,j \le k})$ are strictly positive for $1 \le k \le n$.
+  \exhint[Official Hint]{Apply Sylvester's Criterion (\cref{thm:sylvesters_criterion}): a real symmetric matrix is positive definite if and only if all its leading principal minors $\Delta_k := \det(M_{1 \le i,j \le k})$ are strictly positive for $1 \le k \le n$.
   For $A$: $\Delta_1 = 3 > 0$, but $\Delta_2 = \det\begin{pmatrix} 3 & 3 \\ 3 & 1 \end{pmatrix} = 3 - 9 = -6 < 0$, so $A$ is not positive definite.
   For $B$: $\Delta_1 = 6 > 0$, $\Delta_2 = 42 - 9 = 33 > 0$, and $\det(B) = 6(56-9) - 3(24-12) + 4(9-28) = 282 - 36 - 76 = 170 > 0$, so $B$ is positive definite.
   For $C$: compute the successive leading principal minors $\Delta_1, \Delta_2, \Delta_3, \Delta_4 > 0$ to verify that $C$ is positive definite.}
@@ -533,7 +533,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
     \item All eigenvalues of $A$ are strictly positive;
     \item There exists an invertible symmetric matrix $S \in \M_{n \times n}(\mathbb{R})$ such that $S^2 = A$ (a symmetric square root).
   \end{enumerate}
-  \exhint{Prove (A) $\implies$ (B) $\implies$ (C) $\implies$ (A).
+  \exhint[Hint (Y. St\"aubli)]{Prove (A) $\implies$ (B) $\implies$ (C) $\implies$ (A).
   (A) $\implies$ (B): If $(\lambda, v)$ is an eigenvalue-eigenvector pair with $v \neq 0$, then $0 < v\transp A v = v\transp (\lambda v) = \lambda \|v\|^2 \implies \lambda > 0$.
   (B) $\implies$ (C): By the Spectral Theorem for symmetric matrices (\cref{thm:spectral_thm_matrices}), $A = O D O\transp$ with $O \in \Orth(n)$ and $D = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$ where each $\lambda_i > 0$. Set $\sqrt{D} := \operatorname{diag}(\sqrt{\lambda_1}, \dots, \sqrt{\lambda_n})$ and $S := O \sqrt{D} O\transp$. Then $S\transp = S$, $S^2 = O D O\transp = A$, and $\det(S) = \prod \sqrt{\lambda_i} > 0$, so $S$ is invertible.
   (C) $\implies$ (A): For any $v \ne 0$, $v\transp A v = v\transp S^2 v = v\transp S\transp S v = \|Sv\|^2$. Since $S$ is invertible and $v \ne 0$, $Sv \ne 0$, hence $\|Sv\|^2 > 0$.}

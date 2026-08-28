@@ -143,7 +143,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
     \item Show that $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
     \item Let $(\lambda_1, v_1)$ and $(\lambda_2, v_2)$ be eigenvalue-eigenvector pairs of $A$ with non-zero eigenvalues $\lambda_1, \lambda_2 \in \mathbb{R}$. Prove that if $\lambda_1 \ne \lambda_2$, then $v_1 \perp v_2$ with respect to the standard scalar product on $\mathbb{R}^n$.
   \end{enumerate}
-  \exhint{For (a) and (b), recall that $\|Av\|^2 = v\transp (A\transp A) v$ and $\ker(A\transp A) = \ker(A)$.
+  \exhint[Official Hint]{For (a) and (b), recall that $\|Av\|^2 = v\transp (A\transp A) v$ and $\ker(A\transp A) = \ker(A)$.
   For (c), since $A$ is symmetric, we have $\langle Av_1, v_2 \rangle = (Av_1)\transp v_2 = v_1\transp A\transp v_2 = v_1\transp A v_2 = \langle v_1, Av_2 \rangle$. Evaluating both sides using $Av_1 = \lambda_1 v_1$ and $Av_2 = \lambda_2 v_2$ gives $\lambda_1 \langle v_1, v_2 \rangle = \lambda_2 \langle v_1, v_2 \rangle \iff (\lambda_1 - \lambda_2) \langle v_1, v_2 \rangle = 0$. Since $\lambda_1 \ne \lambda_2$, it follows that $\langle v_1, v_2 \rangle = 0$, so $v_1 \perp v_2$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:symmetric_matrix_orthogonal_eigenvectors}
@@ -253,7 +253,7 @@ This is the step marked \qt{exc.: check this} in the proof above. Let $\mathcal{
     where $P_{W_j} \colon V \to W_j$ denotes the orthogonal projection onto $W_j$.
     \item Show that for every subspace $U \subseteq V$, the orthogonal projection $P_U$ is self-adjoint ($P_U^* = P_U$).
   \end{enumerate}
-  \exhint{(a) By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = \gEig_T(\lambda_1) \oplus \dots \oplus \gEig_T(\lambda_k)$, where $\lambda_1, \dots, \lambda_k$ are the distinct eigenvalues of $T$. By \cref{lem:properties_normal_endo}(d), the eigenspaces $W_j := \gEig_T(\lambda_j)$ are mutually orthogonal. For any $v = w_1 + \dots + w_k$ with $w_j \in W_j$, we have $P_{W_j}(v) = w_j$ and $T(v) = \sum_{j=1}^k \lambda_j w_j = \sum_{j=1}^k \lambda_j P_{W_j}(v)$.
+  \exhint[Hint (Y. St\"aubli)]{(a) By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = \gEig_T(\lambda_1) \oplus \dots \oplus \gEig_T(\lambda_k)$, where $\lambda_1, \dots, \lambda_k$ are the distinct eigenvalues of $T$. By \cref{lem:properties_normal_endo}(d), the eigenspaces $W_j := \gEig_T(\lambda_j)$ are mutually orthogonal. For any $v = w_1 + \dots + w_k$ with $w_j \in W_j$, we have $P_{W_j}(v) = w_j$ and $T(v) = \sum_{j=1}^k \lambda_j w_j = \sum_{j=1}^k \lambda_j P_{W_j}(v)$.
   (b) Let $v, w \in V$. Decompose $v = u_1 + u_1^\perp$ and $w = u_2 + u_2^\perp$ with $u_1, u_2 \in U$ and $u_1^\perp, u_2^\perp \in U^\perp$. Then $\langle P_U(v), w \rangle = \langle u_1, u_2 + u_2^\perp \rangle = \langle u_1, u_2 \rangle = \langle u_1 + u_1^\perp, u_2 \rangle = \langle v, P_U(w) \rangle$, proving $P_U^* = P_U$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:spectral_decomposition_projections}
@@ -319,7 +319,7 @@ Show that $T \colon V \to V$ is self adjoint if and only if for every orthonorma
     \item Show that $T$ is not self-adjoint.
     \item The representation matrix of $T$ with respect to the standard monomial basis $\mathcal{B} = (1, x, x^2)$ is $[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}$, which is symmetric ($A\transp = A$). Explain why this does not contradict \cref{exc:self_adjoint_matrix_criterion}.
   \end{enumerate}
-  \exhint{(a) Compute $\langle T(1), x \rangle = \langle 0, x \rangle = 0$, but $\langle 1, T(x) \rangle = \langle 1, x \rangle = \int_0^1 x \, dx = 1/2 \ne 0$. Thus $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, so $T^* \ne T$.
+  \exhint[Official Hint]{(a) Compute $\langle T(1), x \rangle = \langle 0, x \rangle = 0$, but $\langle 1, T(x) \rangle = \langle 1, x \rangle = \int_0^1 x \, dx = 1/2 \ne 0$. Thus $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, so $T^* \ne T$.
   (b) \Cref{exc:self_adjoint_matrix_criterion} and \cref{prop:matrix_representation_adjoint} state that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^*$ holds if and only if the basis $\mathcal{B}$ is \emph{orthonormal}. The standard monomial basis $(1, x, x^2)$ is not orthogonal (e.g. $\langle 1, x \rangle = 1/2 \ne 0$), so the symmetry of $[T]_{\mathcal{B}}^{\mathcal{B}}$ does not imply that $T$ is self-adjoint.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:self_adjoint_non_orthonormal_basis}
@@ -381,7 +381,7 @@ The forward direction was proven in \cref{lem:real_orth_diag_is_self_adj}. For t
     \item Show that $\Delta := -D^2 = -D \circ D$ is self-adjoint.
     \item Let $U \subset V$ be the subspace spanned by $\{x \mapsto \cos(nx) \mid n \ge 0\} \cup \{x \mapsto \sin(nx) \mid n \ge 1\}$. Find an orthonormal basis of $U$ consisting of eigenvectors of $\Delta|_U$, and determine the eigenvalues and their multiplicities.
   \end{enumerate}
-  \exhint{(a) Using integration by parts and $2\pi$-periodicity, $\langle Df, g \rangle = \frac{1}{2\pi} [f(x)g(x)]_0^{2\pi} - \frac{1}{2\pi} \int_0^{2\pi} f(x) g'(x) \, dx = -\langle f, Dg \rangle = \langle f, -Dg \rangle$. Thus $D^* = -D$, meaning $D$ is skew-adjoint (hence not self-adjoint).
+  \exhint[Hint (Y. St\"aubli)]{(a) Using integration by parts and $2\pi$-periodicity, $\langle Df, g \rangle = \frac{1}{2\pi} [f(x)g(x)]_0^{2\pi} - \frac{1}{2\pi} \int_0^{2\pi} f(x) g'(x) \, dx = -\langle f, Dg \rangle = \langle f, -Dg \rangle$. Thus $D^* = -D$, meaning $D$ is skew-adjoint (hence not self-adjoint).
   (b) $\Delta^* = (-D^2)^* = -(D^*)^2 = -(-D)^2 = -D^2 = \Delta$.
   (c) Compute $\Delta(\cos(nx)) = n^2 \cos(nx)$ and $\Delta(\sin(nx)) = n^2 \sin(nx)$. The orthonormal basis is $\{1\} \cup \{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx) \mid n \ge 1\}$. The eigenvalue $\lambda_0 = 0$ has multiplicity $1$ (spanned by $1$), and for each $n \ge 1$, the eigenvalue $\lambda_n = n^2$ has multiplicity $2$ (spanned by $\{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx)\}$).}
   \exinfo{This exercise is Problem 6 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -428,7 +428,7 @@ Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* 
       \item Every eigenvector $v$ of $A$ is an eigenvector of $p(A)$.
     \end{enumerate}
   \end{enumerate}
-  \exhint{(a) $(A+B)^* = A^* + B^* = A + B$ is self-adjoint. $(\lambda A)^* = \overline{\lambda} A^*$ is self-adjoint if and only if $\lambda \in \mathbb{R}$. However, $\lambda A$ is always normal since $(\lambda A)^*(\lambda A) = |\lambda|^2 A^2 = (\lambda A)(\lambda A)^*$.
+  \exhint[Official Hint]{(a) $(A+B)^* = A^* + B^* = A + B$ is self-adjoint. $(\lambda A)^* = \overline{\lambda} A^*$ is self-adjoint if and only if $\lambda \in \mathbb{R}$. However, $\lambda A$ is always normal since $(\lambda A)^*(\lambda A) = |\lambda|^2 A^2 = (\lambda A)(\lambda A)^*$.
   (b) $(AB + BA)^* = B^* A^* + A^* B^* = BA + AB$ and $(ABA)^* = A^* B^* A^* = ABA$ are self-adjoint. $(AB - BA)^* = BA - AB = -(AB - BA)$ is skew-adjoint, hence normal. $AB$ is self-adjoint if and only if $AB = BA$.
   (c) (i) False (the coefficients of $p$ are conjugated: $p(A)^* = \bar{p}(A^*)$).
   (ii) True (by induction from $A A^* = A^* A$).

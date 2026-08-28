@@ -69,7 +69,7 @@ Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$ be
     \]
     as polynomials in the polynomial ring $K[t]$.
 \end{enumerate}
-\exhint{(a) For the forward implication, use the explicit adjugate formula for $A^{-1}$; for the reverse implication, use the multiplicativity of the determinant $\det(AB) = \det(A)\det(B)$. (b) First show that $\det(tI_2 - A) = t^2 - (\operatorname{tr} A)t + \det A$, where $\operatorname{tr}(A) = a + d$, and compare coefficients.}
+\exhint[Hint (Y. St\"aubli)]{(a) For the forward implication, use the explicit adjugate formula for $A^{-1}$; for the reverse implication, use the multiplicativity of the determinant $\det(AB) = \det(A)\det(B)$. (b) First show that $\det(tI_2 - A) = t^2 - (\operatorname{tr} A)t + \det A$, where $\operatorname{tr}(A) = a + d$, and compare coefficients.}
 \exinfo{This exercise is Problem 2 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:invertibility_nilpotency_2x2}
 \end{exercise}
@@ -119,7 +119,7 @@ Let $K$ be a subfield of the complex numbers $\mathbb{C}$, and let $n$ be a posi
 D(A) := A(j_1, k_1) A(j_2, k_2) \cdots A(j_n, k_n).
 \]
 Prove that $D$ is $n$-linear (as a function of the rows of $A$) if and only if the row indices $j_1, \dots, j_n$ are pairwise distinct.
-\exhint{If two row indices are equal, say $j_1 = j_2$, show that scaling that row by $c \in K$ scales the product by $c^2$ rather than $c$ (explain why $K \subseteq \mathbb{C}$ prevents $c^2 = c$ for all $c$, in contrast to finite fields like $\mathbb{F}_2$). If all $j_i$ are distinct, each row appears exactly once in the product, so $n$-linearity holds directly.}
+\exhint[Hint (Y. St\"aubli)]{If two row indices are equal, say $j_1 = j_2$, show that scaling that row by $c \in K$ scales the product by $c^2$ rather than $c$ (explain why $K \subseteq \mathbb{C}$ prevents $c^2 = c$ for all $c$, in contrast to finite fields like $\mathbb{F}_2$). If all $j_i$ are distinct, each row appears exactly once in the product, so $n$-linearity holds directly.}
 \exinfo{This exercise is Problem 4 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:monomial_matrix_multilinear}
 \end{exercise}
@@ -158,7 +158,7 @@ Each of the following expressions defines a function $D \colon \M_{3 \times 3}(\
     \item $D(A) = 0$;
     \item $D(A) = 1$.
 \end{enumerate}
-\exhint{Here, $3$-linear with respect to the rows is meant. For those functions that fail to be $3$-linear, provide an explicit counterexample to linearity in some row.}
+\exhint[Hint (Y. St\"aubli)]{Here, $3$-linear with respect to the rows is meant. For those functions that fail to be $3$-linear, provide an explicit counterexample to linearity in some row.}
 \exinfo{This exercise is Problem 3 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:multilinear_candidates_3x3}
 \end{exercise}
@@ -172,7 +172,7 @@ Each of the following expressions defines a function $D \colon \M_{3 \times 3}(\
 \begin{exercise}[The $2 \times 2$ Determinant as an Alternating $2$-Linear Form \faHeart]
 \label{exc:det_2x2_alternating_bilinear}
 Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$, is an alternating $2$-linear function with respect to both its rows and its columns.
-\exhint{Using the explicit formula $\det A = ad - bc$, verify that $\det$ is linear in each column (holding the other fixed) and linear in each row (holding the other fixed), and show that $\det A = 0$ whenever the two columns (or the two rows) are equal.}
+\exhint[Official Hint]{Using the explicit formula $\det A = ad - bc$, verify that $\det$ is linear in each column (holding the other fixed) and linear in each row (holding the other fixed), and show that $\det A = 0$ whenever the two columns (or the two rows) are equal.}
 \exinfo{This exercise is Problem 1 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:det_2x2_alternating_bilinear}
 \end{exercise}
@@ -289,7 +289,7 @@ Let $K$ be a field. Consider the function $D \colon \M_{3 \times 3}(K) \to K$ de
 D(A) := A_{11} \det \begin{pmatrix} A_{22} & A_{23} \\ A_{32} & A_{33} \end{pmatrix} - A_{12} \det \begin{pmatrix} A_{21} & A_{23} \\ A_{31} & A_{33} \end{pmatrix} + A_{13} \det \begin{pmatrix} A_{21} & A_{22} \\ A_{31} & A_{32} \end{pmatrix}.
 \]
 Show directly that $D$ is an alternating and $3$-linear function as a function of the columns of $A$.
-\exhint{Verify column linearity by expanding the $2 \times 2$ determinants and checking linearity in each of the three column vectors; verify the alternating property by checking that $D(A) = 0$ whenever two columns of $A$ coincide.}
+\exhint[Hint (Y. St\"aubli)]{Verify column linearity by expanding the $2 \times 2$ determinants and checking linearity in each of the three column vectors; verify the alternating property by checking that $D(A) = 0$ whenever two columns of $A$ coincide.}
 \exinfo{This exercise is Problem 5 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:laplace_expansion_3x3_alternating_trilinear}
 \end{exercise}
@@ -420,7 +420,7 @@ By the alternating property of $D$, performing the transpositions necessary to s
   \[
   \det(A) = A_{11} A_{22} \cdots A_{nn}.
   \]
-  \exhint{Use the Leibniz formula $\det A = \sum_{\sigma \in S_n} \sgn(\sigma) A(1,\sigma(1)) \cdots A(n,\sigma(n))$. For an upper triangular matrix ($A_{ij} = 0$ for $i > j$), show that if $\sigma \neq \id$, there must exist an index $i \in \{1, \dots, n\}$ such that $\sigma(i) < i$, which forces the corresponding factor in the product to be zero. A similar argument applies to lower triangular matrices.}
+  \exhint[Official Hint]{Use the Leibniz formula $\det A = \sum_{\sigma \in S_n} \sgn(\sigma) A(1,\sigma(1)) \cdots A(n,\sigma(n))$. For an upper triangular matrix ($A_{ij} = 0$ for $i > j$), show that if $\sigma \neq \id$, there must exist an index $i \in \{1, \dots, n\}$ such that $\sigma(i) < i$, which forces the corresponding factor in the product to be zero. A similar argument applies to lower triangular matrices.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:triangular_matrix_determinant}
 \end{exercise}
@@ -462,7 +462,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
     for the determinant of a $4 \times 4$ matrix $A$. Notice that for $n \ge 4$, inspecting diagonal products alone is not sufficient to determine the determinant.
     \item How many even permutations are contained in $S_n$ for an arbitrary integer $n \ge 1$?
   \end{enumerate}
-  \exhint{\textbf{(a)} Permutations of the same cycle structure have the same sign (e.g., $4$-cycles have sign $-1$, products of two disjoint transpositions have sign $+1$, $3$-cycles have sign $+1$, single transpositions have sign $-1$, and the identity has sign $+1$). List all $4! = 24$ permutations grouped by cycle type to write down the $24$ terms. \textbf{(b)} The case $n=1$ is trivial. For $n \ge 2$, fix a transposition $\tau \in S_n$ (e.g., $\tau = (1\;2)$) and show that the map $\sigma \mapsto \tau \circ \sigma$ is a bijection between the set of even permutations and the set of odd permutations.}
+  \exhint[Official Hint]{\textbf{(a)} Permutations of the same cycle structure have the same sign (e.g., $4$-cycles have sign $-1$, products of two disjoint transpositions have sign $+1$, $3$-cycles have sign $+1$, single transpositions have sign $-1$, and the identity has sign $+1$). List all $4! = 24$ permutations grouped by cycle type to write down the $24$ terms. \textbf{(b)} The case $n=1$ is trivial. For $n \ge 2$, fix a transposition $\tau \in S_n$ (e.g., $\tau = (1\;2)$) and show that the map $\sigma \mapsto \tau \circ \sigma$ is a bijection between the set of even permutations and the set of odd permutations.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:symmetric_group_s4_and_alternating}
 \end{exercise}
@@ -506,7 +506,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
     \det(A B) = \det(A) \cdot \det(B).
     \]
   \end{proposition*}
-  \exhint{Let $\{e_i\}_{i=1}^n$ denote the standard basis of $K^n$ and write the matrix $B$ as a list of column vectors $B = \left( \sum_{s_1=1}^n B(s_1, 1) e_{s_1}, \dots, \sum_{s_n=1}^n B(s_n, n) e_{s_n} \right)$. Expand $\det(AB) = \det(A B e_1, \dots, A B e_n)$ using the multilinearity of the determinant:
+  \exhint[Official Hint]{Let $\{e_i\}_{i=1}^n$ denote the standard basis of $K^n$ and write the matrix $B$ as a list of column vectors $B = \left( \sum_{s_1=1}^n B(s_1, 1) e_{s_1}, \dots, \sum_{s_n=1}^n B(s_n, n) e_{s_n} \right)$. Expand $\det(AB) = \det(A B e_1, \dots, A B e_n)$ using the multilinearity of the determinant:
   \[
   \det(AB) = \sum_{s_1=1}^n \cdots \sum_{s_n=1}^n \left( \prod_{i=1}^n B(s_i, i) \right) \det(A e_{s_1}, \dots, A e_{s_n}).
   \]
@@ -643,7 +643,7 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
     \]
     is also divisible by $106$.
   \end{enumerate}
-  \exhint{\textbf{(a)} These are the fundamental computational rules for determinants under elementary row operations; see \cref{thm:row_operations}. \textbf{(b)} Perform the elementary row operation $R_4 \to 1000 R_1 + 100 R_2 + 10 R_3 + R_4$ to obtain the fourth row $(2014, 1484, 3710, 6996)$, and observe that a common factor in any row can be factored out of the determinant.}
+  \exhint[Official Hint]{\textbf{(a)} These are the fundamental computational rules for determinants under elementary row operations; see \cref{thm:row_operations}. \textbf{(b)} Perform the elementary row operation $R_4 \to 1000 R_1 + 100 R_2 + 10 R_3 + R_4$ to obtain the fourth row $(2014, 1484, 3710, 6996)$, and observe that a common factor in any row can be factored out of the determinant.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:row_operations_and_determinant_divisibility}
 \end{exercise}
@@ -716,7 +716,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
   \[
   \det \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \det(A D - C B).
   \]
-  \exhint{Multiply the given block matrix from the left by $\begin{pmatrix} I_n & 0 \\ -C & A \end{pmatrix}$. Use the block matrix determinant formula $\det \begin{pmatrix} X & 0 \\ Y & Z \end{pmatrix} = \det(X) \det(Z)$ and the multiplicativity of the determinant, together with the commutativity relation $A C = C A$, to conclude.}
+  \exhint[Official Hint]{Multiply the given block matrix from the left by $\begin{pmatrix} I_n & 0 \\ -C & A \end{pmatrix}$. Use the block matrix determinant formula $\det \begin{pmatrix} X & 0 \\ Y & Z \end{pmatrix} = \det(X) \det(Z)$ and the multiplicativity of the determinant, together with the commutativity relation $A C = C A$, to conclude.}
   \exinfo{This exercise is Problem 9 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:block_matrix_commuting_blocks}
 \end{exercise}
@@ -781,7 +781,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
     -6 & 11 & -23 & -14 & 9
   \end{pmatrix}.
   \]
-  \exhint{Use elementary row operations (Gaussian elimination) to reduce each matrix to triangular form, keeping track of any row swaps and row scalings.}
+  \exhint[Official Hint]{Use elementary row operations (Gaussian elimination) to reduce each matrix to triangular form, keeping track of any row swaps and row scalings.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:determinants_via_gaussian_elimination}
 \end{exercise}
@@ -799,7 +799,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
   = \prod_{1 \le i < j \le n} (x_j - x_i).
   \]
   \textit{Remark.} Products of this form are called \emph{Vandermonde determinants}, and the matrix is known as the \emph{Vandermonde matrix}.
-  \exhint{Use induction on $n$. Subtract the first row from each of the subsequent rows, factor out $(x_i - x_1)$ from the $i$-th row for each $i \ge 2$, and use the identity $x_i^m - x_1^m = (x_i - x_1) \sum_{k=0}^{m-1} x_i^k x_1^{m-1-k}$ along with column operations to reduce the remaining $(n-1) \times (n-1)$ determinant to the Vandermonde determinant of order $n-1$.}
+  \exhint[Official Hint]{Use induction on $n$. Subtract the first row from each of the subsequent rows, factor out $(x_i - x_1)$ from the $i$-th row for each $i \ge 2$, and use the identity $x_i^m - x_1^m = (x_i - x_1) \sum_{k=0}^{m-1} x_i^k x_1^{m-1-k}$ along with column operations to reduce the remaining $(n-1) \times (n-1)$ determinant to the Vandermonde determinant of order $n-1$.}
   \exinfo{This exercise is Problem 8 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:vandermonde_determinant}
 \end{exercise}
@@ -829,7 +829,7 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
   \end{pmatrix}
   \]
   over the field $\mathbb{R}$ and over the finite field $\mathbb{F}_5$. Is $B$ invertible over each of these fields?
-  \exhint{Compute the determinant using Laplace expansion, for instance along rows or columns containing many zero entries.}
+  \exhint[Official Hint]{Compute the determinant using Laplace expansion, for instance along rows or columns containing many zero entries.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:determinant_5x5_laplace}
 \end{exercise}
@@ -847,7 +847,7 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
   \end{pmatrix}.
   \]
   Prove that $\det(A_n) = n+1$ for all $n \ge 1$.
-  \exhint{Use induction on $n$. Expand the determinant along the first row (or column) to establish the recurrence relation $\det(A_n) = 2 \det(A_{n-1}) - \det(A_{n-2})$. Since this relates $\det(A_n)$ to two preceding terms, verify two base cases ($n=1$ and $n=2$).}
+  \exhint[Official Hint]{Use induction on $n$. Expand the determinant along the first row (or column) to establish the recurrence relation $\det(A_n) = 2 \det(A_{n-1}) - \det(A_{n-2})$. Since this relates $\det(A_n)$ to two preceding terms, verify two base cases ($n=1$ and $n=2$).}
   \exinfo{This exercise is Problem 4 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:tridiagonal_toeplitz_determinant}
 \end{exercise}
@@ -930,7 +930,7 @@ using $(\adj A)_{ji} = C_{ij}$ from the Definition on \cpageref{def:classical_ad
     \item $\det(\adj A) = \det(A)$;
     \item $\adj(A\transp) = (\adj A)\transp$.
   \end{enumerate}
-  \exhint{Perform direct algebraic calculations using the explicit entries of $A$ and $\adj A$.}
+  \exhint[Official Hint]{Perform direct algebraic calculations using the explicit entries of $A$ and $\adj A$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:properties_2x2_adjugate}
 \end{exercise}

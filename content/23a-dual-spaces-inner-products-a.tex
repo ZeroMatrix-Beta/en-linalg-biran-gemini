@@ -73,7 +73,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
     \item Show that there exists a unique scalar product $\langle \cdot, \cdot \rangle^*$ on $V^*$ such that $\delta$ is an isometry, i.e., $\langle \delta(v), \delta(w) \rangle^* = \langle v, w \rangle$ for all $v, w \in V$.
     \item Let $\mathcal{B} = (v_1, \dots, v_n)$ be an ordered basis of $V$, and let $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ be the corresponding dual basis of $V^*$. Express the representation matrix of $\langle \cdot, \cdot \rangle^*$ with respect to $\mathcal{B}^*$ in terms of the representation matrix $G = [\langle \cdot, \cdot \rangle]_{\mathcal{B}} = (\langle v_i, v_j \rangle)_{i,j=1}^n$.
   \end{enumerate}
-  \exhint{(a) Since $\delta$ is a vector space isomorphism, the isometry requirement forces $\langle \varphi, \psi \rangle^* := \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle$ for all $\varphi, \psi \in V^*$. Check that this formula indeed satisfies all axioms of a scalar product (bilinearity, symmetry, and positivity) using the linearity and injectivity of $\delta^{-1}$.
+  \exhint[Official Hint]{(a) Since $\delta$ is a vector space isomorphism, the isometry requirement forces $\langle \varphi, \psi \rangle^* := \langle \delta^{-1}(\varphi), \delta^{-1}(\psi) \rangle$ for all $\varphi, \psi \in V^*$. Check that this formula indeed satisfies all axioms of a scalar product (bilinearity, symmetry, and positivity) using the linearity and injectivity of $\delta^{-1}$.
   (b) The basis change from the dual basis $\mathcal{B}^*$ to the basis $\delta(\mathcal{B}) = (\delta(v_1), \dots, \delta(v_n))$ of $V^*$ is given by the Gram matrix $G$: since $v_i^* = \sum_{k=1}^n (G^{-1})_{ik} \delta(v_k)$, it follows that the representation matrix of $\langle \cdot, \cdot \rangle^*$ with respect to $\mathcal{B}^*$ is $[\langle \cdot, \cdot \rangle^*]_{\mathcal{B}^*} = G^{-1}$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:dual_space_inner_product_isometry}
@@ -89,7 +89,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
     \item Show that there does not exist any function $g \in V$ such that $\varphi(f) = \langle f, g \rangle$ for all $f \in V$.
     \item Explain why this does not contradict \cref{thm:dual_space_inner_product_isomorphism}.
   \end{enumerate}
-  \exhint{(a) Suppose such a continuous $g \in C[-1, 1]$ exists. For each $n \in \mathbb{N}$, consider the continuous tent functions $f_n(x) = \max\{0, 1 - n|x|\}$. Then $\varphi(f_n) = f_n(0) = 1$, but $\langle f_n, g \rangle = \int_{-1/n}^{1/n} f_n(x) g(x) \, dx \to 0$ as $n \to \infty$ because $|g(x)| \le M$ is bounded. This yields $1 = 0$, a contradiction.
+  \exhint[Official Hint]{(a) Suppose such a continuous $g \in C[-1, 1]$ exists. For each $n \in \mathbb{N}$, consider the continuous tent functions $f_n(x) = \max\{0, 1 - n|x|\}$. Then $\varphi(f_n) = f_n(0) = 1$, but $\langle f_n, g \rangle = \int_{-1/n}^{1/n} f_n(x) g(x) \, dx \to 0$ as $n \to \infty$ because $|g(x)| \le M$ is bounded. This yields $1 = 0$, a contradiction.
   (b) \Cref{thm:dual_space_inner_product_isomorphism} assumes that $\dim V < \infty$, whereas $C[-1, 1]$ is infinite-dimensional.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:riesz_failure_infinite_dimensions}
@@ -105,7 +105,7 @@ The statements about the linearity of $\Phi$ are left as an exercise.
     \]
     \item Does the statement in (a) always hold if we instead assume $\dim W < \infty$ while $\dim V = \infty$?
   \end{enumerate}
-  \exhint{(a) For each fixed $w \in W$, the map $\varphi_w \colon V \to \mathbb{R}$ given by $\varphi_w(v) = \langle f(v), w \rangle_W$ is a linear functional on $V$. Since $\dim V < \infty$, the Riesz representation theorem (\cref{thm:dual_space_inner_product_isomorphism}) guarantees a unique vector $v_w \in V$ such that $\varphi_w(v) = \langle v, v_w \rangle_V$. Defining $f^*(w) := v_w$ gives the required map. Show that $f^*$ is linear and unique.
+  \exhint[Official Hint]{(a) For each fixed $w \in W$, the map $\varphi_w \colon V \to \mathbb{R}$ given by $\varphi_w(v) = \langle f(v), w \rangle_W$ is a linear functional on $V$. Since $\dim V < \infty$, the Riesz representation theorem (\cref{thm:dual_space_inner_product_isomorphism}) guarantees a unique vector $v_w \in V$ such that $\varphi_w(v) = \langle v, v_w \rangle_V$. Defining $f^*(w) := v_w$ gives the required map. Show that $f^*$ is linear and unique.
   (b) No. Consider $V = \mathbb{R}^{(\mathbb{N})}$ (the space of real sequences $(a_i)_{i=1}^\infty$ with only finitely many non-zero terms) equipped with the standard $\ell^2$-scalar product $\langle a, b \rangle = \sum_{i=1}^\infty a_i b_i$, and let $W = \mathbb{R}$. Define $f \colon V \to \mathbb{R}$ by $f(a) = \sum_{i=1}^\infty a_i$. If $f^*$ existed, $f^*(1)$ would be a vector $c \in V$ such that $f(a) = \langle a, c \rangle = \sum a_i c_i$. Taking $a = e_k$ gives $c_k = f(e_k) = 1$ for all $k \in \mathbb{N}$, which has infinitely many non-zero entries and thus does not belong to $V$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:adjoint_existence_finite_dim}
@@ -300,7 +300,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
     \item Show that $T^* = S$, and compute the composite $\Delta := T^* \circ T = S \circ T \colon \mathbb{R}^V \to \mathbb{R}^V$ (the \newterm{combinatorial Laplace operator} of $G$).
     \item Assume that $G$ is undirected (i.e., $(v, w) \in E \iff (w, v) \in E$) and $d$-regular (each vertex has degree $d$). Show that $\Delta = T^* T$ has eigenvalue $0$, and explain why the geometric multiplicity $m_g(0)$ equals the number of connected components of $G$.
   \end{enumerate}
-  \exhint{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
+  \exhint[Official Hint]{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
   (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:graph_laplacian_adjoint}
@@ -309,7 +309,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
 \begin{exercise}[Invariant Subspaces and the Adjoint Map \faHeart]
   \label{exc:invariant_subspaces_adjoint}
   Let $V$ be a finite-dimensional inner product space over $K \in \{\mathbb{R}, \mathbb{C}\}$, let $T \in \End(V)$, and let $U \subseteq V$ be a subspace. Prove that $U$ is $T$-invariant if and only if $U^\perp$ is $T^*$-invariant.
-  \exhint{Suppose $T(U) \subseteq U$. Let $w \in U^\perp$. We must show $T^*(w) \in U^\perp$, meaning $\langle u, T^*(w) \rangle = 0$ for all $u \in U$. By definition of the adjoint, $\langle u, T^*(w) \rangle = \langle T(u), w \rangle$. Since $T(u) \in U$ and $w \in U^\perp$, this inner product is zero, so $T^*(w) \in U^\perp$.
+  \exhint[Hint (Y. St\"aubli)]{Suppose $T(U) \subseteq U$. Let $w \in U^\perp$. We must show $T^*(w) \in U^\perp$, meaning $\langle u, T^*(w) \rangle = 0$ for all $u \in U$. By definition of the adjoint, $\langle u, T^*(w) \rangle = \langle T(u), w \rangle$. Since $T(u) \in U$ and $w \in U^\perp$, this inner product is zero, so $T^*(w) \in U^\perp$.
   Conversely, if $U^\perp$ is $T^*$-invariant, applying the forward direction to $T^*$ and $U^\perp$ gives that $(U^\perp)^\perp$ is $(T^*)^*$-invariant. Since $(U^\perp)^\perp = U$ (using $\dim V < \infty$, \cref{cor:bidual_orthogonal_complement}) and $(T^*)^* = T$, this shows $T(U) \subseteq U$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:invariant_subspaces_adjoint}
@@ -322,7 +322,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
   f^* \circ f \circ g_1 = f^* \circ f \circ g_2.
   \]
   Prove that $f \circ g_1 = f \circ g_2$.
-  \exhint{Let $h := g_1 - g_2 \in \End(V)$. The hypothesis implies $(f^* \circ f \circ h)(v) = 0$ for all $v \in V$. Taking the inner product with $h(v)$ gives $0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2$. By positive definiteness, $\|f(h(v))\| = 0 \implies f(h(v)) = 0$ for all $v \in V$. Hence $f \circ h = 0$, which proves $f \circ g_1 = f \circ g_2$.}
+  \exhint[Hint (Y. St\"aubli)]{Let $h := g_1 - g_2 \in \End(V)$. The hypothesis implies $(f^* \circ f \circ h)(v) = 0$ for all $v \in V$. Taking the inner product with $h(v)$ gives $0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2$. By positive definiteness, $\|f(h(v))\| = 0 \implies f(h(v)) = 0$ for all $v \in V$. Hence $f \circ h = 0$, which proves $f \circ g_1 = f \circ g_2$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:cancellation_adjoint_composite}
 \end{exercise}

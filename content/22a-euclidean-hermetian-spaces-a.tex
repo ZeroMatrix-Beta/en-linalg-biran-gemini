@@ -160,7 +160,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
   \langle \cdot, \cdot \rangle : V \times V \longrightarrow \mathbb{R}, \qquad (A, B) \longmapsto \Tr(A\transp B).
   \]
   Show that this defines a scalar product on $V$, and find an orthonormal basis with respect to this scalar product. The induced norm is called the \newterm{Hilbert-Schmidt norm} (or \newterm{Frobenius norm}). Provide an explicit formula for the norm of a matrix $A \in V$ in terms of its entries $(a_{ij})$.
-  \exhint{Recall the properties of the trace: $\Tr(A + B) = \Tr(A) + \Tr(B)$, $\Tr(\alpha A) = \alpha \Tr(A)$, $\Tr(M\transp) = \Tr(M)$, and $\Tr(MN) = \Tr(NM)$. Using these, show bilinearity and symmetry $\langle A, B \rangle = \Tr(A\transp B) = \Tr((A\transp B)\transp) = \Tr(B\transp A) = \langle B, A \rangle$. For positivity, compute $\langle A, A \rangle = \Tr(A\transp A) = \sum_{i,j=1}^n a_{ij}^2 \ge 0$, which is zero if and only if all entries $a_{ij} = 0$, i.e., $A = 0$.
+  \exhint[Official Hint]{Recall the properties of the trace: $\Tr(A + B) = \Tr(A) + \Tr(B)$, $\Tr(\alpha A) = \alpha \Tr(A)$, $\Tr(M\transp) = \Tr(M)$, and $\Tr(MN) = \Tr(NM)$. Using these, show bilinearity and symmetry $\langle A, B \rangle = \Tr(A\transp B) = \Tr((A\transp B)\transp) = \Tr(B\transp A) = \langle B, A \rangle$. For positivity, compute $\langle A, A \rangle = \Tr(A\transp A) = \sum_{i,j=1}^n a_{ij}^2 \ge 0$, which is zero if and only if all entries $a_{ij} = 0$, i.e., $A = 0$.
   The standard elementary matrices $\{E_{ij} \mid 1 \le i, j \le n\}$ form an orthonormal basis since $\langle E_{ij}, E_{k\ell} \rangle = \delta_{ik}\delta_{j\ell}$. The induced norm is $\|A\|_{HS} = \sqrt{\Tr(A\transp A)} = \sqrt{\sum_{i=1}^n \sum_{j=1}^n a_{ij}^2}$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:frobenius_hilbert_schmidt_inner_product}
@@ -192,7 +192,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \item $I_n^* = I_n$.
     \item $(A \cdot C)^* = C^* \cdot A^*$.
   \end{enumerate}
-  \exhint{Compute the $(i, j)$-entry for each side of the equations. For part (e), the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
+  \exhint[Official Hint]{Compute the $(i, j)$-entry for each side of the equations. For part (e), the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:properties_adjoint_matrix_rules}
 \end{exercise}
@@ -205,7 +205,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     the unitary matrices, the self-adjoint (Hermitian) matrices, the symmetric matrices, and the normal matrices.
     \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. Prove that $\Tr(A) \in \mathbb{R}$ and $\det(A) \in \mathbb{R}$.
   \end{enumerate}
-  \exhint{(a) Compute $A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
+  \exhint[Official Hint]{(a) Compute $A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
   (b) The symmetric matrices form a $\mathbb{C}$-subspace because $(A + \alpha B)\transp = A\transp + \alpha B\transp = A + \alpha B$ for all $\alpha \in \mathbb{C}$. The Hermitian matrices do not form a $\mathbb{C}$-subspace, because $(i A)^* = -i A^* = -i A \ne i A$ for $A \ne 0$.
   (c) Since $A^* = A$, we have $\overline{\Tr(A)} = \Tr(\overline{A}) = \Tr(\overline{A}\transp) = \Tr(A^*) = \Tr(A)$, so $\Tr(A) \in \mathbb{R}$. Similarly, $\overline{\det(A)} = \det(\overline{A}) = \det(\overline{A}\transp) = \det(A^*) = \det(A)$, so $\det(A) \in \mathbb{R}$.}
   \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -269,7 +269,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
   \langle \cdot, \cdot \rangle : \mathbb{R}^2 \times \mathbb{R}^2 \longrightarrow \mathbb{R}, \qquad \left( \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \right) \longmapsto x_1 y_1 + a x_1 y_2 + a x_2 y_1 + 7 x_2 y_2
   \]
   a scalar product on $\mathbb{R}^2$?
-  \exhint{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
+  \exhint[Official Hint]{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:pos_def_examples_real_b}
 \end{exercise}
@@ -338,7 +338,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \item The matrix $A\transp A$ is positive definite if and only if $A$ is invertible.
     \item $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
   \end{enumerate}
-  \exhint{(a) Compute $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$.
+  \exhint[Official Hint]{(a) Compute $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$.
   (b) For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (A v)\transp (A v) = \|A v\|^2 \ge 0$. Thus $v\transp (A\transp A) v > 0$ for all $v \neq 0$ if and only if $Av \neq 0$ for all $v \neq 0$, which is equivalent to $\ker(A) = \{0\}$, i.e., $A$ is invertible.
   (c) Show that $\ker(A\transp A) = \ker(A)$: if $v \in \ker(A)$, then clearly $A\transp A v = 0$; conversely, if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$. By the rank-nullity theorem, $\operatorname{rank}(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \operatorname{rank}(A)$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -377,7 +377,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \[
         \left\langle \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle = 1, \quad \left\langle \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle' = \begin{pmatrix} 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 0.
     \]
-    So $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \perp' \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ but $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \not\perp \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$.
+    So $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \perp' \left(\begin{smallmatrix} 1 \\ 1 \end{pmatrix}\right)$ but $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \not\perp \left(\begin{smallmatrix} 1 \\ 1 \end{pmatrix}\right)$.
 \end{example}
 
 \subsection*{A different type of example}
@@ -416,7 +416,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     defines a scalar product on $V$.
     \item Determine the matrix of this scalar product with respect to the basis $(1, x, \dots, x^n)$.
   \end{enumerate}
-  \exhint{(a) Bilinearity and symmetry follow from the linearity and symmetry of the integral. For positivity, let $p(x) \neq 0$. The integrand $p(t)^2 e^{-t}$ is continuous and non-negative on $[0, \infty)$. Since $p$ has at most $n$ roots, $p(t)^2 > 0$ on some non-empty interval, which implies $\int_0^\infty p(t)^2 e^{-t} \, dt > 0$.
+  \exhint[Hint (Y. St\"aubli)]{(a) Bilinearity and symmetry follow from the linearity and symmetry of the integral. For positivity, let $p(x) \neq 0$. The integrand $p(t)^2 e^{-t}$ is continuous and non-negative on $[0, \infty)$. Since $p$ has at most $n$ roots, $p(t)^2 > 0$ on some non-empty interval, which implies $\int_0^\infty p(t)^2 e^{-t} \, dt > 0$.
   (b) With respect to the basis $\mathcal{B} = (1, x, \dots, x^n) = (b_0, b_1, \dots, b_n)$, the entries of the matrix $A = (a_{ij})_{0 \le i, j \le n}$ are given by $a_{ij} = \langle x^i, x^j \rangle = \int_0^\infty t^{i+j} e^{-t} \, dt = (i+j)!$, using the Gamma integral $\int_0^\infty t^k e^{-t} \, dt = k!$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:exponential_weighted_polynomial_inner_product}
@@ -449,7 +449,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     \label{exc:non_inner_product_norms}
     Define $\left\| \binom{a}{b} \right\|' := \max\{|a|, |b|\}$, and $\left\| \binom{a}{b} \right\|'' := |a| + |b|$ for all $\binom{a}{b} \in \mathbb{R}^2$. Show that $\| \cdot \|'$ and $\| \cdot \|''$ are norms, but they are not induced by any scalar product. 
     
-    \textit{Hint:} Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.
+    \exhint[Hint (Prof. Biran)]{Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \exsol{sol:non_inner_product_norms}
 \end{exercise}
@@ -467,7 +467,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
     \]
     Show that $\|\cdot\|_1$ defines a norm on $V$, and prove that it is not induced by any scalar product for $n \ge 2$.
   \end{enumerate}
-  \exhint{(a) The forward direction follows by expanding $\|x+y\|^2 + \|x-y\|^2$ using $\langle \cdot, \cdot \rangle$. For the converse, define $\langle x, y \rangle := \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$. Symmetry is immediate. Use the parallelogram identity to verify additivity $\langle x+z, y \rangle = \langle x, y \rangle + \langle z, y \rangle$. Then by induction show $\langle nx, y \rangle = n \langle x, y \rangle$ for $n \in \mathbb{N}$, extend to $q \in \mathbb{Q}$, and use continuity of the norm to extend to all scalars $t \in \mathbb{R}$.
+  \exhint[Hint (Y. St\"aubli)]{(a) The forward direction follows by expanding $\|x+y\|^2 + \|x-y\|^2$ using $\langle \cdot, \cdot \rangle$. For the converse, define $\langle x, y \rangle := \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$. Symmetry is immediate. Use the parallelogram identity to verify additivity $\langle x+z, y \rangle = \langle x, y \rangle + \langle z, y \rangle$. Then by induction show $\langle nx, y \rangle = n \langle x, y \rangle$ for $n \in \mathbb{N}$, extend to $q \in \mathbb{Q}$, and use continuity of the norm to extend to all scalars $t \in \mathbb{R}$.
   (b) Verify the norm axioms for $\|\cdot\|_1$. To show it does not come from a scalar product, choose $x = e_1$ and $y = e_2$ in $\mathbb{R}^n$ ($n \ge 2$) and check that the parallelogram identity fails: $\|x+y\|_1^2 + \|x-y\|_1^2 = 2^2 + 2^2 = 8$, whereas $2\|x\|_1^2 + 2\|y\|_1^2 = 2(1) + 2(1) = 4 \neq 8$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:jordan_von_neumann_parallelogram}
@@ -478,94 +478,47 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \label{thm:cauchy_schwarz}
     Let $(V, \langle \cdot, \cdot \rangle)$ be a vector space endowed with an inner product $\langle \cdot, \cdot \rangle$. Then for all $u, v \in V$ we have 
     \[
-        |\langle u, v \rangle| \leq \|u\| \cdot \|v\|,
+        |\langle u, v \rangle| \leq \|u\| \cdot \|v\|.
     \]
-    with equality if and only if $u$ and $v$ are proportional (i.e., $u = \alpha \cdot v$, or $v = \alpha \cdot u$ for some $\alpha \in K \iff u, v$ are linearly dependent).
 \end{theorem}
 
+% Creator: Opus 5
 \begin{proof}
-    If $u = 0$, the (in)equality holds, so assume $u \neq 0$. 
-    Put $w := v - \lambda \cdot u$, where $\lambda := \frac{\langle v, u \rangle}{\|u\|^2}$. (*)
-    
-    We have $\langle w, u \rangle = \langle v, u \rangle - \lambda \langle u, u \rangle = 0$.
-    Now:
-    \begin{align*}
-        0 &\leq \|w\|^2 = \langle v - \lambda u, v - \lambda u \rangle \\
-        &= \langle v, v \rangle - \overline{\lambda} \langle v, u \rangle - \lambda \langle u, v \rangle + \lambda \overline{\lambda} \langle u, u \rangle \\
-        &= \|v\|^2 - \overline{\lambda} \cdot \lambda \|u\|^2 - \lambda \cdot \overline{\lambda} \|u\|^2 + \lambda \cdot \overline{\lambda} \|u\|^2 \quad \left(\text{since } \langle v, u \rangle = \lambda \|u\|^2 \text{ and } \langle u, v \rangle = \overline{\langle v, u \rangle} = \overline{\lambda} \|u\|^2\right) \\
-        &= \|v\|^2 - |\lambda|^2 \|u\|^2 \\
-        &= \|v\|^2 - \frac{|\langle v, u \rangle|^2}{\|u\|^4} \cdot \|u\|^2 \\
-        &= \|v\|^2 - \frac{|\langle v, u \rangle|^2}{\|u\|^2}.
-    \end{align*}
-    This implies $0 \leq \|v\|^2 - \frac{|\langle v, u \rangle|^2}{\|u\|^2}$, which implies $|\langle v, u \rangle| \leq \|u\| \cdot \|v\|$.
-    
-    We have equality if and only if either $u = 0$, or $w = 0$.
-    But $w = 0 \iff v = \lambda u$ where $\lambda = \frac{\langle v, u \rangle}{\|u\|^2}$.
-    But for $u \neq 0$, the condition $v = \lambda u$ implies $\lambda = \frac{\langle v, u \rangle}{\|u\|^2}$.
-    So, equality if and only if either $u = 0$ or $v = \lambda u$ for some $\lambda \in K \iff u, v$ are linearly dependent.
+    If $v = 0$ both sides vanish, so the inequality holds (with equality). Assume $v \neq 0$. For every scalar $\alpha \in K$, positivity of the inner product gives
+    \[
+        0 \leq \langle u - \alpha v, u - \alpha v \rangle = \langle u, u \rangle - \alpha \langle v, u \rangle - \overline{\alpha} \langle u, v \rangle + |\alpha|^2 \langle v, v \rangle.
+    \]
+    Choosing $\alpha := \frac{\langle u, v \rangle}{\langle v, v \rangle} = \frac{\langle u, v \rangle}{\|v\|^2}$ simplifies the right-hand side:
+    \[
+        0 \leq \|u\|^2 - \frac{|\langle u, v \rangle|^2}{\|v\|^2} - \frac{|\langle u, v \rangle|^2}{\|v\|^2} + \frac{|\langle u, v \rangle|^2}{\|v\|^2} = \|u\|^2 - \frac{|\langle u, v \rangle|^2}{\|v\|^2}.
+    \]
+    Multiplying by $\|v\|^2 > 0$ and rearranging gives $|\langle u, v \rangle|^2 \leq \|u\|^2 \|v\|^2$. Taking the non-negative square root yields $|\langle u, v \rangle| \leq \|u\| \cdot \|v\|$.
 \end{proof}
 
-% Cor. (22.a.12)
-\begin{corollary}
-\label{cor:norm_induced}
-    Let $V$ be a vector space and $\langle \cdot, \cdot \rangle$ an inner product on $V$. Then $V \ni v \mapsto \|v\| := \sqrt{\langle v, v \rangle}$ is a norm on $V$.
+\begin{corollary}[Properties of the Induced Norm]
+\label{cor:norm_axioms}
+    Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space. Then $\|v\| := \sqrt{\langle v, v \rangle}$ defines a norm on $V$.
 \end{corollary}
 
+% Creator: Opus 5
 \begin{proof}
-    We assume $(V, \langle \cdot, \cdot \rangle)$ is a Hermitian space (the case of Euclidean space is very similar).
-    
-    \textbf{Triangle inequality:} Let $u, v \in V$.
-    \begin{align*}
-        \|u + v\|^2 &= \langle u + v, u + v \rangle = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle \\
-        &= \|u\|^2 + 2 \Rea \langle u, v \rangle + \|v\|^2. \quad (*)
-    \end{align*}
-    Note that for all $z \in \mathbb{C}$ we have $|\Rea z| \leq |z|$. (Indeed, if $z = x + iy$, $x, y \in \mathbb{R}$, then $|\Rea z| = |x| \leq \sqrt{x^2 + y^2} = |z|$).
-    Applying this to our situation, we have $\Rea \langle u, v \rangle \leq |\Rea \langle u, v \rangle| \leq |\langle u, v \rangle|$.
-    Going back to (*), we get:
+    Non-negativity and non-degeneracy follow from the positivity axiom of the inner product: $\|v\| = 0 \iff \langle v, v \rangle = 0 \iff v = 0$. Homogeneity follows from $\langle \alpha v, \alpha v \rangle = \alpha \overline{\alpha} \langle v, v \rangle = |\alpha|^2 \|v\|^2$. For the triangle inequality, using Cauchy-Schwarz:
     \[
-        \|u + v\|^2 \leq \|u\|^2 + 2 |\langle u, v \rangle| + \|v\|^2 \leq \|u\|^2 + 2 \|u\| \cdot \|v\| + \|v\|^2 = (\|u\| + \|v\|)^2,
+        \|u + v\|^2 = \langle u + v, u + v \rangle = \|u\|^2 + 2 \Rea \langle u, v \rangle + \|v\|^2 \leq \|u\|^2 + 2 |\langle u, v \rangle| + \|v\|^2 \leq (\|u\| + \|v\|)^2.
     \]
-    where the second inequality follows from the Cauchy-Schwarz inequality.
-    Since both $\|u + v\|$ and $\|u\| + \|v\|$ are non-negative, the last inequality implies that $\|u + v\| \leq \|u\| + \|v\|$.
-
-    The other properties of being a norm are \cref{exc:remaining_norm_axioms}.
+    Taking square roots gives $\|u + v\| \leq \|u\| + \|v\|$.
 \end{proof}
 
 \begin{exercise}[The Remaining Two Norm Axioms]
     \label{exc:remaining_norm_axioms}
-    Complete the proof of \cref{cor:norm_induced} by verifying the homogeneity $\|\alpha \cdot v\| = |\alpha| \cdot \|v\|$ and the non-degeneracy \qt{$\|v\| = 0 \implies v = 0$} for $\|v\| := \sqrt{\langle v, v \rangle}$.
+    Write out the verification of axioms \textbf{(b)} and \textbf{(c)} in the definition of a norm (\cref{def:norm}) for the induced norm $\|v\| = \sqrt{\langle v, v \rangle}$. (Prof. Biran leaves them with \qt{Exercise}).
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \exsol{sol:remaining_norm_axioms}
 \end{exercise}
 
-% Def. (22.a.13)
-\begin{definition}
-\label{def:angle}
-    Let $(V, \langle \cdot, \cdot \rangle)$ be a Euclidean space. Let $u, v \in V$ be two non-zero vectors. By the Cauchy-Schwarz inequality, $-1 \leq \frac{\langle u, v \rangle}{\|u\| \cdot \|v\|} \leq 1$. We define the \newterm{angle} between $u$ and $v$ to be the unique $\alpha \in [0, \pi]$ such that:
-    \[
-        \cos \alpha = \frac{\langle u, v \rangle}{\|u\| \cdot \|v\|} \quad \left(= \left\langle \frac{u}{\|u\|}, \frac{v}{\|v\|} \right\rangle\right).
-    \]
-    \begin{center}
-        \begin{tikzpicture}[scale=0.8]
-            \draw[->] (-0.2,0) -- (2*pi+0.5,0) node[right] {$\theta$};
-            \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
-            \draw[domain=0:2*pi, smooth, variable=\x, green!60!black, thick] plot ({\x}, {cos(\x*180/pi)});
-            \node[green!60!black, right] at (2*pi, 1) {$y = \cos \theta$};
-            
-            \draw (pi/2, 0.1) -- (pi/2, -0.1) node[below] {\footnotesize $\frac{\pi}{2}$};
-            \draw (pi, 0.1) -- (pi, -0.1) node[below] {\footnotesize $\pi$};
-            \draw (3*pi/2, 0.1) -- (3*pi/2, -0.1) node[below] {\footnotesize $\frac{3\pi}{2}$};
-            \draw (2*pi, 0.1) -- (2*pi, -0.1) node[below] {\footnotesize $2\pi$};
-            
-            \draw (0.1, 1) -- (-0.1, 1) node[left] {\footnotesize $1$};
-            \draw (0.1, -1) -- (-0.1, -1) node[left] {\footnotesize $-1$};
-        \end{tikzpicture}
-    \end{center}
-\end{definition}
-
 \begin{exercise}[Rotation Invariance of the Geometric Angle]
   \label{exc:rotation_invariance_angle}
-  Let $V = \mathbb{R}^2$ be endowed with the standard scalar product, and let $v_1, v_2 \in V \setminus \{0\}$. Show that the angle formula
+  Let $V = \mathbb{R}^2$ equipped with the standard scalar product. Prove that the geometric angle between two non-zero vectors $v_1, v_2 \in V \setminus \{0\}$, defined by
   \[
   \cos \angle(v_1, v_2) = \frac{\langle v_1, v_2 \rangle}{\|v_1\| \|v_2\|}
   \]
@@ -573,7 +526,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
   \[
   \cos \angle(R v_1, R v_2) = \cos \angle(v_1, v_2).
   \]
-  \exhint{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
+  \exhint[Official Hint]{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:rotation_invariance_angle}
 \end{exercise}
@@ -678,7 +631,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
 \begin{exercise}[Extending an Orthonormal System to an Orthonormal Basis]
   \label{exc:extend_orthonormal_system_sheet23}
   Let $V$ be a finite-dimensional Euclidean vector space and let $S \subseteq V$ be an orthonormal system. Show that $S$ can be extended to an orthonormal basis of $V$.
-  \exhint{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
+  \exhint[Official Hint]{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
   \exsol{sol:extend_orthonormal_system}
 \end{exercise}
@@ -693,7 +646,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
     \item Apply the Gram-Schmidt orthogonalization process to the standard monomial basis $(1, x, x^2)$ to obtain an orthonormal basis $\mathcal{C} = (u_1, u_2, u_3)$ of $\mathbb{R}_{\le 2}[x]$.
     \item Find an orthonormal basis of $\mathbb{R}_{\le 2}[x]$ such that the representation matrix of the derivative operator $D \colon \mathbb{R}_{\le 2}[x] \to \mathbb{R}_{\le 2}[x]$, $p \mapsto p'$, is an upper triangular matrix.
   \end{enumerate}
-  \exhint{(a) Starting with $b_1 = 1$, we have $\|b_1\|^2 = \int_0^1 1 \, dx = 1$, so $u_1 = 1$. Next, $v_2 = x - \langle x, u_1 \rangle u_1 = x - 1/2$, and $\|v_2\|^2 = 1/12$, so $u_2 = \sqrt{3}(2x - 1)$. Finally, $v_3 = x^2 - \langle x^2, u_1 \rangle u_1 - \langle x^2, u_2 \rangle u_2 = x^2 - x + 1/6$, with $\|v_3\|^2 = 1/180$, so $u_3 = \sqrt{5}(6x^2 - 6x + 1)$.
+  \exhint[Hint (Y. St\"aubli)]{(a) Starting with $b_1 = 1$, we have $\|b_1\|^2 = \int_0^1 1 \, dx = 1$, so $u_1 = 1$. Next, $v_2 = x - \langle x, u_1 \rangle u_1 = x - 1/2$, and $\|v_2\|^2 = 1/12$, so $u_2 = \sqrt{3}(2x - 1)$. Finally, $v_3 = x^2 - \langle x^2, u_1 \rangle u_1 - \langle x^2, u_2 \rangle u_2 = x^2 - x + 1/6$, with $\|v_3\|^2 = 1/180$, so $u_3 = \sqrt{5}(6x^2 - 6x + 1)$.
   (b) The basis $\mathcal{C} = (u_1, u_2, u_3)$ obtained in part (a) already satisfies $\deg(u_k) = k-1$. Since differentiation lowers the polynomial degree, $D(u_1) = 0$, $D(u_2) \in \Sp(u_1)$, and $D(u_3) \in \Sp(u_1, u_2)$, so the representation matrix $[D]_{\mathcal{C}}^{\mathcal{C}}$ is upper triangular.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:gram_schmidt_polynomials_derivative}
