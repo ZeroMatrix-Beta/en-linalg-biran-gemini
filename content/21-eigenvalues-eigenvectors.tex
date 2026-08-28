@@ -657,7 +657,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
   \textbf{A non-zero polynomial has at most $\deg$ many zeros.} We claim that a polynomial $0 \ne r(x) \in K[x]$ of degree $d$ has at most $d$ distinct zeros in $K$. We induct on $d$. If $d = 0$, then $r$ is a non-zero constant and has no zeros at all. Let $d \ge 1$. If $r$ has no zero, there is nothing to prove; otherwise pick a zero $\lambda \in K$. By the Conclusion of the digression above, $r(x) = (x - \lambda) \cdot q(x)$ with $\deg q(x) = d-1$. If $\mu \ne \lambda$ is another zero of $r$, then $(\mu - \lambda) \cdot q(\mu) = 0$ with $\mu - \lambda \ne 0$, and since a field has no zero divisors, $q(\mu) = 0$. So, every zero of $r$ other than $\lambda$ is a zero of $q$, of which there are at most $d-1$ by the inductive hypothesis. Hence, $r$ has at most $d$ zeros.
 
-  \textbf{Infinite fields.} If $K$ is infinite, then no non-zero polynomial can vanish at every point of $K$, since it has only finitely many zeros. Consequently $r(x) = 0$, that is, $p(x) = q(x)$: over an infinite field, distinct polynomials always define distinct functions. This settles $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$, for these fields the phenomenon of \cref{rem:poly_vs_func} cannot occur, and one may safely identify a polynomial with the function it defines.
+  \textbf{Infinite fields.} If $K$ is infinite, then no non-zero polynomial can vanish at every point of $K$, since it has only finitely many zeros. Consequently, $r(x) = 0$, that is, $p(x) = q(x)$: over an infinite field, distinct polynomials always define distinct functions. This settles $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$, for these fields the phenomenon of \cref{rem:poly_vs_func} cannot occur, and one may safely identify a polynomial with the function it defines.
 
   \textbf{Finite fields.} If $K$ is finite, the phenomenon always occurs. Indeed, put
   \[ r(x) := \prod_{a \in K} (x - a) \in K[x]. \]
@@ -1588,7 +1588,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $u \in \langle v \rangle_T$. By the definition of the span, $u = a_0 v + a_1 Tv + \dots + a_m T^m v$ for some $m \in \mathbb{Z}_{\ge 0}$ and $a_0, \dots, a_m \in K$. Applying the linear map $T$ gives
       \[ Tu = a_0 Tv + a_1 T^2 v + \dots + a_m T^{m+1} v, \]
-      which is again a linear combination of vectors of the form $T^k v$, and hence lies in $\langle v \rangle_T$. Therefore $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
+      which is again a linear combination of vectors of the form $T^k v$, and hence lies in $\langle v \rangle_T$. Therefore, $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
     \item Let $U \subseteq V$ be a linear subspace with $v \in U$ and $T(U) \subseteq U$. We show by induction on $k$ that $T^k v \in U$ for every $k \in \mathbb{Z}_{\ge 0}$. For $k = 0$ this says $v \in U$, which holds by assumption. If $T^k v \in U$, then $T^{k+1} v = T(T^k v) \in T(U) \subseteq U$, which completes the induction.
 
       Thus $\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} \subseteq U$. Since $U$ is a linear subspace, it contains every linear combination of its elements, and therefore contains the span of that set, which is exactly $\langle v \rangle_T$. Hence, $\langle v \rangle_T \subseteq U$.

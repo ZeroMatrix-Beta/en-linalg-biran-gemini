@@ -260,7 +260,7 @@ and therefore, $\Img q(T) \subseteq \ker(T - \lambda \id_V)^k \subseteq \gEig_T(
 \]
 We want to show that $Y = \{0\}$. Assume by contradiction that $Y \neq \{0\}$, that is, $\dim Y \ge 1$. Since $Y$ is invariant under $T$, the restriction $T|_Y$ defines an endomorphism $T_Y \colon Y \to Y$.
 
-By assumption $P_T(x)$ splits into a product of linear factors. As $P_{T_Y}(x)$ divides $P_T(x)$ by \cref{exc:char_poly_restriction_divides}, and $\deg P_{T_Y}(x) \ge 1$ because $\dim Y \ge 1$, the polynomial $P_{T_Y}(x)$ also splits as a product of linear factors. Consequently, $P_{T_Y}(x)$ has a zero in $K$, so $T_Y$ has at least one eigenvalue and an eigenvector $v \in Y$.
+By assumption, $P_T(x)$ splits into a product of linear factors. As $P_{T_Y}(x)$ divides $P_T(x)$ by \cref{exc:char_poly_restriction_divides}, and $\deg P_{T_Y}(x) \ge 1$ because $\dim Y \ge 1$, the polynomial $P_{T_Y}(x)$ also splits as a product of linear factors. Consequently, $P_{T_Y}(x)$ has a zero in $K$, so $T_Y$ has at least one eigenvalue and an eigenvector $v \in Y$.
 
 But we have seen in \cref{lem:generalized_eigenspace} \textbf{(b)} that the only eigenvectors of $T$ lying inside $\gEig_T(\lambda)$ are the eigenvectors of $\lambda$. So, $Tv = \lambda v$, and therefore,
 \[
@@ -327,7 +327,7 @@ Let $T \in \End(V)$ and let $\lambda \in K$ be an eigenvalue of $T$. We have see
 \[
     \left. (T - \lambda \id_V)^{\dim V} \right|_{\gEig_T(\lambda)} = 0.
 \]
-In fact we have the sharper statement
+In fact, we have the sharper statement
 \[
     \left. (T - \lambda \id_V)^{m} \right|_{\gEig_T(\lambda)} = 0, \qquad \text{where } m := \dim \gEig_T(\lambda),
 \]
@@ -674,7 +674,7 @@ Hence, $P_{S_U}(x)$ divides $P_S(x)$.
     \[
         \gEig_N(0) = \bigcup_{j=1}^\infty \ker\left(N^j\right) = V.
     \]
-    By \cref{lem:generalized_eigenspace} \textbf{(a)} applied with $T := N$ and $\lambda := 0$, we also have $\gEig_N(0) = \ker\left(N^{\dim V}\right)$. Combining the two gives $\ker\left(N^{\dim V}\right) = V$, that is, $N^{\dim V} = 0$. In particular the nilpotency index, being the least such exponent, is at most $\dim V$.
+    By \cref{lem:generalized_eigenspace} \textbf{(a)} applied with $T := N$ and $\lambda := 0$, we also have $\gEig_N(0) = \ker\left(N^{\dim V}\right)$. Combining the two gives $\ker\left(N^{\dim V}\right) = V$, that is, $N^{\dim V} = 0$. In particular, the nilpotency index, being the least such exponent, is at most $\dim V$.
 
     \item By part \textbf{(a)}, the only eigenvalue of $N$ is $0$. Since $P_N(x)$ splits as a product of linear factors, it is a product of factors of the form $(\mu - x)$ with $\mu$ an eigenvalue of $N$, hence $\mu = 0$ in every factor. As $\deg P_N(x) = \dim V$ and $P_N$ is normalized so that its leading term is $(-x)^{\dim V}$, we get $P_N(x) = (-x)^{\dim V}$.
 

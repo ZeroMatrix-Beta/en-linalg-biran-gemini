@@ -155,7 +155,7 @@ Now, part (I) is exactly $\widetilde{P}_U(v)$ from the previous proof, and we ha
     \item Compute the representation matrices of the orthogonal projections $P_U \colon \mathbb{R}^3 \to U$ and $P_{U^\perp} \colon \mathbb{R}^3 \to U^\perp$ with respect to the standard basis of $\mathbb{R}^3$ and the respective bases obtained in part (a).
   \end{enumerate}
   \exhint[Official Hint]{(a) Apply Gram-Schmidt to $(v_1, v_2)$ to obtain an orthonormal basis $\mathcal{C}_U = (w_1, w_2)$ of $U$. Then find a non-zero vector $v_3 \in U^\perp$ (e.g., by solving the linear system $\langle x, v_1 \rangle = 0$ and $\langle x, v_2 \rangle = 0$, or via the cross product $v_1 \times v_2$) and normalize it to obtain an orthonormal basis $\mathcal{C}_{U^\perp} = (w_3)$ of $U^\perp$.
-  (b) The projection $P_U \colon \mathbb{R}^3 \to U$ acts by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$. The representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ has column $j$ given by the coordinate vector of $P_U(e_j)$ with respect to $\mathcal{C}_U$, namely $\begin{pmatrix} \langle e_j, w_1 \rangle \\ \langle e_j, w_2 \rangle \end{pmatrix}$. Similarly for $P_{U^\perp}$.}
+  (b) The projection $P_U \colon \mathbb{R}^3 \to U$ acts by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$. The representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ has column $j$ given by the coordinate vector of $P_U(e_j)$ with respect to $\mathcal{C}_U$, namely $\begin{pmatrix} \langle e_j, w_1 \rangle \\ \langle e_j, w_2 \rangle \end{pmatrix}$. Similarly, for $P_{U^\perp}$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:orthogonal_projection_computation}
 \end{exercise}
@@ -512,9 +512,9 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 \label{sol:extend_orthonormal_system}
   An orthonormal system is in particular an orthogonal system, hence linearly independent by \cref{thm:properties_orthogonal_systems} \textbf{(a)}. So, $(e_1, \dots, e_r)$ can be extended to a basis $(e_1, \dots, e_r, u_{r+1}, \dots, u_n)$ of $V$.
 
-  Now apply the Gram-Schmidt process (\cref{thm:gram_schmidt}) to that basis, producing $w_1, \dots, w_n$. The point is that Gram-Schmidt does not disturb an initial segment that is already orthonormal. Indeed $w_1 = e_1$, and if $2 \le j \le r$ and $w_i = e_i$ for all $i < j$, then
+  Now apply the Gram-Schmidt process (\cref{thm:gram_schmidt}) to that basis, producing $w_1, \dots, w_n$. The point is that Gram-Schmidt does not disturb an initial segment that is already orthonormal. Indeed, $w_1 = e_1$, and if $2 \le j \le r$ and $w_i = e_i$ for all $i < j$, then
   \[ w_j = e_j - \sum_{i=1}^{j-1} \frac{\langle e_j, w_i \rangle}{\langle w_i, w_i \rangle} w_i = e_j - \sum_{i=1}^{j-1} \frac{\langle e_j, e_i \rangle}{1} \, e_i = e_j, \]
-  because $\langle e_j, e_i \rangle = 0$ for $i \ne j$ and $\langle e_i, e_i \rangle = 1$. By induction $w_i = e_i$ for all $1 \le i \le r$.
+  because $\langle e_j, e_i \rangle = 0$ for $i \ne j$ and $\langle e_i, e_i \rangle = 1$. By induction, $w_i = e_i$ for all $1 \le i \le r$.
 
   Therefore $(w_1, \dots, w_n) = (e_1, \dots, e_r, w_{r+1}, \dots, w_n)$ is an orthogonal basis of $V$, and normalizing only the tail (the first $r$ vectors already have norm $1$) gives the orthonormal basis
   \[ \left( e_1, \dots, e_r, \frac{w_{r+1}}{\|w_{r+1}\|}, \dots, \frac{w_n}{\|w_n\|} \right) \]
@@ -534,7 +534,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
   The subtracted sum is therefore $v_{i_{k+1}}$ itself; it is the orthogonal projection $P_U(v_{i_{k+1}})$, which fixes $U$ pointwise by \cref{prop:orthogonal_projection_properties} \textbf{(d)}, and consequently
   \[ w = v_{i_{k+1}} - v_{i_{k+1}} = 0 . \]
 
-  \textbf{What this means for the process.} The construction then stalls: the next step would divide by $\langle w, w \rangle = 0$. Geometrically this is exactly right, $v_{i_{k+1}}$ contributes no new direction, so there is nothing left after removing its component along $U$.
+  \textbf{What this means for the process.} The construction then stalls: the next step would divide by $\langle w, w \rangle = 0$. Geometrically, this is exactly right, $v_{i_{k+1}}$ contributes no new direction, so there is nothing left after removing its component along $U$.
 
   \textbf{The remedy.} Discard every vector that produces $0$ and carry on with the next one. The vectors that survive are precisely a maximal linearly independent sublist $v_{i_1}, \dots, v_{i_r}$ of $v_1, \dots, v_m$, where $r = \dim \Sp(v_1, \dots, v_m)$, and the output $e_1, \dots, e_r$ is an orthogonal basis of $\Sp(v_1, \dots, v_m)$ satisfying $\Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k})$ for every $k$.
 

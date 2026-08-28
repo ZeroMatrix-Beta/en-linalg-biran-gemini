@@ -564,7 +564,7 @@ This formulation shows that the behavior of the sequence is entirely governed by
 \label{exc:ch1_list}
 \begin{enumerate}
     \item \textbf{General Formula:} Find an explicit formula for the general Fibonacci sequence $\mathcal{F}_{a_0, a_1}$ that depends only on the initial values $a_0, a_1$ and the index $n$.
-    \item \textbf{The Shift Operator:} Let $S: \Fib \to \Fib$ be the shift map defined by $S(a_0, a_1, \dots) = (a_1, a_2, \dots)$. Formally verify that $S$ is a \textit{linear map}.
+    \item \textbf{The Shift Operator:} Let $S: \Fib \to \Fib$ be the shift map defined by $S(a_0, a_1, \dots) = (a_1, a_2, \dots)$. Formally, verify that $S$ is a \textit{linear map}.
     \item \textbf{Golden Ratio Continued Fraction:} Consider $\varphi = \frac{1+\sqrt{5}}{2}$.
         \[
         \left.
@@ -658,7 +658,7 @@ Let $\mathcal{F}_{a_0, a_1} = (\alpha_0, \alpha_1, \alpha_2, \dots)$ be a Fibona
 \]
 that is, $\alpha_m = d$ for every $m \ge 0$: the sequence is constant. Now impose the recurrence once on this constant sequence: $d = \alpha_2 = \alpha_1 + \alpha_0 = d + d$, so $d = 0$ and $\mathcal{F}_{a_0,a_1} = \mathcal{F}_{0,0}$.
 
-Conversely $\mathcal{F}_{0,0}$ is arithmetic, with $d = 0$. So, the zero sequence is the only arithmetic Fibonacci sequence, which is what the text asserts before \cref{lem:geometric_fibonacci}. Note that no growth estimate entered: the argument is finished by the single equation $d = d + d$, and it applies to sequences with negative terms just as well.
+Conversely, $\mathcal{F}_{0,0}$ is arithmetic, with $d = 0$. So, the zero sequence is the only arithmetic Fibonacci sequence, which is what the text asserts before \cref{lem:geometric_fibonacci}. Note that no growth estimate entered: the argument is finished by the single equation $d = d + d$, and it applies to sequences with negative terms just as well.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(e)}]
@@ -693,7 +693,7 @@ Now take determinants. The determinant is multiplicative, so $\det(M^n) = (\det 
 \[
     a_{n+1} a_{n-1} - a_n^2 = (-1)^n \qquad \text{for all } n \ge 1,
 \]
-which is Cassini's identity. For instance $n = 6$ gives $a_7 a_5 - a_6^2 = 13 \cdot 5 - 8^2 = 65 - 64 = 1 = (-1)^6$.
+which is Cassini's identity. For instance, $n = 6$ gives $a_7 a_5 - a_6^2 = 13 \cdot 5 - 8^2 = 65 - 64 = 1 = (-1)^6$.
 \end{exercisesolution}
 
 \begin{ainote}
