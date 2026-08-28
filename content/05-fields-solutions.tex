@@ -53,16 +53,16 @@ This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism o
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We verify the field axioms for $(k[\tau], +, \cdot, 0, 1)$:
     \begin{itemize}
-        \item \textbf{Axioms (K1)--(K4) [Addition]:} Addition is defined componentwise as $(a+b\tau) + (c+d\tau) = (a+c) + (b+d)\tau$. Since $(k, +)$ is an abelian group, addition on $k[\tau]$ is associative and commutative, $0 = 0 + 0\tau$ is the additive identity, and $-(a+b\tau) = (-a) + (-b)\tau$ is the additive inverse.
+        \item \textbf{Axioms \textbf{(K1)}--\textbf{(K4)} [Addition]:} Addition is defined componentwise as $(a+b\tau) + (c+d\tau) = (a+c) + (b+d)\tau$. Since $(k, +)$ is an abelian group, addition on $k[\tau]$ is associative and commutative, $0 = 0 + 0\tau$ is the additive identity, and $-(a+b\tau) = (-a) + (-b)\tau$ is the additive inverse.
         
-        \item \textbf{Axioms (K5)--(K8) [Multiplication and Distributivity]:}
+        \item \textbf{Axioms \textbf{(K5)}--\textbf{(K8)} [Multiplication and Distributivity]:}
         Multiplication is commutative:
         \[
         (a+b\tau)(c+d\tau) = (ac + \alpha bd) + (bc + ad)\tau = (ca + \alpha db) + (da + cb)\tau = (c+d\tau)(a+b\tau).
         \]
         The element $1 = 1 + 0\tau$ satisfies $(a+b\tau)(1+0\tau) = (a\cdot 1 + \alpha b\cdot 0) + (b\cdot 1 + a\cdot 0)\tau = a+b\tau$, so $1$ is the multiplicative identity. Associativity and distributivity follow by direct algebraic expansion from the corresponding properties in $k$ together with the relation $\tau^2 = \alpha$.
         
-        \item \textbf{Axiom (K7) [Multiplicative Inverse]:} Let $z = a + b\tau \in k[\tau]$ with $z \ne 0$, meaning $(a, b) \ne (0, 0)$. Define the \newterm{norm} of $z$ by:
+        \item \textbf{Axiom \textbf{(K7)} [Multiplicative Inverse]:} Let $z = a + b\tau \in k[\tau]$ with $z \ne 0$, meaning $(a, b) \ne (0, 0)$. Define the \newterm{norm} of $z$ by:
         \[
         N(z) := (a + b\tau)(a - b\tau) = a^2 - \alpha b^2 \in k.
         \]

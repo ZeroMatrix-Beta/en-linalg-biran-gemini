@@ -4,7 +4,7 @@
 The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operations is \textbf{not} a vector space over $\mathbb{R}$. Several vector space axioms fail:
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item \textbf{Failure of Associativity of Addition (V1):}
+    \item \textbf{Failure of Associativity of Addition \textbf{(V1)}:}
     Consider the elements $\infty, \infty, -\infty \in V$. Computing the sum with different bracketings gives:
     \[
     (\infty + \infty) + (-\infty) = \infty + (-\infty) = 0,
@@ -15,8 +15,8 @@ The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operati
     \]
     Since $0 \ne \infty$, we have $(\infty + \infty) + (-\infty) \ne \infty + (\infty + (-\infty))$, so addition is not associative.
 
-    \item \textbf{Failure of Scalar Distributivity (V7):}
-    Axiom (V7) requires $(a + b) \cdot v = a \cdot v + b \cdot v$ for all $a, b \in \mathbb{R}$ and $v \in V$. Choose $a = 2$, $b = -1$, and $v = \infty$. Then:
+    \item \textbf{Failure of Scalar Distributivity \textbf{(V7)}:}
+    Axiom \textbf{(V7)} requires $(a + b) \cdot v = a \cdot v + b \cdot v$ for all $a, b \in \mathbb{R}$ and $v \in V$. Choose $a = 2$, $b = -1$, and $v = \infty$. Then:
     \[
     (a + b) \cdot v = (2 - 1) \cdot \infty = 1 \cdot \infty = \infty,
     \]
@@ -24,7 +24,7 @@ The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operati
     \[
     a \cdot v + b \cdot v = 2 \cdot \infty + (-1) \cdot \infty = \infty + (-\infty) = 0.
     \]
-    Since $\infty \ne 0$, axiom (V7) fails.
+    Since $\infty \ne 0$, axiom \textbf{(V7)} fails.
 \end{enumerate}
 Therefore, $V$ fails to be a vector space over $\mathbb{R}$.
 \exinfo{Official Solution (Problem Sheet 5, Exercise 3). Checks failure of vector space axioms for extended real numbers.}
@@ -40,21 +40,21 @@ We examine the three candidate definitions of scalar multiplication on $(\mathbb
     This operation is not even well-defined as a map $\mathbb{R} \times \mathbb{R}_{>0}^2 \to \mathbb{R}_{>0}^2$. For instance, choosing $\lambda = -1$ and $(1, 1) \in \mathbb{R}_{>0}^2$ yields $(-1, -1) \notin \mathbb{R}_{>0}^2$. Hence, candidate (1) fails.
 
     \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} e^{\lambda} x_1 \\ e^{\lambda} x_2 \end{pmatrix}$:
-    This fails axiom (V6), which requires $1 \odot v = v$. Indeed,
+    This fails axiom \textbf{(V6)}, which requires $1 \odot v = v$. Indeed,
     \[
     1 \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} e x_1 \\ e x_2 \end{pmatrix} \ne \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}.
     \]
-    It also fails scalar distributivity (V7) because $(\lambda + \mu) \odot v$ would have components $e^{\lambda+\mu} x_i$, whereas $(\lambda \odot v) \oplus (\mu \odot v)$ has components $(e^\lambda x_i)(e^\mu x_i) = e^{\lambda+\mu} x_i^2$.
+    It also fails scalar distributivity \textbf{(V7)} because $(\lambda + \mu) \odot v$ would have components $e^{\lambda+\mu} x_i$, whereas $(\lambda \odot v) \oplus (\mu \odot v)$ has components $(e^\lambda x_i)(e^\mu x_i) = e^{\lambda+\mu} x_i^2$.
 
     \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} x_1^{\lambda} \\ x_2^{\lambda} \end{pmatrix}$:
     This definition turns $(\mathbb{R}_{>0}^2, \oplus, \odot)$ into a valid vector space over $\mathbb{R}$:
     \begin{itemize}
         \item \textbf{Well-definedness:} For any $x_1, x_2 > 0$ and $\lambda \in \mathbb{R}$, $x_1^\lambda > 0$ and $x_2^\lambda > 0$, so $\lambda \odot x \in \mathbb{R}_{>0}^2$.
         \item \textbf{Zero Vector and Inverses:} The zero vector is $0_V = (1, 1)$, since $(x_1, x_2) \oplus (1, 1) = (x_1 \cdot 1, x_2 \cdot 1) = (x_1, x_2)$. The additive inverse of $(x_1, x_2)$ is $(x_1^{-1}, x_2^{-1})$.
-        \item \textbf{Axiom (V5):} $\lambda \odot (\mu \odot x) = \lambda \odot (x_1^\mu, x_2^\mu) = ((x_1^\mu)^\lambda, (x_2^\mu)^\lambda) = (x_1^{\lambda\mu}, x_2^{\lambda\mu}) = (\lambda\mu) \odot x$.
-        \item \textbf{Axiom (V6):} $1 \odot x = (x_1^1, x_2^1) = (x_1, x_2) = x$.
-        \item \textbf{Axiom (V7):} $(\lambda + \mu) \odot x = (x_1^{\lambda+\mu}, x_2^{\lambda+\mu}) = (x_1^\lambda x_1^\mu, x_2^\lambda x_2^\mu) = (x_1^\lambda, x_2^\lambda) \oplus (x_1^\mu, x_2^\mu) = (\lambda \odot x) \oplus (\mu \odot x)$.
-        \item \textbf{Axiom (V8):} $\lambda \odot (x \oplus y) = \lambda \odot (x_1 y_1, x_2 y_2) = ((x_1 y_1)^\lambda, (x_2 y_2)^\lambda) = (x_1^\lambda y_1^\lambda, x_2^\lambda y_2^\lambda) = (x_1^\lambda, x_2^\lambda) \oplus (y_1^\lambda, y_2^\lambda) = (\lambda \odot x) \oplus (\lambda \odot y)$.
+        \item \textbf{Axiom \textbf{(V5)}:} $\lambda \odot (\mu \odot x) = \lambda \odot (x_1^\mu, x_2^\mu) = ((x_1^\mu)^\lambda, (x_2^\mu)^\lambda) = (x_1^{\lambda\mu}, x_2^{\lambda\mu}) = (\lambda\mu) \odot x$.
+        \item \textbf{Axiom \textbf{(V6)}:} $1 \odot x = (x_1^1, x_2^1) = (x_1, x_2) = x$.
+        \item \textbf{Axiom \textbf{(V7)}:} $(\lambda + \mu) \odot x = (x_1^{\lambda+\mu}, x_2^{\lambda+\mu}) = (x_1^\lambda x_1^\mu, x_2^\lambda x_2^\mu) = (x_1^\lambda, x_2^\lambda) \oplus (x_1^\mu, x_2^\mu) = (\lambda \odot x) \oplus (\mu \odot x)$.
+        \item \textbf{Axiom \textbf{(V8)}:} $\lambda \odot (x \oplus y) = \lambda \odot (x_1 y_1, x_2 y_2) = ((x_1 y_1)^\lambda, (x_2 y_2)^\lambda) = (x_1^\lambda y_1^\lambda, x_2^\lambda y_2^\lambda) = (x_1^\lambda, x_2^\lambda) \oplus (y_1^\lambda, y_2^\lambda) = (\lambda \odot x) \oplus (\lambda \odot y)$.
     \end{itemize}
 \end{enumerate}
 Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vector space (which is isomorphic to the standard $\mathbb{R}^2$ via the componentwise logarithm map $\ln \colon \mathbb{R}_{>0}^2 \to \mathbb{R}^2$).
@@ -179,7 +179,7 @@ The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$
     \end{itemize}
 
     \item \textbf{When is $S$ a Linear Subspace?}
-    A linear subspace must contain the zero vector $(0, 0)$ by (LSS1).
+    A linear subspace must contain the zero vector $(0, 0)$ by \textbf{(LSS1)}.
     \begin{itemize}
         \item For $m \ne \pm 2$, the unique solution has $x = -\frac{6}{2 - m} \ne 0$, so $(0, 0) \notin S$.
         \item For $m = 2$, $S = \emptyset$, so $(0, 0) \notin S$.
@@ -252,7 +252,7 @@ Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with invers
 % Official Solution (Problem Sheet 5, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:power_set_f2_vector_space}]
 \label{sol:power_set_f2_vector_space}
-We verify the eight vector space axioms (V1)--(V8) for $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ over $\mathbb{F}_2 = \{0, 1\}$. It is helpful to use the characteristic function $\chi_A \colon X \to \mathbb{F}_2$ defined by $\chi_A(x) = 1$ if $x \in A$ and $\chi_A(x) = 0$ if $x \notin A$. For symmetric difference, $\chi_{A \mathbin{\triangle} B}(x) = \chi_A(x) + \chi_B(x) \pmod 2$.
+We verify the eight vector space axioms \textbf{(V1)}--\textbf{(V8)} for $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ over $\mathbb{F}_2 = \{0, 1\}$. It is helpful to use the characteristic function $\chi_A \colon X \to \mathbb{F}_2$ defined by $\chi_A(x) = 1$ if $x \in A$ and $\chi_A(x) = 0$ if $x \notin A$. For symmetric difference, $\chi_{A \mathbin{\triangle} B}(x) = \chi_A(x) + \chi_B(x) \pmod 2$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{(V1) Associativity of Addition:}
