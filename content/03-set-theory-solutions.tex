@@ -1,7 +1,6 @@
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 2, Exercise 2 / Prof. Einsiedler)
 \begin{exercisesolution}[Solution to \cref{exc:archimedean_intersection}]
 \label{sol:archimedean_intersection}
-\exinfo{Official Solution (Problem Sheet 2, Exercise 2 / Prof.~Einsiedler's Analysis notes). Proves the intersection of nested intervals is $\{0\}$ using the Archimedean property.}
 We claim that
 \[
 \bigcap_{n=1}^\infty \left\{ x \in \mathbb{R} \;\middle|\; -\frac{1}{n} \le x \le \frac{1}{n} \right\} = \{0\}.
@@ -17,12 +16,12 @@ Let $I_n := \left[-\frac{1}{n}, \frac{1}{n}\right] = \left\{ x \in \mathbb{R} \;
     This implies that $x > \frac{1}{N}$ (if $x > 0$) or $x < -\frac{1}{N}$ (if $x < 0$). In either case, $x \notin \left[-\frac{1}{N}, \frac{1}{N}\right] = I_N$. But this contradicts the assumption that $x \in \bigcap_{n=1}^\infty I_n \subseteq I_N$.
 \end{enumerate}
 Therefore, the only element belonging to the intersection is $0$, which establishes the claim.
+\exinfo{Official Solution (Problem Sheet 2, Exercise 2 / Prof.~Einsiedler's Analysis notes). Proves the intersection of nested intervals is $\{0\}$ using the Archimedean property.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 2, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:cartesian_product_intersections}]
 \label{sol:cartesian_product_intersections}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 2, Exercise 3). Proves distributivity of Cartesian products over intersections and supplies a geometric 2D counterexample for unions.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $(x, y) \in X \times Y$ be an arbitrary element. We show equality of sets by a chain of logical equivalences:
     \begin{align*}
@@ -46,4 +45,5 @@ Therefore, the only element belonging to the intersection is $0$, which establis
     \end{itemize}
     For instance, the point $(0, 2)$ lies in $(A \cup A') \times (B \cup B')$, because $0 \in A \subseteq A \cup A'$ and $2 \in B' \subseteq B \cup B'$. However, $(0, 2) \notin A \times B$ (since $2 \notin [0,1]$) and $(0, 2) \notin A' \times B'$ (since $0 \notin [2,3]$), so $(0, 2) \notin (A \times B) \cup (A' \times B')$.
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 2, Exercise 3). Proves distributivity of Cartesian products over intersections and supplies a geometric 2D counterexample for unions.}
 \end{exercisesolution}

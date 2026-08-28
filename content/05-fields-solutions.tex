@@ -1,9 +1,8 @@
 \section{Solutions}\label{sec:solutions_fields}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 3, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:finite_field_f5_arithmetic}]
 \label{sol:finite_field_f5_arithmetic}
-\exinfo{Official Solution (Problem Sheet 3, Exercise 2). Performs arithmetic calculations in the finite field $\mathbb{F}_5$.}
 In $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$, arithmetic is performed modulo $5$.
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We seek all pairs $(x, y) \in \mathbb{F}_5 \times \mathbb{F}_5$ such that $x + y = 0 \pmod 5$, which means $y = -x$:
@@ -26,12 +25,12 @@ In $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$, arithmetic is performed modulo $5$.
     \]
     Thus, $4^{2025} = 4 \in \mathbb{F}_5$.
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 3, Exercise 2). Performs arithmetic calculations in the finite field $\mathbb{F}_5$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 3, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:frobenius_f3}]
 \label{sol:frobenius_f3}
-\exinfo{Official Solution (Problem Sheet 3, Exercise 3). Expands $(a+b)^3 = a^3 + b^3$ in characteristic 3 via the binomial formula.}
 Let $a, b \in \mathbb{F}_3$. Using the binomial expansion formula (which holds in any commutative ring):
 \[
 (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3.
@@ -45,12 +44,12 @@ Substituting these values back into the expansion gives:
 (a + b)^3 = a^3 + 0 + 0 + b^3 = a^3 + b^3.
 \]
 This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism of $\mathbb{F}_3$.
+\exinfo{Official Solution (Problem Sheet 3, Exercise 3). Expands $(a+b)^3 = a^3 + b^3$ in characteristic 3 via the binomial formula.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:quadratic_field_extensions}]
 \label{sol:quadratic_field_extensions}
-\exinfo{Official Solution (Problem Sheet 3, Exercise 5). Verifies the field axioms for the quadratic field extension $k[\tau]$ using the norm function.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We verify the field axioms for $(k[\tau], +, \cdot, 0, 1)$:
     \begin{itemize}
@@ -87,12 +86,12 @@ This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism o
         \item \textbf{Finite Fields:} Take $k = \mathbb{F}_3 = \{0, 1, 2\}$ and $\alpha = 2 \equiv -1$. The squares in $\mathbb{F}_3$ are $0^2 = 0, 1^2 = 1, 2^2 = 1$, so $x^2 = 2$ has no solution in $\mathbb{F}_3$. Then $\mathbb{F}_3[\tau]$ is a finite field with $3^2 = 9$ elements, isomorphic to $\mathbb{F}_9$.
     \end{itemize}
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 5). Verifies the field axioms for the quadratic field extension $k[\tau]$ using the norm function.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:finite_field_sum_product}]
 \label{sol:finite_field_sum_product}
-\exinfo{Official Solution (Problem Sheet 3, Exercise 6). Proves the sum $\sum_{x\in k} x = 0$ (for $|k|>2$) via scaling permutation and Wilson's theorem for finite fields $\prod_{x\in k^\times} x = -1$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Sum of all elements:}
     \begin{itemize}
@@ -125,4 +124,5 @@ This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism o
     \end{itemize}
     In both cases, we have $M = -1$.
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 6). Proves the sum $\sum_{x\in k} x = 0$ (for $|k|>2$) via scaling permutation and Wilson's theorem for finite fields $\prod_{x\in k^\times} x = -1$.}
 \end{exercisesolution}

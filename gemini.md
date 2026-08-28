@@ -94,8 +94,18 @@ You are authorized to improve the prose and apply the established "House Style" 
 
 * **Inline Edits:** When performing inline edits, prioritize keeping the surrounding LaTeX syntax intact.
 * **Logic Checks:** If a proof seems circular or a matrix calculation is visibly incorrect, flag it to the user while applying the stylistic edits. Use some color, for example dark-red.
-* **Commit Messages:** When asked to generate a commit message, be specific about the mathematical or stylistic changes made.
 * **Exercise Solutions:** Make an extra section or subsection for the solutions to the exercises at the end of each section. When an exercise is tied to a specific numbered environment, use `\cref` to reference it in the solution title, preferring the word "Proof" if it is a proof (e.g., `\begin{exercisesolution}[Proof of \cref{prop:properties_adjoint_matrix}]`). To reference specific subitems (e.g., part (c) of a Lemma), combine `\cref` with the bolded letter manually (e.g., `\begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(c)}]`). If the exercise is tied to an *unnumbered* environment (like a `claim*`), you must add a label to that environment and reference its page number in the solution title using `\cpageref` along with a highly descriptive name. For example: `\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]`.
+  * **Solution Environment Structure & Placement:**
+    * **Preceding Comment:** Always place a comment above `\begin{exercisesolution}` indicating provenance:
+      * `% Solution: Gemini / Official Hybrid (Problem Sheet X, Exercise Y)`
+      * `% Official Solution (Problem Sheet X, Exercise Y)`
+      * `% Solution: Prof. Biran Lecture Notes (Proof by Gemini 3.7 Flash)`
+      * `% Solution by Gemini 3.7 Flash (High)` (for `aiexercise`)
+    * **`\exinfo` inside `exercisesolution`:** `\exinfo{...}` (or the `exerciseinfo` environment) is permitted anywhere, including within solutions. Inside `exercisesolution`, **`\exinfo{...}` must always go at the very END** (immediately before `\end{exercisesolution}`), never at the start.
+    * **Hybrid vs. Official:** If Gemini's solution and the official solution share the same core approach, merge the best prose, explanations, and structure into a single polished hybrid solution and mark it as a hybrid in `\exinfo` and the preceding comment. If transcribed virtually 1-1, mark as Official Solution.
+    * **Multiple Approaches:** If the official solution presents multiple approaches (or if an alternative elegant method exists), include both approaches and highlight this in `\exinfo`.
+    * **Divergence / Disagreement:** If the Gemini derivation or interpretation differs substantively from the official solution, append an `\begin{ainote} ... \end{ainote}` after `\end{exercisesolution}` presenting both versions and explaining the differences.
+    * **Bidirectional Linking:** Every exercise statement ends with `\exsol{sol:slug}`, and every solution begins with `\label{sol:slug}` and refers back to the exercise via `[Solution to \cref{exc:slug}]` or `[Proof of \cref{...}]`.
 
 ## MORE LATEX DIRECTIVES
 

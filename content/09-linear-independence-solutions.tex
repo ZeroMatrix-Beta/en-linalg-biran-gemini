@@ -1,7 +1,6 @@
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 7, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:linear_independence_r4_lists}]
 \label{sol:linear_independence_r4_lists}
-\exinfo{Solution by Gemini 3.7 Flash (High). Determines linear independence in $\mathbb{R}^4$ via Gaussian elimination.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{The set $S_1$:}
     We form the matrix whose columns are the four vectors of $S_1$ and perform elementary row operations to determine its row echelon form:
@@ -67,12 +66,12 @@
     The matrix has $4$ pivots in $4$ columns, so the system $B c = 0$ has only the trivial solution $c_1 = c_2 = c_3 = c_4 = 0$.
     Therefore, $S_2$ is \textbf{linearly independent}.
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 7, Exercise 1). Determines linear independence in $\mathbb{R}^4$ via Gaussian elimination.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 7, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:linear_independence_various_contexts}]
 \label{sol:linear_independence_various_contexts}
-\exinfo{Solution by Gemini 3.7 Flash (High). Evaluates linear independence of parameter vectors, triangular columns, and functions.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{The set $S = \{(1, 0, 0), (0, 2, t), (2, 4, t^2)\} \subseteq \mathbb{R}^3$:}
     We row-reduce the matrix with these vectors as columns:
@@ -122,12 +121,12 @@
     Since $r \ne s$, choosing $x = 1$ gives $e^{r-s} - 1 \ne 0$, which forces $c_1 = 0$, and thus $c_2 = 0$.
     Hence $\{e^{rx}, e^{sx}\}$ is \textbf{linearly independent}.
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 7, Exercise 2). Evaluates linear independence of parameter vectors, triangular columns, and functions.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 7, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:rational_functions_independent}]
 \label{sol:rational_functions_independent}
-\exinfo{Official Solution (Problem Sheet 6, Exercise 2). Proves linear independence of the uncountable family of rational functions via polynomial roots.}
 By \cref{def:independent_family}, the family $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent if and only if every finite subfamily is linearly independent.
 
 Let $n \ge 1$ and let $a_1 < a_2 < \dots < a_n$ be distinct non-negative real numbers. Suppose there exist scalars $c_1, \dots, c_n \in \mathbb{R}$ such that:
@@ -151,12 +150,12 @@ Q(-a_k) = c_k \prod_{\substack{j=1 \\ j \ne k}}^{n} (a_j - a_k) = 0 \implies c_k
 \]
 Since this holds for every $k \in \{1, \dots, n\}$, we have $c_1 = c_2 = \dots = c_n = 0$.
 Hence every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent, so the entire uncountable family is linearly independent over $\mathbb{R}$.
+\exinfo{Official Solution (Problem Sheet 7, Exercise 3). Proves linear independence of the uncountable family of rational functions via polynomial roots.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 7, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_span_and_independence}]
 \label{sol:matrix_span_and_independence}
-\exinfo{Official Solution (Problem Sheet 6, Exercise 4). Demonstrates matrix subspace spans, linear independence, and dimension bounds.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Linear Independence of $\{A_1, A_2\}$:}
     Suppose $\alpha_1 A_1 + \alpha_2 A_2 = 0 \in \M_{2 \times 3}(\mathbb{R})$. Then:
@@ -184,12 +183,12 @@ Hence every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linea
     
     Such an $A_3$ \textbf{cannot} be chosen so that $\Sp(A_1, A_2, A_3) = \M_{2 \times 3}(\mathbb{R})$. Indeed, any linear combination of $3$ matrices depends on at most $3$ free parameters, whereas the space $\M_{2 \times 3}(\mathbb{R})$ has dimension $6$ and requires $6$ parameters (the standard basis has $6$ matrices $E_{ij}$).
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 7, Exercise 4). Demonstrates matrix subspace spans, linear independence, and dimension bounds.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 7, Multiple Choice)
 \begin{exercisesolution}[Solution to \cref{exc:monotonicity_independence_spanning_mc}]
 \label{sol:monotonicity_independence_spanning_mc}
-\exinfo{Official Solution (Problem Sheet 6, Multiple Choice). Analyzes monotonicity of linear independence, spanning sets, and bases under inclusions.}
 Let $V$ be a vector space and $S_1 \subsetneq S_2 \subseteq V$.
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -200,4 +199,5 @@ Let $V$ be a vector space and $S_1 \subsetneq S_2 \subseteq V$.
     \item \textbf{Never.} A basis $S_1$ is a maximal linearly independent set. Since $S_1$ spans $V$, any vector $v \in S_2 \setminus S_1$ is a linear combination of elements of $S_1$, so $S_2$ is linearly dependent and cannot be a basis.
     \item \textbf{Never.} A basis $S_2$ is a minimal generating set. Since $S_2$ is linearly independent, removing any element strictly reduces the span: for any $v \in S_2 \setminus S_1$, $v \notin \Sp(S_1)$, so $\Sp(S_1) \ne V$ and $S_1$ cannot be a basis.
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 7, Multiple Choice). Analyzes monotonicity of linear independence, spanning sets, and bases under inclusions.}
 \end{exercisesolution}

@@ -1,10 +1,9 @@
 \section{Solutions}
 \label{sec:solutions_dimension}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 8, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_subspaces_dimension_bases}]
 \label{sol:matrix_subspaces_dimension_bases}
-\exinfo{Official Solution (Problem Sheet 7, Exercise 2). Determines bases and dimensions of upper triangular, diagonal, symmetric, and row-sum zero matrix spaces.}
 Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matrix having entry $1$ in the $(i, j)$-position and $0$ elsewhere, for $1 \le i, j \le n$. The set of all $n^2$ elementary matrices forms the standard basis of $\M_{n \times n}(\mathbb{R})$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -62,12 +61,12 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     
     Thus the collection $\mathcal{B} := \{A_k^{(i)} \mid 1 \le i \le n,\, 1 \le k \le n-1\}$ is a basis of $W$, and its cardinality is $n(n-1)$. Hence $\dim W = n(n-1)$.
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 2). Determines bases and dimensions of upper triangular, diagonal, symmetric, and row-sum zero matrix spaces.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 8, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:subspace_dimension_equations_basis_selection}]
 \label{sol:subspace_dimension_equations_basis_selection}
-\exinfo{Official Solution (Problem Sheet 7, Exercise 4). Computes basis selection, dimension, and defining homogeneous Cartesian equations for a subspace in $\mathbb{R}^4$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We determine the dimension of $W = \Sp(v_1, v_2, v_3, v_4)$ by applying elementary row operations to the matrix whose columns are the given vectors:
     \[
@@ -153,12 +152,12 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
         \mathcal{B}_1 := \{v_1, v_2, v_3\}, \qquad \mathcal{B}_2 := \{v_1, v_2, v_4\}, \qquad \mathcal{B}_3 := \{v_2, v_3, v_4\}.
     \]
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 4). Computes basis selection, dimension, and defining homogeneous Cartesian equations for a subspace in $\mathbb{R}^4$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 8, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:bases_dimensions_various_spaces}]
 \label{sol:bases_dimensions_various_spaces}
-\exinfo{Solution by Gemini 3.7 Flash (High). Finds bases and dimensions for linear systems, trivial space, and complex vs real planes.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{System of linear equations.} The system is
     \[
@@ -210,12 +209,12 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \]
     Hence $\mathcal{B} := \left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ i \end{pmatrix} \right\}$ is a basis of $V$ over $\mathbb{R}$, and $\dim_{\mathbb{R}} V = 2$.
 \end{enumerate}
+\exinfo{Solution by Gemini 3.7 Flash (High). Finds bases and dimensions for linear systems, trivial space, and complex vs real planes.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 9)
 \begin{exercisesolution}[Solution to \cref{exc:polynomials_linear_factor_dimension}]
 \label{sol:polynomials_linear_factor_dimension}
-\exinfo{Solution by Gemini 3.7 Flash (High). Computes the dimension of multiples of a fixed linear factor in polynomial spaces.}
 Let $g(X) := X + 5 \in K[X]$. An element $h \in K[X]$ belongs to $W$ if and only if $\deg(h) \le d$ and $h(X) = g(X) f(X)$ for some polynomial $f(X) \in K[X]$.
 
 For any non-zero polynomial $f \in K[X]$, the degree formula yields
@@ -243,12 +242,12 @@ Since $K[X]$ is an integral domain and $g(X) = X + 5 \neq 0$, the second factor 
 Because the standard monomials $1, X, \dots, X^{d-1}$ are linearly independent in $K[X]$, it follows that $c_0 = c_1 = \dots = c_{d-1} = 0$.
 
 Thus $\mathcal{B}$ is a basis of $W$. Since it contains exactly $d$ polynomials, we conclude that $\dim W = d$.
+\exinfo{Solution by Gemini 3.7 Flash (High). Computes the dimension of multiples of a fixed linear factor in polynomial spaces.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 9)
 \begin{exercisesolution}[Solution to \cref{exc:harmonic_ode_solution_space}]
 \label{sol:harmonic_ode_solution_space}
-\exinfo{Solution by Gemini 3.7 Flash (High). Demonstrates the 2-dimensional solution space of harmonic oscillator ODE $f'' + f = 0$.}
 We determine the dimension and an explicit basis for the real vector space
 \[
     V := \left\{ f \colon \mathbb{R} \to \mathbb{R} \;\middle|\; f \text{ is twice differentiable and } f'' + f = 0 \right\}.
@@ -277,12 +276,12 @@ This proves that $\{\cos x, \sin x\}$ spans $V$.
 \textbf{Step 3: Linear independence.} Suppose that $\lambda_1 \cos x + \lambda_2 \sin x = 0$ for all $x \in \mathbb{R}$, where $\lambda_1, \lambda_2 \in \mathbb{R}$. Evaluating at $x = 0$ gives $\lambda_1(1) + \lambda_2(0) = \lambda_1 = 0$. Evaluating at $x = \pi/2$ gives $\lambda_1(0) + \lambda_2(1) = \lambda_2 = 0$. Thus $\cos x$ and $\sin x$ are linearly independent over $\mathbb{R}$.
 
 \textbf{Conclusion.} The set $\mathcal{B} := \{\cos x, \sin x\}$ is an explicit basis of $V$, and $\dim V = 2$.
+\exinfo{Solution by Gemini 3.7 Flash (High). Demonstrates the 2-dimensional solution space of harmonic oscillator ODE $f'' + f = 0$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 8, Exercise 6)
 \begin{exercisesolution}[Proof of \cref{exc:shifted_span_dimension}]
 \label{sol:shifted_span_dimension}
-\exinfo{Solution by Gemini 3.7 Flash (High). Proves the dimension bound $\dim \Sp(v_1+w, \dots, v_m+w) \ge m-1$ via difference vectors.}
 Let $\{v_1, \dots, v_m\}$ be a linearly independent subset of $V$, let $w \in V$, and define the subspace
 \[
     W := \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \subseteq V.
@@ -309,12 +308,12 @@ Hence $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of card
 \[
     \dim \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \ge m - 1.
 \]
+\exinfo{Solution by Gemini 3.7 Flash (High). Proves the dimension bound $\dim \Sp(v_1+w, \dots, v_m+w) \ge m-1$ via difference vectors.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 8, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:descending_chains_subspaces}]
 \label{sol:descending_chains_subspaces}
-\exinfo{Official Solution (Problem Sheet 7, Exercise 6). Proves stabilization of descending subspace chains in finite dimensions and provides polynomial counterexamples in infinite dimensions.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Finite-dimensional case.} Suppose that $\dim V = d < \infty$. By \cref{prop:subspace_dimension_constraints}, every linear subspace of $V$ is finite-dimensional with $\dim U \le \dim V$. Since the sequence is nested with $U_{n+1} \subseteq U_n$, applying \cref{prop:subspace_dimension_constraints} gives $\dim U_{n+1} \le \dim U_n$ for all $n \ge 0$.
     
@@ -347,4 +346,5 @@ Hence $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of card
         \bigcap_{n=0}^\infty U_n = \{0\}.
     \]
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 6). Proves stabilization of descending subspace chains in finite dimensions and provides polynomial counterexamples in infinite dimensions.}
 \end{exercisesolution}

@@ -1,7 +1,6 @@
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 6, Multiple Choice)
 \begin{exercisesolution}[Solution to \cref{exc:span_subspaces_mc}]
 \label{sol:span_subspaces_mc}
-\exinfo{Official Solution (Problem Sheet 5, Multiple Choice). Verifies subspace span properties and intersection inclusions.}
 All four assertions are \textbf{true}. We verify each in turn:
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -13,12 +12,12 @@ All four assertions are \textbf{true}. We verify each in turn:
 
     \item \textbf{True.} Since $S_1 \cap S_2 \subseteq S_1$, we have $\Sp(S_1 \cap S_2) \subseteq \Sp(S_1)$. Similarly, $S_1 \cap S_2 \subseteq S_2$ implies $\Sp(S_1 \cap S_2) \subseteq \Sp(S_2)$. Therefore, $\Sp(S_1 \cap S_2) \subseteq \Sp(S_1) \cap \Sp(S_2)$.
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 6, Multiple Choice). Verifies subspace span properties and intersection inclusions.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 6, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:subspaces_two_dimensions}]
 \label{sol:subspaces_two_dimensions}
-\exinfo{Official Solution (Problem Sheet 5, Exercise 2). Proves two non-collinear vectors span $\mathbb{R}^2$ and classifies all subspaces of $\mathbb{R}^2$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Proof that $\Sp(v, w) = \mathbb{R}^2$:}
     Let $v = (v_1, v_2) \ne (0, 0)$ and $w = (w_1, w_2) \ne (0, 0)$ with $w \ne \alpha v$ for all $\alpha \in \mathbb{R}$.
@@ -49,12 +48,12 @@ All four assertions are \textbf{true}. We verify each in turn:
     \end{itemize}
     Thus, the only subspaces of $\mathbb{R}^2$ are $\{(0, 0)\}$, lines through the origin $\Sp(u)$ ($u \ne 0$), and $\mathbb{R}^2$ itself.
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 6, Exercise 2). Proves two non-collinear vectors span $\mathbb{R}^2$ and classifies all subspaces of $\mathbb{R}^2$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 6, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:polynomial_linear_combination_span}]
 \label{sol:polynomial_linear_combination_span}
-\exinfo{Solution by Gemini 3.7 Flash (High). Solves the linear system for polynomial coordinates and proves the polynomials span $\mathbb{R}[x]_3$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Expressing $q(x)$ as a Linear Combination:}
     We seek scalars $\alpha_1, \alpha_2, \alpha_3, \alpha_4 \in \mathbb{R}$ such that
@@ -95,12 +94,12 @@ All four assertions are \textbf{true}. We verify each in turn:
     \Sp(p_1, p_2, p_3, p_4) = \mathbb{R}[x]_3.
     \]
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 6, Exercise 1). Solves the linear system for polynomial coordinates and proves the polynomials span $\mathbb{R}[x]_3$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 6, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_subspace_vector_constraint}]
 \label{sol:matrix_subspace_vector_constraint}
-\exinfo{Official Solution (Problem Sheet 5, Exercise 3). Proves $Ax = b$ subspace criterion requires $b=0$.}
 The subset $U = \{A \in \M_{m \times n}(K) \mid A \cdot x = b\}$ is a linear subspace of $\M_{m \times n}(K)$ if and only if $b = 0 \in K^m$ (for any $x \in K^n$).
 
 \begin{itemize}
@@ -119,12 +118,12 @@ The subset $U = \{A \in \M_{m \times n}(K) \mid A \cdot x = b\}$ is a linear sub
     \end{enumerate}
 \end{itemize}
 Therefore, $U$ is a linear subspace if and only if $b = 0$.
+\exinfo{Official Solution (Problem Sheet 6, Exercise 3). Proves $Ax = b$ subspace criterion requires $b=0$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 6, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:polynomial_space_infinite_dim}]
 \label{sol:polynomial_space_infinite_dim}
-\exinfo{Official Solution (Problem Sheet 5, Exercise 4). Demonstrates $K[x]$ is infinite-dimensional via the degree bound.}
 Suppose for contradiction that the vector space $K[x]$ is finite-dimensional. Then by \cref{def:finite_dimensional}, there exists a finite generating set $S = \{f_1, \dots, f_k\} \subset K[x]$ such that $\Sp(S) = K[x]$.
 
 Each polynomial $f_i(x)$ has a well-defined non-negative degree $\deg(f_i)$ (or degree $-\infty$ if $f_i = 0$). Since the set $S$ is finite, the maximum
@@ -138,12 +137,12 @@ exists. For any polynomial $g(x) \in \Sp(f_1, \dots, f_k)$, $g(x)$ is a finite l
 Consequently, every element of $\Sp(S)$ has degree at most $d$, so $\Sp(S) \subseteq K[x]_d$.
 However, the monomial $x^{d+1}$ belongs to $K[x]$ and has $\deg(x^{d+1}) = d + 1 > d$, so $x^{d+1} \notin \Sp(S)$.
 This contradicts the assumption that $\Sp(S) = K[x]$. Therefore, no finite set can span $K[x]$, and $K[x]$ is not finite-dimensional.
+\exinfo{Official Solution (Problem Sheet 6, Exercise 4). Demonstrates $K[x]$ is infinite-dimensional via the degree bound.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 6, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:generating_sets_sequences}]
 \label{sol:generating_sets_sequences}
-\exinfo{Official Solution (Problem Sheet 5, Exercise 5). Constructs minimal generating sets for finite-support and eventually-constant sequence spaces.}
 For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in K^\infty$ denote the sequence with $1$ in position $i$ and $0$ in all other positions.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -171,4 +170,5 @@ For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in 
     \end{itemize}
     Thus, $S = \{e_i \mid i \ge 0\} \cup \{\mathbf{1}\}$ is the minimal generating set of $K_{\mathrm{cst}}^\infty$.
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 6, Exercise 5). Constructs minimal generating sets for finite-support and eventually-constant sequence spaces.}
 \end{exercisesolution}

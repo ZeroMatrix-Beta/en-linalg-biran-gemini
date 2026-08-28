@@ -1,4 +1,4 @@
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Fibonacci Dynamics)
 \begin{exercisesolution}[Solution to \cref{exc:fibonacci_sequence_space_shift_eigenvalues}]
 \label{sol:fibonacci_sequence_space_shift_eigenvalues}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -26,9 +26,10 @@
     Since $\varphi \ne \psi$, the eigenvectors $v_\varphi$ and $v_\psi$ correspond to distinct eigenvalues and are therefore linearly independent (\cref{prop:lin_indep_eigen}).
     Since $\dim \Fib = 2$, the set $\{v_\varphi, v_\psi\}$ forms a basis of $\Fib$. \qedhere
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Establishes Fibonacci sequence space isomorphism and eigenbasis via golden ratio.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Sequence Operators)
 \begin{exercisesolution}[Solution to \cref{exc:eigenvalues_infinite_dimensional_sequences}]
 \label{sol:eigenvalues_infinite_dimensional_sequences}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -50,9 +51,10 @@
     The first coordinate gives $\lambda x_0 = 0$. If $\lambda \ne 0$, then $x_0 = 0$, and inductively $x_n = \lambda^{-1} x_{n-1} = 0$ for all $n \ge 0$, so $x = 0$. If $\lambda = 0$, then $x_0 = 0, x_1 = 0, \dots$, so $x = 0$.
     In either case there is no non-zero eigenvector, so $R$ has no eigenvalues. \qedhere
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Determines spectral properties of shift operators on sequence spaces.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Infinite Dimension)
 \begin{exercisesolution}[Solution to \cref{exc:uncountable_dimension_sequence_space}]
 \label{sol:uncountable_dimension_sequence_space}
 For each $\lambda \in \mathbb{R}$, consider the vector $v_\lambda := (1, \lambda, \lambda^2, \lambda^3, \dots) \in \mathbb{R}^\infty$.
@@ -61,9 +63,10 @@ By \cref{prop:lin_indep_eigen}, eigenvectors corresponding to pairwise distinct 
 Since the set of real numbers $\mathbb{R}$ is uncountable, the family $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ is an uncountable linearly independent subset of $\mathbb{R}^\infty$.
 If $\mathbb{R}^\infty$ had a countable basis $\mathcal{B}$, every element of $\mathbb{R}^\infty$ would be a finite linear combination of elements of $\mathcal{B}$, which would bound the cardinality of any linearly independent subset by $|\mathcal{B}| \le \aleph_0$.
 Since $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ has cardinality $2^{\aleph_0} > \aleph_0$, $\mathbb{R}^\infty$ cannot have a countable basis.
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves uncountable dimensionality of sequence space via distinct geometric eigenspaces.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Composition Spectra)
 \begin{exercisesolution}[Solution to \cref{exc:eigenvalues_of_composed_endomorphisms}]
 \label{sol:eigenvalues_of_composed_endomorphisms}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -85,9 +88,10 @@ Since $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ has cardinality $2^{\aleph_0} > \
     Then $G \circ F = \id_V$, whose only eigenvalue is $1$.
     On the other hand, $(F \circ G)(1, 0, 0, \dots) = F(0, 0, \dots) = (0, 0, \dots) = 0 \cdot (1, 0, 0, \dots)$, so $0$ is an eigenvalue of $F \circ G$, but not of $G \circ F$. \qedhere
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves spectral equality for $F \circ G$ and $G \circ F$ in finite dimensions and counterexample in infinite dimensions.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Resolvent Identity)
 \begin{exercisesolution}[Solution to \cref{exc:resolvent_identity_matrix_products}]
 \label{sol:resolvent_identity_matrix_products}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -108,9 +112,10 @@ Since $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ has cardinality $2^{\aleph_0} > \
     Hence $\lambda \in K^*$ is an eigenvalue of $AB \iff \lambda I_n - AB$ is singular $\iff \lambda I_n - BA$ is singular $\iff \lambda$ is an eigenvalue of $BA$.
     For $\lambda = 0$, $\det(AB) = \det(A)\det(B) = \det(B)\det(A) = \det(BA)$, so $0$ is an eigenvalue of $AB$ if and only if $0$ is an eigenvalue of $BA$. \qedhere
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves the matrix resolvent identity and deduces spectral matching of $AB$ and $BA$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Differential Operators)
 \begin{exercisesolution}[Solution to \cref{exc:eigenfunctions_derivative_operator}]
 \label{sol:eigenfunctions_derivative_operator}
 An eigenfunction $f \in C^\infty(\mathbb{R})$ with eigenvalue $\lambda \in \mathbb{R}$ satisfies $f'(x) = \lambda f(x)$ for all $x \in \mathbb{R}$.
@@ -120,9 +125,10 @@ For every $\lambda \in \mathbb{R}$, the function $x \mapsto e^{\lambda x}$ is no
 \[
 \Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x}). \qedhere
 \]
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Solves eigenvalue problem for differentiation on $C^\infty(\mathbb{R})$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Volterra Operators)
 \begin{exercisesolution}[Solution to \cref{exc:volterra_integration_no_eigenvalues}]
 \label{sol:volterra_integration_no_eigenvalues}
 Suppose $T f = \lambda f$ for some $f \in C^0(\mathbb{R}) \setminus \{0\}$ and $\lambda \in \mathbb{R}$.
@@ -137,9 +143,10 @@ Suppose $T f = \lambda f$ for some $f \in C^0(\mathbb{R}) \setminus \{0\}$ and $
     The unique solution to this initial value problem is $f(x) = f(0) e^{x/\lambda} = 0$, again contradicting $f \ne 0$.
 \end{itemize}
 Thus the Volterra integration operator has no eigenvalues.
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves absence of eigenvalues for Volterra integration via ODE reduction.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Inverse Endomorphism)
 \begin{exercisesolution}[Solution to \cref{exc:eigenspaces_inverse_endomorphism}]
 \label{sol:eigenspaces_inverse_endomorphism}
 Let $T \in \End(V)$ be invertible and $\lambda \in K^*$.
@@ -151,9 +158,10 @@ Therefore:
 \[
 \Eig_T(\lambda) = \{v \in V \mid Tv = \lambda v\} = \{v \in V \mid T^{-1} v = (1/\lambda) v\} = \Eig_{T^{-1}}(1/\lambda). \qedhere
 \]
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Connects eigenspaces of an invertible operator to those of its inverse.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Characteristic Polynomial of Inverse)
 \begin{exercisesolution}[Solution to \cref{exc:char_poly_inverse_matrix}]
 \label{sol:char_poly_inverse_matrix}
 Let $A \in \GL(n, K)$. We rewrite $A^{-1} - x I_n$ as:
@@ -165,9 +173,10 @@ Taking determinants and using multiplicativity (\cref{thm:det_multiplicative}):
 P_{A^{-1}}(x) &= \det(A^{-1} - x I_n) = \det(-x A^{-1}) \cdot \det(A - x^{-1} I_n) \\
 &= (-x)^n \det(A^{-1}) P_A(x^{-1}) = \frac{(-x)^n}{\det A} P_A(x^{-1}). \qedhere
 \end{align*}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Derives formula relating characteristic polynomials of $A$ and $A^{-1}$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Nilpotent Matrices)
 \begin{exercisesolution}[Solution to \cref{exc:nilpotent_matrix_eigenvalues}]
 \label{sol:nilpotent_matrix_eigenvalues}
 Let $A \in \M_{n \times n}(K)$ with $A^m = 0$ for some $m \ge 1$.
@@ -178,9 +187,10 @@ In any field, $\lambda^m = 0 \implies \lambda = 0$. Thus $0$ is the only possibl
 Furthermore, $0$ is an eigenvalue of $A$ if and only if $\ker A \ne \{0\} \iff \det A = 0$.
 Since $(\det A)^m = \det(A^m) = \det(0) = 0$, we have $\det A = 0$ whenever $n \ge 1$.
 Therefore, for every nilpotent matrix of dimension $n \ge 1$, $0$ is always an eigenvalue.
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Demonstrates that zero is the unique eigenvalue of any nilpotent matrix.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Real vs Complex Spectra)
 \begin{exercisesolution}[Solution to \cref{exc:eigenvalues_eigenspaces_R_vs_C}]
 \label{sol:eigenvalues_eigenspaces_R_vs_C}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -210,9 +220,10 @@ Therefore, for every nilpotent matrix of dimension $n \ge 1$, $0$ is always an e
         \item Over $\mathbb{C}$: $\Eig_{U_3}(0) = \Sp_\mathbb{C}\big(\binom{1}{-1}\big)$, $\Eig_{U_3}(2) = \Sp_\mathbb{C}\big(\binom{1}{1}\big)$. \qedhere
     \end{itemize}
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Computes spectra and eigenspaces over $\mathbb{R}$ vs $\mathbb{C}$ for $2 \times 2$ matrices.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 18, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:multiplicities_3x3_matrix}]
 \label{sol:multiplicities_3x3_matrix}
 Let $A = \begin{pmatrix} 3 & 0 & -2 \\ 2 & 0 & -2 \\ 0 & 1 & 1 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$.
@@ -237,9 +248,10 @@ Let $A = \begin{pmatrix} 3 & 0 & -2 \\ 2 & 0 & -2 \\ 0 & 1 & 1 \end{pmatrix} \in
     \end{itemize}
     In summary: $m_a(A; 1) = 2, m_g(A; 1) = 1$ and $m_a(A; 2) = 1, m_g(A; 2) = 1$. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 18, Exercise 1). Computes characteristic polynomial, eigenvalues, and arithmetic/geometric multiplicities for a $3 \times 3$ matrix.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 18, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:diagonalizability_over_Q}]
 \label{sol:diagonalizability_over_Q}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -267,9 +279,10 @@ Let $A = \begin{pmatrix} 3 & 0 & -2 \\ 2 & 0 & -2 \\ 0 & 1 & 1 \end{pmatrix} \in
     Thus $\rank(C - I_4) = 3$, which implies $m_g(C; 1) = 4 - 3 = 1 < 4 = m_a(C; 1)$.
     Therefore, $C$ is \textbf{not diagonalizable over $\mathbb{Q}$}. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 18, Exercise 2). Analyzes diagonalizability over $\mathbb{Q}$ for three matrices of sizes 2, 3, and 4.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Invariants)
 \begin{exercisesolution}[Solution to \cref{exc:trace_determinant_char_poly_diagonalizable}]
 \label{sol:trace_determinant_char_poly_diagonalizable}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -292,9 +305,10 @@ Let $A = \begin{pmatrix} 3 & 0 & -2 \\ 2 & 0 & -2 \\ 0 & 1 & 1 \end{pmatrix} \in
     \det(B) = \lambda_1 \lambda_2 = \lambda_1(-\lambda_1) = -\lambda_1^2 \le 0. \qedhere
     \]
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Relates trace, determinant, and characteristic polynomial coefficients to eigenvalues for diagonalizable operators.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Direct Sums and Simultaneous Diagonalization)
 \begin{exercisesolution}[Solution to \cref{exc:direct_sum_multiplicities_and_simultaneous_diagonalizability}]
 \label{sol:direct_sum_multiplicities_and_simultaneous_diagonalizability}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -321,9 +335,10 @@ Let $A = \begin{pmatrix} 3 & 0 & -2 \\ 2 & 0 & -2 \\ 0 & 1 & 1 \end{pmatrix} \in
         Choosing an eigenbasis of $g|_{\Eig_f(\lambda_j)}$ for each $j$ yields a basis of $V$ whose vectors are simultaneous eigenvectors of both $f$ and $g$. \qedhere
     \end{itemize}
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves direct sum multiplicity additivity and characterizes simultaneous diagonalizability for commuting operators.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Real 2x2 Classification)
 \begin{exercisesolution}[Solution to \cref{exc:real_2x2_similarity_classification}]
 \label{sol:real_2x2_similarity_classification}
 Let $A \in \GL(2, \mathbb{R})$. The characteristic polynomial is $P_A(x) = x^2 - \Tr(A)x + \det(A)$, with discriminant $\Delta = \Tr(A)^2 - 4\det(A)$.
@@ -349,9 +364,10 @@ Let $A \in \GL(2, \mathbb{R})$. The characteristic polynomial is $P_A(x) = x^2 -
     In the basis $\mathcal{B} = (u, -w)$, the matrix of $T_A$ is $\begin{pmatrix} a & b \\ -b & a \end{pmatrix}$, so $P^{-1} A P = \begin{pmatrix} a & b \\ -b & a \end{pmatrix}$ with $P = (u \mid -w) \in \GL(2, \mathbb{R})$.
 \end{itemize}
 Since $\Delta > 0$, $\Delta = 0$, and $\Delta < 0$ partition all real quadratic polynomials, precisely one condition holds.
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Establishes the real similarity canonical form trichotomy for $\GL(2, \mathbb{R})$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Annihilating Polynomials)
 \begin{exercisesolution}[Solution to \cref{exc:eigenvalues_are_roots_of_annihilating_polynomials}]
 \label{sol:eigenvalues_are_roots_of_annihilating_polynomials}
 Let $\lambda \in K$ be an eigenvalue of $A$ with eigenvector $v \in K^n \setminus \{0\}$.
@@ -362,9 +378,10 @@ p(A) v = \left(\sum_{i=0}^d c_i A^i\right) v = \sum_{i=0}^d c_i A^i v = \sum_{i=
 \]
 Since $p(A) = 0$ by assumption, $p(A) v = 0$, which yields $p(\lambda) v = 0$.
 Because $v \ne 0$, this forces $p(\lambda) = 0$, showing that $\lambda$ is a root of $p(x)$.
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves every eigenvalue of an operator is a root of any annihilating polynomial.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Real Matrix Parity)
 \begin{exercisesolution}[Solution to \cref{exc:annihilating_quadratic_even_dimension}]
 \label{sol:annihilating_quadratic_even_dimension}
 The statement is \textbf{true}: such a matrix $A \in \M_{n \times n}(\mathbb{R})$ exists if and only if $n$ is even.
@@ -384,9 +401,10 @@ The statement is \textbf{true}: such a matrix $A \in \M_{n \times n}(\mathbb{R})
     A^2 + 2A + 5I_n = \operatorname{diag}(J^2 + 2J + 5I_2, \dots, J^2 + 2J + 5I_2) = 0. \qedhere
     \]
 \end{itemize}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves existence of real matrices with non-real quadratic annihilator if and only if dimension is even.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Minimal Polynomial Rank Bound)
 \begin{exercisesolution}[Solution to \cref{exc:degree_minimal_poly_bounded_by_rank}]
 \label{sol:degree_minimal_poly_bounded_by_rank}
 Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = \rank(A) = r$.
@@ -402,9 +420,10 @@ By the definition of the minimal polynomial, $m_A(x)$ divides any annihilating p
 \[
 \deg(m_A) \le \deg(p) = r + 1. \qedhere
 \]
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Bounds the minimal polynomial degree by $\operatorname{rank}(A) + 1$ via restriction and Cayley-Hamilton.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Matrix Powers and Inverse Polynomial)
 \begin{exercisesolution}[Solution to \cref{exc:subspace_matrix_powers_and_inverse}]
 \label{sol:subspace_matrix_powers_and_inverse}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -424,9 +443,10 @@ By the definition of the minimal polynomial, $m_A(x)$ divides any annihilating p
     \]
     Thus $p(x) = \frac{1}{18}(x^2 - 6x - 9)$ satisfies $p(A) = A^{-1}$. \qedhere
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Expresses matrix powers and matrix inverse via Cayley-Hamilton polynomials.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Polynomial Similarity)
 \begin{exercisesolution}[Solution to \cref{exc:similarity_of_matrix_polynomials}]
 \label{sol:similarity_of_matrix_polynomials}
 We first prove by induction that $(Q^{-1} A Q)^i = Q^{-1} A^i Q$ for all $i \ge 0$.
@@ -438,9 +458,10 @@ Now let $p(x) = \sum_{i=0}^d c_i x^i \in K[x]$. By linearity:
 \[
 p(Q^{-1} A Q) = \sum_{i=0}^d c_i (Q^{-1} A Q)^i = \sum_{i=0}^d c_i Q^{-1} A^i Q = Q^{-1} \left( \sum_{i=0}^d c_i A^i \right) Q = Q^{-1} p(A) Q. \qedhere
 \]
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves $p(Q^{-1}AQ) = Q^{-1}p(A)Q$ for all polynomials and similarity transforms.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Density of Diagonalizable Matrices)
 \begin{exercisesolution}[Solution to \cref{exc:density_of_diagonalizable_matrices}]
 \label{sol:density_of_diagonalizable_matrices}
 Let $A \in \M_{n \times n}(\mathbb{C})$ and $\varepsilon > 0$.
@@ -457,9 +478,10 @@ Moreover:
 |B_{ij} - A_{ij}| \le \|B - A\| = \|P (T' - T) P^{-1}\| \le \|P\| \|\operatorname{diag}(\delta_1, \dots, \delta_n)\| \|P^{-1}\| < \varepsilon
 \]
 for all $1 \le i, j \le n$.
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Establishes topological density of diagonalizable matrices in $\M_{n \times n}(\mathbb{C})$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Continuity of Matrix Evaluation)
 \begin{exercisesolution}[Solution to \cref{exc:convergence_of_matrix_polynomials}]
 \label{sol:convergence_of_matrix_polynomials}
 Since $A_k \to A$ entrywise, by continuity of matrix multiplication we have $A_k^i \to A^i$ entrywise for each fixed power $0 \le i \le d$.
@@ -468,9 +490,10 @@ Summing over the finitely many terms $i = 0, 1, \dots, d$:
 \[
 \lim_{k \to \infty} p_k(A_k) = \lim_{k \to \infty} \sum_{i=0}^d c_i^{(k)} A_k^i = \sum_{i=0}^d \lim_{k \to \infty} c_i^{(k)} A_k^i = \sum_{i=0}^d c_i A^i = p(A). \qedhere
 \]
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves continuity of matrix polynomial evaluation under joint coefficient and matrix limits.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Cayley-Hamilton via Density)
 \begin{exercisesolution}[Solution to \cref{exc:cayley_hamilton_via_density}]
 \label{sol:cayley_hamilton_via_density}
 \begin{enumerate}
@@ -486,9 +509,10 @@ Summing over the finitely many terms $i = 0, 1, \dots, d$:
     P_A(A) = \lim_{k \to \infty} P_{A_k}(A_k) = \lim_{k \to \infty} 0 = 0. \qedhere
     \]
 \end{enumerate}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Gives a density-based topological proof of the Cayley-Hamilton theorem over $\mathbb{C}$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Solution: Gemini / Official Hybrid (Problem Sheet 18, Companion Matrix)
 \begin{exercisesolution}[Solution to \cref{exc:char_poly_companion_matrix}]
 \label{sol:char_poly_companion_matrix}
 We proceed by induction on $n \ge 2$.
@@ -517,4 +541,5 @@ We proceed by induction on $n \ge 2$.
     &= (-1)^n (x^n + c_{n-1}x^{n-1} + \dots + c_1 x + c_0). \qedhere
     \end{align*}
 \end{itemize}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves the characteristic polynomial of a companion matrix by induction.}
 \end{exercisesolution}

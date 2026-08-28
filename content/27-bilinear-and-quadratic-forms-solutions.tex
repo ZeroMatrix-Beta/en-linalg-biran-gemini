@@ -1,4 +1,4 @@
-﻿% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 26, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:polarization_quadratic_forms_series26}]
 \label{sol:polarization_quadratic_forms_series26}
 Let $K$ be a field with $\operatorname{char}(K) \neq 2$, let $V$ be a vector space over $K$, and let $B \colon V \times V \to K$ be a symmetric bilinear form.
@@ -20,9 +20,10 @@ Since $\operatorname{char}(K) \ne 2$, the scalar $2 \in K$ is invertible. Dividi
 \[
 B(v, w) = \frac{1}{2} \big( q_B(v + w) - q_B(v) - q_B(w) \big). \qedhere
 \]
+\exinfo{Official Solution (Problem Sheet 26, Exercise 1). Derives the polarization identity expressing symmetric bilinear forms in terms of quadratic forms in characteristic $\ne 2$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 26, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:sylvester_criterion_matrix_tests}]
 \label{sol:sylvester_criterion_matrix_tests}
 We apply Sylvester's Criterion (\cref{thm:sylvesters_criterion}), which states that a real symmetric matrix is positive definite if and only if all its leading principal minors $\Delta_k := \det(M_{1 \le i,j \le k})$ are strictly positive for $1 \le k \le n$.
@@ -55,9 +56,10 @@ We apply Sylvester's Criterion (\cref{thm:sylvesters_criterion}), which states t
     \end{align*}
     Since all four leading principal minors are strictly positive, $C$ is \textbf{positive definite}. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 26, Exercise 3). Tests positive definiteness of three matrices of sizes 2, 3, and 4 via leading principal minors.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 26, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:positive_definite_equivalent_characterizations}]
 \label{sol:positive_definite_equivalent_characterizations}
 Let $A \in \M_{n \times n}(\mathbb{R})$ be symmetric. We prove the cycle of implications \textbf{(A)} $\implies$ \textbf{(B)} $\implies$ \textbf{(C)} $\implies$ \textbf{(A)}.
@@ -95,4 +97,5 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be symmetric. We prove the cycle of impl
     Since $S$ is invertible and $v \ne 0$, we have $Sv \ne 0$.
     By positive definiteness of the Euclidean norm, $\|Sv\|^2 > 0$, so $v\transp A v > 0$, proving that $A$ is positive definite. \qedhere
 \end{itemize}
+\exinfo{Official Solution (Problem Sheet 26, Exercise 4). Proves cyclic equivalence between positive definiteness, positive eigenvalues, and positive symmetric square root factorization.}
 \end{exercisesolution}

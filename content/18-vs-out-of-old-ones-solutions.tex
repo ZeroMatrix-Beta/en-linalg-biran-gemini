@@ -2,10 +2,9 @@
 
 % --- Section 18.a: Hom, Duals and Biduals ---
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:hom_non_injective_non_surjective_not_subspaces}]
 \label{sol:hom_non_injective_non_surjective_not_subspaces}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 1). Constructs sums of non-injective (resp. non-surjective) linear maps that become injective (resp. surjective).}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $n := \dim V$ and $m := \dim W$ with $2 \le n \le m$.
     Choose an ordered basis $(v_1, \dots, v_n)$ of $V$ and linearly independent vectors $(w_1, \dots, w_n)$ in $W$ (which exist since $m \ge n$).
@@ -39,12 +38,12 @@
     Thus $S_1 + S_2$ is surjective, so $S_1 + S_2 \notin \mathcal{T}$.
     Hence $\mathcal{T}$ is not closed under addition, so it is not a linear subspace. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 14, Exercise 1). Constructs sums of non-injective (resp. non-surjective) linear maps that become injective (resp. surjective).}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:dim_kernel_linear_functional_sc}]
 \label{sol:dim_kernel_linear_functional_sc}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 2). Computes the possible kernel dimensions of a linear functional on a 4-dimensional space via Rank-Nullity.}
 Let $\varphi \in V^* = \Hom(V, K)$ with $\dim V = 4$.
 By the Rank-Nullity Theorem (\cref{thm:rank_nullity}):
 \[
@@ -54,12 +53,12 @@ Since $\Img(\varphi)$ is a linear subspace of the 1-dimensional space $K$, its d
 Consequently, $\dim \ker(\varphi) = 4 - 0 = 4$ or $\dim \ker(\varphi) = 4 - 1 = 3$.
 It is impossible for $\dim \ker(\varphi)$ to equal $2$.
 Therefore, the statement is \textbf{False} (Option 2).
+\exinfo{Official Solution (Problem Sheet 14, Exercise 2). Computes the possible kernel dimensions of a linear functional on a 4-dimensional space via Rank-Nullity.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:dual_map_equivalences_sc}]
 \label{sol:dual_map_equivalences_sc}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 3). Identifies which condition characterizes surjectivity rather than injectivity for dual maps.}
 Assertions (1), (2), (3), and (5) are all equivalent characterizations of the \emph{injectivity} of the linear map $f \colon V \to W$:
 \begin{itemize}
     \item (1) $\iff$ (3) is the fundamental definition of injectivity ($\ker f = \{0\}$).
@@ -68,12 +67,12 @@ Assertions (1), (2), (3), and (5) are all equivalent characterizations of the \e
 \end{itemize}
 In contrast, Assertion (4) ($\exists g \colon W \to V$ such that $f \circ g = \id_W$) states that $f$ has a right inverse, which is equivalent to $f$ being \emph{surjective}, not injective.
 Therefore, Assertion \textbf{(4)} is not equivalent to the others.
+\exinfo{Official Solution (Problem Sheet 14, Exercise 3). Identifies which condition characterizes surjectivity rather than injectivity for dual maps.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:hom_dual_isomorphism_trace_pairing}]
 \label{sol:hom_dual_isomorphism_trace_pairing}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 4). Proves the canonical isomorphism $\Hom(V, W) \cong \Hom(W^*, V^*)$ and non-degeneracy of the trace pairing on endomorphisms.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Consider the map $\Phi \colon \Hom(V, W) \to \Hom(W^*, V^*)$ defined by $\Phi(T) := T^*$.
     By \cref{lem:dual_map}, $(\alpha T_1 + T_2)^* = \alpha T_1^* + T_2^*$, so $\Phi$ is linear.
@@ -99,25 +98,25 @@ Therefore, Assertion \textbf{(4)} is not equivalent to the others.
     Thus $A = 0$, which implies $T = 0$.
     Hence $\ker(\Theta) = \{0\}$. Since $\dim \Hom(V, V)^* = \dim \Hom(V, V) = n^2$, $\Theta$ is an isomorphism. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 14, Exercise 4). Proves the canonical isomorphism $\Hom(V, W) \cong \Hom(W^*, V^*)$ and non-degeneracy of the trace pairing on endomorphisms.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:every_finite_dim_is_dual_sc}]
 \label{sol:every_finite_dim_is_dual_sc}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 5). Establishes that every finite-dimensional vector space is canonically isomorphic to the dual of its dual.}
 Let $V$ be any finite-dimensional vector space over $K$.
 Setting $W := V^*$, we obtain a finite-dimensional space $W$ whose dual is $W^* = (V^*)^*$.
 By the canonical evaluation isomorphism of \cref{thm:natural_map_injective}, $V \cong (V^*)^* = W^*$.
 Therefore, every finite-dimensional space is isomorphic to the dual of a finite-dimensional space.
 The statement is \textbf{True} (Option 1).
+\exinfo{Official Solution (Problem Sheet 14, Exercise 5). Establishes that every finite-dimensional vector space is canonically isomorphic to the dual of its dual.}
 \end{exercisesolution}
 
 % --- Section 18.b: Direct Sums ---
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:graph_of_linear_map}]
 \label{sol:graph_of_linear_map}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 6). Characterizes linearity of a mapping in terms of its graph being a linear subspace of the direct sum $V \oplus W$.}
 Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V\}$.
 
 \begin{itemize}
@@ -137,12 +136,12 @@ Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V
     Similarly, closure under scalar multiplication gives $\alpha(v, T(v)) = (\alpha v, \alpha T(v)) \in \Gamma(T)$, which implies $T(\alpha v) = \alpha T(v)$.
     Hence $T$ is a linear map.
 \end{itemize}
+\exinfo{Official Solution (Problem Sheet 14, Exercise 6). Characterizes linearity of a mapping in terms of its graph being a linear subspace of the direct sum $V \oplus W$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 7)
 \begin{exercisesolution}[Solution to \cref{exc:subspace_complement_dual_decomposition}]
 \label{sol:subspace_complement_dual_decomposition}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 7). Decomposes dual spaces $V^* \cong U^* \oplus W^*$ relative to direct sum complements.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Define $\theta \colon U \oplus W \to V$ by $\theta(u, w) := u + w$.
     Linearity is immediate from the vector space operations.
@@ -162,12 +161,12 @@ Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V
     Thus $\ker(\psi) = \{0\}$.
     Since $\dim(U^* \oplus W^*) = \dim U + \dim W = \dim V = \dim V^*$, $\psi$ is an isomorphism. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 14, Exercise 7). Decomposes dual spaces $V^* \cong U^* \oplus W^*$ relative to direct sum complements.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 8)
 \begin{exercisesolution}[Solution to \cref{exc:hom_direct_sum_decompositions}]
 \label{sol:hom_direct_sum_decompositions}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 8). Proves the distributivity of $\Hom(-, -)$ across direct sums in both arguments.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $\pi_1 \colon W_1 \oplus W_2 \to W_1$ and $\pi_2 \colon W_1 \oplus W_2 \to W_2$ be the canonical projections.
     Define $\Phi \colon \Hom(V, W_1 \oplus W_2) \to \Hom(V, W_1) \oplus \Hom(V, W_2)$ by:
@@ -193,14 +192,14 @@ Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V
     For any $(v, u) \in V \oplus U$, $\Omega(\Theta(f))(v, u) = f(v, 0) + f(0, u) = f(v, u)$ by linearity of $f$.
     Thus $\Theta$ is an isomorphism. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 14, Exercise 8). Proves the distributivity of $\Hom(-, -)$ across direct sums in both arguments.}
 \end{exercisesolution}
 
 % --- Section 18.c: Quotients ---
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 9)
 \begin{exercisesolution}[Solution to \cref{exc:properties_induced_quotient_maps}]
 \label{sol:properties_induced_quotient_maps}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 9). Establishes kernel, injectivity, and surjectivity properties of the induced quotient homomorphism $\bar{f} \colon V/U \to W$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item By definition, $[v] \in \ker(\bar{f}) \iff \bar{f}([v]) = 0 \iff f(v) = 0 \iff v \in \ker(f)$.
     The set of such classes is precisely the quotient subspace $\ker(f)/U \subseteq V/U$.
@@ -213,12 +212,12 @@ Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V
     \item If $f$ is surjective, setting $U := \ker(f)$ gives $\ker(\bar{f}) = \{0\}$ and $\Img(\bar{f}) = W$.
     Thus the induced map $\bar{f} \colon V/\ker(f) \to W$ is both injective and surjective, hence a canonical isomorphism. \qedhere
 \end{enumerate}
+\exinfo{Official Solution (Problem Sheet 14, Exercise 9). Establishes kernel, injectivity, and surjectivity properties of the induced quotient homomorphism $\bar{f} \colon V/U \to W$.}
 \end{exercisesolution}
 
-% Solution by Gemini 3.7 Flash (High)
+% Official Solution (Problem Sheet 14, Exercise 10)
 \begin{exercisesolution}[Solution to \cref{exc:basis_of_quotient_space_r5}]
 \label{sol:basis_of_quotient_space_r5}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 10). Computes the dimension and standard basis projection for a quotient subspace in $\mathbb{R}^5$.}
 Let $u_1 = (2, 2, 2, 2, 2)\transp, u_2 = (1, 2, 2, 2, 2)\transp, u_3 = (1, 1, 2, 2, 2)\transp \in \mathbb{R}^5$.
 Subtracting generators yields:
 \[
@@ -249,4 +248,5 @@ Therefore, $\Sp(e_4, e_5)$ is a complement to $U$, and the subset of the standar
 (e_4, e_5), \qquad \text{with quotient basis } \big(\pi(e_4), \pi(e_5)\big) = \big([e_4], [e_5]\big).
 \]
 (Equally valid choices are $(e_3, e_4)$ or $(e_3, e_5)$).
+\exinfo{Official Solution (Problem Sheet 14, Exercise 10). Computes the dimension and standard basis projection for a quotient subspace in $\mathbb{R}^5$.}
 \end{exercisesolution}
