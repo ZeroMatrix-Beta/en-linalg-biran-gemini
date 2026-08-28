@@ -1007,7 +1007,14 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 \begin{theorem}[Universal Property of Quotient Spaces]
 % thm:18.c.6
   \label{thm:universal_property_quotient}
-  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. The quotient space $V/U$ has the following universal property: For every vector space $W$ and every linear map $T \colon V \to W$ for which $T(U) = 0$ (i.e., for which $\ker(T) \supseteq U$), there exists a unique linear map $T' \colon V/U \to W$ such that $T = T' \circ \pi$. Moreover, $\ker(T') = \ker(T)/U$.
+  Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. The quotient space $V/U$ has the following universal property: For every vector space $W$ and every linear map $T \colon V \to W$ for which $T(U) = 0$ (i.e., for which $\ker(T) \supseteq U$), there exists a unique linear map $T' \colon V/U \to W$ such that $T = T' \circ \pi$, that is, such that the following triangle commutes:
+  \begin{center}
+  \begin{tikzcd}[row sep=large, column sep=large]
+  V \arrow[r, "T"] \arrow[d, "\pi"'] & W \\
+  V/U \arrow[ur, "T'"'] &
+  \end{tikzcd}
+  \end{center}
+  Moreover, $\ker(T') = \ker(T)/U$.
 \end{theorem}
 
 \begin{remark}

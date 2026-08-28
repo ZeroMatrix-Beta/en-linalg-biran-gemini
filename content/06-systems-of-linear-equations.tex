@@ -443,31 +443,31 @@ An $m \times n$ matrix $A$ is called \newterm{row-reduced} if the following two 
 
 \begin{example}[Row-reduced and not row-reduced]
 \label{ex:row_reduced_examples}
-Consider the following four matrices over $\mathbb{Q}$:
+Consider the following four matrices over $\mathbb{Q}$, with the leading entry of each non-zero row ringed as Prof.~Biran rings it, so that both conditions can be checked by eye:
 \[
 A = \begin{pmatrix}
-0 & 0 & 0 & 1 & 2 \\
-0 & 1 & -3 & 0 & \frac{1}{2} \\
+0 & 0 & 0 & \pivot{1} & 2 \\
+0 & \pivot{1} & -3 & 0 & \frac{1}{2} \\
 0 & 0 & 0 & 0 & 0
 \end{pmatrix}
 \qquad\qquad
 B = \begin{pmatrix}
-1 & 0 & 0 & 0 \\
-0 & 1 & -1 & 0 \\
-0 & 0 & 1 & 0
+\pivot{1} & 0 & 0 & 0 \\
+0 & \pivot{1} & -1 & 0 \\
+0 & 0 & \pivot{1} & 0
 \end{pmatrix}
 \]
 \[
 C = \begin{pmatrix}
-0 & 2 & 1 \\
-1 & 0 & -3 \\
+0 & \pivot{2} & 1 \\
+\pivot{1} & 0 & -3 \\
 0 & 0 & 0
 \end{pmatrix}
 \qquad\qquad
 D = \begin{pmatrix}
-0 & 0 & 1 & 1 \\
-1 & 0 & 0 & 2 \\
-0 & 1 & 0 & 5
+0 & 0 & \pivot{1} & 1 \\
+\pivot{1} & 0 & 0 & 2 \\
+0 & \pivot{1} & 0 & 5
 \end{pmatrix}
 \]
 \begin{itemize}

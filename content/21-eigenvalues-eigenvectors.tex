@@ -1393,17 +1393,38 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   Suppose that $v, Tv, \dots, T^{d-1}v$ ($d \ge 1$) are linearly independent, and $T^d v = c_0 v + c_1 Tv + \dots + c_{d-1}T^{d-1}v$. Then:
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $\mathcal{B} = (v, Tv, \dots, T^{d-1}v)$ forms a basis for $\langle v \rangle_T$.
-    \item Let $S = T|_{\langle v \rangle_T}$. Then $[S]_{\mathcal{B}}^{\mathcal{B}}$ is a companion matrix:
-    \[
-    [S]_{\mathcal{B}}^{\mathcal{B}} =
-    \begin{pmatrix}
-      0 & 0 & \dots & 0 & c_0 \\
-      1 & 0 & \dots & 0 & c_1 \\
-      0 & 1 & \dots & 0 & c_2 \\
-      \vdots & \vdots & \ddots & \vdots & \vdots \\
-      0 & 0 & \dots & 1 & c_{d-1}
-    \end{pmatrix}.
-    \]
+    \item Let $S = T|_{\langle v \rangle_T}$. Then $[S]_{\mathcal{B}}^{\mathcal{B}}$ is a companion matrix, an identity block pushed down one row together with a last column carrying the coefficients, which is how Prof.~Biran rings it:
+
+% Extractor: Opus 5
+\begin{center}
+$[S]_{\mathcal{B}}^{\mathcal{B}} \;=\;$
+\begin{tikzpicture}[baseline=(S.center)]
+  \matrix (S) [matrix of math nodes,
+               nodes in empty cells,
+               left delimiter=(, right delimiter=),
+               nodes={minimum width=2.3em, minimum height=1.7em, inner sep=1pt},
+               column sep=0pt, row sep=0pt]
+  {
+    0 & 0 & \dots & 0 & c_0 \\
+    1 & 0 & \dots & 0 & c_1 \\
+    0 & 1 & \dots & 0 & c_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \dots & 1 & c_{d-1} \\
+  };
+  % The identity block, sitting one row below the diagonal.
+  \draw[ThemeGreen, thick]
+    ([xshift=-2pt, yshift=2pt]S-2-1.north west) rectangle
+    ([xshift=2pt, yshift=-2pt]S-5-4.south east);
+  % The column of coefficients.
+  \draw[ThemeAccent, thick]
+    ([xshift=-2pt, yshift=2pt]S-1-5.north west) rectangle
+    ([xshift=2pt, yshift=-2pt]S-5-5.south east);
+  \node[ThemeGreen, below=9pt] (idlab) at (S-5-2.south) {$I_{d-1}$};
+  \draw[->, ThemeGreen] (idlab.north) -- ++(0,6pt);
+\end{tikzpicture}
+\end{center}
+% Extractor: Gemini 3.1 Pro
+
   \end{enumerate}
 \end{lemma}
 

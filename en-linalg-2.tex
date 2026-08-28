@@ -720,6 +720,17 @@
 % typographically, the way \ColS and \RowS already do for the spaces.
 \newcommand{\rankcol}{\rank_{\text{col}}}
 \newcommand{\rankrow}{\rank_{\text{row}}}
+% Prof. Biran rings the leading entry of each row whenever he wants the
+% row-reduced conditions to be checkable at a glance. The ring is the whole
+% content of those examples: condition (b) is read off by looking down the
+% ringed columns, which prose can only ask the reader to do by counting.
+% The colour matches the circled pivots of the echelon figure in chapter 6,
+% so that one ring means one thing throughout the book.
+\newcommand{\pivot}[1]{%
+  \tikz[baseline=(pv.base)]{%
+    \node[draw=ThemeAccent, circle, inner sep=1.2pt, line width=0.5pt]
+      (pv) {$#1$};}%
+}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\id}{id}
