@@ -83,7 +83,7 @@ Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$ be
 We wish to generalize the determinant to arbitrary dimensions. To this end, we should view an $n \times n$ matrix not just as a grid of numbers, but as a collection of $n$ row vectors.
 
 \begin{definition}[$n$-Linearity]\label{def:n_linear}
-  Let $D : \M_{n \times n}(K) \to K$ be a function. We say that $D$ is \newterm{$n$-linear} if for every $1 \le i \le n$, $D$ is linear as a function of the $i$-th row when all the other $n-1$ rows are held fixed.
+  Let $D : \M_{n \times n}(K) \to K$ be a function. We say that $D$ is \newterm[n-linear@$n$-linear]{$n$-linear} if for every $1 \le i \le n$, $D$ is linear as a function of the $i$-th row when all the other $n-1$ rows are held fixed.
 \end{definition}
 
 We can think of the matrix space $\M_{n \times n}(K)$ as a Cartesian product of row vectors: $K^n_{\text{row}} \times \dots \times K^n_{\text{row}}$. If $A$ has rows $\alpha_1, \dots, \alpha_n$, we write $D(A) = D(\alpha_1, \dots, \alpha_n)$.
@@ -216,6 +216,7 @@ Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b 
 \subsection{The Determinant Function}
 
 \begin{definition}[Determinant Function]\label{def:determinant_func}
+\defterm{determinant function}
   A function $D : \M_{n \times n}(K) \to K$ is called a \qt{determinant function} if it is $n$-linear, it is alternating, and it normalizes the identity matrix such that $D(I) = 1$.
 \end{definition}
 
@@ -239,6 +240,7 @@ Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b 
 \end{example}
 
 \begin{definition}[Submatrix]\label{def:minor_submatrix}
+\defterm{submatrix}
   Let $A \in \M_{n \times n}(K)$, $n \ge 2$, and $1 \le i \le n$, $1 \le j \le n$. We denote by $A(i|j) \in \M_{(n-1) \times (n-1)}(K)$ the \qt{submatrix} obtained from $A$ by deleting row $i$ and column $j$. If $D$ is an $(n-1)$-linear function, we intuitively define $D_{ij}(A) := D(A(i|j))$.
 \end{definition}
 
@@ -393,6 +395,7 @@ By the alternating property of $D$, performing the transpositions necessary to s
 
 \begin{theorem}[Leibniz Formula \& Uniqueness]
   \label{thm:unique_det}
+\defterm{Leibniz formula}
   For all $n \ge 1$, there exists a unique determinant function on $\M_{n \times n}(K)$. We will denote it by $\det$. It is mathematically given by the formula:
   \[
   \det(A) = \sum_{\sigma} \sgn(\sigma) \cdot A(1,\sigma(1)) \cdot A(2,\sigma(2)) \cdots A(n,\sigma(n)).
@@ -816,6 +819,7 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
 
 \begin{corollary}[Laplace Expansion]
   \label{cor:cofactor_expansion}
+\defterm{Laplace expansion}
   For all $A \in \M_{n \times n}(K)$, we have the following $n$ different formulas for $\det(A)$ (expanding along column $j$):
   \[
   \det(A) = \sum_{i=1}^n (-1)^{i+j} A_{ij} \det A(i|j), \quad \text{for any } j = 1, \dots, n.
@@ -875,7 +879,7 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
 \exsol{sol:parameter_for_3x3_determinant_sc}
 \end{exercise}
 
-The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \newterm{$i,j$ cofactor} of $A$. We can succinctly write the expansion of $\det(A)$ by the cofactors of the $j$-th column as $\det(A) = \sum_{i=1}^n A_{ij} \cdot C_{ij}$.
+The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \newterm[cofactor@$i,j$ cofactor]{$i,j$ cofactor} of $A$. We can succinctly write the expansion of $\det(A)$ by the cofactors of the $j$-th column as $\det(A) = \sum_{i=1}^n A_{ij} \cdot C_{ij}$.
 
 \begin{lemma*}[Orthogonality of Cofactors]\label{lem:false_cofactor}
   If we replace $A_{ij}$ in the formula by $A_{ik}$ (where $k$ is fixed), we always get $0$. In other words, for all $A \in \M_{n \times n}(K)$ and for $j \neq k$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = 0$.
@@ -974,6 +978,7 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
 
 \begin{theorem}[Cramer's Rule]
   \label{thm:cramers_rule}
+\defterm{Cramer's rule}
   Let $A \in \M_{n \times n}(K)$ with $\det A \neq 0$. Let $b = (b_1, \dots, b_n)\transp \in K^n$. Then, the system $A x = b$, where $x = (x_1, \dots, x_n)\transp$, has a unique solution, and it is given by the formula:
   \[
   x_j = \frac{\det A(j, b)}{\det A} \quad \text{for all } 1 \le j \le n,

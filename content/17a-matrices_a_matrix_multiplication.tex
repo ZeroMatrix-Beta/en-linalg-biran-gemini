@@ -19,7 +19,7 @@
 % def:17.a.1
 \begin{definition}[Matrix Multiplication]
 \label{def:matrix_multiplication}
-Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. We define a new matrix, which is called the \newterm{product} (or \newterm{multiplication}) of $A$ and $B$, denoted by $A \cdot B \in \M_{m \times p}(K)$.
+Let $A \in \M_{m \times n}(K)$ and $B \in \M_{n \times p}(K)$. We define a new matrix, which is called the \newterm[matrix product]{product} (or \newterm[matrix multiplication]{multiplication}) of $A$ and $B$, denoted by $A \cdot B \in \M_{m \times p}(K)$.
 
 Write $A = (a_{ij})_{\substack{1 \le i \le m \\ 1 \le j \le n}}$ and $B = (b_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le p}}$. The matrix $A \cdot B$ has entries $(c_{ij})_{\substack{1 \le i \le m \\ 1 \le j \le p}}$, where
 \begin{equation*}
@@ -524,9 +524,9 @@ We apply this equality for the standard basis vectors $w = e_1, w = e_2, \dots, 
 \label{def:triangular_diagonal_matrices}
 A matrix $A \in \M_{n \times n}(K)$, with entries $A = (a_{ij})_{\substack{1 \le i \le n \\ 1 \le j \le n}}$, is called:
 \begin{itemize}
-    \item \newterm{Upper triangular} if $a_{ij} = 0$ for all $i > j$.
-    \item \newterm{Lower triangular} if $a_{ij} = 0$ for all $i < j$.
-    \item \newterm{Diagonal} if $a_{ij} = 0$ for all $i \neq j$. A diagonal matrix has the form:
+    \item \newterm[upper triangular matrix]{Upper triangular} if $a_{ij} = 0$ for all $i > j$.
+    \item \newterm[lower triangular matrix]{Lower triangular} if $a_{ij} = 0$ for all $i < j$.
+    \item \newterm[diagonal matrix]{Diagonal} if $a_{ij} = 0$ for all $i \neq j$. A diagonal matrix has the form:
     \begin{equation*}
         \begin{pmatrix} * & & 0 \\ & \ddots & \\ 0 & & * \end{pmatrix}
     \end{equation*}

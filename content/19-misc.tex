@@ -22,6 +22,7 @@ It is a common temptation to simply identify every $n$-dimensional vector space 
 
 \begin{definition}[A Continuous Family of Subspaces]
   \label{def:mobius_family}
+\defterm{continuous family of subspaces}
   Let $S \subseteq \mathbb{C}$ be the unit circle defined by $S = \{e^{i\theta} \mid \theta \in [0, 2\pi]\}$. For each $z = e^{i\theta} \in S$, we define a 1-dimensional subspace $L_z \subseteq \mathbb{R}^2$ as follows:
   \[ L_z := \Sp \left( \left( \cos\tfrac{\theta}{2}, \, \sin\tfrac{\theta}{2} \right) \right). \]
   The inner parentheses are those of the vector: $L_z$ is the span of the \emph{single} vector $(\cos\frac{\theta}{2}, \sin\frac{\theta}{2}) \in \mathbb{R}^2$, not of the two scalars.
@@ -83,7 +84,7 @@ In our strict definition of a vector space, there is always a distinguished orig
   \label{def:affine_space}
   A subset $X \subseteq V$ is called an \newterm{affine space} if there exists a linear subspace $U \subseteq V$ and a translation vector $x_0 \in V$ such that $X = x_0 + U$.
 
-  We say that $X$ is modeled on the subspace $U$, and we write the \newterm{direction space} as $\vec{X} := U$. The elements of $X$ are called \newterm{points}, while the elements of $\vec{X}$ are called \newterm{vectors}.
+  We say that $X$ is modeled on the subspace $U$, and we write the \newterm{direction space} as $\vec{X} := U$. The elements of $X$ are called \newterm[point]{points}, while the elements of $\vec{X}$ are called \newterm[vector]{vectors}.
 % Extractor: Opus 5
   The \newterm{dimension} of $X$ is defined as $\dim X := \dim U$.
 \end{definition}
@@ -142,7 +143,7 @@ Note also that the two operations fit together as one expects: $p + \vec{pq} = q
 \end{example}
 
 \begin{remark}
-One can go further and define \newterm{affine maps} $f \colon X \to Y$ between affine spaces, and, given an affine space $X$ and a subspace $U \subseteq \vec{X}$, a new affine space $X/U$ modeled on $\vec{X}/U$.
+One can go further and define \newterm[affine map]{affine maps} $f \colon X \to Y$ between affine spaces, and, given an affine space $X$ and a subspace $U \subseteq \vec{X}$, a new affine space $X/U$ modeled on $\vec{X}/U$.
 \end{remark}
 
 \begin{definition}[Parallel Affine Spaces]
@@ -194,6 +195,7 @@ is defined. These are proportions, not distances: no notion of length is involve
 % Extractor: Opus 5
 \begin{theorem}[Thales' Theorem in Affine Geometry]
   \label{thm:thales_affine}
+\defterm{Thales' theorem}
   Let $V$ be a $3$-dimensional vector space over $K$, and let $H, H', H''$ be three distinct parallel $2$-dimensional affine planes in $V$. Let $\ell_1, \ell_2$ be two affine lines, neither of them weakly parallel to $H$, and put
   \[
   p_1 := H \cap \ell_1, \quad p_1' := H' \cap \ell_1, \quad p_1'' := H'' \cap \ell_1, \qquad p_2 := H \cap \ell_2, \quad p_2' := H' \cap \ell_2, \quad p_2'' := H'' \cap \ell_2.

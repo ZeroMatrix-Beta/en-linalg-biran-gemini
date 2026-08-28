@@ -20,6 +20,7 @@
 
 \begin{definition}[Map / Function]
 \label{def:map}
+\defterm{map}\defterm{function}
 Let $X$ and $Y$ be sets. A map $f: X \to Y$ (also called a function or transformation) is an assignment that assigns to every element $x \in X$ a uniquely defined element $f(x) \in Y$. 
 \end{definition}
 
@@ -91,6 +92,7 @@ $Y$ is called the \textit{target} (or target domain) of $f$.
 
 \begin{definition}[Equality of Functions]
 \label{def:equality_of_functions}
+\defterm{equality of functions}
 Two functions $f: X \to Y$ and $g: X' \to Y'$ are equal if they have the same domain of definition ($X' = X$), the same target ($Y' = Y$), and for all $x \in X$, we have $f(x) = g(x)$.
 \end{definition}
 
@@ -126,6 +128,7 @@ Concretely: $f: \mathbb{R} \to \mathbb{R}, \mathbb{R} \ni x \mapsto x^5 \in \mat
 
 \begin{definition}[Image of a Map]
 \label{def:image_of_map}
+\defterm{image of a map}
 Let $f: X \to Y$ be a map. The \textit{image} of $f$ is the set:
 \[
 f(X) := \{y \in Y \mid \exists x \in X \text{ s.t. } f(x) = y\}
@@ -135,6 +138,7 @@ f(X) := \{y \in Y \mid \exists x \in X \text{ s.t. } f(x) = y\}
 
 \begin{definition}[Restriction and Extension]
 \label{def:restriction}
+\defterm{restriction}\defterm{extension}
 Let $f: X \to Y$ be a map, and let $A \subseteq X$ be a subset. We can define a new map $f|_A: A \to Y$, called the \textit{restriction} of $f$ to $A$, simply by $f|_A(x) := f(x)$ for all $x \in A$.
 Conversely, $f$ is called an \textit{extension} of $f|_A$.
 \end{definition}
@@ -165,6 +169,7 @@ Conversely, $f$ is called an \textit{extension} of $f|_A$.
 
 \begin{definition}[Injectivity, Surjectivity, and Bijectivity]
 \label{def:injective_surjective_bijective}
+\defterm{injective}\defterm{surjective}\defterm{bijective}
 Let $f: X \to Y$ be a map.
 \begin{enumerate}
     \item We say $f$ is \textbf{injective} if $\forall x_1, x_2 \in X$, $f(x_1) = f(x_2) \implies x_1 = x_2$. (Equivalently, by contrapositive: $x_1 \ne x_2 \implies f(x_1) \ne f(x_2)$).
@@ -184,6 +189,7 @@ Consider variations of the squaring function, which explicitly demonstrate the i
 
 \begin{definition}[Inverse Map]
 \label{def:inverse_map}
+\defterm{inverse map}
 Let $f: X \to Y$ be a bijection. The \textit{inverse map} $f^{-1}: Y \to X$ is the map that assigns to every $y \in Y$ the unique $x \in X$ such that $f(x) = y$.
 \end{definition}
 
@@ -234,6 +240,7 @@ For the bijection $f: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$ with $f(x) = x^
 
 \begin{definition}[Composition]
 \label{def:composition}
+\defterm{composition}
 Let $f: X \to Y$ and $g: Y \to Z$ be maps. The composition $g \circ f: X \to Z$ is defined by:
 \[
 (g \circ f)(x) := g(f(x))
@@ -446,6 +453,7 @@ in the following two cases:
 
 \begin{definition}[Image of a Subset]
 \label{def:image_of_subset}
+\defterm{image of a subset}
 Let $f: X \to Y$ be a map, and let $A \subseteq X$. The \textit{image of $A$ under $f$} is:
 \[
 f(A) := \{y \in Y \mid \exists x \in A \text{ s.t. } f(x) = y\} = \{f(x) \mid x \in A\}
@@ -454,6 +462,7 @@ f(A) := \{y \in Y \mid \exists x \in A \text{ s.t. } f(x) = y\} = \{f(x) \mid x 
 
 \begin{definition}[Inverse Image of a Subset]
 \label{def:inverse_image_of_subset}
+\defterm{inverse image}
 Let $f: X \to Y$ be a map, and let $B \subseteq Y$. The \textit{inverse image of $B$ under $f$} is:
 \[
 f^{-1}(B) := \{x \in X \mid f(x) \in B\} \subseteq X
@@ -496,6 +505,7 @@ Let $f \colon X \to Y$ be a map, and let $A, A' \subseteq X$ and $B, B' \subsete
 
 \begin{definition}[Partition]
 \label{def:partition}
+\defterm{partition}
 Let $X$ be a set and $\mathcal{P}$ a family of subsets of $X$, none of which is empty. We say that $\mathcal{P}$ is a \textit{partition} of $X$ if the following hold:
 \begin{enumerate}
     \item $X = \bigcup_{P \in \mathcal{P}} P$ (the subsets cover $X$).

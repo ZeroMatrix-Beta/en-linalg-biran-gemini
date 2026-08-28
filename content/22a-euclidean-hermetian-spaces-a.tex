@@ -108,6 +108,7 @@ All three parts are left as an exercise.
 % thm 22.a.5
 \begin{theorem}[Pythagoras' Theorem]
 \label{thm:pythagoras}
+\defterm{Pythagoras' theorem}
 Let $V$ be a Euclidean/Hermitian vector space, and $u, v \in V$ with $u \perp v$. Then $\|u + v\|^2 = \|u\|^2 + \|v\|^2$.
 \end{theorem}
 
@@ -476,6 +477,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 % Thm. (22.a.11)
 \begin{theorem}[Cauchy-Schwarz Inequality]
 \label{thm:cauchy_schwarz}
+\defterm{Cauchy-Schwarz inequality}
     Let $(V, \langle \cdot, \cdot \rangle)$ be a vector space endowed with an inner product $\langle \cdot, \cdot \rangle$. Then for all $u, v \in V$ we have 
     \[
         |\langle u, v \rangle| \leq \|u\| \cdot \|v\|,
@@ -622,6 +624,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
 % Thm. (22.a.16)
 \begin{theorem}[Gram-Schmidt orthogonalization process]
 \label{thm:gram_schmidt}
+\defterm{Gram-Schmidt process}
     Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space over $K$ ($= \mathbb{R}$ or $\mathbb{C}$) and let $n = \dim V$. Let $(v_1, \dots, v_n)$ be a basis of $V$. Define a new list of vectors $w_1, \dots, w_n$ by induction:
     \[
         w_1 := v_1, \quad w_j := v_j - \sum_{i=1}^{j-1} \frac{\langle v_j, w_i \rangle}{\langle w_i, w_i \rangle} \cdot w_i \quad \text{for } j = 2, \dots, n.

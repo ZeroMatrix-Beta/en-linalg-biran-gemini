@@ -163,7 +163,7 @@ A \newterm{linear equation} in $n$ variables $x_1, \dots, x_n$ over a field $K$ 
 \[
 a_1 x_1 + \dots + a_n x_n = b,
 \]
-where $a_1, \dots, a_n \in K$ are the \newterm{coefficients} and $b \in K$ is the \newterm{constant term}.
+where $a_1, \dots, a_n \in K$ are the \newterm[coefficient]{coefficients} and $b \in K$ is the \newterm{constant term}.
 \begin{itemize}
     \item If $b = 0$, the equation is called \newterm{homogeneous}.
     \item If $b \ne 0$, the equation is called \newterm{inhomogeneous}.
@@ -172,6 +172,7 @@ where $a_1, \dots, a_n \in K$ are the \newterm{coefficients} and $b \in K$ is th
 
 \begin{definition}[System of Linear Equations]
 \label{def:system_of_linear_equations}
+\defterm{system of linear equations}
 A general system of $m$ linear equations in $n$ variables over a field $K$ is written as
 \begin{equation} \label{eq:general_system}
 \begin{cases}
@@ -191,7 +192,7 @@ A \newterm{solution} of the system is a tuple of scalars $s_1, \dots, s_n \in K$
 
 \begin{definition}[Equivalence of Systems]
 \label{def:equivalent_systems}
-Two systems of linear equations in the same variables are called \newterm{equivalent} if they have exactly the same set of solutions.
+Two systems of linear equations in the same variables are called \newterm[equivalent systems]{equivalent} if they have exactly the same set of solutions.
 \end{definition}
 
 \subsection{Matrices}
@@ -235,6 +236,7 @@ Special cases of matrices occur when one of the dimensions is $1$:
 
 \begin{definition}[Matrix-Vector Multiplication]
 \label{def:matrix_vector_multiplication}
+\defterm{matrix-vector multiplication}
 Let $A \in \M_{m \times n}(K)$ and $x \in K^n$. We define the product $A \cdot x$ to be the column vector in $K^m$ obtained by pairing each row of $A$ with the vector $x$:
 \[
 \begin{pmatrix}

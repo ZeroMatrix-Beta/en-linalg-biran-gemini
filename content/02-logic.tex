@@ -54,6 +54,7 @@ A & \neg A \\
 
 \begin{definition}[Conjunction / AND]
 \label{def:conjunction}
+\defterm{conjunction}
 The statement $A \wedge B$ (read \qt{$A$ and $B$}, and sometimes written $A \,\&\, B$) is True if and only if both $A$ and $B$ are True.
 \[
 \begin{array}{|c|c|c|}
@@ -75,6 +76,7 @@ For $x \in \mathbb{R}$, the statement $(x^2 = 1) \wedge (x \ge 0)$ is logically 
 
 \begin{definition}[Disjunction / OR]
 \label{def:disjunction}
+\defterm{disjunction}
 The statement $A \vee B$ (read \qt{$A$ or $B$}) is True if \textit{at least one} of the statements $A$ or $B$ is True. This is an \textit{inclusive} OR.
 \[
 \begin{array}{|c|c|c|}
@@ -179,6 +181,7 @@ The statement $(x > 1) \vee (x < 2)$ is True for all $x \in \mathbb{R}$, since e
 
 \begin{definition}[Implication]
 \label{def:implication}
+\defterm{implication}
 The statement $A \implies B$ (\qt{$A$ implies $B$}) is defined to be False only when $A$ is True and $B$ is False. In all other cases, it is True.
 \[
 \begin{array}{|c|c|c|}
@@ -204,6 +207,7 @@ is a mathematically \textbf{True} statement. Causality is irrelevant in formal l
 
 \begin{definition}[Equivalence]
 \label{def:equivalence}
+\defterm{equivalence of statements}
 The statement $A \iff B$ (\qt{$A$ if and only if $B$}) holds when $A \implies B$ and $B \implies A$ are both True. This means $A$ and $B$ share the same truth value.
 \[
 \begin{array}{|c|c|c|}
@@ -271,6 +275,7 @@ A \newterm{predicate} $P(x)$ is a statement whose truth depends on a variable $x
 
 \begin{definition}[Quantifiers]
 \label{def:quantifiers}
+\defterm{quantifier}
 \begin{itemize}
     \item \textbf{Universal ($\forall$):} \qt{For every $x$ in $X$, $P(x)$ holds.}
     \item \textbf{Existential ($\exists$):} \qt{There exists at least one $x$ in $X$ such that $P(x)$ holds.}
@@ -382,6 +387,7 @@ Let $x, y, z$ be variables and let $R, S$ be relations. Distribute the negation 
 
 \begin{definition}[Unique Existence]
 \label{def:unique_existence}
+\defterm{unique existence}
 The notation $\exists! x \in X : P(x)$ means there exists exactly one $x$ satisfying the predicate. Formally:
 \[
 (\exists x \in X : P(x)) \wedge (\forall x, y \in X : (P(x) \wedge P(y) \implies x = y))

@@ -63,6 +63,7 @@ We will now define three types of elementary matrices in $\M_{n \times n}(K)$. T
 % The notes present the three types under "Notation", unnumbered; keeping this
 % definition unnumbered is what makes 17.e.1--17.e.5 below line up with them.
 \begin{definition*}[Elementary Matrices]
+\defterm{elementary matrix}
 We define the following three types of elementary matrices:
 \begin{enumerate}
     \item \textbf{Type I:} Let $1 \le i \le n$, $1 \le j \le n$ with $i \neq j$, and let $\alpha \in K$. We define $Q_{ij}(\alpha)$ to be the matrix obtained from $I_n$ by applying the row operation $R_i + \alpha R_j \longrightarrow R_i$ (i.e., replacing the $i$-th row by the sum of the $i$-th row and $\alpha$ times the $j$-th row). Explicitly, we have:
@@ -222,6 +223,7 @@ By left-multiplying successively with the inverses of these elementary matrices,
 \end{proof}
 
 \begin{theorem}[Matrix Inversion Algorithm]
+\defterm{matrix inversion algorithm}
 % thm:17.e.4
 \label{thm:matrix_inversion_algorithm}
 Let $A \in \M_{n \times n}(K)$. Construct the augmented matrix by placing $A$ alongside $I_n$, denoted as $(A \mid I_n) \in \M_{n \times 2n}(K)$, that is, the matrix whose first $n$ columns are those of $A$ and whose last $n$ columns are those of $I_n$. Then, $A$ is invertible if and only if $(A \mid I_n)$ can be brought, via a sequence of elementary row operations, to the form $(I_n \mid B)$ for some matrix $B \in \M_{n \times n}(K)$. Furthermore, if this is the case, we have $A^{-1} = B$.

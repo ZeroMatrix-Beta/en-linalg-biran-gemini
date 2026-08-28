@@ -228,7 +228,7 @@ An important special case of $\Hom(V,W)$ is when $W=K$.
 \begin{definition}[The Dual Space and Linear Functionals]
 % def:18.a.5
   \label{def:dual_space}
-  Let $V$ be a vector space over $K$. The \newterm{dual space} of $V$ is defined to be the vector space $V^* := \Hom(V,K)$. The elements of $V^*$ are linear maps $\ell \colon V \to K$, and are sometimes called \newterm{functionals}.
+  Let $V$ be a vector space over $K$. The \newterm{dual space} of $V$ is defined to be the vector space $V^* := \Hom(V,K)$. The elements of $V^*$ are linear maps $\ell \colon V \to K$, and are sometimes called \newterm[linear functional]{functionals}.
 \end{definition}
 
 % cor:18.a.6
@@ -270,6 +270,7 @@ Show that the map $D \colon K_{\text{row}}^n \to (K_{\text{col}}^n)^*$, $D(\ell)
 % 18.a.1--18.a.12 are untouched; cite it with \cpageref.
 \begin{definition*}[The Functionals Dual to a Basis]
 \label{def:dual_basis_functionals}
+\defterm{dual basis}
 % Extractor: Gemini 3.1 Pro
 Let $V$ be a finite-dimensional vector space over $K$, and let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$. For $1 \leq i \leq n$, define a functional $v_i^* \in V^*$ as follows: $v_i^*(v_j) := \delta_{ij}$. This means that $v_i^*(v_i) = 1$, and $v_i^*(v_j) = 0$ for all $j \neq i$. Since $v_1, \dots, v_n$ form a basis for $V$, our definition determines uniquely a well-defined functional $v_i^* \colon V \to K$
 % Creator: Opus 5
@@ -800,6 +801,7 @@ We denote the equivalence class of $v \in V$ by $[v]$. Thus,
 % def:18.c.1
 \begin{definition}[The Quotient Space]
   \label{def:quotient_space}
+\defterm{quotient space}
   Let $V$ be a vector space over $K$, and let $U \subseteq V$ be a subspace. We define $V/U := V/\sim$ to be the set of equivalence classes of the equivalence relation $\sim$, which is one by the Lemma on \cpageref{lem:quotient_equivalence_relation}. So, the elements of $V/U$ are $[v]$, where $v \in V$.
   
   Alternatively, each element in $V/U$ is a set of the form $v + U$, where $v \in V$. The space $V/U$ is called the quotient of $V$ by $U$ (or modulo $U$).
@@ -957,6 +959,7 @@ We now define a map $\pi \colon V \to V/U$ by $\pi(v) := [v] \in V/U$ for all $v
 % thm:18.c.5
 \begin{theorem}[The First Isomorphism Theorem]
   \label{thm:first_isomorphism}
+\defterm{first isomorphism theorem}
   Let $V$ and $W$ be vector spaces over $K$, and let $T \colon V \to W$ be a linear map. We define a new map $\overline{T} \colon V/\ker(T) \to \Img(T)$ as follows: For $x \in V/\ker(T)$, choose a representative $v \in V$ such that $x = [v]$. Define $\overline{T}(x) := T(v)$. Then:
   \begin{enumerate}
     \item $\overline{T}$ is well-defined and is a linear map.

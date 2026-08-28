@@ -70,7 +70,7 @@ This matrix has $\lambda$ on the main diagonal, $1$'s on the diagonal immediatel
 
 For $n=1$, $J_{\lambda, 1} = (\lambda)$. For $n=2$, $J_{\lambda, 2} = \left(\begin{smallmatrix} \lambda & 1 \\ 0 & \lambda \end{smallmatrix}\right)$. For $n=3$, $J_{\lambda, 3} = \begin{pmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{pmatrix}$, etc.
 
-The matrix $J_{\lambda, n}$ is called the \newterm{$n$-dimensional Jordan matrix with eigenvalue $\lambda$}.
+The matrix $J_{\lambda, n}$ is called the \newterm[Jordan matrix]{$n$-dimensional Jordan matrix with eigenvalue $\lambda$}.
 \end{definition}
 
 % Lemma. (28.a.2)
@@ -127,6 +127,7 @@ Is $J_{\lambda, n}$ the \qt{only reason} for this non-implication?
 % Thm. (28.a.3)
 \begin{theorem}[Jordan Normal Form]
 \label{thm:jordan_normal_form}
+\defterm{Jordan normal form}
 Let $V$ be an $n$-dimensional vector space over $K$ and $T \in \End(V)$ such that $P_T(x)$ splits as a product of linear factors in $K[x]$ (e.g., if $K = \mathbb{C}$, this always happens). Then there exists a basis $\mathcal{B}$ for $V$ such that
 \[
 [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} J_{\lambda_1, n_1} & & & \\ & J_{\lambda_2, n_2} & & \\ & & \ddots & \\ & & & J_{\lambda_k, n_k} \end{pmatrix},
@@ -147,7 +148,7 @@ Prof. Biran annotates the uniqueness claim with \qt{explain}. Make the statement
 
 \begin{remark}
 \label{rem:jordan_basis}
-The basis $\mathcal{B}$ is called a \newterm{Jordan basis} for $T$. The resulting block diagonal matrix is called the \newterm{Jordan Normal Form} (JNF) of $T$. A similar theorem holds for matrices $A \in \M_{n \times n}(K)$: there exists an invertible matrix $P$ such that $P^{-1} A P$ is in Jordan Normal Form.
+The basis $\mathcal{B}$ is called a \newterm{Jordan basis} for $T$. The resulting block diagonal matrix is called the \newterm[Jordan normal form]{Jordan Normal Form} (JNF) of $T$. A similar theorem holds for matrices $A \in \M_{n \times n}(K)$: there exists an invertible matrix $P$ such that $P^{-1} A P$ is in Jordan Normal Form.
 \end{remark}
 
 \begin{example}[Jordan Normal Form Block Structure]

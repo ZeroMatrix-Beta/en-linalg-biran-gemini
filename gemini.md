@@ -73,6 +73,11 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Lists with Descriptions:** For lists where each item has a specific name or title (e.g., "Associativity", "Distributivity"), use the `description` environment. For standard numbered lists, use `enumerate` but do not hard-code labels; rely on the global style defined in the preamble.
 * **New Terminology & Quotes:** Use `\newterm{...}` for introducing newly defined mathematical terms (the first definition or formal introduction of a concept). Use `\qt{...}` strictly for quoting text, literal quotes, colloquial terms, or informal emphasis—never use `\qt{...}` where a term is being formally defined or introduced for the first time.
 * **Bracket Restriction:** NEVER use `\qt{...}` or `\newterm{...}` or any other formatting macro inside the square brackets `[...]` of an environment header (e.g., `\begin{definition}[Linear Map]` is correct; `\begin{definition}[\qt{Linear Map}]` is WRONG).
+* **The Index (`\newterm`, `\defterm`):** The book carries an index, and it is built out of the markup that is already in the prose. There is no second list to keep in step.
+  * `\newterm{term}` files that term in the index as well as marking it, with the page number set in bold so a reader can pick the defining page out of a run. Marking a term is all it takes to index it.
+  * The optional argument overrides the entry when the phrase in the sentence is not what a reader would look up: `\newterm[basis]{bases}` when the sentence needs the plural, `\newterm[T-cyclic subspace@$T$-cyclic subspace]{$T$-cyclic subspace}` when the entry starts with maths. Without the sort key before the `@`, makeindex files the entry under `$`, ahead of the letters. A literal `!`, `@`, `|` or `"` in an entry is quoted as `"!`, `"@`, `"|`, `""`.
+  * `\defterm{term}` files a term that has no `\newterm` to hang it on: a definition whose subject no single phrase in the sentence names, or a theorem the reader looks up by name, e.g. `\defterm{Cayley-Hamilton theorem}`. It goes **inside** the environment, after the `\label`, never in the `[...]` title (see the Bracket Restriction above).
+  * `perl tools/check-index.pl` fails if any `definition`, `definition*` or `aidefinition` indexes nothing at all. `notation` is exempt: it introduces symbols rather than words, and several notations name nothing a reader would look up.
 * **Elementary Row Operations (EROs):** Prof. Biran defines these explicitly in his own hand, on p. 5–6 of `source/06.linear equations.v02.pdf`, and **his three forms are the convention**. Copy them exactly:
   * Type 1 (Scaling): `c \cdot R_i \to R_i` (with $c \ne 0$) — scalar first, target after the arrow.
   * Type 2 (Addition): `R_j + c \cdot R_i \to R_j` — **the target row is written first inside the sum**, then the multiple of the other row, then the arrow, then the target again.
@@ -188,7 +193,9 @@ You are authorized to improve the prose and apply the established "House Style" 
 \newenvironment{exercisesol}[1][Solution]{\exnoteopen{SolTint}{\faCheckCircle[regular]}{#1}}{\exnoteclose}
 \newcommand{\exsol}[2][Solution]{\begin{exercisesol}[#1]\hyperref[#2]{See solution on \cpageref{#2}}\end{exercisesol}}
 
-\newcommand{\newterm}[1]{\glqq\textit{#1}\grqq}
+% \newterm also writes the index entry; the optional argument overrides it.
+\newcommand{\defterm}[1]{\index{#1|textbf}}
+\newcommand{\newterm}[2][]{\ifstrempty{#1}{\defterm{#2}}{\defterm{#1}}\glqq\textit{#2}\grqq}
 \newcommand{\qt}[1]{\textit{``#1''}}
 
 % --- MATH OPERATORS ---

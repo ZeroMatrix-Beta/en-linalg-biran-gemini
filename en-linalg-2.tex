@@ -165,6 +165,25 @@
 \usepackage[nameinlink, capitalize]{cleveref}
 
 % ==========================================
+% INDEX
+% ==========================================
+% imakeidx calls makeindex itself (restricted \write18 is enabled), so the
+% index also comes out of a bare pdflatex run, not only from latexmk.
+\usepackage{imakeidx}
+\makeindex[title=Index, intoc, columns=2]
+
+% \defterm{entry} marks the place where a term is *defined*. It sets that page
+% number in bold, so a reader scanning a run of pages can pick the definition
+% out of the ordinary occurrences. It goes inside the definition environment,
+% and at the statement of a theorem the reader would look up by name.
+%
+% makeindex reads "!" as the subentry separator and "@" as "sort as":
+%   \defterm{matrix!triangular}   files "triangular" under "matrix"
+%   \defterm{Fp@$\mathbb{F}_p$}   prints the maths but sorts under "Fp"
+% A literal !, @, | or " inside an entry has to be quoted as "!, "@, "| or "".
+\newcommand{\defterm}[1]{\index{#1|textbf}}
+
+% ==========================================
 % SPACING UNITS (everything in ex -- do not mix in pt)
 % ==========================================
 \linespread{1.05}
@@ -207,8 +226,23 @@
 % \germanterm -> German quotes  \glqq...\grqq  for German technical terms
 % \definecolor{QuoteRed}{HTML}{EB2D00}
 \definecolor{QuoteRed}{HTML}{BD2400}
+% \newterm already marks a term at exactly the place where the text introduces
+% it, so it is also what files that term in the index, with the page number in
+% bold. Nothing else has to be maintained: a term marked in the prose is a
+% term in the index.
+%
+% The optional argument overrides the index entry for the cases where the
+% phrase in the sentence is not what a reader would look up:
+%   \newterm[basis]{bases}                       the sentence needs the plural
+%   \newterm[matrix!augmented]{augmented matrix} file it under "matrix"
+%   \newterm[T-cyclic subspace@$T$-cyclic subspace]{$T$-cyclic subspace}
+% An entry that starts with maths needs that sort key, or makeindex files it
+% under "$", ahead of the letters.
 % \newcommand{\newterm}[1]{\textcolor{BrickRed}{``}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{BrickRed}{''}}
-\newcommand{\newterm}[1]{\textcolor{QuoteRed}{``}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{QuoteRed}{''}}
+\newcommand{\newterm}[2][]{%
+  \ifstrempty{#1}{\defterm{#2}}{\defterm{#1}}%
+  \textcolor{QuoteRed}{``}\textcolor{TextBoldColor}{\textit{#2}}\textcolor{QuoteRed}{''}%
+}
 \newcommand{\germanterm}[1]{\textcolor{QuoteRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{QuoteRed}{\grqq}}
 \newcommand{\qt}[1]{\textit{\textcolor{QuoteRed}{``}#1\textcolor{QuoteRed}{''}}}
 \newcommand{\inlinemetanote}[1]{\textit{[\textcolor{TextMetaNote}{#1}]}}
@@ -904,5 +938,8 @@
 \input{content/27-bilinear-and-quadratic-forms.tex}
 \input{content/28-jordan-a.tex}
 \input{content/28b-jordan-b.tex}
+
+\cleardoublepage
+\printindex
 
 \end{document}

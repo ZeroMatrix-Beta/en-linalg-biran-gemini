@@ -79,6 +79,7 @@ What about over $\mathbb{C}$?
 % Thm. (24.a.4)
 \begin{theorem}[Spectral Theorem over $\mathbb{C}$]
 \label{thm:spectral_thm_c}
+\defterm{spectral theorem}
 Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{C}$, and let $T \colon V \to V$ be a linear map. Then $T$ is orthogonally diagonalizable if and only if $T$ is normal.
 \end{theorem}
 
@@ -300,9 +301,9 @@ where the first equality is \cref{prop:matrix_representation_adjoint}, whose con
 % Def. (24.a.8)
 \begin{definition}
 \label{def:self_adjoint}
-Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and $T \in \End(V)$. $T$ is called \newterm{self adjoint} if $T^* = T$. 
+Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and $T \in \End(V)$. $T$ is called \newterm[self-adjoint]{self adjoint} if $T^* = T$. 
 
-Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm{self adjoint} if $A^* = A$, where $A^* := \overline{A}\transp$ is the adjoint matrix of \cref{def:adjoint_hermitian_matrices}. (Note that over $K = \mathbb{R}$, a self adjoint matrix is precisely a symmetric matrix, $A\transp = A$).
+Similarly, a matrix $A \in \M_{n \times n}(K)$ is called \newterm[self-adjoint]{self adjoint} if $A^* = A$, where $A^* := \overline{A}\transp$ is the adjoint matrix of \cref{def:adjoint_hermitian_matrices}. (Note that over $K = \mathbb{R}$, a self adjoint matrix is precisely a symmetric matrix, $A\transp = A$).
 \end{definition}
 
 \begin{exercise}[Matrix Representation of Self-Adjoint Maps]
@@ -329,6 +330,7 @@ Show that $T \colon V \to V$ is self adjoint if and only if for every orthonorma
 % The notes state this theorem without ever introducing T; supplied here.
 \begin{theorem}[Spectral Theorem over $\mathbb{R}$]
 \label{thm:spectral_thm_r}
+\defterm{spectral theorem}
 Let $V$ be a Euclidean space (i.e., an inner product space over $\mathbb{R}$) of finite dimension, and let $T \in \End(V)$. Then $T$ is orthogonally diagonalizable if and only if $T$ is self adjoint.
 \end{theorem}
 
@@ -443,6 +445,7 @@ Carry out the calculation Prof. Biran marks with \qt{check that $A A^* \neq A^* 
 % Thm. (24.a.11)
 \begin{theorem}[Matrix Spectral Theorems]
 \label{thm:spectral_thm_matrices}
+\defterm{spectral theorem}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item If $A \in \M_{n \times n}(\mathbb{C})$ is normal, then there exists a unitary matrix $U \in \Unit(n)$ such that $U^{-1} A U$ is diagonal. (Note that $U^{-1} = U^*$, by \cref{lem:char_unitary_matrices} \textbf{(d)}).
     \item If $A \in \M_{n \times n}(\mathbb{R})$ is a symmetric matrix, then there exists an orthogonal matrix $O \in \Orth(n)$ such that $O^{-1} A O$ is diagonal. (Note that $O^{-1} = O\transp$, by \cref{lem:char_orthogonal_matrices} \textbf{(d)}).
