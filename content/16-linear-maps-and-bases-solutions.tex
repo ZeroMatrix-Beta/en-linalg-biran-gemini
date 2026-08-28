@@ -3,6 +3,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:properties_coordinate_maps_mc}]
 \label{sol:properties_coordinate_maps_mc}
+\exinfo{Official Solution (Problem Sheet 10, Exercise 1). Evaluates statements on coordinate isomorphisms, nullspace-image intersections, and injectivity vs.~bijectivity.}
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \item \textbf{Statement (1) is TRUE:}
     By \cref{prop:coordinate_map_isomorphism}, for any choice of basis $\mathcal{B}$, the coordinate assignment map $\Phi_{\mathcal{B}} \colon V \to \mathbb{R}^n, v \mapsto [v]_{\mathcal{B}}$ is an isomorphism of vector spaces, and hence is linear.
@@ -21,6 +22,7 @@ Thus statements \textbf{(1)} and \textbf{(3)} are true, while statement \textbf{
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:geometric_interpretation_matrix_mc}]
 \label{sol:geometric_interpretation_matrix_mc}
+\exinfo{Official Solution (Problem Sheet 10, Exercise 2). Connects coordinate representation matrices to rotations, reflections, and basis changes in $\mathbb{R}^2$.}
 We are given $M = [f]_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$. By definition, the $j$-th column of $M$ contains the coordinate vector with respect to $\mathcal{B}$ of the image of the $j$-th vector of $\mathcal{A}$.
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -41,6 +43,7 @@ All four statements are true.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:complex_multiplication_real_linear_map_sc}]
 \label{sol:complex_multiplication_real_linear_map_sc}
+\exinfo{Official Solution (Problem Sheet 10, Exercise 3). Identifies multiplication by $i$ on $\mathbb{C} \cong \mathbb{R}^2$ from its representation matrix in the basis $(1, i)$.}
 Consider the linear map $T \colon \mathbb{C} \to \mathbb{C}$ given by $T(z) = iz$.
 Using the ordered basis $\mathcal{B} = (1, i)$:
 \begin{align*}
@@ -57,6 +60,7 @@ Therefore, the correct choice is \textbf{(4): $z \mapsto iz$}.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:polynomial_differential_operator_matrix}]
 \label{sol:polynomial_differential_operator_matrix}
+\exinfo{Official Solution (Problem Sheet 10, Exercise 4). Computes the upper triangular representation matrix of $p \mapsto p'' + p'$ on $\mathbb{R}[X]_n$ in the monomial basis.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Linearity:}
     Let $p, q \in \mathbb{R}[X]_n$ and $\alpha, \beta \in \mathbb{R}$. Using the linearity of the standard derivative operators:
@@ -101,6 +105,7 @@ Therefore, the correct choice is \textbf{(4): $z \mapsto iz$}.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:differentiation_customized_bases}]
 \label{sol:differentiation_customized_bases}
+\exinfo{Official Solution (Problem Sheet 10, Exercise 5). Constructs customized polynomial bases of $\mathbb{R}[x]_3$ and $\mathbb{R}[x]_2$ realizing a target upper triangular matrix for differentiation.}
 Let $\mathcal{C} = (1, x, x^2)$ be the standard monomial basis of $\mathbb{R}[x]_2$.
 We seek a basis $\mathcal{B} = (b_0, b_1, b_2, b_3)$ of $\mathbb{R}[x]_3$ such that $[D(b_j)]_{\mathcal{C}}$ matches column $j$ of the given matrix:
 \[
@@ -128,6 +133,7 @@ Thus, an explicit choice of bases is:
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:change_of_bases_composition}]
 \label{sol:change_of_bases_composition}
+\exinfo{Official Solution (Problem Sheet 10, Exercise 6). Verifies basis conditions via determinants, computes composite representations, and confirms the matrix product formula $[g \circ f]_{\mathcal{C}}^{\mathcal{A}} = [g]_{\mathcal{C}}^{\mathcal{B}} [f]_{\mathcal{B}}^{\mathcal{A}}$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Basis Verification:}
     \begin{itemize}

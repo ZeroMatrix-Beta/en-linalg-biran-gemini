@@ -1,9 +1,10 @@
-﻿\section{Solutions}
+\section{Solutions}
 \label{sec:solutions_dimension}
 
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_subspaces_dimension_bases}]
 \label{sol:matrix_subspaces_dimension_bases}
+\exinfo{Official Solution (Problem Sheet 7, Exercise 2). Determines bases and dimensions of upper triangular, diagonal, symmetric, and row-sum zero matrix spaces.}
 Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matrix having entry $1$ in the $(i, j)$-position and $0$ elsewhere, for $1 \le i, j \le n$. The set of all $n^2$ elementary matrices forms the standard basis of $\M_{n \times n}(\mathbb{R})$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -66,6 +67,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:subspace_dimension_equations_basis_selection}]
 \label{sol:subspace_dimension_equations_basis_selection}
+\exinfo{Official Solution (Problem Sheet 7, Exercise 4). Computes basis selection, dimension, and defining homogeneous Cartesian equations for a subspace in $\mathbb{R}^4$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We determine the dimension of $W = \Sp(v_1, v_2, v_3, v_4)$ by applying elementary row operations to the matrix whose columns are the given vectors:
     \[
@@ -156,6 +158,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:bases_dimensions_various_spaces}]
 \label{sol:bases_dimensions_various_spaces}
+\exinfo{Solution by Gemini 3.7 Flash (High). Finds bases and dimensions for linear systems, trivial space, and complex vs real planes.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{System of linear equations.} The system is
     \[
@@ -212,6 +215,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:polynomials_linear_factor_dimension}]
 \label{sol:polynomials_linear_factor_dimension}
+\exinfo{Solution by Gemini 3.7 Flash (High). Computes the dimension of multiples of a fixed linear factor in polynomial spaces.}
 Let $g(X) := X + 5 \in K[X]$. An element $h \in K[X]$ belongs to $W$ if and only if $\deg(h) \le d$ and $h(X) = g(X) f(X)$ for some polynomial $f(X) \in K[X]$.
 
 For any non-zero polynomial $f \in K[X]$, the degree formula yields
@@ -244,6 +248,7 @@ Thus $\mathcal{B}$ is a basis of $W$. Since it contains exactly $d$ polynomials,
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:harmonic_ode_solution_space}]
 \label{sol:harmonic_ode_solution_space}
+\exinfo{Solution by Gemini 3.7 Flash (High). Demonstrates the 2-dimensional solution space of harmonic oscillator ODE $f'' + f = 0$.}
 We determine the dimension and an explicit basis for the real vector space
 \[
     V := \left\{ f \colon \mathbb{R} \to \mathbb{R} \;\middle|\; f \text{ is twice differentiable and } f'' + f = 0 \right\}.
@@ -277,6 +282,7 @@ This proves that $\{\cos x, \sin x\}$ spans $V$.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Proof of \cref{exc:shifted_span_dimension}]
 \label{sol:shifted_span_dimension}
+\exinfo{Solution by Gemini 3.7 Flash (High). Proves the dimension bound $\dim \Sp(v_1+w, \dots, v_m+w) \ge m-1$ via difference vectors.}
 Let $\{v_1, \dots, v_m\}$ be a linearly independent subset of $V$, let $w \in V$, and define the subspace
 \[
     W := \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \subseteq V.
@@ -308,6 +314,7 @@ Hence $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of card
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:descending_chains_subspaces}]
 \label{sol:descending_chains_subspaces}
+\exinfo{Official Solution (Problem Sheet 7, Exercise 6). Proves stabilization of descending subspace chains in finite dimensions and provides polynomial counterexamples in infinite dimensions.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Finite-dimensional case.} Suppose that $\dim V = d < \infty$. By \cref{prop:subspace_dimension_constraints}, every linear subspace of $V$ is finite-dimensional with $\dim U \le \dim V$. Since the sequence is nested with $U_{n+1} \subseteq U_n$, applying \cref{prop:subspace_dimension_constraints} gives $\dim U_{n+1} \le \dim U_n$ for all $n \ge 0$.
     

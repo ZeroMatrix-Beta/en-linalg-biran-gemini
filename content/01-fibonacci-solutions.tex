@@ -1,6 +1,6 @@
-% Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:fib_dimension_two_samples}]
 \label{sol:fib_dimension_two_samples}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 1, Exercise 6). Method 1 presents the geometric eigenbasis and determinant argument; the alternative recurrence shift in the note below follows the ETH sample solution (suggested by Segev).}
 Let $F = (\alpha_n)_{n=0}^\infty$ and $G = (\beta_n)_{n=0}^\infty$ be two sequences in $\Fib$. Consider the difference sequence $D := F - G = (\delta_n)_{n=0}^\infty$, where $\delta_n := \alpha_n - \beta_n$ for all $n \ge 0$. 
 
 By \cref{prop:fib_closure}, $\Fib$ is closed under linear combinations, so $D \in \Fib$. Therefore, by \cref{thm:binet_formula}, there exist unique real constants $c_1, c_2 \in \mathbb{R}$ such that
@@ -60,6 +60,7 @@ Since $j > i$, the second condition gives $0 = \delta_j = \delta_{i+(j-i)} = F_{
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:golden_ratio_part1}]
 \label{sol:golden_ratio_part1}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 1, Exercise 1). Solves for the basis sequence $\mathcal{F}_{1,0}$ and general $\mathcal{F}_{a,b}$ using the standard geometric eigenbasis decomposition.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We seek the explicit formula for $\mathcal{F}_{1,0} = (b_n)_{n=0}^\infty$. Since $\mathcal{F}_{1,0} \in \Fib$, we can express it as a linear combination of the two geometric basis sequences $\mathcal{F}_{1,\varphi} = (\varphi^n)$ and $\mathcal{F}_{1,\psi} = (\psi^n)$:
     \[
@@ -108,6 +109,7 @@ Since $j > i$, the second condition gives $0 = \delta_j = \delta_{i+(j-i)} = F_{
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:golden_ratio_part2}]
 \label{sol:golden_ratio_part2}
+\exinfo{Official Solution (Problem Sheet 1, Exercise 3). Computes the algebraic limit of consecutive Fibonacci ratios via the characteristic polynomial.}
 Let $F_n$ denote the $n$-th classical Fibonacci number ($F_0 = 0, F_1 = 1, F_2 = 1, F_3 = 2, \dots$). We are given that the limit
 \[
 L := \lim_{n \to \infty} \frac{F_n}{F_{n-1}}

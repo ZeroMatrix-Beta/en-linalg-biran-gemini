@@ -1,6 +1,7 @@
-﻿% Solution by Gemini 3.7 Flash (High)
+% Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:similarity_of_matrix_products}]
 \label{sol:similarity_of_matrix_products}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 5). Proves similarity of $AB$ and $BA$ when at least one matrix is invertible and constructs a nilpotency counterexample otherwise.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{At least one factor is invertible:}
     Suppose without loss of generality that $A \in \GL_n(K)$. Then:
@@ -29,6 +30,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:rank_invariance_similarity_mc}]
 \label{sol:rank_invariance_similarity_mc}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 6). Shows similarity preserves shifted rank $\rank(A - I_n)$ and connects nullity to fixed vectors.}
 Let $A \in \M_{n \times n}(K)$ and $P \in \GL_n(K)$.
 \begin{itemize}
     \item Note that:
@@ -57,6 +59,7 @@ The true statements are \textbf{(1)} and \textbf{(5)}.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:change_of_basis_polynomials_mc}]
 \label{sol:change_of_basis_polynomials_mc}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 7). Computes the change of basis transition matrix between quadratic polynomial bases.}
 The change of basis matrix $Q = [\id]_{\mathcal{B}}^{\mathcal{C}}$ has as its $j$-th column the coordinates $[c_j]_{\mathcal{B}}$ of the $j$-th element of $\mathcal{C} = (c_1, c_2, c_3)$ expressed in the basis $\mathcal{B} = (1, x, x^2)$:
 \begin{align*}
 c_1 &= x^2 = 0 \cdot 1 + 0 \cdot x + 1 \cdot x^2 \implies [c_1]_{\mathcal{B}} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, \\
@@ -72,6 +75,7 @@ Q = [\id_{\mathbb{R}[x]_2}]_{\mathcal{B}}^{\mathcal{C}} = \begin{pmatrix} 0 & 1 
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:linear_maps_and_base_changes_sc}]
 \label{sol:linear_maps_and_base_changes_sc}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 8). Evaluates statements on rank upper bounds, change-of-basis definitions, and matrix invertibility.}
 Statement \textbf{(3)} is \textbf{false} in general.
 For any linear map $f \colon K^n \to K^m$, its rank satisfies $\rank(f) \le \min\{n, m\}$ (since $\Img(f) \subseteq K^m$ and $\dim \Img(f) \le \dim K^n$), not $\ge \min\{n, m\}$. For example, the zero map $f(v) = 0$ has rank $0 < \min\{n, m\}$ whenever $n, m \ge 1$.
 

@@ -1,4 +1,4 @@
-\renewcommand{\thetheorem}{19.\arabic{theorem}}
+﻿\renewcommand{\thetheorem}{19.\arabic{theorem}}
 \setcounter{theorem}{0}
 \setcounter{chapter}{18} % Chapter 19
 % ---------------------------------------------------------------------------
@@ -102,6 +102,7 @@ The point $x_0$ in \cref{def:affine_space} is not uniquely determined by $X$, un
 \label{exc:direction_space_unique}
 Let $X \subseteq V$ be an affine space. Show that the subspace $U$ of \cref{def:affine_space} is uniquely determined by $X$, and that any point of $X$ may be taken as the base point $x_0$. Deduce that $x_0$ is unique precisely when $\dim X = 0$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
+\exsol{sol:direction_space_unique}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
@@ -370,6 +371,7 @@ This is the whole method in miniature, and it is the motivation for the chapters
 \label{sec:solutions_misc}
 
 \begin{exercisesolution}[Solution to \cref{exc:direction_space_unique}]
+\label{sol:direction_space_unique}
 Write $X = x_0 + U$ as in \cref{def:affine_space}. The key observation is that $U$ can be recovered from $X$ alone, without reference to $x_0$, as the set of differences of points of $X$:
 \[
 U = \{\, q - p \mid p, q \in X \,\}.
@@ -446,3 +448,4 @@ The uniqueness of the direction space $U$, on which the notation $\vec{X}$ of
 the point is that $U$ is the set of differences of points of $X$, a description
 in which the base point does not appear.
 \end{ainote}
+

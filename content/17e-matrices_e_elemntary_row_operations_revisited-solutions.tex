@@ -1,6 +1,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:explicit_inversion_matrices}]
 \label{sol:explicit_inversion_matrices}
+\exinfo{Official Solution (Problem Sheet 13, Exercise 1). Explicitly inverts 4 matrices via Gauss-Jordan elimination on $(M \mid I)$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Matrix $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$:}
     Applying the row operations $R_2 \to R_2 - R_1$ and $R_3 \to R_3 - R_1$ yields:
@@ -108,6 +109,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_gaussian_elimination_invertibility}]
 \label{sol:parametric_gaussian_elimination_invertibility}
+\exinfo{Official Solution (Problem Sheet 13, Exercise 2). Performs parametric row reduction to determine values of $\alpha$ for matrix invertibility.}
 We apply Gaussian elimination to the parameter-dependent matrix $M_\alpha$:
 \[
 M_\alpha = \begin{pmatrix}
@@ -161,6 +163,7 @@ Therefore, $M_\alpha$ is invertible if and only if $\alpha \in \mathbb{Q} \setmi
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:bruhat_decomposition}]
 \label{sol:bruhat_decomposition}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 13, Exercise 3). Establishes the Bruhat decomposition $A = B P B'$ for $\GL_n(K)$ using triangular row operations and permutation matrices.}
 Let $A \in \GL_n(K)$. Let $B \subseteq \GL_n(K)$ denote the subgroup of invertible upper triangular matrices.
 
 \textbf{Proof via Gaussian Elimination:}
@@ -180,6 +183,7 @@ A = B P B'. \qedhere
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_3x3_invertibility_mc}]
 \label{sol:parametric_3x3_invertibility_mc}
+\exinfo{Official Solution (Problem Sheet 13, Exercise 4). Evaluates the non-invertibility condition $\det(A) = 0$ for a $3 \times 3$ parametric matrix.}
 Let $A = \begin{pmatrix} 1 & x & 1 \\ 3 & 3 & x \\ 0 & 3 & 1 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$.
 We compute the determinant of $A$ by expanding along the first column:
 \begin{align*}

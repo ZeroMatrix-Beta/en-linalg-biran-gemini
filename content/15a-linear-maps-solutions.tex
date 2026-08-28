@@ -1,6 +1,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:extending_linear_map_by_zero}]
 \label{sol:extending_linear_map_by_zero}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 1). Proves non-linearity of extending a non-trivial map by zero outside a proper subspace.}
 The extended map $T \colon V \to W$ is \textbf{not} linear in general.
 
 \textbf{Proof:}
@@ -24,6 +25,7 @@ Hence $T$ fails additivity and is therefore not a linear map.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:additive_maps_over_rationals}]
 \label{sol:additive_maps_over_rationals}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 2). Establishes $\mathbb{Q}$-homogeneity for additive maps using induction and scaling.}
 Let $f \colon V \to W$ be an additive map, so $f(x + y) = f(x) + f(y)$ for all $x, y \in V$. We must show that $f(q x) = q f(x)$ for all $q \in \mathbb{Q}$ and $x \in V$.
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -53,6 +55,7 @@ Thus $f$ is homogeneous under scalar multiplication by $\mathbb{Q}$, so $f \in \
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:polynomial_integral_eval_linear_map}]
 \label{sol:polynomial_integral_eval_linear_map}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 3). Identifies parameter values making integral and point-evaluation maps linear via test polynomials.}
 Write $T = (T_1, T_2)\transp \colon \mathbb{R}[x] \to \mathbb{R}^2$ where:
 \[
 T_1(p) = 3p(4) + 5p(6) + b p(1)p(2), \qquad T_2(p) = \int_{-1}^2 x^2 p(x) \, dx + c (p(0))^2.
@@ -84,6 +87,7 @@ Thus $T$ is linear if and only if $b = c = 0$.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:identifying_linear_maps_mc}]
 \label{sol:identifying_linear_maps_mc}
+\exinfo{Solution by Gemini 3.7 Flash (High). Based on Problem Sheet 9, Multiple Choice. Analyzes linearity of vector formulas and matrix operations.}
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \item \textbf{Linear:} $f(x, y) = (x + y, 2x, 0)$ is given by matrix multiplication:
     \[
@@ -104,6 +108,7 @@ Thus $T$ is linear if and only if $b = c = 0$.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_map_mc}]
 \label{sol:matrix_map_mc}
+\exinfo{Solution by Gemini 3.7 Flash (High). Based on Problem Sheet 9, Multiple Choice. Identifies the canonical linear transformation associated with a $3 \times 2$ matrix.}
 The matrix $A = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix}$ has size $3 \times 2$, so it defines a linear map $K^2 \to K^3$ via:
 \[
 A \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2x + y \\ x \\ 2y \end{pmatrix}.
@@ -114,6 +119,7 @@ Therefore, map \textbf{(1)}, $f \colon \mathbb{R}^2 \to \mathbb{R}^3, f(x, y) = 
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:preimage_subspace_dimension_formula}]
 \label{sol:preimage_subspace_dimension_formula}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 4). Proves preimage of a subspace is a subspace and derives its dimension formula via Rank-Nullity on the restricted map.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Subspace Property:}
     Since $0_W \in W'$ and $f(0_V) = 0_W$, we have $0_V \in f^{-1}(W')$.
@@ -140,6 +146,7 @@ Therefore, map \textbf{(1)}, $f \colon \mathbb{R}^2 \to \mathbb{R}^3, f(x, y) = 
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:isomorphisms_preserve_structures}]
 \label{sol:isomorphisms_preserve_structures}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 5). Proves isomorphisms preserve linear independence, spanning sets, and bases.}
 Let $T \colon V \to W$ be an isomorphism with linear inverse $T^{-1} \colon W \to V$.
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Preservation of Linear Independence:}
@@ -171,6 +178,7 @@ Let $T \colon V \to W$ be an isomorphism with linear inverse $T^{-1} \colon W \t
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:one_dim_endomorphism_canonical_iso}]
 \label{sol:one_dim_endomorphism_canonical_iso}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 6). Explains the canonical scalar isomorphism $\operatorname{End}(V) \cong K$ in dimension 1 versus non-canonical $V \cong K$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Scalar Multiplication Property:}
     Since $\dim V = 1$, choose any non-zero vector $v_0 \in V$. Then $(v_0)$ is a basis of $V$.
@@ -192,6 +200,7 @@ Let $T \colon V \to W$ be an isomorphism with linear inverse $T^{-1} \colon W \t
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:functionals_same_kernel_proportional}]
 \label{sol:functionals_same_kernel_proportional}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 7). Demonstrates that linear functionals with identical nullspaces are scalar multiples of each other.}
 Let $T_1, T_2 \in \Hom_K(V, K)$ with $\ker(T_1) = \ker(T_2) =: U$.
 \begin{itemize}
     \item \textbf{Case 1: $U = V$.}
@@ -220,6 +229,7 @@ Let $T_1, T_2 \in \Hom_K(V, K)$ with $\ker(T_1) = \ker(T_2) =: U$.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:projections_and_complements}]
 \label{sol:projections_and_complements}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 8). Establishes the 1-to-1 correspondence between direct sum decompositions and projection operators.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{$V = \ker(P) \oplus \Img(P)$ for any projection $P$:}
     \begin{itemize}
@@ -252,6 +262,7 @@ Let $T_1, T_2 \in \Hom_K(V, K)$ with $\ker(T_1) = \ker(T_2) =: U$.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:invertibility_three_map_composition}]
 \label{sol:invertibility_three_map_composition}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 9, Exercise 9). Deduces invertibility of the middle endomorphism $T$ when $S \circ T \circ U = \id_V$ in finite dimensions.}
 We are given $S, T, U \in \Hom(V, V)$ on a finite-dimensional space $V$ with $S \circ T \circ U = \id_V$.
 
 \begin{itemize}
@@ -273,6 +284,7 @@ T^{-1} = U \circ S. \qedhere
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:endomorphism_properties_true_false}]
 \label{sol:endomorphism_properties_true_false}
+\exinfo{Official Solution (Problem Sheet 9, Exercise 10). Evaluates statements on automorphism extension, image-kernel complements, and parity of rank-nullity dimensions.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Statement (1) is TRUE:}
     Let $\mathcal{B}' = (v_1, \dots, v_k)$ be a basis for the subspace $V'$. Extend $\mathcal{B}'$ to a basis $\mathcal{B} = (v_1, \dots, v_k, v_{k+1}, \dots, v_n)$ of $V$.

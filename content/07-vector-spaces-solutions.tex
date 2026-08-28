@@ -1,6 +1,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:extended_reals_not_vector_space}]
 \label{sol:extended_reals_not_vector_space}
+\exinfo{Official Solution (Problem Sheet 4, Exercise 3). Checks failure of vector space axioms for extended real numbers.}
 The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operations is \textbf{not} a vector space over $\mathbb{R}$. Several vector space axioms fail:
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -32,6 +33,7 @@ Therefore, $V$ fails to be a vector space over $\mathbb{R}$.
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:positive_reals_vector_space_mc}]
 \label{sol:positive_reals_vector_space_mc}
+\exinfo{Official Solution (Problem Sheet 4, Multiple Choice). Identifies the power-operation scalar multiplication on $\mathbb{R}_{>0}^2$.}
 We examine the three candidate definitions of scalar multiplication on $(\mathbb{R}_{>0}^2, \oplus)$:
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -62,6 +64,7 @@ Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vecto
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:verifying_subspaces_r_f2}]
 \label{sol:verifying_subspaces_r_f2}
+\exinfo{Official Solution (Problem Sheet 4, Exercise 4). Verifies subspaces over $\mathbb{R}$ versus $\mathbb{F}_2$.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{The subset $S_1 \subseteq \mathbb{R}^3$:}
     The condition $x_1 = x_2 = 2x_3$ can be written as the system of homogeneous linear equations:
@@ -90,7 +93,7 @@ Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vecto
     \item \textbf{The subset $S_3 \subseteq \mathbb{R}^2$:}
     \begin{itemize}
         \item \textbf{Over $\mathbb{R}$:} For any $\lambda \in \mathbb{R}$, we have $\lambda^2 \ge 0$. As $\mu$ ranges over $\mathbb{R}$, the first coordinate $\mu + \lambda$ covers all of $\mathbb{R}$. Thus $S_3 = \mathbb{R} \times [0, \infty)$ is the upper closed half-plane.
-        Taking $(0, 1) \in S_3$ (with $\mu = -1, \lambda = 1$) and multiplying by $-1 \in \mathbb{R}$ gives $(-1) \cdot (0, 1) = (0, -1) \notin S_3$. Thus $S_3$ is not closed under scalar multiplication and is \textbf{not a linear subspace} over $\mathbb{R}$.
+        Taking $(0, 1) \in $ (with $\mu = -1, \lambda = 1$) and multiplying by $-1 \in \mathbb{R}$ gives $(-1) \cdot (0, 1) = (0, -1) \notin S_3$. Thus $S_3$ is not closed under scalar multiplication and is \textbf{not a linear subspace} over $\mathbb{R}$.
         \item \textbf{Over $\mathbb{F}_2$:} In $\mathbb{F}_2$, $\lambda^2 = \lambda$ for all $\lambda \in \mathbb{F}_2$. Thus
         \[
         S_3 = \{(\mu + \lambda, \lambda) \mid \mu, \lambda \in \mathbb{F}_2\}.
@@ -103,6 +106,7 @@ Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vecto
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:subspace_identification_mc}]
 \label{sol:subspace_identification_mc}
+\exinfo{Official Solution (Problem Sheet 4, Single Choice). Tests closure axioms for candidate subsets in $\mathbb{R}^n$.}
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \item \textbf{Subspace.} The set is defined by the homogeneous linear system $\begin{cases} 3x_1 + 5x_2 + 3x_3 = 0 \\ 2x_2 + x_3 = 0 \end{cases}$. By \cref{thm:solution_set_subspace}, its solution set is a linear subspace of $\mathbb{R}^3$.
     \item \textbf{Not a subspace.} The zero vector $(0,0,0)$ satisfies $0 + 0 + 0 = 0 \ne 3$, so $0 \notin S$.
@@ -115,6 +119,7 @@ Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vecto
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:union_three_subspaces}]
 \label{sol:union_three_subspaces}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 5). Compares union of three subspaces over $\mathbb{F}_2$ with $\mathbb{R}$.}
 The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$, depending on the base field $K$ and the ambient space $V$.
 
 \begin{itemize}
@@ -138,6 +143,7 @@ The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_linear_system_subspace}]
 \label{sol:parametric_linear_system_subspace}
+\exinfo{Solution by Gemini 3.7 Flash (High). Analyzes the affine solution geometry under parameter variations.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Determination of the Solution Set $S$:}
     We form the augmented matrix and apply elementary row operations:
@@ -194,6 +200,7 @@ The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:even_odd_function_subspaces}]
 \label{sol:even_odd_function_subspaces}
+\exinfo{Official Solution (Problem Sheet 4, Exercise 6). Proves direct sum decomposition into even and odd function subspaces for $\operatorname{char}(K) \ne 2$.}
 Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with inverse $2^{-1} = \frac{1}{2} \in K$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -245,6 +252,7 @@ Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with invers
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:power_set_f2_vector_space}]
 \label{sol:power_set_f2_vector_space}
+\exinfo{Official Solution (Problem Sheet 5, Exercise 1). Verifies the 8 vector space axioms for the power set $\mathcal{P}(X)$ over $\mathbb{F}_2$.}
 We verify the eight vector space axioms (V1)--(V8) for $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ over $\mathbb{F}_2 = \{0, 1\}$. It is helpful to use the characteristic function $\chi_A \colon X \to \mathbb{F}_2$ defined by $\chi_A(x) = 1$ if $x \in A$ and $\chi_A(x) = 0$ if $x \notin A$. For symmetric difference, $\chi_{A \mathbin{\triangle} B}(x) = \chi_A(x) + \chi_B(x) \pmod 2$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]

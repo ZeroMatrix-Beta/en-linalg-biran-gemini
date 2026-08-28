@@ -1,6 +1,7 @@
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:subspaces_distributivity}]
 \label{sol:subspaces_distributivity}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 2). Demonstrates failure of subspace distributivity and provides counterexamples in $\mathbb{R}^2$.}
 Neither distributive law holds in general, but in both cases the inclusion from left to right ($\subseteq$) is always satisfied.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -34,6 +35,7 @@ Neither distributive law holds in general, but in both cases the inclusion from 
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:intersection_four_dim_subspaces}]
 \label{sol:intersection_four_dim_subspaces}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 3). Computes lower bound for subspace intersection dimension via Grassmann's formula.}
 Let $U, V \subseteq \mathbb{C}^6$ be $4$-dimensional linear subspaces over $\mathbb{C}$. By the dimension formula for sums of subspaces (\cref{prop:properties_of_sums}):
 \[
 \dim_{\mathbb{C}}(U + V) = \dim_{\mathbb{C}} U + \dim_{\mathbb{C}} V - \dim_{\mathbb{C}}(U \cap V).
@@ -49,6 +51,7 @@ By linear independence, $u_1 \ne 0$, $u_2 \ne 0$, and neither vector is a scalar
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:hyperplane_and_diagonal_subspaces}]
 \label{sol:hyperplane_and_diagonal_subspaces}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 4). Analyzes the sum and intersection of the trace/sum hyperplane and diagonal line depending on field characteristic.}
 Let $H = \{(x_1, \dots, x_n) \in K^n \mid \sum_{i=1}^n x_i = 0\}$ and $D = \{(\lambda, \dots, \lambda) \in K^n \mid \lambda \in K\} = \Sp(\mathbf{1})$, where $\mathbf{1} = (1, \dots, 1)$. Note that $\dim H = n - 1$ and $\dim D = 1$.
 
 A vector $v = (\lambda, \dots, \lambda) \in D$ belongs to $H$ if and only if:
@@ -78,6 +81,7 @@ We distinguish two cases according to the characteristic of the field $K$:
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:pairwise_trivial_vs_direct_sum}]
 \label{sol:pairwise_trivial_vs_direct_sum}
+\exinfo{Official Solution (Problem Sheet 8, Exercise 5). Constructs a 3-subspace counterexample showing pairwise trivial intersection does not imply a direct sum.}
 The condition that $U_i \cap U_j = \{0\}$ for all $i \ne j$ does \textbf{not} imply that $V = U_1 \oplus U_2 \oplus U_3$ is a direct sum.
 
 \textbf{Counterexample:}
@@ -103,6 +107,7 @@ Thus $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direc
 % Solution by Gemini 3.7 Flash (High)
 \begin{exercisesolution}[Solution to \cref{exc:linear_complements_matrix_subspaces}]
 \label{sol:linear_complements_matrix_subspaces}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 8, Exercise 6). Constructs explicit linear complements for upper triangular and symmetric matrices, treating general characteristic and skew-symmetric projections.}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Complement of Upper Triangular Matrices $U_{\mathrm{UT}}$:}
     Let $U_{\mathrm{SLT}} \subseteq \M_{n \times n}(F)$ denote the subspace of \emph{strictly lower triangular} matrices:
