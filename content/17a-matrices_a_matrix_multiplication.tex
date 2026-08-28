@@ -200,7 +200,9 @@ Matrix multiplication satisfies the following algebraic properties:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Associativity:} For all $A \in \M_{m \times n}(K)$, $B \in \M_{n \times p}(K)$, and $C \in \M_{p \times q}(K)$, we have:
     \begin{equation*}
-        (AB)C = A(BC) \in \M_{m \times q}(K)
+        \underbrace{(AB)}_{m \times p} \underbrace{\vphantom{(}C}_{p \times q}
+        \;=\; \underbrace{\vphantom{(}A}_{m \times n} \underbrace{(BC)}_{n \times q}
+        \;\in\; \M_{m \times q}(K)
     \end{equation*}
     \item \textbf{Distributivity:} For all $A, B \in \M_{m \times n}(K)$, $C \in \M_{n \times p}(K)$, and $C' \in \M_{q \times m}(K)$, we have:
     \begin{align*}

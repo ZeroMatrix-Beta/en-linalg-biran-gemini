@@ -299,7 +299,20 @@ T(v_j) = a_{1j} w_1 + a_{2j} w_2 + \dots + a_{mj} w_m = \sum_{i=1}^m a_{ij} w_i.
 \end{proposition*}
 
 \begin{proof}
-Recall that the $j$-th column of $A$ is given by $T_A(e_j)$, where $e_j \in K^n$ is the $j$-th standard basis vector. We can evaluate $T_A(e_j)$ using the commutative diagram:
+Recall that the $j$-th column of $A$ is given by $T_A(e_j)$, where $e_j \in K^n$ is the $j$-th standard basis vector. We can evaluate $T_A(e_j)$ using the commutative diagram, which Prof.~Biran draws with the element being chased carried alongside each space:
+
+% Extractor: Opus 5
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep=huge]
+v_j \in V \arrow[r, "T"] \arrow[d, "\Phi_{\mathcal{B}}"']
+  & W \ni T(v_j) \arrow[d, "\Phi_{\mathcal{C}}"] \\
+e_j \in K^n \arrow[r, "T_A"']
+  & K^m \ni [T(v_j)]_{\mathcal{C}}
+\end{tikzcd}
+\end{center}
+% Extractor: Gemini 3.1 Pro
+
+Going down first and then across is the composition defining $T_A$, so
 \[
 T_A(e_j) = \left( \Phi_{\mathcal{C}} \circ T \circ \Phi_{\mathcal{B}}^{-1} \right)(e_j) = \Phi_{\mathcal{C}}\left( T\left( \Phi_{\mathcal{B}}^{-1}(e_j) \right) \right).
 \]

@@ -62,18 +62,36 @@ Let $V$ be a vector space over a field $K$. Then the following properties hold:
 
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Assume there are two such zero elements, $0_1$ and $0_2$.
-Then, by applying \textbf{(V2)} to both, we get: $0_1 = 0_1 + 0_2 = 0_2 + 0_1 = 0_2$. Thus, $0_1 = 0_2$.
-
-    \item Assume there are two inverses $v_1'$ and $v_2'$ for an element $v$.
-Then we can write:
+    \item Assume there are two such zero elements, $0_1$ and $0_2$. Then
 \[
-v_1' = v_1' + 0_V = v_1' + (v + v_2') = (v_1' + v) + v_2' = 0_V + v_2' = v_2'
+0_1 \overset{\text{\textbf{(V2)}}}{=} 0_1 + 0_2
+    \overset{\text{\textbf{(V4)}}}{=} 0_2 + 0_1
+    \overset{\text{\textbf{(V2)}}}{=} 0_2,
 \]
-Thus, the inverse is unique.
+the first step using that $0_2$ is a zero element and the last that $0_1$ is. Thus, $0_1 = 0_2$.
 
-    \item Consider $0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v$, where the second equality is \textbf{(V8)}.
-By adding $-(0 \cdot v)$ to both sides, we yield $0_V = 0 \cdot v$.
+    \item Assume there are two inverses $v_1'$ and $v_2'$ for an element $v$, so that $v + v_1' = 0_V$ and $v + v_2' = 0_V$. Then we can write:
+\[
+v_1' \overset{\text{\textbf{(V2)}}}{=} v_1' + 0_V
+     \overset{\text{\textbf{(V3)}}}{=} v_1' + (v + v_2')
+     \overset{\text{\textbf{(V1)}}}{=} (v_1' + v) + v_2'
+     \overset{\text{\textbf{(V4)}}}{=} 0_V + v_2'
+     \overset{\text{\textbf{(V2)}}}{=} v_2',
+\]
+where the second step substitutes the defining property of $v_2'$ and the fourth that of $v_1'$, the latter read backwards through commutativity. Thus, the inverse is unique.
+
+    \item Consider
+\begin{equation}
+\label{eq:zero_scalar_doubles}
+0 \cdot v = (0 + 0) \cdot v \overset{\text{\textbf{(V8)}}}{=} 0 \cdot v + 0 \cdot v.
+\end{equation}
+Adding $-(0 \cdot v)$ to both sides cancels one copy:
+\[
+0_V \overset{\text{\textbf{(V3)}}}{=} 0 \cdot v + \bigl(-(0 \cdot v)\bigr)
+    \overset{\eqref{eq:zero_scalar_doubles}}{=} \bigl(0 \cdot v + 0 \cdot v\bigr) + \bigl(-(0 \cdot v)\bigr)
+    \overset{\text{\textbf{(V1)}}}{=} 0 \cdot v + \underbrace{\Bigl(0 \cdot v + \bigl(-(0 \cdot v)\bigr)\Bigr)}_{=\; 0_V}
+    \overset{\text{\textbf{(V2)}}}{=} 0 \cdot v.
+\]
 
     \item Similarly, $\alpha \cdot 0_V = \alpha \cdot (0_V + 0_V) = \alpha \cdot 0_V + \alpha \cdot 0_V$ by \textbf{(V7)}. Adding $-(\alpha \cdot 0_V)$ yields $0_V = \alpha \cdot 0_V$.
 
