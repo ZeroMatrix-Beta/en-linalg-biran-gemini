@@ -193,13 +193,19 @@ Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b 
   We begin with the proof of \textbf{(b)}. Assume first that $B'$ is obtained from $B$ by interchanging two adjacent rows (say, row $k$ and row $k+1$).
   Consider evaluating $D$ on a matrix where both the $k$-th and $(k+1)$-th rows are equal to $\beta_k + \beta_{k+1}$. By our assumption, this yields $0$.
   Expanding this via $n$-linearity gives:
+  \begin{align*}
+    D(\dots, \beta_k + \beta_{k+1}, \beta_k + \beta_{k+1}, \dots)
+      &= \underbrace{D(\dots, \beta_k, \beta_k, \dots)}_{=\, 0}
+       + D(\dots, \beta_k, \beta_{k+1}, \dots) \\
+      &\quad + D(\dots, \beta_{k+1}, \beta_k, \dots)
+       + \underbrace{D(\dots, \beta_{k+1}, \beta_{k+1}, \dots)}_{=\, 0} \;=\; 0.
+  \end{align*}
+  The two braced terms carry two equal adjacent rows, so they vanish by assumption, and the identity collapses to
   \[
-  D(\dots, \beta_k + \beta_{k+1}, \beta_k + \beta_{k+1}, \dots) = D(\dots, \beta_k, \beta_k, \dots) + D(\dots, \beta_k, \beta_{k+1}, \dots)
+  \underbrace{D(\dots, \beta_k, \beta_{k+1}, \dots)}_{D(B)}
+  + \underbrace{D(\dots, \beta_{k+1}, \beta_k, \dots)}_{D(B')} = 0,
   \]
-  \[
-  + D(\dots, \beta_{k+1}, \beta_k, \dots) + D(\dots, \beta_{k+1}, \beta_{k+1}, \dots) = 0.
-  \]
-  By assumption, the terms with adjacent equal rows are zero, leaving $D(B) + D(B') = 0$, which naturally implies $D(B') = -D(B)$.
+  which naturally implies $D(B') = -D(B)$.
 
   Now suppose $B'$ is obtained from $B$ by interchanging rows $k$ and $\ell$ where $k < \ell$. We can obtain $B'$ by doing a sequence of adjacent row interchanges. Moving row $\ell$ to position $k$ requires $r = \ell-k$ adjacent interchanges. Next, moving the original row $k$ down to position $\ell$ requires $r-1$ adjacent interchanges. The total number of interchanges is $2r - 1$. Since this is always an odd number, we flip the sign an odd number of times. Thus, $D(B') = (-1)^{2r-1} D(B) = -D(B)$.
 

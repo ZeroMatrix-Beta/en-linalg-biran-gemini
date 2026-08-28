@@ -21,6 +21,43 @@ Let $A \in \M_{n \times p}(K)$. We have previously learned about elementary row 
 Let $n \in \mathbb{Z}_{\ge 1}$, and let $1 \le i \le n$, $1 \le j \le n$. We denote by $E_{ij} \in \M_{n \times n}(K)$ the matrix whose entries are all zero, except for the entry in the $i$-th row and $j$-th column, which is equal to $1$.
 \end{notation}
 
+% Extractor: Opus 5
+Prof.~Biran pictures $E_{ij}$ as a pair of cross-hairs, the marked row and the marked column meeting at the single non-zero entry, with the four remaining regions of the matrix identically zero:
+
+\begin{center}
+\begin{tikzpicture}[baseline=(E.center)]
+  \matrix (E) [matrix of math nodes,
+               nodes in empty cells,
+               left delimiter=(, right delimiter=),
+               nodes={minimum width=2.2em, minimum height=1.7em, inner sep=1pt},
+               column sep=0pt, row sep=0pt]
+  {
+    & & 0 & & \\
+    & & \vdots & & \\
+    0 & \dots & 1 & \dots & 0 \\
+    & & \vdots & & \\
+    & & 0 & & \\
+  };
+  % The four regions away from row i and column j, all of them zero.
+  \foreach \ra/\ca/\rb/\cb in {1/1/2/2, 1/4/2/5, 4/1/5/2, 4/4/5/5}
+    \node[draw=ThemeSecondary, ellipse, inner sep=0pt,
+          minimum width=3.2em, minimum height=2.6em]
+      at ($(E-\ra-\ca)!0.5!(E-\rb-\cb)$) {$0$};
+  % Row i and column j.
+  \draw[ThemeAccent1, thick, rounded corners=2pt]
+    ([xshift=-2pt, yshift=2pt]E-3-1.north west) rectangle
+    ([xshift=2pt, yshift=-2pt]E-3-5.south east);
+  \draw[EmphBlue, thick, rounded corners=2pt]
+    ([xshift=-2pt, yshift=2pt]E-1-3.north west) rectangle
+    ([xshift=2pt, yshift=-2pt]E-5-3.south east);
+  \node[EmphBlue, above=10pt] (collab) at (E-1-3.north) {col.\ $j$};
+  \draw[->, EmphBlue] (collab.south) -- ++(0,-7pt);
+  \node[ThemeAccent1, right=22pt] (rowlab) at (E-3-5.east) {row $i$};
+  \draw[->, ThemeAccent1] (rowlab.west) -- ++(-9pt,0);
+\end{tikzpicture}
+\end{center}
+% Extractor: Gemini 3.1 Pro
+
 We will now define three types of elementary matrices in $\M_{n \times n}(K)$. The notes introduce them without a number of their own, so that the numbering of this section starts at \cref{lemma:row_operations_matrix_multiplication} below.
 
 % The notes present the three types under "Notation", unnumbered; keeping this

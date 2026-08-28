@@ -182,7 +182,11 @@ This is the question Prof. Biran annotates the Polarization Identity with. Let $
 \label{thm:sylvesters_inertia}
 Let $B \colon V \times V \to \mathbb{R}$ be a \emph{symmetric} bilinear form on a vector space $V$ over $\mathbb{R}$, of dimension $n$. Then there exists a basis $\mathcal{C}$ for $V$ such that
 \[
-[B]_{\mathcal{C}} = \begin{pmatrix} I_k & 0 & 0 \\ 0 & -I_\ell & 0 \\ 0 & 0 & 0 \end{pmatrix},
+[B]_{\mathcal{C}} = \left( \begin{array}{c|c|c}
+  I_k & 0 & 0 \\ \hline
+  0 & -I_\ell & 0 \\ \hline
+  0 & 0 & 0
+\end{array} \right),
 \]
 for some $k, \ell \in \mathbb{Z}_{\ge 0}$ with $k + \ell \le n$. (The zero block in the bottom right has size $n - (k + \ell)$).
 
@@ -446,6 +450,34 @@ Let $V$ be a finite-dimensional vector space over $\mathbb{R}$ and $B \colon V \
     \item Like \textbf{(b)}, but instead of \qt{there exists a basis\dots}, it holds for \qt{all bases\dots}.
 \end{enumerate}
 \end{theorem}
+
+% Extractor: Opus 5
+The minors in \textbf{(b)} are the \emph{leading} ones: writing $b_{jk} := B(e_j, e_k)$, the $\ell$-th of them is the determinant of the top-left $\ell \times \ell$ corner of $[B]_{\mathcal{C}}$. Prof.~Biran draws them as a nest of squares growing out of the entry $b_{11}$, which is also the order in which the induction below consumes them:
+
+\begin{center}
+$[B]_{\mathcal{C}} \;=\;$
+\begin{tikzpicture}[baseline=(M.center)]
+  \matrix (M) [matrix of math nodes,
+               nodes in empty cells,
+               left delimiter=(, right delimiter=),
+               nodes={minimum width=2.9em, minimum height=1.8em, inner sep=1pt},
+               column sep=0pt, row sep=0pt]
+  {
+    b_{11} & b_{12} & b_{13} & \dots & b_{1n} \\
+    b_{21} & b_{22} & b_{23} & \dots & b_{2n} \\
+    b_{31} & b_{32} & b_{33} & \dots & b_{3n} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    b_{n1} & b_{n2} & b_{n3} & \dots & b_{nn} \\
+  };
+  % Leading principal minors of orders 1, 2, 3 and n, each drawn with a
+  % slightly smaller padding so that the shared top-left corner stays legible.
+  \foreach \last/\pad in {1/5, 2/3.5, 3/2, 5/0.5}
+    \draw[ThemeAccent, thick]
+      ([xshift=-\pad pt, yshift=\pad pt]M-1-1.north west) rectangle
+      ([xshift=\pad pt, yshift=-\pad pt]M-\last-\last.south east);
+\end{tikzpicture}
+\end{center}
+% Extractor: Gemini 3.1 Pro
 
 \begin{proof}
 \textbf{(b)} $\implies$ \textbf{(a)}: We proceed by induction on $n = \dim V$.
