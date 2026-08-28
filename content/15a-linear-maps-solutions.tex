@@ -18,7 +18,7 @@ Consequently,
 \[
 T(u + v_0) = 0_W \ne S(u) = T(u) + T(v_0).
 \]
-Hence $T$ fails additivity and is therefore not a linear map.
+Hence, $T$ fails additivity and is therefore not a linear map.
 \exinfo{Official Solution (Problem Sheet 11, Exercise 1). Proves non-linearity of extending a non-trivial map by zero outside a proper subspace.}
 \end{exercisesolution}
 
@@ -48,7 +48,7 @@ Let $f \colon V \to W$ be an additive map, so $f(x + y) = f(x) + f(y)$ for all $
     f(q x) = f\left(a \left(\frac{1}{b} x\right)\right) = a f\left(\frac{1}{b} x\right) = a \left(\frac{1}{b} f(x)\right) = \frac{a}{b} f(x) = q f(x).
     \]
 \end{enumerate}
-Thus $f$ is homogeneous under scalar multiplication by $\mathbb{Q}$, so $f \in \Hom_{\mathbb{Q}}(V, W)$.
+Thus, $f$ is homogeneous under scalar multiplication by $\mathbb{Q}$, so $f \in \Hom_{\mathbb{Q}}(V, W)$.
 \exinfo{Official Solution (Problem Sheet 11, Exercise 2). Establishes $\mathbb{Q}$-homogeneity for additive maps using induction and scaling.}
 \end{exercisesolution}
 
@@ -80,7 +80,7 @@ T_1(p) = 3p(4) + 5p(6) + b p(1)p(2), \qquad T_2(p) = \int_{-1}^2 x^2 p(x) \, dx 
     \]
     By linearity, $T_2(2 p_0) = 2 T_2(p_0) = 6 + 2c$. Equating the two yields $6 + 4c = 6 + 2c \implies 2c = 0 \implies c = 0$.
 \end{itemize}
-Thus $T$ is linear if and only if $b = c = 0$.
+Thus, $T$ is linear if and only if $b = c = 0$.
 \exinfo{Official Solution (Problem Sheet 11, Exercise 3). Identifies parameter values making integral and point-evaluation maps linear via test polynomials.}
 \end{exercisesolution}
 
@@ -157,7 +157,7 @@ Let $T \colon V \to W$ be an isomorphism with linear inverse $T^{-1} \colon W \t
     T(c_1 v_1 + \dots + c_k v_k) = c_1 T(v_1) + \dots + c_k T(v_k) = 0_W.
     \]
     Since $T$ is an isomorphism, it is injective, so $\ker(T) = \{0_V\}$. This implies $c_1 v_1 + \dots + c_k v_k = 0_V$.
-    Since $S$ is linearly independent, $c_1 = \dots = c_k = 0$. Thus $T(S)$ is linearly independent in $W$.
+    Since $S$ is linearly independent, $c_1 = \dots = c_k = 0$. Thus, $T(S)$ is linearly independent in $W$.
 
     \item \textbf{Preservation of Spanning Sets:}
     Let $S \subseteq V$ span $V$, so $\Sp(S) = V$.
@@ -238,7 +238,7 @@ Let $T_1, T_2 \in \Hom_K(V, K)$ with $\ker(T_1) = \ker(T_2) =: U$.
         \[
         P(v - P(v)) = P(v) - P^2(v) = P(v) - P(v) = 0_V \implies v - P(v) \in \ker(P).
         \]
-        Clearly $P(v) \in \Img(P)$. Thus $V = \ker(P) + \Img(P)$.
+        Clearly $P(v) \in \Img(P)$. Thus, $V = \ker(P) + \Img(P)$.
         \item \textbf{Trivial Intersection:} Let $v \in \ker(P) \cap \Img(P)$. Since $v \in \ker(P)$, $P(v) = 0$. Since $v \in \Img(P)$, $v = P(u)$ for some $u \in V$. Applying $P$ gives:
         \[
         v = P(u) = P^2(u) = P(P(u)) = P(v) = 0_V.
@@ -253,8 +253,8 @@ Let $T_1, T_2 \in \Hom_K(V, K)$ with $\ker(T_1) = \ker(T_2) =: U$.
     \begin{itemize}
         \item \textbf{Linearity:} If $v = w_1 + w_2$ and $v' = w'_1 + w'_2$, then for any $\alpha, \beta \in K$, $\alpha v + \beta v' = (\alpha w_1 + \beta w'_1) + (\alpha w_2 + \beta w'_2)$. By uniqueness of direct sum representation, $P(\alpha v + \beta v') = \alpha w_2 + \beta w'_2 = \alpha P(v) + \beta P(v')$.
         \item \textbf{Idempotence:} For any $v \in V$, $P(v) = w_2 = 0 + w_2$, so $P(P(v)) = w_2 = P(v)$, which shows $P^2 = P$.
-        \item \textbf{Kernel and Image:} $P(v) = 0 \iff w_2 = 0 \iff v = w_1 \in W_1$, so $\ker(P) = W_1$. Clearly $\Img(P) = W_2$.
-        \item \textbf{Uniqueness:} Let $Q \colon V \to V$ be another projection with $\ker(Q) = W_1$ and $\Img(Q) = W_2$. For any $w_2 \in W_2 = \Img(Q)$, there exists $u \in V$ with $w_2 = Q(u)$, so $Q(w_2) = Q^2(u) = Q(u) = w_2$. For $w_1 \in W_1 = \ker(Q)$, $Q(w_1) = 0$. Thus for any $v = w_1 + w_2$, $Q(v) = Q(w_1) + Q(w_2) = 0 + w_2 = w_2 = P(v)$, proving $Q = P$.
+        \item \textbf{Kernel and Image:} $P(v) = 0 \iff w_2 = 0 \iff v = w_1 \in W_1$, so $\ker(P) = W_1$. Clearly, $\Img(P) = W_2$.
+        \item \textbf{Uniqueness:} Let $Q \colon V \to V$ be another projection with $\ker(Q) = W_1$ and $\Img(Q) = W_2$. For any $w_2 \in W_2 = \Img(Q)$, there exists $u \in V$ with $w_2 = Q(u)$, so $Q(w_2) = Q^2(u) = Q(u) = w_2$. For $w_1 \in W_1 = \ker(Q)$, $Q(w_1) = 0$. Thus, for any $v = w_1 + w_2$, $Q(v) = Q(w_1) + Q(w_2) = 0 + w_2 = w_2 = P(v)$, proving $Q = P$.
     \end{itemize}
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 11, Exercise 8). Establishes the 1-to-1 correspondence between direct sum decompositions and projection operators.}
@@ -266,7 +266,7 @@ Let $T_1, T_2 \in \Hom_K(V, K)$ with $\ker(T_1) = \ker(T_2) =: U$.
 We are given $S, T, U \in \Hom(V, V)$ on a finite-dimensional space $V$ with $S \circ T \circ U = \id_V$.
 
 \begin{itemize}
-    \item Grouping the composition as $S \circ (T \circ U) = \id_V$: by \cref{cor:equal_dim_iso}, for endomorphisms on a finite-dimensional vector space, having a right inverse implies two-sided invertibility. Thus $S$ and $T \circ U$ are invertible with $S^{-1} = T \circ U$. This implies:
+    \item Grouping the composition as $S \circ (T \circ U) = \id_V$: by \cref{cor:equal_dim_iso}, for endomorphisms on a finite-dimensional vector space, having a right inverse implies two-sided invertibility. Thus, $S$ and $T \circ U$ are invertible with $S^{-1} = T \circ U$. This implies:
     \[
     (T \circ U) \circ S = \id_V \implies T \circ (U \circ S) = \id_V.
     \]

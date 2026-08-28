@@ -125,7 +125,7 @@ D(A) = A_{11}(A_{22}A_{33} - A_{23}A_{32}) - A_{12}(A_{21}A_{33} - A_{23}A_{31})
         \item If $C_1 = C_3$ or $C_2 = C_3$, a completely symmetric cancellation occurs.
     \end{itemize}
 \end{itemize}
-Thus $D$ is an alternating $3$-linear function of the columns.
+Thus, $D$ is an alternating $3$-linear function of the columns.
 \exinfo{Official Solution (Problem Sheet 16, Exercise 5). Demonstrates the alternating trilinear property of the $3 \times 3$ Laplace expansion.}
 \end{exercisesolution}
 
@@ -200,7 +200,7 @@ Using the multilinearity of $\det$ with respect to columns:
 \det(AB) = \det(A b_1, \dots, A b_n) = \sum_{s_1=1}^n \cdots \sum_{s_n=1}^n \left(\prod_{j=1}^n B(s_j, j)\right) \det(A e_{s_1}, \dots, A e_{s_n}).
 \]
 Because $\det$ is alternating in columns, $\det(A e_{s_1}, \dots, A e_{s_n}) = 0$ whenever two of the indices $s_1, \dots, s_n$ coincide.
-Thus non-zero summands correspond precisely to permutations $\sigma \in S_n$ with $(s_1, \dots, s_n) = (\sigma(1), \dots, \sigma(n))$.
+Thus, non-zero summands correspond precisely to permutations $\sigma \in S_n$ with $(s_1, \dots, s_n) = (\sigma(1), \dots, \sigma(n))$.
 For any $\sigma \in S_n$, reordering the columns $(A e_{\sigma(1)}, \dots, A e_{\sigma(n)})$ back to $(A e_1, \dots, A e_n)$ requires transpositions that produce a factor of $\sgn(\sigma)$:
 \[
 \det(A e_{\sigma(1)}, \dots, A e_{\sigma(n)}) = \sgn(\sigma) \det(A e_1, \dots, A e_n) = \sgn(\sigma) \det(A).
@@ -559,7 +559,7 @@ D_n = 2 \det(A_{n-1}) - 1 \cdot \det \begin{pmatrix}
 \end{pmatrix}_{(n-1) \times (n-1)}.
 \]
 Expanding this second minor along its first column yields $1 \cdot \det(A_{n-2}) = D_{n-2}$.
-Thus we obtain the linear recurrence relation:
+Thus, we obtain the linear recurrence relation:
 \[
 D_n = 2 D_{n-1} - D_{n-2} \iff D_n - D_{n-1} = D_{n-1} - D_{n-2}.
 \]

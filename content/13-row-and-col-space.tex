@@ -135,9 +135,9 @@ Elementary row operations do not change the row space: $\RowS(A) = \RowS(A')$. M
 \begin{proof}
 New rows are, simply, linear combinations of the old rows, and because elementary operations are reversible, the spans remain identical. We now carry this out for each of the three types of \cref{def:elementary_row_operations}. Let $M \in \M_{m \times n}(K)$ be a matrix with rows $w_{1}, \dots, w_{m} \in K^{n}$.
 
-\textbf{Type 3 ($E_{i} \leftrightarrow E_{j}$).} Exchanging two rows of $M$ merely reorders the list $w_{1}, \dots, w_{m}$, and the span of a list does not depend on the order of its members. Hence $\RowS(M)$ is unchanged by such an operation.
+\textbf{Type 3 ($E_{i} \leftrightarrow E_{j}$).} Exchanging two rows of $M$ merely reorders the list $w_{1}, \dots, w_{m}$, and the span of a list does not depend on the order of its members. Hence, $\RowS(M)$ is unchanged by such an operation.
 
-\textbf{Type 1 ($\lambda \cdot E_{i} \to E_{i}$, with $\lambda \in K \setminus \{0\}$).} Replacing $w_{i}$ by $\lambda w_{i}$ does not change the span of the rows either: the new row lies in $\Sp(w_{1}, \dots, w_{m})$, and conversely $w_{i} = \lambda^{-1} (\lambda w_{i})$ lies in the span of the new list, which is where the hypothesis $\lambda \neq 0$ enters. So $\RowS(M)$ is left unchanged by such an operation as well.
+\textbf{Type 1 ($\lambda \cdot E_{i} \to E_{i}$, with $\lambda \in K \setminus \{0\}$).} Replacing $w_{i}$ by $\lambda w_{i}$ does not change the span of the rows either: the new row lies in $\Sp(w_{1}, \dots, w_{m})$, and conversely $w_{i} = \lambda^{-1} (\lambda w_{i})$ lies in the span of the new list, which is where the hypothesis $\lambda \neq 0$ enters. So, $\RowS(M)$ is left unchanged by such an operation as well.
 
 \textbf{Type 2 ($\lambda \cdot E_{j} + E_{i} \to E_{i}$, with $i \neq j$ and $\lambda \in K$).} Here we claim that
 \[
@@ -184,7 +184,7 @@ Consequently, for every subset of indices $S \subseteq \{1, \dots, n\}$:
 \end{ailemma}
 
 \begin{proof}
-Writing $x := (\alpha_{1}, \dots, \alpha_{n})\transp$, the equation $\alpha_{1} w_{1} + \dots + \alpha_{n} w_{n} = 0$ says precisely that $Ax = 0$, and likewise $\alpha_{1} w'_{1} + \dots + \alpha_{n} w'_{n} = 0$ says precisely that $A'x = 0$. Performing on $(A \mid 0)$ the very sequence of elementary row operations that leads from $A$ to $A'$ produces $(A' \mid 0)$, since a zero column stays a zero column under any row operation. So the two augmented matrices are row-equivalent, and \cref{thm:ero_preserve_solutions} gives the two homogeneous systems the same solution set. This is the asserted equivalence.
+Writing $x := (\alpha_{1}, \dots, \alpha_{n})\transp$, the equation $\alpha_{1} w_{1} + \dots + \alpha_{n} w_{n} = 0$ says precisely that $Ax = 0$, and likewise $\alpha_{1} w'_{1} + \dots + \alpha_{n} w'_{n} = 0$ says precisely that $A'x = 0$. Performing on $(A \mid 0)$ the very sequence of elementary row operations that leads from $A$ to $A'$ produces $(A' \mid 0)$, since a zero column stays a zero column under any row operation. So, the two augmented matrices are row-equivalent, and \cref{thm:ero_preserve_solutions} gives the two homogeneous systems the same solution set. This is the asserted equivalence.
 
 For \textbf{(a)}, a linear relation among the columns indexed by $S$ is the same thing as a linear relation among all $n$ columns whose coefficients vanish outside $S$. The equivalence just proved matches such relations for $A$ with such relations for $A'$ coefficient by coefficient, so one family admits a non-trivial relation exactly when the other does.
 

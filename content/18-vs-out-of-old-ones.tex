@@ -366,7 +366,7 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
   % Comment at Gemini: dont use a transposed row-vector here:
   The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$).
 % Creator: Opus 5
-  These coordinates are, for $1 \le j \le m$, precisely the columns of $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}), and they agree column by column with those of $A\transp$. Hence $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$, as claimed.
+  These coordinates are, for $1 \le j \le m$, precisely the columns of $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}), and they agree column by column with those of $A\transp$. Hence, $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$, as claimed.
 \end{proof}
 
 \begin{exercise}[Dual Map Injectivity and Surjectivity Equivalences]
@@ -467,7 +467,7 @@ Both sides are maps $V \to (W^*)^*$, so it is enough to compare their values at 
   &= \big(\tau_V(v) \circ T^*\big)(\ell) = \tau_V(v)\big(T^*(\ell)\big) = \big(T^*(\ell)\big)(v) \\
   &= (\ell \circ T)(v) = \ell\big(T(v)\big) = \tau_W\big(T(v)\big)(\ell).
 \end{align*}
-Hence $(T^*)^*(\tau_V(v)) = \tau_W(T(v))$ for every $v \in V$, which is precisely the commutativity of the square. Note that nothing here requires $V$ or $W$ to be finite-di\-men\-sional.
+Hence, $(T^*)^*(\tau_V(v)) = \tau_W(T(v))$ for every $v \in V$, which is precisely the commutativity of the square. Note that nothing here requires $V$ or $W$ to be finite-di\-men\-sional.
 \end{proof}
 % Extractor: Gemini 3.1 Pro
 
@@ -530,7 +530,7 @@ For the composition rule, both $(S \circ T)^*$ and $T^* \circ S^*$ are maps $U^*
 \[
 (S \circ T)^*(\ell) = \ell \circ (S \circ T) = (\ell \circ S) \circ T = T^*(\ell \circ S) = T^*\big(S^*(\ell)\big) = (T^* \circ S^*)(\ell),
 \]
-using only the associativity of composition. Hence $(S \circ T)^* = T^* \circ S^*$.
+using only the associativity of composition. Hence, $(S \circ T)^* = T^* \circ S^*$.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item For $\ell \in V^*$ we have $(\id_V)^*(\ell) = \ell \circ \id_V = \ell$, so $(\id_V)^* = \id_{V^*}$.
@@ -1180,7 +1180,7 @@ using the definition of $\pi$, then the definition of $\overline{T}$ on the clas
 \begin{exercisesolution}[Proof of \cref{exc:induced_map_well_defined}]
 \label{sol:induced_map_well_defined}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Suppose $[v] = [v']$. Then $v - v' \in U \subseteq \ker(T)$ by the hypothesis $T(U) = 0$, so $T(v - v') = 0$ and hence $T(v) = T(v')$. So the value $T'([v]) := T(v)$ does not depend on the representative chosen.
+    \item Suppose $[v] = [v']$. Then $v - v' \in U \subseteq \ker(T)$ by the hypothesis $T(U) = 0$, so $T(v - v') = 0$ and hence $T(v) = T(v')$. So, the value $T'([v]) := T(v)$ does not depend on the representative chosen.
     \item For $\alpha \in K$ and $[v], [v'] \in V/U$,
     \[
     T'\big(\alpha [v] + [v']\big) = T'\big([\alpha v + v']\big) = T(\alpha v + v') = \alpha T(v) + T(v') = \alpha \, T'([v]) + T'([v']),
@@ -1197,7 +1197,7 @@ Let $x \in V/U$ and write $x = [v]$. Then
 \[
 x \in \ker(T') \iff T'([v]) = 0 \iff T(v) = 0 \iff v \in \ker(T) \iff x \in \ker(T)/U,
 \]
-where the second step is the definition of $T'$. The middle equivalence is legitimate for either representative of $x$, since $T'$ is well defined. Hence $\ker(T') = \ker(T)/U$.
+where the second step is the definition of $T'$. The middle equivalence is legitimate for either representative of $x$, since $T'$ is well defined. Hence, $\ker(T') = \ker(T)/U$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:inverse_from_complement}]

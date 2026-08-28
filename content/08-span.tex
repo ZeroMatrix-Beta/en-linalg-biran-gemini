@@ -160,7 +160,7 @@ Before diving into the algebra, let us visualize the logical strategy of the pro
 Note that \textbf{(a)} and \textbf{(b)} imply that $\Sp(S) \subseteq \widetilde{\Sp}(S)$: together they say that $\widetilde{\Sp}(S)$ is one of the subspaces containing $S$, so \cref{lem:span_is_smallest} \textbf{(b)} applies to it. Furthermore, \textbf{(c)} implies that $\widetilde{\Sp}(S) \subseteq \Sp(S)$, because $\Sp(S)$ is itself a subspace $W$ containing $S$ by \cref{lem:span_is_smallest}. Let us now prove the three statements.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $v \in S$. Then we can write $v = 1 \cdot v \in \widetilde{\Sp}(S)$, which is a linear combination with $n = 1$. Thus $S \subseteq \widetilde{\Sp}(S)$.
+    \item Let $v \in S$. Then we can write $v = 1 \cdot v \in \widetilde{\Sp}(S)$, which is a linear combination with $n = 1$. Thus, $S \subseteq \widetilde{\Sp}(S)$.
 
     \item We verify the criterion of \cref{lem:subspace_criterion}. First, $0_V \in \widetilde{\Sp}(S)$: since $S \ne \emptyset$ by assumption, we may pick some $u \in S$, and then $0_V = 0 \cdot u \in \widetilde{\Sp}(S)$ by \cref{lem:vector_space_basics} \textbf{(c)}. \\
     Second, let $v, w \in \widetilde{\Sp}(S)$ and $\alpha, \beta \in K$. Write
@@ -171,7 +171,7 @@ Note that \textbf{(a)} and \textbf{(b)} imply that $\Sp(S) \subseteq \widetilde{
     \[
     \alpha v + \beta w = \alpha a_1 v_1 + \dots + \alpha a_n v_n + \beta b_1 w_1 + \dots + \beta b_m w_m,
     \]
-    which is a linear combination of the vectors $v_1, \dots, v_n, w_1, \dots, w_m \in S$ with coefficients $\alpha a_1, \dots, \alpha a_n, \beta b_1, \dots, \beta b_m \in K$. Hence $\alpha v + \beta w \in \widetilde{\Sp}(S)$, and $\widetilde{\Sp}(S)$ is a linear subspace.
+    which is a linear combination of the vectors $v_1, \dots, v_n, w_1, \dots, w_m \in S$ with coefficients $\alpha a_1, \dots, \alpha a_n, \beta b_1, \dots, \beta b_m \in K$. Hence, $\alpha v + \beta w \in \widetilde{\Sp}(S)$, and $\widetilde{\Sp}(S)$ is a linear subspace.
 
     \item Let $W \subseteq V$ be a linear subspace such that $S \subseteq W$, and let $v \in \widetilde{\Sp}(S)$. We need to show that $v \in W$. Indeed, write $v = a_1 v_1 + \dots + a_n v_n$ for some $n \in \mathbb{N}$, $v_i \in S$ and $a_i \in K$. By assumption $S \subseteq W$, and hence $v_i \in W$ for every $i$. Since $W$ is a linear subspace it is closed under scalar multiplication and under finite sums, and therefore,
     \[
@@ -418,7 +418,7 @@ This reveals one of the most useful insights in all of linear algebra: \textbf{a
 
 \subsubsection{The consequence for membership in a span}
 
-So the problem \qt{find coefficients $x_1, \dots, x_n \in K$ such that $x_1 v_1 + \dots + x_n v_n = w$} is the very same problem as \qt{find a solution $x \in K^n$ of the system $A \cdot x = w$}, where $A$ is the matrix whose columns are $v_1, \dots, v_n$. We record this as a theorem.
+So, the problem \qt{find coefficients $x_1, \dots, x_n \in K$ such that $x_1 v_1 + \dots + x_n v_n = w$} is the very same problem as \qt{find a solution $x \in K^n$ of the system $A \cdot x = w$}, where $A$ is the matrix whose columns are $v_1, \dots, v_n$. We record this as a theorem.
 
 \begin{theorem}[Span and Consistency of a Linear System]
 \label{thm:span_iff_consistent}
@@ -612,7 +612,7 @@ Let $0 \ne v, w \in \mathbb{R}^2$. We prove the two equivalences in turn.
 
 \textbf{$\Sp(v) = \Sp(w) \iff w = \alpha v$ for some $\alpha \ne 0$.} Suppose the spans agree. Then $w \in \Sp(w) = \Sp(v)$, so $w = \alpha v$ for some $\alpha \in \mathbb{R}$ by \cref{lem:span_of_finite_list}, and $\alpha \ne 0$ because $\alpha = 0$ would give $w = 0$, which is excluded. Conversely, suppose $w = \alpha v$ with $\alpha \ne 0$. Then $w \in \Sp(v)$, and since $\Sp(v)$ is a subspace, $\Sp(w) \subseteq \Sp(v)$ by \cref{lem:span_is_smallest}. Multiplying by $\alpha^{-1}$, which exists because $\alpha \ne 0$, gives $v = \alpha^{-1} w \in \Sp(w)$, and the same argument gives $\Sp(v) \subseteq \Sp(w)$.
 
-\textbf{$w = \alpha v$ for some $\alpha \ne 0 \iff L_v = L_w$.} By the description in \cref{ex:lines_through_origin}, $L_v$ is by definition the set $\{\alpha v \mid \alpha \in \mathbb{R}\} = \Sp(v)$, and likewise $L_w = \Sp(w)$. So this second equivalence is the first one restated, once the geometric line is identified with the span. That identification is the whole content of the example: \qt{the line through $0$ and $v$} and \qt{the span of $v$} name the same subset of $\mathbb{R}^2$.
+\textbf{$w = \alpha v$ for some $\alpha \ne 0 \iff L_v = L_w$.} By the description in \cref{ex:lines_through_origin}, $L_v$ is by definition the set $\{\alpha v \mid \alpha \in \mathbb{R}\} = \Sp(v)$, and likewise $L_w = \Sp(w)$. So, this second equivalence is the first one restated, once the geometric line is identified with the span. That identification is the whole content of the example: \qt{the line through $0$ and $v$} and \qt{the span of $v$} name the same subset of $\mathbb{R}^2$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:two_vectors_span_plane}]
@@ -636,7 +636,7 @@ Then, computing the two coordinates of $\alpha v + \beta w$ separately,
 \[
     \alpha b + \beta d = \frac{b u_1 d - b u_2 c + d u_2 a - d u_1 b}{\Delta} = \frac{u_2 (ad - bc)}{\Delta} = u_2,
 \]
-so $\alpha v + \beta w = u$. Hence every $u \in \mathbb{R}^2$ lies in $W$, and $W = \mathbb{R}^2$.
+so $\alpha v + \beta w = u$. Hence, every $u \in \mathbb{R}^2$ lies in $W$, and $W = \mathbb{R}^2$.
 
 (The quantity $\Delta$ is the determinant of the matrix with columns $v$ and $w$, and the two displayed formulas are Cramer's rule for a $2 \times 2$ system. Neither notion is available yet, and neither is needed: the computation above is self-contained.)
 
@@ -653,7 +653,7 @@ For the reverse inclusion, let $x = (x_1, \dots, x_n) \in K^n$. Then
     = x_1 (1, 0, \dots, 0) + x_2 (0, 1, 0, \dots, 0) + \dots + x_n (0, \dots, 0, 1)
     = (x_1, x_2, \dots, x_n) = x,
 \]
-where the middle equality is the definition of the operations on $K^n$, applied coordinate by coordinate: coordinate $j$ of the sum is $\sum_i x_i (e_i)_j = x_j$, since $(e_i)_j$ is $1$ for $i = j$ and $0$ otherwise. So $x \in \Sp(e_1, \dots, e_n)$ by \cref{lem:span_of_finite_list}.
+where the middle equality is the definition of the operations on $K^n$, applied coordinate by coordinate: coordinate $j$ of the sum is $\sum_i x_i (e_i)_j = x_j$, since $(e_i)_j$ is $1$ for $i = j$ and $0$ otherwise. So, $x \in \Sp(e_1, \dots, e_n)$ by \cref{lem:span_of_finite_list}.
 
 Two things are worth noticing. The coefficients used are the coordinates of $x$ themselves, so they are visibly unique; that uniqueness is what makes $(e_1, \dots, e_n)$ a basis in ch. 10a and $\Phi_{\mathcal{B}}$ well defined in ch. 16. And the computation used nothing about $K$ beyond the field axioms, so it holds over $\mathbb{F}_2$ exactly as over $\mathbb{R}$.
 \end{exercisesolution}
@@ -664,9 +664,9 @@ By \cref{def:finite_dimensional}, a space is finite-di\-men\-sional when some \e
 
 \textbf{$K^n$.} The previous solution exhibits the finite generating set $\{e_1, \dots, e_n\}$, of size $n$.
 
-\textbf{$\M_{m \times n}(K)$.} For $1 \le i \le m$ and $1 \le j \le n$ let $E_{ij}$ be the matrix with $1$ in position $(i,j)$ and $0$ elsewhere. Any $A = (a_{ij})$ satisfies $A = \sum_{i,j} a_{ij} E_{ij}$, since the two sides agree in every entry. So $\M_{m \times n}(K) = \Sp(\{E_{ij}\})$, a generating set of size $m \cdot n$. This is the computation displayed in \cref{ex:span_matrix_space} above, read as a statement about spanning.
+\textbf{$\M_{m \times n}(K)$.} For $1 \le i \le m$ and $1 \le j \le n$ let $E_{ij}$ be the matrix with $1$ in position $(i,j)$ and $0$ elsewhere. Any $A = (a_{ij})$ satisfies $A = \sum_{i,j} a_{ij} E_{ij}$, since the two sides agree in every entry. So, $\M_{m \times n}(K) = \Sp(\{E_{ij}\})$, a generating set of size $m \cdot n$. This is the computation displayed in \cref{ex:span_matrix_space} above, read as a statement about spanning.
 
-\textbf{$K[x]_d$.} Every $f$ with $\deg f \le d$ is $f = a_0 + a_1 x + \dots + a_d x^d$, which is a linear combination of $1, x, \dots, x^d$. So $K[x]_d = \Sp(1, x, \dots, x^d)$, a generating set of size $d+1$.
+\textbf{$K[x]_d$.} Every $f$ with $\deg f \le d$ is $f = a_0 + a_1 x + \dots + a_d x^d$, which is a linear combination of $1, x, \dots, x^d$. So, $K[x]_d = \Sp(1, x, \dots, x^d)$, a generating set of size $d+1$.
 
 \textbf{$K[x]$ is \emph{not} finite-di\-men\-sional.} Suppose it were, say $K[x] = \Sp(f_1, \dots, f_k)$ for finitely many polynomials $f_i$. Each $f_i$ has a degree, so
 \[

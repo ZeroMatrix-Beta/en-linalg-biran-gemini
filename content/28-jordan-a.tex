@@ -1,4 +1,4 @@
-﻿% Source: 28.Jordan.a.v02, ten pages. As in chapter 26, Prof. Biran numbers
+% Source: 28.Jordan.a.v02, ten pages. As in chapter 26, Prof. Biran numbers
 % nothing here: every Def., Lemma, Thm. and Cor. is unnumbered in the notes.
 % We print 28.a.1 through 28.a.5 anyway, following the decision taken for the
 % Singular Value Decomposition: nothing downstream shifts, and it keeps these
@@ -379,7 +379,7 @@ The data claimed to be independent of the choice of Jordan basis is the \emph{mu
 \[ \{ (\lambda_1, n_1), (\lambda_2, n_2), \dots, (\lambda_k, n_k) \}, \]
 that is, the unordered list, counted with repetitions, of the eigenvalues labelling the blocks together with the sizes of those blocks. Equivalently: for every $\lambda \in K$ and every $r \ge 1$, the number of indices $j$ with $\lambda_j = \lambda$ and $n_j = r$ depends only on $T$.
 
-The qualification \qt{up to permutation} is needed because no ordering of the blocks can possibly be canonical. If $\mathcal{B}$ is a Jordan basis, then reordering the basis vectors block by block is again a basis, and it produces the same blocks arranged along the diagonal in a different order. So the ordered list of blocks is not an invariant of $T$, while the multiset is.
+The qualification \qt{up to permutation} is needed because no ordering of the blocks can possibly be canonical. If $\mathcal{B}$ is a Jordan basis, then reordering the basis vectors block by block is again a basis, and it produces the same blocks arranged along the diagonal in a different order. So, the ordered list of blocks is not an invariant of $T$, while the multiset is.
 
 Two instances of this independence follow immediately from \cref{cor:multiplicities_min_poly_jnf}.
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -395,7 +395,7 @@ These two invariants do not by themselves pin down the whole multiset when $\lam
 \[ 0 = \mu_T(T) v = \mu_T(\lambda_i) \cdot v. \]
 Since $v \neq 0$, this forces $\mu_T(\lambda_i) = 0$, so $(x - \lambda_i)$ divides $\mu_T(x)$, that is, $\ell_i \ge 1$.
 
-\textbf{The upper bound $\ell_i \le m_a(\lambda_i)$.} First note that $\mu_T$ divides every annihilating polynomial. Indeed, if $g(T) = 0$, divide with remainder, $g = q \cdot \mu_T + r$ with $r = 0$ or $\deg r < \deg \mu_T$. Evaluating at $T$ gives $r(T) = g(T) - q(T)\mu_T(T) = 0$, and if $r \neq 0$ this would contradict the minimality of $\deg \mu_T$. Hence $r = 0$ and $\mu_T \mid g$.
+\textbf{The upper bound $\ell_i \le m_a(\lambda_i)$.} First note that $\mu_T$ divides every annihilating polynomial. Indeed, if $g(T) = 0$, divide with remainder, $g = q \cdot \mu_T + r$ with $r = 0$ or $\deg r < \deg \mu_T$. Evaluating at $T$ gives $r(T) = g(T) - q(T)\mu_T(T) = 0$, and if $r \neq 0$ this would contradict the minimality of $\deg \mu_T$. Hence, $r = 0$ and $\mu_T \mid g$.
 
 By \cref{thm:cayley_hamilton} we have $P_T(T) = 0$, so $\mu_T(x)$ divides $P_T(x)$. Since $P_T(x)$ splits, the multiplicity of the factor $(x - \lambda_i)$ in $P_T(x)$ is by definition $m_a(\lambda_i)$, and a divisor cannot contain that factor more often than $P_T$ does. Therefore, $\ell_i \le m_a(\lambda_i)$.
 \end{exercisesolution}
@@ -406,9 +406,9 @@ By definition $N_{i,j} = 1$ if $j = i+1$ and $N_{i,j} = 0$ otherwise, which is t
 \[
     \left(N^{k+1}\right)_{i,j} = \sum_{p=1}^n \left(N^k\right)_{i,p} \cdot N_{p,j}.
 \]
-By the induction hypothesis the factor $\left(N^k\right)_{i,p}$ vanishes unless $p = i+k$, and $N_{p,j}$ vanishes unless $j = p+1$. So the whole sum is $1$ exactly when $j = (i+k) + 1 = i + (k+1)$, and $0$ otherwise, which is the claim for $k+1$.
+By the induction hypothesis the factor $\left(N^k\right)_{i,p}$ vanishes unless $p = i+k$, and $N_{p,j}$ vanishes unless $j = p+1$. So, the whole sum is $1$ exactly when $j = (i+k) + 1 = i + (k+1)$, and $0$ otherwise, which is the claim for $k+1$.
 
-For $k \ge n$ there is no pair of indices $1 \le i, j \le n$ with $j = i + k$ at all, since that would force $j \ge 1 + n > n$. Hence every entry of $N^k$ vanishes, that is, $N^k = 0$.
+For $k \ge n$ there is no pair of indices $1 \le i, j \le n$ with $j = i + k$ at all, since that would force $j \ge 1 + n > n$. Hence, every entry of $N^k$ vanishes, that is, $N^k = 0$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:powers_of_block_diagonal}]

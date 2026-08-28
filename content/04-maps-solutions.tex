@@ -77,11 +77,11 @@ R = \bigl\{ (x, y) \in \mathbb{R}^2 \;\big|\; x \ge 0, \; y \ge 0, \; y \le ax +
 \begin{exercisesolution}[Solution to \cref{exc:images_preimages_operations}]
 \label{sol:images_preimages_operations}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item \textbf{Proof of $f(f^{-1}(B)) \subseteq B$:} Let $y \in f(f^{-1}(B))$. By definition of the image of a subset, there exists $x \in f^{-1}(B)$ such that $y = f(x)$. By definition of the preimage, $x \in f^{-1}(B)$ implies $f(x) \in B$. Hence $y \in B$.
+    \item \textbf{Proof of $f(f^{-1}(B)) \subseteq B$:} Let $y \in f(f^{-1}(B))$. By definition of the image of a subset, there exists $x \in f^{-1}(B)$ such that $y = f(x)$. By definition of the preimage, $x \in f^{-1}(B)$ implies $f(x) \in B$. Hence, $y \in B$.
     
     \textbf{Condition for equality:} Equality $f(f^{-1}(B)) = B$ holds for all $B \subseteq Y$ if and only if $f$ is surjective.
     \begin{itemize}
-        \item If $f$ is surjective, then for every $y \in B$, there exists $x \in X$ such that $f(x) = y \in B$. Thus $x \in f^{-1}(B)$, which implies $y = f(x) \in f(f^{-1}(B))$. This gives $B \subseteq f(f^{-1}(B))$ and hence equality.
+        \item If $f$ is surjective, then for every $y \in B$, there exists $x \in X$ such that $f(x) = y \in B$. Thus, $x \in f^{-1}(B)$, which implies $y = f(x) \in f(f^{-1}(B))$. This gives $B \subseteq f(f^{-1}(B))$ and hence equality.
         \item If $f$ is not surjective, take $y_0 \in Y \setminus \Img(f)$ and set $B := \{y_0\}$. Then $f^{-1}(B) = \emptyset$, so $f(f^{-1}(B)) = f(\emptyset) = \emptyset \ne \{y_0\} = B$.
     \end{itemize}
 
@@ -89,7 +89,7 @@ R = \bigl\{ (x, y) \in \mathbb{R}^2 \;\big|\; x \ge 0, \; y \ge 0, \; y \le ax +
     
     \textbf{Condition for equality:} Equality $f^{-1}(f(A)) = A$ holds for all $A \subseteq X$ if and only if $f$ is injective.
     \begin{itemize}
-        \item If $f$ is injective, let $x \in f^{-1}(f(A))$. Then $f(x) \in f(A)$, so there exists $a \in A$ such that $f(x) = f(a)$. Since $f$ is injective, $x = a \in A$. Thus $f^{-1}(f(A)) \subseteq A$, proving equality.
+        \item If $f$ is injective, let $x \in f^{-1}(f(A))$. Then $f(x) \in f(A)$, so there exists $a \in A$ such that $f(x) = f(a)$. Since $f$ is injective, $x = a \in A$. Thus, $f^{-1}(f(A)) \subseteq A$, proving equality.
         \item If $f$ is not injective, there exist $x_1 \ne x_2 \in X$ such that $f(x_1) = f(x_2)$. Setting $A := \{x_1\}$, we have $f(A) = \{f(x_1)\}$, and therefore $f^{-1}(f(A)) = f^{-1}(\{f(x_1)\}) \supseteq \{x_1, x_2\} \ne \{x_1\} = A$.
     \end{itemize}
 
@@ -105,7 +105,7 @@ R = \bigl\{ (x, y) \in \mathbb{R}^2 \;\big|\; x \ge 0, \; y \ge 0, \; y \le ax +
     &\iff x \in f^{-1}(B) \text{ or } x \in f^{-1}(B') \iff x \in f^{-1}(B) \cup f^{-1}(B').
     \end{align*}
 
-    \item \textbf{Intersections and image:} If $y \in f(A \cap A')$, there exists $x \in A \cap A'$ with $f(x) = y$. Since $x \in A$, $y = f(x) \in f(A)$, and since $x \in A'$, $y = f(x) \in f(A')$. Hence $y \in f(A) \cap f(A')$, proving $f(A \cap A') \subseteq f(A) \cap f(A')$.
+    \item \textbf{Intersections and image:} If $y \in f(A \cap A')$, there exists $x \in A \cap A'$ with $f(x) = y$. Since $x \in A$, $y = f(x) \in f(A)$, and since $x \in A'$, $y = f(x) \in f(A')$. Hence, $y \in f(A) \cap f(A')$, proving $f(A \cap A') \subseteq f(A) \cap f(A')$.
     
     If $f$ is injective, let $y \in f(A) \cap f(A')$. Then $y = f(a)$ for some $a \in A$ and $y = f(a')$ for some $a' \in A'$. Injectivity forces $a = a'$, so $a \in A \cap A'$ and $y = f(a) \in f(A \cap A')$.
     

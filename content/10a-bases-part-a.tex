@@ -175,7 +175,7 @@ Since $v_1, \dots, v_n$ are linearly independent, all coefficients must be zero.
 \[
 v_1 = a_1^{-1} u - a_1^{-1} a_2 v_2 - \dots - a_1^{-1} a_n v_n
 \]
-This shows $v_1 \in \Sp(u, v_2, \dots, v_n)$. Since all the other basis vectors $v_2, \dots, v_n$ are trivially in this span, all vectors of the original basis are contained within it. Thus $V = \Sp(v_1, \dots, v_n) \subseteq \Sp(u, v_2, \dots, v_n)$. The reverse inclusion is immediate, since $u, v_2, \dots, v_n$ all lie in $V$ and $V$ is a subspace of itself, so the two spans are equal and the new list spans $V$.
+This shows $v_1 \in \Sp(u, v_2, \dots, v_n)$. Since all the other basis vectors $v_2, \dots, v_n$ are trivially in this span, all vectors of the original basis are contained within it. Thus, $V = \Sp(v_1, \dots, v_n) \subseteq \Sp(u, v_2, \dots, v_n)$. The reverse inclusion is immediate, since $u, v_2, \dots, v_n$ all lie in $V$ and $V$ is a subspace of itself, so the two spans are equal and the new list spans $V$.
 \end{proof}
 
 \begin{lemma}[Lemma B: Targeted Redundancy]
@@ -235,7 +235,7 @@ Moving $v_j$ to the other side gives
 \[
 0_V = a_1 v_1 + \dots + a_{j-1} v_{j-1} + (-1) v_j.
 \]
-The coefficient of $v_j$ is $-1 \ne 0$, so this is a non-trivial linear combination of $v_1, \dots, v_j$ that gives $0_V$. Hence $v_1, \dots, v_j$ are linearly dependent. Since $j \le k$, the list $v_1, \dots, v_j$ sits inside the list $v_1, \dots, v_k$, so $v_1, \dots, v_k$ are linearly dependent as well. This contradicts the assumption that $v_1, \dots, v_k$ are linearly independent, and therefore, $k < j$.
+The coefficient of $v_j$ is $-1 \ne 0$, so this is a non-trivial linear combination of $v_1, \dots, v_j$ that gives $0_V$. Hence, $v_1, \dots, v_j$ are linearly dependent. Since $j \le k$, the list $v_1, \dots, v_j$ sits inside the list $v_1, \dots, v_k$, so $v_1, \dots, v_k$ are linearly dependent as well. This contradicts the assumption that $v_1, \dots, v_k$ are linearly independent, and therefore, $k < j$.
 \end{proof}
 
 \begin{lemma}[Lemma C: Span Overcrowding]

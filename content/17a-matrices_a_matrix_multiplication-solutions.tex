@@ -59,8 +59,8 @@
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $V, W$ be finite-dimensional vector spaces with $\dim V = \dim W = n$, and let $S \in \Hom(V, W)$ and $T \in \Hom(W, V)$ satisfy $T \circ S = \id_V$.
     \begin{itemize}
-        \item \emph{$S$ is injective:} If $v \in \ker(S)$, then $S(v) = 0$, so $v = \id_V(v) = (T \circ S)(v) = T(S(v)) = T(0) = 0$. Thus $\ker(S) = \{0\}$.
-        \item \emph{$S$ is an isomorphism:} By \cref{cor:equal_dim_iso} \textbf{(c)} (a consequence of the Rank-Nullity Theorem \cref{thm:rank_nullity}), for a linear map between vector spaces of equal finite dimension $\dim V = \dim W = n < \infty$, injectivity is equivalent to bijectivity. Thus $S \colon V \to W$ is an isomorphism.
+        \item \emph{$S$ is injective:} If $v \in \ker(S)$, then $S(v) = 0$, so $v = \id_V(v) = (T \circ S)(v) = T(S(v)) = T(0) = 0$. Thus, $\ker(S) = \{0\}$.
+        \item \emph{$S$ is an isomorphism:} By \cref{cor:equal_dim_iso} \textbf{(c)} (a consequence of the Rank-Nullity Theorem \cref{thm:rank_nullity}), for a linear map between vector spaces of equal finite dimension $\dim V = \dim W = n < \infty$, injectivity is equivalent to bijectivity. Thus, $S \colon V \to W$ is an isomorphism.
         \item \emph{$T = S^{-1}$:} Since $S$ is invertible, we multiply $T \circ S = \id_V$ on the right by $S^{-1}$ to obtain $T = T \circ (S \circ S^{-1}) = (T \circ S) \circ S^{-1} = \id_V \circ S^{-1} = S^{-1}$.
     \end{itemize}
 

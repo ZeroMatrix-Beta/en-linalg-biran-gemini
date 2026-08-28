@@ -241,7 +241,7 @@ P_A(\mu) = \det(A - \mu \cdot I_n),
 \]
 the determinant on the right now being an ordinary one, over $K$. We use this repeatedly and it is the only bridge between the formal polynomial and the scalars.
 
-Second, $P_T(x)$ is defined through a basis, since $\det$ of an endomorphism is. It does not depend on which one: two bases give similar matrices, by the computation in \cref{cor:det_endomorphism}, and similar matrices have equal characteristic polynomials by \cref{lem:properties_char_poly} \textbf{(e)}. So $P_T(x) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$ for every basis $\mathcal{B}$, which is what the proof of \cref{rem:char_poly_degree} uses.
+Second, $P_T(x)$ is defined through a basis, since $\det$ of an endomorphism is. It does not depend on which one: two bases give similar matrices, by the computation in \cref{cor:det_endomorphism}, and similar matrices have equal characteristic polynomials by \cref{lem:properties_char_poly} \textbf{(e)}. So, $P_T(x) = P_{[T]_{\mathcal{B}}^{\mathcal{B}}}(x)$ for every basis $\mathcal{B}$, which is what the proof of \cref{rem:char_poly_degree} uses.
 \end{remark}
 
 % Creator: Opus 5
@@ -259,7 +259,7 @@ Let $V$ be a finite-di\-men\-sional vector space over $K$ with $\dim V \ge 1$, l
 \end{aiproposition}
 
 \begin{proof}
-Each step is an equivalence. By \cref{prop:eigen_injective}, $\lambda$ is an eigenvalue of $T$ if and only if $T - \lambda \cdot \id_V$ is not injective. Its domain and target are both $V$, so \cref{cor:equal_dim_iso} \textbf{(c)} applies and injectivity is the same as bijectivity here; by \cref{lem:bijective_is_iso}, that is the same as being an isomorphism. So $\lambda$ is an eigenvalue if and only if $T - \lambda \cdot \id_V$ is \emph{not} an isomorphism, which by part \textbf{(b)} of the Proposition on \cpageref{prop:det_endomorphism_properties} happens exactly when
+Each step is an equivalence. By \cref{prop:eigen_injective}, $\lambda$ is an eigenvalue of $T$ if and only if $T - \lambda \cdot \id_V$ is not injective. Its domain and target are both $V$, so \cref{cor:equal_dim_iso} \textbf{(c)} applies and injectivity is the same as bijectivity here; by \cref{lem:bijective_is_iso}, that is the same as being an isomorphism. So, $\lambda$ is an eigenvalue if and only if $T - \lambda \cdot \id_V$ is \emph{not} an isomorphism, which by part \textbf{(b)} of the Proposition on \cpageref{prop:det_endomorphism_properties} happens exactly when
 \[
 \det(T - \lambda \cdot \id_V) = 0.
 \]
@@ -399,7 +399,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \end{exercise}
 
 \begin{exercise}[Isomorphism between External and Internal Direct Sums]\label{ex:canonical_iso_direct_sum}
-  If $U_1 + \dots + U_r$ is a direct sum, then there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
+  If $U_1 + \dots + U_r$ is a direct sum, then there exists a canonical isomorphism $U_1 \oplus \dots \oplus U_r \xrightarrow{\sim} $ $U_1 + \dots + U_r$, given by $(u_1, \dots, u_r) \mapsto u_1 + \dots + u_r$. So, when $U_1 + \dots + U_r$ is a direct sum, we can identify $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \exsol{sol:canonical_iso_direct_sum}
 \end{exercise}
@@ -462,11 +462,11 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 
   \textbf{(b) implies (a).} Suppose $0 = u_1 + \dots + u_r$ with $u_i \in U_i$ and not all $u_i$ equal to $0$. Let $j$ be the largest index with $u_j \ne 0$. If $j = 1$, then $0 = u_1$ contradicts $u_1 \ne 0$. If $j \ge 2$, then
   \[ u_j = -(u_1 + \dots + u_{j-1}) \in U_j \cap (U_1 + \dots + U_{j-1}) = \{0\}, \]
-  again contradicting $u_j \ne 0$. Hence all the $u_i$ vanish.
+  again contradicting $u_j \ne 0$. Hence, all the $u_i$ vanish.
 
-  \textbf{The basis criterion.} Assume in addition that every $U_i$ is finite-di\-men\-sional, and let $\mathcal{B}_i := (b_1^{(i)}, \dots, b_{d_i}^{(i)})$ be a basis for $U_i$. The concatenated list $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ always spans $W$, since every $u_i \in U_i$ is a combination of $\mathcal{B}_i$. So the only question is linear independence.
+  \textbf{The basis criterion.} Assume in addition that every $U_i$ is finite-di\-men\-sional, and let $\mathcal{B}_i := (b_1^{(i)}, \dots, b_{d_i}^{(i)})$ be a basis for $U_i$. The concatenated list $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ always spans $W$, since every $u_i \in U_i$ is a combination of $\mathcal{B}_i$. So, the only question is linear independence.
 
-  If the sum is direct, consider a vanishing combination of the concatenated list and collect, for each $i$, the terms coming from $\mathcal{B}_i$ into a single vector $u_i \in U_i$. Then $u_1 + \dots + u_r = 0$, so $u_i = 0$ for every $i$ by \textbf{(a)}, and the linear independence of $\mathcal{B}_i$ forces all the coefficients in the $i$-th group to vanish. Thus $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$, for every choice of the bases $\mathcal{B}_i$.
+  If the sum is direct, consider a vanishing combination of the concatenated list and collect, for each $i$, the terms coming from $\mathcal{B}_i$ into a single vector $u_i \in U_i$. Then $u_1 + \dots + u_r = 0$, so $u_i = 0$ for every $i$ by \textbf{(a)}, and the linear independence of $\mathcal{B}_i$ forces all the coefficients in the $i$-th group to vanish. Thus, $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$, for every choice of the bases $\mathcal{B}_i$.
 
   Conversely, suppose $(\mathcal{B}_1, \dots, \mathcal{B}_r)$ is a basis for $W$ for some choice of bases $\mathcal{B}_i$, and let $0 = u_1 + \dots + u_r$ with $u_i \in U_i$. Expanding each $u_i$ in the basis $\mathcal{B}_i$ exhibits a vanishing combination of the concatenated list; by its linear independence all coefficients are $0$, hence $u_i = 0$ for every $i$. This is \textbf{(a)}, so the sum is direct.
 \end{exercisesolution}
@@ -479,14 +479,14 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   \[ \Phi\big((u_1, \dots, u_r) + \mu (u_1', \dots, u_r')\big) = \sum_{i=1}^r (u_i + \mu u_i') = \Phi(u_1, \dots, u_r) + \mu \Phi(u_1', \dots, u_r'), \]
   and $\Phi$ is linear. It is surjective, because by the very definition of $U_1 + \dots + U_r$ every element of the target is of the form $u_1 + \dots + u_r$ with $u_i \in U_i$.
 
-  For injectivity, let $(u_1, \dots, u_r) \in \ker \Phi$, that is, $u_1 + \dots + u_r = 0$ with $u_i \in U_i$. Since the sum is direct, part \textbf{(a)} of \cref{ex:direct_sum_conditions} gives $u_1 = \dots = u_r = 0$, so $\ker \Phi = \{0\}$. Hence $\Phi$ is an isomorphism.
+  For injectivity, let $(u_1, \dots, u_r) \in \ker \Phi$, that is, $u_1 + \dots + u_r = 0$ with $u_i \in U_i$. Since the sum is direct, part \textbf{(a)} of \cref{ex:direct_sum_conditions} gives $u_1 = \dots = u_r = 0$, so $\ker \Phi = \{0\}$. Hence, $\Phi$ is an isomorphism.
 
   The isomorphism is canonical in the sense that its definition involves no choice whatsoever, no bases, no complements, only the addition of $V$. This is what licenses the identification of $U_1 + \dots + U_r$ with $U_1 \oplus \dots \oplus U_r$ whenever the sum is direct.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{ex:finite_eigenvalues}]
 \label{sol:finite_eigenvalues}
-  Put $n := \dim V$ and let $\lambda_1, \dots, \lambda_m \in K$ be pairwise distinct eigenvalues of $T$. Choose, for each $i$, an eigenvector $v_i \ne 0$ for $\lambda_i$. By \cref{prop:lin_indep_eigen}, the vectors $v_1, \dots, v_m$ are linearly independent, and a linearly independent list in an $n$-di\-men\-sional space has at most $n$ members. Hence $m \le n$.
+  Put $n := \dim V$ and let $\lambda_1, \dots, \lambda_m \in K$ be pairwise distinct eigenvalues of $T$. Choose, for each $i$, an eigenvector $v_i \ne 0$ for $\lambda_i$. By \cref{prop:lin_indep_eigen}, the vectors $v_1, \dots, v_m$ are linearly independent, and a linearly independent list in an $n$-di\-men\-sional space has at most $n$ members. Hence, $m \le n$.
 
   Since $m$ was the number of \emph{any} list of pairwise distinct eigenvalues, $T$ has at most $n = \dim V$ distinct eigenvalues; in particular, only finitely many.
 \end{exercisesolution}
@@ -655,13 +655,13 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \label{sol:poly_vs_func}
   The assignment $p(x) \mapsto \hat{p}$, where $\hat{p} : K \to K$ denotes the function $\hat{p}(a) := p(a)$, is $K$-linear, so two polynomials $p(x), q(x) \in K[x]$ define the same function if and only if their difference $r(x) := p(x) - q(x)$ vanishes at \emph{every} point of $K$. The question is therefore: which non-zero polynomials vanish identically as functions?
 
-  \textbf{A non-zero polynomial has at most $\deg$ many zeros.} We claim that a polynomial $0 \ne r(x) \in K[x]$ of degree $d$ has at most $d$ distinct zeros in $K$. We induct on $d$. If $d = 0$, then $r$ is a non-zero constant and has no zeros at all. Let $d \ge 1$. If $r$ has no zero, there is nothing to prove; otherwise pick a zero $\lambda \in K$. By the Conclusion of the digression above, $r(x) = (x - \lambda) \cdot q(x)$ with $\deg q(x) = d-1$. If $\mu \ne \lambda$ is another zero of $r$, then $(\mu - \lambda) \cdot q(\mu) = 0$ with $\mu - \lambda \ne 0$, and since a field has no zero divisors, $q(\mu) = 0$. So every zero of $r$ other than $\lambda$ is a zero of $q$, of which there are at most $d-1$ by the inductive hypothesis. Hence $r$ has at most $d$ zeros.
+  \textbf{A non-zero polynomial has at most $\deg$ many zeros.} We claim that a polynomial $0 \ne r(x) \in K[x]$ of degree $d$ has at most $d$ distinct zeros in $K$. We induct on $d$. If $d = 0$, then $r$ is a non-zero constant and has no zeros at all. Let $d \ge 1$. If $r$ has no zero, there is nothing to prove; otherwise pick a zero $\lambda \in K$. By the Conclusion of the digression above, $r(x) = (x - \lambda) \cdot q(x)$ with $\deg q(x) = d-1$. If $\mu \ne \lambda$ is another zero of $r$, then $(\mu - \lambda) \cdot q(\mu) = 0$ with $\mu - \lambda \ne 0$, and since a field has no zero divisors, $q(\mu) = 0$. So, every zero of $r$ other than $\lambda$ is a zero of $q$, of which there are at most $d-1$ by the inductive hypothesis. Hence, $r$ has at most $d$ zeros.
 
   \textbf{Infinite fields.} If $K$ is infinite, then no non-zero polynomial can vanish at every point of $K$, since it has only finitely many zeros. Consequently $r(x) = 0$, that is, $p(x) = q(x)$: over an infinite field, distinct polynomials always define distinct functions. This settles $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}$, for these fields the phenomenon of \cref{rem:poly_vs_func} cannot occur, and one may safely identify a polynomial with the function it defines.
 
   \textbf{Finite fields.} If $K$ is finite, the phenomenon always occurs. Indeed, put
   \[ r(x) := \prod_{a \in K} (x - a) \in K[x]. \]
-  This polynomial is non-zero (it is monic of degree $|K|$), yet $\hat{r}(a) = 0$ for every $a \in K$. Thus $p(x)$ and $p(x) + r(x)$ are distinct polynomials defining the same function, for any $p(x)$ whatsoever. For $K = \mathbb{Z}_2$ this gives $r(x) = x \cdot (x-1) = x^2 - x$, and adding it to $p(x) = x$ returns exactly Prof. Biran's $q(x) = x^2$.
+  This polynomial is non-zero (it is monic of degree $|K|$), yet $\hat{r}(a) = 0$ for every $a \in K$. Thus, $p(x)$ and $p(x) + r(x)$ are distinct polynomials defining the same function, for any $p(x)$ whatsoever. For $K = \mathbb{Z}_2$ this gives $r(x) = x \cdot (x-1) = x^2 - x$, and adding it to $p(x) = x$ returns exactly Prof. Biran's $q(x) = x^2$.
 
   There is also a proof by counting, which shows that a collision must occur without exhibiting one: if $|K| = m < \infty$, then there are exactly $m^m$ functions $K \to K$, whereas $K[x]$ is infinite, so the map $p(x) \mapsto \hat{p}$ cannot possibly be injective.
 \end{exercisesolution}
@@ -725,7 +725,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \end{corollary}
 
 \begin{proof}
-  Let $\lambda$ be an eigenvalue of $T$. Then $\Eig_T(\lambda) \ne \{0_V\}$, since it contains an eigenvector, so $m_g(T;\lambda) \ge 1$; and $m_g(T;\lambda) \le m_a(T;\lambda) = 1$ by \cref{prop:mult_inequality}. Hence $m_g(T;\lambda) = 1 = m_a(T;\lambda)$. Now use point \textbf{(c)} of \cref{thm:diag_equiv}.
+  Let $\lambda$ be an eigenvalue of $T$. Then $\Eig_T(\lambda) \ne \{0_V\}$, since it contains an eigenvector, so $m_g(T;\lambda) \ge 1$; and $m_g(T;\lambda) \le m_a(T;\lambda) = 1$ by \cref{prop:mult_inequality}. Hence, $m_g(T;\lambda) = 1 = m_a(T;\lambda)$. Now use point \textbf{(c)} of \cref{thm:diag_equiv}.
 \end{proof}
 
 \begin{exercise}[Diagonalizability over $\mathbb{Q}$ \faHeart]
@@ -757,7 +757,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     For each $0 \le k \le n$, let $c_k$ be the coefficient of $x^k$ in the characteristic polynomial $P_T(x) = \sum_{k=0}^n c_k x^k$. Give an explicit formula for $c_k$ in terms of the eigenvalues $\lambda_1, \dots, \lambda_n$.
     \item Let $B \in \M_{2 \times 2}(\mathbb{R})$ be a diagonalizable matrix with $\Tr(B) = 0$. Show that $\det(B) \le 0$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Choose a basis $\mathcal{B}$ of eigenvectors so that $[T]_{\mathcal{B}}^{\mathcal{B}} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Use the invariance of the trace $\Tr(T) = \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$ and determinant $\det(T) = \det([T]_{\mathcal{B}}^{\mathcal{B}})$. Expanding $P_T(x) = \prod_{i=1}^n (\lambda_i - x)$ yields $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$, where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial. \textbf{(b)} The two real eigenvalues satisfy $\lambda_1 + \lambda_2 = \Tr(B) = 0$, so $\lambda_2 = -\lambda_1$. Hence $\det(B) = \lambda_1 \lambda_2 = -\lambda_1^2 \le 0$.}
+  \exhint[Official Hint]{\textbf{(a)} Choose a basis $\mathcal{B}$ of eigenvectors so that $[T]_{\mathcal{B}}^{\mathcal{B}} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Use the invariance of the trace $\Tr(T) = \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$ and determinant $\det(T) = \det([T]_{\mathcal{B}}^{\mathcal{B}})$. Expanding $P_T(x) = \prod_{i=1}^n (\lambda_i - x)$ yields $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$, where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial. \textbf{(b)} The two real eigenvalues satisfy $\lambda_1 + \lambda_2 = \Tr(B) = 0$, so $\lambda_2 = -\lambda_1$. Hence, $\det(B) = \lambda_1 \lambda_2 = -\lambda_1^2 \le 0$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:trace_determinant_char_poly_diagonalizable}
 \end{exercise}
@@ -1020,7 +1020,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
   \textbf{Spanning.} Let $[v] \in V/U$ be arbitrary and expand $v$ in the basis of $V$:
   \[ v = a_1 u_1 + \dots + a_r u_r + b_{r+1} w_{r+1} + \dots + b_n w_n. \]
-  Applying $\pi$ and using $[u_i] = 0$ for $i \le r$ leaves $[v] = b_{r+1}[w_{r+1}] + \dots + b_n[w_n]$. Hence $([w_{r+1}], \dots, [w_n])$ spans $V/U$.
+  Applying $\pi$ and using $[u_i] = 0$ for $i \le r$ leaves $[v] = b_{r+1}[w_{r+1}] + \dots + b_n[w_n]$. Hence, $([w_{r+1}], \dots, [w_n])$ spans $V/U$.
 
   \textbf{Linear independence.} Suppose $b_{r+1}[w_{r+1}] + \dots + b_n[w_n] = 0$, that is, $b_{r+1} w_{r+1} + \dots + b_n w_n \in U$. Since $(u_1, \dots, u_r)$ is a basis for $U$, there are scalars $a_1, \dots, a_r$ with
   \[ b_{r+1} w_{r+1} + \dots + b_n w_n = a_1 u_1 + \dots + a_r u_r, \]
@@ -1079,7 +1079,7 @@ Two points are needed before the notation $m_T(x)$ is legitimate, and the hypoth
 
 \textbf{Existence.} Some non-zero polynomial annihilates $T$, by the Claim on \cpageref{claim:existence_annihilating} applied to $[T]_{\mathcal{B}}^{\mathcal{B}}$ for any basis $\mathcal{B}$; the set of degrees of such polynomials is a non-empty set of non-negative integers and so has a least element. Dividing by the leading coefficient makes a polynomial of that least degree monic without changing its degree or the fact that it annihilates $T$. Without finite-di\-men\-sionality this fails: the argument counts powers of $T$ inside a space of dimension $n^2$, and there are endomorphisms of infinite-di\-men\-sional spaces that no non-zero polynomial annihilates.
 
-\textbf{Uniqueness.} If $f$ and $g$ are both monic of that least degree $d$ with $f(T) = g(T) = 0$, then $h := f - g$ satisfies $h(T) = 0$ and $\deg h < d$, the leading terms cancelling. Were $h \ne 0$, dividing it by its leading coefficient would produce a monic annihilating polynomial of degree less than $d$, contradicting minimality. So $h = 0$ and $f = g$. This is what licenses speaking of \emph{the} minimal polynomial and writing $m_T(x)$.
+\textbf{Uniqueness.} If $f$ and $g$ are both monic of that least degree $d$ with $f(T) = g(T) = 0$, then $h := f - g$ satisfies $h(T) = 0$ and $\deg h < d$, the leading terms cancelling. Were $h \ne 0$, dividing it by its leading coefficient would produce a monic annihilating polynomial of degree less than $d$, contradicting minimality. So, $h = 0$ and $f = g$. This is what licenses speaking of \emph{the} minimal polynomial and writing $m_T(x)$.
 \end{remark}
 
 \begin{exercise}[Eigenvalues are Roots of Annihilating Polynomials]
@@ -1138,7 +1138,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \[
   \deg(m_A) \le r + 1.
   \]
-  \exhint[Official Hint]{Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = r$. Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is well-defined. By the Cayley-Hamilton theorem applied to $F$, there is a monic polynomial $q(x) \in K[x]$ of degree $r = \dim W$ such that $q(F) = 0$, meaning $q(T_A)(w) = 0$ for all $w \in W$. For any $v \in K^n$, $T_A(v) \in W$, so $q(T_A)(T_A(v)) = 0$. Thus the polynomial $p(x) := x q(x)$, which has degree $r + 1$, satisfies $p(A) = 0$. Since the minimal polynomial $m_A(x)$ divides $p(x)$, $\deg(m_A) \le \deg(p) = r + 1$.}
+  \exhint[Official Hint]{Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = r$. Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is well-defined. By the Cayley-Hamilton theorem applied to $F$, there is a monic polynomial $q(x) \in K[x]$ of degree $r = \dim W$ such that $q(F) = 0$, meaning $q(T_A)(w) = 0$ for all $w \in W$. For any $v \in K^n$, $T_A(v) \in W$, so $q(T_A)(T_A(v)) = 0$. Thus, the polynomial $p(x) := x q(x)$, which has degree $r + 1$, satisfies $p(A) = 0$. Since the minimal polynomial $m_A(x)$ divides $p(x)$, $\deg(m_A) \le \deg(p) = r + 1$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:degree_minimal_poly_bounded_by_rank}
 \end{exercise}
@@ -1409,7 +1409,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 
 \begin{proof}
   \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $U := \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus $T(U) \subseteq U$, so $U$ is a $T$-invariant subspace of $V$ containing $v$. Clearly $U \subseteq \langle v \rangle_T$; and by part \textbf{(b)} of \cref{ex:cyclic_minimal} (which identifies $\langle v \rangle_T$ as the smallest $T$-invariant subspace containing $v$), we also have $\langle v \rangle_T \subseteq U$. Hence $U = \langle v \rangle_T$. Since the elements of $\mathcal{B}$ are linearly independent by assumption and span this space, they form a basis for it.
+    \item Let $U := \Sp(\mathcal{B})$. Applying $T$ to any basis vector $T^k v$ yields either the next basis element $T^{k+1}v \in U$, or (in the case of $k=d-1$) it yields $T^d v \in U$ due to the given linear combination. Thus, $T(U) \subseteq U$, so $U$ is a $T$-invariant subspace of $V$ containing $v$. Clearly, $U \subseteq \langle v \rangle_T$; and by part \textbf{(b)} of \cref{ex:cyclic_minimal} (which identifies $\langle v \rangle_T$ as the smallest $T$-invariant subspace containing $v$), we also have $\langle v \rangle_T \subseteq U$. Hence, $U = \langle v \rangle_T$. Since the elements of $\mathcal{B}$ are linearly independent by assumption and span this space, they form a basis for it.
     \item This follows directly from the definition of the matrix representation; each vector maps to the next standard basis vector, creating the $1$s on the subdiagonal, and the last vector maps to the prescribed linear combination, populating the final column.
   \end{enumerate}
 \end{proof}
@@ -1515,7 +1515,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
   \[
   P_S(T)v = (-1)^d (T^d v - c_{d-1}T^{d-1}v - \dots - c_0 v).
   \]
-  By the very definition of our constants $c_i$, this evaluates exactly to $0$. Hence $Rv = P_C(T)(0) = 0$. Since $v \neq 0$ was chosen completely arbitrarily, $P_T(T)$ evaluates to zero on every vector in $V$, meaning $P_T(T) = 0$.
+  By the very definition of our constants $c_i$, this evaluates exactly to $0$. Hence, $Rv = P_C(T)(0) = 0$. Since $v \neq 0$ was chosen completely arbitrarily, $P_T(T)$ evaluates to zero on every vector in $V$, meaning $P_T(T) = 0$.
 \end{proof}
 
 \begin{remark}[The Lazy Proof]\label{rem:lazy_proof}
@@ -1563,7 +1563,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \label{sol:conjugation_continuous}
   Identify $\M_{n \times n}(\mathbb{C})$ with $\mathbb{C}^{n^2}$ by listing the entries; under this identification, convergence of matrices is exactly entrywise convergence, which is what the statement of \cref{lemma:sequence_diagonalizable} asks for. A map into $\mathbb{C}^{n^2}$ is continuous if and only if each of its $n^2$ coordinate functions is continuous, so it suffices to look at one entry of $PXQ$ at a time. By the definition of matrix multiplication,
   \[ (P X Q)_{ij} = \sum_{k=1}^n \sum_{\ell=1}^n P_{ik} \, X_{k\ell} \, Q_{\ell j}. \]
-  Here $P_{ik}$ and $Q_{\ell j}$ are fixed complex numbers, so the right-hand side is a linear, in particular polynomial, expression in the $n^2$ coordinates $X_{k\ell}$ of $X$. Polynomial functions $\mathbb{C}^{n^2} \to \mathbb{C}$ are continuous, being built from the (continuous) coordinate projections by finitely many additions and multiplications. Hence every entry of $PXQ$ depends continuously on $X$, and so does $PXQ$ itself.
+  Here $P_{ik}$ and $Q_{\ell j}$ are fixed complex numbers, so the right-hand side is a linear, in particular polynomial, expression in the $n^2$ coordinates $X_{k\ell}$ of $X$. Polynomial functions $\mathbb{C}^{n^2} \to \mathbb{C}$ are continuous, being built from the (continuous) coordinate projections by finitely many additions and multiplications. Hence, every entry of $PXQ$ depends continuously on $X$, and so does $PXQ$ itself.
 
   Taking $Q := P^{-1}$ gives the case used in \cref{lemma:sequence_diagonalizable}: we have $\lim_{k \to \infty} P B_k P^{-1} = P \left( \lim_{k \to \infty} B_k \right) P^{-1}$ whenever the limit on the right exists.
 \end{exercisesolution}
@@ -1591,7 +1591,7 @@ While the analytic proof is mathematically beautiful, it relies on topological m
       which is again a linear combination of vectors of the form $T^k v$, and hence lies in $\langle v \rangle_T$. Therefore $T(\langle v \rangle_T) \subseteq \langle v \rangle_T$.
     \item Let $U \subseteq V$ be a linear subspace with $v \in U$ and $T(U) \subseteq U$. We show by induction on $k$ that $T^k v \in U$ for every $k \in \mathbb{Z}_{\ge 0}$. For $k = 0$ this says $v \in U$, which holds by assumption. If $T^k v \in U$, then $T^{k+1} v = T(T^k v) \in T(U) \subseteq U$, which completes the induction.
 
-      Thus $\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} \subseteq U$. Since $U$ is a linear subspace, it contains every linear combination of its elements, and therefore contains the span of that set, which is exactly $\langle v \rangle_T$. Hence $\langle v \rangle_T \subseteq U$.
+      Thus $\{T^k v \mid k \in \mathbb{Z}_{\ge 0}\} \subseteq U$. Since $U$ is a linear subspace, it contains every linear combination of its elements, and therefore contains the span of that set, which is exactly $\langle v \rangle_T$. Hence, $\langle v \rangle_T \subseteq U$.
   \end{enumerate}
   Together, \textbf{(a)} and \textbf{(b)} say that $\langle v \rangle_T$ is itself a $T$-invariant subspace containing $v$ and is contained in every other one, that is, it is the smallest such subspace, which is the property used in the proof of \cref{lemma:cyclic_basis_companion}.
 \end{exercisesolution}

@@ -301,7 +301,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
     \item Assume that $G$ is undirected (i.e., $(v, w) \in E \iff (w, v) \in E$) and $d$-regular (each vertex has degree $d$). Show that $\Delta = T^* T$ has eigenvalue $0$, and explain why the geometric multiplicity $m_g(0)$ equals the number of connected components of $G$.
   \end{enumerate}
   \exhint[Official Hint]{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
-  (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
+  (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus, $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:graph_laplacian_adjoint}
 \end{exercise}
@@ -322,7 +322,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
   f^* \circ f \circ g_1 = f^* \circ f \circ g_2.
   \]
   Prove that $f \circ g_1 = f \circ g_2$.
-  \exhint[Hint (Y. St\"aubli)]{Let $h := g_1 - g_2 \in \End(V)$. The hypothesis implies $(f^* \circ f \circ h)(v) = 0$ for all $v \in V$. Taking the inner product with $h(v)$ gives $0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2$. By positive definiteness, $\|f(h(v))\| = 0 \implies f(h(v)) = 0$ for all $v \in V$. Hence $f \circ h = 0$, which proves $f \circ g_1 = f \circ g_2$.}
+  \exhint[Hint (Y. St\"aubli)]{Let $h := g_1 - g_2 \in \End(V)$. The hypothesis implies $(f^* \circ f \circ h)(v) = 0$ for all $v \in V$. Taking the inner product with $h(v)$ gives $0 = \langle h(v), (f^* \circ f)(h(v)) \rangle = \langle f(h(v)), f(h(v)) \rangle = \|f(h(v))\|^2$. By positive definiteness, $\|f(h(v))\| = 0 \implies f(h(v)) = 0$ for all $v \in V$. Hence, $f \circ h = 0$, which proves $f \circ g_1 = f \circ g_2$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:cancellation_adjoint_composite}
 \end{exercise}
@@ -415,13 +415,13 @@ and
 \[
     \Phi(c u)(v) = \langle v, c u \rangle = c \langle v, u \rangle = c \Phi(u)(v).
 \]
-(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus $\Phi$ is linear.
+(Here we used the fact that for $K = \mathbb{R}$, $c = \overline{c}$). Thus, $\Phi$ is linear.
 
 For $K = \mathbb{C}$, the additivity follows identically. For scalar multiplication:
 \[
     \Phi(c u)(v) = \langle v, c u \rangle = \overline{c} \langle v, u \rangle = \overline{c} \Phi(u)(v).
 \]
-Thus $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
+Thus, $\Phi(c u) = \overline{c} \Phi(u)$, making it $\mathbb{C}$-antilinear.
 
 For the inverse $\Phi^{-1}$: since $\Phi$ is additive, taking $\varphi_1 = \Phi(u_1)$ and $\varphi_2 = \Phi(u_2)$ gives $\Phi^{-1}(\varphi_1 + \varphi_2) = \Phi^{-1}(\varphi_1) + \Phi^{-1}(\varphi_2)$, so $\Phi^{-1}$ is additive.
 For scalar multiplication, let $\varphi = \Phi(u)$ and $\lambda \in \mathbb{C}$. Then $\overline{\lambda} \varphi = \overline{\lambda} \Phi(u) = \Phi(\lambda u)$. Applying $\Phi^{-1}$ to both sides gives $\Phi^{-1}(\overline{\lambda} \varphi) = \lambda u = \lambda \Phi^{-1}(\varphi)$. Setting $c = \overline{\lambda}$ (so $\lambda = \overline{c}$) gives $\Phi^{-1}(c \varphi) = \overline{c} \Phi^{-1}(\varphi)$, proving $\Phi^{-1}$ is $\mathbb{C}$-antilinear.
@@ -449,7 +449,7 @@ Let $v \in V$ and $w \in W$. We have:
 \[
     \langle v, (\lambda T)^*(w) \rangle = \langle (\lambda T)(v), w \rangle = \langle \lambda T(v), w \rangle = \lambda \langle T(v), w \rangle = \lambda \langle v, T^*(w) \rangle = \langle v, \overline{\lambda} T^*(w) \rangle.
 \]
-This holds for all $v \in V$, so $(\lambda T)^*(w) = \overline{\lambda} T^*(w)$. Thus $(\lambda T)^* = \overline{\lambda} T^*$.
+This holds for all $v \in V$, so $(\lambda T)^*(w) = \overline{\lambda} T^*(w)$. Thus, $(\lambda T)^* = \overline{\lambda} T^*$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(e)}]
@@ -458,7 +458,7 @@ Let $v, w \in V$. We have:
 \[
     \langle v, (\id_V)^*(w) \rangle = \langle \id_V(v), w \rangle = \langle v, w \rangle.
 \]
-This holds for all $v \in V$, so $(\id_V)^*(w) = w = \id_V(w)$. Thus $(\id_V)^* = \id_V$.
+This holds for all $v \in V$, so $(\id_V)^*(w) = w = \id_V(w)$. Thus, $(\id_V)^* = \id_V$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{prop:properties_adjoint_matrix}]

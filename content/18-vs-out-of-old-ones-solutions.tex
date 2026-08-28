@@ -20,7 +20,7 @@
     \[
     (T_1 + T_2)(v_k) = w_k \qquad \text{for all } 1 \le k \le n.
     \]
-    Since $(w_1, \dots, w_n)$ is linearly independent in $W$, if $\sum_{k=1}^n c_k v_k \in \ker(T_1 + T_2)$, then $\sum_{k=1}^n c_k w_k = 0_W$, which forces $c_1 = \dots = c_n = 0$. Hence $\ker(T_1 + T_2) = \{0_V\}$, so $T_1 + T_2$ is injective by \cref{prop:injectivity_kernel} \textbf{(a)}.
+    Since $(w_1, \dots, w_n)$ is linearly independent in $W$, if $\sum_{k=1}^n c_k v_k \in \ker(T_1 + T_2)$, then $\sum_{k=1}^n c_k w_k = 0_W$, which forces $c_1 = \dots = c_n = 0$. Hence, $\ker(T_1 + T_2) = \{0_V\}$, so $T_1 + T_2$ is injective by \cref{prop:injectivity_kernel} \textbf{(a)}.
     Thus $T_1 + T_2 \notin \mathcal{S}$, which proves that $\mathcal{S}$ is not closed under addition, hence not a subspace.
 
     \item Let $n := \dim V$ and $m := \dim W$ with $n \ge m \ge 2$.
@@ -81,7 +81,7 @@ Therefore, Assertion \textbf{(4)} is not equivalent to the others.
     T^*(\ell)(v) = \ell(T(v)) = 0.
     \]
     If $T(v) \ne 0_W$ for some $v \in V$, we could extend $T(v)$ to a basis of $W$ and construct a functional $\ell \in W^*$ with $\ell(T(v)) = 1 \ne 0$, a contradiction.
-    Hence $T(v) = 0$ for all $v \in V$, so $T = 0$. Thus $\ker(\Phi) = \{0\}$.
+    Hence $T(v) = 0$ for all $v \in V$, so $T = 0$. Thus, $\ker(\Phi) = \{0\}$.
     Since $\dim \Hom(V, W) = (\dim V)(\dim W) = (\dim W^*)(\dim V^*) = \dim \Hom(W^*, V^*) < \infty$, the injective map $\Phi$ is an isomorphism.
 
     \item Consider $\Theta \colon \Hom(V, V) \to \Hom(V, V)^*$ given by $\Theta(T)(S) := \operatorname{tr}(S \circ T)$.
@@ -229,7 +229,7 @@ u_2 - u_3 = (0, 1, 0, 0, 0)\transp = e_2 \in U,
 \[
 u_3 - e_1 - e_2 = (0, 0, 2, 2, 2)\transp \implies (0, 0, 1, 1, 1)\transp \in U.
 \]
-Thus $U = \Sp(e_1, e_2, (0, 0, 1, 1, 1)\transp)$, which has $\dim U = 3$.
+Thus, $U = \Sp(e_1, e_2, (0, 0, 1, 1, 1)\transp)$, which has $\dim U = 3$.
 Consequently, $\dim(\mathbb{R}^5/U) = 5 - 3 = 2$.
 To find a basis of the quotient space of the form $([e_i], [e_j])$, we need $e_i, e_j$ to span a complement of $U$ in $\mathbb{R}^5$.
 Selecting $e_4, e_5 \in \mathbb{R}^5$, the matrix with columns $(e_1, e_2, (0,0,1,1,1)\transp, e_4, e_5)$ is:

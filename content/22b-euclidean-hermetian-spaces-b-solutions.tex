@@ -63,7 +63,7 @@ Equality holds if and only if $\|P_U(v) - u\|^2 = 0 \iff u = P_U(v)$, proving th
 Equip $V = C[-\pi, \pi]$ with the inner product $\langle f, g \rangle = \int_{-\pi}^\pi f(x) g(x) \, dx$.
 By the Best Approximation Theorem (\cref{exc:best_approximation_subspace}), the minimizing polynomial is the orthogonal projection $p = P_U(\sin x)$ onto $U = \mathbb{R}_{\le 5}[x]$.
 Since $\sin(x)$ is an odd function, $\langle \sin x, x^{2k} \rangle = 0$ for all even powers.
-Thus $p(x)$ is an odd polynomial: $p(x) = c_1 x + c_3 x^3 + c_5 x^5$.
+Thus, $p(x)$ is an odd polynomial: $p(x) = c_1 x + c_3 x^3 + c_5 x^5$.
 The coefficients satisfy the normal equations $\langle p(x), x^k \rangle = \langle \sin x, x^k \rangle$ for $k \in \{1, 3, 5\}$:
 \begin{align*}
 \langle \sin x, x \rangle &= \int_{-\pi}^\pi x \sin x \, dx = 2\pi, \\

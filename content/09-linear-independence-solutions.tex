@@ -149,7 +149,7 @@ Therefore, evaluating at $x = -a_k$ yields:
 Q(-a_k) = c_k \prod_{\substack{j=1 \\ j \ne k}}^{n} (a_j - a_k) = 0 \implies c_k = 0.
 \]
 Since this holds for every $k \in \{1, \dots, n\}$, we have $c_1 = c_2 = \dots = c_n = 0$.
-Hence every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent, so the entire uncountable family is linearly independent over $\mathbb{R}$.
+Hence, every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent, so the entire uncountable family is linearly independent over $\mathbb{R}$.
 \exinfo{Official Solution (Problem Sheet 7, Exercise 3). Proves linear independence of the uncountable family of rational functions via polynomial roots.}
 \end{exercisesolution}
 
@@ -164,11 +164,11 @@ Hence every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linea
     = \begin{pmatrix} \alpha_2 & \alpha_1 + 2\alpha_2 & 3\alpha_2 \\ 0 & 0 & \alpha_1 + \alpha_2 \end{pmatrix}
     = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}.
     \]
-    Entry $(1, 1)$ gives $\alpha_2 = 0$. Substituting $\alpha_2 = 0$ into entry $(1, 2)$ gives $\alpha_1 = 0$. Thus $\alpha_1 = \alpha_2 = 0$, so $\{A_1, A_2\}$ is \textbf{linearly independent}.
+    Entry $(1, 1)$ gives $\alpha_2 = 0$. Substituting $\alpha_2 = 0$ into entry $(1, 2)$ gives $\alpha_1 = 0$. Thus, $\alpha_1 = \alpha_2 = 0$, so $\{A_1, A_2\}$ is \textbf{linearly independent}.
 
     \item \textbf{Proof that $\Sp(A_1, A_2) = M$:}
     \begin{itemize}
-        \item \textbf{$\Sp(A_1, A_2) \subseteq M$:} Every matrix in $\Sp(A_1, A_2)$ has the form $\begin{pmatrix} \alpha_2 & \alpha_1 + 2\alpha_2 & 3\alpha_2 \\ 0 & 0 & \alpha_1 + \alpha_2 \end{pmatrix}$. Setting $a = \alpha_2, b = \alpha_1 + 2\alpha_2, c = 3\alpha_2, d = 0, e = 0, f = \alpha_1 + \alpha_2$, we see that $d = e = 0$, $3a = 3\alpha_2 = c$, and $b - a = (\alpha_1 + 2\alpha_2) - \alpha_2 = \alpha_1 + \alpha_2 = f$. Thus every condition of $M$ is satisfied, so $\Sp(A_1, A_2) \subseteq M$.
+        \item \textbf{$\Sp(A_1, A_2) \subseteq M$:} Every matrix in $\Sp(A_1, A_2)$ has the form $\begin{pmatrix} \alpha_2 & \alpha_1 + 2\alpha_2 & 3\alpha_2 \\ 0 & 0 & \alpha_1 + \alpha_2 \end{pmatrix}$. Setting $a = \alpha_2, b = \alpha_1 + 2\alpha_2, c = 3\alpha_2, d = 0, e = 0, f = \alpha_1 + \alpha_2$, we see that $d = e = 0$, $3a = 3\alpha_2 = c$, and $b - a = (\alpha_1 + 2\alpha_2) - \alpha_2 = \alpha_1 + \alpha_2 = f$. Thus, every condition of $M$ is satisfied, so $\Sp(A_1, A_2) \subseteq M$.
         \item \textbf{$M \subseteq \Sp(A_1, A_2)$:} Let $A = \begin{pmatrix} a & b & c \\ d & e & f \end{pmatrix} \in M$. Then $d = e = 0$, $c = 3a$, and $f = b - a$. Choosing $\alpha_2 := a$ and $\alpha_1 := b - 2a$, we have:
         \begin{align*}
         \alpha_1 A_1 + \alpha_2 A_2 &= \begin{pmatrix} a & (b - 2a) + 2a & 3a \\ 0 & 0 & (b - 2a) + a \end{pmatrix} \\

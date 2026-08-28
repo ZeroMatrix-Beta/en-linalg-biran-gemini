@@ -183,7 +183,7 @@ The one axiom that deserves a word is (V2), because it asserts the \emph{existen
 \[
 0_V = 0_K \cdot u \in U,
 \]
-where the first equality is \cref{lem:vector_space_basics} \textbf{(c)}. Now $0_V + w = w$ holds for every $w \in U$, because it already holds for every $w \in V$ by (V2) for $V$. Hence $0_V$ serves as the zero element of $U$.
+where the first equality is \cref{lem:vector_space_basics} \textbf{(c)}. Now $0_V + w = w$ holds for every $w \in U$, because it already holds for every $w \in V$ by (V2) for $V$. Hence, $0_V$ serves as the zero element of $U$.
 \end{proof}
 
 \begin{exercise}[The Remaining Seven Axioms for a Linear Subspace]
@@ -215,7 +215,7 @@ which is (LSS2). Finally, let $\alpha \in K$ and $u \in U$. By \textbf{(b)} appl
 \[
 \underbrace{\alpha \cdot u + 0 \cdot u}_{= \; \alpha \cdot u} \in U,
 \]
-which is (LSS3). Hence $U$ is a linear subspace.
+which is (LSS3). Hence, $U$ is a linear subspace.
 \end{proof}
 
 \begin{exercise}[Verifying Linear Subspaces over \texorpdfstring{$\mathbb{R}$}{R} and \texorpdfstring{$\mathbb{F}_2$}{F2}]
@@ -360,7 +360,7 @@ so $a \cdot x \in L$. This shows $L$ is a subspace.
 
 \begin{importantremark}
 \label{rem:homogeneous_vs_inhomogeneous}
-So the solution set of a \emph{homogeneous} system is a linear subspace of $K^n$, while the solution set of an inhomogeneous one is never a subspace; it does not even contain $0$. It is not, however, shapeless: recall the last example of the previous chapter, whose general solution had the form \qt{one particular solution plus an arbitrary multiple of a fixed vector}. We will make that observation precise once we have the notion of dimension.
+So, the solution set of a \emph{homogeneous} system is a linear subspace of $K^n$, while the solution set of an inhomogeneous one is never a subspace; it does not even contain $0$. It is not, however, shapeless: recall the last example of the previous chapter, whose general solution had the form \qt{one particular solution plus an arbitrary multiple of a fixed vector}. We will make that observation precise once we have the notion of dimension.
 \end{importantremark}
 
 \begin{exercise}[Parametric Linear Systems and Subspaces]
@@ -621,7 +621,7 @@ Now look at any one of the eight axioms, say (V1), $u + (v + w) = (u + v) + w$. 
 \]
 and that is the associativity axiom \textbf{(K1)} of the field $K$, applied once for each $i$. The same argument settles the other seven: each of (V1)--(V8) is an identity between two expressions built from $+$ and $\cdot$, both sides evaluate index by index, and the resulting identity in $K$ is one of \textbf{(K1)}--\textbf{(K10)}. Concretely, (V1) and (V3) come from \textbf{(K1)} and \textbf{(K2)}; the zero element is the function with $0$ at every index and the inverse of $u$ is $i \mapsto -u(i)$, so (V2) and (V4) come from \textbf{(K3)} and \textbf{(K4)}; (V5) and (V6) come from \textbf{(K5)} and \textbf{(K6)}; and (V7) and (V8) come from the two halves of distributivity, \textbf{(K8)}.
 
-For $K[x]$ one extra word is needed, and it is the only difference between the four cases: one must know that the operations do not leave the set. If $u$ has $a_k = 0$ for all $k > N$ and $v$ has $b_k = 0$ for all $k > M$, then $u + v$ has all coefficients beyond $\max(N, M)$ equal to zero, and $a \cdot u$ has all coefficients beyond $N$ equal to zero. So both results are again polynomials, and the axioms then hold for the reason above. This finiteness condition is exactly what makes $K[x]$ smaller than $K^\infty$, and \cref{exc:k_infinity_independent} in ch. 9 turns on the same distinction.
+For $K[x]$ one extra word is needed, and it is the only difference between the four cases: one must know that the operations do not leave the set. If $u$ has $a_k = 0$ for all $k > N$ and $v$ has $b_k = 0$ for all $k > M$, then $u + v$ has all coefficients beyond $\max(N, M)$ equal to zero, and $a \cdot u$ has all coefficients beyond $N$ equal to zero. So, both results are again polynomials, and the axioms then hold for the reason above. This finiteness condition is exactly what makes $K[x]$ smaller than $K^\infty$, and \cref{exc:k_infinity_independent} in ch. 9 turns on the same distinction.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:subspace_axioms}]
@@ -643,15 +643,15 @@ Assume $b = 0$, so that $U_0 = \{(x_1, x_2, x_3) \in K^3 \mid x_1 + x_2 + x_3 = 
 \[
     (x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = (x_1 + x_2 + x_3) + (y_1 + y_2 + y_3) = 0 + 0 = 0,
 \]
-using commutativity and associativity of addition in $K$ to regroup. Hence $x + y \in U_0$.
+using commutativity and associativity of addition in $K$ to regroup. Hence, $x + y \in U_0$.
 
 \textbf{(LSS3)} Let $x \in U_0$ and $a \in K$. Then
 \[
     a x_1 + a x_2 + a x_3 = a \cdot (x_1 + x_2 + x_3) = a \cdot 0 = 0
 \]
-by distributivity \textbf{(K8)} and \cref{lem:mult_by_zero}. Hence $a \cdot x \in U_0$.
+by distributivity \textbf{(K8)} and \cref{lem:mult_by_zero}. Hence, $a \cdot x \in U_0$.
 
-So $U_0$ is a linear subspace of $K^3$. Together with the direction proved in the text, this establishes the Claim on \cpageref{claim:U_b_subspace}. Note where the two halves differ: the forward direction used only closure under addition, and produced the equation $b + b = b$; the converse needs all three conditions, but each is a one-line consequence of the field axioms.
+So, $U_0$ is a linear subspace of $K^3$. Together with the direction proved in the text, this establishes the Claim on \cpageref{claim:U_b_subspace}. Note where the two halves differ: the forward direction used only closure under addition, and produced the equation $b + b = b$; the converse needs all three conditions, but each is a one-line consequence of the field axioms.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:matrix_vector_scalar}]
@@ -671,17 +671,17 @@ This holds for every $1 \le i \le m$, so the two column vectors are equal.
 \label{sol:continuous_subspace}
 We check the three conditions of \cref{def:linear_subspace} for $C(S) \subseteq \mathbb{R}^S$, with $S = [0,1]$. Each rests on a standard fact from analysis about limits, which is where this example steps outside algebra.
 
-\textbf{(LSS1)} The constant function $0$ is continuous at every point of $[0,1]$, since $|0 - 0| = 0 < \varepsilon$ for every $\varepsilon > 0$ and every choice of $\delta$. So $0 \in C(S)$.
+\textbf{(LSS1)} The constant function $0$ is continuous at every point of $[0,1]$, since $|0 - 0| = 0 < \varepsilon$ for every $\varepsilon > 0$ and every choice of $\delta$. So, $0 \in C(S)$.
 
 \textbf{(LSS2)} Let $f, g \in C(S)$ and let $x_0 \in [0,1]$. Given $\varepsilon > 0$, continuity of $f$ and of $g$ at $x_0$ supplies $\delta_1, \delta_2 > 0$ with $|f(x) - f(x_0)| < \varepsilon/2$ for $|x - x_0| < \delta_1$ and $|g(x) - g(x_0)| < \varepsilon/2$ for $|x - x_0| < \delta_2$. Put $\delta := \min(\delta_1, \delta_2)$. For $|x - x_0| < \delta$ the triangle inequality gives
 \[
     \bigl|(f+g)(x) - (f+g)(x_0)\bigr| \le |f(x) - f(x_0)| + |g(x) - g(x_0)| < \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon .
 \]
-So $f + g$ is continuous at $x_0$, and $x_0$ was arbitrary.
+So, $f + g$ is continuous at $x_0$, and $x_0$ was arbitrary.
 
-\textbf{(LSS3)} Let $f \in C(S)$ and $a \in \mathbb{R}$. If $a = 0$ then $a \cdot f$ is the zero function, covered by (LSS1). If $a \neq 0$, then given $\varepsilon > 0$ choose $\delta > 0$ with $|f(x) - f(x_0)| < \varepsilon / |a|$ for $|x - x_0| < \delta$; then $|a f(x) - a f(x_0)| = |a| \cdot |f(x) - f(x_0)| < \varepsilon$. So $a \cdot f$ is continuous.
+\textbf{(LSS3)} Let $f \in C(S)$ and $a \in \mathbb{R}$. If $a = 0$ then $a \cdot f$ is the zero function, covered by (LSS1). If $a \neq 0$, then given $\varepsilon > 0$ choose $\delta > 0$ with $|f(x) - f(x_0)| < \varepsilon / |a|$ for $|x - x_0| < \delta$; then $|a f(x) - a f(x_0)| = |a| \cdot |f(x) - f(x_0)| < \varepsilon$. So, $a \cdot f$ is continuous.
 
-Hence $C(S)$ is a linear subspace of $\mathbb{R}^S$. It is worth noticing that this is the first subspace in the book whose defining condition is not algebraic: nothing in the argument would work over an arbitrary field, because $|\cdot|$ and $\varepsilon$ have no meaning there.
+Hence, $C(S)$ is a linear subspace of $\mathbb{R}^S$. It is worth noticing that this is the first subspace in the book whose defining condition is not algebraic: nothing in the argument would work over an arbitrary field, because $|\cdot|$ and $\varepsilon$ have no meaning there.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of the Claim on Polynomials of Bounded Degree, on \cpageref{claim:bounded_degree_subspace}]
@@ -690,7 +690,7 @@ We use the criterion of \cref{lem:subspace_criterion}. The zero polynomial has d
 \[
     f = \sum_{k \ge 0} f_k x^k, \qquad g = \sum_{k \ge 0} g_k x^k,
 \]
-where $f_k = 0$ and $g_k = 0$ for every $k > d$. The coefficient of $x^k$ in $a f + b g$ is $a f_k + b g_k$, which vanishes for every $k > d$ as well. Hence $\deg(a f + b g) \le d$, so $a f + b g \in K[x]_d$.
+where $f_k = 0$ and $g_k = 0$ for every $k > d$. The coefficient of $x^k$ in $a f + b g$ is $a f_k + b g_k$, which vanishes for every $k > d$ as well. Hence, $\deg(a f + b g) \le d$, so $a f + b g \in K[x]_d$.
 
 Notice that the inequality $\deg(a f + b g) \le d$ can be strict even when $\deg f = \deg g = d$: over any field, $f = x^d$ and $g = -x^d$ give $f + g = 0$, of degree $-\infty$. That is exactly why the definition uses $\le d$ rather than $= d$, and it is the content of \cref{q:degree_exactly_d} \textbf{(a)}.
 \end{exercisesolution}

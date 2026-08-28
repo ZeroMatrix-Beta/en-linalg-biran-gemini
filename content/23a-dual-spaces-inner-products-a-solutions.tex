@@ -52,7 +52,7 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector
     \[
     1 = \lim_{n \to \infty} \varphi(f_n) = \lim_{n \to \infty} \langle f_n, g \rangle = 0,
     \]
-    which is a contradiction. Hence no such $g \in C[-1, 1]$ exists.
+    which is a contradiction. Hence, no such $g \in C[-1, 1]$ exists.
 
     \item This does not contradict \cref{thm:dual_space_inner_product_isomorphism} because that theorem requires the vector space $V$ to be finite-dimensional, whereas $C[-1, 1]$ is infinite-dimensional. \qedhere
 \end{enumerate}
@@ -86,7 +86,7 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector
     \langle a, c \rangle = f(a) \cdot 1 = \sum_{i=1}^\infty a_i \qquad \forall a \in V.
     \]
     Testing with the standard basis vectors $a = e_k = (\delta_{ki})_{i=1}^\infty \in V$ gives $c_k = \langle e_k, c \rangle = f(e_k) = 1$ for all $k \in \mathbb{N}$.
-    Thus $c = (1, 1, 1, \dots)$, which has infinitely many non-zero entries and hence does not belong to $V$. Thus no adjoint $f^*$ exists. \qedhere
+    Thus $c = (1, 1, 1, \dots)$, which has infinitely many non-zero entries and hence does not belong to $V$. Thus, no adjoint $f^*$ exists. \qedhere
 \end{enumerate}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves adjoint map existence via Riesz representation and provides infinite-dimensional counterexample.}
 \end{exercisesolution}
@@ -135,7 +135,7 @@ Let $V$ be a finite-dimensional inner product space, $T \in \End(V)$, and $U \su
     \]
     Since $u \in U$ and $U$ is $T$-invariant, $T(u) \in U$.
     Since $w \in U^\perp$, we have $\langle T(u), w \rangle = 0$.
-    Thus $\langle u, T^*(w) \rangle = 0$ for all $u \in U$, which proves $T^*(w) \in U^\perp$. Hence $U^\perp$ is $T^*$-invariant.
+    Thus $\langle u, T^*(w) \rangle = 0$ for all $u \in U$, which proves $T^*(w) \in U^\perp$. Hence, $U^\perp$ is $T^*$-invariant.
 
     \item \emph{($\Leftarrow$):} Suppose $U^\perp$ is $T^*$-invariant.
     Applying the forward implication to the endomorphism $T^*$ and the subspace $U^\perp$, we deduce that $(U^\perp)^\perp$ is $(T^*)^*$-invariant.

@@ -117,7 +117,7 @@ Statements \textbf{(a')}, \textbf{(b')}, and \textbf{(c')} can be deduced from t
 \end{equation*}
 By part \textbf{(a)}, applied to $A\transp \in \M_{p \times n}(K)$ with the roles of $n$ and $p$ interchanged, this is exactly the matrix obtained from $A\transp$ after applying to it the row operation $R_j + \alpha R_i \longrightarrow R_j$.
 % Creator: Opus 5
-Now the rows of $A\transp$ are the columns of $A$, so performing that row operation on $A\transp$ is the same as performing the column operation $C_j + \alpha C_i \longrightarrow C_j$ on $A$ and transposing the result. Hence the matrix above is equal to:
+Now the rows of $A\transp$ are the columns of $A$, so performing that row operation on $A\transp$ is the same as performing the column operation $C_j + \alpha C_i \longrightarrow C_j$ on $A$ and transposing the result. Hence, the matrix above is equal to:
 % Extractor: Gemini 3.1 Pro
 \begin{equation*}
     \left( \text{matrix obtained from } A \text{ after applying } C_j + \alpha C_i \longrightarrow C_j \right)\transp
@@ -215,7 +215,7 @@ Assume that $A$ is invertible. By \Cref{thm:elementary_matrix_decomposition}, th
     T_k \dots T_1 \cdot \left(A \mid I_n\right) = \left(T_k \dots T_1 \cdot A \mid T_k \dots T_1 \cdot I_n\right) = \left(I_n \mid T_k \dots T_1\right)
 \end{equation*}
 % Creator: Opus 5
-Left-multiplying by $T_1$, then by $T_2$, and so on up to $T_k$ is, by \cref{lemma:row_operations_matrix_multiplication}, nothing other than performing the corresponding $k$ elementary row operations in that order. So $(A \mid I_n)$ can indeed be brought to the required form by a sequence of elementary row operations.
+Left-multiplying by $T_1$, then by $T_2$, and so on up to $T_k$ is, by \cref{lemma:row_operations_matrix_multiplication}, nothing other than performing the corresponding $k$ elementary row operations in that order. So, $(A \mid I_n)$ can indeed be brought to the required form by a sequence of elementary row operations.
 % Extractor: Gemini 3.1 Pro
 
 Let us define $B := T_k \dots T_1$. We can clearly see that:
@@ -316,7 +316,7 @@ Both sides are $n \times n$ matrices, so it suffices to compare entries. Write $
     \item $M_{ij} = 0 + 1 = 1$ and $M_{ji} = 0 + 1 = 1$;
     \item $M_{k\ell} = 0$ in every other position.
 \end{itemize}
-That is exactly the matrix obtained from $I_n$ by exchanging rows $i$ and $j$: row $i$ of $M$ has its single $1$ in column $j$, row $j$ has its single $1$ in column $i$, and every other row is unchanged. Hence $M = P_{ij}$.
+That is exactly the matrix obtained from $I_n$ by exchanging rows $i$ and $j$: row $i$ of $M$ has its single $1$ in column $j$, row $j$ has its single $1$ in column $i$, and every other row is unchanged. Hence, $M = P_{ij}$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{lemma:row_operations_matrix_multiplication} \textbf{(a)}]
@@ -325,7 +325,7 @@ Let $A = (a_{k\ell}) \in \M_{n \times p}(K)$. Using $Q_{ij}(\alpha) = I_n + \alp
 \[
 Q_{ij}(\alpha) \cdot A = (I_n + \alpha E_{ij}) A = A + \alpha \, E_{ij} A.
 \]
-Now $E_{ij} A$ has $(k, \ell)$-entry $\sum_{q} (E_{ij})_{kq} a_{q\ell}$, and $(E_{ij})_{kq}$ vanishes unless $k = i$ and $q = j$. So $E_{ij}A$ has the $j$-th row of $A$ sitting in its $i$-th row and zeros everywhere else. Adding $\alpha$ times this to $A$ therefore leaves every row of $A$ untouched except the $i$-th, which becomes
+Now $E_{ij} A$ has $(k, \ell)$-entry $\sum_{q} (E_{ij})_{kq} a_{q\ell}$, and $(E_{ij})_{kq}$ vanishes unless $k = i$ and $q = j$. So, $E_{ij}A$ has the $j$-th row of $A$ sitting in its $i$-th row and zeros everywhere else. Adding $\alpha$ times this to $A$ therefore leaves every row of $A$ untouched except the $i$-th, which becomes
 \[
 (\text{row } i \text{ of } A) + \alpha \cdot (\text{row } j \text{ of } A),
 \]
@@ -334,13 +334,13 @@ which is precisely the operation $R_i + \alpha R_j \longrightarrow R_i$. The cal
 
 \begin{exercisesolution}[Proof of \cref{lemma:elementary_matrix_inverses}]
 \label{sol:elementary_matrix_inverses}
-For Type II, the hint does it: $P_{ij} \cdot P_{ij}$ is, by \cref{lemma:row_operations_matrix_multiplication} \textbf{(b)}, the matrix obtained from $P_{ij}$ by exchanging its rows $i$ and $j$, and exchanging them a second time restores $I_n$. So $P_{ij}^{-1} = P_{ij}$.
+For Type II, the hint does it: $P_{ij} \cdot P_{ij}$ is, by \cref{lemma:row_operations_matrix_multiplication} \textbf{(b)}, the matrix obtained from $P_{ij}$ by exchanging its rows $i$ and $j$, and exchanging them a second time restores $I_n$. So, $P_{ij}^{-1} = P_{ij}$.
 
 For Type I, apply \cref{lemma:row_operations_matrix_multiplication} \textbf{(a)} twice, or compute directly using $i \neq j$, which gives $E_{ij} E_{ij} = 0$:
 \[
 Q_{ij}(\alpha) \, Q_{ij}(-\alpha) = (I_n + \alpha E_{ij})(I_n - \alpha E_{ij}) = I_n - \alpha E_{ij} + \alpha E_{ij} - \alpha^2 E_{ij}E_{ij} = I_n,
 \]
-and the same computation with $\alpha$ and $-\alpha$ interchanged gives $Q_{ij}(-\alpha) Q_{ij}(\alpha) = I_n$. Hence $Q_{ij}(\alpha)^{-1} = Q_{ij}(-\alpha)$.
+and the same computation with $\alpha$ and $-\alpha$ interchanged gives $Q_{ij}(-\alpha) Q_{ij}(\alpha) = I_n$. Hence, $Q_{ij}(\alpha)^{-1} = Q_{ij}(-\alpha)$.
 
 For Type III, $S_i(\alpha) S_i(\alpha^{-1})$ scales the $i$-th row of $S_i(\alpha^{-1})$ by $\alpha$, turning its $(i,i)$-entry $\alpha^{-1}$ into $1$ and leaving the other rows alone, so the product is $I_n$; symmetrically for the other order. This uses $\alpha \neq 0$, which is part of the definition of $S_i(\alpha)$. In every case the inverse is an elementary matrix of the same type.
 \end{exercisesolution}
@@ -351,7 +351,7 @@ Write $(C \mid D) \in \M_{n \times 2n}(K)$ for the matrix whose first $n$ column
 \[
 B \cdot \begin{pmatrix} | & & | \\ u_1 & \dots & u_{2n} \\ | & & | \end{pmatrix} = \begin{pmatrix} | & & | \\ B u_1 & \dots & B u_{2n} \\ | & & | \end{pmatrix}.
 \]
-The first $n$ columns of $(C \mid D)$ are the columns $c_1, \dots, c_n$ of $C$, and the last $n$ are the columns $d_1, \dots, d_n$ of $D$. So the first $n$ columns of $B \cdot (C \mid D)$ are $Bc_1, \dots, Bc_n$, that is, the columns of $B \cdot C$, and the last $n$ are $Bd_1, \dots, Bd_n$, the columns of $B \cdot D$. Hence $B \cdot (C \mid D) = (B \cdot C \mid B \cdot D)$.
+The first $n$ columns of $(C \mid D)$ are the columns $c_1, \dots, c_n$ of $C$, and the last $n$ are the columns $d_1, \dots, d_n$ of $D$. So, the first $n$ columns of $B \cdot (C \mid D)$ are $Bc_1, \dots, Bc_n$, that is, the columns of $B \cdot C$, and the last $n$ are $Bd_1, \dots, Bd_n$, the columns of $B \cdot D$. Hence, $B \cdot (C \mid D) = (B \cdot C \mid B \cdot D)$.
 \end{exercisesolution}
 
 \input{content/17e-matrices_e_elemntary_row_operations_revisited-solutions.tex}

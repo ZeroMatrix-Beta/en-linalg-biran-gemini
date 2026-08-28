@@ -149,7 +149,7 @@ The meaning of this is, by definition, that we have a set $I$ (called the \textb
 \[
 \mathcal{F} \colon I \longrightarrow V, \qquad I \ni i \longmapsto v_i \in V.
 \]
-So $\mathcal{F}$ assigns to each index $i \in I$ an element $v_i \in V$.
+So, $\mathcal{F}$ assigns to each index $i \in I$ an element $v_i \in V$.
 \end{definition}
 
 \begin{example}[Families and Their Index Sets]
@@ -451,7 +451,7 @@ Write $E := \{e_0, e_1, e_2, \dots\} \subseteq K^\infty$, where $e_k$ is the seq
     (e_k)_j = \delta_{kj} := \begin{cases} 1 & \text{if } j = k, \\ 0 & \text{if } j \neq k. \end{cases}
 \]
 
-\textbf{$E$ is linearly independent.} By \cref{def:independent_set}, an infinite set is linearly independent exactly when every relation among \emph{finitely many} of its distinct members is trivial. So let $k_1 < k_2 < \dots < k_r$ be distinct indices, let $a_1, \dots, a_r \in K$, and suppose
+\textbf{$E$ is linearly independent.} By \cref{def:independent_set}, an infinite set is linearly independent exactly when every relation among \emph{finitely many} of its distinct members is trivial. So, let $k_1 < k_2 < \dots < k_r$ be distinct indices, let $a_1, \dots, a_r \in K$, and suppose
 \[
     a_1 e_{k_1} + a_2 e_{k_2} + \dots + a_r e_{k_r} = 0 \in K^\infty .
 \]
@@ -459,9 +459,9 @@ Two sequences are equal exactly when they agree in every entry, and the operatio
 \[
     \sum_{j=1}^{r} a_j \, (e_{k_j})_{k_i} = \sum_{j=1}^{r} a_j \, \delta_{k_j k_i} = a_i,
 \]
-because the indices $k_1, \dots, k_r$ are distinct, so exactly one term of the sum survives. On the right, entry $k_i$ of the zero sequence is $0$. Hence $a_i = 0$, and since $i$ was arbitrary, all the coefficients vanish. So $E$ is linearly independent.
+because the indices $k_1, \dots, k_r$ are distinct, so exactly one term of the sum survives. On the right, entry $k_i$ of the zero sequence is $0$. Hence, $a_i = 0$, and since $i$ was arbitrary, all the coefficients vanish. So, $E$ is linearly independent.
 
-\textbf{$E$ does not span $K^\infty$.} Consider the constant sequence $c := (1, 1, 1, \dots)$. Any element of $\Sp(E)$ is a finite linear combination $\sum_{j=1}^{r} a_j e_{k_j}$, by \cref{lem:span_is_linear_combinations}, and such a sequence has entry $0$ at every index outside the finite set $\{k_1, \dots, k_r\}$. It therefore has at most $r$ non-zero entries, whereas $c$ has infinitely many. So $c \notin \Sp(E)$.
+\textbf{$E$ does not span $K^\infty$.} Consider the constant sequence $c := (1, 1, 1, \dots)$. Any element of $\Sp(E)$ is a finite linear combination $\sum_{j=1}^{r} a_j e_{k_j}$, by \cref{lem:span_is_linear_combinations}, and such a sequence has entry $0$ at every index outside the finite set $\{k_1, \dots, k_r\}$. It therefore has at most $r$ non-zero entries, whereas $c$ has infinitely many. So, $c \notin \Sp(E)$.
 
 The two halves together are the point of the exercise, and they are the reason the parenthetical in its statement is worth reading twice. Independence is a condition about finite relations, so it survives passing to an infinite family untouched; spanning is a condition about finite sums \emph{reaching} a given vector, and it does not. The gap between them is exactly the reason $K^\infty$ is not finite-di\-men\-sional, and the same phenomenon, with indicator functions in place of the $e_k$, is what ch. 12 uses to show that $K^S$ is infinite-di\-men\-sional when $S$ is infinite.
 

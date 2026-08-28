@@ -319,7 +319,7 @@ Show that $T \colon V \to V$ is self adjoint if and only if for every orthonorma
     \item Show that $T$ is not self-adjoint.
     \item The representation matrix of $T$ with respect to the standard monomial basis $\mathcal{B} = (1, x, x^2)$ is $[T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}$, which is symmetric ($A\transp = A$). Explain why this does not contradict \cref{exc:self_adjoint_matrix_criterion}.
   \end{enumerate}
-  \exhint[Official Hint]{(a) Compute $\langle T(1), x \rangle = \langle 0, x \rangle = 0$, but $\langle 1, T(x) \rangle = \langle 1, x \rangle = \int_0^1 x \, dx = 1/2 \ne 0$. Thus $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, so $T^* \ne T$.
+  \exhint[Official Hint]{(a) Compute $\langle T(1), x \rangle = \langle 0, x \rangle = 0$, but $\langle 1, T(x) \rangle = \langle 1, x \rangle = \int_0^1 x \, dx = 1/2 \ne 0$. Thus, $\langle T(1), x \rangle \ne \langle 1, T(x) \rangle$, so $T^* \ne T$.
   (b) \Cref{exc:self_adjoint_matrix_criterion} and \cref{prop:matrix_representation_adjoint} state that $[T^*]_{\mathcal{B}}^{\mathcal{B}} = ([T]_{\mathcal{B}}^{\mathcal{B}})^*$ holds if and only if the basis $\mathcal{B}$ is \emph{orthonormal}. The standard monomial basis $(1, x, x^2)$ is not orthogonal (e.g. $\langle 1, x \rangle = 1/2 \ne 0$), so the symmetry of $[T]_{\mathcal{B}}^{\mathcal{B}}$ does not imply that $T$ is self-adjoint.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:self_adjoint_non_orthonormal_basis}
@@ -346,13 +346,13 @@ Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C
 
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item If $K = \mathbb{R}$, there is nothing to show. So assume $K = \mathbb{C}$. Let $\lambda \in \mathbb{C}$ be an eigenvalue and $v \in V$ a corresponding non-zero eigenvector. We've seen in \cref{lem:properties_normal_endo} \textbf{(c)} that $v$ is also an eigenvector of $T^*$ with eigenvalue $\overline{\lambda}$ (that lemma applies because a self adjoint endomorphism is in particular normal: $T \circ T^* = T \circ T = T^* \circ T$). But $T^* = T$. This implies:
+    \item If $K = \mathbb{R}$, there is nothing to show. So, assume $K = \mathbb{C}$. Let $\lambda \in \mathbb{C}$ be an eigenvalue and $v \in V$ a corresponding non-zero eigenvector. We've seen in \cref{lem:properties_normal_endo} \textbf{(c)} that $v$ is also an eigenvector of $T^*$ with eigenvalue $\overline{\lambda}$ (that lemma applies because a self adjoint endomorphism is in particular normal: $T \circ T^* = T \circ T = T^* \circ T$). But $T^* = T$. This implies:
     \[
         \lambda v = Tv = T^*v = \overline{\lambda} v.
     \]
     Since $v \neq 0$, we must have $\lambda = \overline{\lambda}$, which implies $\lambda \in \mathbb{R}$.
     
-    \item For $K = \mathbb{C}$, this follows immediately from the Fundamental Theorem of Algebra (\cref{thm:fta}). So assume $K = \mathbb{R}$. Let $\mathcal{B}$ be an orthonormal basis for $V$ (one exists by \cref{cor:orthonormal_basis_exists}) and consider the matrix $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(\mathbb{R})$, where $n := \dim V$. The statement would follow if we show that the characteristic polynomial $P_A(x)$ factors as a product of linear terms with real coefficients, since $P_T = P_A$ for the representation matrix $A$ of $T$ in any basis (the second half of \cref{rem:char_poly_well_defined}).
+    \item For $K = \mathbb{C}$, this follows immediately from the Fundamental Theorem of Algebra (\cref{thm:fta}). So, assume $K = \mathbb{R}$. Let $\mathcal{B}$ be an orthonormal basis for $V$ (one exists by \cref{cor:orthonormal_basis_exists}) and consider the matrix $A := [T]_{\mathcal{B}}^{\mathcal{B}} \in \M_{n \times n}(\mathbb{R})$, where $n := \dim V$. The statement would follow if we show that the characteristic polynomial $P_A(x)$ factors as a product of linear terms with real coefficients, since $P_T = P_A$ for the representation matrix $A$ of $T$ in any basis (the second half of \cref{rem:char_poly_well_defined}).
     
     Now, $T^* = T$, hence $A = [T]_{\mathcal{B}}^{\mathcal{B}} = [T^*]_{\mathcal{B}}^{\mathcal{B}} = \left([T]_{\mathcal{B}}^{\mathcal{B}}\right)^* = A^* = A\transp$, the third equality by \cref{prop:matrix_representation_adjoint} and the last because $A$ has real entries.
     Consider $\mathbb{C}^n$ endowed with its standard inner product, and view $A$ as a matrix in $\M_{n \times n}(\mathbb{C})$. Let $T_A \colon \mathbb{C}^n \to \mathbb{C}^n$ be the corresponding linear map. The standard basis $\mathcal{E}_n = (e_1, \dots, e_n)$ is orthonormal, and $[T_A]_{\mathcal{E}_n}^{\mathcal{E}_n} = A$. 
@@ -381,7 +381,7 @@ The forward direction was proven in \cref{lem:real_orth_diag_is_self_adj}. For t
     \item Show that $\Delta := -D^2 = -D \circ D$ is self-adjoint.
     \item Let $U \subset V$ be the subspace spanned by $\{x \mapsto \cos(nx) \mid n \ge 0\} \cup \{x \mapsto \sin(nx) \mid n \ge 1\}$. Find an orthonormal basis of $U$ consisting of eigenvectors of $\Delta|_U$, and determine the eigenvalues and their multiplicities.
   \end{enumerate}
-  \exhint[Hint (Y. St\"aubli)]{(a) Using integration by parts and $2\pi$-periodicity, $\langle Df, g \rangle = \frac{1}{2\pi} [f(x)g(x)]_0^{2\pi} - \frac{1}{2\pi} \int_0^{2\pi} f(x) g'(x) \, dx = -\langle f, Dg \rangle = \langle f, -Dg \rangle$. Thus $D^* = -D$, meaning $D$ is skew-adjoint (hence not self-adjoint).
+  \exhint[Hint (Y. St\"aubli)]{(a) Using integration by parts and $2\pi$-periodicity, $\langle Df, g \rangle = \frac{1}{2\pi} [f(x)g(x)]_0^{2\pi} - \frac{1}{2\pi} \int_0^{2\pi} f(x) g'(x) \, dx = -\langle f, Dg \rangle = \langle f, -Dg \rangle$. Thus, $D^* = -D$, meaning $D$ is skew-adjoint (hence not self-adjoint).
   (b) $\Delta^* = (-D^2)^* = -(D^*)^2 = -(-D)^2 = -D^2 = \Delta$.
   (c) Compute $\Delta(\cos(nx)) = n^2 \cos(nx)$ and $\Delta(\sin(nx)) = n^2 \sin(nx)$. The orthonormal basis is $\{1\} \cup \{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx) \mid n \ge 1\}$. The eigenvalue $\lambda_0 = 0$ has multiplicity $1$ (spanned by $1$), and for each $n \ge 1$, the eigenvalue $\lambda_n = n^2$ has multiplicity $2$ (spanned by $\{\sqrt{2}\cos(nx), \sqrt{2}\sin(nx)\}$).}
   \exinfo{This exercise is Problem 6 of Problem Sheet 25, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}

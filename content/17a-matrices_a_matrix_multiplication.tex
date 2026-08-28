@@ -547,7 +547,7 @@ at the end of this section, on \cpageref{sec:solutions_matrix_multiplication}.
 
 \begin{exercisesolution}[Proof that the Identity Map is Represented by $I_n$ (on \cpageref{prop:identity_represents_id})]
 \label{sol:identity_represents_id}
-Let $\mathcal{B} = (v_1, \dots, v_n)$. The $j$-th column of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is the coordinate vector of $\id_V(v_j) = v_j$ with respect to $\mathcal{B}$. Writing $v_j = 0 \cdot v_1 + \dots + 1 \cdot v_j + \dots + 0 \cdot v_n$ shows that this coordinate vector is $e_j$, whose $i$-th entry is $\delta_{ij}$. So the $(i,j)$-entry of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is $\delta_{ij}$, which is exactly $I_n$.
+Let $\mathcal{B} = (v_1, \dots, v_n)$. The $j$-th column of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is the coordinate vector of $\id_V(v_j) = v_j$ with respect to $\mathcal{B}$. Writing $v_j = 0 \cdot v_1 + \dots + 1 \cdot v_j + \dots + 0 \cdot v_n$ shows that this coordinate vector is $e_j$, whose $i$-th entry is $\delta_{ij}$. So, the $(i,j)$-entry of $[\id_V]_{\mathcal{B}}^{\mathcal{B}}$ is $\delta_{ij}$, which is exactly $I_n$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{claim:scaling_map_matrix} and of \cref{prop:matrix_multiplication_properties} \textbf{(d)}]
@@ -576,7 +576,7 @@ again by associativity. Together these give $\alpha(AB) = (\alpha A)B = A(\alpha
     \[
     \sum_{\ell=1}^{n} (B\transp)_{k\ell} (A\transp)_{\ell i} = \sum_{\ell=1}^{n} b_{\ell k} a_{i \ell},
     \]
-    which is the same sum, since the entries are scalars and $K$ is commutative. Hence $(AB)\transp = B\transp A\transp$.
+    which is the same sum, since the entries are scalars and $K$ is commutative. Hence, $(AB)\transp = B\transp A\transp$.
     \item Let $A \in \GL_n(K)$. Using \textbf{(a)} and $I_n\transp = I_n$,
     \[
     A\transp \cdot (A^{-1})\transp = (A^{-1} A)\transp = I_n\transp = I_n, \qquad (A^{-1})\transp \cdot A\transp = (A A^{-1})\transp = I_n\transp = I_n.
@@ -598,7 +598,7 @@ Fix a pair of indices with $i > j$, and consider a single term $a_{ik} b_{kj}$ o
 \end{itemize}
 In either case the term vanishes, so $c_{ij} = 0$ for all $i > j$, which says precisely that $C$ is upper triangular.
 
-For the lower triangular case, note that $A$ is lower triangular if and only if $A\transp$ is upper triangular. So if $A$ and $B$ are lower triangular, then $A\transp$ and $B\transp$ are upper triangular, and by \cref{exc:transpose_properties_multiplication} \textbf{(a)} together with the case already proved,
+For the lower triangular case, note that $A$ is lower triangular if and only if $A\transp$ is upper triangular. So, if $A$ and $B$ are lower triangular, then $A\transp$ and $B\transp$ are upper triangular, and by \cref{exc:transpose_properties_multiplication} \textbf{(a)} together with the case already proved,
 \[
 (AB)\transp = B\transp A\transp \quad \text{is upper triangular,}
 \]

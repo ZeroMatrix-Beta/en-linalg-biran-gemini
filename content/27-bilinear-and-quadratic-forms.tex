@@ -350,7 +350,7 @@ We proceed by induction on $n := \dim V$. We need to show there exists a basis $
 If $B = 0$, or if $n = 1$, there is nothing to prove.
 
 Let $n \ge 2$. Assume the statement of the theorem holds for all vector spaces of dimension $\le n-1$. Let $V$ be an $n$-dimensional vector space.
-If $B(v, v) = 0$ for all $v \in V$, then the polarization formula (on \cpageref{thm:polarization_identity_bilinear}) shows $B = 0$ and we are done. (That identity is available here because $K$ has characteristic $0$, so in particular $2 \neq 0$ in $K$). So assume that there exists $v_1 \in V$ such that $B(v_1, v_1) \neq 0$.
+If $B(v, v) = 0$ for all $v \in V$, then the polarization formula (on \cpageref{thm:polarization_identity_bilinear}) shows $B = 0$ and we are done. (That identity is available here because $K$ has characteristic $0$, so in particular $2 \neq 0$ in $K$). So, assume that there exists $v_1 \in V$ such that $B(v_1, v_1) \neq 0$.
 
 Put $W := \Sp(v_1)$. The subspace $W$ is 1-dimensional (because $v_1 \neq 0$). Define the orthogonal complement with respect to $B$ as:
 \[
@@ -369,7 +369,7 @@ belongs to $W^{\perp_B}$. To see this, we calculate:
 \[
 B(v_1, u) = B(v_1, v) - \frac{B(v_1, v)}{B(v_1, v_1)} \cdot B(v_1, v_1) = 0.
 \]
-This implies $u \in W^{\perp_B}$. So we can write $v$ as:
+This implies $u \in W^{\perp_B}$. So, we can write $v$ as:
 \[
 v = \underbrace{\frac{B(v_1, v)}{B(v_1, v_1)} \cdot v_1}_{\in W} + \underbrace{u}_{\in W^{\perp_B}} \in W + W^{\perp_B}.
 \]
@@ -583,7 +583,7 @@ Suppose that $\mathcal{C}$ is a basis for $V$ in which $M := [B]_{\mathcal{C}}$ 
 \[
     B(w, v) = d\transp M c = \left(d\transp M c\right)\transp = c\transp M\transp d = c\transp M d = B(v, w).
 \]
-So $B$ is symmetric. In other words, symmetry is not an artefact of the proof but a genuine necessary condition: no non-symmetric form can be brought to that shape in any basis.
+So, $B$ is symmetric. In other words, symmetry is not an artefact of the proof but a genuine necessary condition: no non-symmetric form can be brought to that shape in any basis.
 
 For a form where the conclusion fails, take $V := \mathbb{R}^2$ and
 \[ B(v, w) := v_1 w_2 - v_2 w_1, \]
@@ -598,7 +598,7 @@ Since $\mathcal{D}$ is orthonormal, $\langle d_j, d_k \rangle = \delta_{jk}$, an
 \[
     \delta_{jk} = \langle d_j, d_k \rangle = \left\langle \sum_{p=1}^n Q_{p,j} d'_p, \; \sum_{q=1}^n Q_{q,k} d'_q \right\rangle = \sum_{p,q=1}^n Q_{p,j} Q_{q,k} \, \delta_{pq} = \sum_{p=1}^n Q_{p,j} Q_{p,k} = \left(Q\transp Q\right)_{j,k}.
 \]
-Hence $Q\transp Q = I_n$, which is exactly the statement that $Q \in \Orth(n)$. (Equivalently, the displayed identity says that the columns of $Q$ form an orthonormal system, which is \cref{def:orthogonal_unitary_matrices}).
+Hence, $Q\transp Q = I_n$, which is exactly the statement that $Q \in \Orth(n)$. (Equivalently, the displayed identity says that the columns of $Q$ form an orthonormal system, which is \cref{def:orthogonal_unitary_matrices}).
 \end{exercisesolution}
 
 % Creator: Gemini 3.1 Pro

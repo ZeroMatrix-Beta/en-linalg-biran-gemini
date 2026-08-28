@@ -22,7 +22,7 @@ Neither distributive law holds in general, but in both cases the inclusion from 
     Does $U + (V_1 \cap V_2) = (U + V_1) \cap (U + V_2)$ hold?
     \begin{itemize}
         \item \textbf{Always valid inclusion:} $U + (V_1 \cap V_2) \subseteq (U + V_1) \cap (U + V_2)$.
-        Indeed, $U \subseteq U + V_1$ and $U \subseteq U + V_2$, so $U \subseteq (U + V_1) \cap (U + V_2)$. Moreover, $V_1 \cap V_2 \subseteq V_1 \subseteq U + V_1$ and $V_1 \cap V_2 \subseteq V_2 \subseteq U + V_2$, so $V_1 \cap V_2 \subseteq (U + V_1) \cap (U + V_2)$. Thus the sum is contained in the intersection.
+        Indeed, $U \subseteq U + V_1$ and $U \subseteq U + V_2$, so $U \subseteq (U + V_1) \cap (U + V_2)$. Moreover, $V_1 \cap V_2 \subseteq V_1 \subseteq U + V_1$ and $V_1 \cap V_2 \subseteq V_2 \subseteq U + V_2$, so $V_1 \cap V_2 \subseteq (U + V_1) \cap (U + V_2)$. Thus, the sum is contained in the intersection.
         \item \textbf{Counterexample to equality:} Using the same three subspaces in $\mathbb{R}^2$:
         $V_1 \cap V_2 = \{0\}$, so $U + (V_1 \cap V_2) = U + \{0\} = U$ (dimension $1$).
         On the other hand, $U + V_1 = \mathbb{R}^2$ and $U + V_2 = \mathbb{R}^2$, so $(U + V_1) \cap (U + V_2) = \mathbb{R}^2 \cap \mathbb{R}^2 = \mathbb{R}^2$ (dimension $2$).
@@ -100,7 +100,7 @@ U_3 = \Sp\left(\begin{pmatrix} 1 \\ 1 \end{pmatrix}\right).
     \]
     with non-zero components in $U_1, U_2, U_3$.
 \end{itemize}
-Thus $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direct sum requires the stronger condition $U_i \cap \sum_{j \ne i} U_j = \{0\}$ for all $i$.
+Thus, $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direct sum requires the stronger condition $U_i \cap \sum_{j \ne i} U_j = \{0\}$ for all $i$.
 \exinfo{Official Solution (Problem Sheet 10, Exercise 5). Constructs a 3-subspace counterexample showing pairwise trivial intersection does not imply a direct sum.}
 \end{exercisesolution}
 
@@ -115,7 +115,7 @@ Thus $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direc
     \]
     We verify that $\M_{n \times n}(F) = U_{\mathrm{UT}} \oplus U_{\mathrm{SLT}}$:
     \begin{itemize}
-        \item \textbf{Trivial Intersection:} If $A \in U_{\mathrm{UT}} \cap U_{\mathrm{SLT}}$, then $a_{ij} = 0$ for all $i > j$ (from $U_{\mathrm{UT}}$) and $a_{ij} = 0$ for all $i \le j$ (from $U_{\mathrm{SLT}}$). Hence $a_{ij} = 0$ for all $i, j$, so $A = 0$.
+        \item \textbf{Trivial Intersection:} If $A \in U_{\mathrm{UT}} \cap U_{\mathrm{SLT}}$, then $a_{ij} = 0$ for all $i > j$ (from $U_{\mathrm{UT}}$) and $a_{ij} = 0$ for all $i \le j$ (from $U_{\mathrm{SLT}}$). Hence, $a_{ij} = 0$ for all $i, j$, so $A = 0$.
         \item \textbf{Sum:} For any matrix $M = (m_{ij}) \in \M_{n \times n}(F)$, define $U = (u_{ij})$ and $L = (l_{ij})$ by:
         \[
         u_{ij} := \begin{cases} m_{ij} & \text{if } i \le j, \\ 0 & \text{if } i > j, \end{cases}
@@ -132,7 +132,7 @@ Thus $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direc
         \item \textbf{Method 1 (Valid over any field $F$, including $\operatorname{char}(F) = 2$):}
         Take again the subspace $U_{\mathrm{SLT}}$ of strictly lower triangular matrices.
         Any matrix $C = (c_{ij}) \in \M_{n \times n}(F)$ decomposes as $C = A + B$, where $A = (a_{ij}) \in U_{\mathrm{Sym}}$ is defined by $a_{ij} := c_{\min(i,j), \max(i,j)}$, and $B = C - A \in U_{\mathrm{SLT}}$ has entries $b_{ij} = c_{ij} - c_{ji}$ for $i > j$ and $0$ for $i \le j$.
-        If $M \in U_{\mathrm{Sym}} \cap U_{\mathrm{SLT}}$, its strictly lower triangular entries are zero (from $U_{\mathrm{Sym}}$ by symmetry with the upper part) and its diagonal and upper entries are zero (from $U_{\mathrm{SLT}}$), so $M = 0$. Thus $\M_{n \times n}(F) = U_{\mathrm{Sym}} \oplus U_{\mathrm{SLT}}$.
+        If $M \in U_{\mathrm{Sym}} \cap U_{\mathrm{SLT}}$, its strictly lower triangular entries are zero (from $U_{\mathrm{Sym}}$ by symmetry with the upper part) and its diagonal and upper entries are zero (from $U_{\mathrm{SLT}}$), so $M = 0$. Thus, $\M_{n \times n}(F) = U_{\mathrm{Sym}} \oplus U_{\mathrm{SLT}}$.
 
         \item \textbf{Method 2 (When $\operatorname{char}(F) \ne 2$):}
         Let $U_{\mathrm{Skew}}$ denote the subspace of skew-symmetric matrices $\{A \in \M_{n \times n}(F) \mid A\transp = -A\}$.
@@ -140,7 +140,7 @@ Thus $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a direc
         \[
         M = \underbrace{\frac{M + M\transp}{2}}_{\in U_{\mathrm{Sym}}} + \underbrace{\frac{M - M\transp}{2}}_{\in U_{\mathrm{Skew}}}.
         \]
-        If $A \in U_{\mathrm{Sym}} \cap U_{\mathrm{Skew}}$, then $A = A\transp = -A \implies 2A = 0 \implies A = 0$. Thus $\M_{n \times n}(F) = U_{\mathrm{Sym}} \oplus U_{\mathrm{Skew}}$.
+        If $A \in U_{\mathrm{Sym}} \cap U_{\mathrm{Skew}}$, then $A = A\transp = -A \implies 2A = 0 \implies A = 0$. Thus, $\M_{n \times n}(F) = U_{\mathrm{Sym}} \oplus U_{\mathrm{Skew}}$.
     \end{itemize}
 \end{enumerate}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 10, Exercise 6). Constructs explicit linear complements for upper triangular and symmetric matrices, treating general characteristic and skew-symmetric projections.}

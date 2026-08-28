@@ -5,7 +5,7 @@
     \item \textbf{Isomorphism $F \colon \Fib \to \mathbb{R}^2$:}
     The map $F((a_n)_{n=0}^\infty) := (a_0, a_1)$ is linear because sequence addition and scalar multiplication in $\Fib \subset \mathbb{R}^\infty$ are defined componentwise.
     \begin{itemize}
-        \item \emph{Injectivity:} If $F((a_n)) = (0, 0)$, then $a_0 = a_1 = 0$. By induction using the recurrence $a_n = a_{n-1} + a_{n-2}$, we have $a_n = 0$ for all $n \ge 0$. Hence $\ker F = \{0\}$.
+        \item \emph{Injectivity:} If $F((a_n)) = (0, 0)$, then $a_0 = a_1 = 0$. By induction using the recurrence $a_n = a_{n-1} + a_{n-2}$, we have $a_n = 0$ for all $n \ge 0$. Hence, $\ker F = \{0\}$.
         \item \emph{Surjectivity:} For any $(x_0, x_1) \in \mathbb{R}^2$, define the sequence $(a_n)$ by $a_0 := x_0$, $a_1 := x_1$, and $a_n := a_{n-1} + a_{n-2}$ for all $n \ge 2$. Then $(a_n) \in \Fib$ and $F((a_n)) = (x_0, x_1)$.
     \end{itemize}
     Thus $F$ is an isomorphism, which shows $\dim \Fib = 2$.
@@ -120,7 +120,7 @@ Since $\{v_\lambda\}_{\lambda \in \mathbb{R}}$ has cardinality $2^{\aleph_0} > \
 \label{sol:eigenfunctions_derivative_operator}
 An eigenfunction $f \in C^\infty(\mathbb{R})$ with eigenvalue $\lambda \in \mathbb{R}$ satisfies $f'(x) = \lambda f(x)$ for all $x \in \mathbb{R}$.
 Multiplying by the integrating factor $e^{-\lambda x}$ gives $(e^{-\lambda x} f(x))' = 0$, which implies $e^{-\lambda x} f(x) = C$ for some constant $C \in \mathbb{R}$.
-Thus $f(x) = C e^{\lambda x}$.
+Thus, $f(x) = C e^{\lambda x}$.
 For every $\lambda \in \mathbb{R}$, the function $x \mapsto e^{\lambda x}$ is non-zero and infinitely differentiable, so every $\lambda \in \mathbb{R}$ is an eigenvalue of $T$, with $1$-dimensional eigenspace:
 \[
 \Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x}). \qedhere
@@ -142,7 +142,7 @@ Suppose $T f = \lambda f$ for some $f \in C^0(\mathbb{R}) \setminus \{0\}$ and $
     \]
     The unique solution to this initial value problem is $f(x) = f(0) e^{x/\lambda} = 0$, again contradicting $f \ne 0$.
 \end{itemize}
-Thus the Volterra integration operator has no eigenvalues.
+Thus, the Volterra integration operator has no eigenvalues.
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves absence of eigenvalues for Volterra integration via ODE reduction.}
 \end{exercisesolution}
 
@@ -182,7 +182,7 @@ P_{A^{-1}}(x) &= \det(A^{-1} - x I_n) = \det(-x A^{-1}) \cdot \det(A - x^{-1} I_
 Let $A \in \M_{n \times n}(K)$ with $A^m = 0$ for some $m \ge 1$.
 If $v \in K^n \setminus \{0\}$ satisfies $A v = \lambda v$, then by induction $A^k v = \lambda^k v$ for all $k \ge 1$.
 In particular, $0 = A^m v = \lambda^m v$, which implies $\lambda^m = 0$ since $v \ne 0$.
-In any field, $\lambda^m = 0 \implies \lambda = 0$. Thus $0$ is the only possible eigenvalue of $A$.
+In any field, $\lambda^m = 0 \implies \lambda = 0$. Thus, $0$ is the only possible eigenvalue of $A$.
 
 Furthermore, $0$ is an eigenvalue of $A$ if and only if $\ker A \ne \{0\} \iff \det A = 0$.
 Since $(\det A)^m = \det(A^m) = \det(0) = 0$, we have $\det A = 0$ whenever $n \ge 1$.
@@ -389,7 +389,7 @@ The statement is \textbf{true}: such a matrix $A \in \M_{n \times n}(\mathbb{R})
     \item \textbf{($\Rightarrow$):} Suppose $A \in \M_{n \times n}(\mathbb{R})$ satisfies $A^2 + 2A + 5I_n = 0$.
     If $n$ is odd, the characteristic polynomial $P_A(x) \in \mathbb{R}[x]$ has odd degree $n$, so by the Intermediate Value Theorem it must have at least one real root $\lambda \in \mathbb{R}$.
     By \cref{exc:eigenvalues_are_roots_of_annihilating_polynomials}, $\lambda$ must satisfy $\lambda^2 + 2\lambda + 5 = 0 \iff (\lambda + 1)^2 = -4$.
-    Since $(\lambda + 1)^2 \ge 0$ for all $\lambda \in \mathbb{R}$, this equation has no real solutions, a contradiction. Thus $n$ must be even.
+    Since $(\lambda + 1)^2 \ge 0$ for all $\lambda \in \mathbb{R}$, this equation has no real solutions, a contradiction. Thus, $n$ must be even.
 
     \item \textbf{($\Leftarrow$):} Suppose $n = 2m$ is even. Consider the $2 \times 2$ block:
     \[

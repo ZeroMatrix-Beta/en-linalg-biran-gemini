@@ -230,7 +230,7 @@ Assume now that $A$ is symmetric. Then $\langle v, w \rangle_A = \langle w, v \r
 \]
 (Note that this is just a scalar, viewed as a $1 \times 1$ matrix). 
 
-Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For example, $A = \left(\begin{smallmatrix} -1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$. Then, $\langle \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right) \rangle_A = -1$. But for a scalar product, we need $\langle v, v \rangle > 0$ for all $v \neq 0$. So we lack positivity here.
+Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For example, $A = \left(\begin{smallmatrix} -1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$. Then, $\langle \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right) \rangle_A = -1$. But for a scalar product, we need $\langle v, v \rangle > 0$ for all $v \neq 0$. So, we lack positivity here.
 
 % Def. (22.a.8)
 \begin{definition}
@@ -339,7 +339,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \item $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
   \end{enumerate}
   \exhint[Official Hint]{(a) Compute $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$.
-  (b) For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (A v)\transp (A v) = \|A v\|^2 \ge 0$. Thus $v\transp (A\transp A) v > 0$ for all $v \neq 0$ if and only if $Av \neq 0$ for all $v \neq 0$, which is equivalent to $\ker(A) = \{0\}$, i.e., $A$ is invertible.
+  (b) For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (A v)\transp (A v) = \|A v\|^2 \ge 0$. Thus, $v\transp (A\transp A) v > 0$ for all $v \neq 0$ if and only if $Av \neq 0$ for all $v \neq 0$, which is equivalent to $\ker(A) = \{0\}$, i.e., $A$ is invertible.
   (c) Show that $\ker(A\transp A) = \ker(A)$: if $v \in \ker(A)$, then clearly $A\transp A v = 0$; conversely, if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$. By the rank-nullity theorem, $\operatorname{rank}(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \operatorname{rank}(A)$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:gram_matrix_properties}
@@ -372,12 +372,12 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
 \end{example}
 
 \begin{example}
-    Let $A = \left(\begin{smallmatrix} 1 & -1 \\ -1 & 2 \end{smallmatrix}\right)$. It is positive definite (why?). Let $\langle \cdot, \cdot \rangle :=$ std. scalar prod, and $\langle \cdot, \cdot \rangle' := \langle \cdot, \cdot \rangle_A$.
+    Let $A = \left(\begin{smallmatrix} 1 & -1 \\ -1 & 2 \end{smallmatrix}\right)$. It is positive definite (why?). Let $\langle \cdot, \cdot \rangle$ be the standard scalar product, and let $\langle \cdot, \cdot \rangle' := \langle \cdot, \cdot \rangle_A$.
     We have:
     \[
         \left\langle \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle = 1, \quad \left\langle \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\rangle' = \begin{pmatrix} 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 0.
     \]
-    So $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \perp' \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ but $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \not\perp \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$.
+    So, $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \perp' \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$, but $\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right) \not\perp \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$.
 \end{example}
 
 \subsection*{A different type of example}
@@ -648,7 +648,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
     \]
     (by inductive hypothesis), which is impossible because $(v_1, \dots, v_j)$ are linearly independent.
     
-    This shows $w_j \neq 0$. By the inductive hypothesis, $w_1, \dots, w_{j-1}$ is an orthogonal system. So we have to prove that $w_j \perp w_1, \dots, w_{j-1}$.
+    This shows $w_j \neq 0$. By the inductive hypothesis, $w_1, \dots, w_{j-1}$ is an orthogonal system. So, we have to prove that $w_j \perp w_1, \dots, w_{j-1}$.
     Indeed, let $1 \leq k \leq j-1$. Then
     \[
         \langle w_j, w_k \rangle = \langle v_j, w_k \rangle - \sum_{i=1}^{j-1} \frac{\langle v_j, w_i \rangle}{\langle w_i, w_i \rangle} \cdot \langle w_i, w_k \rangle = \langle v_j, w_k \rangle - \frac{\langle v_j, w_k \rangle}{\langle w_k, w_k \rangle} \cdot \langle w_k, w_k \rangle = 0.
@@ -762,7 +762,7 @@ We'll see more about this soon.
     \item Homogeneity in the first variable with $\alpha := 0$ gives
       \[ \langle 0, v \rangle = \langle 0 \cdot 0, v \rangle = 0 \cdot \langle 0, v \rangle = 0, \]
       and homogeneity in the second variable gives $\langle v, 0 \rangle = \langle v, 0 \cdot 0 \rangle = \overline{0} \cdot \langle v, 0 \rangle = 0$ (in the Euclidean case simply $0 \cdot \langle v, 0 \rangle$, since there is no conjugation).
-    \item Suppose $\langle v, w \rangle = 0$ for every $v \in V$. Taking in particular $v := w$ gives $\langle w, w \rangle = 0$. If $w$ were non-zero, positivity would force $\langle w, w \rangle > 0$, a contradiction. Hence $w = 0$.
+    \item Suppose $\langle v, w \rangle = 0$ for every $v \in V$. Taking in particular $v := w$ gives $\langle w, w \rangle = 0$. If $w$ were non-zero, positivity would force $\langle w, w \rangle > 0$, a contradiction. Hence, $w = 0$.
     \item Let $v \in V$ be arbitrary. Additivity in the second variable, together with $\overline{-1} = -1$, gives
       \[ \langle v, w_1 - w_2 \rangle = \langle v, w_1 \rangle + \overline{(-1)} \langle v, w_2 \rangle = \langle v, w_1 \rangle - \langle v, w_2 \rangle = 0. \]
       Since this holds for every $v \in V$, part \textbf{(b)} applied to $w := w_1 - w_2$ gives $w_1 - w_2 = 0$, that is, $w_1 = w_2$.
@@ -832,7 +832,7 @@ We'll see more about this soon.
   \begin{equation} \label{eq:complete_square_real}
     Q(v) = a \left( x + \frac{b}{a} y \right)^2 + \frac{ad - b^2}{a} \, y^2 = a \left( x + \frac{b}{a} y \right)^2 + \frac{\det(A)}{a} \, y^2 .
   \end{equation}
-  Both coefficients are positive, so $Q(v) \ge 0$ always, and $Q(v) = 0$ forces first $y = 0$ and then $x + \frac{b}{a}y = x = 0$. Hence $Q(v) > 0$ for every $v \ne 0$, which is positive definiteness.
+  Both coefficients are positive, so $Q(v) \ge 0$ always, and $Q(v) = 0$ forces first $y = 0$ and then $x + \frac{b}{a}y = x = 0$. Hence, $Q(v) > 0$ for every $v \ne 0$, which is positive definiteness.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:pos_def_2x2_complex}]
@@ -851,14 +851,14 @@ We'll see more about this soon.
   \begin{equation} \label{eq:complete_square_complex}
     Q(v) = a \left| x + \frac{\overline{b}}{a} y \right|^2 + \frac{ad - |b|^2}{a} |y|^2 = a \left| x + \frac{\overline{b}}{a} y \right|^2 + \frac{\det(A)}{a} |y|^2 .
   \end{equation}
-  Both coefficients are positive real numbers and both squared moduli are non-negative, so $Q(v) \ge 0$; and $Q(v) = 0$ forces $y = 0$ and then $x = 0$. Hence $Q(v) > 0$ for all $v \ne 0$. Reading \eqref{eq:complete_square_complex} at $x = -\overline{b}y/a$, $y = 1$ also supplies the value $\det(A)/a$ used in the necessity half.
+  Both coefficients are positive real numbers and both squared moduli are non-negative, so $Q(v) \ge 0$; and $Q(v) = 0$ forces $y = 0$ and then $x = 0$. Hence, $Q(v) > 0$ for all $v \ne 0$. Reading \eqref{eq:complete_square_complex} at $x = -\overline{b}y/a$, $y = 1$ also supplies the value $\det(A)/a$ used in the necessity half.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:real_case_of_claim}]
 \label{sol:real_case_of_claim}
   Let $A \in \M_{n \times n}(\mathbb{R})$ and suppose $\langle v, w \rangle_A := v\transp A w$ is a scalar product on $\mathbb{R}^n$. Symmetry of the product says $v\transp A w = w\transp A v$ for all $v, w \in \mathbb{R}^n$. Take $v := e_i$ and $w := e_j$ from the standard basis. As in the complex computation of the text,
   \[ e_i\transp A e_j = a_{ij}, \qquad e_j\transp A e_i = a_{ji}, \]
-  since $A e_j$ is the $j$-th column of $A$ and left multiplication by $e_i\transp$ selects its $i$-th entry. Hence $a_{ij} = a_{ji}$ for all $i, j$, that is, $A\transp = A$: the matrix is symmetric.
+  since $A e_j$ is the $j$-th column of $A$ and left multiplication by $e_i\transp$ selects its $i$-th entry. Hence, $a_{ij} = a_{ji}$ for all $i, j$, that is, $A\transp = A$: the matrix is symmetric.
 
   Positivity of the scalar product says $\langle v, v \rangle_A = v\transp A v > 0$ for every $0 \ne v \in \mathbb{R}^n$, which is precisely the statement that the symmetric matrix $A$ is positive definite (\cref{def:positive_definite_matrix_real}). This proves the Claim on \cpageref{claim:scalar_product_forces_pos_def}, and, read together with \cref{exc:pos_def_gives_scalar_product}, shows that $\langle \cdot, \cdot \rangle_A$ is a scalar product if and only if $A$ is symmetric and positive definite.
 

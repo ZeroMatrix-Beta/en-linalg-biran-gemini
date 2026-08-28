@@ -455,7 +455,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
   \end{enumerate}
   \exhint[Official Hint]{(a) Compute $A\transp A = I_3$ and evaluate $\det(A) = 1$ using the Sarrus rule or expansion along a row.
   (b) The rotation axis corresponds to the eigenspace $\Eig_A(1) = \ker(A - I_3)$. Solving $(A - I_3)v = 0$ gives $\Eig_A(1) = \Sp\big((-3, 1, -1)\transp\big)$, so the normalized axis vector is $v_1 = \frac{1}{\sqrt{11}}(-3, 1, -1)\transp$ (or its negative).
-  By \cref{prop:classification_so3}, $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, so $\Tr(A) = 1 + 2\cos\theta$. From the matrix, $\Tr(A) = \frac{1}{3}(2 - 2 - 2) = -\frac{2}{3}$. Thus $1 + 2\cos\theta = -\frac{2}{3} \implies \cos\theta = -\frac{5}{6}$, giving $\theta = \arccos(-5/6) \approx 146.44^\circ$.}
+  By \cref{prop:classification_so3}, $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, so $\Tr(A) = 1 + 2\cos\theta$. From the matrix, $\Tr(A) = \frac{1}{3}(2 - 2 - 2) = -\frac{2}{3}$. Thus, $1 + 2\cos\theta = -\frac{2}{3} \implies \cos\theta = -\frac{5}{6}$, giving $\theta = \arccos(-5/6) \approx 146.44^\circ$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:rotation_matrix_axis_angle}
 \end{exercise}
@@ -467,7 +467,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
   |\Tr(f)| \le n.
   \]
   For which orthogonal endomorphisms $f$ does equality hold?
-  \exhint[Official Hint]{Let $\mathcal{B}$ be an orthonormal basis of $V$. Then $A := [f]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$. By the real classification of isometries (or passing to $\mathbb{C}$), the eigenvalues of $A$ are complex numbers $\lambda_j$ with $|\lambda_j| = 1$. Thus $|\Tr(f)| = |\sum_{j=1}^n \lambda_j| \le \sum_{j=1}^n |\lambda_j| = n$ by the triangle inequality.
+  \exhint[Official Hint]{Let $\mathcal{B}$ be an orthonormal basis of $V$. Then $A := [f]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$. By the real classification of isometries (or passing to $\mathbb{C}$), the eigenvalues of $A$ are complex numbers $\lambda_j$ with $|\lambda_j| = 1$. Thus, $|\Tr(f)| = |\sum_{j=1}^n \lambda_j| \le \sum_{j=1}^n |\lambda_j| = n$ by the triangle inequality.
   Equality $|\Tr(f)| = n$ holds if and only if all eigenvalues $\lambda_j$ lie on the same ray in $\mathbb{C}$ and have modulus $1$, which forces $\lambda_1 = \dots = \lambda_n = 1$ (so $f = \id_V$) or $\lambda_1 = \dots = \lambda_n = -1$ (so $f = -\id_V$).}
   \exinfo{This exercise is Problem 5 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:trace_orthogonal_endomorphism}

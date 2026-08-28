@@ -948,7 +948,7 @@ Conversely, assume $\det A \neq 0$. Then the scalar $\frac{1}{\det A} \in K$ exi
 \[
 A \cdot \left( \frac{1}{\det A} \adj A \right) = \frac{1}{\det A} \big( A \cdot \adj A \big) = \frac{1}{\det A} (\det A) \cdot I = I,
 \]
-and in the same way $\left( \frac{1}{\det A} \adj A \right) \cdot A = I$. So $\frac{1}{\det A} \adj A$ is a two-sided inverse of $A$, which makes $A$ invertible with $A^{-1} = \frac{1}{\det A} \adj A$.
+and in the same way $\left( \frac{1}{\det A} \adj A \right) \cdot A = I$. So, $\frac{1}{\det A} \adj A$ is a two-sided inverse of $A$, which makes $A$ invertible with $A^{-1} = \frac{1}{\det A} \adj A$.
 \end{proof}
 
 % Extractor: Gemini 3.1 Pro
@@ -976,7 +976,7 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
 \end{theorem}
 
 \begin{proof}[Proof of \Cref{thm:cramers_rule}]
-  Since $\det A \neq 0$, the matrix $A$ is invertible by \cref{thm:inverse_adjoint}. Then $x := A^{-1} b$ solves the system, because $A(A^{-1}b) = b$, and it is the only solution: any $x$ with $Ax = b$ satisfies $x = A^{-1}(Ax) = A^{-1}b$. So the system has a unique solution, and there is no need to appeal to Linear Algebra I for it. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
+  Since $\det A \neq 0$, the matrix $A$ is invertible by \cref{thm:inverse_adjoint}. Then $x := A^{-1} b$ solves the system, because $A(A^{-1}b) = b$, and it is the only solution: any $x$ with $Ax = b$ satisfies $x = A^{-1}(Ax) = A^{-1}b$. So, the system has a unique solution, and there is no need to appeal to Linear Algebra I for it. We have just shown above that $(\det A) \cdot x_j = \det A(j, b)$. Since $\det A \neq 0$, we can safely divide to obtain $x_j = \frac{\det A(j, b)}{\det A}$.
 \end{proof}
 
 \begin{example}[Solving a System using Cramer's Rule]

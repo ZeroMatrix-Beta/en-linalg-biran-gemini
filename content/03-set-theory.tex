@@ -245,7 +245,7 @@ Let $\mathcal{A} = \{2, 3, 4, \dots\}$ and, for every $n \in \mathcal{A}$, set
 \[
 A_n := \{ x \mid x \in \mathbb{Z}, \ x \ge 1, \text{ and } n^2 \text{ divides } x \}.
 \]
-Thus $A_2 = \{4, 8, 12, \dots\}$, $A_3 = \{9, 18, 27, \dots\}$, and so on. Then
+Thus, $A_2 = \{4, 8, 12, \dots\}$, $A_3 = \{9, 18, 27, \dots\}$, and so on. Then
 \[
 \bigcup_{n \in \mathcal{A}} A_n = \{ a \in \mathbb{Z} \mid \exists k, r \in \mathbb{Z}, \ k, r \ge 1, \text{ such that } a = k^2 \cdot r \},
 \qquad
@@ -448,7 +448,7 @@ Neither $S$ nor $R$ can be regarded as a set.
 
 % Creator: Opus 5
 \begin{proof}
-Both halves are the contradiction just derived, read backwards. If $R$ were a set, then \qt{$R \in R$} would be a mathematical statement in the sense of \cref{def:mathematical_statement}, and so would have exactly one of the truth values T and F; the two bullet points above show that each of them forces the other, so it has neither. Hence $R$ is not a set. And if $S$ were a set, then $R$ would be one too, being carved out of $S$ by the property $P \notin P$, which is the only step in the construction of $R$ that needs justifying. So $S$ is not a set either.
+Both halves are the contradiction just derived, read backwards. If $R$ were a set, then \qt{$R \in R$} would be a mathematical statement in the sense of \cref{def:mathematical_statement}, and so would have exactly one of the truth values T and F; the two bullet points above show that each of them forces the other, so it has neither. Hence, $R$ is not a set. And if $S$ were a set, then $R$ would be one too, being carved out of $S$ by the property $P \notin P$, which is the only step in the construction of $R$ that needs justifying. So, $S$ is not a set either.
 
 Notice which assumption is being discarded. Nothing in the derivation is faulty: what fails is the naive principle that every property defines a set. The axiomatic theories mentioned below replace that principle by one that only allows a property to carve a subset out of a set already known to exist, which is exactly the step that this argument turns against itself.
 \end{proof}
@@ -464,7 +464,7 @@ This paradox led to the development of Axiomatic Set Theory (e.g., Zermelo-Fraen
 \label{sol:power_set_cardinality}
 We induct on $n := |A|$, the cardinality of \cref{def:cardinality}.
 
-\textbf{Base, $n = 0$.} The only set with no elements is $\emptyset$, and its only subset is $\emptyset$ itself: it is one, by the Claim on \cpageref{claim:empty_set_is_subset}, and any other would have to contain an element of $\emptyset$, of which there are none. So $\mathcal{P}(\emptyset) = \{\emptyset\}$, which has one element, and $2^0 = 1$.
+\textbf{Base, $n = 0$.} The only set with no elements is $\emptyset$, and its only subset is $\emptyset$ itself: it is one, by the Claim on \cpageref{claim:empty_set_is_subset}, and any other would have to contain an element of $\emptyset$, of which there are none. So, $\mathcal{P}(\emptyset) = \{\emptyset\}$, which has one element, and $2^0 = 1$.
 
 \textbf{Step.} Suppose the claim holds for every set of cardinality $n$, and let $|A| = n+1$. Since $n + 1 \ge 1$ we may pick an element $a \in A$; put $A' := A \setminus \{a\}$, so that $|A'| = n$. Split the subsets of $A$ according to whether they contain $a$:
 \[
@@ -476,7 +476,7 @@ A subset of $A$ avoiding $a$ is precisely a subset of $A'$, so $\mathcal{Q}_0 = 
 \[
     \mathcal{P}(A') \longrightarrow \mathcal{Q}_1, \qquad Q' \longmapsto Q' \cup \{a\},
 \]
-is a bijection: it lands in $\mathcal{Q}_1$; it is injective, because removing $a$ again recovers $Q'$; and it is surjective, because any $Q \in \mathcal{Q}_1$ is the image of $Q \setminus \{a\} \subseteq A'$. Hence $|\mathcal{Q}_1| = |\mathcal{P}(A')| = 2^n$ as well.
+is a bijection: it lands in $\mathcal{Q}_1$; it is injective, because removing $a$ again recovers $Q'$; and it is surjective, because any $Q \in \mathcal{Q}_1$ is the image of $Q \setminus \{a\} \subseteq A'$. Hence, $|\mathcal{Q}_1| = |\mathcal{P}(A')| = 2^n$ as well.
 
 Adding the two disjoint parts,
 \[

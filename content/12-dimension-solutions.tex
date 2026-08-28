@@ -11,7 +11,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \[
         A = \sum_{1 \le i \le j \le n} a_{ij} E_{ij}.
     \]
-    The family $\mathcal{B} := \{E_{ij} \mid 1 \le i \le j \le n\}$ is a subset of the standard basis, hence linearly independent, and it spans the subspace of upper triangular matrices. Thus $\mathcal{B}$ is a basis. The number of basis elements is
+    The family $\mathcal{B} := \{E_{ij} \mid 1 \le i \le j \le n\}$ is a subset of the standard basis, hence linearly independent, and it spans the subspace of upper triangular matrices. Thus, $\mathcal{B}$ is a basis. The number of basis elements is
     \[
         \sum_{i=1}^n (n - i + 1) = \sum_{k=1}^n k = \frac{n(n+1)}{2}.
     \]
@@ -21,7 +21,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \[
         A = \sum_{i=1}^n a_{ii} E_{ii}.
     \]
-    The set $\mathcal{B} := \{E_{ii} \mid 1 \le i \le n\}$ is linearly independent and spans the subspace of diagonal matrices. Hence $\mathcal{B}$ is a basis, and the dimension is $n$.
+    The set $\mathcal{B} := \{E_{ii} \mid 1 \le i \le n\}$ is linearly independent and spans the subspace of diagonal matrices. Hence, $\mathcal{B}$ is a basis, and the dimension is $n$.
 
     \item \textbf{Symmetric matrices.} A matrix $A = (a_{ij})$ is symmetric if and only if $a_{ji} = a_{ij}$ for all $1 \le i, j \le n$. For $1 \le i \le n$, set $D_i := E_{ii}$, and for $1 \le i < j \le n$, set $S_{ij} := E_{ij} + E_{ji}$. Each $D_i$ and $S_{ij}$ is symmetric since $D_i\transp = D_i$ and $S_{ij}\transp = (E_{ij} + E_{ji})\transp = E_{ji} + E_{ij} = S_{ij}$.
     
@@ -33,7 +33,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \[
         \sum_{i=1}^n \alpha_{ii} D_i + \sum_{1 \le i < j \le n} \alpha_{ij} S_{ij} = 0.
     \]
-    Examining the diagonal entries yields $\alpha_{ii} = 0$ for each $1 \le i \le n$. For $i < j$, the $(i, j)$-entry of the linear combination is $\alpha_{ij}$, which implies $\alpha_{ij} = 0$. Thus the family
+    Examining the diagonal entries yields $\alpha_{ii} = 0$ for each $1 \le i \le n$. For $i < j$, the $(i, j)$-entry of the linear combination is $\alpha_{ij}$, which implies $\alpha_{ij} = 0$. Thus, the family
     \[
         \mathcal{B} := \{D_i \mid 1 \le i \le n\} \cup \{S_{ij} \mid 1 \le i < j \le n\}
     \]
@@ -59,7 +59,7 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \]
     To verify linear independence, suppose that $\sum_{i=1}^n \sum_{k=1}^{n-1} \lambda_{ik} A_k^{(i)} = 0$. For any fixed pair $(i, k)$ with $1 \le k \le n-1$, the $(i, k)$-entry of the sum is precisely $\lambda_{ik}$, forcing $\lambda_{ik} = 0$.
     
-    Thus the collection $\mathcal{B} := \{A_k^{(i)} \mid 1 \le i \le n,\, 1 \le k \le n-1\}$ is a basis of $W$, and its cardinality is $n(n-1)$. Hence $\dim W = n(n-1)$.
+    Thus the collection $\mathcal{B} := \{A_k^{(i)} \mid 1 \le i \le n,\, 1 \le k \le n-1\}$ is a basis of $W$, and its cardinality is $n(n-1)$. Hence, $\dim W = n(n-1)$.
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 8, Exercise 2). Determines bases and dimensions of upper triangular, diagonal, symmetric, and row-sum zero matrix spaces.}
 \end{exercisesolution}
@@ -191,13 +191,13 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     
     Thus the solution set is $S = \Sp\left( \begin{pmatrix} -3 \\ 5 \\ 2 \end{pmatrix} \right)$. Since the vector is non-zero, $\mathcal{B} := \left\{ \begin{pmatrix} -3 \\ 5 \\ 2 \end{pmatrix} \right\}$ is a basis of $S$, and $\dim S = 1$.
 
-    \item \textbf{Trivial space $\{0\}$.} The empty set $\emptyset$ is linearly independent and spans $\{0\}$ (because the empty sum of vectors evaluates to $0$). Thus $\mathcal{B} := \emptyset$ is a basis of $\{0\}$, and $\dim(\{0\}) = |\emptyset| = 0$.
+    \item \textbf{Trivial space $\{0\}$.} The empty set $\emptyset$ is linearly independent and spans $\{0\}$ (because the empty sum of vectors evaluates to $0$). Thus, $\mathcal{B} := \emptyset$ is a basis of $\{0\}$, and $\dim(\{0\}) = |\emptyset| = 0$.
 
     \item \textbf{$V = \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ over $\mathbb{C}$.} The condition $z + iw = 0$ is equivalent to $z = -iw$. Every vector in $V$ is of the form
     \[
         \begin{pmatrix} z \\ w \end{pmatrix} = \begin{pmatrix} -iw \\ w \end{pmatrix} = w \begin{pmatrix} -i \\ 1 \end{pmatrix} \quad (w \in \mathbb{C}).
     \]
-    The single vector $v_1 := (-i, 1)\transp \in \mathbb{C}^2$ is non-zero, hence linearly independent over $\mathbb{C}$, and it generates $V$. Thus $\mathcal{B} := \left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix} \right\}$ is a basis of $V$ over $\mathbb{C}$, and $\dim_{\mathbb{C}} V = 1$.
+    The single vector $v_1 := (-i, 1)\transp \in \mathbb{C}^2$ is non-zero, hence linearly independent over $\mathbb{C}$, and it generates $V$. Thus, $\mathcal{B} := \left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix} \right\}$ is a basis of $V$ over $\mathbb{C}$, and $\dim_{\mathbb{C}} V = 1$.
 
     \item \textbf{$V = \{(z, w) \in \mathbb{C}^2 \mid z + iw = 0\}$ over $\mathbb{R}$.} Writing the free parameter $w \in \mathbb{C}$ in terms of real and imaginary parts as $w = a + ib$ with $a, b \in \mathbb{R}$, we obtain
     \[
@@ -241,7 +241,7 @@ Since $K[X]$ is an integral domain and $g(X) = X + 5 \neq 0$, the second factor 
 \]
 Because the standard monomials $1, X, \dots, X^{d-1}$ are linearly independent in $K[X]$, it follows that $c_0 = c_1 = \dots = c_{d-1} = 0$.
 
-Thus $\mathcal{B}$ is a basis of $W$. Since it contains exactly $d$ polynomials, we conclude that $\dim W = d$.
+Thus, $\mathcal{B}$ is a basis of $W$. Since it contains exactly $d$ polynomials, we conclude that $\dim W = d$.
 \exinfo{Solution by Gemini 3.7 Flash (High). Computes the dimension of multiples of a fixed linear factor in polynomial spaces.}
 \end{exercisesolution}
 
@@ -273,7 +273,7 @@ Consequently, $g(x) = 0$ for all $x \in \mathbb{R}$, which yields
 \]
 This proves that $\{\cos x, \sin x\}$ spans $V$.
 
-\textbf{Step 3: Linear independence.} Suppose that $\lambda_1 \cos x + \lambda_2 \sin x = 0$ for all $x \in \mathbb{R}$, where $\lambda_1, \lambda_2 \in \mathbb{R}$. Evaluating at $x = 0$ gives $\lambda_1(1) + \lambda_2(0) = \lambda_1 = 0$. Evaluating at $x = \pi/2$ gives $\lambda_1(0) + \lambda_2(1) = \lambda_2 = 0$. Thus $\cos x$ and $\sin x$ are linearly independent over $\mathbb{R}$.
+\textbf{Step 3: Linear independence.} Suppose that $\lambda_1 \cos x + \lambda_2 \sin x = 0$ for all $x \in \mathbb{R}$, where $\lambda_1, \lambda_2 \in \mathbb{R}$. Evaluating at $x = 0$ gives $\lambda_1(1) + \lambda_2(0) = \lambda_1 = 0$. Evaluating at $x = \pi/2$ gives $\lambda_1(0) + \lambda_2(1) = \lambda_2 = 0$. Thus, $\cos x$ and $\sin x$ are linearly independent over $\mathbb{R}$.
 
 \textbf{Conclusion.} The set $\mathcal{B} := \{\cos x, \sin x\}$ is an explicit basis of $V$, and $\dim V = 2$.
 \exinfo{Solution by Gemini 3.7 Flash (High). Demonstrates the 2-dimensional solution space of harmonic oscillator ODE $f'' + f = 0$.}
@@ -304,7 +304,7 @@ Because the original family $\{v_1, v_2, \dots, v_m\}$ is linearly independent, 
 \[
     \alpha_i = 0 \quad \text{for all } 2 \le i \le m.
 \]
-Hence $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of cardinality $m - 1$. By \cref{prop:subspace_dimension_constraints}, every subspace containing a linearly independent set of $m - 1$ elements must have dimension at least $m - 1$. Therefore,
+Hence, $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of cardinality $m - 1$. By \cref{prop:subspace_dimension_constraints}, every subspace containing a linearly independent set of $m - 1$ elements must have dimension at least $m - 1$. Therefore,
 \[
     \dim \Sp(v_1 + w, v_2 + w, \dots, v_m + w) \ge m - 1.
 \]
@@ -341,7 +341,7 @@ Hence $\{u_2, \dots, u_m\} \subseteq W$ is a linearly independent subset of card
     
     To see this, consider again the nested sequence $U_n = \Sp(X^n, X^{n+1}, \dots) \subset F[X]$ from part \textbf{(b)}. Each subspace $U_n$ contains the infinite linearly independent set $\{X^k \mid k \ge n\}$, so $\dim U_n = \infty \ge 1$ for all $n$.
     
-    Now suppose $p(X) \in \bigcap_{n=0}^\infty U_n$. If $p(X) \neq 0$, then $p(X)$ has a well-defined finite degree $m := \deg(p) \ge 0$. But every non-zero polynomial in $U_{m+1}$ has degree at least $m + 1$, which implies $p(X) \notin U_{m+1}$, a contradiction. Hence no non-zero polynomial belongs to the intersection, proving that
+    Now suppose $p(X) \in \bigcap_{n=0}^\infty U_n$. If $p(X) \neq 0$, then $p(X)$ has a well-defined finite degree $m := \deg(p) \ge 0$. But every non-zero polynomial in $U_{m+1}$ has degree at least $m + 1$, which implies $p(X) \notin U_{m+1}$, a contradiction. Hence, no non-zero polynomial belongs to the intersection, proving that
     \[
         \bigcap_{n=0}^\infty U_n = \{0\}.
     \]

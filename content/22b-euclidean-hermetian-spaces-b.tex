@@ -91,7 +91,7 @@ Let $V$ be an inner product space (possibly of infinite dimension), and let $U \
 \end{theorem}
 
 \begin{proof}
-By \cref{lem:orthogonal_complement_properties} \textbf{(c)}, the intersection $U \cap U^\perp$ is either empty or $\{0\}$; it is not empty, since $U$ is a subspace and so contains $0$, which lies in $U^\perp$ as well. Hence $U \cap U^\perp = \{0\}$, and it is enough to show that $U + U^\perp = V$.
+By \cref{lem:orthogonal_complement_properties} \textbf{(c)}, the intersection $U \cap U^\perp$ is either empty or $\{0\}$; it is not empty, since $U$ is a subspace and so contains $0$, which lies in $U^\perp$ as well. Hence, $U \cap U^\perp = \{0\}$, and it is enough to show that $U + U^\perp = V$.
 Put $r := \dim U$ and pick an orthonormal basis $(e_1, \dots, e_r)$ for $U$, which exists by \cref{cor:orthonormal_basis_exists} because $U$ is finite-di\-men\-sional. (Note: this is not necessarily the standard basis or anything similar). Let $v \in V$.
 We introduce the temporary notation $\widetilde{P}_U(v) := \langle v, e_1 \rangle e_1 + \dots + \langle v, e_r \rangle e_r \in U$. (This is the orthogonal projection of $v$ onto $U$.)
 We have
@@ -225,8 +225,8 @@ Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:ortho
     U_2 = \left\{ f \in V_2 \;\middle|\; \int_0^{1/2} f(x) \, dx = 0 \right\}.
     \]
   \end{enumerate}
-  \exhint[Official Hint]{(a) The standard sequence basis vectors $e_k = (\delta_{kn})_{n=0}^\infty$ all lie in $U_1$. If $v = (v_n) \in U_1^\perp$, then $\langle v, e_k \rangle = v_k = 0$ for all $k \ge 0$, which forces $v = 0$. Hence $U_1^\perp = \{0\}$ (note that $U_1 \neq V_1$, so $(U_1^\perp)^\perp \neq U_1$).
-  (b) Let $h \in U_2^\perp$. For any $x_0 \in (1/2, 1)$, test functions $f \in U_2$ supported near $x_0$ show by continuity that $h(x) = 0$ on $(1/2, 1]$. Similarly, testing against functions whose integral over $[0, 1/2]$ is zero shows that $h$ must be constant on $[0, 1/2)$. By continuity at $x = 1/2$, this constant must match $h(1/2) = 0$, so $h \equiv 0$ on $[0, 1]$. Thus $U_2^\perp = \{0\}$.}
+  \exhint[Official Hint]{(a) The standard sequence basis vectors $e_k = (\delta_{kn})_{n=0}^\infty$ all lie in $U_1$. If $v = (v_n) \in U_1^\perp$, then $\langle v, e_k \rangle = v_k = 0$ for all $k \ge 0$, which forces $v = 0$. Hence, $U_1^\perp = \{0\}$ (note that $U_1 \neq V_1$, so $(U_1^\perp)^\perp \neq U_1$).
+  (b) Let $h \in U_2^\perp$. For any $x_0 \in (1/2, 1)$, test functions $f \in U_2$ supported near $x_0$ show by continuity that $h(x) = 0$ on $(1/2, 1]$. Similarly, testing against functions whose integral over $[0, 1/2]$ is zero shows that $h$ must be constant on $[0, 1/2)$. By continuity at $x = 1/2$, this constant must match $h(1/2) = 0$, so $h \equiv 0$ on $[0, 1]$. Thus, $U_2^\perp = \{0\}$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:infinite_dim_orthogonal_complements}
 \end{exercise}
@@ -320,7 +320,7 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
 % Creator: Opus 5
 \begin{proof}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item By \cref{lem:char_orthogonal_matrices}, $A \in \Orth(n)$ if and only if $A\transp A = I_n$, and equally if and only if $A A\transp = I_n$. Applying the same characterization to the matrix $A\transp$, whose transpose is $A$, the condition $A\transp \in \Orth(n)$ reads $(A\transp)\transp A\transp = A A\transp = I_n$, the very same equation. Hence $A \in \Orth(n) \iff A\transp \in \Orth(n)$. Finally, the columns of $A\transp$ are exactly the rows of $A$, so $A\transp \in \Orth(n)$ says precisely that the rows of $A$ form an orthonormal system, and an orthonormal system of $n$ vectors in $\mathbb{R}^n$ is a basis by \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
+    \item By \cref{lem:char_orthogonal_matrices}, $A \in \Orth(n)$ if and only if $A\transp A = I_n$, and equally if and only if $A A\transp = I_n$. Applying the same characterization to the matrix $A\transp$, whose transpose is $A$, the condition $A\transp \in \Orth(n)$ reads $(A\transp)\transp A\transp = A A\transp = I_n$, the very same equation. Hence, $A \in \Orth(n) \iff A\transp \in \Orth(n)$. Finally, the columns of $A\transp$ are exactly the rows of $A$, so $A\transp \in \Orth(n)$ says precisely that the rows of $A$ form an orthonormal system, and an orthonormal system of $n$ vectors in $\mathbb{R}^n$ is a basis by \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
     \item Identical, with \cref{lem:char_unitary_matrices} in place of \cref{lem:char_orthogonal_matrices} and $A^*$ in place of $A\transp$: the condition $A^* \in \Unit(n)$ reads $(A^*)^* A^* = A A^* = I_n$, which is one of the equivalent forms of $A \in \Unit(n)$; and the columns of $A^*$ are the conjugates of the rows of $A$, which form an orthonormal system exactly when the rows do. \qedhere
 \end{enumerate}
 \end{proof}
@@ -371,7 +371,7 @@ with $v_k \in K_{\text{col}}^n$. Since $A \in \GL_n(K)$, the vectors $v_1, \dots
 \end{equation}
 
 % Extractor: Opus 5
-Fix $1 \le j \le n$. By \eqref{eq:qr_nested_spans} the vector $v_j$ lies in $\Sp(e_1, \dots, e_j)$, and since $(e_1, \dots, e_j)$ is orthonormal, \cref{thm:properties_orthogonal_systems} \textbf{(b)} identifies its coefficients: they are $\langle v_j, e_i \rangle / \langle e_i, e_i \rangle = \langle v_j, e_i \rangle$. So the whole list expands as
+Fix $1 \le j \le n$. By \eqref{eq:qr_nested_spans} the vector $v_j$ lies in $\Sp(e_1, \dots, e_j)$, and since $(e_1, \dots, e_j)$ is orthonormal, \cref{thm:properties_orthogonal_systems} \textbf{(b)} identifies its coefficients: they are $\langle v_j, e_i \rangle / \langle e_i, e_i \rangle = \langle v_j, e_i \rangle$. So, the whole list expands as
 \begin{align*}
     v_1 &= \langle v_1, e_1 \rangle e_1, \\
     v_2 &= \langle v_2, e_1 \rangle e_1 + \langle v_2, e_2 \rangle e_2, \\
@@ -393,7 +393,7 @@ with no $e_i$ of index $i > j$ ever appearing in $v_j$. Read column by column, t
 \]
 that is, $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $R_{ij} = 0$ for $i > j$.
 
-The columns of $Q$ are $e_1, \dots, e_n$, an orthonormal basis of $K^n$, so $Q \in \Orth(n)$ when $K = \mathbb{R}$ and $Q \in \Unit(n)$ when $K = \mathbb{C}$ (\cref{def:orthogonal_unitary_matrices}); and $R$ is upper triangular by construction. Hence $A = Q \cdot R$ as required.
+The columns of $Q$ are $e_1, \dots, e_n$, an orthonormal basis of $K^n$, so $Q \in \Orth(n)$ when $K = \mathbb{R}$ and $Q \in \Unit(n)$ when $K = \mathbb{C}$ (\cref{def:orthogonal_unitary_matrices}); and $R$ is upper triangular by construction. Hence, $A = Q \cdot R$ as required.
 % Extractor: Gemini 3.7 Flash (High)
 \end{proof}
 
@@ -442,7 +442,7 @@ Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \do
 and let $R$ be built exactly as in the previous proof, by $R_{ij} := \langle v_j, e_i \rangle$.
 
 % Extractor: Opus 5
-The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$, upper triangular for the same reason as before, while the remaining columns are the arbitrary entries denoted by $*$. Hence $A = Q \cdot R$ with $R$ of the stated form.
+The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$, upper triangular for the same reason as before, while the remaining columns are the arbitrary entries denoted by $*$. Hence, $A = Q \cdot R$ with $R$ of the stated form.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 
@@ -478,7 +478,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 
 \begin{exercisesolution}[Proof of \cref{lem:orthogonal_complement_properties} \textbf{(d)}]
 \label{sol:orthogonal_complement_properties_d}
-  Assume $S \subseteq T$ and let $v \in T^\perp$, so that $\langle v, t \rangle = 0$ for every $t \in T$. Every $s \in S$ is in particular an element of $T$, so $\langle v, s \rangle = 0$ for every $s \in S$, that is, $v \in S^\perp$. Hence $T^\perp \subseteq S^\perp$, which is the assertion $S^\perp \supseteq T^\perp$.
+  Assume $S \subseteq T$ and let $v \in T^\perp$, so that $\langle v, t \rangle = 0$ for every $t \in T$. Every $s \in S$ is in particular an element of $T$, so $\langle v, s \rangle = 0$ for every $s \in S$, that is, $v \in S^\perp$. Hence, $T^\perp \subseteq S^\perp$, which is the assertion $S^\perp \supseteq T^\perp$.
 
   Note that the inclusion reverses: passing to a larger set imposes more conditions on $v$, so fewer vectors survive.
 \end{exercisesolution}
@@ -510,7 +510,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 
 \begin{exercisesolution}[Proof of \cref{exc:extend_orthonormal_system}]
 \label{sol:extend_orthonormal_system}
-  An orthonormal system is in particular an orthogonal system, hence linearly independent by \cref{thm:properties_orthogonal_systems} \textbf{(a)}. So $(e_1, \dots, e_r)$ can be extended to a basis $(e_1, \dots, e_r, u_{r+1}, \dots, u_n)$ of $V$.
+  An orthonormal system is in particular an orthogonal system, hence linearly independent by \cref{thm:properties_orthogonal_systems} \textbf{(a)}. So, $(e_1, \dots, e_r)$ can be extended to a basis $(e_1, \dots, e_r, u_{r+1}, \dots, u_n)$ of $V$.
 
   Now apply the Gram-Schmidt process (\cref{thm:gram_schmidt}) to that basis, producing $w_1, \dots, w_n$. The point is that Gram-Schmidt does not disturb an initial segment that is already orthonormal. Indeed $w_1 = e_1$, and if $2 \le j \le r$ and $w_i = e_i$ for all $i < j$, then
   \[ w_j = e_j - \sum_{i=1}^{j-1} \frac{\langle e_j, w_i \rangle}{\langle w_i, w_i \rangle} w_i = e_j - \sum_{i=1}^{j-1} \frac{\langle e_j, e_i \rangle}{1} \, e_i = e_j, \]

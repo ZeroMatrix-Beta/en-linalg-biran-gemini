@@ -149,8 +149,8 @@ For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in 
     \item \textbf{Smallest Generating Set for $K_0^\infty$:}
     Consider the set $E := \{e_i \mid i \ge 0\} \subseteq K_0^\infty$.
     \begin{itemize}
-        \item \textbf{$E$ spans $K_0^\infty$:} Any sequence $a = (a_0, a_1, \dots) \in K_0^\infty$ has only finitely many non-zero terms, say $a_n = 0$ for all $n > N$. Then $a = \sum_{i=0}^N a_i e_i$, which is a finite linear combination of elements of $E$. Hence $\Sp(E) = K_0^\infty$.
-        \item \textbf{Minimality:} If $E' \subsetneq E$, there exists some index $k \ge 0$ such that $e_k \notin E'$. Any finite linear combination of elements in $E'$ has $k$-th coordinate equal to $0$, because every $e_j \in E'$ ($j \ne k$) has $(e_j)_k = 0$. Hence $e_k \notin \Sp(E')$, so $\Sp(E') \ne K_0^\infty$.
+        \item \textbf{$E$ spans $K_0^\infty$:} Any sequence $a = (a_0, a_1, \dots) \in K_0^\infty$ has only finitely many non-zero terms, say $a_n = 0$ for all $n > N$. Then $a = \sum_{i=0}^N a_i e_i$, which is a finite linear combination of elements of $E$. Hence, $\Sp(E) = K_0^\infty$.
+        \item \textbf{Minimality:} If $E' \subsetneq E$, there exists some index $k \ge 0$ such that $e_k \notin E'$. Any finite linear combination of elements in $E'$ has $k$-th coordinate equal to $0$, because every $e_j \in E'$ ($j \ne k$) has $(e_j)_k = 0$. Hence, $e_k \notin \Sp(E')$, so $\Sp(E') \ne K_0^\infty$.
     \end{itemize}
     Thus, $E = \{e_i \mid i \ge 0\}$ is the unique minimal (under inclusion, up to scalar multiples) generating set of $K_0^\infty$.
 
@@ -165,7 +165,7 @@ For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in 
         \item \textbf{Minimality:}
         \begin{itemize}
             \item If $\mathbf{1}$ is omitted, $\Sp(E) = K_0^\infty \subsetneq K_{\mathrm{cst}}^\infty$, because $\mathbf{1} \notin K_0^\infty$.
-            \item If some $e_k$ is omitted from $S$, consider $\Sp(S \setminus \{e_k\})$. Any element in this span has the form $\sum_{j \ne k} \alpha_j e_j + \beta \mathbf{1}$. If this sequence equals $e_k$, its tail entries must be $0$, which forces $\beta = 0$. But with $\beta = 0$, its $k$-th coordinate is $0 \ne 1$. Hence $e_k \notin \Sp(S \setminus \{e_k\})$.
+            \item If some $e_k$ is omitted from $S$, consider $\Sp(S \setminus \{e_k\})$. Any element in this span has the form $\sum_{j \ne k} \alpha_j e_j + \beta \mathbf{1}$. If this sequence equals $e_k$, its tail entries must be $0$, which forces $\beta = 0$. But with $\beta = 0$, its $k$-th coordinate is $0 \ne 1$. Hence, $e_k \notin \Sp(S \setminus \{e_k\})$.
         \end{itemize}
     \end{itemize}
     Thus, $S = \{e_i \mid i \ge 0\} \cup \{\mathbf{1}\}$ is the minimal generating set of $K_{\mathrm{cst}}^\infty$.
