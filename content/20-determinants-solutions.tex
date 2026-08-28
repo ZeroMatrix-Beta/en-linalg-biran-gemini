@@ -190,7 +190,7 @@ For a lower triangular matrix, transposing gives an upper triangular matrix with
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 16). Classifies permutations in $S_4$, writes the 24-term Leibniz formula, and proves $|A_n| = n!/2$.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 16 / Theory)
+% Solution: Gemini / Official Hybrid (Problem Sheet 17, Exercise 10)
 \begin{exercisesolution}[Solution to \cref{exc:multiplicativity_via_leibniz}]
 \label{sol:multiplicativity_via_leibniz}
 Let $A, B \in \M_{n \times n}(K)$. Write $B$ in terms of its columns $B = (b_1, \dots, b_n)$ where $b_j = \sum_{s_j=1}^n B(s_j, j) e_{s_j}$.
@@ -209,10 +209,10 @@ Substituting this back gives:
 \[
 \det(AB) = \det(A) \sum_{\sigma \in S_n} \sgn(\sigma) \prod_{j=1}^n B(\sigma(j), j) = \det(A) \det(B\transp) = \det(A) \det(B). \qedhere
 \]
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Derives determinant multiplicativity directly from column Leibniz expansion.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 17, Exercise 10). Derives determinant multiplicativity directly from column Leibniz expansion.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 16, Multiple Choice)
+% Official Solution (Problem Sheet 17, Multiple Choice Question 1)
 \begin{exercisesolution}[Solution to \cref{exc:general_determinant_properties_mc}]
 \label{sol:general_determinant_properties_mc}
 \begin{itemize}
@@ -223,10 +223,10 @@ Substituting this back gives:
     \item \textbf{(e) False:} The determinant is multilinear, not linear; for example $\det(I_2 + I_2) = \det(2I_2) = 4 \ne 1 + 1 = 2$.
 \end{itemize}
 The correct statements are \textbf{(a), (b), and (c)}.
-\exinfo{Official Solution (Problem Sheet 16, Multiple Choice). Evaluates general determinant properties including multiplicativity and scaling.}
+\exinfo{Official Solution (Problem Sheet 17, Multiple Choice Question 1). Evaluates general determinant properties including multiplicativity and scaling.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 16, Single Choice)
+% Official Solution (Problem Sheet 17, Single Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:determinant_properties_linearity_sc}]
 \label{sol:determinant_properties_linearity_sc}
 Statement \textbf{(c)} is false: the determinant function $\det \colon \M_{n \times n}(K) \to K$ is \emph{not} a linear map for $n \ge 2$, since $\det(A + B) \ne \det(A) + \det(B)$ in general (e.g. $\det(I_n + I_n) = 2^n \ne 1 + 1 = 2$).
@@ -237,7 +237,7 @@ The remaining statements are all true:
     \item \textbf{(d)} is true since $\det(\operatorname{diag}(\lambda, 1, \dots, 1)) = \lambda$ for any $\lambda \in K$.
 \end{itemize}
 Therefore, the false statement is \textbf{(c)}.
-\exinfo{Official Solution (Problem Sheet 16, Single Choice). Tests understanding of non-linearity and fundamental properties of the determinant.}
+\exinfo{Official Solution (Problem Sheet 17, Single Choice Question 2). Tests understanding of non-linearity and fundamental properties of the determinant.}
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Exercise 2)
@@ -252,7 +252,7 @@ Therefore, the false statement is \textbf{(c)}.
     \end{enumerate}
 
     \item Let $M = \begin{pmatrix} 2 & 1 & 3 & 6 \\ 0 & 4 & 7 & 9 \\ 1 & 8 & 1 & 9 \\ 4 & 4 & 0 & 6 \end{pmatrix}$.
-    Perform the Type I row operation $R_4 \to 1000 R_1 + 100 R_2 + 10 R_3 + R_4$. By part \textbf{(a)(iii)}, this preserves the determinant:
+    Perform the three Type I row operations $1000 R_1 + R_4 \to R_4$, then $100 R_2 + R_4 \to R_4$, then $10 R_3 + R_4 \to R_4$. By part \textbf{(a)(iii)}, each preserves the determinant:
     \[
     \det(M) = \det \begin{pmatrix}
       2 & 1 & 3 & 6 \\
@@ -275,7 +275,7 @@ Therefore, the false statement is \textbf{(c)}.
 \exinfo{Official Solution (Problem Sheet 17, Exercise 2). Connects elementary row operations to determinant scaling and proves 106-divisibility without calculation.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Single Choice)
+% Official Solution (Problem Sheet 17, Single Choice Question 3)
 \begin{exercisesolution}[Solution to \cref{exc:invariance_under_matrix_operations_sc}]
 \label{sol:invariance_under_matrix_operations_sc}
 Interchanging two rows flips the sign of the determinant ($\det \to -\det$), so the determinant in general changes.
@@ -286,24 +286,24 @@ The other operations strictly preserve the determinant:
     \item \textbf{(d)} $\det(P^{-1}AP) = \det(A)$ (\cref{cor:det_endomorphism}).
 \end{itemize}
 Therefore, the correct answer is \textbf{(a)}.
-\exinfo{Official Solution (Problem Sheet 17, Single Choice). Tests invariance of determinants under transposition, similarity, and row operations.}
+\exinfo{Official Solution (Problem Sheet 17, Single Choice Question 3). Tests invariance of determinants under transposition, similarity, and row operations.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Multiple Choice)
+% Official Solution (Problem Sheet 17, Multiple Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:row_transformations_2x2_mc}]
 \label{sol:row_transformations_2x2_mc}
 Given $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4$:
 \begin{itemize}
     \item \textbf{(a) Incorrect:} $\det \begin{pmatrix} 2a & 2b \\ 2c & 2d \end{pmatrix} = 2^2 \det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4 \times 4 = 16 \ne 8$.
-    \item \textbf{(b) Correct:} Applying $R_2 \to R_2 - R_1$ preserves the determinant, so the value remains $4$.
-    \item \textbf{(c) Correct:} Applying $R_2 \to R_2 + 2R_1$ preserves the determinant, so the value remains $4$.
+    \item \textbf{(b) Correct:} Applying $R_2 - R_1 \to R_2$ preserves the determinant, so the value remains $4$.
+    \item \textbf{(c) Correct:} Applying $R_2 + 2R_1 \to R_2$ preserves the determinant, so the value remains $4$.
     \item \textbf{(d) Correct:} Scaling the second row by $3$ scales the determinant by $3$, giving $3 \times 4 = 12$.
 \end{itemize}
 The correct statements are \textbf{(b), (c), and (d)}.
-\exinfo{Official Solution (Problem Sheet 17, Multiple Choice). Evaluates determinant effects of row operations on a $2 \times 2$ matrix.}
+\exinfo{Official Solution (Problem Sheet 17, Multiple Choice Question 2). Evaluates determinant effects of row operations on a $2 \times 2$ matrix.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Exercise 3)
+% Official Solution (Problem Sheet 17, Exercise 9)
 \begin{exercisesolution}[Solution to \cref{exc:block_matrix_commuting_blocks}]
 \label{sol:block_matrix_commuting_blocks}
 Let $M = \begin{pmatrix} A & B \\ C & D \end{pmatrix}$ with $AC = CA$ and $\det A \ne 0$.
@@ -325,10 +325,10 @@ Since $\det A \ne 0$, dividing both sides by $\det(A)$ yields:
 \[
 \det \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \det(AD - CB). \qedhere
 \]
-\exinfo{Official Solution (Problem Sheet 17, Exercise 3). Proves block determinant identity $\det(M) = \det(AD - CB)$ when $AC = CA$ and $A$ is invertible.}
+\exinfo{Official Solution (Problem Sheet 17, Exercise 9). Proves block determinant identity $\det(M) = \det(AD - CB)$ when $AC = CA$ and $A$ is invertible.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Exercise 4)
+% Official Solution (Problem Sheet 17, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:determinants_via_gaussian_elimination}]
 \label{sol:determinants_via_gaussian_elimination}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -356,7 +356,7 @@ Since $\det A \ne 0$, dividing both sides by $\det(A)$ yields:
       0 & 0 & -2 & 1
     \end{pmatrix}.
     \]
-    Eliminating row $3$ using $R_3 \to 2R_3 - R_2$ gives $(0, 0, 2, -1)$, which is the exact negation of row $4$. Adding row $4$ yields a zero row, so $\rank(A) < 4$ and:
+    Applying $R_2 - 2R_3 \to R_2$ turns row $2$ into $(0, 0, -2, 1)$, which is exactly row $4$. Two equal rows force $\rank(A) < 4$, and therefore:
     \[
     \det(A) = 0.
     \]
@@ -440,10 +440,10 @@ Since $\det A \ne 0$, dividing both sides by $\det(A)$ yields:
     \det(C) = (-1) \cdot \big(2 \cdot 1 \cdot 2 \cdot 1 \cdot (-6)\big) = (-1) \cdot (-24) = 24. \qedhere
     \]
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 17, Exercise 4). Computes determinants of three $4 \times 4$ and $5 \times 5$ matrices using Gaussian elimination.}
+\exinfo{Official Solution (Problem Sheet 17, Exercise 3). Computes determinants of three $4 \times 4$ and $5 \times 5$ matrices using Gaussian elimination.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Exercise 5)
+% Official Solution (Problem Sheet 17, Exercise 8)
 \begin{exercisesolution}[Solution to \cref{exc:vandermonde_determinant}]
 \label{sol:vandermonde_determinant}
 Let $V_n(x_1, \dots, x_n) = \det(x_i^{j-1})_{1 \le i, j \le n}$. We proceed by induction on $n \ge 2$.
@@ -482,7 +482,7 @@ Let $V_n(x_1, \dots, x_n) = \det(x_i^{j-1})_{1 \le i, j \le n}$. We proceed by i
     V_n(x_1, \dots, x_n) = \left(\prod_{j=2}^n (x_j - x_1)\right) \left(\prod_{2 \le i < j \le n} (x_j - x_i)\right) = \prod_{1 \le i < j \le n} (x_j - x_i). \qedhere
     \]
 \end{itemize}
-\exinfo{Official Solution (Problem Sheet 17, Exercise 5). Proves the Vandermonde determinant formula by induction using column operations.}
+\exinfo{Official Solution (Problem Sheet 17, Exercise 8). Proves the Vandermonde determinant formula by induction using column operations.}
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Exercise 1)
@@ -514,7 +514,7 @@ We expand $\det(B)$ along the first column:
     \[
     3 \cdot (-1)^{4+1} \det \begin{pmatrix} 0 & 2 & 3 \\ 2 & 3 & 0 \\ 3 & 0 & 0 \end{pmatrix} = -3 \cdot \left( 3 \cdot (-1)^{3+1} \det \begin{pmatrix} 2 & 3 \\ 3 & 0 \end{pmatrix} \right) = -9 \cdot (0 - 9) = 81.
     \]
-    \item For the second $4 \times 4$ minor, performing $R_4 \to R_4 - 2R_1$ gives:
+    \item For the second $4 \times 4$ minor, performing $R_4 - 2R_1 \to R_4$ gives:
     \[
     \det \begin{pmatrix}
       1 & 1 & 1 & 1 \\
@@ -541,7 +541,7 @@ Thus:
 \exinfo{Official Solution (Problem Sheet 17, Exercise 1). Computes $5 \times 5$ determinant via Laplace expansion and analyzes invertibility over $\mathbb{R}$ and $\mathbb{F}_5$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Exercise 6)
+% Official Solution (Problem Sheet 17, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:tridiagonal_toeplitz_determinant}]
 \label{sol:tridiagonal_toeplitz_determinant}
 Let $D_n := \det(A_n)$. We verify the base cases:
@@ -568,14 +568,14 @@ Therefore, $(D_n)_{n \ge 1}$ is an arithmetic progression:
 \[
 D_n = D_1 + (n-1) \cdot 1 = 2 + n - 1 = n + 1 \qquad \text{for all } n \ge 1. \qedhere
 \]
-\exinfo{Official Solution (Problem Sheet 17, Exercise 6). Derives and solves a second-order linear recurrence relation for tridiagonal Toeplitz determinants.}
+\exinfo{Official Solution (Problem Sheet 17, Exercise 4). Derives and solves a second-order linear recurrence relation for tridiagonal Toeplitz determinants.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Single Choice)
+% Official Solution (Problem Sheet 17, Single Choice Question 1)
 \begin{exercisesolution}[Solution to \cref{exc:parameter_for_3x3_determinant_sc}]
 \label{sol:parameter_for_3x3_determinant_sc}
 Let $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{pmatrix}$.
-Applying row operations $R_2 \to R_2 - R_1$ and $R_3 \to R_3 - R_1$ gives the upper triangular form:
+Applying row operations $R_2 - R_1 \to R_2$ and $R_3 - R_1 \to R_3$ gives the upper triangular form:
 \[
 \det(A) = \det \begin{pmatrix} 1 & 1 & 1 \\ 0 & x-1 & 0 \\ 0 & 0 & x-1 \end{pmatrix} = 1 \cdot (x-1) \cdot (x-1) = (x-1)^2.
 \]
@@ -584,10 +584,10 @@ We solve the equation $(x-1)^2 = 1$:
 x - 1 = \pm 1 \implies x = 2 \quad \text{or} \quad x = 0.
 \]
 Among the given options, $x = 2$ is \textbf{(b)}.
-\exinfo{Official Solution (Problem Sheet 17, Single Choice). Solves parametric $3 \times 3$ determinant equation via triangular row reduction.}
+\exinfo{Official Solution (Problem Sheet 17, Single Choice Question 1). Solves parametric $3 \times 3$ determinant equation via triangular row reduction.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 17, Exercise 7)
+% Official Solution (Problem Sheet 17, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:properties_2x2_adjugate}]
 \label{sol:properties_2x2_adjugate}
 Let $A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}$, so $\adj A = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}$ and $\det A = A_{11} A_{22} - A_{12} A_{21}$.
@@ -613,5 +613,5 @@ Let $A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}$, so $
     \adj(A\transp) = \begin{pmatrix} A_{22} & -A_{21} \\ -A_{12} & A_{11} \end{pmatrix} = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}\transp = (\adj A)\transp. \qedhere
     \]
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 17, Exercise 7). Verifies the adjugate inverse identity, determinant formula, and transpose compatibility for $2 \times 2$ matrices.}
+\exinfo{Official Solution (Problem Sheet 17, Exercise 5). Verifies the adjugate inverse identity, determinant formula, and transpose compatibility for $2 \times 2$ matrices.}
 \end{exercisesolution}

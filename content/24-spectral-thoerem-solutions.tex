@@ -1,4 +1,4 @@
-% Solution: Gemini / Official Hybrid (Problem Sheet 23, Symmetric Matrix Eigenvectors)
+% Solution: Gemini / Official Hybrid (Problem Sheet 23, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:symmetric_matrix_orthogonal_eigenvectors}]
 \label{sol:symmetric_matrix_orthogonal_eigenvectors}
 Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
@@ -26,10 +26,10 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
     \]
     Since $\lambda_1 \ne \lambda_2$, we must have $\langle v_1, v_2 \rangle = 0$, so $v_1 \perp v_2$. \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Establishes positive definiteness of $A\transp A$, rank equality, and orthogonality of distinct eigenspaces for symmetric matrices.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 23, Exercise 2). Establishes positive definiteness of $A\transp A$, rank equality, and orthogonality of distinct eigenspaces for symmetric matrices.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 23, Spectral Decomposition)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:spectral_decomposition_projections}]
 \label{sol:spectral_decomposition_projections}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -52,10 +52,10 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
     \]
     By definition of the adjoint, this proves $P_U^* = P_U$. \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Derives the spectral decomposition of normal operators into orthogonal projections and verifies self-adjointness of projections.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Exercise 3). Derives the spectral decomposition of normal operators into orthogonal projections and verifies self-adjointness of projections.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 23, Non-Orthonormal Bases)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:self_adjoint_non_orthonormal_basis}]
 \label{sol:self_adjoint_non_orthonormal_basis}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -73,10 +73,10 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
     In a non-orthonormal basis, the representation matrix of the adjoint is $[T^*]_\mathcal{B}^\mathcal{B} = G^{-1} ([T]_\mathcal{B}^\mathcal{B})^* G$, where $G = [\langle \cdot, \cdot \rangle]_\mathcal{B}$ is the Gram matrix.
     Thus symmetry of $[T]_\mathcal{B}^\mathcal{B}$ does not imply self-adjointness of $T$ unless $\mathcal{B}$ is orthonormal ($G = I$). \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Clarifies that matrix symmetry implies self-adjointness only when computed in an orthonormal basis.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Exercise 4). Clarifies that matrix symmetry implies self-adjointness only when computed in an orthonormal basis.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 23, Fourier Differential Operators)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:differential_operators_fourier}]
 \label{sol:differential_operators_fourier}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -118,10 +118,10 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
         \item $\lambda_n = n^2$ ($n \ge 1$) with multiplicity $m_g(n^2) = 2$ and eigenspace $\Sp(\cos(nx), \sin(nx))$. \qedhere
     \end{itemize}
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Computes adjoints and eigenbasis of derivative and 1D Laplacian on periodic smooth functions.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Exercise 6). Computes adjoints and eigenbasis of derivative and 1D Laplacian on periodic smooth functions.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 23, Algebraic Operations on Normal Matrices)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Multiple Choice)
 \begin{exercisesolution}[Solution to \cref{exc:algebra_self_adjoint_normal_mc}]
 \label{sol:algebra_self_adjoint_normal_mc}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -149,5 +149,5 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
         \item \emph{True:} If $Av = \lambda v$, then $A^k v = \lambda^k v$, so $p(A)v = p(\lambda)v$, showing $v$ is an eigenvector of $p(A)$. \qedhere
     \end{enumerate}
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Characterizes algebraic operations, commutator relations, and polynomial evaluations on normal matrices.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Multiple Choice). Characterizes algebraic operations, commutator relations, and polynomial evaluations on normal matrices.}
 \end{exercisesolution}

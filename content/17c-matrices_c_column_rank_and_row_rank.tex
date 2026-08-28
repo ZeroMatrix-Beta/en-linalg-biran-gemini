@@ -186,23 +186,24 @@ Determine the ranks of the following $n \times n$ matrices in $\M_{n \times n}(\
 
 % Creator: Opus 5
 \begin{ainote}
-The transcript has all four numbered statements of this section, but 17.c.3 is
-not the one in the notes. Prof. Biran's Lemma 2 records that $A$ is invertible
-if and only if $T_A$ is an isomorphism, in two lines; the transcript put in its
-place a lemma on the invertibility of $A\transp$, with a proof that runs
-through row-reduced echelon forms and pivots. That lemma is true, and its first
-sentence is precisely Prof. Biran's Lemma 2 used as a step, but the statement is
-not his and nothing in this section uses it. The notes' lemma is restored as
-\cref{lemma:invertible_iff_T_A_iso}, and the transpose statement is kept as
-\cref{rem:transpose_invertibility}, where it belongs: it is
+\Cref{lemma:invertible_iff_T_A_iso} is the hinge of the section: $A$ is
+invertible exactly when $T_A$ is an isomorphism, which is what allows a question
+about matrices to be answered with the theory of maps. Worth noticing is how
+little it costs. It needs nothing about rank, only the correspondence between
+matrices and maps set up in ch. 17a, so the rank results that follow genuinely
+rest on it and not the reverse. \Cref{rem:transpose_invertibility}, on the
+invertibility of $A\transp$, stands beside it as a remark rather than as a
+result of this section for the mirror-image reason: it is
 \cref{exc:transpose_properties_multiplication} \textbf{(b)} of
-\cref{sec:matrix_multiplication}, needs nothing from this section, and comes
-with the inverse written out.
+\cref{sec:matrix_multiplication}, it needs nothing from here, and it is recorded
+with its inverse written out.
 
-Nothing in the section is false. One thing is left as it stands, deliberately:
-\cref{lemma:rank_invariance_isomorphisms} calls a vector space $P$, while $P$ is
-an invertible matrix two statements later. Nothing depends on it, but the
-collision is a trap for the eye. And a reader meeting
+Two things are left as they stand, deliberately.
+\Cref{lemma:rank_invariance_isomorphisms} calls a vector space $P$, while $P$ is
+an invertible matrix two statements later. Nothing depends on the clash, but it
+is a trap for the eye. And a reader meeting
 \cref{lemma:invertible_iff_T_A_iso} should know that it is the same statement as
-\cref{prop:invertibility_isomorphism_equivalence}, not a new result.
+\cref{prop:invertibility_isomorphism_equivalence} of the earlier section, not a
+new result: the two are kept apart because each section reaches for it in its
+own terms.
 \end{ainote}

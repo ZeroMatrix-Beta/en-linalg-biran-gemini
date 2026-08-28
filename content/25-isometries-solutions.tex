@@ -1,4 +1,4 @@
-% Solution: Gemini / Official Hybrid (Problem Sheet 24, SO(3) Axis and Angle)
+% Solution: Gemini / Official Hybrid (Problem Sheet 26, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:rotation_matrix_axis_angle}]
 \label{sol:rotation_matrix_axis_angle}
 Let $A = \frac{1}{3} \begin{pmatrix} 2 & -2 & 1 \\ -1 & -2 & -2 \\ 2 & 1 & -2 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$.
@@ -38,10 +38,10 @@ Let $A = \frac{1}{3} \begin{pmatrix} 2 & -2 & 1 \\ -1 & -2 & -2 \\ 2 & 1 & -2 \e
     \]
     The rotation angle is $\theta = \arccos\left(-\frac{5}{6}\right) \approx 146.44^\circ$. \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Verifies special orthogonality and computes rotation axis and angle from trace for a $3 \times 3$ matrix.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 26, Exercise 2). Verifies special orthogonality and computes rotation axis and angle from trace for a $3 \times 3$ matrix.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 24, Trace Bound of Orthogonal Endomorphisms)
+% Solution: Gemini / Official Hybrid (Problem Sheet 26, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:trace_orthogonal_endomorphism}]
 \label{sol:trace_orthogonal_endomorphism}
 Let $V$ be an $n$-dimensional Euclidean space, and $f \in \End(V)$ an orthogonal endomorphism.
@@ -63,10 +63,10 @@ Since $\Tr(f) \in \mathbb{R}$, we must have $e^{i\varphi} \in \mathbb{R}$, which
     \item $\lambda_1 = \dots = \lambda_n = 1$: in this case $[f]_\mathcal{B}^\mathcal{B}$ is orthogonally similar to $I_n$, so $f = \id_V$.
     \item $\lambda_1 = \dots = \lambda_n = -1$: in this case $[f]_\mathcal{B}^\mathcal{B}$ is orthogonally similar to $-I_n$, so $f = -\id_V$. \qedhere
 \end{itemize}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves $|\Tr(f)| \le n$ for orthogonal endomorphisms via complex eigenvalues and characterizes the equality cases.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 26, Exercise 5). Proves $|\Tr(f)| \le n$ for orthogonal endomorphisms via complex eigenvalues and characterizes the equality cases.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 24, Exercise 3)
+% Official Solution (Problem Sheet 26, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:so3_rotations_subspaces}]
 \label{sol:so3_rotations_subspaces}
 Let $E_1, E_2 \subset \mathbb{R}^3$ be two-dimensional subspaces.
@@ -91,5 +91,5 @@ Let $E_1, E_2 \subset \mathbb{R}^3$ be two-dimensional subspaces.
     \{ T \in \SOrth(3) \mid T(E_1) = E_2 \} = \{ M_2 \cdot D \cdot M_1\transp \mid D \in \SOrth(3), \, D(E_0) = E_0 \}. \qedhere
     \]
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 24, Exercise 3). Classifies rotations in $\SOrth(3)$ mapping a 2D subspace to itself and between two given 2D planes.}
+\exinfo{Official Solution (Problem Sheet 26, Exercise 6). Classifies rotations in $\SOrth(3)$ mapping a 2D subspace to itself and between two given 2D planes.}
 \end{exercisesolution}

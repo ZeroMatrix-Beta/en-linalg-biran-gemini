@@ -317,12 +317,14 @@ which is the formula stated in the example. The construction is the same one tha
 \input{content/11-bases-part-b-solutions.tex}
 
 \begin{ainote}
-The notes prepare the Basis Theorem with two lemmas the transcript had dropped,
-\cref{lem:no_predecessor_span} and \cref{lem:spanning_list_contains_basis}, both
-restored above with their proofs. The first of them closes a real gap: the filter
-that extracts a basis only ever tests a vector against the ones \emph{preceding}
-it, whereas \cref{prop:dependence_is_redundancy}, which the transcript cited
-here, is about a vector lying in the span of \emph{all} the others.
+Two lemmas prepare the Basis Theorem, and the first of them,
+\cref{lem:no_predecessor_span}, closes a gap that is easy to walk past. The
+filter that extracts a basis from a spanning list only ever tests a vector
+against the ones \emph{preceding} it, whereas
+\cref{prop:dependence_is_redundancy} speaks of a vector lying in the span of
+\emph{all} the others. Those are different conditions, and it is the first that
+the extraction argument needs; \cref{lem:spanning_list_contains_basis} is where
+the two are finally brought together.
 
 Two cautions about what the exchange procedure of \cref{lem:strong_steinitz}
 does and does not maintain. Ejecting a redundant $v_k$ preserves the span and

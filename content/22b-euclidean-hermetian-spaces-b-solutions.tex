@@ -1,4 +1,4 @@
-% Official Solution (Problem Sheet 21, Exercise 1)
+% Official Solution (Problem Sheet 23, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:orthogonal_projection_computation}]
 \label{sol:orthogonal_projection_computation}
 Let $U = \Sp(v_1, v_2) \subseteq \mathbb{R}^3$ with $v_1 = (1, 1, 1)\transp$ and $v_2 = (0, 2, 1)\transp$.
@@ -34,10 +34,10 @@ Let $U = \Sp(v_1, v_2) \subseteq \mathbb{R}^3$ with $v_1 = (1, 1, 1)\transp$ and
     \end{pmatrix}. \qedhere
     \]
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 21, Exercise 1). Computes orthonormal bases and representation matrices for orthogonal projections onto $U$ and $U^\perp$.}
+\exinfo{Official Solution (Problem Sheet 23, Exercise 4). Computes orthonormal bases and representation matrices for orthogonal projections onto $U$ and $U^\perp$.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 21, Best Approximation)
+% Solution: Gemini / Official Hybrid (Problem Sheet 24, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:best_approximation_subspace}]
 \label{sol:best_approximation_subspace}
 Let $V$ be an inner product space, $U \subseteq V$ a finite-dimensional subspace, $v \in V$, and $u \in U$.
@@ -54,10 +54,10 @@ Applying Pythagoras' theorem (\cref{thm:pythagoras}):
 \]
 Taking square roots yields $\|v - P_U(v)\| \le \|v - u\|$.
 Equality holds if and only if $\|P_U(v) - u\|^2 = 0 \iff u = P_U(v)$, proving that $P_U(v)$ is the unique closest point in $U$ to $v$.
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves the Best Approximation Theorem in inner product spaces via Pythagoras.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 24, Exercise 3). Proves the Best Approximation Theorem in inner product spaces via Pythagoras.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 21, Least Squares Approximation)
+% Solution: Gemini / Official Hybrid (Problem Sheet 24, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:least_squares_polynomial_sine}]
 \label{sol:least_squares_polynomial_sine}
 Equip $V = C[-\pi, \pi]$ with the inner product $\langle f, g \rangle = \int_{-\pi}^\pi f(x) g(x) \, dx$.
@@ -91,10 +91,10 @@ c_1 &= \frac{105(33\pi^4 - 2376\pi^2 + 10450)}{8\pi^6}, \\
 c_3 &= \frac{315(-11\pi^4 + 792\pi^2 - 3465)}{4\pi^8}, \\
 c_5 &= \frac{693(5\pi^4 - 360\pi^2 + 1575)}{8\pi^{10}}. \qedhere
 \end{align*}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Computes degree 5 polynomial least-squares approximation of $\sin(x)$ on $[-\pi, \pi]$ via normal equations.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 24, Exercise 4). Computes degree 5 polynomial least-squares approximation of $\sin(x)$ on $[-\pi, \pi]$ via normal equations.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 21, Exercise 3)
+% Official Solution (Problem Sheet 23, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:infinite_dim_orthogonal_complements}]
 \label{sol:infinite_dim_orthogonal_complements}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -118,7 +118,7 @@ c_5 &= \frac{693(5\pi^4 - 360\pi^2 + 1575)}{8\pi^{10}}. \qedhere
     \end{itemize}
     Thus $h(x) = 0$ for all $x \in [0, 1]$, proving that $U_2^\perp = \{0\}$. \qedhere
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 21, Exercise 3). Constructs dense subspaces with trivial orthogonal complements in $\ell^2$ and $C[0,1]$.}
+\exinfo{Official Solution (Problem Sheet 23, Exercise 5). Constructs dense subspaces with trivial orthogonal complements in $\ell^2$ and $C[0,1]$.}
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 21, Single/Multiple Choice)
@@ -154,7 +154,7 @@ c_5 &= \frac{693(5\pi^4 - 360\pi^2 + 1575)}{8\pi^{10}}. \qedhere
 \exinfo{Official Solution (Problem Sheet 21, Single/Multiple Choice). Assesses truth values of triangle equality, orthogonality relations, and unitary subgroup properties.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 21, Exercise 4)
+% Official Solution (Problem Sheet 23, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:qr_decomposition_computation}]
 \label{sol:qr_decomposition_computation}
 Let $A = \begin{pmatrix} -1 & 1 & -1 \\ 2 & 0 & 1 \\ -2 & 1 & 0 \end{pmatrix}$ with column vectors $v_1, v_2, v_3$.
@@ -197,5 +197,5 @@ Let $A = \begin{pmatrix} -1 & 1 & -1 \\ 2 & 0 & 1 \\ -2 & 1 & 0 \end{pmatrix}$ w
     \end{align*}
     Thus the unique solution is $x = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$. \qedhere
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 21, Exercise 4). Computes QR decomposition via Gram-Schmidt and solves linear system via back-substitution.}
+\exinfo{Official Solution (Problem Sheet 23, Exercise 3). Computes QR decomposition via Gram-Schmidt and solves linear system via back-substitution.}
 \end{exercisesolution}

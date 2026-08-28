@@ -440,45 +440,28 @@ This is exactly the assertion: $q(J_{\lambda,n})$ is upper triangular, and each 
 
 % Creator: Opus 5
 \begin{ainote}
-Nothing false, and the source-verification pass had already written up all six of
-Prof. Biran's \qt{exc.} marks, including the two \qt{why?}s on the exponents of
-the minimal polynomial and the \qt{explain} on the uniqueness claim.
+Everything in this chapter happens twice over, once for the endomorphism $T$ and
+once for its matrix $A := [T]_{\mathcal{B}}^{\mathcal{B}}$, and the passage
+between the two is where the care is needed. Two such passages carry the
+argument. The geometric multiplicities agree,
+$m_g(T, \lambda) = m_g(A, \lambda)$, because the coordinate map
+$\Phi_{\mathcal{B}}$ carries $\Eig_T(\lambda)$ onto $\Eig_A(\lambda)$
+(\cref{prop:matrix_evaluation} together with
+\cref{prop:coordinate_map_isomorphism}). The minimal polynomials agree too, and
+that matters more: the second half of \cref{cor:multiplicities_min_poly_jnf}
+argues about the minimal polynomial of the \emph{matrix} $A$ and then draws a
+conclusion about $\mu_T$. The two are the same polynomial because
+$q(A) = [q(T)]_{\mathcal{B}}^{\mathcal{B}}$ for every polynomial $q$, the
+representation map being a ring homomorphism and injective
+(\cref{thm:homomorphism_isomorphism}). Without that identification the corollary
+would be computing the minimal polynomial of the wrong object.
 
-\textbf{A notation used once and defined nowhere.} \Cref{cor:multiplicities_min_poly_jnf}
-writes its product over $\lambda \in \Spec(T)$, the only occurrence of $\Spec$ in
-the book: the operator is declared in the preamble, the word \qt{spectrum} is
-explained only in the AI-Note opening ch. 24, and the corollary's own proof works
-throughout with $\{\lambda_1, \dots, \lambda_k\}$ instead. The statement now says
-which set that is.
-
-\textbf{Two passages between $T$ and its matrix, both silent.} The proof computes
-$m_g(T, \lambda) = m_g(A, \lambda)$ for $A := [T]_{\mathcal{B}}^{\mathcal{B}}$
-without argument; the reason is that $\Phi_{\mathcal{B}}$ carries
-$\Eig_T(\lambda)$ onto $\Eig_A(\lambda)$, which is
-\cref{prop:matrix_evaluation} together with
-\cref{prop:coordinate_map_isomorphism}. The whole second half then proves a
-statement about the minimal polynomial of the \emph{matrix} $A$ and concludes one
-about $\mu_T$; these agree because $q(A) = [q(T)]_{\mathcal{B}}^{\mathcal{B}}$ for
-every polynomial $q$, the representation map being a ring homomorphism and
-injective by \cref{thm:homomorphism_isomorphism}. This is the more serious of the
-two, since without it the corollary computes the minimal polynomial of the wrong
-object.
-
-Smaller ones: the determinant of the triangular $J_{\lambda, n} - x I_n$ is
-\cref{lem:properties_char_poly} \textbf{(c)}; passing from \qt{the only root} to
-\qt{the only eigenvalue} is \cref{aiprop:eigenvalue_iff_root}; the algebraic
-multiplicity is read off \cref{def:geom_alg_mult}; and the two-block additivity
-of $m_g$ reaches $k$ blocks by an induction that is now named.
-
-The Remark introducing the terms \newterm{Jordan basis} and \newterm{Jordan
-Normal Form} keeps its Remark and simply carries a label now, so later chapters
-can cite it where it stands.
-
-Checked and found correct: the shift description $T_N e_i = e_{i-1}$ agrees with
-$N = J_{0,n}$; the binomial expansion of $(\lambda I_n + N)^k$ is legitimate
-because the two commute; and every one of the six exercise solutions was
-re-verified, including the two roots $\cos\theta \pm i\sin\theta$ of
-$x^2 - 2\cos\theta \cdot x + 1$.
+Two smaller points. The binomial expansion of $(\lambda I_n + N)^k$ is
+legitimate only because $\lambda I_n$ and $N$ commute, which they do, and it is
+what makes powers of a Jordan block computable at all. And
+\cref{cor:multiplicities_min_poly_jnf} indexes its product by $\Spec(T)$, the
+only appearance of that operator in the book; the statement names the set it
+means.
 \end{ainote}
 
 

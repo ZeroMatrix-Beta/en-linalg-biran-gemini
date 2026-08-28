@@ -311,27 +311,26 @@ Throughout, write $A \sim B$ for equivalence and $A \approx B$ for similarity.
 \input{content/17b-matrices_b_change_of_basis-solutions.tex}
 
 \begin{ainote}
-Every numbered statement of the notes for this section is present in the
-transcript, in the notes' order, and 17.b.1--17.b.8 already matched the
-handwritten numbering; the proofs follow Prof. Biran's.
+The two relations this section introduces are easy to define and easy to
+misremember, and \cref{exc:equivalence_similarity_properties} is where they
+acquire their meaning. Two matrices are equivalent exactly when they represent
+one and the same linear map in two pairs of bases; two square matrices are
+similar exactly when they represent one and the same endomorphism in two bases.
+Both readings turn on a single observation: for an invertible $P$, the columns
+of $P$ form a basis, and $P$ is itself the transition matrix from the standard
+basis to that one. Most of what follows is that observation applied twice, once
+on each side.
 
-The four parts of \cref{exc:equivalence_similarity_properties} are Prof. Biran's,
-marked \qt{Exc.} in the notes and left unanswered by the transcript; they are
-solved above. Two of them carry the content of the section: equivalence of
-matrices means representing the same linear map in two pairs of bases, and
-similarity means representing the same endomorphism in two bases. Both
-directions turn on the observation that for an invertible $P$, the columns of
-$P$ form a basis whose transition matrix from the standard basis is $P$ itself.
-
-Two slips in the bookkeeping of bases were corrected, and the second is the kind
-this book is most exposed to. In the proof of
-\cref{cor:matrix_equivalence_normal_form} the left factor was written
-$[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$, whose bases do not meet those of the
-middle factor $[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}$ the way the composition
-rule requires: the product as printed does not compose at all, and the matrix
-named $P$ was the inverse of the one intended. It has to be
-$[\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}$, which is also what the solution to
-part \textbf{(b)} of \cref{exc:equivalence_similarity_properties} arrives at
-independently. The other slip was one inverse too many at the close of
-\cref{cor:change_of_basis_formula}.
+The composition rule repays being used as a check and not only as a formula. In
+a product $[S]_{\mathcal{E}}^{\mathcal{C}} \cdot [T]_{\mathcal{C}}^{\mathcal{B}}$
+the two inner bases have to agree, and an expression in which they do not fails
+to compose at all, whatever its shapes may permit. That safeguard earns its keep
+here, because the characteristic error in this material is not arithmetic:
+writing $[\id_{K^m}]_{\mathcal{E}_m}^{\mathcal{C}}$ where
+$[\id_{K^m}]_{\mathcal{C}}^{\mathcal{E}_m}$ is meant yields the \emph{inverse}
+of the matrix intended, and since the inverse of a transition matrix is again a
+transition matrix, nothing about the resulting expression looks out of place.
+Reading the inner bases off before anything else catches it immediately, and it
+is the discipline \cref{cor:matrix_equivalence_normal_form} and
+\cref{cor:change_of_basis_formula} both reward.
 \end{ainote}

@@ -160,7 +160,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
   \langle \cdot, \cdot \rangle : V \times V \longrightarrow \mathbb{R}, \qquad (A, B) \longmapsto \Tr(A\transp B).
   \]
   Show that this defines a scalar product on $V$, and find an orthonormal basis with respect to this scalar product. The induced norm is called the \newterm{Hilbert-Schmidt norm} (or \newterm{Frobenius norm}). Provide an explicit formula for the norm of a matrix $A \in V$ in terms of its entries $(a_{ij})$.
-  \exhint[Official Hint]{Recall the properties of the trace: $\Tr(A + B) = \Tr(A) + \Tr(B)$, $\Tr(\alpha A) = \alpha \Tr(A)$, $\Tr(M\transp) = \Tr(M)$, and $\Tr(MN) = \Tr(NM)$. Using these, show bilinearity and symmetry $\langle A, B \rangle = \Tr(A\transp B) = \Tr((A\transp B)\transp) = \Tr(B\transp A) = \langle B, A \rangle$. For positivity, compute $\langle A, A \rangle = \Tr(A\transp A) = \sum_{i,j=1}^n a_{ij}^2 \ge 0$, which is zero if and only if all entries $a_{ij} = 0$, i.e., $A = 0$.
+  \exhint[Hint (Y. St\"aubli)]{Recall the properties of the trace: $\Tr(A + B) = \Tr(A) + \Tr(B)$, $\Tr(\alpha A) = \alpha \Tr(A)$, $\Tr(M\transp) = \Tr(M)$, and $\Tr(MN) = \Tr(NM)$. Using these, show bilinearity and symmetry $\langle A, B \rangle = \Tr(A\transp B) = \Tr((A\transp B)\transp) = \Tr(B\transp A) = \langle B, A \rangle$. For positivity, compute $\langle A, A \rangle = \Tr(A\transp A) = \sum_{i,j=1}^n a_{ij}^2 \ge 0$, which is zero if and only if all entries $a_{ij} = 0$, i.e., $A = 0$.
   The standard elementary matrices $\{E_{ij} \mid 1 \le i, j \le n\}$ form an orthonormal basis since $\langle E_{ij}, E_{k\ell} \rangle = \delta_{ik}\delta_{j\ell}$. The induced norm is $\|A\|_{HS} = \sqrt{\Tr(A\transp A)} = \sqrt{\sum_{i=1}^n \sum_{j=1}^n a_{ij}^2}$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:frobenius_hilbert_schmidt_inner_product}
@@ -192,7 +192,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \item $I_n^* = I_n$.
     \item $(A \cdot C)^* = C^* \cdot A^*$.
   \end{enumerate}
-  \exhint[Official Hint]{Compute the $(i, j)$-entry for each side of the equations. For part \textbf{(e)}, the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
+  \exhint[Hint (Y. St\"aubli)]{Compute the $(i, j)$-entry for each side of the equations. For part \textbf{(e)}, the $(i, j)$-entry of $(A C)^*$ is $\overline{(AC)_{ji}} = \overline{\sum_{k=1}^m a_{jk} c_{ki}} = \sum_{k=1}^m \overline{c_{ki}} \, \overline{a_{jk}} = \sum_{k=1}^m (C^*)_{ik} (A^*)_{kj} = (C^* A^*)_{ij}$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:properties_adjoint_matrix_rules}
 \end{exercise}
@@ -205,7 +205,7 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     the unitary matrices, the self-adjoint (Hermitian) matrices, the symmetric matrices, and the normal matrices.
     \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. Prove that $\Tr(A) \in \mathbb{R}$ and $\det(A) \in \mathbb{R}$.
   \end{enumerate}
-  \exhint[Official Hint]{(a) Compute $A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
+  \exhint[Hint]{(a) Compute $A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
   (b) The symmetric matrices form a $\mathbb{C}$-subspace because $(A + \alpha B)\transp = A\transp + \alpha B\transp = A + \alpha B$ for all $\alpha \in \mathbb{C}$. The Hermitian matrices do not form a $\mathbb{C}$-subspace, because $(i A)^* = -i A^* = -i A \ne i A$ for $A \ne 0$.
   (c) Since $A^* = A$, we have $\overline{\Tr(A)} = \Tr(\overline{A}) = \Tr(\overline{A}\transp) = \Tr(A^*) = \Tr(A)$, so $\Tr(A) \in \mathbb{R}$. Similarly, $\overline{\det(A)} = \det(\overline{A}) = \det(\overline{A}\transp) = \det(A^*) = \det(A)$, so $\det(A) \in \mathbb{R}$.}
   \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -269,7 +269,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
   \langle \cdot, \cdot \rangle : \mathbb{R}^2 \times \mathbb{R}^2 \longrightarrow \mathbb{R}, \qquad \left( \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \right) \longmapsto x_1 y_1 + a x_1 y_2 + a x_2 y_1 + 7 x_2 y_2
   \]
   a scalar product on $\mathbb{R}^2$?
-  \exhint[Official Hint]{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
+  \exhint[Hint (Y. St\"aubli)]{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:pos_def_examples_real_b}
 \end{exercise}
@@ -338,7 +338,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \item The matrix $A\transp A$ is positive definite if and only if $A$ is invertible.
     \item $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
   \end{enumerate}
-  \exhint[Official Hint]{(a) Compute $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$.
+  \exhint[Hint (Y. St\"aubli)]{(a) Compute $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$.
   (b) For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (A v)\transp (A v) = \|A v\|^2 \ge 0$. Thus, $v\transp (A\transp A) v > 0$ for all $v \neq 0$ if and only if $Av \neq 0$ for all $v \neq 0$, which is equivalent to $\ker(A) = \{0\}$, i.e., $A$ is invertible.
   (c) Show that $\ker(A\transp A) = \ker(A)$: if $v \in \ker(A)$, then clearly $A\transp A v = 0$; conversely, if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$. By the rank-nullity theorem, $\operatorname{rank}(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \operatorname{rank}(A)$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -573,7 +573,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
   \[
   \cos \angle(R v_1, R v_2) = \cos \angle(v_1, v_2).
   \]
-  \exhint[Official Hint]{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
+  \exhint[Hint (Y. St\"aubli)]{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:rotation_invariance_angle}
 \end{exercise}
@@ -678,7 +678,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
 \begin{exercise}[Extending an Orthonormal System to an Orthonormal Basis]
   \label{exc:extend_orthonormal_system_sheet23}
   Let $V$ be a finite-dimensional Euclidean vector space and let $S \subseteq V$ be an orthonormal system. Show that $S$ can be extended to an orthonormal basis of $V$.
-  \exhint[Official Hint]{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
+  \exhint[Hint (Y. St\"aubli)]{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
   \exsol{sol:extend_orthonormal_system}
 \end{exercise}
@@ -947,31 +947,23 @@ We'll see more about this soon.
 \input{content/22a-euclidean-hermetian-spaces-a-solutions.tex}
 
 \begin{ainote}
-The rigour pass found this chapter sound and its exercises already fully solved.
-Four things were added.
+The positivity axiom of \cref{def:hermitian_product_complex} asks that
+$\langle v, v \rangle > 0$, and $\langle \cdot, \cdot \rangle$ takes its values
+in $\mathbb{C}$, where there is no order to appeal to. What makes the condition
+well formed is the Hermitian axiom standing immediately above it: that axiom
+forces $\langle v, v \rangle$ to equal its own conjugate, hence to be real, and
+only then does the inequality mean anything at all. The corresponding remark is
+already made for matrices in \cref{def:positive_definite_matrix_complex}. The
+same care is wanted on \cpageref{claim:hermitian_product_iff_pos_def}, where
+\qt{positive definite} is a property that
+\cref{def:positive_definite_matrix_complex} confers only on Hermitian matrices;
+the Claim therefore carries both halves, its proof extracts the Hermitian one
+first, and \cref{exc:real_case_of_claim} says the same thing in the real case.
 
-\Cref{cor:orthonormal_basis_exists} stood without a proof, although it is the
-result the whole Gram-Schmidt section exists to produce, and chs. 22b, 24 and 25
-all begin from it. Two lines suffice, the only point worth stating being that
-$\dim V = 0$ is covered by the empty family.
-
-The positivity axiom of \cref{def:hermitian_product_complex} writes
-\qt{$\langle v, v \rangle > 0$} for a quantity whose values lie in $\mathbb{C}$,
-where there is no order. What makes the condition well formed is the Hermitian
-axiom immediately above it, which forces $\langle v, v \rangle$ to equal its own
-conjugate and hence to be real. The definition now says so.
-\Cref{def:positive_definite_matrix_complex} already made the corresponding
-remark for matrices, so the omission here was a local one.
-
-The Claim on \cpageref{claim:hermitian_product_iff_pos_def} asked for $A$
-\qt{positive definite}, a property \cref{def:positive_definite_matrix_complex}
-declares only for Hermitian matrices; the statement now carries both halves,
-which is also what its proof extracts first and what
-\cref{exc:real_case_of_claim} says in the real case.
-
-And the last step of the proof of \cref{thm:gram_schmidt}, that two spans of
-equal dimension coincide, now names \cref{prop:subspace_dimension_constraints}
-and \cref{thm:properties_orthogonal_systems} \textbf{(a)}.
+\Cref{cor:orthonormal_basis_exists} is the result the whole Gram-Schmidt section
+exists to produce, and chs. 22b, 24 and 25 all begin from it. Its proof runs to
+two lines; the only point worth pausing on is that $\dim V = 0$ is covered by
+the empty family.
 \end{ainote}
 
 

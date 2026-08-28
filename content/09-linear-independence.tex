@@ -423,23 +423,6 @@ Let $V$ be a vector space and let $S_1, S_2 \subseteq V$ be subsets with $S_1 \s
 \exsol{sol:monotonicity_independence_spanning_mc}
 \end{exercise}
 
-\begin{ainote}
-\Cref{def:family} and the surrounding discussion of families, the index-set
-examples, the remark that nothing here needs $V$ to be a vector space, and the
-link between repetitions and injectivity, are in the notes and were missing
-from this transcript; the same holds for \cref{def:independent_set}, for the
-comparison of a family with the set of its values on \cpageref{q:family_vs_set},
-for the exercise on \cpageref{exc:k_infinity_independent}, and for the remarks on
-\cpageref{rem:dependence_basics}. The notes write the two non-zero coefficients
-in the proof of \cref{lem:independence_basics} \textbf{(c)} as $1$ and $1$,
-which does not give $v_k - v_l$; the transcript already had the corrected $1$
-and $-1$, which is kept. Because this transcript indexes sequences from $0$
-(\cpageref{ex:sequence_space}), the standard vectors of $K^\infty$ in that exercise are $e_0, e_1, e_2, \dots$ rather than
-$e_1, e_2, \dots$ as in the notes. \Cref{prop:dependence_is_redundancy} and the
-two diagrams are not in the notes at this point; the proposition is kept here
-because the basis-extraction argument in the chapters on bases relies on it.
-\end{ainote}
-
 % Creator: Opus 5
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_linear_independence}
@@ -487,5 +470,14 @@ by quantifying over its \emph{finite} subfamilies. That is why
 \cref{lem:subsets_of_independent_sets} and
 \cref{lem:supersets_of_dependent_sets} are one-line consequences, and it is what
 the exercise above is really testing.
+
+One result here exists for the sake of a later chapter.
+\Cref{prop:dependence_is_redundancy} turns dependence into redundancy: a
+dependent family has a member lying in the span of the others, so that member
+may be discarded without changing the span. Every basis-extraction argument in
+chs. 10a to 12 rests on that reading. It is worth knowing in advance that the
+form stated here, testing a vector against \emph{all} the others, is not quite
+the form those arguments need, which tests it only against the ones preceding
+it; ch. 11 supplies the sharper version separately.
 \end{ainote}
 

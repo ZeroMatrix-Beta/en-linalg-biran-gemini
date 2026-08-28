@@ -1,9 +1,9 @@
-% Official Solution (Problem Sheet 14, Exercise 1)
+% Official Solution (Problem Sheet 13, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:explicit_inversion_matrices}]
 \label{sol:explicit_inversion_matrices}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Matrix $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$:}
-    Applying the row operations $R_2 \to R_2 - R_1$ and $R_3 \to R_3 - R_1$ yields:
+    Applying the row operations $R_2 - R_1 \to R_2$ and $R_3 - R_1 \to R_3$ yields:
     \[
     \begin{pmatrix} 1 & 1 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}.
     \]
@@ -37,13 +37,15 @@
 
     \item \textbf{Matrix $C = \begin{pmatrix} 2 & 1 & 1 & 1 \\ 1 & 2 & 1 & 1 \\ 1 & 1 & 2 & 1 \\ 1 & 1 & 1 & 2 \end{pmatrix}$:}
     Notice $C = I_4 + J_4$ where $J_4$ is the $4 \times 4$ all-ones matrix.
-    Summing all four rows into $R_1$:
+    Sum the other three rows into the first, one operation at a time, by
+    $R_1 + R_2 \to R_1$, then $R_1 + R_3 \to R_1$, then $R_1 + R_4 \to R_1$. Since every
+    column of $C$ sums to $5$, the first row becomes
     \[
-    R_1 + R_2 + R_3 + R_4 \longrightarrow R_1: \quad (5, 5, 5, 5 \mid 1, 1, 1, 1).
+    (5, 5, 5, 5 \mid 1, 1, 1, 1).
     \]
-    Scale $R_1$ by $\frac{1}{5}$: $(1, 1, 1, 1 \mid \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5})$.
-    Subtracting this new $R_1$ from $R_i$ ($i = 2, 3, 4$) gives $e_i\transp \mid -\frac{1}{5}, \dots, \frac{4}{5}, \dots$.
-    Finally subtracting rows $2, 3, 4$ from $R_1$ leaves $I_4$ on the left.
+    Now $\frac{1}{5} \cdot R_1 \to R_1$ gives $(1, 1, 1, 1 \mid \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5})$.
+    Subtracting this new first row from each of the others, by $R_i - R_1 \to R_i$ for $i = 2, 3, 4$, gives $e_i\transp \mid -\frac{1}{5}, \dots, \frac{4}{5}, \dots$.
+    Finally $R_1 - R_2 \to R_1$, then $R_1 - R_3 \to R_1$, then $R_1 - R_4 \to R_1$ leaves $I_4$ on the left.
     Thus $C$ is invertible with inverse:
     \[
     C^{-1} = \frac{1}{5} \begin{pmatrix}
@@ -103,10 +105,10 @@
     \end{pmatrix}. \qedhere
     \]
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 14, Exercise 1). Explicitly inverts 4 matrices via Gauss-Jordan elimination on $(M \mid I)$.}
+\exinfo{Official Solution (Problem Sheet 13, Exercise 1). Explicitly inverts 4 matrices via Gauss-Jordan elimination on $(M \mid I)$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 14, Exercise 2)
+% Official Solution (Problem Sheet 13, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_gaussian_elimination_invertibility}]
 \label{sol:parametric_gaussian_elimination_invertibility}
 We apply Gaussian elimination to the parameter-dependent matrix $M_\alpha$:
@@ -157,17 +159,17 @@ The row echelon form has $4$ non-zero pivots if and only if the bottom right ent
 \alpha^2 - \alpha \ne 0 \iff \alpha(\alpha - 1) \ne 0 \iff \alpha \notin \{0, 1\}.
 \]
 Therefore, $M_\alpha$ is invertible if and only if $\alpha \in \mathbb{Q} \setminus \{0, 1\}$.
-\exinfo{Official Solution (Problem Sheet 14, Exercise 2). Performs parametric row reduction to determine values of $\alpha$ for matrix invertibility.}
+\exinfo{Official Solution (Problem Sheet 13, Exercise 5). Performs parametric row reduction to determine values of $\alpha$ for matrix invertibility.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 14, Exercise 3)
+% Solution: Gemini / Official Hybrid (Problem Sheet 13, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:bruhat_decomposition}]
 \label{sol:bruhat_decomposition}
 Let $A \in \GL_n(K)$. Let $B \subseteq \GL_n(K)$ denote the subgroup of invertible upper triangular matrices.
 
 \textbf{Proof via Gaussian Elimination:}
 For any non-zero vector $v \in K^n$, let $\operatorname{piv}(v) \in \{1, \dots, n\}$ denote the index of the \emph{last} (bottom-most) non-zero entry of $v$.
-We perform row reduction using only upper triangular elementary row operations (Type I operations $R_i \to R_i + \alpha R_j$ with $i < j$ and Type III scaling operations $R_i \to \alpha R_i$).
+We perform row reduction using only upper triangular elementary row operations (Type I operations $R_i + \alpha R_j \to R_i$ with $i < j$ and Type III scaling operations $\alpha \cdot R_i \to R_i$).
 Left-multiplication by an upper triangular matrix $U \in B$ allows us to clear all entries in row $i$ sitting above any established pivot position $j$ (where $i < j$) without affecting lower rows.
 
 Because $A$ is invertible, no row ever becomes zero. By iteratively applying these upper triangular operations from bottom to top, we can ensure that each row $i$ has its pivot in a unique column $\sigma(i)$, with no other non-zero entries in column $\sigma(i)$ above row $i$.
@@ -177,10 +179,10 @@ Multiplying by the inverses $B := U^{-1} \in B$ and $B' := (U')^{-1} \in B$ yiel
 \[
 A = B P B'. \qedhere
 \]
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 14, Exercise 3). Establishes the Bruhat decomposition $A = B P B'$ for $\GL_n(K)$ using triangular row operations and permutation matrices.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 13, Exercise 6). Establishes the Bruhat decomposition $A = B P B'$ for $\GL_n(K)$ using triangular row operations and permutation matrices.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 14, Exercise 4)
+% Official Solution (Problem Sheet 14, Multiple Choice Question 1)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_3x3_invertibility_mc}]
 \label{sol:parametric_3x3_invertibility_mc}
 Let $A = \begin{pmatrix} 1 & x & 1 \\ 3 & 3 & x \\ 0 & 3 & 1 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$.
@@ -193,8 +195,8 @@ A square matrix is not invertible if and only if its determinant is zero:
 \[
 \det(A) = 0 \iff 12 - 6x = 0 \iff 6x = 12 \iff x = 2.
 \]
-Alternatively, applying the row operation $R_2 \to R_2 - 3R_1$ gives $\begin{pmatrix} 1 & x & 1 \\ 0 & 3-3x & x-3 \\ 0 & 3 & 1 \end{pmatrix}$.
+Alternatively, applying the row operation $R_2 - 3R_1 \to R_2$ gives $\begin{pmatrix} 1 & x & 1 \\ 0 & 3-3x & x-3 \\ 0 & 3 & 1 \end{pmatrix}$.
 When $x = 2$, row 2 is $(0, -3, -1) = -R_3$, producing a zero row upon $R_3 + R_2 \to R_3$.
 Thus, $A$ is not invertible if and only if $x = 2$.
-\exinfo{Official Solution (Problem Sheet 14, Exercise 4). Evaluates the non-invertibility condition $\det(A) = 0$ for a $3 \times 3$ parametric matrix.}
+\exinfo{Official Solution (Problem Sheet 14, Multiple Choice Question 1). Evaluates the non-invertibility condition $\det(A) = 0$ for a $3 \times 3$ parametric matrix.}
 \end{exercisesolution}

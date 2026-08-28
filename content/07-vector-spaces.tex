@@ -578,14 +578,30 @@ With these operations, $\M_{m \times n}(K)$ is a vector space over $K$. Its zero
 \end{example}
 
 \begin{ainote}
-The lecture notes index sequences from $1$, writing $K^\infty = \{(a_1, a_2, \dots)\}$ and
-$\Fib$ with the recursion starting at $k \ge 3$. This transcript indexes from $0$
-instead, so that $\Fib$ here is literally the same object as the one built in
-\cref{prop:fib_closure}; nothing else changes. The notes also use $W$ for a
-subspace, where this transcript writes $U$, matching the later chapters. The
-proofs of \cref{lem:vector_space_basics} \textbf{(e)}, \textbf{(f)} and
-\textbf{(h)} are left as exercises in the notes and are supplied here; the
-exercises marked as such above are the ones the notes leave open.
+Two notational choices here differ from Prof. Biran's and are worth registering
+before they cause trouble later. Sequences are indexed from $0$ throughout this
+book, so that $K^\infty = \{(a_0, a_1, \dots)\}$ and the space $\Fib$ above is
+literally the one built in \cref{prop:fib_closure}, where the notes index from
+$1$ and start the recursion at $k \ge 3$. And a subspace is written $U$ here
+where the notes write $W$, since the later chapters need $W$ for a second space
+and sums such as $U + W$ have to stay readable.
+
+Of the eight axioms, one is easy to dismiss as bookkeeping and should not be.
+\textbf{(V1)} to \textbf{(V4)} make $(V, +)$ an abelian group and say nothing
+about $K$ at all, while \textbf{(V5)}, \textbf{(V7)} and \textbf{(V8)} are
+compatibility conditions that even a completely trivial scalar multiplication
+would satisfy: setting $\alpha \cdot v := 0_V$ for every $\alpha$ and every $v$
+meets all three. \textbf{(V6)}, $1 \cdot v = v$, is the only axiom that
+excludes this, and therefore the only one that forces the scalars to act on $V$
+at all.
+
+\Cref{lem:vector_space_basics} is where the axioms begin to pay, and its
+statements are used silently for the rest of the book rather than cited. Part
+\textbf{(g)}, that $a \cdot v = 0_V$ forces $a = 0$ or $v = 0_V$, stands behind
+every argument that divides through by a coefficient, the linear independence
+arguments of ch. 9 above all. Part \textbf{(h)}, generalized associativity, is
+what makes the notation $\sum_{i=1}^n a_i v_i$ legitimate in the first place,
+since \textbf{(V1)} on its own brackets only three summands.
 \end{ainote}
 
 % Creator: Opus 5

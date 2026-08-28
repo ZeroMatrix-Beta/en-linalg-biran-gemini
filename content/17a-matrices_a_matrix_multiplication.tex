@@ -608,28 +608,37 @@ which makes $AB$ lower triangular. Finally, a matrix is diagonal exactly when it
 \input{content/17a-matrices_a_matrix_multiplication-solutions.tex}
 
 \begin{ainote}
-Every numbered statement of the notes for this section is present, and
-17.a.1--17.a.11 already matched the handwritten numbering.
+Not one of the four properties in \cref{prop:matrix_multiplication_properties}
+is proved by manipulating sums. Each is read off the corresponding property of
+linear maps: associativity from \cref{ailem:composition_associative},
+distributivity from the distributivity of composition over addition of maps, the
+identity law from the fact that $I_m$ represents the identity (the Proposition
+on \cpageref{prop:identity_represents_id}), and the scalar law in the same way.
+That is the intended reading of \cref{def:matrix_multiplication}. The formula
+$c_{ij} = \sum_k a_{ik} b_{kj}$ is not one anybody would arrive at unprompted;
+it is whatever the entries have to be for composition of maps to become
+multiplication of matrices, and every algebraic fact about the product is
+therefore a fact about composition in different notation.
 
-The one real error here was invisible to a reader. The whole proof of
-\cref{prop:matrix_multiplication_properties} carried its representation matrices
-the wrong way round, writing $[T_A]_{\mathcal{E}_n}^{\mathcal{E}_m}$ for the map
-$T_A \colon K^n \to K^m$ and so putting the basis of the \emph{target} on top.
-This book, in \cref{sec:change_of_basis} and everywhere after, puts the basis of
-the source in the superscript. Every occurrence in that proof was swapped the
-same way, so the argument was internally consistent and read perfectly well,
-which is exactly why it survived; but each matrix in it named the wrong map.
+One convention deserves fixing firmly in mind here, because it governs every
+section after this one. In $[T]_{\mathcal{C}}^{\mathcal{B}}$ the basis of the
+\emph{source} stands in the superscript and the basis of the \emph{target} in
+the subscript, so that a map $T_A \colon K^n \to K^m$ carries the matrix
+$[T_A]_{\mathcal{E}_m}^{\mathcal{E}_n}$. What makes this worth stating is that
+the opposite convention is internally consistent: adopt it uniformly through an
+argument and the composition rule still lines up, the adjacent bases still meet
+in the middle, and the algebra still closes. Nothing visibly breaks; only the
+names of the maps come out inverted, and each matrix then denotes a map going
+the other way. \Cref{sec:change_of_basis} is where the difference finally shows
+itself, the two bases there being genuinely distinct rather than
+distinguishable by shape alone.
 
-Two smaller repairs are worth knowing about. The proof of
-\cref{lemma:triangular_multiplication_closure} argued that \qt{for $a_{ik}$ to be
-non-zero, $k$ must be less than or equal to $i$}, where the condition runs the
-other way; the conclusion was right and the argument was not. And statement
-\textbf{(b)} of \cref{prop:matrix_multiplication_properties} needs different
-shapes from \textbf{(a)} and \textbf{(d)}, since $A$ and $B$ must be summable
-there, while its proof had inherited the maps fixed for \textbf{(a)}.
-
-The notes mark four things \qt{Exc.}; all four are stated as exercises and solved
-on \cpageref{sec:solutions_matrix_multiplication}.
+The proof of \cref{lemma:triangular_multiplication_closure} is worth reading
+with the index condition written out rather than carried in the head. For an
+upper triangular $A$ the entry $a_{ik}$ vanishes unless $i \le k$, and the
+product $\sum_k a_{ik} b_{kj}$ is then non-zero only for $i \le k \le j$, which
+is empty when $i > j$. The inequality runs that way and not the other; it is a
+short argument, and reversing it is the easiest mistake in the section.
 \end{ainote}
 
 

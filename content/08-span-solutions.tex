@@ -1,4 +1,4 @@
-% Official Solution (Problem Sheet 6, Multiple Choice)
+% Official Solution (Problem Sheet 7, Multiple Choice Question 1)
 \begin{exercisesolution}[Solution to \cref{exc:span_subspaces_mc}]
 \label{sol:span_subspaces_mc}
 All four assertions are \textbf{true}. We verify each in turn:
@@ -12,7 +12,7 @@ All four assertions are \textbf{true}. We verify each in turn:
 
     \item \textbf{True.} Since $S_1 \cap S_2 \subseteq S_1$, we have $\Sp(S_1 \cap S_2) \subseteq \Sp(S_1)$. Similarly, $S_1 \cap S_2 \subseteq S_2$ implies $\Sp(S_1 \cap S_2) \subseteq \Sp(S_2)$. Therefore, $\Sp(S_1 \cap S_2) \subseteq \Sp(S_1) \cap \Sp(S_2)$.
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 6, Multiple Choice). Verifies subspace span properties and intersection inclusions.}
+\exinfo{Official Solution (Problem Sheet 7, Multiple Choice Question 1). Verifies subspace span properties and intersection inclusions.}
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 6, Exercise 2)
@@ -97,7 +97,7 @@ All four assertions are \textbf{true}. We verify each in turn:
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 6, Exercise 1). Solves the linear system for polynomial coordinates and proves the polynomials span $\mathbb{R}[x]_3$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 6, Exercise 3)
+% Official Solution (Problem Sheet 6, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_subspace_vector_constraint}]
 \label{sol:matrix_subspace_vector_constraint}
 The subset $U = \{A \in \M_{m \times n}(K) \mid A \cdot x = b\}$ is a linear subspace of $\M_{m \times n}(K)$ if and only if $b = 0 \in K^m$ (for any $x \in K^n$).
@@ -118,10 +118,10 @@ The subset $U = \{A \in \M_{m \times n}(K) \mid A \cdot x = b\}$ is a linear sub
     \end{enumerate}
 \end{itemize}
 Therefore, $U$ is a linear subspace if and only if $b = 0$.
-\exinfo{Official Solution (Problem Sheet 6, Exercise 3). Proves $Ax = b$ subspace criterion requires $b=0$.}
+\exinfo{Official Solution (Problem Sheet 6, Exercise 4). Proves $Ax = b$ subspace criterion requires $b=0$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 6, Exercise 4)
+% Official Solution (Problem Sheet 6, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:polynomial_space_infinite_dim}]
 \label{sol:polynomial_space_infinite_dim}
 Suppose for contradiction that the vector space $K[x]$ is finite-dimensional. Then by \cref{def:finite_dimensional}, there exists a finite generating set $S = \{f_1, \dots, f_k\} \subset K[x]$ such that $\Sp(S) = K[x]$.
@@ -137,10 +137,10 @@ exists. For any polynomial $g(x) \in \Sp(f_1, \dots, f_k)$, $g(x)$ is a finite l
 Consequently, every element of $\Sp(S)$ has degree at most $d$, so $\Sp(S) \subseteq K[x]_d$.
 However, the monomial $x^{d+1}$ belongs to $K[x]$ and has $\deg(x^{d+1}) = d + 1 > d$, so $x^{d+1} \notin \Sp(S)$.
 This contradicts the assumption that $\Sp(S) = K[x]$. Therefore, no finite set can span $K[x]$, and $K[x]$ is not finite-dimensional.
-\exinfo{Official Solution (Problem Sheet 6, Exercise 4). Demonstrates $K[x]$ is infinite-dimensional via the degree bound.}
+\exinfo{Official Solution (Problem Sheet 6, Exercise 5). Demonstrates $K[x]$ is infinite-dimensional via the degree bound.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 6, Exercise 5)
+% Official Solution (Problem Sheet 6, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:generating_sets_sequences}]
 \label{sol:generating_sets_sequences}
 For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in K^\infty$ denote the sequence with $1$ in position $i$ and $0$ in all other positions.
@@ -152,7 +152,7 @@ For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in 
         \item \textbf{$E$ spans $K_0^\infty$:} Any sequence $a = (a_0, a_1, \dots) \in K_0^\infty$ has only finitely many non-zero terms, say $a_n = 0$ for all $n > N$. Then $a = \sum_{i=0}^N a_i e_i$, which is a finite linear combination of elements of $E$. Hence, $\Sp(E) = K_0^\infty$.
         \item \textbf{Minimality:} If $E' \subsetneq E$, there exists some index $k \ge 0$ such that $e_k \notin E'$. Any finite linear combination of elements in $E'$ has $k$-th coordinate equal to $0$, because every $e_j \in E'$ ($j \ne k$) has $(e_j)_k = 0$. Hence, $e_k \notin \Sp(E')$, so $\Sp(E') \ne K_0^\infty$.
     \end{itemize}
-    Thus, $E = \{e_i \mid i \ge 0\}$ is the unique minimal (under inclusion, up to scalar multiples) generating set of $K_0^\infty$.
+    Thus, $E = \{e_i \mid i \ge 0\}$ is a minimal generating set of $K_0^\infty$: no proper subset of it still generates. (Minimality is not the same as uniqueness. The family $\{e_0,\, e_0 + e_1,\, e_1 + e_2,\, \dots\}$ is another minimal generating set, and it is not obtained from $E$ by rescaling; what the argument above establishes is that $E$ cannot be shrunk, not that it is the only such set).
 
     \item \textbf{Smallest Generating Set for $K_{\mathrm{cst}}^\infty$:}
     Let $\mathbf{1} := (1, 1, 1, \dots) \in K_{\mathrm{cst}}^\infty$ be the constant sequence of ones. Consider the set $S := \{e_i \mid i \ge 0\} \cup \{\mathbf{1}\} \subseteq K_{\mathrm{cst}}^\infty$.
@@ -168,7 +168,7 @@ For each $i \in \mathbb{Z}_{\ge 0}$, let $e_i := (0, \dots, 0, 1, 0, \dots) \in 
             \item If some $e_k$ is omitted from $S$, consider $\Sp(S \setminus \{e_k\})$. Any element in this span has the form $\sum_{j \ne k} \alpha_j e_j + \beta \mathbf{1}$. If this sequence equals $e_k$, its tail entries must be $0$, which forces $\beta = 0$. But with $\beta = 0$, its $k$-th coordinate is $0 \ne 1$. Hence, $e_k \notin \Sp(S \setminus \{e_k\})$.
         \end{itemize}
     \end{itemize}
-    Thus, $S = \{e_i \mid i \ge 0\} \cup \{\mathbf{1}\}$ is the minimal generating set of $K_{\mathrm{cst}}^\infty$.
+    Thus, $S = \{e_i \mid i \ge 0\} \cup \{\mathbf{1}\}$ is a minimal generating set of $K_{\mathrm{cst}}^\infty$, again in the sense that no proper subset of it generates.
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 6, Exercise 5). Constructs minimal generating sets for finite-support and eventually-constant sequence spaces.}
+\exinfo{Official Solution (Problem Sheet 6, Exercise 6). Constructs minimal generating sets for finite-support and eventually-constant sequence spaces.}
 \end{exercisesolution}

@@ -269,43 +269,23 @@ which gives $\rank(A) = n$. In the language of the hint: the columns $v_1, \dots
 \end{exercisesolution}
 
 \begin{ainote}
-This section is complete in the transcript: all four numbered statements, in the
-notes' order, with the notes' proofs and with Prof. Biran's hints for the two he
-leaves as exercises. The staircase picture that the notes draw by hand is
-rendered as \cref{fig:rref_pivot_staircase}.
+Two of the four results in this section are left to the reader in the notes,
+with hints, and both are written out above; \cref{fig:rref_pivot_staircase}
+follows the staircase Prof. Biran draws by hand.
 
-The two proofs the notes mark \qt{Exc.} stood in the text as
-\verb|\begin{proof}| blocks reading \qt{This is left as an exercise}, followed
-by the hints. They are now exercises carrying those hints, and both are solved
-above. The second one needs a little more than the hint gives: the uniqueness
-criterion follows by combining \cref{prop:rank_solvability_criterion} with the
-dimension count $\dim \Sol(A, 0) = n - \rank(A)$ from the opening of the
-section.
+One of the two wants more than its hint supplies. The uniqueness criterion does
+not drop out of \cref{prop:rank_solvability_criterion} on its own; it needs that
+criterion together with the dimension count $\dim \Sol(A, 0) = n - \rank(A)$
+from the opening of the section. There is a second place worth slowing down for.
+The middle link in the chain of equivalences of
+\cref{prop:rank_solvability_criterion} turns on the fact that two nested
+subspaces of equal finite dimension coincide; without it, knowing that the two
+spans have the same dimension would not put $b$ in the smaller one.
 
-% Creator: Opus 5
-A later pass looking only for gaps in rigour found nothing wrong here. What it
-found was the same pattern as in \cref{sec:matrix_multiplication}: an object
-defined in running prose with a numbered statement about it standing directly
-underneath. The map $\Phi$, which sends a choice of free variables to the
-solution it determines, now has a definition of its own, unnumbered so that
-17.d.1--17.d.4 are untouched, and \cref{prop:solution_map_isomorphism} points
-at it.
-
-Five steps were taken silently and now say why they hold: the dimension of the
-solution space rests on the rank theorem together with
-$\dim \Img(T_A) = \rank(A)$; the pivot count is
-\cref{rem:rank_notation_and_properties}; the word \qt{clearly} in front of
-$\Sol(A, 0) = \Sol(A', 0)$ covers \cref{thm:ero_preserve_solutions}, that
-row-equivalent systems have the same solutions; the passage from a trivial
-kernel to an isomorphism is \cref{cor:equal_dim_iso} \textbf{(c)} followed by
-\cref{lem:bijective_is_iso}; and the middle link of the chain of equivalences
-in \cref{prop:rank_solvability_criterion} needs the observation that two nested
-subspaces of equal finite dimension coincide, without which equal dimensions of
-the two spans would not put $b$ in the smaller one.
-
-Finally, the augmented matrix is written $(A \mid b)$ in the chapter on systems
-of linear equations, where it is introduced, and in the solutions at the end of
-this section, but was written $(A|b)$ in the two propositions. The three
-occurrences are unified.
+The map $\Phi$, which sends a choice of values for the free variables to the
+solution it determines, is introduced in the notes in running prose, with a
+numbered statement about it standing directly underneath. It is given a
+definition of its own here, left unnumbered so that 17.d.1--17.d.4 keep Prof.
+Biran's numbers, and \cref{prop:solution_map_isomorphism} refers to it.
 \end{ainote}
 

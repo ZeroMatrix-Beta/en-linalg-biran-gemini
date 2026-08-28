@@ -573,14 +573,32 @@ Let $K$ be a field.
 \end{exercise}
 
 \begin{ainote}
-The lecture notes write $\Sp(S)$ throughout, which this transcript keeps. The
-logical roadmap diagram inside the proof of
-\cref{lem:span_is_linear_combinations}, \cref{fig:subspaces_of_plane}, and the
-closing sentence about uniqueness in the practical remark on
-\cpageref{rem:span_check_in_practice} were added here; everything else follows
-the notes. \Cref{lem:span_is_smallest} is
-stated in the notes with the proof left as \qt{check the details}, and is proved
-in full above.
+The span is described twice over, and the order of the two descriptions is the
+point of the chapter. \Cref{def:span} builds it from above, as the intersection
+of every subspace containing $S$, and on that definition
+\cref{lem:span_is_smallest} costs almost nothing: an intersection of subspaces
+is a subspace (\cref{lem:intersection_of_subspaces}), and an intersection sits
+inside each of the sets intersected. What the definition does not give is any
+way of deciding whether a particular vector belongs.
+\Cref{lem:span_is_linear_combinations} supplies that from below, as the set of
+finite linear combinations, and the work of the chapter lies entirely in showing
+that the two agree. Afterwards the book uses whichever is convenient, often both
+within one proof.
+
+Two details of that agreement repay attention. The description from below needs
+$S \ne \emptyset$ while the description from above does not, which is why
+$\Sp(\emptyset) = \{0_V\}$ has to be argued separately in
+\cref{rem:span_of_empty_set}, and is a consequence rather than a convention.
+And \cref{rem:finite_sums_only} holds every linear combination to finitely many
+terms even when $S$ is infinite. That restriction is not a limitation being
+apologized for: it is what lets ch. 9 define independence of an infinite family
+by quantifying over its finite subfamilies, and it is why the polynomial space
+of \cref{exc:polynomial_space_infinite_dim} behaves as it does.
+
+\Cref{thm:span_iff_consistent} is where the chapter cashes out. Membership in a
+span is consistency of a linear system, so the whole of ch. 6 becomes available
+as an algorithm; and the one thing that algorithm leaves open, whether the
+coefficients are unique, is exactly the subject of the next chapter.
 \end{ainote}
 
 % Creator: Opus 5

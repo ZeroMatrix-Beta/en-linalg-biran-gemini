@@ -56,7 +56,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
     \item Consider the shift operator $T : \mathbb{R}^\infty \to \mathbb{R}^\infty$, $(a_0, a_1, a_2, \dots) \mapsto (a_1, a_2, a_3, \dots)$. Determine all eigenvalues and eigenvectors of $T$. Show that $T(\Fib) \subseteq \Fib$, and find all eigenvalues and eigenvectors of the restricted operator $T|_{\Fib} : \Fib \to \Fib$.
     \item Show that the eigenvectors of $T|_{\Fib}$ found in part \textbf{(b)} form a basis of $\Fib$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Check that $F$ is linear and that any sequence in $\Fib$ is uniquely determined by its first two terms $(a_0, a_1)$, proving bijectivity. \textbf{(b)} For $Tx = \lambda x$, show that $x = (c, c\lambda, c\lambda^2, \dots)$ for some scalar $c$. For this geometric sequence to satisfy the Fibonacci recurrence, $\lambda$ must satisfy $\lambda^2 = \lambda + 1$, which yields the eigenvalues $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi = \frac{1-\sqrt{5}}{2}$. \textbf{(c)} Since $\dim \Fib = 2$ and the two eigenvalues are distinct, the corresponding eigenvectors are linearly independent and hence form a basis for $\Fib$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Check that $F$ is linear and that any sequence in $\Fib$ is uniquely determined by its first two terms $(a_0, a_1)$, proving bijectivity. \textbf{(b)} For $Tx = \lambda x$, show that $x = (c, c\lambda, c\lambda^2, \dots)$ for some scalar $c$. For this geometric sequence to satisfy the Fibonacci recurrence, $\lambda$ must satisfy $\lambda^2 = \lambda + 1$, which yields the eigenvalues $\varphi = \frac{1+\sqrt{5}}{2}$ and $\psi = \frac{1-\sqrt{5}}{2}$. \textbf{(c)} Since $\dim \Fib = 2$ and the two eigenvalues are distinct, the corresponding eigenvectors are linearly independent and hence form a basis for $\Fib$.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:fibonacci_sequence_space_shift_eigenvalues}
 \end{exercise}
@@ -143,7 +143,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
     \item Construct an endomorphism of $K_0^\infty$ whose set of eigenvalues is precisely $\{0, 1, 2, 3, \dots\}$.
     \item Construct an endomorphism of $K_0^\infty$ that has no eigenvalues.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Show that $T(x) = \lambda x$ implies $x_n = c \lambda^n$ for some $c \in K$, so every $\lambda \in K$ is an eigenvalue with eigenvector $(1, \lambda, \lambda^2, \dots)$. \textbf{(b)} The eigenvectors of $T|_{K_0^\infty}$ are the eigenvectors of $T$ that belong to $K_0^\infty$; show that a geometric sequence $(1, \lambda, \lambda^2, \dots)$ is eventually zero if and only if $\lambda = 0$. \textbf{(c)} Consider the standard basis vectors $e_k = (\delta_{kn})_{n \ge 0}$ of $K_0^\infty$ and define an endomorphism by $S(e_k) := k e_k$. \textbf{(d)} Consider a shift operator such as the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and show that $Mx = \lambda x$ forces $x = 0$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Show that $T(x) = \lambda x$ implies $x_n = c \lambda^n$ for some $c \in K$, so every $\lambda \in K$ is an eigenvalue with eigenvector $(1, \lambda, \lambda^2, \dots)$. \textbf{(b)} The eigenvectors of $T|_{K_0^\infty}$ are the eigenvectors of $T$ that belong to $K_0^\infty$; show that a geometric sequence $(1, \lambda, \lambda^2, \dots)$ is eventually zero if and only if $\lambda = 0$. \textbf{(c)} Consider the standard basis vectors $e_k = (\delta_{kn})_{n \ge 0}$ of $K_0^\infty$ and define an endomorphism by $S(e_k) := k e_k$. \textbf{(d)} Consider a shift operator such as the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and show that $Mx = \lambda x$ forces $x = 0$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:eigenvalues_infinite_dimensional_sequences}
 \end{exercise}
@@ -174,7 +174,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
     \item If $V$ is finite-dimensional, then $F \circ G$ and $G \circ F$ have exactly the same eigenvalues.
     \item Give a counterexample to \textbf{(b)} when $V$ is infinite-dimensional.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part \textbf{(a)} immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Apply $G$ to both sides of $(F \circ G)(v) = \lambda v$ to obtain $(G \circ F)(G(v)) = \lambda G(v)$. \textbf{(b)} For $\lambda \neq 0$, part \textbf{(a)} immediately transfers the eigenvalue. If $\lambda = 0$ is an eigenvalue of $F \circ G$, then $F \circ G$ is not invertible, which in finite dimensions means $\det(F \circ G) = \det(F)\det(G) = 0$, so $\det(G \circ F) = 0$, proving that $0$ is also an eigenvalue of $G \circ F$. \textbf{(c)} On $V = K^\infty$ or $K_0^\infty$, let $F$ be the right shift $(x_0, x_1, \dots) \mapsto (0, x_0, x_1, \dots)$ and $G$ the left shift $(x_0, x_1, \dots) \mapsto (x_1, x_2, \dots)$.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:eigenvalues_of_composed_endomorphisms}
 \end{exercise}
@@ -189,7 +189,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
     \]
     \item Use \textbf{(a)} to show that $AB$ and $BA$ have precisely the same eigenvalues in $K$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Verify directly by multiplying $(I_n - BA)$ with $(I_n + B(I_n - AB)^{-1}A)$ and simplifying using $BA B = B (AB)$. \textbf{(b)} For any $\lambda \in K^*$, notice that $\lambda I_n - AB = \lambda(I_n - A(B/\lambda))$ is invertible if and only if $\lambda I_n - BA = \lambda(I_n - (B/\lambda)A)$ is invertible by part \textbf{(a)}. For $\lambda = 0$, $AB$ is singular if and only if $\det(AB) = \det(A)\det(B) = 0 \iff \det(BA) = 0 \iff BA$ is singular.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Verify directly by multiplying $(I_n - BA)$ with $(I_n + B(I_n - AB)^{-1}A)$ and simplifying using $BA B = B (AB)$. \textbf{(b)} For any $\lambda \in K^*$, notice that $\lambda I_n - AB = \lambda(I_n - A(B/\lambda))$ is invertible if and only if $\lambda I_n - BA = \lambda(I_n - (B/\lambda)A)$ is invertible by part \textbf{(a)}. For $\lambda = 0$, $AB$ is singular if and only if $\det(AB) = \det(A)\det(B) = 0 \iff \det(BA) = 0 \iff BA$ is singular.}
   \exinfo{This exercise is Problem 8 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:resolvent_identity_matrix_products}
 \end{exercise}
@@ -201,7 +201,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   T : C^\infty(\mathbb{R}) \to C^\infty(\mathbb{R}), \quad f \mapsto f'.
   \]
   Compute all eigenvalues and the corresponding eigenfunctions (eigenvectors) of $T$.
-  \exhint[Official Hint]{An eigenfunction $f \in C^\infty(\mathbb{R})$ for eigenvalue $\lambda \in \mathbb{R}$ satisfies the differential equation $f'(x) = \lambda f(x)$. Solve this ordinary differential equation to show that every $\lambda \in \mathbb{R}$ is an eigenvalue with eigenspace $\Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x})$.}
+  \exhint[Hint (Y. St\"aubli)]{An eigenfunction $f \in C^\infty(\mathbb{R})$ for eigenvalue $\lambda \in \mathbb{R}$ satisfies the differential equation $f'(x) = \lambda f(x)$. Solve this ordinary differential equation to show that every $\lambda \in \mathbb{R}$ is an eigenvalue with eigenspace $\Eig_T(\lambda) = \Sp(x \mapsto e^{\lambda x})$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:eigenfunctions_derivative_operator}
 \end{exercise}
@@ -213,7 +213,7 @@ Let us try to find a Fibonacci sequence $\mathcal{F} \ne 0$ such that $S(\mathca
   (T f)(x) := \int_0^x f(t) \, dt.
   \]
   Show that $T$ has no eigenvalues.
-  \exhint[Official Hint]{Suppose $T f = \lambda f$ for some non-zero function $f \in C^0(\mathbb{R})$ and scalar $\lambda \in \mathbb{R}$. If $\lambda = 0$, then $\int_0^x f(t)\, dt = 0$ for all $x$, so differentiating yields $f(x) = 0$, a contradiction. If $\lambda \neq 0$, then $f(x) = \frac{1}{\lambda} \int_0^x f(t)\, dt$ is differentiable with $f'(x) = \frac{1}{\lambda} f(x)$ and $f(0) = 0$. The unique solution to this initial value problem is $f(x) \equiv 0$, again contradicting $f \neq 0$.}
+  \exhint[Hint (Y. St\"aubli)]{Suppose $T f = \lambda f$ for some non-zero function $f \in C^0(\mathbb{R})$ and scalar $\lambda \in \mathbb{R}$. If $\lambda = 0$, then $\int_0^x f(t)\, dt = 0$ for all $x$, so differentiating yields $f(x) = 0$, a contradiction. If $\lambda \neq 0$, then $f(x) = \frac{1}{\lambda} \int_0^x f(t)\, dt$ is differentiable with $f'(x) = \frac{1}{\lambda} f(x)$ and $f(0) = 0$. The unique solution to this initial value problem is $f(x) \equiv 0$, again contradicting $f \neq 0$.}
   \exinfo{This exercise is Problem 9 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:volterra_integration_no_eigenvalues}
 \end{exercise}
@@ -278,7 +278,7 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
   \[
   \Eig_T(\lambda) = \Eig_{T^{-1}}(1/\lambda).
   \]
-  \exhint[Official Hint]{Show that for any vector $v \in V \setminus \{0\}$, $T v = \lambda v \iff v = \lambda T^{-1} v \iff T^{-1} v = \lambda^{-1} v$.}
+  \exhint[Hint (Y. St\"aubli)]{Show that for any vector $v \in V \setminus \{0\}$, $T v = \lambda v \iff v = \lambda T^{-1} v \iff T^{-1} v = \lambda^{-1} v$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:eigenspaces_inverse_endomorphism}
 \end{exercise}
@@ -317,7 +317,7 @@ Finally, that scalar determinant is the value $P_T(\lambda)$ of the formal polyn
 \begin{exercise}[Characteristic Polynomial of an Inverse Matrix]
   \label{exc:char_poly_inverse_matrix}
   For an arbitrary invertible $n \times n$ matrix $A \in \GL(n, K)$, express the characteristic polynomial $P_{A^{-1}}(x)$ in terms of the characteristic polynomial $P_A(x)$ of $A$.
-  \exhint[Official Hint]{Use the relation $A^{-1} - x I_n = -x A^{-1} (A - x^{-1} I_n)$ and the multiplicativity of the determinant to establish $P_{A^{-1}}(x) = \frac{(-x)^n}{\det A} P_A(x^{-1})$.}
+  \exhint[Hint (Y. St\"aubli)]{Use the relation $A^{-1} - x I_n = -x A^{-1} (A - x^{-1} I_n)$ and the multiplicativity of the determinant to establish $P_{A^{-1}}(x) = \frac{(-x)^n}{\det A} P_A(x^{-1})$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:char_poly_inverse_matrix}
 \end{exercise}
@@ -378,7 +378,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 \begin{exercise}[Eigenvalues of Nilpotent Matrices \faHeart]
   \label{exc:nilpotent_matrix_eigenvalues}
   Let $A \in \M_{n \times n}(K)$ be a nilpotent matrix, meaning there exists an integer $m \ge 1$ such that $A^m = 0$. Show that the only possible eigenvalue of $A$ in $K$ is $0$. Under what exact conditions is $0$ an eigenvalue of $A$?
-  \exhint[Official Hint]{If $v \neq 0$ satisfies $A v = \lambda v$, then $A^m v = \lambda^m v = 0$, which implies $\lambda^m = 0$ and hence $\lambda = 0$. Moreover, $0$ is an eigenvalue if and only if $\ker A \neq \{0\}$, which holds for every nilpotent matrix on a space of dimension $n \ge 1$ because $(\det A)^m = \det(A^m) = 0 \implies \det A = 0$.}
+  \exhint[Hint (Y. St\"aubli)]{If $v \neq 0$ satisfies $A v = \lambda v$, then $A^m v = \lambda^m v = 0$, which implies $\lambda^m = 0$ and hence $\lambda = 0$. Moreover, $0$ is an eigenvalue if and only if $\ker A \neq \{0\}$, which holds for every nilpotent matrix on a space of dimension $n \ge 1$ because $(\det A)^m = \det(A^m) = 0 \implies \det A = 0$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:nilpotent_matrix_eigenvalues}
 \end{exercise}
@@ -565,7 +565,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
   A_3 = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}.
   \]
   For each $i \in \{1, 2, 3\}$, compute the characteristic polynomial of $T_i$ and of $U_i$, find the eigenvalues of each endomorphism, and determine a basis of eigenvectors for each corresponding eigenspace.
-  \exhint[Official Hint]{The characteristic polynomial of $A_i$ is $P_{A_i}(x) = \det(A_i - x I_2)$ regardless of the ground field. Determine whether its roots lie in $\mathbb{R}$ or only in $\mathbb{C}$. For each eigenvalue $\lambda$, compute a basis of $\ker(A_i - \lambda I_2)$ over $\mathbb{R}$ or $\mathbb{C}$ respectively, taking the span over the corresponding field.}
+  \exhint[Hint (Y. St\"aubli)]{The characteristic polynomial of $A_i$ is $P_{A_i}(x) = \det(A_i - x I_2)$ regardless of the ground field. Determine whether its roots lie in $\mathbb{R}$ or only in $\mathbb{C}$. For each eigenvalue $\lambda$, compute a basis of $\ker(A_i - \lambda I_2)$ over $\mathbb{R}$ or $\mathbb{C}$ respectively, taking the span over the corresponding field.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:eigenvalues_eigenspaces_R_vs_C}
 \end{exercise}
@@ -642,7 +642,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     \item Determine all eigenvalues of $A$.
     \item Recall that the \emph{geometric multiplicity} of an eigenvalue $\lambda$ is $\dim \Eig_A(\lambda)$ and the \emph{algebraic multiplicity} is the multiplicity of $\lambda$ as a root of $P_A(x)$. Determine the algebraic and geometric multiplicities of all eigenvalues of $A$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Compute $P_A(x) = \det(A - x I_3)$. \textbf{(b)} Factor $P_A(x)$ to find its roots. \textbf{(c)} For each eigenvalue $\lambda$, compute $m_g(A; \lambda) = 3 - \rank(A - \lambda I_3)$ and compare with $m_a(A; \lambda)$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Compute $P_A(x) = \det(A - x I_3)$. \textbf{(b)} Factor $P_A(x)$ to find its roots. \textbf{(c)} For each eigenvalue $\lambda$, compute $m_g(A; \lambda) = 3 - \rank(A - \lambda I_3)$ and compare with $m_a(A; \lambda)$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:multiplicities_3x3_matrix}
 \end{exercise}
@@ -741,7 +741,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     3 & 3 & 1 & 6
   \end{pmatrix}.
   \]
-  \exhint[Official Hint]{For each matrix, calculate the characteristic polynomial and its roots in $\mathbb{Q}$. For each eigenvalue $\lambda$, compute a basis of the eigenspace $\ker(M - \lambda I)$. A matrix is diagonalizable over $\mathbb{Q}$ if and only if its characteristic polynomial splits into linear factors over $\mathbb{Q}$ and the geometric multiplicity equals the algebraic multiplicity for every eigenvalue.}
+  \exhint[Hint (Y. St\"aubli)]{For each matrix, calculate the characteristic polynomial and its roots in $\mathbb{Q}$. For each eigenvalue $\lambda$, compute a basis of the eigenspace $\ker(M - \lambda I)$. A matrix is diagonalizable over $\mathbb{Q}$ if and only if its characteristic polynomial splits into linear factors over $\mathbb{Q}$ and the geometric multiplicity equals the algebraic multiplicity for every eigenvalue.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 18, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:diagonalizability_over_Q}
 \end{exercise}
@@ -757,7 +757,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     For each $0 \le k \le n$, let $c_k$ be the coefficient of $x^k$ in the characteristic polynomial $P_T(x) = \sum_{k=0}^n c_k x^k$. Give an explicit formula for $c_k$ in terms of the eigenvalues $\lambda_1, \dots, \lambda_n$.
     \item Let $B \in \M_{2 \times 2}(\mathbb{R})$ be a diagonalizable matrix with $\Tr(B) = 0$. Show that $\det(B) \le 0$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Choose a basis $\mathcal{B}$ of eigenvectors so that $[T]_{\mathcal{B}}^{\mathcal{B}} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Use the invariance of the trace $\Tr(T) = \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$ and determinant $\det(T) = \det([T]_{\mathcal{B}}^{\mathcal{B}})$. Expanding $P_T(x) = \prod_{i=1}^n (\lambda_i - x)$ yields $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$, where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial. \textbf{(b)} The two real eigenvalues satisfy $\lambda_1 + \lambda_2 = \Tr(B) = 0$, so $\lambda_2 = -\lambda_1$. Hence, $\det(B) = \lambda_1 \lambda_2 = -\lambda_1^2 \le 0$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Choose a basis $\mathcal{B}$ of eigenvectors so that $[T]_{\mathcal{B}}^{\mathcal{B}} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$. Use the invariance of the trace $\Tr(T) = \Tr([T]_{\mathcal{B}}^{\mathcal{B}})$ and determinant $\det(T) = \det([T]_{\mathcal{B}}^{\mathcal{B}})$. Expanding $P_T(x) = \prod_{i=1}^n (\lambda_i - x)$ yields $c_k = (-1)^k e_{n-k}(\lambda_1, \dots, \lambda_n)$, where $e_m(\lambda_1, \dots, \lambda_n) = \sum_{1 \le i_1 < \dots < i_m \le n} \lambda_{i_1} \cdots \lambda_{i_m}$ is the $m$-th elementary symmetric polynomial. \textbf{(b)} The two real eigenvalues satisfy $\lambda_1 + \lambda_2 = \Tr(B) = 0$, so $\lambda_2 = -\lambda_1$. Hence, $\det(B) = \lambda_1 \lambda_2 = -\lambda_1^2 \le 0$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 19, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:trace_determinant_char_poly_diagonalizable}
 \end{exercise}
@@ -773,7 +773,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     \item Deduce that $f$ is diagonalizable if and only if each restriction $f|_{V_i}$ is diagonalizable on $V_i$.
     \item Let $f, g \in \End(V)$. Show that $f$ and $g$ are simultaneously diagonalizable (that is, there exists a single basis $\mathcal{B}$ of $V$ consisting of simultaneous eigenvectors for both $f$ and $g$) if and only if they commute ($f \circ g = g \circ f$) and each is separately diagonalizable.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} In a basis adapted to $V_1 \oplus \dots \oplus V_r$, $[f]$ is block diagonal, so $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$, which adds the algebraic multiplicities. For geometric multiplicities, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$. \textbf{(b)} $f$ is diagonalizable $\iff \sum_\lambda m_g(f;\lambda) = \dim V = \sum_i \dim V_i$. \textbf{(c)} $(\implies)$ In a simultaneous eigenbasis, $[f]$ and $[g]$ are diagonal, hence commute. $(\impliedby)$ If $f \circ g = g \circ f$, each eigenspace $V_\lambda = \Eig_f(\lambda)$ is $g$-invariant ($f(g(v)) = g(f(v)) = \lambda g(v)$). By part \textbf{(b)}, since $g$ is diagonalizable on $V = \bigoplus_\lambda V_\lambda$, each restriction $g|_{V_\lambda}$ is diagonalizable, yielding a basis of $V_\lambda$ composed of eigenvectors of both $f$ and $g$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} In a basis adapted to $V_1 \oplus \dots \oplus V_r$, $[f]$ is block diagonal, so $P_f(x) = \prod_{i=1}^r P_{f|_{V_i}}(x)$, which adds the algebraic multiplicities. For geometric multiplicities, $\Eig_f(\lambda) = \bigoplus_{i=1}^r \Eig_{f|_{V_i}}(\lambda)$. \textbf{(b)} $f$ is diagonalizable $\iff \sum_\lambda m_g(f;\lambda) = \dim V = \sum_i \dim V_i$. \textbf{(c)} $(\implies)$ In a simultaneous eigenbasis, $[f]$ and $[g]$ are diagonal, hence commute. $(\impliedby)$ If $f \circ g = g \circ f$, each eigenspace $V_\lambda = \Eig_f(\lambda)$ is $g$-invariant ($f(g(v)) = g(f(v)) = \lambda g(v)$). By part \textbf{(b)}, since $g$ is diagonalizable on $V = \bigoplus_\lambda V_\lambda$, each restriction $g|_{V_\lambda}$ is diagonalizable, yielding a basis of $V_\lambda$ composed of eigenvectors of both $f$ and $g$.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:direct_sum_multiplicities_and_simultaneous_diagonalizability}
 \end{exercise}
@@ -988,7 +988,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
     P^{-1} A P = \begin{pmatrix} a & b \\ -b & a \end{pmatrix} \quad \text{for some } a, b \in \mathbb{R} \text{ with } b \neq 0.
     \]
   \end{itemize}
-  \exhint[Official Hint]{Analyze the discriminant $\Delta = \Tr(A)^2 - 4\det(A)$ of the characteristic polynomial $P_A(x) = x^2 - \Tr(A)x + \det(A)$. If $\Delta > 0$, $A$ has two distinct real eigenvalues and is diagonalizable. If $\Delta = 0$, $A$ has a single real eigenvalue $\lambda = \Tr(A)/2$; either $A = \lambda I_2$ (diagonalizable) or $m_g(A;\lambda) = 1$ (strictly trigonalizable). If $\Delta < 0$, $P_A(x)$ has complex conjugate roots $\lambda, \bar{\lambda} = a \pm ib$ with $b \neq 0$. Let $v = u + iw \in \mathbb{C}^2 \setminus \{0\}$ be an eigenvector for $a + ib$; show that $(u, w)$ is an $\mathbb{R}$-basis of $\mathbb{R}^2$ with representation matrix $\left(\begin{smallmatrix} a & b \\ -b & a \end{smallmatrix}\right)$.}
+  \exhint[Hint (Y. St\"aubli)]{Analyze the discriminant $\Delta = \Tr(A)^2 - 4\det(A)$ of the characteristic polynomial $P_A(x) = x^2 - \Tr(A)x + \det(A)$. If $\Delta > 0$, $A$ has two distinct real eigenvalues and is diagonalizable. If $\Delta = 0$, $A$ has a single real eigenvalue $\lambda = \Tr(A)/2$; either $A = \lambda I_2$ (diagonalizable) or $m_g(A;\lambda) = 1$ (strictly trigonalizable). If $\Delta < 0$, $P_A(x)$ has complex conjugate roots $\lambda, \bar{\lambda} = a \pm ib$ with $b \neq 0$. Let $v = u + iw \in \mathbb{C}^2 \setminus \{0\}$ be an eigenvector for $a + ib$; show that $(u, w)$ is an $\mathbb{R}$-basis of $\mathbb{R}^2$ with representation matrix $\left(\begin{smallmatrix} a & b \\ -b & a \end{smallmatrix}\right)$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:real_2x2_similarity_classification}
 \end{exercise}
@@ -1138,7 +1138,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
   \[
   \deg(m_A) \le r + 1.
   \]
-  \exhint[Official Hint]{Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = r$. Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is well-defined. By the Cayley-Hamilton theorem applied to $F$, there is a monic polynomial $q(x) \in K[x]$ of degree $r = \dim W$ such that $q(F) = 0$, meaning $q(T_A)(w) = 0$ for all $w \in W$. For any $v \in K^n$, $T_A(v) \in W$, so $q(T_A)(T_A(v)) = 0$. Thus, the polynomial $p(x) := x q(x)$, which has degree $r + 1$, satisfies $p(A) = 0$. Since the minimal polynomial $m_A(x)$ divides $p(x)$, $\deg(m_A) \le \deg(p) = r + 1$.}
+  \exhint[Hint (Y. St\"aubli)]{Let $W := \operatorname{im}(T_A) \subseteq K^n$, so $\dim W = r$. Since $T_A(W) \subseteq W$, the restriction $F := T_A|_W \in \End(W)$ is well-defined. By the Cayley-Hamilton theorem applied to $F$, there is a monic polynomial $q(x) \in K[x]$ of degree $r = \dim W$ such that $q(F) = 0$, meaning $q(T_A)(w) = 0$ for all $w \in W$. For any $v \in K^n$, $T_A(v) \in W$, so $q(T_A)(T_A(v)) = 0$. Thus, the polynomial $p(x) := x q(x)$, which has degree $r + 1$, satisfies $p(A) = 0$. Since the minimal polynomial $m_A(x)$ divides $p(x)$, $\deg(m_A) \le \deg(p) = r + 1$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:degree_minimal_poly_bounded_by_rank}
 \end{exercise}
@@ -1150,7 +1150,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
     \item Let $A \in \M_{n \times n}(K)$. Prove that the subspace $\Sp(I_n, A, A^2, A^3, \dots) \subseteq \M_{n \times n}(K)$ has dimension at most $n$.
     \item Let $A := \begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \\ 3 & 1 & 2 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$. Find a polynomial $p(x) \in \mathbb{R}[x]$ such that $p(A) = A^{-1}$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $A^n$ is a linear combination of $I_n, A, \dots, A^{n-1}$. By induction, every power $A^m$ for $m \ge n$ belongs to $\Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$. \textbf{(b)} Compute the characteristic polynomial $P_A(x) = \det(A - x I_3) = -x^3 + 6x^2 + 9x + 18$. By Cayley-Hamilton, $-A^3 + 6A^2 + 9A + 18 I_3 = 0$. Multiply by $A^{-1}$ to obtain $A^{-1} = \frac{1}{18}(A^2 - 6A - 9 I_3)$, so $p(x) = \frac{1}{18}(x^2 - 6x - 9)$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $A^n$ is a linear combination of $I_n, A, \dots, A^{n-1}$. By induction, every power $A^m$ for $m \ge n$ belongs to $\Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$. \textbf{(b)} Compute the characteristic polynomial $P_A(x) = \det(A - x I_3) = -x^3 + 6x^2 + 9x + 18$. By Cayley-Hamilton, $-A^3 + 6A^2 + 9A + 18 I_3 = 0$. Multiply by $A^{-1}$ to obtain $A^{-1} = \frac{1}{18}(A^2 - 6A - 9 I_3)$, so $p(x) = \frac{1}{18}(x^2 - 6x - 9)$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:subspace_matrix_powers_and_inverse}
 \end{exercise}
@@ -1199,7 +1199,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \[
   p(Q^{-1} A Q) = Q^{-1} p(A) Q.
   \]
-  \exhint[Official Hint]{Show first by induction that $(Q^{-1} A Q)^i = Q^{-1} A^i Q$ for all $i \ge 0$. Then by linearity, for any polynomial $p(x) = \sum_{i=0}^d c_i x^i$, we have $p(Q^{-1}AQ) = \sum_{i=0}^d c_i (Q^{-1} A Q)^i = \sum_{i=0}^d c_i Q^{-1} A^i Q = Q^{-1} \left(\sum_{i=0}^d c_i A^i\right) Q = Q^{-1} p(A) Q$.}
+  \exhint[Hint (Y. St\"aubli)]{Show first by induction that $(Q^{-1} A Q)^i = Q^{-1} A^i Q$ for all $i \ge 0$. Then by linearity, for any polynomial $p(x) = \sum_{i=0}^d c_i x^i$, we have $p(Q^{-1}AQ) = \sum_{i=0}^d c_i (Q^{-1} A Q)^i = \sum_{i=0}^d c_i Q^{-1} A^i Q = Q^{-1} \left(\sum_{i=0}^d c_i A^i\right) Q = Q^{-1} p(A) Q$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:similarity_of_matrix_polynomials}
 \end{exercise}
@@ -1242,7 +1242,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
 \begin{exercise}[Density of Diagonalizable Complex Matrices]
   \label{exc:density_of_diagonalizable_matrices}
   Let $\varepsilon > 0$ and let $A = (a_{ij}) \in \M_{n \times n}(\mathbb{C})$. Show that there exists a diagonalizable matrix $B = (b_{ij}) \in \M_{n \times n}(\mathbb{C})$ such that $|b_{ij} - a_{ij}| < \varepsilon$ for all $1 \le i, j \le n$.
-  \exhint[Official Hint]{Trigonalize $A = P T P^{-1}$ with $T$ upper triangular (\cref{cor:complex_trigonalizable}). Perturb the diagonal entries of $T$ by distinct complex numbers $\delta_i$ with $|\delta_i| < \delta$ to obtain an upper triangular matrix $T'$ with pairwise distinct diagonal entries (hence diagonalizable). By choosing $\delta > 0$ sufficiently small, the matrix $B := P T' P^{-1}$ is diagonalizable and satisfies $|b_{ij} - a_{ij}| < \varepsilon$ for all $i,j$, thanks to the continuity of $X \mapsto P X P^{-1}$.}
+  \exhint[Hint (Y. St\"aubli)]{Trigonalize $A = P T P^{-1}$ with $T$ upper triangular (\cref{cor:complex_trigonalizable}). Perturb the diagonal entries of $T$ by distinct complex numbers $\delta_i$ with $|\delta_i| < \delta$ to obtain an upper triangular matrix $T'$ with pairwise distinct diagonal entries (hence diagonalizable). By choosing $\delta > 0$ sufficiently small, the matrix $B := P T' P^{-1}$ is diagonalizable and satisfies $|b_{ij} - a_{ij}| < \varepsilon$ for all $i,j$, thanks to the continuity of $X \mapsto P X P^{-1}$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:density_of_diagonalizable_matrices}
 \end{exercise}
@@ -1263,7 +1263,7 @@ If Cayley-Hamilton holds for matrices, then $P_A(A) = 0$, meaning $[P_T(T)]_{\ma
   \[
   \lim_{k \to \infty} p_k(A_k) = p(A).
   \]
-  \exhint[Official Hint]{Using any submultiplicative matrix norm (such as the Frobenius norm $\|M\| = \sqrt{\sum |m_{ij}|^2}$, for which $\|MN\| \le \|M\|\|N\|$), show that $A_k^i \to A^i$ for each $0 \le i \le d$. Then write $\|p_k(A_k) - p(A)\| \le \sum_{i=0}^d \|c_i^{(k)} A_k^i - c_i A^i\| \le \sum_{i=0}^d (|c_i^{(k)} - c_i| \|A_k^i\| + |c_i| \|A_k^i - A^i\|) \to 0$ as $k \to \infty$.}
+  \exhint[Hint (Y. St\"aubli)]{Using any submultiplicative matrix norm (such as the Frobenius norm $\|M\| = \sqrt{\sum |m_{ij}|^2}$, for which $\|MN\| \le \|M\|\|N\|$), show that $A_k^i \to A^i$ for each $0 \le i \le d$. Then write $\|p_k(A_k) - p(A)\| \le \sum_{i=0}^d \|c_i^{(k)} A_k^i - c_i A^i\| \le \sum_{i=0}^d (|c_i^{(k)} - c_i| \|A_k^i\| + |c_i| \|A_k^i - A^i\|) \to 0$ as $k \to \infty$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 21, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:convergence_of_matrix_polynomials}
 \end{exercise}
@@ -1599,63 +1599,33 @@ While the analytic proof is mathematically beautiful, it relies on topological m
 \input{content/21-eigenvalues-eigenvectors-solutions.tex}
 
 \begin{ainote}
-The scan \verb|21.eigenvectors.a| is absent from \verb|source/|, so the material
-of \S 21.a could not be collated against Prof. Biran's notes; parts b, c and d
-were checked page by page. That gap decides one question below.
+Two definitions in this chapter ask for more care than they look to need. The
+first is the characteristic polynomial. \Cref{def:char_poly} takes a determinant
+of a matrix whose entries lie in $K[x]$ rather than in a field, while ch. 20
+defines $\det$ over a field; what rescues it is that the Leibniz formula is a
+polynomial identity valid over any commutative ring. It also defines $P_T$
+through a basis, without pausing to say that the answer does not depend on which
+basis, which is \cref{lem:properties_char_poly} \textbf{(e)}.
+\Cref{rem:char_poly_well_defined} collects both, together with the evaluation
+identity $P_A(\mu) = \det(A - \mu I_n)$. That identity is the only bridge
+between the formal polynomial and actual scalars, and it is crossed every time a
+root is turned into an eigenvector.
 
-The rigour pass found one error of substance and several statements resting on
-a fact the book never states.
+The second is the minimal polynomial. Existence of an annihilating polynomial is
+proved by counting powers of $T$ inside a space of dimension $n^2$, so $V$ has
+to be finite-di\-men\-sional; and the notation $m_T(x)$, used ever afterwards,
+presupposes a uniqueness that has to be argued.
+\Cref{rem:minimal_poly_well_defined} supplies both.
 
-\textbf{A change-of-basis matrix named as its own inverse.} In the first proof
-of \cref{thm:trig_condition}, the transition matrix was introduced as
-$Q = [\id]_{\mathcal{C}}^{\mathcal{E}}$ and the conjugation written
-$Q^{-1} A Q$. With the source basis on top, as this book writes it,
-$[\id]_{\mathcal{C}}^{\mathcal{E}}$ is the \emph{left} factor of the displayed
-product, so that product is $Q A Q^{-1}$; the matrix meant is
-$Q := [\id]_{\mathcal{E}}^{\mathcal{C}}$, whose columns are the vectors of
-$\mathcal{C}$ in standard coordinates. This is the failure mode of ch. 17b
-again, a product that composes perfectly while the letter naming one factor
-denotes its inverse, and \verb|check-repmatrix.pl| cannot see it: the bases do
-meet correctly, only the abbreviation is wrong.
-
-\textbf{Eigenvalues and roots.} The proof of
-\cref{lemma:cayley_diagonalizable} says \qt{the roots of the characteristic
-polynomial are exactly the eigenvalues}, and both proofs of
-\cref{thm:trig_condition} open by drawing an eigenvector out of a zero of
-$P_T(x)$. That equivalence is the reason the characteristic polynomial is worth
-defining, and it appears nowhere in the book. It is now
-\cref{aiprop:eigenvalue_iff_root}. Because the scan for \S 21.a is missing, it
-cannot be checked whether Prof. Biran states it, and the rule keys on where a
-statement demonstrably appears: an \verb|ai| environment is therefore the honest
-choice, and it leaves 21.a.1 to 21.a.9 untouched either way.
-
-\textbf{What $\det(A - x I_n)$ means.} \Cref{def:char_poly} takes a determinant
-of a matrix whose entries lie in $K[x]$, whereas ch. 20 defines $\det$ over a
-field, and it defines $P_T$ through a basis without saying that the result does
-not depend on it. Both are settled by material already in the book, the Leibniz
-formula being a polynomial identity valid over any commutative ring and
-\cref{lem:properties_char_poly} \textbf{(e)} giving the basis-independence, and
-\cref{rem:char_poly_well_defined} now says so. The evaluation identity
-$P_A(\mu) = \det(A - \mu I_n)$ recorded there is the only bridge between the
-formal polynomial and the scalars, and it is used every time a root is turned
-into an eigenvector.
-
-\textbf{The minimal polynomial.} \Cref{def:minimal_poly} placed no restriction
-on $V$, although the existence of an annihilating polynomial is proved by
-counting powers of $T$ in a space of dimension $n^2$; and the notation $m_T(x)$,
-used ever after, presupposes a uniqueness never argued.
-\Cref{rem:minimal_poly_well_defined} supplies both, and the hypothesis is now
-finite-di\-men\-sional.
-
-\textbf{Smaller repairs.} The proof of \cref{prop:eigen_injective} argued an
-equivalence with two implications pointing the same way. Part \textbf{(e)}
-$\Rightarrow$ \textbf{(a)} of \cref{thm:diag_equiv} concluded that a direct sum
-of eigenspaces filled $V$ from its being a subspace, which needs the dimension
-count that an abstract isomorphism supplies. \Cref{cor:sufficient_diag} passed
-from $m_a = 1$ to $m_g = 1$ without noting that $m_g \ge 1$ holds because an
-eigenvalue has an eigenvector. And ten \verb|enumerate| environments printed
-their items as $1, 2, 3$ while the proofs and the surrounding prose refer to
-them as \textbf{(a)}, \textbf{(b)}, \textbf{(c)}.
+Between them stands the fact that makes the first definition worth having: the
+eigenvalues of $T$ are exactly the roots of $P_T$. It carries
+\cref{lemma:cayley_diagonalizable} and opens both proofs of
+\cref{thm:trig_condition}, yet no numbered statement of the chapter records it.
+It appears here as \cref{aiprop:eigenvalue_iff_root}, on a counter of its own
+and marked as not being Prof. Biran's. Section 21.a is also the one section of
+this book with no page of Prof. Biran's handwritten notes behind it, so
+attributing the result to him would be a guess; and either way 21.a.1--21.a.9
+keep the numbers they have.
 \end{ainote}
 
 

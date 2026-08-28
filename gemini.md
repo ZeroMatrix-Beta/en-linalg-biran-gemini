@@ -73,11 +73,18 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Lists with Descriptions:** For lists where each item has a specific name or title (e.g., "Associativity", "Distributivity"), use the `description` environment. For standard numbered lists, use `enumerate` but do not hard-code labels; rely on the global style defined in the preamble.
 * **New Terminology & Quotes:** Use `\newterm{...}` for introducing newly defined mathematical terms (the first definition or formal introduction of a concept). Use `\qt{...}` strictly for quoting text, literal quotes, colloquial terms, or informal emphasis—never use `\qt{...}` where a term is being formally defined or introduced for the first time.
 * **Bracket Restriction:** NEVER use `\qt{...}` or `\newterm{...}` or any other formatting macro inside the square brackets `[...]` of an environment header (e.g., `\begin{definition}[Linear Map]` is correct; `\begin{definition}[\qt{Linear Map}]` is WRONG).
-* **Elementary Row Operations (EROs):** Strictly use Prof. Biran's left-to-right arrow convention.
-  * Type 1 (Scaling): `\lambda \cdot E_i \to E_i`
-  * Type 2 (Addition): `\lambda \cdot E_i + E_j \to E_j`
-  * Type 3 (Swap): `E_i \leftrightarrow E_j`
-  * *Never* use the standard textbook format (e.g., $E_j \to E_j + \lambda E_i$).
+* **Elementary Row Operations (EROs):** Prof. Biran defines these explicitly in his own hand, on p. 5–6 of `source/06.linear equations.v02.pdf`, and **his three forms are the convention**. Copy them exactly:
+  * Type 1 (Scaling): `c \cdot R_i \to R_i` (with $c \ne 0$) — scalar first, target after the arrow.
+  * Type 2 (Addition): `R_j + c \cdot R_i \to R_j` — **the target row is written first inside the sum**, then the multiple of the other row, then the arrow, then the target again.
+  * Type 3 (Swap): `R_i \leftrightarrow R_j`
+  * The inverse operations, also his: `R_j - c \cdot R_i \to R_j` undoes Type 2, and `\frac{1}{c} \cdot R_i \to R_i` undoes Type 1.
+  * *Never* use the standard textbook format (e.g., $R_j \to R_j + c R_i$), which puts the target on the left of the arrow.
+  * **Operand order matters and is easy to get backwards.** `c \cdot R_i + R_j \to R_j` is the same operation mathematically, but it is *not* how Prof. Biran writes it. He leads with the row being changed.
+  * **Where the annotation goes.** Prof. Biran hangs the operation over the arrow between the two systems or matrices, `S \xrightarrow{R_j + c \cdot R_i \to R_j} S'`, which is exactly the `\xrightarrow{...}` usage here. An annotation that names only an expression, such as `\xrightarrow{R_4 - R_1}`, is incomplete: it never says which row the result lands in. Always finish it with `\to R_j`.
+  * **One arrow, one operation.** `$R_3 \to 2R_3 - R_2$` is two operations (a scaling and an addition) wearing one arrow, and the scaling silently multiplies the determinant. Split them, or pick a single operation that does the job.
+  * **When an operation is described in prose, give the arrow form too**, e.g. "subtracting twice the first row from the second ($R_2 - 2R_1 \to R_2$)". The words carry the intent, the annotation pins down the convention.
+  * **Rows are `R_i`, and `E_{ij}` is reserved for the matrix units.** This is not a free choice: p. 1 of `source/17.matrices.e.v02.pdf` introduces `E_{ij}` as the matrix with a single $1$ in position $(i,j)$ and, six lines later, writes the Type I operation as `R_i + \alpha R_j \longrightarrow R_i`. The same `R_i` runs through the chapter on linear systems. Using `E_i` for a row therefore collides head-on with `E_{ij}`, which is why the book no longer does so anywhere.
+  * **The master solutions are not a second source for the arrow form.** They chain matrices with a bare `⇝` carrying no annotation at all, and describe operations only in prose, target-first ("replace the second row R2 by R2 − mR1"). Prof. Biran's notes are the authority here.
 
 ## GRAMMAR AND PROSE STYLE
 

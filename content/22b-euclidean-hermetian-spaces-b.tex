@@ -154,7 +154,7 @@ Now, part \textbf{(I)} is exactly $\widetilde{P}_U(v)$ from the previous proof, 
     \item Find an orthonormal basis for $U$ and an orthonormal basis for $U^\perp$.
     \item Compute the representation matrices of the orthogonal projections $P_U \colon \mathbb{R}^3 \to U$ and $P_{U^\perp} \colon \mathbb{R}^3 \to U^\perp$ with respect to the standard basis of $\mathbb{R}^3$ and the respective bases obtained in part \textbf{(a)}.
   \end{enumerate}
-  \exhint[Official Hint]{(a) Apply Gram-Schmidt to $(v_1, v_2)$ to obtain an orthonormal basis $\mathcal{C}_U = (w_1, w_2)$ of $U$. Then find a non-zero vector $v_3 \in U^\perp$ (e.g., by solving the linear system $\langle x, v_1 \rangle = 0$ and $\langle x, v_2 \rangle = 0$, or via the cross product $v_1 \times v_2$) and normalize it to obtain an orthonormal basis $\mathcal{C}_{U^\perp} = (w_3)$ of $U^\perp$.
+  \exhint[Hint (Y. St\"aubli)]{(a) Apply Gram-Schmidt to $(v_1, v_2)$ to obtain an orthonormal basis $\mathcal{C}_U = (w_1, w_2)$ of $U$. Then find a non-zero vector $v_3 \in U^\perp$ (e.g., by solving the linear system $\langle x, v_1 \rangle = 0$ and $\langle x, v_2 \rangle = 0$, or via the cross product $v_1 \times v_2$) and normalize it to obtain an orthonormal basis $\mathcal{C}_{U^\perp} = (w_3)$ of $U^\perp$.
   (b) The projection $P_U \colon \mathbb{R}^3 \to U$ acts by $P_U(v) = \langle v, w_1 \rangle w_1 + \langle v, w_2 \rangle w_2$. The representation matrix $[P_U]_{\mathcal{C}_U}^{\mathcal{E}_3}$ has column $j$ given by the coordinate vector of $P_U(e_j)$ with respect to $\mathcal{C}_U$, namely $\begin{pmatrix} \langle e_j, w_1 \rangle \\ \langle e_j, w_2 \rangle \end{pmatrix}$. Similarly, for $P_{U^\perp}$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:orthogonal_projection_computation}
@@ -225,7 +225,7 @@ Since $V$ is finite-di\-men\-sional, so is its subspace $U$, and \cref{thm:ortho
     U_2 = \left\{ f \in V_2 \;\middle|\; \int_0^{1/2} f(x) \, dx = 0 \right\}.
     \]
   \end{enumerate}
-  \exhint[Official Hint]{(a) The standard sequence basis vectors $e_k = (\delta_{kn})_{n=0}^\infty$ all lie in $U_1$. If $v = (v_n) \in U_1^\perp$, then $\langle v, e_k \rangle = v_k = 0$ for all $k \ge 0$, which forces $v = 0$. Hence, $U_1^\perp = \{0\}$ (note that $U_1 \neq V_1$, so $(U_1^\perp)^\perp \neq U_1$).
+  \exhint[Hint (Y. St\"aubli)]{(a) The standard sequence basis vectors $e_k = (\delta_{kn})_{n=0}^\infty$ all lie in $U_1$. If $v = (v_n) \in U_1^\perp$, then $\langle v, e_k \rangle = v_k = 0$ for all $k \ge 0$, which forces $v = 0$. Hence, $U_1^\perp = \{0\}$ (note that $U_1 \neq V_1$, so $(U_1^\perp)^\perp \neq U_1$).
   (b) Let $h \in U_2^\perp$. For any $x_0 \in (1/2, 1)$, test functions $f \in U_2$ supported near $x_0$ show by continuity that $h(x) = 0$ on $(1/2, 1]$. Similarly, testing against functions whose integral over $[0, 1/2]$ is zero shows that $h$ must be constant on $[0, 1/2)$. By continuity at $x = 1/2$, this constant must match $h(1/2) = 0$, so $h \equiv 0$ on $[0, 1]$. Thus, $U_2^\perp = \{0\}$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:infinite_dim_orthogonal_complements}
@@ -337,7 +337,7 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
     \]
     \item If $U, V \in \Unit(n)$ and $\lambda = e^{2\pi i \theta}$ ($\theta \in \mathbb{R}$), prove that $\lambda U$, $U^{-1}$, and $UV$ are unitary, while $U + V$ is generally not unitary.
   \end{enumerate}
-  \exhint[Official Hint]{(a) Equality holds if and only if $v$ and $w$ are linearly dependent with non-negative scaling factor: $v = c w$ or $w = c v$ with $c \ge 0$.
+  \exhint[Hint]{(a) Equality holds if and only if $v$ and $w$ are linearly dependent with non-negative scaling factor: $v = c w$ or $w = c v$ with $c \ge 0$.
   (b) In $\mathbb{R}^2$, take $v_1 = e_1$, $v_2 = e_2$, and $v_3 = e_1$; then $v_1 \perp v_2$ and $v_2 \perp v_3$, but $\langle v_1, v_3 \rangle = 1 \ne 0$.
   (c) Any non-orthogonal linearly independent pair of lines in $\mathbb{R}^2$ intersects only at $\{0\}$ but are not orthogonal.
   (d) Check $A^* = A$ for Hermitian and $A^* A = I_2$ for unitary. $A_1$ is Hermitian (not unitary); $A_2$ is unitary (skew-Hermitian); $A_3$ is unitary (skew-Hermitian); $A_4$ is both Hermitian and unitary.
@@ -407,7 +407,7 @@ The columns of $Q$ are $e_1, \dots, e_n$, an orthonormal basis of $K^n$, so $Q \
     \item Compute a decomposition $A = QR$ into an orthogonal matrix $Q \in \Orth(3)$ and an upper triangular matrix $R \in \M_{3 \times 3}(\mathbb{R})$ with positive diagonal entries.
     \item Use this $QR$-decomposition to solve the linear system of equations $A x = b$ for $b = (0, 3, -3)\transp$.
   \end{enumerate}
-  \exhint[Official Hint]{Apply the Gram-Schmidt orthogonalization process to the columns $v_1, v_2, v_3$ of $A$ as in the proof of \cref{thm:qr_decomposition_invertible} to obtain an orthonormal basis $e_1, e_2, e_3$ of $\mathbb{R}^3$. These vectors form the columns of $Q$. The entries of $R$ are $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $0$ for $i > j$.
+  \exhint[Hint (Y. St\"aubli)]{Apply the Gram-Schmidt orthogonalization process to the columns $v_1, v_2, v_3$ of $A$ as in the proof of \cref{thm:qr_decomposition_invertible} to obtain an orthonormal basis $e_1, e_2, e_3$ of $\mathbb{R}^3$. These vectors form the columns of $Q$. The entries of $R$ are $R_{ij} = \langle v_j, e_i \rangle$ for $i \le j$ and $0$ for $i > j$.
   To solve $Ax = b$, write $QRx = b \iff Rx = Q\transp b$, and solve this upper triangular system via back-substitution.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:qr_decomposition_computation}
@@ -544,32 +544,29 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
 \input{content/22b-euclidean-hermetian-spaces-b-solutions.tex}
 
 \begin{ainote}
-Nothing in this section is false, and the source-verification pass had already
-restored the QR construction and unnumbered the QR extension, which is why
-\cpageref{thm:qr_decomposition_all} is a \verb|theorem*| and 22.b.12 lands where
-Prof. Biran puts it.
+The orthogonal projection is what this section is built to produce, and it rests
+on less than its five properties suggest. Once $U^\perp$ is known to be a
+complement of $U$ (\cref{thm:orthogonal_complement_finite_dim}), every $v \in V$
+has exactly one decomposition $v = u + w$ with $u \in U$ and $w \in U^\perp$,
+and $P_U(v) := u$ is well defined for that reason alone. Parts \textbf{(a)} to
+\textbf{(d)} of \cref{prop:orthogonal_projection_properties} are then nothing
+but the general facts about projecting along a direct sum, and both the
+well-definedness and the linearity come from the uniqueness in
+\cref{cor:trivial_intersection} \textbf{(d)}. Only part \textbf{(e)}, the
+formula $P_U(v) = \sum_{i} \langle v, e_i \rangle e_i$, touches the inner
+product at all, which is why it alone asks for an orthonormal basis.
 
-The rigour pass named four steps. The proof of
-\cref{thm:orthogonal_complement_finite_dim} reads $U \cap U^\perp = \{0\}$ off
-\cref{lem:orthogonal_complement_properties} \textbf{(c)}, which offers a choice
-between $\emptyset$ and $\{0\}$; what excludes the first is that $U$, being a
-subspace, contains $0$. That proof also picks an orthonormal basis of $U$
-without saying where one comes from, which is \cref{cor:orthonormal_basis_exists}
-of the previous section.
+That division is worth carrying into \cref{exc:best_approximation_subspace}.
+The geometric content there, that $P_U(v)$ is the point of $U$ nearest to $v$,
+comes from part \textbf{(c)} and Pythagoras and never from the formula; the
+formula is only how one computes the point once it is known which point it is.
 
-\Cref{prop:orthogonal_projection_properties} rests its first four parts on a
-general fact about projections along a direct sum, asserted in one sentence and
-proved nowhere in the book. The well-definedness of that projection is the
-uniqueness in \cref{cor:trivial_intersection} \textbf{(d)}, and its linearity
-follows from the same uniqueness in two lines; both are now written out.
-Finally, \cref{cor:dim_orthogonal_complement} concatenates two bases into one
-without naming the basis criterion of \cref{ex:direct_sum_conditions}.
-
-The two places where the text says \qt{exercise} in the middle of a proof, the
-identity $0^\perp = V$ and the monotonicity
-\cref{lem:orthogonal_complement_properties} \textbf{(d)}, already had their
-solutions at the end of the section, and \textbf{(d)} is used in the proof of
-\textbf{(e)} directly above it.
+One convention runs through the section. $U$ is assumed finite-di\-men\-sional
+while $V$ need not be, and that asymmetry is not idle:
+\cref{thm:orthogonal_complement_finite_dim} builds the decomposition out of a
+finite orthonormal basis of $U$, so the dimension count of
+\cref{cor:dim_orthogonal_complement}, which does need all of $V$ finite, is a
+strictly narrower statement than the theorem above it.
 \end{ainote}
 
 

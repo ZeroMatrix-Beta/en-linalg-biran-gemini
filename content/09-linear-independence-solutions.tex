@@ -11,21 +11,21 @@
     0 & -3 & -4 & 1 \\
     1 & 9 & 7 & 3
     \end{pmatrix}
-    \xrightarrow{R_4 - R_1}
+    \xrightarrow{R_4 - R_1 \to R_4}
     \begin{pmatrix}
     1 & 2 & 1 & 2 \\
     0 & 3 & 3 & 0 \\
     0 & -3 & -4 & 1 \\
     0 & 7 & 6 & 1
     \end{pmatrix} \\
-    &\xrightarrow{\substack{R_2 / 3 \\ R_3 + R_2 \\ R_4 - 7(R_2/3)}}
+    &\xrightarrow{\substack{R_3 + R_2 \to R_3 \\ R_4 - \frac{7}{3} R_2 \to R_4 \\ \frac{1}{3} \cdot R_2 \to R_2}}
     \begin{pmatrix}
     1 & 2 & 1 & 2 \\
     0 & 1 & 1 & 0 \\
     0 & 0 & -1 & 1 \\
     0 & 0 & -1 & 1
     \end{pmatrix}
-    \xrightarrow{R_4 - R_3}
+    \xrightarrow{R_4 - R_3 \to R_4}
     \begin{pmatrix}
     1 & 2 & 1 & 2 \\
     0 & 1 & 1 & 0 \\
@@ -48,14 +48,14 @@
     0 & 1 & -1 & 0 \\
     1 & 0 & 0 & -1
     \end{pmatrix}
-    \xrightarrow{R_4 - R_1}
+    \xrightarrow{R_4 - R_1 \to R_4}
     \begin{pmatrix}
     1 & 0 & 0 & 1 \\
     0 & 1 & 1 & 0 \\
     0 & 1 & -1 & 0 \\
     0 & 0 & 0 & -2
     \end{pmatrix}
-    \xrightarrow{R_3 - R_2}
+    \xrightarrow{R_3 - R_2 \to R_3}
     \begin{pmatrix}
     1 & 0 & 0 & 1 \\
     0 & 1 & 1 & 0 \\
@@ -81,7 +81,7 @@
     0 & 2 & 4 \\
     0 & t & t^2
     \end{pmatrix}
-    \xrightarrow{R_3 - \frac{t}{2} R_2}
+    \xrightarrow{R_3 - \frac{t}{2} R_2 \to R_3}
     \begin{pmatrix}
     1 & 0 & 2 \\
     0 & 2 & 4 \\
@@ -124,7 +124,7 @@
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 7, Exercise 2). Evaluates linear independence of parameter vectors, triangular columns, and functions.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 7, Exercise 3)
+% Official Solution (Problem Sheet 7, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:rational_functions_independent}]
 \label{sol:rational_functions_independent}
 By \cref{def:independent_family}, the family $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent if and only if every finite subfamily is linearly independent.
@@ -150,10 +150,10 @@ Q(-a_k) = c_k \prod_{\substack{j=1 \\ j \ne k}}^{n} (a_j - a_k) = 0 \implies c_k
 \]
 Since this holds for every $k \in \{1, \dots, n\}$, we have $c_1 = c_2 = \dots = c_n = 0$.
 Hence, every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is linearly independent, so the entire uncountable family is linearly independent over $\mathbb{R}$.
-\exinfo{Official Solution (Problem Sheet 7, Exercise 3). Proves linear independence of the uncountable family of rational functions via polynomial roots.}
+\exinfo{Official Solution (Problem Sheet 7, Exercise 6). Proves linear independence of the uncountable family of rational functions via polynomial roots.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 7, Exercise 4)
+% Official Solution (Problem Sheet 7, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:matrix_span_and_independence}]
 \label{sol:matrix_span_and_independence}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -183,10 +183,10 @@ Hence, every finite subset of $\{\varphi_a\}_{a \in \mathbb{R}_{\ge 0}}$ is line
     
     Such an $A_3$ \textbf{cannot} be chosen so that $\Sp(A_1, A_2, A_3) = \M_{2 \times 3}(\mathbb{R})$. Indeed, any linear combination of $3$ matrices depends on at most $3$ free parameters, whereas the space $\M_{2 \times 3}(\mathbb{R})$ has dimension $6$ and requires $6$ parameters (the standard basis has $6$ matrices $E_{ij}$).
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 7, Exercise 4). Demonstrates matrix subspace spans, linear independence, and dimension bounds.}
+\exinfo{Official Solution (Problem Sheet 7, Exercise 3). Demonstrates matrix subspace spans, linear independence, and dimension bounds.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 7, Multiple Choice)
+% Official Solution (Problem Sheet 7, Multiple Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:monotonicity_independence_spanning_mc}]
 \label{sol:monotonicity_independence_spanning_mc}
 Let $V$ be a vector space and $S_1 \subsetneq S_2 \subseteq V$.
@@ -199,5 +199,5 @@ Let $V$ be a vector space and $S_1 \subsetneq S_2 \subseteq V$.
     \item \textbf{Never.} A basis $S_1$ is a maximal linearly independent set. Since $S_1$ spans $V$, any vector $v \in S_2 \setminus S_1$ is a linear combination of elements of $S_1$, so $S_2$ is linearly dependent and cannot be a basis.
     \item \textbf{Never.} A basis $S_2$ is a minimal generating set. Since $S_2$ is linearly independent, removing any element strictly reduces the span: for any $v \in S_2 \setminus S_1$, $v \notin \Sp(S_1)$, so $\Sp(S_1) \ne V$ and $S_1$ cannot be a basis.
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 7, Multiple Choice). Analyzes monotonicity of linear independence, spanning sets, and bases under inclusions.}
+\exinfo{Official Solution (Problem Sheet 7, Multiple Choice Question 2). Analyzes monotonicity of linear independence, spanning sets, and bases under inclusions.}
 \end{exercisesolution}

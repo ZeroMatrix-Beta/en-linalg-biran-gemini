@@ -389,63 +389,34 @@ Finally, the base point is unique exactly when $X$ has a single element. If $\di
 
 \begin{ainote}
 This chapter is the one place in the book where the notes are mostly pictures
-and asides, and the transcript kept the pictures but lost several of the
-asides. Restored above:
+and asides, and its two halves sit further apart than usual: affine spaces
+first, then a return to the Fibonacci question the book opened with.
 
-In the affine section, the dimension of an affine space; the observation that
-the base point $x_0$ is not determined by $X$ while the direction space is
-(\cpageref{rem:affine_x0_not_unique}); the identity $p + \vec{pq} = q$; Prof.
-Biran's four examples, of which the fourth is the pleasant one, the solution
-set of $Ax = b$ \emph{is} an affine space, modeled on the solution space of
-$Ax = 0$; the mention of affine maps and affine quotients; the definition of
-parallel and weakly parallel; and, above all,
-\cpageref{rem:ratio_of_vectors}: in a one-dimensional space one vector may be
-divided by another. Without that observation the fraction in the statement of
-\cref{thm:thales_affine} has no meaning at all, and the transcript stated
-Thales without it.
+Two small observations carry more weight than their size suggests. The first is
+that in a one-dimensional space one vector may be divided by another
+(\cpageref{rem:ratio_of_vectors}); without it the fraction in the statement of
+\cref{thm:thales_affine} has no meaning at all. The second is that the base
+point $x_0$ of an affine space is not determined by $X$, while the direction
+space is (\cref{exc:direction_space_unique}), and it is the second half of that
+which lets the notation $\vec{X}$ mean anything: $U$ is the set of differences
+of points of $X$, a description in which no base point appears.
 
-\Cref{thm:thales_affine} itself stood without a proof and with a hypothesis too
-loose to be true as stated, the ambient space must be three-dimensional, the
-planes two-dimensional, and the two lines must not be weakly parallel to $H$,
-or the intersections need not be single points. Prof. Biran's proof is restored:
-collapse the common direction $U$ of the three planes, so that $V/U$ becomes a
-line, and the equality of ratios falls out. He annotates it \qt{a truly
-coordinate-free proof}, and it is a striking use of the quotient construction
-from the previous chapter.
+\Cref{thm:thales_affine} needs its hypotheses stated tightly. The ambient space
+must be three-dimensional, the planes two-dimensional, and neither line weakly
+parallel to $H$; otherwise the intersections need not be single points. Prof.
+Biran's proof repays the attention he draws to it, calling it \qt{a truly
+coordinate-free proof}: collapse the common direction $U$ of the three planes,
+so that $V/U$ becomes a line, and the equality of ratios falls out. It is a
+striking use of the quotient construction from the previous chapter.
 
-In the closing section, the reformulations of the eigenvalue condition, non-trivial
-kernel, failure to be an isomorphism, non-invertibility of
-$[T]_{\mathcal{B}}^{\mathcal{B}} - \lambda I_n$, which are what makes the
-notion computable later. And the payoff the chapter was building towards: that
-$\varphi$ and $\psi$ are the eigenvalues of the shift on $\Fib$, that the two
-geometric sequences form a basis, and that expanding the Fibonacci sequence in
-that basis returns the formula from chapter 1. In the transcript this last part
-existed only as two commented-out lines at the end of the file, one of them a
-corrected copy of the other.
-
-Also: the proposition on $\Fib$ had \verb|$Fib$| in its title, typeset as a
-product of three italic letters rather than with the \verb|\Fib| macro, and five
-raw quotation marks became \verb|\qt|.
-
-The rigour pass closed two gaps and corrected one notation. The lines of the
-M\"obius family were written $\Sp(\cos\frac{\theta}{2}, \sin\frac{\theta}{2})$,
-and likewise $\Sp(1,0)$ and $\Sp(-1,0)$ further down. Under this book's own
-convention, $\Sp(v_1, \dots, v_n)$ is the span of a \emph{list}, so those read
-as spans of two scalars rather than of one vector of $\mathbb{R}^2$. The vector's
-own parentheses are now written.
-
-\Cref{prop:fibonacci_structure} stood without a proof, although the computation
-closing the chapter uses both of its halves: the isomorphism $F$ to test the
-independence of the two geometric sequences, and $\dim \Fib = 2$ to conclude
-from that independence that they form a basis. A proof is supplied; it is four
-lines, the substance being that a Fibonacci sequence is determined by its first
-two terms and that any pair of reals starts one.
-
-The uniqueness of the direction space $U$, on which the notation $\vec{X}$ of
-\cref{def:affine_space} depends for its meaning, was asserted in
-\cref{rem:affine_x0_not_unique} and left to the reader. It is now
-\cref{exc:direction_space_unique}, with its solution at the end of the chapter;
-the point is that $U$ is the set of differences of points of $X$, a description
-in which the base point does not appear.
+The chapter then pays off chapter 1. The eigenvalue condition is restated as a
+non-trivial kernel, as failure to be an isomorphism, and as non-invertibility of
+$[T]_{\mathcal{B}}^{\mathcal{B}} - \lambda I_n$, which is what makes it
+computable; and then $\varphi$ and $\psi$ turn out to be the eigenvalues of the
+shift on $\Fib$, the two geometric sequences turn out to be a basis, and
+expanding the Fibonacci sequence in that basis returns Binet's formula. The
+substance of \cref{prop:fibonacci_structure}, which carries that last step, is
+that a Fibonacci sequence is determined by its first two terms and that any pair
+of reals starts one.
 \end{ainote}
 

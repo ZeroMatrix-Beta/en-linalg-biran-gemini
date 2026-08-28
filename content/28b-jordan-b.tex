@@ -767,28 +767,17 @@ uniqueness holds even though the Jordan basis is very far from unique.
 
 One warning about reading the notes alongside this text. Prof. Biran numbers his
 four preparatory lemmata \qt{Lemma 1} to \qt{Lemma 4} and leaves the rest
-unnumbered, so the labels 28.b.1 to 28.b.7 here are the book's own; a comment
-above each label records his numbering where he gives one. The abbreviation
-\qt{splf} of \cref{not:splf} is his and appears throughout the scans, but the
-prose here always writes the phrase out.
+unnumbered, so the labels 28.b.1 to 28.b.7 here are the book's own and agree
+with his only where he gives a number at all. The abbreviation \qt{splf} of
+\cref{not:splf} is his, and he uses it throughout; the prose here always writes
+the phrase out.
 
-\medskip
-The rigour pass over this section found nothing false. Five steps were resting on
-a reason that was left unsaid, and now name it: that a divisor of a split
-polynomial splits, in the proof of
-\cref{lem:char_poly_on_generalized_eigenspace}, without which
-$P_{T_\lambda}(x) = (\lambda - x)^m$ does not follow from having no other zero;
-criterion \textbf{(b)} of \cref{ex:direct_sum_conditions}, which is what the
-induction of \cref{lem:generalized_eigenspaces_direct_sum} actually verifies;
-\cref{prop:block_matrix} with \cref{rem:char_poly_well_defined} for multiplying
-the characteristic polynomials of the summands back together in
-\cref{cor:nilpotency_on_generalized_eigenspace}; \cref{exc:nilpotent_properties}
-\textbf{(d)} for the splitting of $P_{N_\lambda}$ in
-\cref{claim:reduction_to_nilpotent}; and, in the uniqueness proof,
-\cref{rem:char_poly_well_defined} and \cref{lem:properties_char_poly}
-\textbf{(c)} for the two identities the whole count starts from, together with
-the observation that $\dim \ker S^k = \dim \ker C^k$ is once again the passage
-from an endomorphism to a representation matrix.
+One step of the existence half is easy to grant too quickly. In
+\cref{lem:char_poly_on_generalized_eigenspace}, knowing that $P_{T_\lambda}$ has
+no zero other than $\lambda$ does not on its own give
+$P_{T_\lambda}(x) = (\lambda - x)^m$: that needs the fact that a divisor of a
+split polynomial splits, without which $P_{T_\lambda}$ could still carry an
+irreducible factor of higher degree hiding no root in $K$.
 \end{ainote}
 
 

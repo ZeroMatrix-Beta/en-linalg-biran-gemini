@@ -1,4 +1,4 @@
-% Official Solution (Problem Sheet 5, Exercise 3)
+% Official Solution (Problem Sheet 5, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:extended_reals_not_vector_space}]
 \label{sol:extended_reals_not_vector_space}
 The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operations is \textbf{not} a vector space over $\mathbb{R}$. Several vector space axioms fail:
@@ -27,10 +27,10 @@ The set $V = \mathbb{R} \cup \{\infty\} \cup \{-\infty\}$ with the given operati
     Since $\infty \ne 0$, axiom \textbf{(V7)} fails.
 \end{enumerate}
 Therefore, $V$ fails to be a vector space over $\mathbb{R}$.
-\exinfo{Official Solution (Problem Sheet 5, Exercise 3). Checks failure of vector space axioms for extended real numbers.}
+\exinfo{Official Solution (Problem Sheet 5, Exercise 4). Checks failure of vector space axioms for extended real numbers.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 5, Multiple Choice)
+% Official Solution (Problem Sheet 5, Multiple Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:positive_reals_vector_space_mc}]
 \label{sol:positive_reals_vector_space_mc}
 We examine the three candidate definitions of scalar multiplication on $(\mathbb{R}_{>0}^2, \oplus)$:
@@ -58,10 +58,10 @@ We examine the three candidate definitions of scalar multiplication on $(\mathbb
     \end{itemize}
 \end{enumerate}
 Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vector space (which is isomorphic to the standard $\mathbb{R}^2$ via the componentwise logarithm map $\ln \colon \mathbb{R}_{>0}^2 \to \mathbb{R}^2$).
-\exinfo{Official Solution (Problem Sheet 5, Multiple Choice). Identifies the power-operation scalar multiplication on $\mathbb{R}_{>0}^2$.}
+\exinfo{Official Solution (Problem Sheet 5, Multiple Choice Question 2). Identifies the power-operation scalar multiplication on $\mathbb{R}_{>0}^2$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 5, Exercise 4)
+% Official Solution (Problem Sheet 5, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:verifying_subspaces_r_f2}]
 \label{sol:verifying_subspaces_r_f2}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -100,10 +100,10 @@ Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vecto
         Choosing $(\mu, \lambda) \in \{(0,0), (1,0), (0,1), (1,1)\}$ gives the vectors $(0,0), (1,0), (1,1), (0,1)$ respectively. Thus, $S_3 = \mathbb{F}_2^2$, which \textbf{is a linear subspace} over $\mathbb{F}_2$.
     \end{itemize}
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 5, Exercise 4). Verifies subspaces over $\mathbb{R}$ versus $\mathbb{F}_2$.}
+\exinfo{Official Solution (Problem Sheet 5, Exercise 2). Verifies subspaces over $\mathbb{R}$ versus $\mathbb{F}_2$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 5, Single Choice)
+% Official Solution (Problem Sheet 5, Multiple Choice Question 1)
 \begin{exercisesolution}[Solution to \cref{exc:subspace_identification_mc}]
 \label{sol:subspace_identification_mc}
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -113,10 +113,10 @@ Therefore, \textbf{candidate (3)} is the unique choice that yields a valid vecto
     \item \textbf{Subspace.} The set is $\{x(0, 1, 2, 3) \mid x \in \mathbb{R}\} = \operatorname{span}\{(0, 1, 2, 3)\}$, which is a 1-dimensional line through the origin in $\mathbb{R}^4$.
     \item \textbf{Not a subspace.} Taking $x = 1$ gives $u = (1, 1, 1, 1) \in S$, and taking $x = -1$ gives $v = (1, -1, 1, -1) \in S$. Their sum is $u + v = (2, 0, 2, 0)$. If $(2, 0, 2, 0) \in S$, there must exist $x \in \mathbb{R}$ such that $x = 0$ (fourth component) and $x^4 = 2$ (first component), which is impossible since $0^4 = 0 \ne 2$. Thus, $S$ is not closed under addition.
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 5, Single Choice). Tests closure axioms for candidate subsets in $\mathbb{R}^n$.}
+\exinfo{Official Solution (Problem Sheet 5, Multiple Choice Question 1). Tests closure axioms for candidate subsets in $\mathbb{R}^n$.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 5, Exercise 5)
+% Solution: Gemini / Official Hybrid (Problem Sheet 5, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:union_three_subspaces}]
 \label{sol:union_three_subspaces}
 The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$, depending on the base field $K$ and the ambient space $V$.
@@ -137,10 +137,10 @@ The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$
     Let $K = \mathbb{R}$ and $V = \mathbb{R}^2$. Let $V_1 = \operatorname{span}\{(1,0)\}$, $V_2 = \operatorname{span}\{(0,1)\}$, and $V_3 = \operatorname{span}\{(1,1)\}$. None is contained in another.
     The vectors $u = (1, 0) \in V_1$ and $v = (1, 1) \in V_3$ both belong to the union $V_1 \cup V_2 \cup V_3$, but their sum $u + v = (2, 1)$ does not lie on the $x$-axis ($V_1$), the $y$-axis ($V_2$), or the diagonal line $y = x$ ($V_3$). Thus, $u + v \notin V_1 \cup V_2 \cup V_3$, showing that the union is not closed under addition.
 \end{itemize}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 5, Exercise 5). Compares union of three subspaces over $\mathbb{F}_2$ with $\mathbb{R}$.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 5, Exercise 6). Compares union of three subspaces over $\mathbb{F}_2$ with $\mathbb{R}$.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 5, Exercise 2)
+% Solution: Gemini / Official Hybrid (Problem Sheet 5, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_linear_system_subspace}]
 \label{sol:parametric_linear_system_subspace}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -151,7 +151,7 @@ The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$
     1 & m & \big| & -3 \\
     m & 4 & \big| & \phantom{-}6
     \end{pmatrix}
-    \xrightarrow{R_2 - m R_1}
+    \xrightarrow{R_2 - m R_1 \to R_2}
     \begin{pmatrix}
     1 & m & \big| & -3 \\
     0 & 4 - m^2 & \big| & 6 + 3m
@@ -194,10 +194,10 @@ The union $V_1 \cup V_2 \cup V_3$ is \textbf{sometimes} a linear subspace of $V$
         \item For $m = -2$: $S$ is an affine line in $\mathbb{R}^2$ with direction vector $(2, 1)$ not passing through the origin (the two equations describe the identical line $x - 2y = -3$).
     \end{itemize}
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 5, Exercise 2). Analyzes the affine solution geometry under parameter variations.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 5, Exercise 1). Analyzes the affine solution geometry under parameter variations.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 5, Exercise 6)
+% Official Solution (Problem Sheet 5, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:even_odd_function_subspaces}]
 \label{sol:even_odd_function_subspaces}
 Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with inverse $2^{-1} = \frac{1}{2} \in K$.
@@ -246,10 +246,10 @@ Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with invers
     \]
     Since $2 \ne 0$ in $K$, multiplying by $2^{-1}$ yields $f(x) = 0$ for all $x \in K$. Hence, $f = 0_V$, so $V_{\mathrm{even}} \cap V_{\mathrm{odd}} = \{0\}$.
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 5, Exercise 6). Proves direct sum decomposition into even and odd function subspaces for $\operatorname{char}(K) \ne 2$.}
+\exinfo{Official Solution (Problem Sheet 5, Exercise 3). Proves direct sum decomposition into even and odd function subspaces for $\operatorname{char}(K) \ne 2$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 5, Exercise 1)
+% Official Solution (Problem Sheet 5, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:power_set_f2_vector_space}]
 \label{sol:power_set_f2_vector_space}
 We verify the eight vector space axioms \textbf{(V1)}--\textbf{(V8)} for $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ over $\mathbb{F}_2 = \{0, 1\}$. It is helpful to use the characteristic function $\chi_A \colon X \to \mathbb{F}_2$ defined by $\chi_A(x) = 1$ if $x \in A$ and $\chi_A(x) = 0$ if $x \notin A$. For symmetric difference, $\chi_{A \mathbin{\triangle} B}(x) = \chi_A(x) + \chi_B(x) \pmod 2$.
@@ -306,5 +306,5 @@ We verify the eight vector space axioms \textbf{(V1)}--\textbf{(V8)} for $(\math
     \end{itemize}
 \end{enumerate}
 Hence, $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ is a vector space over $\mathbb{F}_2$.
-\exinfo{Official Solution (Problem Sheet 5, Exercise 1). Verifies the 8 vector space axioms for the power set $\mathcal{P}(X)$ over $\mathbb{F}_2$.}
+\exinfo{Official Solution (Problem Sheet 5, Exercise 5). Verifies the 8 vector space axioms for the power set $\mathcal{P}(X)$ over $\mathbb{F}_2$.}
 \end{exercisesolution}

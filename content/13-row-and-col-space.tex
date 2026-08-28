@@ -61,13 +61,13 @@ In other words, the system is consistent if and only if the entries in $b'$ corr
 Let $v_{1} = (1, 1, 1)\transp$ and $v_{2} = (1, 0, -1)\transp \in K^{3}$. To describe $\Sp(v_{1}, v_{2})$, we set up the augmented matrix with a general vector $b$ and row-reduce:
 \begin{align*}
 \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 1 & 0 & b_{2} \\ 1 & -1 & b_{3} \end{array} \right)
-&\xrightarrow[\; -1 \cdot E_{1} + E_{3} \to E_{3} \;]{\; -1 \cdot E_{1} + E_{2} \to E_{2} \;}
+&\xrightarrow[\; R_{3} - R_{1} \to R_{3} \;]{\; R_{2} - R_{1} \to R_{2} \;}
 \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & -1 & b_{2}-b_{1} \\ 0 & -2 & b_{3}-b_{1} \end{array} \right) \\[0.5em]
-&\xrightarrow{\; -1 \cdot E_{2} \to E_{2} \;}
+&\xrightarrow{\; -1 \cdot R_{2} \to R_{2} \;}
 \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ 0 & -2 & b_{3}-b_{1} \end{array} \right) \\[0.5em]
-&\xrightarrow{\; 2 \cdot E_{2} + E_{3} \to E_{3} \;}
+&\xrightarrow{\;R_{3} + 2 \cdot R_{2} \to R_{3} \;}
 \left( \begin{array}{cc|c} 1 & 1 & b_{1} \\ 0 & 1 & b_{1}-b_{2} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right) \\[0.5em]
-&\xrightarrow{\; -1 \cdot E_{2} + E_{1} \to E_{1} \;}
+&\xrightarrow{\; R_{1} - R_{2} \to R_{1} \;}
 \left( \begin{array}{cc|c} 1 & 0 & b_{2} \\ 0 & 1 & b_{1}-b_{2} \\ \hline 0 & 0 & b_{1}-2b_{2}+b_{3} \end{array} \right)
 \end{align*}
 The last step clears the entry above the second pivot, which is what makes the left block row-reduced and not merely echelon; it does not affect the zero row, and it has the pleasant side effect that the solution can now be read off directly, as $x_{1} = b_{2}$ and $x_{2} = b_{1} - b_{2}$.
@@ -135,11 +135,11 @@ Elementary row operations do not change the row space: $\RowS(A) = \RowS(A')$. M
 \begin{proof}
 New rows are, simply, linear combinations of the old rows, and because elementary operations are reversible, the spans remain identical. We now carry this out for each of the three types of \cref{def:elementary_row_operations}. Let $M \in \M_{m \times n}(K)$ be a matrix with rows $w_{1}, \dots, w_{m} \in K^{n}$.
 
-\textbf{Type 3 ($E_{i} \leftrightarrow E_{j}$).} Exchanging two rows of $M$ merely reorders the list $w_{1}, \dots, w_{m}$, and the span of a list does not depend on the order of its members. Hence, $\RowS(M)$ is unchanged by such an operation.
+\textbf{Type 3 ($R_{i} \leftrightarrow R_{j}$).} Exchanging two rows of $M$ merely reorders the list $w_{1}, \dots, w_{m}$, and the span of a list does not depend on the order of its members. Hence, $\RowS(M)$ is unchanged by such an operation.
 
-\textbf{Type 1 ($\lambda \cdot E_{i} \to E_{i}$, with $\lambda \in K \setminus \{0\}$).} Replacing $w_{i}$ by $\lambda w_{i}$ does not change the span of the rows either: the new row lies in $\Sp(w_{1}, \dots, w_{m})$, and conversely $w_{i} = \lambda^{-1} (\lambda w_{i})$ lies in the span of the new list, which is where the hypothesis $\lambda \neq 0$ enters. So, $\RowS(M)$ is left unchanged by such an operation as well.
+\textbf{Type 1 ($\lambda \cdot R_{i} \to R_{i}$, with $\lambda \in K \setminus \{0\}$).} Replacing $w_{i}$ by $\lambda w_{i}$ does not change the span of the rows either: the new row lies in $\Sp(w_{1}, \dots, w_{m})$, and conversely $w_{i} = \lambda^{-1} (\lambda w_{i})$ lies in the span of the new list, which is where the hypothesis $\lambda \neq 0$ enters. So, $\RowS(M)$ is left unchanged by such an operation as well.
 
-\textbf{Type 2 ($\lambda \cdot E_{j} + E_{i} \to E_{i}$, with $i \neq j$ and $\lambda \in K$).} Here we claim that
+\textbf{Type 2 ($R_{i} + \lambda \cdot R_{j} \to R_{i}$, with $i \neq j$ and $\lambda \in K$).} Here we claim that
 \[
 \Sp(w_{1}, \dots, w_{i}, \dots, w_{m}) = \Sp(w_{1}, \dots, w_{i} + \lambda w_{j}, \dots, w_{m}),
 \]
@@ -360,25 +360,30 @@ and therefore, every statement about row rank is a statement about the column ra
 \end{remark}
 
 \begin{ainote}
-Several pieces of the notes were missing from this transcript and are restored
-above, among them \cref{def:row_and_column_rank}, used from
-\cref{thm:rank_row_column_equality} onwards but never introduced, and the whole
-closing section on the transpose, whose notation $A\transp$ the transcript
-already used here and in fourteen later chapters without ever defining it.
+Two pieces of notation arrive later in this chapter than a reader expects them
+to. The transpose is defined only in the closing section
+(\cref{def:transpose}), although $A\transp$ is used from here on through
+fourteen chapters; and the two ranks are named in
+\cref{def:row_and_column_rank}, just before the theorem that identifies them.
+Both are worth locating on a first pass, since almost nothing later stops to
+recall either.
 
-Two things go beyond the notes, and it is worth knowing which.
-\Cref{ailem:column_relations_preserved} is not in Prof. Biran's text: the
-transcript asserts the preservation of linear relations between columns in a
-remark and then rests \cref{thm:basis_col_space} on it, so it is stated and
-proved here as an AI-Lemma, on the strength of
-\cref{thm:ero_preserve_solutions}. And the notes defer
-$\rankrow(A) = \rankcol(A)$ to a later lecture, while this chapter already
-reaches it in \cref{thm:rank_equality}; the argument is sound and is kept.
+One step of the argument is not Prof. Biran's and is marked accordingly.
+\Cref{thm:basis_col_space}, which says that the columns of $A$ sitting over the
+pivots of its row-reduced form are a basis of $\ColS(A)$, rests on the principle
+that row operations preserve the linear relations among columns. The notes state
+that principle in a remark and use it without proof, and it carries real weight:
+it is the entire reason a computation performed on the rows says anything at all
+about the columns. It appears here as
+\cref{ailem:column_relations_preserved}, proved from
+\cref{thm:ero_preserve_solutions}. Prof. Biran also defers
+$\rankrow(A) = \rankcol(A)$ to a later lecture, whereas this chapter reaches it
+already, in \cref{thm:rank_equality}.
 
-One thing is left as it stands, deliberately. The rank of a matrix is named
+One oddity is left as it stands, deliberately. The rank of a matrix is named
 inside the statement of \cref{thm:rank_equality} rather than in a definition of
-its own. That is unusual, but the notion stays citable, that theorem being
-numbered, and nothing later appeals to a definition of matrix rank that does not
-exist: the two places in ch. 17c that say \qt{by definition, $\rank(\cdot)$} mean
-the rank of a linear map, which \cref{def:rank_linear_map} supplies.
+its own. The notion stays citable, that theorem being numbered, and nothing
+later appeals to a definition of matrix rank that does not exist: the two places
+in ch. 17c that say \qt{by definition, $\rank(\cdot)$} mean the rank of a linear
+map, which \cref{def:rank_linear_map} supplies.
 \end{ainote}

@@ -1,6 +1,6 @@
 \section{Solutions}\label{sec:solutions_linear_maps_and_bases}
 
-% Official Solution (Problem Sheet 12, Exercise 1)
+% Official Solution (Problem Sheet 11, Multiple Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:properties_coordinate_maps_mc}]
 \label{sol:properties_coordinate_maps_mc}
 \begin{enumerate}[label=\textbf{(\arabic*)}]
@@ -16,10 +16,10 @@
     For a linear endomorphism $f \colon \mathbb{R}^n \to \mathbb{R}^n$ between finite-dimensional spaces of the same dimension, having $\ker(f) = \{0\}$ is equivalent to injectivity, which by \cref{cor:equal_dim_iso} \textbf{(c)} is equivalent to bijectivity (invertibility).
 \end{enumerate}
 Thus, statements \textbf{(1)} and \textbf{(3)} are true, while statement \textbf{(2)} is false.
-\exinfo{Official Solution (Problem Sheet 12, Exercise 1). Evaluates statements on coordinate isomorphisms, nullspace-image intersections, and injectivity vs.~bijectivity.}
+\exinfo{Official Solution (Problem Sheet 11, Multiple Choice Question 2). Evaluates statements on coordinate isomorphisms, nullspace-image intersections, and injectivity vs.~bijectivity.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 12, Exercise 2)
+% Official Solution (Problem Sheet 11, Multiple Choice Question 1)
 \begin{exercisesolution}[Solution to \cref{exc:geometric_interpretation_matrix_mc}]
 \label{sol:geometric_interpretation_matrix_mc}
 We are given $M = [f]_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$. By definition, the $j$-th column of $M$ contains the coordinate vector with respect to $\mathcal{B}$ of the image of the $j$-th vector of $\mathcal{A}$.
@@ -37,10 +37,10 @@ We are given $M = [f]_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 0 & -1 \\ 1 
     Thus $\mathcal{A} = (e_2, e_1)$.
 \end{enumerate}
 All four statements are true.
-\exinfo{Official Solution (Problem Sheet 12, Exercise 2). Connects coordinate representation matrices to rotations, reflections, and basis changes in $\mathbb{R}^2$.}
+\exinfo{Official Solution (Problem Sheet 11, Multiple Choice Question 1). Connects coordinate representation matrices to rotations, reflections, and basis changes in $\mathbb{R}^2$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 12, Exercise 3)
+% Official Solution (Problem Sheet 13, Single Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:complex_multiplication_real_linear_map_sc}]
 \label{sol:complex_multiplication_real_linear_map_sc}
 Consider the linear map $T \colon \mathbb{C} \to \mathbb{C}$ given by $T(z) = iz$.
@@ -54,10 +54,10 @@ Forming the matrix whose columns are these coordinate vectors:
 [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
 \]
 Therefore, the correct choice is \textbf{(4): $z \mapsto iz$}.
-\exinfo{Official Solution (Problem Sheet 12, Exercise 3). Identifies multiplication by $i$ on $\mathbb{C} \cong \mathbb{R}^2$ from its representation matrix in the basis $(1, i)$.}
+\exinfo{Official Solution (Problem Sheet 13, Single Choice Question 2). Identifies multiplication by $i$ on $\mathbb{C} \cong \mathbb{R}^2$ from its representation matrix in the basis $(1, i)$.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 12, Exercise 4)
+% Official Solution (Problem Sheet 11, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:polynomial_differential_operator_matrix}]
 \label{sol:polynomial_differential_operator_matrix}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -99,10 +99,10 @@ Therefore, the correct choice is \textbf{(4): $z \mapsto iz$}.
     \end{cases}
     \]
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 12, Exercise 4). Computes the upper triangular representation matrix of $p \mapsto p'' + p'$ on $\mathbb{R}[X]_n$ in the monomial basis.}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 2). Computes the upper triangular representation matrix of $p \mapsto p'' + p'$ on $\mathbb{R}[X]_n$ in the monomial basis.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 12, Exercise 5)
+% Official Solution (Problem Sheet 11, Exercise 7)
 \begin{exercisesolution}[Solution to \cref{exc:differentiation_customized_bases}]
 \label{sol:differentiation_customized_bases}
 Let $\mathcal{C} = (1, x, x^2)$ be the standard monomial basis of $\mathbb{R}[x]_2$.
@@ -127,10 +127,10 @@ Thus, an explicit choice of bases is:
 \[
 \mathcal{B} = \left(1, \; x, \; x^2 - x, \; x^3 - \frac{1}{2}x^2 - x\right), \qquad \mathcal{C} = (1, \; x, \; x^2).
 \]
-\exinfo{Official Solution (Problem Sheet 12, Exercise 5). Constructs customized polynomial bases of $\mathbb{R}[x]_3$ and $\mathbb{R}[x]_2$ realizing a target upper triangular matrix for differentiation.}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 7). Constructs customized polynomial bases of $\mathbb{R}[x]_3$ and $\mathbb{R}[x]_2$ realizing a target upper triangular matrix for differentiation.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 12, Exercise 6)
+% Official Solution (Problem Sheet 11, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:change_of_bases_composition}]
 \label{sol:change_of_bases_composition}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -139,7 +139,7 @@ Thus, an explicit choice of bases is:
         \item For $\mathcal{A} \subseteq \mathbb{R}^4$: Form the matrix with columns $a_1, a_2, a_3, a_4$:
         \begin{align*}
         \det \begin{pmatrix} 1 & 1 & 1 & 2 \\ 0 & 4 & 1 & 0 \\ 1 & 2 & 1 & 3 \\ 0 & 2 & 1 & 0 \end{pmatrix}
-        &= \det \begin{pmatrix} 1 & 1 & 1 & 2 \\ 0 & 2 & 0 & 0 \\ 1 & 2 & 1 & 3 \\ 0 & 2 & 1 & 0 \end{pmatrix} \quad (R_2 \to R_2 - R_4) \\
+        &= \det \begin{pmatrix} 1 & 1 & 1 & 2 \\ 0 & 2 & 0 & 0 \\ 1 & 2 & 1 & 3 \\ 0 & 2 & 1 & 0 \end{pmatrix} \quad (R_2 - R_4 \to R_2) \\
         &= 2 \cdot (-1)^{2+2} \det \begin{pmatrix} 1 & 1 & 2 \\ 1 & 1 & 3 \\ 0 & 1 & 0 \end{pmatrix} \\
         &= 2 \cdot (-1) \cdot (3 - 2) = -2 \ne 0.
         \end{align*}
@@ -188,5 +188,5 @@ Thus, an explicit choice of bases is:
         Direct evaluation confirms $(g \circ f)(a_1) = \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix} = -3 c_1 - 2 c_2 + 10 c_3$, matching the first column.
     \end{enumerate}
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 12, Exercise 6). Verifies basis conditions via determinants, computes composite representations, and confirms the matrix product formula $[g \circ f]_{\mathcal{C}}^{\mathcal{A}} = [g]_{\mathcal{C}}^{\mathcal{B}} [f]_{\mathcal{B}}^{\mathcal{A}}$.}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 5). Verifies basis conditions via determinants, computes composite representations, and confirms the matrix product formula $[g \circ f]_{\mathcal{C}}^{\mathcal{A}} = [g]_{\mathcal{C}}^{\mathcal{B}} [f]_{\mathcal{B}}^{\mathcal{A}}$.}
 \end{exercisesolution}

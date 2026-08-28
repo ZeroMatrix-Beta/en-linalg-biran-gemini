@@ -1,4 +1,4 @@
-% Solution: Gemini / Official Hybrid (Problem Sheet 22, Dual Space Isometry)
+% Solution: Gemini / Official Hybrid (Problem Sheet 23, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:dual_space_inner_product_isometry}]
 \label{sol:dual_space_inner_product_isometry}
 Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector space, and $\delta \colon V \to V^*$, $v \mapsto \langle v, \cdot \rangle$.
@@ -30,10 +30,10 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector
     \]
     Thus $[\langle \cdot, \cdot \rangle^*]_{\mathcal{B}^*} = G^{-1}$. \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Establishes existence, uniqueness, and inverse Gram representation of the dual inner product.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 23, Exercise 6). Establishes existence, uniqueness, and inverse Gram representation of the dual inner product.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 22, Riesz Failure in Infinite Dimensions)
+% Solution: Gemini / Official Hybrid (Problem Sheet 24, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:riesz_failure_infinite_dimensions}]
 \label{sol:riesz_failure_infinite_dimensions}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -56,10 +56,10 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector
 
     \item This does not contradict \cref{thm:dual_space_inner_product_isomorphism} because that theorem requires the vector space $V$ to be finite-dimensional, whereas $C[-1, 1]$ is infinite-dimensional. \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Shows failure of Riesz representation on infinite-dimensional $C[-1, 1]$ via delta evaluation.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 24, Exercise 5). Shows failure of Riesz representation on infinite-dimensional $C[-1, 1]$ via delta evaluation.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 22, Adjoint Existence)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:adjoint_existence_finite_dim}]
 \label{sol:adjoint_existence_finite_dim}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -88,10 +88,10 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector
     Testing with the standard basis vectors $a = e_k = (\delta_{ki})_{i=1}^\infty \in V$ gives $c_k = \langle e_k, c \rangle = f(e_k) = 1$ for all $k \in \mathbb{N}$.
     Thus $c = (1, 1, 1, \dots)$, which has infinitely many non-zero entries and hence does not belong to $V$. Thus, no adjoint $f^*$ exists. \qedhere
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves adjoint map existence via Riesz representation and provides infinite-dimensional counterexample.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Exercise 5). Proves adjoint map existence via Riesz representation and provides infinite-dimensional counterexample.}
 \end{exercisesolution}
 
-% Official Solution (Problem Sheet 22, Exercise 4)
+% Official Solution (Problem Sheet 24, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:graph_laplacian_adjoint}]
 \label{sol:graph_laplacian_adjoint}
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -119,10 +119,10 @@ Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-dimensional Euclidean vector
     If $G$ has $k$ connected components $C_1, \dots, C_k$, a basis of $\ker(\Delta)$ is given by the indicator functions $(\mathbf{1}_{C_1}, \dots, \mathbf{1}_{C_k})$.
     Therefore, $\dim\ker(\Delta) = m_g(\Delta; 0) = k$, the number of connected components. \qedhere
 \end{enumerate}
-\exinfo{Official Solution (Problem Sheet 22, Exercise 4). Computes graph derivative adjoint, establishes graph Laplacian formula, and connects zero eigenspace to connected components.}
+\exinfo{Official Solution (Problem Sheet 24, Exercise 6). Computes graph derivative adjoint, establishes graph Laplacian formula, and connects zero eigenspace to connected components.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 22, Invariant Subspaces of Adjoint)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:invariant_subspaces_adjoint}]
 \label{sol:invariant_subspaces_adjoint}
 Let $V$ be a finite-dimensional inner product space, $T \in \End(V)$, and $U \subseteq V$ a subspace.
@@ -142,10 +142,10 @@ Let $V$ be a finite-dimensional inner product space, $T \in \End(V)$, and $U \su
     Since $\dim V < \infty$, \cref{cor:bidual_orthogonal_complement} gives $(U^\perp)^\perp = U$, and by \cref{lem:properties_adjoint_map} \textbf{(b)}, $(T^*)^* = T$.
     Hence $U$ is $T$-invariant. \qedhere
 \end{itemize}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Characterizes invariant subspaces of the adjoint map via orthogonal complements.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Exercise 1). Characterizes invariant subspaces of the adjoint map via orthogonal complements.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 22, Adjoint Cancellation)
+% Solution: Gemini / Official Hybrid (Problem Sheet 25, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:cancellation_adjoint_composite}]
 \label{sol:cancellation_adjoint_composite}
 Let $h := g_1 - g_2 \in \End(V)$.
@@ -164,5 +164,5 @@ Expanding $h = g_1 - g_2$:
 \[
 f \circ (g_1 - g_2) = 0 \implies f \circ g_1 = f \circ g_2. \qedhere
 \]
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Biran Lecture Notes). Proves $f^* \circ f \circ g_1 = f^* \circ f \circ g_2 \implies f \circ g_1 = f \circ g_2$ using positivity of norm.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 25, Exercise 2). Proves $f^* \circ f \circ g_1 = f^* \circ f \circ g_2 \implies f \circ g_1 = f \circ g_2$ using positivity of norm.}
 \end{exercisesolution}

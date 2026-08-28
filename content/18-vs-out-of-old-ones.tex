@@ -712,7 +712,7 @@ Let $V$ be a finite-dimensional vector space over a field $K$.
     V^* \cong U^* \oplus W^*.
     \]
 \end{enumerate}
-\exhint[Official Hint]{(a) Recall the canonical map $(u, w) \mapsto u + w$ from the lecture. (b) Every linear map is uniquely determined by its values on a basis; extend a basis of $U$ to $V$ using a basis of $W$. (c) For $\ell \in V^*$, consider the restricted functionals $\ell|_U = \ell \circ \iota_U \in U^*$ and $\ell|_W = \ell \circ \iota_W \in W^*$. Use these to define a linear map $\psi \colon V^* \to U^* \oplus W^*$ and prove that it is bijective.}
+\exhint[Hint (Y. St\"aubli)]{(a) Recall the canonical map $(u, w) \mapsto u + w$ from the lecture. (b) Every linear map is uniquely determined by its values on a basis; extend a basis of $U$ to $V$ using a basis of $W$. (c) For $\ell \in V^*$, consider the restricted functionals $\ell|_U = \ell \circ \iota_U \in U^*$ and $\ell|_W = \ell \circ \iota_W \in W^*$. Use these to define a linear map $\psi \colon V^* \to U^* \oplus W^*$ and prove that it is bijective.}
 \exinfo{This exercise is Problem 4 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:subspace_complement_dual_decomposition}
 \end{exercise}
@@ -730,7 +730,7 @@ Let $U, V, W_1, W_2$ be finite-dimensional vector spaces over a field $K$.
     \Hom(V \oplus U, W_1) \cong \Hom(V, W_1) \oplus \Hom(U, W_1).
     \]
 \end{enumerate}
-\exhint[Official Hint]{While dimension-counting shows the spaces are isomorphic, the goal is to construct explicit coordinate-free isomorphisms: (a) For $f \in \Hom(V, W_1 \oplus W_2)$, consider the compositions $\pi_{W_1} \circ f$ and $\pi_{W_2} \circ f$ with the canonical projections, and define $\Phi(f) := (\pi_{W_1} \circ f, \pi_{W_2} \circ f)$; exhibit its inverse explicitly. (b) For $f \in \Hom(V \oplus U, W_1)$, consider the precompositions $f \circ \iota_V$ and $f \circ \iota_U$ with the canonical inclusions.}
+\exhint[Hint (Y. St\"aubli)]{While dimension-counting shows the spaces are isomorphic, the goal is to construct explicit coordinate-free isomorphisms: (a) For $f \in \Hom(V, W_1 \oplus W_2)$, consider the compositions $\pi_{W_1} \circ f$ and $\pi_{W_2} \circ f$ with the canonical projections, and define $\Phi(f) := (\pi_{W_1} \circ f, \pi_{W_2} \circ f)$; exhibit its inverse explicitly. (b) For $f \in \Hom(V \oplus U, W_1)$, consider the precompositions $f \circ \iota_V$ and $f \circ \iota_U$ with the canonical inclusions.}
 \exinfo{This exercise is Problem 6 (parts a and b) of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:hom_direct_sum_decompositions}
 \end{exercise}
@@ -1052,7 +1052,7 @@ guaranteed by the universal property of quotient spaces. Show that:
     \item $\bar{f}$ is surjective if and only if $f$ is surjective.
     \item If $f$ is surjective, then $\bar{f}$ induces a canonical isomorphism $V/\ker(f) \cong W$.
 \end{enumerate}
-\exhint[Official Hint]{(a) Note that $[v] \in \ker(\bar{f}) \iff f(v) = 0 \iff v \in \ker(f)$. (b) Use (a) and the fact that for a subspace $X \subseteq Y$, $Y/X = \{0\} \iff Y = X$. (c), (d) Combine (b) and the definition of $\Img(\bar{f})$.}
+\exhint[Hint (Y. St\"aubli)]{(a) Note that $[v] \in \ker(\bar{f}) \iff f(v) = 0 \iff v \in \ker(f)$. (b) Use (a) and the fact that for a subspace $X \subseteq Y$, $Y/X = \{0\} \iff Y = X$. (c), (d) Combine (b) and the definition of $\Img(\bar{f})$.}
 \exinfo{This exercise is Problem 2 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:properties_induced_quotient_maps}
 \end{exercise}
@@ -1093,7 +1093,7 @@ Consider the linear subspace
 U := \operatorname{span}\left( \begin{pmatrix} 2 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 2 \\ 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 2 \\ 2 \\ 2 \end{pmatrix} \right) \subseteq V := \mathbb{R}^5.
 \]
 Determine a subset of the standard basis $(e_1, e_2, e_3, e_4, e_5)$ of $\mathbb{R}^5$ whose image under the canonical quotient map $\pi \colon V \to V/U$ forms a basis of the quotient space $V/U$.
-\exhint[Official Hint]{Recall that $V/U \cong U'$ for any complement $U'$ of $U$. Find which standard basis vectors can be selected to form a complement of $U$ in $\mathbb{R}^5$.}
+\exhint[Hint (Y. St\"aubli)]{Recall that $V/U \cong U'$ for any complement $U'$ of $U$. Find which standard basis vectors can be selected to form a complement of $U$ in $\mathbb{R}^5$.}
 \exinfo{This exercise is Problem 1 of Problem Sheet 15, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:basis_of_quotient_space_r5}
 \end{exercise}
@@ -1249,99 +1249,25 @@ The middle equivalence is the only one with content: $\ell \circ T$ is the zero 
 \input{content/18-vs-out-of-old-ones-solutions.tex}
 
 \begin{ainote}
-The three lectures behind this chapter, 18.a on $\Hom$, duals and biduals,
-18.b on direct sums, 18.c on quotients, are all present in the transcript,
-statement for statement, and the printed numbers 18.a.1--18.a.12, 18.b.1--18.b.2
-and 18.c.1--18.c.8 already agreed with the handwritten ones. What the audit
-found here was damage of a different kind: repetitions, one broken inference,
-and a great many exercises left unanswered.
+Three lectures stand behind this chapter: $\Hom$, duals and biduals in 18.a,
+direct sums in 18.b, quotients in 18.c. They share one move. Each takes vector
+spaces already in hand and manufactures a new one from them, and in each case
+the work is to check that what comes out is again a vector space and to find its
+dimension. The dual is the case to watch, because $V^*$ and $V$ have the same
+dimension without there being any canonical isomorphism between them, while $V$
+and $V^{**}$ do have one. \Cref{thm:natural_map_injective} and the naturality of
+$\tau$ on \cpageref{prop:naturality_of_tau} are where that distinction is made
+precise, and it is worth reading them together: the first says the map exists
+and is injective, the second says it does not depend on any choice.
 
-\textbf{Repetitions and misplacements.} The paragraph introducing the bidual
-appeared twice, once inside a \verb|summary| environment that had swallowed a
-\verb|\subsection| heading along with it, and once again under
-\qt{Reflexivity}; the first copy is removed and the summary now ends where the
-notes end it. \Cref{cor:endomorphism_ring} carried two proofs in a row, a
-sketch and a full verification; the sketch was contained in the verification
-and is dropped. A \verb|definition*| naming the quotient and the quotient map
-stood before either had been constructed, duplicating the naming that comes
-with \cref{def:quotient_space}; it is folded into the sentence that announces
-the construction. Four cross-references read \qt{Figure \cref{fig:quotient_r2}},
-which typesets the word \qt{Figure} twice.
-
-\textbf{One broken inference.} Of the map $D \colon K^n_{\text{row}} \to
-(K^n_{\text{col}})^*$ the transcript said it \qt{is a linear map, and therefore,
-it is an isomorphism}, linearity does not give that, and the notes do not
-claim it does: they say the map is an iso and mark the verification \qt{exc.
-Prove this!}. It is now \cref{exc:row_space_is_dual}, solved on
-\cpageref{sec:solutions_hom_dual}. Also repaired: the proof of
-\cref{prop:dual_change_of_basis} set $A := [\id_V]$ with no bases on it, and the
-matrix it means is $[\id_V]_{\mathcal{C}}^{\mathcal{B}}$.
-
-\textbf{Rings.} At the point where the notes say only \qt{explain briefly the
-structure of a ring} and \qt{explain what is a homomorphism of rings}, both
-given orally, the book had nothing, although it uses the word from
-\cpageref{rem:matrix_ring} onwards and states \cref{cor:endomorphism_ring} as an
-isomorphism of rings. \Cref{aidef:ring} and \cref{aidef:ring_homomorphism} fill
-that gap; they are not Prof. Biran's text and are marked as AI-Definitions.
-
-\textbf{Exercises.} The notes mark fourteen things \qt{Exc.} across the three
-lectures, from the vector space axioms for $\Hom(V,W)$ to
-$(\Img T)^\perp = \ker(T^*)$. Several stood in the transcript as
-\verb|\begin{proof}| blocks reading \qt{Exercise}, which leaves a stated result
-with no proof anywhere. All of them are now exercises, and each of the three
-sections ends with the solutions.
-
-\textbf{A later pass looking only for gaps in rigour} found nothing false in
-this chapter, but five numbered results of Prof. Biran's carrying no
-\verb|\label| at all, so that nothing could cite them: 18.a.3, 18.a.5, 18.a.11,
-18.c.6 and 18.c.8. Two of them were being cited already, in words rather than
-by reference: the proof of \cref{cor:dim_dual} runs
-$\dim V^* = \dim \Hom(V,K) = \dim V \cdot \dim K$ on \cref{cor:dim_hom} without
-saying so, and the proof of \cref{prop:annihilator_dual_quotient} appeals twice
-to \qt{the theorem about the universal property of quotient spaces}, which is
-\cref{thm:universal_property_quotient} directly above it. All five are labelled
-now, with the handwritten numbers recorded above them as everywhere else, and
-the printed 18.a.1--18.a.12, 18.b.1--18.b.2 and 18.c.1--18.c.8 are unchanged.
-
-\textbf{A proof that stops one line early.} The proof of
-\cref{lem:dual_map_transpose} computes the coordinates of $S^*(w_j^*)$ in
-$\mathcal{B}^*$, observes that they form column $j$ of $A\transp$, and ends
-there, without ever saying that this identifies
-$[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ with $A\transp$, which is what was to be
-shown. The concluding sentence is supplied.
-
-\textbf{Two things stated in running prose.} The same pattern as in the chapter
-on linear maps and bases. The functionals $v_i^*$, on which
-\cref{lem:dual_basis} standing directly underneath is a statement, were defined
-in a paragraph of prose; they have an unnumbered Definition now, on
-\cpageref{def:dual_basis_functionals}. And the naturality of $\tau$ was
-asserted as a commutative square with no statement attached to it and no proof:
-it is the Proposition on \cpageref{prop:naturality_of_tau}, with the four-line
-verification that unwinds the definitions. Both are unnumbered, so nothing
-moved.
-
-\textbf{Silent steps.} Some fifteen now name the result they rest on, across
-all three sections. The ones with real content: that isomorphic spaces have
-equal dimension, which is what carries \cref{cor:dim_hom}; that two linear maps
-agreeing on a basis are equal and that prescribing values on a basis determines
-a linear map, which are the two halves of
-\cref{thm:existence_uniqueness_linear_map} and are used three times between the
-dual basis and the surjectivity of the restriction map; that $n$ spanning
-vectors in an $n$-dimensional space are a basis; that an injective map between
-spaces of equal finite dimension is already an isomorphism, which finishes
-\cref{thm:natural_map_injective}; the column description of a representation
-matrix, twice; and the basis extension behind
-\cref{prop:annihilator_dual_quotient} \textbf{(c)}. \Cref{cor:endomorphism_ring}
-appealed to \qt{a fundamental result from Linear Algebra I} for the matrix of a
-composition; that result is the composition rule earlier in this book, and is
-now pointed at.
-
-Two smaller things. \Cref{prop:direct_sum_complement} said that $U'$ being a
-complement \qt{implies} $U + U' = V$ and $U \cap U' = \{0\}$, where those two
-conditions are the definition of a complement, \cref{def:complement}, not a
-consequence of it. And one \verb|\cpageref| was introduced by \qt{in} rather
-than \qt{on}, which typesets as \qt{in page 136}; the same slip survives in the
-chapters on bases and on miscellaneous topics, which this pass has not yet
-reached.
+The notes leave two things to the lecture rather than to the page. Where they
+say only \qt{explain briefly the structure of a ring} and \qt{explain what is a
+homomorphism of rings}, both given orally, this book has to write something
+down, since it uses the word from \cpageref{rem:matrix_ring} onwards and states
+\cref{cor:endomorphism_ring} as an isomorphism of rings. \Cref{aidef:ring} and
+\cref{aidef:ring_homomorphism} fill that gap, and are marked as not being Prof.
+Biran's. The notes also mark fourteen results \qt{Exc.}, from the vector space
+axioms for $\Hom(V,W)$ to $(\Img T)^\perp = \ker(T^*)$; all fourteen are
+exercises here, and each of the three sections closes with their solutions.
 \end{ainote}
 

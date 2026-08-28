@@ -208,23 +208,25 @@ be a sequence of nested linear subspaces.
 \end{exercise}
 
 \begin{ainote}
-\Cref{thm:wrong_length_lists}, and the trivial direction of the equality claim in
-\cref{prop:subspace_dimension_constraints}, were missing from this transcript and
-are restored above. The notes also restate \cref{lem:no_predecessor_span} in full
-at this point, as a recollection from the earlier lecture; here it is only
-cross-referenced.
+The two principles collected in \cref{sum:finite_dim_properties} are recalled in
+the notes rather than proved, and nothing else in the book proves them, although
+the second of them, the basis extension property, is used some ten times from
+ch. 14 onwards and is occasionally credited in passing to \qt{the Steinitz
+Exchange Lemma}. Both are proved above, in a few lines each, from
+\cref{lem:spanning_list_contains_basis} and \cref{lem:strong_steinitz}.
 
-The substantial addition is the proof of \cref{sum:finite_dim_properties}. The
-notes give its two principles as a recollection and prove neither, and nothing
-else in the book proves them, although item \textbf{(2)}, the basis extension
-property, is used some ten times from ch. 14 onwards and is occasionally credited
-in passing to \qt{the Steinitz Exchange Lemma}. Both follow from
-\cref{lem:spanning_list_contains_basis} and \cref{lem:strong_steinitz} in a few
-lines. The derivation deliberately avoids
-\cref{thm:basis_equivalent_characterizations}, which stands just below it and
-whose own proof appeals to both items: going through it would be circular. That
-is the reason for the longer route, and a later simplification should not undo
-it.
+The route those two proofs take is longer than it needs to look, and
+deliberately so. The natural argument would run through
+\cref{thm:basis_equivalent_characterizations}, which stands just below and
+delivers both principles at once; but that theorem's own proof appeals to both
+of them in turn, so the short route is circular. Anyone tempted to compress the
+argument should check that dependency first.
+
+\Cref{thm:wrong_length_lists} is the statement to read alongside them: a list
+shorter than $\dim V$ cannot span, and a list longer than $\dim V$ cannot be
+independent. That is what turns the dimension from a number attached to a space
+into a constraint on every list inside it, and most of the counting arguments of
+the later chapters are it in disguise.
 \end{ainote}
 
 \input{content/12-dimension-solutions.tex}

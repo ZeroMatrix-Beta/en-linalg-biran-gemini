@@ -492,11 +492,12 @@ in the plane $\Fib$ converges to the line $\mathbb{R} \cdot \mathcal{F}_{1,\varp
 \subsection{The Upshot: Asymptotics and Matrix Form}
 
 \begin{ainote}
-This subsection has no counterpart in Prof.\ Biran's notes for Lecture 1A, which end
-with the exercises reproduced below. The closest-integer estimate, the matrix form and
-Cassini's identity are supplementary material added in this transcript. They are
-included because the matrix $M$ reappears in the chapters on eigenvalues, but they
-should not be mistaken for lecture content.
+This subsection has no counterpart in Prof.\ Biran's notes for Lecture 1A, which
+end with the exercises reproduced below. The closest-integer estimate, the matrix
+form and Cassini's identity are supplementary. They earn their place because the
+matrix $M$ returns in the chapters on eigenvalues, where diagonalizing it is
+precisely what turns the recursion into Binet's formula; but they should not be
+mistaken for lecture content.
 \end{ainote}
 
 The derivation above yields two profound observations regarding the growth and representation of the Fibonacci sequence.
@@ -616,7 +617,7 @@ Both computations use \cref{prop:fib_closure} implicitly, in that the sequences 
 We repeat the derivation of \cref{thm:binet_formula} with $\mathcal{F}_{0,1}$ replaced by an arbitrary $\mathcal{F}_{a_0, a_1}$. By \cref{cor:fib_linear_combination} we look for $\alpha, \beta \in \mathbb{R}$ with $\alpha \cdot \mathcal{F}_{1,\varphi} + \beta \cdot \mathcal{F}_{1,\psi} = \mathcal{F}_{a_0, a_1}$, and comparing the terms with $n = 0$ and $n = 1$ gives
 \[
 \begin{cases}
-    \alpha + \beta = a_0, \
+    \alpha + \beta = a_0, \\
     \alpha \varphi + \beta \psi = a_1.
 \end{cases}
 \]

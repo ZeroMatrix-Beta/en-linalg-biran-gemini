@@ -1,6 +1,6 @@
 \section{Solutions}\label{sec:solutions_linear_equations}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 6)
+% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:converse_ero_solution_set}]
 \label{sol:converse_ero_solution_set}
 The converse is \textbf{false} in general. Having identical solution sets does not imply that the augmented matrices are row equivalent.
@@ -23,10 +23,10 @@ The system $(x_1 = 0)$ with augmented matrix $(1 \mid 0) \in \M_{1 \times 2}(\ma
 \begin{remark}
 If one restricts attention to \emph{consistent} linear systems with the same number of variables and equations whose coefficient matrices have the same dimensions, then the converse does hold: any consistent system has a unique reduced row echelon form completely determined by the affine subspace of solutions.
 \end{remark}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 6). Examines row equivalence vs solution set equality for inconsistent and non-square systems.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 4). Examines row equivalence vs solution set equality for inconsistent and non-square systems.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 2)
+% Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:gauss_elimination_4vars}]
 \label{sol:gauss_elimination_4vars}
 We write the augmented matrix of the system and apply elementary row operations:
@@ -35,7 +35,7 @@ We write the augmented matrix of the system and apply elementary row operations:
 1 & 2 & 2 & 1 & \big| & -1 \\
 3 & 6 & 2 & 5 & \big| & 1
 \end{pmatrix}
-\xrightarrow{-3 \cdot E_1 + E_2 \to E_2}
+\xrightarrow{R_2 - 3 \cdot R_1 \to R_2}
 \begin{pmatrix}
 1 & 2 & 2 & 1 & \big| & -1 \\
 0 & 0 & -4 & 2 & \big| & 4
@@ -43,15 +43,15 @@ We write the augmented matrix of the system and apply elementary row operations:
 \]
 Divide the second row by $-4$:
 \[
-\xrightarrow{-\frac{1}{4} \cdot E_2 \to E_2}
+\xrightarrow{-\frac{1}{4} \cdot R_2 \to R_2}
 \begin{pmatrix}
 1 & 2 & 2 & 1 & \big| & -1 \\
 0 & 0 & 1 & -\frac{1}{2} & \big| & -1
 \end{pmatrix}
 \]
-Now clear the entry above the second pivot by $-2 \cdot E_2 + E_1 \to E_1$:
+Now clear the entry above the second pivot by $R_1 - 2 \cdot R_2 \to R_1$:
 \[
-\xrightarrow{-2 \cdot E_2 + E_1 \to E_1}
+\xrightarrow{R_1 - 2 \cdot R_2 \to R_1}
 \begin{pmatrix}
 1 & 2 & 0 & 2 & \big| & 1 \\
 0 & 0 & 1 & -\frac{1}{2} & \big| & -1
@@ -73,7 +73,7 @@ Therefore, the complete solution set in $\mathbb{R}^4$ is:
 \[
 L = \left\{ \begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix} = \begin{pmatrix} 1 - 2s - 2t \\ s \\ -1 + \frac{1}{2}t \\ t \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ -1 \\ 0 \end{pmatrix} + s \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t \begin{pmatrix} -2 \\ 0 \\ \frac{1}{2} \\ 1 \end{pmatrix} \;\middle|\; s, t \in \mathbb{R} \right\}.
 \]
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 2). Fully works out Gaussian elimination into reduced row echelon form with 2 free variables.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 1). Fully works out Gaussian elimination into reduced row echelon form with 2 free variables.}
 \end{exercisesolution}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 3)
@@ -86,7 +86,7 @@ Since both systems $(S_1)$ and $(S_2)$ share the same coefficient matrix $A$, we
 1 & 2 & 2 & \big| & 11 & 10 \\
 2 & 3 & -4 & \big| & 3 & 3
 \end{pmatrix}
-\xrightarrow{\begin{subarray}{l} -1 \cdot E_1 + E_2 \to E_2 \\ -2 \cdot E_1 + E_3 \to E_3 \end{subarray}}
+\xrightarrow{\begin{subarray}{l} R_2 - R_1 \to R_2 \\ R_3 - 2 \cdot R_1 \to R_3 \end{subarray}}
 \begin{pmatrix}
 1 & 1 & 1 & \big| & 6 & 7 \\
 0 & 1 & 1 & \big| & 5 & 3 \\
@@ -95,13 +95,13 @@ Since both systems $(S_1)$ and $(S_2)$ share the same coefficient matrix $A$, we
 \]
 Eliminate the second column in row 3:
 \[
-\xrightarrow{-1 \cdot E_2 + E_3 \to E_3}
+\xrightarrow{R_3 - R_2 \to R_3}
 \begin{pmatrix}
 1 & 1 & 1 & \big| & 6 & 7 \\
 0 & 1 & 1 & \big| & 5 & 3 \\
 0 & 0 & -7 & \big| & -14 & -14
 \end{pmatrix}
-\xrightarrow{-\frac{1}{7} \cdot E_3 \to E_3}
+\xrightarrow{-\frac{1}{7} \cdot R_3 \to R_3}
 \begin{pmatrix}
 1 & 1 & 1 & \big| & 6 & 7 \\
 0 & 1 & 1 & \big| & 5 & 3 \\
@@ -110,13 +110,13 @@ Eliminate the second column in row 3:
 \]
 Now clear the entries above the third pivot:
 \[
-\xrightarrow{\begin{subarray}{l} -1 \cdot E_3 + E_2 \to E_2 \\ -1 \cdot E_3 + E_1 \to E_1 \end{subarray}}
+\xrightarrow{\begin{subarray}{l} R_2 - R_3 \to R_2 \\ R_1 - R_3 \to R_1 \end{subarray}}
 \begin{pmatrix}
 1 & 1 & 0 & \big| & 4 & 5 \\
 0 & 1 & 0 & \big| & 3 & 1 \\
 0 & 0 & 1 & \big| & 2 & 2
 \end{pmatrix}
-\xrightarrow{-1 \cdot E_2 + E_1 \to E_1}
+\xrightarrow{R_1 - R_2 \to R_1}
 \begin{pmatrix}
 1 & 0 & 0 & \big| & 1 & 4 \\
 0 & 1 & 0 & \big| & 3 & 1 \\
@@ -131,7 +131,7 @@ Reading off the solutions from the respective right-hand columns:
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 3). Applies simultaneous Gaussian elimination on a dual augmented matrix.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 4)
+% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:two_parameter_linear_system}]
 \label{sol:two_parameter_linear_system}
 We write the augmented matrix of the system and apply Gaussian elimination:
@@ -142,7 +142,7 @@ We write the augmented matrix of the system and apply Gaussian elimination:
 -3 & -5 & a & \big| & b \\
 2 & 4 & -3 & \big| & 5
 \end{pmatrix}
-\xrightarrow{\begin{subarray}{l} -3 \cdot E_1 + E_2 \to E_2 \\ 3 \cdot E_1 + E_3 \to E_3 \\ -2 \cdot E_1 + E_4 \to E_4 \end{subarray}}
+\xrightarrow{\begin{subarray}{l} R_2 - 3 \cdot R_1 \to R_2 \\R_3 + 3 \cdot R_1 \to R_3 \\ R_4 - 2 \cdot R_1 \to R_4 \end{subarray}}
 \begin{pmatrix}
 1 & 2 & -3 & \big| & 10 \\
 0 & 1 & 0 & \big| & b - 30 \\
@@ -151,9 +151,9 @@ We write the augmented matrix of the system and apply Gaussian elimination:
 \end{pmatrix}
 \]
 From row 4, we have $3z = -15 \implies z = -5$.
-Next, perform $-1 \cdot E_2 + E_3 \to E_3$:
+Next, perform $R_3 - R_2 \to R_3$:
 \[
-\xrightarrow{-1 \cdot E_2 + E_3 \to E_3}
+\xrightarrow{R_3 - R_2 \to R_3}
 \begin{pmatrix}
 1 & 2 & -3 & \big| & 10 \\
 0 & 1 & 0 & \big| & b - 30 \\
@@ -177,10 +177,10 @@ When $a = -3$, we determine the unique solution:
     \item From row 1: $x + 2(b - 30) - 3(-5) = 10 \implies x + 2b - 60 + 15 = 10 \implies x = 55 - 2b$.
 \end{itemize}
 In conclusion, the system admits a solution if and only if $a = -3$ (with $b \in \mathbb{R}$ arbitrary), and the unique solution is $(x, y, z) = (55 - 2b, b - 30, -5)$.
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 4). Analyzes consistency parameters $a, b$ and determines the unique solution.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 2). Analyzes consistency parameters $a, b$ and determines the unique solution.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 5)
+% Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:parametric_linear_system_solvability}]
 \label{sol:parametric_linear_system_solvability}
 We form the augmented matrix and apply row operations:
@@ -190,13 +190,13 @@ We form the augmented matrix and apply row operations:
 -1 & 2 & -\frac{1}{2} & \big| & b_2 \\
 4 & -1 & 0 & \big| & b_3
 \end{pmatrix}
-\xrightarrow{E_1 \leftrightarrow E_2}
+\xrightarrow{R_1 \leftrightarrow R_2}
 \begin{pmatrix}
 -1 & 2 & -\frac{1}{2} & \big| & b_2 \\
 0 & 7 & -2 & \big| & b_1 \\
 4 & -1 & 0 & \big| & b_3
 \end{pmatrix}
-\xrightarrow{-1 \cdot E_1 \to E_1}
+\xrightarrow{-1 \cdot R_1 \to R_1}
 \begin{pmatrix}
 1 & -2 & \frac{1}{2} & \big| & -b_2 \\
 0 & 7 & -2 & \big| & b_1 \\
@@ -205,13 +205,13 @@ We form the augmented matrix and apply row operations:
 \]
 Eliminate the first column of row 3:
 \[
-\xrightarrow{-4 \cdot E_1 + E_3 \to E_3}
+\xrightarrow{R_3 - 4 \cdot R_1 \to R_3}
 \begin{pmatrix}
 1 & -2 & \frac{1}{2} & \big| & -b_2 \\
 0 & 7 & -2 & \big| & b_1 \\
 0 & 7 & -2 & \big| & b_3 + 4b_2
 \end{pmatrix}
-\xrightarrow{-1 \cdot E_2 + E_3 \to E_3}
+\xrightarrow{R_3 - R_2 \to R_3}
 \begin{pmatrix}
 1 & -2 & \frac{1}{2} & \big| & -b_2 \\
 0 & 7 & -2 & \big| & b_1 \\
@@ -234,10 +234,10 @@ Thus, the solution set $S \subseteq \mathbb{R}^3$ is:
 \[
 S = \left\{ \begin{pmatrix} \frac{2}{7}b_1 - b_2 \\ \frac{1}{7}b_1 \\ 0 \end{pmatrix} + t \begin{pmatrix} 1 \\ 4 \\ 14 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
 \]
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 5). Computes the solvability hyperplane condition $b_1 - 4b_2 - b_3 = 0$ via row reduction.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 4). Computes the solvability hyperplane condition $b_1 - 4b_2 - b_3 = 0$ via row reduction.}
 \end{exercisesolution}
 
-% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 1)
+% Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:inconsistent_2x2_system}]
 \label{sol:inconsistent_2x2_system}
 Let $A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$ and $b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} \in \mathbb{R}^2$. 
@@ -260,10 +260,10 @@ Hence, the rows of $A$ must be linearly dependent, which means that one row of $
 \textbf{Alternative Elementary Proof via Row Operations:}
 We can also prove the contrapositive directly using only Gaussian elimination: suppose no row of $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is a scalar multiple of the other.
 \begin{itemize}
-    \item If $a \ne 0$, subtract $\frac{c}{a} R_1$ from $R_2$ to obtain the second row $\bigl(0, \; d - \frac{bc}{a} \;\big|\; b_2 - \frac{c}{a}b_1\bigr)$. Since the rows are not proportional, $ad - bc \ne 0$, so the pivot $d - \frac{bc}{a} \ne 0$, which allows solving for both unknowns uniquely for any $(b_1, b_2)$.
+    \item If $a \ne 0$, apply $R_2 - \frac{c}{a} \cdot R_1 \to R_2$ to obtain the second row $\bigl(0, \; d - \frac{bc}{a} \;\big|\; b_2 - \frac{c}{a}b_1\bigr)$. Since the rows are not proportional, $ad - bc \ne 0$, so the pivot $d - \frac{bc}{a} \ne 0$, which allows solving for both unknowns uniquely for any $(b_1, b_2)$.
     \item If $a = 0$, then $c \ne 0$ (otherwise row 1 is $0$ times row 2). Swapping rows reduces to the previous case.
 \end{itemize}
 Thus, if no row is a multiple of the other, the system is consistent for every right-hand side $b \in \mathbb{R}^2$.
 \end{ainote}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 1). Proves the contrapositive geometric condition for $2 \times 2$ inconsistent systems using both determinant invertibility and echelon reduction.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 5). Proves the contrapositive geometric condition for $2 \times 2$ inconsistent systems using both determinant invertibility and echelon reduction.}
 \end{exercisesolution}

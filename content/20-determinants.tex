@@ -172,7 +172,7 @@ Each of the following expressions defines a function $D \colon \M_{3 \times 3}(\
 \begin{exercise}[The $2 \times 2$ Determinant as an Alternating $2$-Linear Form \faHeart]
 \label{exc:det_2x2_alternating_bilinear}
 Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$, is an alternating $2$-linear function with respect to both its rows and its columns.
-\exhint[Official Hint]{Using the explicit formula $\det A = ad - bc$, verify that $\det$ is linear in each column (holding the other fixed) and linear in each row (holding the other fixed), and show that $\det A = 0$ whenever the two columns (or the two rows) are equal.}
+\exhint[Hint (Y. St\"aubli)]{Using the explicit formula $\det A = ad - bc$, verify that $\det$ is linear in each column (holding the other fixed) and linear in each row (holding the other fixed), and show that $\det A = 0$ whenever the two columns (or the two rows) are equal.}
 \exinfo{This exercise is Problem 1 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:det_2x2_alternating_bilinear}
 \end{exercise}
@@ -420,7 +420,7 @@ By the alternating property of $D$, performing the transpositions necessary to s
   \[
   \det(A) = A_{11} A_{22} \cdots A_{nn}.
   \]
-  \exhint[Official Hint]{Use the Leibniz formula $\det A = \sum_{\sigma \in S_n} \sgn(\sigma) A(1,\sigma(1)) \cdots A(n,\sigma(n))$. For an upper triangular matrix ($A_{ij} = 0$ for $i > j$), show that if $\sigma \neq \id$, there must exist an index $i \in \{1, \dots, n\}$ such that $\sigma(i) < i$, which forces the corresponding factor in the product to be zero. A similar argument applies to lower triangular matrices.}
+  \exhint[Hint (Y. St\"aubli)]{Use the Leibniz formula $\det A = \sum_{\sigma \in S_n} \sgn(\sigma) A(1,\sigma(1)) \cdots A(n,\sigma(n))$. For an upper triangular matrix ($A_{ij} = 0$ for $i > j$), show that if $\sigma \neq \id$, there must exist an index $i \in \{1, \dots, n\}$ such that $\sigma(i) < i$, which forces the corresponding factor in the product to be zero. A similar argument applies to lower triangular matrices.}
   \exinfo{This exercise is Problem 7 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:triangular_matrix_determinant}
 \end{exercise}
@@ -462,7 +462,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
     for the determinant of a $4 \times 4$ matrix $A$. Notice that for $n \ge 4$, inspecting diagonal products alone is not sufficient to determine the determinant.
     \item How many even permutations are contained in $S_n$ for an arbitrary integer $n \ge 1$?
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} Permutations of the same cycle structure have the same sign (e.g., $4$-cycles have sign $-1$, products of two disjoint transpositions have sign $+1$, $3$-cycles have sign $+1$, single transpositions have sign $-1$, and the identity has sign $+1$). List all $4! = 24$ permutations grouped by cycle type to write down the $24$ terms. \textbf{(b)} The case $n=1$ is trivial. For $n \ge 2$, fix a transposition $\tau \in S_n$ (e.g., $\tau = (1\;2)$) and show that the map $\sigma \mapsto \tau \circ \sigma$ is a bijection between the set of even permutations and the set of odd permutations.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} Permutations of the same cycle structure have the same sign (e.g., $4$-cycles have sign $-1$, products of two disjoint transpositions have sign $+1$, $3$-cycles have sign $+1$, single transpositions have sign $-1$, and the identity has sign $+1$). List all $4! = 24$ permutations grouped by cycle type to write down the $24$ terms. \textbf{(b)} The case $n=1$ is trivial. For $n \ge 2$, fix a transposition $\tau \in S_n$ (e.g., $\tau = (1\;2)$) and show that the map $\sigma \mapsto \tau \circ \sigma$ is a bijection between the set of even permutations and the set of odd permutations.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:symmetric_group_s4_and_alternating}
 \end{exercise}
@@ -602,9 +602,9 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
   \label{thm:row_operations}
   Let $A \in \M_{n \times n}(K)$.
   \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row (i.e., $c \cdot E_j + E_i \to E_i$ for $i \neq j$), or by doing the analogous operation on columns, then $\det(B) = \det(A)$.
-    \item If $B$ is obtained from $A$ by interchanging two rows (i.e., $E_i \leftrightarrow E_j$ for $i \neq j$), or columns, then $\det(B) = -\det(A)$.
-    \item If $B$ is obtained from $A$ by multiplying a row, or a column, by a scalar (i.e., $c \cdot E_i \to E_i$), then $\det(B) = c \det(A)$.
+    \item If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row (i.e., $R_i + c \cdot R_j \to R_i$ for $i \neq j$), or by doing the analogous operation on columns, then $\det(B) = \det(A)$.
+    \item If $B$ is obtained from $A$ by interchanging two rows (i.e., $R_i \leftrightarrow R_j$ for $i \neq j$), or columns, then $\det(B) = -\det(A)$.
+    \item If $B$ is obtained from $A$ by multiplying a row, or a column, by a scalar (i.e., $c \cdot R_i \to R_i$), then $\det(B) = c \det(A)$.
   \end{enumerate}
 \end{theorem}
 
@@ -628,9 +628,9 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $K$ be a field, $\lambda \in K$, and $A \in \M_{n \times n}(K)$. Show:
     \begin{enumerate}[label=\textbf{(\roman*)}]
-      \item If $B$ is obtained from $A$ by multiplying row $i$ by $\lambda$ ($R_i \to \lambda R_i$), then $\det B = \lambda \det A$.
+      \item If $B$ is obtained from $A$ by multiplying row $i$ by $\lambda$ ($\lambda \cdot R_i \to R_i$), then $\det B = \lambda \det A$.
       \item If $B$ is obtained from $A$ by swapping rows $i$ and $j$ ($R_i \leftrightarrow R_j$), then $\det B = -\det A$.
-      \item If $B$ is obtained from $A$ by adding $\lambda$ times row $i$ to row $j$ ($R_j \to R_j + \lambda R_i$ with $i \neq j$), then $\det B = \det A$.
+      \item If $B$ is obtained from $A$ by adding $\lambda$ times row $i$ to row $j$ ($R_j + \lambda \cdot R_i \to R_j$ with $i \neq j$), then $\det B = \det A$.
     \end{enumerate}
     \item The numbers $2014, 1484, 3710$, and $6996$ are all divisible by $106$. Show without explicitly computing the numerical value that
     \[
@@ -643,7 +643,7 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
     \]
     is also divisible by $106$.
   \end{enumerate}
-  \exhint[Official Hint]{\textbf{(a)} These are the fundamental computational rules for determinants under elementary row operations; see \cref{thm:row_operations}. \textbf{(b)} Perform the elementary row operation $R_4 \to 1000 R_1 + 100 R_2 + 10 R_3 + R_4$ to obtain the fourth row $(2014, 1484, 3710, 6996)$, and observe that a common factor in any row can be factored out of the determinant.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} These are the fundamental computational rules for determinants under elementary row operations; see \cref{thm:row_operations}. \textbf{(b)} Perform the elementary row operations $1000 R_1 + R_4 \to R_4$, $100 R_2 + R_4 \to R_4$ and $10 R_3 + R_4 \to R_4$ to obtain the fourth row $(2014, 1484, 3710, 6996)$, and observe that a common factor in any row can be factored out of the determinant.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:row_operations_and_determinant_divisibility}
 \end{exercise}
@@ -781,7 +781,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
     -6 & 11 & -23 & -14 & 9
   \end{pmatrix}.
   \]
-  \exhint[Official Hint]{Use elementary row operations (Gaussian elimination) to reduce each matrix to triangular form, keeping track of any row swaps and row scalings.}
+  \exhint[Hint (Y. St\"aubli)]{Use elementary row operations (Gaussian elimination) to reduce each matrix to triangular form, keeping track of any row swaps and row scalings.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:determinants_via_gaussian_elimination}
 \end{exercise}
@@ -799,7 +799,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
   = \prod_{1 \le i < j \le n} (x_j - x_i).
   \]
   \textit{Remark.} Products of this form are called \emph{Vandermonde determinants}, and the matrix is known as the \emph{Vandermonde matrix}.
-  \exhint[Official Hint]{Use induction on $n$. Subtract the first row from each of the subsequent rows, factor out $(x_i - x_1)$ from the $i$-th row for each $i \ge 2$, and use the identity $x_i^m - x_1^m = (x_i - x_1) \sum_{k=0}^{m-1} x_i^k x_1^{m-1-k}$ along with column operations to reduce the remaining $(n-1) \times (n-1)$ determinant to the Vandermonde determinant of order $n-1$.}
+  \exhint[Hint (Y. St\"aubli)]{Use induction on $n$. Subtract the first row from each of the subsequent rows, factor out $(x_i - x_1)$ from the $i$-th row for each $i \ge 2$, and use the identity $x_i^m - x_1^m = (x_i - x_1) \sum_{k=0}^{m-1} x_i^k x_1^{m-1-k}$ along with column operations to reduce the remaining $(n-1) \times (n-1)$ determinant to the Vandermonde determinant of order $n-1$.}
   \exinfo{This exercise is Problem 8 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:vandermonde_determinant}
 \end{exercise}
@@ -829,7 +829,7 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
   \end{pmatrix}
   \]
   over the field $\mathbb{R}$ and over the finite field $\mathbb{F}_5$. Is $B$ invertible over each of these fields?
-  \exhint[Official Hint]{Compute the determinant using Laplace expansion, for instance along rows or columns containing many zero entries.}
+  \exhint[Hint (Y. St\"aubli)]{Compute the determinant using Laplace expansion, for instance along rows or columns containing many zero entries.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:determinant_5x5_laplace}
 \end{exercise}
@@ -847,7 +847,7 @@ Recall that if $D$ is a determinant function on $\M_{(n-1) \times (n-1)}(K)$, th
   \end{pmatrix}.
   \]
   Prove that $\det(A_n) = n+1$ for all $n \ge 1$.
-  \exhint[Official Hint]{Use induction on $n$. Expand the determinant along the first row (or column) to establish the recurrence relation $\det(A_n) = 2 \det(A_{n-1}) - \det(A_{n-2})$. Since this relates $\det(A_n)$ to two preceding terms, verify two base cases ($n=1$ and $n=2$).}
+  \exhint[Hint (Y. St\"aubli)]{Use induction on $n$. Expand the determinant along the first row (or column) to establish the recurrence relation $\det(A_n) = 2 \det(A_{n-1}) - \det(A_{n-2})$. Since this relates $\det(A_n)$ to two preceding terms, verify two base cases ($n=1$ and $n=2$).}
   \exinfo{This exercise is Problem 4 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:tridiagonal_toeplitz_determinant}
 \end{exercise}
@@ -930,7 +930,7 @@ using $(\adj A)_{ji} = C_{ij}$ from the Definition on \cpageref{def:classical_ad
     \item $\det(\adj A) = \det(A)$;
     \item $\adj(A\transp) = (\adj A)\transp$.
   \end{enumerate}
-  \exhint[Official Hint]{Perform direct algebraic calculations using the explicit entries of $A$ and $\adj A$.}
+  \exhint[Hint (Y. St\"aubli)]{Perform direct algebraic calculations using the explicit entries of $A$ and $\adj A$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:properties_2x2_adjugate}
 \end{exercise}
@@ -1078,60 +1078,26 @@ using \cref{thm:det_transpose} once more on each factor.
 \input{content/20-determinants-solutions.tex}
 
 \begin{ainote}
-This chapter came through in good order. All of 20.a.1--20.a.9, 20.b.1--20.b.6
-and 20.c.1--20.c.8 are present, in the notes' order, with the notes' proofs, and
-the printed numbers already matched, including the deliberate use of
-unnumbered \verb|lemma*| and \verb|definition*| around the cofactor identity and
-the classical adjoint, which is what keeps 20.c.6 landing on the theorem about
-the inverse.
+Determinants are built here in an order that looks circular and is not, and it
+is worth saying once why. Existence comes from a recursion, the expansion along
+a column, in which the sign of a permutation never appears; the Leibniz formula
+and the sign are derived only afterwards, from the object already in hand.
+\Cref{rem:no_circularity_sign} makes the point where it first arises.
 
-Three repairs. \Cref{thm:inverse_adjoint} was stated without any proof; it is
-the point the whole cofactor discussion has been building to, and the two lines
-it needs are supplied. The exercise inside the proof of \cref{prop:inv_2x2}
-stated the dichotomy as \qt{either the first column is the zero vector or the
-second column is a scalar multiple of the first}, while the proof two lines
-below it uses the notes' version, either column is a multiple of the other
---- and the zero case is subsumed there; the statement now matches what is
-used. And a sentence in the proof of \cpageref{lem:adj_property_left} was left
-behind a second time as a commented-out copy.
+Two hypotheses repay reading slowly. \Cref{prop:alternating_swap} assumes that
+$D$ is $n$-linear and vanishes on matrices with two equal \emph{adjacent} rows,
+and that adjacency is the whole strength of the statement: the two conditions
+listed after it, vanishing whenever any two rows are equal and changing sign
+under a swap, are conclusions drawn from that hypothesis rather than
+alternative forms of it. And statement \textbf{(d)} of the properties of
+$\det \colon \End(V) \to K$ on \cpageref{prop:det_endomorphism_properties}
+needs $\dim V \ge 1$.
 
-Prof. Biran marks three things \qt{exc.}: the column dichotomy just mentioned,
-$|S_n| = n!$, and the lower-triangular block shape. Two of them stood in the
-text as \verb|remark[Exercise]| and one as a parenthesis; all three are now
-exercises, solved above.
-
-The rigour pass supplied three missing proofs and repaired one statement.
-\Cref{prop:alternating_swap} opened \qt{let $D$ be an alternating function} and
-then offered \qt{$D$ is alternating} as one of two equivalent conditions,
-assuming what it concludes; its hypothesis is that $D$ is $n$-linear and
-vanishes on matrices with two equal \emph{adjacent} rows, and both listed
-statements are conclusions drawn from that. Its list, and that of
-\cref{thm:row_operations}, also printed as $1,2,3$ while both proofs refer to
-\textbf{(a)}, \textbf{(b)} and \textbf{(c)}.
-
-\Cref{cor:det_exists} and \cref{cor:det_pullout} were both stated without proof.
-The first carries \cref{lem:permutation_parity}, and the second is the engine of
-\cref{thm:det_multiplicative}, \cref{prop:block_matrix} and
-\cref{cor:det_columns}; each proof is three lines. \Cref{thm:unique_det} asserts
-existence as well as uniqueness and its proof addressed only uniqueness, which
-is now said. The order of these results looks circular and is not, so
-\cref{rem:no_circularity_sign} says once why: existence comes from a recursion
-in which the sign of a permutation never appears.
-
-The four properties of $\det : \End(V) \to K$ stood in running prose with no
-environment, although \cref{rem:eigenvalue_reformulations} in the previous
-chapter turns on the second of them; they are now the unnumbered Proposition on
-\cpageref{prop:det_endomorphism_properties}, with proofs, so 20.c.1--20.c.8 do
-not move. Statement \textbf{(d)} needs $\dim V \ge 1$, which is now a hypothesis.
-
-Smaller things: the inverse in \cref{prop:inv_2x2} was verified in one order
-only, and an inverse must satisfy the identity in both; the rank criterion the
-same proof opens with is \cref{aiprop:invertible_iff_full_rank} from ch. 17e;
-the passage from \cref{sum:cofactor_orthogonality} to
-\eqref{eq:adj_property_right}, which the text calls immediate, is one line of
-index bookkeeping and is now written out; and the proof of
-\cref{thm:cramers_rule} appealed to \qt{Linear Algebra I} for the unique
-solubility of $Ax = b$, which \cref{thm:inverse_adjoint} two results above
-already gives.
+Prof. Biran marks three things \qt{exc.}: the column dichotomy inside
+\cref{prop:inv_2x2}, the count $|S_n| = n!$, and the lower-triangular block
+shape. All three are exercises here, solved above. The first is worth keeping in
+his form rather than a weaker one. He writes that either column is a scalar
+multiple of the other, which already covers the case of a zero column, and it is
+that version the proof below him uses.
 \end{ainote}
 

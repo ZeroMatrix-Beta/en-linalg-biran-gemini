@@ -357,72 +357,34 @@ The first $n$ columns of $(C \mid D)$ are the columns $c_1, \dots, c_n$ of $C$, 
 \input{content/17e-matrices_e_elemntary_row_operations_revisited-solutions.tex}
 
 \begin{ainote}
-All five numbered statements of the notes are present in the transcript, in the
-notes' order and with the notes' proofs, but the printed numbers were each one
-too large: the three types of elementary matrix are introduced in the notes
-under \qt{Notation}, without a number, while the transcript wrapped them in a
-numbered \verb|definition|, which consumed 17.e.1 and pushed everything after
-it. That definition is now unnumbered, and 17.e.1 through 17.e.5 line up with
-the handwritten ones again.
+The three types of elementary matrix are introduced under \qt{Notation} and
+carry no number, here as in the notes, so that 17.e.1--17.e.5 keep Prof. Biran's
+own numbering. Four things he marks for the reader to check, the explicit form
+of $P_{ij}$, the calculation behind
+\cref{lemma:row_operations_matrix_multiplication},
+\cref{lemma:elementary_matrix_inverses} and
+\cref{lemma:block_matrix_multiplication}, are exercises with solutions above.
 
-The notes call the matrix units $E_{ij}$; the transcript renamed them
-$R_{ij}$, which collides with the $R_i$ that this very section uses for rows ---
-$R_{ij}$ and $R_i + \alpha R_j \to R_i$ appear within two lines of each other.
-The notes' $E_{ij}$ is restored. Note that the notes switch from the $E_i$ of
-the chapter on linear systems to $R_i$ here for rows; that switch is Prof.
-Biran's own and is left alone.
+Two letters are in play at once in this section, and they do not compete in
+Prof. Biran's own hand: he writes $R_i$ for rows and reserves $E_{ij}$ for the
+matrix units, in the chapter on linear systems and here alike. Both usages are
+kept as he has them.
 
-The notes mark four things for the reader: the explicit form of $P_{ij}$, the
-direct calculation behind \cref{lemma:row_operations_matrix_multiplication},
-\cref{lemma:elementary_matrix_inverses}, and
-\cref{lemma:block_matrix_multiplication}. All four are now exercises with
-solutions above. The proof of \cref{lemma:block_matrix_multiplication} in the
-transcript also carried its opening sentence twice, once with an exercise
-prompt and once with a hint.
-
-Finally, the transcript's example of a Type II matrix was $P_{3,4}$, correctly
-computed but not the notes' example; it is back to Prof. Biran's $P_{2,4}$.
-
-A later pass looking only for gaps in rigour found one product that does not
-compose. The elementary matrices are defined in $\M_{n \times n}(K)$, which is
-what \cref{lemma:row_operations_matrix_multiplication} needs, since it
-multiplies $A \in \M_{n \times p}(K)$ from the left. But
-\cref{rem:column_operations} multiplies the same $A$ from the right by the same
-matrices, and $A \cdot Q_{ij}(\alpha)$ is defined only for a $p \times p$
-factor. The remark now says that its elementary matrices are the ones of
-$\M_{p \times p}(K)$; the mathematics of all three statements is otherwise
-untouched, and the proof gains the note that it applies \textbf{(a)} to
-$A\transp$ with the roles of $n$ and $p$ interchanged.
-
-The chapter also carries the same pattern seen in the chapter on linear maps
-and bases: two of its steps rest on facts the book never
-states. \Cref{thm:elementary_matrix_decomposition} opens with \qt{$A$ is
-invertible, and hence $\rank(A) = n$}, and the proof of
-\cref{thm:matrix_inversion_algorithm} closes with the converse implication;
-neither direction is stated anywhere in the notes, each being assembled on the
-spot from \cref{lemma:invertible_iff_T_A_iso}, \cref{cor:equal_dim_iso} and
-\cref{prop:subspace_dimension_constraints}. Since the equivalence is nowhere in
-the lecture material, it is stated as
-\cref{aiprop:invertible_iff_full_rank} rather than as an unnumbered
-Proposition: the ai-family carries the robot marker that tells a reader this is
-not Prof. Biran's, and runs on its own counter, so 17.e.1--17.e.5 stay where
-they are.
-
-Seven further steps now name the reason they hold: the existence of the
-row-reduced echelon form, the invariance of the rank under row operations
-(twice), the identification of the only $n \times n$ row-reduced echelon matrix
-of rank $n$, the passage from left-multiplication by a chain of elementary
-matrices to a sequence of row operations (twice, once in each direction of
-\cref{thm:matrix_inversion_algorithm}), and the reversal of order when a
-product is inverted. The statement of
-\cref{thm:elementary_matrix_decomposition} asks for $k \ge 1$ while its proof
-produces no elementary matrix at all when $A = I_n$; the proof now closes that
-gap with $T_1 := S_1(1) = I_n$.
-
-Two smaller things. The proof following \cref{rem:column_operations} argues
-both that remark and the lemma above it, so its title now says which; and
-where it read \qt{But taking the transpose again}, nothing was in fact being
-transposed, the step being the observation that the rows of $A\transp$ are the
-columns of $A$. The logic was right either way.
+Three points deserve care. The elementary matrices are square of size $n$, which
+is what \cref{lemma:row_operations_matrix_multiplication} needs, since it
+multiplies $A \in \M_{n \times p}(K)$ from the left; but
+\cref{rem:column_operations} multiplies the same $A$ from the \emph{right}, and
+$A \cdot Q_{ij}(\alpha)$ only composes for a $p \times p$ factor, so the
+elementary matrices of that remark are those of $\M_{p \times p}(K)$. Next,
+\cref{thm:elementary_matrix_decomposition} asks for $k \ge 1$ factors, and the
+construction produces none at all when $A = I_n$; the harmless
+$T_1 := S_1(1) = I_n$ covers that case. Last, both
+\cref{thm:elementary_matrix_decomposition} and
+\cref{thm:matrix_inversion_algorithm} lean on the equivalence between
+invertibility of $A$ and $\rank(A) = n$. The notes never state it, assembling it
+on the spot each time, so it appears here as
+\cref{aiprop:invertible_iff_full_rank}: numbered on its own counter, and marked
+as not being Prof. Biran's.
 \end{ainote}
+
 

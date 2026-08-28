@@ -453,7 +453,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
     \item Show that $A \in \SOrth(3)$, i.e., $A$ is orthogonal and $\det(A) = 1$.
     \item Determine the axis of rotation $\Sp(v_1)$ and the rotation angle $\theta \in [0, \pi]$ of the linear isometry $T_A \colon \mathbb{R}^3 \to \mathbb{R}^3$.
   \end{enumerate}
-  \exhint[Official Hint]{(a) Compute $A\transp A = I_3$ and evaluate $\det(A) = 1$ using the Sarrus rule or expansion along a row.
+  \exhint[Hint (Y. St\"aubli)]{(a) Compute $A\transp A = I_3$ and evaluate $\det(A) = 1$ using the Sarrus rule or expansion along a row.
   (b) The rotation axis corresponds to the eigenspace $\Eig_A(1) = \ker(A - I_3)$. Solving $(A - I_3)v = 0$ gives $\Eig_A(1) = \Sp\big((-3, 1, -1)\transp\big)$, so the normalized axis vector is $v_1 = \frac{1}{\sqrt{11}}(-3, 1, -1)\transp$ (or its negative).
   By \cref{prop:classification_so3}, $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, so $\Tr(A) = 1 + 2\cos\theta$. From the matrix, $\Tr(A) = \frac{1}{3}(2 - 2 - 2) = -\frac{2}{3}$. Thus, $1 + 2\cos\theta = -\frac{2}{3} \implies \cos\theta = -\frac{5}{6}$, giving $\theta = \arccos(-5/6) \approx 146.44^\circ$.}
   \exinfo{This exercise is Problem 2 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -467,7 +467,7 @@ Prof. Biran annotates the parenthesis in \cref{prop:classification_so3} \textbf{
   |\Tr(f)| \le n.
   \]
   For which orthogonal endomorphisms $f$ does equality hold?
-  \exhint[Official Hint]{Let $\mathcal{B}$ be an orthonormal basis of $V$. Then $A := [f]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$. By the real classification of isometries (or passing to $\mathbb{C}$), the eigenvalues of $A$ are complex numbers $\lambda_j$ with $|\lambda_j| = 1$. Thus, $|\Tr(f)| = |\sum_{j=1}^n \lambda_j| \le \sum_{j=1}^n |\lambda_j| = n$ by the triangle inequality.
+  \exhint[Hint (Y. St\"aubli)]{Let $\mathcal{B}$ be an orthonormal basis of $V$. Then $A := [f]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$. By the real classification of isometries (or passing to $\mathbb{C}$), the eigenvalues of $A$ are complex numbers $\lambda_j$ with $|\lambda_j| = 1$. Thus, $|\Tr(f)| = |\sum_{j=1}^n \lambda_j| \le \sum_{j=1}^n |\lambda_j| = n$ by the triangle inequality.
   Equality $|\Tr(f)| = n$ holds if and only if all eigenvalues $\lambda_j$ lie on the same ray in $\mathbb{C}$ and have modulus $1$, which forces $\lambda_1 = \dots = \lambda_n = 1$ (so $f = \id_V$) or $\lambda_1 = \dots = \lambda_n = -1$ (so $f = -\id_V$).}
   \exinfo{This exercise is Problem 5 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:trace_orthogonal_endomorphism}
@@ -553,51 +553,26 @@ Note that the first assertion of \cref{prop:classification_so3} is what makes th
 \input{content/25-isometries-solutions.tex}
 % Creator: Opus 5
 \begin{ainote}
-Two of Prof. Biran's statements were sitting in running prose with nothing to
-cite. The names \newterm{orthogonal endomorphism} and \newterm{unitary
-endomorphism}, which \cref{prop:orth_unitary_matrix_rep},
-\cref{lem:eigenvalues_orthogonal}, \cref{cor:2d_isometry_matrix} and both
-exercises all use, were introduced in a single sentence between 25.a.2 and
-25.a.3; they are now the Definition on
-\cpageref{def:orthogonal_unitary_endomorphism}. And $\det A = \pm 1$ for
-$A \in \Orth(n)$, with $|\det A| = 1$ for $A \in \Unit(n)$, was a paragraph of
-running prose that \cref{cor:2d_isometry_matrix} had to cite in words, as
-\qt{the computation following \cref{prop:orth_unitary_matrix_rep}}; it is now
-the Proposition on \cpageref{prop:det_orth_unit_matrices}, with that paragraph
-as its proof. Both unnumbered, so that 25.a.1 to 25.a.10 do not move.
+Two things this chapter uses constantly arrive in the notes as passing remarks.
+The names \newterm{orthogonal endomorphism} and \newterm{unitary endomorphism}
+are introduced in a single sentence between 25.a.2 and 25.a.3, although
+\cref{prop:orth_unitary_matrix_rep}, \cref{lem:eigenvalues_orthogonal},
+\cref{cor:2d_isometry_matrix} and both exercises rest on them; they are given
+the Definition on \cpageref{def:orthogonal_unitary_endomorphism}. And
+$\det A = \pm 1$ for $A \in \Orth(n)$, with $|\det A| = 1$ for $A \in \Unit(n)$,
+is a paragraph of running prose that \cref{cor:2d_isometry_matrix} then has to
+appeal to; it becomes the Proposition on
+\cpageref{prop:det_orth_unit_matrices}, with that paragraph as its proof. Both
+are unnumbered, so 25.a.1--25.a.10 keep Prof. Biran's numbers.
 
-One gap in a proof. The implication \textbf{(b)} $\implies$ \textbf{(a)} of
-\cref{thm:isometry_equivalences} is proved with the polarization identity of
-\cref{exc:polarization} \textbf{(a)}, which is stated for a Euclidean space,
-while the theorem is asserted over $\mathbb{R}$ and over $\mathbb{C}$ alike. The
-complex half needed the Hermitian identity of \cref{exc:polarization}
-\textbf{(b)}, which the solutions to ch. 22a do supply; the proof now says so.
-
-Three silent steps in the same proof and the ones after it now name their
-reason: passing from $\langle v, e_j \rangle = \langle v, T^*Te_j \rangle$ for
-all $v$ to $T^*Te_j = e_j$ is \cref{lem:basic_properties_inner_prod}
-\textbf{(c)}; concluding $T^* \circ T = \id_V$ from agreement on a basis is the
-uniqueness half of \cref{thm:existence_uniqueness_linear_map}; and
-$\det(\overline{A}) = \overline{\det(A)}$, the fourth equality of the unitary
-determinant computation, holds because the Leibniz formula of
-\cref{thm:unique_det} is a sum of products and conjugation respects both.
-
-Also: the odd-degree polynomial argument opening the proof of
-\cref{prop:classification_so3} produces a root of $P_A$, and turning that into
-an eigenvalue is \cref{aiprop:eigenvalue_iff_root}. The coordinate map $\Phi$ in
-the proof of \cref{cor:2d_isometry_matrix} was called an isometry without
-argument; it preserves the norm by \cref{ailem:norm_in_orthonormal_basis}
-\textbf{(a)}, and the polarization step of \cref{thm:isometry_equivalences}
-never uses that the two spaces coincide.
-
-Checked and found correct: the two unit vectors orthogonal to
-$(\cos\theta, \sin\theta)\transp$ really are $\pm(-\sin\theta, \cos\theta)\transp$;
-$R_\theta \cdot \operatorname{diag}(1, -1)$ really is
-$\left(\begin{smallmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta
-\end{smallmatrix}\right)$; the reordering $(v_1, w_1, w_2) \to (w_1, v_1, w_2)$
-in case \textbf{(b)} of \cref{prop:classification_so3} does turn
-$\operatorname{diag}(-1, 1, -1)$ into $\operatorname{diag}(1, -1, -1)$; and
-$-R_{\theta'} = R_{\theta' + \pi}$.
+One step in the chapter deserves care. The implication \textbf{(b)}
+$\implies$ \textbf{(a)} of \cref{thm:isometry_equivalences} runs through a
+polarization identity, and the theorem is asserted over $\mathbb{R}$ and over
+$\mathbb{C}$ alike. The Euclidean identity of \cref{exc:polarization}
+\textbf{(a)} settles the real half only; the complex half needs the Hermitian
+identity of \cref{exc:polarization} \textbf{(b)}, whose extra conjugation is
+precisely what the real version has no room for. The proof says which one it is
+using at each turn.
 \end{ainote}
 
 

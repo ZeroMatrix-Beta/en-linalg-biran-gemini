@@ -155,34 +155,17 @@ For the general case, see the script, chapter 7.5.
 
 % Creator: Opus 5
 \begin{ainote}
-Nothing in this chapter is false, and the source-verification pass had already
-supplied most of what the argument leaves implicit: the definition of
-equivalence the Remark alludes to, the two steps of \eqref{eq:svd_pos_def}, the
-reading of $C^* C = I_n$ as an orthonormality statement, and the extension of an
-orthonormal system to a basis.
+This section is two pages and a single theorem, and the whole of it turns on one
+step that is easy to read past. The proof calls the diagonal entries $\eta_j$ of
+$Q^{-1} B Q$ positive reals, on the strength of a paragraph above it that speaks
+about the \emph{eigenvalues} of $B$. Those two lists agree because $Q^{-1} B Q$
+and $B$ are similar and therefore share a characteristic polynomial
+(\cref{lem:properties_char_poly} \textbf{(e)}), whose roots are exactly the
+eigenvalues (\cref{aiprop:eigenvalue_iff_root}). Without that identification
+$\lambda_j := +\sqrt{\eta_j}$ is not yet known to be defined at all, and with it
+the singular values come for free.
 
-The rigour pass named four more. That $B := A^* A$ is self adjoint is
-\cref{prop:properties_adjoint_matrix} \textbf{(e)} and \textbf{(c)}, and passing
-from the matrix $B$ to the endomorphism $T_B$, which is what
-\cref{lem:self_adj_properties} actually speaks about, is
-\cref{cor:adjoint_matrix_map}. The computation of $C^* C$ takes two adjoints
-silently, of a real diagonal matrix and of $Q$, the second being $Q^* = Q^{-1}$
-by \cref{lem:char_orthogonal_matrices} \textbf{(d)}, resp.
-\cref{lem:char_unitary_matrices} \textbf{(d)}. The identity
-$C = P \cdot \left(\begin{smallmatrix} I_n \\ 0 \end{smallmatrix}\right)$ is the
-definition of $P$ read column by column. And the reduction $n \le m$ announced in
-the first line of the proof is \cref{thm:rank_nullity} together with
-\cref{prop:subspace_dimension_constraints}.
-
-The one step that was doing real work unannounced: the proof calls the diagonal
-entries $\eta_j$ of $Q^{-1} B Q$ positive reals, which is the paragraph above
-applied to them, and that paragraph speaks about *eigenvalues* of $B$. The two
-are the same list because $Q^{-1} B Q$ and $B$ are similar, hence share a
-characteristic polynomial by \cref{lem:properties_char_poly} \textbf{(e)}, whose
-roots are the eigenvalues by \cref{aiprop:eigenvalue_iff_root}. Without that,
-$\lambda_j := +\sqrt{\eta_j}$ is not known to be defined.
-
-On the numbering: Prof. Biran numbers nothing in this two-page section, and the
-file's own header explains why printing the single theorem as 26.a.1 shifts
-nothing. That decision is left as it stands.
+Prof. Biran numbers nothing in this section. The single theorem is printed as
+26.a.1 regardless, which shifts nothing elsewhere and keeps the result citable;
+the header of the file records that decision.
 \end{ainote}

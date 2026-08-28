@@ -815,26 +815,27 @@ so that $\Img(S \circ T)$ is the image of the restricted linear map $S|_{\Img(T)
 \input{content/15a-linear-maps-solutions.tex}
 
 \begin{ainote}
-This was the most heavily damaged chapter the restoration met. Of the thirteen
-numbered statements in the notes for \cref{sec:kernel_image_rank}, the transcript
-kept five and hid the loss with a counter jump, a
-\verb|\setcounter{theorem}{11}| annotated as aligning the numbering with the
-notes. The missing eight are restored above in Prof. Biran's own order, so the
-printed numbers now agree with the handwritten ones throughout.
+The chapter's central definition carries a subtlety that the word
+\qt{isomorphism} tends to hide. \Cref{def:isomorphism} asks for a linear map
+with a \emph{linear} two-sided inverse, which on the face of it is more than
+bijectivity: a bijection has a set-theoretic inverse, and nothing in the
+definition of a linear map says that inverse respects addition and scaling.
+That it always does is the content of \cref{lem:bijective_is_iso}, and it is a
+small theorem rather than an observation. Every later proof that checks
+injectivity and surjectivity and then says \qt{isomorphism} is leaning on it,
+\cref{cor:equal_dim_iso} included.
 
-The gap that mattered most was \cref{def:isomorphism}. The transcript carried a
-definition of \emph{isomorphic spaces} at the very end of the chapter, while the
-word \qt{isomorphism} was already in use well above it, and the old proof of
-\cref{cor:equal_dim_iso} concluded from bijectivity that a map is an isomorphism,
-which is exactly \cref{lem:bijective_is_iso}, the one result the transcript had
-dropped. Both are back in the notes' positions.
-
-Two additions go beyond the notes. Prof. Biran leaves
-\cref{thm:iso_preserves_bases} unproved, so a proof is supplied; it then yields a
-second proof of \cref{thm:rank_nullity}, which takes a complement $U$ of
-$\ker(T)$ as in \cref{prop:existence_complement} and observes that $T|_U$ is an
-isomorphism onto $\Img(T)$. Neither ingredient depends on the rank theorem, so
-the second proof is not circular.
+The Rank-Nullity theorem is proved twice here, and the two proofs are worth
+comparing rather than merely counting. The first extends a basis of $\ker T$ to
+one of $V$ and shows the extension maps to a basis of $\Img T$; it is a
+computation with coordinates and it yields the numbers. The second decomposes
+$V = \ker T \oplus U$ and identifies $\Img T$ with $U$ itself, which is more
+information: it names a concrete subspace of $V$ that the image is a copy of,
+and it is the form the theorem takes whenever a later chapter wants the
+splitting and not merely the count. What it does not give is canonicity. The
+complement $U$ is one of many (\cref{rem:complement_not_unique}), so the
+resulting isomorphism $U \cong \Img T$ depends on a choice, and only the
+dimension it produces does not.
 \end{ainote}
 
 

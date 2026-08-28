@@ -292,21 +292,30 @@ Adding the two expressions writes $x$ as a linear combination of the members of 
 \input{content/14-sums-of-vector-spaces-solutions.tex}
 
 \begin{ainote}
-\Cref{cor:trivial_intersection} deserves a word. The notes state \emph{five}
-equivalent conditions and the transcript kept only four: the two dimension
-criteria, $\dim(U + W) = \dim U + \dim W$ and $\dim(U \cap W) = 0$, were lost,
-and in their place stood a garbled duplicate of statement \textbf{(e)}. Prof.
-Biran's list is restored, together with his hypothesis that $U$ and $W$ be
-finite-di\-men\-sional, without which the two dimension criteria mean nothing.
-That something had gone missing was visible in the transcript itself, whose
-remark after \cref{def:complement} already spoke of \qt{the five equivalent
-statements}.
+\Cref{cor:trivial_intersection} deserves a word about its hypotheses, because
+its five conditions do not all cost the same. Statements \textbf{(c)},
+\textbf{(d)} and \textbf{(e)}, that $U \cap W = \{0_V\}$, that every element of
+$U + W$ decomposes uniquely, and that only the trivial decomposition of $0$
+exists, are equivalent in any vector space whatever. The other two are dimension
+counts and mean nothing unless $U$ and $W$ are finite-di\-men\-sional; the
+hypothesis at the head of the corollary is there for their sake alone. Keeping
+the two groups apart matters later: ch. 22b applies the equivalence of
+\textbf{(c)} and \textbf{(d)} to $U$ and $U^\perp$ inside an inner product space
+expressly allowed to be infinite-di\-men\-sional. That citation reaches past the
+hypothesis printed here, and legitimately so, since the half of the proof it
+uses never counts anything.
 
-One correction of statement. \Cref{rem:complement_not_unique} said that a
-subspace $U \subsetneq V$ has many complements. It needs $U \ne \{0_V\}$ as well:
-the zero subspace has $W = V$ as its only complement, since $\{0_V\} + W = W$,
-and there is nothing to choose. The figure beside the remark had assumed as much
-all along, taking for $U$ a line rather than a point, which is the sort of
-disagreement between a picture and its caption worth checking for elsewhere.
+Statement \textbf{(d)} is the one that travels furthest. Uniqueness of the
+decomposition is precisely what makes a projection onto a direct summand a
+well-defined map, and everything ch. 22b proves about orthogonal projection
+rests on that single observation rather than on anything metric.
+
+The direct sum is also where the book first meets a construction with no
+canonical choice in it. A complement exists (\cref{prop:existence_complement})
+and is almost never unique (\cref{rem:complement_not_unique}), so every
+argument that picks one has to be checked for independence of the pick. That
+pattern recurs with bases, with Jordan bases, and with the isomorphism
+$V \cong V^*$ of ch. 18, which is exactly the point at which \qt{no canonical
+choice} stops being a curiosity.
 \end{ainote}
 
