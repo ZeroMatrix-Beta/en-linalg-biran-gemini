@@ -18,7 +18,7 @@
 
 Let $V$ be a vector space over $K$ (any field). Recall that we have the dual space $V^* := \Hom(V, K)$, which is the space of linear maps $\varphi \colon V \to K$ (also called \newterm[linear functional]{functionals}). The dual space $V^*$ is also a vector space over $K$.
 
-\begin{warmup}
+\begin{warmup}[Linear Functionals on $K^n$ as Row Matrices]
 Assume $V = K^n$ and let $\varphi \colon K^n \to K$ be a functional. Then there exists a unique matrix $A = (a_1, \dots, a_n) \in \M_{1 \times n}(K)$ such that $\varphi(v) = A \cdot v$ for all $v \in K^n$.
 
 Indeed, let $e_1, \dots, e_n$ be the standard basis for $K^n$, and define $a_1 := \varphi(e_1), \dots, a_n := \varphi(e_n)$. Let $v = (v_1, \dots, v_n)\transp \in K^n$. Then
@@ -39,7 +39,7 @@ The map $\varphi_u$ is linear.
 (This is left as an exercise).
 
 % Thm 23.a.1
-\begin{theorem}
+\begin{theorem}[Riesz Representation Theorem for Inner Product Spaces]
 \label{thm:dual_space_inner_product_isomorphism}
 Let $(V, \langle \cdot, \cdot \rangle)$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$). Let $\varphi \in V^*$. Then there exists a unique vector $u \in V$ such that $\varphi = \varphi_u$, that is, $\varphi(v) = \langle v, u \rangle$ for all $v \in V$.
 

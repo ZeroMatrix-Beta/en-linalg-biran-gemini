@@ -69,7 +69,7 @@ Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$ be
     \]
     as polynomials in the polynomial ring $K[t]$.
 \end{enumerate}
-\exhint[Hint (Y. St\"aubli)]{(a) For the forward implication, use the explicit adjugate formula for $A^{-1}$; for the reverse implication, use the multiplicativity of the determinant $\det(AB) = \det(A)\det(B)$. (b) First show that $\det(tI_2 - A) = t^2 - (\operatorname{tr} A)t + \det A$, where $\operatorname{tr}(A) = a + d$, and compare coefficients.}
+\exhint[Hint (Y. St\"aubli)]{(a) For the forward implication, use the explicit adjugate formula for $A^{-1}$; for the reverse implication, use the multiplicativity of the determinant $\det(AB) = \det(A)\det(B)$. (b) First show that $\det(tI_2 - A) = t^2 - (\Tr A)t + \det A$, where $\Tr(A) = a + d$, and compare coefficients.}
 \exinfo{This exercise is Problem 2 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:invertibility_nilpotency_2x2}
 \end{exercise}
@@ -509,7 +509,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
 \begin{exercise}[Direct Proof of Multiplicativity of the Determinant via the Leibniz Formula]
   \label{exc:multiplicativity_via_leibniz}
   Prove the following proposition directly using the Leibniz formula:
-  \begin{proposition*}
+  \begin{proposition*}[Multiplicativity of the Determinant]
     Let $K$ be a field and let $A, B \in \M_{n \times n}(K)$. Then
     \[
     \det(A B) = \det(A) \cdot \det(B).
@@ -520,7 +520,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
   \det(AB) = \sum_{s_1=1}^n \cdots \sum_{s_n=1}^n \left( \prod_{i=1}^n B(s_i, i) \right) \det(A e_{s_1}, \dots, A e_{s_n}).
   \]
   Show that terms where the indices $s_1, \dots, s_n$ are not distinct vanish, so the sum reduces to permutations $\sigma \in S_n$. Then prove and apply the lemma:
-  \begin{lemma*}
+  \begin{lemma*}[Determinant of Permuted Columns]
     For all $A \in \M_{n \times n}(K)$ and all $\sigma \in S_n$,
     \[
     \det(A e_{\sigma(1)}, \dots, A e_{\sigma(n)}) = \sgn(\sigma) \det(A).
@@ -898,7 +898,7 @@ The scalars $C_{ij} := (-1)^{i+j} \det A(i|j)$ are called the \newterm[cofactor@
   \]
 \end{proof}
 
-\begin{summary}
+\begin{summary}[Cofactor Expansion and Orthogonality Relations]
 \label{sum:cofactor_orthogonality}
 For $A \in \M_{n \times n}(K)$, we have $\sum_{i=1}^n A_{ik} \cdot C_{ij} = \delta_{jk} \cdot \det(A)$, where $\delta_{jk}$ is the Kronecker delta (which is 1 if $j=k$, and 0 otherwise).
 \end{summary}

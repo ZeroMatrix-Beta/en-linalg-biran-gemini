@@ -370,6 +370,7 @@ Matrix multiplication is, in general, \textbf{not commutative}. There exist matr
 \subsection{Invertible Matrices}
 
 \begin{definition}[Invertibility]
+\label{def:invertible_matrix}
 An $n \times n$ matrix $A \in \M_{n \times n}(K)$ is called \newterm{invertible} if there exists a matrix $B \in \M_{n \times n}(K)$ such that $A \cdot B = B \cdot A = I_n$.
 \end{definition}
 
@@ -391,6 +392,7 @@ This proves the uniqueness.
 \end{proof}
 
 \begin{definition}[Inverse Matrix and the General Linear Group]
+\label{def:inverse_matrix_and_gl}
 If $A$ is invertible, the unique matrix $B$ such that $AB = BA = I_n$ (unique by the Proposition on \cpageref{prop:uniqueness_of_inverse_matrix}) is called the \newterm{inverse} of $A$ and is denoted by $A^{-1}$. We have:
 \begin{equation*}
     A \cdot A^{-1} = A^{-1} \cdot A = I_n
@@ -402,6 +404,7 @@ The set of all invertible $n \times n$ matrices over $K$ is denoted by:
 \end{definition}
 
 \begin{definition}[Group]
+\label{def:group}
 Let $G$ be a set and $\cdot : G \times G \to G$, $(a,b) \mapsto a \cdot b \in G$, be a binary operation. We say that $(G, \cdot)$ is a \newterm{group} if the following axioms hold:
 \begin{enumerate}
     \item \textbf{Associativity:} For all $g_1, g_2, g_3 \in G$, we have $g_1 \cdot (g_2 \cdot g_3) = (g_1 \cdot g_2) \cdot g_3$.

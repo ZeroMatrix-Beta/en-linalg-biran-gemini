@@ -349,7 +349,7 @@ The notes mark this proof as an exercise; it is carried out among the solutions 
 
 % Extractor: Gemini 3.1 Pro
 
-\begin{summary}
+\begin{summary}[Dual Spaces as a Contravariant Functor]
 In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and gives us a new vector space $V^*$. It also takes any linear map $T \colon V \to W$ and gives us a new map $T^*$ between the duals of $V$ and $W$, but the arrow is reversed: $T^* \colon W^* \to V^*$. This is an example of a \newterm{contravariant functor}.
 \end{summary}
 
@@ -390,10 +390,10 @@ Let $f \colon V \to W$ be a linear map between vector spaces over $K$. Which of 
 Let $V$ and $W$ be finite-dimensional vector spaces over a field $K$.
 \begin{enumerate}
     \item Show that $\Hom(V, W) \cong \Hom(W^*, V^*)$ via the assignment $T \mapsto T^*$.
-    \item Let $\operatorname{tr} \in \Hom(V, V)^*$ be the trace functional defined by $\operatorname{tr}(T) := \operatorname{tr}([T]_{\mathcal{B}}^{\mathcal{B}}) = \sum_{i=1}^n ([T]_{\mathcal{B}}^{\mathcal{B}})_{ii}$ for any chosen basis $\mathcal{B}$ of $V$.
+    \item Let $\Tr \in \Hom(V, V)^*$ be the trace functional defined by $\Tr(T) := \Tr([T]_{\mathcal{B}}^{\mathcal{B}}) = \sum_{i=1}^n ([T]_{\mathcal{B}}^{\mathcal{B}})_{ii}$ for any chosen basis $\mathcal{B}$ of $V$.
     Show that the linear map
     \[
-    \Theta \colon \Hom(V, V) \longrightarrow \Hom(V, V)^*, \qquad T \longmapsto \left( S \mapsto \operatorname{tr}(S \circ T) \right)
+    \Theta \colon \Hom(V, V) \longrightarrow \Hom(V, V)^*, \qquad T \longmapsto \left( S \mapsto \Tr(S \circ T) \right)
     \]
     is an isomorphism of vector spaces.
 \end{enumerate}

@@ -81,7 +81,7 @@ The definition of a Hermitian product \qt{coincides} with a scalar product if $V
 \end{remark}
 
 % lemma 22.a.3
-\begin{lemma}
+\begin{lemma}[Basic Properties of Inner Products]
 \label{lem:basic_properties_inner_prod}
 Let $V$ be a Euclidean/Hermitian vector space. Then:
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -93,7 +93,7 @@ All three parts are left as an exercise.
 \end{lemma}
 
 % def 22.a.4
-\begin{definition}
+\begin{definition}[Norm, Distance, and Orthogonality]
 \label{def:norm_distance_orthogonality}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $V$ be a Euclidean/Hermitian vector space. For all $v \in V$, define $\|v\| := \sqrt{\langle v, v \rangle} \in \mathbb{R}_{\geq 0}$. The mapping $\| \cdot \|$ is called the \newterm{norm} on $V$ induced by $\langle \cdot, \cdot \rangle$.
@@ -168,13 +168,13 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 \end{exercise}
 
 % Def. (22.a.6)
-\begin{definition}
+\begin{definition}[Symmetric Matrix]
 \label{def:symmetric_matrix}
     A matrix $A \in \M_{n \times n}(K)$ (where $K$ is any field) is called \newterm{symmetric} if $A\transp = A$ (i.e., $a_{ij} = a_{ji}$ for all $i,j$).
 \end{definition}
 
 % Def. (22.a.7)
-\begin{definition}
+\begin{definition}[Conjugate, Adjoint, and Hermitian Matrices]
 \label{def:adjoint_hermitian_matrices}
     \begin{enumerate}[label=\textbf{(\alph*)}]
         \item Let $A \in \M_{n \times m}(\mathbb{C})$. We write $\overline{A}$ for the matrix whose entry at $i,j$ is $\overline{(A_{ij})}$ (complex conjugation). That is, $(\overline{A})_{ij} := \overline{(A_{ij})}$.
@@ -234,7 +234,7 @@ Assume now that $A$ is symmetric. Then $\langle v, w \rangle_A = \langle w, v \r
 Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For example, $A = \left(\begin{smallmatrix} -1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$. Then, $\langle \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right) \rangle_A = -1$. But for a scalar product, we need $\langle v, v \rangle > 0$ for all $v \neq 0$. So, we lack positivity here.
 
 % Def. (22.a.8)
-\begin{definition}
+\begin{definition}[Positive Definite Real Matrix]
 \label{def:positive_definite_matrix_real}
     A symmetric matrix $A \in \M_{n \times n}(\mathbb{R})$ is called \newterm{positive definite} if $v\transp A v > 0$ for all $0 \neq v \in \mathbb{R}^n$.
 \end{definition}
@@ -251,7 +251,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
     If $\langle \cdot, \cdot \rangle_A$ is a scalar product, then $A$ is positive definite. (Proof: a bit later).
 \end{claim*}
 
-\begin{example}
+\begin{example}[Positive Definite Matrices in $\mathbb{R}^n$ and $\M_{2 \times 2}(\mathbb{R})$]
 \label{ex:pos_def_examples_real}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $a_1, \dots, a_n > 0$ (with $a_i \in \mathbb{R}$). Then the diagonal matrix $D = \left(\begin{smallmatrix} a_1 & & 0 \\ & \ddots & \\ 0 & & a_n \end{smallmatrix}\right)$ is positive definite. Indeed, if $v = (v_1, \dots, v_n)\transp$, then
@@ -272,13 +272,13 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
   a scalar product on $\mathbb{R}^2$?
   \exhint[Hint (Y. St\"aubli)]{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
-\exsol{sol:pos_def_examples_real_b}
+  \exsol{sol:pos_def_examples_real_b}
 \end{exercise}
 
 The situation for Hermitian products is similar.
 
 % Def. (22.a.9)
-\begin{definition}
+\begin{definition}[Positive Definite Complex Matrix]
 \label{def:positive_definite_matrix_complex}
     Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. We say that $A$ is \newterm{positive definite} if for all $0 \neq v \in \mathbb{C}^n$, we have $v\transp A \overline{v} > 0$.
     (Note that $v\transp A \overline{v} \in \mathbb{R}$, because $(\overline{v\transp A \overline{v}}) = \overline{v}\transp \overline{A} v = (\overline{v}\transp \overline{A} v)\transp = v\transp \overline{A}\transp \overline{v} = v\transp A \overline{v}$. Here, we used $(\cdot)\transp = (\cdot)$ for a scalar/$1\times1$ matrix, and the fact that $A$ is Hermitian. Recall that if $v = (v_1, \dots, v_n)\transp \in \mathbb{C}^n$, then $\overline{v} := (\overline{v}_1, \dots, \overline{v}_n)\transp$).
@@ -337,18 +337,18 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The matrix $A\transp A$ is symmetric.
     \item The matrix $A\transp A$ is positive definite if and only if $A$ is invertible.
-    \item $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
+    \item $\rank(A\transp A) = \rank(A)$.
   \end{enumerate}
   \exhint[Hint (Y. St\"aubli)]{(a) Compute $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$.
   (b) For any $v \in \mathbb{R}^n$, we have $v\transp (A\transp A) v = (A v)\transp (A v) = \|A v\|^2 \ge 0$. Thus, $v\transp (A\transp A) v > 0$ for all $v \neq 0$ if and only if $Av \neq 0$ for all $v \neq 0$, which is equivalent to $\ker(A) = \{0\}$, i.e., $A$ is invertible.
-  (c) Show that $\ker(A\transp A) = \ker(A)$: if $v \in \ker(A)$, then clearly $A\transp A v = 0$; conversely, if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$. By the rank-nullity theorem, $\operatorname{rank}(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \operatorname{rank}(A)$.}
+  (c) Show that $\ker(A\transp A) = \ker(A)$: if $v \in \ker(A)$, then clearly $A\transp A v = 0$; conversely, if $A\transp A v = 0$, then $\|Av\|^2 = v\transp A\transp A v = 0 \implies Av = 0$. By the rank-nullity theorem, $\rank(A\transp A) = n - \dim\ker(A\transp A) = n - \dim\ker(A) = \rank(A)$.}
   \exinfo{This exercise is Problem 4 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:gram_matrix_properties}
 \end{exercise}
 
 \subsection*{The geometry on \texorpdfstring{$V$}{V} depends on the choice of inner product}
 
-\begin{example}
+\begin{example}[Geometry of Weighted Scalar Products in $\mathbb{R}^2$]
     Let $V = \mathbb{R}^2$, $\langle v, w \rangle = v_1 w_1 + v_2 w_2$ (the standard scalar product on $\mathbb{R}^2$). Let $\langle v, w \rangle' = a_1 v_1 w_1 + a_2 v_2 w_2$, where $a_1, a_2 > 0$. Note that $\langle v, w \rangle'$ is $\langle v, w \rangle_A$ for $A = \left(\begin{smallmatrix} a_1 & 0 \\ 0 & a_2 \end{smallmatrix}\right)$.
     
     The unit sphere for $\langle \cdot, \cdot \rangle$: $S = \{v \in \mathbb{R}^2 \mid \|v\| = 1\} = \{(v_1, v_2) \mid v_1^2 + v_2^2 = 1\}$.
@@ -372,7 +372,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \end{center}
 \end{example}
 
-\begin{example}
+\begin{example}[Matrix-Dependent Orthogonality]
     Let $A = \left(\begin{smallmatrix} 1 & -1 \\ -1 & 2 \end{smallmatrix}\right)$. It is positive definite (why?). Let $\langle \cdot, \cdot \rangle$ be the standard scalar product, and let $\langle \cdot, \cdot \rangle' := \langle \cdot, \cdot \rangle_A$.
     We have:
     \[
@@ -426,7 +426,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \subsection*{Norms and angles}
 
 % Def. (22.a.10)
-\begin{definition}
+\begin{definition}[Norm on a Vector Space]
 \label{def:norm}
     Let $V$ be a vector space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$). A \newterm{norm} on $V$ is a function $\| \cdot \|: V \to \mathbb{R}_{\geq 0}$ such that:
     \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -508,7 +508,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \end{proof}
 
 % Cor. (22.a.12)
-\begin{corollary}
+\begin{corollary}[Induced Norm and Triangle Inequality]
 \label{cor:norm_induced}
     Let $V$ be a vector space and $\langle \cdot, \cdot \rangle$ an inner product on $V$. Then $V \ni v \mapsto \|v\| := \sqrt{\langle v, v \rangle}$ is a norm on $V$.
 \end{corollary}
@@ -541,7 +541,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \end{exercise}
 
 % Def. (22.a.13)
-\begin{definition}
+\begin{definition}[Angle between Vectors]
 \label{def:angle}
     Let $(V, \langle \cdot, \cdot \rangle)$ be a Euclidean space. Let $u, v \in V$ be two non-zero vectors. By the Cauchy-Schwarz inequality, $-1 \leq \frac{\langle u, v \rangle}{\|u\| \cdot \|v\|} \leq 1$. We define the \newterm{angle} between $u$ and $v$ to be the unique $\alpha \in [0, \pi]$ such that:
     \[
@@ -583,7 +583,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \subsection*{The Gram-Schmidt orthogonalization process.}
 
 % Thm. (22.a.14)
-\begin{theorem}
+\begin{theorem}[Properties of Orthogonal Systems]
 \label{thm:properties_orthogonal_systems}
     Let $(V, \langle \cdot, \cdot \rangle)$ be an inner product space.
     \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -612,7 +612,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 \end{proof}
 
 % Prop. (22.a.15)
-\begin{proposition}
+\begin{proposition}[Representation Matrix with Orthonormal Basis]
 \label{prop:matrix_representation_orthonormal}
     Let $V, W$ be vector spaces over $K$ ($= \mathbb{R}$ or $\mathbb{C}$) and let $\langle \cdot, \cdot \rangle$ be an inner product on $W$. Let $\mathcal{B} = (v_1, \dots, v_n)$ be a basis for $V$ and $\mathcal{C} = (w_1, \dots, w_m)$ an \emph{orthonormal} basis for $W$. Let $T: V \to W$ be a linear map. Write $[T]_{\mathcal{C}}^{\mathcal{B}} = (a_{ij})$. Then $a_{ij} = \langle T(v_j), w_i \rangle$ for all $i,j$. 
     (If $\mathcal{C}$ is only an orthogonal basis, then $a_{ij} = \langle T(v_j), w_i \rangle / \langle w_i, w_i \rangle$).
@@ -666,7 +666,7 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
 \end{proof}
 
 % Cor. (22.a.17)
-\begin{corollary}
+\begin{corollary}[Existence of Orthonormal Bases]
 \label{cor:orthonormal_basis_exists}
     Every finite-di\-men\-sional inner product space has an orthonormal basis.
 \end{corollary}

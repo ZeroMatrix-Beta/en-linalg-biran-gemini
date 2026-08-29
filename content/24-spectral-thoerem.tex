@@ -21,13 +21,13 @@ The professor left a note to \qt{explain the name} of the Spectral Theorems. In 
 
 % Extractor: Gemini 3.1 Pro
 % Def. (24.a.1)
-\begin{definition}
+\begin{definition}[Orthogonally Diagonalizable Endomorphism]
 \label{def:orthogonally_diagonalizable}
 Let $V$ be an inner product space and $T \colon V \to V$ an endomorphism. We say that $T$ is \newterm{orthogonally diagonalizable} if there exists an orthonormal basis for $V$ consisting of eigenvectors of $T$.
 \end{definition}
 
 % Lemma. (24.a.2)
-\begin{lemma}
+\begin{lemma}[Orthogonal Diagonalizability Implies Normality]
 \label{lem:orth_diag_implies_commute}
 If $T$ is orthogonally diagonalizable, then $T \circ T^* = T^* \circ T$. (Here, and wherever an adjoint appears in this chapter, $V$ is understood to be finite-di\-men\-sional: the construction of $T^*$ in the previous chapter inverts the map $\Phi_V$, and every statement about adjoints, \cref{lem:properties_adjoint_map} included, assumes as much.)
 \end{lemma}
@@ -57,7 +57,7 @@ and therefore, $T \circ T^* = T^* \circ T$ (two endomorphisms with the same repr
 \end{proof}
 
 % Def. (24.a.3)
-\begin{definition}
+\begin{definition}[Normal Endomorphisms and Normal Matrices]
 \label{def:normal_endomorphism}
 Let $V$ be an inner product space. An endomorphism $T \colon V \to V$ is called \newterm{normal} if $T \circ T^* = T^* \circ T$. 
 
@@ -141,7 +141,7 @@ Let $V$ be a finite-di\-men\-sional inner product space over $K$ (where $K = \ma
   Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix.
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Show that $A\transp A$ is symmetric and positive definite if and only if $A$ is invertible.
-    \item Show that $\operatorname{rank}(A\transp A) = \operatorname{rank}(A)$.
+    \item Show that $\rank(A\transp A) = \rank(A)$.
     \item Let $(\lambda_1, v_1)$ and $(\lambda_2, v_2)$ be eigenvalue-eigenvector pairs of $A$ with non-zero eigenvalues $\lambda_1, \lambda_2 \in \mathbb{R}$. Prove that if $\lambda_1 \ne \lambda_2$, then $v_1 \perp v_2$ with respect to the standard scalar product on $\mathbb{R}^n$.
   \end{enumerate}
   \exhint[Hint (Y. St\"aubli)]{For \textbf{(a)} and (b), recall that $\|Av\|^2 = v\transp (A\transp A) v$ and $\ker(A\transp A) = \ker(A)$.
@@ -266,7 +266,7 @@ In the proof above, we used $K = \mathbb{C}$ \emph{only} at one place: when we s
 \end{remark}
 
 % Cor. (24.a.6)
-\begin{corollary}
+\begin{corollary}[Spectral Theorem for Real Trigonalizable Normal Operators]
 \label{cor:spectral_thm_real_trigonalizable}
 Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$, and let $T \colon V \to V$ be an endomorphism which is normal. If $T$ is trigonalizable (which by \cref{thm:trig_condition} is true if and only if the characteristic polynomial $P_T(x)$ factors as a product of linear factors over $\mathbb{R}$), then $T$ is orthogonally diagonalizable.
 \end{corollary}
@@ -285,7 +285,7 @@ Read the proof of \cref{thm:spectral_thm_c} again with $K = \mathbb{R}$. Trigona
 We've seen that over $\mathbb{R}$, the statement \qt{$T \in \End(V)$ is normal $\implies T$ is orthogonally diagonalizable} does not hold in general. We need a stronger condition.
 
 % Lemma. (24.a.7)
-\begin{lemma}
+\begin{lemma}[Real Orthogonally Diagonalizable Operators are Self-Adjoint]
 \label{lem:real_orth_diag_is_self_adj}
 Let $V$ be a finite-di\-men\-sional inner product space over $\mathbb{R}$, and let $T \in \End(V)$ be orthogonally diagonalizable. Then $T^* = T$.
 \end{lemma}
@@ -299,7 +299,7 @@ where the first equality is \cref{prop:matrix_representation_adjoint}, whose con
 \end{proof}
 
 % Def. (24.a.8)
-\begin{definition}
+\begin{definition}[Self-Adjoint Endomorphisms and Matrices]
 \label{def:self_adjoint}
 Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and $T \in \End(V)$. $T$ is called \newterm[self-adjoint]{self adjoint} if $T^* = T$. 
 
@@ -337,7 +337,7 @@ Let $V$ be a Euclidean space (i.e., an inner product space over $\mathbb{R}$) of
 For the proof, we need the following lemma:
 
 % Lemma. (24.a.10)
-\begin{lemma}
+\begin{lemma}[Eigenvalues and Characteristic Polynomial of Self-Adjoint Operators]
 \label{lem:self_adj_properties}
 Let $V$ be an inner product space over $K$ (where $K = \mathbb{R}$ or $\mathbb{C}$), and let $T \in \End(V)$ be self adjoint. Then:
 \begin{enumerate}[label=\textbf{(\alph*)}]

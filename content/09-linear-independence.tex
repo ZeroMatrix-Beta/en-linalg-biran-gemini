@@ -47,7 +47,7 @@ Let $V$ be a vector space. The following properties hold for any finite list of 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The zero vector $0_V$ can always be written as a trivial linear combination of any finite list of vectors: $0 \cdot v_1 + \dots + 0 \cdot v_n = 0_V$.
     \item The order of the vectors in a list does not affect their linear independence.
-    \item If a list $v_1, \dots, v_n$ contains two identical vectors (i.e., $v_k = v_l$ for some $k \ne l$), then the list is NOT linearly independent.
+    \item If a list $v_1, \dots, v_n$ contains two identical vectors (i.e., $v_k = v_\ell$ for some $k \ne \ell$), then the list is NOT linearly independent.
     \item If the zero vector $0_V$ is an element of the list, then the list is NOT linearly independent.
 \end{enumerate}
 \end{lemma}
@@ -57,9 +57,9 @@ We address each property:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Follows trivially from the vector space axioms (specifically $0 \cdot v = 0_V$ for all $v \in V$).
     \item Follows trivially from the commutativity of vector addition in $V$.
-    \item Assume $v_k = v_l$ for some $1 \le k < l \le n$. We can construct a specific linear combination where the coefficient for $v_k$ is $1$, the coefficient for $v_l$ is $-1$, and all other coefficients are $0$:
+    \item Assume $v_k = v_\ell$ for some $1 \le k < \ell \le n$. We can construct a specific linear combination where the coefficient for $v_k$ is $1$, the coefficient for $v_l$ is $-1$, and all other coefficients are $0$:
     \[
-    0 \cdot v_1 + \dots + 1 \cdot v_k + \dots + (-1) \cdot v_l + \dots + 0 \cdot v_n = v_k - v_l = 0_V
+    0 \cdot v_1 + \dots + 1 \cdot v_k + \dots + (-1) \cdot v_\ell + \dots + 0 \cdot v_n = v_k - v_l = 0_V
     \]
     Because we found a linear combination equal to $0_V$ where not all coefficients are zero (specifically, $a_k = 1 \ne 0$), the list fails the definition and is therefore not linearly independent.
 

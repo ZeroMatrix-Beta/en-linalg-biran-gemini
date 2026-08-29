@@ -91,7 +91,7 @@ This shows that $\mathcal{F}_{a_0, a_1} + \mathcal{F}_{b_0, b_1} = \mathcal{F}_{
 \end{enumerate}
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}[Linear Combinations of Fibonacci Sequences]
 \label{cor:fib_linear_combination}
 By \cref{prop:fib_closure}, linear combinations of Fibonacci sequences are also Fibonacci sequences. That is, for any scalars $\alpha, \beta \in \mathbb{R}$, we have:
 \[
@@ -126,7 +126,7 @@ First, we can rule out arithmetic sequences. Except for the trivial zero sequenc
 
 Next, we ask: perhaps for some choice of $a_0, a_1$, the sequence $\mathcal{F}_{a_0, a_1}$ coincides with a geometric sequence? Let us try a geometric sequence of the form $\mathcal{G} = (1, q, q^2, q^3, \dots, q^n, \dots)$. 
 
-\begin{lemma}
+\begin{lemma}[Geometric Sequences Satisfying the Fibonacci Recurrence]
 \label{lem:geometric_fibonacci}
 A geometric sequence $\mathcal{G} = (1, q, q^2, \dots)$ with $q \ne 0$ is a Fibonacci sequence if and only if $q = \frac{1 \pm \sqrt{5}}{2}$.
 \end{lemma}
@@ -417,7 +417,7 @@ $\varphi$ or $\psi$ satisfies $S(\mathcal{A}) = \lambda \cdot \mathcal{A}$ by th
 computation read backwards.
 \end{proof}
 
-\begin{conclusion}
+\begin{conclusion}[Geometric Sequences as Eigenvectors of the Shift Operator]
 Taking $a_0 = 1$, the two geometric sequences
 \[
 \mathcal{F}_{1, \varphi} = (1, \varphi, \varphi^2, \dots, \varphi^n, \dots)

@@ -13,18 +13,18 @@
     We compute the characteristic polynomial of $A$ in $K[t]$:
     \begin{align*}
     \det(tI_2 - A) &= \det \begin{pmatrix} t - a & -b \\ -c & t - d \end{pmatrix} = (t - a)(t - d) - bc \\
-    &= t^2 - (a + d)t + (ad - bc) = t^2 - (\operatorname{tr} A)t + \det A.
+    &= t^2 - (a + d)t + (ad - bc) = t^2 - (\Tr A)t + \det A.
     \end{align*}
-    Thus $\det(tI_2 - A) = t^2 \iff \operatorname{tr} A = 0$ and $\det A = 0$.
+    Thus $\det(tI_2 - A) = t^2 \iff \Tr A = 0$ and $\det A = 0$.
     \begin{itemize}
-        \item If $\operatorname{tr} A = 0$ and $\det A = 0$, direct computation yields:
+        \item If $\Tr A = 0$ and $\det A = 0$, direct computation yields:
         \[
         A^2 = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} a & b \\ c & -a \end{pmatrix} = \begin{pmatrix} a^2 + bc & b(a+d) \\ c(a+d) & bc + d^2 \end{pmatrix} = \begin{pmatrix} a^2 + bc & 0 \\ 0 & bc + a^2 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix},
         \]
         since $a^2 + bc = -ad + bc = -(ad - bc) = -\det A = 0$.
         \item Conversely, if $A^2 = 0$, then $(\det A)^2 = \det(A^2) = \det(0) = 0 \implies \det A = 0$.
-        By the Cayley-Hamilton relation for $2 \times 2$ matrices, $A^2 - (\operatorname{tr} A)A + (\det A)I_2 = 0$, which reduces to $(\operatorname{tr} A)A = 0$.
-        If $A \ne 0$, this implies $\operatorname{tr} A = 0$. If $A = 0$, then $\operatorname{tr} A = 0$ and $\det A = 0$ trivially.
+        By the Cayley-Hamilton relation for $2 \times 2$ matrices, $A^2 - (\Tr A)A + (\det A)I_2 = 0$, which reduces to $(\Tr A)A = 0$.
+        If $A \ne 0$, this implies $\Tr A = 0$. If $A = 0$, then $\Tr A = 0$ and $\det A = 0$ trivially.
     \end{itemize}
     Therefore, $A^2 = 0 \iff \det(tI_2 - A) = t^2$. \qedhere
 \end{enumerate}

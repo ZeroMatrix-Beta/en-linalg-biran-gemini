@@ -84,15 +84,15 @@ Therefore, Assertion \textbf{(4)} is not equivalent to the others.
     Hence $T(v) = 0$ for all $v \in V$, so $T = 0$. Thus, $\ker(\Phi) = \{0\}$.
     Since $\dim \Hom(V, W) = (\dim V)(\dim W) = (\dim W^*)(\dim V^*) = \dim \Hom(W^*, V^*) < \infty$, the injective map $\Phi$ is an isomorphism.
 
-    \item Consider $\Theta \colon \Hom(V, V) \to \Hom(V, V)^*$ given by $\Theta(T)(S) := \operatorname{tr}(S \circ T)$.
+    \item Consider $\Theta \colon \Hom(V, V) \to \Hom(V, V)^*$ given by $\Theta(T)(S) := \Tr(S \circ T)$.
     By linearity of composition and of the trace, $\Theta$ is a linear map.
-    To show injectivity: suppose $T \in \ker(\Theta)$, so $\operatorname{tr}(S \circ T) = 0$ for all $S \in \Hom(V, V)$.
+    To show injectivity: suppose $T \in \ker(\Theta)$, so $\Tr(S \circ T) = 0$ for all $S \in \Hom(V, V)$.
     Fix an ordered basis $\mathcal{B}$ of $V$, and let $A := [T]_{\mathcal{B}}^{\mathcal{B}} = (a_{ij}) \in \M_{n \times n}(K)$.
     For any pair $(p, q)$ with $1 \le p, q \le n$, let $S_{pq} \in \Hom(V, V)$ be the operator whose representation matrix is the elementary matrix $E_{pq}$.
     Then $[S_{pq} \circ T]_{\mathcal{B}}^{\mathcal{B}} = E_{pq} A$.
     The trace is:
     \[
-    \operatorname{tr}(S_{pq} \circ T) = \operatorname{tr}(E_{pq} A) = \sum_{i=1}^n (E_{pq} A)_{ii} = \sum_{i=1}^n \delta_{ip} a_{qi} = a_{qp}.
+    \Tr(S_{pq} \circ T) = \Tr(E_{pq} A) = \sum_{i=1}^n (E_{pq} A)_{ii} = \sum_{i=1}^n \delta_{ip} a_{qi} = a_{qp}.
     \]
     Since $\Theta(T)(S_{pq}) = 0$, we have $a_{qp} = 0$ for all $1 \le p, q \le n$.
     Thus $A = 0$, which implies $T = 0$.

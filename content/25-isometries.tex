@@ -135,7 +135,7 @@ Back to matrices. Recall that:
 \end{itemize}
 
 % Prop. (25.a.3)
-\begin{proposition}
+\begin{proposition}[Matrix Representation of Isometries]
 \label{prop:orth_unitary_matrix_rep}
 Let $V$ be an $n$-di\-men\-sional inner product space over $\mathbb{R}$ (resp. $\mathbb{C}$). Let $\mathcal{B}$ be an orthonormal basis for $V$, and let $T \in \End(V)$. Then, $T$ is orthogonal (resp. unitary) if and only if $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Orth(n)$ (resp. $[T]_{\mathcal{B}}^{\mathcal{B}} \in \Unit(n)$).
 \end{proposition}
@@ -214,7 +214,7 @@ This is the claim Prof. Biran circles with \qt{Exc.} Prove the three statements 
 \section{Classification of the Elements of \texorpdfstring{$\Orth(2)$, $\Orth(3)$}{O(2), O(3)}, etc.}
 
 % Lemma. (25.a.6)
-\begin{lemma}
+\begin{lemma}[Eigenvalues of Orthogonal Matrices]
 \label{lem:eigenvalues_orthogonal}
 Let $A \in \Orth(n)$. If $\lambda$ is a real eigenvalue of $A$, then $\lambda = \pm 1$.
 \end{lemma}
@@ -333,13 +333,13 @@ and therefore, the basis $\mathcal{B} = (v_1, v_2)$ appearing in statement \text
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 
-\begin{summary}
+\begin{summary}[Structure of $\Orth(2)$]
 $\SOrth(2) =$ rotations. \\
 $\Orth(2) \setminus \SOrth(2) =$ reflections.
 \end{summary}
 
 % Cor. (25.a.8)
-\begin{corollary}
+\begin{corollary}[Canonical Form of 2D Isometries]
 \label{cor:2d_isometry_matrix}
 Let $V$ be a 2-di\-men\-sional Euclidean space and $T \colon V \to V$ a linear isometry. Then $\det(T) = \pm 1$. 
 Moreover, there exists an orthonormal basis $\mathcal{B}$ for $V$ such that:
