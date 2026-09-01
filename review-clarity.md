@@ -374,3 +374,16 @@ Of these, 16 and 17 are unconfirmed leads that a first grep did not reproduce,
 and 3 needs a decision that cannot be made from the repository alone: the
 exercise says $5p^3(6)$ and its own official solution says $5p(6)$, so the scan
 of Problem Sheet 9 has to settle which was meant.
+
+### Second tranche
+
+Also fixed: findings 8, 9, 12, 16.
+
+Finding 16 is CONFIRMED after all: `21-eigenvalues-eigenvectors.tex:1195` did
+read `P_A(lambda_1)`, missing the backslash. The earlier grep that failed to
+reproduce it had been truncated to the first 400 matches of `lambda`.
+
+Finding 17 is REFUTED: a scan of `20-determinants.tex` for U+2014 returns
+nothing, so there is no em dash there. Struck from the list.
+
+Remaining open: 3, 4, 5, 6, 10, 11, 14, 18, 19, 20, 21, 23, 25.
