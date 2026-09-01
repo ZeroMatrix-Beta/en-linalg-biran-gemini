@@ -620,13 +620,13 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
 \begin{proof}
   Statement \textbf{(b)} follows directly from the fact that the determinant is an alternating function. Statement \textbf{(c)} follows from the $n$-linearity of the determinant.
 
-  To prove \textbf{(a)}, let $A$ have rows $\alpha_1, \dots, \alpha_n$. Assume $j < i$. Expanding by linearity on the $i$-th row gives:
+  To prove \textbf{(a)}, let $A$ have rows $\alpha_1, \dots, \alpha_n$. Assume $i < j$. Expanding by linearity on the $i$-th row gives:
   \begin{align*}
     \det(B) &= \det(\alpha_1, \dots, \alpha_i + c\alpha_j, \dots, \alpha_j, \dots, \alpha_n) \\
     &= \det(\alpha_1, \dots, \alpha_i, \dots, \alpha_n) + c \det(\alpha_1, \dots, \alpha_j, \dots, \alpha_j, \dots, \alpha_n) \\
     &= \det(A) + 0 = \det(A).
   \end{align*}
-  The second term identically vanishes because two rows are equal ($\alpha_j$ appears twice). If $j > i$, the proof is similar.
+  The second term identically vanishes because two rows are equal ($\alpha_j$ appears twice). If $j < i$, the proof is similar.
 
   In each of the three statements, the assertion about columns follows from the one about rows: a column operation on $A$ is the corresponding row operation on $A\transp$, and $\det(A\transp) = \det(A)$ by \cref{thm:det_transpose}.
 \end{proof}

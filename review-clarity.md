@@ -358,3 +358,19 @@ $(k, \ell, 0)$", which reads as (positive index, negative index, nullity) and
 so implies nullity $0$, true only for non-degenerate $B$.
 
 Fix: write "type $(k, \ell, n - (k+\ell))$".
+
+---
+
+## Applied so far
+
+Fixed in `347f21a`: findings 1, 2.
+
+Fixed in the commit that adds this section: findings 7, 13, 15, 22, 24, 26, 27.
+All seven were literal, unambiguous replacements; the book builds clean at 458
+pages and all three checks pass.
+
+Still open: 3, 4, 5, 6, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 20, 21, 23, 25.
+Of these, 16 and 17 are unconfirmed leads that a first grep did not reproduce,
+and 3 needs a decision that cannot be made from the repository alone: the
+exercise says $5p^3(6)$ and its own official solution says $5p(6)$, so the scan
+of Problem Sheet 9 has to settle which was meant.

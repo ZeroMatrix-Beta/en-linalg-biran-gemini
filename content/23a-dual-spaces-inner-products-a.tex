@@ -301,7 +301,7 @@ Only \textbf{(a)} is established from scratch; the notes then deduce the other t
     \item Assume that $G$ is undirected (i.e., $(v, w) \in E \iff (w, v) \in E$) and $d$-regular (each vertex has degree $d$). Show that $\Delta = T^* T$ has eigenvalue $0$, and explain why the geometric multiplicity $m_g(0)$ equals the number of connected components of $G$.
   \end{enumerate}
   \exhint[Hint (Y. St\"aubli)]{(a) By definition of the adjoint, show $\langle Tf, \varphi \rangle_E = \langle f, S\varphi \rangle_V$. Expanding both sums over $e = (v_{\text{init}}, v_{\text{term}}) \in E$ yields $\sum_{e \in E} (f(v_{\text{term}}) - f(v_{\text{init}})) \varphi(e)$, which matches $\sum_{v \in V} f(v) (S\varphi)(v)$.
-  (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus, $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \gEig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
+  (b) Note that $\Delta f = 0 \iff \langle \Delta f, f \rangle_V = \|Tf\|_E^2 = 0 \iff Tf = 0 \iff f(v_{\text{term}}) = f(v_{\text{init}})$ for all $(v_{\text{init}}, v_{\text{term}}) \in E$. Thus, $f \in \ker(\Delta)$ if and only if $f$ is constant on every connected component of $G$. The dimension of $\ker(\Delta) = \Eig_\Delta(0)$ (the geometric multiplicity) is therefore exactly the number of connected components.}
   \exinfo{This exercise is Problem 6 of Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:graph_laplacian_adjoint}
 \end{exercise}

@@ -35,7 +35,7 @@ Let $A \in \M_{n \times n}(\mathbb{R})$ be a symmetric matrix ($A\transp = A$).
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Spectral decomposition:}
     Let $T \in \End(V)$ be a normal operator on a finite-dimensional unitary space $V$.
-    By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = W_1 \oplus \dots \oplus W_k$, where $W_j := \gEig_T(\lambda_j)$ are the distinct eigenspaces of $T$ corresponding to distinct eigenvalues $\lambda_1, \dots, \lambda_k \in \mathbb{C}$.
+    By the Spectral Theorem (\cref{thm:spectral_thm_c}), $V = W_1 \oplus \dots \oplus W_k$, where $W_j := \Eig_T(\lambda_j)$ are the distinct eigenspaces of $T$ corresponding to distinct eigenvalues $\lambda_1, \dots, \lambda_k \in \mathbb{C}$.
     By \cref{lem:properties_normal_endo} \textbf{(d)}, the eigenspaces $W_j$ are mutually orthogonal: $W_i \perp W_j$ for $i \ne j$.
     Therefore, every $v \in V$ decomposes uniquely as $v = \sum_{j=1}^k w_j$ with $w_j = P_{W_j}(v) \in W_j$.
     Applying $T$:

@@ -1152,7 +1152,7 @@ While the minimal polynomial guarantees that an operator satisfies \textit{some}
     \item Let $A \in \M_{n \times n}(K)$. Prove that the subspace $\Sp(I_n, A, A^2, A^3, \dots) \subseteq \M_{n \times n}(K)$ has dimension at most $n$.
     \item Let $A := \begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \\ 3 & 1 & 2 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R})$. Find a polynomial $p(x) \in \mathbb{R}[x]$ such that $p(A) = A^{-1}$.
   \end{enumerate}
-  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $A^n$ is a linear combination of $I_n, A, \dots, A^{n-1}$. By induction, every power $A^m$ for $m \ge n$ belongs to $\Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$. \textbf{(b)} Compute the characteristic polynomial $P_A(x) = \det(A - x I_3) = -x^3 + 6x^2 + 9x + 18$. By Cayley-Hamilton, $-A^3 + 6A^2 + 9A + 18 I_3 = 0$. Multiply by $A^{-1}$ to obtain $A^{-1} = \frac{1}{18}(A^2 - 6A - 9 I_3)$, so $p(x) = \frac{1}{18}(x^2 - 6x - 9)$.}
+  \exhint[Hint (Y. St\"aubli)]{\textbf{(a)} By the Cayley-Hamilton theorem (\cref{thm:cayley_hamilton}), $A^n$ is a linear combination of $I_n, A, \dots, A^{n-1}$. By induction, every power $A^m$ for $m \ge n$ belongs to $\Sp(I_n, A, \dots, A^{n-1})$, which has dimension at most $n$. \textbf{(b)} Compute the characteristic polynomial $P_A(x) = \det(A - x I_3) = -x^3 + 6x^2 + 3x - 18$. By Cayley-Hamilton, $-A^3 + 6A^2 + 3A - 18 I_3 = 0$. Multiply by $A^{-1}$ to obtain $A^{-1} = \frac{1}{18}(-A^2 + 6A + 3 I_3)$, so $p(x) = \frac{1}{18}(-x^2 + 6x + 3)$.}
   \exinfo{This exercise is Problem 5 of Problem Sheet 20, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:subspace_matrix_powers_and_inverse}
 \end{exercise}
