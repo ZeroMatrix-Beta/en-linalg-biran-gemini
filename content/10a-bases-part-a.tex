@@ -12,7 +12,7 @@ We have previously explored two fundamental properties a set of vectors can poss
 
 \begin{definition}[Basis]
 \label{def:basis}
-Let $V$ be a vector space over a field $K$. A subset $S \subseteq V$ is called a \textbf{basis} of $V$ (plural: \newterm[basis]{bases}) if the following two conditions hold:
+Let $V$ be a vector space over a field $K$. A subset $S \subseteq V$ is called a \newterm{basis} of $V$ (plural: \textit{bases}) if the following two conditions hold:
 \begin{enumerate}
     \item $S$ is linearly independent.
     \item $S$ generates (or spans) $V$, meaning $\Sp(S) = V$.
@@ -43,7 +43,7 @@ Let $V$ be a vector space over $K$ and let $S \subseteq V$. A function $c: S \to
 \[
 \text{supp}(c) := \{u \in S \mid c(u) \ne 0\},
 \]
-is a finite set. For such a $c$, the associated \textbf{linear combination of elements of $S$} is the sum
+is a finite set. For such a $c$, the associated \newterm[linear combination over a set]{linear combination of elements of $S$} is the sum
 \[
 \sum_{u \in S} c(u) \cdot u \in V.
 \]
@@ -223,11 +223,11 @@ The next lemma refines the previous one. It pins down \emph{where} in the list t
 
 \begin{lemma}[Lemma B\textquotesingle: The Drop Index Lies Beyond Any Independent Head]
 \label{lem:drop_index_beyond_head}
-Same assumptions as in \cref{lem:targeted_redundancy}, so let $v_1, \dots, v_n$ be a linearly dependent list and let $j$ be the index it provides. Assume in addition that $v_1, \dots, v_k$ are linearly independent, where $1 \le k \le n$ is some index. Then $k < j$.
+Same assumptions as in \cref{lem:targeted_redundancy}, so let $v_1, \dots, v_n$ be a linearly dependent list and let $j$ be any index as supplied by that lemma, that is, any $1 \le j \le n$ with $v_j \in \Sp(v_1, \dots, v_{j-1})$. Assume in addition that $v_1, \dots, v_k$ are linearly independent, where $1 \le k \le n$ is some index. Then $k < j$.
 \end{lemma}
 
 \begin{proof}
-Assume by contradiction that $j \le k$. By \cref{lem:targeted_redundancy} we have $v_j \in \Sp(v_1, \dots, v_{j-1})$, that is,
+Assume by contradiction that $j \le k$. By the hypothesis on $j$ we have $v_j \in \Sp(v_1, \dots, v_{j-1})$, that is,
 \[
 v_j = a_1 v_1 + \dots + a_{j-1} v_{j-1} \qquad \text{for some } a_1, \dots, a_{j-1} \in K.
 \]
