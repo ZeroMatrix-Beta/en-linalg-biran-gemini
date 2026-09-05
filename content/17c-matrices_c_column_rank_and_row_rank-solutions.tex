@@ -60,8 +60,8 @@ Performing the elementary row operation $R_2 + 3R_1 \to R_2$ gives the row echel
 \[
 \begin{pmatrix} 1 & 3 \\ 0 & 0 \end{pmatrix}.
 \]
-The echelon form contains exactly $1$ pivot (non-zero row), so by \cref{rem:rank_notation_and_properties} \textbf{(2)}, $\rank(A) = 1$.
-Therefore, the correct choice is \textbf{(2): $1$}.
+The echelon form contains exactly $1$ pivot (non-zero row), so by \cref{rem:rank_notation_and_properties} \textbf{(b)}, $\rank(A) = 1$.
+Therefore, the correct choice is \textbf{(b): $1$}.
 \exinfo{Official Solution (Problem Sheet 13, Single Choice Question 3). Computes the rank of a $2 \times 2$ matrix with linearly dependent rows.}
 \end{exercisesolution}
 
@@ -72,16 +72,16 @@ Let $M := [T]_{\mathcal{B}}^{\mathcal{A}} \in \M_{n \times n}(K)$.
 By \cref{prop:invertibility_isomorphism_equivalence}, $T$ is an automorphism if and only if $M \in \GL_n(K)$ is invertible, which is equivalent to $\rank(M) = n$.
 
 \begin{itemize}
-    \item \textbf{Equivalence with (2) and (3):}
+    \item \textbf{Equivalence of (a), (b), and (c):}
     The columns $C_1, \dots, C_n$ of $M$ are $n$ vectors in the $n$-dimensional vector space $K_{\mathrm{col}}^n$.
     The column rank is $\rankcol(M) = \dim \Sp(C_1, \dots, C_n)$.
     By \cref{sum:finite_dim_properties}, for $n$ vectors in an $n$-dimensional space, linear independence, spanning the space, and having maximal dimension $n$ are all equivalent.
-    Thus $(1) \iff (2) \iff (3)$.
+    Thus \textbf{(a)} $\iff$ \textbf{(b)} $\iff$ \textbf{(c)}.
 
-    \item \textbf{Equivalence with (4) and (5):}
+    \item \textbf{Equivalence of (a), (d), and (e):}
     By the Main Theorem of this chapter (\cref{thm:rank_row_column_equality}), $\rankrow(M) = \rankcol(M) = \rank(M)$.
     The rows $R_1, \dots, R_n$ of $M$ are $n$ vectors in the $n$-dimensional space $K_{\mathrm{row}}^n$.
-    Applying the same dimension argument to the row vectors gives $(1) \iff (4) \iff (5)$.
+    Applying the same dimension argument to the row vectors gives \textbf{(a)} $\iff$ \textbf{(d)} $\iff$ \textbf{(e)}.
 \end{itemize}
 Thus, all five statements are equivalent to $\rank(M) = n$.
 \exinfo{Official Solution (Problem Sheet 12, Exercise 3). Unifies 5 equivalent characterizations of invertibility for square representation matrices via row and column rank.}

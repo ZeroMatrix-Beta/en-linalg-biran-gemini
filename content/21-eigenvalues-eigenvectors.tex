@@ -966,9 +966,9 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
   Finally, we claim that $[T]_{\mathcal{B}}^{\mathcal{B}}$ is upper triangular.
   For the first column, we already know $T(v_1) = \lambda_1 v_1$.
   For the remaining columns ($2 \le i \le n+1$), we read from the upper-triangular matrix \eqref{eq:quotient_upper_triangular} that:
-  \[ [\overline{T}z_i]_{\mathcal{C}} = \alpha_{2i}z_2 + \dots + \alpha_{i-1, i}z_{i-1} + \lambda_i z_i \]
-  for some scalars $\alpha \in K$. Translating this back to the equivalence classes:
-  \[ [\overline{T}v_i] = \alpha_{2i}[v_2] + \dots + \alpha_{i-1, i}[v_{i-1}] + \lambda_i [v_i]. \]
+  \[ \overline{T} z_i = \alpha_{2i}z_2 + \dots + \alpha_{i-1, i}z_{i-1} + \lambda_i z_i \]
+  for some scalars $\alpha \in K$. Translating this back to the equivalence classes via $z_j = [v_j]$:
+  \[ [T v_i] = \overline{T}[v_i] = \alpha_{2i}[v_2] + \dots + \alpha_{i-1, i}[v_{i-1}] + \lambda_i [v_i]. \]
   This implies that the difference between $Tv_i$ and the linear combination of the $v$'s must belong to the kernel of the quotient map, which is $U$:
   \[ Tv_i = \alpha_{2i}v_2 + \dots + \alpha_{i-1, i}v_{i-1} + \lambda_i v_i + u \quad \text{for some } u \in U. \]
   Since $U = \Sp(v_1)$, we can write $u = \beta_i v_1$ for some scalar $\beta_i$. Thus,

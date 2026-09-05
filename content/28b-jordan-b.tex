@@ -162,9 +162,9 @@ Assume by contradiction that $\mathcal{U} \neq \{0\}$, so that $\dim \mathcal{U}
 
 Since $\mathcal{U} \subseteq \gEig_T(\lambda)$ and $\mathcal{U} \subseteq \gEig_T(\mu)$, the polynomial $P_{T|_{\mathcal{U}}}(x)$ divides both
 \[
-    P_{T_\lambda}(x) = (\lambda - x)^{m_a(\lambda)} \qquad \text{and} \qquad P_{T_\mu}(x) = (\mu - x)^{m_a(\mu)},
+    P_{T_\lambda}(x) = (\lambda - x)^m \qquad \text{and} \qquad P_{T_\mu}(x) = (\mu - x)^{m'},
 \]
-again by \cref{exc:char_poly_restriction_divides}. This is impossible, because $\lambda \neq \mu$ and a non-constant polynomial cannot divide two coprime polynomials. Consequently, $\dim \mathcal{U} = 0$, that is, $\mathcal{U} = \{0\}$.
+again by \cref{exc:char_poly_restriction_divides} (for some $m, m' \ge 1$). This is impossible, because $\lambda \neq \mu$ and a non-constant polynomial cannot divide two coprime polynomials. Consequently, $\dim \mathcal{U} = 0$, that is, $\mathcal{U} = \{0\}$.
 \end{proof}
 
 % Lemma 4.
@@ -532,7 +532,7 @@ This is the step Prof. Biran marks with \qt{Exc.} in the proof above. Show that 
 \[
     \mathcal{B}_3 = (e_1, \dots, e_k, e_{k+1}, \dots, e_{k+m}, f_{m+1}, \dots, f_\ell)
 \]
-are linearly independent, and hence form a basis for $V$. (Prof. Biran's hint: $e_{k+j} = f_{k+j} + (\text{something from } W)$).
+are linearly independent, and hence form a basis for $V$. (Prof. Biran's hint: $e_{k+j} = f_j + (\text{something from } W)$).
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \exsol{sol:B3_is_a_basis}
 \end{exercise}

@@ -196,7 +196,7 @@ Moreover, $k$ and $\ell$ do \emph{not} depend on the basis $\mathcal{C}$ (they d
 \begin{align*}
 k &= \max \{ \dim W \mid W \subseteq V \text{ is a subspace and } B|_{W \times W} \text{ is positive definite} \}, \\
 \ell &= \max \{ \dim U \mid U \subseteq V \text{ is a subspace and } -B|_{U \times U} \text{ is positive definite} \}, \\
-n - (k + \ell) &= \max \{ \dim Z \mid Z \subseteq V \text{ is a subspace and } B|_{Z \times Z} \equiv 0 \}.
+n - (k + \ell) &= \dim \{ z \in V \mid B(z, v) = 0 \text{ for all } v \in V \}.
 \end{align*}
 \end{theorem}
 
@@ -412,7 +412,7 @@ for some $0 \le r \le n$. (The zero block in the bottom right has size $n - r$).
 
 The number $r$ is independent of the basis $\mathcal{C}$: it depends only on $B$. In fact,
 \[
-n - r = \max \{ \dim W \mid W \subseteq V \text{ is a subspace such that } B|_{W \times W} \equiv 0 \}.
+n - r = \dim \{ w \in V \mid B(w, v) = 0 \text{ for all } v \in V \}.
 \]
 The number $r$ is sometimes called the \newterm{rank} of $B$.
 \end{theorem}

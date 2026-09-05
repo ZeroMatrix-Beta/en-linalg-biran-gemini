@@ -165,7 +165,7 @@ such that $A_{i+1}$ is obtained from $A_{i}$ by a single elementary row operatio
 
 \begin{importantremark}
 \label{rem:row_ops_and_columns}
-Row operations \textbf{do} change the column space, as seen by $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \to \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$. However, they \textbf{preserve} the linear relations between columns: $\sum \alpha_{i} w_{i} = 0 \iff \sum \alpha_{i} w'_{i} = 0$.
+Row operations \textbf{do} change the column space, as seen by $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \to \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$. However, they \textbf{preserve} the linear relations between columns: writing $w_1, \dots, w_n$ for the columns of $A$ and $w'_1, \dots, w'_n$ for the columns of $A'$, we have $\sum \alpha_{i} w_{i} = 0 \iff \sum \alpha_{i} w'_{i} = 0$.
 \end{importantremark}
 
 The second assertion of \cref{rem:row_ops_and_columns} carries the entire weight of \cref{thm:basis_col_space} below, which transfers a statement about the echelon form back to the original matrix. The notes do not prove it, so we record it here, together with the two consequences in which it is actually used.
@@ -264,10 +264,10 @@ The non-zero rows of the row-reduced echelon matrix $B$ form a basis for $\RowS(
 \end{theorem}
 
 \begin{proof}
-By \cref{prop:row_space_invariance}, $\RowS(A) = \RowS(B)$. Let $r$ be the number of pivots in $B$. The non-zero rows of $B$ are $w'_1, \dots, w'_r$, the zero rows of a row-reduced echelon matrix standing below them. They span $\RowS(B)$: by \cref{def:matrix_subspaces} that space is spanned by \emph{all} rows of $B$, and discarding the zero ones changes no linear combination.
+By \cref{prop:row_space_invariance}, $\RowS(A) = \RowS(B)$. Let $r$ be the number of pivots in $B$. The non-zero rows of $B$ are $u'_1, \dots, u'_r$, the zero rows of a row-reduced echelon matrix standing below them. They span $\RowS(B)$: by \cref{def:matrix_subspaces} that space is spanned by \emph{all} rows of $B$, and discarding the zero ones changes no linear combination.
 
 To show linear independence, consider the indices of the pivot columns $j_1, \dots, j_r$. For each row $i \in \{1, \dots, r\}$, the entry in the $j_i$-th column is $1$, while in all other rows $k \neq i$, the entry in the $j_i$-th column is $0$. 
-Suppose $\sum_{i=1}^r \alpha_i w'_i = 0$. Looking at the $j_k$-th component of this vector sum, we have:
+Suppose $\sum_{i=1}^r \alpha_i u'_i = 0$. Looking at the $j_k$-th component of this vector sum, we have:
 \[ \sum_{i=1}^r \alpha_i B_{i, j_k} = \alpha_k \cdot 1 + \sum_{i \neq k} \alpha_i \cdot 0 = \alpha_k = 0. \]
 Since this holds for all $k$, all coefficients must be zero. Thus, the non-zero rows are linearly independent and form a basis.
 \end{proof}

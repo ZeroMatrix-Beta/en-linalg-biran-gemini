@@ -386,4 +386,21 @@ reproduce it had been truncated to the first 400 matches of `lambda`.
 Finding 17 is REFUTED: a scan of `20-determinants.tex` for U+2014 returns
 nothing, so there is no em dash there. Struck from the list.
 
-Remaining open: 3, 4, 5, 6, 10, 11, 14, 18, 19, 20, 21, 23, 25.
+### Third tranche
+
+Fixed in the `review/verify-against-source` branch: findings 3, 4, 5, 6, 10, 11, 14, 18, 19, 20, 21, 23, 25.
+- Finding 3: Verified against `exercises/sheets/LAI-serie09-en-v2.pdf`, corrected polynomial question and solution in `15a-linear-maps.tex` and `15a-linear-maps-solutions.tex`.
+- Finding 4: Converted set notation to ordered basis tuples and bold alphabetical labels in `16-linear-maps-and-bases.tex` and solutions.
+- Finding 5: Clarified column and row notations $w_j, w'_j, u'_i$ in `13-row-and-col-space.tex`.
+- Finding 6: Added cross-reference to `def:complement` for internal direct sum $\oplus$ in `15a-linear-maps.tex`.
+- Finding 10: Normalized sub-part references from numerical `(1), (2)` to bold alphabetical `\textbf{(a)}, \textbf{(b)}` in `17b`, `17c`, `18` solutions.
+- Finding 11: Renamed Borel subgroup to $\mathcal{B}$ in `17e-matrices_e_elemntary_row_operations_revisited-solutions.tex`.
+- Finding 14: Corrected quotient brackets vs coordinate column brackets in `21-eigenvalues-eigenvectors.tex`.
+- Finding 18: Replaced false maximal isotropic subspace characterisation with radical dimension in `27-bilinear-and-quadratic-forms.tex`.
+- Finding 19: Fixed complex symmetric bilinear form nullity to radical dimension in `27-bilinear-and-quadratic-forms.tex`.
+- Finding 20: Corrected index in hint for `exc:B3_is_a_basis` in `28b-jordan-b.tex` ($e_{k+j} = f_j + w_j$).
+- Finding 21: Used $m, m'$ exponents instead of premature $m_a(\lambda)$ in proof of `lem:char_poly_on_generalized_eigenspace` in `28b-jordan-b.tex`.
+- Finding 23: Fixed $(2,2)$ entry of $A_3$ to $-i$ in `22b-euclidean-hermetian-spaces-b.tex` and solutions so $A_3$ is unitary.
+- Finding 25: Clarified upper-triangular block structure in QR decomposition proof for general matrices in `22b-euclidean-hermetian-spaces-b.tex`.
+
+All 27 clarity findings have now been resolved.

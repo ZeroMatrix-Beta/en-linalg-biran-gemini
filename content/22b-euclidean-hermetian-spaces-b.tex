@@ -333,7 +333,7 @@ Carry out the argument above for a real matrix $A \in \M_{n \times n}(\mathbb{R}
     \item Let $S, T \subseteq V$ be subsets of an inner product space. Show that $S \subseteq T^\perp \iff T \subseteq S^\perp \iff S \perp T$, and give an example showing that $\Sp(S) \cap \Sp(T) = \{0\}$ does not imply $S \perp T$.
     \item Determine which of the following complex matrices are Hermitian and which are unitary:
     \[
-    A_1 = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}, \quad A_2 = \frac{1}{i}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad A_3 = \frac{1}{\sqrt{5}}\begin{pmatrix} i & -2 \\ 2 & i \end{pmatrix}, \quad A_4 = \begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}.
+    A_1 = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}, \quad A_2 = \frac{1}{i}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad A_3 = \frac{1}{\sqrt{5}}\begin{pmatrix} i & -2 \\ 2 & -i \end{pmatrix}, \quad A_4 = \begin{pmatrix} 0 & i \\ -i & 0 \end{pmatrix}.
     \]
     \item If $U, V \in \Unit(n)$ and $\lambda = e^{2\pi i \theta}$ ($\theta \in \mathbb{R}$), prove that $\lambda U$, $U^{-1}$, and $UV$ are unitary, while $U + V$ is generally not unitary.
   \end{enumerate}
@@ -443,7 +443,7 @@ Extend $e_1, \dots, e_r$ to an orthonormal basis $(e_1, \dots, e_r, e_{r+1}, \do
 and let $R$ be built exactly as in the previous proof, by $R_{ij} := \langle v_j, e_i \rangle$.
 
 % Extractor: Opus 5
-The block shape of $R$ is now forced. Every $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the indices $i_1 < \dots < i_r$ do not exceed $j$; in particular no $e_i$ with $i > r$ ever occurs, so the last $n-r$ rows of $R$ vanish. Among the first $r$ rows, the columns $j = i_1, \dots, i_r$ carry the upper triangular block $C := \left( \langle v_{i_j}, e_i \rangle \right)_{1 \le i, j \le r}$, upper triangular for the same reason as before, while the remaining columns are the arbitrary entries denoted by $*$. Hence, $A = Q \cdot R$ with $R$ of the stated form.
+The block shape of $R$ is now forced. For each $1 \le j \le n$, the vector $v_j$ lies in $\Sp(v_1, \dots, v_j) = \Sp(e_1, \dots, e_{k(j)})$, where $k(j) \le r$ counts how many of the basis indices $i_1 < \dots < i_r$ do not exceed $j$. In particular, $k(j) \le j$ and $k(j) \le r$. By orthonormality of the basis, $R_{ij} = \langle v_j, e_i \rangle = 0$ whenever $i > k(j)$. Since $k(j) \le j$, this implies $R_{ij} = 0$ whenever $i > j$, so $R$ is upper triangular. In particular, its leading $r \times r$ block $C := (R_{ij})_{1 \le i, j \le r}$ is upper triangular. Furthermore, since $k(j) \le r$ for all $j \in \{1, \dots, n\}$, we have $R_{ij} = 0$ for all $i > r$, which means that the last $n-r$ rows of $R$ vanish. Hence, $R$ has the asserted block form $\left(\begin{array}{c|c} C & * \\ \hline 0 & 0 \end{array}\right)$ and $A = Q \cdot R$.
 % Extractor: Gemini 3.1 Pro
 \end{proof}
 

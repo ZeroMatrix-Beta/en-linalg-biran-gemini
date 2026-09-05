@@ -165,17 +165,17 @@ Therefore, $M_\alpha$ is invertible if and only if $\alpha \in \mathbb{Q} \setmi
 % Solution: Gemini / Official Hybrid (Problem Sheet 13, Exercise 6)
 \begin{exercisesolution}[Solution to \cref{exc:bruhat_decomposition}]
 \label{sol:bruhat_decomposition}
-Let $A \in \GL_n(K)$. Let $B \subseteq \GL_n(K)$ denote the subgroup of invertible upper triangular matrices.
+Let $A \in \GL_n(K)$. Let $\mathcal{B} \subseteq \GL_n(K)$ denote the subgroup of invertible upper triangular matrices.
 
 \textbf{Proof via Gaussian Elimination:}
 For any non-zero vector $v \in K^n$, let $\operatorname{piv}(v) \in \{1, \dots, n\}$ denote the index of the \emph{last} (bottom-most) non-zero entry of $v$.
 We perform row reduction using only upper triangular elementary row operations (Type I operations $R_i + \alpha R_j \to R_i$ with $i < j$ and Type III scaling operations $\alpha \cdot R_i \to R_i$).
-Left-multiplication by an upper triangular matrix $U \in B$ allows us to clear all entries in row $i$ sitting above any established pivot position $j$ (where $i < j$) without affecting lower rows.
+Left-multiplication by an upper triangular matrix $U \in \mathcal{B}$ allows us to clear all entries in row $i$ sitting above any established pivot position $j$ (where $i < j$) without affecting lower rows.
 
 Because $A$ is invertible, no row ever becomes zero. By iteratively applying these upper triangular operations from bottom to top, we can ensure that each row $i$ has its pivot in a unique column $\sigma(i)$, with no other non-zero entries in column $\sigma(i)$ above row $i$.
 The permutation $\sigma \in S_n$ defines a permutation matrix $P \in \GL_n(K)$ with $P_{i, \sigma(i)} = 1$.
-The reduced matrix $U A$ then has the property that right-multiplication by an upper triangular matrix $U' \in B$ clears all entries to the right of the pivots, reducing $U A U' = P$.
-Multiplying by the inverses $B := U^{-1} \in B$ and $B' := (U')^{-1} \in B$ yields the Bruhat decomposition:
+The reduced matrix $U A$ then has the property that right-multiplication by an upper triangular matrix $U' \in \mathcal{B}$ clears all entries to the right of the pivots, reducing $U A U' = P$.
+Multiplying by the inverses $B := U^{-1} \in \mathcal{B}$ and $B' := (U')^{-1} \in \mathcal{B}$ yields the Bruhat decomposition:
 \[
 A = B P B'. \qedhere
 \]

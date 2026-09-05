@@ -57,28 +57,28 @@ Thus, $f$ is homogeneous under scalar multiplication by $\mathbb{Q}$, so $f \in 
 \label{sol:polynomial_integral_eval_linear_map}
 Write $T = (T_1, T_2)\transp \colon \mathbb{R}[x] \to \mathbb{R}^2$ where:
 \[
-T_1(p) = 3p(4) + 5p(6) + b p(1)p(2), \qquad T_2(p) = \int_{-1}^2 x^2 p(x) \, dx + c (p(0))^2.
+T_1(p) = 3p(4) + 5p'(6) + b p(1)p(2), \qquad T_2(p) = \int_{-1}^2 x^3 p(x) \, dx + c (p(0))^2.
 \]
 \begin{itemize}
     \item \textbf{If $b = c = 0$:} The components become:
     \[
-    T_1(p) = 3p(4) + 5p(6), \qquad T_2(p) = \int_{-1}^2 x^2 p(x) \, dx.
+    T_1(p) = 3p(4) + 5p'(6), \qquad T_2(p) = \int_{-1}^2 x^3 p(x) \, dx.
     \]
-    Evaluation at a point ($p \mapsto p(x_0)$) and definite integration against a fixed weight function are well-known linear functionals. Any linear combination of linear functionals is linear, so $T_1$ and $T_2$ are linear, making $T$ linear.
+    Evaluation at a point ($p \mapsto p(x_0)$), differentiation followed by evaluation ($p \mapsto p'(x_0)$), and definite integration against a fixed polynomial weight function are well-known linear functionals on $\mathbb{R}[x]$. Any linear combination of linear functionals is linear, so $T_1$ and $T_2$ are linear, making $T$ linear.
 
     \item \textbf{Conversely, suppose $T$ is linear:}
     Linearity requires $T(\alpha p) = \alpha T(p)$ for all $\alpha \in \mathbb{R}$ and $p \in \mathbb{R}[x]$.
-    Consider the constant polynomial $p_0(x) = 1$:
+    Consider the constant polynomial $p_0(x) = 1$ (whose derivative is $p_0'(x) = 0$):
     \[
-    T_1(p_0) = 3(1) + 5(1) + b(1)(1) = 8 + b, \qquad T_1(2 p_0) = 3(2) + 5(2) + b(2)(2) = 16 + 4b.
+    T_1(p_0) = 3(1) + 5(0) + b(1)(1) = 3 + b, \qquad T_1(2 p_0) = 3(2) + 5(0) + b(2)(2) = 6 + 4b.
     \]
-    By linearity, $T_1(2 p_0) = 2 T_1(p_0) = 16 + 2b$. Equating the two yields $16 + 4b = 16 + 2b \implies 2b = 0 \implies b = 0$.
+    By linearity, $T_1(2 p_0) = 2 T_1(p_0) = 6 + 2b$. Equating the two yields $6 + 4b = 6 + 2b \implies 2b = 0 \implies b = 0$.
 
-    Similarly for $T_2$, using $\int_{-1}^2 x^2 \, dx = \left[\frac{x^3}{3}\right]_{-1}^2 = \frac{8 - (-1)}{3} = 3$:
+    Similarly for $T_2$, using $\int_{-1}^2 x^3 \, dx = \left[\frac{x^4}{4}\right]_{-1}^2 = \frac{16 - 1}{4} = \frac{15}{4}$:
     \[
-    T_2(p_0) = 3 + c(1)^2 = 3 + c, \qquad T_2(2 p_0) = 2(3) + c(2)^2 = 6 + 4c.
+    T_2(p_0) = \frac{15}{4} + c(1)^2 = \frac{15}{4} + c, \qquad T_2(2 p_0) = 2\left(\frac{15}{4}\right) + c(2)^2 = \frac{15}{2} + 4c.
     \]
-    By linearity, $T_2(2 p_0) = 2 T_2(p_0) = 6 + 2c$. Equating the two yields $6 + 4c = 6 + 2c \implies 2c = 0 \implies c = 0$.
+    By linearity, $T_2(2 p_0) = 2 T_2(p_0) = \frac{15}{2} + 2c$. Equating the two yields $\frac{15}{2} + 4c = \frac{15}{2} + 2c \implies 2c = 0 \implies c = 0$.
 \end{itemize}
 Thus, $T$ is linear if and only if $b = c = 0$.
 \exinfo{Official Solution (Problem Sheet 9, Exercise 2). Identifies parameter values making integral and point-evaluation maps linear via test polynomials.}
