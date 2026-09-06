@@ -3,19 +3,19 @@
 % Official Solution (Problem Sheet 11, Multiple Choice Question 2)
 \begin{exercisesolution}[Solution to \cref{exc:properties_coordinate_maps_mc}]
 \label{sol:properties_coordinate_maps_mc}
-\begin{enumerate}[label=\textbf{(\arabic*)}]
-    \item \textbf{Statement (1) is TRUE:}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item \textbf{Statement (a) is TRUE:}
     By \cref{prop:coordinate_map_isomorphism}, for any choice of basis $\mathcal{B}$, the coordinate assignment map $\Phi_{\mathcal{B}} \colon V \to \mathbb{R}^n, v \mapsto [v]_{\mathcal{B}}$ is an isomorphism of vector spaces, and hence is linear.
 
-    \item \textbf{Statement (2) is FALSE:}
+    \item \textbf{Statement (b) is FALSE:}
     Consider the projection onto the $x$-axis $f \colon \mathbb{R}^2 \to \mathbb{R}^2$ given by $f(x, y) = (x, 0)$.
     Then $\ker(f) = \{(0, y) \mid y \in \mathbb{R}\} = \Sp(e_2)$ and $\Img(f) = \{(x, 0) \mid x \in \mathbb{R}\} = \Sp(e_1)$.
     The intersection $\ker(f) \cap \Img(f) = \{(0, 0)\}$ contains no non-zero vectors.
 
-    \item \textbf{Statement (3) is TRUE:}
+    \item \textbf{Statement (c) is TRUE:}
     For a linear endomorphism $f \colon \mathbb{R}^n \to \mathbb{R}^n$ between finite-dimensional spaces of the same dimension, having $\ker(f) = \{0\}$ is equivalent to injectivity, which by \cref{cor:equal_dim_iso} \textbf{(c)} is equivalent to bijectivity (invertibility).
 \end{enumerate}
-Thus, statements \textbf{(1)} and \textbf{(3)} are true, while statement \textbf{(2)} is false.
+Thus, statements \textbf{(a)} and \textbf{(c)} are true, while statement \textbf{(b)} is false.
 \exinfo{Official Solution (Problem Sheet 11, Multiple Choice Question 2). Evaluates statements on coordinate isomorphisms, nullspace-image intersections, and injectivity vs.~bijectivity.}
 \end{exercisesolution}
 
@@ -53,7 +53,7 @@ Forming the matrix whose columns are these coordinate vectors:
 \[
 [T]_{\mathcal{B}}^{\mathcal{B}} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
 \]
-Therefore, the correct choice is \textbf{(4): $z \mapsto iz$}.
+Therefore, the correct choice is \textbf{(d): $z \mapsto iz$}.
 \exinfo{Official Solution (Problem Sheet 13, Single Choice Question 2). Identifies multiplication by $i$ on $\mathbb{C} \cong \mathbb{R}^2$ from its representation matrix in the basis $(1, i)$.}
 \end{exercisesolution}
 

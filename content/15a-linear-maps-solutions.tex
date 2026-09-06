@@ -112,7 +112,7 @@ The matrix $A = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix}$ has size 
 \[
 A \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2x + y \\ x \\ 2y \end{pmatrix}.
 \]
-Therefore, map \textbf{(1)}, $f \colon \mathbb{R}^2 \to \mathbb{R}^3, f(x, y) = (2x + y, x, 2y)\transp$, is the correct one.
+Therefore, map \textbf{(a)}, $f \colon \mathbb{R}^2 \to \mathbb{R}^3, f(x, y) = (2x + y, x, 2y)\transp$, is the correct one.
 \exinfo{Official Solution (Problem Sheet 9, Multiple Choice Question 2). Identifies the canonical linear transformation associated with a $3 \times 2$ matrix.}
 \end{exercisesolution}
 
@@ -286,7 +286,7 @@ T^{-1} = U \circ S. \qedhere
 \begin{exercisesolution}[Solution to \cref{exc:endomorphism_properties_true_false}]
 \label{sol:endomorphism_properties_true_false}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item \textbf{Statement (1) is TRUE:}
+    \item \textbf{Statement (a) is TRUE:}
     Let $\mathcal{B}' = (v_1, \dots, v_k)$ be a basis for the subspace $V'$. Extend $\mathcal{B}'$ to a basis $\mathcal{B} = (v_1, \dots, v_k, v_{k+1}, \dots, v_n)$ of $V$.
     Define the linear map $\bar{f} \colon V \to V$ on the basis $\mathcal{B}$ by:
     \[
@@ -301,12 +301,12 @@ T^{-1} = U \circ S. \qedhere
     $\sum_{j=k+1}^n b_j v_j = 0 \implies b_j = 0$ for all $j$, and $f(\sum_{i=1}^k a_i v_i) = 0 \implies \sum_{i=1}^k a_i v_i = 0$ (since $f$ is an automorphism of $V'$), so $a_i = 0$ for all $i$.
     Thus $\ker(\bar{f}) = \{0_V\}$, so $\bar{f}$ is an automorphism.
 
-    \item \textbf{Statement (2) is FALSE:}
+    \item \textbf{Statement (b) is FALSE:}
     Consider the endomorphism $f \colon \mathbb{R}^2 \to \mathbb{R}^2$ given by $f(x, y) = (0, x)$.
     Then $\ker(f) = \{(x, y) \mid x = 0\} = \Sp((0, 1))$ and $\Img(f) = \{(0, x) \mid x \in \mathbb{R}\} = \Sp((0, 1))$.
     Since $\ker(f) = \Img(f)$, we have $\ker(f) \cap \Img(f) = \Sp((0, 1)) \ne \{0\}$, so $\Img(f)$ is not a complement of $\ker(f)$.
 
-    \item \textbf{Statement (3) is TRUE:}
+    \item \textbf{Statement (c) is TRUE:}
     For any linear map $T \colon \mathbb{R}^5 \to \mathbb{R}^5$, the Rank-Nullity Theorem (\cref{thm:rank_nullity}) states:
     \[
     \dim \ker(T) + \rank(T) = \dim \mathbb{R}^5 = 5.

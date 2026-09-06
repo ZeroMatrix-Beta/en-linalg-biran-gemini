@@ -497,7 +497,7 @@ Let $V$ be a finite-di\-men\-sional vector space, and let $T: V \to W$ be a line
 \end{theorem}
 
 \begin{proof}
-Being a subspace of the finite-di\-men\-sional space $V$, the kernel $\ker(T)$ is itself finite-di\-men\-sional by \cref{prop:subspace_dimension_constraints}, so it has a basis. Let $k := \dim \ker(T)$ and $n := \dim V$, and let $(u_1, \dots, u_k)$ be a basis for $\ker(T)$. By the basis extension property, item \textbf{(2)} of \cref{sum:finite_dim_properties}, we can extend this linearly independent set to a full basis for $V$, denoted by $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_{n-k})$. We claim that the family $\mathcal{C} = (T(v_1), \dots, T(v_{n-k}))$ forms a basis for $\Img(T)$.
+Being a subspace of the finite-di\-men\-sional space $V$, the kernel $\ker(T)$ is itself finite-di\-men\-sional by \cref{prop:subspace_dimension_constraints}, so it has a basis. Let $k := \dim \ker(T)$ and $n := \dim V$, and let $(u_1, \dots, u_k)$ be a basis for $\ker(T)$. By the basis extension property, item \textbf{(b)} of \cref{sum:finite_dim_properties}, we can extend this linearly independent set to a full basis for $V$, denoted by $\mathcal{B} = (u_1, \dots, u_k, v_1, \dots, v_{n-k})$. We claim that the family $\mathcal{C} = (T(v_1), \dots, T(v_{n-k}))$ forms a basis for $\Img(T)$.
 
 \begin{enumerate}
     \item \textbf{Spanning:} Let $w \in \Img(T)$. By definition, there exists some $v \in V$ such that $w = T(v)$. We can express $v$ uniquely as a linear combination of the basis vectors in $\mathcal{B}$:

@@ -389,7 +389,7 @@ nothing, so there is no em dash there. Struck from the list.
 ### Third tranche
 
 Fixed in the `review/verify-against-source` branch: findings 3, 4, 5, 6, 10, 11, 14, 18, 19, 20, 21, 23, 25.
-- Finding 3: Verified against `exercises/sheets/LAI-serie09-en-v2.pdf`, corrected polynomial question and solution in `15a-linear-maps.tex` and `15a-linear-maps-solutions.tex`.
+- Finding 3: Verified against `exercises/LAI-serie09-en-v2.pdf`, corrected polynomial question and solution in `15a-linear-maps.tex` and `15a-linear-maps-solutions.tex`.
 - Finding 4: Converted set notation to ordered basis tuples and bold alphabetical labels in `16-linear-maps-and-bases.tex` and solutions.
 - Finding 5: Clarified column and row notations $w_j, w'_j, u'_i$ in `13-row-and-col-space.tex`.
 - Finding 6: Added cross-reference to `def:complement` for internal direct sum $\oplus$ in `15a-linear-maps.tex`.
@@ -403,4 +403,46 @@ Fixed in the `review/verify-against-source` branch: findings 3, 4, 5, 6, 10, 11,
 - Finding 23: Fixed $(2,2)$ entry of $A_3$ to $-i$ in `22b-euclidean-hermetian-spaces-b.tex` and solutions so $A_3$ is unitary.
 - Finding 25: Clarified upper-triangular block structure in QR decomposition proof for general matrices in `22b-euclidean-hermetian-spaces-b.tex`.
 
-All 27 clarity findings have now been resolved.
+### Fourth tranche: finishing finding 10
+
+The third tranche fixed only the lines finding 10 happened to enumerate, and
+missed `17c-...-solutions.tex:51`, which was on that list. The same mismatch
+survived in six further files. All of it is now fixed:
+
+- `12-dimension.tex:20,27,32,34` and the "item ... of the summary" clauses at
+  `:77,:83`; `14-sums-of-vector-spaces.tex:210`; `15a-linear-maps.tex:500`.
+  All cite `sum:finite_dim_properties`, whose bare `enumerate` prints (a), (b).
+- `15a-linear-maps-solutions.tex:115`, and `:289,304,309`, where the printed
+  label was already (a), (b), (c) while the text read "Statement (1)" and so on.
+- `16-linear-maps-and-bases-solutions.tex:6-18`, whose list was still
+  `label=\textbf{(\arabic*)}` against an exercise printing (a), (b), (c); and
+  `:56`, "correct choice is (4)", where the printed label is (d).
+- `17c-...-solutions.tex:51`, "correct choice is (3)", printed label (c).
+- `18-...-solutions.tex:55,111`, "(Option 2)" and "(Option 1)", printed labels
+  (b) and (a).
+
+Left numeric on purpose: `12-dimension.tex:77,83,101` and `20-determinants.tex:32`
+cite `thm:wrong_length_lists`, which sets `label=\textbf{(\arabic*)}` and really
+does print (1), (2).
+
+Also corrected: the rewritten QR block-shape paragraph at
+`22b-euclidean-hermetian-spaces-b.tex:446` was tagged `% Extractor: Opus 5`,
+but it is newly written prose rather than a transcription of Prof. Biran's
+notes, and the rewrite is Gemini's. Retagged `% Creator: Gemini 3.1 Pro`.
+
+All 27 clarity findings are now resolved. The book builds clean at 458 pages
+and all three checks pass.
+
+### Known residuals, outside the numbered findings
+
+Both are cases where a finding's diagnosis was wider than its "Fix" line, so
+the fix as specified left something behind. Neither is an error in the text.
+
+- Finding 5 named `13-row-and-col-space.tex:136` as a second place where $w$
+  denotes rows, but asked only for `thm:row_basis` and the remark. Line 136
+  still writes the rows of a generic $M$ as $w_1, \dots, w_m$. It is declared
+  in place and local to that proof.
+- Finding 6 called `15a-linear-maps.tex:698` the first use of $\oplus$. In the
+  direct-sum sense the symbol already appears at
+  `14-sums-of-vector-spaces-solutions.tex:68,84,116,135,143`, still with no
+  symbol introduced. (Chapter 7's $\oplus$ is an unrelated ad-hoc operation.)
