@@ -23,8 +23,7 @@ Let $V$ be a vector space over a field $K$. In the previous chapter, we studied 
 
 \begin{definition}[Linear Independence]
 \label{def:linear_independence}
-\defterm{linear independence}
-Let $v_1, \dots, v_n$ be a finite list of vectors in $V$. We say that the list $v_1, \dots, v_n$ is \textbf{linearly independent} if the only linear combination that equals the zero vector $0_V$ is the trivial combination (where all coefficients are zero). 
+Let $v_1, \dots, v_n$ be a finite list of vectors in $V$. We say that the list $v_1, \dots, v_n$ is \newterm[linear independence]{linearly independent} if the only linear combination that equals the zero vector $0_V$ is the trivial combination (where all coefficients are zero).
 
 In formal notation, the vectors are linearly independent if, for all $a_1, \dots, a_n \in K$:
 \[
@@ -57,9 +56,9 @@ We address each property:
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Follows trivially from the vector space axioms (specifically $0 \cdot v = 0_V$ for all $v \in V$).
     \item Follows trivially from the commutativity of vector addition in $V$.
-    \item Assume $v_k = v_\ell$ for some $1 \le k < \ell \le n$. We can construct a specific linear combination where the coefficient for $v_k$ is $1$, the coefficient for $v_l$ is $-1$, and all other coefficients are $0$:
+    \item Assume $v_k = v_\ell$ for some $1 \le k < \ell \le n$. We can construct a specific linear combination where the coefficient for $v_k$ is $1$, the coefficient for $v_\ell$ is $-1$, and all other coefficients are $0$:
     \[
-    0 \cdot v_1 + \dots + 1 \cdot v_k + \dots + (-1) \cdot v_\ell + \dots + 0 \cdot v_n = v_k - v_l = 0_V
+    0 \cdot v_1 + \dots + 1 \cdot v_k + \dots + (-1) \cdot v_\ell + \dots + 0 \cdot v_n = v_k - v_\ell = 0_V
     \]
     Because we found a linear combination equal to $0_V$ where not all coefficients are zero (specifically, $a_k = 1 \ne 0$), the list fails the definition and is therefore not linearly independent.
 
@@ -147,7 +146,7 @@ What do we mean by a family of vectors in $V$, written $\mathcal{F} = \{v_i\}_{i
 \begin{definition}[Family]
 \label{def:family}
 \defterm{family}
-The meaning of this is, by definition, that we have a set $I$ (called the \textbf{set of indices}), and that we are given a function
+The meaning of this is, by definition, that we have a set $I$ (called the \newterm{set of indices}), and that we are given a function
 \[
 \mathcal{F} \colon I \longrightarrow V, \qquad I \ni i \longmapsto v_i \in V.
 \]
@@ -254,14 +253,13 @@ We now formally define the opposite of linear independence, specifically focusin
 
 \begin{definition}[Linear Dependence]
 \label{def:linear_dependence}
-\defterm{linear dependence}
-A family $\mathcal{F} = \{v_i\}_{i \in I}$ of vectors in $V$ is called \textbf{linearly dependent} if it is NOT linearly independent.
+A family $\mathcal{F} = \{v_i\}_{i \in I}$ of vectors in $V$ is called \newterm[linear dependence]{linearly dependent} if it is not linearly independent.
 
 In other words, this means there exists some finite integer $n \in \mathbb{N}$, a selection of $n$ distinct indices $i_1, \dots, i_n \in I$, and a set of scalars $a_1, \dots, a_n \in K$ \textbf{where not all $a_j$ are zero}, such that:
 \[
 a_1 v_{i_1} + a_2 v_{i_2} + \dots + a_n v_{i_n} = 0_V
 \]
-Such a combination, in which at least one coefficient is non-zero, is called a \textbf{non-trivial linear combination} of $v_{i_1}, \dots, v_{i_n}$. In other words, there is a non-trivial linear combination of elements from $\mathcal{F}$ that gives $0_V$.
+Such a combination, in which at least one coefficient is non-zero, is called a \newterm{non-trivial linear combination} of $v_{i_1}, \dots, v_{i_n}$. In other words, there is a non-trivial linear combination of elements from $\mathcal{F}$ that gives $0_V$.
 \end{definition}
 
 \begin{remark}[Two Ways to Be Dependent]

@@ -221,7 +221,7 @@ Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b 
 \end{definition}
 
 \begin{example}[Warmup]
-  Let us find all determinant functions on $M_{2 \times 2}(K)$. Write $I = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} -\epsilon_1- \\ -\epsilon_2- \end{smallmatrix}\right)$, meaning $\epsilon_1 = (1,0)$ and $\epsilon_2 = (0,1)$.
+  Let us find all determinant functions on $\M_{2 \times 2}(K)$. Write $I = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right) = \left(\begin{smallmatrix} -\epsilon_1- \\ -\epsilon_2- \end{smallmatrix}\right)$, meaning $\epsilon_1 = (1,0)$ and $\epsilon_2 = (0,1)$.
   If $D$ is a $2$-linear function, we can expand it algebraically:
   \begin{align*}
     D(A) &= D(A_{11}\epsilon_1 + A_{12}\epsilon_2, A_{21}\epsilon_1 + A_{22}\epsilon_2) \\
@@ -287,7 +287,7 @@ Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b 
   \[
   E_1(A) = A_{11} \begin{vmatrix} A_{22} & A_{23} \\ A_{32} & A_{33} \end{vmatrix} - A_{21} \begin{vmatrix} A_{12} & A_{13} \\ A_{32} & A_{33} \end{vmatrix} + A_{31} \begin{vmatrix} A_{12} & A_{13} \\ A_{22} & A_{23} \end{vmatrix}.
   \]
-  We can similarly construct $E_2(A)$ and $E_3(A)$ along the other columns, and all of these form valid determinant functions on $M_{3 \times 3}(K)$.
+  We can similarly construct $E_2(A)$ and $E_3(A)$ along the other columns, and all of these form valid determinant functions on $\M_{3 \times 3}(K)$.
 \end{example}
 
 \begin{exercise}[Laplace Expansion for $3 \times 3$ Matrices]
@@ -480,7 +480,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
 
 \begin{theorem}[Multiplicativity of the Determinant]
   \label{thm:det_multiplicative}
-  For any matrices $A, B \in M_{n \times n}(K)$, we have $\det(A \cdot B) = \det(A) \cdot \det(B)$.
+  For any matrices $A, B \in \M_{n \times n}(K)$, we have $\det(A \cdot B) = \det(A) \cdot \det(B)$.
 \end{theorem}
 
 \begin{proof}
@@ -561,7 +561,7 @@ Denote by $S_n$ the set of permutations $\sigma : \{1, \dots, n\} \to \{1, \dots
 \setcounter{theorem}{0}
 \section{More on Determinants: Properties of Determinants and the Transpose}
 
-Recall that for any matrix $M \in M_{m \times n}(K)$, we have the transposed matrix $M\transp \in M_{n \times m}(K)$, where the entries are given by $M\transp(i,j) = M(j,i)$.
+Recall that for any matrix $M \in \M_{m \times n}(K)$, we have the transposed matrix $M\transp \in \M_{n \times m}(K)$, where the entries are given by $M\transp(i,j) = M(j,i)$.
 
 \begin{theorem}[Determinant of the Transpose]
   \label{thm:det_transpose}
@@ -602,7 +602,7 @@ Recall that for any matrix $M \in M_{m \times n}(K)$, we have the transposed mat
 \end{corollary}
 
 \begin{proof}
-  For any $A \in M_{n \times n}(K)$, we have previously established $D(A) = \det(A) \cdot D(I)$. Applying this to $A\transp$ gives $D(A\transp) = \det(A\transp) \cdot D(I)$. Since $\det(A\transp) = \det(A)$, this evaluates exactly to $\det(A) \cdot D(I) = D(A)$.
+  For any $A \in \M_{n \times n}(K)$, we have previously established $D(A) = \det(A) \cdot D(I)$. Applying this to $A\transp$ gives $D(A\transp) = \det(A\transp) \cdot D(I)$. Since $\det(A\transp) = \det(A)$, this evaluates exactly to $\det(A) \cdot D(I) = D(A)$.
 \end{proof}
 
 Because the determinant acts symmetrically on rows and columns, we can perform column operations just as we do row operations.

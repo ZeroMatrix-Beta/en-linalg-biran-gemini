@@ -254,8 +254,8 @@ Let $K$ be a field with $1 + 1 \ne 0$, so $2 := 1 + 1$ is invertible with invers
 \label{sol:power_set_f2_vector_space}
 We verify the eight vector space axioms \textbf{(V1)}--\textbf{(V8)} for $(\mathcal{P}(X), \bigtriangleup, \cdot, \emptyset)$ over $\mathbb{F}_2 = \{0, 1\}$. It is helpful to use the characteristic function $\chi_A \colon X \to \mathbb{F}_2$ defined by $\chi_A(x) = 1$ if $x \in A$ and $\chi_A(x) = 0$ if $x \notin A$. For symmetric difference, $\chi_{A \mathbin{\triangle} B}(x) = \chi_A(x) + \chi_B(x) \pmod 2$.
 
-\begin{enumerate}[label=\textbf{(\alph*)}]
-    \item \textbf{(V1) Associativity of Addition:}
+\begin{enumerate}[label=(\textbf{V}\arabic*), leftmargin=3.5em]
+    \item \textbf{Associativity of Addition:}
     For any $A, B, C \in \mathcal{P}(X)$,
     \begin{align*}
     \chi_{(A \mathbin{\triangle} B) \mathbin{\triangle} C}(x) &= (\chi_A(x) + \chi_B(x)) + \chi_C(x) \\
@@ -263,32 +263,32 @@ We verify the eight vector space axioms \textbf{(V1)}--\textbf{(V8)} for $(\math
     \end{align*}
     using associativity in $\mathbb{F}_2$. Hence, $(A \mathbin{\triangle} B) \mathbin{\triangle} C = A \mathbin{\triangle} (B \mathbin{\triangle} C)$.
 
-    \item \textbf{(V2) Neutral Element:}
+    \item \textbf{Neutral Element:}
     The empty set $\emptyset$ satisfies $\chi_\emptyset(x) = 0$. For all $A \in \mathcal{P}(X)$,
     \[
     A \mathbin{\triangle} \emptyset = (A \cup \emptyset) \setminus (A \cap \emptyset) = A \setminus \emptyset = A.
     \]
 
-    \item \textbf{(V3) Commutativity of Addition:}
+    \item \textbf{Commutativity of Addition:}
     $A \mathbin{\triangle} B = (A \cup B) \setminus (A \cap B) = (B \cup A) \setminus (B \cap A) = B \mathbin{\triangle} A$.
 
-    \item \textbf{(V4) Additive Inverse:}
+    \item \textbf{Additive Inverse:}
     Every element is its own additive inverse:
     \[
     A \mathbin{\triangle} A = (A \cup A) \setminus (A \cap A) = A \setminus A = \emptyset.
     \]
 
-    \item \textbf{(V5) Associativity of Scalar Multiplication:}
+    \item \textbf{Associativity of Scalar Multiplication:}
     We verify $\lambda \cdot (\mu \cdot A) = (\lambda \mu) \cdot A$ for all $\lambda, \mu \in \mathbb{F}_2$:
     \begin{itemize}
         \item If $\lambda = 0$ or $\mu = 0$, then $\lambda \mu = 0$ and both sides equal $\emptyset$.
         \item If $\lambda = 1$ and $\mu = 1$, then $\lambda \mu = 1$ and both sides equal $1 \cdot (1 \cdot A) = A$.
     \end{itemize}
 
-    \item \textbf{(V6) Unit Element:}
+    \item \textbf{Unit Element:}
     $1 \cdot A = A$ by the definition of the scalar multiplication.
 
-    \item \textbf{(V7) Distributivity in Scalars:}
+    \item \textbf{Distributivity in Scalars:}
     We check $(\lambda + \mu) \cdot A = (\lambda \cdot A) \mathbin{\triangle} (\mu \cdot A)$ for $\lambda, \mu \in \mathbb{F}_2$:
     \begin{itemize}
         \item $\lambda = 0, \mu = 0$: $(0+0)\cdot A = \emptyset = \emptyset \mathbin{\triangle} \emptyset$.
@@ -298,7 +298,7 @@ We verify the eight vector space axioms \textbf{(V1)}--\textbf{(V8)} for $(\math
     \end{itemize}
     In all cases, equality holds.
 
-    \item \textbf{(V8) Distributivity in Vectors:}
+    \item \textbf{Distributivity in Vectors:}
     We check $\lambda \cdot (A \mathbin{\triangle} B) = (\lambda \cdot A) \mathbin{\triangle} (\lambda \cdot B)$ for $\lambda \in \mathbb{F}_2$:
     \begin{itemize}
         \item If $\lambda = 0$: $0 \cdot (A \mathbin{\triangle} B) = \emptyset = \emptyset \mathbin{\triangle} \emptyset = (0 \cdot A) \mathbin{\triangle} (0 \cdot B)$.

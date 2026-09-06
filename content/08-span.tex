@@ -73,10 +73,11 @@ be the collection of all linear subspaces of $V$ that contain $S$. We define the
 
 \begin{definition}[Linear Combination]
 \label{def:linear_combination}
-Let $n \in \mathbb{N}$, let $a_1, \dots, a_n \in K$ be scalars and let $v_1, \dots, v_n \in V$ be vectors. A \newterm{linear combination} of the vectors $v_1, \dots, v_n$ with coefficients $a_1, \dots, a_n$ is the vector
+Let $n \in \mathbb{Z}_{\ge 0}$, let $a_1, \dots, a_n \in K$ be scalars and let $v_1, \dots, v_n \in V$ be vectors. A \newterm{linear combination} of the vectors $v_1, \dots, v_n$ with coefficients $a_1, \dots, a_n$ is the vector
 \[
 a_1 v_1 + \dots + a_n v_n \in V \quad \left(\text{or equivalently, } \sum_{i=1}^n a_i v_i\right).
 \]
+The case $n = 0$ is permitted and gives the \newterm{empty linear combination}, the sum of no terms at all, which is $0_V$ by the usual convention for empty sums. It is what makes \cref{rem:span_of_empty_set} below read the same way from either description of the span.
 \end{definition}
 
 \begin{importantremark}
@@ -111,7 +112,7 @@ The next lemma answers the second of our two opening questions, and shows that t
 \label{lem:span_is_linear_combinations}
 Let $\emptyset \ne S \subseteq V$. Then $\Sp(S)$ is exactly the set of all possible linear combinations of vectors from $S$:
 \begin{align*}
-\Sp(S) &= \{a_1 v_1 + \dots + a_n v_n \mid n \in \mathbb{N}, \; a_i \in K, \; v_i \in S \text{ for all } 1 \le i \le n\} \\
+\Sp(S) &= \{a_1 v_1 + \dots + a_n v_n \mid n \in \mathbb{Z}_{\ge 0}, \; a_i \in K, \; v_i \in S \text{ for all } 1 \le i \le n\} \\
 &= \text{the subset of } V \text{ obtained by taking all possible linear combinations of vectors from } S.
 \end{align*}
 \end{lemma}
@@ -124,7 +125,7 @@ The set $S$ itself can be finite or infinite. Regardless of the size of $S$, eac
 \begin{proof}
 Let us denote the set of all linear combinations by
 \[
-\widetilde{\Sp}(S) := \{a_1 v_1 + \dots + a_n v_n \mid n \in \mathbb{N}, \; a_i \in K, \; v_i \in S \text{ for all } 1 \le i \le n\}.
+\widetilde{\Sp}(S) := \{a_1 v_1 + \dots + a_n v_n \mid n \in \mathbb{Z}_{\ge 0}, \; a_i \in K, \; v_i \in S \text{ for all } 1 \le i \le n\}.
 \]
 
 Before diving into the algebra, let us visualize the logical strategy of the proof. We will establish three facts, which together force $\Sp(S) = \widetilde{\Sp}(S)$:
@@ -136,9 +137,9 @@ Before diving into the algebra, let us visualize the logical strategy of the pro
     arrow/.style={->, thick, >=stealth}
 ]
     % Left Column (The 3 Facts)
-    \node[box] (n1) {\emph{(a)} $S \subseteq \widetilde{\Sp}(S)$};
-    \node[box, below=0.5cm of n1] (n2) {\emph{(b)} $\widetilde{\Sp}(S)$ is a linear subspace};
-    \node[box, below=1cm of n2] (n3) {\emph{(c)} $\forall W \subseteq V$ subspace with \\ $S \subseteq W \implies \widetilde{\Sp}(S) \subseteq W$};
+    \node[box] (n1) {\textbf{(a)} $S \subseteq \widetilde{\Sp}(S)$};
+    \node[box, below=0.5cm of n1] (n2) {\textbf{(b)} $\widetilde{\Sp}(S)$ is a linear subspace};
+    \node[box, below=1cm of n2] (n3) {\textbf{(c)} $\forall W \subseteq V$ subspace with \\ $S \subseteq W \implies \widetilde{\Sp}(S) \subseteq W$};
 
     % Middle Column (Implications)
     \node[box, right=2cm of n1, yshift=-0.6cm] (p1) {$\Sp(S) \subseteq \widetilde{\Sp}(S)$};
@@ -336,7 +337,7 @@ Prove the two equivalences stated on \cpageref{ex:lines_through_origin}: for $0 
 \exsol{sol:same_span_same_line}
 \end{exercise}
 
-\begin{exercise}[Two Independent Vectors Span the Plane --- Important!]
+\begin{exercise}[Two Independent Vectors Span the Plane \faHeart]
 \label{exc:two_vectors_span_plane}
 Let $W \subseteq \mathbb{R}^2$ be a linear subspace. Suppose $W = \Sp(v, w)$, where $v \ne 0$ and $w \notin \Sp(v)$. Show that $W = \mathbb{R}^2$.
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
@@ -464,7 +465,7 @@ Check the identity $K^n = \Sp(e_1, \dots, e_n)$ in detail.
 
 \begin{example}[Polynomials]
 \label{ex:span_polynomials}
-Let $W := K[x]_d$ be the space of polynomials over $K$ of degree $\le d$, introduced as a subspace of $K[x]$ on \cpageref{ex:bounded_degree_subspace}. We can generate this space using the standard monomials:
+Let $d \ge 0$ and let $W := K[x]_d$ be the space of polynomials over $K$ of degree $\le d$, introduced as a subspace of $K[x]$ on \cpageref{ex:bounded_degree_subspace}. We can generate this space using the standard monomials:
 \[
 W = \Sp(1, x, x^2, \dots, x^d).
 \]

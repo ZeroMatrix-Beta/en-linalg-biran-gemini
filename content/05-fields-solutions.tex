@@ -51,42 +51,42 @@ This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism o
 \begin{exercisesolution}[Solution to \cref{exc:quadratic_field_extensions}]
 \label{sol:quadratic_field_extensions}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item We verify the field axioms for $(k[\tau], +, \cdot, 0, 1)$:
+    \item We verify the field axioms for $(K[\tau], +, \cdot, 0, 1)$:
     \begin{itemize}
-        \item \textbf{Axioms \textbf{(K1)}--\textbf{(K4)} [Addition]:} Addition is defined componentwise as $(a+b\tau) + (c+d\tau) = (a+c) + (b+d)\tau$. Since $(k, +)$ is an abelian group, addition on $k[\tau]$ is associative and commutative, $0 = 0 + 0\tau$ is the additive identity, and $-(a+b\tau) = (-a) + (-b)\tau$ is the additive inverse.
+        \item \textbf{Axioms \textbf{(K1)}--\textbf{(K4)} [Addition]:} Addition is defined componentwise as $(a+b\tau) + (c+d\tau) = (a+c) + (b+d)\tau$. Since $(K, +)$ is an abelian group, addition on $K[\tau]$ is associative and commutative, $0 = 0 + 0\tau$ is the additive identity, and $-(a+b\tau) = (-a) + (-b)\tau$ is the additive inverse.
         
         \item \textbf{Axioms \textbf{(K5)}, \textbf{(K6)}, \textbf{(K8)}--\textbf{(K10)} [Multiplication and Distributivity]:}
         Multiplication is commutative (\textbf{(K10)}):
         \[
         (a+b\tau)(c+d\tau) = (ac + \alpha bd) + (bc + ad)\tau = (ca + \alpha db) + (da + cb)\tau = (c+d\tau)(a+b\tau).
         \]
-        The element $1 = 1 + 0\tau$ satisfies $(a+b\tau)(1+0\tau) = (a\cdot 1 + \alpha b\cdot 0) + (b\cdot 1 + a\cdot 0)\tau = a+b\tau$, so $1$ is the multiplicative identity (\textbf{(K6)}). Associativity (\textbf{(K5)}) and distributivity (\textbf{(K8)}) follow by direct algebraic expansion from the corresponding properties in $k$ together with the relation $\tau^2 = \alpha$. Finally, $1 \ne 0$ in $k[\tau]$ because $1 \ne 0$ already in $k$, which is \textbf{(K9)}.
+        The element $1 = 1 + 0\tau$ satisfies $(a+b\tau)(1+0\tau) = (a\cdot 1 + \alpha b\cdot 0) + (b\cdot 1 + a\cdot 0)\tau = a+b\tau$, so $1$ is the multiplicative identity (\textbf{(K6)}). Associativity (\textbf{(K5)}) and distributivity (\textbf{(K8)}) follow by direct algebraic expansion from the corresponding properties in $K$ together with the relation $\tau^2 = \alpha$. Finally, $1 \ne 0$ in $K[\tau]$ because $1 \ne 0$ already in $K$, which is \textbf{(K9)}.
         
-        \item \textbf{Axiom \textbf{(K7)} [Multiplicative Inverse]:} Let $z = a + b\tau \in k[\tau]$ with $z \ne 0$, meaning $(a, b) \ne (0, 0)$. Define the \newterm{norm} of $z$ by:
+        \item \textbf{Axiom \textbf{(K7)} [Multiplicative Inverse]:} Let $z = a + b\tau \in K[\tau]$ with $z \ne 0$, meaning $(a, b) \ne (0, 0)$. Define the \newterm{norm} of $z$ by:
         \[
-        N(z) := (a + b\tau)(a - b\tau) = a^2 - \alpha b^2 \in k.
+        N(z) := (a + b\tau)(a - b\tau) = a^2 - \alpha b^2 \in K.
         \]
-        We claim that $N(z) \ne 0$ in $k$. Indeed, if $N(z) = 0$, then $a^2 = \alpha b^2$.
+        We claim that $N(z) \ne 0$ in $K$. Indeed, if $N(z) = 0$, then $a^2 = \alpha b^2$.
         \begin{itemize}
-            \item If $b \ne 0$, we can multiply by $(b^{-1})^2$ to obtain $(ab^{-1})^2 = \alpha$, which means $x = ab^{-1} \in k$ is a solution to $x^2 = \alpha$, contradicting the hypothesis that $x^2 = \alpha$ has no solution in $k$.
+            \item If $b \ne 0$, we can multiply by $(b^{-1})^2$ to obtain $(ab^{-1})^2 = \alpha$, which means $x = ab^{-1} \in K$ is a solution to $x^2 = \alpha$, contradicting the hypothesis that $x^2 = \alpha$ has no solution in $K$.
             \item If $b = 0$, then $a^2 = 0 \implies a = 0$, which contradicts $(a, b) \ne (0, 0)$.
         \end{itemize}
-        Thus $N(z) = a^2 - \alpha b^2 \ne 0$ in $k$. Since $k$ is a field, $N(z)$ has a multiplicative inverse $N(z)^{-1} \in k$. Setting
+        Thus $N(z) = a^2 - \alpha b^2 \ne 0$ in $K$. Since $K$ is a field, $N(z)$ has a multiplicative inverse $N(z)^{-1} \in K$. Setting
         \[
-        z^{-1} := \frac{a}{a^2 - \alpha b^2} - \frac{b}{a^2 - \alpha b^2}\tau \in k[\tau],
+        z^{-1} := \frac{a}{a^2 - \alpha b^2} - \frac{b}{a^2 - \alpha b^2}\tau \in K[\tau],
         \]
         we compute $z \cdot z^{-1} = \frac{(a+b\tau)(a-b\tau)}{a^2 - \alpha b^2} = \frac{a^2 - \alpha b^2}{a^2 - \alpha b^2} = 1$. Thus, every non-zero element has a multiplicative inverse.
     \end{itemize}
-    This completes the proof that $k[\tau]$ is a field.
+    This completes the proof that $K[\tau]$ is a field.
 
     \item \textbf{Examples:}
     \begin{itemize}
-        \item \textbf{The Complex Numbers:} Take $k = \mathbb{R}$ and $\alpha = -1$. The equation $x^2 = -1$ has no solution in $\mathbb{R}$. Adjoining $\tau = i$ gives $\mathbb{R}[i] \cong \mathbb{C}$.
-        \item \textbf{Quadratic Number Fields:} Take $k = \mathbb{Q}$ and $\alpha = 2$. Since $\sqrt{2} \notin \mathbb{Q}$, $\mathbb{Q}[\sqrt{2}] = \{a + b\sqrt{2} \mid a, b \in \mathbb{Q}\}$ is a field extension of $\mathbb{Q}$.
-        \item \textbf{Finite Fields:} Take $k = \mathbb{F}_3 = \{0, 1, 2\}$ and $\alpha = 2 \equiv -1$. The squares in $\mathbb{F}_3$ are $0^2 = 0, 1^2 = 1, 2^2 = 1$, so $x^2 = 2$ has no solution in $\mathbb{F}_3$. Then $\mathbb{F}_3[\tau]$ is a finite field with $3^2 = 9$ elements, isomorphic to $\mathbb{F}_9$.
+        \item \textbf{The Complex Numbers:} Take $K = \mathbb{R}$ and $\alpha = -1$. The equation $x^2 = -1$ has no solution in $\mathbb{R}$. Adjoining $\tau = i$ gives $\mathbb{R}[i] \cong \mathbb{C}$.
+        \item \textbf{Quadratic Number Fields:} Take $K = \mathbb{Q}$ and $\alpha = 2$. Since $\sqrt{2} \notin \mathbb{Q}$, $\mathbb{Q}[\sqrt{2}] = \{a + b\sqrt{2} \mid a, b \in \mathbb{Q}\}$ is a field extension of $\mathbb{Q}$.
+        \item \textbf{Finite Fields:} Take $K = \mathbb{F}_3 = \{0, 1, 2\}$ and $\alpha = 2 \equiv -1$. The squares in $\mathbb{F}_3$ are $0^2 = 0, 1^2 = 1, 2^2 = 1$, so $x^2 = 2$ has no solution in $\mathbb{F}_3$. Then $\mathbb{F}_3[\tau]$ is a finite field with $3^2 = 9$ elements, isomorphic to $\mathbb{F}_9$.
     \end{itemize}
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 5). Verifies the field axioms for the quadratic field extension $k[\tau]$ using the norm function.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 5). Verifies the field axioms for the quadratic field extension $K[\tau]$ using the norm function.}
 \end{exercisesolution}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 6)
@@ -95,34 +95,34 @@ This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism o
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Sum of all elements:}
     \begin{itemize}
-        \item Suppose $|k| > 2$. Then the multiplicative group $k^\times = k \setminus \{0\}$ has cardinality $|k^\times| = |k| - 1 \ge 2$, so there exists an element $b \in k^\times$ with $b \ne 1$.
-        The multiplication map $m_b \colon k \to k, x \mapsto bx$ is a bijection (with inverse $m_{b^{-1}}$). Therefore, multiplying every term in the sum $S := \sum_{x \in k} x$ by $b$ simply permutes the elements of $k$:
+        \item Suppose $|K| > 2$. Then the multiplicative group $K^\times = K \setminus \{0\}$ has cardinality $|K^\times| = |K| - 1 \ge 2$, so there exists an element $b \in K^\times$ with $b \ne 1$.
+        The multiplication map $m_b \colon K \to K, x \mapsto bx$ is a bijection (with inverse $m_{b^{-1}}$). Therefore, multiplying every term in the sum $S := \sum_{x \in K} x$ by $b$ simply permutes the elements of $K$:
         \[
-        bS = b \sum_{x \in k} x = \sum_{x \in k} bx = \sum_{y \in k} y = S.
+        bS = b \sum_{x \in K} x = \sum_{x \in K} bx = \sum_{y \in K} y = S.
         \]
         This implies $(1 - b)S = 0$. Since $b \ne 1$, $1 - b \ne 0$, and by \cref{lem:no_zero_divisors} (absence of zero divisors in a field), we conclude that $S = 0$.
-        \item Conversely, if $|k| \le 2$, since any field must have distinct elements $0 \ne 1$ (by axiom \textbf{(K9)}), the only possibility is $k = \mathbb{F}_2 = \{0, 1\}$. In this case, $S = 0 + 1 = 1 \ne 0$.
+        \item Conversely, if $|K| \le 2$, since any field must have distinct elements $0 \ne 1$ (by axiom \textbf{(K9)}), the only possibility is $K = \mathbb{F}_2 = \{0, 1\}$. In this case, $S = 0 + 1 = 1 \ne 0$.
     \end{itemize}
-    Hence, $S = 0$ if and only if $|k| > 2$.
+    Hence, $S = 0$ if and only if $|K| > 2$.
 
-    \item \textbf{Product of all non-zero elements:} Consider the inversion map $\iota \colon k^\times \to k^\times, x \mapsto x^{-1}$. Since inversion is a bijection from $k^\times$ to itself, every element $x$ can be paired with its unique inverse $x^{-1}$, and their product is $x \cdot x^{-1} = 1$.
+    \item \textbf{Product of all non-zero elements:} Consider the inversion map $\iota \colon K^\times \to K^\times, x \mapsto x^{-1}$. Since inversion is a bijection from $K^\times$ to itself, every element $x$ can be paired with its unique inverse $x^{-1}$, and their product is $x \cdot x^{-1} = 1$.
     
     An element is its own inverse if and only if
     \[
     x = x^{-1} \iff x^2 = 1 \iff x^2 - 1 = 0 \iff (x - 1)(x + 1) = 0.
     \]
-    By \cref{lem:no_zero_divisors}, the only solutions in $k$ are $x = 1$ and $x = -1$.
+    By \cref{lem:no_zero_divisors}, the only solutions in $K$ are $x = 1$ and $x = -1$.
     \begin{itemize}
-        \item If $\operatorname{char}(k) \ne 2$, then $1 \ne -1$, so exactly two elements ($1$ and $-1$) are self-inverse. All remaining elements of $k^\times \setminus \{1, -1\}$ pair up into disjoint two-element sets $\{y, y^{-1}\}$ with $y \cdot y^{-1} = 1$. Therefore:
+        \item If $\operatorname{char}(K) \ne 2$, then $1 \ne -1$, so exactly two elements ($1$ and $-1$) are self-inverse. All remaining elements of $K^\times \setminus \{1, -1\}$ pair up into disjoint two-element sets $\{y, y^{-1}\}$ with $y \cdot y^{-1} = 1$. Therefore:
         \[
-        M = \prod_{x \in k^\times} x = 1 \cdot (-1) \cdot \prod_{\{y, y^{-1}\}} (y \cdot y^{-1}) = -1 \cdot 1 = -1.
+        M = \prod_{x \in K^\times} x = 1 \cdot (-1) \cdot \prod_{\{y, y^{-1}\}} (y \cdot y^{-1}) = -1 \cdot 1 = -1.
         \]
-        \item If $\operatorname{char}(k) = 2$, then $1 = -1$, so $x = 1$ is the unique self-inverse element. All other elements pair up as $\{y, y^{-1}\}$ with product $1$. Therefore:
+        \item If $\operatorname{char}(K) = 2$, then $1 = -1$, so $x = 1$ is the unique self-inverse element. All other elements pair up as $\{y, y^{-1}\}$ with product $1$. Therefore:
         \[
         M = 1 \cdot \prod_{\{y, y^{-1}\}} 1 = 1 = -1 \quad (\text{since } 1 = -1 \text{ in characteristic } 2).
         \]
     \end{itemize}
     In both cases, we have $M = -1$.
 \end{enumerate}
-\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 6). Proves the sum $\sum_{x\in k} x = 0$ (for $|k|>2$) via scaling permutation and Wilson's theorem for finite fields $\prod_{x\in k^\times} x = -1$.}
+\exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 6). Proves the sum $\sum_{x\in K} x = 0$ (for $|K|>2$) via scaling permutation and Wilson's theorem for finite fields $\prod_{x\in K^\times} x = -1$.}
 \end{exercisesolution}

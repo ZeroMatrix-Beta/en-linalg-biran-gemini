@@ -19,7 +19,7 @@
 
 Before we can solve systems of linear equations or define abstract vector spaces, we must answer a more fundamental question: \textit{Where do our numbers come from?} 
 
-In linear algebra, we do not restrict ourselves to the real numbers. We can perform our calculations over any algebraic structure where addition, subtraction, multiplication, and division behave exactly as we expect them to. Such a structure is called a \textbf{field} (in German: \textit{Körper}).
+In linear algebra, we do not restrict ourselves to the real numbers. We can perform our calculations over any algebraic structure where addition, subtraction, multiplication, and division behave exactly as we expect them to. Such a structure is called a field (in German: \textit{Körper}).
 
 \subsection{The Field Axioms}
 
@@ -27,8 +27,7 @@ To ensure that an algebraic structure behaves nicely, it must satisfy ten rigid 
 
 \begin{definition}[Field]
 \label{def:field}
-\defterm{field}
-A \textit{field} is a tuple $(K, +, \cdot, 0, 1)$ consisting of a set $K$ equipped with two binary operations:
+A \newterm{field} is a tuple $(K, +, \cdot, 0, 1)$ consisting of a set $K$ equipped with two binary operations:
 \begin{align*}
 &+: K \times K \rightarrow K, \quad (x, y) \mapsto x + y \quad \text{(Addition)} \\
 &\cdot: K \times K \rightarrow K, \quad (x, y) \mapsto x \cdot y \quad \text{(Multiplication)}
@@ -133,7 +132,7 @@ Let $p$ be a prime number. The set of integers modulo $p$, denoted as $\mathbb{F
 \[
 \mathbb{F}_p = \{0, 1, 2, \dots, p-1\}
 \]
-Addition and multiplication are performed exactly as regular integers, but if the result exceeds $p-1$, we divide by $p$ and keep only the \textbf{remainder}.
+Addition and multiplication are performed exactly as regular integers, but if the result exceeds $p-1$, we divide by $p$ and keep only the \newterm{remainder}.
 \end{definition}
 
 \begin{theorem}[Field Characterization of $\mathbb{F}_p$]
@@ -280,14 +279,14 @@ Now, by the additive inverse axiom \textbf{(K4)}, the element $(0 \cdot x)$ must
 \[
 \big(0 \cdot x + 0 \cdot x\big) + \big(-(0 \cdot x)\big) = 0 \cdot x + \big(-(0 \cdot x)\big)
 \]
-Using associativity of addition \textbf{(K1)}, we regroup the left side:
+Using associativity of addition \textbf{(K1)} on the left side, and \textbf{(K4)} on the right side, we obtain:
 \[
 0 \cdot x + \Big(0 \cdot x + \big(-(0 \cdot x)\big)\Big) = 0
 \]
 \[
 0 \cdot x + 0 = 0
 \]
-Finally, applying \textbf{(K3)} once more, we drop the $+ 0$ to conclude:
+Finally, commuting the two summands by \textbf{(K2)} and then applying \textbf{(K3)}, we drop the $+ 0$ to conclude:
 \[
 0 \cdot x = 0
 \]
@@ -327,19 +326,19 @@ We have proven that if the product is zero and $a$ is not zero, $b$ is forced to
 
 \begin{exercise}[Quadratic Field Extensions]
 \label{exc:quadratic_field_extensions}
-Let $(k, +, \cdot, 0, 1)$ be a field and let $\alpha \in k$ be an element such that the equation $x^2 = \alpha$ has no solution in $k$. Let $\tau$ be a formal symbol outside $k$ satisfying $\tau^2 = \alpha \in k$. Define the set
+Let $(K, +, \cdot, 0, 1)$ be a field and let $\alpha \in K$ be an element such that the equation $x^2 = \alpha$ has no solution in $K$. Let $\tau$ be a formal symbol outside $K$ satisfying $\tau^2 = \alpha \in K$. Define the set
 \[
-k[\tau] := \{a + b\tau \mid a, b \in k\}
+K[\tau] := \{a + b\tau \mid a, b \in K\}
 \]
 equipped with the following addition and multiplication operations:
 \begin{align*}
-+ \colon k[\tau] \times k[\tau] &\longrightarrow k[\tau], \quad (a + b\tau, c + d\tau) \longmapsto (a + c) + (b + d)\tau, \\
-\cdot \colon k[\tau] \times k[\tau] &\longrightarrow k[\tau], \quad (a + b\tau, c + d\tau) \longmapsto (ac + \alpha bd) + (bc + ad)\tau,
++ \colon K[\tau] \times K[\tau] &\longrightarrow K[\tau], \quad (a + b\tau, c + d\tau) \longmapsto (a + c) + (b + d)\tau, \\
+\cdot \colon K[\tau] \times K[\tau] &\longrightarrow K[\tau], \quad (a + b\tau, c + d\tau) \longmapsto (ac + \alpha bd) + (bc + ad)\tau,
 \end{align*}
 with neutral elements $0 := 0 + 0\tau$ and $1 := 1 + 0\tau$.
 \begin{enumerate}
-    \item Show that $(k[\tau], +, \cdot, 0, 1)$ is a field.
-    \item Give explicit examples of this construction for different choices of the base field $k$.
+    \item Show that $(K[\tau], +, \cdot, 0, 1)$ is a field.
+    \item Give explicit examples of this construction for different choices of the base field $K$.
 \end{enumerate}
 \exinfo{This exercise is Problem 5 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
 \exsol{sol:quadratic_field_extensions}
@@ -347,12 +346,12 @@ with neutral elements $0 := 0 + 0\tau$ and $1 := 1 + 0\tau$.
 
 \begin{exercise}[Sum and Product of Elements in Finite Fields]
 \label{exc:finite_field_sum_product}
-Let $k$ be a finite field.
+Let $K$ be a finite field.
 \begin{enumerate}
-    \item Let $S := \sum_{x \in k} x$ be the sum of all elements of $k$. Show that $S = 0$ if and only if $k$ has strictly more than two elements ($|k| > 2$).
-    \exhint[Official Hint]{For $b \in k^\times := k \setminus \{0\}$, consider the multiplication map $m_b \colon k \to k, x \mapsto bx$.}
-    \item Let $M := \prod_{x \in k^\times} x$ be the product of all non-zero elements of $k$. Show that $M = -1$.
-    \exhint[Official Hint]{Consider the inversion map $k^\times \to k^\times, x \mapsto x^{-1}$.}
+    \item Let $S := \sum_{x \in K} x$ be the sum of all elements of $K$. Show that $S = 0$ if and only if $K$ has strictly more than two elements ($|K| > 2$).
+    \exhint[Official Hint]{For $b \in K^\times := K \setminus \{0\}$, consider the multiplication map $m_b \colon K \to K, x \mapsto bx$.}
+    \item Let $M := \prod_{x \in K^\times} x$ be the product of all non-zero elements of $K$. Show that $M = -1$.
+    \exhint[Official Hint]{Consider the inversion map $K^\times \to K^\times, x \mapsto x^{-1}$.}
 \end{enumerate}
 \exinfo{This exercise is Problem 6 of Problem Sheet 3, Linear Algebra I, Autumn Semester 2025.}
 \exsol{sol:finite_field_sum_product}

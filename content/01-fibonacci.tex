@@ -352,12 +352,17 @@ extreme, values. Two such notions will accompany us for the rest of the course.
 
 \begin{definition}[Fixed Point and Eigenvector]
 \label{def:fixed_point_eigenvector}
-Let $T \colon X \to X$ be a map. An element $x_0 \in X$ is a \newterm{fixed point} of
-$T$ if $T(x_0) = x_0$. An element $y_0 \in X$ is an \newterm{eigenvector} of $T$ if
+Let $X$ be a real vector space, such as $\Fib$, and let $T \colon X \to X$ be a map.
+An element $x_0 \in X$ is a \newterm{fixed point} of $T$ if $T(x_0) = x_0$. An
+element $y_0 \in X$ with $y_0 \ne 0$ is an \newterm{eigenvector} of $T$ if
 $T(y_0)$ is proportional to $y_0$, that is, if
 \[
 T(y_0) = \lambda \cdot y_0 \quad \text{for some } \lambda \in \mathbb{R}.
 \]
+The requirement $y_0 \ne 0$ is not decoration: without it the zero vector would
+satisfy $T(0) = \lambda \cdot 0$ for \emph{every} $\lambda$ and would count as an
+eigenvector for all of them at once. \Cref{def:eigenvalue_eigenvector} in ch. 21
+imposes the same requirement when the notion is taken up in general.
 \end{definition}
 
 Let us test both notions on $X = \Fib$ with $T = S$ the shift map.
@@ -594,7 +599,12 @@ This formulation shows that the behavior of the sequence is entirely governed by
     \item \textbf{Cassini's Identity:} Show that $a_{n+1} a_{n-1} - a_n^2 = (-1)^n$ for all $n \ge 1$. \exhint[Hint (Prof. Biran)]{Use the determinant of the matrix $M^n$.}
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
-\exsol{sol:shift_is_linear_b}
+\exsol[Solution to \textbf{(a)}]{sol:ch1_list_a}
+\exsol[Solution to \textbf{(b)}]{sol:shift_is_linear_b}
+\exsol[Solution to \textbf{(c)}]{sol:ch1_list_c}
+\exsol[Solution to \textbf{(d)}]{sol:ch1_list_d}
+\exsol[Solution to \textbf{(e)}]{sol:ch1_list_e}
+\exsol[Solution to \textbf{(f)}]{sol:ch1_list_f}
 \end{exercise}
 
 % Creator: Opus 5
@@ -667,7 +677,7 @@ Conversely, $\mathcal{F}_{0,0}$ is arithmetic, with $d = 0$. So, the zero sequen
 \label{sol:ch1_list_e}
 By \cref{thm:binet_formula}, for $n \ge 1$,
 \[
-    \frac{a_n}{a_{n-1}} = \frac{\varphi^n - \psi^n}{\varphi^{n-1} - \psi^{n-1}} = \varphi \cdot \frac{1 - (\psi/\varphi)^n}{1 - (\psi/\varphi)^{n-1}} \cdot \frac{1}{1},
+    \frac{a_n}{a_{n-1}} = \frac{\varphi^n - \psi^n}{\varphi^{n-1} - \psi^{n-1}} = \varphi \cdot \frac{1 - (\psi/\varphi)^n}{1 - (\psi/\varphi)^{n-1}},
 \]
 where the second expression is obtained by dividing numerator and denominator by $\varphi^n$ and $\varphi^{n-1}$ respectively. Now $\left|\psi/\varphi\right| = \frac{|1 - \sqrt{5}|}{1 + \sqrt{5}} = \frac{\sqrt{5}-1}{\sqrt{5}+1} < 1$, so $(\psi/\varphi)^n \to 0$, and both the numerator and the denominator of the middle fraction tend to $1$. Note also that $a_{n-1} \neq 0$ for $n \ge 2$, so the quotient is defined. Consequently
 \[

@@ -402,7 +402,7 @@ If $(S')$ is obtained from $(S)$ by one elementary row operation, then $(S)$ can
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item If $(S) \xrightarrow{\;\lambda \cdot R_i \to R_i\;} (S')$ with $\lambda \ne 0$, then $(S') \xrightarrow{\;\frac{1}{\lambda} \cdot R_i \to R_i\;} (S)$.
     \item If $(S) \xrightarrow{\;R_j + \lambda \cdot R_i \to R_j\;} (S')$ with $i \ne j$, then $(S') \xrightarrow{\;R_j - \lambda \cdot R_i \to R_j\;} (S)$.
-    \item If $(S) \xrightarrow{\;R_i \leftrightarrow R_j\;} (S')$, then $(S') \xrightarrow{\;R_j \leftrightarrow R_i\;} (S)$.
+    \item If $(S) \xrightarrow{\;R_i \leftrightarrow R_j\;} (S')$, then $(S') \xrightarrow{\;R_i \leftrightarrow R_j\;} (S)$: an interchange is its own inverse.
 \end{enumerate}
 Note that case \textbf{(a)} is where the restriction $\lambda \ne 0$ in \cref{def:elementary_row_operations} earns its keep: without it, $\frac{1}{\lambda}$ would not exist and the operation would not be reversible. This concludes the proof of Claim 2. \hfill $\diamond$
 
@@ -492,9 +492,9 @@ Let $A = (a_{ij})$ with $1 \le i \le m$, $1 \le j \le n$ and $a_{ij} \in K$. We 
 \[
 a_{1j} = 0 \quad \forall \, 1 \le j < k, \qquad a_{1k} \ne 0,
 \]
-so that the first row has the shape $(0, \dots, 0, a_{1k}, \ast, \dots, \ast)$. Multiply row $\#1$ by $\frac{1}{a_{1k}}$; its leading entry is now $1$, and condition \textbf{(a)} holds for row $\#1$. Next, for each $2 \le i \le m$, add $(-a_{ik})$ times row $\#1$ to row $i$, that is, perform
+so that the first row has the shape $(0, \dots, 0, a_{1k}, \ast, \dots, \ast)$. Multiply row $\#1$ by $\frac{1}{a_{1k}}$, that is, perform $\frac{1}{a_{1k}} \cdot R_1 \to R_1$; its leading entry is now $1$, and condition \textbf{(a)} holds for row $\#1$. Next, for each $2 \le i \le m$, subtract $a_{ik}$ times row $\#1$ from row $i$, that is, perform
 \[
--a_{ik} \cdot R_1 + R_i \to R_i.
+R_i - a_{ik} \cdot R_1 \to R_i.
 \]
 Schematically:
 \[
@@ -504,7 +504,7 @@ Schematically:
 a_{i1} & \dots & \dots & a_{ik} & \dots \\
 & \vdots & & \vdots &
 \end{pmatrix}
-\xrightarrow{\; -a_{ik} \cdot R_1 + R_i \to R_i \;}
+\xrightarrow{\; R_i - a_{ik} \cdot R_1 \to R_i \;}
 \begin{pmatrix}
 0 & \dots & 0 & 1 & \dots \\
 & \vdots & & \vdots & \\
@@ -514,7 +514,7 @@ a_{i1} & \dots & a_{i,k-1} & 0 & \dots \\
 \]
 After these operations, column $k$ is zero apart from the $1$ in row $\#1$.
 
-\textbf{Row $\#2$.} If all entries in row $\#2$ are $0$, we do nothing to this row. If some entry in row $\#2$ is non-zero, we multiply row $\#2$ by a scalar so that its leading term becomes $1$. Recall that row $\#1$ has its leading non-zero entry in column $k$. Since we have just made all other entries of column $k$ vanish, the leading non-zero term of row $\#2$ can \emph{not} lie in column $k$: it must appear in some other column, say column $k'$ with $k' \ne k$. We now add suitable multiples of row $\#2$ to all the other rows until we obtain a matrix in which all entries of column $k'$ are $0$, except the one in row $\#2$. The two possible configurations are
+\textbf{Row $\#2$.} If all entries in row $\#2$ are $0$, we do nothing to this row. If some entry in row $\#2$ is non-zero, we multiply row $\#2$ by a scalar $\mu \ne 0$ so that its leading term becomes $1$, that is, we perform $\mu \cdot R_2 \to R_2$. Recall that row $\#1$ has its leading non-zero entry in column $k$. Since we have just made all other entries of column $k$ vanish, the leading non-zero term of row $\#2$ can \emph{not} lie in column $k$: it must appear in some other column, say column $k'$ with $k' \ne k$. We now add suitable multiples of row $\#2$ to all the other rows, performing $R_i - a_{ik'} \cdot R_2 \to R_i$ for each $i \ne 2$, until we obtain a matrix in which all entries of column $k'$ are $0$, except the one in row $\#2$. The two possible configurations are
 \[
 \begin{pmatrix}
 0 & \dots & 0 & \dots & 0 & 1 & \ast & \dots & \ast \\
@@ -881,7 +881,7 @@ Observe the shape of the answer: one particular solution plus an arbitrary multi
 
 \begin{exercise}[Inconsistency in \texorpdfstring{$2 \times 2$}{2x2} Systems and Linear Dependence]
 \label{exc:inconsistent_2x2_system}
-Let $A \in M_{2 \times 2}(\mathbb{R})$ be a $2 \times 2$ real matrix and let $b \in \mathbb{R}^2$ be a vector such that the system of equations $Ax = b$ has no solutions. Show that one row of the matrix $A$ must be a scalar multiple of the other.
+Let $A \in \M_{2 \times 2}(\mathbb{R})$ be a $2 \times 2$ real matrix and let $b \in \mathbb{R}^2$ be a vector such that the system of equations $Ax = b$ has no solutions. Show that one row of the matrix $A$ must be a scalar multiple of the other.
 \exinfo{This exercise is Problem 5 of Problem Sheet 4, Linear Algebra I, Autumn Semester 2025.}
 \exsol{sol:inconsistent_2x2_system}
 \end{exercise}
