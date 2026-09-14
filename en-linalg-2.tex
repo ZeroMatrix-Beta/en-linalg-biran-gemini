@@ -88,12 +88,20 @@
 \colorlet{ProofQEDBg}{white}
 
 % --- Running text ---
+% Repointed 2026-09-14 to match the sibling ta-notes project exactly. The two colours had
+% effectively been swapped between the projects: there emphasis is the orange-brown and bold
+% the teal-blue, here it was the other way round. ta-notes is now the reference for both.
 % \colorlet{TextEmphColor}{MidnightBlue}
+% EmphBlue drove \emph until 2026-09-14 and must stay DEFINED even though it no longer does:
+% a handful of TikZ pictures in content/ name it directly (01-fibonacci, 17e-matrices_e).
 \definecolor{EmphBlue}{HTML}{008CC8}
-\colorlet{TextEmphColor}{EmphBlue}
+% \colorlet{TextEmphColor}{EmphBlue}
+\definecolor{EmphBrown}{HTML}{BD6400}
+\colorlet{TextEmphColor}{EmphBrown}
 % \colorlet{TextBoldColor}{Brown!70!black}   % Espresso brown
 % \definecolor{TextBoldColor}{HTML}{4A2511}    % Deep espresso brown
-\definecolor{TextBoldColor}{HTML}{A8651E}    % Warm Bronze Brown (grayscale ~113, brighter than OliveGreen ~107)
+% \definecolor{TextBoldColor}{HTML}{A8651E}    % Warm Bronze Brown, until 2026-09-14
+\definecolor{TextBoldColor}{HTML}{0E6C95}
 \colorlet{TextMetaNote}{Gray}
 \colorlet{LinkColor}{MidnightBlue}
 \colorlet{FileColor}{Magenta}
@@ -140,7 +148,13 @@
 % override the entry colour and the whole TOC would come out midnight blue.
 \colorlet{TocChapColor}{ThemePurple!95!black}
 \colorlet{TocSecColor}{MidnightBlue} % Keep TOC section entries as MidnightBlue
-\colorlet{TocSubsecColor}{TextBoldColor}
+%
+% TocSubsecColor is deliberately NOT tied to TextBoldColor any more (2026-09-14). TextBoldColor
+% was repointed from the warm bronze to a teal-blue to match ta-notes; the TOC should keep
+% looking the way it always did, so TocEntryBrown freezes the old value under its own name --
+% the same arrangement ta-notes uses for its TocEntryBlue/TocEntryBrown pair.
+\definecolor{TocEntryBrown}{HTML}{A8651E}
+\colorlet{TocSubsecColor}{TocEntryBrown}
 \colorlet{TocSubsubColor}{gray}
 \colorlet{TocLabelColor}{ThemePurple!85!black}
 
@@ -670,12 +684,26 @@
 \Crefname{item}{Part}{Parts}
 
 % ==========================================
-% PROOF ENVIRONMENT (with pen nib icon & shadowed Q.E.D. box)
+% PROOF ENVIRONMENT (with pen nib icon & shadowed Q.E.D. / Solved box)
 % ==========================================
 \newcommand{\qedbox}{%
   \tikz[baseline=(Q.base)]\node[draw=ProofTint, fill=ProofQEDBg, line width=1pt, rounded corners=2pt, inner xsep=4pt, inner ysep=2pt, font=\sffamily\bfseries\small, text=ProofQEDText, drop shadow={shadow xshift=0.5ex, shadow yshift=-0.5ex, fill=ProofTint, opacity=0.4}] (Q) {Q.E.D.};%
 }
+
+% The closing marker for a solution that proves nothing -- a computation, a multiple-choice
+% verdict, a worked example, a "give an instance of" answer. Q.E.D. means "which was to be
+% demonstrated", and at the foot of an arithmetic answer it claims something that did not
+% happen. Same box, same colour, same shadow as \qedbox, so the two read as one family; the
+% tick and the word are the whole difference. Reached through `exercisesolution*' below.
+\newcommand{\solvedbox}{%
+  \tikz[baseline=(S.base)]\node[draw=ProofTint, fill=ProofQEDBg, line width=1pt, rounded corners=2pt, inner xsep=4pt, inner ysep=2pt, font=\sffamily\bfseries\small, text=ProofQEDText, drop shadow={shadow xshift=0.5ex, shadow yshift=-0.5ex, fill=ProofTint, opacity=0.4}] (S) {\faCheck\hspace{0.35em}Solved};%
+}
 \renewcommand{\qedsymbol}{\qedbox}
+
+% Which of the two closes the current block. `exercisesolution*' repoints it for the duration
+% of one environment; every other proof-like block keeps the Q.E.D. box. Do not inline
+% \qedbox in the `proof' end code again -- that is what made the marker unswitchable.
+\newcommand{\proofendmark}{\qedbox}
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{%
@@ -686,13 +714,33 @@
   \@afterindentfalse\@afterheading
 }{%
   \unskip\nobreak\hfill\penalty50\hskip2em\null\nobreak\hfill
-  \qedbox
+  \proofendmark
   {\parfillskip=0pt\par}\vspace{2ex}
 }
 \makeatother
 
+% Two spellings, differing ONLY in the closing marker -- same heading, same pen-nib icon,
+% same spacing:
+%
+%   \begin{exercisesolution}[Proof of \cref{exc:foo}]      ... \end{exercisesolution}
+%       an argument. Closes with the Q.E.D. box.
+%   \begin{exercisesolution*}[Solution to \cref{exc:foo}]  ... \end{exercisesolution*}
+%       a computation, a verdict on a multiple-choice list, an example produced on demand.
+%       Closes with the tick box.
+%
+% Rule of thumb: if the exercise says prove / show / verify / check / justify / deduce, it is
+% the unstarred form. If it says compute / determine / find / describe / which of the
+% following, it is the starred one. An exercise that asks for both keeps Q.E.D.
 \newenvironment{exercisesolution}[1][Solution]{%
   \phantomsection
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
+\newenvironment{exercisesolution*}[1][Solution]{%
+  \phantomsection
+  \renewcommand{\proofendmark}{\solvedbox}%
+  \renewcommand{\qedsymbol}{\solvedbox}%  so a \qedhere inside also gets the tick
   \begin{proof}[#1]%
 }{%
   \end{proof}%

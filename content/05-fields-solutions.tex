@@ -1,7 +1,7 @@
 \section{Solutions}\label{sec:solutions_fields}
 
 % Official Solution (Problem Sheet 3, Exercise 2)
-\begin{exercisesolution}[Solution to \cref{exc:finite_field_f5_arithmetic}]
+\begin{exercisesolution*}[Solution to \cref{exc:finite_field_f5_arithmetic}]
 \label{sol:finite_field_f5_arithmetic}
 In $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$, arithmetic is performed modulo $5$.
 \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -26,7 +26,7 @@ In $\mathbb{F}_5 = \{0, 1, 2, 3, 4\}$, arithmetic is performed modulo $5$.
     Thus, $4^{2025} = 4 \in \mathbb{F}_5$.
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 3, Exercise 2). Performs arithmetic calculations in the finite field $\mathbb{F}_5$.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 3, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:frobenius_f3}]
@@ -62,7 +62,7 @@ This proves that the Frobenius map $x \mapsto x^3$ is an additive endomorphism o
         \]
         The element $1 = 1 + 0\tau$ satisfies $(a+b\tau)(1+0\tau) = (a\cdot 1 + \alpha b\cdot 0) + (b\cdot 1 + a\cdot 0)\tau = a+b\tau$, so $1$ is the multiplicative identity (\textbf{(K6)}). Associativity (\textbf{(K5)}) and distributivity (\textbf{(K8)}) follow by direct algebraic expansion from the corresponding properties in $K$ together with the relation $\tau^2 = \alpha$. Finally, $1 \ne 0$ in $K[\tau]$ because $1 \ne 0$ already in $K$, which is \textbf{(K9)}.
         
-        \item \textbf{Axiom \textbf{(K7)} [Multiplicative Inverse]:} Let $z = a + b\tau \in K[\tau]$ with $z \ne 0$, meaning $(a, b) \ne (0, 0)$. Define the \newterm{norm} of $z$ by:
+        \item \textbf{Axiom \textbf{(K7)} [Multiplicative Inverse]:} Let $z = a + b\tau \in K[\tau]$ with $z \ne 0$, meaning $(a, b) \ne (0, 0)$. Define the \newterm[norm!of a quadratic field extension]{norm} of $z$ by:
         \[
         N(z) := (a + b\tau)(a - b\tau) = a^2 - \alpha b^2 \in K.
         \]

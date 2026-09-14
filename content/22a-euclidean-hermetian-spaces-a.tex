@@ -133,7 +133,10 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
     \item Find an analogous formula to (*) for a Hermitian vector space.
 \end{enumerate}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
-\exsol{sol:polarization_a}
+% The two parts are solved in two separate blocks, so each gets its own forward link --
+% sol:polarization_b had none at all until 2026-09-14.
+\exsol[Solution to \textbf{(a)}]{sol:polarization_a}
+\exsol[Solution to \textbf{(b)}]{sol:polarization_b}
 \end{exercise}
 
 \subsection*{Examples}
@@ -272,7 +275,9 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
   a scalar product on $\mathbb{R}^2$?
   \exhint[Hint (Y. St\"aubli)]{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
-  \exsol{sol:pos_def_examples_real_b}
+  % Points at this exercise's own solution. It used to read \exsol{sol:pos_def_examples_real_b},
+  % which proves the 2x2 positive-definiteness criterion the hint invokes, not this exercise.
+  \exsol{sol:inner_product_parameter_a}
 \end{exercise}
 
 The situation for Hermitian products is similar.
@@ -683,7 +688,10 @@ So, having orthogonal/orthonormal bases for our spaces is useful!
   Let $V$ be a finite-dimensional Euclidean vector space and let $S \subseteq V$ be an orthonormal system. Show that $S$ can be extended to an orthonormal basis of $V$.
   \exhint[Hint (Y. St\"aubli)]{Let $S = (u_1, \dots, u_k)$. By \cref{thm:properties_orthogonal_systems}(a), $S$ is linearly independent. By the Steinitz exchange lemma (\cref{lem:strong_steinitz}), we can extend $S$ to a basis $(u_1, \dots, u_k, v_{k+1}, \dots, v_n)$ of $V$. Now apply the Gram-Schmidt orthogonalization process (\cref{thm:gram_schmidt}) to this basis. Because $(u_1, \dots, u_k)$ is already orthonormal, the process leaves the first $k$ vectors unchanged ($w_i = u_i$ for $1 \le i \le k$), while orthogonalizing and normalizing the remaining vectors $v_{k+1}, \dots, v_n$, thus producing an orthonormal basis extending $S$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 23, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
-  \exsol{sol:extend_orthonormal_system}
+  % Points at THIS exercise's own solution. It used to read \exsol{sol:extend_orthonormal_system},
+  % which is the solution to the near-identical exc:extend_orthonormal_system in ch. 22b, and left
+  % sol:extend_orthonormal_system_sheet23 with nothing linking to it.
+  \exsol{sol:extend_orthonormal_system_sheet23}
 \end{exercise}
 
 \begin{exercise}[Gram-Schmidt on Polynomials and Upper Triangular Derivative \faHeart]
@@ -781,7 +789,7 @@ We'll see more about this soon.
   The right-hand side involves nothing but the norm, so two scalar products on $V$ that induce the same norm are equal; this is the sense in which $\| \cdot \|$ determines $\langle \cdot, \cdot \rangle$. The converse fails: not every norm arises this way, as \cref{exc:non_inner_product_norms} shows.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Solution of \cref{exc:polarization} \textbf{(b)}]
+\begin{exercisesolution*}[Solution of \cref{exc:polarization} \textbf{(b)}]
 \label{sol:polarization_b}
   Let $V$ be a Hermitian space. Here $\langle u, v \rangle$ is in general not real, so one formula must recover two real numbers, and we obtain them one at a time.
 
@@ -800,7 +808,7 @@ We'll see more about this soon.
   \[ \langle u, v \rangle = \frac{1}{2}\left( \|u+v\|^2 - \|u\|^2 - \|v\|^2 \right) + \frac{i}{2} \left( \|u+iv\|^2 - \|u\|^2 - \|v\|^2 \right), \]
   which is the analogue of $(*)$ asked for. Subtracting the versions of \eqref{eq:hermitian_expand} for $v$ and for $-v$ (respectively for $iv$ and $-iv$) eliminates $\|u\|^2 + \|v\|^2$ and yields the more symmetric form usually called the polarization identity:
   \[ \langle u, v \rangle = \frac{1}{4}\left( \|u+v\|^2 - \|u-v\|^2 + i\|u+iv\|^2 - i\|u-iv\|^2 \right). \]
-\end{exercisesolution}
+\end{exercisesolution*}
 
 \begin{exercisesolution}[Proof of \cref{exc:bilinear_form_A}]
 \label{sol:bilinear_form_A}

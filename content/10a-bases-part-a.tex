@@ -315,7 +315,7 @@ Indeed, we already know that $m \le n$. Apply the procedure from the proof for t
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_bases_part_a}
 
-\begin{exercisesolution}[Solution to \cref{exc:redundancy_j_equals_one}]
+\begin{exercisesolution*}[Solution to \cref{exc:redundancy_j_equals_one}]
 \label{sol:redundancy_j_equals_one}
 The index $j$ supplied by \cref{lem:targeted_redundancy} may indeed be $1$, and in that case the conclusion degenerates in a way that is worth reading carefully. The vectors strictly preceding $v_1$ form the empty list, so
 \[
@@ -335,7 +335,7 @@ is a non-trivial dependency whose largest non-zero index is $1$, so the proof ma
 The second assertion of the lemma survives unchanged: dropping $v_1 = 0_V$ leaves $\Sp(v_2, \dots, v_n) = \Sp(v_1, \dots, v_n)$, since the zero vector contributes nothing to any linear combination.
 
 This degenerate case is precisely what Step 1 in the proof of \cref{thm:steinitz} has to rule out. There $u_1$ heads the list, so $j = 1$ would say $u_1 = 0_V$; but $u_1$ belongs to an independent list and is therefore non-zero, so the drop index cannot be $1$ and one of the $v_i$'s must be ejected instead. From Step 2 on, the head is no longer a single vector and this role is taken over by \cref{lem:drop_index_beyond_head}.
-\end{exercisesolution}
+\end{exercisesolution*}
 
 \input{content/10a-bases-part-a-solutions.tex}
 

@@ -521,7 +521,7 @@ Let $A \in \M_{n \times n}(K)$ and $P_A(x) = c_n x^n + c_{n-1} x^{n-1} + \dots +
 
 \begin{importantremark}\label{rem:poly_vs_func}
   There is an important difference between polynomials $p(x) \in K[x]$ and the functions they define $K \rightarrow K$.
-  For example, if $K = \mathbb{Z}_2$, then $p(x) = x$ and $q(x) = x^2$ are different polynomials, but they define the same function $\mathbb{Z}_2 \rightarrow \mathbb{Z}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
+  For example, if $K = \mathbb{F}_2$, then $p(x) = x$ and $q(x) = x^2$ are different polynomials, but they define the same function $\mathbb{F}_2 \rightarrow \mathbb{F}_2$. (What happens for $K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \dots$?)
 \end{importantremark}
 
 % Extractor: Opus 5
@@ -651,7 +651,7 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 \subsection{Solutions to the Exercises}
 \label{sec:solutions_multiplicities}
 
-\begin{exercisesolution}[Solution of \cref{ex:poly_vs_func}]
+\begin{exercisesolution*}[Solution of \cref{ex:poly_vs_func}]
 \label{sol:poly_vs_func}
   The assignment $p(x) \mapsto \hat{p}$, where $\hat{p} : K \to K$ denotes the function $\hat{p}(a) := p(a)$, is $K$-linear, so two polynomials $p(x), q(x) \in K[x]$ define the same function if and only if their difference $r(x) := p(x) - q(x)$ vanishes at \emph{every} point of $K$. The question is therefore: which non-zero polynomials vanish identically as functions?
 
@@ -661,10 +661,10 @@ Sometimes, $\lambda$ is also a zero of $q(x)$, so $q(x) = (x-\lambda) \cdot h(x)
 
   \textbf{Finite fields.} If $K$ is finite, the phenomenon always occurs. Indeed, put
   \[ r(x) := \prod_{a \in K} (x - a) \in K[x]. \]
-  This polynomial is non-zero (it is monic of degree $|K|$), yet $\hat{r}(a) = 0$ for every $a \in K$. Thus, $p(x)$ and $p(x) + r(x)$ are distinct polynomials defining the same function, for any $p(x)$ whatsoever. For $K = \mathbb{Z}_2$ this gives $r(x) = x \cdot (x-1) = x^2 - x$, and adding it to $p(x) = x$ returns exactly Prof. Biran's $q(x) = x^2$.
+  This polynomial is non-zero (it is monic of degree $|K|$), yet $\hat{r}(a) = 0$ for every $a \in K$. Thus, $p(x)$ and $p(x) + r(x)$ are distinct polynomials defining the same function, for any $p(x)$ whatsoever. For $K = \mathbb{F}_2$ this gives $r(x) = x \cdot (x-1) = x^2 - x$, and adding it to $p(x) = x$ returns exactly Prof. Biran's $q(x) = x^2$.
 
   There is also a proof by counting, which shows that a collision must occur without exhibiting one: if $|K| = m < \infty$, then there are exactly $m^m$ functions $K \to K$, whereas $K[x]$ is infinite, so the map $p(x) \mapsto \hat{p}$ cannot possibly be injective.
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Extractor: Gemini 3.1 Pro
 \renewcommand{\thetheorem}{21.c.\arabic{theorem}}
@@ -1331,7 +1331,7 @@ taken over a finite set $\mathcal{I} \subseteq (\mathbb{Z}_{\ge 0})^r$ of multi-
 \end{proof}
 
 \begin{exercise}[Where the Argument Breaks over Other Fields]\label{ex:multi_var_other_fields}
-  What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$, even for $r = 1$, with, for example, $K = \mathbb{Z}_2$, or some other field, finite or infinite?
+  What fails in the proof of \cref{lemma:multi_var_poly} if we replace $\mathbb{R}[x_1, \dots, x_r]$ by $K[x_1, \dots, x_r]$, even for $r = 1$, with, for example, $K = \mathbb{F}_2$, or some other field, finite or infinite?
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
 \exsol{sol:multi_var_other_fields}
 \end{exercise}
@@ -1595,9 +1595,9 @@ $[S]_{\mathcal{B}}^{\mathcal{B}} \;=\;$
 \label{sol:multi_var_other_fields}
   Two separate things go wrong, and it is worth keeping them apart.
 
-  \textbf{The proof breaks immediately.} The argument is analytic: it differentiates $f$ as a \emph{function} on $\mathbb{R}^r$, and differentiation rests on limits, which a bare field $K$ does not provide. One can of course define the formal derivative of a polynomial without any analysis, but the step that made the proof work, \qt{$f$ vanishes identically, therefore all its derivatives vanish identically}, is a statement about functions and is no longer available. Even granting formal derivatives, the last step divides by $i_1! \cdot \dots \cdot i_r!$, and in a field of characteristic $p$ those factorials can be $0$: for $K = \mathbb{Z}_2$ and $i = 2$ already $2! = 0$ in $K$.
+  \textbf{The proof breaks immediately.} The argument is analytic: it differentiates $f$ as a \emph{function} on $\mathbb{R}^r$, and differentiation rests on limits, which a bare field $K$ does not provide. One can of course define the formal derivative of a polynomial without any analysis, but the step that made the proof work, \qt{$f$ vanishes identically, therefore all its derivatives vanish identically}, is a statement about functions and is no longer available. Even granting formal derivatives, the last step divides by $i_1! \cdot \dots \cdot i_r!$, and in a field of characteristic $p$ those factorials can be $0$: for $K = \mathbb{F}_2$ and $i = 2$ already $2! = 0$ in $K$.
 
-  \textbf{For finite $K$ the statement itself is false}, so no repair of the proof is possible. Take $K = \mathbb{Z}_2$ and $r = 1$. Then $f(x) := x^2 + x$ satisfies $f(0) = 0$ and $f(1) = 1 + 1 = 0$, so $f$ vanishes at every point of $K$, yet $f$ is not the zero polynomial. This is exactly the phenomenon of \cref{rem:poly_vs_func}, and \cref{ex:poly_vs_func} shows that it occurs over every finite field.
+  \textbf{For finite $K$ the statement itself is false}, so no repair of the proof is possible. Take $K = \mathbb{F}_2$ and $r = 1$. Then $f(x) := x^2 + x$ satisfies $f(0) = 0$ and $f(1) = 1 + 1 = 0$, so $f$ vanishes at every point of $K$, yet $f$ is not the zero polynomial. This is exactly the phenomenon of \cref{rem:poly_vs_func}, and \cref{ex:poly_vs_func} shows that it occurs over every finite field.
 
   \textbf{For infinite $K$ the statement survives}, but it must be proved algebraically rather than analytically. Induct on $r$. The case $r = 1$ is the content of \cref{ex:poly_vs_func}: a non-zero polynomial in one variable has at most $\deg$ many zeros, so over an infinite field it cannot vanish everywhere. For $r \ge 2$, collect $f$ by powers of the last variable,
   \[ f(x_1, \dots, x_r) = \sum_{j} g_j(x_1, \dots, x_{r-1}) \cdot x_r^{\,j}, \]

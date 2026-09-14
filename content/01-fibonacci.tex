@@ -623,7 +623,7 @@ Let $\mathcal{A} = (a_0, a_1, a_2, \dots)$ and $\mathcal{B} = (b_0, b_1, b_2, \d
 Both computations use \cref{prop:fib_closure} implicitly, in that the sequences $\mathcal{A} + \mathcal{B}$ and $\alpha \mathcal{A}$ are again in $\Fib$, so that $S$ may be applied to them at all.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(a)}]
+\begin{exercisesolution*}[Solution of \cref{exc:ch1_list} \textbf{(a)}]
 \label{sol:ch1_list_a}
 We repeat the derivation of \cref{thm:binet_formula} with $\mathcal{F}_{0,1}$ replaced by an arbitrary $\mathcal{F}_{a_0, a_1}$. By \cref{cor:fib_linear_combination} we look for $\alpha, \beta \in \mathbb{R}$ with $\alpha \cdot \mathcal{F}_{1,\varphi} + \beta \cdot \mathcal{F}_{1,\psi} = \mathcal{F}_{a_0, a_1}$, and comparing the terms with $n = 0$ and $n = 1$ gives
 \[
@@ -641,9 +641,9 @@ Reading off the $n$-th term, the general Fibonacci sequence $\mathcal{F}_{a_0, a
     \alpha_n = \frac{1}{\sqrt{5}} \left( (a_1 - a_0 \psi) \, \varphi^n - (a_1 - a_0 \varphi) \, \psi^n \right) \qquad \text{for all } n \ge 0.
 \]
 Two checks. For $a_0 = 0$ and $a_1 = 1$ this collapses to $\frac{1}{\sqrt{5}}(\varphi^n - \psi^n)$, which is Binet's formula. For $a_0 = 1$ and $a_1 = 0$ it gives $\frac{1}{\sqrt{5}}(\varphi \psi^n - \psi \varphi^n)$, whose values at $n = 0$ and $n = 1$ are $\frac{\varphi - \psi}{\sqrt{5}} = 1$ and $\frac{\varphi\psi - \psi\varphi}{\sqrt{5}} = 0$, as they must be.
-\end{exercisesolution}
+\end{exercisesolution*}
 
-\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(c)}]
+\begin{exercisesolution*}[Solution of \cref{exc:ch1_list} \textbf{(c)}]
 \label{sol:ch1_list_c}
 The displayed expression is not a finite computation, so it has to be given a meaning, and the standard one is as a limit. Define a sequence by
 \[
@@ -660,7 +660,7 @@ Second, the limit does exist, and the reason is this chapter's own subject. Star
 because $1 + \frac{a_n}{a_{n+1}} = \frac{a_{n+1} + a_n}{a_{n+1}} = \frac{a_{n+2}}{a_{n+1}}$ by the recurrence. So, the convergents of the continued fraction are precisely the ratios of consecutive Fibonacci numbers, and part \textbf{(e)} below shows that these converge to $\varphi$.
 
 The meaning of the picture, then, is that the golden ratio is the number whose continued fraction expansion consists of nothing but $1$'s, and that its convergents are the Fibonacci quotients plotted in \cref{fig:fib_ratio_to_phi}.
-\end{exercisesolution}
+\end{exercisesolution*}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(d)}]
 \label{sol:ch1_list_d}
@@ -673,9 +673,9 @@ that is, $\alpha_m = d$ for every $m \ge 0$: the sequence is constant. Now impos
 Conversely, $\mathcal{F}_{0,0}$ is arithmetic, with $d = 0$. So, the zero sequence is the only arithmetic Fibonacci sequence, which is what the text asserts before \cref{lem:geometric_fibonacci}. Note that no growth estimate entered: the argument is finished by the single equation $d = d + d$, and it applies to sequences with negative terms just as well.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(e)}]
+\begin{exercisesolution*}[Solution of \cref{exc:ch1_list} \textbf{(e)}]
 \label{sol:ch1_list_e}
-By \cref{thm:binet_formula}, for $n \ge 1$,
+By \cref{thm:binet_formula}, for $n \ge 2$ (the quotient is undefined at $n = 1$, where $a_0 = 0$),
 \[
     \frac{a_n}{a_{n-1}} = \frac{\varphi^n - \psi^n}{\varphi^{n-1} - \psi^{n-1}} = \varphi \cdot \frac{1 - (\psi/\varphi)^n}{1 - (\psi/\varphi)^{n-1}},
 \]
@@ -684,10 +684,12 @@ where the second expression is obtained by dividing numerator and denominator by
     \lim_{n \to \infty} \frac{a_n}{a_{n-1}} = \varphi = \frac{1 + \sqrt{5}}{2}.
 \]
 The oscillation visible in \cref{fig:fib_ratio_to_phi} is the sign of $(\psi/\varphi)^n$, which alternates, while its magnitude decays geometrically.
-\end{exercisesolution}
+\end{exercisesolution*}
 
 \begin{exercisesolution}[Solution of \cref{exc:ch1_list} \textbf{(f)}]
 \label{sol:ch1_list_f}
+\inlinemetanote{Uses later theory. The argument takes determinants and uses that the determinant is multiplicative, both from ch.\ 20. The dependency is inherited from the exercise rather than introduced here: Prof.~Biran's own hint is to use $\det(M^n)$. For a $2 \times 2$ matrix, $\det \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) = ad - bc$ and multiplicativity can both be checked by direct expansion, so nothing below is circular.}
+
 Write $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ as in the text. We first claim that
 \[
     M^n = \begin{pmatrix} a_{n+1} & a_n \\ a_n & a_{n-1} \end{pmatrix} \qquad \text{for all } n \ge 1,

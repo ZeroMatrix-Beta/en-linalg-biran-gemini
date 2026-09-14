@@ -26,9 +26,56 @@
 \exinfo{Official Solution (Problem Sheet 11, Exercise 1). Computes 2x2 matrix square and proves the formula for powers of an upper triangular shear matrix by induction.}
 \end{exercisesolution}
 
+% Official Solution (Problem Sheet 11, Exercise 3)
+\begin{exercisesolution}[Solution to \cref{exc:block_diagonal_upper_triangular_mult}]
+\label{sol:block_diagonal_upper_triangular_mult}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item Write $A = (a_{ij})$ and $B = (b_{ij})$ in $\M_{n \times n}(K)$, and split the index range $\{1, \dots, n\}$ into the two blocks
+    \[
+        I := \{1, \dots, k\}, \qquad J := \{k+1, \dots, n\}.
+    \]
+    The block form of $A$ says precisely that $a_{ij} = 0$ whenever $i$ and $j$ lie in \emph{different} blocks, and likewise for $B$. By \cref{def:matrix_multiplication}, the $(i,j)$-entry of $A \cdot B$ is
+    \[
+        c_{ij} = \sum_{\ell = 1}^{n} a_{i\ell} b_{\ell j}.
+    \]
+    Fix $i$ and $j$. A summand $a_{i\ell} b_{\ell j}$ can be non-zero only if $\ell$ lies in the same block as $i$ (else $a_{i\ell} = 0$) \emph{and} in the same block as $j$ (else $b_{\ell j} = 0$). If $i$ and $j$ lie in different blocks, no $\ell$ meets both conditions, the sum is empty of non-zero terms, and $c_{ij} = 0$. This is the assertion that $A \cdot B$ is again block diagonal with blocks of the same two sizes.
+
+    If instead $i$ and $j$ both lie in $I$, the surviving summands are exactly those with $\ell \in I$, so
+    \[
+        c_{ij} = \sum_{\ell = 1}^{k} a_{i\ell} b_{\ell j},
+    \]
+    which is the $(i,j)$-entry of $A_1 \cdot B_1$. The same computation over $J$ gives, for $i, j \in J$, the $(i-k, j-k)$-entry of $A_2 \cdot B_2$. Hence
+    \[
+        A \cdot B = \begin{pmatrix} A_1 B_1 & 0_{k \times (n-k)} \\ 0_{(n-k) \times k} & A_2 B_2 \end{pmatrix},
+    \]
+    as claimed: a block diagonal product is computed block by block.
+
+    \item Suppose $A_1 \in \GL_k(K)$ and $A_2 \in \GL_{n-k}(K)$, and put
+    \[
+        C := \begin{pmatrix} A_1^{-1} & 0_{k \times (n-k)} \\ 0_{(n-k) \times k} & A_2^{-1} \end{pmatrix} \in \M_{n \times n}(K),
+    \]
+    which is block diagonal with the same two block sizes. By part \textbf{(a)},
+    \[
+        A \cdot C = \begin{pmatrix} A_1 A_1^{-1} & 0 \\ 0 & A_2 A_2^{-1} \end{pmatrix} = \begin{pmatrix} I_k & 0 \\ 0 & I_{n-k} \end{pmatrix} = I_n,
+    \]
+    and symmetrically $C \cdot A = I_n$. So, $A$ is invertible by \cref{def:invertible_matrix}, and $C$ is its inverse by the uniqueness on \cpageref{prop:uniqueness_of_inverse_matrix}:
+    \[
+        A^{-1} = \begin{pmatrix} A_1^{-1} & 0_{k \times (n-k)} \\ 0_{(n-k) \times k} & A_2^{-1} \end{pmatrix}.
+    \]
+    The inverse of a block diagonal matrix is thus obtained by inverting each block separately.
+
+    \item This is exactly the upper triangular case of \cref{lemma:triangular_multiplication_closure}, whose proof is carried out on \cpageref{sol:triangular_multiplication_closure}. In brief: if $A = (a_{ij})$ and $B = (b_{ij})$ are both upper triangular, then $a_{i\ell} = 0$ unless $i \le \ell$ and $b_{\ell j} = 0$ unless $\ell \le j$, so a summand of $\sum_{\ell} a_{i\ell} b_{\ell j}$ survives only when $i \le \ell \le j$. For $i > j$ there is no such $\ell$, and therefore $(AB)_{ij} = 0$. Hence $AB$ is upper triangular, and $U$ is closed under matrix multiplication.
+
+    Note that $U$ is a subspace of $\M_{n \times n}(K)$ that is moreover closed under the product; together with $I_n \in U$ this makes $U$ a subring of the matrix ring of \cref{rem:matrix_ring}, not merely a subspace.
+\end{enumerate}
+\exinfo{Official Solution (Problem Sheet 11, Exercise 3). Block diagonal matrices multiply and invert block by block; upper triangular matrices are closed under the product.}
+\end{exercisesolution}
+
 % Official Solution (Problem Sheet 12, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:powers_2x2_nilpotency}]
 \label{sol:powers_2x2_nilpotency}
+\inlinemetanote{Uses later theory. Part \textbf{(a)} runs on two tools this chapter does not have: the \emph{determinant} and its multiplicativity, from ch.\ 20, and the $2 \times 2$ case of the Cayley--Hamilton identity $A^2 - \Tr(A)A + \det(A)I_2 = 0$, from ch.\ 21 (where it is \cref{ex:cayley_2x2}). The identity itself can be checked here by expanding both sides entry by entry, which is what \cref{ex:cayley_2x2} does; it is only the name and the context that arrive later.}
+
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $A \in \M_{2 \times 2}(K)$ such that $A^2 \ne 0$.
     Suppose for contradiction that $A^k = 0$ for some $k \ge 3$.
@@ -75,7 +122,7 @@
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 14, Single Choice Question 3)
-\begin{exercisesolution}[Solution to \cref{exc:gl_not_subspace_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:gl_not_subspace_sc}]
 \label{sol:gl_not_subspace_sc}
 The correct answer is \textbf{(a): not a real linear subspace of $\M_{n \times n}(\mathbb{R})$}.
 
@@ -83,4 +130,4 @@ The correct answer is \textbf{(a): not a real linear subspace of $\M_{n \times n
 However, the zero matrix $0 \in \M_{n \times n}(\mathbb{R})$ has determinant $\det(0) = 0$, so $0 \notin \GL_n(\mathbb{R})$.
 Furthermore, $\GL_n(\mathbb{R})$ is not closed under addition: for instance, $I_n \in \GL_n(\mathbb{R})$ and $-I_n \in \GL_n(\mathbb{R})$, but their sum $I_n + (-I_n) = 0 \notin \GL_n(\mathbb{R})$. \qedhere
 \exinfo{Official Solution (Problem Sheet 14, Single Choice Question 3). Shows that the general linear group $\GL_n(\mathbb{R})$ is not a subspace because it lacks the zero matrix.}
-\end{exercisesolution}
+\end{exercisesolution*}

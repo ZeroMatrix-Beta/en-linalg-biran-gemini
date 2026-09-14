@@ -608,7 +608,13 @@ Thus, $\alpha w_1 + \beta w_2 \in W^{\perp_B}$, proving it is a subspace.
 
 \begin{exercisesolution}[Proof of \cref{exc:scaled_family_is_basis}]
 \label{sol:scaled_family_is_basis}
-We are given a basis $\mathcal{C}'' := (v''_1, \dots, v''_n)$. The new set $\mathcal{C} := (v_1, \dots, v_n)$ is formed by scaling each vector in $\mathcal{C}''$ by a non-zero scalar $c_i$ (where $c_i = 1/\lambda_i$ or $c_i = 1$). Since scaling basis vectors by non-zero scalars preserves linear independence and the span, $\mathcal{C}$ remains a basis for $V$.
+We are given a basis $\mathcal{C}'' := (v''_1, \dots, v''_n)$ and non-zero scalars $c_1, \dots, c_n \in K \setminus \{0\}$, and we set $v_i := c_i v''_i$.
+
+\textbf{Independence.} Suppose $\sum_{i=1}^n a_i v_i = 0$. Substituting $v_i = c_i v''_i$ gives $\sum_{i=1}^n (a_i c_i) v''_i = 0$, and since $\mathcal{C}''$ is independent, $a_i c_i = 0$ for every $i$. Each $c_i$ is non-zero and $K$ is a field, so $a_i = 0$ for every $i$.
+
+\textbf{Spanning.} Each $v''_i = c_i^{-1} v_i \in \Sp(\mathcal{C})$, so $V = \Sp(\mathcal{C}'') \subseteq \Sp(\mathcal{C}) \subseteq V$.
+
+Hence, $\mathcal{C} := (v_1, \dots, v_n)$ is again a basis for $V$. Invertibility of every $c_i$ is what both halves turn on; scaling by $0$ would destroy independence at once.
 \end{exercisesolution}
 
 % Creator: Opus 5

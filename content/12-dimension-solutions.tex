@@ -2,7 +2,7 @@
 \label{sec:solutions_dimension}
 
 % Official Solution (Problem Sheet 8, Exercise 1)
-\begin{exercisesolution}[Solution to \cref{exc:matrix_subspaces_dimension_bases}]
+\begin{exercisesolution*}[Solution to \cref{exc:matrix_subspaces_dimension_bases}]
 \label{sol:matrix_subspaces_dimension_bases}
 Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matrix having entry $1$ in the $(i, j)$-position and $0$ elsewhere, for $1 \le i, j \le n$. The set of all $n^2$ elementary matrices forms the standard basis of $\M_{n \times n}(\mathbb{R})$.
 
@@ -62,10 +62,10 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     Thus the collection $\mathcal{B} := \{A_k^{(i)} \mid 1 \le i \le n,\, 1 \le k \le n-1\}$ is a basis of $W$, and its cardinality is $n(n-1)$. Hence, $\dim W = n(n-1)$.
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 8, Exercise 1). Determines bases and dimensions of upper triangular, diagonal, symmetric, and row-sum zero matrix spaces.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 8, Exercise 2)
-\begin{exercisesolution}[Solution to \cref{exc:subspace_dimension_equations_basis_selection}]
+\begin{exercisesolution*}[Solution to \cref{exc:subspace_dimension_equations_basis_selection}]
 \label{sol:subspace_dimension_equations_basis_selection}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item We determine the dimension of $W = \Sp(v_1, v_2, v_3, v_4)$ by applying elementary row operations to the matrix whose columns are the given vectors:
@@ -143,8 +143,8 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
             \begin{pmatrix} 1 \\ 2 \\ 1 \\ 2 \end{pmatrix} + \begin{pmatrix} 0 \\ 2 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 4 \\ 2 \\ 3 \end{pmatrix}.
         \]
         Thus the subset $\{v_1, v_3, v_4\}$ is linearly dependent and spans only a $2$-dimensional subspace; it is not a basis.
-        \item For $\{v_1, v_2, v_4\}$, the Gaussian elimination in part \textbf{(a)} established that the corresponding columns are linearly independent. By \cref{thm:basis_equivalent_characterizations}, any linearly independent list of length $3$ in a $3$-dimensional space is a basis.
-        \item For $\{v_1, v_2, v_3\}$, since $v_4 = v_3 - v_1$, we have $\Sp(v_1, v_2, v_3) = \Sp(v_1, v_2, v_3, v_4) = W$. By \cref{thm:basis_equivalent_characterizations}, this spanning set of size $3$ is a basis.
+        \item For $\{v_1, v_2, v_3\}$, the echelon form computed in part \textbf{(a)} has its pivots in columns $1$, $2$ and $3$, so those three columns are linearly independent. By \cref{thm:basis_equivalent_characterizations}, any linearly independent list of length $3$ in a $3$-dimensional space is a basis.
+        \item For $\{v_1, v_2, v_4\}$, since $v_3 = v_1 + v_4$, we have $\Sp(v_1, v_2, v_4) = \Sp(v_1, v_2, v_3, v_4) = W$. By \cref{thm:basis_equivalent_characterizations}, this spanning set of size $3$ is a basis. (The pivot columns of part \textbf{(a)} do \emph{not} settle this one: they are columns $1,2,3$, which certify the previous subset, not this one.)
         \item For $\{v_2, v_3, v_4\}$, since $v_1 = v_3 - v_4$, we have $\Sp(v_2, v_3, v_4) = W$, so this is likewise a basis.
     \end{itemize}
     Thus there are exactly $3$ such bases:
@@ -153,10 +153,10 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \]
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 8, Exercise 2). Computes basis selection, dimension, and defining homogeneous Cartesian equations for a subspace in $\mathbb{R}^4$.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 8, Exercise 3)
-\begin{exercisesolution}[Solution to \cref{exc:bases_dimensions_various_spaces}]
+\begin{exercisesolution*}[Solution to \cref{exc:bases_dimensions_various_spaces}]
 \label{sol:bases_dimensions_various_spaces}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{System of linear equations.} The system is
@@ -210,10 +210,10 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     Hence $\mathcal{B} := \left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ i \end{pmatrix} \right\}$ is a basis of $V$ over $\mathbb{R}$, and $\dim_{\mathbb{R}} V = 2$.
 \end{enumerate}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 8, Exercise 3). Finds bases and dimensions for linear systems, trivial space, and complex vs real planes.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 8, Exercise 4)
-\begin{exercisesolution}[Solution to \cref{exc:polynomials_linear_factor_dimension}]
+\begin{exercisesolution*}[Solution to \cref{exc:polynomials_linear_factor_dimension}]
 \label{sol:polynomials_linear_factor_dimension}
 Let $g(X) := X + 5 \in K[X]$. An element $h \in K[X]$ belongs to $W$ if and only if $\deg(h) \le d$ and $h(X) = g(X) f(X)$ for some polynomial $f(X) \in K[X]$.
 
@@ -243,10 +243,10 @@ Because the standard monomials $1, X, \dots, X^{d-1}$ are linearly independent i
 
 Thus, $\mathcal{B}$ is a basis of $W$. Since it contains exactly $d$ polynomials, we conclude that $\dim W = d$.
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 8, Exercise 4). Computes the dimension of multiples of a fixed linear factor in polynomial spaces.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 8, Exercise 5)
-\begin{exercisesolution}[Solution to \cref{exc:harmonic_ode_solution_space}]
+\begin{exercisesolution*}[Solution to \cref{exc:harmonic_ode_solution_space}]
 \label{sol:harmonic_ode_solution_space}
 We determine the dimension and an explicit basis for the real vector space
 \[
@@ -277,7 +277,7 @@ This proves that $\{\cos x, \sin x\}$ spans $V$.
 
 \textbf{Conclusion.} The set $\mathcal{B} := \{\cos x, \sin x\}$ is an explicit basis of $V$, and $\dim V = 2$.
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 8, Exercise 5). Demonstrates the 2-dimensional solution space of harmonic oscillator ODE $f'' + f = 0$.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 9, Exercise 4)
 \begin{exercisesolution}[Proof of \cref{exc:shifted_span_dimension}]

@@ -127,6 +127,11 @@ You are authorized to improve the prose and apply the established "House Style" 
     * **Multiple Approaches:** If the official solution presents multiple approaches (or if an alternative elegant method exists), include both approaches and highlight this in `\exinfo`.
     * **Divergence / Disagreement:** If the Gemini derivation or interpretation differs substantively from the official solution, append an `\begin{ainote} ... \end{ainote}` after `\end{exercisesolution}` presenting both versions and explaining the differences.
     * **Bidirectional Linking:** Every exercise statement ends with `\exsol{sol:slug}`, and every solution begins with `\label{sol:slug}` and refers back to the exercise via `[Solution to \cref{exc:slug}]` or `[Proof of \cref{...}]`.
+    * **Which closing marker: `exercisesolution` or `exercisesolution*`?** The two environments are identical except for the box that closes them, and the choice is not cosmetic — "Q.E.D." asserts *quod erat demonstrandum*, so putting it under a column of arithmetic claims something that did not happen.
+      * **`exercisesolution`** (Q.E.D. box) — the block *argues*. Use it when the exercise says prove, show, verify, check, justify, deduce, or simply states a proposition to be established. Also for "prove or disprove", where discharging the verdict is the demonstration.
+      * **`exercisesolution*`** (tick + "Solved" box) — the block *answers*. Use it when the task is to produce a result rather than establish a claim: compute, calculate, determine, find, describe, sketch, solve, list, "for which values …", "which of the following …", and every multiple-choice / single-choice / true-false compilation.
+      * **A multi-part exercise that asks for both keeps the unstarred form.** But when the parts are solved in *separate* blocks (as `exc:ch1_list` and `exc:polarization` are), each block is judged on its own part — part (a) "Find an explicit formula" is starred even though part (f) "Show that …" is not.
+      * The marker must match the block's own content, not its title: a solution headed "Solution to …" can still be a proof, and is then unstarred.
 
 ## MORE LATEX DIRECTIVES
 
@@ -178,8 +183,17 @@ You are authorized to improve the prose and apply the established "House Style" 
 \newtheorem{aiexercise}{AI-Exercise}[chapter]
 
 \newtheorem*{ainote}{AI-Note}
+% Unstarred closes with the Q.E.D. box, starred with the tick box -- nothing else differs.
 \newenvironment{exercisesolution}[1][Solution]{%
   \phantomsection
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
+\newenvironment{exercisesolution*}[1][Solution]{%
+  \phantomsection
+  \renewcommand{\proofendmark}{\solvedbox}%
+  \renewcommand{\qedsymbol}{\solvedbox}%
   \begin{proof}[#1]%
 }{%
   \end{proof}%

@@ -28,6 +28,21 @@ Let $\emptyset \neq S \subseteq V$ be a subset. We define the \newterm{orthogona
 When $S = \{v\}$, we write $v^\perp := \{v\}^\perp$.
 \end{definition}
 
+\begin{importantremark}[Two meanings of $(\cdot)^\perp$]
+\label{rem:perp_two_meanings}
+The superscript $\perp$ has already been used once in this book, in
+\cref{prop:annihilator_dual_quotient}, where $U^\perp = \{\ell \in V^* \mid \ell|_U = 0\}$
+is the \emph{annihilator} of $U$. That is a different object from the one just
+defined, and it lives in a different space: the annihilator is a subspace of the
+dual $V^*$ and needs no inner product, whereas the orthogonal complement above
+is a subspace of $V$ itself and is defined entirely in terms of
+$\langle \cdot, \cdot \rangle$. Both notations are standard, and which is meant
+is always fixed by the ambient space. The two are not unrelated: once an inner
+product is present, \cref{thm:dual_space_inner_product_isomorphism} of ch. 23a
+identifies $V$ with $V^*$, and under that identification the annihilator of $U$
+corresponds to its orthogonal complement.
+\end{importantremark}
+
 \begin{center}
 \begin{tikzpicture}[scale=1.2]
     % The plane v^\perp
@@ -524,7 +539,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
   There is a second route, worth recording because it is the one the geometry suggests: put $U := \Sp(e_1, \dots, e_r)$. By \cref{cor:dim_orthogonal_complement}, $\dim U^\perp = n - r$; choose an orthonormal basis $(f_{r+1}, \dots, f_n)$ of $U^\perp$, which exists by \cref{cor:orthonormal_basis_exists}. Every $f_i$ is orthogonal to every $e_j$ by the definition of $U^\perp$, so the concatenation $(e_1, \dots, e_r, f_{r+1}, \dots, f_n)$ is an orthonormal system of $n$ vectors, hence linearly independent, hence a basis of $V$.
 \end{exercisesolution}
 
-\begin{exercisesolution}[Solution of \cref{exc:gram_schmidt_dependent}]
+\begin{exercisesolution*}[Solution of \cref{exc:gram_schmidt_dependent}]
 \label{sol:gram_schmidt_dependent}
   \textbf{The next vector is $0$.} Suppose that after $k$ successful steps we have an orthogonal system $e_1, \dots, e_k$ with
   \[ U := \Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k}), \]
@@ -540,7 +555,7 @@ Suppose that at stage $j$ we already have an orthogonal system $e_1, \dots, e_k$
   \textbf{The remedy.} Discard every vector that produces $0$ and carry on with the next one. The vectors that survive are precisely a maximal linearly independent sublist $v_{i_1}, \dots, v_{i_r}$ of $v_1, \dots, v_m$, where $r = \dim \Sp(v_1, \dots, v_m)$, and the output $e_1, \dots, e_r$ is an orthogonal basis of $\Sp(v_1, \dots, v_m)$ satisfying $\Sp(e_1, \dots, e_k) = \Sp(v_1, \dots, v_{i_k})$ for every $k$.
 
   This is what the proof of the extension of the QR-decomposition on \cpageref{thm:qr_decomposition_all} arranges in advance: rather than letting the process stall, it selects the indices $i_1 < \dots < i_r$ first and applies Gram-Schmidt only to $v_{i_1}, \dots, v_{i_r}$, which are linearly independent by construction.
-\end{exercisesolution}
+\end{exercisesolution*}
 
 \input{content/22b-euclidean-hermetian-spaces-b-solutions.tex}
 

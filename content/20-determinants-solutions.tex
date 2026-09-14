@@ -62,7 +62,7 @@ Let $D(A) = A(j_1, k_1) A(j_2, k_2) \cdots A(j_n, k_n)$ where $j_i, k_i \in \{1,
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 16, Exercise 3)
-\begin{exercisesolution}[Solution to \cref{exc:multilinear_candidates_3x3}]
+\begin{exercisesolution*}[Solution to \cref{exc:multilinear_candidates_3x3}]
 \label{sol:multilinear_candidates_3x3}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item $D(A) = A_{11} + A_{22} + A_{33}$ (\textbf{Not $3$-linear}):
@@ -84,7 +84,7 @@ Let $D(A) = A(j_1, k_1) A(j_2, k_2) \cdots A(j_n, k_n)$ where $j_i, k_i \in \{1,
     Scaling row $1$ by $c = 0$ gives $D(0, R_2, R_3) = 1 \ne 0 \cdot D(A) = 0$. \qedhere
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 16, Exercise 3). Identifies which functions on $3 \times 3$ matrices are 3-linear.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 16, Exercise 1)
 \begin{exercisesolution}[Solution to \cref{exc:det_2x2_alternating_bilinear}]
@@ -95,12 +95,12 @@ Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$, s
     \item \textbf{Linearity in rows:}
     Fixing $(c, d)$, the map $(a, b) \mapsto ad - bc = d \cdot a - c \cdot b$ is linear in the first row.
     Fixing $(a, b)$, the map $(c, d) \mapsto ad - bc = -b \cdot c + a \cdot d$ is linear in the second row.
-    If the two rows are equal, then $(a, b) = (c, d)$, so $\det A = ac - bc = ac - ac = 0$, so $\det$ is alternating in rows.
+    If the two rows are equal, then $(a, b) = (c, d)$, that is, $c = a$ and $d = b$, so $\det A = ad - bc = ab - ba = 0$, and $\det$ is alternating in rows.
 
     \item \textbf{Linearity in columns:}
     Fixing column $2$, $(a, c) \mapsto ad - bc = d \cdot a - b \cdot c$ is linear in column $1$.
     Fixing column $1$, $(b, d) \mapsto ad - bc = -c \cdot b + a \cdot d$ is linear in column $2$.
-    If the two columns are equal, then $(a, c) = (b, d)$, so $\det A = ab - ba = 0$, so $\det$ is alternating in columns. \qedhere
+    If the two columns are equal, then $(a, c) = (b, d)$, that is, $b = a$ and $d = c$, so $\det A = ad - bc = ac - ac = 0$, and $\det$ is alternating in columns. \qedhere
 \end{itemize}
 \exinfo{Official Solution (Problem Sheet 16, Exercise 1). Proves the $2 \times 2$ determinant is an alternating bilinear function in rows and columns.}
 \end{exercisesolution}
@@ -153,7 +153,7 @@ For a lower triangular matrix, transposing gives an upper triangular matrix with
 \end{exercisesolution}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 16, Combinatorics)
-\begin{exercisesolution}[Solution to \cref{exc:symmetric_group_s4_and_alternating}]
+\begin{exercisesolution*}[Solution to \cref{exc:symmetric_group_s4_and_alternating}]
 \label{sol:symmetric_group_s4_and_alternating}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item The group $S_4$ contains $4! = 24$ permutations, classified by cycle structure:
@@ -188,7 +188,7 @@ For a lower triangular matrix, transposing gives an upper triangular matrix with
     \]
 \end{enumerate}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 16). Classifies permutations in $S_4$, writes the 24-term Leibniz formula, and proves $|A_n| = n!/2$.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 17, Exercise 10)
 \begin{exercisesolution}[Solution to \cref{exc:multiplicativity_via_leibniz}]
@@ -213,7 +213,7 @@ Substituting this back gives:
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Multiple Choice Question 1)
-\begin{exercisesolution}[Solution to \cref{exc:general_determinant_properties_mc}]
+\begin{exercisesolution*}[Solution to \cref{exc:general_determinant_properties_mc}]
 \label{sol:general_determinant_properties_mc}
 \begin{itemize}
     \item \textbf{(a) True:} Multiplicativity of the determinant (\cref{thm:det_multiplicative}).
@@ -224,10 +224,10 @@ Substituting this back gives:
 \end{itemize}
 The correct statements are \textbf{(a), (b), and (c)}.
 \exinfo{Official Solution (Problem Sheet 17, Multiple Choice Question 1). Evaluates general determinant properties including multiplicativity and scaling.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Single Choice Question 2)
-\begin{exercisesolution}[Solution to \cref{exc:determinant_properties_linearity_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:determinant_properties_linearity_sc}]
 \label{sol:determinant_properties_linearity_sc}
 Statement \textbf{(c)} is false: the determinant function $\det \colon \M_{n \times n}(K) \to K$ is \emph{not} a linear map for $n \ge 2$, since $\det(A + B) \ne \det(A) + \det(B)$ in general (e.g. $\det(I_n + I_n) = 2^n \ne 1 + 1 = 2$).
 The remaining statements are all true:
@@ -238,7 +238,7 @@ The remaining statements are all true:
 \end{itemize}
 Therefore, the false statement is \textbf{(c)}.
 \exinfo{Official Solution (Problem Sheet 17, Single Choice Question 2). Tests understanding of non-linearity and fundamental properties of the determinant.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:row_operations_and_determinant_divisibility}]
@@ -276,7 +276,7 @@ Therefore, the false statement is \textbf{(c)}.
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Single Choice Question 3)
-\begin{exercisesolution}[Solution to \cref{exc:invariance_under_matrix_operations_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:invariance_under_matrix_operations_sc}]
 \label{sol:invariance_under_matrix_operations_sc}
 Interchanging two rows flips the sign of the determinant ($\det \to -\det$), so the determinant in general changes.
 The other operations strictly preserve the determinant:
@@ -287,10 +287,10 @@ The other operations strictly preserve the determinant:
 \end{itemize}
 Therefore, the correct answer is \textbf{(a)}.
 \exinfo{Official Solution (Problem Sheet 17, Single Choice Question 3). Tests invariance of determinants under transposition, similarity, and row operations.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Multiple Choice Question 2)
-\begin{exercisesolution}[Solution to \cref{exc:row_transformations_2x2_mc}]
+\begin{exercisesolution*}[Solution to \cref{exc:row_transformations_2x2_mc}]
 \label{sol:row_transformations_2x2_mc}
 Given $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4$:
 \begin{itemize}
@@ -301,7 +301,7 @@ Given $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4$:
 \end{itemize}
 The correct statements are \textbf{(b), (c), and (d)}.
 \exinfo{Official Solution (Problem Sheet 17, Multiple Choice Question 2). Evaluates determinant effects of row operations on a $2 \times 2$ matrix.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Exercise 9)
 \begin{exercisesolution}[Solution to \cref{exc:block_matrix_commuting_blocks}]
@@ -329,7 +329,7 @@ Since $\det A \ne 0$, dividing both sides by $\det(A)$ yields:
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Exercise 3)
-\begin{exercisesolution}[Solution to \cref{exc:determinants_via_gaussian_elimination}]
+\begin{exercisesolution*}[Solution to \cref{exc:determinants_via_gaussian_elimination}]
 \label{sol:determinants_via_gaussian_elimination}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Matrix $A$:}
@@ -441,7 +441,7 @@ Since $\det A \ne 0$, dividing both sides by $\det(A)$ yields:
     \]
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 17, Exercise 3). Computes determinants of three $4 \times 4$ and $5 \times 5$ matrices using Gaussian elimination.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Exercise 8)
 \begin{exercisesolution}[Solution to \cref{exc:vandermonde_determinant}]
@@ -486,7 +486,7 @@ Let $V_n(x_1, \dots, x_n) = \det(x_i^{j-1})_{1 \le i, j \le n}$. We proceed by i
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Exercise 1)
-\begin{exercisesolution}[Solution to \cref{exc:determinant_5x5_laplace}]
+\begin{exercisesolution*}[Solution to \cref{exc:determinant_5x5_laplace}]
 \label{sol:determinant_5x5_laplace}
 Let $B = \begin{pmatrix}
   1 & 1 & 1 & 1 & 1 \\
@@ -539,7 +539,7 @@ Thus:
     \item Over $\mathbb{F}_5$: $\det(B) = 55 \equiv 0 \pmod 5$, so $B$ is \textbf{not invertible} over $\mathbb{F}_5$. \qedhere
 \end{itemize}
 \exinfo{Official Solution (Problem Sheet 17, Exercise 1). Computes $5 \times 5$ determinant via Laplace expansion and analyzes invertibility over $\mathbb{R}$ and $\mathbb{F}_5$.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:tridiagonal_toeplitz_determinant}]
@@ -572,7 +572,7 @@ D_n = D_1 + (n-1) \cdot 1 = 2 + n - 1 = n + 1 \qquad \text{for all } n \ge 1. \q
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 17, Single Choice Question 1)
-\begin{exercisesolution}[Solution to \cref{exc:parameter_for_3x3_determinant_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:parameter_for_3x3_determinant_sc}]
 \label{sol:parameter_for_3x3_determinant_sc}
 Let $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{pmatrix}$.
 Applying row operations $R_2 - R_1 \to R_2$ and $R_3 - R_1 \to R_3$ gives the upper triangular form:
@@ -585,7 +585,7 @@ x - 1 = \pm 1 \implies x = 2 \quad \text{or} \quad x = 0.
 \]
 Among the given options, $x = 2$ is \textbf{(b)}.
 \exinfo{Official Solution (Problem Sheet 17, Single Choice Question 1). Solves parametric $3 \times 3$ determinant equation via triangular row reduction.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 17, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:properties_2x2_adjugate}]

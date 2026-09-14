@@ -27,7 +27,7 @@ If one restricts attention to \emph{consistent} linear systems with the same num
 \end{exercisesolution}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 1)
-\begin{exercisesolution}[Solution to \cref{exc:gauss_elimination_4vars}]
+\begin{exercisesolution*}[Solution to \cref{exc:gauss_elimination_4vars}]
 \label{sol:gauss_elimination_4vars}
 We write the augmented matrix of the system and apply elementary row operations:
 \[
@@ -74,10 +74,10 @@ Therefore, the complete solution set in $\mathbb{R}^4$ is:
 L = \left\{ \begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix} = \begin{pmatrix} 1 - 2s - 2t \\ s \\ -1 + \frac{1}{2}t \\ t \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ -1 \\ 0 \end{pmatrix} + s \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t \begin{pmatrix} -2 \\ 0 \\ \frac{1}{2} \\ 1 \end{pmatrix} \;\middle|\; s, t \in \mathbb{R} \right\}.
 \]
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 1). Fully works out Gaussian elimination into reduced row echelon form with 2 free variables.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 3)
-\begin{exercisesolution}[Solution to \cref{exc:simultaneous_row_reduction}]
+\begin{exercisesolution*}[Solution to \cref{exc:simultaneous_row_reduction}]
 \label{sol:simultaneous_row_reduction}
 Since both systems $(S_1)$ and $(S_2)$ share the same coefficient matrix $A$, we form the $3 \times 5$ augmented matrix $(A \mid b_1 \mid b_2)$ and perform row reduction:
 \[
@@ -129,10 +129,10 @@ Reading off the solutions from the respective right-hand columns:
     \item For $(S_2)$, the unique solution is $(x, y, z) = (4, 1, 2)$.
 \end{itemize}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 3). Applies simultaneous Gaussian elimination on a dual augmented matrix.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 2)
-\begin{exercisesolution}[Solution to \cref{exc:two_parameter_linear_system}]
+\begin{exercisesolution*}[Solution to \cref{exc:two_parameter_linear_system}]
 \label{sol:two_parameter_linear_system}
 We write the augmented matrix of the system and apply Gaussian elimination:
 \[
@@ -178,10 +178,10 @@ When $a = -3$, we determine the unique solution:
 \end{itemize}
 In conclusion, the system admits a solution if and only if $a = -3$ (with $b \in \mathbb{R}$ arbitrary), and the unique solution is $(x, y, z) = (55 - 2b, b - 30, -5)$.
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 4, Exercise 2). Analyzes consistency parameters $a, b$ and determines the unique solution.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 3, Exercise 4)
-\begin{exercisesolution}[Solution to \cref{exc:parametric_linear_system_solvability}]
+\begin{exercisesolution*}[Solution to \cref{exc:parametric_linear_system_solvability}]
 \label{sol:parametric_linear_system_solvability}
 We form the augmented matrix and apply row operations:
 \[
@@ -235,12 +235,14 @@ Thus, the solution set $S \subseteq \mathbb{R}^3$ is:
 S = \left\{ \begin{pmatrix} \frac{2}{7}b_1 - b_2 \\ \frac{1}{7}b_1 \\ 0 \end{pmatrix} + t \begin{pmatrix} 1 \\ 4 \\ 14 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
 \]
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 3, Exercise 4). Computes the solvability hyperplane condition $b_1 - 4b_2 - b_3 = 0$ via row reduction.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 4, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:inconsistent_2x2_system}]
 \label{sol:inconsistent_2x2_system}
-Let $A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$ and $b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} \in \mathbb{R}^2$. 
+\inlinemetanote{Uses later theory. The argument below borrows two notions this chapter has not met: \emph{linear independence}, introduced in ch.\ 9, and the \emph{determinant} together with the $2 \times 2$ inverse formula, introduced in ch.\ 20. It is given first because it is the argument a reader will recognise later; the AI-Note at the end of this solution is a self-contained replacement using nothing beyond Gaussian elimination, and that is the one to read on a first pass.}
+
+Let $A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$ and $b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} \in \mathbb{R}^2$.
 
 Suppose for contradiction that neither row of $A$ is a scalar multiple of the other. This means that the row vectors $(a_{11}, a_{12})$ and $(a_{21}, a_{22})$ are linearly independent in $\mathbb{R}^2$. 
 

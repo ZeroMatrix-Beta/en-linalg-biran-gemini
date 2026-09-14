@@ -42,7 +42,7 @@
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 14, Single Choice Question 1)
-\begin{exercisesolution}[Solution to \cref{exc:dim_kernel_linear_functional_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:dim_kernel_linear_functional_sc}]
 \label{sol:dim_kernel_linear_functional_sc}
 Let $\varphi \in V^* = \Hom(V, K)$ with $\dim V = 4$.
 By the Rank-Nullity Theorem (\cref{thm:rank_nullity}):
@@ -54,10 +54,10 @@ Consequently, $\dim \ker(\varphi) = 4 - 0 = 4$ or $\dim \ker(\varphi) = 4 - 1 = 
 It is impossible for $\dim \ker(\varphi)$ to equal $2$.
 Therefore, the statement is \textbf{False}, option \textbf{(b)}.
 \exinfo{Official Solution (Problem Sheet 14, Single Choice Question 1). Computes the possible kernel dimensions of a linear functional on a 4-dimensional space via Rank-Nullity.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 14, Single Choice Question 4)
-\begin{exercisesolution}[Solution to \cref{exc:dual_map_equivalences_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:dual_map_equivalences_sc}]
 \label{sol:dual_map_equivalences_sc}
 Assertions \textbf{(a)}, \textbf{(b)}, \textbf{(c)}, and \textbf{(e)} are all equivalent characterizations of the \emph{injectivity} of the linear map $f \colon V \to W$:
 \begin{itemize}
@@ -68,7 +68,7 @@ Assertions \textbf{(a)}, \textbf{(b)}, \textbf{(c)}, and \textbf{(e)} are all eq
 In contrast, Assertion \textbf{(d)} ($\exists g \colon W \to V$ such that $f \circ g = \id_W$) states that $f$ has a right inverse, which is equivalent to $f$ being \emph{surjective}, not injective.
 Therefore, Assertion \textbf{(d)} is not equivalent to the others.
 \exinfo{Official Solution (Problem Sheet 14, Single Choice Question 4). Identifies which condition characterizes surjectivity rather than injectivity for dual maps.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 14, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:hom_dual_isomorphism_trace_pairing}]
@@ -102,7 +102,7 @@ Therefore, Assertion \textbf{(d)} is not equivalent to the others.
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 14, Single Choice Question 2)
-\begin{exercisesolution}[Solution to \cref{exc:every_finite_dim_is_dual_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:every_finite_dim_is_dual_sc}]
 \label{sol:every_finite_dim_is_dual_sc}
 Let $V$ be any finite-dimensional vector space over $K$.
 Setting $W := V^*$, we obtain a finite-dimensional space $W$ whose dual is $W^* = (V^*)^*$.
@@ -110,7 +110,7 @@ By the canonical evaluation isomorphism of \cref{thm:natural_map_injective}, $V 
 Therefore, every finite-dimensional space is isomorphic to the dual of a finite-dimensional space.
 The statement is \textbf{True}, option \textbf{(a)}.
 \exinfo{Official Solution (Problem Sheet 14, Single Choice Question 2). Establishes that every finite-dimensional vector space is canonically isomorphic to the dual of its dual.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % --- Section 18.b: Direct Sums ---
 
@@ -152,7 +152,11 @@ Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V
     \item Let $\alpha \in U^*$. Since $V = U \oplus W$, every $v \in V$ can be uniquely written as $v = u + w$ with $u \in U, w \in W$.
     Define $\tilde{\alpha} \colon V \to K$ by $\tilde{\alpha}(u + w) := \alpha(u)$.
     Then $\tilde{\alpha}$ is linear and $\tilde{\alpha}|_U(u) = \tilde{\alpha}(u + 0) = \alpha(u)$, so $\tilde{\alpha}$ extends $\alpha$.
-    The extension $\tilde{\alpha}$ \emph{does} depend on the choice of the complement $W$: choosing a different complement $W'$ where $w' = u_0 + w_0$ ($u_0 \in U \setminus \{0\}, w_0 \in W$) yields $\tilde{\alpha}_{W'}(w') = 0 \ne \alpha(u_0) = \tilde{\alpha}_W(w')$.
+    The extension $\tilde{\alpha}$ \emph{does} depend on the choice of the complement $W$, as soon as there is anything for it to depend on. Assume $\alpha \ne 0$ and $W \ne \{0\}$, and pick $u_0 \in U$ with $\alpha(u_0) \ne 0$ (such a $u_0$ exists precisely because $\alpha \ne 0$; note that $u_0 \ne 0$ alone would not do, since $\alpha$ may well vanish on a non-zero vector) together with some $w_0 \in W \setminus \{0\}$. Put $w' := u_0 + w_0$ and let $W'$ be a complement of $U$ containing $w'$, which exists because $w' \notin U$. Then
+    \[
+    \tilde{\alpha}_{W'}(w') = 0 \ne \alpha(u_0) = \tilde{\alpha}_W(w'),
+    \]
+    the left equality because $w' \in W'$ and the right because $w' = u_0 + w_0$ is the decomposition of $w'$ along $U \oplus W$. So, the two extensions differ. (If $\alpha = 0$, every extension is the zero functional and the choice of $W$ genuinely does not matter.)
 
     \item Define $\psi \colon V^* \to U^* \oplus W^*$ by $\psi(\ell) := (\ell|_U, \ell|_W)$.
     Linearity of $\psi$ follows from the pointwise definition of operations on functionals.
@@ -216,7 +220,7 @@ Let $T \colon V \to W$ and $\Gamma(T) := \{(v, T(v)) \in V \oplus W \mid v \in V
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 15, Exercise 1)
-\begin{exercisesolution}[Solution to \cref{exc:basis_of_quotient_space_r5}]
+\begin{exercisesolution*}[Solution to \cref{exc:basis_of_quotient_space_r5}]
 \label{sol:basis_of_quotient_space_r5}
 Let $u_1 = (2, 2, 2, 2, 2)\transp, u_2 = (1, 2, 2, 2, 2)\transp, u_3 = (1, 1, 2, 2, 2)\transp \in \mathbb{R}^5$.
 Subtracting generators yields:
@@ -249,4 +253,4 @@ Therefore, $\Sp(e_4, e_5)$ is a complement to $U$, and the subset of the standar
 \]
 (Equally valid choices are $(e_3, e_4)$ or $(e_3, e_5)$).
 \exinfo{Official Solution (Problem Sheet 15, Exercise 1). Computes the dimension and standard basis projection for a quotient subspace in $\mathbb{R}^5$.}
-\end{exercisesolution}
+\end{exercisesolution*}

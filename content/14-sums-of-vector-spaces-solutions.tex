@@ -1,7 +1,7 @@
 % Official Solution (Problem Sheet 6, Exercise 3)
-\begin{exercisesolution}[Solution to \cref{exc:subspaces_distributivity}]
+\begin{exercisesolution*}[Solution to \cref{exc:subspaces_distributivity}]
 \label{sol:subspaces_distributivity}
-Neither distributive law holds in general, but in both cases the inclusion from left to right ($\subseteq$) is always satisfied.
+Neither distributive law holds in general, but in each case one of the two inclusions always does. Note that they run in opposite directions: in \textbf{(a)} it is the right-hand side that is contained in the left, in \textbf{(b)} the left-hand side that is contained in the right.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Distributivity of Intersection over Sum:}
@@ -30,7 +30,7 @@ Neither distributive law holds in general, but in both cases the inclusion from 
     \end{itemize}
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 6, Exercise 3). Demonstrates failure of subspace distributivity and provides counterexamples in $\mathbb{R}^2$.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 9, Exercise 3)
 \begin{exercisesolution}[Solution to \cref{exc:intersection_four_dim_subspaces}]
@@ -49,34 +49,48 @@ By linear independence, $u_1 \ne 0$, $u_2 \ne 0$, and neither vector is a scalar
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 9, Exercise 7)
-\begin{exercisesolution}[Solution to \cref{exc:hyperplane_and_diagonal_subspaces}]
+\begin{exercisesolution*}[Solution to \cref{exc:hyperplane_and_diagonal_subspaces}]
 \label{sol:hyperplane_and_diagonal_subspaces}
-Let $H = \{(x_1, \dots, x_n) \in K^n \mid \sum_{i=1}^n x_i = 0\}$ and $D = \{(\lambda, \dots, \lambda) \in K^n \mid \lambda \in K\} = \Sp(\mathbf{1})$, where $\mathbf{1} = (1, \dots, 1)$. Note that $\dim H = n - 1$ and $\dim D = 1$.
+Write $\mathbf{1} := (1, \dots, 1) \in K^n$, so that $D = \Sp(\mathbf{1})$.
 
-A vector $v = (\lambda, \dots, \lambda) \in D$ belongs to $H$ if and only if:
+\textbf{A basis and the dimension of $D$.} The single vector $\mathbf{1}$ spans $D$ by definition, and it is non-zero because $1 \ne 0$ in a field, so $(\mathbf{1})$ is a basis and $\dim D = 1$. This holds in every characteristic.
+
+\textbf{A basis and the dimension of $U$.} For $1 \le i \le n-1$ put
 \[
-\sum_{i=1}^n \lambda = (n \cdot 1_K) \lambda = 0.
+    u_i := e_i - e_n \in K^n .
 \]
-We distinguish two cases according to the characteristic of the field $K$:
+Each $u_i$ lies in $U$, since its coordinates sum to $1 + (-1) = 0$. They span $U$: if $x \in U$, then $x_n = -\sum_{i=1}^{n-1} x_i$, and therefore
+\[
+    \sum_{i=1}^{n-1} x_i \, u_i = \sum_{i=1}^{n-1} x_i e_i - \Bigl( \sum_{i=1}^{n-1} x_i \Bigr) e_n = \sum_{i=1}^{n-1} x_i e_i + x_n e_n = x .
+\]
+And they are independent: in a relation $\sum_{i=1}^{n-1} a_i u_i = 0$, reading off coordinate $i$ for $i < n$ gives $a_i = 0$, because $e_n$ contributes nothing to those coordinates. So, $(u_1, \dots, u_{n-1})$ is a basis of $U$ and $\dim U = n-1$, again in every characteristic.
+
+\textbf{The intersection.} A vector $v = \lambda \mathbf{1} \in D$ belongs to $U$ if and only if
+\[
+\sum_{i=1}^n \lambda = (n \cdot 1_K) \lambda = 0,
+\]
+so everything turns on whether the scalar $n \cdot 1_K$ vanishes. We distinguish the two cases:
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Case 1: $n \cdot 1_K \ne 0$ in $K$ (i.e., $\operatorname{char}(K) \nmid n$).}
     Then $(n \cdot 1_K) \lambda = 0 \iff \lambda = 0$.
     \begin{itemize}
-        \item \textbf{Intersection:} $H \cap D = \{0\}$.
-        \item \textbf{Sum:} By Grassmann's formula, $\dim(H + D) = \dim H + \dim D - \dim(H \cap D) = (n - 1) + 1 - 0 = n$.
-        Since $H + D \subseteq K^n$ has dimension $n$, $H + D = K^n$, and the sum is direct: $K^n = H \oplus D$.
+        \item \textbf{Intersection:} $U \cap D = \{0\}$, whose basis is the empty family and whose dimension is $0$.
+        \item \textbf{Sum:} By the dimension formula (\cref{prop:properties_of_sums}), $\dim(U + D) = \dim U + \dim D - \dim(U \cap D) = (n - 1) + 1 - 0 = n$.
+        Since $U + D \subseteq K^n$ has dimension $n$, $U + D = K^n$, with basis the standard basis $(e_1, \dots, e_n)$, and the sum is direct: $K^n = U \oplus D$. Concatenating the two bases found above gives a second, less familiar basis of $K^n$, namely $(u_1, \dots, u_{n-1}, \mathbf{1})$.
     \end{itemize}
 
     \item \textbf{Case 2: $n \cdot 1_K = 0$ in $K$ (i.e., $\operatorname{char}(K) \mid n$).}
-    Then $(n \cdot 1_K) \lambda = 0$ holds for all $\lambda \in K$, which means $D \subseteq H$.
+    Then $(n \cdot 1_K) \lambda = 0$ holds for all $\lambda \in K$, which means $D \subseteq U$.
     \begin{itemize}
-        \item \textbf{Intersection:} $H \cap D = D$, so $\dim(H \cap D) = 1$.
-        \item \textbf{Sum:} Since $D \subseteq H$, we have $H + D = H$, so $\dim(H + D) = n - 1$.
+        \item \textbf{Intersection:} $U \cap D = D$, with basis $(\mathbf{1})$ and $\dim(U \cap D) = 1$.
+        \item \textbf{Sum:} Since $D \subseteq U$, we have $U + D = U$, with basis $(u_1, \dots, u_{n-1})$ and $\dim(U + D) = n - 1$.
     \end{itemize}
 \end{enumerate}
+
+The smallest instance of Case 2 is $K = \mathbb{F}_2$, $n = 2$: there $\mathbf{1} = (1,1)$ has coordinate sum $1 + 1 = 0$, so the diagonal line lies inside the zero-sum hyperplane, and indeed $U = D = \Sp((1,1))$ is one-dimensional inside $\mathbb{F}_2^2$.
 \exinfo{Official Solution (Problem Sheet 9, Exercise 7). Analyzes the sum and intersection of the trace/sum hyperplane and diagonal line depending on field characteristic.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 9, Exercise 5)
 \begin{exercisesolution}[Solution to \cref{exc:pairwise_trivial_vs_direct_sum}]
@@ -105,7 +119,7 @@ Thus, $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a dire
 \end{exercisesolution}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 9, Exercise 1)
-\begin{exercisesolution}[Solution to \cref{exc:linear_complements_matrix_subspaces}]
+\begin{exercisesolution*}[Solution to \cref{exc:linear_complements_matrix_subspaces}]
 \label{sol:linear_complements_matrix_subspaces}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Complement of Upper Triangular Matrices $U_{\mathrm{UT}}$:}
@@ -144,4 +158,4 @@ Thus, $V = U_1 + U_2 + U_3$ is not a direct sum. For $k \ge 3$ subspaces, a dire
     \end{itemize}
 \end{enumerate}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 9, Exercise 1). Constructs explicit linear complements for upper triangular and symmetric matrices, treating general characteristic and skew-symmetric projections.}
-\end{exercisesolution}
+\end{exercisesolution*}

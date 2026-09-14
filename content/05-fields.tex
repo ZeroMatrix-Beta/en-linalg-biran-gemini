@@ -148,7 +148,7 @@ $\mathbb{F}_p$ is a field if and only if $p$ is a prime number.
 \begin{proof}
 Fix $n \ge 2$ and write $\mathbb{Z}/n\mathbb{Z} = \{0, 1, \dots, n-1\}$, with the two operations of \cref{def:field_fp}. Axioms \textbf{(K1)}--\textbf{(K6)} and \textbf{(K8)}--\textbf{(K10)} hold for every such $n$, because each of them is an identity between polynomial expressions in the entries, and reducing modulo $n$ respects sums and products; \textbf{(K9)} holds because $n \ge 2$ makes $1$ and $0$ distinct residues. So, everything turns on \textbf{(K7)}, the existence of multiplicative inverses.
 
-Suppose first that $n$ is \emph{not} prime, say $n = a \cdot b$ with $1 < a, b < n$. Then $a$ and $b$ are non-zero residues, while $a \cdot b = n \equiv 0$. A field has no such pair, by \cref{lem:no_zero_divisors}, so $\mathbb{Z}/n\mathbb{Z}$ is not a field. This is the argument the discussion below carries out for $n = 4$, where $a = b = 2$.
+Suppose first that $n$ is \emph{not} prime, say $n = a \cdot b$ with $1 < a, b < n$. Then $a$ and $b$ are non-zero residues, while $a \cdot b = n \equiv 0$. A field has no such pair, by \cref{lem:no_zero_divisors} below, so $\mathbb{Z}/n\mathbb{Z}$ is not a field. (That lemma is proved two pages further on, from the axioms alone and with no reference to the present theorem, so citing it here is not circular.) This is the argument the discussion below carries out for $n = 4$, where $a = b = 2$.
 
 Suppose now that $n = p$ is prime, and let $a \in \{1, \dots, p-1\}$ be a non-zero residue. Since $p$ is prime and $p$ does not divide $a$, the only common positive divisor of $a$ and $p$ is $1$. By Bézout's identity there are integers $u, v$ with
 \[

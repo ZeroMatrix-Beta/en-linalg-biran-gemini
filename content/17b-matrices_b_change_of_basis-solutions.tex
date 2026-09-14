@@ -28,7 +28,7 @@
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 13, Multiple Choice Question 2)
-\begin{exercisesolution}[Solution to \cref{exc:rank_invariance_similarity_mc}]
+\begin{exercisesolution*}[Solution to \cref{exc:rank_invariance_similarity_mc}]
 \label{sol:rank_invariance_similarity_mc}
 Let $A \in \M_{n \times n}(K)$ and $P \in \GL_n(K)$.
 \begin{itemize}
@@ -54,10 +54,10 @@ Let $A \in \M_{n \times n}(K)$ and $P \in \GL_n(K)$.
 \end{itemize}
 The true statements are \textbf{(a)} and \textbf{(e)}.
 \exinfo{Official Solution (Problem Sheet 13, Multiple Choice Question 2). Shows similarity preserves shifted rank $\rank(A - I_n)$ and connects nullity to fixed vectors.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 13, Multiple Choice Question 1)
-\begin{exercisesolution}[Solution to \cref{exc:change_of_basis_polynomials_mc}]
+\begin{exercisesolution*}[Solution to \cref{exc:change_of_basis_polynomials_mc}]
 \label{sol:change_of_basis_polynomials_mc}
 The change of basis matrix $Q = [\id]_{\mathcal{B}}^{\mathcal{C}}$ has as its $j$-th column the coordinates $[c_j]_{\mathcal{B}}$ of the $j$-th element of $\mathcal{C} = (c_1, c_2, c_3)$ expressed in the basis $\mathcal{B} = (1, x, x^2)$:
 \begin{align*}
@@ -70,10 +70,10 @@ Arranging these column vectors into a matrix gives:
 Q = [\id_{\mathbb{R}[x]_2}]_{\mathcal{B}}^{\mathcal{C}} = \begin{pmatrix} 0 & 1 & 4 \\ 0 & 2 & 4 \\ 1 & 1 & 1 \end{pmatrix}.
 \]
 \exinfo{Official Solution (Problem Sheet 13, Multiple Choice Question 1). Computes the change of basis transition matrix between quadratic polynomial bases.}
-\end{exercisesolution}
+\end{exercisesolution*}
 
 % Official Solution (Problem Sheet 13, Single Choice Question 1)
-\begin{exercisesolution}[Solution to \cref{exc:linear_maps_and_base_changes_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:linear_maps_and_base_changes_sc}]
 \label{sol:linear_maps_and_base_changes_sc}
 Statement \textbf{(c)} is \textbf{false} in general.
 For any linear map $f \colon K^n \to K^m$, its rank satisfies $\rank(f) \le \min\{n, m\}$ (since $\Img(f) \subseteq K^m$ and $\dim \Img(f) \le \dim K^n$), not $\ge \min\{n, m\}$. For example, the zero map $f(v) = 0$ has rank $0 < \min\{n, m\}$ whenever $n, m \ge 1$.
@@ -85,4 +85,4 @@ Statements \textbf{(a)}, \textbf{(b)}, and \textbf{(d)} are all standard true re
     \item \textbf{(d)} True by \cref{prop:invertibility_isomorphism_equivalence}.
 \end{itemize}
 \exinfo{Official Solution (Problem Sheet 13, Single Choice Question 1). Evaluates statements on rank upper bounds, change-of-basis definitions, and matrix invertibility.}
-\end{exercisesolution}
+\end{exercisesolution*}

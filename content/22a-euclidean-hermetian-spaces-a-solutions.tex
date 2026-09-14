@@ -63,7 +63,7 @@ Let $A, B \in \M_{n \times m}(K)$ and $C \in \M_{m \times p}(K)$.
 \end{exercisesolution}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 24, Single and Multiple Choice)
-\begin{exercisesolution}[Solution to \cref{exc:hermitian_trace_subspaces_sc}]
+\begin{exercisesolution*}[Solution to \cref{exc:hermitian_trace_subspaces_sc}]
 \label{sol:hermitian_trace_subspaces_sc}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item Let $A = \begin{pmatrix} x & -x \\ x & x \end{pmatrix}$. Then:
@@ -78,7 +78,11 @@ Let $A, B \in \M_{n \times m}(K)$ and $C \in \M_{m \times p}(K)$.
         \item \emph{Symmetric matrices:} Is a $\mathbb{C}$-linear subspace: if $A\transp = A$ and $B\transp = B$, then $(\alpha A + \beta B)\transp = \alpha A\transp + \beta B\transp = \alpha A + \beta B$ for all $\alpha, \beta \in \mathbb{C}$.
         \item \emph{Hermitian matrices:} Not a $\mathbb{C}$-linear subspace: if $A = I_n$ (Hermitian), then $(i I_n)^* = -i I_n^* = -i I_n \ne i I_n$, so it is not closed under complex scalar multiplication.
         \item \emph{Unitary matrices:} Not a subspace: the zero matrix is not unitary ($0^* 0 = 0 \ne I_n$).
-        \item \emph{Normal matrices:} Not a subspace: the sum of two normal matrices need not be normal (e.g. $A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ and $B = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$).
+        \item \emph{Normal matrices:} Not a subspace: the sum of two normal matrices need not be normal. Take $A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$, which is symmetric and real, hence Hermitian, hence normal, and $B = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$, which satisfies $B B^* = B^* B = I_2$ and is therefore normal as well. Their sum $C := A + B = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}$ is not:
+        \[
+        C C^* = \begin{pmatrix} 4 & 0 \\ 0 & 0 \end{pmatrix} \ne \begin{pmatrix} 0 & 0 \\ 0 & 4 \end{pmatrix} = C^* C.
+        \]
+        (Note how easy it is to pick a pair that does \emph{not} work: any two real symmetric matrices are normal and so is their sum, since symmetry is preserved by addition. The point of the example above is that $B$ is skew-symmetric rather than symmetric, so that the sum is neither.)
     \end{itemize}
 
     \item \textbf{Real trace and determinant of Hermitian matrices:}
@@ -89,7 +93,35 @@ Let $A, B \in \M_{n \times m}(K)$ and $C \in \M_{m \times p}(K)$.
     \end{itemize}
 \end{enumerate}
 \exinfo{Hybrid Solution (Gemini 3.7 Flash / Official Problem Sheet 24, Single and Multiple Choice). Analyzes unitarity conditions, subspace closure for matrix types, and reality of Hermitian traces/determinants.}
-\end{exercisesolution}
+\end{exercisesolution*}
+
+% Official Solution (Problem Sheet 22, Exercise 1)
+\begin{exercisesolution*}[Solution to \cref{exc:inner_product_parameter_a}]
+\label{sol:inner_product_parameter_a}
+\textbf{Answer: exactly the values $a$ with $-\sqrt{7} < a < \sqrt{7}$.}
+
+Write $x = (x_1, x_2)\transp$ and $y = (y_1, y_2)\transp$. The given map is
+\[
+    \langle x, y \rangle = x_1 y_1 + a x_1 y_2 + a x_2 y_1 + 7 x_2 y_2 = x\transp A y,
+    \qquad A := \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix},
+\]
+and two of the three requirements hold for every $a$: a map of the form $x\transp A y$ is bilinear whatever $A$ is, and it is symmetric precisely when $A\transp = A$, which here is automatic. So, only positive definiteness can fail, and by \cref{ex:pos_def_examples_real} \textbf{(b)} the symmetric matrix $A$ is positive definite if and only if
+\[
+    a_{11} = 1 > 0 \quad \text{and} \quad \det(A) = 7 - a^2 > 0 .
+\]
+The first holds always, the second exactly when $a^2 < 7$. Hence, the map is a scalar product on $\mathbb{R}^2$ if and only if $a \in (-\sqrt{7}, \sqrt{7})$.
+
+It is worth seeing the same answer without the criterion, by completing the square in the associated quadratic form:
+\[
+    \langle x, x \rangle = x_1^2 + 2a x_1 x_2 + 7 x_2^2 = (x_1 + a x_2)^2 + (7 - a^2) x_2^2 .
+\]
+If $a^2 < 7$, both summands are non-negative, and $\langle x, x \rangle = 0$ forces $x_2 = 0$ from the second summand and then $x_1 = 0$ from the first, so the form is positive definite. If $a^2 \ge 7$, the vector $x := (-a, 1)\transp \ne 0$ kills the first summand and leaves
+\[
+    \langle x, x \rangle = 7 - a^2 \le 0,
+\]
+which is $0$ at $a = \pm\sqrt{7}$ and negative beyond, so positive definiteness fails in both cases. The two boundary values are therefore genuinely excluded: at $a = \pm\sqrt{7}$ the form is still symmetric and bilinear, and even positive \emph{semi}-definite, but it vanishes on a non-zero vector and so is not a scalar product.
+\exinfo{Official Solution (Problem Sheet 22, Exercise 1). Determines the parameter range making a symmetric bilinear form on $\mathbb{R}^2$ positive definite, via the $2 \times 2$ criterion and by completing the square.}
+\end{exercisesolution*}
 
 % Solution: Gemini / Official Hybrid (Problem Sheet 22, Exercise 4)
 \begin{exercisesolution}[Solution to \cref{exc:gram_matrix_properties}]
@@ -165,7 +197,11 @@ Let $A \in \M_{n \times n}(\mathbb{R})$.
         \[
         \langle x+z, y \rangle + \langle x-z, y \rangle = 2\langle x, y \rangle.
         \]
-        Setting $z = x$ gives $\langle 2x, y \rangle = 2\langle x, y \rangle$, and setting $x = z = \frac{u+v}{2}$ yields additivity $\langle u+v, y \rangle = \langle u, y \rangle + \langle v, y \rangle$.
+        Setting $z = x$ gives $\langle 2x, y \rangle = 2\langle x, y \rangle$, since $\langle x - x, y \rangle = \langle 0, y \rangle = 0$. Now set
+        \[
+        x := \frac{u+v}{2}, \qquad z := \frac{u-v}{2},
+        \]
+        so that $x + z = u$ and $x - z = v$. The displayed identity becomes $\langle u, y \rangle + \langle v, y \rangle = 2\langle \frac{u+v}{2}, y \rangle$, and the halving rule just established turns the right-hand side into $\langle u+v, y \rangle$, which is additivity. (Taking $x = z$ here instead would give back the halving rule and nothing more.)
         By induction $\langle nx, y \rangle = n\langle x, y \rangle$ for $n \in \mathbb{N}$, extending to $\mathbb{Q}$ by division, and to $\mathbb{R}$ by continuity of the norm.
     \end{itemize}
 
@@ -230,7 +266,7 @@ Thus, $(u_1, \dots, u_k, e_{k+1}, \dots, e_n)$ is an orthonormal basis of $V$ ex
 \end{exercisesolution}
 
 % Official Solution (Problem Sheet 24, Exercise 2)
-\begin{exercisesolution}[Solution to \cref{exc:gram_schmidt_polynomials_derivative}]
+\begin{exercisesolution*}[Solution to \cref{exc:gram_schmidt_polynomials_derivative}]
 \label{sol:gram_schmidt_polynomials_derivative}
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Gram-Schmidt process on $(1, x, x^2)$:}
@@ -265,4 +301,4 @@ Thus, $(u_1, \dots, u_k, e_{k+1}, \dots, e_n)$ is an orthonormal basis of $V$ ex
     Hence the representation matrix $[D]_\mathcal{C}^\mathcal{C} = \begin{pmatrix} 0 & 2\sqrt{3} & 0 \\ 0 & 0 & 2\sqrt{15} \\ 0 & 0 & 0 \end{pmatrix}$ is strictly upper triangular. \qedhere
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 24, Exercise 2). Computes orthonormal Legendre-type polynomials on $[0,1]$ via Gram-Schmidt and derives upper triangular derivative matrix.}
-\end{exercisesolution}
+\end{exercisesolution*}
