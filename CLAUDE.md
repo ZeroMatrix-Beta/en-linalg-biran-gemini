@@ -2,32 +2,26 @@
 
 Make gemini.md your set of instructions.
 
-## `review/verify-against-source` is the live branch, not `main`
+## `main` is the only branch
 
-Day-to-day work happens on `review/verify-against-source`. `main` is not
-abandoned, it is just downstream: it only moves when a tranche of work is
-finished and gets fast-forwarded onto it.
+All work lands on `main` directly. There was once a `review/verify-against-source`
+branch holding the live work while `main` sat downstream, but the two were
+fast-forwarded together on 2026-09-14 and the review branch was deleted. Nothing
+is downstream of anything any more.
 
-That split is easy to miss, and it bites in one specific way: GitHub shows
-`main` by default, so **the compiled `en-linalg-2.pdf` visible on the repo page
-is `main`'s copy, not the current one.** Once `main` drifts, the published book
-silently goes stale even though every commit has been pushed. It reached 161
-commits behind that way, with a PDF holding about a third of the book.
+Why that arrangement is still worth knowing about: GitHub shows `main` by
+default, so **the compiled `en-linalg-2.pdf` visible on the repo page is whatever
+`main` points at.** While the branches were separate, `main` drifted 161 commits
+behind and the published book sat at about a third of its length, even though
+every commit had been pushed. The branch that caused that is gone, but the
+exposure is not -- it now arrives by a different road, committing source changes
+without rebuilding the PDF. The repo page is only ever as current as the last
+committed build.
 
-So, when a tranche of work is done (and the PDF has been rebuilt and committed):
-
-```bash
-git rev-list --left-right --count origin/main...HEAD   # expect 0 on the left
-git push origin review/verify-against-source:main
-```
-
-- The left-hand count must be `0`. That means `main` is a strict ancestor and
-  the push is a genuine fast-forward, losing nothing.
-- If it is not `0`, `main` has commits of its own: stop and ask, do not force.
-- Ask me before pushing to `main`. It is not covered by the standing
-  push-after-commit authorization in the global notes.
-- Pushing only moves the remote. Local `main` stays put until
-  `git branch -f main origin/main`.
+- Ask me before pushing. It is not covered by the standing push-after-commit
+  authorization in the global notes.
+- Pushes to `main` should be fast-forwards. If one is rejected as
+  non-fast-forward, the remote has moved: stop and ask, do not force.
 
 ### The PDF is a committed build artefact
 
