@@ -705,17 +705,26 @@
 % \qedbox in the `proof' end code again -- that is what made the marker unswitchable.
 \newcommand{\proofendmark}{\qedbox}
 
+% What the proof environment pushes onto amsthm's QED stack: the marker, flushed right, on
+% the last line if it fits and on a line of its own if not. Going through \pushQED/\popQED
+% (rather than setting the marker by hand in the end code) is what lets \qedhere pop it
+% early, at the end of a final display or list item.
+\newcommand{\proofqed}{%
+  \unskip\nobreak\hfill\penalty50\hskip2em\null\nobreak\hfill
+  \proofendmark
+}
+
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{%
   \par\if@nobreak\vspace{-1ex}\else\addvspace{2.2ex plus 0.5ex minus 0.2ex}\fi
+  \pushQED{\proofqed}%
   \noindent\textcolor{ProofTint}{\faPenNib}\hspace{0.5em}%
   {\normalfont\sffamily\bfseries\color{ProofTint}#1:}%
   \par\nobreak\vspace{0.8ex plus .1ex}\vspace{-\parskip}
   \@afterindentfalse\@afterheading
 }{%
-  \unskip\nobreak\hfill\penalty50\hskip2em\null\nobreak\hfill
-  \proofendmark
-  {\parfillskip=0pt\par}\vspace{2ex}
+  \popQED
+  {\parfillskip=0pt\par}\vspace{2ex}%
 }
 \makeatother
 
