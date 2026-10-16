@@ -66,7 +66,7 @@ Let $A, B \in \M_{n \times m}(K)$ and $C \in \M_{m \times p}(K)$.
 \begin{exercisesolution*}[Solution to \cref{exc:hermitian_trace_subspaces_sc}]
 \label{sol:hermitian_trace_subspaces_sc}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A = \begin{pmatrix} x & -x \\ x & x \end{pmatrix}$. Then:
+    \item Let $A = \left(\begin{smallmatrix} x & -x \\ x & x \end{smallmatrix}\right)$. Then:
     \[
     A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} |x|^2 + |x|^2 & -\overline{x}x + \overline{x}x \\ -\overline{x}x + \overline{x}x & |-\overline{x}|^2 + |x|^2 \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}.
     \]
@@ -78,7 +78,7 @@ Let $A, B \in \M_{n \times m}(K)$ and $C \in \M_{m \times p}(K)$.
         \item \emph{Symmetric matrices:} Is a $\mathbb{C}$-linear subspace: if $A\transp = A$ and $B\transp = B$, then $(\alpha A + \beta B)\transp = \alpha A\transp + \beta B\transp = \alpha A + \beta B$ for all $\alpha, \beta \in \mathbb{C}$.
         \item \emph{Hermitian matrices:} Not a $\mathbb{C}$-linear subspace: if $A = I_n$ (Hermitian), then $(i I_n)^* = -i I_n^* = -i I_n \ne i I_n$, so it is not closed under complex scalar multiplication.
         \item \emph{Unitary matrices:} Not a subspace: the zero matrix is not unitary ($0^* 0 = 0 \ne I_n$).
-        \item \emph{Normal matrices:} Not a subspace: the sum of two normal matrices need not be normal. Take $A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$, which is symmetric and real, hence Hermitian, hence normal, and $B = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$, which satisfies $B B^* = B^* B = I_2$ and is therefore normal as well. Their sum $C := A + B = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}$ is not:
+        \item \emph{Normal matrices:} Not a subspace: the sum of two normal matrices need not be normal. Take $A = \left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)$, which is symmetric and real, hence Hermitian, hence normal, and $B = \left(\begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix}\right)$, which satisfies $B B^* = B^* B = I_2$ and is therefore normal as well. Their sum $C := A + B = \left(\begin{smallmatrix} 0 & 2 \\ 0 & 0 \end{smallmatrix}\right)$ is not:
         \[
         C C^* = \begin{pmatrix} 4 & 0 \\ 0 & 0 \end{pmatrix} \ne \begin{pmatrix} 0 & 0 \\ 0 & 4 \end{pmatrix} = C^* C.
         \]
@@ -298,7 +298,7 @@ Thus, $(u_1, \dots, u_k, e_{k+1}, \dots, e_n)$ is an orthonormal basis of $V$ ex
     D(u_2) &= 2\sqrt{3} = 2\sqrt{3} u_1 \in \Sp(u_1), \\
     D(u_3) &= \sqrt{5}(12x - 6) = 6\sqrt{5}(2x - 1) = 2\sqrt{15} u_2 \in \Sp(u_1, u_2).
     \end{align*}
-    Hence the representation matrix $[D]_\mathcal{C}^\mathcal{C} = \begin{pmatrix} 0 & 2\sqrt{3} & 0 \\ 0 & 0 & 2\sqrt{15} \\ 0 & 0 & 0 \end{pmatrix}$ is strictly upper triangular. \qedhere
+    Hence the representation matrix $[D]_\mathcal{C}^\mathcal{C} = \left(\begin{smallmatrix} 0 & 2\sqrt{3} & 0 \\ 0 & 0 & 2\sqrt{15} \\ 0 & 0 & 0 \end{smallmatrix}\right)$ is strictly upper triangular. \qedhere
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 24, Exercise 2). Computes orthonormal Legendre-type polynomials on $[0,1]$ via Gram-Schmidt and derives upper triangular derivative matrix.}
 \end{exercisesolution*}

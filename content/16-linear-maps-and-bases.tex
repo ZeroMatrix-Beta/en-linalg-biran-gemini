@@ -166,11 +166,11 @@ Choose a basis $\mathcal{B}$ for $V$. Then, $\Phi_{\mathcal{B}}: V \to K^n$ is a
 % ex:16.a
 \begin{example}[Coordinate Vector Calculation]
 \label{ex:coordinate_vector_calculation}
-Consider $V = \mathbb{R}^2$, let $\mathcal{E} = \left(\binom{1}{0}, \binom{0}{1}\right)$ be the standard basis, and let $\mathcal{B} = \left(\binom{1}{1}, \binom{1}{-1}\right)$ be another basis (check that $\mathcal{B}$ is indeed a basis!). We have
+Consider $V = \mathbb{R}^2$, let $\mathcal{E} = \left(\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)\right)$ be the standard basis, and let $\mathcal{B} = \left(\left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 1 \\ -1 \end{smallmatrix}\right)\right)$ be another basis (check that $\mathcal{B}$ is indeed a basis!). We have
 \[
-\left[\binom{x}{y}\right]_{\mathcal{E}} = \binom{x}{y}, \quad \text{and we want to find} \quad \left[\binom{x}{y}\right]_{\mathcal{B}} = \binom{a}{b} = ?
+\left[\begin{pmatrix} x \\ y \end{pmatrix}\right]_{\mathcal{E}} = \begin{pmatrix} x \\ y \end{pmatrix}, \quad \text{and we want to find} \quad \left[\begin{pmatrix} x \\ y \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} a \\ b \end{pmatrix} = ?
 \]
-Let us first try to determine $\left[\binom{1}{0}\right]_{\mathcal{B}}$ and $\left[\binom{0}{1}\right]_{\mathcal{B}}$. We set $\left[\binom{1}{0}\right]_{\mathcal{B}} = \binom{a_1}{a_2}$, where
+Let us first try to determine $\left[\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)\right]_{\mathcal{B}}$ and $\left[\left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)\right]_{\mathcal{B}}$. We set $\left[\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)\right]_{\mathcal{B}} = \left(\begin{smallmatrix} a_1 \\ a_2 \end{smallmatrix}\right)$, where
 \[
 a_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + a_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}.
 \]
@@ -181,11 +181,11 @@ a_1 + a_2 = 1 \\
 a_1 - a_2 = 0
 \end{cases}
 \]
-Solving this system yields $a_1 = a_2 = \frac{1}{2}$, and therefore, $\left[\binom{1}{0}\right]_{\mathcal{B}} = \binom{1/2}{1/2}$.
+Solving this system yields $a_1 = a_2 = \frac{1}{2}$, and therefore, $\left[\left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)\right]_{\mathcal{B}} = \left(\begin{smallmatrix} 1/2 \\ 1/2 \end{smallmatrix}\right)$.
 
 Similarly, for the second standard basis vector, we set
 \[
-\left[\binom{0}{1}\right]_{\mathcal{B}} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}, \quad \text{where} \quad b_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + b_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
+\left[\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}, \quad \text{where} \quad b_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + b_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
 \]
 The resulting system is:
 \[
@@ -194,11 +194,11 @@ b_1 + b_2 = 0 \\
 b_1 - b_2 = 1
 \end{cases}
 \]
-Solving this yields $b_1 = \frac{1}{2}$ and $b_2 = -\frac{1}{2}$, so $\left[\binom{0}{1}\right]_{\mathcal{B}} = \binom{1/2}{-1/2}$.
+Solving this yields $b_1 = \frac{1}{2}$ and $b_2 = -\frac{1}{2}$, so $\left[\left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)\right]_{\mathcal{B}} = \left(\begin{smallmatrix} 1/2 \\ -1/2 \end{smallmatrix}\right)$.
 
 Finally, using the fact that $\Phi_{\mathcal{B}}$ is linear, we calculate:
 \[
-\left[\binom{x}{y}\right]_{\mathcal{B}} = x \left[\binom{1}{0}\right]_{\mathcal{B}} + y \left[\binom{0}{1}\right]_{\mathcal{B}} = \begin{pmatrix} x/2 \\ x/2 \end{pmatrix} + \begin{pmatrix} y/2 \\ -y/2 \end{pmatrix} = \begin{pmatrix} \frac{x+y}{2} \\ \frac{x-y}{2} \end{pmatrix}.
+\left[\begin{pmatrix} x \\ y \end{pmatrix}\right]_{\mathcal{B}} = x \left[\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right]_{\mathcal{B}} + y \left[\begin{pmatrix} 0 \\ 1 \end{pmatrix}\right]_{\mathcal{B}} = \begin{pmatrix} x/2 \\ x/2 \end{pmatrix} + \begin{pmatrix} y/2 \\ -y/2 \end{pmatrix} = \begin{pmatrix} \frac{x+y}{2} \\ \frac{x-y}{2} \end{pmatrix}.
 \]
 \end{example}
 

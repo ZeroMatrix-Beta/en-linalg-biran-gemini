@@ -553,7 +553,7 @@ This is the implication Prof. Biran leaves with \qt{Exc. Similar ideas.} Prove t
   C := \begin{pmatrix} 3 & 0 & -1 & 0 \\ 0 & 6 & 1 & 1 \\ -1 & 1 & 8 & 2 \\ 0 & 1 & 2 & 5 \end{pmatrix}.
   \]
   \exhint[Official Hint]{Apply Sylvester's Criterion (\cref{thm:sylvesters_criterion}): a real symmetric matrix is positive definite if and only if all its leading principal minors $\Delta_k := \det(M_{1 \le i,j \le k})$ are strictly positive for $1 \le k \le n$.
-  For $A$: $\Delta_1 = 3 > 0$, but $\Delta_2 = \det\begin{pmatrix} 3 & 3 \\ 3 & 1 \end{pmatrix} = 3 - 9 = -6 < 0$, so $A$ is not positive definite.
+  For $A$: $\Delta_1 = 3 > 0$, but $\Delta_2 = \det\left(\begin{smallmatrix} 3 & 3 \\ 3 & 1 \end{smallmatrix}\right) = 3 - 9 = -6 < 0$, so $A$ is not positive definite.
   For $B$: $\Delta_1 = 6 > 0$, $\Delta_2 = 42 - 9 = 33 > 0$, and $\det(B) = 6(56-9) - 3(24-12) + 4(9-28) = 282 - 36 - 76 = 170 > 0$, so $B$ is positive definite.
   For $C$: compute the successive leading principal minors $\Delta_1, \Delta_2, \Delta_3, \Delta_4 > 0$ to verify that $C$ is positive definite.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 26, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}

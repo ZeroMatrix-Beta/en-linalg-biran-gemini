@@ -2,21 +2,21 @@
 \begin{exercisesolution}[Solution to \cref{exc:matrix_powers_2x2}]
 \label{sol:matrix_powers_2x2}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$.
+    \item Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$.
     Computing the matrix square:
     \[
     A^2 = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} a^2 + bc & ab + bd \\ ca + dc & cb + d^2 \end{pmatrix} = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & bc + d^2 \end{pmatrix}.
     \]
 
-    \item Let $T = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$.
+    \item Let $T = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$.
     We claim that for all $n \in \mathbb{N}$:
     \[
     T^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}.
     \]
     We prove this formula by mathematical induction on $n \ge 1$:
     \begin{itemize}
-        \item \emph{Base case ($n = 1$):} $T^1 = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$, which matches the formula with $n = 1$.
-        \item \emph{Induction step:} Assume $T^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}$ holds for some $n \ge 1$. Then:
+        \item \emph{Base case ($n = 1$):} $T^1 = \left(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}\right)$, which matches the formula with $n = 1$.
+        \item \emph{Induction step:} Assume $T^n = \left(\begin{smallmatrix} 1 & n \\ 0 & 1 \end{smallmatrix}\right)$ holds for some $n \ge 1$. Then:
         \[
         T^{n+1} = T^n \cdot T = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1\cdot 1 + n \cdot 0 & 1\cdot 1 + n \cdot 1 \\ 0 \cdot 1 + 1 \cdot 0 & 0 \cdot 1 + 1 \cdot 1 \end{pmatrix} = \begin{pmatrix} 1 & n+1 \\ 0 & 1 \end{pmatrix}.
         \]
@@ -94,7 +94,7 @@
     \[
     A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \in \M_{2 \times 2}(K) \setminus \{0\}.
     \]
-    Direct calculation gives $A^2 = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = 0$.
+    Direct calculation gives $A^2 = \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right) \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right) = \left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right) = 0$.
     Thus $A^n = 0$ for $n = 2$. \qedhere
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 12, Exercise 5). Demonstrates that a 2x2 matrix with non-zero square cannot be nilpotent, and gives a nilpotency index 2 example.}

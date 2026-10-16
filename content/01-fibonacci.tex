@@ -561,11 +561,11 @@ exists and is non-zero, compute its exact value.
 \exsol{sol:golden_ratio_part2}
 \end{exercise}
 
-Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n := \binom{a_{n+1}}{a_n}$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
+Finally, we can represent the recurrence relation using the language of matrices. Defining a vector $v_n := \left(\begin{smallmatrix} a_{n+1} \\ a_n \end{smallmatrix}\right)$, the relation $a_{n+1} = a_n + a_{n-1}$ can be written as:
 \begin{equation}
 \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} a_n \\ a_{n-1} \end{pmatrix} \implies v_n = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^n \begin{pmatrix} a_1 \\ a_0 \end{pmatrix}
 \end{equation}
-This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$. It is the shift map of \eqref{eq:shift_in_coordinates} written in the reversed coordinates $\binom{a_{n+1}}{a_n}$, so by \cref{prop:eigenvectors_shift} its eigenvalues are again $\varphi$ and $\psi$.
+This formulation shows that the behavior of the sequence is entirely governed by the powers of the matrix $M := \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$. It is the shift map of \eqref{eq:shift_in_coordinates} written in the reversed coordinates $\left(\begin{smallmatrix} a_{n+1} \\ a_n \end{smallmatrix}\right)$, so by \cref{prop:eigenvectors_shift} its eigenvalues are again $\varphi$ and $\psi$.
 
 \begin{exercise}[Further Problems on Fibonacci Sequences and the Golden Ratio]
 \label{exc:ch1_list}

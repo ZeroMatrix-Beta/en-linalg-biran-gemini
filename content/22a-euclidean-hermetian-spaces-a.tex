@@ -204,12 +204,12 @@ Note that in the Euclidean case, $\langle u, v \rangle = 0$ directly. In the Her
 \begin{exercise}[Hermitian Matrices, Trace, and Subspaces]
   \label{exc:hermitian_trace_subspaces_sc}
   \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item For which complex numbers $x \in \mathbb{C}$ is the matrix $A = \begin{pmatrix} x & -x \\ x & x \end{pmatrix}$ unitary?
+    \item For which complex numbers $x \in \mathbb{C}$ is the matrix $A = \left(\begin{smallmatrix} x & -x \\ x & x \end{smallmatrix}\right)$ unitary?
     \item Determine which of the following subsets of $\M_{n \times n}(\mathbb{C})$ form $\mathbb{C}$-linear subspaces:
     the unitary matrices, the self-adjoint (Hermitian) matrices, the symmetric matrices, and the normal matrices.
     \item Let $A \in \M_{n \times n}(\mathbb{C})$ be a Hermitian matrix. Prove that $\Tr(A) \in \mathbb{R}$ and $\det(A) \in \mathbb{R}$.
   \end{enumerate}
-  \exhint[Hint]{(a) Compute $A^* A = \begin{pmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{pmatrix} \begin{pmatrix} x & -x \\ x & x \end{pmatrix} = \begin{pmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{pmatrix}$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
+  \exhint[Hint]{(a) Compute $A^* A = \left(\begin{smallmatrix} \overline{x} & \overline{x} \\ -\overline{x} & \overline{x} \end{smallmatrix}\right) \left(\begin{smallmatrix} x & -x \\ x & x \end{smallmatrix}\right) = \left(\begin{smallmatrix} 2|x|^2 & 0 \\ 0 & 2|x|^2 \end{smallmatrix}\right)$. This equals $I_2$ if and only if $2|x|^2 = 1 \iff |x|^2 = 1/2$.
   (b) The symmetric matrices form a $\mathbb{C}$-subspace because $(A + \alpha B)\transp = A\transp + \alpha B\transp = A + \alpha B$ for all $\alpha \in \mathbb{C}$. The Hermitian matrices do not form a $\mathbb{C}$-subspace, because $(i A)^* = -i A^* = -i A \ne i A$ for $A \ne 0$.
   (c) Since $A^* = A$, we have $\overline{\Tr(A)} = \Tr(\overline{A}) = \Tr(\overline{A}\transp) = \Tr(A^*) = \Tr(A)$, so $\Tr(A) \in \mathbb{R}$. Similarly, $\overline{\det(A)} = \det(\overline{A}) = \det(\overline{A}\transp) = \det(A^*) = \det(A)$, so $\det(A) \in \mathbb{R}$.}
   \exinfo{This exercise compiles the Single Choice and Multiple Choice problems from Problem Sheet 24, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
@@ -273,7 +273,7 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
   \langle \cdot, \cdot \rangle : \mathbb{R}^2 \times \mathbb{R}^2 \longrightarrow \mathbb{R}, \qquad \left( \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \right) \longmapsto x_1 y_1 + a x_1 y_2 + a x_2 y_1 + 7 x_2 y_2
   \]
   a scalar product on $\mathbb{R}^2$?
-  \exhint[Hint (Y. St\"aubli)]{The matrix associated with this form with respect to the standard basis is $A = \begin{pmatrix} 1 & a \\ a & 7 \end{pmatrix}$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
+  \exhint[Hint (Y. St\"aubli)]{The matrix associated with this form with respect to the standard basis is $A = \left(\begin{smallmatrix} 1 & a \\ a & 7 \end{smallmatrix}\right)$. By \cref{ex:pos_def_examples_real}(b), $A$ is positive definite if and only if $a_{11} = 1 > 0$ (which is satisfied) and $\det(A) = 7 - a^2 > 0$. Solve this inequality for $a$.}
   \exinfo{This exercise is Problem 1 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
   % Points at this exercise's own solution. It used to read \exsol{sol:pos_def_examples_real_b},
   % which proves the 2x2 positive-definiteness criterion the hint invokes, not this exercise.
@@ -310,7 +310,7 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \[
         \implies v\transp A \overline{w} = \overline{w\transp A \overline{v}} \implies v\transp A \overline{w} = \overline{w}\transp \overline{A} v \implies v\transp A \overline{w} = (\overline{w}\transp \overline{A} v)\transp \implies v\transp A \overline{w} = v\transp \overline{A}\transp \overline{w}.
     \]
-    Take $v = e_i$, $w = e_j$ (standard basis). Write $A := \begin{pmatrix} a_{11} & \dots & a_{1j} & \dots & a_{1n} \\ \vdots & & \vdots & & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{pmatrix}$. We have
+    Take $v = e_i$, $w = e_j$ (standard basis). Write $A := \left(\begin{smallmatrix} a_{11} & \dots & a_{1j} & \dots & a_{1n} \\ \vdots & & \vdots & & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{smallmatrix}\right)$. We have
     \[
         e_i\transp \cdot A \cdot e_j = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} A \begin{pmatrix} | \\ e_j \\ | \end{pmatrix} = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} \begin{pmatrix} a_{1j} \\ \vdots \\ a_{nj} \end{pmatrix} = a_{ij}.
     \]
@@ -453,7 +453,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
 
 \begin{exercise}[Examples of Non-Inner-Product Norms]
     \label{exc:non_inner_product_norms}
-    Define $\left\| \binom{a}{b} \right\|' := \max\{|a|, |b|\}$, and $\left\| \binom{a}{b} \right\|'' := |a| + |b|$ for all $\binom{a}{b} \in \mathbb{R}^2$. Show that $\| \cdot \|'$ and $\| \cdot \|''$ are norms, but they are not induced by any scalar product. 
+    Define $\left\| \left(\begin{smallmatrix} a \\ b \end{smallmatrix}\right) \right\|' := \max\{|a|, |b|\}$, and $\left\| \left(\begin{smallmatrix} a \\ b \end{smallmatrix}\right) \right\|'' := |a| + |b|$ for all $\left(\begin{smallmatrix} a \\ b \end{smallmatrix}\right) \in \mathbb{R}^2$. Show that $\| \cdot \|'$ and $\| \cdot \|''$ are norms, but they are not induced by any scalar product. 
     
     \exhint[Hint (Prof. Biran)]{Recall that if the scalar product $\langle \cdot, \cdot \rangle$ induces $\| \cdot \|$, then $\langle u, v \rangle = \frac{1}{2} (\|u + v\|^2 - \|u\|^2 - \|v\|^2)$.}
 \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
@@ -580,7 +580,7 @@ Let's check positivity: let $0 \neq f \in C[a,b]$. Then $\langle f, f \rangle = 
   \[
   \cos \angle(R v_1, R v_2) = \cos \angle(v_1, v_2).
   \]
-  \exhint[Hint (Y. St\"aubli)]{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
+  \exhint[Hint (Y. St\"aubli)]{It suffices to show that the standard scalar product is invariant under rotations, i.e., $\langle R v_1, R v_2 \rangle = \langle v_1, v_2 \rangle$ and consequently $\|R v\| = \|v\|$ for all $v$. In the standard basis, a rotation by an angle $\theta$ is represented by the matrix $R_\theta = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{smallmatrix}\right)$. Check that $R_\theta\transp R_\theta = I_2$, so that $\langle R_\theta v_1, R_\theta v_2 \rangle = (R_\theta v_1)\transp (R_\theta v_2) = v_1\transp R_\theta\transp R_\theta v_2 = v_1\transp v_2 = \langle v_1, v_2 \rangle$.}
   \exinfo{This exercise is Problem 3 of Problem Sheet 22, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:rotation_invariance_angle}
 \end{exercise}

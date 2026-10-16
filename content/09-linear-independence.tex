@@ -82,7 +82,7 @@ Since the order of the vectors is irrelevant, whenever the list $v_1, \dots, v_n
 Let us apply this definition to various vector spaces.
 
 \begin{example}[In $\mathbb{R}^2$]
-Consider the vectors $v_1 := \binom{1}{0}$ and $v_2 := \binom{0}{1}$ in $\mathbb{R}^2$. \\
+Consider the vectors $v_1 := \left(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right)$ and $v_2 := \left(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\right)$ in $\mathbb{R}^2$. \\
 Assume $a_1 v_1 + a_2 v_2 = 0_{\mathbb{R}^2}$. This means:
 \[
 a_1 \begin{pmatrix} 1 \\ 0 \end{pmatrix} + a_2 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
@@ -93,7 +93,7 @@ Thus, $a_1 = 0$ and $a_2 = 0$. The vectors $\{v_1, v_2\}$ are linearly independe
 \end{example}
 
 \begin{example}[Linearly dependent vectors in $\mathbb{R}^2$]
-Consider $v_1 := \binom{1}{1}$ and $v_2 := \binom{2}{2}$. \\
+Consider $v_1 := \left(\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}\right)$ and $v_2 := \left(\begin{smallmatrix} 2 \\ 2 \end{smallmatrix}\right)$. \\
 We can easily spot that $2 v_1 - v_2 = 0_{\mathbb{R}^2}$. Because we have coefficients $a_1 = 2$ and $a_2 = -1$ (which are non-zero) that yield the zero vector, these vectors are NOT linearly independent.
 \end{example}
 
@@ -114,8 +114,8 @@ Let $V$ be a vector space and $v \in V$. The single-element set $\{v\}$ is linea
 \label{exc:linear_independence_r4_lists}
 For each of the following subsets of $\mathbb{R}^4$, determine whether or not it is linearly independent over $\mathbb{R}$:
 \begin{enumerate}
-    \item $S_1 := \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ 3 \\ -3 \\ 9 \end{pmatrix}, \begin{pmatrix} 1 \\ 3 \\ -4 \\ 7 \end{pmatrix}, \begin{pmatrix} 2 \\ 0 \\ 1 \\ 3 \end{pmatrix} \right\} \subseteq \mathbb{R}^4$;
-    \item $S_2 := \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \\ -1 \end{pmatrix} \right\} \subseteq \mathbb{R}^4$.
+    \item $S_1 := \left\{ \left(\begin{smallmatrix} 1 \\ 0 \\ 0 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 2 \\ 3 \\ -3 \\ 9 \end{smallmatrix}\right), \left(\begin{smallmatrix} 1 \\ 3 \\ -4 \\ 7 \end{smallmatrix}\right), \left(\begin{smallmatrix} 2 \\ 0 \\ 1 \\ 3 \end{smallmatrix}\right) \right\} \subseteq \mathbb{R}^4$;
+    \item $S_2 := \left\{ \left(\begin{smallmatrix} 1 \\ 0 \\ 0 \\ 1 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \\ 1 \\ 0 \end{smallmatrix}\right), \left(\begin{smallmatrix} 0 \\ 1 \\ -1 \\ 0 \end{smallmatrix}\right), \left(\begin{smallmatrix} 1 \\ 0 \\ 0 \\ -1 \end{smallmatrix}\right) \right\} \subseteq \mathbb{R}^4$.
 \end{enumerate}
 \exinfo{This exercise is Problem 1 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}
 \exsol{sol:linear_independence_r4_lists}
@@ -339,7 +339,7 @@ A_1 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \qquad A_2 = \begin{
 \]
 \begin{enumerate}
     \item Show that $\{A_1, A_2\}$ is linearly independent over $\mathbb{R}$.
-    \item Let $M := \left\{ \begin{pmatrix} a & b & c \\ d & e & f \end{pmatrix} \in \M_{2 \times 3}(\mathbb{R}) \;\middle|\; d = e = 0, \; b - a = f, \; 3a = c \right\}$. Prove that $\Sp(A_1, A_2) = M$.
+    \item Let $M := \left\{ \left(\begin{smallmatrix} a & b & c \\ d & e & f \end{smallmatrix}\right) \in \M_{2 \times 3}(\mathbb{R}) \;\middle|\; d = e = 0, \; b - a = f, \; 3a = c \right\}$. Prove that $\Sp(A_1, A_2) = M$.
     \item Find a matrix $A_3 \in \M_{2 \times 3}(\mathbb{R})$ such that $\{A_1, A_2, A_3\}$ is linearly independent. Can such an $A_3$ be chosen so that $\Sp(A_1, A_2, A_3) = \M_{2 \times 3}(\mathbb{R})$?
 \end{enumerate}
 \exinfo{This exercise is Problem 3 of Problem Sheet 7, Linear Algebra I, Autumn Semester 2025.}

@@ -18,7 +18,7 @@ Their augmented matrices in row-reduced echelon form are:
 These two matrices are not row equivalent because the only non-zero row in the coefficient part of $(A_1 \mid b_1)$ is $(1, 0)$, whereas in $(A_2 \mid b_2)$ it is $(0, 1)$. Since both matrices are in row-reduced echelon form (\cref{def:row_reduced_echelon}), they represent different row spaces and cannot be transformed into one another by elementary row operations.
 
 \textbf{Counterexample 2 (Different Number of Equations):}
-The system $(x_1 = 0)$ with augmented matrix $(1 \mid 0) \in \M_{1 \times 2}(\mathbb{R})$ and the system $\begin{cases} x_1 = 0 \\ x_1 = 0 \end{cases}$ with augmented matrix $\begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$ both have the unique solution $x_1 = 0$. However, matrices of different dimensions cannot be row equivalent.
+The system $(x_1 = 0)$ with augmented matrix $(1 \mid 0) \in \M_{1 \times 2}(\mathbb{R})$ and the system $\begin{cases} x_1 = 0 \\ x_1 = 0 \end{cases}$ with augmented matrix $\left(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$ both have the unique solution $x_1 = 0$. However, matrices of different dimensions cannot be row equivalent.
 
 \begin{remark}
 If one restricts attention to \emph{consistent} linear systems with the same number of variables and equations whose coefficient matrices have the same dimensions, then the converse does hold: any consistent system has a unique reduced row echelon form completely determined by the affine subspace of solutions.
@@ -242,7 +242,7 @@ S = \left\{ \begin{pmatrix} \frac{2}{7}b_1 - b_2 \\ \frac{1}{7}b_1 \\ 0 \end{pma
 \label{sol:inconsistent_2x2_system}
 \inlinemetanote{Uses later theory. The argument below borrows two notions this chapter has not met: \emph{linear independence}, introduced in ch.\ 9, and the \emph{determinant} together with the $2 \times 2$ inverse formula, introduced in ch.\ 20. It is given first because it is the argument a reader will recognise later; the AI-Note at the end of this solution is a self-contained replacement using nothing beyond Gaussian elimination, and that is the one to read on a first pass.}
 
-Let $A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \in \M_{2 \times 2}(\mathbb{R})$ and $b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} \in \mathbb{R}^2$.
+Let $A = \left(\begin{smallmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{smallmatrix}\right) \in \M_{2 \times 2}(\mathbb{R})$ and $b = \left(\begin{smallmatrix} b_1 \\ b_2 \end{smallmatrix}\right) \in \mathbb{R}^2$.
 
 Suppose for contradiction that neither row of $A$ is a scalar multiple of the other. This means that the row vectors $(a_{11}, a_{12})$ and $(a_{21}, a_{22})$ are linearly independent in $\mathbb{R}^2$. 
 
@@ -260,7 +260,7 @@ Hence, the rows of $A$ must be linearly dependent, which means that one row of $
 
 \begin{ainote}
 \textbf{Alternative Elementary Proof via Row Operations:}
-We can also prove the contrapositive directly using only Gaussian elimination: suppose no row of $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is a scalar multiple of the other.
+We can also prove the contrapositive directly using only Gaussian elimination: suppose no row of $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$ is a scalar multiple of the other.
 \begin{itemize}
     \item If $a \ne 0$, apply $R_2 - \frac{c}{a} \cdot R_1 \to R_2$ to obtain the second row $\bigl(0, \; d - \frac{bc}{a} \;\big|\; b_2 - \frac{c}{a}b_1\bigr)$. Since the rows are not proportional, $ad - bc \ne 0$, so the pivot $d - \frac{bc}{a} \ne 0$, which allows solving for both unknowns uniquely for any $(b_1, b_2)$.
     \item If $a = 0$, then $c \ne 0$ (otherwise row 1 is $0$ times row 2). Swapping rows reduces to the previous case.

@@ -33,20 +33,20 @@ In linear algebra, determining whether a matrix is invertible is a fundamental p
 
 % Extractor: Opus 5
   \begin{exercise}[Dependence of Two Columns]\label{exc:lin_dep_2x2}
-    Check that the columns of $A$ being linearly dependent means that either the first column is a scalar multiple of the second, $\binom{a}{c} = \lambda \binom{b}{d}$ for some $\lambda \in K$, or the second is a scalar multiple of the first, $\binom{b}{d} = \tau \binom{a}{c}$ for some $\tau \in K$.
+    Check that the columns of $A$ being linearly dependent means that either the first column is a scalar multiple of the second, $\left(\begin{smallmatrix} a \\ c \end{smallmatrix}\right) = \lambda \left(\begin{smallmatrix} b \\ d \end{smallmatrix}\right)$ for some $\lambda \in K$, or the second is a scalar multiple of the first, $\left(\begin{smallmatrix} b \\ d \end{smallmatrix}\right) = \tau \left(\begin{smallmatrix} a \\ c \end{smallmatrix}\right)$ for some $\tau \in K$.
   \exinfo{This exercise is taken from Prof.~Biran's handwritten lecture notes.}
   \exsol{sol:lin_dep_2x2}
 \end{exercise}
 
 % Extractor: Gemini 3.1 Pro
 
-  If $\binom{a}{c} = \lambda \binom{b}{d}$, then $a = \lambda b$ and $c = \lambda d$. Consequently, $ad - bc = (\lambda b)d - b(\lambda d) = 0$.
-  If, on the other hand, $\binom{b}{d} = \tau \binom{a}{c}$, then $b = \tau a$ and $d = \tau c$. Consequently, $ad - bc = a(\tau c) - (\tau a)c = 0$.
+  If $\left(\begin{smallmatrix} a \\ c \end{smallmatrix}\right) = \lambda \left(\begin{smallmatrix} b \\ d \end{smallmatrix}\right)$, then $a = \lambda b$ and $c = \lambda d$. Consequently, $ad - bc = (\lambda b)d - b(\lambda d) = 0$.
+  If, on the other hand, $\left(\begin{smallmatrix} b \\ d \end{smallmatrix}\right) = \tau \left(\begin{smallmatrix} a \\ c \end{smallmatrix}\right)$, then $b = \tau a$ and $d = \tau c$. Consequently, $ad - bc = a(\tau c) - (\tau a)c = 0$.
   Thus, we have proved that if $A$ is not invertible, then $ad - bc = 0$.
 
   Conversely, assume $ad - bc = 0$. If $a = 0$, then $bc = 0$, so either $b = 0$ or $c = 0$. This means either $A = \left(\begin{smallmatrix} 0 & 0 \\ c & d \end{smallmatrix}\right)$ or $A = \left(\begin{smallmatrix} 0 & b \\ 0 & d \end{smallmatrix}\right)$. In both of these cases, $A$, clearly, has linearly dependent columns and is therefore not invertible.
 
-  Now, assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus we can write $A = \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column because $\binom{b}{\frac{bc}{a}} = \frac{b}{a} \binom{a}{c}$. This implies that the columns of $A$ are linearly dependent. Hence, $\rank(A) < 2$, which implies $A$ is not invertible.
+  Now, assume $a \neq 0$. This implies $d = \frac{bc}{a}$, and thus we can write $A = \left(\begin{smallmatrix} a & b \\ c & \frac{bc}{a} \end{smallmatrix}\right)$. We can observe that the second column of $A$ is exactly a multiple of the first column because $\left(\begin{smallmatrix} b \\ \frac{bc}{a} \end{smallmatrix}\right) = \frac{b}{a} \left(\begin{smallmatrix} a \\ c \end{smallmatrix}\right)$. This implies that the columns of $A$ are linearly dependent. Hence, $\rank(A) < 2$, which implies $A$ is not invertible.
 \end{proof}
 
 To confirm the sufficiency of this condition and to find the explicit inverse, the formula for $A^{-1}$ can be verified by direct matrix multiplication:
@@ -60,7 +60,7 @@ An inverse has to satisfy the identity in both orders, and the product taken the
 
 \begin{exercise}[Invertibility and Nilpotency of $2 \times 2$ Matrices \faHeart]
 \label{exc:invertibility_nilpotency_2x2}
-Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \M_{2 \times 2}(K)$ be a $2 \times 2$ matrix over a field $K$.
+Let $A = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) \in \M_{2 \times 2}(K)$ be a $2 \times 2$ matrix over a field $K$.
 \begin{enumerate}
     \item Show that $A$ is invertible if and only if $ad - bc \neq 0$.
     \item Show that
@@ -171,7 +171,7 @@ Each of the following expressions defines a function $D \colon \M_{3 \times 3}(\
 
 \begin{exercise}[The $2 \times 2$ Determinant as an Alternating $2$-Linear Form \faHeart]
 \label{exc:det_2x2_alternating_bilinear}
-Show that the determinant of a $2 \times 2$ matrix, $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$, is an alternating $2$-linear function with respect to both its rows and its columns.
+Show that the determinant of a $2 \times 2$ matrix, $\det \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) = ad - bc$, is an alternating $2$-linear function with respect to both its rows and its columns.
 \exhint[Hint (Y. St\"aubli)]{Using the explicit formula $\det A = ad - bc$, verify that $\det$ is linear in each column (holding the other fixed) and linear in each row (holding the other fixed), and show that $\det A = 0$ whenever the two columns (or the two rows) are equal.}
 \exinfo{This exercise is Problem 1 of Problem Sheet 16, Linear Algebra II, Spring Semester 2026.}
 \exsol{sol:det_2x2_alternating_bilinear}
@@ -672,12 +672,12 @@ Because the determinant acts symmetrically on rows and columns, we can perform c
 
 \begin{exercise}[Row Transformations of a $2 \times 2$ Determinant (Multiple Choice)]
   \label{exc:row_transformations_2x2_mc}
-  Suppose $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 4$. Which of the following statements are correct?
+  Suppose $\det \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) = 4$. Which of the following statements are correct?
   \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item $\det \begin{pmatrix} 2a & 2b \\ 2c & 2d \end{pmatrix} = 8$.
-    \item $\det \begin{pmatrix} a & b \\ c-a & d-b \end{pmatrix} = 4$.
-    \item $\det \begin{pmatrix} a & b \\ c+2a & d+2b \end{pmatrix} = 4$.
-    \item $\det \begin{pmatrix} a & b \\ 3c & 3d \end{pmatrix} = 12$.
+    \item $\det \left(\begin{smallmatrix} 2a & 2b \\ 2c & 2d \end{smallmatrix}\right) = 8$.
+    \item $\det \left(\begin{smallmatrix} a & b \\ c-a & d-b \end{smallmatrix}\right) = 4$.
+    \item $\det \left(\begin{smallmatrix} a & b \\ c+2a & d+2b \end{smallmatrix}\right) = 4$.
+    \item $\det \left(\begin{smallmatrix} a & b \\ 3c & 3d \end{smallmatrix}\right) = 12$.
   \end{enumerate}
   \exinfo{This exercise is Multiple Choice Question 2 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:row_transformations_2x2_mc}
@@ -725,7 +725,7 @@ Calculating the determinant of a large matrix by expanding all permutations is c
   \[
   \det \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \det(A D - C B).
   \]
-  \exhint[Official Hint]{Multiply the given block matrix from the left by $\begin{pmatrix} I_n & 0 \\ -C & A \end{pmatrix}$. Use the block matrix determinant formula $\det \begin{pmatrix} X & 0 \\ Y & Z \end{pmatrix} = \det(X) \det(Z)$ and the multiplicativity of the determinant, together with the commutativity relation $A C = C A$, to conclude.}
+  \exhint[Official Hint]{Multiply the given block matrix from the left by $\left(\begin{smallmatrix} I_n & 0 \\ -C & A \end{smallmatrix}\right)$. Use the block matrix determinant formula $\det \left(\begin{smallmatrix} X & 0 \\ Y & Z \end{smallmatrix}\right) = \det(X) \det(Z)$ and the multiplicativity of the determinant, together with the commutativity relation $A C = C A$, to conclude.}
   \exinfo{This exercise is Problem 9 of Problem Sheet 17, Linear Algebra II, Spring Semester 2026, ETH Zurich (Lecturer: Prof. P. Biran).}
 \exsol{sol:block_matrix_commuting_blocks}
 \end{exercise}
@@ -930,7 +930,7 @@ using $(\adj A)_{ji} = C_{ij}$ from the Definition on \cpageref{def:classical_ad
 
 \begin{exercise}[Properties of the $2 \times 2$ Adjugate Matrix]
   \label{exc:properties_2x2_adjugate}
-  Let $K$ be a field. For a $2 \times 2$ matrix $A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix} \in \M_{2 \times 2}(K)$, the adjugate of $A$ is defined by
+  Let $K$ be a field. For a $2 \times 2$ matrix $A = \left(\begin{smallmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{smallmatrix}\right) \in \M_{2 \times 2}(K)$, the adjugate of $A$ is defined by
   \[
   \adj A = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}.
   \]
@@ -995,7 +995,7 @@ where $A(j, b)$ is the matrix obtained from $A$ by replacing column $j$ with the
   \[
   x_1 = \frac{\det \begin{pmatrix} 5 & 1 \\ 5 & 3 \end{pmatrix}}{5} = \frac{15 - 5}{5} = 2, \quad x_2 = \frac{\det \begin{pmatrix} 2 & 5 \\ 1 & 5 \end{pmatrix}}{5} = \frac{10 - 5}{5} = 1.
   \]
-  Thus, the solution is $x = \binom{2}{1}$.
+  Thus, the solution is $x = \left(\begin{smallmatrix} 2 \\ 1 \end{smallmatrix}\right)$.
 \end{example}
 
 \subsection{Determinants of Endomorphisms}
@@ -1062,7 +1062,7 @@ Fix a basis $\mathcal{B}$ of $V$ and write $n := \dim V$, so that $\det(T) = \de
 
 \begin{exercisesolution}[Proof of \cref{exc:lin_dep_2x2}]
 \label{sol:lin_dep_2x2}
-Write $u := \binom{a}{c}$ and $v := \binom{b}{d}$ for the two columns. By \cref{prop:dependence_is_redundancy}, the list $(u,v)$ is linearly dependent exactly when one of the two vectors is a linear combination of the other. Explicitly: dependence gives scalars $\mu, \nu \in K$, not both zero, with $\mu u + \nu v = 0$. If $\mu \neq 0$ then $u = -\frac{\nu}{\mu} v$, which is the first alternative with $\lambda := -\frac{\nu}{\mu}$; and if $\mu = 0$ then $\nu \neq 0$, so $v = 0 = 0 \cdot u$, which is the second alternative with $\tau := 0$. Conversely, either alternative exhibits a non-trivial vanishing combination, so the columns are dependent. Note that the case $u = 0$ is contained in the first alternative, taking $\lambda := 0$.
+Write $u := \left(\begin{smallmatrix} a \\ c \end{smallmatrix}\right)$ and $v := \left(\begin{smallmatrix} b \\ d \end{smallmatrix}\right)$ for the two columns. By \cref{prop:dependence_is_redundancy}, the list $(u,v)$ is linearly dependent exactly when one of the two vectors is a linear combination of the other. Explicitly: dependence gives scalars $\mu, \nu \in K$, not both zero, with $\mu u + \nu v = 0$. If $\mu \neq 0$ then $u = -\frac{\nu}{\mu} v$, which is the first alternative with $\lambda := -\frac{\nu}{\mu}$; and if $\mu = 0$ then $\nu \neq 0$, so $v = 0 = 0 \cdot u$, which is the second alternative with $\tau := 0$. Conversely, either alternative exhibits a non-trivial vanishing combination, so the columns are dependent. Note that the case $u = 0$ is contained in the first alternative, taking $\lambda := 0$.
 \end{exercisesolution}
 
 \begin{exercisesolution}[Proof of \cref{exc:size_of_Sn}]

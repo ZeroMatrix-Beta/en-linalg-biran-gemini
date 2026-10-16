@@ -36,17 +36,17 @@ Therefore, $V$ fails to be a vector space over $\mathbb{R}$.
 We examine the three candidate definitions of scalar multiplication on $(\mathbb{R}_{>0}^2, \oplus)$:
 
 \begin{enumerate}[label=\textbf{(\arabic*)}]
-    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} \lambda x_1 \\ \lambda x_2 \end{pmatrix}$:
+    \item $\lambda \odot \left(\begin{smallmatrix} x_1 \\ x_2 \end{smallmatrix}\right) := \left(\begin{smallmatrix} \lambda x_1 \\ \lambda x_2 \end{smallmatrix}\right)$:
     This operation is not even well-defined as a map $\mathbb{R} \times \mathbb{R}_{>0}^2 \to \mathbb{R}_{>0}^2$. For instance, choosing $\lambda = -1$ and $(1, 1) \in \mathbb{R}_{>0}^2$ yields $(-1, -1) \notin \mathbb{R}_{>0}^2$. Hence, candidate (1) fails.
 
-    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} e^{\lambda} x_1 \\ e^{\lambda} x_2 \end{pmatrix}$:
+    \item $\lambda \odot \left(\begin{smallmatrix} x_1 \\ x_2 \end{smallmatrix}\right) := \left(\begin{smallmatrix} e^{\lambda} x_1 \\ e^{\lambda} x_2 \end{smallmatrix}\right)$:
     This fails axiom \textbf{(V6)}, which requires $1 \odot v = v$. Indeed,
     \[
     1 \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} e x_1 \\ e x_2 \end{pmatrix} \ne \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}.
     \]
     It also fails scalar distributivity \textbf{(V7)} because $(\lambda + \mu) \odot v$ would have components $e^{\lambda+\mu} x_i$, whereas $(\lambda \odot v) \oplus (\mu \odot v)$ has components $(e^\lambda x_i)(e^\mu x_i) = e^{\lambda+\mu} x_i^2$.
 
-    \item $\lambda \odot \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} := \begin{pmatrix} x_1^{\lambda} \\ x_2^{\lambda} \end{pmatrix}$:
+    \item $\lambda \odot \left(\begin{smallmatrix} x_1 \\ x_2 \end{smallmatrix}\right) := \left(\begin{smallmatrix} x_1^{\lambda} \\ x_2^{\lambda} \end{smallmatrix}\right)$:
     This definition turns $(\mathbb{R}_{>0}^2, \oplus, \odot)$ into a valid vector space over $\mathbb{R}$:
     \begin{itemize}
         \item \textbf{Well-definedness:} For any $x_1, x_2 > 0$ and $\lambda \in \mathbb{R}$, $x_1^\lambda > 0$ and $x_2^\lambda > 0$, so $\lambda \odot x \in \mathbb{R}_{>0}^2$.
