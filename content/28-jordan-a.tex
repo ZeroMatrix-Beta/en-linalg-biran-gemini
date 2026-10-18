@@ -68,7 +68,10 @@ J_{\lambda, n} = \begin{pmatrix} \lambda & 1 & & 0 \\ & \ddots & \ddots & \\ & &
 \]
 This matrix has $\lambda$ on the main diagonal, $1$'s on the diagonal immediately above the main diagonal, and $0$'s everywhere else.
 
-For $n=1$, $J_{\lambda, 1} = (\lambda)$. For $n=2$, $J_{\lambda, 2} = \left(\begin{smallmatrix} \lambda & 1 \\ 0 & \lambda \end{smallmatrix}\right)$. For $n=3$, $J_{\lambda, 3} = \left(\begin{smallmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{smallmatrix}\right)$, etc.
+For $n=1$, $J_{\lambda, 1} = (\lambda)$. For $n=2$, $J_{\lambda, 2} = \left(\begin{smallmatrix} \lambda & 1 \\ 0 & \lambda \end{smallmatrix}\right)$. For $n=3$,
+\[
+J_{\lambda, 3} = \begin{pmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{pmatrix}, \quad \text{etc.}
+\]
 
 The matrix $J_{\lambda, n}$ is called the \newterm[Jordan matrix]{$n$-dimensional Jordan matrix with eigenvalue $\lambda$}.
 \end{definition}
@@ -114,7 +117,11 @@ The matrix $J_{\lambda, n}$ is called the \newterm[Jordan matrix]{$n$-dimensiona
     0 = 0
     \end{cases}
     \]
-    The only free variable is $x_1$. Therefore, $\Eig_{J_{\lambda, n}}(\lambda) = \Sp\left(\begin{smallmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{smallmatrix}\right) = \Sp(e_1)$, which means the geometric multiplicity is $1$.
+    The only free variable is $x_1$. Therefore,
+    \[
+    \Eig_{J_{\lambda, n}}(\lambda) = \Sp\left( \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} \right) = \Sp(e_1),
+    \]
+    which means the geometric multiplicity is $1$.
 \end{enumerate}
 \end{proof}
 

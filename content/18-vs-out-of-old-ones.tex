@@ -365,7 +365,11 @@ In summary, applying $(-)^*$, or $\Hom(-,K)$, takes every vector space $V$ and g
   where the second equality follows from the Lemma on the Dual Basis, \cref{lem:dual_basis}, applied to the functional $w_j^* \circ S \in V^*$ and the basis $\mathcal{B}$. Substituting $S(v_i)$, we get
   \[ \sum_{i=1}^n w_j^*\left(\sum_{k=1}^m a_{ki} w_k\right) \cdot v_i^* = \sum_{i=1}^n a_{ji} v_i^*. \]
   % Comment at Gemini: dont use a transposed row-vector here:
-  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are $\left(\begin{smallmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{smallmatrix}\right)$, which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$).
+  The coordinates of $S^*(w_j^*)$ in the basis $\mathcal{B}^* = (v_1^*, \dots, v_n^*)$ are
+  \[
+  \begin{pmatrix} a_{j1} \\ \vdots \\ a_{jn} \end{pmatrix},
+  \]
+  which corresponds to row $j$ in $A$, represented as a column (i.e., column $j$ in $A\transp$).
 % Creator: Opus 5
   These coordinates are, for $1 \le j \le m$, precisely the columns of $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*}$ (the column description of a representation matrix, on \cpageref{prop:columns_of_representation_matrix}), and they agree column by column with those of $A\transp$. Hence, $[S^*]_{\mathcal{B}^*}^{\mathcal{C}^*} = A\transp = ([S]_{\mathcal{C}}^{\mathcal{B}})\transp$, as claimed.
 \end{proof}

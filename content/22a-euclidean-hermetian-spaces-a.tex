@@ -257,7 +257,11 @@ Is $\langle \cdot, \cdot \rangle_A$ a scalar product? In general, it is not. For
 \begin{example}[Positive Definite Matrices in $\mathbb{R}^n$ and $\M_{2 \times 2}(\mathbb{R})$]
 \label{ex:pos_def_examples_real}
 \begin{enumerate}[label=\textbf{(\alph*)}]
-    \item Let $a_1, \dots, a_n > 0$ (with $a_i \in \mathbb{R}$). Then the diagonal matrix $D = \left(\begin{smallmatrix} a_1 & & 0 \\ & \ddots & \\ 0 & & a_n \end{smallmatrix}\right)$ is positive definite. Indeed, if $v = (v_1, \dots, v_n)\transp$, then
+    \item Let $a_1, \dots, a_n > 0$ (with $a_i \in \mathbb{R}$). Then the diagonal matrix
+    \[
+        D = \begin{pmatrix} a_1 & & 0 \\ & \ddots & \\ 0 & & a_n \end{pmatrix}
+    \]
+    is positive definite. Indeed, if $v = (v_1, \dots, v_n)\transp$, then
     \[
         \langle v, v \rangle_D = v\transp \cdot D \cdot v = a_1 v_1^2 + \dots + a_n v_n^2 \geq 0,
     \]
@@ -310,7 +314,11 @@ Given a positive definite complex matrix $A$, we can define a Hermitian product 
     \[
         \implies v\transp A \overline{w} = \overline{w\transp A \overline{v}} \implies v\transp A \overline{w} = \overline{w}\transp \overline{A} v \implies v\transp A \overline{w} = (\overline{w}\transp \overline{A} v)\transp \implies v\transp A \overline{w} = v\transp \overline{A}\transp \overline{w}.
     \]
-    Take $v = e_i$, $w = e_j$ (standard basis). Write $A := \left(\begin{smallmatrix} a_{11} & \dots & a_{1j} & \dots & a_{1n} \\ \vdots & & \vdots & & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{smallmatrix}\right)$. We have
+    Take $v = e_i$, $w = e_j$ (standard basis). Write
+    \[
+        A := \begin{pmatrix} a_{11} & \dots & a_{1j} & \dots & a_{1n} \\ \vdots & & \vdots & & \vdots \\ a_{n1} & \dots & a_{nj} & \dots & a_{nn} \end{pmatrix}.
+    \]
+    We have
     \[
         e_i\transp \cdot A \cdot e_j = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} A \begin{pmatrix} | \\ e_j \\ | \end{pmatrix} = \begin{pmatrix} \text{---} & e_i & \text{---} \end{pmatrix} \begin{pmatrix} a_{1j} \\ \vdots \\ a_{nj} \end{pmatrix} = a_{ij}.
     \]

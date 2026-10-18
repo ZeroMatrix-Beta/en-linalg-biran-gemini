@@ -731,7 +731,10 @@ Calculating the determinant of a large matrix by expanding all permutations is c
 \end{exercise}
 
 \begin{example}[Calculation of a $4 \times 4$ Determinant]
-  Let $A = \left(\begin{smallmatrix} 1 & -1 & 2 & 3 \\ 2 & 2 & 0 & 2 \\ 4 & 1 & -1 & -1 \\ 1 & 2 & 3 & 0 \end{smallmatrix}\right) \in \M_{4 \times 4}(\mathbb{R})$.
+  Let
+  \[
+  A = \begin{pmatrix} 1 & -1 & 2 & 3 \\ 2 & 2 & 0 & 2 \\ 4 & 1 & -1 & -1 \\ 1 & 2 & 3 & 0 \end{pmatrix} \in \M_{4 \times 4}(\mathbb{R}).
+  \]
   We begin by performing row operations $R_2 - 2R_1 \to R_2$, $R_3 - 4R_1 \to R_3$, and $R_4 - R_1 \to R_4$. This transforms $A$ into:
   \[
   \begin{pmatrix}
@@ -965,7 +968,15 @@ and in the same way $\left( \frac{1}{\det A} \adj A \right) \cdot A = I$. So, $\
 
 \subsection{Cramer's Rule}
 
-Let $A \in \M_{n \times n}(K)$. We would like an explicit formula to solve the system of linear equations $A \cdot x = b$, where $x = \left(\begin{smallmatrix} x_1 \\ \vdots \\ x_n \end{smallmatrix}\right)$ are the unknowns and $b = \left(\begin{smallmatrix} b_1 \\ \vdots \\ b_n \end{smallmatrix}\right) \in K^n$ is a given vector.
+Let $A \in \M_{n \times n}(K)$. We would like an explicit formula to solve the system of linear equations $A \cdot x = b$, where
+\[
+x = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}
+\]
+are the unknowns and
+\[
+b = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix} \in K^n
+\]
+is a given vector.
 
 Assume $A \cdot x = b$. Multiplying both sides by the adjoint gives $(\adj A) \cdot A \cdot x = (\adj A) \cdot b$. This directly implies $(\det A) \cdot x = (\adj A) \cdot b$.
 Looking at the $j$-th row of this vector equation, we get:

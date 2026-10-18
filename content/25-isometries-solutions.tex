@@ -1,7 +1,10 @@
 % Solution: Gemini / Official Hybrid (Problem Sheet 26, Exercise 2)
 \begin{exercisesolution}[Solution to \cref{exc:rotation_matrix_axis_angle}]
 \label{sol:rotation_matrix_axis_angle}
-Let $A = \frac{1}{3} \left(\begin{smallmatrix} 2 & -2 & 1 \\ -1 & -2 & -2 \\ 2 & 1 & -2 \end{smallmatrix}\right) \in \M_{3 \times 3}(\mathbb{R})$.
+Let
+\[
+A = \frac{1}{3} \begin{pmatrix} 2 & -2 & 1 \\ -1 & -2 & -2 \\ 2 & 1 & -2 \end{pmatrix} \in \M_{3 \times 3}(\mathbb{R}).
+\]
 \begin{enumerate}[label=\textbf{(\alph*)}]
     \item \textbf{Verification that $A \in \SOrth(3)$:}
     Computing $A\transp A$:
@@ -23,8 +26,14 @@ Let $A = \frac{1}{3} \left(\begin{smallmatrix} 2 & -2 & 1 \\ -1 & -2 & -2 \\ 2 &
     \]
     Subtracting row 1 from row 2: $-3y - 3z = 0 \implies y = -z$.
     Substituting into row 1: $-x - 2(-z) + z = 0 \implies x = 3z$.
-    Thus $\Eig_A(1) = \Sp\left( \left(\begin{smallmatrix} 3 \\ -1 \\ 1 \end{smallmatrix}\right) \right)$.
-    The unit axis vector is $v_1 = \frac{1}{\sqrt{11}} \left(\begin{smallmatrix} 3 \\ -1 \\ 1 \end{smallmatrix}\right)$.
+    Thus,
+    \[
+    \Eig_A(1) = \Sp\left( \begin{pmatrix} 3 \\ -1 \\ 1 \end{pmatrix} \right).
+    \]
+    The unit axis vector is
+    \[
+    v_1 = \frac{1}{\sqrt{11}} \begin{pmatrix} 3 \\ -1 \\ 1 \end{pmatrix}.
+    \]
 
     By the classification of $\SOrth(3)$ (\cref{prop:classification_so3}), $A$ is orthogonally similar to $\operatorname{diag}(1, R_\theta)$, where $R_\theta = \left(\begin{smallmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{smallmatrix}\right)$.
     Taking the trace:
@@ -77,9 +86,15 @@ Let $E_1, E_2 \subset \mathbb{R}^3$ be two-dimensional subspaces.
     Thus $T(e_3) = \pm e_3$.
     \begin{itemize}
         \item If $T(e_3) = e_3$, then $1 = \det(T) = \det(T|_{E_0}) \cdot 1 \implies \det(T|_{E_0}) = 1$.
-        Thus $T|_{E_0} = R_\theta \in \SOrth(2)$ is a rotation of angle $\theta \in [0, 2\pi)$, so $T = \left(\begin{smallmatrix} R_\theta & 0 \\ 0 & 1 \end{smallmatrix}\right)$.
+        Thus $T|_{E_0} = R_\theta \in \SOrth(2)$ is a rotation of angle $\theta \in [0, 2\pi)$, so
+        \[
+        T = \begin{pmatrix} R_\theta & 0 \\ 0 & 1 \end{pmatrix}.
+        \]
         \item If $T(e_3) = -e_3$, then $1 = \det(T) = \det(T|_{E_0}) \cdot (-1) \implies \det(T|_{E_0}) = -1$.
-        Thus $T|_{E_0}$ is an orthogonal reflection in $E_0$, represented by $\left(\begin{smallmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{smallmatrix}\right)$, so $T = \left(\begin{smallmatrix} R_\theta \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right) & 0 \\ 0 & -1 \end{smallmatrix}\right)$.
+        Thus $T|_{E_0}$ is an orthogonal reflection in $E_0$, represented by $\left(\begin{smallmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{smallmatrix}\right)$, so
+        \[
+        T = \begin{pmatrix} R_\theta \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} & 0 \\ 0 & -1 \end{pmatrix}.
+        \]
     \end{itemize}
 
     \item \textbf{General case:}

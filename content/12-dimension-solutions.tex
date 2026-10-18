@@ -189,7 +189,15 @@ Let $E_{ij} \in \M_{n \times n}(\mathbb{R})$ denote the standard elementary matr
     \]
     The second row gives $-2y + 5z = 0 \implies y = \frac{5}{2}z$. Substituting into the first row yields $x = z - y = z - \frac{5}{2}z = -\frac{3}{2}z$. Choosing $z := 2$ gives the solution vector $(-3, 5, 2)\transp$.
     
-    Thus the solution set is $S = \Sp\left( \left(\begin{smallmatrix} -3 \\ 5 \\ 2 \end{smallmatrix}\right) \right)$. Since the vector is non-zero, $\mathcal{B} := \left\{ \left(\begin{smallmatrix} -3 \\ 5 \\ 2 \end{smallmatrix}\right) \right\}$ is a basis of $S$, and $\dim S = 1$.
+    Thus the solution set is
+    \[
+    S = \Sp\left( \begin{pmatrix} -3 \\ 5 \\ 2 \end{pmatrix} \right).
+    \]
+    Since the vector is non-zero,
+    \[
+    \mathcal{B} := \left\{ \begin{pmatrix} -3 \\ 5 \\ 2 \end{pmatrix} \right\}
+    \]
+    is a basis of $S$, and $\dim S = 1$.
 
     \item \textbf{Trivial space $\{0\}$.} The empty set $\emptyset$ is linearly independent and spans $\{0\}$ (because the empty sum of vectors evaluates to $0$). Thus, $\mathcal{B} := \emptyset$ is a basis of $\{0\}$, and $\dim(\{0\}) = |\emptyset| = 0$.
 

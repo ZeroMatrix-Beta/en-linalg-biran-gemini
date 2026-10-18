@@ -135,7 +135,11 @@ Which of the following maps are linear?
 
 \begin{exercise}[Matrix Representation of a Linear Map]
 \label{exc:matrix_map_mc}
-Consider the matrix $A = \left(\begin{smallmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{smallmatrix}\right)$. Which of the following linear maps is given by $x \mapsto A \cdot x$?
+Consider the matrix
+\[
+A = \begin{pmatrix} 2 & 1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix}.
+\]
+Which of the following linear maps is given by $x \mapsto A \cdot x$?
 \begin{enumerate}
     \item $f \colon \mathbb{R}^2 \to \mathbb{R}^3, \quad f(x, y) = (2x + y, x, 2y)\transp$;
     \item $f \colon \mathbb{R}^3 \to \mathbb{R}^2, \quad f(x, y, z) = (2x + y, x + 2z)\transp$.
@@ -528,7 +532,10 @@ Being a subspace of the finite-di\-men\-sional space $V$, the kernel $\ker(T)$ i
     However, since $\mathcal{B}$ is a basis for $V$, all of its constituent vectors are linearly independent. This forces all coefficients to be zero, specifically $b_j = 0$ for all $1 \le j \le n-k$. 
 \end{enumerate}
 
-Therefore, $\mathcal{C}$ is linearly independent and spans the image, making it a basis for $\Img(T)$. Consequently, $\dim \Img(T) = n - k = \dim V - \dim \ker(T)$.
+Therefore, $\mathcal{C}$ is linearly independent and spans the image, making it a basis for $\Img(T)$. Consequently,
+\[
+\dim \Img(T) = n - k = \dim V - \dim \ker(T). \qedhere
+\]
 \end{proof}
 
 % Extractor: Opus 5

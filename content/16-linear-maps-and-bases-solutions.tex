@@ -168,8 +168,15 @@ Thus, an explicit choice of bases is:
         &\implies [f]_{\mathcal{B}}^{\mathcal{A}} = \begin{pmatrix} 2 & 11 & 4 & 5 \\ 1 & -1 & 0 & 2 \end{pmatrix}.
         \end{align*}
 
-        \item For $[g]_{\mathcal{C}}^{\mathcal{B}}$: Compute $g(e_1) = \left(\begin{smallmatrix} 1 \\ 1 \\ 3 \end{smallmatrix}\right)$ and $g(e_2) = \left(\begin{smallmatrix} 1 \\ -1 \\ 0 \end{smallmatrix}\right)$.
-        Solving $\left(\begin{smallmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 4 & 1 & 2 \end{smallmatrix}\right) [\alpha]_{\mathcal{C}} = g(e_i)$ yields:
+        \item For $[g]_{\mathcal{C}}^{\mathcal{B}}$: Compute
+        \[
+        g(e_1) = \begin{pmatrix} 1 \\ 1 \\ 3 \end{pmatrix} \qquad \text{and} \qquad g(e_2) = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}.
+        \]
+        Solving
+        \[
+        \begin{pmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 4 & 1 & 2 \end{pmatrix} [\alpha]_{\mathcal{C}} = g(e_i)
+        \]
+        yields:
         \[
         [g(e_1)]_{\mathcal{C}} = \begin{pmatrix} -1 \\ -1 \\ 4 \end{pmatrix}, \qquad [g(e_2)]_{\mathcal{C}} = \begin{pmatrix} -1 \\ 0 \\ 2 \end{pmatrix}
         \implies [g]_{\mathcal{C}}^{\mathcal{B}} = \begin{pmatrix} -1 & -1 \\ -1 & 0 \\ 4 & 2 \end{pmatrix}.
@@ -185,7 +192,11 @@ Thus, an explicit choice of bases is:
         10 & 42 & 16 & 24
         \end{pmatrix}.
         \end{align*}
-        Direct evaluation confirms $(g \circ f)(a_1) = \left(\begin{smallmatrix} 3 \\ 1 \\ 6 \end{smallmatrix}\right) = -3 c_1 - 2 c_2 + 10 c_3$, matching the first column.
+        Direct evaluation confirms
+        \[
+        (g \circ f)(a_1) = \begin{pmatrix} 3 \\ 1 \\ 6 \end{pmatrix} = -3 c_1 - 2 c_2 + 10 c_3,
+        \]
+        matching the first column.
     \end{enumerate}
 \end{enumerate}
 \exinfo{Official Solution (Problem Sheet 11, Exercise 5). Verifies basis conditions via determinants, computes composite representations, and confirms the matrix product formula $[g \circ f]_{\mathcal{C}}^{\mathcal{A}} = [g]_{\mathcal{C}}^{\mathcal{B}} [f]_{\mathcal{B}}^{\mathcal{A}}$.}
