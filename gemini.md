@@ -24,7 +24,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 ## CONTEXT AND WORKSPACE
 
 * **Repository:** <https://github.com/ZeroMatrix-Beta/en-linalg-biran-gemini/tree/main>
-* **Lecture Notes:** They are stored in the `source_material/` folder. They are **NOT** ignored by git anymore. The order of the lecture note is determined by `chapternumber.chaptername.sectionnumberalph.version.pdf`. (Appearently, Gemini Code Assistant isn't yet capable of reading pictures or pdf's...)
+* **Lecture Notes:** They are stored in the `source/` folder (48 PDFs), which is gitignored, so they exist only on this machine. The order of the lecture note is determined by `chapternumber.chaptername.sectionnumberalph.version.pdf`. (Appearently, Gemini Code Assistant isn't yet capable of reading pictures or pdf's...)
 * **Example:** `08.span.b.v01.pdf` stands for chapter 8, "span", section b. This file comes right after `08.span.a.v01.pdf`.
 * **Environment:** You are working directly within the repository structure. Always reference existing definitions in the project's preamble or `.cls` files before suggesting new commands. If you introduce packages that are not already in use, be clear about that.
 
@@ -114,7 +114,7 @@ You are authorized to improve the prose and apply the established "House Style" 
 * **Exercise Hints (`\exhint`):** Always specify the hint author/origin using the optional argument:
   * `\exhint[Hint (Y. St\"aubli)]{...}` for hints authored by Y. Stäubli from the companion tip sheets (`exercises/hints/Tipps Serie *.pdf`). Note: Use the abbreviated name **Y. Stäubli** (not the full first name).
   * `\exhint[Official Hint]{...}` for hints directly originating from the official ETH Zurich problem sheets (Series 01–28).
-  * `\exhint[Hint (Prof. Biran)]{...}` for hints appearing in Prof. Biran's handwritten lecture notes (`source_material/*.pdf`).
+  * `\exhint[Hint (Prof. Biran)]{...}` for hints appearing in Prof. Biran's handwritten lecture notes (`source/*.pdf`).
 * **Exercise Solutions:** Make an extra section or subsection for the solutions to the exercises at the end of each section. When an exercise is tied to a specific numbered environment, use `\cref` to reference it in the solution title, preferring the word "Proof" if it is a proof (e.g., `\begin{exercisesolution}[Proof of \cref{prop:properties_adjoint_matrix}]`). To reference specific subitems (e.g., part (c) of a Lemma), combine `\cref` with the bolded letter manually (e.g., `\begin{exercisesolution}[Proof of \cref{lem:properties_adjoint_map} \textbf{(c)}]`). If the exercise is tied to an *unnumbered* environment (like a `claim*`), you must add a label to that environment and reference its page number in the solution title using `\cpageref` along with a highly descriptive name. For example: `\begin{exercisesolution}[Proof of Linearity of $\varphi_u$ (on \cpageref{claim:linearity_phi_u})]`.
   * **Solution Environment Structure & Placement:**
     * **Preceding Comment:** Always place a comment above `\begin{exercisesolution}` indicating provenance:

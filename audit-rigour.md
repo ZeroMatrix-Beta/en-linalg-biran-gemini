@@ -1,7 +1,7 @@
 # Rigour audit (reading the LaTeX alone)
 
-Working notes for the second audit pass over this book. Branch
-`review/verify-against-source`. **The pass is complete: every chapter, 1 through
+Working notes for the second audit pass over this book (done on the since-deleted branch
+`review/verify-against-source`, now in `main`). **The pass is complete: every chapter, 1 through
 28b, has been through it.** Last updated after ch. 9 was pushed, which finished
 the run. The status table below records where each chapter landed, and the
 sections after it record what the pass found; the Open questions at the end are
